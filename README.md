@@ -1,5 +1,4 @@
-# OSRS-Cache
-[![Build Status](https://travis-ci.com/guthix/OSRS-Cache.svg?branch=master)](https://travis-ci.com/guthix/OSRS-Cache)
+# OldScape Cache
 
 A library for reading and writing OSRS cache files
 
@@ -30,7 +29,8 @@ A library for reading and writing OSRS cache files
 
 ## Dependencies
 
-Currently the Jagex-Store-5 dependency needs to be manually added to
+Currently the Jagex-Store-5 dependency needs to be manually added to the
+classpath.
 
 
 
