@@ -63,7 +63,7 @@ class Land(
         }
 
         fun decode(data: ByteBuf, baseX: Int, baseY: Int): Land {
-            val tileHeights = Array(Region.FLOOR_COUNT) { Array(Region.Companion.SIZE) { IntArray(
+            val tileHeights = Array(Region.FLOOR_COUNT) { Array(Region.SIZE) { IntArray(
                 Region.SIZE
             ) } }
             val renderRules = Array(Region.FLOOR_COUNT) { Array(Region.SIZE) { ShortArray(

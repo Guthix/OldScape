@@ -70,7 +70,7 @@ data class IdentKitConfig(override val id: Int) : Config(id) {
         return data
     }
 
-    companion object : io.guthix.oldscape.cache.config.ConfigCompanion<IdentKitConfig>() {
+    companion object : ConfigCompanion<IdentKitConfig>() {
         override val id = 3
 
         override fun decode(id: Int, data: ByteBuf): IdentKitConfig {
