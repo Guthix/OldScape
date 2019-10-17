@@ -23,6 +23,5 @@ ext.jgltfVersion = '2.0.0'
 
 dependencies {
     api project(':cache:codec')
-    implementation group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib-jdk8'
     implementation group: 'de.javagl', name: 'jgltf-model', version: jgltfVersion
 }
