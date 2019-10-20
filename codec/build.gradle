@@ -20,9 +20,8 @@ plugins {
 }
 
 ext {
-    kotlinLoggingVersion = '1.7.6'
     logbackVersion = '1.2.3'
-    jagexstoreVersion = '0.2.2'
+    jagexstoreVersion = '0.2.3'
 }
 
 dependencies {
