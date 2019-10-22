@@ -1,7 +1,5 @@
 package io.guthix.oldscape.server.net
 
-import io.guthix.cache.js5.container.disk.Js5DiskStore
-import io.guthix.oldscape.server.net.state.js5.Js5TransferCache
 import io.guthix.oldscape.server.net.state.service.ServiceDecoder
 import io.guthix.oldscape.server.net.state.service.ServiceHandler
 import io.netty.bootstrap.ServerBootstrap
@@ -15,7 +13,7 @@ import mu.KotlinLogging
 
 private val logger = KotlinLogging.logger { }
 
-class OldScapeServer(private val revision: Int, private val port: Int, private val transferCache: Js5TransferCache) {
+class OldScapeServer(private val revision: Int, private val port: Int) {
     fun run() {
         val bossGroup = NioEventLoopGroup()
         val loopGroup = NioEventLoopGroup()
@@ -30,7 +28,7 @@ class OldScapeServer(private val revision: Int, private val port: Int, private v
                     override fun initChannel(channel: SocketChannel) {
                         channel.pipeline().addLast(ServiceDecoder::class.qualifiedName, ServiceDecoder())
                         channel.pipeline().addLast(ServiceHandler::class.qualifiedName,
-                            ServiceHandler(revision, transferCache)
+                            ServiceHandler(revision)
                         )
                     }
                 })
