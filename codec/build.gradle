@@ -19,13 +19,8 @@ plugins {
     id 'java-library'
 }
 
-ext {
-    logbackVersion = '1.2.3'
-    jagexstoreVersion = '0.2.3'
-}
-
 dependencies {
-    api group: 'io.guthix.cache', name: 'Jagex-Store-5', version: jagexstoreVersion
+    api group: 'io.guthix.cache', name: 'Jagex-Store-5', version: '0.2.3'
     implementation group: 'io.github.microutils', name: 'kotlin-logging', version: kotlinLoggingVersion
     implementation group: 'ch.qos.logback', name: 'logback-classic', version: logbackVersion
 }
