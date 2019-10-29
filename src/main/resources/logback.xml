@@ -6,6 +6,7 @@
         </encoder>
     </appender>
     <logger name="io.guthix" level="INFO"/>
+    <logger name="io.netty" level="WARN"/>
     <root level="debug">
         <appender-ref ref="STDOUT" />
     </root>
