@@ -6,8 +6,8 @@ import io.guthix.cache.js5.util.XTEA_KEY_SIZE
 import io.guthix.cache.js5.util.xteaDecrypt
 import io.guthix.oldscape.server.net.state.IsaacRandom
 import io.guthix.oldscape.server.net.state.IsaacRandomPair
-import io.guthix.oldscape.server.world.ClientSettings
-import io.guthix.oldscape.server.world.MachineSettings
+import io.guthix.oldscape.server.world.entity.player.ClientSettings
+import io.guthix.oldscape.server.world.entity.player.MachineSettings
 import io.netty.buffer.ByteBuf
 import io.netty.buffer.Unpooled
 import io.netty.channel.ChannelHandlerContext

@@ -2,8 +2,8 @@ package io.guthix.oldscape.server.net.state.login
 
 import io.guthix.oldscape.server.net.IncPacket
 import io.guthix.oldscape.server.net.state.IsaacRandomPair
-import io.guthix.oldscape.server.world.ClientSettings
-import io.guthix.oldscape.server.world.MachineSettings
+import io.guthix.oldscape.server.world.entity.player.ClientSettings
+import io.guthix.oldscape.server.world.entity.player.MachineSettings
 
 data class LoginRequest(
         val loginType: LoginType,

@@ -1,4 +1,4 @@
-package io.guthix.oldscape.server.world
+package io.guthix.oldscape.server.world.entity.player
 
 data class ClientSettings(
         val resizable: Boolean,

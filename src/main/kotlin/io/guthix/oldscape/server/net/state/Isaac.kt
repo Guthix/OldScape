@@ -30,7 +30,7 @@ class IsaacRandom(private val seed: IntArray) {
         return randResult[valuesUsed]
     }
 
-    fun generateMoreResults() {
+    private fun generateMoreResults() {
         bb += ++cc
         for (i in 0 until 256) {
             val x = mm[i]
