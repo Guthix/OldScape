@@ -20,7 +20,7 @@ plugins {
 }
 
 dependencies {
-    api group: 'io.guthix.cache', name: 'Jagex-Store-5', version: '0.2.3'
+    api group: 'io.guthix.cache', name: 'Jagex-Store-5', version: '0.2.6'
     implementation group: 'io.github.microutils', name: 'kotlin-logging', version: kotlinLoggingVersion
     implementation group: 'ch.qos.logback', name: 'logback-classic', version: logbackVersion
 }
