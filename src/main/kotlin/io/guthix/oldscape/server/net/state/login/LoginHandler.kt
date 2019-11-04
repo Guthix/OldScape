@@ -6,6 +6,6 @@ import io.netty.channel.ChannelHandlerContext
 
 class LoginHandler(val sessionId: Long) : PacketInboundHandler<IncPacket>() {
     override fun channelRead0(ctx: ChannelHandlerContext?, msg: IncPacket?) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        println("Received lo0gin request ${msg as LoginRequest}")
     }
 }
