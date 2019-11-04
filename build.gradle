@@ -27,3 +27,7 @@ dependencies {
     implementation group: 'io.ktor', name: 'ktor-server-core', version: ktorVersion
     implementation group: 'io.ktor', name: 'ktor-client-cio', version: ktorVersion
 }
+
+license {
+    header = file(rootDir.path + '\\licenseheaders\\LGPL.txt')
+}
