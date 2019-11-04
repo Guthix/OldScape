@@ -25,3 +25,7 @@ dependencies {
     api project(':cache:codec')
     implementation group: 'de.javagl', name: 'jgltf-model', version: jgltfVersion
 }
+
+license {
+    header = file(rootDir.path + '\\licenseheaders\\LGPL.txt')
+}

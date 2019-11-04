@@ -24,3 +24,7 @@ dependencies {
     implementation group: 'io.github.microutils', name: 'kotlin-logging', version: kotlinLoggingVersion
     implementation group: 'ch.qos.logback', name: 'logback-classic', version: logbackVersion
 }
+
+license {
+    header = file(rootDir.path + '\\licenseheaders\\LGPL.txt')
+}
