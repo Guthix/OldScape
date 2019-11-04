@@ -10,9 +10,15 @@ import io.guthix.oldscape.server.net.state.login.*
 import io.netty.channel.ChannelHandlerContext
 import io.netty.channel.ChannelPipeline
 import kotlinx.io.IOException
+import java.math.BigInteger
 import kotlin.random.Random
 
-class ServiceHandler(private val currentRevision: Int) : PacketInboundHandler<IncPacket>() {
+class ServiceHandler(
+        private val currentRevision: Int,
+        private val archiveCount: Int,
+        private val rsaPrivateKey: BigInteger,
+        private val rsaMod: BigInteger
+) : PacketInboundHandler<IncPacket>() {
     override fun channelRead0(ctx: ChannelHandlerContext, msg: IncPacket) {
         ctx.pipeline().addStatusEncoder()
         when(msg) {
@@ -21,7 +27,7 @@ class ServiceHandler(private val currentRevision: Int) : PacketInboundHandler<In
                 ctx.pipeline().replaceSessionIdEncoder()
                 val sessionId = Random.nextLong()
                 ctx.writeAndFlush(sessionId)
-                ctx.pipeline().swapToLogin(sessionId)
+                ctx.pipeline().swapToLogin(rsaPrivateKey, rsaMod, sessionId)
             }
             is Js5ConnectionRequest -> {
                 if(msg.revision != currentRevision) {
@@ -45,8 +51,10 @@ class ServiceHandler(private val currentRevision: Int) : PacketInboundHandler<In
         replace(StatusEncoder::class.qualifiedName, SessionIdEncoder::class.qualifiedName, SessionIdEncoder())
     }
 
-    private fun ChannelPipeline.swapToLogin(sessionId: Long) {
-        replace(ServiceDecoder::class.qualifiedName, LoginDecoder::class.qualifiedName, LoginDecoder())
+    private fun ChannelPipeline.swapToLogin(rsaExp: BigInteger, rsaMod: BigInteger, sessionId: Long) {
+        replace(ServiceDecoder::class.qualifiedName, LoginDecoder::class.qualifiedName,
+                LoginDecoder(archiveCount, rsaExp, rsaMod)
+        )
         replace(ServiceHandler::class.qualifiedName, LoginHandler::class.qualifiedName, LoginHandler(sessionId))
         replace(SessionIdEncoder::class.qualifiedName, LoginEncoder::class.qualifiedName, LoginEncoder())
     }
