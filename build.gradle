@@ -29,5 +29,5 @@ dependencies {
 }
 
 license {
-    header = file(rootDir.path + '\\licenseheaders\\LGPL.txt')
+    header = file(rootDir.path + '\\license\\LGPL.txt')
 }
