@@ -44,5 +44,6 @@ dependencies {
 }
 
 license {
-    header = file(rootDir.path + '\\licenseheaders\\GPL.txt')
+    header = file(rootDir.path + '\\license\\GPL.txt')
+    exclude("*\\main_file_cache.*")
 }
