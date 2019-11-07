@@ -14,30 +14,12 @@
  * You should have received a copy of the GNU General Public License
  * along with Foobar.  If not, see <https://www.gnu.org/licenses/>.
  */
-package io.guthix.oldscape.server.world
+package io.guthix.oldscape.server.net.state.login
 
-import io.guthix.oldscape.server.net.state.login.LoginRequest
-import io.guthix.oldscape.server.world.entity.player.PlayerList
-import java.util.*
-import java.util.concurrent.*
+import io.guthix.oldscape.server.net.StatusResponse
 
-class World : TimerTask() {
-    internal val loginQueue = SynchronousQueue<LoginRequest>()
-
-    internal val players = PlayerList(MAX_PLAYERS)
-
-    override fun run() {
-        processLogins()
-    }
-
-    private fun processLogins() {
-        while(loginQueue.isNotEmpty()) {
-            val request = loginQueue.poll()
-            players.add(request)
-        }
-    }
-
-    companion object {
-        const val MAX_PLAYERS = 2048
-    }
-}
+data class LoginResponse(
+    val playerIndex: Int,
+    val playerRights: Int,
+    val statusResponse: StatusResponse
+)
