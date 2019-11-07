@@ -85,7 +85,7 @@ class LoginDecoder(
         val serverSeed = IntArray(XTEA_KEY_SIZE) { clientSeed[it] + 50 }
         val isaacPair = IsaacRandomPair(IsaacRandom(clientSeed), IsaacRandom(serverSeed))
         out.add(LoginRequest(loginType, revision, authType, sessionId, uniqueId, userName, password, clientSettings,
-                machineSettings, crcs, isaacPair)
+                machineSettings, crcs, isaacPair, ctx)
         )
     }
 

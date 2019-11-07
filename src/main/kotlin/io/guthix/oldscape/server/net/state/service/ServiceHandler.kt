@@ -74,7 +74,7 @@ class ServiceHandler(
                 LoginDecoder(archiveCount, rsaPrivateKey, rsaMod)
         )
         replace(ServiceHandler::class.qualifiedName, LoginHandler::class.qualifiedName, LoginHandler(world, sessionId))
-        replace(SessionIdEncoder::class.qualifiedName, LoginEncoder::class.qualifiedName, LoginEncoder())
+        replace(SessionIdEncoder::class.qualifiedName, StatusEncoder::class.qualifiedName, StatusEncoder())
     }
 
     private fun ChannelPipeline.swapToJs5() {
