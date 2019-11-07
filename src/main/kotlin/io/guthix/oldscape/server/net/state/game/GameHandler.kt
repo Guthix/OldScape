@@ -14,19 +14,14 @@
  * You should have received a copy of the GNU General Public License
  * along with Foobar.  If not, see <https://www.gnu.org/licenses/>.
  */
-package io.guthix.oldscape.server
+package io.guthix.oldscape.server.net.state.game
 
-import com.charleskorn.kaml.Yaml
-import io.guthix.oldscape.server.net.OldScapeServer
-import io.guthix.oldscape.server.world.World
-import java.nio.file.Files
-import java.nio.file.Path
-import java.util.*
+import io.guthix.oldscape.server.GameEvent
+import io.guthix.oldscape.server.net.PacketInboundHandler
+import io.netty.channel.ChannelHandlerContext
 
-fun main() {
-    val configFile = Path.of(ServerConfig::class.java.getResource("/Config.yaml").toURI())
-    val config = Yaml.default.parse(ServerConfig.serializer(), Files.readString(configFile))
-    val world = World()
-    Timer().scheduleAtFixedRate(world, 0, 600)
-    OldScapeServer(config.revision, config.port, 21, world, config.rsa.privateKey, config.rsa.modulus).run()
+class GameHandler : PacketInboundHandler<PacketEvent>() {
+    override fun channelRead0(ctx: ChannelHandlerContext, msg: PacketEvent) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
 }

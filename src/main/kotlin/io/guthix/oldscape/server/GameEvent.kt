@@ -16,17 +16,4 @@
  */
 package io.guthix.oldscape.server
 
-import com.charleskorn.kaml.Yaml
-import io.guthix.oldscape.server.net.OldScapeServer
-import io.guthix.oldscape.server.world.World
-import java.nio.file.Files
-import java.nio.file.Path
-import java.util.*
-
-fun main() {
-    val configFile = Path.of(ServerConfig::class.java.getResource("/Config.yaml").toURI())
-    val config = Yaml.default.parse(ServerConfig.serializer(), Files.readString(configFile))
-    val world = World()
-    Timer().scheduleAtFixedRate(world, 0, 600)
-    OldScapeServer(config.revision, config.port, 21, world, config.rsa.privateKey, config.rsa.modulus).run()
-}
+interface GameEvent

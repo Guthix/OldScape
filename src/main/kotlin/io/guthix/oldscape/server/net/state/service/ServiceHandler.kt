@@ -23,6 +23,7 @@ import io.guthix.oldscape.server.net.StatusEncoder
 import io.guthix.oldscape.server.net.state.js5.Js5Decoder
 import io.guthix.oldscape.server.net.state.js5.Js5Handler
 import io.guthix.oldscape.server.net.state.login.*
+import io.guthix.oldscape.server.world.World
 import io.netty.channel.ChannelHandlerContext
 import io.netty.channel.ChannelPipeline
 import kotlinx.io.IOException
@@ -30,10 +31,11 @@ import java.math.BigInteger
 import kotlin.random.Random
 
 class ServiceHandler(
-        private val currentRevision: Int,
-        private val archiveCount: Int,
-        private val rsaPrivateKey: BigInteger,
-        private val rsaMod: BigInteger
+    private val currentRevision: Int,
+    private val archiveCount: Int,
+    private val world: World,
+    private val rsaPrivateKey: BigInteger,
+    private val rsaMod: BigInteger
 ) : PacketInboundHandler<IncPacket>() {
     override fun channelRead0(ctx: ChannelHandlerContext, msg: IncPacket) {
         ctx.pipeline().addStatusEncoder()
@@ -43,7 +45,7 @@ class ServiceHandler(
                 ctx.pipeline().replaceSessionIdEncoder()
                 val sessionId = Random.nextLong()
                 ctx.writeAndFlush(sessionId)
-                ctx.pipeline().swapToLogin(rsaPrivateKey, rsaMod, sessionId)
+                ctx.pipeline().swapToLogin(world, sessionId, rsaPrivateKey, rsaMod)
             }
             is Js5ConnectionRequest -> {
                 if(msg.revision != currentRevision) {
@@ -67,11 +69,11 @@ class ServiceHandler(
         replace(StatusEncoder::class.qualifiedName, SessionIdEncoder::class.qualifiedName, SessionIdEncoder())
     }
 
-    private fun ChannelPipeline.swapToLogin(rsaExp: BigInteger, rsaMod: BigInteger, sessionId: Long) {
+    private fun ChannelPipeline.swapToLogin(world: World, sessionId: Long, rsaPrivateKey: BigInteger, rsaMod: BigInteger) {
         replace(ServiceDecoder::class.qualifiedName, LoginDecoder::class.qualifiedName,
-                LoginDecoder(archiveCount, rsaExp, rsaMod)
+                LoginDecoder(archiveCount, rsaPrivateKey, rsaMod)
         )
-        replace(ServiceHandler::class.qualifiedName, LoginHandler::class.qualifiedName, LoginHandler(sessionId))
+        replace(ServiceHandler::class.qualifiedName, LoginHandler::class.qualifiedName, LoginHandler(world, sessionId))
         replace(SessionIdEncoder::class.qualifiedName, LoginEncoder::class.qualifiedName, LoginEncoder())
     }
 
