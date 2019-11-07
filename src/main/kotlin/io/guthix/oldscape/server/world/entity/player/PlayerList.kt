@@ -31,15 +31,18 @@ class PlayerList(capacity: Int) : Iterable<Player> {
 
     private val random = Random.Default
 
+    val freeSpace get() = freeIndexes.size
+
     init {
         for (index in capacity downTo 1) freeIndexes.push(index)
     }
 
-    fun add(request: LoginRequest) {
+    fun create(request: LoginRequest): Player {
         val index = freeIndexes.pop()
         val pid = random.nextInt(occupiedIndexes.size + 1)
         val player = Player(index, pid, request.username)
         occupiedIndexes.add(pid, player.index)
+        return player
     }
 
     fun remove(player: Player) {
@@ -56,10 +59,6 @@ class PlayerList(capacity: Int) : Iterable<Player> {
     }
 
     operator fun get(index: Int) = players[index]
-
-    fun receiveIndex() = freeIndexes.pop()
-
-    fun isFull() = freeIndexes.isEmpty()
 
     override fun iterator(): Iterator<Player> {
         iterator.currentIndex = 0

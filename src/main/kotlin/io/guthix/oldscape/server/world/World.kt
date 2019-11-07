@@ -16,7 +16,9 @@
  */
 package io.guthix.oldscape.server.world
 
+import io.guthix.oldscape.server.net.StatusResponse
 import io.guthix.oldscape.server.net.state.login.LoginRequest
+import io.guthix.oldscape.server.net.state.login.LoginResponse
 import io.guthix.oldscape.server.world.entity.player.PlayerList
 import java.util.*
 import java.util.concurrent.*
@@ -26,6 +28,8 @@ class World : TimerTask() {
 
     internal val players = PlayerList(MAX_PLAYERS)
 
+    val isFull get(): Boolean = players.freeSpace + loginQueue.size >= MAX_PLAYERS
+
     override fun run() {
         processLogins()
     }
@@ -33,7 +37,8 @@ class World : TimerTask() {
     private fun processLogins() {
         while(loginQueue.isNotEmpty()) {
             val request = loginQueue.poll()
-            players.add(request)
+            val player= players.create(request)
+            request.ctx.writeAndFlush(LoginResponse(player.index, player.rights))
         }
     }
 

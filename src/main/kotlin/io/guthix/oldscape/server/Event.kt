@@ -16,4 +16,4 @@
  */
 package io.guthix.oldscape.server
 
-interface GameEvent
+interface Event

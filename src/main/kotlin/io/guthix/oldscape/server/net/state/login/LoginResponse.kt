@@ -16,10 +16,7 @@
  */
 package io.guthix.oldscape.server.net.state.login
 
-import io.guthix.oldscape.server.net.StatusResponse
-
 data class LoginResponse(
     val playerIndex: Int,
-    val playerRights: Int,
-    val statusResponse: StatusResponse
+    val playerRights: Int
 )

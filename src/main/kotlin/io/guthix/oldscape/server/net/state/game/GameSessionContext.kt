@@ -16,10 +16,9 @@
  */
 package io.guthix.oldscape.server.net.state.game
 
-import io.guthix.oldscape.server.net.IncPacket
 import java.util.concurrent.SynchronousQueue
 
 class GameSessionContext {
-    val incomingPackets = SynchronousQueue<IncPacket>()
-    val outPackets = SynchronousQueue<IncPacket>()
+    val incomingPackets = SynchronousQueue<PacketEvent>()
+    val outPackets = SynchronousQueue<PacketEvent>()
 }

@@ -16,7 +16,6 @@
  */
 package io.guthix.oldscape.server.net.state.game
 
-import io.guthix.oldscape.server.GameEvent
 import io.guthix.oldscape.server.net.PacketInboundHandler
 import io.netty.channel.ChannelHandlerContext
 
