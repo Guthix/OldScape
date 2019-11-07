@@ -27,7 +27,7 @@ class ServiceDecoder : ByteToMessageDecoder() {
         inc.markReaderIndex()
         when(val opcode = inc.readUnsignedByte().toInt()) {
             ServiceType.GAME.opcode -> {
-                out.add(gameConnectionRequest)
+                out.add(GameConnectionRequest())
             }
             ServiceType.JS5.opcode -> {
                 if(!inc.isReadable(4)) {
@@ -38,12 +38,5 @@ class ServiceDecoder : ByteToMessageDecoder() {
             }
             else -> throw IOException("Could not identify service with opcode $opcode.")
         }
-    }
-
-    companion object {
-        /**
-         * Reusable game connection request.
-         */
-        val gameConnectionRequest = GameConnectionRequest()
     }
 }

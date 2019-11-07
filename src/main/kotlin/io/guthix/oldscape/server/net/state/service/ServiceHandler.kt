@@ -49,7 +49,7 @@ class ServiceHandler(
                 if(msg.revision != currentRevision) {
                     ctx.writeAndFlush(StatusResponse.OUT_OF_DATE)
                     throw IOException(
-                        "Revision handshake failed, expected revision $currentRevision but got ${msg.revision}"
+                        "Revision handshake failed, expected revision $currentRevision but got ${msg.revision}."
                     )
                 } else {
                     ctx.writeAndFlush(StatusResponse.SUCCESSFUL)

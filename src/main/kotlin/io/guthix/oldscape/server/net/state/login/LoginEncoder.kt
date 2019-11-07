@@ -16,13 +16,21 @@
  */
 package io.guthix.oldscape.server.net.state.login
 
-import io.guthix.oldscape.server.net.IncPacket
+import io.guthix.oldscape.server.net.StatusResponse
 import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 import io.netty.handler.codec.MessageToByteEncoder
 
-class LoginEncoder : MessageToByteEncoder<IncPacket>() {
-    override fun encode(ctx: ChannelHandlerContext, msg: IncPacket, out: ByteBuf) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+class LoginEncoder : MessageToByteEncoder<LoginResponse>() {
+    override fun encode(ctx: ChannelHandlerContext, msg: LoginResponse, out: ByteBuf) {
+        out.writeByte(msg.statusResponse.opcode)
+        if (msg.statusResponse == StatusResponse.NORMAL) {
+            out.writeBoolean(false)
+            out.writeInt(0)
+            out.writeByte(msg.playerRights)
+            out.writeBoolean(true)
+            out.writeShort(msg.playerIndex)
+            out.writeByte(1)
+        }
     }
 }

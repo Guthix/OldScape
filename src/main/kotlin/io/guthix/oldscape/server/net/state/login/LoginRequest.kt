@@ -22,17 +22,17 @@ import io.guthix.oldscape.server.world.entity.player.ClientSettings
 import io.guthix.oldscape.server.world.entity.player.MachineSettings
 
 data class LoginRequest(
-        val loginType: LoginType,
-        val clientRevision: Int,
-        val authType: Int,
-        val sessionId: Long,
-        val uniqueId: ByteArray,
-        val username: String,
-        val password: String,
-        val clientInfo: ClientSettings,
-        val machineInfo: MachineSettings,
-        val crcs: IntArray,
-        val isaacPair: IsaacRandomPair
+    val loginType: LoginType,
+    val clientRevision: Int,
+    val authType: Int,
+    val sessionId: Long,
+    val uniqueId: ByteArray,
+    val username: String,
+    val password: String,
+    val clientInfo: ClientSettings,
+    val machineInfo: MachineSettings,
+    val crcs: IntArray,
+    val isaacPair: IsaacRandomPair
 ) : IncPacket {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

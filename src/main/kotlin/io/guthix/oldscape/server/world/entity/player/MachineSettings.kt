@@ -17,15 +17,15 @@
 package io.guthix.oldscape.server.world.entity.player
 
 data class MachineSettings(
-        val operatingSystem: OperatingSystem,
-        val is64Bit: Boolean,
-        val osVersion: String,
-        val javaVendor: JavaVendor,
-        val javaVersionMajor: Int,
-        val javaVersionMinor: Int,
-        val javaVersionPatch: Int,
-        val maxMemory: Int,
-        val availableProcessors: Int
+    val operatingSystem: OperatingSystem,
+    val is64Bit: Boolean,
+    val osVersion: String,
+    val javaVendor: JavaVendor,
+    val javaVersionMajor: Int,
+    val javaVersionMinor: Int,
+    val javaVersionPatch: Int,
+    val maxMemory: Int,
+    val availableProcessors: Int
 ) {
     enum class OperatingSystem(val opcode: Int) {
         WINDOWS(1),
