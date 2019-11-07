@@ -14,19 +14,18 @@
  * You should have received a copy of the GNU General Public License
  * along with Foobar.  If not, see <https://www.gnu.org/licenses/>.
  */
-package io.guthix.oldscape.server
+package io.guthix.oldscape.server.net.state.game
 
-import com.charleskorn.kaml.Yaml
-import io.guthix.oldscape.server.net.OldScapeServer
-import io.guthix.oldscape.server.world.World
-import java.nio.file.Files
-import java.nio.file.Path
-import java.util.*
+import io.guthix.oldscape.server.GameEvent
 
-fun main() {
-    val configFile = Path.of(ServerConfig::class.java.getResource("/Config.yaml").toURI())
-    val config = Yaml.default.parse(ServerConfig.serializer(), Files.readString(configFile))
-    val world = World()
-    Timer().scheduleAtFixedRate(world, 0, 600)
-    OldScapeServer(config.revision, config.port, 21, world, config.rsa.privateKey, config.rsa.modulus).run()
+data class GamePacketInDefinition(var size: Int, val decoder: GamePacketDecoder) {
+    companion object {
+        val inc = mutableMapOf<Int, GamePacketInDefinition>()
+    }
+}
+
+data class GamePacketOutDefinition(val opcode: Int, val size: Int, val encoder: GamePacketEncoder) {
+    companion object {
+        val out = mutableMapOf<GameEvent, GamePacketOutDefinition>()
+    }
 }

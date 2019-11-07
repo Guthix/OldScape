@@ -18,12 +18,14 @@ package io.guthix.oldscape.server.net.state.login
 
 import io.guthix.oldscape.server.net.PacketInboundHandler
 import io.guthix.oldscape.server.net.StatusResponse
+import io.guthix.oldscape.server.world.World
 import io.netty.channel.ChannelHandlerContext
 
-class LoginHandler(val sessionId: Long) : PacketInboundHandler<LoginRequest>() {
+class LoginHandler(val world: World, val sessionId: Long) : PacketInboundHandler<LoginRequest>() {
     override fun channelRead0(ctx: ChannelHandlerContext, msg: LoginRequest) {
         if(msg.sessionId != sessionId) {
             ctx.writeAndFlush(StatusResponse.BAD_SESSION_ID)
         }
+        world.loginQueue.add(msg)
     }
 }
