@@ -16,9 +16,10 @@
  */
 package io.guthix.oldscape.server.world
 
-import io.guthix.oldscape.server.net.StatusResponse
-import io.guthix.oldscape.server.net.state.login.LoginRequest
-import io.guthix.oldscape.server.net.state.login.LoginResponse
+import io.guthix.oldscape.server.net.state.game.GameDecoder
+import io.guthix.oldscape.server.net.state.game.GameEncoder
+import io.guthix.oldscape.server.net.state.game.GameHandler
+import io.guthix.oldscape.server.net.state.login.*
 import io.guthix.oldscape.server.world.entity.player.PlayerList
 import java.util.*
 import java.util.concurrent.*
@@ -28,7 +29,7 @@ class World : TimerTask() {
 
     internal val players = PlayerList(MAX_PLAYERS)
 
-    val isFull get(): Boolean = players.freeSpace + loginQueue.size >= MAX_PLAYERS
+    val isFull get(): Boolean = players.size + loginQueue.size >= MAX_PLAYERS
 
     override fun run() {
         processLogins()
@@ -39,6 +40,15 @@ class World : TimerTask() {
             val request = loginQueue.poll()
             val player= players.create(request)
             request.ctx.writeAndFlush(LoginResponse(player.index, player.rights))
+            request.ctx.pipeline().replace(LoginDecoder::class.qualifiedName, GameDecoder::class.qualifiedName,
+                GameDecoder(request.isaacPair.serverGen)
+            )
+            request.ctx.pipeline().replace(LoginHandler::class.qualifiedName, GameHandler::class.qualifiedName,
+                GameHandler(player)
+            )
+            request.ctx.pipeline().replace(LoginEncoder::class.qualifiedName, GameEncoder::class.qualifiedName,
+                GameEncoder(request.isaacPair.clientGen)
+            )
         }
     }
 
