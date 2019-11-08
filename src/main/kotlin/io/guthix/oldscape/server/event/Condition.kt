@@ -14,11 +14,24 @@
  * You should have received a copy of the GNU General Public License
  * along with Foobar. If not, see <https://www.gnu.org/licenses/>.
  */
-package io.guthix.oldscape.server.net.state.game
+package io.guthix.oldscape.server.event
 
-import java.util.concurrent.SynchronousQueue
+import kotlin.coroutines.Continuation
 
-class GameSessionContext {
-    val incomingPackets = SynchronousQueue<PacketEvent>()
-    val outPackets = SynchronousQueue<PacketEvent>()
+interface Condition {
+    fun canResume(): Boolean
 }
+
+class TrueCondition : Condition {
+    override fun canResume() = true
+}
+
+class TickCondition(private var tickCount: Int) : Condition {
+    override fun canResume() = --tickCount == 0
+}
+
+class LambdaCondition(private val cond: () -> Boolean) : Condition {
+    override fun canResume() = cond.invoke()
+}
+
+class ConditionalContinuation(val condition: Condition, val continuation: Continuation<Unit>) : Condition by condition

@@ -14,14 +14,15 @@
  * You should have received a copy of the GNU General Public License
  * along with Foobar. If not, see <https://www.gnu.org/licenses/>.
  */
-package io.guthix.oldscape.server.net.state.game
+package io.guthix.oldscape.server.event
 
-import io.guthix.oldscape.server.net.PacketInboundHandler
-import io.guthix.oldscape.server.world.entity.player.Player
-import io.netty.channel.ChannelHandlerContext
+import io.guthix.oldscape.server.Event
+import kotlin.reflect.KClass
 
-class GameHandler(val player: Player) : PacketInboundHandler<PacketEvent>() {
-    override fun channelRead0(ctx: ChannelHandlerContext, msg: PacketEvent) {
-        player.eventQueue.add(msg)
+object EventRepository {
+    val events: Map<Event, ScriptCoroutine> = mapOf() // TODO create plugin system
+
+    fun <E : AssignedEvent> register(clazz: KClass<E>, listener: EventExecutor<E>) {
+        TODO()
     }
 }

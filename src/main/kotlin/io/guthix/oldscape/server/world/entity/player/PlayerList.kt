@@ -31,7 +31,7 @@ class PlayerList(capacity: Int) : Iterable<Player> {
 
     private val random = Random.Default
 
-    val freeSpace get() = freeIndexes.size
+    val size get() = occupiedIndexes.size
 
     init {
         for (index in capacity downTo 1) freeIndexes.push(index)
