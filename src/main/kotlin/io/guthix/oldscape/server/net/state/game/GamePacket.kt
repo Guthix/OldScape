@@ -16,7 +16,7 @@
  */
 package io.guthix.oldscape.server.net.state.game
 
-import io.guthix.oldscape.server.Event
+import io.guthix.oldscape.server.event.GameEvent
 
 data class GamePacketInDefinition(var size: Int, val decoder: GamePacketDecoder) {
     companion object {
@@ -26,6 +26,6 @@ data class GamePacketInDefinition(var size: Int, val decoder: GamePacketDecoder)
 
 data class GamePacketOutDefinition(val opcode: Int, val size: Int, val encoder: GamePacketEncoder) {
     companion object {
-        val out = mutableMapOf<Event, GamePacketOutDefinition>()
+        val out = mutableMapOf<GameEvent, GamePacketOutDefinition>()
     }
 }

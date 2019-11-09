@@ -16,7 +16,4 @@
  */
 package io.guthix.oldscape.server.event
 
-import io.guthix.oldscape.server.world.World
-import io.guthix.oldscape.server.world.entity.player.Player
-
-open class AssignedEvent(val world: World, player: Player) : ScriptCoroutine(player)
+class ExampleEvent(val someInteger: Int) : GameEvent
