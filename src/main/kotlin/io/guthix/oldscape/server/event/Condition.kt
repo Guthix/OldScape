@@ -22,10 +22,6 @@ interface Condition {
     fun canResume(): Boolean
 }
 
-class TrueCondition : Condition {
-    override fun canResume() = true
-}
-
 class TickCondition(private var tickCount: Int) : Condition {
     override fun canResume() = --tickCount == 0
 }

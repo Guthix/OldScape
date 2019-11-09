@@ -16,32 +16,30 @@
  */
 package io.guthix.oldscape.server.event
 
-import kotlin.coroutines.intrinsics.createCoroutineUnintercepted
-import kotlin.coroutines.resume
-import kotlin.reflect.KClass
+import io.guthix.oldscape.server.world.World
+import io.guthix.oldscape.server.world.entity.player.Player
+import kotlin.coroutines.intrinsics.startCoroutineUninterceptedOrReturn
+import kotlin.script.experimental.annotations.KotlinScript
 
+@KotlinScript
 abstract class Script {
-    fun <E : AssignedEvent> on(type: KClass<E>) = EventExecutor(type)
+    fun <E: GameEvent>on(event: E) = EventExecutor(event)
 }
 
-class EventExecutor<E : AssignedEvent>(val type: KClass<E>) {
-    private var condition: E.() -> Boolean = { true }
-    private var script: suspend E.() -> Unit = { }
+class EventExecutor<E: GameEvent>(val event: E) {
+    private var script: suspend ScriptCoroutine<E>.() -> Unit = { }
 
-    fun where(condition: E.() -> Boolean): EventExecutor<E> {
-        this.condition = condition
+    fun then(script: suspend ScriptCoroutine<E>.() -> Unit): EventExecutor<E> {
+        this.script = script
         return this
     }
 
-    fun then(script: suspend E.() -> Unit) {
-        this.script = script
-        EventRepository.register(type, this)
+    fun register(eventBus: EventBus) {
+        eventBus.register(event, this)
     }
 
-    internal fun execute(event: E) {
-        if(event.condition()) {
-            event.next = ConditionalContinuation(TrueCondition(), script.createCoroutineUnintercepted(event, event))
-            event.resume(Unit)
-        }
+    internal fun execute(world: World, player: Player) {
+        val coroutine = ScriptCoroutine<E>(event, world, player)
+        script.startCoroutineUninterceptedOrReturn(coroutine, coroutine)
     }
 }

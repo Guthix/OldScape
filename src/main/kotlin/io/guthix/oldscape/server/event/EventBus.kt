@@ -16,13 +16,24 @@
  */
 package io.guthix.oldscape.server.event
 
-import io.guthix.oldscape.server.Event
 import kotlin.reflect.KClass
 
-object EventRepository {
-    val events: Map<Event, ScriptCoroutine> = mapOf() // TODO create plugin system
+class EventBus {
+    private val events = mutableMapOf<KClass<out GameEvent>, MutableMap<GameEvent, EventExecutor<out GameEvent>>>()
 
-    fun <E : AssignedEvent> register(clazz: KClass<E>, listener: EventExecutor<E>) {
-        TODO()
+    operator fun <E : GameEvent> get(event: E): EventExecutor<out GameEvent> {
+        val executors = events[event::class] ?: throw IllegalArgumentException(
+            "No events registered of type ${event::class.simpleName}."
+        )
+        return executors[event] ?: throw IllegalArgumentException(
+            "No event registered for $event."
+        )
+    }
+
+    fun <E : GameEvent>register(event: E, executor: EventExecutor<E>) {
+        val executors = events.getOrPut(event::class) {
+            mutableMapOf()
+        }
+        executors[event] = executor
     }
 }

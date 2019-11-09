@@ -16,21 +16,19 @@
  */
 package io.guthix.oldscape.server.world.entity.player
 
-import io.guthix.oldscape.server.Event
-import io.guthix.oldscape.server.event.EventRepository
+import io.guthix.oldscape.server.event.GameEvent
+import io.guthix.oldscape.server.event.EventBus
 import io.guthix.oldscape.server.event.ScriptCoroutine
 import java.util.concurrent.SynchronousQueue
 
 class Player(val index: Int, var priority: Int, val username: String) {
-    val eventQueue = SynchronousQueue<Event>()
+    val eventQueue = SynchronousQueue<GameEvent>()
 
-    val continuations = mutableListOf<ScriptCoroutine>()
+    val continuations = mutableListOf<ScriptCoroutine<out GameEvent>>()
 
     var rights = 0
 
     fun handleEvents() {
-        while(eventQueue.isNotEmpty()) {
-            val eventProcessor = EventRepository.events[eventQueue.poll()] ?: continue
-        }
+        //TODO
     }
 }
