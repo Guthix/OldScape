@@ -19,21 +19,18 @@ package io.guthix.oldscape.server.event
 import kotlin.reflect.KClass
 
 class EventBus {
-    private val events = mutableMapOf<KClass<out GameEvent>, MutableMap<GameEvent, EventExecutor<out GameEvent>>>()
+    private val eventListeners = mutableMapOf<KClass<out AssignedGameEvent>, MutableList<EventListener<in AssignedGameEvent>>>()
 
-    operator fun <E : GameEvent> get(event: E): EventExecutor<out GameEvent> {
-        val executors = events[event::class] ?: throw IllegalArgumentException(
-            "No events registered of type ${event::class.simpleName}."
-        )
-        return executors[event] ?: throw IllegalArgumentException(
-            "No event registered for $event."
-        )
+    fun <E : AssignedGameEvent> notify(event: E) = eventListeners[event::class]?.let {
+        for (listener in it) {
+            listener.execute(event)
+        }
     }
 
-    fun <E : GameEvent>register(event: E, executor: EventExecutor<E>) {
-        val executors = events.getOrPut(event::class) {
-            mutableMapOf()
+    fun <E : AssignedGameEvent> register(type: KClass<E>, listener: EventListener<E>) {
+        val listeners = eventListeners.getOrPut(type) {
+            mutableListOf()
         }
-        executors[event] = executor
+        listeners.add(listener as EventListener<AssignedGameEvent>)
     }
 }

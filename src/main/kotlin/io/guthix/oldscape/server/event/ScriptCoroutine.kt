@@ -16,17 +16,12 @@
  */
 package io.guthix.oldscape.server.event
 
-import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.player.Player
 import kotlin.coroutines.*
 import kotlin.coroutines.intrinsics.COROUTINE_SUSPENDED
 import kotlin.coroutines.intrinsics.suspendCoroutineUninterceptedOrReturn
 
-open class ScriptCoroutine<E: GameEvent>(
-    val event: E,
-    val world: World,
-    val player: Player
-) : Continuation<Unit> {
+open class ScriptCoroutine(val player: Player) : Continuation<Unit> {
     private var next: ConditionalContinuation? = null
 
     override val context: CoroutineContext = EmptyCoroutineContext

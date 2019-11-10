@@ -16,7 +16,6 @@
  */
 package io.guthix.oldscape.server.net.state.game
 
-import io.guthix.oldscape.server.event.GameEvent
 import io.guthix.oldscape.server.net.IncPacket
 
-interface PacketEvent : GameEvent, IncPacket
+interface PacketEvent : IncPacket

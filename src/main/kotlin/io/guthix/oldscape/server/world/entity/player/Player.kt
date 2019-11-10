@@ -16,15 +16,10 @@
  */
 package io.guthix.oldscape.server.world.entity.player
 
-import io.guthix.oldscape.server.event.GameEvent
-import io.guthix.oldscape.server.event.EventBus
-import io.guthix.oldscape.server.event.ScriptCoroutine
-import java.util.concurrent.SynchronousQueue
+import kotlin.coroutines.Continuation
 
 class Player(val index: Int, var priority: Int, val username: String) {
-    val eventQueue = SynchronousQueue<GameEvent>()
-
-    val continuations = mutableListOf<ScriptCoroutine<out GameEvent>>()
+    val continuations = mutableListOf<Continuation<Unit>>()
 
     var rights = 0
 

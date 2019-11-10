@@ -22,6 +22,6 @@ import io.netty.channel.ChannelHandlerContext
 
 class GameHandler(val player: Player) : PacketInboundHandler<PacketEvent>() {
     override fun channelRead0(ctx: ChannelHandlerContext, msg: PacketEvent) {
-        player.eventQueue.add(msg)
+        TODO()
     }
 }
