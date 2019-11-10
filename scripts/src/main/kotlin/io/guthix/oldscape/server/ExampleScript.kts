@@ -1,7 +1,7 @@
 import io.guthix.oldscape.server.event.ExampleEvent
 
-on(ExampleEvent(3)).then {
-    println(player.index)
+on(ExampleEvent::class).where { testValue == 3 }.then {
+    println(testValue)
     println(world.isFull)
-    println(event.someInteger)
+    println(player.index)
 }

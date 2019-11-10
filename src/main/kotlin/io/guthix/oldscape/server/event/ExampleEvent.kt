@@ -16,4 +16,7 @@
  */
 package io.guthix.oldscape.server.event
 
-class ExampleEvent(val someInteger: Int) : GameEvent
+import io.guthix.oldscape.server.world.World
+import io.guthix.oldscape.server.world.entity.player.Player
+
+class ExampleEvent(val testValue: Int, world: World, player: Player) : AssignedGameEvent(world, player)
