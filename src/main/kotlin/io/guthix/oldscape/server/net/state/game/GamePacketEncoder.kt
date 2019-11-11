@@ -19,5 +19,5 @@ package io.guthix.oldscape.server.net.state.game
 import io.netty.buffer.ByteBuf
 
 interface GamePacketEncoder {
-    fun encode(event: PacketEvent): ByteBuf
+    fun encode(gamePacket: GamePacket): ByteBuf
 }

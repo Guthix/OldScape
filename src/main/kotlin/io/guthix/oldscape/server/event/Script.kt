@@ -16,16 +16,16 @@
  */
 package io.guthix.oldscape.server.event
 
-import kotlin.coroutines.intrinsics.startCoroutineUninterceptedOrReturn
+import kotlin.coroutines.intrinsics.createCoroutineUnintercepted
 import kotlin.reflect.KClass
 import kotlin.script.experimental.annotations.KotlinScript
 
 @KotlinScript
 abstract class Script {
-    fun <E: AssignedGameEvent>on(type: KClass<E>) = EventListener(type)
+    fun <E: GameEvent>on(type: KClass<E>) = EventListener(type)
 }
 
-class EventListener<E: AssignedGameEvent>(val type: KClass<E>) {
+class EventListener<E: GameEvent>(private val type: KClass<E>) {
     internal var condition: E.() -> Boolean = { true }
 
     private var script: suspend E.() -> Unit = { }
@@ -37,13 +37,17 @@ class EventListener<E: AssignedGameEvent>(val type: KClass<E>) {
 
     fun then(script: suspend E.() -> Unit) {
         this.script = script
+        registerListener()
     }
 
-    fun register(eventBus: EventBus) {
-        eventBus.register(type, this)
+    private fun registerListener() {
+        EventBus.register(type, this)
     }
 
-    fun execute(event: E) {
-        if(event.condition()) script.startCoroutineUninterceptedOrReturn(event, event)
+    fun schedule(event: E) {
+        if(event.condition()) {
+            script.createCoroutineUnintercepted(event, event)
+            event.player.continuations.add(event)
+        }
     }
 }

@@ -16,10 +16,10 @@
  */
 package io.guthix.oldscape.server.world.entity.player
 
-import kotlin.coroutines.Continuation
+import io.guthix.oldscape.server.event.GameEvent
 
 class Player(val index: Int, var priority: Int, val username: String) {
-    val continuations = mutableListOf<Continuation<Unit>>()
+    val continuations = mutableListOf<GameEvent>()
 
     var rights = 0
 

@@ -16,6 +16,15 @@
  */
 package io.guthix.oldscape.server.net.state.game
 
+import io.guthix.oldscape.server.event.GameEvent
+import io.guthix.oldscape.server.net.IncPacket
+import io.guthix.oldscape.server.world.World
+import io.guthix.oldscape.server.world.entity.player.Player
+
+interface GamePacket : IncPacket {
+    fun toEvent(world: World, player: Player) : GameEvent
+}
+
 data class GamePacketInDefinition(var size: Int, val decoder: GamePacketDecoder) {
     companion object {
         val inc = mutableMapOf<Int, GamePacketInDefinition>()
@@ -24,6 +33,6 @@ data class GamePacketInDefinition(var size: Int, val decoder: GamePacketDecoder)
 
 data class GamePacketOutDefinition(val opcode: Int, val size: Int, val encoder: GamePacketEncoder) {
     companion object {
-        val out = mutableMapOf<PacketEvent, GamePacketOutDefinition>()
+        val out = mutableMapOf<GamePacket, GamePacketOutDefinition>()
     }
 }

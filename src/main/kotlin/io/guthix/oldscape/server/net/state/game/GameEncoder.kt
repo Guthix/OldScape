@@ -22,8 +22,8 @@ import io.netty.channel.ChannelHandlerContext
 import io.netty.handler.codec.MessageToByteEncoder
 import kotlinx.io.IOException
 
-class GameEncoder(private val encodeCipher: IsaacRandom) : MessageToByteEncoder<PacketEvent>() {
-    override fun encode(ctx: ChannelHandlerContext, msg: PacketEvent, out: ByteBuf) {
+class GameEncoder(private val encodeCipher: IsaacRandom) : MessageToByteEncoder<GamePacket>() {
+    override fun encode(ctx: ChannelHandlerContext, msg: GamePacket, out: ByteBuf) {
         val packet = GamePacketOutDefinition.out[msg] ?: throw IOException(
             "No packet definition found for $msg"
         )
