@@ -14,8 +14,9 @@
  * You should have received a copy of the GNU General Public License
  * along with Foobar. If not, see <https://www.gnu.org/licenses/>.
  */
-package io.guthix.oldscape.server.net.state.game
+package io.guthix.oldscape.server.event
 
-import io.guthix.oldscape.server.net.IncPacket
+import io.guthix.oldscape.server.world.World
+import io.guthix.oldscape.server.world.entity.player.Player
 
-interface PacketEvent : IncPacket
+abstract class GameEvent(val world: World, player: Player) : ScriptCoroutine(player)

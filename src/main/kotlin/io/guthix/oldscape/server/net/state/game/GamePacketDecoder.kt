@@ -19,5 +19,5 @@ package io.guthix.oldscape.server.net.state.game
 import io.netty.buffer.ByteBuf
 
 interface GamePacketDecoder {
-    fun decode(data: ByteBuf): PacketEvent
+    fun decode(data: ByteBuf): GamePacket
 }

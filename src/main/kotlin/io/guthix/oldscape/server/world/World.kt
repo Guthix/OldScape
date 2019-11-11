@@ -44,7 +44,7 @@ class World : TimerTask() {
                 GameDecoder(request.isaacPair.serverGen)
             )
             request.ctx.pipeline().replace(LoginHandler::class.qualifiedName, GameHandler::class.qualifiedName,
-                GameHandler(player)
+                GameHandler(this, player)
             )
             request.ctx.pipeline().replace(LoginEncoder::class.qualifiedName, GameEncoder::class.qualifiedName,
                 GameEncoder(request.isaacPair.clientGen)

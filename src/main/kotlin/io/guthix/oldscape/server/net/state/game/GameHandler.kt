@@ -16,12 +16,14 @@
  */
 package io.guthix.oldscape.server.net.state.game
 
+import io.guthix.oldscape.server.event.EventBus
 import io.guthix.oldscape.server.net.PacketInboundHandler
+import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.player.Player
 import io.netty.channel.ChannelHandlerContext
 
-class GameHandler(val player: Player) : PacketInboundHandler<PacketEvent>() {
-    override fun channelRead0(ctx: ChannelHandlerContext, msg: PacketEvent) {
-        TODO()
+class GameHandler(val world: World, val player: Player) : PacketInboundHandler<GamePacket>() {
+    override fun channelRead0(ctx: ChannelHandlerContext, msg: GamePacket) {
+        EventBus.scheduleEvent(msg.toEvent(world, player))
     }
 }
