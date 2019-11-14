@@ -44,11 +44,11 @@ open class ScriptCoroutine(val player: Player) : Continuation<Unit> {
         }
     }
 
-    protected suspend fun wait(ticks: Int) {
+    suspend fun wait(ticks: Int) {
         suspend(TickCondition(ticks))
     }
 
-    protected suspend fun wait(cond: () -> Boolean) {
+    suspend fun wait(cond: () -> Boolean) {
         suspend(LambdaCondition(cond))
     }
 
