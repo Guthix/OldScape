@@ -16,7 +16,10 @@
  */
 package io.guthix.oldscape.cache.xtea
 
-class MapXtea(val id: Int, val key: IntArray) {
+import kotlinx.serialization.Serializable
+
+@Serializable
+data class MapXtea(val id: Int, val key: IntArray) {
     val x get() = id shr 8
     val y get() = id and 0xFF
 }
