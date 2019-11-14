@@ -20,9 +20,19 @@ import io.guthix.oldscape.server.event.GameEvent
 import io.guthix.oldscape.server.net.IncPacket
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.player.Player
+import io.netty.buffer.ByteBuf
+import io.netty.channel.ChannelHandlerContext
 
-interface GamePacket : IncPacket {
+class GamePacket(val opcode: Int, val type: PacketSize, val payload: ByteBuf) {
+    enum class PacketSize { FIXED, VAR_BYTE, VAR_SHORT }
+}
+
+interface IncGamePacket : IncPacket {
     fun toEvent(world: World, player: Player) : GameEvent
+}
+
+interface OutGameEvent {
+    fun encode(ctx: ChannelHandlerContext): GamePacket
 }
 
 data class GamePacketInDefinition(var size: Int, val decoder: GamePacketDecoder) {
@@ -31,8 +41,6 @@ data class GamePacketInDefinition(var size: Int, val decoder: GamePacketDecoder)
     }
 }
 
-data class GamePacketOutDefinition(val opcode: Int, val size: Int, val encoder: GamePacketEncoder) {
-    companion object {
-        val out = mutableMapOf<GamePacket, GamePacketOutDefinition>()
-    }
+interface GamePacketDecoder {
+    fun decode(data: ByteBuf): IncGamePacket
 }
