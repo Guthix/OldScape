@@ -14,10 +14,6 @@
  * You should have received a copy of the GNU General Public License
  * along with Foobar. If not, see <https://www.gnu.org/licenses/>.
  */
-package io.guthix.oldscape.server.net.state.game
+package io.guthix.oldscape.server.world.mapsquare
 
-import io.netty.buffer.ByteBuf
-
-interface GamePacketEncoder {
-    fun encode(gamePacket: GamePacket): ByteBuf
-}
+class MapSquare(val z: HeightDim, val x: MapSquareDim, val y: MapSquareDim)
