@@ -25,7 +25,7 @@ import java.util.*
 
 fun main() {
     val configFile = Path.of(ServerConfig::class.java.getResource("/Config.yaml").toURI())
-    XTEA.initJson(Path.of(XTEA::class.java.getResource("/xteas.json").toURI()))
+    XTEA.initJson(Path.of(XTEA::class.java.getResource("/cache/xteas.json").toURI()))
     val config = Yaml.default.parse(ServerConfig.serializer(), Files.readString(configFile))
     val world = World()
     Timer().scheduleAtFixedRate(world, 0, 600)
