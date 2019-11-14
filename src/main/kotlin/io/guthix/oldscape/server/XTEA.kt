@@ -16,18 +16,23 @@
  */
 package io.guthix.oldscape.server
 
-import com.charleskorn.kaml.Yaml
-import io.guthix.oldscape.server.net.OldScapeServer
-import io.guthix.oldscape.server.world.World
+import io.guthix.oldscape.cache.xtea.MapXtea
+import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.JsonConfiguration
+import kotlinx.serialization.list
 import java.nio.file.Files
 import java.nio.file.Path
-import java.util.*
 
-fun main() {
-    val configFile = Path.of(ServerConfig::class.java.getResource("/Config.yaml").toURI())
-    XTEA.initJson(Path.of(XTEA::class.java.getResource("/xteas.json").toURI()))
-    val config = Yaml.default.parse(ServerConfig.serializer(), Files.readString(configFile))
-    val world = World()
-    Timer().scheduleAtFixedRate(world, 0, 600)
-    OldScapeServer(config.revision, config.port, 21, world, config.rsa.privateKey, config.rsa.modulus).run()
+object XTEA {
+    lateinit var id: Map<Int, IntArray>
+
+    fun initJson(filePath: Path) {
+        val xteas = Json(JsonConfiguration.Stable).parse(MapXtea.serializer().list, Files.readString(filePath))
+        val result = mutableMapOf<Int, IntArray>()
+        for(mapXtea in xteas) {
+            result[mapXtea.id] = mapXtea.key
+        }
+        id = result.toMap()
+    }
 }
+
