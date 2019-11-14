@@ -14,9 +14,10 @@
  * You should have received a copy of the GNU General Public License
  * along with Foobar. If not, see <https://www.gnu.org/licenses/>.
  */
-package io.guthix.oldscape.server.event
+package io.guthix.oldscape.server.event.imp
 
+import io.guthix.oldscape.server.event.GameEvent
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.player.Player
 
-class ExampleEvent(val testValue: Int, world: World, player: Player) : GameEvent(world, player)
+class LoginEvent(world: World, player: Player) : GameEvent(world, player)
