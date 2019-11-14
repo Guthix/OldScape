@@ -16,6 +16,8 @@
  */
 package io.guthix.oldscape.server.world
 
+import io.guthix.oldscape.server.event.EventBus
+import io.guthix.oldscape.server.event.imp.LoginEvent
 import io.guthix.oldscape.server.net.state.game.GameDecoder
 import io.guthix.oldscape.server.net.state.game.GameEncoder
 import io.guthix.oldscape.server.net.state.game.GameHandler
@@ -49,6 +51,7 @@ class World : TimerTask() {
             request.ctx.pipeline().replace(LoginEncoder::class.qualifiedName, GameEncoder::class.qualifiedName,
                 GameEncoder(request.isaacPair.clientGen)
             )
+            EventBus.scheduleEvent(LoginEvent(this, player))
         }
     }
 
