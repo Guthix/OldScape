@@ -20,19 +20,16 @@ import io.guthix.oldscape.server.net.state.IsaacRandom
 import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 import io.netty.handler.codec.MessageToByteEncoder
-import kotlinx.io.IOException
 
-class GameEncoder(private val encodeCipher: IsaacRandom) : MessageToByteEncoder<GamePacket>() {
-    override fun encode(ctx: ChannelHandlerContext, msg: GamePacket, out: ByteBuf) {
-        val packet = GamePacketOutDefinition.out[msg] ?: throw IOException(
-            "No packet definition found for $msg"
-        )
-        val payload = packet.encoder.encode(msg)
+class GameEncoder(private val encodeCipher: IsaacRandom) : MessageToByteEncoder<OutGameEvent>() {
+    override fun encode(ctx: ChannelHandlerContext, msg: OutGameEvent, out: ByteBuf) {
+        val packet = msg.encode(ctx)
         out.writeByte(packet.opcode + encodeCipher.nextInt())
-        when(packet.size) {
-            -2 -> out.writeShort(payload.readableBytes())
-            -1 -> out.writeByte(payload.readableBytes())
+        when(packet.type) {
+            GamePacket.PacketSize.VAR_SHORT -> out.writeShort(packet.payload.readableBytes())
+            GamePacket.PacketSize.VAR_BYTE -> out.writeByte(packet.payload.readableBytes())
+            else -> { }
         }
-        out.writeBytes(payload)
+        out.writeBytes(packet.payload)
     }
 }

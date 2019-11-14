@@ -22,8 +22,8 @@ import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.player.Player
 import io.netty.channel.ChannelHandlerContext
 
-class GameHandler(val world: World, val player: Player) : PacketInboundHandler<GamePacket>() {
-    override fun channelRead0(ctx: ChannelHandlerContext, msg: GamePacket) {
+class GameHandler(val world: World, val player: Player) : PacketInboundHandler<IncGamePacket>() {
+    override fun channelRead0(ctx: ChannelHandlerContext, msg: IncGamePacket) {
         EventBus.scheduleEvent(msg.toEvent(world, player))
     }
 }
