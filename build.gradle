@@ -38,4 +38,5 @@ compileKotlin {
 license {
     header = file(rootDir.path + '\\license\\GPL.txt')
     exclude("*\\main_file_cache.*")
+    exclude("*\\xteas.json")
 }
