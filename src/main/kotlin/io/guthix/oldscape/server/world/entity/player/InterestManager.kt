@@ -14,10 +14,8 @@
  * You should have received a copy of the GNU General Public License
  * along with Foobar. If not, see <https://www.gnu.org/licenses/>.
  */
-package io.guthix.oldscape.server.net.state.game
+package io.guthix.oldscape.server.world.entity.player
 
-import io.netty.buffer.ByteBuf
-
-interface GamePacketDecoder {
-    fun decode(data: ByteBuf): GamePacket
+class InterestManager(val player: Player) {
 }
+
