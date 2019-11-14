@@ -29,6 +29,12 @@ dependencies {
     implementation group: 'ch.qos.logback', name: 'logback-classic', version: logbackVersion
 }
 
+compileKotlin {
+    kotlinOptions {
+        freeCompilerArgs = ['-XXLanguage:+InlineClasses']
+    }
+}
+
 license {
     header = file(rootDir.path + '\\license\\GPL.txt')
     exclude("*\\main_file_cache.*")
