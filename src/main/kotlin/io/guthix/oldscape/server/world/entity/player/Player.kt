@@ -23,8 +23,9 @@ import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.TileDim
 import io.netty.channel.ChannelHandlerContext
 import java.util.concurrent.ConcurrentLinkedQueue
+import kotlin.coroutines.resume
 
-class Player(val index: Int, var priority: Int, val username: String, val ctx: ChannelHandlerContext) {
+data class Player(val index: Int, var priority: Int, val username: String, val ctx: ChannelHandlerContext) : Comparable<Player> {
     val continuations = ConcurrentLinkedQueue<ScriptCoroutine>()
 
     val position = Tile(HeightDim(0), TileDim(3000), TileDim(3000))
@@ -35,7 +36,16 @@ class Player(val index: Int, var priority: Int, val username: String, val ctx: C
         ctx.write(event)
     }
 
+    override fun compareTo(other: Player) = when {
+        priority < other.priority -> -1
+        priority > other.priority -> 1
+        else -> 0
+    }
+
     fun handleEvents() {
-        //TODO
+        for(continuation in continuations) {
+            println("Resuming event $continuation")
+            continuation.resume(Unit)
+        }
     }
 }
