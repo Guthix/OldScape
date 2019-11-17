@@ -43,9 +43,9 @@ data class Player(val index: Int, var priority: Int, val username: String, val c
     }
 
     fun handleEvents() {
+        println("tick")
         for(continuation in continuations) {
-            println("Resuming event $continuation")
-            continuation.resume(Unit)
+            continuation.resumeIfPossible()
         }
     }
 }

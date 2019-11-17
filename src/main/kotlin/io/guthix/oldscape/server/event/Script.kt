@@ -46,7 +46,7 @@ class EventListener<E: GameEvent>(private val type: KClass<E>) {
 
     fun schedule(event: E) {
         if(event.condition()) {
-            script.createCoroutineUnintercepted(event, event)
+            event.next = ConditionalContinuation(InitialCondition, script.createCoroutineUnintercepted(event, event))
             event.player.continuations.add(event)
         }
     }
