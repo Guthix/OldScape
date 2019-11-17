@@ -40,7 +40,7 @@ class PlayerList(capacity: Int) : Iterable<Player> {
     fun create(request: LoginRequest): Player {
         val index = freeIndexes.pop()
         val pid = random.nextInt(occupiedIndexes.size + 1)
-        val player = Player(index, pid, request.username)
+        val player = Player(index, pid, request.username, request.ctx)
         occupiedIndexes.add(pid, player.index)
         return player
     }
