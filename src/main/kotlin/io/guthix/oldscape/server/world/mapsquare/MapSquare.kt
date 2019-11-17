@@ -16,4 +16,4 @@
  */
 package io.guthix.oldscape.server.world.mapsquare
 
-class MapSquare(val z: HeightDim, val x: MapSquareDim, val y: MapSquareDim)
+class MapSquare(val z: HeightDim, val floor: MapSquareDim)
