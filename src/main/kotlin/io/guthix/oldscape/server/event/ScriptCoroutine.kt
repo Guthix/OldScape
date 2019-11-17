@@ -22,7 +22,7 @@ import kotlin.coroutines.intrinsics.COROUTINE_SUSPENDED
 import kotlin.coroutines.intrinsics.suspendCoroutineUninterceptedOrReturn
 
 open class ScriptCoroutine(val player: Player) : Continuation<Unit> {
-    private var next: ConditionalContinuation? = null
+    internal var next: ConditionalContinuation? = null
 
     override val context: CoroutineContext = EmptyCoroutineContext
 
@@ -37,7 +37,7 @@ open class ScriptCoroutine(val player: Player) : Continuation<Unit> {
         }
     }
 
-    internal fun checkResume()  = next?.let {
+    internal fun resumeIfPossible()  = next?.let {
         if(it.canResume()) {
             player.continuations.remove(this)
             resumeWith(Result.success(Unit))

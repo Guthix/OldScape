@@ -30,14 +30,18 @@ class PlayerList(val capacity: Int) : Iterable<Player> {
     val size get() = players.size
 
     init {
-        for (index in 0 until capacity) freeIndexes.add(index)
+        for (index in 0 until capacity) {
+            freePriorities.add(index)
+            freeIndexes.add(index)
+        }
+        freePriorities.shuffle()
     }
 
     fun create(request: LoginRequest): Player {
         val index = freeIndexes.poll()
         val priority = freePriorities[random.nextInt(freePriorities.size)]
         val player = Player(index, priority, request.username, request.ctx)
-        players[index] = player
+        players.add(index, player)
         return player
     }
 

@@ -30,4 +30,8 @@ class LambdaCondition(private val cond: () -> Boolean) : Condition {
     override fun canResume() = cond.invoke()
 }
 
+object InitialCondition : Condition {
+    override fun canResume() = true
+}
+
 class ConditionalContinuation(val condition: Condition, val continuation: Continuation<Unit>) : Condition by condition
