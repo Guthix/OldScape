@@ -22,15 +22,18 @@ import io.guthix.oldscape.server.world.mapsquare.HeightDim
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.TileDim
 import io.netty.channel.ChannelHandlerContext
+import java.util.concurrent.ConcurrentLinkedQueue
 
 class Player(val index: Int, var priority: Int, val username: String, val ctx: ChannelHandlerContext) {
-    val continuations = mutableListOf<ScriptCoroutine>()
+    val continuations = ConcurrentLinkedQueue<ScriptCoroutine>()
 
     val position = Tile(HeightDim(0), TileDim(3000), TileDim(3000))
 
     var rights = 0
 
-    fun write(event: OutGameEvent) = ctx.write(event)
+    fun write(event: OutGameEvent) {
+        ctx.write(event)
+    }
 
     fun handleEvents() {
         //TODO
