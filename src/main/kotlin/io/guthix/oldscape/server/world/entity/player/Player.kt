@@ -17,16 +17,20 @@
 package io.guthix.oldscape.server.world.entity.player
 
 import io.guthix.oldscape.server.event.ScriptCoroutine
+import io.guthix.oldscape.server.net.state.game.OutGameEvent
 import io.guthix.oldscape.server.world.mapsquare.HeightDim
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.TileDim
+import io.netty.channel.ChannelHandlerContext
 
-class Player(val index: Int, var priority: Int, val username: String) {
+class Player(val index: Int, var priority: Int, val username: String, val ctx: ChannelHandlerContext) {
     val continuations = mutableListOf<ScriptCoroutine>()
 
     val position = Tile(HeightDim(0), TileDim(3000), TileDim(3000))
 
     var rights = 0
+
+    fun write(event: OutGameEvent) = ctx.write(event)
 
     fun handleEvents() {
         //TODO

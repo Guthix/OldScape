@@ -4,6 +4,7 @@ import io.guthix.oldscape.server.interest.InterestConstants.ZONE_INTEREST_RANGE
 import io.guthix.oldscape.server.world.mapsquare.MapSquareDim
 import io.guthix.oldscape.server.world.mapsquare.md
 import io.guthix.oldscape.server.world.mapsquare.zone.ZoneDim
+import io.guthix.oldscape.server.net.state.game.outp.RebuildNormalPacket
 import io.guthix.oldscape.server.XTEA
 
 val ZoneDim.startMapInterest get() = (this - ZONE_INTEREST_RANGE).md
@@ -29,7 +30,7 @@ on(LoginEvent::class).then {
                 xteas.add(xtea)
             }
         }
-        player.wri
+        player.write(RebuildNormalPacket(xteas, player.position.zone))
         lastUpdatedZone = player.position.zone
         wait(ticks = 1)
     }
