@@ -24,7 +24,7 @@ import java.nio.file.Files
 import java.nio.file.Path
 
 object XTEA {
-    lateinit var id: Map<Int, IntArray>
+    lateinit var key: Map<Int, IntArray>
 
     fun initJson(filePath: Path) {
         val xteas = Json(JsonConfiguration.Stable).parse(MapXtea.serializer().list, Files.readString(filePath))
@@ -32,7 +32,7 @@ object XTEA {
         for(mapXtea in xteas) {
             result[mapXtea.id] = mapXtea.key
         }
-        id = result.toMap()
+        key = result.toMap()
     }
 }
 
