@@ -1,3 +1,5 @@
+package io.guthix.oldscape.server.interest
+
 import io.guthix.oldscape.server.event.imp.LoginEvent
 import io.guthix.oldscape.server.interest.InterestConstants.ZONE_INTEREST_UPDATE
 import io.guthix.oldscape.server.interest.InterestConstants.ZONE_INTEREST_RANGE

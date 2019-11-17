@@ -16,10 +16,29 @@
  */
 package io.guthix.oldscape.server.event
 
+import io.github.classgraph.ClassGraph
+import mu.KotlinLogging
 import kotlin.reflect.KClass
 
+private val logger = KotlinLogging.logger { }
+
 object EventBus {
+    const val pkg = "io.guthix.oldscape.server"
+
     private val eventListeners = mutableMapOf<KClass<out GameEvent>, MutableList<EventListener<in GameEvent>>>()
+
+    fun loadScripts() {
+        ClassGraph().whitelistPackages(pkg).scan().use { scanResult ->
+            val pluginClassList = scanResult
+                .getSubclasses("io.guthix.oldscape.server.event.Script")
+                .directOnly()
+            pluginClassList.forEach {
+                it.loadClass(Script::class.java).getDeclaredConstructor().newInstance()
+            }
+            logger.info { "Loaded ${pluginClassList.size} scripts" }
+        }
+    }
+
 
     fun <E : GameEvent> scheduleEvent(event: E) = eventListeners[event::class]?.let {
         for (listener in it) {
