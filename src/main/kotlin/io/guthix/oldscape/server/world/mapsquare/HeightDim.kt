@@ -18,3 +18,10 @@ package io.guthix.oldscape.server.world.mapsquare
 
 
 inline class HeightDim(val dim: Int)
+
+val Int.hd get(): HeightDim {
+    require(this in 0..3) {
+        "Height is $this but should be lower than 4"
+    }
+    return HeightDim(this)
+}
