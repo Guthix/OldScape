@@ -27,7 +27,7 @@ import java.util.*
 import java.util.concurrent.*
 
 class World : TimerTask() {
-    internal val loginQueue = SynchronousQueue<LoginRequest>()
+    internal val loginQueue = ConcurrentLinkedQueue<LoginRequest>()
 
     internal val players = PlayerList(MAX_PLAYERS)
 
