@@ -19,7 +19,7 @@ package io.guthix.oldscape.server.world.mapsquare.zone
 import io.guthix.oldscape.server.world.mapsquare.MapSquareDim
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.TileDim
 
-inline class ZoneDim(val dim: Int) {
+inline class ZoneDim(val dim: Int): Comparable<ZoneDim> {
     val td get() = TileDim(dim * SIZE_TILE.dim)
     val md get() = MapSquareDim(dim / MapSquareDim.SIZE_ZONE.dim)
 
@@ -30,13 +30,36 @@ inline class ZoneDim(val dim: Int) {
     operator fun rem(other: ZoneDim) = ZoneDim(dim % other.dim)
     operator fun unaryPlus() = this
     operator fun unaryMinus() = ZoneDim(-dim)
-    operator fun rangeTo(other: ZoneDim) = ZoneDimRange(dim, other.dim)
+    operator fun rangeTo(other: ZoneDim) = ZoneDimProgression(this, other)
+
+    override fun compareTo(other: ZoneDim): Int = when {
+        dim < other.dim -> -1
+        dim > other.dim -> 1
+        else -> 0
+    }
 
     companion object {
         val SIZE_TILE = TileDim(8)
     }
 }
 
-class ZoneDimRange(override val start: Int, override val endInclusive: Int) : ClosedRange<Int>
+class ZoneDimIterator(
+    start: ZoneDim,
+    private val endInclusive: ZoneDim,
+    private val step: ZoneDim
+) : Iterator<ZoneDim> {
+    private var current = start
+    override fun hasNext() = current <= endInclusive
+    override fun next() = current + step
+}
+
+class ZoneDimProgression(
+    override val start: ZoneDim,
+    override val endInclusive: ZoneDim,
+    private val step: ZoneDim = 1.zd
+) : Iterable<ZoneDim>, ClosedRange<ZoneDim> {
+    override fun iterator() = ZoneDimIterator(start, endInclusive, step)
+    infix fun step(zones: ZoneDim) = ZoneDimIterator(start, endInclusive, zones)
+}
 
 val Int.zd get() = ZoneDim(this)
