@@ -19,7 +19,7 @@ package io.guthix.oldscape.server.world.mapsquare.zone.tile
 import io.guthix.oldscape.server.world.mapsquare.zone.ZoneDim
 
 inline class TileDim(val dim: Int) {
-    val zone get() = ZoneDim(dim / ZoneDim.SIZE_TILE.dim)
+    val zd get() = ZoneDim(dim / ZoneDim.SIZE_TILE.dim)
 
     operator fun plus(other: TileDim) = TileDim(dim + other.dim)
     operator fun minus(other: TileDim) = TileDim(dim - other.dim)
@@ -32,3 +32,5 @@ inline class TileDim(val dim: Int) {
 }
 
 class TileDimRange(override val start: Int, override val endInclusive: Int) : ClosedRange<Int>
+
+val Int.td get() = TileDim(this)

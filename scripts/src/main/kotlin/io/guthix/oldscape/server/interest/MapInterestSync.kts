@@ -13,6 +13,6 @@ on(LoginEvent::class).then {
     }
 }
 
-fun endMapSquare(zone: ZoneDim) = (zone + ZONE_INTEREST_RANGE).mapSquare
+fun endMapSquare(zone: ZoneDim) = (zone + ZONE_INTEREST_RANGE).md
 
-fun startMapSquare(zone: ZoneDim) = (zone - ZONE_INTEREST_RANGE).mapSquare
+fun startMapSquare(zone: ZoneDim) = (zone - ZONE_INTEREST_RANGE).md
