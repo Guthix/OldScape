@@ -17,65 +17,48 @@
 package io.guthix.oldscape.server.world.entity.player
 
 import io.guthix.oldscape.server.net.state.login.LoginRequest
-import java.util.Stack
+import java.util.*
 import kotlin.random.Random
 
-class PlayerList(capacity: Int) : Iterable<Player> {
-    private val players = arrayOfNulls<Player>(capacity)
+class PlayerList(val capacity: Int) : Iterable<Player> {
+    private val players = mutableListOf<Player>()
 
-    private val freeIndexes = Stack<Int>()
+    private val freePriorities = mutableListOf<Int>()
 
-    private val occupiedIndexes = mutableListOf<Int>()
+    private val freeIndexes = PriorityQueue<Int>(capacity)
 
-    private val iterator = PriorityIterator()
-
-    private val random = Random.Default
-
-    val size get() = occupiedIndexes.size
+    val size get() = players.size
 
     init {
-        for (index in capacity downTo 1) freeIndexes.push(index)
+        for (index in 0 until capacity) freeIndexes.add(index)
     }
 
     fun create(request: LoginRequest): Player {
-        val index = freeIndexes.pop()
-        val pid = random.nextInt(occupiedIndexes.size + 1)
-        val player = Player(index, pid, request.username, request.ctx)
-        occupiedIndexes.add(pid, player.index)
+        val index = freeIndexes.poll()
+        val priority = freePriorities[random.nextInt(freePriorities.size)]
+        val player = Player(index, priority, request.username, request.ctx)
+        players[index] = player
         return player
     }
 
     fun remove(player: Player) {
-        players[player.index] = null
-        occupiedIndexes.remove(player.index)
+        players.removeAt(player.index)
+        freePriorities.add(random.nextInt(freePriorities.size), player.index)
         freeIndexes.add(player.index)
     }
 
-    fun randomizePriority() {
-        occupiedIndexes.shuffle()
-        for (index in occupiedIndexes) {
-            players[index]!!.priority = iterator.currentIndex
+    fun ranomizePriorities() {
+        players.shuffle()
+        players.forEachIndexed{ priority, player ->
+            player.priority = priority
         }
     }
 
     operator fun get(index: Int) = players[index]
 
-    override fun iterator(): Iterator<Player> {
-        iterator.currentIndex = 0
-        return iterator
-    }
+    override fun iterator() = players.iterator()
 
-    inner class PriorityIterator : MutableIterator<Player> {
-        internal var currentIndex = 0
-
-        override fun hasNext(): Boolean = currentIndex < occupiedIndexes.size
-
-        override fun next(): Player = players[occupiedIndexes[currentIndex++]] ?: next()
-
-        override fun remove() {
-            players[currentIndex] = null
-            occupiedIndexes.remove(currentIndex)
-            freeIndexes.add(currentIndex)
-        }
+    companion object {
+        private val random = Random.Default
     }
 }

@@ -35,6 +35,7 @@ class World : TimerTask() {
 
     override fun run() {
         processLogins()
+        processPlayerEvents()
     }
 
     private fun processLogins() {
@@ -51,8 +52,13 @@ class World : TimerTask() {
             request.ctx.pipeline().replace(LoginEncoder::class.qualifiedName, GameEncoder::class.qualifiedName,
                 GameEncoder(request.isaacPair.clientGen)
             )
+            println("Fire event bus on player $player")
             EventBus.scheduleEvent(LoginEvent(this, player))
         }
+    }
+
+    private fun processPlayerEvents() {
+        for(player in players) player.handleEvents()
     }
 
     companion object {
