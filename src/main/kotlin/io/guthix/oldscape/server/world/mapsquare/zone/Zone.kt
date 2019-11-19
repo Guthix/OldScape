@@ -21,11 +21,11 @@ import io.guthix.oldscape.server.world.mapsquare.MapSquare
 import io.guthix.oldscape.server.world.mapsquare.MapSquareFloor
 import kotlin.math.abs
 
-class Zone(val z: HeightDim, val x: ZoneDim, val y: ZoneDim) {
-    val mapSquare = MapSquare(z, MapSquareFloor(x.md, y.md))
+class Zone(val z: HeightDim, val x: ZoneUnit, val y: ZoneUnit) {
+    val mapSquare = MapSquare(z, MapSquareFloor(x.mapSquares, y.mapSquares))
 
-    fun withInDistanceOf(other: Zone, distance: ZoneDim) = if (z == other.z) {
-        abs((other.x - x).dim) <= distance.dim && abs((other.y - y).dim) <= distance.dim
+    fun withInDistanceOf(other: Zone, distance: ZoneUnit) = if (z == other.z) {
+        abs((other.x - x).value) <= distance.value && abs((other.y - y).value) <= distance.value
     } else {
         false
     }

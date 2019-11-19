@@ -25,8 +25,8 @@ import io.netty.channel.ChannelHandlerContext
 class RebuildNormalPacket(private val xteas: List<IntArray>, private val zone: Zone) : OutGameEvent {
     override fun encode(ctx: ChannelHandlerContext): GamePacket {
         val payload = ctx.alloc().buffer(STATIC_SIZE + xteas.size * XTEA_KEY_SIZE * Int.SIZE_BYTES)
-        payload.writeShortLE(zone.y.dim)
-        payload.writeShort(zone.x.dim)
+        payload.writeShortLE(zone.y.value)
+        payload.writeShort(zone.x.value)
         payload.writeShort(xteas.size)
         xteas.forEach { xteaKey ->
             xteaKey.forEach { keyPart ->
