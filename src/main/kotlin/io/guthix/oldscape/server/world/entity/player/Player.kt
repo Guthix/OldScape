@@ -18,16 +18,16 @@ package io.guthix.oldscape.server.world.entity.player
 
 import io.guthix.oldscape.server.event.ScriptCoroutine
 import io.guthix.oldscape.server.net.state.game.OutGameEvent
-import io.guthix.oldscape.server.world.mapsquare.HeightDim
+import io.guthix.oldscape.server.world.mapsquare.floor
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
-import io.guthix.oldscape.server.world.mapsquare.zone.tile.tiles
+import io.guthix.oldscape.server.world.mapsquare.zone.tile.tile
 import io.netty.channel.ChannelHandlerContext
 import java.util.concurrent.ConcurrentLinkedQueue
 
 data class Player(val index: Int, var priority: Int, val username: String, val ctx: ChannelHandlerContext) : Comparable<Player> {
     val continuations = ConcurrentLinkedQueue<ScriptCoroutine>()
 
-    val position = Tile(HeightDim(0), 3000.tiles, 3000.tiles)
+    val position = Tile(0.floor, 3000.tile, 3000.tile)
 
     var rights = 0
 
