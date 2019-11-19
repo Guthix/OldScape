@@ -27,7 +27,6 @@ on(LoginEvent::class).then {
             wait(ticks = 1)
             continue
         }
-        println("Sending new update")
         val xteas = mutableListOf<IntArray>()
         val pZone = player.position.inZone
         for(mSquareX in pZone.x.startMapInterest..pZone.x.endMapInterest) {

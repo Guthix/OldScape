@@ -41,7 +41,6 @@ object EventBus {
         }
     }
 
-
     fun <E : GameEvent> scheduleEvent(event: E, world: World, player: Player) = eventListeners[event::class]?.let {
         for (listener in it) {
             listener.schedule(event, world, player)

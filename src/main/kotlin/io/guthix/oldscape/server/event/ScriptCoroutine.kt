@@ -26,21 +26,12 @@ open class ScriptCoroutine(val player: Player) : Continuation<Unit> {
 
     override val context: CoroutineContext = EmptyCoroutineContext
 
-    override fun resumeWith(result: Result<Unit>) {
-        next?.let {
-            if(result.isSuccess) {
-                it.continuation.resume(Unit)
-            } else {
-                player.continuations.remove(this)
-                result.getOrThrow()
-            }
-        }
-    }
+    override fun resumeWith(result: Result<Unit>) { }
 
     internal fun resumeIfPossible()  = next?.let {
         if(it.canResume()) {
             player.continuations.remove(this)
-            resumeWith(Result.success(Unit))
+            it.continuation.resume(Unit)
         }
     }
 

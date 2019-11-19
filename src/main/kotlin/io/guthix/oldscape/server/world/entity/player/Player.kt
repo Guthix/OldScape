@@ -27,7 +27,7 @@ import java.util.concurrent.ConcurrentLinkedQueue
 data class Player(val index: Int, var priority: Int, val username: String, val ctx: ChannelHandlerContext) : Comparable<Player> {
     val continuations = ConcurrentLinkedQueue<ScriptCoroutine>()
 
-    val position = Tile(0.floor, 3000.tile, 3000.tile)
+    val position = Tile(0.floor, 3200.tile, 3200.tile)
 
     var rights = 0
 
@@ -42,7 +42,6 @@ data class Player(val index: Int, var priority: Int, val username: String, val c
     }
 
     fun handleEvents() {
-        println("tick")
         for(continuation in continuations) {
             continuation.resumeIfPossible()
         }
