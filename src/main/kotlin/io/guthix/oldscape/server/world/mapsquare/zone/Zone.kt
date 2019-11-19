@@ -16,13 +16,13 @@
  */
 package io.guthix.oldscape.server.world.mapsquare.zone
 
-import io.guthix.oldscape.server.world.mapsquare.HeightDim
+import io.guthix.oldscape.server.world.mapsquare.FloorUnit
 import io.guthix.oldscape.server.world.mapsquare.MapSquare
 import io.guthix.oldscape.server.world.mapsquare.MapSquareFloor
 import kotlin.math.abs
 
-class Zone(val z: HeightDim, val x: ZoneUnit, val y: ZoneUnit) {
-    val mapSquare = MapSquare(z, MapSquareFloor(x.mapSquares, y.mapSquares))
+class Zone(val z: FloorUnit, val x: ZoneUnit, val y: ZoneUnit) {
+    val inMapSquare = MapSquare(z, MapSquareFloor(x.inMapSquares, y.inMapSquares))
 
     fun withInDistanceOf(other: Zone, distance: ZoneUnit) = if (z == other.z) {
         abs((other.x - x).value) <= distance.value && abs((other.y - y).value) <= distance.value

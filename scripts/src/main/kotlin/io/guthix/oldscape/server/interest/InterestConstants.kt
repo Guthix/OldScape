@@ -16,18 +16,18 @@
  */
 package io.guthix.oldscape.server.interest
 
-import io.guthix.oldscape.server.world.mapsquare.zone.tile.tiles
+import io.guthix.oldscape.server.world.mapsquare.zone.tile.tile
 import io.guthix.oldscape.server.world.mapsquare.zone.zones
 
 object InterestConstants {
     val ZONE_INTEREST = 13.zones
 
-    val ENTITY_INTEREST = 32.tiles
+    val ENTITY_INTEREST = 32.tile
 
     val ZONE_INTEREST_RANGE = ZONE_INTEREST / 2.zones
 
-    val ENTITY_INTEREST_RANGE = ENTITY_INTEREST / 2.tiles
+    val ENTITY_INTEREST_RANGE = ENTITY_INTEREST / 2.tile
 
-    val ZONE_INTEREST_UPDATE = ZONE_INTEREST_RANGE - ENTITY_INTEREST_RANGE.zones
+    val ZONE_INTEREST_UPDATE = ZONE_INTEREST_RANGE - ENTITY_INTEREST_RANGE.inZones
 }
 
