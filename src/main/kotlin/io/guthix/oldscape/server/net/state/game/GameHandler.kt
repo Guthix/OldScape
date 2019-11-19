@@ -24,6 +24,6 @@ import io.netty.channel.ChannelHandlerContext
 
 class GameHandler(val world: World, val player: Player) : PacketInboundHandler<IncGamePacket>() {
     override fun channelRead0(ctx: ChannelHandlerContext, msg: IncGamePacket) {
-        EventBus.scheduleEvent(msg.toEvent(world, player))
+        EventBus.scheduleEvent(msg.toEvent(), world, player)
     }
 }
