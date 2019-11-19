@@ -28,7 +28,7 @@ class GamePacket(val opcode: Int, val type: PacketSize, val payload: ByteBuf) {
 }
 
 interface IncGamePacket : IncPacket {
-    fun toEvent(world: World, player: Player) : GameEvent
+    fun toEvent() : GameEvent
 }
 
 interface OutGameEvent {

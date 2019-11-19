@@ -20,4 +20,4 @@ import io.guthix.oldscape.server.event.GameEvent
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.player.Player
 
-class LoginEvent(world: World, player: Player) : GameEvent(world, player)
+class LoginEvent : GameEvent

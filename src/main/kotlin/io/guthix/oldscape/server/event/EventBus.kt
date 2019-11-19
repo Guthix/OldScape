@@ -17,6 +17,8 @@
 package io.guthix.oldscape.server.event
 
 import io.github.classgraph.ClassGraph
+import io.guthix.oldscape.server.world.World
+import io.guthix.oldscape.server.world.entity.player.Player
 import mu.KotlinLogging
 import kotlin.reflect.KClass
 
@@ -40,12 +42,13 @@ object EventBus {
     }
 
 
-    fun <E : GameEvent> scheduleEvent(event: E) = eventListeners[event::class]?.let {
+    fun <E : GameEvent> scheduleEvent(event: E, world: World, player: Player) = eventListeners[event::class]?.let {
         for (listener in it) {
-            listener.schedule(event)
+            listener.schedule(event, world, player)
         }
     }
 
+    @Suppress("UNCHECKED_CAST")
     fun <E : GameEvent> register(type: KClass<E>, listener: EventListener<E>) {
         val listeners = eventListeners.getOrPut(type) {
             mutableListOf()
