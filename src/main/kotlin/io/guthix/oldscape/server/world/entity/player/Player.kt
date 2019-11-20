@@ -18,13 +18,21 @@ package io.guthix.oldscape.server.world.entity.player
 
 import io.guthix.oldscape.server.event.ScriptCoroutine
 import io.guthix.oldscape.server.net.state.game.OutGameEvent
+import io.guthix.oldscape.server.world.entity.Entity
 import io.guthix.oldscape.server.world.mapsquare.floor
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.tile
 import io.netty.channel.ChannelHandlerContext
 import java.util.concurrent.ConcurrentLinkedQueue
+import kotlin.reflect.KProperty
 
-data class Player(val index: Int, var priority: Int, val username: String, val ctx: ChannelHandlerContext) : Comparable<Player> {
+data class Player(
+    val index: Int,
+    var priority: Int,
+    val username: String,
+    val ctx: ChannelHandlerContext,
+    override val attributes: MutableMap<KProperty<*>, Any?> = mutableMapOf()
+) : Entity(attributes), Comparable<Player> {
     val continuations = ConcurrentLinkedQueue<ScriptCoroutine>()
 
     val position = Tile(0.floor, 3200.tile, 3200.tile)

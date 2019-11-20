@@ -29,7 +29,7 @@ import java.util.concurrent.*
 class World : TimerTask() {
     internal val loginQueue = ConcurrentLinkedQueue<LoginRequest>()
 
-    internal val players = PlayerList(MAX_PLAYERS)
+    val players = PlayerList(MAX_PLAYERS)
 
     val isFull get(): Boolean = players.size + loginQueue.size >= MAX_PLAYERS
 
