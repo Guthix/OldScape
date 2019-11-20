@@ -22,6 +22,7 @@ import io.guthix.oldscape.server.world.entity.Entity
 import io.guthix.oldscape.server.world.mapsquare.floor
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.tile
+import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 import java.util.concurrent.ConcurrentLinkedQueue
 import kotlin.reflect.KProperty
@@ -39,6 +40,10 @@ data class Player(
 
     var rights = 0
 
+    fun write(buf: ByteBuf) {
+        ctx.write(buf)
+    }
+
     fun write(event: OutGameEvent) {
         ctx.write(event)
     }
@@ -53,5 +58,6 @@ data class Player(
         for(continuation in continuations) {
             continuation.resumeIfPossible()
         }
+        ctx.flush()
     }
 }

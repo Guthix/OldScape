@@ -19,7 +19,7 @@ repositories {
 
 dependencies {
     runtimeOnly project(':server:scripts')
-    implementation project(':cache:codec')
+    api project(':cache:codec')
     implementation group: 'org.jetbrains.kotlin', name: 'kotlin-reflect', version: '1.3.60'
     implementation group: 'org.jetbrains.kotlin', name: 'kotlin-scripting-common', version: '1.3.60'
     implementation group: 'org.jetbrains.kotlinx', name: 'kotlinx-serialization-runtime', version: '0.13.0'
