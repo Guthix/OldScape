@@ -21,48 +21,58 @@ import java.util.*
 import kotlin.random.Random
 
 class PlayerList(capacity: Int) : Iterable<Player> {
-    private val players = mutableListOf<Player>()
+    private val players = arrayOfNulls<Player>(capacity)
 
-    private val freePriorities = mutableListOf<Int>()
+    private val occupiedIndexes = mutableListOf<Int>()
 
-    private val freeIndexes = PriorityQueue<Int>(capacity)
+    private val freeIndexes = Stack<Int>()
 
-    val size get() = players.size
+    private val iterator = PriorityIterator()
+
+    val size get() = occupiedIndexes.size
 
     init {
-        for (index in 0 until capacity) {
-            freePriorities.add(index)
-            freeIndexes.add(index)
-        }
-        freePriorities.shuffle()
+        for (index in capacity downTo 1) freeIndexes.push(index)
     }
 
-    fun create(request: LoginRequest): Player {
-        val index = freeIndexes.poll()
-        val priority = freePriorities[random.nextInt(freePriorities.size)]
-        val player = Player(index, priority, request.username, request.ctx)
-        players.add(index, player)
+    fun create(req: LoginRequest): Player {
+        val index = freeIndexes.pop()
+        val priority = Random.nextInt(occupiedIndexes.size + 1)
+        val player = Player(index, priority, req.username, req.ctx)
+        players[player.index] = player
+        player.priority = priority
+        occupiedIndexes.add(priority, player.index)
         return player
     }
 
     fun remove(player: Player) {
-        players.removeAt(player.index)
-        freePriorities.add(random.nextInt(freePriorities.size), player.index)
+        players[player.index] = null
+        occupiedIndexes.remove(player.index)
         freeIndexes.add(player.index)
     }
 
-    fun ranomizePriorities() {
-        players.shuffle()
-        players.forEachIndexed{ priority, player ->
-            player.priority = priority
+    fun randomizePriority() {
+        occupiedIndexes.shuffle()
+        for (index in occupiedIndexes) {
+            players[index]!!.priority = iterator.currentIndex
         }
     }
 
-    operator fun get(index: Int): Player? = players[index]
+    operator fun get(index: Int) = players[index]
 
-    override fun iterator() = players.iterator()
+    override fun iterator(): Iterator<Player> = PriorityIterator()
 
-    companion object {
-        private val random = Random.Default
+    inner class PriorityIterator : MutableIterator<Player> {
+        internal var currentIndex = 0
+
+        override fun hasNext(): Boolean = currentIndex < occupiedIndexes.size
+
+        override fun next(): Player = players[occupiedIndexes[currentIndex++]] ?: next()
+
+        override fun remove() {
+            players[currentIndex] = null
+            occupiedIndexes.remove(currentIndex)
+            freeIndexes.add(currentIndex)
+        }
     }
 }
