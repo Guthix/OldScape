@@ -22,11 +22,12 @@ import io.netty.handler.codec.MessageToByteEncoder
 
 class LoginEncoder : MessageToByteEncoder<LoginResponse>() {
     override fun encode(ctx: ChannelHandlerContext, msg: LoginResponse, out: ByteBuf) {
+        out.writeByte(0)
         out.writeBoolean(false)
         out.writeInt(0)
         out.writeByte(msg.playerRights)
         out.writeBoolean(true)
         out.writeShort(msg.playerIndex)
-        out.writeByte(1)
+        out.writeBoolean(false)
     }
 }

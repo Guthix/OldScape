@@ -13,7 +13,11 @@ on(LoginEvent::class).then {
     player.playerInterest.localPlayers.add(player)
     val pZone = player.position.inZones
     val xteas = getInterestedXTEAS(pZone)
-    player.write(InterestInitPacket(player, world.players, xteas, player.position.inZones))
+    val playersInWorld = mutableMapOf<Int, Player>()
+    for(player in world.players) {
+        playersInWorld[player.index] = player
+    }
+    player.write(InterestInitPacket(player, playersInWorld, xteas, player.position.inZones))
     EventBus.scheduleEvent(StartMapSyncEvent(pZone), world, player)
     EventBus.scheduleEvent(StartPlayerSyncEvent(), world, player)
 }

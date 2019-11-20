@@ -17,11 +17,11 @@
 package io.guthix.oldscape.server.net.state.game.outp
 
 import io.guthix.buffer.toBitMode
+import io.guthix.cache.js5.util.XTEA_KEY_SIZE
 import io.guthix.oldscape.server.net.state.game.GamePacket
 import io.guthix.oldscape.server.net.state.game.OutGameEvent
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.player.Player
-import io.guthix.oldscape.server.world.entity.player.PlayerList
 import io.guthix.oldscape.server.world.mapsquare.zone.Zone
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
 import io.netty.channel.ChannelHandlerContext
@@ -29,7 +29,7 @@ import kotlin.math.ceil
 
 class InterestInitPacket(
     private val player: Player,
-    private val worldPlayers: PlayerList,
+    private val playersInWorld: Map<Int, Player>,
     private val xteas: List<IntArray>,
     private val zone: Zone
 ) : OutGameEvent{
@@ -40,17 +40,30 @@ class InterestInitPacket(
 
     private val Tile.bitpack get() = (z.value shl 28) or (x.value shl 14) or y.value
 
-
     override fun encode(ctx: ChannelHandlerContext): GamePacket {
-        val data = player.ctx.alloc().buffer(
-            ceil((30 + World.MAX_PLAYERS * 18).toDouble() / Byte.SIZE_BITS).toInt()
+        val bitBuf = player.ctx.alloc().buffer(
+            STATIC_SIZE + xteas.size * XTEA_KEY_SIZE * Int.SIZE_BYTES
         ).toBitMode()
-        data.writeBits(player.position.bitpack, 30)
+        bitBuf.writeBits(player.position.bitpack, 30)
         for(playerIndex in 1 until World.MAX_PLAYERS) {
-            val initPlayer = worldPlayers[playerIndex]
-            data.writeBits(initPlayer?.position?.regionBitPack ?: 0, 18)
+            val initPlayer = playersInWorld[playerIndex]
+            bitBuf.writeBits(initPlayer?.position?.regionBitPack ?: 0, 18)
         }
-        ctx.write(data.toByteMode())
-        return RebuildNormalPacket(xteas, zone).encode(ctx)
+        ctx.write(bitBuf.toByteMode())
+        val byteBuf = bitBuf.toByteMode()
+        byteBuf.writeShortLE(zone.y.value)
+        byteBuf.writeShort(zone.x.value)
+        byteBuf.writeShort(xteas.size)
+        xteas.forEach { xteaKey ->
+            xteaKey.forEach { keyPart ->
+                byteBuf.writeInt(keyPart)
+            }
+        }
+        return GamePacket(73, GamePacket.PacketSize.VAR_SHORT, byteBuf)
+    }
+
+    companion object {
+        val STATIC_SIZE get() = ceil((30 + World.MAX_PLAYERS * 18).toDouble() / Byte.SIZE_BITS).toInt() +
+            RebuildNormalPacket.STATIC_SIZE
     }
 }
