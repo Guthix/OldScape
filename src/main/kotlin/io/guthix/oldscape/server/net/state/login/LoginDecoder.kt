@@ -54,7 +54,7 @@ class LoginDecoder(
         val rsaBuf = inc.decipherRsa(rsaPrivateKey, rsaMod, encryptedSize)
         val encCheck = rsaBuf.readUnsignedByte().toInt()
         if (encCheck != 1) throw IOException("RSA keys didn't match, first byte was $encCheck.")
-        val clientSeed = IntArray(XTEA_KEY_SIZE) { rsaBuf.readInt() }
+        val encodeSeed = IntArray(XTEA_KEY_SIZE) { rsaBuf.readInt() }
         val sessionId = rsaBuf.readLong()
         val authType = rsaBuf.readUnsignedByte().toInt()
         when (authType) {
@@ -68,7 +68,7 @@ class LoginDecoder(
             }
         }
         val password = rsaBuf.readStringCP1252()
-        val xteaData = inc.xteaDecrypt(clientSeed)
+        val xteaData = inc.xteaDecrypt(encodeSeed)
         val userName = xteaData.readStringCP1252()
         val clientSettings = xteaData.decodeClientSettings()
         val uniqueId = ByteArray(24) { // unique id stored in random.dat
@@ -82,8 +82,8 @@ class LoginDecoder(
         val crcs = IntArray(archiveCount) {
             xteaData.readInt()
         }
-        val serverSeed = IntArray(XTEA_KEY_SIZE) { clientSeed[it] + 50 }
-        val isaacPair = IsaacRandomPair(IsaacRandom(clientSeed), IsaacRandom(serverSeed))
+        val decodeSeed = IntArray(XTEA_KEY_SIZE) { encodeSeed[it] + 50 }
+        val isaacPair = IsaacRandomPair(IsaacRandom(decodeSeed), IsaacRandom(encodeSeed))
         out.add(LoginRequest(loginType, revision, authType, sessionId, uniqueId, userName, password, clientSettings,
                 machineSettings, crcs, isaacPair, ctx)
         )
