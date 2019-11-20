@@ -33,6 +33,7 @@ class LoginHandler(val world: World, val sessionId: Long) : PacketInboundHandler
         }
         ctx.write(StatusResponse.NORMAL)
         ctx.pipeline().replace(StatusEncoder::class.qualifiedName, LoginEncoder::class.qualifiedName, LoginEncoder())
+        msg.ctx = ctx
         world.loginQueue.add(msg)
     }
 }

@@ -34,7 +34,7 @@ data class LoginRequest(
     val machineInfo: MachineSettings,
     val crcs: IntArray,
     val isaacPair: IsaacRandomPair,
-    val ctx: ChannelHandlerContext
+    var ctx: ChannelHandlerContext
 ) : IncPacket {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
