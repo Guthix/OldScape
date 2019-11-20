@@ -31,7 +31,7 @@ data class Player(
     val index: Int,
     var priority: Int,
     val username: String,
-    val ctx: ChannelHandlerContext,
+    var ctx: ChannelHandlerContext,
     override val attributes: MutableMap<KProperty<*>, Any?> = mutableMapOf()
 ) : Entity(attributes), Comparable<Player> {
     val continuations = ConcurrentLinkedQueue<ScriptCoroutine>()

@@ -24,7 +24,7 @@ import io.netty.handler.codec.MessageToByteEncoder
 class GameEncoder(private val encodeCipher: IsaacRandom) : MessageToByteEncoder<OutGameEvent>() {
     override fun encode(ctx: ChannelHandlerContext, msg: OutGameEvent, out: ByteBuf) {
         val packet = msg.encode(ctx)
-        out.writeByte(packet.opcode + encodeCipher.nextInt())
+        out.writeByte(packet.opcode)
         when(packet.type) {
             GamePacket.PacketSize.VAR_SHORT -> out.writeShort(packet.payload.readableBytes())
             GamePacket.PacketSize.VAR_BYTE -> out.writeByte(packet.payload.readableBytes())
