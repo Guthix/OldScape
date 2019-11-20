@@ -44,13 +44,13 @@ class World : TimerTask() {
             val player= players.create(request)
             request.ctx.writeAndFlush(LoginResponse(player.index, player.rights))
             request.ctx.pipeline().replace(LoginDecoder::class.qualifiedName, GameDecoder::class.qualifiedName,
-                GameDecoder(request.isaacPair.serverGen)
+                GameDecoder(request.isaacPair.decodeGen)
             )
             request.ctx.pipeline().replace(LoginHandler::class.qualifiedName, GameHandler::class.qualifiedName,
                 GameHandler(this, player)
             )
             request.ctx.pipeline().replace(LoginEncoder::class.qualifiedName, GameEncoder::class.qualifiedName,
-                GameEncoder(request.isaacPair.clientGen)
+                GameEncoder(request.isaacPair.encodeGen)
             )
             EventBus.scheduleEvent(LoginEvent(), this, player)
         }

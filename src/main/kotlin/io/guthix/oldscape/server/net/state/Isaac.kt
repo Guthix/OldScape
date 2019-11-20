@@ -16,113 +16,189 @@
  */
 package io.guthix.oldscape.server.net.state
 
-import java.util.*
-
-class IsaacRandomPair(val clientGen : IsaacRandom, val serverGen: IsaacRandom)
+class IsaacRandomPair(val encodeGen : IsaacRandom, val decodeGen: IsaacRandom)
 
 class IsaacRandom(private val seed: IntArray) {
-    private var randResult: IntArray = IntArray(256) // result of the last generation
-    private var valuesUsed = 0 // number of values already used in randResult
-
-    // internal ISAAC random state
-    private val mm: IntArray = IntArray(256)
-    private var aa = 0
-    private var bb = 0
-    private var cc = 0
+    private var valuesRemaining = 0
+    private var randResult: IntArray = IntArray(256)
+    private var mm: IntArray = IntArray(256)
+    private var field2387 = 0
+    private var field2385 = 0
+    private var field2382 = 0
 
     init {
-        for (i in seed.indices) {
-            randResult[i] = seed[i]
+        for (int_0 in seed.indices) {
+            randResult[int_0] = seed[int_0]
         }
-        init(seed)
+        method3861()
     }
 
     fun nextInt(): Int {
-        if (--valuesUsed + 1 == 0) {
+        if (--valuesRemaining + 1 == 0) {
             generateMoreResults()
-            valuesUsed = 255
+            valuesRemaining = 255
         }
-
-        return randResult[valuesUsed]
+        return randResult[valuesRemaining]
     }
 
-    private fun generateMoreResults() {
-        bb += ++cc
-        for (i in 0 until 256) {
-            val x = mm[i]
-            when (i and 3) {
-                0 -> aa = aa xor (aa shl 13)
-                1 -> aa = aa xor aa.ushr(6)
-                2 -> aa = aa xor (aa shl 2)
-                3 -> aa = aa xor aa.ushr(16)
+    fun generateMoreResults() {
+        field2385 += ++field2382
+
+        for (int_0 in 0..255) {
+            val int_1 = mm[int_0]
+            field2387 = if (int_0 and 0x2 == 0) {
+                if (int_0 and 0x1 == 0) {
+                    field2387 xor (field2387 shl 13)
+                } else {
+                    field2387 xor field2387.ushr(6)
+                }
+            } else if (int_0 and 0x1 == 0) {
+                field2387 xor (field2387 shl 2)
+            } else {
+                field2387 xor field2387.ushr(16)
             }
-            aa += mm[i xor 128]
-            mm[i] = mm[x.ushr(2) and 0xFF] + aa + bb
-            val y = mm[i]
-            bb = mm[y.ushr(10) and 0xFF] + x
-            randResult[i] = bb
+
+            field2387 += mm[128 + int_0 and 0xFF]
+            val int_2: Int
+            int_2 = mm[int_1 and 0x3FC shr 2] + field2385 + field2387
+            mm[int_0] = int_2
+            field2385 = mm[int_2 shr 8 and 0x3FC shr 2] + int_1
+            randResult[int_0] = field2385
         }
+
     }
 
-    private fun init(seed: IntArray) {
-        var mutSeed = seed
-        if (seed.size != 256) {
-            mutSeed = Arrays.copyOf(seed, 256)
-        }
-        cc = 0
-        bb = cc
-        aa = bb
-        val initState = IntArray(8)
-        Arrays.fill(initState, -0x61c88647)    // the golden ratio
-        for (i in 0..3) {
-            mix(initState)
-        }
-        for(i in 0 until 256 step 8) {
-            for (j in 0 until 8) {
-                initState[j] += mutSeed[i + j]
-            }
-            mix(initState)
-            for (j in 0 until 8) {
-                mm[i + j] = initState[j]
-            }
-        }
-        for(i in 0 until 256 step 8) {
-            for (j in 0 until 8) {
-                initState[j] += mm[i + j]
-            }
-            mix(initState)
-            for (j in 0 until 8) {
-                mm[i + j] = initState[j]
-            }
-        }
-        valuesUsed = 256
-    }
+    private fun method3861() {
+        var int_0 = GOLDEN_RATIO
+        var int_1 = GOLDEN_RATIO
+        var int_2 = GOLDEN_RATIO
+        var int_3 = GOLDEN_RATIO
+        var int_4 = GOLDEN_RATIO
+        var int_5 = GOLDEN_RATIO
+        var int_6 = GOLDEN_RATIO
+        var int_7 = GOLDEN_RATIO
 
-    private fun mix(s: IntArray) {
-        s[0] = s[0] xor (s[1] shl 11)
-        s[3] += s[0]
-        s[1] += s[2]
-        s[1] = s[1] xor s[2].ushr(2)
-        s[4] += s[1]
-        s[2] += s[3]
-        s[2] = s[2] xor (s[3] shl 8)
-        s[5] += s[2]
-        s[3] += s[4]
-        s[3] = s[3] xor s[4].ushr(16)
-        s[6] += s[3]
-        s[4] += s[5]
-        s[4] = s[4] xor (s[5] shl 10)
-        s[7] += s[4]
-        s[5] += s[6]
-        s[5] = s[5] xor s[6].ushr(4)
-        s[0] += s[5]
-        s[6] += s[7]
-        s[6] = s[6] xor (s[7] shl 8)
-        s[1] += s[6]
-        s[7] += s[0]
-        s[7] = s[7] xor s[0].ushr(9)
-        s[2] += s[7]
-        s[0] += s[1]
+        var int_8 = 0
+        while (int_8 < 4) {
+            int_7 = int_7 xor (int_6 shl 11)
+            int_4 += int_7
+            int_6 += int_5
+            int_6 = int_6 xor int_5.ushr(2)
+            int_3 += int_6
+            int_5 += int_4
+            int_5 = int_5 xor (int_4 shl 8)
+            int_2 += int_5
+            int_4 += int_3
+            int_4 = int_4 xor int_3.ushr(16)
+            int_1 += int_4
+            int_3 += int_2
+            int_3 = int_3 xor (int_2 shl 10)
+            int_0 += int_3
+            int_2 += int_1
+            int_2 = int_2 xor int_1.ushr(4)
+            int_7 += int_2
+            int_1 += int_0
+            int_1 = int_1 xor (int_0 shl 8)
+            int_6 += int_1
+            int_0 += int_7
+            int_0 = int_0 xor int_7.ushr(9)
+            int_5 += int_0
+            int_7 += int_6
+            int_8++
+        }
+
+        int_8 = 0
+        while (int_8 < 256) {
+            int_7 += randResult[int_8]
+            int_6 += randResult[int_8 + 1]
+            int_5 += randResult[int_8 + 2]
+            int_4 += randResult[int_8 + 3]
+            int_3 += randResult[int_8 + 4]
+            int_2 += randResult[int_8 + 5]
+            int_1 += randResult[int_8 + 6]
+            int_0 += randResult[int_8 + 7]
+            int_7 = int_7 xor (int_6 shl 11)
+            int_4 += int_7
+            int_6 += int_5
+            int_6 = int_6 xor int_5.ushr(2)
+            int_3 += int_6
+            int_5 += int_4
+            int_5 = int_5 xor (int_4 shl 8)
+            int_2 += int_5
+            int_4 += int_3
+            int_4 = int_4 xor int_3.ushr(16)
+            int_1 += int_4
+            int_3 += int_2
+            int_3 = int_3 xor (int_2 shl 10)
+            int_0 += int_3
+            int_2 += int_1
+            int_2 = int_2 xor int_1.ushr(4)
+            int_7 += int_2
+            int_1 += int_0
+            int_1 = int_1 xor (int_0 shl 8)
+            int_6 += int_1
+            int_0 += int_7
+            int_0 = int_0 xor int_7.ushr(9)
+            int_5 += int_0
+            int_7 += int_6
+            mm[int_8] = int_7
+            mm[int_8 + 1] = int_6
+            mm[int_8 + 2] = int_5
+            mm[int_8 + 3] = int_4
+            mm[int_8 + 4] = int_3
+            mm[int_8 + 5] = int_2
+            mm[int_8 + 6] = int_1
+            mm[int_8 + 7] = int_0
+            int_8 += 8
+        }
+
+        int_8 = 0
+        while (int_8 < 256) {
+            int_7 += mm[int_8]
+            int_6 += mm[int_8 + 1]
+            int_5 += mm[int_8 + 2]
+            int_4 += mm[int_8 + 3]
+            int_3 += mm[int_8 + 4]
+            int_2 += mm[int_8 + 5]
+            int_1 += mm[int_8 + 6]
+            int_0 += mm[int_8 + 7]
+            int_7 = int_7 xor (int_6 shl 11)
+            int_4 += int_7
+            int_6 += int_5
+            int_6 = int_6 xor int_5.ushr(2)
+            int_3 += int_6
+            int_5 += int_4
+            int_5 = int_5 xor (int_4 shl 8)
+            int_2 += int_5
+            int_4 += int_3
+            int_4 = int_4 xor int_3.ushr(16)
+            int_1 += int_4
+            int_3 += int_2
+            int_3 = int_3 xor (int_2 shl 10)
+            int_0 += int_3
+            int_2 += int_1
+            int_2 = int_2 xor int_1.ushr(4)
+            int_7 += int_2
+            int_1 += int_0
+            int_1 = int_1 xor (int_0 shl 8)
+            int_6 += int_1
+            int_0 += int_7
+            int_0 = int_0 xor int_7.ushr(9)
+            int_5 += int_0
+            int_7 += int_6
+            mm[int_8] = int_7
+            mm[int_8 + 1] = int_6
+            mm[int_8 + 2] = int_5
+            mm[int_8 + 3] = int_4
+            mm[int_8 + 4] = int_3
+            mm[int_8 + 5] = int_2
+            mm[int_8 + 6] = int_1
+            mm[int_8 + 7] = int_0
+            int_8 += 8
+        }
+
+        generateMoreResults()
+        valuesRemaining = 256
     }
 
     companion object {
