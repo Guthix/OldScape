@@ -20,6 +20,7 @@ import io.guthix.cache.js5.util.XTEA_KEY_SIZE
 import io.guthix.oldscape.server.net.state.game.GamePacket
 import io.guthix.oldscape.server.net.state.game.OutGameEvent
 import io.guthix.oldscape.server.world.mapsquare.zone.Zone
+import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 
 class RebuildNormalPacket(private val xteas: List<IntArray>, private val zone: Zone) : OutGameEvent {

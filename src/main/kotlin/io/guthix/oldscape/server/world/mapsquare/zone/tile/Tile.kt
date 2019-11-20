@@ -21,7 +21,7 @@ import io.guthix.oldscape.server.world.mapsquare.zone.Zone
 import kotlin.math.abs
 
 class Tile(val z: FloorUnit, val x: TileUnit, val y: TileUnit) {
-    val inZone get() = Zone(z, x.inZones, y.inZones)
+    val inZones get() = Zone(z, x.inZones, y.inZones)
 
     fun withInDistanceOf(other: Tile, distance: TileUnit) = if (z == other.z) {
         abs((other.x - x).value) <= distance.value && abs((other.y - y).value) <= distance.value

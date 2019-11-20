@@ -20,7 +20,7 @@ import io.guthix.oldscape.server.net.state.login.LoginRequest
 import java.util.*
 import kotlin.random.Random
 
-class PlayerList(val capacity: Int) : Iterable<Player> {
+class PlayerList(capacity: Int) : Iterable<Player> {
     private val players = mutableListOf<Player>()
 
     private val freePriorities = mutableListOf<Int>()
@@ -58,7 +58,7 @@ class PlayerList(val capacity: Int) : Iterable<Player> {
         }
     }
 
-    operator fun get(index: Int) = players[index]
+    operator fun get(index: Int): Player? = players[index]
 
     override fun iterator() = players.iterator()
 

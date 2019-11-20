@@ -14,17 +14,20 @@
  * You should have received a copy of the GNU General Public License
  * along with Foobar. If not, see <https://www.gnu.org/licenses/>.
  */
-package io.guthix.oldscape.server.world.entity
+package io.guthix.oldscape.server.interest
 
-import kotlin.reflect.KProperty
+import io.guthix.oldscape.server.world.World
+import io.guthix.oldscape.server.world.entity.EntityAttribute
+import io.guthix.oldscape.server.world.entity.player.Player
 
-class EntityAttribute<T : Any?> {
-    @Suppress("UNCHECKED_CAST")
-    operator fun getValue(thisRef: Entity, property: KProperty<*>): T {
-        return thisRef.attributes[property] as T
-    }
+var Player.playerInterest by EntityAttribute<PlayerInterest>()
 
-    operator fun setValue(thisRef: Entity, property: KProperty<*>, value: T) {
-        thisRef.attributes[property] = value
-    }
+class PlayerInterest {
+    val localPlayers = mutableListOf<Player>()
+
+    val externalPlayers =  mutableListOf<Player>()
+
+    val fieldIds = IntArray(World.MAX_PLAYERS)
+
+    val skipFlags = ByteArray(World.MAX_PLAYERS)
 }
