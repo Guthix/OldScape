@@ -36,7 +36,7 @@ data class Player(
 ) : Entity(attributes), Comparable<Player> {
     val continuations = ConcurrentLinkedQueue<ScriptCoroutine>()
 
-    val position = Tile(0.floor, 3200.tile, 3200.tile)
+    val position = Tile(0.floor, 3222.tile, 3218.tile)
 
     var rights = 0
 
