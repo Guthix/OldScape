@@ -16,16 +16,28 @@
  */
 package io.guthix.oldscape.server.net.state.game
 
+import io.github.classgraph.ClassGraph
+import io.guthix.oldscape.server.event.EventBus
 import io.guthix.oldscape.server.event.GameEvent
+import io.guthix.oldscape.server.event.Script
 import io.guthix.oldscape.server.net.IncPacket
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.player.Player
 import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
+import mu.KotlinLogging
 
-class GamePacket(val opcode: Int, val type: PacketSize, val payload: ByteBuf) {
-    enum class PacketSize { FIXED, VAR_BYTE, VAR_SHORT }
-}
+private val logger = KotlinLogging.logger { }
+
+class GamePacket(val opcode: Int, val type: PacketSize, val payload: ByteBuf)
+
+sealed class PacketSize
+
+class FixedSize(val size: Int) : PacketSize()
+
+object VarByteSize : PacketSize()
+
+object VarShortSize : PacketSize()
 
 interface IncGamePacket : IncPacket {
     fun toEvent() : GameEvent
@@ -35,12 +47,25 @@ interface OutGameEvent {
     fun encode(ctx: ChannelHandlerContext): GamePacket
 }
 
-data class GamePacketInDefinition(var size: Int, val decoder: GamePacketDecoder) {
-    companion object {
-        val inc = mutableMapOf<Int, GamePacketInDefinition>()
-    }
-}
+abstract class GamePacketDecoder(val opcode: Int, val packetSize: PacketSize) {
+    abstract fun decode(data: ByteBuf, ctx: ChannelHandlerContext): GameEvent
 
-interface GamePacketDecoder {
-    fun decode(data: ByteBuf): IncGamePacket
+    companion object {
+        const val pkg = "io.guthix.oldscape.server.net.state.game.inp"
+
+        val inc = mutableMapOf<Int, GamePacketDecoder>()
+
+        fun loadIncPackets() {
+            ClassGraph().whitelistPackages(pkg).scan().use { scanResult ->
+                val pluginClassList = scanResult.getSubclasses(
+                    "io.guthix.oldscape.server.net.state.game.GamePacketDecoder"
+                ).directOnly()
+                pluginClassList.forEach {
+                    val clazz = it.loadClass(GamePacketDecoder::class.java).getDeclaredConstructor().newInstance()
+                    inc[clazz.opcode] = clazz
+                }
+                logger.info { "Loaded ${inc.size} inc packet decoders" }
+            }
+        }
+    }
 }

@@ -19,6 +19,7 @@ package io.guthix.oldscape.server
 import com.charleskorn.kaml.Yaml
 import io.guthix.oldscape.server.event.EventBus
 import io.guthix.oldscape.server.net.OldScapeServer
+import io.guthix.oldscape.server.net.state.game.GamePacketDecoder
 import io.guthix.oldscape.server.world.World
 import java.nio.file.Files
 import java.nio.file.Path
@@ -28,6 +29,7 @@ fun main() {
     val configFile = Path.of(ServerConfig::class.java.getResource("/Config.yaml").toURI())
     XTEA.initJson(Path.of(XTEA::class.java.getResource("/cache/xteas.json").toURI()))
     EventBus.loadScripts()
+    GamePacketDecoder.loadIncPackets()
     val config = Yaml.default.parse(ServerConfig.serializer(), Files.readString(configFile))
     val world = World()
     Timer().scheduleAtFixedRate(world, 0, 600)

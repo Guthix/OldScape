@@ -26,8 +26,8 @@ class GameEncoder(private val encodeCipher: IsaacRandom) : MessageToByteEncoder<
         val packet = msg.encode(ctx)
         out.writeByte(packet.opcode + encodeCipher.nextInt())
         when(packet.type) {
-            GamePacket.PacketSize.VAR_SHORT -> out.writeShort(packet.payload.readableBytes())
-            GamePacket.PacketSize.VAR_BYTE -> out.writeByte(packet.payload.readableBytes())
+            VarShortSize -> out.writeShort(packet.payload.readableBytes())
+            VarByteSize -> out.writeByte(packet.payload.readableBytes())
             else -> { }
         }
         out.writeBytes(packet.payload)

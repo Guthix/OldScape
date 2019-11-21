@@ -20,6 +20,7 @@ import io.guthix.buffer.toBitMode
 import io.guthix.cache.js5.util.XTEA_KEY_SIZE
 import io.guthix.oldscape.server.net.state.game.GamePacket
 import io.guthix.oldscape.server.net.state.game.OutGameEvent
+import io.guthix.oldscape.server.net.state.game.VarShortSize
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.player.Player
 import io.guthix.oldscape.server.world.mapsquare.zone.Zone
@@ -61,11 +62,11 @@ class InterestInitPacket(
                 byteBuf.writeInt(keyPart)
             }
         }
-        return GamePacket(73, GamePacket.PacketSize.VAR_SHORT, byteBuf)
+        return GamePacket(73, VarShortSize, byteBuf)
     }
 
     companion object {
-        val STATIC_SIZE get() = ceil((30 + World.MAX_PLAYERS * 18).toDouble() / Byte.SIZE_BITS).toInt() +
+        val STATIC_SIZE get() = ceil((30 + (World.MAX_PLAYERS - 2) * 18).toDouble() / Byte.SIZE_BITS).toInt() +
             RebuildNormalPacket.STATIC_SIZE
     }
 }
