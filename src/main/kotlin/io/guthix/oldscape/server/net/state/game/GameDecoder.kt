@@ -27,36 +27,41 @@ class GameDecoder(private val decodeCipher: IsaacRandom) : ByteToMessageDecoder(
 
     private var state = State.OPCODE
 
+    private var decoder: GamePacketDecoder? = null
+
+    private var size: Int = 0
+
     override fun decode(ctx: ChannelHandlerContext, inc: ByteBuf, out: MutableList<Any>) {
-        var packetIn: GamePacketInDefinition? = null
         when(state) {
             State.OPCODE -> {
                 if(!inc.isReadable) return
                 val opcode = inc.readUnsignedByte() - decodeCipher.nextInt()
-                val type = GamePacketInDefinition.inc[opcode] ?: throw IOException(
-                    "Could not find packet for opcode $opcode."
+                decoder = GamePacketDecoder.inc[opcode] ?: throw IOException(
+                    "Could not find packet decoder for opcode $opcode."
                 )
-                packetIn = type.copy()
                 state = State.SIZE
             }
             State.SIZE -> {
-                when(packetIn?.size) {
-                    -2 -> {
-                        if (!inc.isReadable(Short.SIZE_BYTES)) return
-                        packetIn.size = inc.readUnsignedShort()
-                    }
-                    -1 -> {
+                if(decoder?.packetSize is FixedSize) {
+                    size = (decoder?.packetSize as FixedSize).size
+                }
+
+                when(decoder?.packetSize ) {
+                    is FixedSize -> size = (decoder!!.packetSize as FixedSize).size
+                    is VarByteSize -> {
                         if (inc.isReadable) return
-                        packetIn.size = inc.readUnsignedByte().toInt()
+                        size = inc.readUnsignedByte().toInt()
+                    }
+                    is VarShortSize -> {
+                        if (!inc.isReadable(Short.SIZE_BYTES)) return
+                        size = inc.readUnsignedShort()
                     }
                 }
                 state = State.PAYLOAD
             }
             State.PAYLOAD -> {
-                packetIn?.let {
-                    if(!inc.isReadable(it.size)) return
-                    out.add(it.decoder.decode(inc.readBytes(it.size)))
-                }
+                if(!inc.isReadable(size)) return
+                out.add(decoder!!.decode(inc.readBytes(size), ctx))
             }
         }
     }
