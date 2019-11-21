@@ -35,17 +35,14 @@ class GameDecoder(private val decodeCipher: IsaacRandom) : ByteToMessageDecoder(
         when(state) {
             State.OPCODE -> {
                 if(!inc.isReadable) return
-                val opcode = inc.readUnsignedByte() - decodeCipher.nextInt()
+                val opcode = (inc.readUnsignedByte() - decodeCipher.nextInt()) and 0xFF
+                println("read opcode $opcode")
                 decoder = GamePacketDecoder.inc[opcode] ?: throw IOException(
                     "Could not find packet decoder for opcode $opcode."
                 )
                 state = State.SIZE
             }
             State.SIZE -> {
-                if(decoder?.packetSize is FixedSize) {
-                    size = (decoder?.packetSize as FixedSize).size
-                }
-
                 when(decoder?.packetSize ) {
                     is FixedSize -> size = (decoder!!.packetSize as FixedSize).size
                     is VarByteSize -> {
