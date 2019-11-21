@@ -29,4 +29,6 @@ class Zone(val z: FloorUnit, val x: ZoneUnit, val y: ZoneUnit) {
     } else {
         false
     }
+
+    override fun toString() = "Zone(z=${z.value}, x=${x.value}, y=${y.value})"
 }
