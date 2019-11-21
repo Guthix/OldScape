@@ -51,7 +51,7 @@ abstract class GamePacketDecoder(val opcode: Int, val packetSize: PacketSize) {
     abstract fun decode(data: ByteBuf, ctx: ChannelHandlerContext): GameEvent
 
     companion object {
-        const val pkg = "io.guthix.oldscape.server.net.state.game.inp"
+        private const val pkg = "io.guthix.oldscape.server.net.state.game.inp"
 
         val inc = mutableMapOf<Int, GamePacketDecoder>()
 
