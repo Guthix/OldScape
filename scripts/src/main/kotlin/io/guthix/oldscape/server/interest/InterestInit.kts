@@ -5,6 +5,7 @@ import io.guthix.oldscape.server.world.entity.EntityAttribute
 import io.guthix.oldscape.server.event.EventBus
 import io.guthix.oldscape.server.world.entity.player.Player
 import io.guthix.oldscape.server.net.state.game.outp.InterestInitPacket
+import io.guthix.oldscape.server.net.state.game.outp.IfOpentopPacket
 
 var Player.playerInterest by EntityAttribute<PlayerInterest>()
 
@@ -18,6 +19,7 @@ on(LoginEvent::class).then {
         playersInWorld[player.index] = player
     }
     player.write(InterestInitPacket(player, playersInWorld, xteas, player.position.inZones))
+    player.write(IfOpentopPacket(165))
     EventBus.scheduleEvent(StartMapSyncEvent(pZone), world, player)
     EventBus.scheduleEvent(StartPlayerSyncEvent(), world, player)
 }
