@@ -33,7 +33,7 @@ class InterestInitPacket(
     private val playersInWorld: Map<Int, Player>,
     private val xteas: List<IntArray>,
     private val zone: Zone
-) : OutGameEvent{
+) : OutGameEvent {
     private val FIELD_TILE_SIZE = 8192
 
     private val Tile.regionBitPack get() =
