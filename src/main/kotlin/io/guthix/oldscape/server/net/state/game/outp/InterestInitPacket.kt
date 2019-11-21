@@ -47,7 +47,9 @@ class InterestInitPacket(
         bitBuf.writeBits(player.position.bitpack, 30)
         for(playerIndex in 1 until World.MAX_PLAYERS) {
             val initPlayer = playersInWorld[playerIndex]
-            bitBuf.writeBits(initPlayer?.position?.regionBitPack ?: 0, 18)
+            if(playerIndex != player.index) {
+                bitBuf.writeBits(initPlayer?.position?.regionBitPack ?: 0, 18)
+            }
         }
         ctx.write(bitBuf.toByteMode())
         val byteBuf = bitBuf.toByteMode()
