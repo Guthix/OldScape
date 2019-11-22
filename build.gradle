@@ -1,6 +1,6 @@
 dependencies {
     implementation group: 'io.github.microutils', name: 'kotlin-logging', version: kotlinLoggingVersion
-    implementation group: 'org.slf4j', name: 'slf4j-simple', version: sl4jVersion
+    implementation group: 'ch.qos.logback', name: 'logback-classic', version: logbackVersion
     implementation group: 'io.ktor', name: 'ktor-server-core', version: ktorVersion
     implementation group: 'io.ktor', name: 'ktor-client-cio', version: ktorVersion
 }
