@@ -107,7 +107,6 @@ inline fun <reified P : WikiTextParser<P>> parseWikiString(wikiString: String): 
         var version = 1
         do {
             val def = P::class.createInstance().parse(wikiString, version)
-            println(def)
             def.ids?.forEach { id ->
                 definitions[id] = def
             }
@@ -115,7 +114,6 @@ inline fun <reified P : WikiTextParser<P>> parseWikiString(wikiString: String): 
         } while(wikiString.contains("|id$version = "))
     } else {
         val def = P::class.createInstance().parse(wikiString, null)
-        println(def)
         def.ids?.forEach { id ->
             definitions[id] = def
         }
