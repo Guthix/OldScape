@@ -24,7 +24,7 @@ dependencies {
     implementation group: 'org.jetbrains.kotlinx', name: 'kotlinx-serialization-runtime', version: kotlinSerializationVersion
     implementation group: 'com.charleskorn.kaml', name: 'kaml', version: kamlVersion
     implementation group: 'io.netty', name: 'netty-all', version: nettyVersion
-    implementation group: 'io.github.classgraph', name: 'classgraph', version: '4.8.53'
+    implementation group: 'io.github.classgraph', name: 'classgraph', version: classGraphVersion
     implementation group: 'io.github.microutils', name: 'kotlin-logging', version: kotlinLoggingVersion
     implementation group: 'ch.qos.logback', name: 'logback-classic', version: logbackVersion
 }
