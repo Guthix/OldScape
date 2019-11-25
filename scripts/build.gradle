@@ -1,8 +1,8 @@
 dependencies {
-    implementation project(':server')
+    implementation rootProject
     implementation "org.jetbrains.kotlin:kotlin-script-runtime:1.3.60"
 }
 
 license {
-    header = file(rootDir.path + '\\license\\GPL.txt')
+    header = file('\\..\\..\\license\\GPL.txt')
 }
