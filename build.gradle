@@ -17,7 +17,7 @@ repositories {
 
 dependencies {
     runtimeOnly project(':server:scripts')
-    api project(':cache:codec')
+    api group: 'io.guthix.oldscape', name: 'cache', version: '0.1-SNAPSHOT'
     implementation group: 'org.jetbrains.kotlin', name: 'kotlin-reflect', version: kotlinVersion
     implementation group: 'org.jetbrains.kotlin', name: 'kotlin-scripting-common', version: kotlinVersion
     implementation group: 'org.jetbrains.kotlinx', name: 'kotlinx-coroutines-core', version: kotlinCoroutinesVersion
