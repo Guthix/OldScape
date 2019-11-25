@@ -30,7 +30,7 @@ apply from:  '../../gradle/dependencies.gradle'
 
 dependencies {
     implementation group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib-jdk8'
-    implementation group: 'io.guthix.cache', name: 'Jagex-Store-5', version: jagexCacheVersion
+    implementation group: 'io.guthix.cache', name: 'jagex-store-5', version: jagexCacheVersion
 }
 
 compileKotlin {
