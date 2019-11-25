@@ -68,10 +68,8 @@ publishing {
     publications {
         register(MavenPublication) {
             from components.java
-            artifact sourcesJar
-            artifact javadocJar
             pom {
-                name = 'cache'
+                name = 'oldscape-cache'
                 description = 'A library for modifying OldScape caches'
                 url = "https://github.com/guthix/OldScape.git"
                 licenses {
