@@ -1,4 +1,4 @@
-rootProject.name = 'server'
+rootProject.name = 'oldscape-server'
 
 include 'scripts'
 includeBuild '../cache'
