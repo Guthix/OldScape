@@ -21,18 +21,19 @@ plugins {
 }
 
 repositories {
+    jcenter()
     mavenCentral()
     mavenLocal()
     maven { url 'https://jitpack.io' }
 }
 
 ext {
-    jagexCacheVersion = '0.2.10'
+    oldscapeCache = '0.1-SNAPSHOT'
 }
 
 dependencies {
     implementation group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib-jdk8'
-    implementation group: 'io.guthix.cache', name: 'jagex-store-5', version: jagexCacheVersion
+    implementation group: 'io.guthix.oldscape', name: 'oldscape-cache', version: oldscapeCache
 }
 
 compileKotlin {
