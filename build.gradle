@@ -1,0 +1,59 @@
+buildscript {
+    ext.kotlinVersion = '1.3.60'
+
+    repositories { jcenter() }
+
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+        classpath "org.jetbrains.kotlin:kotlin-serialization:$kotlinVersion"
+    }
+}
+
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version '1.3.60' apply false
+    id 'com.github.hierynomus.license' version '0.15.0' apply false
+}
+
+apply plugin: 'kotlinx-serialization'
+
+apply from:  '../gradle/dependencies.gradle'
+
+group 'io.guthix.oldscape'
+version '0.1-SNAPSHOT'
+
+allprojects {
+    apply plugin: 'org.jetbrains.kotlin.jvm'
+    apply plugin: 'com.github.hierynomus.license'
+
+    repositories {
+        jcenter()
+        mavenCentral()
+        mavenLocal()
+        maven { url 'https://jitpack.io' }
+    }
+
+    dependencies {
+        implementation group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib-jdk8'
+    }
+
+    compileKotlin {
+        sourceCompatibility = JavaVersion.VERSION_11
+        kotlinOptions.jvmTarget = JavaVersion.VERSION_11
+    }
+
+    compileTestKotlin {
+        sourceCompatibility = JavaVersion.VERSION_11
+        kotlinOptions.jvmTarget = JavaVersion.VERSION_11
+    }
+}
+
+dependencies {
+    api group: 'io.guthix.cache', name: 'Jagex-Store-5', version: jagexCacheVersion
+    implementation group: 'org.jetbrains.kotlinx', name: 'kotlinx-serialization-runtime', version: kotlinSerializationVersion
+    implementation group: 'io.github.microutils', name: 'kotlin-logging', version: kotlinLoggingVersion
+    implementation group: 'ch.qos.logback', name: 'logback-classic', version: logbackVersion
+}
+
+license {
+    header = file(rootDir.path + '\\..\\license\\LGPL.txt')
+}
