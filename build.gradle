@@ -1,4 +1,19 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version '1.3.60'
+    id 'com.github.hierynomus.license' version '0.15.0'
+}
+
+apply from: '../gradle/dependencies.gradle'
+
+group 'io.guthix.oldscape'
+version '0.1-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
 dependencies {
+    implementation group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib-jdk8'
     implementation group: 'io.github.microutils', name: 'kotlin-logging', version: kotlinLoggingVersion
     implementation group: 'ch.qos.logback', name: 'logback-classic', version: logbackVersion
     implementation group: 'io.ktor', name: 'ktor-server-core', version: ktorVersion
@@ -6,5 +21,5 @@ dependencies {
 }
 
 license {
-    header = file(rootDir.path + '\\license\\LGPL.txt')
+    header = file('\\..\\license\\LGPL.txt')
 }
