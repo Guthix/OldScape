@@ -257,9 +257,9 @@ data class NpcConfig(override val id: Int) : Config(id) {
                         } else null
                         val size = data.readUnsignedByte().toInt()
                         val transforms = arrayOfNulls<Int?>(size + 2)
-                        for(i in 0 ..size) {
+                        for(i in 0..size) {
                             val transform = data.readUnsignedShort()
-                            transforms[i] = if(transform == size) null else transform
+                            transforms[i] = if(transform == 65535) null else transform
                         }
                         if(opcode == 118) {
                             transforms[size + 1] = lastEntry

@@ -324,17 +324,17 @@ data class ObjectConfig(override val id: Int): Config(id) {
                         objectConfig.transformVarbit = if(transformVarbit == 65535) null else transformVarbit
                         val transformVarp = data.readUnsignedShort()
                         objectConfig.transformVarp = if(transformVarbit == 65535) null else transformVarp
-                        val lastEntry = if(92 == 118) {
+                        val lastEntry = if(opcode == 92) {
                             val entry = data.readUnsignedShort()
                             if(entry == 65535) null else entry
                         } else null
                         val size = data.readUnsignedByte().toInt()
                         val transforms = arrayOfNulls<Int?>(size + 2)
-                        for(i in 0 ..size) {
+                        for(i in 0..size) {
                             val transform = data.readUnsignedShort()
-                            transforms[i] = if(transform == size) null else transform
+                            transforms[i] = if(transform == 65535) null else transform
                         }
-                        if(opcode == 118) {
+                        if(opcode == 92) {
                             transforms[size + 1] = lastEntry
                         }
                         objectConfig.transforms = transforms
