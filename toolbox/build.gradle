@@ -1,0 +1,8 @@
+dependencies {
+    implementation rootProject
+    implementation group: 'org.jetbrains.kotlinx', name: 'kotlinx-coroutines-core', version: '1.3.2'
+}
+
+license {
+    header = file('\\..\\..\\license\\LGPL.txt')
+}

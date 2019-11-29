@@ -1,1 +1,4 @@
 rootProject.name = 'oldscape-wiki'
+
+include 'toolbox'
+includeBuild '../cache'

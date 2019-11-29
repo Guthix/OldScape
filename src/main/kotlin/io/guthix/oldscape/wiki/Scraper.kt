@@ -21,6 +21,7 @@ import io.ktor.client.call.call
 import io.ktor.client.engine.cio.CIO
 import io.ktor.client.request.get
 import io.ktor.util.KtorExperimentalAPI
+import io.ktor.util.url
 import mu.KotlinLogging
 import java.io.IOException
 import kotlin.reflect.KClass
@@ -39,10 +40,12 @@ suspend fun <P : WikiTextParser<P>>scrapeWikiText(type: KClass<P>, id: Int, name
     HttpClient(CIO) {
         followRedirects = false
     }.use { client ->
-        val queryUrl = if(name.contains("%")) {
+        val urlName = name.replace(' ', '_').replace("<.*?>".toRegex(), "");
+        println(urlName)
+        val queryUrl = if(urlName.contains("%")) {
             "$wikiUrl/w/Special:Lookup?type=$wikiType&id=$id"
         } else {
-            "$wikiUrl/w/Special:Lookup?type=$wikiType&id=$id&name=$name"
+            "$wikiUrl/w/Special:Lookup?type=$wikiType&id=$id&name=$urlName"
         }
         logger.info("REQUEST - QUERY - $queryUrl")
         val redirect = client.call(queryUrl).response.headers["location"]
