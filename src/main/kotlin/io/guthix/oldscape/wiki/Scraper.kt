@@ -41,7 +41,6 @@ suspend fun <P : WikiTextParser<P>>scrapeWikiText(type: KClass<P>, id: Int, name
         followRedirects = false
     }.use { client ->
         val urlName = name.replace(' ', '_').replace("<.*?>".toRegex(), "");
-        println(urlName)
         val queryUrl = if(urlName.contains("%")) {
             "$wikiUrl/w/Special:Lookup?type=$wikiType&id=$id"
         } else {
