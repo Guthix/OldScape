@@ -23,8 +23,11 @@ import io.guthix.oldscape.cache.config.NpcConfig
 import io.guthix.oldscape.wiki.wikitext.NpcWikiDefinition
 import io.ktor.util.KtorExperimentalAPI
 import kotlinx.coroutines.*
+import mu.KotlinLogging
 import java.nio.file.Path
 import kotlin.Exception
+
+private val logger = KotlinLogging.logger {}
 
 @KtorExperimentalAPI
 fun main() {
@@ -33,29 +36,19 @@ fun main() {
 
 class JsonDownloader {
     @KtorExperimentalAPI
-    fun load() {
+    fun load() = runBlocking {
         val ds = Js5DiskStore.open(Path.of(JsonDownloader::class.java.getResource("/cache").toURI()))
         val cache = Js5Cache(ds)
-        val npcConfigs = NpcConfig.load(cache.readArchive(ConfigArchive.id).readGroup(NpcConfig.id)).values.groupBy {
-            it.id / stepSize
-        }.values
-        val scope = CoroutineScope(Dispatchers.Default)
+        val npcConfigs = NpcConfig.load(cache.readArchive(ConfigArchive.id).readGroup(NpcConfig.id)).values
         val definitions = mutableListOf<NpcWikiDefinition>()
-        for(subConfigList in npcConfigs) {
-            val deffered = subConfigList.map { config ->
-                scope.async {
-                    val string = scrapeWikiText(NpcWikiDefinition.queryString, config.id, config.name)
-                    NpcWikiDefinition().parse(string, null)
-                }
-            }
-            runBlocking {
-                val curDefinitions = deffered.awaitAll()
-                definitions.addAll(curDefinitions)
-            }
-        }
-    }
-
-    companion object {
-        const val stepSize = 50
+       for(config in npcConfigs) {
+           val wikiText = try{
+               scrapeWikiText(NpcWikiDefinition.queryString, config.id, config.name)
+           } catch (e: Exception) {
+               logger.error(e) { "Could not scrape wiki for id $config.id name ${config.name}"}
+               continue
+           }
+           definitions.add(NpcWikiDefinition().parse(wikiText))
+       }
     }
 }

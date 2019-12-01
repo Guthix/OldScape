@@ -28,7 +28,7 @@ abstract class WikiTextParser<P : WikiTextParser<P>> {
     var ids: List<Int>? = null
 
     @Suppress("UNCHECKED_CAST")
-    open fun parse(page: String, version: Int?): P {
+    open fun parse(page: String, version: Int? = null): P {
         page.reader().readLines().forEach { pageLine ->
             try {
                 if(pageLine.startsWith("|")) {

@@ -18,6 +18,7 @@ package io.guthix.oldscape.wiki
 
 import io.ktor.client.HttpClient
 import io.ktor.client.call.call
+import io.ktor.client.engine.apache.Apache
 import io.ktor.client.engine.cio.CIO
 import io.ktor.client.request.get
 import io.ktor.util.KtorExperimentalAPI
@@ -35,7 +36,7 @@ private const val wikiUrl = "https://oldschool.runescape.wiki"
 /** Scrapes the wiki and retrieves the wiki text.*/
 @KtorExperimentalAPI
 suspend fun scrapeWikiText(wikiType: String, id: Int, name: String): String {
-    HttpClient(CIO) { followRedirects = false }.use { client ->
+    HttpClient(Apache) { followRedirects = false }.use { client ->
         val urlName = name.replace(' ', '_').replace("<.*?>".toRegex(), "");
         val queryUrl = if(urlName.contains("%")) {
             "$wikiUrl/w/Special:Lookup?type=$wikiType&id=$id"
