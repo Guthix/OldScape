@@ -18,16 +18,11 @@ package io.guthix.oldscape.wiki
 
 import io.ktor.client.HttpClient
 import io.ktor.client.call.call
-import io.ktor.client.engine.apache.Apache
 import io.ktor.client.engine.cio.CIO
 import io.ktor.client.request.get
 import io.ktor.util.KtorExperimentalAPI
-import io.ktor.util.url
 import mu.KotlinLogging
 import java.io.IOException
-import kotlin.reflect.KClass
-import kotlin.reflect.full.companionObject
-import kotlin.reflect.full.declaredMemberProperties
 
 private val logger = KotlinLogging.logger {}
 
@@ -36,20 +31,21 @@ private const val wikiUrl = "https://oldschool.runescape.wiki"
 /** Scrapes the wiki and retrieves the wiki text.*/
 @KtorExperimentalAPI
 suspend fun scrapeWikiText(wikiType: String, id: Int, name: String): String {
-    HttpClient(Apache) { followRedirects = false }.use { client ->
+    HttpClient(CIO) { followRedirects = false }.use { client ->
         val urlName = name.replace(' ', '_').replace("<.*?>".toRegex(), "");
         val queryUrl = if(urlName.contains("%")) {
             "$wikiUrl/w/Special:Lookup?type=$wikiType&id=$id"
         } else {
             "$wikiUrl/w/Special:Lookup?type=$wikiType&id=$id&name=$urlName"
         }
-        logger.info("REQUEST - QUERY - $queryUrl")
+        logger.info { "REQUEST - QUERY - $queryUrl" }
         val redirect = client.call(queryUrl).response.headers["location"]
-            ?: throw IOException("Could not retrieve redirect for $queryUrl")
-        redirect.let {
-            val rawUrl = "${it.substringBefore("#")}?action=raw"
-            logger.info("REQUEST - RAW - $rawUrl")
-            return client.get(rawUrl)
-        }
+            ?: throw PageNotFoundException("Could not retrieve redirect for $queryUrl")
+        if(redirect.contains("search"))  throw PageNotFoundException("Could not retrieve redirect for $queryUrl")
+        val rawUrl = "${redirect.substringBefore("#")}?action=raw"
+        logger.info { "REQUEST - RAW - $rawUrl" }
+        return client.get(rawUrl)
     }
 }
+
+class PageNotFoundException(message: String) : Exception(message)

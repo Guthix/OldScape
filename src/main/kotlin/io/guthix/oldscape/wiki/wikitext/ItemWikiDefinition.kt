@@ -17,12 +17,15 @@
 package io.guthix.oldscape.wiki.wikitext
 
 import io.guthix.oldscape.wiki.WikiTextParser
+import io.guthix.oldscape.wiki.serialization.LocalDateSerializer
+import kotlinx.serialization.Serializable
 import java.time.LocalDate
 
+@Serializable
 class ItemWikiDefinition : WikiTextParser<ItemWikiDefinition>() {
     var versionType: String? = null
     var name: String? = null
-    var releaseDate: LocalDate? = null
+    @Serializable(LocalDateSerializer::class) var releaseDate: LocalDate? = null
     var update: String? = null
     var isMembers: Boolean? = null
     var quests: List<String>? = null
@@ -131,6 +134,6 @@ class ItemWikiDefinition : WikiTextParser<ItemWikiDefinition>() {
     }
 
     companion object {
-        @JvmField val queryString = "item"
+        const val queryString = "item"
     }
 }

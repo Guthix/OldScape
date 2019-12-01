@@ -101,22 +101,18 @@ abstract class WikiTextParser<P : WikiTextParser<P>> {
     }
 }
 
-inline fun <reified P : WikiTextParser<P>> parseWikiString(wikiString: String): Map<Int, P> {
-    val definitions = mutableMapOf<Int, P>()
+inline fun <reified P : WikiTextParser<P>> parseWikiString(wikiString: String): List<P> {
+    val definitions = mutableListOf<P>()
     if(wikiString.contains("|id1 = ")) {
         var version = 1
         do {
             val def = P::class.createInstance().parse(wikiString, version)
-            def.ids?.forEach { id ->
-                definitions[id] = def
-            }
+            definitions.add(def)
             version++
         } while(wikiString.contains("|id$version = "))
     } else {
         val def = P::class.createInstance().parse(wikiString, null)
-        def.ids?.forEach { id ->
-            definitions[id] = def
-        }
+        definitions.add(def)
     }
     return definitions
 }
