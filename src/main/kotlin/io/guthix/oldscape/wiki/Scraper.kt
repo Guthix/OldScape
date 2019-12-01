@@ -34,12 +34,8 @@ private const val wikiUrl = "https://oldschool.runescape.wiki"
 
 /** Scrapes the wiki and retrieves the wiki text.*/
 @KtorExperimentalAPI
-suspend fun <P : WikiTextParser<P>>scrapeWikiText(type: KClass<P>, id: Int, name: String): String {
-    val wikiType = type.companionObject!!.declaredMemberProperties.find { it.name == "queryString" }!!
-        .getter.call(type.companionObject) as String
-    HttpClient(CIO) {
-        followRedirects = false
-    }.use { client ->
+suspend fun scrapeWikiText(wikiType: String, id: Int, name: String): String {
+    HttpClient(CIO) { followRedirects = false }.use { client ->
         val urlName = name.replace(' ', '_').replace("<.*?>".toRegex(), "");
         val queryUrl = if(urlName.contains("%")) {
             "$wikiUrl/w/Special:Lookup?type=$wikiType&id=$id"

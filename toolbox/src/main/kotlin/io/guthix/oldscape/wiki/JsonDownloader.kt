@@ -44,7 +44,7 @@ class JsonDownloader {
         for(subConfigList in npcConfigs) {
             val deffered = subConfigList.map { config ->
                 scope.async {
-                    val string = scrapeWikiText(NpcWikiDefinition::class, config.id, config.name)
+                    val string = scrapeWikiText(NpcWikiDefinition.queryString, config.id, config.name)
                     NpcWikiDefinition().parse(string, null)
                 }
             }
@@ -56,6 +56,6 @@ class JsonDownloader {
     }
 
     companion object {
-        const val stepSize = 1 
+        const val stepSize = 50
     }
 }
