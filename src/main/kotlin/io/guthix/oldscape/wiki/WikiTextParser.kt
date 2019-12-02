@@ -25,7 +25,7 @@ import kotlin.reflect.full.createInstance
 private val logger = KotlinLogging.logger {}
 
 abstract class WikiTextParser<P : WikiTextParser<P>> {
-    var ids: List<Int>? = null
+    open var ids: List<Int>? = null
 
     @Suppress("UNCHECKED_CAST")
     open fun parse(page: String, version: Int? = null): P {
@@ -35,7 +35,7 @@ abstract class WikiTextParser<P : WikiTextParser<P>> {
                     parseKeyValueLine(pageLine, version)
                 }
             } catch (e: Exception) {
-                logger.warn("Could not parse line: $pageLine.")
+                logger.warn("Could not parse line: $pageLine")
             }
         }
         return this as P
@@ -59,7 +59,7 @@ abstract class WikiTextParser<P : WikiTextParser<P>> {
     }
 
     protected fun String.getWikiStrings() = getWikiString()
-        ?.split(",")
+        ?.split(",")?.map { it.replace(' ', ',') }
 
     protected fun String.getWikiBool() = getWikiString()
         ?.replace(" ", "")

@@ -23,23 +23,31 @@ import io.guthix.oldscape.cache.config.NpcConfig
 import io.guthix.oldscape.wiki.wikitext.NpcWikiDefinition
 import io.ktor.util.KtorExperimentalAPI
 import kotlinx.coroutines.*
-import kotlinx.coroutines.channels.Channel
+import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.JsonConfiguration
+import kotlinx.serialization.list
 import mu.KotlinLogging
+import java.nio.file.Files
 import java.nio.file.Path
 import kotlin.Exception
 
 private val logger = KotlinLogging.logger {}
 
+@ExperimentalCoroutinesApi
 @KtorExperimentalAPI
 fun main() {
-    JsonDownloader().load()
+    val npcConfigs = JsonDownloader().load()
+    val wikiConfigsJson = Json(JsonConfiguration.Stable.copy(encodeDefaults = false, prettyPrint = true))
+        .stringify(NpcWikiDefinition.serializer().list, npcConfigs)
+    val path = Path.of(JsonDownloader::class.java.getResource("/").toURI())
+    println(path)
+    Files.writeString(path.resolve("wikiNpcConfigs.json"), wikiConfigsJson)
 }
 
 class JsonDownloader {
     @ExperimentalCoroutinesApi
     @KtorExperimentalAPI
-    fun load() = runBlocking {
-        // Load cache
+    fun load() = runBlocking<List<NpcWikiDefinition>> {
         val ds = Js5DiskStore.open(Path.of(JsonDownloader::class.java.getResource("/cache").toURI()))
         val cache = Js5Cache(ds)
         val cacheConfigs = NpcConfig.load(cache.readArchive(ConfigArchive.id).readGroup(NpcConfig.id)).values
@@ -64,6 +72,8 @@ class JsonDownloader {
                 logger.info { "Already found wiki config for id ${config.id} name ${config.name}" }
             }
         }
+        wikiConfigs.sortBy { it.ids?.first() }
+        wikiConfigs
     }
 
     @KtorExperimentalAPI

@@ -23,7 +23,8 @@ import java.time.LocalDate
 
 @Serializable
 class NpcWikiDefinition : WikiTextParser<NpcWikiDefinition>() {
-    var versionType: String? = null
+    override var ids: List<Int>? = null
+    var type: String? = null
     var name: String? = null
     @Serializable(LocalDateSerializer::class) var release: LocalDate? = null
     var update: String? = null
@@ -65,7 +66,7 @@ class NpcWikiDefinition : WikiTextParser<NpcWikiDefinition>() {
 
     override fun parseKeyValueLine(line: String, version: Int?)  = when {
         line.checkWikiKey("id", version) -> ids = line.getIds()
-        line.checkWikiKey("version", version) -> versionType = line.getWikiString()
+        line.checkWikiKey("version", version) && type == null -> type = line.getWikiString()
         line.checkWikiKey("name", version) -> name = line.getWikiString()
         line.checkWikiKey("release", version) -> release = line.getWikiDate()
         line.checkWikiKey("update", version) -> update = line.getWikiString()

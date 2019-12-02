@@ -23,6 +23,7 @@ import java.time.LocalDate
 
 @Serializable
 class ItemWikiDefinition : WikiTextParser<ItemWikiDefinition>() {
+    override var ids: List<Int>? = null
     var versionType: String? = null
     var name: String? = null
     @Serializable(LocalDateSerializer::class) var releaseDate: LocalDate? = null

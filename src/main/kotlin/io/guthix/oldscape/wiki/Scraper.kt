@@ -16,11 +16,13 @@
  */
 package io.guthix.oldscape.wiki
 
+import io.guthix.oldscape.wiki.wikitext.NpcWikiDefinition
 import io.ktor.client.HttpClient
 import io.ktor.client.call.call
 import io.ktor.client.engine.cio.CIO
 import io.ktor.client.request.get
 import io.ktor.util.KtorExperimentalAPI
+import kotlinx.coroutines.runBlocking
 import mu.KotlinLogging
 import java.io.IOException
 
