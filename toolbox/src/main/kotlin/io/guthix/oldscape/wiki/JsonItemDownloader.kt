@@ -50,7 +50,7 @@ class JsonItemDownloader : JsonDownloader() {
     fun load() = runBlocking<List<ItemWikiDefinition>> {
         val ds = Js5DiskStore.open(Path.of(JsonNpcDownloader::class.java.getResource("/cache").toURI()))
         val cache = Js5Cache(ds)
-        val cacheConfigs = NpcConfig.load(cache.readArchive(ConfigArchive.id).readGroup(ItemConfig.id)).values
+        val cacheConfigs = ItemConfig.load(cache.readArchive(ConfigArchive.id).readGroup(ItemConfig.id)).values
         val wikiConfigs = mutableListOf<ItemWikiDefinition>()
         val idsScraped = mutableListOf<Int>()
         for(config in cacheConfigs) {
