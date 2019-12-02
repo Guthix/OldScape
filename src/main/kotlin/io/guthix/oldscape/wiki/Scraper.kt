@@ -23,12 +23,39 @@ import io.ktor.client.engine.cio.CIO
 import io.ktor.client.request.get
 import io.ktor.util.KtorExperimentalAPI
 import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.withTimeout
 import mu.KotlinLogging
 import java.io.IOException
 
 private val logger = KotlinLogging.logger {}
 
 private const val wikiUrl = "https://oldschool.runescape.wiki"
+
+private const val timeOutTime = 10000L
+
+private const val maxTryCount = 5
+
+@KtorExperimentalAPI
+suspend fun requestWikiText(id: Int, name: String): String? {
+    var wikiText: String? = null
+    var tryCount = 0
+    while(tryCount <= maxTryCount) {
+        wikiText = try {
+            withTimeout(timeOutTime) {
+                scrapeWikiText(NpcWikiDefinition.queryString, id, name)
+            }
+        } catch (ep: PageNotFoundException) {
+            logger.error { "Could not scrape wiki for id $id name $name"}
+            break
+        } catch (e: Exception) {
+            logger.error(e) { "Try $tryCount - could not scrape wiki for id $id name $name"}
+            tryCount++
+            continue
+        }
+        break
+    }
+    return wikiText
+}
 
 /** Scrapes the wiki and retrieves the wiki text.*/
 @KtorExperimentalAPI

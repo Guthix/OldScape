@@ -24,8 +24,9 @@ import kotlin.reflect.full.createInstance
 
 private val logger = KotlinLogging.logger {}
 
-abstract class WikiTextParser<P : WikiTextParser<P>> {
+abstract class WikiDefinition<P : WikiDefinition<P>> {
     open var ids: List<Int>? = null
+    open var name: String? = null
 
     @Suppress("UNCHECKED_CAST")
     open fun parse(page: String, version: Int? = null): P {
@@ -101,7 +102,7 @@ abstract class WikiTextParser<P : WikiTextParser<P>> {
     }
 }
 
-inline fun <reified P : WikiTextParser<P>> parseWikiString(wikiString: String): List<P> {
+inline fun <reified P : WikiDefinition<P>> parseWikiString(wikiString: String): List<P> {
     val definitions = mutableListOf<P>()
     if(wikiString.contains("|id1 = ")) {
         var version = 1

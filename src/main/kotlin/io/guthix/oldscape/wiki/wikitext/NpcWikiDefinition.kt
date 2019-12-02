@@ -16,16 +16,16 @@
  */
 package io.guthix.oldscape.wiki.wikitext
 
-import io.guthix.oldscape.wiki.WikiTextParser
+import io.guthix.oldscape.wiki.WikiDefinition
 import io.guthix.oldscape.wiki.serialization.LocalDateSerializer
 import kotlinx.serialization.Serializable
 import java.time.LocalDate
 
 @Serializable
-class NpcWikiDefinition : WikiTextParser<NpcWikiDefinition>() {
+class NpcWikiDefinition : WikiDefinition<NpcWikiDefinition>() {
     override var ids: List<Int>? = null
+    override var name: String? = null
     var type: String? = null
-    var name: String? = null
     @Serializable(LocalDateSerializer::class) var release: LocalDate? = null
     var update: String? = null
     var isMembers: Boolean? = null
