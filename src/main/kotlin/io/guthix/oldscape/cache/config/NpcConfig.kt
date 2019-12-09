@@ -22,8 +22,8 @@ import io.netty.buffer.ByteBuf
 import io.netty.buffer.Unpooled
 import java.io.IOException
 
-data class NpcConfig(override val id: Int) : Config(id) {
-    var name = "null"
+data class NpcConfig(override val id: Int) : NamedConfig(id) {
+    override var name = "null"
     var size: Short = 1
     var combatLevel: Int? = null
     var isInteractable = true

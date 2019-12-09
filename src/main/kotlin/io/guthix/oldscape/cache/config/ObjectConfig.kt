@@ -22,8 +22,8 @@ import io.netty.buffer.ByteBuf
 import io.netty.buffer.Unpooled
 import java.io.IOException
 
-data class ObjectConfig(override val id: Int): Config(id) {
-    var name = "null"
+data class ObjectConfig(override val id: Int): NamedConfig(id) {
+    override var name = "null"
     var width: Short= 1
     var length: Short = 1
     var mapIconId: Int? = null

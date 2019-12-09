@@ -22,9 +22,9 @@ import io.netty.buffer.Unpooled
 import java.io.IOException
 
 data class AreaConfig(override val id: Int) : Config(id) {
+    var name: String? = null
     var spriteId1: Int? = null
     var spriteId2: Int? = null
-    var name: String? = null
     var field3033: Int? = null
     var textSize: Short = 0
     val iop = arrayOfNulls<String>(5)

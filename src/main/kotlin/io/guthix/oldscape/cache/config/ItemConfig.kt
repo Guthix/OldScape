@@ -22,9 +22,9 @@ import io.netty.buffer.ByteBuf
 import io.netty.buffer.Unpooled
 import java.io.IOException
 
-data class ItemConfig(override val id: Int) : Config(id) {
+data class ItemConfig(override val id: Int) : NamedConfig(id) {
+    override var name = "null"
     var model: Int = 0
-    var name = "null"
     var zoom2d = 2000
     var xan2d: Int = 0
     var yan2d: Int = 0

@@ -21,6 +21,10 @@ import io.guthix.buffer.writeStringCP1252
 import io.guthix.cache.js5.Js5Group
 import io.netty.buffer.ByteBuf
 
+abstract class NamedConfig(id: Int) : Config(id) {
+    abstract val name: String
+}
+
 abstract class Config(open val id: Int) {
     abstract fun encode(): ByteBuf
 
