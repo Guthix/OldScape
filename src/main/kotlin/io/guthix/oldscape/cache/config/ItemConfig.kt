@@ -243,7 +243,7 @@ data class ItemConfig(override val id: Int) : NamedConfig(id) {
         return data
     }
 
-    companion object : ConfigCompanion<ItemConfig>() {
+    companion object : NamedConfigCompanion<ItemConfig>() {
         override val id = 10
 
         override fun decode(id: Int, data: ByteBuf): ItemConfig {

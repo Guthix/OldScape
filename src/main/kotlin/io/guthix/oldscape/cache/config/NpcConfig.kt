@@ -186,7 +186,7 @@ data class NpcConfig(override val id: Int) : NamedConfig(id) {
         return data
     }
 
-    companion object : ConfigCompanion<NpcConfig>() {
+    companion object : NamedConfigCompanion<NpcConfig>() {
         override val id = 9
 
         override fun decode(id: Int, data: ByteBuf): NpcConfig {

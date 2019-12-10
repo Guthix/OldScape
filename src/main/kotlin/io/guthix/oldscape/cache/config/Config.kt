@@ -41,6 +41,8 @@ abstract class Config(open val id: Int) {
     }
 }
 
+abstract class NamedConfigCompanion<out T: NamedConfig> : ConfigCompanion<T>()
+
 abstract class ConfigCompanion<out T: Config> {
     abstract val id: Int
 
