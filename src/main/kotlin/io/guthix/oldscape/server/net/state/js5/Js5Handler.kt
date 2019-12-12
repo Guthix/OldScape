@@ -20,17 +20,20 @@ import io.guthix.oldscape.server.net.PacketInboundHandler
 import io.netty.buffer.Unpooled
 import io.netty.channel.ChannelHandlerContext
 import io.netty.channel.DefaultFileRegion
+import java.net.URL
 import java.nio.channels.FileChannel
 import java.nio.file.Path
 
 class Js5Handler : PacketInboundHandler<Js5FileRequest>() {
     override fun channelRead0(ctx: ChannelHandlerContext, msg: Js5FileRequest) {
-        val indexFolder = Path.of(cacheDir + msg.indexFileId)
+        val indexFolder = Path.of(cacheDir.toURI()).resolve(msg.indexFileId.toString())
         val packet = indexFolder.resolve(msg.containerId.toString()).toFile()
+        println(packet)
         ctx.writeAndFlush(DefaultFileRegion(packet, 0, packet.length()))
     }
 
+    @Suppress("JAVA_CLASS_ON_COMPANION")
     companion object {
-        const val cacheDir = "server\\build\\resources\\main\\cache\\"
+        val cacheDir: URL = javaClass.getResource("/cache")
     }
 }
