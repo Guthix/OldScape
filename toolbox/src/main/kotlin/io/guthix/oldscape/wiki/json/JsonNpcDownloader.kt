@@ -14,17 +14,23 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with Foobar. If not, see <https://www.gnu.org/licenses/>.
  */
-package io.guthix.oldscape.wiki.serialization
+package io.guthix.oldscape.wiki.json
 
-import kotlinx.serialization.*
-import kotlinx.serialization.internal.StringDescriptor
-import java.time.LocalDate
+import io.guthix.oldscape.cache.config.NpcConfig
+import io.guthix.oldscape.wiki.wikitext.NpcWikiDefinition
+import io.ktor.util.KtorExperimentalAPI
+import kotlinx.serialization.ImplicitReflectionSerializer
+import mu.KotlinLogging
+import java.nio.file.Path
 
-@Serializer(forClass = LocalDate::class)
-object LocalDateSerializer : KSerializer<LocalDate> {
-    override val descriptor: SerialDescriptor = StringDescriptor.withName("LocalDate")
+private val logger = KotlinLogging.logger {}
 
-    override fun serialize(encoder: Encoder, obj: LocalDate) = encoder.encodeString(obj.toString())
-
-    override fun deserialize(decoder: Decoder) = LocalDate.parse(decoder.decodeString())
+@KtorExperimentalAPI
+@ImplicitReflectionSerializer
+fun main() {
+    JsonDownloader(logger).download<NpcConfig, NpcWikiDefinition>(
+        Path.of("downloads/npcconfig.json"),
+        NpcWikiDefinition,
+        NpcConfig
+    )
 }

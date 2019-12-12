@@ -16,6 +16,7 @@
  */
 package io.guthix.oldscape.wiki.wikitext
 
+import io.guthix.oldscape.wiki.WikiConfigCompanion
 import io.guthix.oldscape.wiki.WikiDefinition
 import io.guthix.oldscape.wiki.serialization.LocalDateSerializer
 import kotlinx.serialization.Serializable
@@ -134,7 +135,7 @@ class ItemWikiDefinition : WikiDefinition<ItemWikiDefinition>() {
         else -> { }
     }
 
-    companion object {
-        const val queryString = "item"
+    companion object : WikiConfigCompanion() {
+        override val queryString = "item"
     }
 }

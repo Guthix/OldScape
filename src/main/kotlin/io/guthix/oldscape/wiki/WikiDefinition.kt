@@ -117,3 +117,7 @@ inline fun <reified P : WikiDefinition<P>> parseWikiString(wikiString: String): 
     }
     return definitions
 }
+
+abstract class WikiConfigCompanion {
+    abstract val queryString: String
+}
