@@ -18,7 +18,7 @@ package io.guthix.oldscape.server.net.state
 
 class IsaacRandomPair(val encodeGen : IsaacRandom, val decodeGen: IsaacRandom)
 
-class IsaacRandom(private val seed: IntArray) {
+class IsaacRandom(seed: IntArray) {
     private var valuesRemaining = 0
     private var randResult: IntArray = IntArray(256)
     private var mm: IntArray = IntArray(256)

@@ -20,20 +20,25 @@ import io.guthix.buffer.writeByteSUB
 import io.guthix.oldscape.server.net.state.game.FixedSize
 import io.guthix.oldscape.server.net.state.game.GamePacket
 import io.guthix.oldscape.server.net.state.game.OutGameEvent
+import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 
 class IfOpensubPacket(
-    private val rootInterfaceId: Int,
-    private val rootSlotId: Int,
-    private val childInterfaceId: Int,
+    private val parentInterface: Int,
+    private val slot: Int,
+    private val childInterface: Int,
     private val isClickable: Boolean
-) : OutGameEvent {
-    override fun encode(ctx: ChannelHandlerContext): GamePacket {
+) : OutGameEvent() {
+    override val opcode = 52
+
+    override val size = FixedSize(STATIC_SIZE)
+
+    override fun encode(ctx: ChannelHandlerContext): ByteBuf {
         val buf = ctx.alloc().buffer(STATIC_SIZE)
-        buf.writeShortLE(childInterfaceId)
+        buf.writeShortLE(childInterface)
         buf.writeByteSUB(if(isClickable) 1 else 0)
-        buf.writeInt((rootInterfaceId shl 16) or rootSlotId)
-        return GamePacket(52, FixedSize(STATIC_SIZE), buf)
+        buf.writeInt((parentInterface shl 16) or slot)
+        return buf
     }
 
     companion object {

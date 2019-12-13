@@ -50,7 +50,7 @@ class EventListener<E: GameEvent>(private val type: KClass<E>) {
         val routine = GameRoutine(world, player, event)
         if(routine.condition()) {
             routine.next = ConditionalContinuation(InitialCondition, script.createCoroutineUnintercepted(routine, routine))
-            routine.player.continuations.add(routine)
+            routine.player.weakQueue.add(routine)
         }
     }
 }

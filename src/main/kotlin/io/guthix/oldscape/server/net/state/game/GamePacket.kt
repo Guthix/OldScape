@@ -43,8 +43,14 @@ interface IncGamePacket : IncPacket {
     fun toEvent() : GameEvent
 }
 
-interface OutGameEvent {
-    fun encode(ctx: ChannelHandlerContext): GamePacket
+abstract class OutGameEvent {
+    abstract val opcode: Int
+
+    abstract val size: PacketSize
+
+    abstract fun encode(ctx: ChannelHandlerContext): ByteBuf
+
+    fun toPacket(ctx: ChannelHandlerContext) = GamePacket(opcode, size, encode(ctx))
 }
 
 abstract class GamePacketDecoder(val opcode: Int, val packetSize: PacketSize) {

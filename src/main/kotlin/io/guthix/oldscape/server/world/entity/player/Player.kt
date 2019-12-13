@@ -17,12 +17,14 @@
 package io.guthix.oldscape.server.world.entity.player
 
 import io.guthix.oldscape.server.event.ScriptCoroutine
-import io.guthix.oldscape.server.net.state.game.OutGameEvent
+import io.guthix.oldscape.server.net.state.game.outp.IfOpensubPacket
+import io.guthix.oldscape.server.net.state.game.outp.IfOpentopPacket
+import io.guthix.oldscape.server.net.state.game.outp.IfSettext
+import io.guthix.oldscape.server.net.state.game.outp.InterestInitPacket
 import io.guthix.oldscape.server.world.entity.Entity
 import io.guthix.oldscape.server.world.mapsquare.floor
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.tile
-import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 import java.util.concurrent.ConcurrentLinkedQueue
 import kotlin.reflect.KProperty
@@ -34,18 +36,32 @@ data class Player(
     var ctx: ChannelHandlerContext,
     override val attributes: MutableMap<KProperty<*>, Any?> = mutableMapOf()
 ) : Entity(attributes), Comparable<Player> {
-    val continuations = ConcurrentLinkedQueue<ScriptCoroutine>()
+    val strongQueue = ConcurrentLinkedQueue<ScriptCoroutine>()
+
+    val normalQueue = ConcurrentLinkedQueue<ScriptCoroutine>()
+
+    val weakQueue = ConcurrentLinkedQueue<ScriptCoroutine>()
+
+    val defaultQueue = ConcurrentLinkedQueue<ScriptCoroutine>()
 
     val position = Tile(0.floor, 3222.tile, 3218.tile)
 
     var rights = 0
 
-    fun write(buf: ByteBuf) {
-        ctx.write(buf)
+    fun setupInterestManager(worldPlayers: Map<Int, Player>, xteas: List<IntArray>) {
+        ctx.write(InterestInitPacket(this, worldPlayers, xteas, position.inZones))
     }
 
-    fun write(event: OutGameEvent) {
-        ctx.write(event)
+    fun setTopInterface(topInterface: Int) {
+        ctx.write(IfOpentopPacket(topInterface))
+    }
+
+    fun setSubInterface(parentInterface: Int, slot: Int, childInterface: Int, isClickable: Boolean) {
+        ctx.write(IfOpensubPacket(parentInterface, slot, childInterface, isClickable))
+    }
+
+    fun setInterfaceText(parentInterface: Int, slot: Int, text: String) {
+        ctx.write(IfSettext(parentInterface, slot, text))
     }
 
     override fun compareTo(other: Player) = when {
@@ -55,7 +71,7 @@ data class Player(
     }
 
     fun handleEvents() {
-        for(continuation in continuations) {
+        for(continuation in weakQueue) {
             continuation.resumeIfPossible()
         }
         ctx.flush()

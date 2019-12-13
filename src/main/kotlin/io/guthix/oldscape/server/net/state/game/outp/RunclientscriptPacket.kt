@@ -20,10 +20,15 @@ import io.guthix.buffer.writeStringCP1252
 import io.guthix.oldscape.server.net.state.game.GamePacket
 import io.guthix.oldscape.server.net.state.game.OutGameEvent
 import io.guthix.oldscape.server.net.state.game.VarShortSize
+import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 
-class RunclientscriptPacket(private val id: Int, private val params: Array<Any>) : OutGameEvent {
-    override fun encode(ctx: ChannelHandlerContext): GamePacket {
+class RunclientscriptPacket(private val id: Int, private val params: Array<Any>) : OutGameEvent() {
+    override val opcode = 83
+
+    override val size = VarShortSize
+
+    override fun encode(ctx: ChannelHandlerContext): ByteBuf {
         val buf = ctx.alloc().buffer()
         val argumentListIdentifier = StringBuilder()
         for (param in params.reversed()) {
@@ -42,6 +47,6 @@ class RunclientscriptPacket(private val id: Int, private val params: Array<Any>)
             }
         }
         buf.writeInt(id)
-        return GamePacket(83, VarShortSize, buf)
+        return buf
     }
 }
