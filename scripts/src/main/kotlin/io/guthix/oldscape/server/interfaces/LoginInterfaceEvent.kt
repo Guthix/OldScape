@@ -14,23 +14,8 @@
  * You should have received a copy of the GNU General Public License
  * along with Foobar. If not, see <https://www.gnu.org/licenses/>.
  */
-package io.guthix.oldscape.server.net.state.game.outp
+package io.guthix.oldscape.server.interfaces
 
-import io.guthix.buffer.writeShortADD
-import io.guthix.oldscape.server.net.state.game.FixedSize
-import io.guthix.oldscape.server.net.state.game.GamePacket
-import io.guthix.oldscape.server.net.state.game.OutGameEvent
-import io.netty.buffer.ByteBuf
-import io.netty.channel.ChannelHandlerContext
+import io.guthix.oldscape.server.event.GameEvent
 
-class IfOpentopPacket(private val topInterface: Int) : OutGameEvent() {
-    override val opcode = 0
-
-    override val size = FixedSize(Short.SIZE_BYTES)
-
-    override fun encode(ctx: ChannelHandlerContext): ByteBuf {
-        val buf = ctx.alloc().buffer(Short.SIZE_BYTES)
-        buf.writeShortADD(topInterface)
-        return buf
-    }
-}
+class LoginInterfaceEvent : GameEvent

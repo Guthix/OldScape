@@ -1,10 +1,6 @@
 package io.guthix.oldscape.server.interest
 
-import io.guthix.oldscape.server.event.imp.LoginEvent
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
-import io.guthix.oldscape.server.world.World
-import io.guthix.buffer.toBitMode
-import kotlin.math.ceil
 
 private val FIELD_TILE_SIZE = 8192
 

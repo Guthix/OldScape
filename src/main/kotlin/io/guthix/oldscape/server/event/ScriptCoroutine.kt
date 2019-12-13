@@ -30,7 +30,7 @@ open class ScriptCoroutine(val player: Player) : Continuation<Unit> {
 
     internal fun resumeIfPossible()  = next?.let {
         if(it.canResume()) {
-            player.continuations.remove(this)
+            player.weakQueue.remove(this)
             it.continuation.resume(Unit)
         }
     }
@@ -44,7 +44,7 @@ open class ScriptCoroutine(val player: Player) : Continuation<Unit> {
     }
 
     private suspend fun suspend(condition: Condition) {
-        player.continuations.add(this)
+        player.weakQueue.add(this)
         return suspendCoroutineUninterceptedOrReturn { cont ->
             next = ConditionalContinuation(condition, cont)
             COROUTINE_SUSPENDED

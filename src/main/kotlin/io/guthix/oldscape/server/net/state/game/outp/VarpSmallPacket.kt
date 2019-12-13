@@ -20,14 +20,19 @@ import io.guthix.buffer.writeByteADD
 import io.guthix.oldscape.server.net.state.game.FixedSize
 import io.guthix.oldscape.server.net.state.game.GamePacket
 import io.guthix.oldscape.server.net.state.game.OutGameEvent
+import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 
-class VarpSmallPacket(private val id: Int, private val state: Int) : OutGameEvent {
-    override fun encode(ctx: ChannelHandlerContext): GamePacket {
+class VarpSmallPacket(private val id: Int, private val state: Int) : OutGameEvent() {
+    override val opcode = 24
+
+    override val size = FixedSize(STATIC_SIZE)
+
+    override fun encode(ctx: ChannelHandlerContext): ByteBuf {
         val buf = ctx.alloc().buffer(STATIC_SIZE)
         buf.writeShort(state)
         buf.writeByteADD(id)
-        return GamePacket(24, FixedSize(VarpLargePacket.STATIC_SIZE), buf)
+        return buf
     }
 
     companion object {
