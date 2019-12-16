@@ -1,6 +1,8 @@
-package io.guthix.oldscape.server.interfaces
+package io.guthix.oldscape.server.gameframe
 
-on(LoginInterfaceEvent::class).then {
+import io.guthix.oldscape.server.event.imp.PlayerLoggedInEvent
+
+on(PlayerLoggedInEvent::class).then {
     player.setTopInterface(topInterface = 165)
     player.setSubInterface(parentInterface = 165, slot = 1, childInterface = 162, isClickable = true)
     player.setSubInterface(parentInterface = 165, slot = 2, childInterface = 651, isClickable = true)

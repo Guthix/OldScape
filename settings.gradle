@@ -1,4 +1,23 @@
+import java.nio.file.Paths
+import java.nio.file.Path
+
 rootProject.name = 'oldscape-server'
 
-include 'scripts'
 includeBuild '../cache'
+
+def pluginRootDir = rootProject.projectDir.toPath().resolve("plugins")
+
+def includeModules(Path pluginDir) {
+    if (pluginDir.toFile().exists()) {
+        def gradleBuildFiles = new FileNameFinder().getFileNames(pluginDir.toString(), "**/*.gradle")
+        gradleBuildFiles.each { filename ->
+            def buildFilePath = Paths.get(filename)
+            def moduleDir = buildFilePath.parent
+            def relativePath = pluginDir.relativize(moduleDir)
+            def pluginName = relativePath.toString().replace(File.separator, ":")
+            include ":plugins:$pluginName"
+        }
+    }
+}
+
+includeModules(pluginRootDir)
