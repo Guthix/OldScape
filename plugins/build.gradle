@@ -1,0 +1,13 @@
+gradle.projectsEvaluated {
+    def gplDir = getRootDir().parent + "\\license\\GPL.txt"
+
+    configure(subprojects.findAll { it.buildFile.exists() }) { subproj ->
+        dependencies {
+            implementation rootProject
+        }
+
+        license {
+            header = file(gplDir)
+        }
+    }
+}

@@ -1,10 +1,11 @@
 package io.guthix.oldscape.server.interest
 
 import io.guthix.oldscape.server.event.imp.LoginEvent
-import io.guthix.oldscape.server.interfaces.LoginInterfaceEvent
 import io.guthix.oldscape.server.world.entity.EntityAttribute
 import io.guthix.oldscape.server.event.EventBus
 import io.guthix.oldscape.server.world.entity.player.Player
+
+import io.guthix.oldscape.server.event.imp.PlayerLoggedInEvent
 
 var Player.playerInterest by EntityAttribute<PlayerInterest>()
 
@@ -18,7 +19,5 @@ on(LoginEvent::class).then {
         playersInWorld[player.index] = player
     }
     player.setupInterestManager(playersInWorld, xteas)
-    EventBus.scheduleEvent(LoginInterfaceEvent(), world, player)
-    EventBus.scheduleEvent(StartMapSyncEvent(pZone), world, player)
-    EventBus.scheduleEvent(StartPlayerSyncEvent(), world, player)
+    EventBus.scheduleEvent(PlayerLoggedInEvent(), world, player)
 }

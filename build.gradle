@@ -47,7 +47,11 @@ allprojects {
 apply plugin: 'js5-packet'
 
 dependencies {
-    runtimeOnly project(':scripts')
+    project(':plugins').subprojects { pluginProject ->
+        if (pluginProject.buildFile.exists()) {
+            runtimeOnly pluginProject
+        }
+    }
     api group: 'io.guthix.oldscape', name: 'cache', version: '0.1-SNAPSHOT'
     implementation group: 'org.jetbrains.kotlin', name: 'kotlin-reflect', version: kotlinVersion
     implementation group: 'org.jetbrains.kotlin', name: 'kotlin-scripting-common', version: kotlinVersion
