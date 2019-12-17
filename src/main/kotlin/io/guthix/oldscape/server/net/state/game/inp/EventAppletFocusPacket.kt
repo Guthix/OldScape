@@ -16,17 +16,15 @@
  */
 package io.guthix.oldscape.server.net.state.game.inp
 
-import io.guthix.oldscape.server.event.GameEvent
+import io.guthix.oldscape.server.event.imp.AppletFocusEvent
 import io.guthix.oldscape.server.net.state.game.FixedSize
 import io.guthix.oldscape.server.net.state.game.GamePacketDecoder
 import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 
-class AppletFocusedEvent(val inFocus: Boolean) : GameEvent
-
 class EventAppletFocusPacket : GamePacketDecoder(10, FixedSize(1)) {
-    override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): AppletFocusedEvent {
+    override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): AppletFocusEvent {
         val isFocus = data.readUnsignedByte().toInt() == 1
-        return AppletFocusedEvent(isFocus)
+        return AppletFocusEvent(isFocus)
     }
 }

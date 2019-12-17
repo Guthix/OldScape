@@ -16,14 +16,12 @@
  */
 package io.guthix.oldscape.server.net.state.game.inp
 
-import io.guthix.oldscape.server.event.GameEvent
+import io.guthix.oldscape.server.event.imp.MapBuildCompleteEvent
 import io.guthix.oldscape.server.net.state.game.FixedSize
 import io.guthix.oldscape.server.net.state.game.GamePacketDecoder
 import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 
-object MapBuildComplete : GameEvent
-
-class MapBuildCompleteDecoder : GamePacketDecoder(49, FixedSize(0)) {
-    override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext) = MapBuildComplete
+class MapBuildCompletePacket : GamePacketDecoder(49, FixedSize(0)) {
+    override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext) = MapBuildCompleteEvent()
 }

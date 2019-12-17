@@ -17,12 +17,11 @@
 package io.guthix.oldscape.server.net.state.game.inp
 
 import io.guthix.oldscape.server.event.GameEvent
+import io.guthix.oldscape.server.event.imp.MouseMoveEvent
 import io.guthix.oldscape.server.net.state.game.GamePacketDecoder
 import io.guthix.oldscape.server.net.state.game.VarByteSize
 import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
-
-class MouseMoveEvent : GameEvent
 
 //TODO
 class EventMouseMovePacket : GamePacketDecoder(4, VarByteSize) {
