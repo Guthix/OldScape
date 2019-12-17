@@ -20,6 +20,7 @@ import io.guthix.oldscape.server.net.PacketInboundHandler
 import io.guthix.oldscape.server.net.StatusResponse
 import io.guthix.oldscape.server.net.StatusEncoder
 import io.guthix.oldscape.server.net.state.js5.Js5Decoder
+import io.guthix.oldscape.server.net.state.js5.Js5Encoder
 import io.guthix.oldscape.server.net.state.js5.Js5Handler
 import io.guthix.oldscape.server.net.state.login.*
 import io.guthix.oldscape.server.world.World
@@ -79,5 +80,6 @@ class ServiceHandler(
     private fun ChannelPipeline.swapToJs5() {
         replace(ServiceDecoder::class.qualifiedName, Js5Decoder::class.qualifiedName, Js5Decoder())
         replace(ServiceHandler::class.qualifiedName, Js5Handler::class.qualifiedName, Js5Handler())
+        replace(StatusEncoder::class.qualifiedName, Js5Encoder::class.qualifiedName, Js5Encoder())
     }
 }

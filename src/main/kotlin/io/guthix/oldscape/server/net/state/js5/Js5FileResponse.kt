@@ -14,22 +14,14 @@
  * You should have received a copy of the GNU General Public License
  * along with Foobar. If not, see <https://www.gnu.org/licenses/>.
  */
-package io.guthix.oldscape.server.api
+package io.guthix.oldscape.server.net.state.js5
 
-import io.guthix.oldscape.cache.ConfigArchive
-import io.guthix.oldscape.cache.config.EnumConfig
-import io.guthix.oldscape.server.Cache
-import mu.KotlinLogging
+import io.netty.buffer.ByteBuf
 
-private val logger = KotlinLogging.logger {  }
-
-object Enums {
-    private lateinit var configs: Map<Int, EnumConfig>
-
-    operator fun get(index: Int) = configs[index]
-
-    fun load() {
-        configs = EnumConfig.load(Cache.getGroup(ConfigArchive.id, EnumConfig.id))
-        logger.info { "Loaded ${configs.size} enums" }
-    }
-}
+class Js5FileResponse(
+    val indexFileId: Int,
+    val containerId: Int,
+    val compressionType: Int,
+    val compressedSize: Int,
+    val data: ByteBuf
+)
