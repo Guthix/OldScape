@@ -16,14 +16,12 @@
  */
 package io.guthix.oldscape.server.net.state.game.inp
 
-import io.guthix.oldscape.server.event.GameEvent
+import io.guthix.oldscape.server.event.imp.NoTimeoutEvent
 import io.guthix.oldscape.server.net.state.game.FixedSize
 import io.guthix.oldscape.server.net.state.game.GamePacketDecoder
 import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 
-object NoTimeOutEvent : GameEvent
-
-class NoTimeOutPacketDecoder : GamePacketDecoder(66, FixedSize(0)) {
-    override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext) = NoTimeOutEvent
+class NoTimeoutPacket : GamePacketDecoder(66, FixedSize(0)) {
+    override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext) = NoTimeoutEvent()
 }

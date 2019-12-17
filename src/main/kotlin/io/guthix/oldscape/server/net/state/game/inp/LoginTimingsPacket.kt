@@ -16,15 +16,12 @@
  */
 package io.guthix.oldscape.server.net.state.game.inp
 
-import io.guthix.oldscape.server.event.GameEvent
+import io.guthix.oldscape.server.event.imp.LoginTimingsEvent
 import io.guthix.oldscape.server.net.state.game.GamePacketDecoder
 import io.guthix.oldscape.server.net.state.game.VarByteSize
 import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 
-class LoginTimingsEvent : GameEvent
-
-//TODO
 class LoginTimingsPacket : GamePacketDecoder(33, VarByteSize) {
     override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): LoginTimingsEvent {
         data.readShort()

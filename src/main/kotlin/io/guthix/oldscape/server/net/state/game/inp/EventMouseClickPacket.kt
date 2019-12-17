@@ -16,13 +16,11 @@
  */
 package io.guthix.oldscape.server.net.state.game.inp
 
-import io.guthix.oldscape.server.event.GameEvent
+import io.guthix.oldscape.server.event.imp.MouseClickEvent
 import io.guthix.oldscape.server.net.state.game.FixedSize
 import io.guthix.oldscape.server.net.state.game.GamePacketDecoder
 import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
-
-data class MouseClickEvent(val isLeftClick: Boolean, val presDuration: Int, val mouseX: Int, val mouseY: Int) : GameEvent
 
 class EventMouseClickPacket : GamePacketDecoder(37, FixedSize(6)) {
     override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): MouseClickEvent {
