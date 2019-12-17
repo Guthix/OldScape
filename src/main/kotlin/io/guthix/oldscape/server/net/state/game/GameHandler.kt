@@ -29,6 +29,7 @@ class GameHandler(val world: World, val player: Player) : PacketInboundHandler<I
     }
 
     override fun channelRead0(ctx: ChannelHandlerContext, msg: IncGamePacket) {
+        println(msg)
         EventBus.scheduleEvent(msg.toEvent(), world, player)
     }
 }
