@@ -14,7 +14,7 @@
  * You should have received a copy of the GNU General Public License
  * along with Foobar. If not, see <https://www.gnu.org/licenses/>.
  */
-package io.guthix.oldscape.server
+package io.guthix.oldscape.server.api
 
 import io.guthix.oldscape.cache.xtea.MapXtea
 import kotlinx.serialization.json.Json
@@ -23,7 +23,7 @@ import kotlinx.serialization.list
 import java.nio.file.Files
 import java.nio.file.Path
 
-object XTEA {
+object Xtea {
     lateinit var key: Map<Int, IntArray>
 
     fun initJson(filePath: Path) {
