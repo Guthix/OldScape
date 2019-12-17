@@ -17,6 +17,10 @@
 package io.guthix.oldscape.server
 
 import com.charleskorn.kaml.Yaml
+import io.guthix.cache.js5.Js5Cache
+import io.guthix.cache.js5.container.disk.Js5DiskStore
+import io.guthix.oldscape.server.api.Enums
+import io.guthix.oldscape.server.api.Xtea
 import io.guthix.oldscape.server.event.EventBus
 import io.guthix.oldscape.server.net.OldScapeServer
 import io.guthix.oldscape.server.net.state.game.GamePacketDecoder
@@ -27,10 +31,14 @@ import java.util.*
 
 fun main() {
     val configFile = Path.of(ServerConfig::class.java.getResource("/Config.yaml").toURI())
-    XTEA.initJson(Path.of(XTEA::class.java.getResource("/cache/xteas.json").toURI()))
+    val config = Yaml.default.parse(ServerConfig.serializer(), Files.readString(configFile))
+    Cache.load(Js5DiskStore.open(Path.of(ServerConfig::class.java.getResource("/cache").toURI())))
+    Xtea.initJson(Path.of(Xtea::class.java.getResource("/cache/xteas.json").toURI()))
+    Enums.load()
+
     EventBus.loadScripts()
     GamePacketDecoder.loadIncPackets()
-    val config = Yaml.default.parse(ServerConfig.serializer(), Files.readString(configFile))
+
     val world = World()
     Timer().scheduleAtFixedRate(world, 0, 600)
     OldScapeServer(config.revision, config.port, 21, world, config.rsa.privateKey, config.rsa.modulus).run()

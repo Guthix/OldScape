@@ -16,7 +16,7 @@
  */
 package io.guthix.oldscape.server.interest
 
-import io.guthix.oldscape.server.XTEA
+import io.guthix.oldscape.server.api.Xtea
 import io.guthix.oldscape.server.world.mapsquare.MapSquareUnit
 import io.guthix.oldscape.server.world.mapsquare.zone.Zone
 import io.guthix.oldscape.server.world.mapsquare.zone.ZoneUnit
@@ -49,7 +49,7 @@ fun getInterestedXTEAS(zone: Zone): List<IntArray> {
         for(mSquareY in zone.y.startMapInterest..zone.y.endMapInterest) {
             if(onTutorialIsland(mSquareX, mSquareY)) continue
             val id = (mSquareX.value shl 8) or mSquareY.value
-            val xtea = XTEA.key[id] ?: throw IllegalStateException(
+            val xtea = Xtea.key[id] ?: throw IllegalStateException(
                 "Could not find XTEA for id $id."
             )
             xteas.add(xtea)

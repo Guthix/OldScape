@@ -44,15 +44,13 @@ allprojects {
     }
 }
 
-apply plugin: 'js5-packet'
-
 dependencies {
     project(':plugins').subprojects { pluginProject ->
         if (pluginProject.buildFile.exists()) {
             runtimeOnly pluginProject
         }
     }
-    api group: 'io.guthix.oldscape', name: 'cache', version: '0.1-SNAPSHOT'
+    api group: 'io.guthix.oldscape', name: 'oldscape-cache', version: '0.1-SNAPSHOT'
     implementation group: 'org.jetbrains.kotlin', name: 'kotlin-reflect', version: kotlinVersion
     implementation group: 'org.jetbrains.kotlin', name: 'kotlin-scripting-common', version: kotlinVersion
     implementation group: 'org.jetbrains.kotlinx', name: 'kotlinx-coroutines-core', version: kotlinCoroutinesVersion
