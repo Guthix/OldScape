@@ -16,7 +16,6 @@
  */
 package io.guthix.oldscape.server.net.state.service
 
-import io.guthix.oldscape.server.net.IncPacket
 import io.guthix.oldscape.server.net.PacketInboundHandler
 import io.guthix.oldscape.server.net.StatusResponse
 import io.guthix.oldscape.server.net.StatusEncoder
@@ -36,8 +35,8 @@ class ServiceHandler(
     private val world: World,
     private val rsaPrivateKey: BigInteger,
     private val rsaMod: BigInteger
-) : PacketInboundHandler<IncPacket>() {
-    override fun channelRead0(ctx: ChannelHandlerContext, msg: IncPacket) {
+) : PacketInboundHandler<ConnectionRequest>() {
+    override fun channelRead0(ctx: ChannelHandlerContext, msg: ConnectionRequest) {
         ctx.pipeline().addStatusEncoder()
         when(msg) {
             is GameConnectionRequest -> {
@@ -73,8 +72,8 @@ class ServiceHandler(
         replace(ServiceDecoder::class.qualifiedName, LoginDecoder::class.qualifiedName,
                 LoginDecoder(archiveCount, rsaPrivateKey, rsaMod)
         )
-        replace(ServiceHandler::class.qualifiedName, LoginHandler::class.qualifiedName, LoginHandler(world, sessionId))
         replace(SessionIdEncoder::class.qualifiedName, StatusEncoder::class.qualifiedName, StatusEncoder())
+        replace(ServiceHandler::class.qualifiedName, LoginHandler::class.qualifiedName, LoginHandler(world, sessionId))
     }
 
     private fun ChannelPipeline.swapToJs5() {

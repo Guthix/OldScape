@@ -16,7 +16,6 @@
  */
 package io.guthix.oldscape.server.net.state.login
 
-import io.guthix.oldscape.server.net.IncPacket
 import io.guthix.oldscape.server.net.state.IsaacRandomPair
 import io.guthix.oldscape.server.world.entity.player.ClientSettings
 import io.guthix.oldscape.server.world.entity.player.MachineSettings
@@ -35,7 +34,7 @@ data class LoginRequest(
     val crcs: IntArray,
     val isaacPair: IsaacRandomPair,
     var ctx: ChannelHandlerContext
-) : IncPacket {
+) {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false
