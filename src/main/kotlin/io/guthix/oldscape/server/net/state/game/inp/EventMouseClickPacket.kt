@@ -24,7 +24,7 @@ import io.netty.channel.ChannelHandlerContext
 
 data class MouseClickEvent(val isLeftClick: Boolean, val presDuration: Int, val mouseX: Int, val mouseY: Int) : GameEvent
 
-class EventMouseClickPacket : GamePacketDecoder(37, FixedSize(7)) {
+class EventMouseClickPacket : GamePacketDecoder(37, FixedSize(6)) {
     override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): MouseClickEvent {
         val bitPack = data.readShort().toInt()
         val mouseX = data.readShort().toInt()
