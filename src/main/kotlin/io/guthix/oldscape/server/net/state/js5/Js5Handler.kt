@@ -16,21 +16,23 @@
  */
 package io.guthix.oldscape.server.net.state.js5
 
+import io.guthix.cache.js5.container.disk.Js5DiskStore
+import io.guthix.oldscape.server.Cache
 import io.guthix.oldscape.server.net.PacketInboundHandler
+import io.netty.buffer.Unpooled
 import io.netty.channel.ChannelHandlerContext
-import io.netty.channel.DefaultFileRegion
 import java.net.URL
-import java.nio.file.Path
 
 class Js5Handler : PacketInboundHandler<Js5FileRequest>() {
     override fun channelRead0(ctx: ChannelHandlerContext, msg: Js5FileRequest) {
-        val indexFolder = Path.of(cacheDir.toURI()).resolve(msg.indexFileId.toString())
-        val packet = indexFolder.resolve(msg.containerId.toString()).toFile()
-        ctx.writeAndFlush(DefaultFileRegion(packet, 0, packet.length()))
-    }
-
-    @Suppress("JAVA_CLASS_ON_COMPANION")
-    companion object {
-        val cacheDir: URL = javaClass.getResource("/cache")
+        val data = if(msg.indexFileId == Js5DiskStore.MASTER_INDEX) {
+            Cache.getRawSettings(msg.containerId)
+        } else {
+            Cache.getRawGroup(msg.indexFileId, msg.containerId).data
+        }.duplicate()
+        val compressionType = data.readUnsignedByte().toInt()
+        val compressedSize = data.readInt()
+        println("${msg.indexFileId} ${msg.containerId}")
+        ctx.writeAndFlush(Js5FileResponse(msg.indexFileId, msg.containerId, compressionType, compressedSize, data))
     }
 }
