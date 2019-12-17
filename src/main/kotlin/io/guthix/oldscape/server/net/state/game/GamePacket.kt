@@ -17,12 +17,7 @@
 package io.guthix.oldscape.server.net.state.game
 
 import io.github.classgraph.ClassGraph
-import io.guthix.oldscape.server.event.EventBus
 import io.guthix.oldscape.server.event.GameEvent
-import io.guthix.oldscape.server.event.Script
-import io.guthix.oldscape.server.net.IncPacket
-import io.guthix.oldscape.server.world.World
-import io.guthix.oldscape.server.world.entity.player.Player
 import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 import mu.KotlinLogging
@@ -38,10 +33,6 @@ class FixedSize(val size: Int) : PacketSize()
 object VarByteSize : PacketSize()
 
 object VarShortSize : PacketSize()
-
-interface IncGamePacket : IncPacket {
-    fun toEvent() : GameEvent
-}
 
 abstract class OutGameEvent {
     abstract val opcode: Int
