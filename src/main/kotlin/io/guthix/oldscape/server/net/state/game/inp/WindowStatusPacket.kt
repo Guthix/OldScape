@@ -25,7 +25,7 @@ import io.netty.channel.ChannelHandlerContext
 data class WindowStatusPacket(val isResized: Boolean, val width: Int, val height: Int) : GameEvent
 
 class WindowStatusDecoder : GamePacketDecoder(76, FixedSize(5)) {
-    override fun decode(data: ByteBuf, ctx: ChannelHandlerContext): GameEvent {
+    override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): GameEvent {
         val isResized = data.readUnsignedByte().toInt() == 2
         val width = data.readUnsignedShort()
         val height = data.readUnsignedShort()

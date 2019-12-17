@@ -25,5 +25,5 @@ import io.netty.channel.ChannelHandlerContext
 object MapBuildComplete : GameEvent
 
 class MapBuildCompleteDecoder : GamePacketDecoder(49, FixedSize(0)) {
-    override fun decode(data: ByteBuf, ctx: ChannelHandlerContext) = MapBuildComplete
+    override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext) = MapBuildComplete
 }
