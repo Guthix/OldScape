@@ -18,6 +18,7 @@ package io.guthix.oldscape.server.net.state.game
 
 import io.guthix.oldscape.server.net.state.IsaacRandom
 import io.netty.buffer.ByteBuf
+import io.netty.buffer.Unpooled
 import io.netty.channel.ChannelHandlerContext
 import io.netty.handler.codec.ByteToMessageDecoder
 import kotlinx.io.IOException
@@ -32,34 +33,34 @@ class GameDecoder(private val decodeCipher: IsaacRandom) : ByteToMessageDecoder(
     private var size: Int = 0
 
     override fun decode(ctx: ChannelHandlerContext, inc: ByteBuf, out: MutableList<Any>) {
-        when(state) {
-            State.OPCODE -> {
-                if(!inc.isReadable) return
-                val opcode = (inc.readUnsignedByte() - decodeCipher.nextInt()) and 0xFF
-                println("read opcode $opcode")
-                decoder = GamePacketDecoder.inc[opcode] ?: throw IOException(
-                    "Could not find packet decoder for opcode $opcode."
-                )
-                state = State.SIZE
-            }
-            State.SIZE -> {
-                when(decoder?.packetSize ) {
-                    is FixedSize -> size = (decoder!!.packetSize as FixedSize).size
-                    is VarByteSize -> {
-                        if (inc.isReadable) return
-                        size = inc.readUnsignedByte().toInt()
-                    }
-                    is VarShortSize -> {
-                        if (!inc.isReadable(Short.SIZE_BYTES)) return
-                        size = inc.readUnsignedShort()
-                    }
+        if(state == State.OPCODE) {
+            if(!inc.isReadable) return
+            val opcode = (inc.readUnsignedByte() - decodeCipher.nextInt()) and 0xFF
+            println("Read OPCODE $opcode")
+            decoder = GamePacketDecoder.inc[opcode] ?: throw IOException(
+                "Could not find packet decoder for opcode $opcode."
+            )
+            state = State.SIZE
+        }
+        if(state == State.SIZE) {
+            size = when(decoder!!.packetSize) {
+                is FixedSize -> (decoder!!.packetSize as FixedSize).size
+                is VarByteSize -> {
+                    if (!inc.isReadable) return
+                    inc.readUnsignedByte().toInt()
                 }
-                state = State.PAYLOAD
+                is VarShortSize -> {
+                    if (!inc.isReadable(Short.SIZE_BYTES)) return
+                    inc.readUnsignedShort()
+                }
             }
-            State.PAYLOAD -> {
-                if(!inc.isReadable(size)) return
-                out.add(decoder!!.decode(inc.readBytes(size), ctx))
-            }
+            state = State.PAYLOAD
+        }
+        if(state == State.PAYLOAD) {
+            if(!inc.isReadable(size)) return
+            val payload = if(size > 0) inc.readBytes(size) else Unpooled.EMPTY_BUFFER
+            out.add(decoder!!.decode(payload, size, ctx))
+            state = State.OPCODE
         }
     }
 }
