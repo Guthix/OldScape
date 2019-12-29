@@ -16,9 +16,4 @@
  */
 package io.guthix.oldscape.server.event
 
-import io.guthix.oldscape.server.world.World
-import io.guthix.oldscape.server.world.entity.player.Player
-
 interface GameEvent
-
-class GameRoutine<E : GameEvent>(val world: World, player: Player, val event: E) : ScriptCoroutine(player)
