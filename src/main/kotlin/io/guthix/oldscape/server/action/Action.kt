@@ -14,14 +14,16 @@
  * You should have received a copy of the GNU General Public License
  * along with Foobar. If not, see <https://www.gnu.org/licenses/>.
  */
-package io.guthix.oldscape.server.event
+package io.guthix.oldscape.server.action
 
 import io.guthix.oldscape.server.world.entity.player.Player
 import kotlin.coroutines.*
 import kotlin.coroutines.intrinsics.COROUTINE_SUSPENDED
 import kotlin.coroutines.intrinsics.suspendCoroutineUninterceptedOrReturn
 
-open class ScriptCoroutine(val player: Player) : Continuation<Unit> {
+open class Action(val type: Type, val player: Player) : Continuation<Unit>, Comparable<Action> {
+    enum class Type(val priority: Int) { STRONG(1), NORMAL(2), WEAK(3) }
+
     internal var next: ConditionalContinuation? = null
 
     override val context: CoroutineContext = EmptyCoroutineContext
@@ -30,7 +32,7 @@ open class ScriptCoroutine(val player: Player) : Continuation<Unit> {
 
     internal fun resumeIfPossible()  = next?.let {
         if(it.canResume()) {
-            player.weakQueue.remove(this)
+            player.actions.remove(this)
             it.continuation.resume(Unit)
         }
     }
@@ -43,11 +45,17 @@ open class ScriptCoroutine(val player: Player) : Continuation<Unit> {
         suspend(LambdaCondition(cond))
     }
 
-    private suspend fun suspend(condition: Condition) {
-        player.weakQueue.add(this)
+    private suspend fun suspend(condition: ActionCondition) {
+        player.actions.add(this)
         return suspendCoroutineUninterceptedOrReturn { cont ->
             next = ConditionalContinuation(condition, cont)
             COROUTINE_SUSPENDED
         }
+    }
+
+    override fun compareTo(other: Action) = when {
+        type.priority < other.type.priority -> -1
+        type.priority > other.type.priority -> 1
+        else -> 0
     }
 }

@@ -19,5 +19,5 @@ on(LoginEvent::class).then {
         playersInWorld[player.index] = player
     }
     player.setupInterestManager(playersInWorld, xteas)
-    EventBus.scheduleEvent(PlayerLoggedInEvent(), world, player)
+    EventBus.schedule(PlayerLoggedInEvent(), world, player)
 }

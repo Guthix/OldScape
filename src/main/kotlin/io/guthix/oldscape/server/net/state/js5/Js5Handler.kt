@@ -32,7 +32,6 @@ class Js5Handler : PacketInboundHandler<Js5FileRequest>() {
         }.duplicate()
         val compressionType = data.readUnsignedByte().toInt()
         val compressedSize = data.readInt()
-        println("${msg.indexFileId} ${msg.containerId}")
         ctx.writeAndFlush(Js5FileResponse(msg.indexFileId, msg.containerId, compressionType, compressedSize, data))
     }
 }

@@ -16,7 +16,7 @@
  */
 package io.guthix.oldscape.server.world.entity.player
 
-import io.guthix.oldscape.server.event.ScriptCoroutine
+import io.guthix.oldscape.server.action.Action
 import io.guthix.oldscape.server.net.state.game.outp.IfOpensubPacket
 import io.guthix.oldscape.server.net.state.game.outp.IfOpentopPacket
 import io.guthix.oldscape.server.net.state.game.outp.IfSettext
@@ -26,6 +26,7 @@ import io.guthix.oldscape.server.world.mapsquare.floor
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.tile
 import io.netty.channel.ChannelHandlerContext
+import java.util.*
 import java.util.concurrent.ConcurrentLinkedQueue
 import kotlin.reflect.KProperty
 
@@ -36,13 +37,9 @@ data class Player(
     var ctx: ChannelHandlerContext,
     override val attributes: MutableMap<KProperty<*>, Any?> = mutableMapOf()
 ) : Entity(attributes), Comparable<Player> {
-    val strongQueue = ConcurrentLinkedQueue<ScriptCoroutine>()
+    val events = ConcurrentLinkedQueue<() -> Unit>()
 
-    val normalQueue = ConcurrentLinkedQueue<ScriptCoroutine>()
-
-    val weakQueue = ConcurrentLinkedQueue<ScriptCoroutine>()
-
-    val defaultQueue = ConcurrentLinkedQueue<ScriptCoroutine>()
+    val actions = PriorityQueue<Action>()
 
     val position = Tile(0.floor, 3222.tile, 3218.tile)
 
@@ -71,9 +68,10 @@ data class Player(
     }
 
     fun handleEvents() {
-        for(continuation in weakQueue) {
-            continuation.resumeIfPossible()
+        while(events.isNotEmpty()) {
+            events.poll().invoke()
         }
+        actions.forEach { it.resumeIfPossible() }
         ctx.flush()
     }
 }

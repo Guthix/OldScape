@@ -52,7 +52,7 @@ class World : TimerTask() {
             request.ctx.pipeline().replace(LoginEncoder::class.qualifiedName, GameEncoder::class.qualifiedName,
                 GameEncoder(request.isaacPair.encodeGen)
             )
-            EventBus.scheduleEvent(LoginEvent(), this, player)
+            EventBus.schedule(LoginEvent(), this, player)
         }
     }
 

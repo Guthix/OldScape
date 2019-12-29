@@ -36,7 +36,6 @@ class GameDecoder(private val decodeCipher: IsaacRandom) : ByteToMessageDecoder(
         if(state == State.OPCODE) {
             if(!inc.isReadable) return
             val opcode = (inc.readUnsignedByte() - decodeCipher.nextInt()) and 0xFF
-            println("Read OPCODE $opcode")
             decoder = GamePacketDecoder.inc[opcode] ?: throw IOException(
                 "Could not find packet decoder for opcode $opcode."
             )

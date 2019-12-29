@@ -18,7 +18,6 @@ package io.guthix.oldscape.server.event
 
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.player.Player
-import kotlin.coroutines.intrinsics.createCoroutineUnintercepted
 import kotlin.reflect.KClass
 import kotlin.script.experimental.annotations.KotlinScript
 
@@ -27,17 +26,19 @@ abstract class Script {
     fun <E: GameEvent>on(type: KClass<E>) = EventListener(type)
 }
 
+class EventHandler<E : GameEvent>(val event: E, val world: World, val player: Player)
+
 class EventListener<E: GameEvent>(private val type: KClass<E>) {
-    internal var condition: GameRoutine<E>.() -> Boolean = { true }
+    internal var condition: EventHandler<E>.() -> Boolean = { true }
 
-    private var script: suspend GameRoutine<E>.() -> Unit = { }
+    private var script: EventHandler<E>.() -> Unit = { }
 
-    fun where(condition: GameRoutine<E>.() -> Boolean): EventListener<E> {
+    fun where(condition: EventHandler<E>.() -> Boolean): EventListener<E> {
         this.condition = condition
         return this
     }
 
-    fun then(script: suspend GameRoutine<E>.() -> Unit) {
+    fun then(script: EventHandler<E>.() -> Unit) {
         this.script = script
         registerListener()
     }
@@ -46,11 +47,11 @@ class EventListener<E: GameEvent>(private val type: KClass<E>) {
         EventBus.register(type, this)
     }
 
+    @Suppress("UNCHECKED_CAST")
     fun schedule(event: E, world: World, player: Player) {
-        val routine = GameRoutine(world, player, event)
+        val routine = EventHandler(event, world, player)
         if(routine.condition()) {
-            routine.next = ConditionalContinuation(InitialCondition, script.createCoroutineUnintercepted(routine, routine))
-            routine.player.weakQueue.add(routine)
+            player.events.add { routine.script() }
         }
     }
 }
