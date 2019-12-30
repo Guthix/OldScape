@@ -16,7 +16,7 @@
  */
 package io.guthix.oldscape.server.action
 
-import io.guthix.oldscape.server.world.entity.player.Player
+import io.guthix.oldscape.server.world.entity.character.player.Player
 import kotlin.coroutines.*
 import kotlin.coroutines.intrinsics.COROUTINE_SUSPENDED
 import kotlin.coroutines.intrinsics.suspendCoroutineUninterceptedOrReturn

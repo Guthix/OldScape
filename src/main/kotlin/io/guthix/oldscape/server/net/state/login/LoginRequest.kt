@@ -17,8 +17,8 @@
 package io.guthix.oldscape.server.net.state.login
 
 import io.guthix.oldscape.server.net.state.IsaacRandomPair
-import io.guthix.oldscape.server.world.entity.player.ClientSettings
-import io.guthix.oldscape.server.world.entity.player.MachineSettings
+import io.guthix.oldscape.server.world.entity.character.player.ClientSettings
+import io.guthix.oldscape.server.world.entity.character.player.MachineSettings
 import io.netty.channel.ChannelHandlerContext
 
 data class LoginRequest(

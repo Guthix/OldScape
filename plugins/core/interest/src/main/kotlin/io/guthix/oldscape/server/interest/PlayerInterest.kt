@@ -18,7 +18,8 @@ package io.guthix.oldscape.server.interest
 
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.EntityAttribute
-import io.guthix.oldscape.server.world.entity.player.Player
+import io.guthix.oldscape.server.world.entity.character.player.Player
+import io.guthix.oldscape.server.world.mapsquare.zone.tile.tile
 
 var Player.playerInterest by EntityAttribute<PlayerInterest>()
 
@@ -29,5 +30,11 @@ class PlayerInterest {
 
     val fieldIds = IntArray(World.MAX_PLAYERS)
 
-    val skipFlags = ByteArray(World.MAX_PLAYERS)
+    val skipFlags = BooleanArray(World.MAX_PLAYERS)
+
+    companion object {
+        val SIZE = 32.tile
+
+        val RANGE = SIZE / 2.tile
+    }
 }

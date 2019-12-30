@@ -17,7 +17,5 @@
 package io.guthix.oldscape.server.event.imp
 
 import io.guthix.oldscape.server.event.GameEvent
-import io.guthix.oldscape.server.world.World
-import io.guthix.oldscape.server.world.entity.player.Player
 
 class LoginEvent : GameEvent
