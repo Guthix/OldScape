@@ -1,3 +1,19 @@
+/**
+ * This file is part of Guthix OldScape.
+ *
+ * Guthix OldScape is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Guthix OldScape is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Foobar. If not, see <https://www.gnu.org/licenses/>.
+ */
 package io.guthix.oldscape.server.net.state.game.outp
 
 import io.guthix.buffer.BitBuf
@@ -6,6 +22,7 @@ import io.guthix.oldscape.server.net.state.game.OutGameEvent
 import io.guthix.oldscape.server.net.state.game.VarShortSize
 import io.guthix.oldscape.server.world.entity.character.Character
 import io.guthix.oldscape.server.world.entity.character.player.Player
+import io.guthix.oldscape.server.world.entity.character.player.interest.PlayerInterest
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.TileUnit
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.tile
@@ -16,10 +33,7 @@ import kotlin.math.abs
 
 class PlayerInfoPacket(
     private val player: Player,
-    private val lastLocalActivePlayers: List<Player>,
-    private val lastLocalInActivePlayers: List<Player>,
-    private val lastExternalActivePlayers: List<Player>,
-    private val lastExternalInActivePlayers: List<Player>
+    private val interest: PlayerInterest
 ) : OutGameEvent() {
     override val opcode = 41
 
@@ -36,10 +50,14 @@ class PlayerInfoPacket(
     override fun encode(ctx: ChannelHandlerContext): ByteBuf {
         val mainBuf = ctx.alloc().buffer()
         val maskBuf = ctx.alloc().buffer()
-        mainBuf.encodeLocalPlayers(player, lastLocalActivePlayers, maskBuf)
-        mainBuf.encodeLocalPlayers(player, lastLocalInActivePlayers, maskBuf)
-        mainBuf.encodeExternalPlayers(player, lastExternalActivePlayers, maskBuf)
-        mainBuf.encodeExternalPlayers(player, lastExternalInActivePlayers, maskBuf)
+        mainBuf.encodeLocalPlayers(player, interest.lastLocalActivePlayers, maskBuf)
+        mainBuf.encodeLocalPlayers(player, interest.lastLocalInActivePlayers, maskBuf)
+        mainBuf.encodeExternalPlayers(player, interest.lastExternalActivePlayers, maskBuf)
+        mainBuf.encodeExternalPlayers(player, interest.lastExternalInActivePlayers, maskBuf)
+        interest.lastLocalActivePlayers = currentLocalActivePlayers
+        interest.lastLocalInActivePlayers = currentLocalInActivePlayers
+        interest.lastExternalActivePlayers = currentLocalActivePlayers
+        interest.lastExternalInActivePlayers = currentLocalInActivePlayers
         return Unpooled.compositeBuffer(2).addComponents(true, mainBuf, maskBuf)
     }
 
@@ -100,7 +118,7 @@ class PlayerInfoPacket(
     }
 
     private fun ByteBuf.encodeExternalPlayers(player: Player, externalPlayers: List<Player>, maskBuf: ByteBuf): ByteBuf {
-        fun Player.updateRequiredFor(otherPlayer: Player) = player.isInterestedIn(otherPlayer)
+        fun Player.updateRequiredFor(otherPlayer: Player) = isInterestedIn(otherPlayer)
 
         fun BitBuf.encodeRegionUpdate(externalPlayer: Player) {
             val dx = externalPlayer.position.x.inRegions - externalPlayer.lastPostion.x.inRegions
