@@ -14,20 +14,22 @@
  * You should have received a copy of the GNU General Public License
  * along with Foobar. If not, see <https://www.gnu.org/licenses/>.
  */
-package io.guthix.oldscape.server.world.entity.player
+package io.guthix.oldscape.server.world.entity.character.player
 
 import io.guthix.oldscape.server.action.Action
-import io.guthix.oldscape.server.net.state.game.outp.IfOpensubPacket
-import io.guthix.oldscape.server.net.state.game.outp.IfOpentopPacket
-import io.guthix.oldscape.server.net.state.game.outp.IfSettext
-import io.guthix.oldscape.server.net.state.game.outp.InterestInitPacket
+import io.guthix.oldscape.server.action.ConditionalContinuation
+import io.guthix.oldscape.server.action.InitialCondition
+import io.guthix.oldscape.server.net.state.game.outp.*
 import io.guthix.oldscape.server.world.entity.Entity
+import io.guthix.oldscape.server.world.entity.character.Character
 import io.guthix.oldscape.server.world.mapsquare.floor
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.tile
+import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 import java.util.*
 import java.util.concurrent.ConcurrentLinkedQueue
+import kotlin.coroutines.intrinsics.createCoroutineUnintercepted
 import kotlin.reflect.KProperty
 
 data class Player(
@@ -36,16 +38,22 @@ data class Player(
     val username: String,
     var ctx: ChannelHandlerContext,
     override val attributes: MutableMap<KProperty<*>, Any?> = mutableMapOf()
-) : Entity(attributes), Comparable<Player> {
+) : Character(attributes), Comparable<Player> {
     val events = ConcurrentLinkedQueue<() -> Unit>()
 
     val actions = PriorityQueue<Action>()
 
-    val position = Tile(0.floor, 3222.tile, 3218.tile)
-
     var rights = 0
 
-    fun setupInterestManager(worldPlayers: Map<Int, Player>, xteas: List<IntArray>) {
+    override val updateFlags: MutableList<PlayerInfoPacket.UpdateType> = mutableListOf()
+
+    fun addAction(type: Action.Type, action: suspend Action.() -> Unit) {
+        val cont = Action(type, this)
+        cont.next = ConditionalContinuation(InitialCondition, action.createCoroutineUnintercepted(cont, cont))
+        actions.add(cont)
+    }
+
+    fun initializeInterest(worldPlayers: Map<Int, Player>, xteas: List<IntArray>) {
         ctx.write(InterestInitPacket(this, worldPlayers, xteas, position.inZones))
     }
 

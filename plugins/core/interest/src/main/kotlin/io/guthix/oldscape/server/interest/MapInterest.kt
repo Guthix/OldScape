@@ -16,45 +16,51 @@
  */
 package io.guthix.oldscape.server.interest
 
+import io.guthix.oldscape.location.tutorialisland.onTutorialIsland
 import io.guthix.oldscape.server.api.Xtea
-import io.guthix.oldscape.server.world.mapsquare.MapSquareUnit
+import io.guthix.oldscape.server.world.entity.EntityAttribute
+import io.guthix.oldscape.server.world.entity.character.player.Player
 import io.guthix.oldscape.server.world.mapsquare.zone.Zone
 import io.guthix.oldscape.server.world.mapsquare.zone.ZoneUnit
-import io.guthix.oldscape.server.world.mapsquare.zone.tile.tile
 import io.guthix.oldscape.server.world.mapsquare.zone.zones
 
-object MapInterestConstants {
-    val ZONE_INTEREST = 13.zones
+var Player.mapInterest by EntityAttribute<MapInterest>()
 
-    val ENTITY_INTEREST = 32.tile
+class MapInterest {
 
-    val ZONE_INTEREST_RANGE = ZONE_INTEREST / 2.zones
+    suspend fun synchronize() {
+        while(true) {
 
-    val ENTITY_INTEREST_RANGE = ENTITY_INTEREST / 2.tile
-
-    val ZONE_INTEREST_UPDATE = ZONE_INTEREST_RANGE - ENTITY_INTEREST_RANGE.inZones
-}
-
-fun onTutorialIsland(mSquareX: MapSquareUnit, mSquareY: MapSquareUnit) =
-    ((mSquareX.value == 48 || mSquareX.value == 49) && mSquareY.value == 48)
-        || (mSquareX.value == 48 && mSquareX.value == 148)
-
-val ZoneUnit.startMapInterest get() = (this - MapInterestConstants.ZONE_INTEREST_RANGE).inMapSquares
-
-val ZoneUnit.endMapInterest get() = (this + MapInterestConstants.ZONE_INTEREST_RANGE).inMapSquares
-
-fun getInterestedXTEAS(zone: Zone): List<IntArray> {
-    val xteas = mutableListOf<IntArray>()
-    for(mSquareX in zone.x.startMapInterest..zone.x.endMapInterest) {
-        for(mSquareY in zone.y.startMapInterest..zone.y.endMapInterest) {
-            if(onTutorialIsland(mSquareX, mSquareY)) continue
-            val id = (mSquareX.value shl 8) or mSquareY.value
-            val xtea = Xtea.key[id] ?: throw IllegalStateException(
-                "Could not find XTEA for id $id."
-            )
-            xteas.add(xtea)
         }
     }
-    return xteas
+
+    companion object {
+        val SIZE = 13.zones
+
+        val RANGE = SIZE / 2.zones
+
+        val UPDATE_RANGE = RANGE - PlayerInterest.RANGE.inZones
+
+        private val ZoneUnit.startMapInterest get() = (this - MapInterest.RANGE).inMapSquares
+
+        private val ZoneUnit.endMapInterest get() = (this + MapInterest.RANGE).inMapSquares
+
+        fun getInterestedXteas(zone: Zone): List<IntArray> {
+            val xteas = mutableListOf<IntArray>()
+            for(mSquareX in zone.x.startMapInterest..zone.x.endMapInterest) {
+                for(mSquareY in zone.y.startMapInterest..zone.y.endMapInterest) {
+                    if(onTutorialIsland(mSquareX, mSquareY)) continue
+                    val id = (mSquareX.value shl 8) or mSquareY.value
+                    val xtea = Xtea.key[id] ?: throw IllegalStateException(
+                        "Could not find XTEA for id $id."
+                    )
+                    xteas.add(xtea)
+                }
+            }
+            return xteas
+        }
+    }
 }
+
+
 

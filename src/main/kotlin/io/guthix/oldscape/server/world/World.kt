@@ -22,7 +22,7 @@ import io.guthix.oldscape.server.net.state.game.GameDecoder
 import io.guthix.oldscape.server.net.state.game.GameEncoder
 import io.guthix.oldscape.server.net.state.game.GameHandler
 import io.guthix.oldscape.server.net.state.login.*
-import io.guthix.oldscape.server.world.entity.player.PlayerList
+import io.guthix.oldscape.server.world.entity.character.player.PlayerList
 import java.util.*
 import java.util.concurrent.*
 

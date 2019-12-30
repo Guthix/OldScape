@@ -20,7 +20,7 @@ import io.guthix.oldscape.server.event.EventBus
 import io.guthix.oldscape.server.event.GameEvent
 import io.guthix.oldscape.server.net.PacketInboundHandler
 import io.guthix.oldscape.server.world.World
-import io.guthix.oldscape.server.world.entity.player.Player
+import io.guthix.oldscape.server.world.entity.character.player.Player
 import io.netty.channel.ChannelHandlerContext
 
 class GameHandler(val world: World, val player: Player) : PacketInboundHandler<GameEvent>() {
