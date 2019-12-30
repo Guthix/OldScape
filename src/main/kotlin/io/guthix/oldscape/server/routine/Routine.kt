@@ -14,15 +14,15 @@
  * You should have received a copy of the GNU General Public License
  * along with Foobar. If not, see <https://www.gnu.org/licenses/>.
  */
-package io.guthix.oldscape.server.action
+package io.guthix.oldscape.server.routine
 
 import io.guthix.oldscape.server.world.entity.character.player.Player
 import kotlin.coroutines.*
 import kotlin.coroutines.intrinsics.COROUTINE_SUSPENDED
 import kotlin.coroutines.intrinsics.suspendCoroutineUninterceptedOrReturn
 
-open class Action(val type: Type, val player: Player) : Continuation<Unit>, Comparable<Action> {
-    enum class Type(val priority: Int) { STRONG(1), NORMAL(2), WEAK(3) }
+open class Routine(val type: Type, val player: Player) : Continuation<Unit>, Comparable<Routine> {
+    abstract class Type(val priority: Int)
 
     internal var next: ConditionalContinuation? = null
 
@@ -32,7 +32,7 @@ open class Action(val type: Type, val player: Player) : Continuation<Unit>, Comp
 
     internal fun resumeIfPossible()  = next?.let {
         if(it.canResume()) {
-            player.actions.remove(this)
+            player.routines.remove(this)
             it.continuation.resume(Unit)
         }
     }
@@ -45,15 +45,15 @@ open class Action(val type: Type, val player: Player) : Continuation<Unit>, Comp
         suspend(LambdaCondition(cond))
     }
 
-    private suspend fun suspend(condition: ActionCondition) {
-        player.actions.add(this)
+    private suspend fun suspend(condition: RoutineCondition) {
+        player.routines.add(this)
         return suspendCoroutineUninterceptedOrReturn { cont ->
             next = ConditionalContinuation(condition, cont)
             COROUTINE_SUSPENDED
         }
     }
 
-    override fun compareTo(other: Action) = when {
+    override fun compareTo(other: Routine) = when {
         type.priority < other.type.priority -> -1
         type.priority > other.type.priority -> 1
         else -> 0

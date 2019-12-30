@@ -14,27 +14,14 @@
  * You should have received a copy of the GNU General Public License
  * along with Foobar. If not, see <https://www.gnu.org/licenses/>.
  */
-package io.guthix.oldscape.server.interest
+package io.guthix.oldscape.server.routine
 
-import io.guthix.oldscape.server.world.World
-import io.guthix.oldscape.server.world.entity.EntityAttribute
-import io.guthix.oldscape.server.world.entity.character.player.Player
-import io.guthix.oldscape.server.world.mapsquare.zone.tile.tile
+object StrongAction : Routine.Type(priority = 1)
 
-var Player.playerInterest by EntityAttribute<PlayerInterest>()
+object NormalAction : Routine.Type(priority = 2)
 
-class PlayerInterest {
-    val localPlayers = mutableListOf<Player>()
+object WeakAction : Routine.Type(priority = 3)
 
-    val externalPlayers =  mutableListOf<Player>()
+object PostRoutine : Routine.Type(priority = 4)
 
-    val fieldIds = IntArray(World.MAX_PLAYERS)
-
-    val skipFlags = BooleanArray(World.MAX_PLAYERS)
-
-    companion object {
-        val SIZE = 32.tile
-
-        val RANGE = SIZE / 2.tile
-    }
-}
+object FinalRoutine : Routine.Type(priority = Int.MAX_VALUE)

@@ -14,27 +14,23 @@
  * You should have received a copy of the GNU General Public License
  * along with Foobar. If not, see <https://www.gnu.org/licenses/>.
  */
-package io.guthix.oldscape.server.action
+package io.guthix.oldscape.server.world.entity.character.player.interest
 
-import kotlin.coroutines.Continuation
+import io.guthix.oldscape.server.world.entity.character.player.Player
+import io.guthix.oldscape.server.world.mapsquare.zone.tile.tile
 
-interface ActionCondition {
-    fun canResume(): Boolean
+class PlayerInterest {
+    var lastLocalActivePlayers = mutableListOf<Player>()
+
+    var lastLocalInActivePlayers = mutableListOf<Player>()
+
+    var lastExternalActivePlayers = mutableListOf<Player>()
+
+    var lastExternalInActivePlayers = mutableListOf<Player>()
+
+    companion object {
+        val SIZE = 32.tile
+
+        val RANGE = SIZE / 2.tile
+    }
 }
-
-class TickCondition(private var tickCount: Int) : ActionCondition {
-    override fun canResume() = --tickCount == 0
-}
-
-class LambdaCondition(private val cond: () -> Boolean) : ActionCondition {
-    override fun canResume() = cond.invoke()
-}
-
-object InitialCondition : ActionCondition {
-    override fun canResume() = true
-}
-
-class ConditionalContinuation(
-    val condition: ActionCondition,
-    val continuation: Continuation<Unit>
-) : ActionCondition by condition

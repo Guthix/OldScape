@@ -16,16 +16,13 @@
  */
 package io.guthix.oldscape.server.world.entity.character.player
 
-import io.guthix.oldscape.server.action.Action
-import io.guthix.oldscape.server.action.ConditionalContinuation
-import io.guthix.oldscape.server.action.InitialCondition
+import io.guthix.oldscape.server.routine.Routine
+import io.guthix.oldscape.server.routine.ConditionalContinuation
+import io.guthix.oldscape.server.routine.InitialCondition
 import io.guthix.oldscape.server.net.state.game.outp.*
-import io.guthix.oldscape.server.world.entity.Entity
 import io.guthix.oldscape.server.world.entity.character.Character
-import io.guthix.oldscape.server.world.mapsquare.floor
-import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
-import io.guthix.oldscape.server.world.mapsquare.zone.tile.tile
-import io.netty.buffer.ByteBuf
+import io.guthix.oldscape.server.world.entity.character.player.interest.MapInterest
+import io.guthix.oldscape.server.world.entity.character.player.interest.PlayerInterest
 import io.netty.channel.ChannelHandlerContext
 import java.util.*
 import java.util.concurrent.ConcurrentLinkedQueue
@@ -41,20 +38,28 @@ data class Player(
 ) : Character(attributes), Comparable<Player> {
     val events = ConcurrentLinkedQueue<() -> Unit>()
 
-    val actions = PriorityQueue<Action>()
+    val routines = PriorityQueue<Routine>()
 
     var rights = 0
 
+    val playerInterest = PlayerInterest()
+
+    val mapInterest = MapInterest()
+
     override val updateFlags: MutableList<PlayerInfoPacket.UpdateType> = mutableListOf()
 
-    fun addAction(type: Action.Type, action: suspend Action.() -> Unit) {
-        val cont = Action(type, this)
-        cont.next = ConditionalContinuation(InitialCondition, action.createCoroutineUnintercepted(cont, cont))
-        actions.add(cont)
+    fun addRoutine(type: Routine.Type, routine: suspend Routine.() -> Unit) {
+        val cont = Routine(type, this)
+        cont.next = ConditionalContinuation(InitialCondition, routine.createCoroutineUnintercepted(cont, cont))
+        routines.add(cont)
     }
 
     fun initializeInterest(worldPlayers: Map<Int, Player>, xteas: List<IntArray>) {
         ctx.write(InterestInitPacket(this, worldPlayers, xteas, position.inZones))
+    }
+
+    fun playerInterestSync() {
+        ctx.write(PlayerInfoPacket(this, playerInterest))
     }
 
     fun setTopInterface(topInterface: Int) {
@@ -79,7 +84,7 @@ data class Player(
         while(events.isNotEmpty()) {
             events.poll().invoke()
         }
-        actions.forEach { it.resumeIfPossible() }
+        routines.forEach { it.resumeIfPossible() }
         ctx.flush()
     }
 }

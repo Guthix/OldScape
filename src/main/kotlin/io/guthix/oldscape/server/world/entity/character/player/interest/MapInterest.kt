@@ -14,25 +14,15 @@
  * You should have received a copy of the GNU General Public License
  * along with Foobar. If not, see <https://www.gnu.org/licenses/>.
  */
-package io.guthix.oldscape.server.interest
+package io.guthix.oldscape.server.world.entity.character.player.interest
 
-import io.guthix.oldscape.location.tutorialisland.onTutorialIsland
 import io.guthix.oldscape.server.api.Xtea
-import io.guthix.oldscape.server.world.entity.EntityAttribute
-import io.guthix.oldscape.server.world.entity.character.player.Player
+import io.guthix.oldscape.server.world.mapsquare.MapSquareUnit
 import io.guthix.oldscape.server.world.mapsquare.zone.Zone
 import io.guthix.oldscape.server.world.mapsquare.zone.ZoneUnit
 import io.guthix.oldscape.server.world.mapsquare.zone.zones
 
-var Player.mapInterest by EntityAttribute<MapInterest>()
-
 class MapInterest {
-
-    suspend fun synchronize() {
-        while(true) {
-
-        }
-    }
 
     companion object {
         val SIZE = 13.zones
@@ -41,9 +31,9 @@ class MapInterest {
 
         val UPDATE_RANGE = RANGE - PlayerInterest.RANGE.inZones
 
-        private val ZoneUnit.startMapInterest get() = (this - MapInterest.RANGE).inMapSquares
+        private val ZoneUnit.startMapInterest get() = (this - RANGE).inMapSquares
 
-        private val ZoneUnit.endMapInterest get() = (this + MapInterest.RANGE).inMapSquares
+        private val ZoneUnit.endMapInterest get() = (this + RANGE).inMapSquares
 
         fun getInterestedXteas(zone: Zone): List<IntArray> {
             val xteas = mutableListOf<IntArray>()
@@ -59,6 +49,10 @@ class MapInterest {
             }
             return xteas
         }
+
+        private fun onTutorialIsland(mSquareX: MapSquareUnit, mSquareY: MapSquareUnit) =
+            ((mSquareX.value == 48 || mSquareX.value == 49) && mSquareY.value == 48)
+                || (mSquareX.value == 48 && mSquareX.value == 148)
     }
 }
 
