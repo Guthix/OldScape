@@ -27,7 +27,7 @@ class IfButton1Packet : GamePacketDecoder(62, FixedSize(8)) {
         val bitpack = data.readUnsignedInt().toInt()
         val componentId = data.readUnsignedShort()
         val slotId = data.readUnsignedShort()
-        return ButtonClickEvent(bitpack shr Short.SIZE_BYTES, bitpack and 0xFFFF, componentId, slotId, 1)
+        return ButtonClickEvent(bitpack shr Short.SIZE_BITS, bitpack and 0xFFFF, componentId, slotId, 1)
     }
 }
 
@@ -36,7 +36,7 @@ class IfButton2Packet : GamePacketDecoder(39, FixedSize(8)) {
         val bitpack = data.readUnsignedInt().toInt()
         val componentId = data.readUnsignedShort()
         val slotId = data.readUnsignedShort()
-        return ButtonClickEvent(bitpack shr Short.SIZE_BYTES, bitpack and 0xFFFF, componentId, slotId, 2)
+        return ButtonClickEvent(bitpack shr Short.SIZE_BITS, bitpack and 0xFFFF, componentId, slotId, 2)
     }
 }
 
@@ -45,7 +45,7 @@ class IfButton3Packet : GamePacketDecoder(69, FixedSize(8)) {
         val bitpack = data.readUnsignedInt().toInt()
         val componentId = data.readUnsignedShort()
         val slotId = data.readUnsignedShort()
-        return ButtonClickEvent(bitpack shr Short.SIZE_BYTES, bitpack and 0xFFFF, componentId, slotId, 3)
+        return ButtonClickEvent(bitpack shr Short.SIZE_BITS, bitpack and 0xFFFF, componentId, slotId, 3)
     }
 }
 
@@ -54,7 +54,7 @@ class IfButton4Packet : GamePacketDecoder(71, FixedSize(8)) {
         val bitpack = data.readUnsignedInt().toInt()
         val componentId = data.readUnsignedShort()
         val slotId = data.readUnsignedShort()
-        return ButtonClickEvent(bitpack shr Short.SIZE_BYTES, bitpack and 0xFFFF, componentId, slotId, 4)
+        return ButtonClickEvent(bitpack shr Short.SIZE_BITS, bitpack and 0xFFFF, componentId, slotId, 4)
     }
 }
 
@@ -63,7 +63,7 @@ class IfButton5Packet : GamePacketDecoder(52, FixedSize(8)) {
         val bitpack = data.readUnsignedInt().toInt()
         val componentId = data.readUnsignedShort()
         val slotId = data.readUnsignedShort()
-        return ButtonClickEvent(bitpack shr Short.SIZE_BYTES, bitpack and 0xFFFF, componentId, slotId, 5)
+        return ButtonClickEvent(bitpack shr Short.SIZE_BITS, bitpack and 0xFFFF, componentId, slotId, 5)
     }
 }
 
@@ -72,7 +72,7 @@ class IfButton6Packet : GamePacketDecoder(84, FixedSize(8)) {
         val bitpack = data.readUnsignedInt().toInt()
         val componentId = data.readUnsignedShort()
         val slotId = data.readUnsignedShort()
-        return ButtonClickEvent(bitpack shr Short.SIZE_BYTES, bitpack and 0xFFFF, componentId, slotId, 6)
+        return ButtonClickEvent(bitpack shr Short.SIZE_BITS, bitpack and 0xFFFF, componentId, slotId, 6)
     }
 }
 
@@ -81,7 +81,7 @@ class IfButton7Packet : GamePacketDecoder(91, FixedSize(8)) {
         val bitpack = data.readUnsignedInt().toInt()
         val componentId = data.readUnsignedShort()
         val slotId = data.readUnsignedShort()
-        return ButtonClickEvent(bitpack shr Short.SIZE_BYTES, bitpack and 0xFFFF, componentId, slotId, 7)
+        return ButtonClickEvent(bitpack shr Short.SIZE_BITS, bitpack and 0xFFFF, componentId, slotId, 7)
     }
 }
 
@@ -90,7 +90,7 @@ class IfButton8Packet : GamePacketDecoder(23, FixedSize(8)) {
         val bitpack = data.readUnsignedInt().toInt()
         val componentId = data.readUnsignedShort()
         val slotId = data.readUnsignedShort()
-        return ButtonClickEvent(bitpack shr Short.SIZE_BYTES, bitpack and 0xFFFF, componentId, slotId, 8)
+        return ButtonClickEvent(bitpack shr Short.SIZE_BITS, bitpack and 0xFFFF, componentId, slotId, 8)
     }
 }
 
@@ -99,7 +99,7 @@ class IfButton9Packet : GamePacketDecoder(7, FixedSize(8)) {
         val bitpack = data.readUnsignedInt().toInt()
         val componentId = data.readUnsignedShort()
         val slotId = data.readUnsignedShort()
-        return ButtonClickEvent(bitpack shr Short.SIZE_BYTES, bitpack and 0xFFFF, componentId, slotId, 9)
+        return ButtonClickEvent(bitpack shr Short.SIZE_BITS, bitpack and 0xFFFF, componentId, slotId, 9)
     }
 }
 
@@ -108,6 +108,6 @@ class IfButton10Packet : GamePacketDecoder(80, FixedSize(8)) {
         val bitpack = data.readUnsignedInt().toInt()
         val componentId = data.readUnsignedShort()
         val slotId = data.readUnsignedShort()
-        return ButtonClickEvent(bitpack shr Short.SIZE_BYTES, bitpack and 0xFFFF, componentId, slotId, 10)
+        return ButtonClickEvent(bitpack shr Short.SIZE_BITS, bitpack and 0xFFFF, componentId, slotId, 10)
     }
 }
