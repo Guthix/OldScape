@@ -70,6 +70,10 @@ data class Player(
         ctx.write(IfOpensubPacket(parentInterface, slot, childInterface, isClickable))
     }
 
+    fun moveSubInterface(fromParent: Int, fromChild: Int, toParent: Int, toChild: Int) {
+        ctx.write(IfMovesubPacket(fromParent, fromChild, toParent, toChild))
+    }
+
     fun setInterfaceText(parentInterface: Int, slot: Int, text: String) {
         ctx.write(IfSettext(parentInterface, slot, text))
     }
