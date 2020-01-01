@@ -23,6 +23,10 @@ import mu.KotlinLogging
 
 private val logger = KotlinLogging.logger {  }
 
+data class Component(val interfaceId: Int, val componentId: Int)
+
+fun readComponent(value: Int) = Component(value shr Short.SIZE_BITS, value and 0xFFFF)
+
 object Enums {
     private lateinit var configs: Map<Int, EnumConfig>
 

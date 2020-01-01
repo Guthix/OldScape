@@ -27,4 +27,5 @@ on(PlayerInitialized::class).then {
     player.setSubInterface(parentInterface = 165, slot = 16, childInterface = 7, isClickable = true)
     player.setSubInterface(parentInterface = 165, slot = 9, childInterface = 593, isClickable = true)
     player.setSubInterface(parentInterface = 165, slot = 25, childInterface = 160, isClickable = true)
+    player.gameframe = GameFrame.BLACK_SCREEN
 }
