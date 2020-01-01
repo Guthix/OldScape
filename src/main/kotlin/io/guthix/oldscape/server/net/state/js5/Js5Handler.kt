@@ -19,9 +19,7 @@ package io.guthix.oldscape.server.net.state.js5
 import io.guthix.cache.js5.container.disk.Js5DiskStore
 import io.guthix.oldscape.server.Cache
 import io.guthix.oldscape.server.net.PacketInboundHandler
-import io.netty.buffer.Unpooled
 import io.netty.channel.ChannelHandlerContext
-import java.net.URL
 
 class Js5Handler : PacketInboundHandler<Js5FileRequest>() {
     override fun channelRead0(ctx: ChannelHandlerContext, msg: Js5FileRequest) {
@@ -29,7 +27,7 @@ class Js5Handler : PacketInboundHandler<Js5FileRequest>() {
             Cache.getRawSettings(msg.containerId)
         } else {
             Cache.getRawGroup(msg.indexFileId, msg.containerId).data
-        }.duplicate()
+        }.copy() // TODO remove copying
         val compressionType = data.readUnsignedByte().toInt()
         val compressedSize = data.readInt()
         ctx.writeAndFlush(Js5FileResponse(msg.indexFileId, msg.containerId, compressionType, compressedSize, data))
