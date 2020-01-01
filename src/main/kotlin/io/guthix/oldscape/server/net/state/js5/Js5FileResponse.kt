@@ -17,6 +17,7 @@
 package io.guthix.oldscape.server.net.state.js5
 
 import io.netty.buffer.ByteBuf
+import io.netty.buffer.DefaultByteBufHolder
 
 class Js5FileResponse(
     val indexFileId: Int,
@@ -24,4 +25,4 @@ class Js5FileResponse(
     val compressionType: Int,
     val compressedSize: Int,
     val data: ByteBuf
-)
+) : DefaultByteBufHolder(data)

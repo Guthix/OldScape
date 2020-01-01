@@ -24,4 +24,4 @@ enum class Js5Type(val opcode: Int) {
     ENCRYPTION_KEY_UPDATE(4);
 }
 
-class Js5FileRequest(val isUrgent: Boolean, val indexFileId: Int, val containerId: Int)
+data class Js5FileRequest(val isUrgent: Boolean, val indexFileId: Int, val containerId: Int)

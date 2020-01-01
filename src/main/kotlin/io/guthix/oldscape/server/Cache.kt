@@ -67,7 +67,8 @@ object Cache {
             val archiveFile = store.openArchiveIdxFile(archiveId)
             archiveSettings.groupSettings.forEach { (groupId, groupSettings) ->
                 val archiveData = groupData.getOrPut(archiveId, { mutableMapOf() })
-                archiveData[groupId] = Js5RawGroup(groupSettings, store.read(archiveFile, groupId))
+                val data = store.read(archiveFile, groupId)
+                archiveData[groupId] = Js5RawGroup(groupSettings, data.slice(0, data.readableBytes() - 2))
             }
         }
         val archiveValidators = settingsData.keys.map { archiveId ->
