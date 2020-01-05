@@ -28,7 +28,7 @@ class IfSettext(
     private val parentInterface: Int,
     private val slot: Int,
     private val message: String
-) : OutGameEvent() {
+) : OutGameEvent {
     override val opcode = 19
 
     override val size = VarShortSize

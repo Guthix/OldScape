@@ -34,12 +34,12 @@ object VarByteSize : PacketSize()
 
 object VarShortSize : PacketSize()
 
-abstract class OutGameEvent {
-    abstract val opcode: Int
+interface OutGameEvent {
+    val opcode: Int
 
-    abstract val size: PacketSize
+    val size: PacketSize
 
-    abstract fun encode(ctx: ChannelHandlerContext): ByteBuf
+    fun encode(ctx: ChannelHandlerContext): ByteBuf
 
     fun toPacket(ctx: ChannelHandlerContext) = GamePacket(opcode, size, encode(ctx))
 }

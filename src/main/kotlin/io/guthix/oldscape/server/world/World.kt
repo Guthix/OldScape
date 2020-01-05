@@ -42,6 +42,7 @@ class World : TimerTask() {
         while(loginQueue.isNotEmpty()) {
             val request = loginQueue.poll()
             val player= players.create(request)
+            player.clientSettings = request.clientSettings
             request.ctx.writeAndFlush(LoginResponse(player.index, player.rights))
             request.ctx.pipeline().replace(LoginDecoder::class.qualifiedName, GameDecoder::class.qualifiedName,
                 GameDecoder(request.isaacPair.decodeGen)

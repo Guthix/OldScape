@@ -17,8 +17,8 @@
 package io.guthix.oldscape.server.world.entity.character.player
 
 data class ClientSettings(
-    val resizable: Boolean,
-    val lowMemory: Boolean,
-    val width: Int,
-    val height: Int
+    var resizable: Boolean,
+    var lowMemory: Boolean,
+    var width: Int,
+    var height: Int
 )

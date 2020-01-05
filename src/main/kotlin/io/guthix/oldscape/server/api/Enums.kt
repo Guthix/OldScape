@@ -19,18 +19,24 @@ package io.guthix.oldscape.server.api
 import io.guthix.oldscape.cache.ConfigArchive
 import io.guthix.oldscape.cache.config.EnumConfig
 import io.guthix.oldscape.server.Cache
+import kotlinx.io.IOException
 import mu.KotlinLogging
 
 private val logger = KotlinLogging.logger {  }
 
 data class Component(val interfaceId: Int, val componentId: Int)
 
-fun readComponent(value: Int) = Component(value shr Short.SIZE_BITS, value and 0xFFFF)
+fun readComponent(value: Int): Component? {
+    if(value == -1) return null
+    return Component(value shr Short.SIZE_BITS, value and 0xFFFF)
+}
 
 object Enums {
     private lateinit var configs: Map<Int, EnumConfig>
 
-    operator fun get(index: Int) = configs[index]
+    operator fun get(index: Int): EnumConfig {
+        return configs[index] ?: throw IOException("Could not find enum $index.")
+    }
 
     fun load() {
         configs = EnumConfig.load(Cache.getGroup(ConfigArchive.id, EnumConfig.id))

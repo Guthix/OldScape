@@ -23,7 +23,7 @@ import io.guthix.oldscape.server.net.state.game.OutGameEvent
 import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 
-class IfOpentopPacket(private val topInterface: Int) : OutGameEvent() {
+class IfOpentopPacket(private val topInterface: Int) : OutGameEvent {
     override val opcode = 0
 
     override val size = FixedSize(Short.SIZE_BYTES)

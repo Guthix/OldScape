@@ -28,7 +28,7 @@ class IfOpensubPacket(
     private val slot: Int,
     private val childInterface: Int,
     private val isClickable: Boolean
-) : OutGameEvent() {
+) : OutGameEvent {
     override val opcode = 52
 
     override val size = FixedSize(STATIC_SIZE)

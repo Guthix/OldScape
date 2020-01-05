@@ -34,7 +34,7 @@ import kotlin.math.abs
 class PlayerInfoPacket(
     private val player: Player,
     private val interest: PlayerInterest
-) : OutGameEvent() {
+) : OutGameEvent {
     override val opcode = 41
 
     override val size = VarShortSize

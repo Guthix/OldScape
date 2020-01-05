@@ -38,6 +38,8 @@ data class Player(
 ) : Character(attributes), Comparable<Player> {
     val events = ConcurrentLinkedQueue<() -> Unit>()
 
+    lateinit var clientSettings: ClientSettings
+
     val routines = PriorityQueue<Routine>()
 
     var rights = 0
@@ -72,6 +74,10 @@ data class Player(
 
     fun moveSubInterface(fromParent: Int, fromChild: Int, toParent: Int, toChild: Int) {
         ctx.write(IfMovesubPacket(fromParent, fromChild, toParent, toChild))
+    }
+
+    fun closeSubInterface(parentInterface: Int, slot: Int) {
+        ctx.write(IfClosesubPacket(parentInterface, slot))
     }
 
     fun setInterfaceText(parentInterface: Int, slot: Int, text: String) {

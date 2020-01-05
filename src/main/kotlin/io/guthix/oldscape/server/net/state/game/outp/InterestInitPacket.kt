@@ -32,7 +32,7 @@ class InterestInitPacket(
     private val playersInWorld: Map<Int, Player>,
     private val xteas: List<IntArray>,
     private val zone: Zone
-) : OutGameEvent() {
+) : OutGameEvent {
     override val opcode = 73
 
     override val size = VarShortSize
