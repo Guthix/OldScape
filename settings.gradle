@@ -3,7 +3,11 @@ import java.nio.file.Path
 
 rootProject.name = 'oldscape-server'
 
-includeBuild '../cache'
+includeBuild('../cache') {
+    dependencySubstitution {
+        substitute module('io.guthix.oldscape:oldscape-cache') with project(':')
+    }
+}
 
 def pluginRootDir = rootProject.projectDir.toPath().resolve("plugins")
 
