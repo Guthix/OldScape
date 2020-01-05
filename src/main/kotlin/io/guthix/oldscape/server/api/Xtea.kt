@@ -16,12 +16,34 @@
  */
 package io.guthix.oldscape.server.api
 
-import io.guthix.oldscape.cache.xtea.MapXtea
+import kotlinx.serialization.*
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonConfiguration
-import kotlinx.serialization.list
 import java.nio.file.Files
 import java.nio.file.Path
+
+//TODO use MapXtea from the cache module
+@Serializable
+data class MapXtea(val id: Int, val key: IntArray) {
+    val x get() = id shr 8
+
+    val y get() = id and 0xFF
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+        other as MapXtea
+        if (id != other.id) return false
+        if (!key.contentEquals(other.key)) return false
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = id
+        result = 31 * result + key.contentHashCode()
+        return result
+    }
+}
 
 object Xtea {
     lateinit var key: Map<Int, IntArray>
