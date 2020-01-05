@@ -29,7 +29,7 @@ data class LoginRequest(
     val uniqueId: ByteArray,
     val username: String,
     val password: String,
-    val clientInfo: ClientSettings,
+    val clientSettings: ClientSettings,
     val machineInfo: MachineSettings,
     val crcs: IntArray,
     val isaacPair: IsaacRandomPair,
@@ -46,7 +46,7 @@ data class LoginRequest(
         if (!uniqueId.contentEquals(other.uniqueId)) return false
         if (username != other.username) return false
         if (password != other.password) return false
-        if (clientInfo != other.clientInfo) return false
+        if (clientSettings != other.clientSettings) return false
         if (machineInfo != other.machineInfo) return false
         if (!crcs.contentEquals(other.crcs)) return false
         if (isaacPair != other.isaacPair) return false
@@ -61,7 +61,7 @@ data class LoginRequest(
         result = 31 * result + uniqueId.contentHashCode()
         result = 31 * result + username.hashCode()
         result = 31 * result + password.hashCode()
-        result = 31 * result + clientInfo.hashCode()
+        result = 31 * result + clientSettings.hashCode()
         result = 31 * result + machineInfo.hashCode()
         result = 31 * result + crcs.contentHashCode()
         result = 31 * result + isaacPair.hashCode()

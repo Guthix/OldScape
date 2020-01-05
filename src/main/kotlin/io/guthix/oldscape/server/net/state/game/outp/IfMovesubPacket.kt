@@ -28,7 +28,7 @@ class IfMovesubPacket(
     private val fromSubInterface: Int,
     private val toTopInterface: Int,
     private val toSubInterface: Int
-) : OutGameEvent() {
+) : OutGameEvent {
     override val opcode = 78
 
     override val size = FixedSize(STATIC_SIZE)

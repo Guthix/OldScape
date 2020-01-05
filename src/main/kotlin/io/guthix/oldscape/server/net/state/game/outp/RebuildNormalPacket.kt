@@ -23,7 +23,7 @@ import io.guthix.oldscape.server.world.mapsquare.zone.Zone
 import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 
-class RebuildNormalPacket(private val xteas: List<IntArray>, private val zone: Zone) : OutGameEvent() {
+class RebuildNormalPacket(private val xteas: List<IntArray>, private val zone: Zone) : OutGameEvent {
     override val opcode = 73
 
     override val size = VarShortSize
