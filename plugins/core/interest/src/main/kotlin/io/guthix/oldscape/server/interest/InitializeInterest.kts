@@ -10,7 +10,6 @@ import io.guthix.oldscape.server.event.imp.PlayerInitialized
 on(LoginEvent::class).then {
     val pZone = player.position.inZones
     val xteas = MapInterest.getInterestedXteas(pZone)
-    println("Add update flags")
     player.updateFlags.add(PlayerInfoPacket.appearance)
     player.playerInterest.initialize(player, world.players)
     player.initializeInterest(world.players, xteas)
