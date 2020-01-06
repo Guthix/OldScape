@@ -16,10 +16,7 @@
  */
 package io.guthix.oldscape.server.net.state.game.outp
 
-import io.guthix.buffer.BitBuf
-import io.guthix.buffer.setByteADD
-import io.guthix.buffer.toBitMode
-import io.guthix.buffer.writeStringCP1252
+import io.guthix.buffer.*
 import io.guthix.oldscape.server.net.state.game.OutGameEvent
 import io.guthix.oldscape.server.net.state.game.VarShortSize
 import io.guthix.oldscape.server.world.World
@@ -357,8 +354,7 @@ class PlayerInfoPacket(
             //TODO
         }
 
-        val appearance = UpdateType(0x80) { player ->
-            println("Encode appearance")
+        val appearance = UpdateType(0x8) { player ->
             val lengthIndex = writerIndex()
             writeByte(0) //place holder for length
             writeByte(0) // gender 0 for male 1 for female
@@ -389,11 +385,12 @@ class PlayerInfoPacket(
             writeShort(821) // turn 90 cw
             writeShort(822) // turn 90 ccw
             writeShort(824) // run anim
+            println(player.username)
             writeStringCP1252(player.username) // username
             writeByte(126) // combat level
             writeShort(0) // skillId level
             writeByte(0) // hidden
-            setByteADD(lengthIndex, writerIndex() - lengthIndex - 1)
+            setByteNEG(lengthIndex, writerIndex() - lengthIndex - 1)
         }
 
         val orientation = UpdateType(0x2) { player ->
