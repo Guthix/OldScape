@@ -281,7 +281,6 @@ class PlayerInfoPacket(
         privateUpdates: MutableSet<UpdateType> = mutableSetOf()
     ) {
         var mask = 0
-        println("Update player visual")
         privateUpdates.addAll(localPlayer.updateFlags)
         privateUpdates.forEach { update ->
             mask = mask or update.mask
@@ -385,7 +384,6 @@ class PlayerInfoPacket(
             writeShort(821) // turn 90 cw
             writeShort(822) // turn 90 ccw
             writeShort(824) // run anim
-            println(player.username)
             writeStringCP1252(player.username) // username
             writeByte(126) // combat level
             writeShort(0) // skillId level
