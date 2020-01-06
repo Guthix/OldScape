@@ -11,6 +11,7 @@ buildscript {
 
 plugins {
     id 'idea'
+    id 'application'
     id 'org.jetbrains.kotlin.jvm' version '1.3.61' apply false
     id 'com.github.hierynomus.license' version '0.15.0' apply false
 }
@@ -60,6 +61,10 @@ dependencies {
     implementation group: 'io.github.classgraph', name: 'classgraph', version: classGraphVersion
     implementation group: 'io.github.microutils', name: 'kotlin-logging', version: kotlinLoggingVersion
     implementation group: 'ch.qos.logback', name: 'logback-classic', version: logbackVersion
+}
+
+application {
+    mainClassName = 'io.guthix.oldscape.server.OldScape'
 }
 
 compileKotlin {

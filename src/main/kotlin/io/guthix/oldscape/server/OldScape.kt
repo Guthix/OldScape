@@ -29,17 +29,21 @@ import java.nio.file.Files
 import java.nio.file.Path
 import java.util.*
 
-fun main() {
-    val configFile = Path.of(ServerConfig::class.java.getResource("/Config.yaml").toURI())
-    val config = Yaml.default.parse(ServerConfig.serializer(), Files.readString(configFile))
-    Cache.load(Js5DiskStore.open(Path.of(ServerConfig::class.java.getResource("/cache").toURI())))
-    Xtea.initJson(Path.of(Xtea::class.java.getResource("/cache/xteas.json").toURI()))
-    Enums.load()
+object OldScape {
+    @JvmStatic
+    fun main(args: Array<String>) {
+        val configFile = Path.of(ServerConfig::class.java.getResource("/Config.yaml").toURI())
+        val config = Yaml.default.parse(ServerConfig.serializer(), Files.readString(configFile))
+        Cache.load(Js5DiskStore.open(Path.of(ServerConfig::class.java.getResource("/cache").toURI())))
+        Xtea.initJson(Path.of(Xtea::class.java.getResource("/cache/xteas.json").toURI()))
+        Enums.load()
 
-    EventBus.loadScripts()
-    GamePacketDecoder.loadIncPackets()
+        EventBus.loadScripts()
+        GamePacketDecoder.loadIncPackets()
 
-    val world = World()
-    Timer().scheduleAtFixedRate(world, 0, 600)
-    OldScapeServer(config.revision, config.port, 21, world, config.rsa.privateKey, config.rsa.modulus).run()
+        val world = World()
+        Timer().scheduleAtFixedRate(world, 0, 600)
+        OldScapeServer(config.revision, config.port, 21, world, config.rsa.privateKey, config.rsa.modulus).run()
+    }
 }
+
