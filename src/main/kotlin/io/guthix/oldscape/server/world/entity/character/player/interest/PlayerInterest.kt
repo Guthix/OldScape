@@ -16,21 +16,46 @@
  */
 package io.guthix.oldscape.server.world.entity.character.player.interest
 
+import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.character.player.Player
+import io.guthix.oldscape.server.world.entity.character.player.PlayerList
+import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.tile
 
 class PlayerInterest {
-    var lastLocalActivePlayers = mutableListOf<Player>()
+    var localPlayerCount = 0
 
-    var lastLocalInActivePlayers = mutableListOf<Player>()
+    val localPlayers = arrayOfNulls<Player>(World.MAX_PLAYERS)
 
-    var lastExternalActivePlayers = mutableListOf<Player>()
+    val localPlayerIndexes = IntArray(World.MAX_PLAYERS)
 
-    var lastExternalInActivePlayers = mutableListOf<Player>()
+    var externalPlayerCount = 0
+
+    val externalPlayerIndexes = IntArray(World.MAX_PLAYERS)
+
+    val fieldIds = IntArray(World.MAX_PLAYERS)
+
+    val skipFlags = ByteArray(World.MAX_PLAYERS)
+
+    fun initialize(player: Player, worldPlayers: PlayerList) {
+        localPlayers[player.index] = player
+        localPlayerIndexes[localPlayerCount++] = player.index
+        for (playerIndex in 1 until World.MAX_PLAYERS) {
+            if (player.index != playerIndex) {
+                val externalPlayer = worldPlayers[playerIndex]
+                fieldIds[playerIndex] = externalPlayer?.position?.regionId ?: 0
+                externalPlayerIndexes[externalPlayerCount++] = playerIndex
+            }
+        }
+    }
 
     companion object {
         val SIZE = 32.tile
 
         val RANGE = SIZE / 2.tile
+
+        private val REGION_SIZE = 8192.tile
+
+        val Tile.regionId get() = (z.value shl 16) or ((x / REGION_SIZE).value shl 8) or (y / REGION_SIZE).value
     }
 }

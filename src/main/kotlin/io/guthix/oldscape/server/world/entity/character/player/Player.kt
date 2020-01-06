@@ -48,7 +48,7 @@ data class Player(
 
     val mapInterest = MapInterest()
 
-    override val updateFlags: MutableList<PlayerInfoPacket.UpdateType> = mutableListOf()
+    override val updateFlags = mutableSetOf<PlayerInfoPacket.UpdateType>()
 
     fun addRoutine(type: Routine.Type, routine: suspend Routine.() -> Unit) {
         val cont = Routine(type, this)
@@ -56,12 +56,12 @@ data class Player(
         routines.add(cont)
     }
 
-    fun initializeInterest(worldPlayers: Map<Int, Player>, xteas: List<IntArray>) {
+    fun initializeInterest(worldPlayers: PlayerList, xteas: List<IntArray>) {
         ctx.write(InterestInitPacket(this, worldPlayers, xteas, position.inZones))
     }
 
-    fun playerInterestSync() {
-        ctx.write(PlayerInfoPacket(this, playerInterest))
+    fun playerInterestSync(worldPlayers: PlayerList) {
+        ctx.write(PlayerInfoPacket(this, worldPlayers))
     }
 
     fun setTopInterface(topInterface: Int) {
@@ -91,6 +91,7 @@ data class Player(
     }
 
     fun handleEvents() {
+        updateFlags.clear()
         while(events.isNotEmpty()) {
             events.poll().invoke()
         }

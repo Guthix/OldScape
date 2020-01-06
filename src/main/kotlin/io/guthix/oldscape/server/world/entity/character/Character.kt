@@ -27,9 +27,9 @@ abstract class Character(attributes: MutableMap<KProperty<*>, Any?>) : Entity(at
 
     val lastPostion = position
 
-    val interestMovementUpdateType = MovementUpdateType.STAY
+    val movementType = MovementUpdateType.STAY
 
-    abstract val updateFlags: MutableList<out UpdateType>
+    abstract val updateFlags: MutableSet<out UpdateType>
 
     abstract class UpdateType(internal val mask: Int)
 

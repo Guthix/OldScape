@@ -21,15 +21,17 @@ import io.guthix.oldscape.server.net.state.game.OutGameEvent
 import io.guthix.oldscape.server.net.state.game.VarShortSize
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.character.player.Player
+import io.guthix.oldscape.server.world.entity.character.player.PlayerList
 import io.guthix.oldscape.server.world.mapsquare.zone.Zone
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
+import io.guthix.oldscape.server.world.entity.character.player.interest.PlayerInterest.Companion.regionId
 import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 import kotlin.math.ceil
 
 class InterestInitPacket(
     private val player: Player,
-    private val playersInWorld: Map<Int, Player>,
+    private val playersInWorld: PlayerList,
     private val xteas: List<IntArray>,
     private val zone: Zone
 ) : OutGameEvent {
@@ -41,9 +43,9 @@ class InterestInitPacket(
         val bitBuf = player.ctx.alloc().buffer(STATIC_SIZE).toBitMode()
         bitBuf.writeBits(player.position.bitpack, 30)
         for(playerIndex in 1 until World.MAX_PLAYERS) {
-            val initPlayer = playersInWorld[playerIndex]
+            val externalPlayer = playersInWorld[playerIndex]
             if(playerIndex != player.index) {
-                bitBuf.writeBits(initPlayer?.position?.regionBitPack ?: 0, 18)
+                bitBuf.writeBits(externalPlayer?.position?.regionId ?: 0, 18)
             }
         }
         val gpiInitBuf = bitBuf.toByteMode()
@@ -52,12 +54,7 @@ class InterestInitPacket(
     }
 
     companion object {
-        private val Tile.regionBitPack get() =
-            (z.value shl 16) or ((x.value / FIELD_TILE_SIZE) shl 8) or (y.value / FIELD_TILE_SIZE)
-
         private val Tile.bitpack get() = (z.value shl 28) or (x.value shl 14) or y.value
-
-        private const val FIELD_TILE_SIZE = 8192
 
         val STATIC_SIZE get() = ceil((30 + (World.MAX_PLAYERS - 2) * 18).toDouble() / Byte.SIZE_BITS).toInt() +
             RebuildNormalPacket.STATIC_SIZE
