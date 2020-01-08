@@ -27,14 +27,10 @@ class Js5Handler : PacketInboundHandler<Js5FileRequest>() {
             Cache.getRawSettings(msg.containerId)
         } else {
             Cache.getRawGroup(msg.indexFileId, msg.containerId).data
-        }.duplicate() // TODO remove copying
+        }.duplicate()
         val compressionType = data.readUnsignedByte().toInt()
         val compressedSize = data.readInt()
         val response = Js5FileResponse(msg.indexFileId, msg.containerId, compressionType, compressedSize, data)
-        try {
-            ctx.writeAndFlush(response)
-        } finally {
-            if(response.refCnt() > 0) response.release() //TODO make this better, probably not the best solution
-        }
+        ctx.writeAndFlush(response)
     }
 }
