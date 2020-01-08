@@ -30,14 +30,16 @@ class Js5Encoder : MessageToByteEncoder<Js5FileResponse>() {
         if (dataSize > BYTES_AFTER_HEADER) {
             dataSize = BYTES_AFTER_HEADER
         }
-        out.writeBytes(msg.data.readBytes(dataSize))
+        out.writeBytes(msg.data.slice(msg.data.readerIndex(), dataSize))
+        msg.data.readerIndex(msg.data.readerIndex() + dataSize)
         while (msg.data.readableBytes() > 0) {
             dataSize = msg.data.readableBytes()
             if (dataSize > BYTES_AFTER_BLOCK) {
                 dataSize = BYTES_AFTER_BLOCK
             }
             out.writeByte(255)
-            out.writeBytes(msg.data.readBytes(dataSize))
+            out.writeBytes(msg.data.slice(msg.data.readerIndex(), dataSize))
+            msg.data.readerIndex(msg.data.readerIndex() + dataSize)
         }
     }
 
