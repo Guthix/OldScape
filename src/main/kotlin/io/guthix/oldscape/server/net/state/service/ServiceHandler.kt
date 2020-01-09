@@ -26,7 +26,7 @@ import io.guthix.oldscape.server.net.state.login.*
 import io.guthix.oldscape.server.world.World
 import io.netty.channel.ChannelHandlerContext
 import io.netty.channel.ChannelPipeline
-import kotlinx.io.IOException
+import java.io.IOException
 import java.math.BigInteger
 import kotlin.random.Random
 
