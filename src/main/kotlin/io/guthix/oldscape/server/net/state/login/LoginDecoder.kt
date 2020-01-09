@@ -28,7 +28,7 @@ import io.netty.buffer.ByteBuf
 import io.netty.buffer.Unpooled
 import io.netty.channel.ChannelHandlerContext
 import io.netty.handler.codec.ByteToMessageDecoder
-import kotlinx.io.IOException
+import java.io.IOException
 import java.math.BigInteger
 
 class LoginDecoder(

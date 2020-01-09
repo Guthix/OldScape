@@ -19,8 +19,8 @@ package io.guthix.oldscape.server.api
 import io.guthix.oldscape.cache.ConfigArchive
 import io.guthix.oldscape.cache.config.EnumConfig
 import io.guthix.oldscape.server.Cache
-import kotlinx.io.IOException
 import mu.KotlinLogging
+import java.io.IOException
 
 private val logger = KotlinLogging.logger {  }
 

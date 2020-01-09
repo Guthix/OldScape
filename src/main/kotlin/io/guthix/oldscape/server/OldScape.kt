@@ -16,28 +16,23 @@
  */
 package io.guthix.oldscape.server
 
-import com.charleskorn.kaml.Yaml
-import io.guthix.cache.js5.Js5Cache
-import io.guthix.cache.js5.container.disk.Js5DiskStore
+import com.fasterxml.jackson.databind.ObjectMapper
+import com.fasterxml.jackson.dataformat.yaml.YAMLFactory
+import com.fasterxml.jackson.module.kotlin.registerKotlinModule
 import io.guthix.oldscape.server.api.Enums
-import io.guthix.oldscape.server.api.Xtea
 import io.guthix.oldscape.server.event.EventBus
 import io.guthix.oldscape.server.net.OldScapeServer
 import io.guthix.oldscape.server.net.state.game.GamePacketDecoder
 import io.guthix.oldscape.server.world.World
-import java.nio.file.Files
 import java.nio.file.Path
 import java.util.*
 
 object OldScape {
     @JvmStatic
     fun main(args: Array<String>) {
-        val configFile = Path.of(ServerConfig::class.java.getResource("/Config.yaml").toURI())
-        val config = Yaml.default.parse(ServerConfig.serializer(), Files.readString(configFile))
-        Cache.load(Js5DiskStore.open(Path.of(ServerConfig::class.java.getResource("/cache").toURI())))
-        Xtea.initJson(Path.of(Xtea::class.java.getResource("/cache/xteas.json").toURI()))
+        val config = loadConfig(Path.of(ServerConfig::class.java.getResource("/Config.yaml").toURI()))
+        Cache.load(Path.of(ServerConfig::class.java.getResource("/cache").toURI()))
         Enums.load()
-
         EventBus.loadScripts()
         GamePacketDecoder.loadIncPackets()
 
@@ -45,5 +40,9 @@ object OldScape {
         Timer().scheduleAtFixedRate(world, 0, 600)
         OldScapeServer(config.revision, config.port, 21, world, config.rsa.privateKey, config.rsa.modulus).run()
     }
+
+    private fun loadConfig(path: Path) = ObjectMapper(YAMLFactory()).registerKotlinModule().readValue(
+        path.toFile(), ServerConfig::class.java
+    )
 }
 
