@@ -27,7 +27,7 @@ class Js5Handler : PacketInboundHandler<Js5FileRequest>() {
             Cache.getRawSettings(msg.containerId)
         } else {
             Cache.getRawGroup(msg.indexFileId, msg.containerId).data
-        }.duplicate()
+        }.retainedDuplicate()
         val compressionType = data.readUnsignedByte().toInt()
         val compressedSize = data.readInt()
         val response = Js5FileResponse(msg.indexFileId, msg.containerId, compressionType, compressedSize, data)
