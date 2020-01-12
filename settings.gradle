@@ -1,3 +1,10 @@
+pluginManagement {
+    plugins {
+        id 'org.jetbrains.kotlin.jvm' version kotlinVersion
+        id 'com.github.hierynomus.license' version licensePluginVersion
+    }
+}
+
 rootProject.name = 'oldscape-cache'
 
 include 'formats'
