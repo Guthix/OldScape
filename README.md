@@ -27,12 +27,5 @@ A library for reading and writing OSRS cache files
 |  19 |  World Map         |
 |  20 |  World Map Ground         |    
 
-## Dependencies
-
-Currently the Jagex-Store-5 dependency needs to be manually added to the
-classpath.
-
-
-
 ## Acknowledgements
 - [RuneLite](https://runelite.net/) for providing CS2 instruction names

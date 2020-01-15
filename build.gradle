@@ -16,7 +16,6 @@ allprojects {
     repositories {
         jcenter()
         mavenCentral()
-        mavenLocal()
         maven { url 'https://jitpack.io' }
     }
 
@@ -36,7 +35,7 @@ allprojects {
 }
 
 dependencies {
-    api group: 'io.guthix.cache', name: 'jagex-store-5', version: jagexCacheVersion
+    api group: 'com.github.guthix', name: 'Jagex-Store-5', version: jagexCacheVersion
     implementation group: 'io.github.microutils', name: 'kotlin-logging', version: kotlinLoggingVersion
     implementation group: 'ch.qos.logback', name: 'logback-classic', version: logbackVersion
 }
