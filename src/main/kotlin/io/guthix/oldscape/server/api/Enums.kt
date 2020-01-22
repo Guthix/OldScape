@@ -16,9 +16,9 @@
  */
 package io.guthix.oldscape.server.api
 
+import io.guthix.cache.js5.Js5Cache
 import io.guthix.oldscape.cache.ConfigArchive
 import io.guthix.oldscape.cache.config.EnumConfig
-import io.guthix.oldscape.server.Cache
 import mu.KotlinLogging
 import java.io.IOException
 
@@ -38,8 +38,8 @@ object Enums {
         return configs[index] ?: throw IOException("Could not find enum $index.")
     }
 
-    fun load() {
-        configs = EnumConfig.load(Cache.getGroup(ConfigArchive.id, EnumConfig.id))
+    fun load(cache: Js5Cache) {
+        configs = EnumConfig.load(cache.readArchive(ConfigArchive.id).readGroup(EnumConfig.id))
         logger.info { "Loaded ${configs.size} enums" }
     }
 }

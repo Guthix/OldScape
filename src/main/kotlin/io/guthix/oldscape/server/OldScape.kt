@@ -16,33 +16,60 @@
  */
 package io.guthix.oldscape.server
 
+import com.fasterxml.jackson.core.type.TypeReference
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory
 import com.fasterxml.jackson.module.kotlin.registerKotlinModule
+import io.guthix.cache.js5.Js5Cache
+import io.guthix.cache.js5.container.Js5Container
+import io.guthix.cache.js5.container.Js5Store
+import io.guthix.cache.js5.container.disk.Js5DiskStore
+import io.guthix.cache.js5.container.heap.Js5HeapStore
+import io.guthix.oldscape.cache.xtea.MapXtea
 import io.guthix.oldscape.server.api.Enums
 import io.guthix.oldscape.server.event.EventBus
 import io.guthix.oldscape.server.net.OldScapeServer
 import io.guthix.oldscape.server.net.state.game.GamePacketDecoder
 import io.guthix.oldscape.server.world.World
+import mu.KotlinLogging
 import java.nio.file.Path
 import java.util.*
+
+val logger = KotlinLogging.logger {  }
 
 object OldScape {
     @JvmStatic
     fun main(args: Array<String>) {
         val config = loadConfig(Path.of(ServerConfig::class.java.getResource("/Config.yaml").toURI()))
-        Cache.load(Path.of(ServerConfig::class.java.getResource("/cache").toURI()))
-        Enums.load()
+        val cacheDir = Path.of(ServerConfig::class.java.getResource("/cache").toURI())
+        val store = Js5HeapStore.open(Js5DiskStore.open(cacheDir), appendVersions = false)
+        val cache = Js5Cache(store)
+        store.write(Js5Store.MASTER_INDEX, Js5Store.MASTER_INDEX, Js5Container(
+            cache.generateValidator(includeWhirlpool = false, includeSizes = false).encode()).encode()
+        )
+        val mapSquareXteas = loadMapSquareXteaKeys(cacheDir.resolve("xteas.json"))
+        Enums.load(cache)
         EventBus.loadScripts()
         GamePacketDecoder.loadIncPackets()
 
-        val world = World()
+        val world = World(cache, mapSquareXteas)
         Timer().scheduleAtFixedRate(world, 0, 600)
-        OldScapeServer(config.revision, config.port, 21, world, config.rsa.privateKey, config.rsa.modulus).run()
+        OldScapeServer(config.revision, config.port, config.rsa.privateKey, config.rsa.modulus, world, store).run()
     }
 
     private fun loadConfig(path: Path) = ObjectMapper(YAMLFactory()).registerKotlinModule().readValue(
         path.toFile(), ServerConfig::class.java
     )
+
+    private fun loadMapSquareXteaKeys(path: Path): Map<Int, IntArray> {
+        val mapper = ObjectMapper().registerKotlinModule()
+        val keys: List<MapXtea> = mapper.readValue(path.toFile(), object : TypeReference<List<MapXtea>>(){})
+        val keyMap = mutableMapOf<Int, IntArray>()
+        for(xtea in keys) {
+            keyMap[xtea.id] = xtea.key
+        }
+        logger.info("Loaded ${keyMap.size} mapsquare xteas")
+        return keyMap.toMap()
+    }
 }
 

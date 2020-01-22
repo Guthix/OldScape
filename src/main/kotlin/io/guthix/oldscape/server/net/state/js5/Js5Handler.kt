@@ -16,21 +16,16 @@
  */
 package io.guthix.oldscape.server.net.state.js5
 
-import io.guthix.cache.js5.container.disk.Js5DiskStore
-import io.guthix.oldscape.server.Cache
+import io.guthix.cache.js5.container.Js5Store
 import io.guthix.oldscape.server.net.PacketInboundHandler
 import io.netty.channel.ChannelHandlerContext
 
-class Js5Handler : PacketInboundHandler<Js5FileRequest>() {
+class Js5Handler(private val store: Js5Store) : PacketInboundHandler<Js5FileRequest>() {
     override fun channelRead0(ctx: ChannelHandlerContext, msg: Js5FileRequest) {
-        val data = if(msg.indexFileId == Js5DiskStore.MASTER_INDEX) {
-            Cache.getRawSettings(msg.containerId)
-        } else {
-            Cache.getRawGroup(msg.indexFileId, msg.containerId).data
-        }.retainedDuplicate()
+        val data = store.read(msg.indexFileId, msg.containerId).retain()
         val compressionType = data.readUnsignedByte().toInt()
         val compressedSize = data.readInt()
-        val response = Js5FileResponse(msg.indexFileId, msg.containerId, compressionType, compressedSize, data)
+        val response = Js5FileResponse(msg.indexFileId, msg.containerId, compressionType, compressedSize, data.copy())
         ctx.writeAndFlush(response)
     }
 }
