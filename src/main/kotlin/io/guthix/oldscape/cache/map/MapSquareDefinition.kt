@@ -47,6 +47,9 @@ class MapDefinition(
     val underlayIds: Array<Array<ShortArray>>
 ) {
     companion object {
+        const val BLOCKED_TILE_MASK: Short = 0x1
+        const val BRIDGE_TILE_MASK: Short = 0x2
+        const val ROOF_TILE_MASK: Short = 0x4
         private const val JAGEX_CIRCULAR_ANGLE = 2048
         private const val ANGULAR_RATIO = 360.0 / JAGEX_CIRCULAR_ANGLE
         private val JAGEX_RADIAN = Math.toRadians(ANGULAR_RATIO)
@@ -165,10 +168,6 @@ class MapLocDefinition(
     val orientation: Int
 ) {
     companion object {
-        const val BLOCKED_TILE_MASK: Short = 0x1
-        const val BRIDGE_TILE_MASK: Short = 0x2
-        const val ROOF_TILE_MASK: Short = 0x4
-
         fun decode(data: ByteBuf, renderRules: Array<Array<ShortArray>>): List<MapLocDefinition> {
             var id = -1
             var offset = data.readUnsignedSmallSmart()
@@ -182,7 +181,7 @@ class MapLocDefinition(
                     val localY = positionHash and 0x3F
                     val localX = (positionHash shr 6) and 0x3F
                     var z = (positionHash shr 12) and 0x3
-                    if(renderRules[1][localX][localY] == BRIDGE_TILE_MASK) z--
+                    if(renderRules[1][localX][localY] == MapDefinition.BRIDGE_TILE_MASK) z--
                     if(z < 0) {
                         data.readByte()
                     } else {
