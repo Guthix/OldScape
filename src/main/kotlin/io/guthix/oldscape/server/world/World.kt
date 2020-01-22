@@ -16,6 +16,7 @@
  */
 package io.guthix.oldscape.server.world
 
+import io.guthix.cache.js5.Js5Cache
 import io.guthix.oldscape.server.event.EventBus
 import io.guthix.oldscape.server.event.imp.LoginEvent
 import io.guthix.oldscape.server.net.state.game.GameDecoder
@@ -26,7 +27,7 @@ import io.guthix.oldscape.server.world.entity.character.player.PlayerList
 import java.util.*
 import java.util.concurrent.*
 
-class World : TimerTask() {
+class World(val cache: Js5Cache, val mapsquareXteas: Map<Int, IntArray>) : TimerTask() {
     internal val loginQueue = ConcurrentLinkedQueue<LoginRequest>()
 
     val players = PlayerList(MAX_PLAYERS)

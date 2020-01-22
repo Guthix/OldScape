@@ -16,7 +16,6 @@
  */
 package io.guthix.oldscape.server.world.entity.character.player.interest
 
-import io.guthix.oldscape.server.Cache
 import io.guthix.oldscape.server.world.mapsquare.MapSquareUnit
 import io.guthix.oldscape.server.world.mapsquare.zone.Zone
 import io.guthix.oldscape.server.world.mapsquare.zone.ZoneUnit
@@ -35,19 +34,19 @@ class MapInterest {
 
         private val ZoneUnit.endMapInterest get() = (this + RANGE).inMapSquares
 
-        fun getInterestedXteas(zone: Zone): List<IntArray> {
-            val xteas = mutableListOf<IntArray>()
+        fun getInterestedXteas(zone: Zone, xteas: Map<Int, IntArray>): List<IntArray> {
+            val interestedXteas = mutableListOf<IntArray>()
             for(mSquareX in zone.x.startMapInterest..zone.x.endMapInterest) {
                 for(mSquareY in zone.y.startMapInterest..zone.y.endMapInterest) {
                     if(onTutorialIsland(mSquareX, mSquareY)) continue
                     val id = (mSquareX.value shl 8) or mSquareY.value
-                    val xtea = Cache.mapSquareXteas[id] ?: throw IllegalStateException(
+                    val xtea = xteas[id] ?: throw IllegalStateException(
                         "Could not find XTEA for id $id."
                     )
-                    xteas.add(xtea)
+                    interestedXteas.add(xtea)
                 }
             }
-            return xteas
+            return interestedXteas
         }
 
         private fun onTutorialIsland(mSquareX: MapSquareUnit, mSquareY: MapSquareUnit) =

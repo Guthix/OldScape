@@ -16,7 +16,7 @@
  */
 package io.guthix.oldscape.server.net.state.login
 
-import io.guthix.oldscape.server.net.state.IsaacRandomPair
+import io.guthix.oldscape.server.net.IsaacRandomPair
 import io.guthix.oldscape.server.world.entity.character.player.ClientSettings
 import io.guthix.oldscape.server.world.entity.character.player.MachineSettings
 import io.netty.channel.ChannelHandlerContext

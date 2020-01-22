@@ -14,7 +14,7 @@
  * You should have received a copy of the GNU General Public License
  * along with Foobar. If not, see <https://www.gnu.org/licenses/>.
  */
-package io.guthix.oldscape.server.net.state
+package io.guthix.oldscape.server.net
 
 class IsaacRandomPair(val encodeGen : IsaacRandom, val decodeGen: IsaacRandom)
 

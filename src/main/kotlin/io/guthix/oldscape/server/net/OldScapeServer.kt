@@ -16,6 +16,7 @@
  */
 package io.guthix.oldscape.server.net
 
+import io.guthix.cache.js5.container.Js5Store
 import io.guthix.oldscape.server.net.state.service.ServiceDecoder
 import io.guthix.oldscape.server.net.state.service.ServiceHandler
 import io.guthix.oldscape.server.world.World
@@ -36,10 +37,10 @@ private val logger = KotlinLogging.logger { }
 class OldScapeServer(
     private val revision: Int,
     private val port: Int,
-    private val archiveCount: Int,
-    private val world: World,
     private val rsaExp: BigInteger,
-    private val rsaMod: BigInteger
+    private val rsaMod: BigInteger,
+    private val world: World,
+    private val store: Js5Store
 ) {
     fun run() {
         val bossGroup = NioEventLoopGroup()
@@ -59,7 +60,7 @@ class OldScapeServer(
                     override fun initChannel(channel: SocketChannel) {
                         channel.pipeline().addLast(ServiceDecoder::class.qualifiedName, ServiceDecoder())
                         channel.pipeline().addLast(ServiceHandler::class.qualifiedName,
-                            ServiceHandler(revision, archiveCount, world, rsaExp, rsaMod)
+                            ServiceHandler(revision, rsaExp, rsaMod, world, store)
                         )
                     }
                 })

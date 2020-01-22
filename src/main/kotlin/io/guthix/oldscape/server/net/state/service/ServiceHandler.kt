@@ -16,6 +16,7 @@
  */
 package io.guthix.oldscape.server.net.state.service
 
+import io.guthix.cache.js5.container.Js5Store
 import io.guthix.oldscape.server.net.PacketInboundHandler
 import io.guthix.oldscape.server.net.StatusResponse
 import io.guthix.oldscape.server.net.StatusEncoder
@@ -32,10 +33,10 @@ import kotlin.random.Random
 
 class ServiceHandler(
     private val currentRevision: Int,
-    private val archiveCount: Int,
-    private val world: World,
     private val rsaPrivateKey: BigInteger,
-    private val rsaMod: BigInteger
+    private val rsaMod: BigInteger,
+    private val world: World,
+    private val store: Js5Store
 ) : PacketInboundHandler<ConnectionRequest>() {
     override fun channelRead0(ctx: ChannelHandlerContext, msg: ConnectionRequest) {
         ctx.pipeline().addStatusEncoder()
@@ -69,9 +70,14 @@ class ServiceHandler(
         replace(StatusEncoder::class.qualifiedName, SessionIdEncoder::class.qualifiedName, SessionIdEncoder())
     }
 
-    private fun ChannelPipeline.swapToLogin(world: World, sessionId: Long, rsaPrivateKey: BigInteger, rsaMod: BigInteger) {
+    private fun ChannelPipeline.swapToLogin(
+        world: World,
+        sessionId: Long,
+        rsaPrivateKey: BigInteger,
+        rsaMod: BigInteger
+    ) {
         replace(ServiceDecoder::class.qualifiedName, LoginDecoder::class.qualifiedName,
-                LoginDecoder(archiveCount, rsaPrivateKey, rsaMod)
+                LoginDecoder(store.archiveCount, rsaPrivateKey, rsaMod)
         )
         replace(SessionIdEncoder::class.qualifiedName, StatusEncoder::class.qualifiedName, StatusEncoder())
         replace(ServiceHandler::class.qualifiedName, LoginHandler::class.qualifiedName, LoginHandler(world, sessionId))
@@ -79,7 +85,7 @@ class ServiceHandler(
 
     private fun ChannelPipeline.swapToJs5() {
         replace(ServiceDecoder::class.qualifiedName, Js5Decoder::class.qualifiedName, Js5Decoder())
-        replace(ServiceHandler::class.qualifiedName, Js5Handler::class.qualifiedName, Js5Handler())
+        replace(ServiceHandler::class.qualifiedName, Js5Handler::class.qualifiedName, Js5Handler(store))
         replace(StatusEncoder::class.qualifiedName, Js5Encoder::class.qualifiedName, Js5Encoder())
     }
 }
