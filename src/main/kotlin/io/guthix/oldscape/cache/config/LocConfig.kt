@@ -22,7 +22,7 @@ import io.netty.buffer.ByteBuf
 import io.netty.buffer.Unpooled
 import java.io.IOException
 
-data class ObjectConfig(override val id: Int): NamedConfig(id) {
+data class LocConfig(override val id: Int): NamedConfig(id) {
     override var name = "null"
     var width: Short= 1
     var length: Short = 1
@@ -235,11 +235,11 @@ data class ObjectConfig(override val id: Int): NamedConfig(id) {
         return data
     }
 
-    companion object : NamedConfigCompanion<ObjectConfig>() {
+    companion object : NamedConfigCompanion<LocConfig>() {
         override val id = 6
 
-        override fun decode(id: Int, data: ByteBuf): ObjectConfig {
-            val objectConfig = ObjectConfig(id)
+        override fun decode(id: Int, data: ByteBuf): LocConfig {
+            val objectConfig = LocConfig(id)
             decoder@ while (true) {
                 when (val opcode = data.readUnsignedByte().toInt()) {
                     0 -> break@decoder

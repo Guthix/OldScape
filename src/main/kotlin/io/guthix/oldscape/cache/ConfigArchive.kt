@@ -14,6 +14,7 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with Foobar. If not, see <https://www.gnu.org/licenses/>.
  */
+@file:Suppress("unused")
 package io.guthix.oldscape.cache
 
 import io.guthix.cache.js5.Js5Archive
@@ -26,9 +27,9 @@ data class ConfigArchive(
     val hitMarkConfigss: Map<Int, HitMarkConfig>,
     val identKitConfigs: Map<Int, IdentKitConfig>,
     val inventoryConfigs: Map<Int, InventoryConfig>,
-    val itemConfigs: Map<Int, ItemConfig>,
+    val objConfigs: Map<Int, ObjConfig>,
     val npcConfigs: Map<Int, NpcConfig>,
-    val objectConfigs: Map<Int, ObjectConfig>,
+    val locConfigs: Map<Int, LocConfig>,
     val overlayConfigs: Map<Int, OverlayConfig>,
     val paramConfigs: Map<Int, ParamConfig>,
     val sequenceConfigs: Map<Int, SequenceConfig>,
@@ -49,9 +50,9 @@ data class ConfigArchive(
             HitMarkConfig.load(archive.readGroup(HitMarkConfig.id)),
             IdentKitConfig.load(archive.readGroup(IdentKitConfig.id)),
             InventoryConfig.load(archive.readGroup(InventoryConfig.id)),
-            ItemConfig.load(archive.readGroup(ItemConfig.id)),
+            ObjConfig.load(archive.readGroup(ObjConfig.id)),
             NpcConfig.load(archive.readGroup(NpcConfig.id)),
-            ObjectConfig.load(archive.readGroup(ObjectConfig.id)),
+            LocConfig.load(archive.readGroup(LocConfig.id)),
             OverlayConfig.load(archive.readGroup(OverlayConfig.id)),
             ParamConfig.load(archive.readGroup(ParamConfig.id)),
             SequenceConfig.load(archive.readGroup(SequenceConfig.id)),

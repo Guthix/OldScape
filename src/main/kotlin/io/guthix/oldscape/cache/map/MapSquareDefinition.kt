@@ -14,38 +14,31 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with Foobar. If not, see <https://www.gnu.org/licenses/>.
  */
+@file:Suppress("unused")
 package io.guthix.oldscape.cache.map
 
 import io.guthix.buffer.readUnsignedSmallSmart
 import io.netty.buffer.ByteBuf
 import kotlin.math.cos
 
-class Region(
-    val tileHeights: Array<Array<IntArray>>,
-    val renderRules: Array<Array<ShortArray>>,
-    val overlayIds: Array<Array<ByteArray>>,
-    val overlayPaths: Array<Array<ShortArray>>,
-    val overlayRotations: Array<Array<ShortArray>>,
-    val underlayIds: Array<Array<ShortArray>>,
-    val objectLocation: List<ObjectLocation>
+class MapSquareDefinition(
+    val mapDefinition: MapDefinition,
+    val mapLocDefinition: List<MapLocDefinition>
 ) {
     companion object {
         const val FLOOR_COUNT = 4
 
         const val SIZE = 64
 
-        fun decode(landData: ByteBuf, mapData: ByteBuf, baseX: Int, baseY: Int): Region {
-            val land = Land.decode(landData, baseX, baseY)
-            val objectLocations = ObjectLocation.decode(mapData, land.renderRules)
-            return Region(
-                land.tileHeights, land.renderRules, land.overlayIds, land.overlayPaths, land.overlayRotations,
-                land.underlayIds, objectLocations
-            )
+        fun decode(landData: ByteBuf, mapData: ByteBuf, baseX: Int, baseY: Int): MapSquareDefinition {
+            val mapDefinitions = MapDefinition.decode(landData, baseX, baseY)
+            val mapLocDefinitions = MapLocDefinition.decode(mapData, mapDefinitions.renderRules)
+            return MapSquareDefinition(mapDefinitions, mapLocDefinitions)
         }
     }
 }
 
-class Land(
+class MapDefinition(
     val tileHeights: Array<Array<IntArray>>,
     val renderRules: Array<Array<ShortArray>>,
     val overlayIds: Array<Array<ByteArray>>,
@@ -61,28 +54,28 @@ class Land(
             ((0xFFFF + 1) * cos(it.toDouble() * JAGEX_RADIAN).toInt())
         }
 
-        fun decode(data: ByteBuf, baseX: Int, baseY: Int): Land {
-            val tileHeights = Array(Region.FLOOR_COUNT) { Array(Region.SIZE) { IntArray(
-                Region.SIZE
+        fun decode(data: ByteBuf, baseX: Int, baseY: Int): MapDefinition {
+            val tileHeights = Array(MapSquareDefinition.FLOOR_COUNT) { Array(MapSquareDefinition.SIZE) { IntArray(
+                MapSquareDefinition.SIZE
             ) } }
-            val renderRules = Array(Region.FLOOR_COUNT) { Array(Region.SIZE) { ShortArray(
-                Region.SIZE
+            val renderRules = Array(MapSquareDefinition.FLOOR_COUNT) { Array(MapSquareDefinition.SIZE) { ShortArray(
+                MapSquareDefinition.SIZE
             ) } }
-            val overlayIds = Array(Region.FLOOR_COUNT) { Array(Region.SIZE) { ByteArray(
-                Region.SIZE
+            val overlayIds = Array(MapSquareDefinition.FLOOR_COUNT) { Array(MapSquareDefinition.SIZE) { ByteArray(
+                MapSquareDefinition.SIZE
             ) } }
-            val overlayPaths = Array(Region.FLOOR_COUNT) { Array(Region.SIZE) { ShortArray(
-                Region.SIZE
+            val overlayPaths = Array(MapSquareDefinition.FLOOR_COUNT) { Array(MapSquareDefinition.SIZE) { ShortArray(
+                MapSquareDefinition.SIZE
             ) } }
-            val overlayRotations = Array(Region.FLOOR_COUNT) { Array(Region.SIZE) { ShortArray(
-                Region.SIZE
+            val overlayRotations = Array(MapSquareDefinition.FLOOR_COUNT) { Array(MapSquareDefinition.SIZE) { ShortArray(
+                MapSquareDefinition.SIZE
             ) } }
-            val underlayIds = Array(Region.FLOOR_COUNT) { Array(Region.SIZE) { ShortArray(
-                Region.SIZE
+            val underlayIds = Array(MapSquareDefinition.FLOOR_COUNT) { Array(MapSquareDefinition.SIZE) { ShortArray(
+                MapSquareDefinition.SIZE
             ) } }
-            for (z in 0 until Region.FLOOR_COUNT) {
-                for (x in 0 until Region.SIZE) {
-                    for (y in 0 until Region.SIZE) {
+            for (z in 0 until MapSquareDefinition.FLOOR_COUNT) {
+                for (x in 0 until MapSquareDefinition.SIZE) {
+                    for (y in 0 until MapSquareDefinition.SIZE) {
                         while (true) {
                             val opcode = data.readUnsignedByte().toInt()
                             when {
@@ -114,7 +107,7 @@ class Land(
                     }
                 }
             }
-            return Land(tileHeights, renderRules, overlayIds, overlayPaths, overlayRotations, underlayIds)
+            return MapDefinition(tileHeights, renderRules, overlayIds, overlayPaths, overlayRotations, underlayIds)
         }
 
         private fun calcZ0Height(baseX: Int, baseY: Int, x: Int, y: Int): Int {
@@ -142,7 +135,6 @@ class Land(
             return interpolate(i1, i2, fracY, frequency)
         }
 
-
         private fun smoothNoise2d(x: Int, y: Int): Int {
             val corners = noise(x - 1, y - 1) + noise(x + 1, y - 1) + noise(x - 1, 1 + y)
             + noise(x + 1, y + 1)
@@ -164,7 +156,7 @@ class Land(
     }
 }
 
-class ObjectLocation(
+class MapLocDefinition(
     val id: Int,
     val floor: Int,
     val localX: Int,
@@ -177,10 +169,10 @@ class ObjectLocation(
         const val BRIDGE_TILE_MASK: Short = 0x2
         const val ROOF_TILE_MASK: Short = 0x4
 
-        fun decode(data: ByteBuf, renderRules: Array<Array<ShortArray>>): List<ObjectLocation> {
+        fun decode(data: ByteBuf, renderRules: Array<Array<ShortArray>>): List<MapLocDefinition> {
             var id = -1
             var offset = data.readUnsignedSmallSmart()
-            val locations = mutableListOf<ObjectLocation>()
+            val locations = mutableListOf<MapLocDefinition>()
             while (offset != 0) {
                 id += offset
                 var positionHash = 0
@@ -197,7 +189,7 @@ class ObjectLocation(
                         val attributes = data.readUnsignedByte().toInt()
                         val orientation = attributes and 0x3
                         val type = attributes shr 2
-                        locations.add(ObjectLocation(id, z, localX, localY, type, orientation))
+                        locations.add(MapLocDefinition(id, z, localX, localY, type, orientation))
                     }
                     positionOffset = data.readUnsignedSmallSmart()
                 }

@@ -14,6 +14,7 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with Foobar. If not, see <https://www.gnu.org/licenses/>.
  */
+@file:Suppress("unused")
 package io.guthix.oldscape.cache.sound
 
 import io.guthix.buffer.readSmallSmart
@@ -157,14 +158,14 @@ class AudioFilter(
                 unity[1] = data.readUnsignedShort()
                 val uByte1 = data.readUnsignedByte().toInt()
                 for(i in 0 until SIZE) {
-                    for(j in 0 until pairs[i].toInt()) {
+                    for(j in 0 until pairs[i]) {
                         phases[i][0][j] = data.readUnsignedShort()
                         magnitudes[i][0][j] = data.readUnsignedShort()
                     }
                 }
 
                 for(i in 0 until SIZE) {
-                    for(j in 0 until pairs[i].toInt()) {
+                    for(j in 0 until pairs[i]) {
                         if (uByte1 and (1 shl i * 4 shl j) != 0) {
                             phases[i][1][j] = data.readUnsignedShort()
                             magnitudes[i][1][j] = data.readUnsignedShort()

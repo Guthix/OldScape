@@ -14,27 +14,30 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with Foobar. If not, see <https://www.gnu.org/licenses/>.
  */
+@file:Suppress("unused")
 package io.guthix.oldscape.cache
 
 import io.guthix.cache.js5.Js5Archive
-import io.guthix.oldscape.cache.map.Region
+import io.guthix.oldscape.cache.map.MapSquareDefinition
 import io.guthix.oldscape.cache.xtea.MapXtea
+import java.io.FileNotFoundException
 
-class MapArchive (val regions: Map<Int, Region>) {
+class MapArchive(val mapSquares: Map<Int, MapSquareDefinition>) {
     companion object  {
-        val id = 5
+        const val id = 5
 
         fun load(archive: Js5Archive, xteas: List<MapXtea>): MapArchive {
-            val regions = mutableMapOf<Int, Region>()
+            val mapSquares = mutableMapOf<Int, MapSquareDefinition>()
             xteas.forEach {
-                val landGroup = archive.readGroup("m${it.x}_${it.y}")
-                val mapGroup = archive.readGroup("l${it.x}_${it.y}", it.key)
-                check(landGroup.files.size != 1 || mapGroup.files.size != 1) {
-                    "Map archive has ${landGroup.files.size} files but can only have 1."
-                }
-                regions[it.id] = Region.decode(landGroup.files[0]!!.data, mapGroup.files[0]!!.data, it.x, it.y)
+                val mapFile = archive.readGroup("m${it.x}_${it.y}").files[0] ?: throw FileNotFoundException(
+                    "Map file not found for map m${it.x}_${it.y}."
+                )
+                val locFile = archive.readGroup("l${it.x}_${it.y}", it.key).files[0] ?: throw FileNotFoundException(
+                    "Loc file not found for loc l${it.x}_${it.y}."
+                )
+                mapSquares[it.id] = MapSquareDefinition.decode(mapFile.data, locFile.data, it.x, it.y)
             }
-            return MapArchive(regions)
+            return MapArchive(mapSquares)
         }
     }
 }
