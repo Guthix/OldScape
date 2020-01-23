@@ -22,6 +22,8 @@ import io.netty.buffer.ByteBuf
 import kotlin.math.cos
 
 class MapSquareDefinition(
+    val x: Int,
+    val y: Int,
     val mapDefinition: MapDefinition,
     val mapLocDefinition: List<MapLocDefinition>
 ) {
@@ -30,10 +32,10 @@ class MapSquareDefinition(
 
         const val SIZE = 64
 
-        fun decode(landData: ByteBuf, mapData: ByteBuf, baseX: Int, baseY: Int): MapSquareDefinition {
-            val mapDefinitions = MapDefinition.decode(landData, baseX, baseY)
+        fun decode(landData: ByteBuf, mapData: ByteBuf, x: Int, y: Int): MapSquareDefinition {
+            val mapDefinitions = MapDefinition.decode(landData, x, y)
             val mapLocDefinitions = MapLocDefinition.decode(mapData, mapDefinitions.renderRules)
-            return MapSquareDefinition(mapDefinitions, mapLocDefinitions)
+            return MapSquareDefinition(x, y, mapDefinitions, mapLocDefinitions)
         }
     }
 }
