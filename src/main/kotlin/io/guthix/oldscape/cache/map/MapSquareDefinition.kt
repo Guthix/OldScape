@@ -17,6 +17,7 @@
 @file:Suppress("unused")
 package io.guthix.oldscape.cache.map
 
+import io.guthix.buffer.readIncrSmallSmart
 import io.guthix.buffer.readUnsignedSmallSmart
 import io.netty.buffer.ByteBuf
 import kotlin.math.cos
@@ -25,7 +26,7 @@ class MapSquareDefinition(
     val x: Int,
     val y: Int,
     val mapDefinition: MapDefinition,
-    val mapLocDefinition: List<MapLocDefinition>
+    val locationDefinitions: List<MapLocDefinition>
 ) {
     companion object {
         const val FLOOR_COUNT = 4
@@ -81,7 +82,7 @@ class MapDefinition(
             for (z in 0 until MapSquareDefinition.FLOOR_COUNT) {
                 for (x in 0 until MapSquareDefinition.SIZE) {
                     for (y in 0 until MapSquareDefinition.SIZE) {
-                        while (true) {
+                        loop@ while (true) {
                             val opcode = data.readUnsignedByte().toInt()
                             when {
                                 opcode == 0 -> {
@@ -90,6 +91,7 @@ class MapDefinition(
                                     } else {
                                         tileHeights[z][x][y] = tileHeights[z - 1][x][y] - 240
                                     }
+                                    break@loop
                                 }
                                 opcode == 1 -> {
                                     var height = data.readUnsignedByte().toInt()
@@ -99,6 +101,7 @@ class MapDefinition(
                                     } else {
                                         tileHeights[z][x][y] = tileHeights[z - 1][x][y] - height * 8
                                     }
+                                    break@loop
                                 }
                                 opcode <= 49 -> {
                                     overlayIds[z][x][y] = data.readByte()
@@ -172,7 +175,7 @@ class MapLocDefinition(
     companion object {
         fun decode(data: ByteBuf, renderRules: Array<Array<ShortArray>>): List<MapLocDefinition> {
             var id = -1
-            var offset = data.readUnsignedSmallSmart()
+            var offset = data.readIncrSmallSmart()
             val locations = mutableListOf<MapLocDefinition>()
             while (offset != 0) {
                 id += offset

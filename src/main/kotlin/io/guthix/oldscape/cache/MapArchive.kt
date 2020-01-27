@@ -22,7 +22,7 @@ import io.guthix.oldscape.cache.map.MapSquareDefinition
 import io.guthix.oldscape.cache.xtea.MapXtea
 import java.io.FileNotFoundException
 
-class MapArchive(val mapSquares: Map<Int, MapSquareDefinition>) {
+class MapArchive(val mapsquares: Map<Int, MapSquareDefinition>) {
     companion object  {
         const val id = 5
 
