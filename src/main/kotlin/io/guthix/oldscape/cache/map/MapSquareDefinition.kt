@@ -197,7 +197,7 @@ class MapLocDefinition(
                     }
                     positionOffset = data.readUnsignedSmallSmart()
                 }
-                offset = data.readUnsignedSmallSmart()
+                offset = data.readIncrSmallSmart()
             }
             return locations
         }
