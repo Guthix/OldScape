@@ -25,6 +25,7 @@ import io.guthix.oldscape.server.world.entity.character.player.PlayerList
 import io.guthix.oldscape.server.world.mapsquare.zone.Zone
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
 import io.guthix.oldscape.server.world.entity.character.player.interest.PlayerInterest.Companion.regionId
+import io.guthix.oldscape.server.world.mapsquare.zone.ZoneUnit
 import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 import kotlin.math.ceil
@@ -33,7 +34,8 @@ class InterestInitPacket(
     private val player: Player,
     private val playersInWorld: PlayerList,
     private val xteas: List<IntArray>,
-    private val zone: Zone
+    private val x: ZoneUnit,
+    private val y: ZoneUnit
 ) : OutGameEvent {
     override val opcode = 73
 
@@ -49,12 +51,12 @@ class InterestInitPacket(
             }
         }
         val gpiInitBuf = bitBuf.toByteMode()
-        val mapInitBuf = RebuildNormalPacket(xteas, zone).encode(ctx)
+        val mapInitBuf = RebuildNormalPacket(xteas, x, y).encode(ctx)
         return ctx.alloc().compositeBuffer(2).addComponents(true, gpiInitBuf, mapInitBuf)
     }
 
     companion object {
-        private val Tile.bitpack get() = (z.value shl 28) or (x.value shl 14) or y.value
+        private val Tile.bitpack get() = (floor.value shl 28) or (x.value shl 14) or y.value
 
         val STATIC_SIZE get() = ceil((30 + (World.MAX_PLAYERS - 2) * 18).toDouble() / Byte.SIZE_BITS).toInt() +
             RebuildNormalPacket.STATIC_SIZE

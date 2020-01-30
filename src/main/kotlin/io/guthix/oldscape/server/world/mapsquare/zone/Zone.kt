@@ -16,19 +16,27 @@
  */
 package io.guthix.oldscape.server.world.mapsquare.zone
 
+import io.guthix.oldscape.server.world.entity.Location
 import io.guthix.oldscape.server.world.mapsquare.FloorUnit
-import io.guthix.oldscape.server.world.mapsquare.MapSquare
-import io.guthix.oldscape.server.world.mapsquare.MapSquareFloor
-import kotlin.math.abs
+import io.guthix.oldscape.server.world.mapsquare.MapsquareFloor
+import io.guthix.oldscape.server.world.mapsquare.zone.tile.TileUnit
 
-class Zone(val z: FloorUnit, val x: ZoneUnit, val y: ZoneUnit) {
-    val inMapSquare = MapSquare(z, MapSquareFloor(x.inMapSquares, y.inMapSquares))
+class Zone(
+    val floor: FloorUnit,
+    val x: ZoneUnit,
+    val y: ZoneUnit,
+    val mapsquareFloor: MapsquareFloor
+) {
+    val collisions = ZoneCollision(this)
 
-    fun withInDistanceOf(other: Zone, distance: ZoneUnit) = if (z == other.z) {
-        abs((other.x - x).value) <= distance.value && abs((other.y - y).value) <= distance.value
-    } else {
-        false
+    val staticLocations: MutableMap<Int, Location> = mutableMapOf()
+
+    fun addUnwalkableTile(x: TileUnit, y: TileUnit) = collisions.addUnwalkableTile(x, y)
+
+    fun addStaticLocation(location: Location) {
+        staticLocations[location.mapKey] = location
+        collisions.addLocation(location)
     }
 
-    override fun toString() = "Zone(z=${z.value}, x=${x.value}, y=${y.value})"
+    override fun toString() = "Zone(z=${floor.value}, x=${x.value}, y=${y.value})"
 }

@@ -16,7 +16,7 @@
  */
 package io.guthix.oldscape.server.world.mapsquare
 
-val Int.floor get() = FloorUnit(this)
+val Int.floors get() = FloorUnit(this)
 
 inline class FloorUnit(val value: Int) : Comparable<FloorUnit> {
     operator fun plus(other: FloorUnit) = FloorUnit(value + other.value)
@@ -79,15 +79,15 @@ class FloorUnitProgressionIterator(first: FloorUnit, last: FloorUnit, private va
             if (!hasNext) throw NoSuchElementException()
             hasNext = false
         } else {
-            next += step.floor
+            next += step.floors
         }
         return value
     }
 }
 
 private fun getProgressionLastElement(start: FloorUnit, end: FloorUnit, step: Int): FloorUnit = when {
-    step > 0 -> if (start >= end) end else end - differenceModulo(end, start, step.floor)
-    step < 0 -> if (start <= end) end else end + differenceModulo(start, end, (-step).floor)
+    step > 0 -> if (start >= end) end else end - differenceModulo(end, start, step.floors)
+    step < 0 -> if (start <= end) end else end + differenceModulo(start, end, (-step).floors)
     else -> throw IllegalArgumentException("Step is zero.")
 }
 

@@ -16,8 +16,7 @@
  */
 package io.guthix.oldscape.server.world.entity
 
+import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
 import kotlin.reflect.KProperty
 
-abstract class Entity(open val attributes: MutableMap<KProperty<*>, Any?>) {
-
-}
+abstract class Entity(open val position: Tile, open val attributes: MutableMap<KProperty<*>, Any?>)

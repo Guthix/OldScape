@@ -20,18 +20,23 @@ import io.guthix.cache.js5.util.XTEA_KEY_SIZE
 import io.guthix.oldscape.server.net.state.game.OutGameEvent
 import io.guthix.oldscape.server.net.state.game.VarShortSize
 import io.guthix.oldscape.server.world.mapsquare.zone.Zone
+import io.guthix.oldscape.server.world.mapsquare.zone.ZoneUnit
 import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 
-class RebuildNormalPacket(private val xteas: List<IntArray>, private val zone: Zone) : OutGameEvent {
+class RebuildNormalPacket(
+    private val xteas: List<IntArray>,
+    private val x: ZoneUnit,
+    private val y: ZoneUnit
+) : OutGameEvent {
     override val opcode = 73
 
     override val size = VarShortSize
 
     override fun encode(ctx: ChannelHandlerContext): ByteBuf {
         val buf = ctx.alloc().buffer(STATIC_SIZE + xteas.size * XTEA_KEY_SIZE * Int.SIZE_BYTES)
-        buf.writeShortLE(zone.y.value)
-        buf.writeShort(zone.x.value)
+        buf.writeShortLE(y.value)
+        buf.writeShort(x.value)
         buf.writeShort(xteas.size)
         xteas.forEach { xteaKey ->
             xteaKey.forEach { keyPart ->

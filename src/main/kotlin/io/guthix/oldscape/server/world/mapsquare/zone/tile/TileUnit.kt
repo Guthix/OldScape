@@ -16,14 +16,16 @@
  */
 package io.guthix.oldscape.server.world.mapsquare.zone.tile
 
-import io.guthix.oldscape.server.world.mapsquare.MapSquareUnit
+import io.guthix.oldscape.server.world.mapsquare.MapsquareUnit
 import io.guthix.oldscape.server.world.mapsquare.zone.ZoneUnit
 
-val Int.tile get() = TileUnit(this)
+val Int.tiles get() = TileUnit(this)
 
 inline class TileUnit(val value: Int): Comparable<TileUnit> {
     val inZones get() = ZoneUnit(value / ZoneUnit.SIZE_TILE.value)
-    val inMapSquares get() = MapSquareUnit(value / MapSquareUnit.SIZE_TILE.value)
+    val inMapsquares get() = MapsquareUnit(value / MapsquareUnit.SIZE_TILE.value)
+    val relativeZone get() = TileUnit(value % ZoneUnit.SIZE_TILE.value)
+    val relativeMapSquare get() = TileUnit(value % MapsquareUnit.SIZE_TILE.value)
 
     operator fun plus(other: TileUnit) = TileUnit(value + other.value)
     operator fun minus(other: TileUnit) = TileUnit(value - other.value)
@@ -36,10 +38,14 @@ inline class TileUnit(val value: Int): Comparable<TileUnit> {
     operator fun unaryMinus() = TileUnit(-value)
     operator fun rangeTo(other: TileUnit) = TileUnitRange(this, other)
     override fun compareTo(other: TileUnit): Int = when {
-        inZones < other.inZones -> -1
-        inZones > other.inZones -> 1
+        value < other.value -> -1
+        value > other.value -> 1
         else -> 0
     }
+}
+
+infix fun TileUnit.until(to: TileUnit): TileUnitRange {
+    return this..(to - 1.tiles)
 }
 
 class TileUnitRange(
@@ -73,7 +79,7 @@ open class TileUnitProgression(start: TileUnit, endInclusive: TileUnit, var step
     override fun toString() = if (step > 0) "$first..$last step $step" else "$first downTo $last step ${-step}"
     infix fun step(step: TileUnit) = this.apply { this.step = step.value }
     infix fun step(step: ZoneUnit) = this.apply { this.step = step.inTiles.value }
-    infix fun step(step: MapSquareUnit) = this.apply { this.step = step.inTiles.value }
+    infix fun step(step: MapsquareUnit) = this.apply { this.step = step.inTiles.value }
 }
 
 class TileUnitProgressionIterator(first: TileUnit, last: TileUnit, private val step: Int) : Iterator<TileUnit> {
@@ -87,15 +93,15 @@ class TileUnitProgressionIterator(first: TileUnit, last: TileUnit, private val s
             if (!hasNext) throw NoSuchElementException()
             hasNext = false
         } else {
-            next += step.tile
+            next += step.tiles
         }
         return value
     }
 }
 
 private fun getProgressionLastElement(start: TileUnit, end: TileUnit, step: Int): TileUnit = when {
-    step > 0 -> if (start >= end) end else end - differenceModulo(end, start, step.tile)
-    step < 0 -> if (start <= end) end else end + differenceModulo(start, end, (-step).tile)
+    step > 0 -> if (start >= end) end else end - differenceModulo(end, start, step.tiles)
+    step < 0 -> if (start <= end) end else end + differenceModulo(start, end, (-step).tiles)
     else -> throw IllegalArgumentException("Step is zero.")
 }
 

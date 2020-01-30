@@ -8,8 +8,8 @@ import io.guthix.oldscape.server.world.entity.character.player.interest.MapInter
 import io.guthix.oldscape.server.event.imp.PlayerInitialized
 
 on(LoginEvent::class).then {
-    val pZone = player.position.inZones
-    val xteas = MapInterest.getInterestedXteas(pZone, world.mapsquareXteas)
+    val pZone = world.getZone(player.position) ?: throw IllegalStateException("Player location can't be null")
+    val xteas = MapInterest.getInterestedXteas(pZone, world.map)
     player.updateFlags.add(PlayerInfoPacket.appearance)
     player.playerInterest.initialize(player, world.players)
     player.initializeInterest(world.players, xteas)
