@@ -25,8 +25,11 @@ import io.guthix.cache.js5.container.Js5Container
 import io.guthix.cache.js5.container.Js5Store
 import io.guthix.cache.js5.container.disk.Js5DiskStore
 import io.guthix.cache.js5.container.heap.Js5HeapStore
+import io.guthix.oldscape.cache.ConfigArchive
+import io.guthix.oldscape.cache.MapArchive
 import io.guthix.oldscape.cache.xtea.MapXtea
 import io.guthix.oldscape.server.api.Enums
+import io.guthix.oldscape.server.api.blueprint.LocationBlueprints
 import io.guthix.oldscape.server.event.EventBus
 import io.guthix.oldscape.server.net.OldScapeServer
 import io.guthix.oldscape.server.net.state.game.GamePacketDecoder
@@ -35,7 +38,9 @@ import mu.KotlinLogging
 import java.nio.file.Path
 import java.util.*
 
-val logger = KotlinLogging.logger {  }
+fun main(args: Array<String>) {
+    OldScape.main(args)
+}
 
 object OldScape {
     @JvmStatic
@@ -47,12 +52,13 @@ object OldScape {
         store.write(Js5Store.MASTER_INDEX, Js5Store.MASTER_INDEX, Js5Container(
             cache.generateValidator(includeWhirlpool = false, includeSizes = false).encode()).encode()
         )
-        val mapSquareXteas = loadMapSquareXteaKeys(cacheDir.resolve("xteas.json"))
-        Enums.load(cache)
+        val configArchive = cache.readArchive(ConfigArchive.id)
+        Enums.load(configArchive)
+        LocationBlueprints.load(configArchive)
         EventBus.loadScripts()
         GamePacketDecoder.loadIncPackets()
-
-        val world = World(cache, mapSquareXteas)
+        val mapSquareXteas = loadMapSquareXteaKeys(cacheDir.resolve("xteas.json"))
+        val world = World().initMap(cache.readArchive(MapArchive.id), mapSquareXteas)
         Timer().scheduleAtFixedRate(world, 0, 600)
         OldScapeServer(config.revision, config.port, config.rsa.privateKey, config.rsa.modulus, world, store).run()
     }
@@ -61,15 +67,9 @@ object OldScape {
         path.toFile(), ServerConfig::class.java
     )
 
-    private fun loadMapSquareXteaKeys(path: Path): Map<Int, IntArray> {
+    private fun loadMapSquareXteaKeys(path: Path): List<MapXtea> {
         val mapper = ObjectMapper().registerKotlinModule()
-        val keys: List<MapXtea> = mapper.readValue(path.toFile(), object : TypeReference<List<MapXtea>>(){})
-        val keyMap = mutableMapOf<Int, IntArray>()
-        for(xtea in keys) {
-            keyMap[xtea.id] = xtea.key
-        }
-        logger.info("Loaded ${keyMap.size} mapsquare xteas")
-        return keyMap.toMap()
+        return mapper.readValue(path.toFile(), object : TypeReference<List<MapXtea>>(){})
     }
 }
 

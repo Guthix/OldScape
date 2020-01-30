@@ -17,17 +17,16 @@
 package io.guthix.oldscape.server.world.mapsquare.zone.tile
 
 import io.guthix.oldscape.server.world.mapsquare.FloorUnit
-import io.guthix.oldscape.server.world.mapsquare.zone.Zone
 import kotlin.math.abs
 
-class Tile(val z: FloorUnit, val x: TileUnit, val y: TileUnit) {
-    val inZones get() = Zone(z, x.inZones, y.inZones)
-
-    fun withInDistanceOf(other: Tile, distance: TileUnit) = if (z == other.z) {
+data class Tile(val floor: FloorUnit, val x: TileUnit, val y: TileUnit) {
+    fun withInDistanceOf(other: Tile, distance: TileUnit) = if (floor == other.floor) {
         abs((other.x - x).value) <= distance.value && abs((other.y - y).value) <= distance.value
     } else {
         false
     }
+
+    override fun toString() = "Tile(z=${floor.value}, x=${x.value}, y=${y.value})"
 }
 
 

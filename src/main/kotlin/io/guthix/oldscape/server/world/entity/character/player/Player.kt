@@ -23,6 +23,9 @@ import io.guthix.oldscape.server.net.state.game.outp.*
 import io.guthix.oldscape.server.world.entity.character.Character
 import io.guthix.oldscape.server.world.entity.character.player.interest.MapInterest
 import io.guthix.oldscape.server.world.entity.character.player.interest.PlayerInterest
+import io.guthix.oldscape.server.world.mapsquare.floors
+import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
+import io.guthix.oldscape.server.world.mapsquare.zone.tile.tiles
 import io.netty.channel.ChannelHandlerContext
 import java.util.*
 import java.util.concurrent.ConcurrentLinkedQueue
@@ -32,10 +35,11 @@ import kotlin.reflect.KProperty
 data class Player(
     val index: Int,
     var priority: Int,
+    override var position: Tile,
     val username: String,
     var ctx: ChannelHandlerContext,
     override val attributes: MutableMap<KProperty<*>, Any?> = mutableMapOf()
-) : Character(attributes), Comparable<Player> {
+) : Character(position, attributes), Comparable<Player> {
     val events = ConcurrentLinkedQueue<() -> Unit>()
 
     lateinit var clientSettings: ClientSettings
@@ -57,7 +61,7 @@ data class Player(
     }
 
     fun initializeInterest(worldPlayers: PlayerList, xteas: List<IntArray>) {
-        ctx.write(InterestInitPacket(this, worldPlayers, xteas, position.inZones))
+        ctx.write(InterestInitPacket(this, worldPlayers, xteas, position.x.inZones, position.y.inZones))
     }
 
     fun playerInterestSync(worldPlayers: PlayerList) {

@@ -20,7 +20,7 @@ import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.character.player.Player
 import io.guthix.oldscape.server.world.entity.character.player.PlayerList
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
-import io.guthix.oldscape.server.world.mapsquare.zone.tile.tile
+import io.guthix.oldscape.server.world.mapsquare.zone.tile.tiles
 
 class PlayerInterest {
     var localPlayerCount = 0
@@ -50,12 +50,12 @@ class PlayerInterest {
     }
 
     companion object {
-        val SIZE = 32.tile
+        val SIZE = 32.tiles
 
-        val RANGE = SIZE / 2.tile
+        val RANGE = SIZE / 2.tiles
 
-        private val REGION_SIZE = 8192.tile
+        private val REGION_SIZE = 8192.tiles
 
-        val Tile.regionId get() = (z.value shl 16) or ((x / REGION_SIZE).value shl 8) or (y / REGION_SIZE).value
+        val Tile.regionId get() = (floor.value shl 16) or ((x / REGION_SIZE).value shl 8) or (y / REGION_SIZE).value
     }
 }

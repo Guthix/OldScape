@@ -24,9 +24,9 @@ import io.guthix.oldscape.server.world.entity.character.player.interest.PlayerIn
 import io.guthix.oldscape.server.world.entity.character.Character
 import io.guthix.oldscape.server.world.entity.character.player.Player
 import io.guthix.oldscape.server.world.entity.character.player.PlayerList
-import io.guthix.oldscape.server.world.mapsquare.floor
+import io.guthix.oldscape.server.world.mapsquare.floors
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
-import io.guthix.oldscape.server.world.mapsquare.zone.tile.tile
+import io.guthix.oldscape.server.world.mapsquare.zone.tile.tiles
 import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 
@@ -82,14 +82,14 @@ class PlayerInfoPacket(
                 var dy = (localPlayer.position.y - localPlayer.lastPostion.y).value
                 if (localPlayerOutsideView) {
                     buf.writeBits(
-                        ((localPlayer.position.z.value and 0x3) shl 28) or ((dx and 0x3fff) shl 14) or (dy and 0x3fff),
+                        ((localPlayer.position.floor.value and 0x3) shl 28) or ((dx and 0x3fff) shl 14) or (dy and 0x3fff),
                         30
                     )
                 } else {
                     if (dx < 0) dx += 32
                     if (dy < 0) dy += 32
                     buf.writeBits(
-                        ((localPlayer.position.z.value and 0x3) shl 10) or ((dx and 0x1F) shl 5) or (dy and 0x1F),
+                        ((localPlayer.position.floor.value and 0x3) shl 10) or ((dx and 0x1F) shl 5) or (dy and 0x1F),
                         12
                     )
                 }
@@ -174,7 +174,7 @@ class PlayerInfoPacket(
                 buf.writeBits(value = (dz shl 3) or getDirectionType(dx, dy), amount = 5)
             } else {
                 buf.writeBits(value = 3, amount = 2)
-                buf.writeBits(value = Tile(dz.floor, dx.tile, dy.tile).regionId, amount = 18)
+                buf.writeBits(value = Tile(dz.floors, dx.tiles, dy.tiles).regionId, amount = 18)
             }
             player.playerInterest.fieldIds[externalPlayer.index] = curentFieldId
         }
@@ -299,9 +299,9 @@ class PlayerInfoPacket(
     class UpdateType(mask: Int, val encode: ByteBuf.(player: Player) -> Unit) : Character.UpdateType(mask)
 
     companion object {
-        private val INTEREST_SIZE = 32.tile
+        private val INTEREST_SIZE = 32.tiles
 
-        private val INTEREST_RANGE = INTEREST_SIZE / 2.tile
+        private val INTEREST_RANGE = INTEREST_SIZE / 2.tiles
 
         private fun Player.isInterestedIn(player: Player) = position.withInDistanceOf(player.position, INTEREST_RANGE)
 

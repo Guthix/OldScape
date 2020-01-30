@@ -14,25 +14,24 @@
  * You should have received a copy of the GNU General Public License
  * along with Foobar. If not, see <https://www.gnu.org/licenses/>.
  */
-package io.guthix.oldscape.server.world.entity.character
+package io.guthix.oldscape.server.world.entity
 
-import io.guthix.oldscape.server.world.entity.Entity
-import io.guthix.oldscape.server.world.mapsquare.floors
+import io.guthix.oldscape.server.api.blueprint.LocationBlueprint
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
-import io.guthix.oldscape.server.world.mapsquare.zone.tile.tiles
 import kotlin.reflect.KProperty
 
-abstract class Character(
-    position: Tile,
-    attributes: MutableMap<KProperty<*>, Any?>
+class Location(
+    override val position: Tile,
+    val blueprint: LocationBlueprint,
+    val type: Int,
+    val orientation: Int,
+    override val attributes: MutableMap<KProperty<*>, Any?> = mutableMapOf()
 ) : Entity(position, attributes) {
-    var lastPostion = position
+    val slot get() = MAP_SLOTS[type]
 
-    val movementType = MovementUpdateType.STAY
+    internal val mapKey get() = ((position.x.relativeZone.value shl 5) or (position.y.relativeZone.value shl 2) or slot)
 
-    abstract val updateFlags: MutableSet<out UpdateType>
-
-    abstract class UpdateType(internal val mask: Int)
-
-    enum class MovementUpdateType { TELEPORT, RUN, WALK, STAY }
+    companion object {
+        val MAP_SLOTS = intArrayOf(0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3)
+    }
 }

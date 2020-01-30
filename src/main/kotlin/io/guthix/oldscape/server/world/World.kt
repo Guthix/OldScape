@@ -16,7 +16,10 @@
  */
 package io.guthix.oldscape.server.world
 
-import io.guthix.cache.js5.Js5Cache
+import io.guthix.cache.js5.Js5Archive
+import io.guthix.cache.js5.util.XTEA_ZERO_KEY
+import io.guthix.oldscape.cache.MapArchive
+import io.guthix.oldscape.cache.xtea.MapXtea
 import io.guthix.oldscape.server.event.EventBus
 import io.guthix.oldscape.server.event.imp.LoginEvent
 import io.guthix.oldscape.server.net.state.game.GameDecoder
@@ -24,15 +27,47 @@ import io.guthix.oldscape.server.net.state.game.GameEncoder
 import io.guthix.oldscape.server.net.state.game.GameHandler
 import io.guthix.oldscape.server.net.state.login.*
 import io.guthix.oldscape.server.world.entity.character.player.PlayerList
+import io.guthix.oldscape.server.world.mapsquare.FloorUnit
+import io.guthix.oldscape.server.world.mapsquare.Mapsquare
+import io.guthix.oldscape.server.world.mapsquare.mapsquares
+import io.guthix.oldscape.server.world.mapsquare.zone.Zone
+import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
+import io.guthix.oldscape.server.world.mapsquare.zone.tile.TileUnit
 import java.util.*
 import java.util.concurrent.*
 
-class World(val cache: Js5Cache, val mapsquareXteas: Map<Int, IntArray>) : TimerTask() {
+class World : TimerTask() {
+    val map: MutableMap<Int, Mapsquare> = mutableMapOf()
+
     internal val loginQueue = ConcurrentLinkedQueue<LoginRequest>()
 
     val players = PlayerList(MAX_PLAYERS)
 
     val isFull get(): Boolean = players.size + loginQueue.size >= MAX_PLAYERS
+
+    fun initMap(archive: Js5Archive, xteas: List<MapXtea>): World {
+        val mapArchive = MapArchive.load(archive, xteas)
+        for(mapXtea in xteas) {
+            val mapsquare = mapArchive.mapsquares[mapXtea.id] ?: continue
+            map[mapXtea.id] = Mapsquare(mapsquare.x.mapsquares, mapsquare.y.mapsquares, mapXtea.key, this)
+        }
+        map.forEach { (id, mapsquare) ->
+            val def = mapArchive.mapsquares[id] ?: throw IllegalStateException(
+                "Could not find mapsquare definition for id $id."
+            )
+            mapsquare.initialize(def)
+        }
+        return this
+    }
+
+    fun getZone(tile: Tile) = getZone(tile.floor, tile.x, tile.y)
+
+    fun getZone(floor: FloorUnit, x: TileUnit, y: TileUnit): Zone? = map[Mapsquare.id(x.inMapsquares, y.inMapsquares)]?.
+        getZone(floor, x.relativeMapSquare, y.relativeMapSquare)
+
+    fun addUnwalkableTile(floor: FloorUnit, x: TileUnit, y: TileUnit) {
+        map[Mapsquare.id(x.inMapsquares, y.inMapsquares)]?.addUnwalkableTile(floor, x, y)
+    }
 
     override fun run() {
         processLogins()

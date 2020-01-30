@@ -16,14 +16,15 @@
  */
 package io.guthix.oldscape.server.world.mapsquare.zone
 
-import io.guthix.oldscape.server.world.mapsquare.MapSquareUnit
+import io.guthix.oldscape.server.world.mapsquare.MapsquareUnit
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.TileUnit
 
 val Int.zones get() = ZoneUnit(this)
 
 inline class ZoneUnit(val value: Int): Comparable<ZoneUnit> {
     val inTiles get() = TileUnit(value * SIZE_TILE.value)
-    val inMapSquares get() = MapSquareUnit(value / MapSquareUnit.SIZE_ZONE.value)
+    val inMapsquares get() = MapsquareUnit(value / MapsquareUnit.SIZE_ZONE.value)
+    val relativeMapSquare get() = ZoneUnit(value % MapsquareUnit.SIZE_ZONE.value)
 
     operator fun plus(other: ZoneUnit) = ZoneUnit(value + other.value)
     operator fun minus(other: ZoneUnit) = ZoneUnit(value - other.value)
@@ -44,6 +45,10 @@ inline class ZoneUnit(val value: Int): Comparable<ZoneUnit> {
     companion object {
         val SIZE_TILE = TileUnit(8)
     }
+}
+
+infix fun ZoneUnit.until(to: ZoneUnit): ZoneUnitRange {
+    return this..(to - 1.zones)
 }
 
 class ZoneUnitRange(
@@ -77,7 +82,7 @@ open class ZoneUnitProgression(start: ZoneUnit, endInclusive: ZoneUnit, var step
     override fun toString() = if (step > 0) "$first..$last step $step" else "$first downTo $last step ${-step}"
     infix fun step(step: TileUnit) = this.apply { this.step = step.inZones.value }
     infix fun step(step: ZoneUnit) = this.apply { this.step = step.value }
-    infix fun step(step: MapSquareUnit) = this.apply { this.step = step.inZones.value }
+    infix fun step(step: MapsquareUnit) = this.apply { this.step = step.inZones.value }
 }
 
 class ZoneUnitProgressionIterator(first: ZoneUnit, last: ZoneUnit, private val step: Int) : Iterator<ZoneUnit> {
