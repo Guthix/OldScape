@@ -31,6 +31,7 @@ import io.guthix.oldscape.server.world.mapsquare.FloorUnit
 import io.guthix.oldscape.server.world.mapsquare.Mapsquare
 import io.guthix.oldscape.server.world.mapsquare.mapsquares
 import io.guthix.oldscape.server.world.mapsquare.zone.Zone
+import io.guthix.oldscape.server.world.mapsquare.zone.ZoneCollision
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.TileUnit
 import java.util.*
@@ -66,7 +67,15 @@ class World : TimerTask() {
         getZone(floor, x.relativeMapSquare, y.relativeMapSquare)
 
     fun addUnwalkableTile(floor: FloorUnit, x: TileUnit, y: TileUnit) {
-        map[Mapsquare.id(x.inMapsquares, y.inMapsquares)]?.addUnwalkableTile(floor, x, y)
+        map[Mapsquare.id(x.inMapsquares, y.inMapsquares)]?.addUnwalkableTile(
+            floor, x.relativeMapSquare, y.relativeMapSquare
+        )
+    }
+
+    fun getCollisionMask(floor: FloorUnit, x: TileUnit, y: TileUnit): Int {
+        return map[Mapsquare.id(x.inMapsquares, y.inMapsquares)]?.getCollisionMask(
+            floor, x.relativeMapSquare, y.relativeZone
+        ) ?: ZoneCollision.MASK_UNWALKABLE_TILE
     }
 
     override fun run() {
