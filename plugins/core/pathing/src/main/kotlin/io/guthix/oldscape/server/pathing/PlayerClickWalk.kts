@@ -8,10 +8,7 @@ import io.guthix.oldscape.server.world.entity.character.Character
 
 on(MapClickEvent::class).then {
     val destination = DestinationTile(player.position.floor, event.x, event.y)
-    println("start: " + player.position)
-    println("dest: " + destination)
     val path = breadthFirstSearch(player.position, destination, player.size, true, world)
-    path.forEach { println(it) }
     player.addRoutine(WeakAction) {
         while(true) {
             if(path.isEmpty()) {
