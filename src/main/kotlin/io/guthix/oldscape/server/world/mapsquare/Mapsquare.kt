@@ -91,6 +91,11 @@ class Mapsquare(val x: MapsquareUnit, val y: MapsquareUnit, val xtea: IntArray, 
             .addUnwalkableTile(localX.relativeZone, localY.relativeZone)
     }
 
+    fun getCollisionMask(floor: FloorUnit, localX: TileUnit, localY: TileUnit): Int {
+        return floors[floor.value].zones[localX.inZones.value][localY.inZones.value]
+            .getCollisionMask(localX.relativeZone, localY.relativeZone)
+    }
+
     companion object {
         const val FLOOR_COUNT = 4
 

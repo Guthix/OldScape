@@ -22,7 +22,7 @@ import io.guthix.oldscape.server.world.mapsquare.zone.tile.tiles
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.until
 
 class ZoneCollision(val zone: Zone) {
-    private val masks = Array(ZoneUnit.SIZE_TILE.value) {
+    val masks = Array(ZoneUnit.SIZE_TILE.value) {
         IntArray(ZoneUnit.SIZE_TILE.value)
     }
 

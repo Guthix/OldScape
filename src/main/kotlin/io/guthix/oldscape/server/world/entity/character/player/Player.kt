@@ -46,6 +46,10 @@ data class Player(
 
     val routines = PriorityQueue<Routine>()
 
+    var isRunning = false
+
+    var isTeleporting = false
+
     var rights = 0
 
     val playerInterest = PlayerInterest()
@@ -99,7 +103,7 @@ data class Player(
         while(events.isNotEmpty()) {
             events.poll().invoke()
         }
-        routines.forEach { it.resumeIfPossible() }
+        PriorityQueue<Routine>(routines).forEach { it.resumeIfPossible() }
         ctx.flush()
     }
 }
