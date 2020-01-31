@@ -54,19 +54,12 @@ class Mapsquare(val x: MapsquareUnit, val y: MapsquareUnit, val xtea: IntArray, 
         }
         fun Array<MapsquareFloor>.loadStaticLocations(locations: List<MapLocDefinition>) {
             locations.forEach { loc ->
-                if(loc.type > 22) {
-                    println("id: " + id(def.x.mapsquares, def.y.mapsquares))
-                    println("Type: ${loc.type}")
-                    println("Id: ${loc.id}")
-                    println("x: ${loc.localX} y: ${loc.localY}")
-                    println(LocationBlueprints[loc.id].name)
-                }
                 get(loc.floor).addStaticLocation(
                     Location(
                         Tile(
                             loc.floor.floors,
-                            def.x.tiles * MapsquareUnit.SIZE_TILE + loc.localX.tiles,
-                            def.y.tiles * MapsquareUnit.SIZE_TILE + loc.localY.tiles
+                            def.x.mapsquares.inTiles + loc.localX.tiles,
+                            def.y.mapsquares.inTiles + loc.localY.tiles
                         ),
                         LocationBlueprints[loc.id],
                         loc.type,
@@ -75,7 +68,6 @@ class Mapsquare(val x: MapsquareUnit, val y: MapsquareUnit, val xtea: IntArray, 
                 )
             }
         }
-
        floors.apply {
             loadUnwalkableTiles(def.mapDefinition.renderRules)
             loadStaticLocations(def.locationDefinitions)

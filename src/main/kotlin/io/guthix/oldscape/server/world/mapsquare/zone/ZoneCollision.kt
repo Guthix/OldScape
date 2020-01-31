@@ -17,6 +17,8 @@
 package io.guthix.oldscape.server.world.mapsquare.zone
 
 import io.guthix.oldscape.server.world.entity.Location
+import io.guthix.oldscape.server.world.mapsquare.floors
+import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.TileUnit
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.tiles
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.until
@@ -27,6 +29,9 @@ class ZoneCollision(val zone: Zone) {
     }
 
     private fun addMask(localX: TileUnit, localY: TileUnit, mask: Int) {
+        if(zone.x.inTiles + localX == 3226.tiles && zone.y.inTiles + localY == 3218.tiles && zone.floor == 0.floors) {
+            throw Exception("Exception!")
+        }
         if (localX >= ZoneUnit.SIZE_TILE || localY >= ZoneUnit.SIZE_TILE || localX < 0.tiles || localY < 0.tiles) {
             val zone = zone.mapsquareFloor.mapsquare.world.getZone(
                 zone.floor, zone.x.inTiles + localX, zone.y.inTiles + localY

@@ -33,7 +33,9 @@ class Zone(
 
     fun addUnwalkableTile(x: TileUnit, y: TileUnit) = collisions.addUnwalkableTile(x, y)
 
-    fun getCollisionMask(x: TileUnit, y: TileUnit) = collisions.masks[x.value][y.value]
+    fun getCollisionMask(x: TileUnit, y: TileUnit): Int {
+        return collisions.masks[x.value][y.value]
+    }
 
     fun addStaticLocation(location: Location) {
         staticLocations[location.mapKey] = location

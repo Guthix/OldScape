@@ -74,7 +74,7 @@ class World : TimerTask() {
 
     fun getCollisionMask(floor: FloorUnit, x: TileUnit, y: TileUnit): Int {
         return map[Mapsquare.id(x.inMapsquares, y.inMapsquares)]?.getCollisionMask(
-            floor, x.relativeMapSquare, y.relativeZone
+            floor, x.relativeMapSquare, y.relativeMapSquare
         ) ?: ZoneCollision.MASK_UNWALKABLE_TILE
     }
 

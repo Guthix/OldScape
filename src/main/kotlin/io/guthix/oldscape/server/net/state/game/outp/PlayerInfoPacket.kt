@@ -99,7 +99,7 @@ class PlayerInfoPacket(
                 player.playerInterest.localPlayers[localPlayer.index] = null
             } else if (localPlayer.movementType == Character.MovementUpdateType.WALK) {
                 bitBuf.writeBits(value = 1, amount = 2)
-                bitBuf.writeBits(3, getDirectionWalk(localPlayer))
+                bitBuf.writeBits(value = getDirectionWalk(localPlayer), amount = 3)
             } else if (localPlayer.movementType == Character.MovementUpdateType.RUN) {
                 bitBuf.writeBits(value = 2, amount = 2)
                 bitBuf.writeBits(value = getDirectionWalk(localPlayer), amount = 4)
