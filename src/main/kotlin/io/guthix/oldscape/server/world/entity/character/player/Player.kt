@@ -46,7 +46,7 @@ data class Player(
 
     val routines = PriorityQueue<Routine>()
 
-    var isRunning = false
+    var inRunMode = false
 
     var isTeleporting = false
 

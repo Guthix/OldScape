@@ -285,8 +285,9 @@ class PlayerInfoPacket(
         privateUpdates.forEach { update ->
             mask = mask or update.mask
         }
+        println(mask)
         if (mask >= 0xff) {
-            maskBuf.writeByte(mask or 0x80)
+            maskBuf.writeByte(mask or 0x2)
             maskBuf.writeByte(mask shr 8)
         } else {
             maskBuf.writeByte(mask)
@@ -314,7 +315,7 @@ class PlayerInfoPacket(
         )
 
         val movementTemporary = UpdateType(0x200) { player ->
-            //TODO
+            writeByteNEG(if(player.movementType == Character.MovementUpdateType.TELEPORT) 127 else 0)
         }
 
         val shout = UpdateType(0x8) { _ ->
@@ -337,8 +338,8 @@ class PlayerInfoPacket(
             //TODO
         }
 
-        val movementCached = UpdateType(0x1000) { player ->
-            //TODO
+        val movementCached = UpdateType(0X800) { player ->
+            writeByteADD(if(player.inRunMode) 2 else 1)
         }
 
         val hit = UpdateType(0x1) { player ->
