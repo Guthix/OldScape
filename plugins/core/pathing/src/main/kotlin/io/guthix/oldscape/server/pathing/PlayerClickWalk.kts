@@ -22,6 +22,8 @@ on(MapClickEvent::class).then {
 fun Player.startWalkingTo(floor: FloorUnit, x: TileUnit, y: TileUnit, world: World) {
     val destination = DestinationTile(floor, x, y)
     val path = breadthFirstSearch(position, destination, size, true, world)
+    println("path: ")
+    path.forEach { println(it) }
     addRoutine(WeakAction) {
         while(true) {
             if(path.isEmpty()) {

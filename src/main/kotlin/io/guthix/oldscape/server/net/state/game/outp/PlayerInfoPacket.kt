@@ -285,7 +285,6 @@ class PlayerInfoPacket(
         privateUpdates.forEach { update ->
             mask = mask or update.mask
         }
-        println(mask)
         if (mask >= 0xff) {
             maskBuf.writeByte(mask or 0x2)
             maskBuf.writeByte(mask shr 8)
