@@ -102,6 +102,10 @@ data class Player(
         ctx.write(UpdateStatPacket(id, xp, status))
     }
 
+    fun updateWeight(amount: Int) {
+        ctx.write(UpdateRunweightPacket(amount))
+    }
+
     override fun compareTo(other: Player) = when {
         priority < other.priority -> -1
         priority > other.priority -> 1

@@ -17,6 +17,7 @@ on(LoginEvent::class).then {
     for(skillId in 0 until 23) {
         player.updateStat(skillId, 13034431, 99)
     }
+    player.updateWeight(100)
     player.addRoutine(PlayerSyncRoutine) {
         while(true) {
             player.playerInterestSync(world.players)
