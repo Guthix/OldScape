@@ -16,13 +16,27 @@
  */
 package io.guthix.oldscape.server.world.entity.character.player.interest
 
+import io.guthix.oldscape.server.world.entity.character.player.Player
 import io.guthix.oldscape.server.world.mapsquare.MapsquareUnit
 import io.guthix.oldscape.server.world.mapsquare.Mapsquare
 import io.guthix.oldscape.server.world.mapsquare.zone.Zone
 import io.guthix.oldscape.server.world.mapsquare.zone.ZoneUnit
+import io.guthix.oldscape.server.world.mapsquare.zone.abs
 import io.guthix.oldscape.server.world.mapsquare.zone.zones
 
-class MapInterest {
+class MapInterest(val player: Player) {
+    lateinit var lastLoadedZone: Zone
+
+    fun checkReload(currentZone: Zone, map: Map<Int, Mapsquare>) {
+        if(reloadRequired(currentZone)) {
+            val xteas = getInterestedXteas(currentZone, map)
+            player.updateMap(currentZone, xteas)
+            lastLoadedZone = currentZone
+        }
+    }
+
+    fun reloadRequired(curZone: Zone) = abs(lastLoadedZone.x - curZone.x) >= UPDATE_RANGE ||
+        abs(lastLoadedZone.y - curZone.y) >= UPDATE_RANGE
 
     companion object {
         val SIZE = 13.zones

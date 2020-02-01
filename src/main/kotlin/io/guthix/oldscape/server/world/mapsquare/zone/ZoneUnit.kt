@@ -18,6 +18,9 @@ package io.guthix.oldscape.server.world.mapsquare.zone
 
 import io.guthix.oldscape.server.world.mapsquare.MapsquareUnit
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.TileUnit
+import kotlin.math.abs
+
+fun abs(n: ZoneUnit) = abs(n.value).zones
 
 val Int.zones get() = ZoneUnit(this)
 
