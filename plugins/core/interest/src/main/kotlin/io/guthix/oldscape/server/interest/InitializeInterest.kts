@@ -14,6 +14,9 @@ on(LoginEvent::class).then {
     val xteas = MapInterest.getInterestedXteas(pZone, world.map)
     player.updateFlags.add(PlayerInfoPacket.appearance)
     player.initializeInterest(world.players, xteas)
+    for(skillId in 0 until 23) {
+        player.updateStat(skillId, 13034431, 99)
+    }
     player.addRoutine(PlayerSyncRoutine) {
         while(true) {
             player.playerInterestSync(world.players)

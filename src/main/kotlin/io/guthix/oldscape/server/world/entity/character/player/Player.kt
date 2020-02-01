@@ -97,7 +97,11 @@ data class Player(
     fun setInterfaceText(parentInterface: Int, slot: Int, text: String) {
         ctx.write(IfSettext(parentInterface, slot, text))
     }
-    
+
+    fun updateStat(id: Int, xp: Int, status: Int) {
+        ctx.write(UpdateStatPacket(id, xp, status))
+    }
+
     override fun compareTo(other: Player) = when {
         priority < other.priority -> -1
         priority > other.priority -> 1
