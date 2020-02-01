@@ -24,4 +24,6 @@ object WeakAction : Routine.Type(priority = 3)
 
 object PostRoutine : Routine.Type(priority = 4)
 
-object FinalRoutine : Routine.Type(priority = Int.MAX_VALUE)
+object MapSyncRoutine : Routine.Type(priority = Int.MAX_VALUE - 1)
+
+object PlayerSyncRoutine : Routine.Type(priority = Int.MAX_VALUE)

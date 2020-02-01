@@ -24,6 +24,7 @@ import io.guthix.oldscape.server.world.entity.character.Character
 import io.guthix.oldscape.server.world.entity.character.player.interest.MapInterest
 import io.guthix.oldscape.server.world.entity.character.player.interest.PlayerInterest
 import io.guthix.oldscape.server.world.mapsquare.floors
+import io.guthix.oldscape.server.world.mapsquare.zone.Zone
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.tiles
 import io.netty.channel.ChannelHandlerContext
@@ -54,7 +55,7 @@ data class Player(
 
     val playerInterest = PlayerInterest()
 
-    val mapInterest = MapInterest()
+    val mapInterest = MapInterest(this)
 
     override val updateFlags = mutableSetOf<PlayerInfoPacket.UpdateType>()
 
@@ -65,11 +66,16 @@ data class Player(
     }
 
     fun initializeInterest(worldPlayers: PlayerList, xteas: List<IntArray>) {
+       playerInterest.initialize(this, worldPlayers)
         ctx.write(InterestInitPacket(this, worldPlayers, xteas, position.x.inZones, position.y.inZones))
     }
 
     fun playerInterestSync(worldPlayers: PlayerList) {
         ctx.write(PlayerInfoPacket(this, worldPlayers))
+    }
+
+    fun updateMap(zone: Zone, xteas: List<IntArray>) {
+        ctx.write(RebuildNormalPacket(xteas, zone.x, zone.y))
     }
 
     fun setTopInterface(topInterface: Int) {
@@ -91,7 +97,7 @@ data class Player(
     fun setInterfaceText(parentInterface: Int, slot: Int, text: String) {
         ctx.write(IfSettext(parentInterface, slot, text))
     }
-
+    
     override fun compareTo(other: Player) = when {
         priority < other.priority -> -1
         priority > other.priority -> 1
