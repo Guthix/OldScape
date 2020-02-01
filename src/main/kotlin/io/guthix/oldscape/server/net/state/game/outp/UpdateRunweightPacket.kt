@@ -16,27 +16,23 @@
  */
 package io.guthix.oldscape.server.net.state.game.outp
 
-import io.guthix.buffer.writeByteADD
-import io.guthix.buffer.writeIntME
 import io.guthix.oldscape.server.net.state.game.FixedSize
 import io.guthix.oldscape.server.net.state.game.OutGameEvent
 import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 
-class UpdateStatPacket(private val skillId: Int, private val xp: Int, private val skillStatus: Int) : OutGameEvent {
-    override val opcode = 37
+class UpdateRunweightPacket(private val weight: Int) : OutGameEvent {
+    override val opcode = 8
 
     override val size = FixedSize(STATIC_SIZE)
 
     override fun encode(ctx: ChannelHandlerContext): ByteBuf {
         val buf = ctx.alloc().buffer(STATIC_SIZE)
-        buf.writeByteADD(skillId)
-        buf.writeIntME(xp)
-        buf.writeByte(skillStatus)
+        buf.writeShort(weight)
         return buf
     }
 
     companion object {
-        const val STATIC_SIZE = Byte.SIZE_BYTES + Int.SIZE_BYTES + Byte.SIZE_BYTES
+        const val STATIC_SIZE = Short.SIZE_BYTES
     }
 }
