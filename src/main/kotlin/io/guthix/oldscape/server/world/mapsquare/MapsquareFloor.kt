@@ -36,9 +36,16 @@ class MapsquareFloor(
         }
     }
 
-    fun addUnwalkableTile(x: TileUnit, y: TileUnit) = zones[x.inZones.value][y.inZones.value].addUnwalkableTile(
-        x.relativeZone, y.relativeZone
-    )
+    fun getZone(localX: TileUnit, localY: TileUnit) = zones[localX.inZones.value][localY.inZones.value]
+
+    fun addUnwalkableTile(localX: TileUnit, localY: TileUnit) = zones[localX.inZones.value][localY.inZones.value]
+        .addUnwalkableTile(localX.relativeZone, localY.relativeZone)
+
+    fun getCollisionMask(localX: TileUnit, localY: TileUnit) = zones[localX.inZones.value][localY.inZones.value]
+        .getCollisionMask(localX.relativeZone, localY.relativeZone)
+
+    fun getLocation(id: Int, localX: TileUnit, localY: TileUnit) = zones[localX.inZones.value][localY.inZones.value]
+        .getLocation(id, localX.relativeZone, localY.relativeZone)
 
     fun addStaticLocation(location: Location) {
         val zoneX = location.position.x.inZones.relativeMapSquare

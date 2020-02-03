@@ -391,8 +391,8 @@ class PlayerInfoPacket(
             setByteNEG(lengthIndex, writerIndex() - lengthIndex - 1)
         }
 
-        val orientation = UpdateType(0x2) { player ->
-            // TODO
+        val orientation = UpdateType(0x20) { player ->
+            writeShortLEADD(player.orientation)
         }
     }
 }

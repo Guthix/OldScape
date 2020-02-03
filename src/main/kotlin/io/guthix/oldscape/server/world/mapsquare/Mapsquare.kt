@@ -74,19 +74,17 @@ class Mapsquare(val x: MapsquareUnit, val y: MapsquareUnit, val xtea: IntArray, 
         }
     }
 
-    fun getZone(floor: FloorUnit, localX: TileUnit, localY: TileUnit): Zone {
-        return floors[floor.value].zones[localX.inZones.value][localY.inZones.value]
-    }
+    fun getZone(floor: FloorUnit, localX: TileUnit, localY: TileUnit) = floors[floor.value]
+        .getZone(localX, localY)
 
-    fun addUnwalkableTile(floor: FloorUnit, localX: TileUnit, localY: TileUnit) {
-        floors[floor.value].zones[localX.inZones.value][localY.inZones.value]
-            .addUnwalkableTile(localX.relativeZone, localY.relativeZone)
-    }
+    fun addUnwalkableTile(floor: FloorUnit, localX: TileUnit, localY: TileUnit) = floors[floor.value]
+        .addUnwalkableTile(localX.relativeZone, localY.relativeZone)
 
-    fun getCollisionMask(floor: FloorUnit, localX: TileUnit, localY: TileUnit): Int {
-        return floors[floor.value].zones[localX.inZones.value][localY.inZones.value]
-            .getCollisionMask(localX.relativeZone, localY.relativeZone)
-    }
+    fun getCollisionMask(floor: FloorUnit, localX: TileUnit, localY: TileUnit) = floors[floor.value]
+        .getCollisionMask(localX, localY)
+
+    fun getLocation(id: Int, floor: FloorUnit, localX: TileUnit, localY: TileUnit) = floors[floor.value]
+        .getLocation(id, localX, localY)
 
     companion object {
         const val FLOOR_COUNT = 4

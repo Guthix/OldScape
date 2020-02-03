@@ -22,7 +22,13 @@ import kotlin.coroutines.intrinsics.COROUTINE_SUSPENDED
 import kotlin.coroutines.intrinsics.suspendCoroutineUninterceptedOrReturn
 
 open class Routine(val type: Type, val player: Player) : Continuation<Unit>, Comparable<Routine> {
-    abstract class Type(val priority: Int)
+    abstract class Type(val priority: Int) : Comparable<Type> {
+        override fun compareTo(other: Type) = when {
+            priority < other.priority -> -1
+            priority > other.priority -> 1
+            else -> 0
+        }
+    }
 
     internal var next: ConditionalContinuation? = null
 
@@ -32,7 +38,7 @@ open class Routine(val type: Type, val player: Player) : Continuation<Unit>, Com
 
     internal fun resumeIfPossible()  = next?.let {
         if(it.canResume()) {
-            player.routines.remove(this)
+            player.routines.remove(type)
             it.continuation.resume(Unit)
         }
     }
@@ -46,16 +52,12 @@ open class Routine(val type: Type, val player: Player) : Continuation<Unit>, Com
     }
 
     private suspend fun suspend(condition: RoutineCondition) {
-        player.routines.add(this)
+        player.routines[type] = this
         return suspendCoroutineUninterceptedOrReturn { cont ->
             next = ConditionalContinuation(condition, cont)
             COROUTINE_SUSPENDED
         }
     }
 
-    override fun compareTo(other: Routine) = when {
-        type.priority < other.type.priority -> -1
-        type.priority > other.type.priority -> 1
-        else -> 0
-    }
+    override fun compareTo(other: Routine) = type.compareTo(other.type)
 }

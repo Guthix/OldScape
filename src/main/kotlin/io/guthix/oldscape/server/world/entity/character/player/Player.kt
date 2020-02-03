@@ -20,6 +20,7 @@ import io.guthix.oldscape.server.routine.Routine
 import io.guthix.oldscape.server.routine.ConditionalContinuation
 import io.guthix.oldscape.server.routine.InitialCondition
 import io.guthix.oldscape.server.net.state.game.outp.*
+import io.guthix.oldscape.server.world.entity.Entity
 import io.guthix.oldscape.server.world.entity.character.Character
 import io.guthix.oldscape.server.world.entity.character.player.interest.MapInterest
 import io.guthix.oldscape.server.world.entity.character.player.interest.PlayerInterest
@@ -31,6 +32,7 @@ import io.netty.channel.ChannelHandlerContext
 import java.util.*
 import java.util.concurrent.ConcurrentLinkedQueue
 import kotlin.coroutines.intrinsics.createCoroutineUnintercepted
+import kotlin.math.atan2
 import kotlin.reflect.KProperty
 
 data class Player(
@@ -45,7 +47,7 @@ data class Player(
 
     lateinit var clientSettings: ClientSettings
 
-    val routines = PriorityQueue<Routine>()
+    val routines = TreeMap<Routine.Type, Routine>()
 
     var inRunMode = false
 
@@ -62,7 +64,7 @@ data class Player(
     fun addRoutine(type: Routine.Type, routine: suspend Routine.() -> Unit) {
         val cont = Routine(type, this)
         cont.next = ConditionalContinuation(InitialCondition, routine.createCoroutineUnintercepted(cont, cont))
-        routines.add(cont)
+        routines[type] = cont
     }
 
     fun initializeInterest(worldPlayers: PlayerList, xteas: List<IntArray>) {
@@ -106,6 +108,16 @@ data class Player(
         ctx.write(UpdateRunweightPacket(amount))
     }
 
+    fun turnTo(entity: Entity) {
+        val dx = (position.x.value + (sizeX.value.toDouble() / 2)) - (entity.position.x.value + (entity.sizeX.value.toDouble() / 2))
+        val dy = (position.y.value + (sizeY.value.toDouble() / 2)) - (entity.position.y.value + (entity.sizeY.value.toDouble() / 2))
+        if (dx.toInt() != 0 || dy.toInt() != 0) {
+            updateFlags.add(PlayerInfoPacket.orientation)
+            orientation = (atan2(dx, dy) * 325.949).toInt() and 0x7FF
+        }
+    }
+
+
     override fun compareTo(other: Player) = when {
         priority < other.priority -> -1
         priority > other.priority -> 1
@@ -117,7 +129,8 @@ data class Player(
         while(events.isNotEmpty()) {
             events.poll().invoke()
         }
-        PriorityQueue<Routine>(routines).forEach { it.resumeIfPossible() }
+        val routes = routines.values.toTypedArray().copyOf()
+        routes.forEach { it.resumeIfPossible() }
         ctx.flush()
     }
 }
