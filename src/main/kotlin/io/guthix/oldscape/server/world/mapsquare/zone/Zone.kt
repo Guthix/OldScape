@@ -16,6 +16,7 @@
  */
 package io.guthix.oldscape.server.world.mapsquare.zone
 
+import io.guthix.oldscape.server.api.blueprint.LocationBlueprints
 import io.guthix.oldscape.server.world.entity.Location
 import io.guthix.oldscape.server.world.mapsquare.FloorUnit
 import io.guthix.oldscape.server.world.mapsquare.MapsquareFloor
@@ -31,10 +32,21 @@ class Zone(
 
     val staticLocations: MutableMap<Int, Location> = mutableMapOf()
 
-    fun addUnwalkableTile(x: TileUnit, y: TileUnit) = collisions.addUnwalkableTile(x, y)
+    val dynamicLocations: MutableMap<Int, Location> = mutableMapOf()
 
-    fun getCollisionMask(x: TileUnit, y: TileUnit): Int {
-        return collisions.masks[x.value][y.value]
+    fun addUnwalkableTile(localX: TileUnit, localY: TileUnit) = collisions.addUnwalkableTile(localX, localY)
+
+    fun getCollisionMask(localX: TileUnit, localY: TileUnit): Int {
+        return collisions.masks[localX.value][localY.value]
+    }
+
+    fun getLocation(id: Int, localX: TileUnit, localY: TileUnit): Location? {
+        for(slot in 0 until Location.UNIQUE_SLOTS) {
+            val key = Location.generateMapKey(localX, localY, slot)
+            val mapObject = staticLocations[key] ?: dynamicLocations[key]
+            mapObject?.let { if(id == it.blueprint.id) return it }
+        }
+        return null
     }
 
     fun addStaticLocation(location: Location) {

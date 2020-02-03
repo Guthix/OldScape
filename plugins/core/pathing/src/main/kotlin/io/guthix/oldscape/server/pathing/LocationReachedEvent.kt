@@ -14,16 +14,9 @@
  * You should have received a copy of the GNU General Public License
  * along with Foobar. If not, see <https://www.gnu.org/licenses/>.
  */
-package io.guthix.oldscape.server.world.entity
+package io.guthix.oldscape.server.pathing
 
-import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
-import io.guthix.oldscape.server.world.mapsquare.zone.tile.tiles
-import kotlin.reflect.KProperty
+import io.guthix.oldscape.server.event.GameEvent
+import io.guthix.oldscape.server.world.entity.Location
 
-abstract class Entity(open val position: Tile, open val attributes: MutableMap<KProperty<*>, Any?>) {
-    open val sizeX get() = size
-
-    open val sizeY get() = size
-
-    val size = 1.tiles // TODO
-}
+class LocationReachedEvent(val loc: Location) : GameEvent

@@ -26,6 +26,7 @@ import io.guthix.oldscape.server.net.state.game.GameDecoder
 import io.guthix.oldscape.server.net.state.game.GameEncoder
 import io.guthix.oldscape.server.net.state.game.GameHandler
 import io.guthix.oldscape.server.net.state.login.*
+import io.guthix.oldscape.server.world.entity.Location
 import io.guthix.oldscape.server.world.entity.character.player.PlayerList
 import io.guthix.oldscape.server.world.mapsquare.FloorUnit
 import io.guthix.oldscape.server.world.mapsquare.Mapsquare
@@ -65,6 +66,10 @@ class World : TimerTask() {
 
     fun getZone(floor: FloorUnit, x: TileUnit, y: TileUnit): Zone? = map[Mapsquare.id(x.inMapsquares, y.inMapsquares)]?.
         getZone(floor, x.relativeMapSquare, y.relativeMapSquare)
+
+    fun getLocation(id: Int, floor: FloorUnit, x: TileUnit, y: TileUnit): Location? =
+        map[Mapsquare.id(x.inMapsquares, y.inMapsquares)]?.
+            getLocation(id, floor, x.relativeMapSquare, y.relativeMapSquare)
 
     fun addUnwalkableTile(floor: FloorUnit, x: TileUnit, y: TileUnit) {
         map[Mapsquare.id(x.inMapsquares, y.inMapsquares)]?.addUnwalkableTile(
