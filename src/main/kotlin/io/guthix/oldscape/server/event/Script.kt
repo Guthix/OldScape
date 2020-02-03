@@ -51,7 +51,7 @@ class EventListener<E: GameEvent>(private val type: KClass<E>) {
     fun schedule(event: E, world: World, player: Player) {
         val routine = EventHandler(event, world, player)
         if(routine.condition()) {
-            player.events.add { routine.script() }
+            player.inEvents.add { routine.script() }
         }
     }
 }
