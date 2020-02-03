@@ -137,6 +137,12 @@ data class Player(
         }
     }
 
+    private fun updateZonePartialFollows(zone: Zone) {
+        val baseZoneX = mapInterest.lastLoadedZone.x - MapInterest.RANGE
+        val baseZoneY = mapInterest.lastLoadedZone.y - MapInterest.RANGE
+        outEvents.add(UpdateZonePartialFollows((zone.x - baseZoneX).inTiles, (zone.y - baseZoneY).inTiles))
+    }
+
     override fun compareTo(other: Player) = when {
         priority < other.priority -> -1
         priority > other.priority -> 1
