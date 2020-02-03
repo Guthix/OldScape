@@ -16,6 +16,7 @@
  */
 package io.guthix.oldscape.server.world.entity.character.player
 
+import io.guthix.oldscape.cache.config.VarbitConfig
 import io.guthix.oldscape.server.routine.Routine
 import io.guthix.oldscape.server.routine.ConditionalContinuation
 import io.guthix.oldscape.server.routine.InitialCondition
@@ -24,10 +25,8 @@ import io.guthix.oldscape.server.world.entity.Entity
 import io.guthix.oldscape.server.world.entity.character.Character
 import io.guthix.oldscape.server.world.entity.character.player.interest.MapInterest
 import io.guthix.oldscape.server.world.entity.character.player.interest.PlayerInterest
-import io.guthix.oldscape.server.world.mapsquare.floors
 import io.guthix.oldscape.server.world.mapsquare.zone.Zone
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
-import io.guthix.oldscape.server.world.mapsquare.zone.tile.tiles
 import io.netty.channel.ChannelHandlerContext
 import java.util.*
 import java.util.concurrent.ConcurrentLinkedQueue
@@ -106,6 +105,24 @@ data class Player(
 
     fun updateWeight(amount: Int) {
         ctx.write(UpdateRunweightPacket(amount))
+    }
+
+    fun runClientScript(id: Int, vararg args: Any) {
+        ctx.write(RunclientscriptPacket(id, *args))
+    }
+
+    fun updateVarp(id: Int, value: Int) {
+        if (value <= Byte.MIN_VALUE || value >= Byte.MAX_VALUE) {
+            ctx.write(VarpLargePacket(id, value))
+        } else {
+            ctx.write(VarpSmallPacket(id, value))
+        }
+    }
+
+    fun updateVarBit(config: VarbitConfig, value: Int) {
+        val rstMask = Int.MAX_VALUE shr config.lsb.toInt() shl config.lsb.toInt() ushr config.msb.toInt() shl config.msb.toInt()
+        val bitMask = (value shl config.lsb.toInt()) and (Int.MAX_VALUE shr config.msb.toInt())
+        updateVarp(config.id, 0 and rstMask or bitMask)
     }
 
     fun turnTo(entity: Entity) {
