@@ -23,7 +23,7 @@ import io.guthix.oldscape.server.net.state.game.VarShortSize
 import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 
-class RunclientscriptPacket(private val id: Int, private val params: Array<Any>) : OutGameEvent {
+class RunclientscriptPacket(private val id: Int, vararg val params: Any) : OutGameEvent {
     override val opcode = 83
 
     override val size = VarShortSize
