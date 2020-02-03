@@ -117,7 +117,6 @@ data class Player(
         }
     }
 
-
     override fun compareTo(other: Player) = when {
         priority < other.priority -> -1
         priority > other.priority -> 1
