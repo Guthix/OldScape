@@ -5,11 +5,11 @@ import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
 import io.guthix.oldscape.server.event.EventBus
 
 on(LocationClickEvent::class).then {
-    val loc = world.getLocation(event.id, player.position.floor, event.x, event.y) ?: throw IllegalStateException(
+    val loc = world.map.getLocation(event.id, player.position.floor, event.x, event.y) ?: throw IllegalStateException(
         "Could not find location at ${Tile(player.position.floor, event.x, event.y)}."
     )
-    val destination = DestinationLocation(loc, world)
-    val path = breadthFirstSearch(player.position, destination, player.size, true, world)
+    val destination = DestinationLocation(loc, world.map)
+    val path = breadthFirstSearch(player.position, destination, player.size, true, world.map)
     player.startWalkingOn(path) {
         player.turnTo(loc)
         EventBus.schedule(LocationReachedEvent(loc), world, player)

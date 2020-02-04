@@ -9,7 +9,7 @@ import io.guthix.oldscape.server.world.entity.character.player.interest.MapInter
 import io.guthix.oldscape.server.event.imp.PlayerInitialized
 
 on(LoginEvent::class).then {
-    var pZone = world.getZone(player.position) ?: throw IllegalStateException("Player location can't be null")
+    var pZone = world.map.getZone(player.position) ?: throw IllegalStateException("Player location can't be null")
     player.mapInterest.lastLoadedZone = pZone
     val xteas = MapInterest.getInterestedXteas(pZone, world.map)
     player.updateFlags.add(PlayerInfoPacket.appearance)
@@ -26,7 +26,7 @@ on(LoginEvent::class).then {
     }
     player.addRoutine(MapSyncRoutine) {
         while(true) {
-            pZone = world.getZone(player.position) ?: throw IllegalStateException("Player location can't be null")
+            pZone = world.map.getZone(player.position) ?: throw IllegalStateException("Player location can't be null")
             player.mapInterest.checkReload(pZone, world.map)
             wait(ticks = 1)
         }

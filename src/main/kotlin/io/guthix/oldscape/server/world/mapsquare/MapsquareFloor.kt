@@ -19,6 +19,7 @@ package io.guthix.oldscape.server.world.mapsquare
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.Location
 import io.guthix.oldscape.server.world.mapsquare.zone.Zone
+import io.guthix.oldscape.server.world.mapsquare.zone.ZoneUnit
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.TileUnit
 import io.guthix.oldscape.server.world.mapsquare.zone.zones
 
@@ -37,6 +38,8 @@ class MapsquareFloor(
     }
 
     fun getZone(localX: TileUnit, localY: TileUnit) = zones[localX.inZones.value][localY.inZones.value]
+
+    fun getZone(localX: ZoneUnit, localY: ZoneUnit) = zones[localX.value][localY.value]
 
     fun addUnwalkableTile(localX: TileUnit, localY: TileUnit) = zones[localX.inZones.value][localY.inZones.value]
         .addUnwalkableTile(localX.relativeZone, localY.relativeZone)

@@ -45,8 +45,6 @@ data class Player(
 ) : Character(position, attributes), Comparable<Player> {
     val inEvents = ConcurrentLinkedQueue<() -> Unit>()
 
-    val outEvents = mutableListOf<OutGameEvent>()
-
     lateinit var clientSettings: ClientSettings
 
     val routines = TreeMap<Routine.Type, Routine>()
@@ -71,54 +69,54 @@ data class Player(
 
     fun initializeInterest(worldPlayers: PlayerList, xteas: List<IntArray>) {
         playerInterest.initialize(this, worldPlayers)
-        outEvents.add(InterestInitPacket(this, worldPlayers, xteas, position.x.inZones, position.y.inZones))
+        ctx.write(InterestInitPacket(this, worldPlayers, xteas, position.x.inZones, position.y.inZones))
     }
 
     fun playerInterestSync(worldPlayers: PlayerList) {
-        outEvents.add(PlayerInfoPacket(this, worldPlayers))
+        ctx.write(PlayerInfoPacket(this, worldPlayers))
     }
 
     fun updateMap(zone: Zone, xteas: List<IntArray>) {
-        outEvents.add(RebuildNormalPacket(xteas, zone.x, zone.y))
+        ctx.write(RebuildNormalPacket(xteas, zone.x, zone.y))
     }
 
     fun setTopInterface(topInterface: Int) {
-        outEvents.add(IfOpentopPacket(topInterface))
+        ctx.write(IfOpentopPacket(topInterface))
     }
 
     fun setSubInterface(parentInterface: Int, slot: Int, childInterface: Int, isClickable: Boolean) {
-        outEvents.add(IfOpensubPacket(parentInterface, slot, childInterface, isClickable))
+        ctx.write(IfOpensubPacket(parentInterface, slot, childInterface, isClickable))
     }
 
     fun moveSubInterface(fromParent: Int, fromChild: Int, toParent: Int, toChild: Int) {
-        outEvents.add(IfMovesubPacket(fromParent, fromChild, toParent, toChild))
+        ctx.write(IfMovesubPacket(fromParent, fromChild, toParent, toChild))
     }
 
     fun closeSubInterface(parentInterface: Int, slot: Int) {
-        outEvents.add(IfClosesubPacket(parentInterface, slot))
+        ctx.write(IfClosesubPacket(parentInterface, slot))
     }
 
     fun setInterfaceText(parentInterface: Int, slot: Int, text: String) {
-        outEvents.add(IfSettext(parentInterface, slot, text))
+        ctx.write(IfSettext(parentInterface, slot, text))
     }
 
     fun updateStat(id: Int, xp: Int, status: Int) {
-        outEvents.add(UpdateStatPacket(id, xp, status))
+        ctx.write(UpdateStatPacket(id, xp, status))
     }
 
     fun updateWeight(amount: Int) {
-        outEvents.add(UpdateRunweightPacket(amount))
+        ctx.write(UpdateRunweightPacket(amount))
     }
 
     fun runClientScript(id: Int, vararg args: Any) {
-        outEvents.add(RunclientscriptPacket(id, *args))
+        ctx.write(RunclientscriptPacket(id, *args))
     }
 
     fun updateVarp(id: Int, value: Int) {
         if (value <= Byte.MIN_VALUE || value >= Byte.MAX_VALUE) {
-            outEvents.add(VarpLargePacket(id, value))
+            ctx.write(VarpLargePacket(id, value))
         } else {
-            outEvents.add(VarpSmallPacket(id, value))
+            ctx.write(VarpSmallPacket(id, value))
         }
     }
 
@@ -138,9 +136,7 @@ data class Player(
     }
 
     private fun updateZonePartialFollows(zone: Zone) {
-        val baseZoneX = mapInterest.lastLoadedZone.x - MapInterest.RANGE
-        val baseZoneY = mapInterest.lastLoadedZone.y - MapInterest.RANGE
-        outEvents.add(UpdateZonePartialFollows((zone.x - baseZoneX).inTiles, (zone.y - baseZoneY).inTiles))
+        ctx.write(UpdateZonePartialFollows((zone.x - mapInterest.baseX).inTiles, (zone.y - mapInterest.baseY).inTiles))
     }
 
     override fun compareTo(other: Player) = when {
@@ -156,8 +152,6 @@ data class Player(
         }
         val routes = routines.values.toTypedArray().copyOf()
         routes.forEach { it.resumeIfPossible() }
-        outEvents.forEach { ctx.write(it) }
-        outEvents.clear()
         ctx.flush()
     }
 }

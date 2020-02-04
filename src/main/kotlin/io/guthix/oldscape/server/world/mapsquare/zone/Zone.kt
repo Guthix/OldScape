@@ -16,8 +16,8 @@
  */
 package io.guthix.oldscape.server.world.mapsquare.zone
 
-import io.guthix.oldscape.server.api.blueprint.LocationBlueprints
 import io.guthix.oldscape.server.world.entity.Location
+import io.guthix.oldscape.server.world.entity.character.player.Player
 import io.guthix.oldscape.server.world.mapsquare.FloorUnit
 import io.guthix.oldscape.server.world.mapsquare.MapsquareFloor
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.TileUnit
@@ -29,6 +29,8 @@ class Zone(
     val mapsquareFloor: MapsquareFloor
 ) {
     val collisions = ZoneCollision(this)
+
+    val players = mutableListOf<Player>()
 
     val staticLocations: MutableMap<Int, Location> = mutableMapOf()
 
