@@ -16,8 +16,7 @@
  */
 package io.guthix.oldscape.server.pathing
 
-import io.guthix.oldscape.server.world.World
-import io.guthix.oldscape.server.world.entity.character.player.Player
+import io.guthix.oldscape.server.world.WorldMap
 import io.guthix.oldscape.server.world.mapsquare.zone.ZoneCollision
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.TileUnit
@@ -34,7 +33,7 @@ fun breadthFirstSearch(
     destination: Destination,
     moverSize: TileUnit,
     findAlternative: Boolean,
-    world: World
+    map: WorldMap
 ): MutableList<Tile> {
     val pathBaseX = start.x - (SEARCH_SIZE / 2.tiles)
     val pathBaseY = start.y - (SEARCH_SIZE / 2.tiles)
@@ -69,7 +68,7 @@ fun breadthFirstSearch(
             }
             val nextDistance = distances[curGraphX.value][curGraphY.value] + 1
             if (curGraphY > 0.tiles && directions[curGraphX.value][curGraphY.value - 1] == 0 &&
-                world.getCollisionMask(dest.floor, curX, curY - 1.tiles) and ZoneCollision.BLOCK_NORTH == 0
+                map.getCollisionMask(dest.floor, curX, curY - 1.tiles) and ZoneCollision.BLOCK_NORTH == 0
             ) {
                 bufferX[nextIndex] = curX.value
                 bufferY[nextIndex] = curY.value - 1
@@ -78,7 +77,7 @@ fun breadthFirstSearch(
                 distances[curGraphX.value][curGraphY.value - 1] = nextDistance
             }
             if (curGraphX > 0.tiles && directions[curGraphX.value - 1][curGraphY.value] == 0
-                && world.getCollisionMask(dest.floor, curX - 1.tiles, curY) and ZoneCollision.BLOCK_EAST == 0
+                && map.getCollisionMask(dest.floor, curX - 1.tiles, curY) and ZoneCollision.BLOCK_EAST == 0
             ) {
                 bufferX[nextIndex] = curX.value - 1
                 bufferY[nextIndex] = curY.value
@@ -87,7 +86,7 @@ fun breadthFirstSearch(
                 distances[curGraphX.value - 1][curGraphY.value] = nextDistance
             }
             if (curGraphY < SEARCH_SIZE - 1.tiles && directions[curGraphX.value][curGraphY.value + 1] == 0
-                && world.getCollisionMask(dest.floor, curX, curY + 1.tiles) and ZoneCollision.BLOCK_SOUTH == 0
+                && map.getCollisionMask(dest.floor, curX, curY + 1.tiles) and ZoneCollision.BLOCK_SOUTH == 0
             ) {
                 bufferX[nextIndex] = curX.value
                 bufferY[nextIndex] = curY.value + 1
@@ -96,7 +95,7 @@ fun breadthFirstSearch(
                 distances[curGraphX.value][curGraphY.value + 1] = nextDistance
             }
             if (curGraphX < SEARCH_SIZE - 1.tiles && directions[curGraphX.value + 1][curGraphY.value] == 0
-                && world.getCollisionMask(dest.floor, curX + 1.tiles, curY) and ZoneCollision.BLOCK_WEST == 0
+                && map.getCollisionMask(dest.floor, curX + 1.tiles, curY) and ZoneCollision.BLOCK_WEST == 0
             ) {
                 bufferX[nextIndex] = curX.value + 1
                 bufferY[nextIndex] = curY.value
@@ -105,9 +104,9 @@ fun breadthFirstSearch(
                 distances[curGraphX.value + 1][curGraphY.value] = nextDistance
             }
             if (curGraphX > 0.tiles && curGraphY > 0.tiles && directions[curGraphX.value - 1][curGraphY.value - 1] == 0
-                && world.getCollisionMask(dest.floor, curX - 1.tiles, curY - 1.tiles) and ZoneCollision.BLOCK_NORTH_EAST == 0
-                && world.getCollisionMask(dest.floor, curX, curY - 1.tiles) and ZoneCollision.BLOCK_NORTH == 0
-                && world.getCollisionMask(dest.floor, curX - 1.tiles, curY) and ZoneCollision.BLOCK_EAST == 0
+                && map.getCollisionMask(dest.floor, curX - 1.tiles, curY - 1.tiles) and ZoneCollision.BLOCK_NORTH_EAST == 0
+                && map.getCollisionMask(dest.floor, curX, curY - 1.tiles) and ZoneCollision.BLOCK_NORTH == 0
+                && map.getCollisionMask(dest.floor, curX - 1.tiles, curY) and ZoneCollision.BLOCK_EAST == 0
             ) {
                 bufferX[nextIndex] = curX.value - 1
                 bufferY[nextIndex] = curY.value - 1
@@ -117,9 +116,9 @@ fun breadthFirstSearch(
             }
             if (curGraphX < SEARCH_SIZE - 1.tiles && curGraphY > 0.tiles
                 && directions[curGraphX.value + 1][curGraphY.value - 1] == 0
-                && world.getCollisionMask(dest.floor, curX + 1.tiles, curY - 1.tiles) and ZoneCollision.BLOCK_NORTH_WEST == 0
-                && world.getCollisionMask(dest.floor, curX, curY - 1.tiles) and ZoneCollision.BLOCK_NORTH == 0
-                && world.getCollisionMask(dest.floor, curX + 1.tiles, curY) and ZoneCollision.BLOCK_WEST == 0
+                && map.getCollisionMask(dest.floor, curX + 1.tiles, curY - 1.tiles) and ZoneCollision.BLOCK_NORTH_WEST == 0
+                && map.getCollisionMask(dest.floor, curX, curY - 1.tiles) and ZoneCollision.BLOCK_NORTH == 0
+                && map.getCollisionMask(dest.floor, curX + 1.tiles, curY) and ZoneCollision.BLOCK_WEST == 0
             ) {
                 bufferX[nextIndex] = curX.value + 1
                 bufferY[nextIndex] = curY.value - 1
@@ -129,9 +128,9 @@ fun breadthFirstSearch(
             }
             if (curGraphX > 0.tiles && curGraphY < SEARCH_SIZE - 1.tiles
                 && directions[curGraphX.value - 1][curGraphY.value + 1] == 0
-                && world.getCollisionMask(dest.floor, curX - 1.tiles, curY + 1.tiles) and ZoneCollision.BLOCK_SOUTH_EAST == 0
-                && world.getCollisionMask(dest.floor, curX, curY + 1.tiles) and ZoneCollision.BLOCK_SOUTH == 0
-                && world.getCollisionMask(dest.floor, curX - 1.tiles, curY) and ZoneCollision.BLOCK_EAST == 0
+                && map.getCollisionMask(dest.floor, curX - 1.tiles, curY + 1.tiles) and ZoneCollision.BLOCK_SOUTH_EAST == 0
+                && map.getCollisionMask(dest.floor, curX, curY + 1.tiles) and ZoneCollision.BLOCK_SOUTH == 0
+                && map.getCollisionMask(dest.floor, curX - 1.tiles, curY) and ZoneCollision.BLOCK_EAST == 0
             ) {
                 bufferX[nextIndex] = curX.value - 1
                 bufferY[nextIndex] = curY.value + 1
@@ -141,9 +140,9 @@ fun breadthFirstSearch(
             }
             if (curGraphX < SEARCH_SIZE - 1.tiles && curGraphY < SEARCH_SIZE - 1.tiles
                 && directions[curGraphX.value + 1][curGraphY.value + 1] == 0
-                && world.getCollisionMask(dest.floor, curX + 1.tiles, curY + 1.tiles) and ZoneCollision.BLOCK_SOUTH_WEST == 0
-                && world.getCollisionMask(dest.floor, curX, curY + 1.tiles) and ZoneCollision.BLOCK_SOUTH == 0
-                && world.getCollisionMask(dest.floor, curX + 1.tiles, curY) and ZoneCollision.BLOCK_WEST == 0
+                && map.getCollisionMask(dest.floor, curX + 1.tiles, curY + 1.tiles) and ZoneCollision.BLOCK_SOUTH_WEST == 0
+                && map.getCollisionMask(dest.floor, curX, curY + 1.tiles) and ZoneCollision.BLOCK_SOUTH == 0
+                && map.getCollisionMask(dest.floor, curX + 1.tiles, curY) and ZoneCollision.BLOCK_WEST == 0
             ) {
                 bufferX[nextIndex] = curX.value + 1
                 bufferY[nextIndex] = curY.value + 1
