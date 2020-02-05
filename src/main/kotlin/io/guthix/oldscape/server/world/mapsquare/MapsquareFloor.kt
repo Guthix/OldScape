@@ -17,7 +17,8 @@
 package io.guthix.oldscape.server.world.mapsquare
 
 import io.guthix.oldscape.server.world.World
-import io.guthix.oldscape.server.world.entity.Location
+import io.guthix.oldscape.server.world.entity.Obj
+import io.guthix.oldscape.server.world.entity.Loc
 import io.guthix.oldscape.server.world.mapsquare.zone.Zone
 import io.guthix.oldscape.server.world.mapsquare.zone.ZoneUnit
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.TileUnit
@@ -41,18 +42,24 @@ class MapsquareFloor(
 
     fun getZone(localX: ZoneUnit, localY: ZoneUnit) = zones[localX.value][localY.value]
 
-    fun addUnwalkableTile(localX: TileUnit, localY: TileUnit) = zones[localX.inZones.value][localY.inZones.value]
-        .addUnwalkableTile(localX.relativeZone, localY.relativeZone)
-
     fun getCollisionMask(localX: TileUnit, localY: TileUnit) = zones[localX.inZones.value][localY.inZones.value]
         .getCollisionMask(localX.relativeZone, localY.relativeZone)
 
-    fun getLocation(id: Int, localX: TileUnit, localY: TileUnit) = zones[localX.inZones.value][localY.inZones.value]
-        .getLocation(id, localX.relativeZone, localY.relativeZone)
+    fun getLoc(id: Int, localX: TileUnit, localY: TileUnit) = zones[localX.inZones.value][localY.inZones.value]
+        .getLoc(id, localX.relativeZone, localY.relativeZone)
 
-    fun addStaticLocation(location: Location) {
-        val zoneX = location.position.x.inZones.relativeMapSquare
-        val zoneY = location.position.y.inZones.relativeMapSquare
-        zones[zoneX.value][zoneY.value].addStaticLocation(location)
+    fun addStaticLocation(loc: Loc) {
+        val zoneX = loc.position.x.inZones.relativeMapSquare
+        val zoneY = loc.position.y.inZones.relativeMapSquare
+        zones[zoneX.value][zoneY.value].addStaticLocation(loc)
+    }
+
+    fun addUnwalkableTile(localX: TileUnit, localY: TileUnit) = zones[localX.inZones.value][localY.inZones.value]
+        .addUnwalkableTile(localX.relativeZone, localY.relativeZone)
+
+    fun addObject(obj: Obj) {
+        val zoneX = obj.position.x.inZones.relativeMapSquare
+        val zoneY = obj.position.y.inZones.relativeMapSquare
+        zones[zoneX.value][zoneY.value].addObject(obj)
     }
 }

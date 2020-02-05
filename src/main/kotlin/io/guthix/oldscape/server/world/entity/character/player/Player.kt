@@ -27,6 +27,7 @@ import io.guthix.oldscape.server.world.entity.character.player.interest.MapInter
 import io.guthix.oldscape.server.world.entity.character.player.interest.PlayerInterest
 import io.guthix.oldscape.server.world.mapsquare.zone.Zone
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
+import io.guthix.oldscape.server.world.mapsquare.zone.zones
 import io.netty.channel.ChannelHandlerContext
 import java.util.*
 import java.util.concurrent.ConcurrentLinkedQueue
@@ -153,6 +154,19 @@ data class Player(
         ctx.write(UpdateZonePartialFollows((zone.x - mapInterest.baseX).inTiles, (zone.y - mapInterest.baseY).inTiles))
     }
 
+    fun syncMapInterest() {
+        mapInterest.packetCache.forEachIndexed { x, yPacketList ->
+            yPacketList.forEachIndexed { y, packetList ->
+                if(packetList.size == 1) {
+                    println("dropping!")
+                    ctx.write(UpdateZonePartialFollows(x.zones.inTiles, y.zones.inTiles))
+                    ctx.write(packetList.first())
+                }
+                packetList.clear()
+            }
+        }
+    }
+
     override fun compareTo(other: Player) = when {
         priority < other.priority -> -1
         priority > other.priority -> 1
@@ -166,6 +180,7 @@ data class Player(
         }
         val routes = routines.values.toTypedArray().copyOf()
         routes.forEach { it.resumeIfPossible() }
+        syncMapInterest() // TODO move this to plugins
         ctx.flush()
     }
 }

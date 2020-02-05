@@ -16,7 +16,8 @@
  */
 package io.guthix.oldscape.server.world.mapsquare.zone
 
-import io.guthix.oldscape.server.world.entity.Location
+import io.guthix.oldscape.server.world.entity.Obj
+import io.guthix.oldscape.server.world.entity.Loc
 import io.guthix.oldscape.server.world.entity.character.player.Player
 import io.guthix.oldscape.server.world.mapsquare.FloorUnit
 import io.guthix.oldscape.server.world.mapsquare.MapsquareFloor
@@ -32,28 +33,35 @@ class Zone(
 
     val players = mutableListOf<Player>()
 
-    val staticLocations: MutableMap<Int, Location> = mutableMapOf()
+    val groundObjects = mutableListOf<Obj>()
 
-    val dynamicLocations: MutableMap<Int, Location> = mutableMapOf()
+    val staticLocations: MutableMap<Int, Loc> = mutableMapOf()
 
-    fun addUnwalkableTile(localX: TileUnit, localY: TileUnit) = collisions.addUnwalkableTile(localX, localY)
+    val dynamicLocations: MutableMap<Int, Loc> = mutableMapOf()
 
     fun getCollisionMask(localX: TileUnit, localY: TileUnit): Int {
         return collisions.masks[localX.value][localY.value]
     }
 
-    fun getLocation(id: Int, localX: TileUnit, localY: TileUnit): Location? {
-        for(slot in 0 until Location.UNIQUE_SLOTS) {
-            val key = Location.generateMapKey(localX, localY, slot)
+    fun getLoc(id: Int, localX: TileUnit, localY: TileUnit): Loc? {
+        for(slot in 0 until Loc.UNIQUE_SLOTS) {
+            val key = Loc.generateMapKey(localX, localY, slot)
             val mapObject = staticLocations[key] ?: dynamicLocations[key]
             mapObject?.let { if(id == it.blueprint.id) return it }
         }
         return null
     }
 
-    fun addStaticLocation(location: Location) {
-        staticLocations[location.mapKey] = location
-        collisions.addLocation(location)
+    fun addStaticLocation(loc: Loc) {
+        staticLocations[loc.mapKey] = loc
+        collisions.addLocation(loc)
+    }
+
+    fun addUnwalkableTile(localX: TileUnit, localY: TileUnit) = collisions.addUnwalkableTile(localX, localY)
+
+    fun addObject(obj: Obj) {
+        groundObjects.add(obj)
+        players.forEach { player -> player.mapInterest.addGroundObject(obj) }
     }
 
     override fun toString() = "Zone(z=${floor.value}, x=${x.value}, y=${y.value})"

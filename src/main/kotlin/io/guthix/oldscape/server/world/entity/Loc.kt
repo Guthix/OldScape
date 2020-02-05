@@ -22,7 +22,7 @@ import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.TileUnit
 import kotlin.reflect.KProperty
 
-class Location(
+class Loc(
     override val position: Tile,
     val blueprint: LocationBlueprint,
     val type: Int,

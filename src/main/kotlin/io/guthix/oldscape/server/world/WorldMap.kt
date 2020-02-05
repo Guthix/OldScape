@@ -1,8 +1,25 @@
+/**
+ * This file is part of Guthix OldScape.
+ *
+ * Guthix OldScape is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Guthix OldScape is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Foobar. If not, see <https://www.gnu.org/licenses/>.
+ */
 package io.guthix.oldscape.server.world
 
 import io.guthix.cache.js5.Js5Archive
 import io.guthix.oldscape.cache.MapArchive
 import io.guthix.oldscape.cache.xtea.MapXtea
+import io.guthix.oldscape.server.world.entity.Obj
 import io.guthix.oldscape.server.world.mapsquare.FloorUnit
 import io.guthix.oldscape.server.world.mapsquare.Mapsquare
 import io.guthix.oldscape.server.world.mapsquare.mapsquares
@@ -41,15 +58,17 @@ class WorldMap(val mapsquares: MutableMap<Int, Mapsquare>) {
         floor, x.relativeMapSquare, y.relativeMapSquare
     )
 
-    fun getLocation(id: Int, floor: FloorUnit, x: TileUnit, y: TileUnit) = mapsquares[id(x, y)]?.getLocation(
+    fun getLoc(id: Int, floor: FloorUnit, x: TileUnit, y: TileUnit) = mapsquares[id(x, y)]?.getLoc(
         id, floor, x.relativeMapSquare, y.relativeMapSquare
-    )
-
-    fun addUnwalkableTile(floor: FloorUnit, x: TileUnit, y: TileUnit) = mapsquares[id(x, y)]?.addUnwalkableTile(
-        floor, x.relativeMapSquare, y.relativeMapSquare
     )
 
     fun getCollisionMask(floor: FloorUnit, x: TileUnit, y: TileUnit) = mapsquares[id(x, y)]?.getCollisionMask(
         floor, x.relativeMapSquare, y.relativeMapSquare
     ) ?: ZoneCollision.MASK_UNWALKABLE_TILE
+
+    fun addUnwalkableTile(floor: FloorUnit, x: TileUnit, y: TileUnit) = mapsquares[id(x, y)]?.addUnwalkableTile(
+        floor, x.relativeMapSquare, y.relativeMapSquare
+    )
+
+    fun addObject(obj: Obj) = mapsquares[id(obj.position.x, obj.position.y)]?.addObject(obj)
 }

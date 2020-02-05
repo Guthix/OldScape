@@ -16,10 +16,9 @@
  */
 package io.guthix.oldscape.server.pathing
 
-import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.WorldMap
 import io.guthix.oldscape.server.world.entity.EntityAttribute
-import io.guthix.oldscape.server.world.entity.Location
+import io.guthix.oldscape.server.world.entity.Loc
 import io.guthix.oldscape.server.world.entity.character.player.Player
 import io.guthix.oldscape.server.world.mapsquare.FloorUnit
 import io.guthix.oldscape.server.world.mapsquare.zone.ZoneCollision
@@ -43,11 +42,11 @@ class DestinationNpc(floor: FloorUnit, x: TileUnit, y: TileUnit) : Destination(f
 }
 
 class DestinationLocation(
-    private val location: Location,
+    private val loc: Loc,
     private val map: WorldMap
-) : Destination(location.position.floor, location.position.x, location.position.y) {
+) : Destination(loc.position.floor, loc.position.x, loc.position.y) {
     override fun reached(moverX: TileUnit, moverY: TileUnit, moverSize: TileUnit): Boolean {
-        return when (location.type) {
+        return when (loc.type) {
             in 0..3, 9 -> reachedWall(moverX, moverY, moverSize)
             in 4..8 -> reachedDecoration(moverX, moverY, moverSize)
             else -> reachedObject(moverX, moverY, moverSize)
@@ -59,9 +58,9 @@ class DestinationLocation(
             if (x == moverX && y == moverY) {
                 return true
             }
-            when (location.type) {
+            when (loc.type) {
                 0 -> {
-                    when (location.orientation) {
+                    when (loc.orientation) {
                         ORIENTATION_NORTH -> if(
                             (y == moverY && moverX == x - 1.tiles) ||
                             (x == moverX && moverY == y + 1.tiles &&
@@ -93,7 +92,7 @@ class DestinationLocation(
                     }
                 }
                 2 -> {
-                    when (location.orientation) {
+                    when (loc.orientation) {
                         ORIENTATION_NORTH -> if(
                             (y == moverY && moverX == x - 1.tiles) ||
                             (x == moverX && moverY == y + 1.tiles) ||
@@ -145,9 +144,9 @@ class DestinationLocation(
             if (x in moverX..actorMaxX && y in moverY..actorMaxY) {
                 return true
             }
-            when (location.type) {
+            when (loc.type) {
                 0 -> {
-                    when (location.orientation) {
+                    when (loc.orientation) {
                         ORIENTATION_NORTH -> if(
                             (y in moverY..actorMaxY && moverY == x - moverSize) ||
                             (x in moverX..actorMaxX && moverY == y + 1.tiles &&
@@ -179,7 +178,7 @@ class DestinationLocation(
                     }
                 }
                 2 -> {
-                    when (location.orientation) {
+                    when (loc.orientation) {
                         ORIENTATION_NORTH -> if(
                             (y in moverY..actorMaxY && moverX == x - moverSize) ||
                             (x in moverX..actorMaxX && moverY == y + 1.tiles) ||
@@ -231,15 +230,15 @@ class DestinationLocation(
     }
 
     private fun reachedDecoration(moverX: TileUnit, moverY: TileUnit, moverSize: TileUnit): Boolean {
-        var orientation = location.orientation
+        var orientation = loc.orientation
         if (moverSize == 1.tiles) {
             if (x == moverX && y == moverY) {
                 return true
             }
             val mask = map.getCollisionMask(floor, moverX, moverY)
-            when (location.type) {
+            when (loc.type) {
                 6, 7 -> {
-                    if (location.type == 7) {
+                    if (loc.type == 7) {
                         orientation = orientation + 2 and 0x3
                     }
                     when (orientation) {
@@ -274,9 +273,9 @@ class DestinationLocation(
             if (x in moverX..actorMaxX && y in moverY..actorMaxY) {
                 return true
             }
-            when (location.type) {
+            when (loc.type) {
                 6, 7 -> {
-                    if (location.type == 7) {
+                    if (loc.type == 7) {
                         orientation = 0x3 and 2 + orientation
                     }
                     when (orientation) {
@@ -324,9 +323,9 @@ class DestinationLocation(
     private fun reachedObject(moverX: TileUnit, moverY: TileUnit, moverSize: TileUnit): Boolean {
         val srcEndX = moverX + moverSize
         val srcEndY = moverY + moverSize
-        val destEndX = x + location.sizeX
-        val destEndY = y + location.sizeY
-        if (moverY == destEndY && location.accessBlockFlags and MASK_ENTRANCE_NORTH == 0) {
+        val destEndX = x + loc.sizeX
+        val destEndY = y + loc.sizeY
+        if (moverY == destEndY && loc.accessBlockFlags and MASK_ENTRANCE_NORTH == 0) {
             var maxX = if (moverX > x) moverX else x
             val maxXSize = if (srcEndX < destEndX) srcEndX else destEndX
             while (maxX < maxXSize) {
@@ -335,7 +334,7 @@ class DestinationLocation(
                 }
                 maxX++
             }
-        } else if (destEndX == moverX && location.accessBlockFlags and MASK_ENTRANCE_EAST == 0) {
+        } else if (destEndX == moverX && loc.accessBlockFlags and MASK_ENTRANCE_EAST == 0) {
             var maxY = if (moverY > y) moverY else y
             val maxYSize = if (srcEndY < destEndY) srcEndY else destEndY
             while (maxY < maxYSize) {
@@ -344,7 +343,7 @@ class DestinationLocation(
                 }
                 maxY++
             }
-        } else if (y == srcEndY && location.accessBlockFlags and MASK_ENTRANCE_SOUTH == 0) {
+        } else if (y == srcEndY && loc.accessBlockFlags and MASK_ENTRANCE_SOUTH == 0) {
             var maxX = if (moverX > x) moverX else x
             val maxXSize = if (srcEndX < destEndX) srcEndX else destEndX
             while (maxX < maxXSize) {
@@ -353,7 +352,7 @@ class DestinationLocation(
                 }
                 maxX++
             }
-        } else if (srcEndX == x && location.accessBlockFlags and MASK_ENTRANCE_WEST == 0) {
+        } else if (srcEndX == x && loc.accessBlockFlags and MASK_ENTRANCE_WEST == 0) {
             var maxY = if (moverY > y) moverY else y
             val maxYSize = if (srcEndY < destEndY) srcEndY else destEndY
             while (maxY < maxYSize) {

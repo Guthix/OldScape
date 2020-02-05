@@ -31,6 +31,7 @@ import io.guthix.oldscape.cache.xtea.MapXtea
 import io.guthix.oldscape.server.api.Enums
 import io.guthix.oldscape.server.api.Varbits
 import io.guthix.oldscape.server.api.blueprint.LocationBlueprints
+import io.guthix.oldscape.server.api.blueprint.ObjectBlueprints
 import io.guthix.oldscape.server.event.EventBus
 import io.guthix.oldscape.server.net.OldScapeServer
 import io.guthix.oldscape.server.net.state.game.GamePacketDecoder
@@ -57,6 +58,7 @@ object OldScape {
         Enums.load(configArchive)
         Varbits.load(configArchive)
         LocationBlueprints.load(configArchive)
+        ObjectBlueprints.load(configArchive)
         EventBus.loadScripts()
         GamePacketDecoder.loadIncPackets()
         val mapSquareXteas = loadMapSquareXteaKeys(cacheDir.resolve("xteas.json"))

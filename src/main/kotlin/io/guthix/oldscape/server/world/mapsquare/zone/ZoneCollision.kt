@@ -16,9 +16,8 @@
  */
 package io.guthix.oldscape.server.world.mapsquare.zone
 
-import io.guthix.oldscape.server.world.entity.Location
+import io.guthix.oldscape.server.world.entity.Loc
 import io.guthix.oldscape.server.world.mapsquare.floors
-import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.TileUnit
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.tiles
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.until
@@ -42,7 +41,7 @@ class ZoneCollision(val zone: Zone) {
         }
     }
 
-    fun addLocation(loc: Location) {
+    fun addLocation(loc: Loc) {
         when (loc.type) {
             in 0..3 -> {
                 if (loc.blueprint.clipType != 0) {

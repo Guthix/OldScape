@@ -17,15 +17,16 @@
 package io.guthix.oldscape.server.world.entity.character.player.interest
 
 import io.guthix.oldscape.server.net.state.game.OutGameEvent
+import io.guthix.oldscape.server.net.state.game.outp.zone.ObjAddPacket
 import io.guthix.oldscape.server.world.WorldMap
+import io.guthix.oldscape.server.world.entity.Obj
 import io.guthix.oldscape.server.world.entity.character.player.Player
 import io.guthix.oldscape.server.world.mapsquare.MapsquareUnit
-import io.guthix.oldscape.server.world.mapsquare.Mapsquare
 import io.guthix.oldscape.server.world.mapsquare.zone.Zone
 import io.guthix.oldscape.server.world.mapsquare.zone.ZoneUnit
 import io.guthix.oldscape.server.world.mapsquare.zone.abs
+import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
 import io.guthix.oldscape.server.world.mapsquare.zone.zones
-import org.w3c.dom.ranges.Range
 
 class MapInterest(val player: Player) {
     lateinit var lastLoadedZone: Zone
@@ -45,17 +46,20 @@ class MapInterest(val player: Player) {
         }
     }
 
+    fun reloadRequired(curZone: Zone) = abs(lastLoadedZone.x - curZone.x) >= UPDATE_RANGE ||
+        abs(lastLoadedZone.y - curZone.y) >= UPDATE_RANGE
+
     fun checkReload(currentZone: Zone, map: WorldMap) {
         if(reloadRequired(currentZone)) {
             val xteas = getInterestedXteas(currentZone, map)
             player.updateMap(currentZone, xteas)
             lastLoadedZone = currentZone
             unsubscribeZones(player)
-            subscribeToZones(map, player)
+            subscribeToZones(player, map)
         }
     }
 
-    fun subscribeToZones(map: WorldMap, player: Player) {
+    fun subscribeToZones(player: Player, map: WorldMap) {
         ((lastLoadedZone.x - RANGE)..(lastLoadedZone.x + RANGE)).forEachIndexed { i, zoneX ->
             ((lastLoadedZone.y - RANGE)..(lastLoadedZone.y + RANGE)).forEachIndexed { j, zoneY ->
                 val zone = map.getZone(lastLoadedZone.floor, zoneX, zoneY)
@@ -69,8 +73,12 @@ class MapInterest(val player: Player) {
         zones.forEach { it.forEach { zone -> zone?.players?.remove(player) } }
     }
 
-    fun reloadRequired(curZone: Zone) = abs(lastLoadedZone.x - curZone.x) >= UPDATE_RANGE ||
-        abs(lastLoadedZone.y - curZone.y) >= UPDATE_RANGE
+    fun addGroundObject(obj: Obj) {
+        println("Add drop ${obj.blueprint.id}")
+        packetCache[(obj.position.x.inZones - baseX).value][(obj.position.y.inZones - baseY).value].add(
+            ObjAddPacket(obj.blueprint.id, 1, obj.position.x.relativeZone, obj.position.y.relativeZone)
+        )
+    }
 
     companion object {
         val SIZE = 13.zones
