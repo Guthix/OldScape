@@ -34,7 +34,9 @@ object VarByteSize : PacketSize()
 
 object VarShortSize : PacketSize()
 
-interface ZoneOutGameEvent : OutGameEvent
+interface ZoneOutGameEvent : OutGameEvent {
+    val encOpcode: Int
+}
 
 interface OutGameEvent {
     val opcode: Int

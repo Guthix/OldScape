@@ -30,6 +30,8 @@ class ObjAddPacket(
 ) : ZoneOutGameEvent {
     override val opcode = 66
 
+    override val encOpcode = 1
+
     override val size = FixedSize(STATIC_SIZE)
 
     override fun encode(ctx: ChannelHandlerContext): ByteBuf {

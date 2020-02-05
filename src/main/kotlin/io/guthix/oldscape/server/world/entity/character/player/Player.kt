@@ -133,7 +133,6 @@ data class Player(
 
 
     fun updateVarp(id: Int, value: Int) {
-        println("Sending varp $id, $value")
         if (value <= Byte.MIN_VALUE || value >= Byte.MAX_VALUE) {
             ctx.write(VarpLargePacket(id, value))
         } else {
@@ -158,9 +157,10 @@ data class Player(
         mapInterest.packetCache.forEachIndexed { x, yPacketList ->
             yPacketList.forEachIndexed { y, packetList ->
                 if(packetList.size == 1) {
-                    println("dropping!")
                     ctx.write(UpdateZonePartialFollows(x.zones.inTiles, y.zones.inTiles))
                     ctx.write(packetList.first())
+                } else {
+                    ctx.write(UpdateZonePartialEnclosed(x.zones.inTiles, y.zones.inTiles, packetList))
                 }
                 packetList.clear()
             }
