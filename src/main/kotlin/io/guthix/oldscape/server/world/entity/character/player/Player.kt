@@ -16,8 +16,7 @@
  */
 package io.guthix.oldscape.server.world.entity.character.player
 
-import io.guthix.oldscape.cache.config.VarbitConfig
-import io.guthix.oldscape.server.net.state.game.OutGameEvent
+import io.guthix.oldscape.server.api.Varbits
 import io.guthix.oldscape.server.routine.Routine
 import io.guthix.oldscape.server.routine.ConditionalContinuation
 import io.guthix.oldscape.server.routine.InitialCondition
@@ -33,6 +32,7 @@ import java.util.*
 import java.util.concurrent.ConcurrentLinkedQueue
 import kotlin.coroutines.intrinsics.createCoroutineUnintercepted
 import kotlin.math.atan2
+import kotlin.math.pow
 import kotlin.reflect.KProperty
 
 data class Player(
@@ -58,6 +58,8 @@ data class Player(
     val playerInterest = PlayerInterest()
 
     val mapInterest = MapInterest(this)
+
+    val varps = mutableMapOf<Int, Int>()
 
     override val updateFlags = mutableSetOf<PlayerInfoPacket.UpdateType>()
 
@@ -112,18 +114,30 @@ data class Player(
         ctx.write(RunclientscriptPacket(id, *args))
     }
 
+    fun updateVarbit(varbitId: Int, value: Int) {
+        fun Int.setBits(msb: Int, lsb: Int): Int = this xor ((1 shl (msb + 1)) - 1) xor ((1 shl lsb) - 1)
+        @Suppress("INTEGER_OVERFLOW")
+        fun Int.clearBits(msb: Int, lsb: Int) =  ((1 shl 4 * 8 - 1) - 1).setBits(msb, lsb) and this
+
+        val config = Varbits[varbitId]
+        val bitSize = (config.msb.toInt() - config.lsb.toInt()) + 1
+        if(value > 2.0.pow(bitSize) - 1) throw IllegalArgumentException("Value $value to big for this varbit.")
+        var curVarp = varps[config.varpId] ?: 0
+        curVarp.clearBits(config.msb.toInt(), config.lsb.toInt())
+        curVarp = curVarp or value shl config.lsb.toInt()
+        varps[config.varpId] = curVarp
+        updateVarp(config.varpId, curVarp)
+    }
+
+
+
     fun updateVarp(id: Int, value: Int) {
+        println("Sending varp $id, $value")
         if (value <= Byte.MIN_VALUE || value >= Byte.MAX_VALUE) {
             ctx.write(VarpLargePacket(id, value))
         } else {
             ctx.write(VarpSmallPacket(id, value))
         }
-    }
-
-    fun updateVarBit(config: VarbitConfig, value: Int) {
-        val rstMask = Int.MAX_VALUE shr config.lsb.toInt() shl config.lsb.toInt() ushr config.msb.toInt() shl config.msb.toInt()
-        val bitMask = (value shl config.lsb.toInt()) and (Int.MAX_VALUE shr config.msb.toInt())
-        updateVarp(config.id, 0 and rstMask or bitMask)
     }
 
     fun turnTo(entity: Entity) {
