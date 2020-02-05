@@ -159,10 +159,11 @@ data class Player(
                 if(packetList.size == 1) {
                     ctx.write(UpdateZonePartialFollows(x.zones.inTiles, y.zones.inTiles))
                     ctx.write(packetList.first())
-                } else {
+                    packetList.clear()
+                } else if(packetList.size > 1){
                     ctx.write(UpdateZonePartialEnclosed(x.zones.inTiles, y.zones.inTiles, packetList))
+                    packetList.clear()
                 }
-                packetList.clear()
             }
         }
     }
