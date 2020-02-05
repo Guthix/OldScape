@@ -17,6 +17,7 @@
 package io.guthix.oldscape.server.world.entity.character.player.interest
 
 import io.guthix.oldscape.server.net.state.game.OutGameEvent
+import io.guthix.oldscape.server.net.state.game.ZoneOutGameEvent
 import io.guthix.oldscape.server.net.state.game.outp.zone.ObjAddPacket
 import io.guthix.oldscape.server.world.WorldMap
 import io.guthix.oldscape.server.world.entity.Obj
@@ -42,7 +43,7 @@ class MapInterest(val player: Player) {
 
     val packetCache = Array(SIZE.value) {
         Array(SIZE.value) {
-            mutableListOf<OutGameEvent>()
+            mutableListOf<ZoneOutGameEvent>()
         }
     }
 
