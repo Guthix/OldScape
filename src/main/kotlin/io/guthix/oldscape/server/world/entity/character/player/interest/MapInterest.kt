@@ -66,16 +66,21 @@ class MapInterest(val player: Player) {
                 val zone = map.getZone(lastLoadedZone.floor, zoneX, zoneY)
                 zones[i][j] = zone
                 zone?.players?.add(player)
+                zone?.groundObjects?.forEach { addGroundObject(it) }
             }
         }
     }
 
     fun unsubscribeZones(player: Player) {
-        zones.forEach { it.forEach { zone -> zone?.players?.remove(player) } }
+        zones.forEachIndexed { x, arrayOfZones ->
+            arrayOfZones.forEachIndexed { y, zone ->
+                zone?.players?.remove(player)
+                packetCache[x][y].clear()
+            }
+        }
     }
 
     fun addGroundObject(obj: Obj) {
-        println("Add drop ${obj.blueprint.id}")
         packetCache[(obj.position.x.inZones - baseX).value][(obj.position.y.inZones - baseY).value].add(
             ObjAddPacket(obj.blueprint.id, 1, obj.position.x.relativeZone, obj.position.y.relativeZone)
         )
