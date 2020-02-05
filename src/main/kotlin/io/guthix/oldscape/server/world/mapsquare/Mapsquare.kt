@@ -21,7 +21,8 @@ import io.guthix.oldscape.cache.map.MapLocDefinition
 import io.guthix.oldscape.cache.map.MapSquareDefinition
 import io.guthix.oldscape.server.api.blueprint.LocationBlueprints
 import io.guthix.oldscape.server.world.WorldMap
-import io.guthix.oldscape.server.world.entity.Location
+import io.guthix.oldscape.server.world.entity.Obj
+import io.guthix.oldscape.server.world.entity.Loc
 import io.guthix.oldscape.server.world.mapsquare.zone.ZoneUnit
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.TileUnit
@@ -55,7 +56,7 @@ class Mapsquare(val x: MapsquareUnit, val y: MapsquareUnit, val xtea: IntArray, 
         fun Array<MapsquareFloor>.loadStaticLocations(locations: List<MapLocDefinition>) {
             locations.forEach { loc ->
                 get(loc.floor).addStaticLocation(
-                    Location(
+                    Loc(
                         Tile(
                             loc.floor.floors,
                             def.x.mapsquares.inTiles + loc.localX.tiles,
@@ -80,14 +81,17 @@ class Mapsquare(val x: MapsquareUnit, val y: MapsquareUnit, val xtea: IntArray, 
     fun getZone(floor: FloorUnit, localX: ZoneUnit, localY: ZoneUnit) = floors[floor.value]
         .getZone(localX, localY)
 
-    fun addUnwalkableTile(floor: FloorUnit, localX: TileUnit, localY: TileUnit) = floors[floor.value]
-        .addUnwalkableTile(localX.relativeZone, localY.relativeZone)
-
     fun getCollisionMask(floor: FloorUnit, localX: TileUnit, localY: TileUnit) = floors[floor.value]
         .getCollisionMask(localX, localY)
 
-    fun getLocation(id: Int, floor: FloorUnit, localX: TileUnit, localY: TileUnit) = floors[floor.value]
-        .getLocation(id, localX, localY)
+    fun getLoc(id: Int, floor: FloorUnit, localX: TileUnit, localY: TileUnit) = floors[floor.value]
+        .getLoc(id, localX, localY)
+
+    fun addUnwalkableTile(floor: FloorUnit, localX: TileUnit, localY: TileUnit) = floors[floor.value]
+        .addUnwalkableTile(localX.relativeZone, localY.relativeZone)
+
+    fun addObject(obj: Obj) = floors[obj.position.floor.value]
+        .addObject(obj)
 
     companion object {
         const val FLOOR_COUNT = 4
