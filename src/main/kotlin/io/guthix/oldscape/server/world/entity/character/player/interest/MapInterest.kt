@@ -18,6 +18,7 @@ package io.guthix.oldscape.server.world.entity.character.player.interest
 
 import io.guthix.oldscape.server.net.state.game.ZoneOutGameEvent
 import io.guthix.oldscape.server.net.state.game.outp.zone.ObjAddPacket
+import io.guthix.oldscape.server.net.state.game.outp.zone.ObjDelPacket
 import io.guthix.oldscape.server.world.WorldMap
 import io.guthix.oldscape.server.world.entity.Obj
 import io.guthix.oldscape.server.world.entity.character.player.Player
@@ -65,7 +66,7 @@ class MapInterest(val player: Player) {
                 zones[i][j] = zone
                 zone?.players?.add(player)
                 zone?.groundObjects?.forEach { tile, objList ->
-                    objList.forEach { addGroundObject(tile, it)  }
+                    objList.forEach { addObject(tile, it)  }
                 }
             }
         }
@@ -80,9 +81,15 @@ class MapInterest(val player: Player) {
         }
     }
 
-    fun addGroundObject(tile: Tile, obj: Obj) {
+    fun addObject(tile: Tile, obj: Obj) {
         packetCache[(tile.x.inZones - baseX).value][(tile.y.inZones - baseY).value].add(
             ObjAddPacket(obj.blueprint.id, obj.quantity, tile.x.relativeZone, tile.y.relativeZone)
+        )
+    }
+
+    fun removeObject(tile: Tile, obj: Obj) {
+        packetCache[(tile.x.inZones - baseX).value][(tile.y.inZones - baseY).value].add(
+            ObjDelPacket(obj.blueprint.id, tile.x.relativeZone, tile.y.relativeZone)
         )
     }
 

@@ -92,6 +92,8 @@ class Mapsquare(val x: MapsquareUnit, val y: MapsquareUnit, val xtea: IntArray, 
 
     fun addObject(tile: Tile, obj: Obj) = floors[tile.floor.value].addObject(tile, obj)
 
+    fun removeObject(tile: Tile, obj: Obj) = floors[tile.floor.value].removeObject(tile, obj)
+
     companion object {
         const val FLOOR_COUNT = 4
 

@@ -63,4 +63,12 @@ class MapsquareFloor(
         val zoneY = tile.y.inZones.relativeMapSquare
         zones[zoneX.value][zoneY.value].addObject(tile, obj)
     }
+
+    fun removeObject(tile: Tile, obj: Obj) {
+        val zoneX = tile.x.inZones.relativeMapSquare
+        val zoneY = tile.y.inZones.relativeMapSquare
+        zones[zoneX.value][zoneY.value].removeObject(tile, obj)
+    }
+
+
 }

@@ -62,7 +62,18 @@ class Zone(
 
     fun addObject(tile: Tile, obj: Obj) {
         groundObjects.getOrPut(tile, { mutableListOf() }).add(obj)
-        players.forEach { player -> player.mapInterest.addGroundObject(tile, obj) }
+        players.forEach { player -> player.mapInterest.addObject(tile, obj) }
+    }
+
+    fun removeObject(tile: Tile, obj: Obj) {
+        val objList = groundObjects[tile] ?: throw IllegalCallerException(
+            "Object $obj does not exist at tile $tile."
+        )
+        if(!objList.remove(obj)) throw IllegalCallerException(
+            "Object $obj does not exist at tile $tile."
+        )
+        if(objList.isEmpty()) groundObjects.remove(tile)
+        players.forEach { player -> player.mapInterest.removeObject(tile, obj) }
     }
 
     override fun toString() = "Zone(z=${floor.value}, x=${x.value}, y=${y.value})"
