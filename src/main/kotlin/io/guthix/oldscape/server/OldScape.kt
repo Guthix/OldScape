@@ -77,4 +77,3 @@ object OldScape {
         return mapper.readValue(path.toFile(), object : TypeReference<List<MapXtea>>(){})
     }
 }
-
