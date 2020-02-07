@@ -22,27 +22,21 @@ import io.guthix.oldscape.server.world.mapsquare.zone.tile.TileUnit
 import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 
-class ObjAddPacket(
-    private val id: Int,
-    private val quantity: Int,
+class MapProjanimPacket(
     localX: TileUnit,
     localY: TileUnit
 ) : ZoneOutGameEvent(localX, localY) {
-    override val opcode = 66
+    override val opcode = 65
 
-    override val enclOpcode = 1
+    override val enclOpcode = 6
 
     override val size = FixedSize(STATIC_SIZE)
 
     override fun encode(ctx: ChannelHandlerContext): ByteBuf {
-        val buf = ctx.alloc().buffer(STATIC_SIZE)
-        buf.writeShort(quantity)
-        buf.writeShortLE(id)
-        buf.writeByte(posBitPack)
-        return buf
+        TODO("not implemented")
     }
 
     companion object {
-        const val STATIC_SIZE = Short.SIZE_BYTES + Short.SIZE_BYTES + Byte.SIZE_BYTES
+        const val STATIC_SIZE = 15
     }
 }

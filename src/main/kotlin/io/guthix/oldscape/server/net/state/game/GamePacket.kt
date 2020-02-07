@@ -18,6 +18,7 @@ package io.guthix.oldscape.server.net.state.game
 
 import io.github.classgraph.ClassGraph
 import io.guthix.oldscape.server.event.GameEvent
+import io.guthix.oldscape.server.world.mapsquare.zone.tile.TileUnit
 import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 import mu.KotlinLogging
@@ -34,8 +35,13 @@ object VarByteSize : PacketSize()
 
 object VarShortSize : PacketSize()
 
-interface ZoneOutGameEvent : OutGameEvent {
-    val encOpcode: Int
+abstract class ZoneOutGameEvent(
+    private val localX: TileUnit,
+    private val localY: TileUnit
+) : OutGameEvent {
+    val posBitPack get() = (localX.value shl 4) or (localY.value and 7)
+
+    abstract val enclOpcode: Int
 }
 
 interface OutGameEvent {
