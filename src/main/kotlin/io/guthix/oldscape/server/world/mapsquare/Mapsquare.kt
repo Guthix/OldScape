@@ -94,6 +94,10 @@ class Mapsquare(val x: MapsquareUnit, val y: MapsquareUnit, val xtea: IntArray, 
 
     fun removeObject(tile: Tile, obj: Obj) = floors[tile.floor.value].removeObject(tile, obj)
 
+    fun addDynamicLoc(loc: Loc) = floors[loc.position.floor.value].addDynamicLoc(loc)
+
+    fun removeDynamicLoc(loc: Loc) = floors[loc.position.floor.value].removeDynamicLoc(loc)
+
     companion object {
         const val FLOOR_COUNT = 4
 

@@ -19,6 +19,7 @@ package io.guthix.oldscape.server.world
 import io.guthix.cache.js5.Js5Archive
 import io.guthix.oldscape.cache.MapArchive
 import io.guthix.oldscape.cache.xtea.MapXtea
+import io.guthix.oldscape.server.world.entity.Loc
 import io.guthix.oldscape.server.world.entity.Obj
 import io.guthix.oldscape.server.world.mapsquare.FloorUnit
 import io.guthix.oldscape.server.world.mapsquare.Mapsquare
@@ -73,4 +74,8 @@ class WorldMap(val mapsquares: MutableMap<Int, Mapsquare>) {
     fun addObject(tile: Tile, obj: Obj) = mapsquares[id(tile.x, tile.y)]?.addObject(tile, obj)
 
     fun removeObject(tile: Tile, obj: Obj) = mapsquares[id(tile.x, tile.y)]?.removeObject(tile, obj)
+
+    fun addDynamicLoc(loc: Loc) = mapsquares[id(loc.position.x, loc.position.y)]?.addDynamicLoc(loc)
+
+    fun removeDynamicLoc(loc: Loc) = mapsquares[id(loc.position.x, loc.position.y)]?.removeDynamicLoc(loc)
 }

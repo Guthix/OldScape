@@ -52,7 +52,7 @@ class MapsquareFloor(
     fun addStaticLocation(loc: Loc) {
         val zoneX = loc.position.x.inZones.relativeMapSquare
         val zoneY = loc.position.y.inZones.relativeMapSquare
-        zones[zoneX.value][zoneY.value].addStaticLocation(loc)
+        zones[zoneX.value][zoneY.value].addStaticLoc(loc)
     }
 
     fun addUnwalkableTile(localX: TileUnit, localY: TileUnit) = zones[localX.inZones.value][localY.inZones.value]
@@ -68,6 +68,18 @@ class MapsquareFloor(
         val zoneX = tile.x.inZones.relativeMapSquare
         val zoneY = tile.y.inZones.relativeMapSquare
         zones[zoneX.value][zoneY.value].removeObject(tile, obj)
+    }
+
+    fun addDynamicLoc(loc: Loc) {
+        val zoneX = loc.position.x.inZones.relativeMapSquare
+        val zoneY = loc.position.y.inZones.relativeMapSquare
+        zones[zoneX.value][zoneY.value].addDynamicLoc(loc)
+    }
+
+    fun removeDynamicLoc(loc: Loc) {
+        val zoneX = loc.position.x.inZones.relativeMapSquare
+        val zoneY = loc.position.y.inZones.relativeMapSquare
+        zones[zoneX.value][zoneY.value].removeDynamicLoc(loc)
     }
 
 

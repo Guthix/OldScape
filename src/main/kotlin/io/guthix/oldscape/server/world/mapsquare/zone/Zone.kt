@@ -53,7 +53,7 @@ class Zone(
         return null
     }
 
-    fun addStaticLocation(loc: Loc) {
+    internal fun addStaticLoc(loc: Loc) {
         staticLocations[loc.mapKey] = loc
         collisions.addLocation(loc)
     }
@@ -74,6 +74,16 @@ class Zone(
         )
         if(objList.isEmpty()) groundObjects.remove(tile)
         players.forEach { player -> player.mapInterest.removeObject(tile, obj) }
+    }
+
+    fun addDynamicLoc(loc: Loc) {
+        staticLocations[loc.mapKey] = loc
+        players.forEach { player -> player.mapInterest.addDynamicLoc(loc) }
+    }
+
+    fun removeDynamicLoc(loc: Loc) {
+        staticLocations.remove(loc.mapKey)
+        players.forEach { player -> player.mapInterest.removeDynamicLoc(loc) }
     }
 
     override fun toString() = "Zone(z=${floor.value}, x=${x.value}, y=${y.value})"
