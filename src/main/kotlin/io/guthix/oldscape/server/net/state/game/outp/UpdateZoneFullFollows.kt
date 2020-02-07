@@ -16,36 +16,25 @@
  */
 package io.guthix.oldscape.server.net.state.game.outp
 
-import io.guthix.buffer.writeByteADD
-import io.guthix.buffer.writeByteSUB
+import io.guthix.buffer.writeByteNEG
+import io.guthix.oldscape.server.net.state.game.FixedSize
 import io.guthix.oldscape.server.net.state.game.OutGameEvent
-import io.guthix.oldscape.server.net.state.game.VarShortSize
-import io.guthix.oldscape.server.net.state.game.ZoneOutGameEvent
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.TileUnit
 import io.netty.buffer.ByteBuf
-import io.netty.buffer.Unpooled
 import io.netty.channel.ChannelHandlerContext
 
-class UpdateZonePartialEnclosed(
+class UpdateZoneFullFollows(
     private val localX: TileUnit,
-    private val localY: TileUnit,
-    private val packets: List<ZoneOutGameEvent>
+    private val localY: TileUnit
 ) : OutGameEvent {
-    override val opcode = 63
+    override val opcode = 70
 
-    override val size = VarShortSize
+    override val size = FixedSize(STATIC_SIZE)
 
     override fun encode(ctx: ChannelHandlerContext): ByteBuf {
-        val buf = Unpooled.compositeBuffer(1 + packets.size * 2)
-        val header = ctx.alloc().buffer(STATIC_SIZE)
-        header.writeByteSUB(localX.value)
-        header.writeByteADD(localY.value)
-        buf.addComponent(true, header)
-        packets.forEach { packet ->
-            val opcode = ctx.alloc().buffer(1).apply { writeByte(packet.enclOpcode) }
-            val payload = packet.encode(ctx)
-            buf.addComponents(true, opcode, payload)
-        }
+        val buf = ctx.alloc().buffer(STATIC_SIZE)
+        buf.writeByteNEG(localX.value)
+        buf.writeByteNEG(localY.value)
         return buf
     }
 

@@ -24,8 +24,8 @@ import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 
 class UpdateZonePartialFollows(
-    private val relativeZoneX: TileUnit,
-    private val relativeZoneY: TileUnit
+    private val localX: TileUnit,
+    private val localY: TileUnit
 ) : OutGameEvent {
     override val opcode = 63
 
@@ -33,8 +33,8 @@ class UpdateZonePartialFollows(
 
     override fun encode(ctx: ChannelHandlerContext): ByteBuf {
         val buf = ctx.alloc().buffer(STATIC_SIZE)
-        buf.writeByte(relativeZoneX.value)
-        buf.writeByteSUB(relativeZoneY.value)
+        buf.writeByte(localX.value)
+        buf.writeByteSUB(localY.value)
         return buf
     }
 
