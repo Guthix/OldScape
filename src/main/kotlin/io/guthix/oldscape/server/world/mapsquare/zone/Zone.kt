@@ -21,6 +21,7 @@ import io.guthix.oldscape.server.world.entity.Loc
 import io.guthix.oldscape.server.world.entity.character.player.Player
 import io.guthix.oldscape.server.world.mapsquare.FloorUnit
 import io.guthix.oldscape.server.world.mapsquare.MapsquareFloor
+import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.TileUnit
 
 class Zone(
@@ -33,7 +34,7 @@ class Zone(
 
     val players = mutableListOf<Player>()
 
-    val groundObjects = mutableListOf<Obj>()
+    val groundObjects = mutableMapOf<Tile, MutableList<Obj>>()
 
     val staticLocations: MutableMap<Int, Loc> = mutableMapOf()
 
@@ -59,9 +60,9 @@ class Zone(
 
     fun addUnwalkableTile(localX: TileUnit, localY: TileUnit) = collisions.addUnwalkableTile(localX, localY)
 
-    fun addObject(obj: Obj) {
-        groundObjects.add(obj)
-        players.forEach { player -> player.mapInterest.addGroundObject(obj) }
+    fun addObject(tile: Tile, obj: Obj) {
+        groundObjects.getOrPut(tile, { mutableListOf() }).add(obj)
+        players.forEach { player -> player.mapInterest.addGroundObject(tile, obj) }
     }
 
     override fun toString() = "Zone(z=${floor.value}, x=${x.value}, y=${y.value})"
