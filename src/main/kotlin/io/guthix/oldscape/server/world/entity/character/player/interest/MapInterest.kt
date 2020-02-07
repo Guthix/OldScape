@@ -16,7 +16,6 @@
  */
 package io.guthix.oldscape.server.world.entity.character.player.interest
 
-import io.guthix.oldscape.server.net.state.game.OutGameEvent
 import io.guthix.oldscape.server.net.state.game.ZoneOutGameEvent
 import io.guthix.oldscape.server.net.state.game.outp.zone.ObjAddPacket
 import io.guthix.oldscape.server.world.WorldMap
@@ -35,7 +34,6 @@ class MapInterest(val player: Player) {
     val baseX get() = lastLoadedZone.x - RANGE
 
     val baseY get() = lastLoadedZone.y - RANGE
-
 
     val zones = Array(SIZE.value) {
         arrayOfNulls<Zone>(SIZE.value)
@@ -66,7 +64,9 @@ class MapInterest(val player: Player) {
                 val zone = map.getZone(lastLoadedZone.floor, zoneX, zoneY)
                 zones[i][j] = zone
                 zone?.players?.add(player)
-                zone?.groundObjects?.forEach { addGroundObject(it) }
+                zone?.groundObjects?.forEach { tile, objList ->
+                    objList.forEach { addGroundObject(tile, it)  }
+                }
             }
         }
     }
@@ -80,9 +80,9 @@ class MapInterest(val player: Player) {
         }
     }
 
-    fun addGroundObject(obj: Obj) {
-        packetCache[(obj.position.x.inZones - baseX).value][(obj.position.y.inZones - baseY).value].add(
-            ObjAddPacket(obj.blueprint.id, 1, obj.position.x.relativeZone, obj.position.y.relativeZone)
+    fun addGroundObject(tile: Tile, obj: Obj) {
+        packetCache[(tile.x.inZones - baseX).value][(tile.y.inZones - baseY).value].add(
+            ObjAddPacket(obj.blueprint.id, obj.quantity, tile.x.relativeZone, tile.y.relativeZone)
         )
     }
 

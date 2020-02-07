@@ -70,5 +70,5 @@ class WorldMap(val mapsquares: MutableMap<Int, Mapsquare>) {
         floor, x.relativeMapSquare, y.relativeMapSquare
     )
 
-    fun addObject(obj: Obj) = mapsquares[id(obj.position.x, obj.position.y)]?.addObject(obj)
+    fun addObject(tile: Tile, obj: Obj) = mapsquares[id(tile.x, tile.y)]?.addObject(tile, obj)
 }

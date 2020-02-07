@@ -90,8 +90,7 @@ class Mapsquare(val x: MapsquareUnit, val y: MapsquareUnit, val xtea: IntArray, 
     fun addUnwalkableTile(floor: FloorUnit, localX: TileUnit, localY: TileUnit) = floors[floor.value]
         .addUnwalkableTile(localX.relativeZone, localY.relativeZone)
 
-    fun addObject(obj: Obj) = floors[obj.position.floor.value]
-        .addObject(obj)
+    fun addObject(tile: Tile, obj: Obj) = floors[tile.floor.value].addObject(tile, obj)
 
     companion object {
         const val FLOOR_COUNT = 4

@@ -21,7 +21,6 @@ import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
 import kotlin.reflect.KProperty
 
 class Obj(
-    override val position: Tile,
     val blueprint: ObjectBlueprint,
-    override val attributes: MutableMap<KProperty<*>, Any?> = mutableMapOf()
-) : Entity(position, attributes)
+    val quantity: Int
+)
