@@ -31,7 +31,7 @@ class UpdateZonePartialEnclosed(
     private val localY: TileUnit,
     private val packets: List<ZoneOutGameEvent>
 ) : OutGameEvent {
-    override val opcode = 63
+    override val opcode = 15
 
     override val size = VarShortSize
 
