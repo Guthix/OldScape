@@ -56,7 +56,7 @@ class MapSquareUnitRange(
 ) : MapSquareUnitProgression(start, endInclusive, 1), ClosedRange<MapsquareUnit> {
     override val start get() = first
     override val endInclusive get() = last
-    override fun contains(value: MapsquareUnit): Boolean = value in first..last
+    override fun contains(value: MapsquareUnit): Boolean = value.value in first.value..last.value
     override fun isEmpty() = first > last
     override fun equals(other: Any?) = other is MapSquareUnitRange &&
         (isEmpty() && other.isEmpty() || first == other.first && last == other.last)

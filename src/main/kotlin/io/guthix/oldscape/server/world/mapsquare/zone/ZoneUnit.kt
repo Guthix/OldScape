@@ -60,7 +60,7 @@ class ZoneUnitRange(
 ) : ZoneUnitProgression(start, endInclusive, 1), ClosedRange<ZoneUnit> {
     override val start get() = first
     override val endInclusive get() = last
-    override fun contains(value: ZoneUnit): Boolean = value in first..last
+    override fun contains(value: ZoneUnit): Boolean = value.value in first.value..last.value
     override fun isEmpty() = first > last
     override fun equals(other: Any?): Boolean = other is ZoneUnitRange &&
         (isEmpty() && other.isEmpty() || first == other.first && last == other.last)
