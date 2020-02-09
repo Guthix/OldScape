@@ -10,11 +10,8 @@ import io.guthix.oldscape.server.event.imp.PlayerInitialized
 
 on(LoginEvent::class).then {
     var pZone = world.map.getZone(player.position) ?: throw IllegalStateException("Player location can't be null")
-    player.mapInterest.lastLoadedZone = pZone
-    val xteas = MapInterest.getInterestedXteas(pZone, world.map)
     player.updateFlags.add(PlayerInfoPacket.appearance)
-    player.initializeInterest(world.players, xteas)
-    player.mapInterest.subscribeToZones(player, world.map)
+    player.initializeInterest(world.map, world.players, pZone)
     for(skillId in 0 until 23) {
         player.updateStat(skillId, 13034431, 99)
     }

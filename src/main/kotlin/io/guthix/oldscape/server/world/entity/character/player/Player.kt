@@ -21,6 +21,7 @@ import io.guthix.oldscape.server.routine.Routine
 import io.guthix.oldscape.server.routine.ConditionalContinuation
 import io.guthix.oldscape.server.routine.InitialCondition
 import io.guthix.oldscape.server.net.state.game.outp.*
+import io.guthix.oldscape.server.world.WorldMap
 import io.guthix.oldscape.server.world.entity.Entity
 import io.guthix.oldscape.server.world.entity.character.Character
 import io.guthix.oldscape.server.world.entity.character.player.interest.MapInterest
@@ -70,8 +71,10 @@ data class Player(
         routines[type] = cont
     }
 
-    fun initializeInterest(worldPlayers: PlayerList, xteas: List<IntArray>) {
+    fun initializeInterest(worldMap: WorldMap, worldPlayers: PlayerList, pZone: Zone) {
         playerInterest.initialize(this, worldPlayers)
+        mapInterest.initialize(pZone, worldMap)
+        val xteas = mapInterest.getInterestedXteas(worldMap)
         ctx.write(InterestInitPacket(this, worldPlayers, xteas, position.x.inZones, position.y.inZones))
     }
 

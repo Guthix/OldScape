@@ -26,18 +26,15 @@ import io.guthix.oldscape.server.world.entity.Loc
 import io.guthix.oldscape.server.world.entity.Obj
 import io.guthix.oldscape.server.world.entity.character.player.Player
 import io.guthix.oldscape.server.world.mapsquare.MapsquareUnit
-import io.guthix.oldscape.server.world.mapsquare.zone.Zone
-import io.guthix.oldscape.server.world.mapsquare.zone.ZoneUnit
-import io.guthix.oldscape.server.world.mapsquare.zone.abs
+import io.guthix.oldscape.server.world.mapsquare.zone.*
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
-import io.guthix.oldscape.server.world.mapsquare.zone.zones
 
 class MapInterest(val player: Player) {
-    lateinit var lastLoadedZone: Zone
+    lateinit var middleZone: Zone
 
-    val baseX get() = lastLoadedZone.x - RANGE
+    val baseX get() = middleZone.x - RANGE
 
-    val baseY get() = lastLoadedZone.y - RANGE
+    val baseY get() = middleZone.y - RANGE
 
     val zones = Array(SIZE.value) {
         arrayOfNulls<Zone>(SIZE.value)
@@ -49,39 +46,80 @@ class MapInterest(val player: Player) {
         }
     }
 
-    fun reloadRequired(curZone: Zone) = abs(lastLoadedZone.x - curZone.x) >= UPDATE_RANGE ||
-        abs(lastLoadedZone.y - curZone.y) >= UPDATE_RANGE
-
-    fun checkReload(currentZone: Zone, map: WorldMap) {
-        if(reloadRequired(currentZone)) {
-            val xteas = getInterestedXteas(currentZone, map)
-            player.updateMap(currentZone, xteas)
-            lastLoadedZone = currentZone
-            unsubscribeZones(player)
-            subscribeToZones(player, map)
-        }
-    }
-
-    fun subscribeToZones(player: Player, map: WorldMap) {
-        ((lastLoadedZone.x - RANGE)..(lastLoadedZone.x + RANGE)).forEachIndexed { i, zoneX ->
-            ((lastLoadedZone.y - RANGE)..(lastLoadedZone.y + RANGE)).forEachIndexed { j, zoneY ->
-                val zone = map.getZone(lastLoadedZone.floor, zoneX, zoneY)
+    fun initialize(mZone: Zone, map: WorldMap) {
+        middleZone = mZone
+        ((middleZone.x - RANGE)..(middleZone.x + RANGE)).forEachIndexed { i, zoneX ->
+            ((middleZone.y - RANGE)..(middleZone.y + RANGE)).forEachIndexed { j, zoneY ->
+                val zone = map.getZone(middleZone.floor, zoneX, zoneY)
                 zones[i][j] = zone
-                zone?.players?.add(player)
-                zone?.groundObjects?.forEach { tile, objList ->
-                    objList.forEach { addObject(tile, it)  }
+                zone?.let {
+                    zone.players.add(player)
+                    addInterestPackets(zone)
                 }
             }
         }
+    }
+
+    fun reloadRequired(curZone: Zone) = abs(middleZone.x - curZone.x) > UPDATE_RANGE ||
+        abs(middleZone.y - curZone.y) > UPDATE_RANGE
+
+    fun checkReload(curZone: Zone, map: WorldMap) {
+        if(reloadRequired(curZone)) {
+            val oldZone = middleZone
+            middleZone = curZone
+            val xteas = getInterestedXteas(map)
+            player.updateMap(curZone, xteas)
+            unsubscribeZones(player)
+            subscribeToZones(oldZone, player, map)
+        }
+    }
+
+    fun getInterestedXteas(map: WorldMap): List<IntArray> {
+        val interestedXteas = mutableListOf<IntArray>()
+        for(mSquareX in middleZone.x.startMapInterest..middleZone.x.endMapInterest) {
+            for(mSquareY in middleZone.y.startMapInterest..middleZone.y.endMapInterest) {
+                if(onTutorialIsland(mSquareX, mSquareY)) continue
+                val id = (mSquareX.value shl 8) or mSquareY.value
+                val xtea = map.mapsquares[id]?.xtea ?: throw IllegalStateException(
+                    "Could not find XTEA for id $id."
+                )
+                interestedXteas.add(xtea)
+            }
+        }
+        return interestedXteas
     }
 
     fun unsubscribeZones(player: Player) {
         zones.forEachIndexed { x, arrayOfZones ->
             arrayOfZones.forEachIndexed { y, zone ->
                 zone?.players?.remove(player)
-                packetCache[x][y].clear()
             }
         }
+    }
+
+    fun subscribeToZones(oldZone: Zone, player: Player, map: WorldMap) {
+        val prevPacketCache = packetCache.copyOf()
+        packetCache.forEach { it.forEach { pCache -> pCache.clear() } }
+        ((middleZone.x - RANGE)..(middleZone.x + RANGE)).forEachIndexed { i, zoneX ->
+            ((middleZone.y - RANGE)..(middleZone.y + RANGE)).forEachIndexed { j, zoneY ->
+                val zone = map.getZone(middleZone.floor, zoneX, zoneY)
+                zones[i][j] = zone
+                zone?.let {
+                    zone.players.add(player)
+                    val prevLocalX = (zone.x - (oldZone.x - RANGE))
+                    val prevLocalY = (zone.y - (oldZone.y - RANGE))
+                    if(middleZone.floor == oldZone.floor && prevLocalX in REL_RANGE && prevLocalY in REL_RANGE) {
+                        packetCache[i][j].addAll(prevPacketCache[prevLocalX.value][prevLocalY.value]) // move packet cache
+                    } else {
+                        addInterestPackets(zone)
+                    }
+                }
+            }
+        }
+    }
+
+    private fun addInterestPackets(zone: Zone) {
+        zone.groundObjects.forEach { (tile, objList) -> objList.forEach { addObject(tile, it)  } }
     }
 
     fun addObject(tile: Tile, obj: Obj) {
@@ -113,6 +151,8 @@ class MapInterest(val player: Player) {
     companion object {
         val SIZE = 13.zones
 
+        val REL_RANGE = (0.zones until SIZE)
+
         val RANGE = SIZE / 2.zones
 
         val UPDATE_RANGE = RANGE - PlayerInterest.RANGE.inZones
@@ -120,21 +160,6 @@ class MapInterest(val player: Player) {
         private val ZoneUnit.startMapInterest get() = (this - RANGE).inMapsquares
 
         private val ZoneUnit.endMapInterest get() = (this + RANGE).inMapsquares
-
-        fun getInterestedXteas(zone: Zone, map: WorldMap): List<IntArray> {
-            val interestedXteas = mutableListOf<IntArray>()
-            for(mSquareX in zone.x.startMapInterest..zone.x.endMapInterest) {
-                for(mSquareY in zone.y.startMapInterest..zone.y.endMapInterest) {
-                    if(onTutorialIsland(mSquareX, mSquareY)) continue
-                    val id = (mSquareX.value shl 8) or mSquareY.value
-                    val xtea = map.mapsquares[id]?.xtea ?: throw IllegalStateException(
-                        "Could not find XTEA for id $id."
-                    )
-                    interestedXteas.add(xtea)
-                }
-            }
-            return interestedXteas
-        }
 
         private fun onTutorialIsland(mSquareX: MapsquareUnit, mSquareY: MapsquareUnit) =
             ((mSquareX.value == 48 || mSquareX.value == 49) && mSquareY.value == 48)
