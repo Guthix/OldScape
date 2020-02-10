@@ -50,7 +50,7 @@ class UpdateInvFullPacket(
                     buf.writeByteADD(255)
                     buf.writeIntLE(obj.quantity)
                 }
-                buf.writeShortLEADD(obj.blueprint.id)
+                buf.writeShortLEADD(obj.blueprint.id + 1)
             }
         }
         return buf
