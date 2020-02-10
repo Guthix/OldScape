@@ -7,6 +7,7 @@ import io.guthix.oldscape.server.api.blueprint.LocationBlueprints
 import io.guthix.oldscape.server.world.entity.Loc
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.tiles
+import io.guthix.oldscape.server.inventory.inventory
 
 on(ClientCheatEvent::class).where { event.string == "drop" }.then {
     world.map.addObject(
@@ -56,4 +57,8 @@ on(ClientCheatEvent::class).where { event.string == "locremove" }.then {
             orientation = 0
         )
     )
+}
+
+on(ClientCheatEvent::class).where { event.string == "obj" }.then {
+    player.inventory.addObject(Obj(ObjectBlueprints[1753], 1))
 }
