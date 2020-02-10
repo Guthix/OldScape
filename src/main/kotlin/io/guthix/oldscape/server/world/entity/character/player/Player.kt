@@ -23,6 +23,7 @@ import io.guthix.oldscape.server.routine.InitialCondition
 import io.guthix.oldscape.server.net.state.game.outp.*
 import io.guthix.oldscape.server.world.WorldMap
 import io.guthix.oldscape.server.world.entity.Entity
+import io.guthix.oldscape.server.world.entity.Obj
 import io.guthix.oldscape.server.world.entity.character.Character
 import io.guthix.oldscape.server.world.entity.character.player.interest.MapInterest
 import io.guthix.oldscape.server.world.entity.character.player.interest.PlayerInterest
@@ -152,8 +153,20 @@ data class Player(
         }
     }
 
-    private fun updateZonePartialFollows(zone: Zone) {
-        ctx.write(UpdateZonePartialFollows((zone.x - mapInterest.baseX).inTiles, (zone.y - mapInterest.baseY).inTiles))
+    fun addFullInventory(interfaceId: Int, interfacePosition: Int,containerId: Int, objs: List<Obj?>) {
+        ctx.write(UpdateInvFullPacket(interfaceId, interfacePosition, containerId, objs))
+    }
+
+    fun addPartialInventory(interfaceId: Int, interfacePosition: Int,containerId: Int, objs: Map<Int, Obj?>) {
+        ctx.write(UpdateInvPartialPacket(interfaceId, interfacePosition, containerId, objs))
+    }
+
+    fun releaseInvMemory(containerId: Int) {
+        ctx.write(UpdateInvStopTransmitPacket(containerId))
+    }
+
+    fun clearInv(interfaceId: Int, interfacePosition: Int) {
+        ctx.write(UpdateInvClearPacket(interfaceId, interfacePosition))
     }
 
     fun syncMapInterest() {
