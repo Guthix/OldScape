@@ -16,15 +16,31 @@
  */
 package io.guthix.oldscape.server.world.entity
 
+import io.guthix.oldscape.server.util.WeakIdentityHashMap
 import kotlin.reflect.KProperty
 
-class EntityAttribute<T : Any?> {
-    @Suppress("UNCHECKED_CAST")
-    operator fun getValue(thisRef: Entity, property: KProperty<*>): T {
-        return thisRef.attributes[property] as T
-    }
+class EntityAttribute<R : Entity, T : Any>(
+    private val initializer: R.() -> T = { throw IllegalStateException("Not initialized.") }
+) {
+    private val map = WeakIdentityHashMap<R, T>()
 
-    operator fun setValue(thisRef: Entity, property: KProperty<*>, value: T) {
-        thisRef.attributes[property] = value
+    operator fun getValue(thisRef: R, property: KProperty<*>): T =
+        map[thisRef] ?: setValue(thisRef, property, initializer(thisRef))
+
+    operator fun setValue(thisRef: R, property: KProperty<*>, value: T): T {
+        map[thisRef] = value
+        return value
+    }
+}
+
+class NullableEntityAttribute<R : Entity, T>(val initializer: R.() -> T? = { null }) {
+    private val map = WeakIdentityHashMap<R, T?>()
+
+    operator fun getValue(thisRef: R, property: KProperty<*>): T? =
+        if (thisRef in map) map[thisRef] else setValue(thisRef, property, initializer(thisRef))
+
+    operator fun setValue(thisRef: R, property: KProperty<*>, value: T?): T? {
+        map[thisRef] = value
+        return value
     }
 }

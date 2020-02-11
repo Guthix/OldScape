@@ -7,7 +7,6 @@ import io.guthix.oldscape.server.api.blueprint.LocationBlueprints
 import io.guthix.oldscape.server.world.entity.Loc
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.tiles
-import io.guthix.oldscape.server.inventory.inventory
 
 on(ClientCheatEvent::class).where { event.string == "drop" }.then {
     world.map.addObject(

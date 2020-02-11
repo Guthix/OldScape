@@ -21,7 +21,7 @@ import io.guthix.oldscape.server.api.readComponent
 import io.guthix.oldscape.server.world.entity.EntityAttribute
 import io.guthix.oldscape.server.world.entity.character.player.Player
 
-var Player.gameframe by EntityAttribute<GameFrame>()
+var Player.gameframe by EntityAttribute<Player, GameFrame> { GameFrame.BLACK_SCREEN }
 
 enum class GameFrame(val enumId: Int) {
     FIXED(1129), RESIZABLE_BOX(1130), RESIZABLE_LINE(1131), BLACK_SCREEN(1132)

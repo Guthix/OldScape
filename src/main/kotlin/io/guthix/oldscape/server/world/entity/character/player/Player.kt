@@ -63,6 +63,8 @@ data class Player(
 
     val mapInterest = MapInterest(this)
 
+    val inventory = Inventory(this, 149, 0, 3, arrayOfNulls(28))
+
     val varps = mutableMapOf<Int, Int>()
 
     override val updateFlags = mutableSetOf<PlayerInfoPacket.UpdateType>()
@@ -199,6 +201,7 @@ data class Player(
         }
         val routes = routines.values.toTypedArray().copyOf()
         routes.forEach { it.resumeIfPossible() }
+        inventory.update()
         val pZone = world.map.getZone(position) ?: throw IllegalStateException("Player is outside of the map.")
         syncMapInterest(pZone, world.map)
         playerInterestSync(world.players)
