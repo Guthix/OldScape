@@ -194,13 +194,16 @@ data class Player(
         else -> 0
     }
 
-    fun handleEvents(world: World) {
+    fun handleEvents() {
         updateFlags.clear()
         while(inEvents.isNotEmpty()) {
             inEvents.poll().invoke()
         }
         val routes = routines.values.toTypedArray().copyOf()
         routes.forEach { it.resumeIfPossible() }
+    }
+
+    fun interestSynchronize(world: World) {
         inventory.update()
         val pZone = world.map.getZone(position) ?: throw IllegalStateException("Player is outside of the map.")
         syncMapInterest(pZone, world.map)

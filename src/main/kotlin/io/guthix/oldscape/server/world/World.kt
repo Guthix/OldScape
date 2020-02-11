@@ -60,7 +60,8 @@ class World : TimerTask() {
     }
 
     private fun processPlayerEvents() {
-        for(player in players) player.handleEvents(this)
+        for(player in players) player.handleEvents()
+        for(player in players) player.interestSynchronize(this)
     }
 
     companion object {
