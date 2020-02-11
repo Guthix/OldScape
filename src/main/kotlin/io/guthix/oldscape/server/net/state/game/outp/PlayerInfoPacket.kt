@@ -191,7 +191,7 @@ class PlayerInfoPacket(
                 buf.writeBits(value = externalPlayer.position.x.value, amount = 13)
                 buf.writeBits(value = externalPlayer.position.y.value, amount = 13)
                 buf.writeBoolean(true)
-                updateLocalPlayerVisual(externalPlayer, maskBuf, mutableSetOf(appearance))
+                updateLocalPlayerVisual(externalPlayer, maskBuf, mutableSetOf(appearance, orientation))
                 player.playerInterest.localPlayers[externalPlayer.index] = externalPlayer
             } else {
                 updateField(buf, externalPlayer)
@@ -291,12 +291,16 @@ class PlayerInfoPacket(
         } else {
             maskBuf.writeByte(mask)
         }
-        privateUpdates.forEach { updateType ->
+        privateUpdates.sortedBy { it.priority }.forEach { updateType ->
             updateType.encode(maskBuf, localPlayer)
         }
     }
 
-    class UpdateType(mask: Int, val encode: ByteBuf.(player: Player) -> Unit) : Character.UpdateType(mask)
+    class UpdateType(
+        val priority: Int,
+        mask: Int,
+        val encode: ByteBuf.(player: Player) -> Unit
+    ) : Character.UpdateType(mask)
 
     companion object {
         private val INTEREST_SIZE = 32.tiles
@@ -313,47 +317,47 @@ class PlayerInfoPacket(
             intArrayOf(0, 1, 2, 3, 4)
         )
 
-        val movementTemporary = UpdateType(0x200) { player ->
+        val movementTemporary = UpdateType(8, 0x200) { player ->
             writeByteNEG(if(player.movementType == Character.MovementUpdateType.TELEPORT) 127 else 0)
         }
 
-        val shout = UpdateType(0x8) { _ ->
+        val shout = UpdateType(3, 0x10) { _ ->
             //TODO
         }
 
-        val graphic = UpdateType(0x800) { player ->
+        val graphic = UpdateType(10, 0x400) { player ->
             //TODO
         }
 
-        val nameModification = UpdateType(0x400) { player ->
+        val contextMenu = UpdateType(12, 0x1000) { player ->
             //TODO
         }
 
-        val animation = UpdateType(0x20) { player ->
+        val animation = UpdateType(2, 0x4) { player ->
             //TODO
         }
 
-        val chat = UpdateType(0x40) { player ->
+        val chat = UpdateType(1, 0x80) { player ->
             //TODO
         }
 
-        val movementCached = UpdateType(0X800) { player ->
+        val movementCached = UpdateType(4, 0x800) { player ->
             writeByteADD(if(player.inRunMode) 2 else 1)
         }
 
-        val hit = UpdateType(0x1) { player ->
+        val hit = UpdateType(11, 0x1) { player ->
             //TODO
         }
 
-        val movementForced = UpdateType(0x100) { player ->
+        val movementForced = UpdateType(7, 0x100) { player ->
             //TODO
         }
 
-        val lockTurnToCharacter = UpdateType(0x10) { player ->
+        val lockTurnToCharacter = UpdateType(9, 0x40) { player ->
             //TODO
         }
 
-        val appearance = UpdateType(0x8) { player ->
+        val appearance = UpdateType(6, 0x8) { player ->
             val lengthIndex = writerIndex()
             writeByte(0) //place holder for length
             writeByte(0) // gender 0 for male 1 for female
@@ -391,7 +395,7 @@ class PlayerInfoPacket(
             setByteNEG(lengthIndex, writerIndex() - lengthIndex - 1)
         }
 
-        val orientation = UpdateType(0x20) { player ->
+        val orientation = UpdateType(5, 0x20) { player ->
             writeShortLEADD(player.orientation)
         }
     }
