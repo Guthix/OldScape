@@ -25,8 +25,6 @@ import io.guthix.oldscape.server.world.mapsquare.zone.ZoneCollision
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.TileUnit
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.tiles
 
-var Player.destination by EntityAttribute<Destination>()
-
 abstract class Destination(val floor: FloorUnit, val x: TileUnit, val y: TileUnit) {
     abstract fun reached(moverX: TileUnit, moverY: TileUnit, moverSize: TileUnit): Boolean
 }

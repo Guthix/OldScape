@@ -9,7 +9,7 @@ import io.guthix.oldscape.server.world.entity.character.player.interest.MapInter
 import io.guthix.oldscape.server.event.imp.PlayerInitialized
 
 on(LoginEvent::class).then {
-    var pZone = world.map.getZone(player.position) ?: throw IllegalStateException("Player location can't be null")
+    val pZone = world.map.getZone(player.position) ?: throw IllegalStateException("Player location can't be null")
     player.updateFlags.add(PlayerInfoPacket.appearance)
     player.initializeInterest(world.map, world.players, pZone)
     for(skillId in 0 until 23) {
@@ -17,18 +17,5 @@ on(LoginEvent::class).then {
     }
     player.updateWeight(100)
     player.updateVarbit(8119, 1)
-    player.addRoutine(PlayerSyncRoutine) {
-        while(true) {
-            player.playerInterestSync(world.players)
-            wait(ticks = 1)
-        }
-    }
-    player.addRoutine(MapSyncRoutine) {
-        while(true) {
-            pZone = world.map.getZone(player.position) ?: throw IllegalStateException("Player location can't be null")
-            player.mapInterest.checkReload(pZone, world.map)
-            wait(ticks = 1)
-        }
-    }
     EventBus.schedule(PlayerInitialized(), world, player)
 }
