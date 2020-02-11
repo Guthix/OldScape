@@ -21,6 +21,7 @@ import io.guthix.oldscape.server.routine.Routine
 import io.guthix.oldscape.server.routine.ConditionalContinuation
 import io.guthix.oldscape.server.routine.InitialCondition
 import io.guthix.oldscape.server.net.state.game.outp.*
+import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.WorldMap
 import io.guthix.oldscape.server.world.entity.Entity
 import io.guthix.oldscape.server.world.entity.Obj
@@ -169,7 +170,8 @@ data class Player(
         ctx.write(UpdateInvClearPacket(interfaceId, interfacePosition))
     }
 
-    fun syncMapInterest() {
+    fun syncMapInterest(pZone: Zone, worldMap: WorldMap) {
+        mapInterest.checkReload(pZone, worldMap)
         mapInterest.packetCache.forEachIndexed { x, yPacketList ->
             yPacketList.forEachIndexed { y, packetList ->
                 if(packetList.size == 1) {
@@ -190,14 +192,16 @@ data class Player(
         else -> 0
     }
 
-    fun handleEvents() {
+    fun handleEvents(world: World) {
         updateFlags.clear()
         while(inEvents.isNotEmpty()) {
             inEvents.poll().invoke()
         }
         val routes = routines.values.toTypedArray().copyOf()
         routes.forEach { it.resumeIfPossible() }
-        syncMapInterest() // TODO move this to plugins
+        val pZone = world.map.getZone(position) ?: throw IllegalStateException("Player is outside of the map.")
+        syncMapInterest(pZone, world.map)
+        playerInterestSync(world.players)
         ctx.flush()
     }
 }
