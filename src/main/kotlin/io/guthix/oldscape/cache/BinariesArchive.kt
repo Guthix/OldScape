@@ -14,26 +14,17 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with Foobar. If not, see <https://www.gnu.org/licenses/>.
  */
-@file:Suppress("unused")
 package io.guthix.oldscape.cache
 
 import io.guthix.cache.js5.Js5Archive
-import io.guthix.oldscape.cache.plane.RsComponent
+import io.guthix.oldscape.cache.binary.Huffman
 
-class ComponentArchive(val components: List<RsComponent>) {
+class BinariesArchive(val huffman: Huffman) {
     companion object {
-        const val id = 3
+        const val id = 10
 
-        fun load(archive: Js5Archive): ComponentArchive {
-            val components = mutableListOf<RsComponent>()
-            archive.groupSettings.forEach { (groupId, _) ->
-                val group = archive.readGroup(groupId)
-                group.files.forEach { (fileId, file) ->
-                    val widgetId = (groupId shl 16) + fileId
-                    components.add(RsComponent.decode(widgetId, file.data))
-                }
-            }
-            return ComponentArchive(components)
+        fun load(archive: Js5Archive): BinariesArchive {
+            return BinariesArchive(Huffman.load(archive.readGroup("huffman").files[0]!!.data))
         }
     }
 }
