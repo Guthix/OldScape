@@ -17,6 +17,7 @@
 package io.guthix.oldscape.server.net.state.game.outp
 
 import io.guthix.buffer.*
+import io.guthix.oldscape.server.api.Huffman
 import io.guthix.oldscape.server.net.state.game.OutGameEvent
 import io.guthix.oldscape.server.net.state.game.VarShortSize
 import io.guthix.oldscape.server.world.World
@@ -28,6 +29,7 @@ import io.guthix.oldscape.server.world.mapsquare.floors
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.tiles
 import io.netty.buffer.ByteBuf
+import io.netty.buffer.Unpooled
 import io.netty.channel.ChannelHandlerContext
 
 class PlayerInfoPacket(
@@ -291,7 +293,7 @@ class PlayerInfoPacket(
         } else {
             maskBuf.writeByte(mask)
         }
-        privateUpdates.sortedBy { it.priority }.forEach { updateType ->
+        privateUpdates.sortedBy { it.priority }.forEach { updateType -> // TODO use sorted set?
             updateType.encode(maskBuf, localPlayer)
         }
     }
@@ -338,7 +340,19 @@ class PlayerInfoPacket(
         }
 
         val chat = UpdateType(1, 0x80) { player ->
-            //TODO
+            player.publicMessage?.let {
+                writeShortLEADD((it.color shl 8) or it.effect)
+                writeByteSUB(player.rights)
+                writeByte(0) // some boolean
+                val compressed = Unpooled.compositeBuffer(2).apply {
+                    addComponents(true,
+                        Unpooled.buffer(2).apply { writeSmallSmart(it.message.length) },
+                        Unpooled.wrappedBuffer(Huffman.compress(it.message))
+                    )
+                }
+                writeByte(compressed.readableBytes())
+                writeBytesReversedADD(compressed)
+            }
         }
 
         val movementCached = UpdateType(4, 0x800) { player ->

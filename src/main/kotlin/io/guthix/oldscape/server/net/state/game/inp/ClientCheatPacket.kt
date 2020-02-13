@@ -14,18 +14,18 @@
  * You should have received a copy of the GNU General Public License
  * along with Foobar. If not, see <https://www.gnu.org/licenses/>.
  */
-package io.guthix.oldscape.server.world.entity
+package io.guthix.oldscape.server.net.state.game.inp
 
-import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
-import io.guthix.oldscape.server.world.mapsquare.zone.tile.tiles
-import kotlin.reflect.KProperty
+import io.guthix.buffer.readStringCP1252
+import io.guthix.oldscape.server.event.GameEvent
+import io.guthix.oldscape.server.event.imp.ClientCheatEvent
+import io.guthix.oldscape.server.net.state.game.GamePacketDecoder
+import io.guthix.oldscape.server.net.state.game.VarByteSize
+import io.netty.buffer.ByteBuf
+import io.netty.channel.ChannelHandlerContext
 
-abstract class Entity(open val position: Tile, open val attributes: MutableMap<KProperty<*>, Any?>) {
-    open val sizeX get() = size
-
-    open val sizeY get() = size
-
-    abstract var orientation: Int
-
-    val size = 1.tiles // TODO
+class ClientCheatPacket : GamePacketDecoder(34, VarByteSize) {
+    override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): GameEvent {
+        return ClientCheatEvent(data.readStringCP1252())
+    }
 }

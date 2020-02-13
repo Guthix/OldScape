@@ -26,7 +26,7 @@ class Loc(
     override val position: Tile,
     val blueprint: LocationBlueprint,
     val type: Int,
-    val orientation: Int,
+    override var orientation: Int,
     override val attributes: MutableMap<KProperty<*>, Any?> = mutableMapOf()
 ) : Entity(position, attributes) {
     override val sizeX get() = if (orientation == 0 || orientation == 2) blueprint.width else blueprint.length
