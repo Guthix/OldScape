@@ -77,7 +77,7 @@ data class Player(
 
     val varps = mutableMapOf<Int, Int>()
 
-    override val updateFlags = mutableSetOf<PlayerInfoPacket.UpdateType>()
+    override val updateFlags = sortedSetOf<PlayerInfoPacket.UpdateType>()
 
     fun addRoutine(type: Routine.Type, routine: suspend Routine.() -> Unit) {
         val cont = Routine(type, this)
