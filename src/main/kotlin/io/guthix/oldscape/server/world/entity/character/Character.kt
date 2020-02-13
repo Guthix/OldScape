@@ -19,7 +19,7 @@ package io.guthix.oldscape.server.world.entity.character
 import io.guthix.oldscape.server.world.entity.Entity
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.TileUnit
-import kotlin.properties.ReadWriteProperty
+import java.util.*
 import kotlin.reflect.KProperty
 
 abstract class Character(
@@ -30,9 +30,15 @@ abstract class Character(
 
     var movementType = MovementUpdateType.STAY
 
-    abstract val updateFlags: MutableSet<out UpdateType>
+    abstract val updateFlags: SortedSet<out UpdateType>
 
-    abstract class UpdateType(internal val mask: Int)
+    abstract class UpdateType(internal val priority: Int, internal val mask: Int) : Comparable<UpdateType> {
+        override fun compareTo(other: UpdateType) = when {
+            priority < other.priority -> -1
+            priority > other.priority -> 1
+            else -> 0
+        }
+    }
 
     enum class MovementUpdateType { TELEPORT, RUN, WALK, STAY }
 

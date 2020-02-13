@@ -31,6 +31,7 @@ import io.guthix.oldscape.server.world.mapsquare.zone.tile.tiles
 import io.netty.buffer.ByteBuf
 import io.netty.buffer.Unpooled
 import io.netty.channel.ChannelHandlerContext
+import java.util.*
 
 class PlayerInfoPacket(
     private val player: Player,
@@ -193,7 +194,7 @@ class PlayerInfoPacket(
                 buf.writeBits(value = externalPlayer.position.x.value, amount = 13)
                 buf.writeBits(value = externalPlayer.position.y.value, amount = 13)
                 buf.writeBoolean(true)
-                updateLocalPlayerVisual(externalPlayer, maskBuf, mutableSetOf(appearance, orientation))
+                updateLocalPlayerVisual(externalPlayer, maskBuf, sortedSetOf(appearance, orientation))
                 player.playerInterest.localPlayers[externalPlayer.index] = externalPlayer
             } else {
                 updateField(buf, externalPlayer)
@@ -280,7 +281,7 @@ class PlayerInfoPacket(
     private fun updateLocalPlayerVisual(
         localPlayer: Player,
         maskBuf: ByteBuf,
-        privateUpdates: MutableSet<UpdateType> = mutableSetOf()
+        privateUpdates: SortedSet<UpdateType> = sortedSetOf()
     ) {
         var mask = 0
         privateUpdates.addAll(localPlayer.updateFlags)
@@ -293,16 +294,16 @@ class PlayerInfoPacket(
         } else {
             maskBuf.writeByte(mask)
         }
-        privateUpdates.sortedBy { it.priority }.forEach { updateType -> // TODO use sorted set?
+        privateUpdates.forEach { updateType ->
             updateType.encode(maskBuf, localPlayer)
         }
     }
 
     class UpdateType(
-        val priority: Int,
+        priority: Int,
         mask: Int,
         val encode: ByteBuf.(player: Player) -> Unit
-    ) : Character.UpdateType(mask)
+    ) : Character.UpdateType(priority, mask)
 
     companion object {
         private val INTEREST_SIZE = 32.tiles
