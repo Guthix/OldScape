@@ -61,6 +61,33 @@ data class Player(
 
     var rights = 2
 
+    var combatLevel = 126
+
+    val appearance = Appearance(
+        gender = Appearance.Gender.MALE,
+        isSkulled = false,
+        overheadIcon = -1,
+        apparel = Appearance.Apparel(
+            skinColor = 26,
+            head = 0,
+            chest = 18,
+            hands = 33,
+            legs = 36,
+            feet = 42,
+            weapon = 0,
+            shield = 0
+        ),
+        animations = Appearance.Animations(
+            stand = 808,
+            turn = 823,
+            walk = 819,
+            turn180 = 820,
+            turn90CW = 821,
+            turn90CCW = 822,
+            run = 824
+        )
+    )
+
     override var orientation: Int by Delegates.observable(0) { _, old, new ->
         if(old != new) updateFlags.add(PlayerInfoPacket.orientation)
     }
