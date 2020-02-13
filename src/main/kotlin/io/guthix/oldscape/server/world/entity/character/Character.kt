@@ -19,14 +19,13 @@ package io.guthix.oldscape.server.world.entity.character
 import io.guthix.oldscape.server.world.entity.Entity
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.TileUnit
+import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty
 
 abstract class Character(
     position: Tile,
     attributes: MutableMap<KProperty<*>, Any?>
 ) : Entity(position, attributes) {
-    var orientation = 0
-
     var lastPostion = position
 
     var movementType = MovementUpdateType.STAY

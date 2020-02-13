@@ -17,6 +17,7 @@
 package io.guthix.oldscape.server.world.entity.character.player
 
 import io.guthix.oldscape.server.api.Varbits
+import io.guthix.oldscape.server.event.imp.PublicMessageEvent
 import io.guthix.oldscape.server.routine.Routine
 import io.guthix.oldscape.server.routine.ConditionalContinuation
 import io.guthix.oldscape.server.routine.InitialCondition
@@ -37,6 +38,7 @@ import java.util.concurrent.ConcurrentLinkedQueue
 import kotlin.coroutines.intrinsics.createCoroutineUnintercepted
 import kotlin.math.atan2
 import kotlin.math.pow
+import kotlin.properties.Delegates
 import kotlin.reflect.KProperty
 
 data class Player(
@@ -57,7 +59,15 @@ data class Player(
 
     var isTeleporting = false
 
-    var rights = 0
+    var rights = 2
+
+    override var orientation: Int by Delegates.observable(0) { _, old, new ->
+        if(old != new) updateFlags.add(PlayerInfoPacket.orientation)
+    }
+
+    var publicMessage: PublicMessageEvent? by Delegates.observable<PublicMessageEvent?>(null) { _, _, new ->
+        new?.let { updateFlags.add(PlayerInfoPacket.chat) }
+    }
 
     val playerInterest = PlayerInterest()
 
@@ -151,7 +161,6 @@ data class Player(
         val dx = (position.x.value + (sizeX.value.toDouble() / 2)) - (entity.position.x.value + (entity.sizeX.value.toDouble() / 2))
         val dy = (position.y.value + (sizeY.value.toDouble() / 2)) - (entity.position.y.value + (entity.sizeY.value.toDouble() / 2))
         if (dx.toInt() != 0 || dy.toInt() != 0) {
-            updateFlags.add(PlayerInfoPacket.orientation)
             orientation = (atan2(dx, dy) * 325.949).toInt() and 0x7FF
         }
     }

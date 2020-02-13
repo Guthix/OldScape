@@ -25,10 +25,12 @@ import io.guthix.cache.js5.container.Js5Container
 import io.guthix.cache.js5.container.Js5Store
 import io.guthix.cache.js5.container.disk.Js5DiskStore
 import io.guthix.cache.js5.container.heap.Js5HeapStore
+import io.guthix.oldscape.cache.BinariesArchive
 import io.guthix.oldscape.cache.ConfigArchive
 import io.guthix.oldscape.cache.MapArchive
 import io.guthix.oldscape.cache.xtea.MapXtea
 import io.guthix.oldscape.server.api.Enums
+import io.guthix.oldscape.server.api.Huffman
 import io.guthix.oldscape.server.api.Varbits
 import io.guthix.oldscape.server.api.blueprint.LocationBlueprints
 import io.guthix.oldscape.server.api.blueprint.ObjectBlueprints
@@ -59,6 +61,8 @@ object OldScape {
         Varbits.load(configArchive)
         LocationBlueprints.load(configArchive)
         ObjectBlueprints.load(configArchive)
+        val binariesArchive = cache.readArchive(BinariesArchive.id)
+        Huffman.load(binariesArchive)
         EventBus.loadScripts()
         GamePacketDecoder.loadIncPackets()
         val mapSquareXteas = loadMapSquareXteaKeys(cacheDir.resolve("xteas.json"))

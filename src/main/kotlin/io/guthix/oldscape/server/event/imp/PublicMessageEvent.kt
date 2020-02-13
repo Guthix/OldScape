@@ -14,18 +14,8 @@
  * You should have received a copy of the GNU General Public License
  * along with Foobar. If not, see <https://www.gnu.org/licenses/>.
  */
-package io.guthix.oldscape.server.world.entity
+package io.guthix.oldscape.server.event.imp
 
-import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
-import io.guthix.oldscape.server.world.mapsquare.zone.tile.tiles
-import kotlin.reflect.KProperty
+import io.guthix.oldscape.server.event.GameEvent
 
-abstract class Entity(open val position: Tile, open val attributes: MutableMap<KProperty<*>, Any?>) {
-    open val sizeX get() = size
-
-    open val sizeY get() = size
-
-    abstract var orientation: Int
-
-    val size = 1.tiles // TODO
-}
+data class PublicMessageEvent(val color: Int, val effect: Int, val message: String) : GameEvent
