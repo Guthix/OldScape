@@ -375,20 +375,20 @@ class PlayerInfoPacket(
         val appearance = UpdateType(6, 0x8) { player ->
             val lengthIndex = writerIndex()
             writeByte(0) //place holder for length
-            writeByte(0) // gender 0 for male 1 for female
-            writeByte(-1) // isSkulled 1 for skull
-            writeByte(-1) // overhead icon
+            writeByte(player.appearance.gender.opcode)
+            writeByte(if(player.appearance.isSkulled) 1 else -1)
+            writeByte(player.appearance.overheadIcon)
 
             for (i in 0 until 4) {
                 writeByte(0)
             }
-            writeShort(0x100 + 18) // chest
-            writeByte(0) // shield
-            writeShort(0x100 + 26) // full body
-            writeShort(0x100 + 36) // legs
-            writeShort(0x100 + 0) // hat
-            writeShort(0x100 + 33) // hands
-            writeShort(0x100 + 42) // feet
+            writeShort(0x100 + player.appearance.apparel.chest)
+            writeByte(player.appearance.apparel.shield)
+            writeShort(0x100 + player.appearance.apparel.skinColor)
+            writeShort(0x100 + player.appearance.apparel.legs)
+            writeShort(0x100 + player.appearance.apparel.head)
+            writeShort(0x100 + player.appearance.apparel.hands)
+            writeShort(0x100 + player.appearance.apparel.feet)
             writeShort(0x100 + 11)
 
             // originalColors
@@ -396,15 +396,15 @@ class PlayerInfoPacket(
                 writeByte(0)
             }
 
-            writeShort(808) // stand anim
-            writeShort(823) // stand turn
-            writeShort(819) // walk anim
-            writeShort(820) // turn 180
-            writeShort(821) // turn 90 cw
-            writeShort(822) // turn 90 ccw
-            writeShort(824) // run anim
+            writeShort(player.appearance.animations.stand)
+            writeShort(player.appearance.animations.turn)
+            writeShort(player.appearance.animations.walk)
+            writeShort(player.appearance.animations.turn180)
+            writeShort(player.appearance.animations.turn90CW)
+            writeShort(player.appearance.animations.turn90CCW)
+            writeShort(player.appearance.animations.run)
             writeStringCP1252(player.username) // username
-            writeByte(126) // combat level
+            writeByte(player.combatLevel) // combat level
             writeShort(0) // skillId level
             writeByte(0) // hidden
             setByteNEG(lengthIndex, writerIndex() - lengthIndex - 1)
