@@ -36,6 +36,7 @@ allprojects {
 
 dependencies {
     api group: 'com.github.guthix', name: 'Jagex-Store-5', version: jagexCacheVersion
+    implementation group: 'com.github.guthix', name: 'Jagex-ByteBuf', version: jagexByteBufVersion
     implementation group: 'io.github.microutils', name: 'kotlin-logging', version: kotlinLoggingVersion
     implementation group: 'ch.qos.logback', name: 'logback-classic', version: logbackVersion
 }
