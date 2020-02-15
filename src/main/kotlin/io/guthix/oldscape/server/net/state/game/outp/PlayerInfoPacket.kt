@@ -324,9 +324,8 @@ class PlayerInfoPacket(
             writeByteNEG(if(player.movementType == Character.MovementUpdateType.TELEPORT) 127 else 0)
         }
 
-        val shout = UpdateType(3, 0x10) { _ ->
-            println("Shout")
-            writeStringCP1252("Testing!")
+        val shout = UpdateType(3, 0x10) { player ->
+            writeStringCP1252(player.shoutMessage)
         }
 
         val graphic = UpdateType(10, 0x400) { player ->
@@ -342,19 +341,17 @@ class PlayerInfoPacket(
         }
 
         val chat = UpdateType(1, 0x80) { player ->
-            player.publicMessage?.let {
-                writeShortLEADD((it.color shl 8) or it.effect)
-                writeByteSUB(player.rights)
-                writeByte(0) // some boolean
-                val compressed = Unpooled.compositeBuffer(2).apply {
-                    addComponents(true,
-                        Unpooled.buffer(2).apply { writeSmallSmart(it.message.length) },
-                        Unpooled.wrappedBuffer(Huffman.compress(it.message))
-                    )
-                }
-                writeByte(compressed.readableBytes())
-                writeBytesReversedADD(compressed)
+            writeShortLEADD((player.publicMessage.color shl 8) or player.publicMessage.effect)
+            writeByteSUB(player.rights)
+            writeByte(0) // some boolean
+            val compressed = Unpooled.compositeBuffer(2).apply {
+                addComponents(true,
+                    Unpooled.buffer(2).apply { writeSmallSmart(player.publicMessage.length) },
+                    Unpooled.wrappedBuffer(Huffman.compress(player.publicMessage.message))
+                )
             }
+            writeByte(compressed.readableBytes())
+            writeBytesReversedADD(compressed)
         }
 
         val movementCached = UpdateType(4, 0x800) { player ->

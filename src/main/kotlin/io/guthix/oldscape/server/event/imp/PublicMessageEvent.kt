@@ -18,4 +18,6 @@ package io.guthix.oldscape.server.event.imp
 
 import io.guthix.oldscape.server.event.GameEvent
 
-data class PublicMessageEvent(val color: Int, val effect: Int, val message: String) : GameEvent
+data class PublicMessageEvent(val color: Int, val effect: Int, val message: String) : GameEvent {
+    val length get() = message.length
+}
