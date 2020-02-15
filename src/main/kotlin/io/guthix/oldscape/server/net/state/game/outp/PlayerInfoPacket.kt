@@ -325,7 +325,8 @@ class PlayerInfoPacket(
         }
 
         val shout = UpdateType(3, 0x10) { _ ->
-            //TODO
+            println("Shout")
+            writeStringCP1252("Testing!")
         }
 
         val graphic = UpdateType(10, 0x400) { player ->

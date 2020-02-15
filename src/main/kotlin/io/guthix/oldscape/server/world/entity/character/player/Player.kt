@@ -96,6 +96,10 @@ data class Player(
         new?.let { updateFlags.add(PlayerInfoPacket.chat) }
     }
 
+    var shoutMessage: String? by Delegates.observable<String?>(null) { _, _, new ->
+        new?.let { updateFlags.add(PlayerInfoPacket.shout) }
+    }
+
     val playerInterest = PlayerInterest()
 
     val mapInterest = MapInterest(this)

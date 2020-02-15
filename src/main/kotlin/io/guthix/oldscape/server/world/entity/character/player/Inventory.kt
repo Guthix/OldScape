@@ -35,7 +35,6 @@ class Inventory(
 
     fun addObject(slot: Int, obj: Obj) {
         require(slot in 0 until maxSize && amountInInventory != maxSize)
-        println("add object!")
         objs[slot] = obj
         objsToUpdate[slot] = obj
         amountInInventory++
