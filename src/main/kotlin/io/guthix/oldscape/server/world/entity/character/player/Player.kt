@@ -92,12 +92,12 @@ data class Player(
         if(old != new) updateFlags.add(PlayerInfoPacket.orientation)
     }
 
-    var publicMessage: PublicMessageEvent? by Delegates.observable<PublicMessageEvent?>(null) { _, _, new ->
-        new?.let { updateFlags.add(PlayerInfoPacket.chat) }
+    var publicMessage: PublicMessageEvent by Delegates.observable(PublicMessageEvent(0,0, "")) {
+        _, _, _ -> updateFlags.add(PlayerInfoPacket.chat)
     }
 
-    var shoutMessage: String? by Delegates.observable<String?>(null) { _, _, new ->
-        new?.let { updateFlags.add(PlayerInfoPacket.shout) }
+    var shoutMessage: String by Delegates.observable("") { _, _, _ ->
+        updateFlags.add(PlayerInfoPacket.shout)
     }
 
     val playerInterest = PlayerInterest()
@@ -210,6 +210,14 @@ data class Player(
 
     fun clearInv(interfaceId: Int, interfacePosition: Int) {
         ctx.write(UpdateInvClearPacket(interfaceId, interfacePosition))
+    }
+
+    fun shout(message: String) {
+        shoutMessage = message
+    }
+
+    fun chat(message: PublicMessageEvent) {
+        publicMessage = message
     }
 
     fun syncMapInterest(pZone: Zone, worldMap: WorldMap) {
