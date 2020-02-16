@@ -92,6 +92,8 @@ data class Player(
 
     var nameModifiers = arrayOf("", "", "")
 
+    var contextMenu = arrayOf("Follow", "Trade with", "Report")
+
     var sequenceId: Int? by Delegates.observable<Int?>(null) { _, _, _ ->
         updateFlags.add(PlayerInfoPacket.sequence)
     }
@@ -174,6 +176,12 @@ data class Player(
         ctx.write(UpdateRunweightPacket(amount))
     }
 
+    fun synchronizeContextMenu() {
+        contextMenu.forEachIndexed { i, text ->
+            ctx.write(SetPlayerOp(false, i + 1, text))
+        }
+    }
+
     fun runClientScript(id: Int, vararg args: Any) {
         ctx.write(RunclientscriptPacket(id, *args))
     }
@@ -202,7 +210,6 @@ data class Player(
             ctx.write(VarpSmallPacket(id, value))
         }
     }
-
 
     fun turnTo(entity: Entity) {
         setOrientation(entity)
