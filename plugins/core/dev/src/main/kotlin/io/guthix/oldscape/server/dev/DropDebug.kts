@@ -66,3 +66,7 @@ on(ClientCheatEvent::class).where { event.string == "obj" }.then {
 on(ClientCheatEvent::class).where { event.string == "shout" }.then {
     player.shoutMessage = "testing!"
 }
+
+on(ClientCheatEvent::class).where { event.string == "sequence" }.then {
+    player.startSequence(1162)
+}
