@@ -329,7 +329,8 @@ class PlayerInfoPacket(
         }
 
         val spotAnim = UpdateType(10, 0x400) { player ->
-
+            writeShortLEADD(player.spotAnimation?.id ?: 65535)
+            writeInt(((player.spotAnimation?.height ?: 0) shl 16) or (player.spotAnimation?.delay ?:0))
         }
 
         val contextMenu = UpdateType(12, 0x1000) { player ->
@@ -337,7 +338,7 @@ class PlayerInfoPacket(
         }
 
         val sequence = UpdateType(2, 0x4) { player ->
-            writeShort(player.sequence ?: 65535)
+            writeShort(player.sequenceId ?: 65535)
             writeByteADD(0)
         }
 

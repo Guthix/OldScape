@@ -16,7 +16,6 @@
  */
 package io.guthix.oldscape.server.world.entity.character.player
 
-import io.guthix.oldscape.cache.config.SequenceConfig
 import io.guthix.oldscape.server.api.Varbits
 import io.guthix.oldscape.server.event.imp.PublicMessageEvent
 import io.guthix.oldscape.server.routine.Routine
@@ -28,6 +27,7 @@ import io.guthix.oldscape.server.world.WorldMap
 import io.guthix.oldscape.server.world.entity.Entity
 import io.guthix.oldscape.server.world.entity.Obj
 import io.guthix.oldscape.server.world.entity.character.Character
+import io.guthix.oldscape.server.world.entity.character.SpotAnimation
 import io.guthix.oldscape.server.world.entity.character.player.interest.MapInterest
 import io.guthix.oldscape.server.world.entity.character.player.interest.PlayerInterest
 import io.guthix.oldscape.server.world.mapsquare.zone.Zone
@@ -93,8 +93,12 @@ data class Player(
         if(old != new) updateFlags.add(PlayerInfoPacket.orientation)
     }
 
-    var sequence: Int? by Delegates.observable<Int?>(null) { _, _, _ ->
+    var sequenceId: Int? by Delegates.observable<Int?>(null) { _, _, _ ->
         updateFlags.add(PlayerInfoPacket.sequence)
+    }
+
+    var spotAnimation: SpotAnimation? by Delegates.observable<SpotAnimation?>(null) { _, _, _ ->
+        updateFlags.add(PlayerInfoPacket.spotAnim)
     }
 
     var publicMessage: PublicMessageEvent by Delegates.observable(PublicMessageEvent(0,0, "")) {
@@ -218,11 +222,19 @@ data class Player(
     }
 
     fun startSequence(seqId: Int) {
-        sequence = seqId
+        sequenceId = seqId
     }
 
     fun stopSequence() {
-        sequence = null
+        sequenceId = null
+    }
+
+    fun startSpotAnimation(spotAnim: SpotAnimation) {
+        spotAnimation = spotAnim
+    }
+
+    fun stopSpotAnimation() {
+        spotAnimation = null
     }
 
     fun shout(message: String) {
