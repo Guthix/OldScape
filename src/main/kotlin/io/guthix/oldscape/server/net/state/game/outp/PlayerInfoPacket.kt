@@ -328,16 +328,17 @@ class PlayerInfoPacket(
             writeStringCP1252(player.shoutMessage)
         }
 
-        val graphic = UpdateType(10, 0x400) { player ->
-            //TODO
+        val spotAnim = UpdateType(10, 0x400) { player ->
+
         }
 
         val contextMenu = UpdateType(12, 0x1000) { player ->
             //TODO
         }
 
-        val animation = UpdateType(2, 0x4) { player ->
-            //TODO
+        val sequence = UpdateType(2, 0x4) { player ->
+            writeShort(player.sequence ?: 65535)
+            writeByteADD(0)
         }
 
         val chat = UpdateType(1, 0x80) { player ->

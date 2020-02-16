@@ -16,6 +16,7 @@
  */
 package io.guthix.oldscape.server.world.entity.character.player
 
+import io.guthix.oldscape.cache.config.SequenceConfig
 import io.guthix.oldscape.server.api.Varbits
 import io.guthix.oldscape.server.event.imp.PublicMessageEvent
 import io.guthix.oldscape.server.routine.Routine
@@ -90,6 +91,10 @@ data class Player(
 
     override var orientation: Int by Delegates.observable(0) { _, old, new ->
         if(old != new) updateFlags.add(PlayerInfoPacket.orientation)
+    }
+
+    var sequence: Int? by Delegates.observable<Int?>(null) { _, _, _ ->
+        updateFlags.add(PlayerInfoPacket.sequence)
     }
 
     var publicMessage: PublicMessageEvent by Delegates.observable(PublicMessageEvent(0,0, "")) {
@@ -210,6 +215,14 @@ data class Player(
 
     fun clearInv(interfaceId: Int, interfacePosition: Int) {
         ctx.write(UpdateInvClearPacket(interfaceId, interfacePosition))
+    }
+
+    fun startSequence(seqId: Int) {
+        sequence = seqId
+    }
+
+    fun stopSequence() {
+        sequence = null
     }
 
     fun shout(message: String) {
