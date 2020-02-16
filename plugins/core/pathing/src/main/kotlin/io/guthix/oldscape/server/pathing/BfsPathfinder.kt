@@ -30,16 +30,16 @@ private const val MAX_ALTERNATIVE_PATH = 99
 
 fun breadthFirstSearch(
     start: Tile,
-    destination: Destination,
+    dest: Destination,
     moverSize: TileUnit,
     findAlternative: Boolean,
     map: WorldMap
 ): MutableList<Tile> {
     val pathBaseX = start.x - (SEARCH_SIZE / 2.tiles)
     val pathBaseY = start.y - (SEARCH_SIZE / 2.tiles)
-    var endX = destination.x
-    var endY = destination.y
-    if (destination.reached(start.x, start.y, moverSize)) { //Already at location
+    var endX = dest.x
+    var endY = dest.y
+    if (dest.reached(start.x, start.y, moverSize)) { //Already at location
         return emptyList<Tile>().toMutableList()
     }
     val directions = Array(SEARCH_SIZE.value) { IntArray(SEARCH_SIZE.value) }
@@ -181,9 +181,9 @@ fun breadthFirstSearch(
 
 
 
-    val foundDestination = canFindPath(start, destination, moverSize)
+    val foundDestination = canFindPath(start, dest, moverSize)
     if (!foundDestination && findAlternative) {
-        findAlternativeDestination(destination)
+        findAlternativeDestination(dest)
     }
     if (start.x == endX && start.y == endY) { //Alternative destination is the same as current location
         return emptyList<Tile>().toMutableList()
@@ -196,7 +196,7 @@ fun breadthFirstSearch(
     val path = mutableListOf<Tile>()
     while (traceX != start.x || traceY != start.y) {
         direction = directions[(traceX - pathBaseX).value][(traceY - pathBaseY).value]
-        path.add(Tile(destination.floor, traceX, traceY))
+        path.add(Tile(dest.floor, traceX, traceY))
         if (direction and Direction.EAST.mask != 0) {
             traceX++
         } else if (direction and Direction.WEST.mask != 0) {

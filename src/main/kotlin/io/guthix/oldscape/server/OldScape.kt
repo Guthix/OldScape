@@ -38,7 +38,6 @@ import io.guthix.oldscape.server.event.EventBus
 import io.guthix.oldscape.server.net.OldScapeServer
 import io.guthix.oldscape.server.net.state.game.GamePacketDecoder
 import io.guthix.oldscape.server.world.World
-import mu.KotlinLogging
 import java.nio.file.Path
 import java.util.*
 
