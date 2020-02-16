@@ -23,6 +23,7 @@ import java.util.*
 import kotlin.reflect.KProperty
 
 abstract class Character(
+    open val index: Int,
     position: Tile,
     attributes: MutableMap<KProperty<*>, Any?>
 ) : Entity(position, attributes) {

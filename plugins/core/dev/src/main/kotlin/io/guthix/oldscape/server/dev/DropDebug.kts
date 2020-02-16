@@ -72,3 +72,8 @@ on(ClientCheatEvent::class).where { event.string == "sequence" }.then {
     player.startSequence(1162)
     player.startSpotAnimation(SpotAnimation(id = 99, height = 92))
 }
+
+on(ClientCheatEvent::class).where { event.string == "follow" }.then {
+    val player2 = world.players[2]
+    player.turnToLock(player2)
+}

@@ -25,7 +25,7 @@ abstract class Entity(open val position: Tile, open val attributes: MutableMap<K
 
     open val sizeY get() = size
 
-    abstract var orientation: Int
+    open var orientation: Int = 0
 
     val size = 1.tiles // TODO
 }

@@ -372,7 +372,13 @@ class PlayerInfoPacket(
         }
 
         val lockTurnToCharacter = UpdateType(9, 0x40) { player ->
-            //TODO
+            if(player.interacting == null) {
+                writeShort(65535)
+            } else {
+                player.interacting?.let {
+                    writeShort(it.index + 32768)
+                }
+            }
         }
 
         val appearance = UpdateType(6, 0x8) { player ->

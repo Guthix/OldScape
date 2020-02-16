@@ -44,13 +44,13 @@ import kotlin.properties.Delegates
 import kotlin.reflect.KProperty
 
 data class Player(
-    val index: Int,
+    override val index: Int,
     var priority: Int,
     override var position: Tile,
     val username: String,
     var ctx: ChannelHandlerContext,
     override val attributes: MutableMap<KProperty<*>, Any?> = mutableMapOf()
-) : Character(position, attributes), Comparable<Player> {
+) : Character(index, position, attributes), Comparable<Player> {
     val inEvents = ConcurrentLinkedQueue<() -> Unit>()
 
     lateinit var clientSettings: ClientSettings
@@ -90,10 +90,6 @@ data class Player(
         )
     )
 
-    override var orientation: Int by Delegates.observable(0) { _, old, new ->
-        if(old != new) updateFlags.add(PlayerInfoPacket.orientation)
-    }
-
     var nameModifiers = arrayOf("", "", "")
 
     var sequenceId: Int? by Delegates.observable<Int?>(null) { _, _, _ ->
@@ -110,6 +106,10 @@ data class Player(
 
     var shoutMessage: String by Delegates.observable("") { _, _, _ ->
         updateFlags.add(PlayerInfoPacket.shout)
+    }
+
+    var interacting: Character? by Delegates.observable<Character?>(null) { _, _, _ ->
+        updateFlags.add(PlayerInfoPacket.lockTurnToCharacter)
     }
 
     val playerInterest = PlayerInterest()
@@ -203,7 +203,18 @@ data class Player(
         }
     }
 
+
     fun turnTo(entity: Entity) {
+        setOrientation(entity)
+        updateFlags.add(PlayerInfoPacket.orientation)
+    }
+
+    fun turnToLock(char: Character?) {
+        interacting = char
+        char?.let { setOrientation(char) }
+    }
+
+    private fun setOrientation(entity: Entity) {
         val dx = (position.x.value + (sizeX.value.toDouble() / 2)) - (entity.position.x.value + (entity.sizeX.value.toDouble() / 2))
         val dy = (position.y.value + (sizeY.value.toDouble() / 2)) - (entity.position.y.value + (entity.sizeY.value.toDouble() / 2))
         if (dx.toInt() != 0 || dy.toInt() != 0) {
@@ -250,7 +261,6 @@ data class Player(
     fun chat(message: PublicMessageEvent) {
         publicMessage = message
     }
-
 
     override fun compareTo(other: Player) = when {
         priority < other.priority -> -1
