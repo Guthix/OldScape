@@ -23,6 +23,7 @@ import io.guthix.oldscape.server.net.state.game.GameEncoder
 import io.guthix.oldscape.server.net.state.game.GameHandler
 import io.guthix.oldscape.server.net.state.login.*
 import io.guthix.oldscape.server.world.entity.character.player.PlayerList
+import io.netty.util.concurrent.*
 import java.util.*
 import java.util.concurrent.*
 
@@ -61,7 +62,11 @@ class World : TimerTask() {
 
     private fun processPlayerEvents() {
         for(player in players) player.handleEvents()
-        for(player in players) player.interestSynchronize(this)
+        val writing = PromiseCombiner(ImmediateEventExecutor.INSTANCE)
+        players.forEach { writing.add(it.interestSynchronize(this)) }
+        writing.finish(DefaultPromise<Void>(ImmediateEventExecutor.INSTANCE).addListener {
+            for(player in players) player.postProcess()
+        })
     }
 
     companion object {

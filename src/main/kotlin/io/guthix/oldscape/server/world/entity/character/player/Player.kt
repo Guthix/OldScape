@@ -33,6 +33,7 @@ import io.guthix.oldscape.server.world.entity.character.player.interest.PlayerIn
 import io.guthix.oldscape.server.world.mapsquare.zone.Zone
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
 import io.guthix.oldscape.server.world.mapsquare.zone.zones
+import io.netty.channel.ChannelFuture
 import io.netty.channel.ChannelHandlerContext
 import java.util.*
 import java.util.concurrent.ConcurrentLinkedQueue
@@ -93,6 +94,8 @@ data class Player(
         if(old != new) updateFlags.add(PlayerInfoPacket.orientation)
     }
 
+    var nameModifiers = arrayOf("Follow", "Trade with", "Report")
+
     var sequenceId: Int? by Delegates.observable<Int?>(null) { _, _, _ ->
         updateFlags.add(PlayerInfoPacket.sequence)
     }
@@ -119,6 +122,11 @@ data class Player(
 
     override val updateFlags = sortedSetOf<PlayerInfoPacket.UpdateType>()
 
+    init {
+        updateFlags.add(PlayerInfoPacket.appearance)
+        updateFlags.add(PlayerInfoPacket.orientation)
+    }
+
     fun addRoutine(type: Routine.Type, routine: suspend Routine.() -> Unit) {
         val cont = Routine(type, this)
         cont.next = ConditionalContinuation(InitialCondition, routine.createCoroutineUnintercepted(cont, cont))
@@ -132,9 +140,6 @@ data class Player(
         ctx.write(InterestInitPacket(this, worldPlayers, xteas, position.x.inZones, position.y.inZones))
     }
 
-    fun playerInterestSync(worldPlayers: PlayerList) {
-        ctx.write(PlayerInfoPacket(this, worldPlayers))
-    }
 
     fun updateMap(zone: Zone, xteas: List<IntArray>) {
         ctx.write(RebuildNormalPacket(xteas, zone.x, zone.y))
@@ -245,6 +250,21 @@ data class Player(
         publicMessage = message
     }
 
+
+    override fun compareTo(other: Player) = when {
+        priority < other.priority -> -1
+        priority > other.priority -> 1
+        else -> 0
+    }
+
+    fun handleEvents() {
+        while(inEvents.isNotEmpty()) {
+            inEvents.poll().invoke()
+        }
+        val routes = routines.values.toTypedArray().copyOf()
+        routes.forEach { it.resumeIfPossible() }
+    }
+
     fun syncMapInterest(pZone: Zone, worldMap: WorldMap) {
         mapInterest.checkReload(pZone, worldMap)
         mapInterest.packetCache.forEachIndexed { x, yPacketList ->
@@ -261,26 +281,14 @@ data class Player(
         }
     }
 
-    override fun compareTo(other: Player) = when {
-        priority < other.priority -> -1
-        priority > other.priority -> 1
-        else -> 0
-    }
-
-    fun handleEvents() {
-        updateFlags.clear()
-        while(inEvents.isNotEmpty()) {
-            inEvents.poll().invoke()
-        }
-        val routes = routines.values.toTypedArray().copyOf()
-        routes.forEach { it.resumeIfPossible() }
-    }
-
-    fun interestSynchronize(world: World) {
+    fun interestSynchronize(world: World): ChannelFuture {
         inventory.update()
         val pZone = world.map.getZone(position) ?: throw IllegalStateException("Player is outside of the map.")
         syncMapInterest(pZone, world.map)
-        playerInterestSync(world.players)
-        ctx.flush()
+        return ctx.writeAndFlush(PlayerInfoPacket(this, world.players))
+    }
+
+    fun postProcess() {
+        updateFlags.clear()
     }
 }

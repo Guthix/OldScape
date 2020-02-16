@@ -32,6 +32,7 @@ import io.netty.buffer.ByteBuf
 import io.netty.buffer.Unpooled
 import io.netty.channel.ChannelHandlerContext
 import java.util.*
+import kotlin.math.abs
 
 class PlayerInfoPacket(
     private val player: Player,
@@ -172,7 +173,7 @@ class PlayerInfoPacket(
             if (dx == 0 && dy == 0) {
                 buf.writeBits(value = 1, amount = 2)
                 buf.writeBits(value = dz, amount = 2)
-            } else if (Math.abs(dx) <= 1 && Math.abs(dy) <= 1) {
+            } else if (abs(dx) <= 1 && abs(dy) <= 1) {
                 buf.writeBits(value = 2, amount = 2)
                 buf.writeBits(value = (dz shl 3) or getDirectionType(dx, dy), amount = 5)
             } else {
