@@ -334,8 +334,10 @@ class PlayerInfoPacket(
             writeInt(((player.spotAnimation?.height ?: 0) shl 16) or (player.spotAnimation?.delay ?:0))
         }
 
-        val contextMenu = UpdateType(12, 0x1000) { player ->
-            //TODO
+        val nameModifiers = UpdateType(12, 0x1000) { player ->
+            player.nameModifiers.forEach { entry ->
+                writeStringCP1252(entry)
+            }
         }
 
         val sequence = UpdateType(2, 0x4) { player ->

@@ -94,7 +94,7 @@ data class Player(
         if(old != new) updateFlags.add(PlayerInfoPacket.orientation)
     }
 
-    var nameModifiers = arrayOf("Follow", "Trade with", "Report")
+    var nameModifiers = arrayOf("", "", "")
 
     var sequenceId: Int? by Delegates.observable<Int?>(null) { _, _, _ ->
         updateFlags.add(PlayerInfoPacket.sequence)
@@ -125,6 +125,7 @@ data class Player(
     init {
         updateFlags.add(PlayerInfoPacket.appearance)
         updateFlags.add(PlayerInfoPacket.orientation)
+        updateFlags.add(PlayerInfoPacket.nameModifiers)
     }
 
     fun addRoutine(type: Routine.Type, routine: suspend Routine.() -> Unit) {
