@@ -16,5 +16,6 @@ on(LoginEvent::class).then {
     }
     player.updateWeight(100)
     player.updateVarbit(8119, 1)
+    player.synchronizeContextMenu()
     EventBus.schedule(PlayerInitialized(), world, player)
 }
