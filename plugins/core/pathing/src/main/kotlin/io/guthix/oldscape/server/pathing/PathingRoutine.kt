@@ -40,6 +40,7 @@ fun Player.startWalkingOn(path: MutableList<Tile>, postAction: Player.() -> Unit
 
 fun Player.step(path: MutableList<Tile>) {
     lastPostion = position
+    println(position)
     position = when {
         inRunMode -> when {
             path.size == 1 -> {
@@ -50,7 +51,8 @@ fun Player.step(path: MutableList<Tile>) {
             }
             position.withInDistanceOf(path[1], 1.tiles) -> { // running around corners
                 movementType = Character.MovementUpdateType.WALK
-                orientation = getOrientation(lastPostion, path[0])
+                orientation = getOrientation(path[0], path[1])
+                path.removeAt(0)
                 path.removeAt(0)
             }
             else -> {
