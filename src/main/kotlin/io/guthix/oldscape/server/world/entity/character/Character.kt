@@ -19,6 +19,7 @@ package io.guthix.oldscape.server.world.entity.character
 import io.guthix.oldscape.server.world.entity.Entity
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.TileUnit
+import io.guthix.oldscape.server.world.mapsquare.zone.tile.tiles
 import java.util.*
 import kotlin.reflect.KProperty
 
@@ -27,7 +28,7 @@ abstract class Character(
     position: Tile,
     attributes: MutableMap<KProperty<*>, Any?>
 ) : Entity(position, attributes) {
-    var lastPostion = position
+    var lastPostion = position.copy(x = position.x - 1.tiles)
 
     var movementType = MovementUpdateType.STAY
 
