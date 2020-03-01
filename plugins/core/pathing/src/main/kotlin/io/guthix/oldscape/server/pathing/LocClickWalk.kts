@@ -13,6 +13,8 @@ on(LocationClickEvent::class).then {
     )
     val destination = DestinationLocation(loc, world.map)
     player.path = breadthFirstSearch(player.position, destination, player.size, true, world.map)
+    val end = player.path.last()
+    player.setMapFlag(end.x, end.y)
     player.addRoutine(NormalAction) {
         wait{ destination.reached(player.position.x, player.position.y, player.size) }
         player.turnTo(loc)
