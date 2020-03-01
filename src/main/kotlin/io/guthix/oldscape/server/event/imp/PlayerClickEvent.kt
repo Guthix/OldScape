@@ -18,4 +18,4 @@ package io.guthix.oldscape.server.event.imp
 
 import io.guthix.oldscape.server.event.GameEvent
 
-class PlayerOpEvent(val playerIndex: Int, val buttonPressed: Boolean, val option: Int) : GameEvent
+data class PlayerClickEvent(val playerIndex: Int, val buttonPressed: Boolean, val option: Int) : GameEvent

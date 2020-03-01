@@ -18,7 +18,7 @@ package io.guthix.oldscape.server.event.imp
 
 import io.guthix.oldscape.server.event.GameEvent
 
-class KeyboardPressEvent(val keyPresses: List<KeyPress>) : GameEvent
+data class KeyboardPressEvent(val keyPresses: List<KeyPress>) : GameEvent
 
 class KeyPress(key: KeyboardKey, interval: Int)
 

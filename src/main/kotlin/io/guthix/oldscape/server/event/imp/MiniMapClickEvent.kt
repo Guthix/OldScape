@@ -19,7 +19,7 @@ package io.guthix.oldscape.server.event.imp
 import io.guthix.oldscape.server.event.GameEvent
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.TileUnit
 
-class MiniMapClickEvent(
+data class MiniMapClickEvent(
     val x: TileUnit,
     val y: TileUnit,
     val type: Int,
