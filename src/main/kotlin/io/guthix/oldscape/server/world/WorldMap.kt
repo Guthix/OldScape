@@ -65,7 +65,7 @@ class WorldMap(val mapsquares: MutableMap<Int, Mapsquare>) {
 
     fun getCollisionMask(floor: FloorUnit, x: TileUnit, y: TileUnit) = mapsquares[id(x, y)]?.getCollisionMask(
         floor, x.relativeMapSquare, y.relativeMapSquare
-    ) ?: ZoneCollision.MASK_UNWALKABLE_TILE
+    ) ?: ZoneCollision.MASK_TERRAIN_BLOCK
 
     fun addUnwalkableTile(floor: FloorUnit, x: TileUnit, y: TileUnit) = mapsquares[id(x, y)]?.addUnwalkableTile(
         floor, x.relativeMapSquare, y.relativeMapSquare

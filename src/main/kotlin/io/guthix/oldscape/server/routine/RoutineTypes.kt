@@ -21,9 +21,3 @@ object StrongAction : Routine.Type(priority = 1)
 object NormalAction : Routine.Type(priority = 2)
 
 object WeakAction : Routine.Type(priority = 3)
-
-object PostRoutine : Routine.Type(priority = 4)
-
-object MapSyncRoutine : Routine.Type(priority = Int.MAX_VALUE - 1)
-
-object PlayerSyncRoutine : Routine.Type(priority = Int.MAX_VALUE)

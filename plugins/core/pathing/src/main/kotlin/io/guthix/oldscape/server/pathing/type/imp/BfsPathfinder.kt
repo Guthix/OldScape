@@ -14,8 +14,11 @@
  * You should have received a copy of the GNU General Public License
  * along with Foobar. If not, see <https://www.gnu.org/licenses/>.
  */
-package io.guthix.oldscape.server.pathing
+package io.guthix.oldscape.server.pathing.type.imp
 
+import io.guthix.oldscape.server.pathing.type.*
+import io.guthix.oldscape.server.pathing.type.canWalkEast
+import io.guthix.oldscape.server.pathing.type.canWalkWest
 import io.guthix.oldscape.server.world.WorldMap
 import io.guthix.oldscape.server.world.mapsquare.zone.ZoneCollision
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
@@ -24,7 +27,7 @@ import io.guthix.oldscape.server.world.mapsquare.zone.tile.tiles
 import kotlin.math.abs
 
 private const val MAX_QUEUE_LENGTH = 4096
-private val SEARCH_SIZE = 128.tiles
+private val SEARCH_SIZE = 104.tiles
 private val ALTERNATIVE_ROUTE_RANGE = 10.tiles
 private const val MAX_ALTERNATIVE_PATH = 99
 
@@ -44,7 +47,7 @@ fun breadthFirstSearch(
     }
     val directions = Array(SEARCH_SIZE.value) { IntArray(SEARCH_SIZE.value) }
     val distances = Array(SEARCH_SIZE.value) { IntArray(SEARCH_SIZE.value) { Int.MAX_VALUE } }
-
+    
     fun canFindPath(start: Tile, dest: Destination, moverSize: TileUnit): Boolean {
         val bufferX = IntArray(MAX_QUEUE_LENGTH)
         val bufferY = IntArray(MAX_QUEUE_LENGTH)
@@ -67,17 +70,8 @@ fun breadthFirstSearch(
                 return true
             }
             val nextDistance = distances[curGraphX.value][curGraphY.value] + 1
-            if (curGraphY > 0.tiles && directions[curGraphX.value][curGraphY.value - 1] == 0 &&
-                map.getCollisionMask(dest.floor, curX, curY - 1.tiles) and ZoneCollision.BLOCK_NORTH == 0
-            ) {
-                bufferX[nextIndex] = curX.value
-                bufferY[nextIndex] = curY.value - 1
-                nextIndex = (nextIndex + 1) and 0xFFF
-                directions[curGraphX.value][curGraphY.value - 1] = Direction.NORTH.mask
-                distances[curGraphX.value][curGraphY.value - 1] = nextDistance
-            }
             if (curGraphX > 0.tiles && directions[curGraphX.value - 1][curGraphY.value] == 0
-                && map.getCollisionMask(dest.floor, curX - 1.tiles, curY) and ZoneCollision.BLOCK_EAST == 0
+                && map.canWalkWest(start.floor, curX, curY, moverSize)
             ) {
                 bufferX[nextIndex] = curX.value - 1
                 bufferY[nextIndex] = curY.value
@@ -85,17 +79,8 @@ fun breadthFirstSearch(
                 directions[curGraphX.value - 1][curGraphY.value] = Direction.EAST.mask
                 distances[curGraphX.value - 1][curGraphY.value] = nextDistance
             }
-            if (curGraphY < SEARCH_SIZE - 1.tiles && directions[curGraphX.value][curGraphY.value + 1] == 0
-                && map.getCollisionMask(dest.floor, curX, curY + 1.tiles) and ZoneCollision.BLOCK_SOUTH == 0
-            ) {
-                bufferX[nextIndex] = curX.value
-                bufferY[nextIndex] = curY.value + 1
-                nextIndex = (nextIndex + 1) and 0xFFF
-                directions[curGraphX.value][curGraphY.value + 1] = Direction.SOUTH.mask
-                distances[curGraphX.value][curGraphY.value + 1] = nextDistance
-            }
             if (curGraphX < SEARCH_SIZE - 1.tiles && directions[curGraphX.value + 1][curGraphY.value] == 0
-                && map.getCollisionMask(dest.floor, curX + 1.tiles, curY) and ZoneCollision.BLOCK_WEST == 0
+                && map.canWalkEast(start.floor, curX, curY, moverSize)
             ) {
                 bufferX[nextIndex] = curX.value + 1
                 bufferY[nextIndex] = curY.value
@@ -103,10 +88,26 @@ fun breadthFirstSearch(
                 directions[curGraphX.value + 1][curGraphY.value] = Direction.WEST.mask
                 distances[curGraphX.value + 1][curGraphY.value] = nextDistance
             }
+            if (curGraphY > 0.tiles && directions[curGraphX.value][curGraphY.value - 1] == 0 &&
+                map.canWalkSouth(start.floor, curX, curY, moverSize)
+            ) {
+                bufferX[nextIndex] = curX.value
+                bufferY[nextIndex] = curY.value - 1
+                nextIndex = (nextIndex + 1) and 0xFFF
+                directions[curGraphX.value][curGraphY.value - 1] = Direction.NORTH.mask
+                distances[curGraphX.value][curGraphY.value - 1] = nextDistance
+            }
+            if (curGraphY < SEARCH_SIZE - 1.tiles && directions[curGraphX.value][curGraphY.value + 1] == 0
+                && map.canWalkNorth(start.floor, curX, curY, moverSize)
+            ) {
+                bufferX[nextIndex] = curX.value
+                bufferY[nextIndex] = curY.value + 1
+                nextIndex = (nextIndex + 1) and 0xFFF
+                directions[curGraphX.value][curGraphY.value + 1] = Direction.SOUTH.mask
+                distances[curGraphX.value][curGraphY.value + 1] = nextDistance
+            }
             if (curGraphX > 0.tiles && curGraphY > 0.tiles && directions[curGraphX.value - 1][curGraphY.value - 1] == 0
-                && map.getCollisionMask(dest.floor, curX - 1.tiles, curY - 1.tiles) and ZoneCollision.BLOCK_NORTH_EAST == 0
-                && map.getCollisionMask(dest.floor, curX, curY - 1.tiles) and ZoneCollision.BLOCK_NORTH == 0
-                && map.getCollisionMask(dest.floor, curX - 1.tiles, curY) and ZoneCollision.BLOCK_EAST == 0
+                && map.canWalkSouthWest(start.floor, curX, curY, moverSize)
             ) {
                 bufferX[nextIndex] = curX.value - 1
                 bufferY[nextIndex] = curY.value - 1
@@ -116,9 +117,7 @@ fun breadthFirstSearch(
             }
             if (curGraphX < SEARCH_SIZE - 1.tiles && curGraphY > 0.tiles
                 && directions[curGraphX.value + 1][curGraphY.value - 1] == 0
-                && map.getCollisionMask(dest.floor, curX + 1.tiles, curY - 1.tiles) and ZoneCollision.BLOCK_NORTH_WEST == 0
-                && map.getCollisionMask(dest.floor, curX, curY - 1.tiles) and ZoneCollision.BLOCK_NORTH == 0
-                && map.getCollisionMask(dest.floor, curX + 1.tiles, curY) and ZoneCollision.BLOCK_WEST == 0
+                && map.canWalkSouthEast(start.floor, curX, curY, moverSize)
             ) {
                 bufferX[nextIndex] = curX.value + 1
                 bufferY[nextIndex] = curY.value - 1
@@ -128,9 +127,7 @@ fun breadthFirstSearch(
             }
             if (curGraphX > 0.tiles && curGraphY < SEARCH_SIZE - 1.tiles
                 && directions[curGraphX.value - 1][curGraphY.value + 1] == 0
-                && map.getCollisionMask(dest.floor, curX - 1.tiles, curY + 1.tiles) and ZoneCollision.BLOCK_SOUTH_EAST == 0
-                && map.getCollisionMask(dest.floor, curX, curY + 1.tiles) and ZoneCollision.BLOCK_SOUTH == 0
-                && map.getCollisionMask(dest.floor, curX - 1.tiles, curY) and ZoneCollision.BLOCK_EAST == 0
+                && map.canWalkNorthWest(start.floor, curX, curY, moverSize)
             ) {
                 bufferX[nextIndex] = curX.value - 1
                 bufferY[nextIndex] = curY.value + 1
@@ -140,9 +137,7 @@ fun breadthFirstSearch(
             }
             if (curGraphX < SEARCH_SIZE - 1.tiles && curGraphY < SEARCH_SIZE - 1.tiles
                 && directions[curGraphX.value + 1][curGraphY.value + 1] == 0
-                && map.getCollisionMask(dest.floor, curX + 1.tiles, curY + 1.tiles) and ZoneCollision.BLOCK_SOUTH_WEST == 0
-                && map.getCollisionMask(dest.floor, curX, curY + 1.tiles) and ZoneCollision.BLOCK_SOUTH == 0
-                && map.getCollisionMask(dest.floor, curX + 1.tiles, curY) and ZoneCollision.BLOCK_WEST == 0
+                && map.canWalkNorthEast(start.floor, curX, curY, moverSize)
             ) {
                 bufferX[nextIndex] = curX.value + 1
                 bufferY[nextIndex] = curY.value + 1
@@ -178,8 +173,6 @@ fun breadthFirstSearch(
             }
         }
     }
-
-
 
     val foundDestination = canFindPath(start, dest, moverSize)
     if (!foundDestination && findAlternative) {

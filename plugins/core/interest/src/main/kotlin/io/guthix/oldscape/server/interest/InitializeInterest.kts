@@ -2,10 +2,6 @@ package io.guthix.oldscape.server.interest
 
 import io.guthix.oldscape.server.event.imp.LoginEvent
 import io.guthix.oldscape.server.event.EventBus
-import io.guthix.oldscape.server.net.state.game.outp.PlayerInfoPacket
-import io.guthix.oldscape.server.routine.PlayerSyncRoutine
-import io.guthix.oldscape.server.routine.MapSyncRoutine
-import io.guthix.oldscape.server.world.entity.character.player.interest.MapInterest
 import io.guthix.oldscape.server.event.imp.PlayerInitialized
 
 on(LoginEvent::class).then {

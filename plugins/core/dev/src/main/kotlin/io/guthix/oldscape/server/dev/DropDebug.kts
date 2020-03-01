@@ -77,3 +77,11 @@ on(ClientCheatEvent::class).where { event.string == "follow" }.then {
     val player2 = world.players[2]
     player.turnToLock(player2)
 }
+
+on(ClientCheatEvent::class).where { event.string == "clear" }.then {
+    player.clearMap()
+}
+
+on(ClientCheatEvent::class).where { event.string == "pos" }.then {
+    println("Position ${player.position}")
+}

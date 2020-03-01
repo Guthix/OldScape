@@ -22,6 +22,10 @@ import io.guthix.oldscape.server.net.state.game.GameDecoder
 import io.guthix.oldscape.server.net.state.game.GameEncoder
 import io.guthix.oldscape.server.net.state.game.GameHandler
 import io.guthix.oldscape.server.net.state.login.*
+import io.guthix.oldscape.server.routine.NormalAction
+import io.guthix.oldscape.server.routine.Routine
+import io.guthix.oldscape.server.routine.StrongAction
+import io.guthix.oldscape.server.routine.WeakAction
 import io.guthix.oldscape.server.world.entity.character.player.PlayerList
 import io.netty.util.concurrent.*
 import java.util.*
@@ -62,6 +66,10 @@ class World : TimerTask() {
 
     private fun processPlayerEvents() {
         for(player in players) player.handleEvents()
+        for(player in players) player.routines[StrongAction]?.resumeIfPossible()
+        for(player in players) player.routines[NormalAction]?.resumeIfPossible()
+        for(player in players) player.routines[WeakAction]?.resumeIfPossible()
+        for(player in players) player.move()
         val writing = PromiseCombiner(ImmediateEventExecutor.INSTANCE)
         players.forEach { writing.add(it.interestSynchronize(this)) }
         writing.finish(DefaultPromise<Void>(ImmediateEventExecutor.INSTANCE).addListener {
