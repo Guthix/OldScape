@@ -32,6 +32,7 @@ import io.guthix.oldscape.server.world.entity.character.player.interest.MapInter
 import io.guthix.oldscape.server.world.entity.character.player.interest.PlayerInterest
 import io.guthix.oldscape.server.world.mapsquare.zone.Zone
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
+import io.guthix.oldscape.server.world.mapsquare.zone.tile.TileUnit
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.abs
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.tiles
 import io.guthix.oldscape.server.world.mapsquare.zone.zones
@@ -190,6 +191,10 @@ data class Player(
 
     fun runClientScript(id: Int, vararg args: Any) {
         ctx.write(RunclientscriptPacket(id, *args))
+    }
+
+    fun setMapFlag(x: TileUnit, y: TileUnit) {
+        ctx.write(SetMapFlag(x - mapInterest.baseX.inTiles, y - mapInterest.baseY.inTiles))
     }
 
     fun updateVarbit(varbitId: Int, value: Int) {
