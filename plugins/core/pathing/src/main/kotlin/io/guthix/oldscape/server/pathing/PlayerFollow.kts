@@ -5,7 +5,6 @@ import io.guthix.oldscape.server.pathing.type.DestinationPlayer
 import io.guthix.oldscape.server.pathing.type.DestinationTile
 import io.guthix.oldscape.server.pathing.type.imp.breadthFirstSearch
 import io.guthix.oldscape.server.pathing.type.imp.simplePathSearch
-import io.guthix.oldscape.server.pathing.type.imp.inLineOfSight
 import io.guthix.oldscape.server.routine.NormalAction
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.tiles
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.abs
@@ -24,7 +23,7 @@ fun conditionSimpleWalk(start: Tile, end: Tile, moverSize: TileUnit, map: WorldM
 }
 
 
-on(PlayerOpEvent::class).where { event.option == 1 }.then {
+on(PlayerOpEvent::class).where { player.contextMenu[event.option - 1] == "Follow" }.then {
     val followed = world.players[event.playerIndex] ?: throw IllegalStateException()
     val pDestination = DestinationPlayer(followed, world.map)
     player.path = if(conditionSimpleWalk(player.position, followed.position, player.size, world.map).isEmpty()) {
@@ -44,7 +43,8 @@ on(PlayerOpEvent::class).where { event.option == 1 }.then {
     player.turnToLock(followed)
     player.addRoutine(NormalAction) {
         while(true) {
-            wait { currentTarget != player.followPosition }
+            wait { currentTarget != followed.followPosition }
+            println("${player.username} c: $currentTarget f: ${player.followPosition}")
             player.path = simplePathSearch(player.position, DestinationTile(followed.followPosition), player.size, world.map)
             currentTarget = followed.followPosition
         }
