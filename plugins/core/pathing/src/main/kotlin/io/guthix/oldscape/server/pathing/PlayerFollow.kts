@@ -1,6 +1,6 @@
 package io.guthix.oldscape.server.pathing
 
-import io.guthix.oldscape.server.event.imp.PlayerOpEvent
+import io.guthix.oldscape.server.event.imp.PlayerClickEvent
 import io.guthix.oldscape.server.pathing.type.DestinationPlayer
 import io.guthix.oldscape.server.pathing.type.DestinationTile
 import io.guthix.oldscape.server.pathing.type.imp.breadthFirstSearch
@@ -23,7 +23,7 @@ fun conditionSimpleWalk(start: Tile, end: Tile, moverSize: TileUnit, map: WorldM
 }
 
 
-on(PlayerOpEvent::class).where { player.contextMenu[event.option - 1] == "Follow" }.then {
+on(PlayerClickEvent::class).where { player.contextMenu[event.option - 1] == "Follow" }.then {
     val followed = world.players[event.playerIndex] ?: throw IllegalStateException()
     val pDestination = DestinationPlayer(followed, world.map)
     player.path = if(conditionSimpleWalk(player.position, followed.position, player.size, world.map).isEmpty()) {
@@ -44,7 +44,6 @@ on(PlayerOpEvent::class).where { player.contextMenu[event.option - 1] == "Follow
     player.addRoutine(NormalAction) {
         while(true) {
             wait { currentTarget != followed.followPosition }
-            println("${player.username} c: $currentTarget f: ${player.followPosition}")
             player.path = simplePathSearch(player.position, DestinationTile(followed.followPosition), player.size, world.map)
             currentTarget = followed.followPosition
         }
