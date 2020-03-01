@@ -195,7 +195,7 @@ class PlayerInfoPacket(
                 buf.writeBits(value = externalPlayer.position.x.value, amount = 13)
                 buf.writeBits(value = externalPlayer.position.y.value, amount = 13)
                 buf.writeBoolean(true)
-                updateLocalPlayerVisual(externalPlayer, maskBuf, sortedSetOf(appearance, orientation))
+                updateLocalPlayerVisual(externalPlayer, maskBuf, sortedSetOf(appearance, orientation, movementCached))
                 player.playerInterest.localPlayers[externalPlayer.index] = externalPlayer
             } else {
                 updateField(buf, externalPlayer)

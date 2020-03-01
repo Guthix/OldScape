@@ -75,7 +75,7 @@ class ZoneCollision(val zone: Zone) {
     fun addObject(x: TileUnit, y: TileUnit, sizeX: TileUnit, sizeY: TileUnit, impenetrable: Boolean) {
         var mask = MASK_LOC
         if (impenetrable) {
-            mask = mask or MASK_LOC_IMPENETRABLE
+            mask = mask or MASK_LOC_HIGH
         }
         for(i in 0 until 3)
         for (tileX in x until (x + sizeX)) {
@@ -90,7 +90,7 @@ class ZoneCollision(val zone: Zone) {
     }
 
     fun addUnwalkableTile(x: TileUnit, y: TileUnit) {
-        addMask(x, y, MASK_UNWALKABLE_TILE)
+        addMask(x, y, MASK_TERRAIN_BLOCK)
     }
 
     fun addWall(x: TileUnit, y: TileUnit, type: Int, orientation: Int, impenetrable: Boolean) {
@@ -98,64 +98,64 @@ class ZoneCollision(val zone: Zone) {
             0 -> {
                 when (orientation) {
                     0 -> {
-                        addMask(x, y, MASK_WALL_WEST)
-                        addMask(x - 1.tiles, y, MASK_WALL_EAST)
+                        addMask(x, y, MASK_WALL_W)
+                        addMask(x - 1.tiles, y, MASK_WALL_E)
                     }
                     1 -> {
-                        addMask(x, y, MASK_WALL_NORTH)
-                        addMask(x, y + 1.tiles, MASK_WALL_SOUTH)
+                        addMask(x, y, MASK_WALL_N)
+                        addMask(x, y + 1.tiles, MASK_WALL_S)
                     }
                     2 -> {
-                        addMask(x, y, MASK_WALL_EAST)
-                        addMask(x + 1.tiles, y, MASK_WALL_WEST)
+                        addMask(x, y, MASK_WALL_E)
+                        addMask(x + 1.tiles, y, MASK_WALL_W)
                     }
                     3 -> {
-                        addMask(x, y, MASK_WALL_SOUTH)
-                        addMask(x, y - 1.tiles, MASK_WALL_NORTH)
+                        addMask(x, y, MASK_WALL_S)
+                        addMask(x, y - 1.tiles, MASK_WALL_N)
                     }
                 }
             }
             1, 3 -> {
                 when (orientation) {
                     0 -> {
-                        addMask(x, y, MASK_WALL_NORTHWEST)
-                        addMask(x - 1.tiles, y + 1.tiles, MASK_WALL_SOUTHEAST)
+                        addMask(x, y, MASK_PILLAR_NW)
+                        addMask(x - 1.tiles, y + 1.tiles, MASK_PILLAR_SE)
                     }
                     1 -> {
-                        addMask(x, y, MASK_WALL_NORTHEAST)
-                        addMask(x + 1.tiles, y + 1.tiles, MASK_WALL_SOUTHWEST)
+                        addMask(x, y, MASK_PILLAR_NE)
+                        addMask(x + 1.tiles, y + 1.tiles, MASK_PILLAR_SW)
                     }
                     2 -> {
-                        addMask(x, y, MASK_WALL_SOUTHEAST)
-                        addMask(x + 1.tiles, y - 1.tiles, MASK_WALL_NORTHWEST)
+                        addMask(x, y, MASK_PILLAR_SE)
+                        addMask(x + 1.tiles, y - 1.tiles, MASK_PILLAR_NW)
                     }
                     3 -> {
-                        addMask(x, y, MASK_WALL_SOUTHWEST)
-                        addMask(x - 1.tiles, y - 1.tiles, MASK_WALL_NORTHEAST)
+                        addMask(x, y, MASK_PILLAR_SW)
+                        addMask(x - 1.tiles, y - 1.tiles, MASK_PILLAR_NE)
                     }
                 }
             }
             2 -> {
                 when (orientation) {
                     0 -> {
-                        addMask(x, y, MASK_WALL_WEST or MASK_WALL_NORTH)
-                        addMask(x - 1.tiles, y, MASK_WALL_EAST)
-                        addMask(x, y + 1.tiles, MASK_WALL_SOUTH)
+                        addMask(x, y, MASK_WALL_W or MASK_WALL_N)
+                        addMask(x - 1.tiles, y, MASK_WALL_E)
+                        addMask(x, y + 1.tiles, MASK_WALL_S)
                     }
                     1 -> {
-                        addMask(x, y, MASK_WALL_NORTH or MASK_WALL_EAST)
-                        addMask(x, y + 1.tiles, MASK_WALL_SOUTH)
-                        addMask(x + 1.tiles, y, MASK_WALL_WEST)
+                        addMask(x, y, MASK_WALL_N or MASK_WALL_E)
+                        addMask(x, y + 1.tiles, MASK_WALL_S)
+                        addMask(x + 1.tiles, y, MASK_WALL_W)
                     }
                     2 -> {
-                        addMask(x, y, MASK_WALL_EAST or MASK_WALL_SOUTH)
-                        addMask(x + 1.tiles, y, MASK_WALL_WEST)
-                        addMask(x, y - 1.tiles, MASK_WALL_NORTH)
+                        addMask(x, y, MASK_WALL_E or MASK_WALL_S)
+                        addMask(x + 1.tiles, y, MASK_WALL_W)
+                        addMask(x, y - 1.tiles, MASK_WALL_N)
                     }
                     3 -> {
-                        addMask(x, y, MASK_WALL_SOUTH or MASK_WALL_WEST)
-                        addMask(x, y - 1.tiles, MASK_WALL_NORTH)
-                        addMask(x - 1.tiles, y, MASK_WALL_EAST)
+                        addMask(x, y, MASK_WALL_S or MASK_WALL_W)
+                        addMask(x, y - 1.tiles, MASK_WALL_N)
+                        addMask(x - 1.tiles, y, MASK_WALL_E)
                     }
                 }
             }
@@ -165,20 +165,20 @@ class ZoneCollision(val zone: Zone) {
                 0 -> {
                     when (orientation) {
                         0 -> {
-                            addMask(x, y, MASK_WALL_WEST_IMPENETRABLE)
-                            addMask(x - 1.tiles, y, MASK_WALL_EAST_IMPENETRABLE)
+                            addMask(x, y, MASK_WALL_HIGH_W)
+                            addMask(x - 1.tiles, y, MASK_WALL_HIGH_E)
                         }
                         1 -> {
-                            addMask(x, y, MASK_WALL_NORTH_IMPENETRABLE)
-                            addMask(x, y + 1.tiles, MASK_WALL_SOUTH_IMPENETRABLE)
+                            addMask(x, y, MASK_WALL_HIGH_N)
+                            addMask(x, y + 1.tiles, MASK_WALL_HIGH_S)
                         }
                         2 -> {
-                            addMask(x, y, MASK_WALL_EAST_IMPENETRABLE)
-                            addMask(x + 1.tiles, y, MASK_WALL_WEST_IMPENETRABLE)
+                            addMask(x, y, MASK_WALL_HIGH_E)
+                            addMask(x + 1.tiles, y, MASK_WALL_HIGH_W)
                         }
                         3 -> {
-                            addMask(x, y, MASK_WALL_SOUTH_IMPENETRABLE)
-                            addMask(x, y - 1.tiles, MASK_WALL_NORTH_IMPENETRABLE)
+                            addMask(x, y, MASK_WALL_HIGH_S)
+                            addMask(x, y - 1.tiles, MASK_WALL_HIGH_N)
                         }
                     }
 
@@ -186,44 +186,44 @@ class ZoneCollision(val zone: Zone) {
                 1, 3 -> {
                     when (orientation) {
                         0 -> {
-                            addMask(x, y, MASK_WALL_NORTHWEST_IMPENETRABLE)
-                            addMask(x - 1.tiles, y + 1.tiles, MASK_WALL_SOUTHEAST_IMPENETRABLE)
+                            addMask(x, y, MASK_PILLAR_HIGH_NW)
+                            addMask(x - 1.tiles, y + 1.tiles, MASK_PILLAR_HIGH_SE)
                         }
                         1 -> {
-                            addMask(x, y, MASK_WALL_NORTHEAST_IMPENETRABLE)
-                            addMask(x + 1.tiles, y + 1.tiles, MASK_WALL_SOUTHWEST_IMPENETRABLE)
+                            addMask(x, y, MASK_PILLAR_HIGH_NE)
+                            addMask(x + 1.tiles, y + 1.tiles, MASK_PILLAR_HIGH_SW)
                         }
                         2 -> {
-                            addMask(x, y, MASK_WALL_SOUTHEAST_IMPENETRABLE)
-                            addMask(x + 1.tiles, y - 1.tiles, MASK_WALL_NORTHWEST_IMPENETRABLE)
+                            addMask(x, y, MASK_PILLAR_HIGH_SE)
+                            addMask(x + 1.tiles, y - 1.tiles, MASK_PILLAR_HIGH_NW)
                         }
                         3 -> {
-                            addMask(x, y, MASK_WALL_SOUTHWEST_IMPENETRABLE)
-                            addMask(x - 1.tiles, y - 1.tiles, MASK_WALL_NORTHEAST_IMPENETRABLE)
+                            addMask(x, y, MASK_PILLAR_HIGH_SW)
+                            addMask(x - 1.tiles, y - 1.tiles, MASK_PILLAR_HIGH_NE)
                         }
                     }
                 }
                 2 -> {
                     when (orientation) {
                         0 -> {
-                            addMask(x, y, MASK_WALL_WEST_IMPENETRABLE or MASK_WALL_NORTH_IMPENETRABLE)
-                            addMask(x - 1.tiles, y, MASK_WALL_EAST_IMPENETRABLE)
-                            addMask(x, y + 1.tiles, MASK_WALL_SOUTH_IMPENETRABLE)
+                            addMask(x, y, MASK_WALL_HIGH_W or MASK_WALL_HIGH_N)
+                            addMask(x - 1.tiles, y, MASK_WALL_HIGH_E)
+                            addMask(x, y + 1.tiles, MASK_WALL_HIGH_S)
                         }
                         1 -> {
-                            addMask(x, y, MASK_WALL_NORTH_IMPENETRABLE or MASK_WALL_EAST_IMPENETRABLE)
-                            addMask(x, y + 1.tiles, MASK_WALL_SOUTH_IMPENETRABLE)
-                            addMask(x + 1.tiles, y, MASK_WALL_WEST_IMPENETRABLE)
+                            addMask(x, y, MASK_WALL_HIGH_N or MASK_WALL_HIGH_E)
+                            addMask(x, y + 1.tiles, MASK_WALL_HIGH_S)
+                            addMask(x + 1.tiles, y, MASK_WALL_HIGH_W)
                         }
                         2 -> {
-                            addMask(x, y, MASK_WALL_EAST_IMPENETRABLE or MASK_WALL_SOUTH_IMPENETRABLE)
-                            addMask(x + 1.tiles, y, MASK_WALL_WEST_IMPENETRABLE)
-                            addMask(x, y - 1.tiles, MASK_WALL_NORTH_IMPENETRABLE)
+                            addMask(x, y, MASK_WALL_HIGH_E or MASK_WALL_HIGH_S)
+                            addMask(x + 1.tiles, y, MASK_WALL_HIGH_W)
+                            addMask(x, y - 1.tiles, MASK_WALL_HIGH_N)
                         }
                         3 -> {
-                            addMask(x, y, MASK_WALL_SOUTH_IMPENETRABLE or MASK_WALL_WEST_IMPENETRABLE)
-                            addMask(x, y - 1.tiles, MASK_WALL_NORTH_IMPENETRABLE)
-                            addMask(x - 1.tiles, y, MASK_WALL_EAST_IMPENETRABLE)
+                            addMask(x, y, MASK_WALL_HIGH_S or MASK_WALL_HIGH_W)
+                            addMask(x, y - 1.tiles, MASK_WALL_HIGH_N)
+                            addMask(x - 1.tiles, y, MASK_WALL_HIGH_E)
                         }
                     }
                 }
@@ -232,38 +232,38 @@ class ZoneCollision(val zone: Zone) {
     }
 
     companion object {
-        const val MASK_WALL_NORTHWEST = 0x1
-        const val MASK_WALL_NORTH = 0x2
-        const val MASK_WALL_NORTHEAST = 0x4
-        const val MASK_WALL_EAST = 0x8
-        const val MASK_WALL_SOUTHEAST = 0x10
-        const val MASK_WALL_SOUTH = 0x20
-        const val MASK_WALL_SOUTHWEST = 0x40
-        const val MASK_WALL_WEST = 0x80
+        const val MASK_PILLAR_NW = 0x1
+        const val MASK_WALL_N = 0x2
+        const val MASK_PILLAR_NE = 0x4
+        const val MASK_WALL_E = 0x8
+        const val MASK_PILLAR_SE = 0x10
+        const val MASK_WALL_S = 0x20
+        const val MASK_PILLAR_SW = 0x40
+        const val MASK_WALL_W = 0x80
         const val MASK_LOC = 0x100
-        const val MASK_WALL_NORTHWEST_IMPENETRABLE = 0x200
-        const val MASK_WALL_NORTH_IMPENETRABLE = 0x400
-        const val MASK_WALL_NORTHEAST_IMPENETRABLE = 0x800
-        const val MASK_WALL_EAST_IMPENETRABLE = 0x1000
-        const val MASK_WALL_SOUTHEAST_IMPENETRABLE = 0x2000
-        const val MASK_WALL_SOUTH_IMPENETRABLE = 0x4000
-        const val MASK_WALL_SOUTHWEST_IMPENETRABLE = 0x8000
-        const val MASK_WALL_WEST_IMPENETRABLE = 0x10000
-        const val MASK_LOC_IMPENETRABLE = 0x20000
+        const val MASK_PILLAR_HIGH_NW = 0x200
+        const val MASK_WALL_HIGH_N = 0x400
+        const val MASK_PILLAR_HIGH_NE = 0x800
+        const val MASK_WALL_HIGH_E = 0x1000
+        const val MASK_PILLAR_HIGH_SE = 0x2000
+        const val MASK_WALL_HIGH_S = 0x4000
+        const val MASK_PILLAR_HIGH_SW = 0x8000
+        const val MASK_WALL_HIGH_W = 0x10000
+        const val MASK_LOC_HIGH = 0x20000
         const val MASK_DECORATION = 0x40000
-        const val MASK_UNWALKABLE_TILE = 0x200000
-        const val BLOCK_TILE = MASK_LOC or MASK_UNWALKABLE_TILE or MASK_DECORATION
-        const val BLOCK_NORTH_WEST = MASK_WALL_NORTH or MASK_WALL_NORTHWEST or MASK_WALL_WEST or BLOCK_TILE
-        const val BLOCK_NORTH = MASK_WALL_NORTH or BLOCK_TILE
-        const val BLOCK_NORTH_EAST = MASK_WALL_NORTH or MASK_WALL_NORTHEAST or MASK_WALL_EAST or BLOCK_TILE
-        const val BLOCK_EAST = MASK_WALL_EAST or BLOCK_TILE
-        const val BLOCK_SOUTH_EAST = MASK_WALL_SOUTH or MASK_WALL_SOUTHEAST or MASK_WALL_EAST or BLOCK_TILE
-        const val BLOCK_SOUTH = MASK_WALL_SOUTH or BLOCK_TILE
-        const val BLOCK_SOUTH_WEST = MASK_WALL_SOUTH or MASK_WALL_SOUTHWEST or MASK_WALL_WEST or BLOCK_TILE
-        const val BLOCK_WEST = MASK_WALL_WEST or BLOCK_TILE
-        const val BLOCK_EAST_NS = BLOCK_NORTH_EAST or BLOCK_SOUTH_EAST
-        const val BLOCK_WEST_NS = BLOCK_NORTH_WEST or BLOCK_SOUTH_WEST
-        const val BLOCK_NORTH_EW = BLOCK_NORTH_EAST or BLOCK_NORTH_WEST
-        const val BLOCK_SOUTH_EW = BLOCK_SOUTH_EAST or BLOCK_SOUTH_WEST
+        const val MASK_TERRAIN_BLOCK = 0x200000
+        const val BLOCK_TILE = MASK_LOC or MASK_TERRAIN_BLOCK or MASK_DECORATION
+        const val BLOCK_NW = MASK_WALL_N or MASK_PILLAR_NW or MASK_WALL_W or BLOCK_TILE
+        const val BLOCK_N = MASK_WALL_N or BLOCK_TILE
+        const val BLOCK_NE = MASK_WALL_N or MASK_PILLAR_NE or MASK_WALL_E or BLOCK_TILE
+        const val BLOCK_E = MASK_WALL_E or BLOCK_TILE
+        const val BLOCK_SE = MASK_WALL_S or MASK_PILLAR_SE or MASK_WALL_E or BLOCK_TILE
+        const val BLOCK_S = MASK_WALL_S or BLOCK_TILE
+        const val BLOCK_SW = MASK_WALL_S or MASK_PILLAR_SW or MASK_WALL_W or BLOCK_TILE
+        const val BLOCK_W = MASK_WALL_W or BLOCK_TILE
+        const val BLOCK_HIGH_N = MASK_WALL_HIGH_N or MASK_LOC_HIGH
+        const val BLOCK_HIGH_E = MASK_WALL_HIGH_E or MASK_LOC_HIGH
+        const val BLOCK_HIGH_S = MASK_WALL_HIGH_S or MASK_LOC_HIGH
+        const val BLOCK_HIGH_W = MASK_WALL_HIGH_W or MASK_LOC_HIGH
     }
 }

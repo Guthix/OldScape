@@ -32,6 +32,8 @@ import io.guthix.oldscape.server.world.entity.character.player.interest.MapInter
 import io.guthix.oldscape.server.world.entity.character.player.interest.PlayerInterest
 import io.guthix.oldscape.server.world.mapsquare.zone.Zone
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
+import io.guthix.oldscape.server.world.mapsquare.zone.tile.abs
+import io.guthix.oldscape.server.world.mapsquare.zone.tile.tiles
 import io.guthix.oldscape.server.world.mapsquare.zone.zones
 import io.netty.channel.ChannelFuture
 import io.netty.channel.ChannelHandlerContext
@@ -57,9 +59,13 @@ data class Player(
 
     val routines = TreeMap<Routine.Type, Routine>()
 
+    var followPosition = lastPostion.copy()
+
     var inRunMode = false
 
     var isTeleporting = false
+
+    var path = mutableListOf<Tile>()
 
     var rights = 2
 
@@ -269,6 +275,63 @@ data class Player(
         publicMessage = message
     }
 
+    fun move() = if(path.isEmpty()) {
+        movementType = MovementUpdateType.STAY
+    } else {
+        takeStep()
+    }
+
+    private fun takeStep() {
+        lastPostion = position
+        position = when {
+            inRunMode -> when {
+                path.size == 1 -> {
+                    movementType = Character.MovementUpdateType.WALK
+                    updateFlags.add(PlayerInfoPacket.movementTemporary)
+                    followPosition = position
+                    path.removeAt(0)
+                }
+                path.size > 1 && position.withInDistanceOf(path[1], 1.tiles) -> { // running corners
+                    movementType = Character.MovementUpdateType.WALK
+                    followPosition = path.removeAt(0)
+                    path.removeAt(0)
+                }
+                else -> {
+                    val nextRunTile = when { // optimization
+                        path.size > 2 && abs(position.x - path[1].x) == 2.tiles && abs(position.y - path[1].y) == 2.tiles -> {
+                            when (1.tiles) {
+                                abs(position.x - path[2].x) -> path[1].copy(x = path[2].x) // TODO check block
+                                abs(position.y - path[2].y) -> path[1].copy(y = path[2].y)  // TODO check block
+                                else -> path[1]
+                            }
+                        }
+                        else -> path[1]
+                    }
+                    movementType = Character.MovementUpdateType.RUN
+                    followPosition = path.removeAt(0)
+                    path.removeAt(0)
+                    nextRunTile
+                }
+            }
+            else -> {
+                val nextTile = when { // optimization
+                    path.size > 1 && position.withInDistanceOf(path[1], 1.tiles) -> {
+                        path.removeAt(0)
+                        path[0]
+                    }
+                    path.size > 1 && position.x == path[1].x -> path[0].copy(x = position.x) // TODO check block
+                    path.size > 1 && position.y == path[1].y -> path[0].copy(y = position.y) // TODO check block
+                    else -> path[0]
+                }
+                movementType = Character.MovementUpdateType.WALK
+                followPosition = position
+                path.removeAt(0)
+                nextTile
+            }
+        }
+        orientation = getOrientation(followPosition, position)
+    }
+
     override fun compareTo(other: Player) = when {
         priority < other.priority -> -1
         priority > other.priority -> 1
@@ -279,8 +342,6 @@ data class Player(
         while(inEvents.isNotEmpty()) {
             inEvents.poll().invoke()
         }
-        val routes = routines.values.toTypedArray().copyOf()
-        routes.forEach { it.resumeIfPossible() }
     }
 
     fun syncMapInterest(pZone: Zone, worldMap: WorldMap) {
@@ -295,6 +356,14 @@ data class Player(
                     ctx.write(UpdateZonePartialEnclosed(x.zones.inTiles, y.zones.inTiles, packetList.toList()))
                     packetList.clear()
                 }
+            }
+        }
+    }
+
+    fun clearMap() {
+        mapInterest.packetCache.forEachIndexed { x, yPacketList ->
+            yPacketList.forEachIndexed { y, _ ->
+                ctx.write(UpdateZoneFullFollows(x.zones.inTiles, y.zones.inTiles))
             }
         }
     }
