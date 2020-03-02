@@ -16,31 +16,29 @@
  */
 package io.guthix.oldscape.server.net.state.game.outp
 
-import io.guthix.buffer.writeSmallSmart
-import io.guthix.buffer.writeStringCP1252
+import io.guthix.buffer.writeByteNEG
+import io.guthix.oldscape.server.net.state.game.FixedSize
 import io.guthix.oldscape.server.net.state.game.OutGameEvent
-import io.guthix.oldscape.server.net.state.game.VarByteSize
+import io.guthix.oldscape.server.world.mapsquare.zone.tile.TileUnit
 import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 
-class MessageGame(
-    private val type: Int,
-    private val isInteractingMessage: Boolean,
-    private val message: String
+class UpdateZoneFullFollowsPacket(
+    private val localX: TileUnit,
+    private val localY: TileUnit
 ) : OutGameEvent {
-    override val opcode = 6
+    override val opcode = 70
 
-    override val size = VarByteSize
+    override val size = FixedSize(STATIC_SIZE)
 
     override fun encode(ctx: ChannelHandlerContext): ByteBuf {
-        val buf = ctx.alloc().buffer(message.length + STATIC_SIZE)
-        buf.writeSmallSmart(type)
-        buf.writeBoolean(isInteractingMessage)
-        buf.writeStringCP1252(message)
+        val buf = ctx.alloc().buffer(STATIC_SIZE)
+        buf.writeByteNEG(localX.value)
+        buf.writeByteNEG(localY.value)
         return buf
     }
 
     companion object {
-        const val STATIC_SIZE = Short.SIZE_BYTES + Byte.SIZE_BYTES
+        const val STATIC_SIZE = Byte.SIZE_BYTES + Byte.SIZE_BYTES
     }
 }

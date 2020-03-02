@@ -16,30 +16,27 @@
  */
 package io.guthix.oldscape.server.net.state.game.outp
 
+import io.guthix.buffer.writeIntIME
 import io.guthix.oldscape.server.net.state.game.FixedSize
 import io.guthix.oldscape.server.net.state.game.OutGameEvent
 import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 
-class IfSetcolour(
+class IfSetplayerheadPacket(
     private val rootInterfaceId: Int,
-    private val slotId: Int,
-    private val red: Int,
-    private val green: Int,
-    private val blue: Int
-) : OutGameEvent {
-    override val opcode = 25
+    private val slotId: Int
+) : OutGameEvent{
+    override val opcode = 18
 
-    override val size = FixedSize(IfOpentopPacket.STATIC_SIZE)
+    override val size = FixedSize(STATIC_SIZE)
 
     override fun encode(ctx: ChannelHandlerContext): ByteBuf {
         val buf = ctx.alloc().buffer(STATIC_SIZE)
-        buf.writeIntLE((rootInterfaceId shl 16) or slotId)
-        buf.writeShortLE((red shl 10) or (green shl 5) or blue)
+        buf.writeIntIME((rootInterfaceId shl 16) or slotId)
         return buf
     }
 
     companion object {
-        const val STATIC_SIZE = Int.SIZE_BYTES + Short.SIZE_BYTES
+        const val STATIC_SIZE = Int.SIZE_BYTES
     }
 }

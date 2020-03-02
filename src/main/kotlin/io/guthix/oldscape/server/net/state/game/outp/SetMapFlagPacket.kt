@@ -22,15 +22,19 @@ import io.guthix.oldscape.server.world.mapsquare.zone.tile.TileUnit
 import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 
-class SetMapFlag(val localX: TileUnit, val localY: TileUnit) : OutGameEvent {
+class SetMapFlagPacket(val localX: TileUnit, val localY: TileUnit) : OutGameEvent {
     override val opcode = 58
 
-    override val size = FixedSize(2)
+    override val size = FixedSize(STATIC_SIZE)
 
     override fun encode(ctx: ChannelHandlerContext): ByteBuf {
         val buf = ctx.alloc().buffer()
         buf.writeByte(localX.value)
         buf.writeByte(localY.value)
         return buf
+    }
+
+    companion object {
+        const val STATIC_SIZE = Byte.SIZE_BYTES + Byte.SIZE_BYTES
     }
 }

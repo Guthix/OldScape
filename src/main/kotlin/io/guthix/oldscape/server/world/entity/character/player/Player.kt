@@ -33,7 +33,6 @@ import io.guthix.oldscape.server.world.entity.character.player.interest.PlayerIn
 import io.guthix.oldscape.server.world.mapsquare.zone.Zone
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.TileUnit
-import io.guthix.oldscape.server.world.mapsquare.zone.tile.abs
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.tiles
 import io.guthix.oldscape.server.world.mapsquare.zone.zones
 import io.netty.channel.ChannelFuture
@@ -179,7 +178,7 @@ data class Player(
     }
 
     fun setInterfaceText(parentInterface: Int, slot: Int, text: String) {
-        ctx.write(IfSettext(parentInterface, slot, text))
+        ctx.write(IfSettextPacket(parentInterface, slot, text))
     }
 
     fun updateStat(id: Int, xp: Int, status: Int) {
@@ -192,7 +191,7 @@ data class Player(
 
     fun synchronizeContextMenu() {
         contextMenu.forEachIndexed { i, text ->
-            ctx.write(SetPlayerOp(false, i + 1, text))
+            ctx.write(SetPlayerOpPacket(false, i + 1, text))
         }
     }
 
@@ -201,7 +200,7 @@ data class Player(
     }
 
     fun setMapFlag(x: TileUnit, y: TileUnit) {
-        ctx.write(SetMapFlag(x - mapInterest.baseX.inTiles, y - mapInterest.baseY.inTiles))
+        ctx.write(SetMapFlagPacket(x - mapInterest.baseX.inTiles, y - mapInterest.baseY.inTiles))
     }
 
     fun updateVarbit(varbitId: Int, value: Int) {
@@ -294,7 +293,7 @@ data class Player(
     }
 
     fun senGameMessage(message: String) {
-        ctx.write(MessageGame(0, false, message))
+        ctx.write(MessageGamePacket(0, false, message))
     }
 
     private fun takeStep() {
@@ -344,11 +343,11 @@ data class Player(
         mapInterest.packetCache.forEachIndexed { x, yPacketList ->
             yPacketList.forEachIndexed { y, packetList ->
                 if(packetList.size == 1) {
-                    ctx.write(UpdateZonePartialFollows(x.zones.inTiles, y.zones.inTiles))
+                    ctx.write(UpdateZonePartialFollowsPacket(x.zones.inTiles, y.zones.inTiles))
                     ctx.write(packetList.first())
                     packetList.clear()
                 } else if(packetList.size > 1) {
-                    ctx.write(UpdateZonePartialEnclosed(x.zones.inTiles, y.zones.inTiles, packetList.toList()))
+                    ctx.write(UpdateZonePartialEnclosedPacket(x.zones.inTiles, y.zones.inTiles, packetList.toList()))
                     packetList.clear()
                 }
             }
@@ -358,7 +357,7 @@ data class Player(
     fun clearMap() {
         mapInterest.packetCache.forEachIndexed { x, yPacketList ->
             yPacketList.forEachIndexed { y, _ ->
-                ctx.write(UpdateZoneFullFollows(x.zones.inTiles, y.zones.inTiles))
+                ctx.write(UpdateZoneFullFollowsPacket(x.zones.inTiles, y.zones.inTiles))
             }
         }
     }
