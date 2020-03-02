@@ -34,9 +34,13 @@ class IfSettextPacket(
     override val size = VarShortSize
 
     override fun encode(ctx: ChannelHandlerContext): ByteBuf {
-        val buf = ctx.alloc().buffer(Int.SIZE_BYTES + message.length)
+        val buf = ctx.alloc().buffer(STATIC_SIZE + message.length)
         buf.writeIntME((parentInterface shl 16) or slot)
         buf.writeStringCP1252(message)
         return buf
+    }
+
+    companion object {
+        const val STATIC_SIZE = Int.SIZE_BYTES
     }
 }

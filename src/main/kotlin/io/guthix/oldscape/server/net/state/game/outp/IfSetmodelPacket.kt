@@ -32,7 +32,7 @@ class IfSetmodelPacket(
     override val size = FixedSize(STATIC_SIZE)
 
     override fun encode(ctx: ChannelHandlerContext): ByteBuf {
-        val buf = ctx.alloc().buffer(IfSetnpcheadPacket.STATIC_SIZE)
+        val buf = ctx.alloc().buffer(STATIC_SIZE)
         buf.writeShort(modelId)
         buf.writeIntIME((rootInterfaceId shl 16) or slotId)
         return buf
