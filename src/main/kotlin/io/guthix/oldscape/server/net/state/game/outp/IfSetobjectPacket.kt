@@ -22,7 +22,7 @@ import io.guthix.oldscape.server.net.state.game.OutGameEvent
 import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 
-class IfSetobject(
+class IfSetobjectPacket(
     private val rootInterfaceId: Int,
     private val slotId: Int,
     private val itemId: Int,
