@@ -5,7 +5,7 @@ plugins {
     id 'com.github.hierynomus.license' apply false
 }
 
-project.ext.agplDir = getRootDir().parent + "\\license\\AGPL.txt"
+project.ext.licenseHeader = file("AGPLv3.txt")
 
 allprojects {
     apply plugin: 'org.jetbrains.kotlin.jvm'
@@ -63,7 +63,7 @@ compileKotlin {
 }
 
 license {
-    header = file(agplDir)
+    header = licenseHeader
     exclude("*\\main_file_cache.*")
     exclude("**/*.json")
     exclude("**/*.xml")
