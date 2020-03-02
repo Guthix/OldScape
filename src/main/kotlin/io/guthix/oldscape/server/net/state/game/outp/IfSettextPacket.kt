@@ -16,27 +16,27 @@
  */
 package io.guthix.oldscape.server.net.state.game.outp
 
-import io.guthix.buffer.writeByteADD
+import io.guthix.buffer.writeIntME
 import io.guthix.buffer.writeStringCP1252
+import io.guthix.oldscape.server.net.state.game.GamePacket
 import io.guthix.oldscape.server.net.state.game.OutGameEvent
-import io.guthix.oldscape.server.net.state.game.VarByteSize
+import io.guthix.oldscape.server.net.state.game.VarShortSize
 import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 
-class SetPlayerOp(val prioritized: Boolean, val slot: Int, val text: String) : OutGameEvent {
-    override val opcode = 42
+class IfSettextPacket(
+    private val parentInterface: Int,
+    private val slot: Int,
+    private val message: String
+) : OutGameEvent {
+    override val opcode = 19
 
-    override val size = VarByteSize
+    override val size = VarShortSize
 
     override fun encode(ctx: ChannelHandlerContext): ByteBuf {
-        val buf = ctx.alloc().buffer(STATIC_SIZE + text.length)
-        buf.writeByteADD(if(prioritized) 1 else 0)
-        buf.writeByte(slot)
-        buf.writeStringCP1252(text)
+        val buf = ctx.alloc().buffer(Int.SIZE_BYTES + message.length)
+        buf.writeIntME((parentInterface shl 16) or slot)
+        buf.writeStringCP1252(message)
         return buf
-    }
-
-    companion object {
-        const val STATIC_SIZE = Byte.SIZE_BYTES + Byte.SIZE_BYTES
     }
 }
