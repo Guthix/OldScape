@@ -17,24 +17,23 @@
 package io.guthix.oldscape.server.net.state.game.outp
 
 import io.guthix.buffer.writeIntIME
-import io.guthix.buffer.writeShortADD
 import io.guthix.oldscape.server.net.state.game.FixedSize
 import io.guthix.oldscape.server.net.state.game.OutGameEvent
 import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 
-class IfSetnpcheadPacket(
+class IfSetmodelPacket(
     private val rootInterfaceId: Int,
     private val slotId: Int,
     private val modelId: Int
 ) : OutGameEvent {
-    override val opcode = 61
+    override val opcode = 43
 
     override val size = FixedSize(STATIC_SIZE)
 
     override fun encode(ctx: ChannelHandlerContext): ByteBuf {
-        val buf = ctx.alloc().buffer(STATIC_SIZE)
-        buf.writeShortADD(modelId)
+        val buf = ctx.alloc().buffer(IfSetnpcheadPacket.STATIC_SIZE)
+        buf.writeShort(modelId)
         buf.writeIntIME((rootInterfaceId shl 16) or slotId)
         return buf
     }
