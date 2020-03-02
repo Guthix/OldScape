@@ -8,5 +8,5 @@ dependencies {
 }
 
 license {
-    header = file('\\..\\..\\license\\LGPL.txt')
+    header = licenseHeader
 }

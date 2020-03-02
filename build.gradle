@@ -6,6 +6,8 @@ plugins {
     id 'maven-publish'
 }
 
+project.ext.licenseHeader = file('LGPLv3.txt')
+
 group 'io.guthix.oldscape'
 version '0.1-SNAPSHOT'
 
@@ -42,7 +44,7 @@ dependencies {
 }
 
 license {
-    header = file(rootDir.path + '\\..\\license\\LGPL.txt')
+    header = licenseHeader
 }
 
 java {
