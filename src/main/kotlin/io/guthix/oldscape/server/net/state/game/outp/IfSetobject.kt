@@ -16,28 +16,31 @@
  */
 package io.guthix.oldscape.server.net.state.game.outp
 
+import io.guthix.buffer.writeIntME
 import io.guthix.oldscape.server.net.state.game.FixedSize
 import io.guthix.oldscape.server.net.state.game.OutGameEvent
 import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 
-class IfSetscrollposPacket(
+class IfSetobject(
     private val rootInterfaceId: Int,
     private val slotId: Int,
-    private val scrollPos: Int
+    private val itemId: Int,
+    private val amount: Int
 ) : OutGameEvent {
-    override val opcode = 35
+    override val opcode = 50
 
     override val size = FixedSize(STATIC_SIZE)
 
     override fun encode(ctx: ChannelHandlerContext): ByteBuf {
         val buf = ctx.alloc().buffer(STATIC_SIZE)
-        buf.writeIntLE((rootInterfaceId shl 16) or slotId)
-        buf.writeShortLE(scrollPos)
+        buf.writeShort(itemId)
+        buf.writeInt(amount)
+        buf.writeIntME((rootInterfaceId shl 16) or slotId)
         return buf
     }
 
     companion object {
-        const val STATIC_SIZE = Short.SIZE_BYTES + Int.SIZE_BYTES
+        const val STATIC_SIZE = Short.SIZE_BYTES + Int.SIZE_BYTES + Int.SIZE_BYTES
     }
 }
