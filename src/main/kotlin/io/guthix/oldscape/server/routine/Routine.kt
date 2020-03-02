@@ -29,6 +29,7 @@ open class Routine(val type: Type, val player: Player) : Continuation<Unit>, Com
             else -> 0
         }
     }
+    internal var cancelAction: () -> Unit = {}
 
     internal var next: ConditionalContinuation? = null
 
@@ -50,6 +51,12 @@ open class Routine(val type: Type, val player: Player) : Continuation<Unit>, Com
     suspend fun wait(cond: () -> Boolean) {
         suspend(LambdaCondition(cond))
     }
+
+    fun onCancel(action: () -> Unit) {
+        cancelAction = action
+    }
+
+    fun cancel() = cancelAction.invoke()
 
     private suspend fun suspend(condition: RoutineCondition) {
         player.routines[type] = this

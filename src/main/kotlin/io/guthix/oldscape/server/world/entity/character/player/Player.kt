@@ -58,7 +58,7 @@ data class Player(
 
     lateinit var clientSettings: ClientSettings
 
-    val routines = TreeMap<Routine.Type, Routine>()
+    internal val routines = TreeMap<Routine.Type, Routine>()
 
     var followPosition = lastPostion.copy()
 
@@ -137,10 +137,17 @@ data class Player(
         updateFlags.add(PlayerInfoPacket.nameModifiers)
     }
 
-    fun addRoutine(type: Routine.Type, routine: suspend Routine.() -> Unit) {
+    fun addRoutine(type: Routine.Type, routine: suspend Routine.() -> Unit): Routine {
         val cont = Routine(type, this)
         cont.next = ConditionalContinuation(InitialCondition, routine.createCoroutineUnintercepted(cont, cont))
+        routines[type]?.cancel()
         routines[type] = cont
+        return cont
+    }
+
+    fun cancelRoutine(type: Routine.Type) {
+        routines[type]?.cancel()
+        routines.remove(type)
     }
 
     fun initializeInterest(worldMap: WorldMap, worldPlayers: PlayerList, pZone: Zone) {
@@ -291,47 +298,26 @@ data class Player(
         position = when {
             inRunMode -> when {
                 path.size == 1 -> {
-                    movementType = Character.MovementUpdateType.WALK
+                    movementType = MovementUpdateType.WALK
                     updateFlags.add(PlayerInfoPacket.movementTemporary)
                     followPosition = position
                     path.removeAt(0)
                 }
                 path.size > 1 && position.withInDistanceOf(path[1], 1.tiles) -> { // running corners
-                    movementType = Character.MovementUpdateType.WALK
+                    movementType = MovementUpdateType.WALK
                     followPosition = path.removeAt(0)
                     path.removeAt(0)
                 }
                 else -> {
-                    val nextRunTile = when { // optimization
-                        path.size > 2 && abs(position.x - path[1].x) == 2.tiles && abs(position.y - path[1].y) == 2.tiles -> {
-                            when (1.tiles) {
-                                abs(position.x - path[2].x) -> path[1].copy(x = path[2].x) // TODO check block
-                                abs(position.y - path[2].y) -> path[1].copy(y = path[2].y)  // TODO check block
-                                else -> path[1]
-                            }
-                        }
-                        else -> path[1]
-                    }
-                    movementType = Character.MovementUpdateType.RUN
+                    movementType = MovementUpdateType.RUN
                     followPosition = path.removeAt(0)
                     path.removeAt(0)
-                    nextRunTile
                 }
             }
             else -> {
-                val nextTile = when { // optimization
-                    path.size > 1 && position.withInDistanceOf(path[1], 1.tiles) -> {
-                        path.removeAt(0)
-                        path[0]
-                    }
-                    path.size > 1 && position.x == path[1].x -> path[0].copy(x = position.x) // TODO check block
-                    path.size > 1 && position.y == path[1].y -> path[0].copy(y = position.y) // TODO check block
-                    else -> path[0]
-                }
-                movementType = Character.MovementUpdateType.WALK
+                movementType = MovementUpdateType.WALK
                 followPosition = position
                 path.removeAt(0)
-                nextTile
             }
         }
         orientation = getOrientation(followPosition, position)
