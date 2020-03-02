@@ -27,5 +27,7 @@ on(PlayerClickEvent::class).where { player.contextMenu[event.option - 1] == "Fol
             player.path = simplePathSearch(player.position, dest, player.size, world.map)
             currentTarget = followed.followPosition
         }
+    }.onCancel {
+        player.turnToLock(null)
     }
 }
