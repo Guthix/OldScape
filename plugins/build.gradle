@@ -5,7 +5,7 @@ gradle.projectsEvaluated {
         }
 
         license {
-            header = file(agplDir)
+            header = licenseHeader
             mapping('kts', 'JAVADOC_STYLE')
             include('**/*.kts')
         }
