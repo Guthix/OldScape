@@ -343,7 +343,7 @@ data class Player(
                     ctx.write(UpdateZonePartialFollows(x.zones.inTiles, y.zones.inTiles))
                     ctx.write(packetList.first())
                     packetList.clear()
-                } else if(packetList.size > 1){
+                } else if(packetList.size > 1) {
                     ctx.write(UpdateZonePartialEnclosed(x.zones.inTiles, y.zones.inTiles, packetList.toList()))
                     packetList.clear()
                 }
