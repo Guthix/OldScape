@@ -293,6 +293,10 @@ data class Player(
         takeStep()
     }
 
+    fun senGameMessage(message: String) {
+        ctx.write(MessageGame(0, false, message))
+    }
+
     private fun takeStep() {
         lastPostion = position
         position = when {
