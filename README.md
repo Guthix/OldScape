@@ -1,21 +1,9 @@
 # OldScape Server
+[![License](https://img.shields.io/badge/license-APGL--3.0-orange)](https://github.com/guthix/OldScape/blob/master/server/LICENSE)
+[![JDK](https://img.shields.io/badge/JDK-11%2B-blue)](https://openjdk.java.net/projects/jdk/11/)
 
-Oldschool Runescape Server Emulation. There OSRS server provides 2 types
-of services:
+An Oldschool Runescape Single World Server Emulator. Oldscape emulator emulates the oldschool runescape game and file
+service. The project aims to closely emulate the game and improve wherever possible.
 
-* A game service which is used for game state synchronization
-* Jagex Store 5 (JS5) file server
-
-Both services listen to the same port, when connecting to the server the
-type of service can be chosen by the client.
-
-## Game state synchronization service
-This is the general game server. The server maintains the game state and
-is able to take commands from the connected clients. The server 
-synchronizes the game state of all the clients at a tick of 600ms. The 
-server can be configured via a config file.
-
-## Jagex Store 5 file server
-An on demand services for streaming game assets. The OldScape JS5 file
-server is an OS-level zero copy implementation. When building a cache
-should be present in the `main/resources/cache` folder.
+## Status
+The project is currrently still in early development. The design and architecture can still change.
