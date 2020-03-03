@@ -30,6 +30,9 @@ import io.guthix.oldscape.server.world.entity.character.Character
 import io.guthix.oldscape.server.world.entity.character.SpotAnimation
 import io.guthix.oldscape.server.world.entity.character.player.interest.MapInterest
 import io.guthix.oldscape.server.world.entity.character.player.interest.PlayerInterest
+import io.guthix.oldscape.server.world.entity.character.player.intface.IfComponent
+import io.guthix.oldscape.server.world.entity.character.player.intface.TopInterface
+import io.guthix.oldscape.server.world.entity.character.player.intface.component.SubInterface
 import io.guthix.oldscape.server.world.mapsquare.zone.Zone
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.TileUnit
@@ -54,6 +57,19 @@ data class Player(
     override val attributes: MutableMap<KProperty<*>, Any?> = mutableMapOf()
 ) : Character(index, position, attributes), Comparable<Player> {
     val inEvents = ConcurrentLinkedQueue<() -> Unit>()
+
+    var topInterface: TopInterface = TopInterface(ctx, 165)
+
+    fun openTopInterface(id: Int, moves: Map<Int, Int> = mutableMapOf()): TopInterface {
+        val movedChildren = mutableMapOf<Int, IfComponent>()
+        ctx.write(IfOpentopPacket(id))
+        for((fromSlot, toSlot) in moves) {
+            movedChildren[fromSlot] =  topInterface.children[fromSlot] ?: continue
+            ctx.write(IfMovesubPacket(topInterface.id, fromSlot, id, toSlot))
+        }
+        topInterface = TopInterface(ctx, id, movedChildren)
+        return topInterface
+    }
 
     lateinit var clientSettings: ClientSettings
 
@@ -159,26 +175,6 @@ data class Player(
 
     fun updateMap(zone: Zone, xteas: List<IntArray>) {
         ctx.write(RebuildNormalPacket(xteas, zone.x, zone.y))
-    }
-
-    fun setTopInterface(topInterface: Int) {
-        ctx.write(IfOpentopPacket(topInterface))
-    }
-
-    fun setSubInterface(parentInterface: Int, slot: Int, childInterface: Int, isClickable: Boolean) {
-        ctx.write(IfOpensubPacket(parentInterface, slot, childInterface, isClickable))
-    }
-
-    fun moveSubInterface(fromParent: Int, fromChild: Int, toParent: Int, toChild: Int) {
-        ctx.write(IfMovesubPacket(fromParent, fromChild, toParent, toChild))
-    }
-
-    fun closeSubInterface(parentInterface: Int, slot: Int) {
-        ctx.write(IfClosesubPacket(parentInterface, slot))
-    }
-
-    fun setInterfaceText(parentInterface: Int, slot: Int, text: String) {
-        ctx.write(IfSettextPacket(parentInterface, slot, text))
     }
 
     fun updateStat(id: Int, xp: Int, status: Int) {

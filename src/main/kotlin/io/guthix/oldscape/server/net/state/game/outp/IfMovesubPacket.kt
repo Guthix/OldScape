@@ -17,17 +17,16 @@
 package io.guthix.oldscape.server.net.state.game.outp
 
 import io.guthix.buffer.writeIntIME
-import io.guthix.buffer.writeIntME
 import io.guthix.oldscape.server.net.state.game.FixedSize
 import io.guthix.oldscape.server.net.state.game.OutGameEvent
 import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 
 class IfMovesubPacket(
-    private val fromTopInterface: Int,
-    private val fromSubInterface: Int,
-    private val toTopInterface: Int,
-    private val toSubInterface: Int
+    private val fromParentId: Int,
+    private val fromSlot: Int,
+    private val toParentId: Int,
+    private val toSlot: Int
 ) : OutGameEvent {
     override val opcode = 78
 
@@ -35,8 +34,8 @@ class IfMovesubPacket(
 
     override fun encode(ctx: ChannelHandlerContext): ByteBuf {
         val buf = ctx.alloc().buffer(STATIC_SIZE)
-        buf.writeIntIME((fromTopInterface shl Short.SIZE_BITS) or fromSubInterface)
-        buf.writeInt((toTopInterface shl Short.SIZE_BITS) or toSubInterface)
+        buf.writeIntIME((fromParentId shl Short.SIZE_BITS) or fromSlot)
+        buf.writeInt((toParentId shl Short.SIZE_BITS) or toSlot)
         return buf
     }
 

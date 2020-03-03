@@ -25,7 +25,7 @@ import java.io.IOException
 
 private val logger = KotlinLogging.logger {  }
 
-data class Component(val interfaceId: Int, val componentId: Int)
+data class Component(val interfaceId: Int, val slot: Int)
 
 fun readComponent(value: Int): Component? {
     if(value == -1) return null
