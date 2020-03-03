@@ -18,26 +18,29 @@ package io.guthix.oldscape.server.gameframe
 
 import io.guthix.oldscape.server.api.Enums
 import io.guthix.oldscape.server.api.readComponent
-import io.guthix.oldscape.server.world.entity.EntityAttribute
 import io.guthix.oldscape.server.world.entity.character.player.Player
 
-var Player.gameframe by EntityAttribute<Player, GameFrame> { GameFrame.BLACK_SCREEN }
+enum class GameFrame(val interfaceId: Int, val enumId: Int) {
+    FIXED(interfaceId = 548, enumId = 1129),
+    RESIZABLE_BOX(interfaceId = 161, enumId = 1130),
+    RESIZABLE_LINE(interfaceId = 164, enumId = 1131),
+    BLACK_SCREEN(interfaceId = 165, enumId = 1132);
 
-enum class GameFrame(val enumId: Int) {
-    FIXED(1129), RESIZABLE_BOX(1130), RESIZABLE_LINE(1131), BLACK_SCREEN(1132)
+    companion object {
+        fun findByInterfaceId(id: Int) = GameFrame.values().first { it.interfaceId == id }
+    }
 }
 
-fun Player.changeGameFrame(toGameFrame: GameFrame) {
-    val fromEnum = Enums[gameframe.enumId]
-    val toEnum = Enums[toGameFrame.enumId]
-    val topInterface = toEnum.keyValuePairs.values.first() as Int shr Short.SIZE_BITS
-    setTopInterface(topInterface)
+fun Player.changeGameFrame(gameFrame: GameFrame) {
+    val fromEnum = Enums[GameFrame.findByInterfaceId(topInterface.id).enumId]
+    val toEnum = Enums[gameFrame.enumId]
+    val moves = mutableMapOf<Int, Int>()
     for((key, value) in fromEnum.keyValuePairs) {
         val from = readComponent(value as Int)
         val to = readComponent(toEnum.keyValuePairs[key] as Int)
         if(from != null && to != null) {
-            moveSubInterface(from.interfaceId, from.componentId, to.interfaceId, to.componentId)
+            moves[from.slot] = to.slot
         }
     }
-    gameframe = toGameFrame
+    openTopInterface(gameFrame.interfaceId, moves)
 }

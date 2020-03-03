@@ -27,7 +27,7 @@ class IfOpensubPacket(
     private val parentInterface: Int,
     private val slot: Int,
     private val childInterface: Int,
-    private val isClickable: Boolean
+    private val type: Int
 ) : OutGameEvent {
     override val opcode = 52
 
@@ -36,7 +36,7 @@ class IfOpensubPacket(
     override fun encode(ctx: ChannelHandlerContext): ByteBuf {
         val buf = ctx.alloc().buffer(STATIC_SIZE)
         buf.writeShortLE(childInterface)
-        buf.writeByteSUB(if(isClickable) 1 else 0)
+        buf.writeByteSUB(type)
         buf.writeInt((parentInterface shl 16) or slot)
         return buf
     }

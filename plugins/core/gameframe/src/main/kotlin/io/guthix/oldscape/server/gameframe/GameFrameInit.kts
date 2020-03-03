@@ -33,7 +33,7 @@ on(WindowStatusEvent::class).then {
 }
 
 on(ButtonClickEvent::class).where { event.interfaceId == 378 && event.buttonId == 81 }.then {
-    player.closeSubInterface(165, 28)
+    player.topInterface.closeComponent(28)
     if(player.clientSettings.resizable) {
         player.changeGameFrame(GameFrame.RESIZABLE_BOX)
     } else {

@@ -14,25 +14,8 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with Foobar. If not, see <https://www.gnu.org/licenses/>.
  */
-package io.guthix.oldscape.server.net.state.game.outp
+package io.guthix.oldscape.server.world.entity.character.player.intface.component
 
-import io.guthix.oldscape.server.net.state.game.FixedSize
-import io.guthix.oldscape.server.net.state.game.OutGameEvent
-import io.netty.buffer.ByteBuf
-import io.netty.channel.ChannelHandlerContext
+import io.guthix.oldscape.server.world.entity.character.player.intface.IfComponent
 
-class IfClosesubPacket(val parentId: Int, val slot: Int) : OutGameEvent {
-    override val opcode = 46
-
-    override val size = FixedSize(STATIC_SIZE)
-
-    override fun encode(ctx: ChannelHandlerContext): ByteBuf {
-        val buf = ctx.alloc().buffer(STATIC_SIZE)
-        buf.writeInt((parentId shl Short.SIZE_BITS) or slot)
-        return buf
-    }
-
-    companion object {
-        const val STATIC_SIZE = Int.SIZE_BYTES
-    }
-}
+class TextComponent(val text: String) : IfComponent
