@@ -64,7 +64,7 @@ data class Player(
         val movedChildren = mutableMapOf<Int, IfComponent>()
         ctx.write(IfOpentopPacket(id))
         for((fromSlot, toSlot) in moves) {
-            movedChildren[fromSlot] =  topInterface.children[fromSlot] ?: continue
+            movedChildren[toSlot] = topInterface.children[fromSlot] ?: continue
             ctx.write(IfMovesubPacket(topInterface.id, fromSlot, id, toSlot))
         }
         topInterface = TopInterface(ctx, id, movedChildren)
