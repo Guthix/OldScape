@@ -14,22 +14,17 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with Foobar. If not, see <https://www.gnu.org/licenses/>.
  */
-package io.guthix.oldscape.server.net.state.game
+package io.guthix.oldscape.server.net.state.game.inp
 
-import io.guthix.oldscape.server.event.EventBus
 import io.guthix.oldscape.server.event.GameEvent
-import io.guthix.oldscape.server.net.PacketInboundHandler
-import io.guthix.oldscape.server.world.World
-import io.guthix.oldscape.server.world.entity.character.player.Player
+import io.guthix.oldscape.server.event.imp.CloseModalEvent
+import io.guthix.oldscape.server.net.state.game.FixedSize
+import io.guthix.oldscape.server.net.state.game.GamePacketDecoder
+import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 
-class GameHandler(val world: World, val player: Player) : PacketInboundHandler<GameEvent>() {
-    override fun channelRegistered(ctx: ChannelHandlerContext) {
-        super.channelRegistered(ctx)
-        player.ctx = ctx
-    }
-
-    override fun channelRead0(ctx: ChannelHandlerContext, msg: GameEvent) {
-        EventBus.schedule(msg, world, player)
+class CloseModalPacket : GamePacketDecoder(86, FixedSize(0)) {
+    override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): GameEvent {
+        return CloseModalEvent()
     }
 }

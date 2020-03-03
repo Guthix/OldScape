@@ -16,10 +16,29 @@
  */
 package io.guthix.oldscape.server.world.entity.character.player.intface
 
+import io.guthix.oldscape.server.net.state.game.outp.IfClosesubPacket
+import io.guthix.oldscape.server.net.state.game.outp.IfOpensubPacket
+import io.guthix.oldscape.server.world.entity.character.player.intface.component.SubInterface
 import io.netty.channel.ChannelHandlerContext
 
 class TopInterface(
     ctx: ChannelHandlerContext,
     id: Int,
+    var modal: Pair<Int, SubInterface>?,
     children: MutableMap<Int, IfComponent> = mutableMapOf()
-) : Interface(ctx, id, Type.TOPLEVELINTERFACE, children)
+) : Interface(ctx, id, Type.TOPLEVELINTERFACE, children) {
+    fun openModal(slot: Int, subId: Int, type: Type): SubInterface {
+        val subInterface = SubInterface(ctx, subId, type)
+        modal = slot to subInterface
+        ctx.write(IfOpensubPacket(id, slot, subId, type.opcode))
+        return subInterface
+    }
+
+    fun closeModal() {
+        check(modal != null) { "Can not close modal interface because there is no modal interface open." }
+        modal?.let {
+            ctx.write(IfClosesubPacket(id, it.first))
+        }
+        modal = null
+    }
+}
