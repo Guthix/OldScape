@@ -1,4 +1,15 @@
+pluginManagement {
+    plugins {
+        id 'org.jetbrains.kotlin.jvm' version kotlinVersion
+        id 'com.github.hierynomus.license' version licensePluginVersion
+    }
+}
+
 rootProject.name = 'oldscape-wiki'
 
 include 'toolbox'
-includeBuild '../cache'
+includeBuild('../cache') {
+    dependencySubstitution {
+        substitute module('io.guthix.oldscape:oldscape-cache') with project(':')
+    }
+}
