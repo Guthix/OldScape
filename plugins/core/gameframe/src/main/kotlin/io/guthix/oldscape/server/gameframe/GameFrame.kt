@@ -44,5 +44,6 @@ fun Player.changeGameFrame(gameFrame: GameFrame) {
             moves[from.slot] = to.slot
         }
     }
-    openTopInterface(gameFrame.interfaceId, toEnum.keyValuePairs[modalKey] as Int, moves)
+    val modalSlot = readComponent(toEnum.keyValuePairs[modalKey] as Int)?.slot
+    openTopInterface(gameFrame.interfaceId, modalSlot, moves)
 }
