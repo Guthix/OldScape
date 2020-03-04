@@ -24,6 +24,7 @@ import io.netty.channel.ChannelHandlerContext
 class TopInterface(
     ctx: ChannelHandlerContext,
     id: Int,
+    var modalOpen: Boolean = false,
     var modalSlot: Int? = null,
     children: MutableMap<Int, IfComponent> = mutableMapOf()
 ) : Interface(ctx, id, Type.TOPLEVELINTERFACE, children) {
@@ -31,12 +32,14 @@ class TopInterface(
         check(modalSlot != null) { "Can't open modal interface on top interface $id." }
         return modalSlot?.let {
             val subInterface = SubInterface(ctx, subId, type)
+            modalOpen = true
             ctx.write(IfOpensubPacket(id, it, subId, type.opcode))
             subInterface
         }!!
     }
 
     fun closeModal() {
+        modalOpen = false
         modalSlot?.let {
             ctx.write(IfClosesubPacket(id, it))
         }
