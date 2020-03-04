@@ -27,6 +27,7 @@ on(LoginEvent::class).then {
         player.updateStat(skillId, 13034431, 99)
     }
     player.updateWeight(100)
+    player.updateRunEnergy(100)
     player.updateVarbit(8119, 1)
     player.senGameMessage("Welcome to OldScape Emulator!")
     player.synchronizeContextMenu()

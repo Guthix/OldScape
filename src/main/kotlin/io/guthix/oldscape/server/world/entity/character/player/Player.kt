@@ -193,6 +193,10 @@ data class Player(
         ctx.write(UpdateRunweightPacket(amount))
     }
 
+    fun updateRunEnergy(energy: Int) {
+        ctx.write(UpdateRunenergyPacket(energy))
+    }
+
     fun synchronizeContextMenu() {
         contextMenu.forEachIndexed { i, text ->
             ctx.write(SetPlayerOpPacket(false, i + 1, text))
