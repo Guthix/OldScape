@@ -17,26 +17,8 @@
 package io.guthix.oldscape.server.gameframe
 
 import io.guthix.oldscape.server.event.imp.ButtonClickEvent
-import io.guthix.oldscape.server.event.imp.WindowStatusEvent
+import io.guthix.oldscape.server.world.entity.character.player.intface.Interface
 
-on(WindowStatusEvent::class).then {
-    player.clientSettings.width = event.width
-    player.clientSettings.height = event.height
-    if(player.clientSettings.resizable != event.isResized) {
-        player.clientSettings.resizable = event.isResized
-        if(player.clientSettings.resizable) {
-            player.changeGameFrame(GameFrame.RESIZABLE_BOX)
-        } else {
-            player.changeGameFrame(GameFrame.FIXED)
-        }
-    }
-}
-
-on(ButtonClickEvent::class).where { event.interfaceId == 378 && event.buttonId == 78 }.then {
-    player.topInterface.closeComponent(28)
-    if(player.clientSettings.resizable) {
-        player.changeGameFrame(GameFrame.RESIZABLE_BOX)
-    } else {
-        player.changeGameFrame(GameFrame.FIXED)
-    }
+on(ButtonClickEvent::class).where { event.interfaceId == 261 && event.buttonId == 35 }.then {
+    player.topInterface.openModal(subId = 60, type = Interface.Type.OVERLAYINTERFACE)
 }
