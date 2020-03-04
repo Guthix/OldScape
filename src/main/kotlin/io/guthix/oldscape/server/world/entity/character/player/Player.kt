@@ -58,16 +58,21 @@ data class Player(
 ) : Character(index, position, attributes), Comparable<Player> {
     val inEvents = ConcurrentLinkedQueue<() -> Unit>()
 
-    var topInterface: TopInterface = TopInterface(ctx, 165)
+    var topInterface: TopInterface = TopInterface(ctx, id = 165)
 
-    fun openTopInterface(id: Int, moves: Map<Int, Int> = mutableMapOf()): TopInterface {
+    fun openTopInterface(id: Int, modalSlot: Int? = null, moves: Map<Int, Int> = mutableMapOf()): TopInterface {
         val movedChildren = mutableMapOf<Int, IfComponent>()
         ctx.write(IfOpentopPacket(id))
         for((fromSlot, toSlot) in moves) {
             movedChildren[toSlot] = topInterface.children[fromSlot] ?: continue
             ctx.write(IfMovesubPacket(topInterface.id, fromSlot, id, toSlot))
         }
-        topInterface = TopInterface(ctx, id, movedChildren)
+        topInterface.modalSlot?.let {
+            curModalSlot -> modalSlot?.let { newModalSlot ->
+                IfMovesubPacket(topInterface.id, curModalSlot, id, newModalSlot)
+            }
+        }
+        topInterface = TopInterface(ctx, id, modalSlot = modalSlot, children = movedChildren)
         return topInterface
     }
 

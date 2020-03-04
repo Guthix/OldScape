@@ -31,6 +31,8 @@ enum class GameFrame(val interfaceId: Int, val enumId: Int) {
     }
 }
 
+private const val modalKey: Int = (161 shl Short.SIZE_BITS) or 15
+
 fun Player.changeGameFrame(gameFrame: GameFrame) {
     val fromEnum = Enums[GameFrame.findByInterfaceId(topInterface.id).enumId]
     val toEnum = Enums[gameFrame.enumId]
@@ -42,5 +44,5 @@ fun Player.changeGameFrame(gameFrame: GameFrame) {
             moves[from.slot] = to.slot
         }
     }
-    openTopInterface(gameFrame.interfaceId, moves)
+    openTopInterface(gameFrame.interfaceId, toEnum.keyValuePairs[modalKey] as Int, moves)
 }

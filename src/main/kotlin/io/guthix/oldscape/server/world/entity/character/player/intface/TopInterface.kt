@@ -24,21 +24,21 @@ import io.netty.channel.ChannelHandlerContext
 class TopInterface(
     ctx: ChannelHandlerContext,
     id: Int,
-    var modal: Pair<Int, SubInterface>?,
+    var modalSlot: Int? = null,
     children: MutableMap<Int, IfComponent> = mutableMapOf()
 ) : Interface(ctx, id, Type.TOPLEVELINTERFACE, children) {
-    fun openModal(slot: Int, subId: Int, type: Type): SubInterface {
-        val subInterface = SubInterface(ctx, subId, type)
-        modal = slot to subInterface
-        ctx.write(IfOpensubPacket(id, slot, subId, type.opcode))
-        return subInterface
+    fun openModal(subId: Int, type: Type): SubInterface {
+        check(modalSlot != null) { "Can't open modal interface on top interface $id." }
+        return modalSlot?.let {
+            val subInterface = SubInterface(ctx, subId, type)
+            ctx.write(IfOpensubPacket(id, it, subId, type.opcode))
+            subInterface
+        }!!
     }
 
     fun closeModal() {
-        check(modal != null) { "Can not close modal interface because there is no modal interface open." }
-        modal?.let {
-            ctx.write(IfClosesubPacket(id, it.first))
+        modalSlot?.let {
+            ctx.write(IfClosesubPacket(id, it))
         }
-        modal = null
     }
 }
