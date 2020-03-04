@@ -68,12 +68,14 @@ data class Player(
             movedChildren[toSlot] = topInterface.children[fromSlot] ?: continue
             ctx.write(IfMovesubPacket(topInterface.id, fromSlot, id, toSlot))
         }
-        topInterface.modalSlot?.let {
-            curModalSlot -> modalSlot?.let { newModalSlot ->
-                ctx.write(IfMovesubPacket(topInterface.id, curModalSlot, id, newModalSlot))
+        topInterface.modalSlot?.let { curModalSlot ->
+            modalSlot?.let { newModalSlot ->
+                if(topInterface.modalOpen && curModalSlot != newModalSlot) {
+                    ctx.write(IfMovesubPacket(topInterface.id, curModalSlot, id, newModalSlot))
+                }
             }
         }
-        topInterface = TopInterface(ctx, id, modalSlot = modalSlot, children = movedChildren)
+        topInterface = TopInterface(ctx, id, topInterface.modalOpen, modalSlot, movedChildren)
         return topInterface
     }
 
