@@ -31,6 +31,7 @@ import io.guthix.oldscape.server.world.entity.character.SpotAnimation
 import io.guthix.oldscape.server.world.entity.character.player.interest.MapInterest
 import io.guthix.oldscape.server.world.entity.character.player.interest.PlayerInterest
 import io.guthix.oldscape.server.world.entity.character.player.intface.IfComponent
+import io.guthix.oldscape.server.world.entity.character.player.intface.Interface
 import io.guthix.oldscape.server.world.entity.character.player.intface.TopInterface
 import io.guthix.oldscape.server.world.entity.character.player.intface.component.SubInterface
 import io.guthix.oldscape.server.world.mapsquare.zone.Zone
@@ -69,7 +70,7 @@ data class Player(
         }
         topInterface.modalSlot?.let {
             curModalSlot -> modalSlot?.let { newModalSlot ->
-                IfMovesubPacket(topInterface.id, curModalSlot, id, newModalSlot)
+                ctx.write(IfMovesubPacket(topInterface.id, curModalSlot, id, newModalSlot))
             }
         }
         topInterface = TopInterface(ctx, id, modalSlot = modalSlot, children = movedChildren)
