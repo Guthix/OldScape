@@ -18,8 +18,8 @@ package io.guthix.oldscape.server.net.state.game.inp
 
 import io.guthix.buffer.readUnsignedShortADD
 import io.guthix.buffer.readUnsignedShortLEADD
-import io.guthix.oldscape.server.event.GameEvent
-import io.guthix.oldscape.server.event.imp.CameraPositionChangeEvent
+import io.guthix.oldscape.server.api.GameEvent
+import io.guthix.oldscape.server.event.CameraPositionChangeEvent
 import io.guthix.oldscape.server.net.state.game.FixedSize
 import io.guthix.oldscape.server.net.state.game.GamePacketDecoder
 import io.netty.buffer.ByteBuf

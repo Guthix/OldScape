@@ -119,7 +119,13 @@ class MapInterest(val player: Player) {
     }
 
     private fun addInterestPackets(zone: Zone) {
-        zone.groundObjects.forEach { (tile, objList) -> objList.forEach { addObject(tile, it)  } }
+        zone.groundObjects.forEach { (tile, objMap) ->
+            objMap.values.forEach { objList ->
+                objList.forEach { obj ->
+                    addObject(tile, obj)
+                }
+            }
+        }
     }
 
     fun addObject(tile: Tile, obj: Obj) {

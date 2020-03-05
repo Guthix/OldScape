@@ -17,7 +17,7 @@
 package io.guthix.oldscape.server.net.state.game
 
 import io.github.classgraph.ClassGraph
-import io.guthix.oldscape.server.event.GameEvent
+import io.guthix.oldscape.server.api.GameEvent
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.TileUnit
 import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext

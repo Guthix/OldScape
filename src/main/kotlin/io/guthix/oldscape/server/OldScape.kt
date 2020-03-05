@@ -30,11 +30,11 @@ import io.guthix.oldscape.cache.ConfigArchive
 import io.guthix.oldscape.cache.MapArchive
 import io.guthix.oldscape.cache.xtea.MapXtea
 import io.guthix.oldscape.server.api.Enums
+import io.guthix.oldscape.server.api.EventBus
 import io.guthix.oldscape.server.api.Huffman
 import io.guthix.oldscape.server.api.Varbits
 import io.guthix.oldscape.server.api.blueprint.LocationBlueprints
 import io.guthix.oldscape.server.api.blueprint.ObjectBlueprints
-import io.guthix.oldscape.server.event.EventBus
 import io.guthix.oldscape.server.net.OldScapeServer
 import io.guthix.oldscape.server.net.state.game.GamePacketDecoder
 import io.guthix.oldscape.server.world.World

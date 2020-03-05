@@ -17,7 +17,7 @@
 package io.guthix.oldscape.server.world.entity.character.player
 
 import io.guthix.oldscape.server.api.Varbits
-import io.guthix.oldscape.server.event.imp.PublicMessageEvent
+import io.guthix.oldscape.server.event.PublicMessageEvent
 import io.guthix.oldscape.server.routine.Routine
 import io.guthix.oldscape.server.routine.ConditionalContinuation
 import io.guthix.oldscape.server.routine.InitialCondition
@@ -165,6 +165,7 @@ data class Player(
         cont.next = ConditionalContinuation(InitialCondition, routine.createCoroutineUnintercepted(cont, cont))
         routines[type]?.cancel()
         routines[type] = cont
+        cont.resumeIfPossible() // resume until first waiting point
         return cont
     }
 

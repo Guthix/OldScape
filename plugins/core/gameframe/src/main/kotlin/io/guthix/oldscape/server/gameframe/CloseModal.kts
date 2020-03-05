@@ -16,7 +16,7 @@
  */
 package io.guthix.oldscape.server.gameframe
 
-import io.guthix.oldscape.server.event.imp.CloseModalEvent
+import io.guthix.oldscape.server.event.CloseModalEvent
 
 on(CloseModalEvent::class).then {
     player.topInterface.closeModal()

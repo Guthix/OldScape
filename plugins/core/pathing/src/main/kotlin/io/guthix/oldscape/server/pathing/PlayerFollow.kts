@@ -16,10 +16,10 @@
  */
 package io.guthix.oldscape.server.pathing
 
-import io.guthix.oldscape.server.event.imp.PlayerClickEvent
-import io.guthix.oldscape.server.pathing.type.DestinationTile
-import io.guthix.oldscape.server.pathing.type.imp.breadthFirstSearch
-import io.guthix.oldscape.server.pathing.type.imp.simplePathSearch
+import io.guthix.oldscape.server.event.PlayerClickEvent
+import io.guthix.oldscape.server.pathing.algo.DestinationTile
+import io.guthix.oldscape.server.pathing.algo.imp.breadthFirstSearch
+import io.guthix.oldscape.server.pathing.algo.imp.simplePathSearch
 import io.guthix.oldscape.server.routine.NormalAction
 
 

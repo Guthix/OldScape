@@ -16,7 +16,7 @@
  */
 package io.guthix.oldscape.server.net.state.game.inp
 
-import io.guthix.oldscape.server.event.imp.MapBuildCompleteEvent
+import io.guthix.oldscape.server.event.MapBuildCompleteEvent
 import io.guthix.oldscape.server.net.state.game.FixedSize
 import io.guthix.oldscape.server.net.state.game.GamePacketDecoder
 import io.netty.buffer.ByteBuf

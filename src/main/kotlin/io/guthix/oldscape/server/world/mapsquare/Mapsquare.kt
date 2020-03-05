@@ -92,7 +92,7 @@ class Mapsquare(val x: MapsquareUnit, val y: MapsquareUnit, val xtea: IntArray, 
 
     fun addObject(tile: Tile, obj: Obj) = floors[tile.floor.value].addObject(tile, obj)
 
-    fun removeObject(tile: Tile, obj: Obj) = floors[tile.floor.value].removeObject(tile, obj)
+    fun removeObject(tile: Tile, id: Int) = floors[tile.floor.value].removeObject(tile, id)
 
     fun addDynamicLoc(loc: Loc) = floors[loc.position.floor.value].addDynamicLoc(loc)
 

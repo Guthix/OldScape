@@ -64,10 +64,10 @@ class MapsquareFloor(
         zones[zoneX.value][zoneY.value].addObject(tile, obj)
     }
 
-    fun removeObject(tile: Tile, obj: Obj) {
+    fun removeObject(tile: Tile, id: Int): Obj {
         val zoneX = tile.x.inZones.relativeMapSquare
         val zoneY = tile.y.inZones.relativeMapSquare
-        zones[zoneX.value][zoneY.value].removeObject(tile, obj)
+        return zones[zoneX.value][zoneY.value].removeObject(tile, id)
     }
 
     fun addDynamicLoc(loc: Loc) {
