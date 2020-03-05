@@ -21,3 +21,5 @@ object StrongAction : Routine.Type(priority = 1)
 object NormalAction : Routine.Type(priority = 2)
 
 object WeakAction : Routine.Type(priority = 3)
+
+object PostWalkAction : Routine.Type(priority = 4)

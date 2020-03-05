@@ -16,10 +16,10 @@
  */
 package io.guthix.oldscape.server.pathing
 
-import io.guthix.oldscape.server.event.imp.MapClickEvent
-import io.guthix.oldscape.server.event.imp.MiniMapClickEvent
-import io.guthix.oldscape.server.pathing.type.DestinationTile
-import io.guthix.oldscape.server.pathing.type.imp.breadthFirstSearch
+import io.guthix.oldscape.server.event.MapClickEvent
+import io.guthix.oldscape.server.event.MiniMapClickEvent
+import io.guthix.oldscape.server.pathing.algo.DestinationTile
+import io.guthix.oldscape.server.pathing.algo.imp.breadthFirstSearch
 import io.guthix.oldscape.server.world.entity.character.player.Player
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.TileUnit
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile

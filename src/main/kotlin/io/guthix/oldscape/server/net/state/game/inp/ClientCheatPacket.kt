@@ -17,8 +17,8 @@
 package io.guthix.oldscape.server.net.state.game.inp
 
 import io.guthix.buffer.readStringCP1252
-import io.guthix.oldscape.server.event.GameEvent
-import io.guthix.oldscape.server.event.imp.ClientCheatEvent
+import io.guthix.oldscape.server.api.GameEvent
+import io.guthix.oldscape.server.event.ClientCheatEvent
 import io.guthix.oldscape.server.net.state.game.GamePacketDecoder
 import io.guthix.oldscape.server.net.state.game.VarByteSize
 import io.netty.buffer.ByteBuf

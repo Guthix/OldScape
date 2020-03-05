@@ -16,7 +16,7 @@
  */
 package io.guthix.oldscape.server.net.state.game.inp
 
-import io.guthix.oldscape.server.event.imp.LoginTimingsEvent
+import io.guthix.oldscape.server.event.LoginTimingsEvent
 import io.guthix.oldscape.server.net.state.game.GamePacketDecoder
 import io.guthix.oldscape.server.net.state.game.VarByteSize
 import io.netty.buffer.ByteBuf

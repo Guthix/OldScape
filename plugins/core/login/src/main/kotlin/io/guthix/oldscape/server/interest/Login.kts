@@ -16,9 +16,9 @@
  */
 package io.guthix.oldscape.server.interest
 
-import io.guthix.oldscape.server.event.imp.LoginEvent
-import io.guthix.oldscape.server.event.EventBus
-import io.guthix.oldscape.server.event.imp.PlayerInitialized
+import io.guthix.oldscape.server.event.LoginEvent
+import io.guthix.oldscape.server.api.EventBus
+import io.guthix.oldscape.server.event.PlayerInitialized
 
 on(LoginEvent::class).then {
     val pZone = world.map.getZone(player.position) ?: throw IllegalStateException("Player location can't be null")

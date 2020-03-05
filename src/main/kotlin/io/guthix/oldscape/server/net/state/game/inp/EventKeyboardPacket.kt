@@ -16,10 +16,10 @@
  */
 package io.guthix.oldscape.server.net.state.game.inp
 
-import io.guthix.oldscape.server.event.GameEvent
-import io.guthix.oldscape.server.event.imp.KeyPress
-import io.guthix.oldscape.server.event.imp.KeyboardKey
-import io.guthix.oldscape.server.event.imp.KeyboardPressEvent
+import io.guthix.oldscape.server.api.GameEvent
+import io.guthix.oldscape.server.event.KeyPress
+import io.guthix.oldscape.server.event.KeyboardKey
+import io.guthix.oldscape.server.event.KeyboardPressEvent
 import io.guthix.oldscape.server.net.state.game.GamePacketDecoder
 import io.guthix.oldscape.server.net.state.game.VarShortSize
 import io.netty.buffer.ByteBuf

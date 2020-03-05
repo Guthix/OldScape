@@ -16,7 +16,7 @@
  */
 package io.guthix.oldscape.server.gameframe
 
-import io.guthix.oldscape.server.event.imp.ButtonClickEvent
+import io.guthix.oldscape.server.event.ButtonClickEvent
 import io.guthix.oldscape.server.world.entity.character.player.intface.Interface
 
 on(ButtonClickEvent::class).where { event.interfaceId == 261 && event.buttonId == 35 }.then {

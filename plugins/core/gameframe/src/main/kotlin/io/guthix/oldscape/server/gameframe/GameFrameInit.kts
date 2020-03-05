@@ -16,8 +16,8 @@
  */
 package io.guthix.oldscape.server.gameframe
 
-import io.guthix.oldscape.server.event.imp.ButtonClickEvent
-import io.guthix.oldscape.server.event.imp.WindowStatusEvent
+import io.guthix.oldscape.server.event.ButtonClickEvent
+import io.guthix.oldscape.server.event.WindowStatusEvent
 
 on(WindowStatusEvent::class).then {
     player.clientSettings.width = event.width

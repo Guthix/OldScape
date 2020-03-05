@@ -34,7 +34,7 @@ class Zone(
 
     val players = mutableListOf<Player>()
 
-    val groundObjects = mutableMapOf<Tile, MutableList<Obj>>()
+    val groundObjects = mutableMapOf<Tile, MutableMap<Int, MutableList<Obj>>>()
 
     val staticLocations: MutableMap<Int, Loc> = mutableMapOf()
 
@@ -61,19 +61,22 @@ class Zone(
     fun addUnwalkableTile(localX: TileUnit, localY: TileUnit) = collisions.addUnwalkableTile(localX, localY)
 
     fun addObject(tile: Tile, obj: Obj) {
-        groundObjects.getOrPut(tile, { mutableListOf() }).add(obj)
+        groundObjects.getOrPut(tile, { mutableMapOf() }).getOrPut(obj.blueprint.id, { mutableListOf() }).add(obj)
         players.forEach { player -> player.mapInterest.addObject(tile, obj) }
     }
 
-    fun removeObject(tile: Tile, obj: Obj) {
-        val objList = groundObjects[tile] ?: throw IllegalCallerException(
-            "Object $obj does not exist at tile $tile."
+    fun removeObject(tile: Tile, id: Int): Obj {
+        val objIdMap = groundObjects[tile] ?: throw IllegalCallerException(
+            "Object $id does not exist at tile $tile."
         )
-        if(!objList.remove(obj)) throw IllegalCallerException(
-            "Object $obj does not exist at tile $tile."
+        val objList = objIdMap[id] ?: throw IllegalCallerException(
+            "Object $id does not exist at tile $tile."
         )
-        if(objList.isEmpty()) groundObjects.remove(tile)
+        val obj = objList.removeFirst()
+        if(objIdMap.isEmpty()) groundObjects.remove(tile)
+        if(objList.isEmpty()) groundObjects[tile]?.remove(id)
         players.forEach { player -> player.mapInterest.removeObject(tile, obj) }
+        return obj
     }
 
     fun addDynamicLoc(loc: Loc) {
