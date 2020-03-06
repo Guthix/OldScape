@@ -34,7 +34,6 @@ on(LocationClickEvent::class).then {
     player.addRoutine(NormalAction) {
         wait{ destination.reached(player.position.x, player.position.y, player.size) }
         EventBus.schedule(LocationReachedEvent(loc), world, player)
-        wait(ticks = 1)
         player.turnTo(loc)
     }
 }

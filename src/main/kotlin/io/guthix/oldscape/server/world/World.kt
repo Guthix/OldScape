@@ -63,10 +63,10 @@ class World : TimerTask() {
 
     private fun processPlayerEvents() {
         for(player in players) player.handleEvents()
-        for(player in players) player.move()
         for(player in players) player.routines[StrongAction]?.resumeIfPossible()
         for(player in players) player.routines[NormalAction]?.resumeIfPossible()
         for(player in players) player.routines[WeakAction]?.resumeIfPossible()
+        for(player in players) player.move()
         val writing = PromiseCombiner(ImmediateEventExecutor.INSTANCE)
         players.forEach { writing.add(it.interestSynchronize(this)) }
         writing.finish(DefaultPromise<Void>(ImmediateEventExecutor.INSTANCE).addListener {

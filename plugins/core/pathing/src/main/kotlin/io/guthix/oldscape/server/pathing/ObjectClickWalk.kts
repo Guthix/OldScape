@@ -31,7 +31,6 @@ on(ObjectClickEvent::class).then {
     player.addRoutine(NormalAction) {
         wait{ destination.reached(player.position.x, player.position.y, player.size) }
         EventBus.schedule(ObjectReachedEvent(event.id, event.x, event.y), world, player)
-        wait(ticks = 1)
         val obj = world.map.removeObject(tile, event.id)
             ?: throw IllegalStateException("Can not pick up object for id ${event.id} at position $tile.")
         player.inventory.addObject(obj)
