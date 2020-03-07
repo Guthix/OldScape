@@ -16,42 +16,88 @@
  */
 package io.guthix.oldscape.server.api
 
+import io.guthix.oldscape.server.routine.ConditionalContinuation
+import io.guthix.oldscape.server.routine.InitialCondition
+import io.guthix.oldscape.server.routine.Routine
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.character.player.Player
+import kotlin.coroutines.intrinsics.createCoroutineUnintercepted
 import kotlin.reflect.KClass
 import kotlin.script.experimental.annotations.KotlinScript
 
 @KotlinScript
 abstract class Script {
-    fun <E: GameEvent>on(type: KClass<E>) = EventListener(type)
+    fun <E: GameEvent>on(type: KClass<E>) = ScriptFilter(type)
 }
 
-class EventHandler<E : GameEvent>(val event: E, val world: World, val player: Player)
+class ScriptFilter<E: GameEvent>(private val type: KClass<E>) {
+    private var condition: EventHandler<E>.() -> Boolean = { true }
 
-class EventListener<E: GameEvent>(private val type: KClass<E>) {
-    internal var condition: EventHandler<E>.() -> Boolean = { true }
-
-    private var script: EventHandler<E>.() -> Unit = { }
-
-    fun where(condition: EventHandler<E>.() -> Boolean): EventListener<E> {
+    fun where(condition: EventHandler<E>.() -> Boolean): ScriptFilter<E> {
         this.condition = condition
         return this
     }
 
-    fun then(script: EventHandler<E>.() -> Unit) {
-        this.script = script
-        registerListener()
-    }
+    fun then(script: EventHandler<E>.() -> Unit) = DefaultScriptScheduler(type, condition, script)
 
-    private fun registerListener() {
+    fun then(routineType: Routine.Type, script: suspend Routine<E>.() -> Unit) = RoutineScriptScheduler(
+        type, condition, routineType, script
+    )
+}
+
+abstract class ScriptScheduler<E : GameEvent>(
+    protected val type: KClass<E>,
+    val condition: EventHandler<E>.() -> Boolean
+) {
+    abstract fun schedule(event: E, world: World, player: Player)
+}
+
+class DefaultScriptScheduler<E: GameEvent>(
+    type: KClass<E>,
+    condition: EventHandler<E>.() -> Boolean,
+    val script: EventHandler<E>.() -> Unit
+) : ScriptScheduler<E>(type, condition) {
+    init {
         EventBus.register(type, this)
     }
 
-    @Suppress("UNCHECKED_CAST")
-    fun schedule(event: E, world: World, player: Player) {
-        val routine = EventHandler(event, world, player)
-        if(routine.condition()) {
-            player.inEvents.add { routine.script() }
+    override fun schedule(event: E, world: World, player: Player) {
+        val handler = EventHandler(event, world, player)
+        if (handler.condition()) {
+            player.inEvents.add { handler.script() }
         }
     }
 }
+
+class RoutineScriptScheduler<E : GameEvent>(
+    type: KClass<E>,
+    condition: EventHandler<E>.() -> Boolean,
+    val routineType: Routine.Type,
+    val script: suspend Routine<E>.() -> Unit
+) : ScriptScheduler<E>(type, condition) {
+    init {
+        EventBus.register(type, this)
+    }
+
+    var onCancel: EventHandler<E>.() -> Unit = {}
+
+    fun onCancel(routine: EventHandler<E>.() -> Unit) {
+        onCancel = routine
+    }
+
+    @Suppress("UNCHECKED_CAST")
+    override fun schedule(event: E, world: World, player: Player) {
+        val routine = Routine(routineType, event, world, player)
+        if (routine.condition()) {
+            routine.next = ConditionalContinuation(
+                InitialCondition, script.createCoroutineUnintercepted(routine, routine)
+            )
+            routine.onCancel(onCancel)
+            player.routines[routineType]?.cancel()
+            player.routines[routineType] = routine as Routine<GameEvent>
+            routine.resumeIfPossible()
+        }
+    }
+}
+
+open class EventHandler<E : GameEvent>(val event: E, val world: World, val player: Player)

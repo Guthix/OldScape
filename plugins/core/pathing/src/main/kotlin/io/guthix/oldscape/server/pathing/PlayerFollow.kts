@@ -20,30 +20,28 @@ import io.guthix.oldscape.server.event.PlayerClickEvent
 import io.guthix.oldscape.server.pathing.algo.DestinationTile
 import io.guthix.oldscape.server.pathing.algo.imp.breadthFirstSearch
 import io.guthix.oldscape.server.pathing.algo.imp.simplePathSearch
-import io.guthix.oldscape.server.routine.NormalAction
+import io.guthix.oldscape.server.routine.Routine
 
 
-on(PlayerClickEvent::class).where { player.contextMenu[event.option - 1] == "Follow" }.then {
-    val followed = world.players[event.playerIndex] ?: throw IllegalStateException()
+on(PlayerClickEvent::class).where { player.contextMenu[event.option - 1] == "Follow" }.then(Routine.Type.NormalAction) {
+    val followed = world.players[event.playerIndex] ?: error("Could not find followed player.")
     var dest = DestinationTile(followed.followPosition)
     player.path = breadthFirstSearch(player.position, dest, player.size, true, world.map)
     player.turnToLock(followed)
-    player.addRoutine(NormalAction) {
-        var currentTarget = player.followPosition
-        while(true) {
-            if(dest.reached(player.position.x, player.position.y, player.size)) break
-            if(currentTarget != player.followPosition) {
-                player.path = breadthFirstSearch(player.position, dest, player.size, true, world.map)
-            }
-            wait(1)
+    var currentTarget = player.followPosition
+    while(true) {
+        if(dest.reached(player.position.x, player.position.y, player.size)) break
+        if(currentTarget != player.followPosition) {
+            player.path = breadthFirstSearch(player.position, dest, player.size, true, world.map)
         }
-        while(true) {
-            wait { currentTarget != player.followPosition }
-            dest = DestinationTile(followed.followPosition)
-            player.path = simplePathSearch(player.position, dest, player.size, world.map)
-            currentTarget = followed.followPosition
-        }
-    }.onCancel {
-        player.turnToLock(null)
+        wait(1)
     }
+    while(true) {
+        wait { currentTarget != player.followPosition }
+        dest = DestinationTile(followed.followPosition)
+        player.path = simplePathSearch(player.position, dest, player.size, world.map)
+        currentTarget = followed.followPosition
+    }
+}.onCancel {
+    player.turnToLock(null)
 }

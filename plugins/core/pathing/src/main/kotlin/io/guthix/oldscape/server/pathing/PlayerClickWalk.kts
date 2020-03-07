@@ -25,7 +25,7 @@ import io.guthix.oldscape.server.world.mapsquare.zone.tile.TileUnit
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
 import io.guthix.oldscape.server.world.mapsquare.FloorUnit
 import io.guthix.oldscape.server.world.WorldMap
-import io.guthix.oldscape.server.routine.NormalAction
+import io.guthix.oldscape.server.routine.Routine
 
 on(MiniMapClickEvent::class).then {
     player.startWalkingToTile(player.position.floor, event.x, event.y, world.map)
@@ -38,5 +38,5 @@ on(MapClickEvent::class).then {
 fun Player.startWalkingToTile(floor: FloorUnit, x: TileUnit, y: TileUnit, map: WorldMap) {
     path = breadthFirstSearch(position, DestinationTile(floor, x, y), size, true, map)
     path.lastOrNull()?.let { dest -> if(dest != Tile(floor, x, y)) setMapFlag(dest.x, dest.y) }
-    cancelRoutine(NormalAction)
+    cancelRoutine(Routine.Type.NormalAction)
 }

@@ -22,7 +22,7 @@ import io.guthix.oldscape.server.world.entity.character.player.PlayerList
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.tiles
 
-class PlayerInterest {
+class PlayerInterestManager {
     var localPlayerCount = 0
 
     val localPlayers = arrayOfNulls<Player>(World.MAX_PLAYERS)
