@@ -22,18 +22,16 @@ import io.guthix.oldscape.server.api.EventBus
 import io.guthix.oldscape.server.event.LocationReachedEvent
 import io.guthix.oldscape.server.pathing.algo.DestinationLocation
 import io.guthix.oldscape.server.pathing.algo.imp.breadthFirstSearch
-import io.guthix.oldscape.server.routine.NormalAction
+import io.guthix.oldscape.server.routine.Routine
 
-on(LocationClickEvent::class).then {
-    val loc = world.map.getLoc(event.id, player.position.floor, event.x, event.y) ?: throw IllegalStateException(
+on(LocationClickEvent::class).then(Routine.Type.NormalAction) {
+    val loc = world.map.getLoc(event.id, player.position.floor, event.x, event.y) ?: error(
         "Could not find location at ${Tile(player.position.floor, event.x, event.y)}."
     )
     val destination = DestinationLocation(loc, world.map)
     player.path = breadthFirstSearch(player.position, destination, player.size, true, world.map)
     player.path.lastOrNull()?.let { dest -> player.setMapFlag(dest.x, dest.y) }
-    player.addRoutine(NormalAction) {
-        wait{ destination.reached(player.position.x, player.position.y, player.size) }
-        EventBus.schedule(LocationReachedEvent(loc), world, player)
-        player.turnTo(loc)
-    }
+    wait{ destination.reached(player.position.x, player.position.y, player.size) }
+    EventBus.schedule(LocationReachedEvent(loc), world, player)
+    player.turnTo(loc)
 }

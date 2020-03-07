@@ -29,7 +29,7 @@ import io.guthix.oldscape.server.world.mapsquare.MapsquareUnit
 import io.guthix.oldscape.server.world.mapsquare.zone.*
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
 
-class MapInterest(val player: Player) {
+class MapInterestManager(val player: Player) {
     lateinit var middleZone: Zone
 
     val baseX get() = middleZone.x - RANGE
@@ -80,7 +80,7 @@ class MapInterest(val player: Player) {
             for(mSquareY in middleZone.y.startMapInterest..middleZone.y.endMapInterest) {
                 if(onTutorialIsland(mSquareX, mSquareY)) continue
                 val id = (mSquareX.value shl 8) or mSquareY.value
-                val xtea = map.mapsquares[id]?.xtea ?: throw IllegalStateException(
+                val xtea = map.mapsquares[id]?.xtea ?: error(
                     "Could not find XTEA for id $id."
                 )
                 interestedXteas.add(xtea)
@@ -161,7 +161,7 @@ class MapInterest(val player: Player) {
 
         val RANGE = SIZE / 2.zones
 
-        val UPDATE_RANGE = RANGE - PlayerInterest.RANGE.inZones
+        val UPDATE_RANGE = RANGE - PlayerInterestManager.RANGE.inZones
 
         private val ZoneUnit.startMapInterest get() = (this - RANGE).inMapsquares
 

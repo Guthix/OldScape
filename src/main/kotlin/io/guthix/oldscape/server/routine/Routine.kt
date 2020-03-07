@@ -16,20 +16,23 @@
  */
 package io.guthix.oldscape.server.routine
 
+import io.guthix.oldscape.server.api.EventHandler
+import io.guthix.oldscape.server.api.GameEvent
+import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.character.player.Player
 import kotlin.coroutines.*
 import kotlin.coroutines.intrinsics.COROUTINE_SUSPENDED
 import kotlin.coroutines.intrinsics.suspendCoroutineUninterceptedOrReturn
 
-open class Routine(val type: Type, val player: Player) : Continuation<Unit>, Comparable<Routine> {
-    abstract class Type(val priority: Int) : Comparable<Type> {
-        override fun compareTo(other: Type) = when {
-            priority < other.priority -> -1
-            priority > other.priority -> 1
-            else -> 0
-        }
-    }
-    internal var cancelAction: () -> Unit = {}
+class Routine<E: GameEvent>(
+    private val type: Type,
+    event: E,
+    world: World,
+    player: Player
+) : Continuation<Unit>, EventHandler<E>(event, world, player) {
+    enum class Type { StrongAction, NormalAction, WeakAction }
+
+    internal var cancelAction: EventHandler<E>.() -> Unit = {}
 
     internal var next: ConditionalContinuation? = null
 
@@ -52,19 +55,17 @@ open class Routine(val type: Type, val player: Player) : Continuation<Unit>, Com
         suspend(LambdaCondition(cond))
     }
 
-    fun onCancel(action: () -> Unit) {
+    fun onCancel(action: EventHandler<E>.() -> Unit) {
         cancelAction = action
     }
 
-    fun cancel() = cancelAction.invoke()
+    fun cancel() = cancelAction.invoke(this)
 
     private suspend fun suspend(condition: RoutineCondition) {
-        player.routines[type] = this
+        player.routines[type] = this as Routine<GameEvent>
         return suspendCoroutineUninterceptedOrReturn { cont ->
             next = ConditionalContinuation(condition, cont)
             COROUTINE_SUSPENDED
         }
     }
-
-    override fun compareTo(other: Routine) = type.compareTo(other.type)
 }

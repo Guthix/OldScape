@@ -20,7 +20,7 @@ import io.guthix.oldscape.server.util.WeakIdentityHashMap
 import kotlin.reflect.KProperty
 
 class EntityAttribute<R : Entity, T : Any>(
-    private val initializer: R.() -> T = { throw IllegalStateException("Not initialized.") }
+    private val initializer: R.() -> T = { error("Not initialized.") }
 ) {
     private val map = WeakIdentityHashMap<R, T>()
 

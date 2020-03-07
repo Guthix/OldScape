@@ -20,19 +20,18 @@ import io.guthix.oldscape.server.event.ObjectClickEvent
 import io.guthix.oldscape.server.event.ObjectReachedEvent
 import io.guthix.oldscape.server.api.EventBus
 import io.guthix.oldscape.server.pathing.algo.DestinationTile
-import io.guthix.oldscape.server.routine.NormalAction
+import io.guthix.oldscape.server.routine.Routine
 import io.guthix.oldscape.server.pathing.algo.imp.breadthFirstSearch
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
 
-on(ObjectClickEvent::class).then {
+on(ObjectClickEvent::class).then(Routine.Type.NormalAction) {
     val tile = Tile(player.position.floor, event.x, event.y)
     val destination = DestinationTile(tile)
     player.path = breadthFirstSearch(player.position, DestinationTile(tile), player.size, true, world.map)
-    player.addRoutine(NormalAction) {
-        wait{ destination.reached(player.position.x, player.position.y, player.size) }
-        EventBus.schedule(ObjectReachedEvent(event.id, event.x, event.y), world, player)
-        val obj = world.map.removeObject(tile, event.id)
-            ?: throw IllegalStateException("Can not pick up object for id ${event.id} at position $tile.")
-        player.inventory.addObject(obj)
-    }
+    wait{ destination.reached(player.position.x, player.position.y, player.size) }
+    EventBus.schedule(ObjectReachedEvent(event.id, event.x, event.y), world, player)
+    val obj = world.map.removeObject(tile, event.id) ?: error(
+        "Can not pick up object for id ${event.id} at position $tile."
+    )
+    player.inventory.addObject(obj)
 }

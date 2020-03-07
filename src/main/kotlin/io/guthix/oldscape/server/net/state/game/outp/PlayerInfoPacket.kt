@@ -21,7 +21,7 @@ import io.guthix.oldscape.server.api.Huffman
 import io.guthix.oldscape.server.net.state.game.OutGameEvent
 import io.guthix.oldscape.server.net.state.game.VarShortSize
 import io.guthix.oldscape.server.world.World
-import io.guthix.oldscape.server.world.entity.character.player.interest.PlayerInterest.Companion.regionId
+import io.guthix.oldscape.server.world.entity.character.player.interest.PlayerInterestManager.Companion.regionId
 import io.guthix.oldscape.server.world.entity.character.Character
 import io.guthix.oldscape.server.world.entity.character.player.Player
 import io.guthix.oldscape.server.world.entity.character.player.PlayerList
