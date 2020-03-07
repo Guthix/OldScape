@@ -14,19 +14,15 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with Foobar. If not, see <https://www.gnu.org/licenses/>.
  */
-package io.guthix.oldscape.server.pathing
+package io.guthix.oldscape.server.world
 
-import io.guthix.oldscape.server.event.ObjectClickEvent
 import io.guthix.oldscape.server.event.ObjectReachedEvent
-import io.guthix.oldscape.server.api.EventBus
-import io.guthix.oldscape.server.pathing.algo.DestinationTile
-import io.guthix.oldscape.server.routine.Routine
-import io.guthix.oldscape.server.pathing.algo.imp.breadthFirstSearch
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
 
-on(ObjectClickEvent::class).then(Routine.Type.NormalAction) {
-    val destination = DestinationTile(player.position.floor, event.x, event.y)
-    player.path = breadthFirstSearch(player.position, destination, player.size, true, world.map)
-    wait{ destination.reached(player.position.x, player.position.y, player.size) }
-    EventBus.schedule(ObjectReachedEvent(event.id, event.x, event.y), world, player)
+on(ObjectReachedEvent::class).then {
+    val tile = Tile(player.position.floor, event.x, event.y)
+    val obj = world.map.removeObject(tile, event.id) ?: error(
+        "Can not pick up object for id ${event.id} at position $tile."
+    )
+    player.inventory.addObject(obj)
 }
