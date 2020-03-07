@@ -33,5 +33,4 @@ on(LocationClickEvent::class).then(Routine.Type.NormalAction) {
     player.path.lastOrNull()?.let { dest -> player.setMapFlag(dest.x, dest.y) }
     wait{ destination.reached(player.position.x, player.position.y, player.size) }
     EventBus.schedule(LocationReachedEvent(loc), world, player)
-    player.turnTo(loc)
 }
