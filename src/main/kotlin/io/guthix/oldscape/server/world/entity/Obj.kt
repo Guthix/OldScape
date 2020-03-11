@@ -22,5 +22,5 @@ import kotlin.reflect.KProperty
 
 data class Obj(
     val blueprint: ObjectBlueprint,
-    val quantity: Int
+    var quantity: Int
 )

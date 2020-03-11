@@ -24,5 +24,5 @@ on(ObjectReachedEvent::class).then {
     val obj = world.map.removeObject(tile, event.id) ?: error(
         "Can not pick up object for id ${event.id} at position $tile."
     )
-    player.inventory.addObject(obj)
+    player.inventory.setObject(obj)
 }
