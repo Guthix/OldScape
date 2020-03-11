@@ -14,15 +14,24 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with Foobar. If not, see <https://www.gnu.org/licenses/>.
  */
-package io.guthix.oldscape.server.event
+package io.guthix.oldscape.server.api.blueprint
 
-import io.guthix.oldscape.server.api.script.GameEvent
-import io.guthix.oldscape.server.world.mapsquare.zone.tile.TileUnit
+import io.guthix.cache.js5.Js5Archive
+import io.guthix.oldscape.cache.config.InventoryConfig
+import mu.KotlinLogging
+import java.io.IOException
 
-data class ObjectClickEvent(
-    val id: Int,
-    val x: TileUnit,
-    val y: TileUnit,
-    val buttonPressed: Boolean,
-    val option: Int
-) : GameEvent
+private val logger = KotlinLogging.logger {  }
+
+object InventoryBlueprints {
+    private lateinit var configs: Map<Int, InventoryConfig>
+
+    operator fun get(index: Int): InventoryConfig {
+        return configs[index] ?: throw IOException("Could not find enum $index.")
+    }
+
+    fun load(archive: Js5Archive) {
+        configs = InventoryConfig.load(archive.readGroup(InventoryConfig.id))
+        logger.info { "Loaded ${configs.size} enums" }
+    }
+}

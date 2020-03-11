@@ -30,11 +30,12 @@ import io.guthix.oldscape.cache.ConfigArchive
 import io.guthix.oldscape.cache.MapArchive
 import io.guthix.oldscape.cache.xtea.MapXtea
 import io.guthix.oldscape.server.api.Enums
-import io.guthix.oldscape.server.api.EventBus
 import io.guthix.oldscape.server.api.Huffman
+import io.guthix.oldscape.server.api.blueprint.InventoryBlueprints
 import io.guthix.oldscape.server.api.Varbits
 import io.guthix.oldscape.server.api.blueprint.LocationBlueprints
 import io.guthix.oldscape.server.api.blueprint.ObjectBlueprints
+import io.guthix.oldscape.server.api.script.EventBus
 import io.guthix.oldscape.server.net.OldScapeServer
 import io.guthix.oldscape.server.net.state.game.GamePacketDecoder
 import io.guthix.oldscape.server.world.World
@@ -57,6 +58,7 @@ object OldScape {
         )
         val configArchive = cache.readArchive(ConfigArchive.id)
         Enums.load(configArchive)
+        InventoryBlueprints.load(configArchive)
         Varbits.load(configArchive)
         LocationBlueprints.load(configArchive)
         ObjectBlueprints.load(configArchive)

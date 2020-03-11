@@ -17,7 +17,6 @@
 package io.guthix.oldscape.server.net.state.game.outp
 
 import io.guthix.buffer.writeSmallSmart
-import io.guthix.oldscape.server.net.state.game.GamePacket
 import io.guthix.oldscape.server.net.state.game.OutGameEvent
 import io.guthix.oldscape.server.net.state.game.VarShortSize
 import io.guthix.oldscape.server.world.entity.Obj
@@ -26,8 +25,8 @@ import io.netty.channel.ChannelHandlerContext
 
 class UpdateInvPartialPacket(
     private val interfaceId: Int,
-    private val interfacePosition: Int,
-    private val containerId: Int,
+    private val slotId: Int,
+    private val subInterfaceId: Int,
     private val objs: Map<Int, Obj?>
 ) : OutGameEvent {
     override val opcode = 13
@@ -36,8 +35,8 @@ class UpdateInvPartialPacket(
 
     override fun encode(ctx: ChannelHandlerContext): ByteBuf {
         val buf = ctx.alloc().buffer()
-        buf.writeInt((interfaceId shl 16) or interfacePosition)
-        buf.writeShort(containerId)
+        buf.writeInt((interfaceId shl Short.SIZE_BYTES) or slotId)
+        buf.writeShort(subInterfaceId)
         for((slot, obj) in objs) {
             buf.writeSmallSmart(slot)
             if(obj == null) {

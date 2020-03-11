@@ -16,7 +16,7 @@
  */
 package io.guthix.oldscape.server.world.entity.character.player
 
-import io.guthix.oldscape.server.api.GameEvent
+import io.guthix.oldscape.server.api.script.GameEvent
 import io.guthix.oldscape.server.api.Varbits
 import io.guthix.oldscape.server.event.PublicMessageEvent
 import io.guthix.oldscape.server.routine.Routine
@@ -72,7 +72,9 @@ data class Player(
 
     val mapInterest = MapInterestManager(this)
 
-    val inventory = Inventory(this, 149, 0, 3, arrayOfNulls(28))
+    val inventory = Inventory(this, 93, 149, 0)
+
+    val equipment = Inventory(this, 94)
 
     fun initializeInterest(worldMap: WorldMap, worldPlayers: PlayerList, pZone: Zone) {
         playerInterest.initialize(this, worldPlayers)

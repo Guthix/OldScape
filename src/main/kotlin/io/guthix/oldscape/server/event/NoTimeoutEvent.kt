@@ -16,6 +16,6 @@
  */
 package io.guthix.oldscape.server.event
 
-import io.guthix.oldscape.server.api.GameEvent
+import io.guthix.oldscape.server.api.script.GameEvent
 
 class NoTimeoutEvent : GameEvent

@@ -16,15 +16,17 @@
  */
 package io.guthix.oldscape.server.world.entity.character.player
 
+import io.guthix.oldscape.server.api.blueprint.InventoryBlueprints
 import io.guthix.oldscape.server.world.entity.Obj
 
 class Inventory(
     val player: Player,
-    val interfaceId: Int,
-    val positionId: Int,
-    val containerId: Int,
-    val objs: Array<Obj?>
+    val id: Int,
+    val interfaceId: Int = -1,
+    val slotId: Int = 0
 ) {
+    val objs: Array<Obj?> = arrayOfNulls(InventoryBlueprints[id].capacity)
+
     val maxSize get() = objs.size
 
     private var amountInInventory = objs.count { it != null }
@@ -65,15 +67,15 @@ class Inventory(
     fun update() {
         if(objsToUpdate.isNotEmpty()) {
             if(objsToUpdate.size == amountInInventory) {
-                player.addFullInventory(interfaceId, positionId, containerId, objs.toList())
+                player.addFullInventory(interfaceId, slotId, id, objs.toList())
             } else {
-                player.addPartialInventory(interfaceId, positionId, containerId, objsToUpdate.toMap())
+                player.addPartialInventory(interfaceId, slotId, id, objsToUpdate.toMap())
             }
             objsToUpdate.clear()
         }
     }
 
     fun release() {
-        player.releaseInvMemory(containerId)
+        player.releaseInvMemory(id)
     }
 }

@@ -16,8 +16,8 @@
  */
 package io.guthix.oldscape.server.routine
 
-import io.guthix.oldscape.server.api.EventHandler
-import io.guthix.oldscape.server.api.GameEvent
+import io.guthix.oldscape.server.api.script.EventHandler
+import io.guthix.oldscape.server.api.script.GameEvent
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.character.player.Player
 import kotlin.coroutines.*
