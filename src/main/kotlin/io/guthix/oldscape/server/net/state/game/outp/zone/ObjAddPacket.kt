@@ -36,7 +36,7 @@ class ObjAddPacket(
 
     override fun encode(ctx: ChannelHandlerContext): ByteBuf {
         val buf = ctx.alloc().buffer(STATIC_SIZE)
-        buf.writeShort(quantity)
+        buf.writeShort(if(quantity > 65535)  65535 else quantity)
         buf.writeShortLE(id)
         buf.writeByte(posBitPack)
         return buf

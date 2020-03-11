@@ -31,9 +31,24 @@ class Inventory(
 
     private val objsToUpdate = mutableMapOf<Int, Obj?>()
 
-    fun addObject(obj: Obj) = addObject(objs.indexOfFirst { it == null }, obj)
+    fun setObject(obj: Obj) {
+        if(obj.blueprint.stackable) {
+            val slot = objs.indexOfFirst { it?.blueprint?.id == obj.blueprint.id }
+            if(slot == -1) { // obj not already in inventory
+                addNextSlot(obj)
+            } else {
+                val iObj = objs[slot] ?: error("No object in slot $slot of inventory $interfaceId")
+                iObj.quantity += obj.quantity
+                objsToUpdate[slot] = iObj
+            }
+        } else {
+            addNextSlot(obj)
+        }
+    }
 
-    fun addObject(slot: Int, obj: Obj) {
+    fun addNextSlot(obj: Obj) = setObject(objs.indexOfFirst { it == null }, obj)
+
+    fun setObject(slot: Int, obj: Obj) {
         require(slot in 0 until maxSize && amountInInventory != maxSize)
         objs[slot] = obj
         objsToUpdate[slot] = obj
@@ -49,7 +64,7 @@ class Inventory(
 
     fun update() {
         if(objsToUpdate.isNotEmpty()) {
-            if(objsToUpdate.size == maxSize) {
+            if(objsToUpdate.size == amountInInventory) {
                 player.addFullInventory(interfaceId, positionId, containerId, objs.toList())
             } else {
                 player.addPartialInventory(interfaceId, positionId, containerId, objsToUpdate.toMap())
