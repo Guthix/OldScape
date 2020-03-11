@@ -25,7 +25,7 @@ class Inventory(
     val containerId: Int,
     val objs: Array<Obj?>
 ) {
-    val maxSize = objs.size
+    val maxSize get() = objs.size
 
     private var amountInInventory = objs.count { it != null }
 
@@ -49,10 +49,10 @@ class Inventory(
 
     fun update() {
         if(objsToUpdate.isNotEmpty()) {
-            if(objsToUpdate.size == amountInInventory) {
+            if(objsToUpdate.size == maxSize) {
                 player.addFullInventory(interfaceId, positionId, containerId, objs.toList())
             } else {
-                player.addPartialInventory(interfaceId, positionId, containerId, objsToUpdate)
+                player.addPartialInventory(interfaceId, positionId, containerId, objsToUpdate.toMap())
             }
             objsToUpdate.clear()
         }
