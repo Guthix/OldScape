@@ -16,7 +16,7 @@
  */
 package io.guthix.oldscape.server.event
 
-import io.guthix.oldscape.server.api.GameEvent
+import io.guthix.oldscape.server.api.script.GameEvent
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.TileUnit
 
 data class MiniMapClickEvent(

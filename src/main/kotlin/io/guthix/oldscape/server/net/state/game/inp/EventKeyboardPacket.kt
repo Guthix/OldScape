@@ -16,7 +16,7 @@
  */
 package io.guthix.oldscape.server.net.state.game.inp
 
-import io.guthix.oldscape.server.api.GameEvent
+import io.guthix.oldscape.server.api.script.GameEvent
 import io.guthix.oldscape.server.event.KeyPress
 import io.guthix.oldscape.server.event.KeyboardKey
 import io.guthix.oldscape.server.event.KeyboardPressEvent

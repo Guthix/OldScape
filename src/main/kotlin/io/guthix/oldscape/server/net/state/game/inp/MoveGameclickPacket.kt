@@ -17,7 +17,7 @@
 package io.guthix.oldscape.server.net.state.game.inp
 
 import io.guthix.buffer.readUnsignedByteADD
-import io.guthix.oldscape.server.api.GameEvent
+import io.guthix.oldscape.server.api.script.GameEvent
 import io.guthix.oldscape.server.event.MapClickEvent
 import io.guthix.oldscape.server.net.state.game.GamePacketDecoder
 import io.guthix.oldscape.server.net.state.game.VarByteSize

@@ -14,7 +14,7 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with Foobar. If not, see <https://www.gnu.org/licenses/>.
  */
-package io.guthix.oldscape.server.api
+package io.guthix.oldscape.server.api.script
 
 import io.github.classgraph.ClassGraph
 import io.guthix.oldscape.server.world.World
@@ -32,7 +32,7 @@ object EventBus {
     fun loadScripts() {
         ClassGraph().whitelistPackages(pkg).scan().use { scanResult ->
             val pluginClassList = scanResult
-                .getSubclasses("io.guthix.oldscape.server.api.Script")
+                .getSubclasses("io.guthix.oldscape.server.api.script.Script")
                 .directOnly()
             pluginClassList.forEach {
                 it.loadClass(Script::class.java).getDeclaredConstructor().newInstance()

@@ -17,7 +17,7 @@
 package io.guthix.oldscape.server.interest
 
 import io.guthix.oldscape.server.event.LoginEvent
-import io.guthix.oldscape.server.api.EventBus
+import io.guthix.oldscape.server.api.script.EventBus
 import io.guthix.oldscape.server.event.PlayerInitialized
 
 on(LoginEvent::class).then {

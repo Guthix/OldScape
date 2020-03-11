@@ -14,6 +14,6 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with Foobar. If not, see <https://www.gnu.org/licenses/>.
  */
-package io.guthix.oldscape.server.api
+package io.guthix.oldscape.server.api.script
 
 interface GameEvent
