@@ -57,15 +57,14 @@ data class Player(
     internal val routines = sortedMapOf<Routine.Type, Routine<InGameEvent>>()
 
     fun processInEvents() {
-        while(inEvents.isNotEmpty()) {
+        while(true) {
             while(inEvents.isNotEmpty()) {
                 inEvents.poll().invoke()
             }
-            routines.toMap().forEach { (_, u) ->  u.resumeIfPossible() }
+            val resumed = routines.toMap().map { (_, u) -> u.resumeIfPossible() }
+            if(resumed.all { !it } && inEvents.isEmpty()) break // if can't progress in routines and no events left
         }
     }
-    
-
 
     val playerInterest = PlayerInterestManager()
 
@@ -108,7 +107,7 @@ data class Player(
 
     fun postProcess() {
         updateFlags.clear()
-        routines.values.forEach { it.handled = false }
+        routines.values.forEach { it.tickSuspended = false }
     }
 
     var topInterface: TopInterface = TopInterface(ctx, id = 165)

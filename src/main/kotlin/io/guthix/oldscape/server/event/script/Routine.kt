@@ -28,7 +28,7 @@ class Routine<E: InGameEvent>(
     world: World,
     player: Player
 ) : Continuation<Unit>, EventHandler<E>(event, world, player) {
-    var handled = false
+    var tickSuspended = false
 
     enum class Type { StrongAction, NormalAction, WeakAction }
 
@@ -40,15 +40,19 @@ class Routine<E: InGameEvent>(
 
     override fun resumeWith(result: Result<Unit>) { }
 
-    internal fun resumeIfPossible()  = next?.let {
-        if(!handled && it.canResume()) {
-            player.routines.remove(type)
-            it.continuation.resume(Unit)
-            handled = true
+    internal fun resumeIfPossible(): Boolean {
+        next?.let {
+            return if(!tickSuspended && it.canResume()) {
+                player.routines.remove(type)
+                it.continuation.resume(Unit)
+                true
+            } else false
         }
+        return false
     }
 
     suspend fun wait(ticks: Int) {
+        tickSuspended = true
         suspend(TickCondition(ticks))
     }
 
