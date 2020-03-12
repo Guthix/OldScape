@@ -17,7 +17,7 @@
 package io.guthix.oldscape.server.net.state.game.inp
 
 import io.guthix.buffer.*
-import io.guthix.oldscape.server.api.script.GameEvent
+import io.guthix.oldscape.server.net.state.game.ClientEvent
 import io.guthix.oldscape.server.event.PlayerClickEvent
 import io.guthix.oldscape.server.net.state.game.FixedSize
 import io.guthix.oldscape.server.net.state.game.GamePacketDecoder
@@ -25,7 +25,7 @@ import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 
 class Opplayer1Packet : GamePacketDecoder(14, FixedSize(3)) {
-    override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): GameEvent {
+    override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): ClientEvent {
         val playerIndex = data.readUnsignedShort()
         val buttonPressed = data.readUnsignedByte().toInt() == 1
         return PlayerClickEvent(playerIndex, buttonPressed, 1)
@@ -33,7 +33,7 @@ class Opplayer1Packet : GamePacketDecoder(14, FixedSize(3)) {
 }
 
 class Opplayer2Packet : GamePacketDecoder(78, FixedSize(3)) {
-    override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): GameEvent {
+    override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): ClientEvent {
         val buttonPressed = data.readUnsignedByteSUB().toInt() == 1
         val playerIndex = data.readUnsignedShortLE()
         return PlayerClickEvent(playerIndex, buttonPressed, 2)
@@ -41,7 +41,7 @@ class Opplayer2Packet : GamePacketDecoder(78, FixedSize(3)) {
 }
 
 class Opplayer3Packet : GamePacketDecoder(46, FixedSize(3)) {
-    override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): GameEvent {
+    override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): ClientEvent {
         val buttonPressed = data.readUnsignedByteADD().toInt() == 1
         val playerIndex = data.readUnsignedShortLEADD()
         return PlayerClickEvent(playerIndex, buttonPressed, 3)
@@ -49,7 +49,7 @@ class Opplayer3Packet : GamePacketDecoder(46, FixedSize(3)) {
 }
 
 class Opplayer4Packet : GamePacketDecoder(50, FixedSize(3)) {
-    override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): GameEvent {
+    override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): ClientEvent {
         val playerIndex = data.readUnsignedShortLEADD()
         val buttonPressed = data.readUnsignedByteADD().toInt() == 1
         return PlayerClickEvent(playerIndex, buttonPressed, 4)
@@ -57,7 +57,7 @@ class Opplayer4Packet : GamePacketDecoder(50, FixedSize(3)) {
 }
 
 class Opplayer5Packet : GamePacketDecoder(24, FixedSize(3)) {
-    override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): GameEvent {
+    override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): ClientEvent {
         val buttonPressed = data.readUnsignedByteSUB().toInt() == 1
         val playerIndex = data.readUnsignedShortADD()
         return PlayerClickEvent(playerIndex, buttonPressed, 5)
@@ -65,7 +65,7 @@ class Opplayer5Packet : GamePacketDecoder(24, FixedSize(3)) {
 }
 
 class Opplayer6Packet : GamePacketDecoder(57, FixedSize(3)) {
-    override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): GameEvent {
+    override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): ClientEvent {
         val buttonPressed = data.readUnsignedByteNEG().toInt() == 1
         val playerIndex = data.readUnsignedShort()
         return PlayerClickEvent(playerIndex, buttonPressed, 6)
@@ -73,7 +73,7 @@ class Opplayer6Packet : GamePacketDecoder(57, FixedSize(3)) {
 }
 
 class Opplayer7Packet : GamePacketDecoder(72, FixedSize(3)) {
-    override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): GameEvent {
+    override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): ClientEvent {
         val playerIndex = data.readUnsignedShortLE()
         val buttonPressed = data.readUnsignedByte().toInt() == 1
         return PlayerClickEvent(playerIndex, buttonPressed, 7)
@@ -81,7 +81,7 @@ class Opplayer7Packet : GamePacketDecoder(72, FixedSize(3)) {
 }
 
 class Opplayer8Packet : GamePacketDecoder(56, FixedSize(3)) {
-    override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): GameEvent {
+    override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): ClientEvent {
         val playerIndex = data.readUnsignedShortLEADD()
         val buttonPressed = data.readUnsignedByteNEG().toInt() == 1
         return PlayerClickEvent(playerIndex, buttonPressed, 8)

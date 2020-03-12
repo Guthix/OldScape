@@ -14,27 +14,6 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with Foobar. If not, see <https://www.gnu.org/licenses/>.
  */
-package io.guthix.oldscape.server.routine
+package io.guthix.oldscape.server.event.script
 
-import kotlin.coroutines.Continuation
-
-interface RoutineCondition {
-    fun canResume(): Boolean
-}
-
-class TickCondition(private var tickCount: Int) : RoutineCondition {
-    override fun canResume() = --tickCount == 0
-}
-
-class LambdaCondition(private val cond: () -> Boolean) : RoutineCondition {
-    override fun canResume() = cond.invoke()
-}
-
-object InitialCondition : RoutineCondition {
-    override fun canResume() = true
-}
-
-class ConditionalContinuation(
-    val condition: RoutineCondition,
-    val continuation: Continuation<Unit>
-) : RoutineCondition by condition
+interface InGameEvent

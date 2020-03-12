@@ -14,11 +14,8 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with Foobar. If not, see <https://www.gnu.org/licenses/>.
  */
-package io.guthix.oldscape.server.api.script
+package io.guthix.oldscape.server.event.script
 
-import io.guthix.oldscape.server.routine.ConditionalContinuation
-import io.guthix.oldscape.server.routine.InitialCondition
-import io.guthix.oldscape.server.routine.Routine
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.character.player.Player
 import kotlin.coroutines.intrinsics.createCoroutineUnintercepted
@@ -27,10 +24,10 @@ import kotlin.script.experimental.annotations.KotlinScript
 
 @KotlinScript
 abstract class Script {
-    fun <E: GameEvent>on(type: KClass<E>) = ScriptFilter(type)
+    fun <E: InGameEvent>on(type: KClass<E>) = ScriptFilter(type)
 }
 
-class ScriptFilter<E: GameEvent>(private val type: KClass<E>) {
+class ScriptFilter<E: InGameEvent>(private val type: KClass<E>) {
     private var condition: EventHandler<E>.() -> Boolean = { true }
 
     fun where(condition: EventHandler<E>.() -> Boolean): ScriptFilter<E> {
@@ -45,14 +42,14 @@ class ScriptFilter<E: GameEvent>(private val type: KClass<E>) {
     )
 }
 
-abstract class ScriptScheduler<E : GameEvent>(
+abstract class ScriptScheduler<E : InGameEvent>(
     protected val type: KClass<E>,
     val condition: EventHandler<E>.() -> Boolean
 ) {
     abstract fun schedule(event: E, world: World, player: Player)
 }
 
-class DefaultScriptScheduler<E: GameEvent>(
+class DefaultScriptScheduler<E: InGameEvent>(
     type: KClass<E>,
     condition: EventHandler<E>.() -> Boolean,
     val script: EventHandler<E>.() -> Unit
@@ -69,7 +66,7 @@ class DefaultScriptScheduler<E: GameEvent>(
     }
 }
 
-class RoutineScriptScheduler<E : GameEvent>(
+class RoutineScriptScheduler<E : InGameEvent>(
     type: KClass<E>,
     condition: EventHandler<E>.() -> Boolean,
     val routineType: Routine.Type,
@@ -94,10 +91,10 @@ class RoutineScriptScheduler<E : GameEvent>(
             )
             routine.onCancel(onCancel)
             player.routines[routineType]?.cancel()
-            player.routines[routineType] = routine as Routine<GameEvent>
+            player.routines[routineType] = routine as Routine<InGameEvent>
             routine.resumeIfPossible()
         }
     }
 }
 
-open class EventHandler<E : GameEvent>(val event: E, val world: World, val player: Player)
+open class EventHandler<E : InGameEvent>(val event: E, val world: World, val player: Player)

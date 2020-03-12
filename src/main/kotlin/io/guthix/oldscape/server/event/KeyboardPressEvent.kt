@@ -16,9 +16,13 @@
  */
 package io.guthix.oldscape.server.event
 
-import io.guthix.oldscape.server.api.script.GameEvent
+import io.guthix.oldscape.server.net.state.game.ClientEvent
+import io.guthix.oldscape.server.event.script.InGameEvent
+import io.guthix.oldscape.server.world.World
 
-data class KeyboardPressEvent(val keyPresses: List<KeyPress>) : GameEvent
+data class KeyboardPressEvent(val keyPresses: List<KeyPress>) : ClientEvent, InGameEvent {
+    override fun toGameEvent(world: World) = this
+}
 
 class KeyPress(key: KeyboardKey, interval: Int)
 

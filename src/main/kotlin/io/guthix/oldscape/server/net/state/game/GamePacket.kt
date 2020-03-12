@@ -17,7 +17,8 @@
 package io.guthix.oldscape.server.net.state.game
 
 import io.github.classgraph.ClassGraph
-import io.guthix.oldscape.server.api.script.GameEvent
+import io.guthix.oldscape.server.event.script.InGameEvent
+import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.TileUnit
 import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
@@ -34,6 +35,10 @@ class FixedSize(val size: Int) : PacketSize()
 object VarByteSize : PacketSize()
 
 object VarShortSize : PacketSize()
+
+interface ClientEvent {
+    fun toGameEvent(world: World): InGameEvent
+}
 
 abstract class ZoneOutGameEvent(
     private val localX: TileUnit,
@@ -55,7 +60,7 @@ interface OutGameEvent {
 }
 
 abstract class GamePacketDecoder(val opcode: Int, val packetSize: PacketSize) {
-    abstract fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): GameEvent
+    abstract fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): ClientEvent
 
     companion object {
         private const val pkg = "io.guthix.oldscape.server.net.state.game.inp"

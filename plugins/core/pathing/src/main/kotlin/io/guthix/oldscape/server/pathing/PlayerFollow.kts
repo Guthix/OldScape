@@ -20,8 +20,7 @@ import io.guthix.oldscape.server.event.PlayerClickEvent
 import io.guthix.oldscape.server.pathing.algo.DestinationTile
 import io.guthix.oldscape.server.pathing.algo.imp.breadthFirstSearch
 import io.guthix.oldscape.server.pathing.algo.imp.simplePathSearch
-import io.guthix.oldscape.server.routine.Routine
-
+import io.guthix.oldscape.server.event.script.Routine
 
 on(PlayerClickEvent::class).where { player.contextMenu[event.option - 1] == "Follow" }.then(Routine.Type.NormalAction) {
     val followed = world.players[event.playerIndex] ?: error("Could not find followed player.")

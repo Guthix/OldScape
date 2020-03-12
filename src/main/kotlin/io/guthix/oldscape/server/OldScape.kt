@@ -35,7 +35,7 @@ import io.guthix.oldscape.server.api.blueprint.InventoryBlueprints
 import io.guthix.oldscape.server.api.Varbits
 import io.guthix.oldscape.server.api.blueprint.LocationBlueprints
 import io.guthix.oldscape.server.api.blueprint.ObjectBlueprints
-import io.guthix.oldscape.server.api.script.EventBus
+import io.guthix.oldscape.server.event.script.EventBus
 import io.guthix.oldscape.server.net.OldScapeServer
 import io.guthix.oldscape.server.net.state.game.GamePacketDecoder
 import io.guthix.oldscape.server.world.World

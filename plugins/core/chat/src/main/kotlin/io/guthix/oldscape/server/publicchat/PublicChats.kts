@@ -18,6 +18,6 @@ package io.guthix.oldscape.server.publicchat
 
 import io.guthix.oldscape.server.event.PublicMessageEvent
 
-on(PublicMessageEvent::class).then{
+on(PublicMessageEvent::class).then {
     player.publicMessage = event
 }
