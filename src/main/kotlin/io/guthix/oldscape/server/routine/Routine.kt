@@ -30,6 +30,8 @@ class Routine<E: GameEvent>(
     world: World,
     player: Player
 ) : Continuation<Unit>, EventHandler<E>(event, world, player) {
+    var handled = false
+
     enum class Type { StrongAction, NormalAction, WeakAction }
 
     internal var cancelAction: EventHandler<E>.() -> Unit = {}
@@ -41,9 +43,10 @@ class Routine<E: GameEvent>(
     override fun resumeWith(result: Result<Unit>) { }
 
     internal fun resumeIfPossible()  = next?.let {
-        if(it.canResume()) {
+        if(!handled && it.canResume()) {
             player.routines.remove(type)
             it.continuation.resume(Unit)
+            handled = true
         }
     }
 
