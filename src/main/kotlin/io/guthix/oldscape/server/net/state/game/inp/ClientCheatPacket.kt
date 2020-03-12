@@ -17,7 +17,7 @@
 package io.guthix.oldscape.server.net.state.game.inp
 
 import io.guthix.buffer.readStringCP1252
-import io.guthix.oldscape.server.api.script.GameEvent
+import io.guthix.oldscape.server.net.state.game.ClientEvent
 import io.guthix.oldscape.server.event.ClientCheatEvent
 import io.guthix.oldscape.server.net.state.game.GamePacketDecoder
 import io.guthix.oldscape.server.net.state.game.VarByteSize
@@ -25,7 +25,7 @@ import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 
 class ClientCheatPacket : GamePacketDecoder(34, VarByteSize) {
-    override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): GameEvent {
+    override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): ClientEvent {
         return ClientCheatEvent(data.readStringCP1252())
     }
 }

@@ -16,7 +16,9 @@
  */
 package io.guthix.oldscape.server.event
 
-import io.guthix.oldscape.server.api.script.GameEvent
+import io.guthix.oldscape.server.net.state.game.ClientEvent
+import io.guthix.oldscape.server.event.script.InGameEvent
+import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.TileUnit
 
 data class MiniMapClickEvent(
@@ -28,4 +30,6 @@ data class MiniMapClickEvent(
     val angle: Int,
     val playerX: TileUnit,
     val playerY: TileUnit
-) : GameEvent
+) : ClientEvent, InGameEvent {
+    override fun toGameEvent(world: World) = this
+}

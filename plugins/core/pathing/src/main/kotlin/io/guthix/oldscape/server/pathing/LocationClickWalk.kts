@@ -19,10 +19,10 @@ package io.guthix.oldscape.server.pathing
 import io.guthix.oldscape.server.event.LocationClickEvent
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
 import io.guthix.oldscape.server.event.LocationReachedEvent
-import io.guthix.oldscape.server.api.script.EventBus
+import io.guthix.oldscape.server.event.script.Routine
+import io.guthix.oldscape.server.event.script.EventBus
 import io.guthix.oldscape.server.pathing.algo.DestinationLocation
 import io.guthix.oldscape.server.pathing.algo.imp.breadthFirstSearch
-import io.guthix.oldscape.server.routine.Routine
 
 on(LocationClickEvent::class).then(Routine.Type.NormalAction) {
     val loc = world.map.getLoc(event.id, player.position.floor, event.x, event.y) ?: error(

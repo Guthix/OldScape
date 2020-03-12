@@ -18,11 +18,10 @@ package io.guthix.oldscape.server.pathing
 
 import io.guthix.oldscape.server.event.ObjectClickEvent
 import io.guthix.oldscape.server.event.ObjectReachedEvent
-import io.guthix.oldscape.server.api.script.EventBus
 import io.guthix.oldscape.server.pathing.algo.DestinationTile
-import io.guthix.oldscape.server.routine.Routine
 import io.guthix.oldscape.server.pathing.algo.imp.breadthFirstSearch
-import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
+import io.guthix.oldscape.server.event.script.Routine
+import io.guthix.oldscape.server.event.script.EventBus
 
 on(ObjectClickEvent::class).then(Routine.Type.NormalAction) {
     val destination = DestinationTile(player.position.floor, event.x, event.y)

@@ -16,10 +16,10 @@
  */
 package io.guthix.oldscape.server.world.entity.character.player
 
-import io.guthix.oldscape.server.api.script.GameEvent
 import io.guthix.oldscape.server.api.Varbits
 import io.guthix.oldscape.server.event.PublicMessageEvent
-import io.guthix.oldscape.server.routine.Routine
+import io.guthix.oldscape.server.event.script.InGameEvent
+import io.guthix.oldscape.server.event.script.Routine
 import io.guthix.oldscape.server.net.state.game.outp.*
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.WorldMap
@@ -54,7 +54,7 @@ data class Player(
 ) : Character(index, position, attributes), Comparable<Player> {
     internal val inEvents = ConcurrentLinkedQueue<() -> Unit>()
 
-    internal val routines = sortedMapOf<Routine.Type, Routine<GameEvent>>()
+    internal val routines = sortedMapOf<Routine.Type, Routine<InGameEvent>>()
 
     fun processInEvents() {
         while(inEvents.isNotEmpty()) {

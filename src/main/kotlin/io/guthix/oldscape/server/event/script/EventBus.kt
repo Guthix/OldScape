@@ -14,7 +14,7 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with Foobar. If not, see <https://www.gnu.org/licenses/>.
  */
-package io.guthix.oldscape.server.api.script
+package io.guthix.oldscape.server.event.script
 
 import io.github.classgraph.ClassGraph
 import io.guthix.oldscape.server.world.World
@@ -27,12 +27,12 @@ private val logger = KotlinLogging.logger { }
 object EventBus {
     const val pkg = "io.guthix.oldscape.server"
 
-    private val eventListeners = mutableMapOf<KClass<out GameEvent>, MutableList<ScriptScheduler<in GameEvent>>>()
+    private val eventListeners = mutableMapOf<KClass<out InGameEvent>, MutableList<ScriptScheduler<in InGameEvent>>>()
 
     fun loadScripts() {
         ClassGraph().whitelistPackages(pkg).scan().use { scanResult ->
             val pluginClassList = scanResult
-                .getSubclasses("io.guthix.oldscape.server.api.script.Script")
+                .getSubclasses("io.guthix.oldscape.server.event.script.Script")
                 .directOnly()
             pluginClassList.forEach {
                 it.loadClass(Script::class.java).getDeclaredConstructor().newInstance()
@@ -41,17 +41,17 @@ object EventBus {
         }
     }
 
-    fun <E : GameEvent> schedule(event: E, world: World, player: Player) = eventListeners[event::class]?.let {
+    fun <E : InGameEvent> schedule(event: E, world: World, player: Player) = eventListeners[event::class]?.let {
         for (listener in it) {
             listener.schedule(event, world, player)
         }
     }
 
     @Suppress("UNCHECKED_CAST")
-    fun <E : GameEvent> register(type: KClass<E>, listener: ScriptScheduler<E>) {
+    fun <E : InGameEvent> register(type: KClass<E>, listener: ScriptScheduler<E>) {
         val listeners = eventListeners.getOrPut(type) {
             mutableListOf()
         }
-        listeners.add(listener as ScriptScheduler<GameEvent>)
+        listeners.add(listener as ScriptScheduler<InGameEvent>)
     }
 }

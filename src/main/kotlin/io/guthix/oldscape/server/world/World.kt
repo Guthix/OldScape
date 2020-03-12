@@ -16,8 +16,8 @@
  */
 package io.guthix.oldscape.server.world
 
-import io.guthix.oldscape.server.api.script.EventBus
 import io.guthix.oldscape.server.event.LoginEvent
+import io.guthix.oldscape.server.event.script.EventBus
 import io.guthix.oldscape.server.net.state.game.GameDecoder
 import io.guthix.oldscape.server.net.state.game.GameEncoder
 import io.guthix.oldscape.server.net.state.game.GameHandler

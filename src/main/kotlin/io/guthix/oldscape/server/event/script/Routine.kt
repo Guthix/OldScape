@@ -14,17 +14,15 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with Foobar. If not, see <https://www.gnu.org/licenses/>.
  */
-package io.guthix.oldscape.server.routine
+package io.guthix.oldscape.server.event.script
 
-import io.guthix.oldscape.server.api.script.EventHandler
-import io.guthix.oldscape.server.api.script.GameEvent
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.character.player.Player
-import kotlin.coroutines.*
 import kotlin.coroutines.intrinsics.COROUTINE_SUSPENDED
 import kotlin.coroutines.intrinsics.suspendCoroutineUninterceptedOrReturn
+import kotlin.coroutines.*
 
-class Routine<E: GameEvent>(
+class Routine<E: InGameEvent>(
     private val type: Type,
     event: E,
     world: World,
@@ -64,8 +62,9 @@ class Routine<E: GameEvent>(
 
     fun cancel() = cancelAction.invoke(this)
 
+    @Suppress("UNCHECKED_CAST")
     private suspend fun suspend(condition: RoutineCondition) {
-        player.routines[type] = this as Routine<GameEvent>
+        player.routines[type] = this as Routine<InGameEvent>
         return suspendCoroutineUninterceptedOrReturn { cont ->
             next = ConditionalContinuation(condition, cont)
             COROUTINE_SUSPENDED

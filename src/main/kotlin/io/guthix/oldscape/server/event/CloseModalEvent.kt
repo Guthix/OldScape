@@ -16,6 +16,10 @@
  */
 package io.guthix.oldscape.server.event
 
-import io.guthix.oldscape.server.api.script.GameEvent
+import io.guthix.oldscape.server.net.state.game.ClientEvent
+import io.guthix.oldscape.server.event.script.InGameEvent
+import io.guthix.oldscape.server.world.World
 
-class CloseModalEvent : GameEvent
+class CloseModalEvent : ClientEvent, InGameEvent {
+    override fun toGameEvent(world: World) = this
+}

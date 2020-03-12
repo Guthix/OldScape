@@ -16,7 +16,9 @@
  */
 package io.guthix.oldscape.server.event
 
-import io.guthix.oldscape.server.api.script.GameEvent
+import io.guthix.oldscape.server.net.state.game.ClientEvent
+import io.guthix.oldscape.server.event.script.InGameEvent
+import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.TileUnit
 
 data class ObjectClickEvent(
@@ -25,4 +27,6 @@ data class ObjectClickEvent(
     val y: TileUnit,
     val buttonPressed: Boolean,
     val option: Int
-) : GameEvent
+) : ClientEvent, InGameEvent {
+    override fun toGameEvent(world: World) = this
+}
