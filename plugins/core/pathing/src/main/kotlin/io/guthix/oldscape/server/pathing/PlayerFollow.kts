@@ -22,21 +22,23 @@ import io.guthix.oldscape.server.pathing.algo.imp.breadthFirstSearch
 import io.guthix.oldscape.server.pathing.algo.imp.simplePathSearch
 import io.guthix.oldscape.server.event.script.Routine
 
-on(PlayerClickEvent::class).where { player.contextMenu[event.option - 1] == "Follow" }.then(Routine.Type.NormalAction) {
-    val followed = world.players[event.playerIndex] ?: error("Could not find followed player.")
+on(PlayerClickEvent::class).where { event.option == "Follow" }.then(Routine.Type.NormalAction) {
+    val followed = event.player
     var dest = DestinationTile(followed.followPosition)
     player.path = breadthFirstSearch(player.position, dest, player.size, true, world.map)
     player.turnToLock(followed)
     var currentTarget = player.followPosition
     while(true) {
-        if(dest.reached(player.position.x, player.position.y, player.size)) break
-        if(currentTarget != player.followPosition) {
+        if(dest.reached(player.position.x, player.position.y, player.size)) {
+            break
+        }
+        if(currentTarget != followed.followPosition) {
             player.path = breadthFirstSearch(player.position, dest, player.size, true, world.map)
         }
         wait(1)
     }
     while(true) {
-        wait { currentTarget != player.followPosition }
+        wait { currentTarget != followed.followPosition }
         dest = DestinationTile(followed.followPosition)
         player.path = simplePathSearch(player.position, dest, player.size, world.map)
         currentTarget = followed.followPosition
