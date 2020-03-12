@@ -19,11 +19,21 @@ package io.guthix.oldscape.server.event
 import io.guthix.oldscape.server.net.state.game.ClientEvent
 import io.guthix.oldscape.server.event.script.InGameEvent
 import io.guthix.oldscape.server.world.World
+import io.guthix.oldscape.server.world.entity.character.player.Player
 
-data class PlayerClickEvent(
+internal data class PlayerClickClientEvent(
     val playerIndex: Int,
     val buttonPressed: Boolean,
     val option: Int
-) : ClientEvent, InGameEvent {
-    override fun toGameEvent(world: World) = this
+) : ClientEvent {
+    override fun toGameEvent(world: World): InGameEvent {
+        val player = world.players[playerIndex] ?: error("Player doesn't exist.")
+        return PlayerClickEvent(player, buttonPressed, player.contextMenu[option -1])
+    }
 }
+
+data class PlayerClickEvent(
+    val player: Player,
+    val buttonPressed: Boolean,
+    val option: String
+) : InGameEvent
