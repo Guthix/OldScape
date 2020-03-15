@@ -16,24 +16,28 @@
  */
 package io.guthix.oldscape.server.event
 
-import io.guthix.oldscape.server.net.state.game.ClientEvent
+import io.guthix.oldscape.server.api.blueprint.ObjectBlueprints
 import io.guthix.oldscape.server.event.script.InGameEvent
+import io.guthix.oldscape.server.net.state.game.ClientEvent
 import io.guthix.oldscape.server.world.World
-import io.guthix.oldscape.server.world.entity.character.player.Player
 
-internal data class PlayerClickClientEvent(
-    val playerIndex: Int,
-    val buttonPressed: Boolean,
+internal data class InventoryClickClientEvent(
+    val interfaceId: Int,
+    val interfaceSlot: Int,
+    val objId: Int,
+    val inventorySlot: Int,
     val option: Int
 ) : ClientEvent {
     override fun toGameEvent(world: World): InGameEvent {
-        val player = world.players[playerIndex] ?: error("Player $playerIndex doesn't exist.")
-        return PlayerClickEvent(player, buttonPressed, player.contextMenu[option -1])
+        val op = ObjectBlueprints[objId].iop[option - 1] ?: error("Item $objId doesn't exist.")
+        return InventoryClickEvent(interfaceId, interfaceSlot, objId, inventorySlot, op)
     }
 }
 
-data class PlayerClickEvent(
-    val player: Player,
-    val buttonPressed: Boolean,
+data class InventoryClickEvent(
+    val interfaceId: Int,
+    val interfaceSlot: Int,
+    val objId: Int,
+    val inventorySlot: Int,
     val option: String
 ) : InGameEvent
