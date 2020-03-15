@@ -30,7 +30,7 @@ on(ClientCheatEvent::class).where { event.string == "drop" }.then {
         Tile(
             player.position.floor, player.position.x + 1.tiles, player.position.y+ 1.tiles
         ),
-        Obj(ObjectBlueprints[995], 1000)
+        Obj(ObjectBlueprints[1753], 1)
     )
 }
 
