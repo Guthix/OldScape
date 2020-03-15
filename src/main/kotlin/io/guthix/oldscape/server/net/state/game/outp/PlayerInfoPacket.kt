@@ -23,6 +23,7 @@ import io.guthix.oldscape.server.net.state.game.VarShortSize
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.character.player.interest.PlayerInterestManager.Companion.regionId
 import io.guthix.oldscape.server.world.entity.character.Character
+import io.guthix.oldscape.server.world.entity.character.player.Appearance
 import io.guthix.oldscape.server.world.entity.character.player.Player
 import io.guthix.oldscape.server.world.entity.character.player.PlayerList
 import io.guthix.oldscape.server.world.mapsquare.floors
@@ -386,24 +387,52 @@ class PlayerInfoPacket(
             writeByte(0) //place holder for length
             writeByte(player.appearance.gender.opcode)
             writeByte(if(player.appearance.isSkulled) 1 else -1)
-            writeByte(player.appearance.overheadIcon)
-
-            for (i in 0 until 4) {
+            writeByte(player.appearance.prayerIcon)
+            player.appearance.equipment.head?.let { // write head gear
+                writeShort(512 + it.blueprint.id)
+            } ?: run { writeByte(0) }
+            player.appearance.equipment.cape?.let {  // write cape
+                writeShort(512 + it.blueprint.id)
+            } ?: run { writeByte(0) }
+            player.appearance.equipment.neck?.let {  // write neck gear
+                writeShort(512 + it.blueprint.id)
+            } ?: run { writeByte(0) }
+            player.appearance.equipment.weapon?.let { // write weapon
+                writeShort(512 + it.blueprint.id)
+            } ?: run { writeByte(0) }
+            player.appearance.equipment.body?.let { // write body
+                writeShort(512 + it.blueprint.id)
+            } ?: run { writeShort(256 + player.appearance.style.torso) }
+            player.appearance.equipment.shield?.let {  // write shield gear
+                writeShort(512 + it.blueprint.id)
+            } ?: run { writeByte(0) }
+            player.appearance.equipment.body?.let { // write arms
+                if(it.fullBody) writeByte(0) else writeShort(256 + player.appearance.style.arms)
+            } ?: run { writeShort(256 + player.appearance.style.arms) }
+            player.appearance.equipment.legs?.let { // write legs
+                writeShort(512 + it.blueprint.id)
+            } ?: run { writeShort(256 + player.appearance.style.legs) }
+            player.appearance.equipment.head?.let { // write hair
+                if(it.coversScalp) writeByte(0) else writeShort(256 + player.appearance.style.hair)
+            } ?: run { writeShort(256 + player.appearance.style.hair) }
+            player.appearance.equipment.hands?.let {  // write hands
+                writeShort(512 + it.blueprint.id)
+            } ?: run { writeShort(256 + player.appearance.style.hands) }
+            player.appearance.equipment.feet?.let { // write feet
+                writeShort(512 + it.blueprint.id)
+            } ?: run { writeShort(256 + player.appearance.style.feet)}
+            if(player.appearance.gender == Appearance.Gender.MALE) { //write beard
+                player.appearance.equipment.head?.let {
+                    if(it.coversFace) writeByte(0) else writeShort(256 + player.appearance.style.beard)
+                } ?: run { writeShort(256 + player.appearance.style.beard) }
+            } else {
                 writeByte(0)
             }
-            writeShort(0x100 + player.appearance.apparel.chest)
-            writeByte(player.appearance.apparel.shield)
-            writeShort(0x100 + player.appearance.apparel.skinColor)
-            writeShort(0x100 + player.appearance.apparel.legs)
-            writeShort(0x100 + player.appearance.apparel.head)
-            writeShort(0x100 + player.appearance.apparel.hands)
-            writeShort(0x100 + player.appearance.apparel.feet)
-            writeShort(0x100 + 11)
-
-            // originalColors
-            for (i in 0 until 5) {
-                writeByte(0)
-            }
+            writeByte(player.appearance.colours.hair)
+            writeByte(player.appearance.colours.torso)
+            writeByte(player.appearance.colours.legs)
+            writeByte(player.appearance.colours.feet)
+            writeByte(player.appearance.colours.skin)
 
             writeShort(player.appearance.animations.stand)
             writeShort(player.appearance.animations.turn)
