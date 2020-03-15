@@ -17,15 +17,13 @@
 package io.guthix.oldscape.wiki
 
 import io.ktor.client.HttpClient
-import io.ktor.client.call.call
 import io.ktor.client.request.get
-import io.ktor.util.KtorExperimentalAPI
-import mu.KotlinLogging
+import io.ktor.client.request.request
+import io.ktor.client.statement.HttpResponse
 
 private const val wikiUrl = "https://oldschool.runescape.wiki"
 
 /** Scrapes the wiki and retrieves the wiki text.*/
-@KtorExperimentalAPI
 suspend fun HttpClient.scrapeWikiText(wikiType: String, id: Int, name: String): String {
     val urlName = name.replace(' ', '_').replace("<.*?>".toRegex(), "");
     val queryUrl = if(urlName.contains("%")) {
@@ -33,7 +31,7 @@ suspend fun HttpClient.scrapeWikiText(wikiType: String, id: Int, name: String): 
     } else {
         "$wikiUrl/w/Special:Lookup?type=$wikiType&id=$id&name=$urlName"
     }
-    val redirect = call(queryUrl).response.headers["location"]
+    val redirect = request<HttpResponse>(queryUrl).call.response.headers["location"]
         ?: throw PageNotFoundException("Could not retrieve redirect for $queryUrl")
     if(redirect.contains("search")) throw PageNotFoundException("Could not retrieve redirect for $queryUrl")
     val rawUrl = "${redirect.substringBefore("#")}?action=raw"
