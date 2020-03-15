@@ -147,17 +147,20 @@ data class Player(
     val appearance = Appearance(
         gender = Appearance.Gender.MALE,
         isSkulled = false,
-        overheadIcon = -1,
-        apparel = Appearance.Apparel(
-            skinColor = 26,
-            head = 0,
-            chest = 18,
-            hands = 33,
+        prayerIcon = -1,
+        style = Appearance.Style(
+            hair = 0,
+            beard = 10,
+            torso = 18,
+            arms = 26,
             legs = 36,
-            feet = 42,
-            weapon = 0,
-            shield = 0
+            hands = 33,
+            feet = 42
         ),
+        equipment = Appearance.Equipment(
+            null, null, null, null, null, null, null, null, null
+        ),
+        colours = Appearance.Colours(0,0,0,0,0),
         animations = Appearance.Animations(
             stand = 808,
             turn = 823,

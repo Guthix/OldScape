@@ -19,19 +19,40 @@ package io.guthix.oldscape.server.world.entity.character.player
 data class Appearance(
     var gender: Gender,
     var isSkulled: Boolean,
-    var overheadIcon: Int,
-    var apparel: Apparel,
+    var prayerIcon: Int,
+    val style: Style,
+    val equipment: Equipment,
+    var colours: Colours,
     var animations: Animations
 ) {
-    data class Apparel(
-        var skinColor: Int,
-        var head: Int,
-        var chest: Int,
-        var hands: Int,
+    data class Equipment(
+        var head: Head?,
+        var cape: Cape?,
+        var neck: Neck?,
+        var weapon: Weapon?,
+        var body: Body?,
+        var shield: Shield?,
+        var legs: Legs?,
+        var hands: Hands?,
+        var feet: Feet?
+    )
+
+    data class Style(
+        val hair: Int,
+        val beard: Int,
+        val torso: Int,
+        val arms: Int,
+        val legs: Int,
+        val hands: Int,
+        val feet: Int
+    )
+
+    data class Colours(
+        var hair: Int,
+        var torso: Int,
         var legs: Int,
         var feet: Int,
-        var weapon: Int,
-        var shield: Int
+        var skin: Int
     )
 
     data class Animations(

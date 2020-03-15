@@ -20,7 +20,7 @@ import io.guthix.oldscape.server.api.blueprint.ObjectBlueprint
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
 import kotlin.reflect.KProperty
 
-data class Obj(
+open class Obj(
     val blueprint: ObjectBlueprint,
     var quantity: Int
 )
