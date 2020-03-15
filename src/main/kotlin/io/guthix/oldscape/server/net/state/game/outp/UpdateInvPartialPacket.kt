@@ -35,7 +35,7 @@ class UpdateInvPartialPacket(
 
     override fun encode(ctx: ChannelHandlerContext): ByteBuf {
         val buf = ctx.alloc().buffer()
-        buf.writeInt((interfaceId shl Short.SIZE_BYTES) or slotId)
+        buf.writeInt((interfaceId shl Short.SIZE_BITS) or slotId)
         buf.writeShort(subInterfaceId)
         for((slot, obj) in objs) {
             buf.writeSmallSmart(slot)
