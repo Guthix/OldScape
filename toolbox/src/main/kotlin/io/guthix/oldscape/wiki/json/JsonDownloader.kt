@@ -35,7 +35,6 @@ class JsonDownloader(override val logger: KLogger) : WikiDownloader() {
     val jsonConfig = JsonConfiguration.Stable.copy(encodeDefaults = false, prettyPrint = true)
 
     @ImplicitReflectionSerializer
-    @KtorExperimentalAPI
     inline fun <reified C : NamedConfig, reified P : WikiDefinition<P>> download(
         to: Path,
         configComp: WikiConfigCompanion,

@@ -21,12 +21,12 @@ import io.guthix.cache.js5.container.disk.Js5DiskStore
 import io.guthix.oldscape.cache.ConfigArchive
 import io.guthix.oldscape.cache.config.NamedConfig
 import io.guthix.oldscape.cache.config.NamedConfigCompanion
+import io.guthix.oldscape.cache.config.ObjectConfig
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.apache.Apache
 import kotlinx.coroutines.*
 import mu.KLoggable
 import java.nio.file.Path
-import kotlin.math.log
 
 abstract class WikiDownloader : KLoggable {
     inline fun <reified C : NamedConfig, reified P : WikiDefinition<P>> fromCache(
@@ -48,8 +48,19 @@ abstract class WikiDownloader : KLoggable {
         }.use { client ->
             val wikiConfigs = mutableMapOf<Int, P>()
             for(cacheConfig in cacheConfigs) {
+                logger.info { "--------------Handle ${cacheConfig.id} ${cacheConfig.name}----------------" }
+                if(cacheConfig is ObjectConfig) {
+                    if(cacheConfig.isNoted) {
+                        logger.info { "Object ${cacheConfig.id} is noted for obj ${cacheConfig.notedId}" }
+                        continue
+                    }
+                    if(cacheConfig.isPlaceHolder) {
+                        logger.info { "Object ${cacheConfig.id} is placeholder for obj ${cacheConfig.placeholderId}" }
+                        continue
+                    }
+                }
                 if(!wikiConfigs.containsKey(cacheConfig.id)) {
-                    logger.info { "--------------REQUEST ${cacheConfig.id} ${cacheConfig.name}----------------" }
+                    logger.info { "Downloading ${cacheConfig.id} ${cacheConfig.name}" }
                     val wikiText = try {
                         client.scrapeWikiText(configComp.queryString, cacheConfig.id, cacheConfig.name)
                     } catch (e: PageNotFoundException) {
@@ -64,6 +75,8 @@ abstract class WikiDownloader : KLoggable {
                             wikiConfigs[wikiId] = wikiConfig
                         }
                     }
+                } else {
+                    logger.info { "Config ${cacheConfig.id} ${cacheConfig.name} already downloaded" }
                 }
             }
             wikiConfigs
