@@ -26,6 +26,7 @@ import io.ktor.client.engine.apache.Apache
 import kotlinx.coroutines.*
 import mu.KLoggable
 import java.nio.file.Path
+import kotlin.math.log
 
 abstract class WikiDownloader : KLoggable {
     inline fun <reified C : NamedConfig, reified P : WikiDefinition<P>> fromCache(
@@ -41,18 +42,18 @@ abstract class WikiDownloader : KLoggable {
     inline fun <reified P : WikiDefinition<P>>scrapeWikiConfigs(
         configComp: WikiConfigCompanion,
         vararg cacheConfigs: NamedConfig
-    ) = runBlocking {
-        val wikiConfigs = HttpClient(Apache) { followRedirects = false }.use { client ->
+    )= runBlocking {
+        val wikiConfigs = HttpClient(Apache) {
+            followRedirects = false
+        }.use { client ->
             val wikiConfigs = mutableMapOf<Int, P>()
             for(cacheConfig in cacheConfigs) {
                 if(!wikiConfigs.containsKey(cacheConfig.id)) {
                     logger.info { "--------------REQUEST ${cacheConfig.id} ${cacheConfig.name}----------------" }
                     val wikiText = try {
                         client.scrapeWikiText(configComp.queryString, cacheConfig.id, cacheConfig.name)
-                    } catch (e: Exception) {
-                        logger.warn(e) {
-                            "Failed to download config for name: ${cacheConfig.name} id: ${cacheConfig.id}"
-                        }
+                    } catch (e: PageNotFoundException) {
+                        logger.warn { e.message }
                         continue
                     }
                     parseWikiString<P>(wikiText).forEach { wikiConfig ->

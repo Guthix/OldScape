@@ -32,8 +32,11 @@ suspend fun HttpClient.scrapeWikiText(wikiType: String, id: Int, name: String): 
         "$wikiUrl/w/Special:Lookup?type=$wikiType&id=$id&name=$urlName"
     }
     val redirect = request<HttpResponse>(queryUrl).call.response.headers["location"]
-        ?: throw PageNotFoundException("Could not retrieve redirect for $queryUrl")
-    if(redirect.contains("search")) throw PageNotFoundException("Could not retrieve redirect for $queryUrl")
+        ?: throw PageNotFoundException("Could not retrieve redirect for $queryUrl.")
+    val dir = redirect.substringAfter("oldschool.runescape.wiki/")
+    if(dir.startsWith("w/Null") || dir.startsWith("w/Special:Search")) {
+        throw PageNotFoundException("Could not retrieve redirect for $queryUrl.")
+    }
     val rawUrl = "${redirect.substringBefore("#")}?action=raw"
     return get(rawUrl)
 }
