@@ -21,16 +21,13 @@ import io.guthix.cache.js5.container.disk.Js5DiskStore
 import io.guthix.oldscape.cache.ConfigArchive
 import io.guthix.oldscape.cache.config.NamedConfig
 import io.guthix.oldscape.cache.config.NamedConfigCompanion
-import io.guthix.oldscape.wiki.wikitext.NpcWikiDefinition
 import io.ktor.client.HttpClient
-import io.ktor.client.engine.cio.CIO
-import io.ktor.util.KtorExperimentalAPI
+import io.ktor.client.engine.apache.Apache
 import kotlinx.coroutines.*
 import mu.KLoggable
 import java.nio.file.Path
 
 abstract class WikiDownloader : KLoggable {
-    @KtorExperimentalAPI
     inline fun <reified C : NamedConfig, reified P : WikiDefinition<P>> fromCache(
         configComp: WikiConfigCompanion,
         cacheLoader: NamedConfigCompanion<C>
@@ -41,12 +38,11 @@ abstract class WikiDownloader : KLoggable {
         return scrapeWikiConfigs(configComp, *cacheConfigs)
     }
 
-    @KtorExperimentalAPI
     inline fun <reified P : WikiDefinition<P>>scrapeWikiConfigs(
         configComp: WikiConfigCompanion,
         vararg cacheConfigs: NamedConfig
     ) = runBlocking {
-        val wikiConfigs = HttpClient(CIO) { followRedirects = false }.use { client ->
+        val wikiConfigs = HttpClient(Apache) { followRedirects = false }.use { client ->
             val wikiConfigs = mutableMapOf<Int, P>()
             for(cacheConfig in cacheConfigs) {
                 if(!wikiConfigs.containsKey(cacheConfig.id)) {
