@@ -50,7 +50,7 @@ data class ObjectConfig(override val id: Int) : NamedConfig(id) {
     var femaleHeadModel: Int? = null
     var femaleHeadModel2: Int? = null
     var notedId: Int? = null
-    var notedTemplate: Int? = null
+    var notedTemplateId: Int? = null
     var resizeX: Int = 128
     var resizeY: Int = 128
     var resizeZ: Int = 128
@@ -69,6 +69,10 @@ data class ObjectConfig(override val id: Int) : NamedConfig(id) {
     var placeholderId: Int? = null
     var placeholderTemplateId: Int? = null
     var params: MutableMap<Int, Any>? = null
+
+    val isNoted get() = notedTemplateId == 799
+
+    val isPlaceHolder get() = placeholderTemplateId == 14401
 
     override fun encode(): ByteBuf {
         val data = Unpooled.buffer()
@@ -189,7 +193,7 @@ data class ObjectConfig(override val id: Int) : NamedConfig(id) {
             data.writeOpcode(97)
             data.writeShort(it)
         }
-        notedTemplate?.let {
+        notedTemplateId?.let {
             data.writeOpcode(98)
             data.writeShort(it)
         }
@@ -313,7 +317,7 @@ data class ObjectConfig(override val id: Int) : NamedConfig(id) {
                     93 -> itemConfig.femaleHeadModel2 = data.readUnsignedShort()
                     95 -> itemConfig.zan2d = data.readUnsignedShort()
                     97 -> itemConfig.notedId = data.readUnsignedShort()
-                    98 -> itemConfig.notedTemplate = data.readUnsignedShort()
+                    98 -> itemConfig.notedTemplateId = data.readUnsignedShort()
                     in 100..109 -> {
                         if (itemConfig.countObj == null) {
                             itemConfig.countObj = IntArray(10)
