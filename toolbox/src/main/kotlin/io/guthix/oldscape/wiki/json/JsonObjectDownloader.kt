@@ -17,7 +17,7 @@
 package io.guthix.oldscape.wiki.json
 
 import io.guthix.oldscape.cache.config.ObjectConfig
-import io.guthix.oldscape.wiki.wikitext.ItemWikiDefinition
+import io.guthix.oldscape.wiki.wikitext.ObjectWikiDefinition
 import io.ktor.util.KtorExperimentalAPI
 import kotlinx.serialization.ImplicitReflectionSerializer
 import mu.KotlinLogging
@@ -28,9 +28,9 @@ private val logger = KotlinLogging.logger {}
 @KtorExperimentalAPI
 @ImplicitReflectionSerializer
 fun main() {
-    JsonDownloader(logger).download<ObjectConfig, ItemWikiDefinition>(
+    JsonDownloader(logger).download<ObjectConfig, ObjectWikiDefinition>(
         Path.of("downloads/npcconfig.json"),
-        ItemWikiDefinition,
+        ObjectWikiDefinition,
         ObjectConfig
     )
 }

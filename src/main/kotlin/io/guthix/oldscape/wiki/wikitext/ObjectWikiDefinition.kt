@@ -23,7 +23,7 @@ import kotlinx.serialization.Serializable
 import java.time.LocalDate
 
 @Serializable
-class ItemWikiDefinition : WikiDefinition<ItemWikiDefinition>() {
+class ObjectWikiDefinition : WikiDefinition<ObjectWikiDefinition>() {
     override var ids: List<Int>? = null
     override var name: String? = null
     var versionType: String? = null
@@ -64,7 +64,7 @@ class ItemWikiDefinition : WikiDefinition<ItemWikiDefinition>() {
     var magicDamageBonus: Int? = null
     var prayerBonus: Int? = null
 
-    override fun parse(page: String, version: Int?): ItemWikiDefinition {
+    override fun parse(page: String, version: Int?): ObjectWikiDefinition {
         super.parse(page, version)
         fixInconsistencies()
         return this
