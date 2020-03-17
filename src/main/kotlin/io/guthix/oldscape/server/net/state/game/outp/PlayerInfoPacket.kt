@@ -17,6 +17,8 @@
 package io.guthix.oldscape.server.net.state.game.outp
 
 import io.guthix.buffer.*
+import io.guthix.oldscape.server.dimensions.floors
+import io.guthix.oldscape.server.dimensions.tiles
 import io.guthix.oldscape.server.api.Huffman
 import io.guthix.oldscape.server.net.state.game.OutGameEvent
 import io.guthix.oldscape.server.net.state.game.VarShortSize
@@ -26,9 +28,7 @@ import io.guthix.oldscape.server.world.entity.character.Character
 import io.guthix.oldscape.server.world.entity.character.player.Appearance
 import io.guthix.oldscape.server.world.entity.character.player.Player
 import io.guthix.oldscape.server.world.entity.character.player.PlayerList
-import io.guthix.oldscape.server.world.mapsquare.floors
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
-import io.guthix.oldscape.server.world.mapsquare.zone.tile.tiles
 import io.netty.buffer.ByteBuf
 import io.netty.buffer.Unpooled
 import io.netty.channel.ChannelHandlerContext

@@ -19,14 +19,12 @@ package io.guthix.oldscape.server.world.mapsquare
 import io.guthix.oldscape.cache.map.MapDefinition
 import io.guthix.oldscape.cache.map.MapLocDefinition
 import io.guthix.oldscape.cache.map.MapSquareDefinition
+import io.guthix.oldscape.server.dimensions.*
 import io.guthix.oldscape.server.api.blueprint.LocationBlueprints
 import io.guthix.oldscape.server.world.WorldMap
 import io.guthix.oldscape.server.world.entity.Obj
 import io.guthix.oldscape.server.world.entity.Loc
-import io.guthix.oldscape.server.world.mapsquare.zone.ZoneUnit
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
-import io.guthix.oldscape.server.world.mapsquare.zone.tile.TileUnit
-import io.guthix.oldscape.server.world.mapsquare.zone.tile.tiles
 
 class Mapsquare(val x: MapsquareUnit, val y: MapsquareUnit, val xtea: IntArray, val world: WorldMap) {
     val id get() = id(x, y)

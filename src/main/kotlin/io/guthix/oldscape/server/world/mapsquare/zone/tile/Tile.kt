@@ -16,7 +16,8 @@
  */
 package io.guthix.oldscape.server.world.mapsquare.zone.tile
 
-import io.guthix.oldscape.server.world.mapsquare.FloorUnit
+import io.guthix.oldscape.server.dimensions.FloorUnit
+import io.guthix.oldscape.server.dimensions.TileUnit
 import kotlin.math.abs
 
 data class Tile(val floor: FloorUnit, val x: TileUnit, val y: TileUnit) {

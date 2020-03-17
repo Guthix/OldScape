@@ -16,14 +16,12 @@
  */
 package io.guthix.oldscape.server.world.mapsquare
 
+import io.guthix.oldscape.server.dimensions.*
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.Obj
 import io.guthix.oldscape.server.world.entity.Loc
 import io.guthix.oldscape.server.world.mapsquare.zone.Zone
-import io.guthix.oldscape.server.world.mapsquare.zone.ZoneUnit
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
-import io.guthix.oldscape.server.world.mapsquare.zone.tile.TileUnit
-import io.guthix.oldscape.server.world.mapsquare.zone.zones
 
 class MapsquareFloor(
     val floor: FloorUnit,

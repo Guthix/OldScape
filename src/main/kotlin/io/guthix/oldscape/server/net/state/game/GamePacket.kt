@@ -17,9 +17,9 @@
 package io.guthix.oldscape.server.net.state.game
 
 import io.github.classgraph.ClassGraph
+import io.guthix.oldscape.server.dimensions.TileUnit
 import io.guthix.oldscape.server.event.script.InGameEvent
 import io.guthix.oldscape.server.world.World
-import io.guthix.oldscape.server.world.mapsquare.zone.tile.TileUnit
 import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 import mu.KotlinLogging

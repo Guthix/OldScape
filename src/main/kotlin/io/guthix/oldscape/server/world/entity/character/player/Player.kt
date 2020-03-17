@@ -16,6 +16,9 @@
  */
 package io.guthix.oldscape.server.world.entity.character.player
 
+import io.guthix.oldscape.server.dimensions.TileUnit
+import io.guthix.oldscape.server.dimensions.tiles
+import io.guthix.oldscape.server.dimensions.zones
 import io.guthix.oldscape.server.api.Varbits
 import io.guthix.oldscape.server.event.PublicMessageEvent
 import io.guthix.oldscape.server.event.script.InGameEvent
@@ -33,9 +36,6 @@ import io.guthix.oldscape.server.world.entity.character.player.intface.IfCompone
 import io.guthix.oldscape.server.world.entity.character.player.intface.TopInterface
 import io.guthix.oldscape.server.world.mapsquare.zone.Zone
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
-import io.guthix.oldscape.server.world.mapsquare.zone.tile.TileUnit
-import io.guthix.oldscape.server.world.mapsquare.zone.tile.tiles
-import io.guthix.oldscape.server.world.mapsquare.zone.zones
 import io.netty.channel.ChannelFuture
 import io.netty.channel.ChannelHandlerContext
 import java.util.concurrent.ConcurrentLinkedQueue

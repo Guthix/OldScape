@@ -39,6 +39,8 @@ dependencies {
         }
     }
     api group: 'io.guthix.oldscape', name: 'oldscape-cache'
+    api project(':dimensions')
+    api project(':blueprints')
     implementation group: 'com.github.guthix', name: 'Jagex-ByteBuf', version: jagexByteBufVersion
     implementation group: 'org.jetbrains.kotlin', name: 'kotlin-reflect', version: kotlinVersion
     implementation group: 'org.jetbrains.kotlin', name: 'kotlin-scripting-common', version: kotlinVersion

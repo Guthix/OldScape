@@ -19,15 +19,15 @@ package io.guthix.oldscape.server.world
 import io.guthix.cache.js5.Js5Archive
 import io.guthix.oldscape.cache.MapArchive
 import io.guthix.oldscape.cache.xtea.MapXtea
+import io.guthix.oldscape.server.dimensions.FloorUnit
+import io.guthix.oldscape.server.dimensions.TileUnit
+import io.guthix.oldscape.server.dimensions.ZoneUnit
+import io.guthix.oldscape.server.dimensions.mapsquares
 import io.guthix.oldscape.server.world.entity.Loc
 import io.guthix.oldscape.server.world.entity.Obj
-import io.guthix.oldscape.server.world.mapsquare.FloorUnit
 import io.guthix.oldscape.server.world.mapsquare.Mapsquare
-import io.guthix.oldscape.server.world.mapsquare.mapsquares
 import io.guthix.oldscape.server.world.mapsquare.zone.ZoneCollision
-import io.guthix.oldscape.server.world.mapsquare.zone.ZoneUnit
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
-import io.guthix.oldscape.server.world.mapsquare.zone.tile.TileUnit
 
 class WorldMap(val mapsquares: MutableMap<Int, Mapsquare>) {
     private fun id(x: TileUnit, y: TileUnit) = Mapsquare.id(x.inMapsquares, y.inMapsquares)

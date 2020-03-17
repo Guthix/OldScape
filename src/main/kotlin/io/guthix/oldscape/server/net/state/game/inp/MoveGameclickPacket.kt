@@ -17,11 +17,11 @@
 package io.guthix.oldscape.server.net.state.game.inp
 
 import io.guthix.buffer.readUnsignedByteADD
+import io.guthix.oldscape.server.dimensions.tiles
 import io.guthix.oldscape.server.net.state.game.ClientEvent
 import io.guthix.oldscape.server.event.MapClickEvent
 import io.guthix.oldscape.server.net.state.game.GamePacketDecoder
 import io.guthix.oldscape.server.net.state.game.VarByteSize
-import io.guthix.oldscape.server.world.mapsquare.zone.tile.tiles
 import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 

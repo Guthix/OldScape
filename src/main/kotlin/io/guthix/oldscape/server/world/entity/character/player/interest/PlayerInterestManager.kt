@@ -16,11 +16,11 @@
  */
 package io.guthix.oldscape.server.world.entity.character.player.interest
 
+import io.guthix.oldscape.server.dimensions.tiles
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.character.player.Player
 import io.guthix.oldscape.server.world.entity.character.player.PlayerList
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
-import io.guthix.oldscape.server.world.mapsquare.zone.tile.tiles
 
 class PlayerInterestManager {
     var localPlayerCount = 0

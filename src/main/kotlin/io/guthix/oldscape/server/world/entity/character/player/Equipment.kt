@@ -16,7 +16,7 @@
  */
 package io.guthix.oldscape.server.world.entity.character.player
 
-import io.guthix.oldscape.server.api.blueprint.ObjectBlueprint
+import io.guthix.oldscape.server.blueprints.ObjectBlueprint
 import io.guthix.oldscape.server.world.entity.Obj
 
 abstract class Equipment(

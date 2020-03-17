@@ -21,8 +21,8 @@ import io.guthix.oldscape.server.pathing.algo.canWalkEast
 import io.guthix.oldscape.server.pathing.algo.canWalkWest
 import io.guthix.oldscape.server.world.WorldMap
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
-import io.guthix.oldscape.server.world.mapsquare.zone.tile.TileUnit
-import io.guthix.oldscape.server.world.mapsquare.zone.tile.tiles
+import io.guthix.oldscape.server.dimensions.TileUnit
+import io.guthix.oldscape.server.dimensions.tiles
 import kotlin.math.abs
 
 private const val MAX_QUEUE_LENGTH = 4096

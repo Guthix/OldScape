@@ -18,13 +18,12 @@ package io.guthix.oldscape.server.net.state.game.outp.zone
 
 import io.guthix.buffer.writeByteADD
 import io.guthix.buffer.writeByteNEG
+import io.guthix.oldscape.server.dimensions.FloorUnit
+import io.guthix.oldscape.server.dimensions.TileUnit
 import io.guthix.oldscape.server.net.state.game.FixedSize
 import io.guthix.oldscape.server.net.state.game.ZoneOutGameEvent
-import io.guthix.oldscape.server.world.mapsquare.FloorUnit
-import io.guthix.oldscape.server.world.mapsquare.zone.tile.TileUnit
 import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
-import kotlinx.coroutines.delay
 
 class SoundAreaPacket(
     private val id: Int,

@@ -16,6 +16,7 @@
  */
 package io.guthix.oldscape.server.world.entity.character.player.interest
 
+import io.guthix.oldscape.server.dimensions.*
 import io.guthix.oldscape.server.net.state.game.ZoneOutGameEvent
 import io.guthix.oldscape.server.net.state.game.outp.zone.LocAddChangePacket
 import io.guthix.oldscape.server.net.state.game.outp.zone.LocDelPacket
@@ -25,7 +26,6 @@ import io.guthix.oldscape.server.world.WorldMap
 import io.guthix.oldscape.server.world.entity.Loc
 import io.guthix.oldscape.server.world.entity.Obj
 import io.guthix.oldscape.server.world.entity.character.player.Player
-import io.guthix.oldscape.server.world.mapsquare.MapsquareUnit
 import io.guthix.oldscape.server.world.mapsquare.zone.*
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
 
@@ -167,9 +167,9 @@ class MapInterestManager(val player: Player) {
 
         private val ZoneUnit.endMapInterest get() = (this + RANGE).inMapsquares
 
-        private fun onTutorialIsland(mSquareX: MapsquareUnit, mSquareY: MapsquareUnit) =
-            ((mSquareX.value == 48 || mSquareX.value == 49) && mSquareY.value == 48)
-                || (mSquareX.value == 48 && mSquareX.value == 148)
+        private fun onTutorialIsland(x: MapsquareUnit, y: MapsquareUnit) =
+            ((x.value == 48 || x.value == 49) && y.value == 48)
+                || (x.value == 48 && x.value == 148)
     }
 }
 

@@ -17,6 +17,7 @@
 package io.guthix.oldscape.server.net.state.game.outp
 
 import io.guthix.buffer.toBitMode
+import io.guthix.oldscape.server.dimensions.ZoneUnit
 import io.guthix.oldscape.server.net.state.game.OutGameEvent
 import io.guthix.oldscape.server.net.state.game.VarShortSize
 import io.guthix.oldscape.server.world.World
@@ -24,7 +25,6 @@ import io.guthix.oldscape.server.world.entity.character.player.Player
 import io.guthix.oldscape.server.world.entity.character.player.PlayerList
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
 import io.guthix.oldscape.server.world.entity.character.player.interest.PlayerInterestManager.Companion.regionId
-import io.guthix.oldscape.server.world.mapsquare.zone.ZoneUnit
 import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 import kotlin.math.ceil

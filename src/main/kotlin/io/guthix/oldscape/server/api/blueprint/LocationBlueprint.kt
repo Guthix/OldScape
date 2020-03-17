@@ -18,8 +18,7 @@ package io.guthix.oldscape.server.api.blueprint
 
 import io.guthix.cache.js5.Js5Archive
 import io.guthix.oldscape.cache.config.LocationConfig
-import io.guthix.oldscape.server.world.mapsquare.zone.tile.TileUnit
-import io.guthix.oldscape.server.world.mapsquare.zone.tile.tiles
+import io.guthix.oldscape.server.blueprints.LocationBlueprint
 import mu.KotlinLogging
 import java.io.IOException
 
@@ -40,39 +39,5 @@ object LocationBlueprints {
         }
         blueprints = tempLocs.toMap()
         logger.info { "Loaded ${blueprints.size} location blueprints" }
-    }
-}
-
-class LocationBlueprint private constructor(
-    val id: Int,
-    val name: String,
-    val width: TileUnit,
-    val length: TileUnit,
-    val mapIconId: Int?,
-    val clipType: Int,
-    val isClipped: Boolean,
-    val isHollow: Boolean,
-    val impenetrable: Boolean,
-    val accessBlockFlags: Int,
-    val animationId: Int?,
-    val options: Array<String?>
-) {
-    companion object {
-        fun create(config: LocationConfig): LocationBlueprint {
-            return LocationBlueprint(
-                config.id,
-                config.name,
-                config.width.toInt().tiles,
-                config.length.toInt().tiles,
-                config.mapIconId,
-                config.clipType,
-                config.isClipped,
-                config.isHollow,
-                config.impenetrable,
-                config.accessBlock.toInt(),
-                config.animationId,
-                config.options
-            )
-        }
     }
 }
