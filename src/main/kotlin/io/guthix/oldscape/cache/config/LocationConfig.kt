@@ -24,7 +24,7 @@ import java.io.IOException
 
 data class LocationConfig(override val id: Int): NamedConfig(id) {
     override var name = "null"
-    var width: Short= 1
+    var width: Short = 1
     var length: Short = 1
     var mapIconId: Int? = null
     val options = arrayOfNulls<String>(5)
