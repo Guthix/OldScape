@@ -18,16 +18,13 @@ package io.guthix.oldscape.wiki.wikitext
 
 import io.guthix.oldscape.wiki.WikiConfigCompanion
 import io.guthix.oldscape.wiki.WikiDefinition
-import io.guthix.oldscape.wiki.serialization.LocalDateSerializer
-import kotlinx.serialization.Serializable
 import java.time.LocalDate
 
-@Serializable
 class ObjectWikiDefinition : WikiDefinition<ObjectWikiDefinition>() {
     override var ids: List<Int>? = null
     override var name: String? = null
     var versionType: String? = null
-    @Serializable(LocalDateSerializer::class) var releaseDate: LocalDate? = null
+    var releaseDate: LocalDate? = null
     var update: String? = null
     var isMembers: Boolean? = null
     var quests: List<String>? = null

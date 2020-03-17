@@ -36,7 +36,6 @@ allprojects {
         implementation group: 'ch.qos.logback', name: 'logback-classic', version: logbackVersion
         implementation group: 'io.ktor', name: 'ktor-server-core', version: ktorVersion
         implementation group: 'io.ktor', name: 'ktor-client-apache', version: ktorVersion
-        implementation group: 'org.jetbrains.kotlinx', name: 'kotlinx-serialization-runtime', version: kotlinSerializationVersion
     }
 
     compileKotlin {

@@ -25,7 +25,7 @@ private const val wikiUrl = "https://oldschool.runescape.wiki"
 
 /** Scrapes the wiki and retrieves the wiki text.*/
 suspend fun HttpClient.scrapeWikiText(wikiType: String, id: Int, name: String): String {
-    val urlName = name.replace(' ', '_').replace("<.*?>".toRegex(), "");
+    val urlName = name.replace(' ', '_').replace("<.*?>".toRegex(), "")
     val queryUrl = if(urlName.contains("%")) {
         "$wikiUrl/w/Special:Lookup?type=$wikiType&id=$id"
     } else {
