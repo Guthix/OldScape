@@ -21,11 +21,11 @@ import io.guthix.oldscape.server.event.MiniMapClickEvent
 import io.guthix.oldscape.server.pathing.algo.DestinationTile
 import io.guthix.oldscape.server.pathing.algo.imp.breadthFirstSearch
 import io.guthix.oldscape.server.world.entity.character.player.Player
-import io.guthix.oldscape.server.world.mapsquare.zone.tile.TileUnit
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
-import io.guthix.oldscape.server.world.mapsquare.FloorUnit
 import io.guthix.oldscape.server.world.WorldMap
 import io.guthix.oldscape.server.event.script.Routine
+import io.guthix.oldscape.server.dimensions.TileUnit
+import io.guthix.oldscape.server.dimensions.FloorUnit
 
 on(MiniMapClickEvent::class).then {
     player.startWalkingToTile(player.position.floor, event.x, event.y, world.map)

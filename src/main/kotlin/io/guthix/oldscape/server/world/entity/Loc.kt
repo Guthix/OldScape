@@ -16,10 +16,9 @@
  */
 package io.guthix.oldscape.server.world.entity
 
-import io.guthix.oldscape.server.api.blueprint.LocationBlueprint
-import io.guthix.oldscape.server.world.mapsquare.FloorUnit
+import io.guthix.oldscape.server.dimensions.TileUnit
+import io.guthix.oldscape.server.blueprints.LocationBlueprint
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
-import io.guthix.oldscape.server.world.mapsquare.zone.tile.TileUnit
 import kotlin.reflect.KProperty
 
 class Loc(

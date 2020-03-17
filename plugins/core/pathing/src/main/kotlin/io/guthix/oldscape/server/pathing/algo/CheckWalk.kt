@@ -17,11 +17,11 @@
 package io.guthix.oldscape.server.pathing.algo
 
 import io.guthix.oldscape.server.world.WorldMap
-import io.guthix.oldscape.server.world.mapsquare.FloorUnit
 import io.guthix.oldscape.server.world.mapsquare.zone.ZoneCollision
-import io.guthix.oldscape.server.world.mapsquare.zone.tile.TileUnit
-import io.guthix.oldscape.server.world.mapsquare.zone.tile.tiles
-import io.guthix.oldscape.server.world.mapsquare.zone.tile.until
+import io.guthix.oldscape.server.dimensions.FloorUnit
+import io.guthix.oldscape.server.dimensions.TileUnit
+import io.guthix.oldscape.server.dimensions.tiles
+import io.guthix.oldscape.server.dimensions.until
 
 internal fun WorldMap.canWalkWest(floor: FloorUnit, x: TileUnit, y: TileUnit, moverSize: TileUnit): Boolean {
     for(i in 0.tiles until moverSize) {

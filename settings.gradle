@@ -31,4 +31,6 @@ def includeModules(Path pluginDir) {
     }
 }
 
+include 'dimensions'
+include 'blueprints'
 includeModules(pluginRootDir)

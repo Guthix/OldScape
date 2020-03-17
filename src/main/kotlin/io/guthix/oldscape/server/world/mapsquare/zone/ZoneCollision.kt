@@ -16,11 +16,8 @@
  */
 package io.guthix.oldscape.server.world.mapsquare.zone
 
+import io.guthix.oldscape.server.dimensions.*
 import io.guthix.oldscape.server.world.entity.Loc
-import io.guthix.oldscape.server.world.mapsquare.floors
-import io.guthix.oldscape.server.world.mapsquare.zone.tile.TileUnit
-import io.guthix.oldscape.server.world.mapsquare.zone.tile.tiles
-import io.guthix.oldscape.server.world.mapsquare.zone.tile.until
 
 class ZoneCollision(val zone: Zone) {
     val masks = Array(ZoneUnit.SIZE_TILE.value) {

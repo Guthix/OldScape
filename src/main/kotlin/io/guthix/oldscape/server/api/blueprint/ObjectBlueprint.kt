@@ -18,6 +18,7 @@ package io.guthix.oldscape.server.api.blueprint
 
 import io.guthix.cache.js5.Js5Archive
 import io.guthix.oldscape.cache.config.ObjectConfig
+import io.guthix.oldscape.server.blueprints.ObjectBlueprint
 import mu.KotlinLogging
 import java.io.IOException
 
@@ -38,29 +39,5 @@ object ObjectBlueprints {
         }
         blueprints = tempLocs.toMap()
         logger.info { "Loaded ${blueprints.size} object blueprints" }
-    }
-}
-
-class ObjectBlueprint private constructor(
-    val id: Int,
-    val name: String,
-    val stackable: Boolean,
-    val tradable: Boolean,
-    val notedId: Int?,
-    val iop: Array<String?>,
-    val groundActions: Array<String?>
-) {
-    companion object {
-        fun create(config: ObjectConfig): ObjectBlueprint {
-            return ObjectBlueprint(
-                config.id,
-                config.name,
-                config.stackable,
-                config.tradable,
-                config.notedId,
-                config.iop,
-                config.groundActions
-            )
-        }
     }
 }

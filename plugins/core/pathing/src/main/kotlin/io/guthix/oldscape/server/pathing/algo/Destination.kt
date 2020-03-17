@@ -19,11 +19,11 @@ package io.guthix.oldscape.server.pathing.algo
 import io.guthix.oldscape.server.world.WorldMap
 import io.guthix.oldscape.server.world.entity.Loc
 import io.guthix.oldscape.server.world.entity.character.player.Player
-import io.guthix.oldscape.server.world.mapsquare.FloorUnit
 import io.guthix.oldscape.server.world.mapsquare.zone.ZoneCollision
+import io.guthix.oldscape.server.dimensions.FloorUnit
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
-import io.guthix.oldscape.server.world.mapsquare.zone.tile.TileUnit
-import io.guthix.oldscape.server.world.mapsquare.zone.tile.tiles
+import io.guthix.oldscape.server.dimensions.TileUnit
+import io.guthix.oldscape.server.dimensions.tiles
 
 abstract class Destination(val floor: FloorUnit, val x: TileUnit, val y: TileUnit) {
     abstract fun reached(moverX: TileUnit, moverY: TileUnit, moverSize: TileUnit): Boolean

@@ -14,10 +14,8 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with Foobar. If not, see <https://www.gnu.org/licenses/>.
  */
-package io.guthix.oldscape.server.world.mapsquare
+package io.guthix.oldscape.server.dimensions
 
-import io.guthix.oldscape.server.world.mapsquare.zone.ZoneUnit
-import io.guthix.oldscape.server.world.mapsquare.zone.tile.TileUnit
 import kotlin.math.abs
 
 fun abs(n: MapsquareUnit) = abs(n.value).mapsquares

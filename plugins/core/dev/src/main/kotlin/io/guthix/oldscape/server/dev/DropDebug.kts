@@ -22,7 +22,7 @@ import io.guthix.oldscape.server.api.blueprint.ObjectBlueprints
 import io.guthix.oldscape.server.api.blueprint.LocationBlueprints
 import io.guthix.oldscape.server.world.entity.Loc
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
-import io.guthix.oldscape.server.world.mapsquare.zone.tile.tiles
+import io.guthix.oldscape.server.dimensions.tiles
 import io.guthix.oldscape.server.world.entity.character.SpotAnimation
 
 on(ClientCheatEvent::class).where { event.string == "drop" }.then {

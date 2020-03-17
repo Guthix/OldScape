@@ -16,9 +16,7 @@
  */
 package io.guthix.oldscape.server.world.entity
 
-import io.guthix.oldscape.server.api.blueprint.ObjectBlueprint
-import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
-import kotlin.reflect.KProperty
+import io.guthix.oldscape.server.blueprints.ObjectBlueprint
 
 open class Obj(
     val blueprint: ObjectBlueprint,

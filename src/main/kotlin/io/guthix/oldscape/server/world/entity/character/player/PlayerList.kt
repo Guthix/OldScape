@@ -16,10 +16,10 @@
  */
 package io.guthix.oldscape.server.world.entity.character.player
 
+import io.guthix.oldscape.server.dimensions.floors
+import io.guthix.oldscape.server.dimensions.tiles
 import io.guthix.oldscape.server.net.state.login.LoginRequest
-import io.guthix.oldscape.server.world.mapsquare.floors
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
-import io.guthix.oldscape.server.world.mapsquare.zone.tile.tiles
 import java.util.*
 import kotlin.random.Random
 

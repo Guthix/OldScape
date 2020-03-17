@@ -19,9 +19,9 @@ package io.guthix.oldscape.server.pathing.algo.imp
 import io.guthix.oldscape.server.world.WorldMap
 import io.guthix.oldscape.server.world.mapsquare.zone.ZoneCollision
 import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
-import io.guthix.oldscape.server.world.mapsquare.zone.tile.TileUnit
-import io.guthix.oldscape.server.world.mapsquare.zone.tile.abs
-import io.guthix.oldscape.server.world.mapsquare.zone.tile.tiles
+import io.guthix.oldscape.server.dimensions.TileUnit
+import io.guthix.oldscape.server.dimensions.abs
+import io.guthix.oldscape.server.dimensions.tiles
 
 private const val SCALE = 16
 
