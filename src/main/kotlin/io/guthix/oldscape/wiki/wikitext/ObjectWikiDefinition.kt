@@ -34,8 +34,6 @@ class ObjectWikiDefinition : WikiDefinition<ObjectWikiDefinition>() {
     var isNoteable: Boolean? = null
     var hasPlaceHolder: Boolean? = null
     var isAlchable: Boolean? = null
-    var highAlchPrice: Int? = null
-    var lowAlchPrice: Int? = null
     var destroy: String? = null
     var valuePrice: Int? = null
     var storePrice: List<Int>? = null
@@ -63,14 +61,7 @@ class ObjectWikiDefinition : WikiDefinition<ObjectWikiDefinition>() {
 
     override fun parse(page: String, version: Int?): ObjectWikiDefinition {
         super.parse(page, version)
-        fixInconsistencies()
         return this
-    }
-
-    private fun fixInconsistencies() {
-        if(highAlchPrice == null && lowAlchPrice == null) {
-            isAlchable = false
-        }
     }
 
     override fun parseKeyValueLine(line: String, version: Int?)  = when {
@@ -94,8 +85,6 @@ class ObjectWikiDefinition : WikiDefinition<ObjectWikiDefinition>() {
         line.checkWikiKey("noteable", version) -> isNoteable = line.getWikiBool()
         line.checkWikiKey("placeholder", version) -> hasPlaceHolder = line.getWikiBool()
         line.checkWikiKey("alchable", version) -> isAlchable = line.getWikiBool()
-        line.checkWikiKey("high", version) -> highAlchPrice = line.getWikiNoInt()
-        line.checkWikiKey("low", version) -> lowAlchPrice = line.getWikiNoInt()
         line.checkWikiKey("destroy", version) -> destroy = line.getWikiString()
         line.checkWikiKey("value", version) -> valuePrice = line.getWikiInt()
         line.checkWikiKey("store", version) ->  {
