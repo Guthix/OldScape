@@ -38,7 +38,7 @@ class ObjectWikiDefinition : WikiDefinition<ObjectWikiDefinition>() {
     var valuePrice: Int? = null
     var storePrice: List<Int>? = null
     var seller: String? = null
-    var weight: Double? = null
+    var weight: Float? = null
     var examine: String? = null
     var onExchange: Boolean? = null
 
@@ -99,7 +99,7 @@ class ObjectWikiDefinition : WikiDefinition<ObjectWikiDefinition>() {
         }
 
         line.checkWikiKey("seller", version) -> seller = line.getWikiString()
-        line.checkWikiKey("weight", version) -> weight = line.getWikiDouble()
+        line.checkWikiKey("weight", version) -> weight = line.getWikiFloat()
         line.checkWikiKey("examine", version) -> examine = line.getWikiString()
         line.checkWikiKey("exchange", version) -> onExchange =
             !line.getWikiString().equals("No", ignoreCase = true)

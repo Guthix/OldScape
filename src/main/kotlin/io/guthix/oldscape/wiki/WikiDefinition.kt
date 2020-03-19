@@ -72,8 +72,8 @@ abstract class WikiDefinition<P : WikiDefinition<P>> {
         ?.replace(" ", "")
         ?.toInt()
 
-    protected fun String.getWikiDouble() = getWikiString()
-        ?.toDouble()
+    protected fun String.getWikiFloat() = getWikiString()
+        ?.toFloat()
 
     protected fun String.getWikiNoString(): String? {
         if(contains("No", ignoreCase = true)) return null
