@@ -7,7 +7,9 @@ pluginManagement {
 
 rootProject.name = 'oldscape-wiki'
 
-include 'toolbox'
+include 'downloader'
+include 'yaml'
+
 includeBuild('../cache') {
     dependencySubstitution {
         substitute module('io.guthix.oldscape:oldscape-cache') with project(':')

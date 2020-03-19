@@ -25,9 +25,14 @@ import io.guthix.oldscape.wiki.wikitext.NpcWikiDefinition
 import io.guthix.oldscape.wiki.wikitext.ObjectWikiDefinition
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.apache.Apache
+import io.ktor.client.request.get
+import io.ktor.client.request.request
+import io.ktor.client.statement.HttpResponse
 import kotlinx.coroutines.*
 import mu.KotlinLogging
 import java.nio.file.Path
+
+private const val wikiUrl = "https://oldschool.runescape.wiki"
 
 private val logger = KotlinLogging.logger {  }
 
@@ -116,3 +121,23 @@ fun scrapeNpcWikiConfigs(cacheConfigs: Map<Int, NpcConfig>)= runBlocking {
     }
     wikiConfigs.values.toList()
 }
+
+/** Scrapes the wiki and retrieves the wiki text.*/
+suspend fun HttpClient.scrapeWikiText(wikiType: String, id: Int, name: String): String {
+    val urlName = name.replace(' ', '_').replace("<.*?>".toRegex(), "")
+    val queryUrl = if(urlName.contains("%")) {
+        "$wikiUrl/w/Special:Lookup?type=$wikiType&id=$id"
+    } else {
+        "$wikiUrl/w/Special:Lookup?type=$wikiType&id=$id&name=$urlName"
+    }
+    val redirect = request<HttpResponse>(queryUrl).call.response.headers["location"]
+        ?: throw PageNotFoundException("Could not retrieve redirect for $queryUrl.")
+    val dir = redirect.substringAfter("oldschool.runescape.wiki/")
+    if(dir.startsWith("w/Null") || dir.startsWith("w/Special:Search")) {
+        throw PageNotFoundException("Could not retrieve redirect for $queryUrl.")
+    }
+    val rawUrl = "${redirect.substringBefore("#")}?action=raw"
+    return get(rawUrl)
+}
+
+class PageNotFoundException(message: String) : Exception(message)

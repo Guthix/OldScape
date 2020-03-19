@@ -1,0 +1,19 @@
+repositories {
+    maven { url 'https://jitpack.io' }
+}
+
+dependencies {
+    implementation rootProject
+    api group: 'io.guthix.oldscape', name: 'oldscape-cache'
+    implementation group: 'org.jetbrains.kotlinx', name: 'kotlinx-coroutines-core', version: kotlinCoroutinesVersion
+    implementation group: 'io.ktor', name: 'ktor-server-core', version: ktorVersion
+    implementation group: 'io.ktor', name: 'ktor-client-apache', version: ktorVersion
+}
+
+license {
+    header = licenseHeader
+    exclude("*\\main_file_cache.*")
+    exclude("**/*.json")
+    exclude("**/*.xml")
+    exclude("**/*.yaml")
+}

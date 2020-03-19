@@ -14,13 +14,15 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with Foobar. If not, see <https://www.gnu.org/licenses/>.
  */
-package io.guthix.oldscape.wiki
+package io.guthix.oldscape.wiki.yaml
 
 import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory
 import com.fasterxml.jackson.dataformat.yaml.YAMLGenerator
 import com.fasterxml.jackson.module.kotlin.registerKotlinModule
+import io.guthix.oldscape.wiki.npcWikiDownloader
+import io.guthix.oldscape.wiki.objectWikiDownloader
 import mu.KotlinLogging
 import java.nio.file.Path
 
@@ -33,7 +35,8 @@ fun main(args: Array<String>) {
 object YamlDownloader {
     @JvmStatic
     fun main(args: Array<String>) {
-        val cacheDir = Path.of(javaClass.getResource("/cache").toURI())
+        val cacheDir = Path.of("..\\..\\server\\src\\main\\resources\\cache")
+        println(cacheDir.toFile().absolutePath)
         val yamlFactory = YAMLFactory()
             .disable(YAMLGenerator.Feature.WRITE_DOC_START_MARKER)
         val objectMapper = ObjectMapper(yamlFactory)
