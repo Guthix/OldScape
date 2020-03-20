@@ -21,23 +21,50 @@ import io.guthix.oldscape.cache.config.ObjectConfig
 class ObjectBlueprint private constructor(
     val id: Int,
     val name: String,
-    val stackable: Boolean,
-    val tradable: Boolean,
+    val weight: Float?,
+    val examines: String,
+    val isStackable: Boolean,
+    val isTradable: Boolean,
     val notedId: Int?,
-    val iop: Array<String?>,
-    val groundActions: Array<String?>
+    val isNoted: Boolean,
+    val placeHolderId: Int?,
+    val isPlaceHolder: Boolean,
+    val interfaceOperations: Array<String?>,
+    val groundOperations: Array<String?>,
+    val equipment: Equipment?
 ) {
+    class Equipment(
+        val slot: EquipmentSlot,
+        val attackBonus: StyleBonus,
+        val defenceBonus: StyleBonus,
+        val strengthBonus: StrengthBonus,
+        val prayerBonus: Int
+    )
+
     companion object {
-        fun create(config: ObjectConfig): ObjectBlueprint {
+        fun create(config: ObjectConfig, extraConfig: ExtraObjectConfig): ObjectBlueprint {
             return ObjectBlueprint(
                 config.id,
                 config.name,
+                extraConfig.weight,
+                extraConfig.examine,
                 config.stackable,
                 config.tradable,
                 config.notedId,
+                config.isNoted,
+                config.placeholderId,
+                config.isPlaceHolder,
                 config.iop,
-                config.groundActions
+                config.groundActions,
+                extraConfig.equipment
             )
         }
     }
 }
+
+class ExtraObjectConfig(
+    val ids: List<Int>,
+    val weight: Float,
+    val examine: String,
+    val equipment: ObjectBlueprint.Equipment?
+)

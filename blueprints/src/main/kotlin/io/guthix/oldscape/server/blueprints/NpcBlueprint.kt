@@ -16,5 +16,71 @@
  */
 package io.guthix.oldscape.server.blueprints
 
-class NpcBlueprint {
+import io.guthix.oldscape.cache.config.NpcConfig
+
+class NpcBlueprint(
+    val id: Int,
+    val name: String?,
+    val size: Int,
+    val combatLevel: Int?,
+    val isInteractable: Boolean,
+    var walkSequence: Int?,
+    var walkLeftSequence: Int?,
+    var walkRightSequence: Int?,
+    var walkBackSequence: Int?,
+    var turnLeftSequence: Int?,
+    var turnRightSequence: Int?
+) {
+    class Combat(
+        val level: Int,
+        val attackStyled: List<String>,
+        val isAggressive: Boolean,
+        val isPoisonous: Boolean,
+        val isImmumePoison: Boolean,
+        val isImmuneVenom: Boolean,
+        val stats: Stats,
+        val aggressiveStats: AggressiveStats,
+        val defensiveStats: StyleBonus
+    ) {
+        class Stats(
+            val health: Int,
+            val attack: Int,
+            val strength: Int,
+            val defence: Int,
+            val range: Int,
+            val magic: Int
+        )
+
+        class AggressiveStats(
+            val attack: Int,
+            val range: Int,
+            val magic: Int,
+            val strengthBonus: StrengthBonus
+        )
+    }
+
+
+
+
+    companion object {
+        fun create(config: NpcConfig) = NpcBlueprint(
+            config.id,
+            config.name,
+            config.size.toInt(),
+            config.combatLevel,
+            config.isInteractable,
+            config.walkSequence,
+            config.walkLeftSequence,
+            config.walkRightSequence,
+            config.walkBackSequence,
+            config.turnLeftSequence,
+            config.turnRightSequence
+        )
+    }
 }
+
+class ExtraNpcConfig(
+    val ids: List<Int>,
+    val examine: String,
+    val combat: NpcBlueprint.Combat?
+)
