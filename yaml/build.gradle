@@ -9,6 +9,7 @@ repositories {
 dependencies {
     implementation rootProject
     implementation project(':downloader')
+    implementation group: 'io.guthix.oldscape', name: 'oldscape-server-blueprints'
     implementation group: 'ch.qos.logback', name: 'logback-classic', version: logbackVersion
     implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: jacksonVersion
     implementation group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-yaml', version: jacksonVersion

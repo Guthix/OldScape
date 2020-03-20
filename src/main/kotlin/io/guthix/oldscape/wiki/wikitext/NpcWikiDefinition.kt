@@ -35,7 +35,7 @@ class NpcWikiDefinition : WikiDefinition<NpcWikiDefinition>() {
     var weakness: String? = null
     var combatLvl: Int? = null
     var hitPoints: Int? = null
-    var attackStyle: String? = null
+    var attackStyles: List<String>? = null
     var maxHit: Int? = null
     var attackSpeed: Int? = null
     var isImmuneToPoison: Boolean? = null
@@ -45,13 +45,13 @@ class NpcWikiDefinition : WikiDefinition<NpcWikiDefinition>() {
     var attackStat: Int? = null
     var strengthStat: Int? = null
     var defenceStat: Int? = null
-    var mageStat: Int? = null
-    var rangeState: Int? = null
-    var attBonusStab: Int? = null
-    var attBonusSlash: Int? = null
+    var magicStat: Int? = null
+    var rangeStat: Int? = null
+    var attackBonusMelee: Int? = null
+    var strBonus: Int? = null
     var attBonusCrush: Int? = null
-    var attBonusMagic: Int? = null
-    var attBonusRange: Int? = null
+    var attackBonusMagic: Int? = null
+    var attackBonusRange: Int? = null
     var defBonusStab: Int? = null
     var defBonusSlash: Int? = null
     var defBonusCrush: Int? = null
@@ -60,7 +60,7 @@ class NpcWikiDefinition : WikiDefinition<NpcWikiDefinition>() {
     var strengthBonus: Int? = null
     var rangeStrengthBonus: Int? = null
     var attackBonus: Int? = null
-    var magicBonus: Int? = null
+    var magicStrengthBonus: Int? = null
 
     override fun parseKeyValueLine(line: String, version: Int?)  = when {
         line.checkWikiKey("id", version) -> ids = line.getIds()
@@ -81,7 +81,8 @@ class NpcWikiDefinition : WikiDefinition<NpcWikiDefinition>() {
         line.checkWikiKey("immunepoison", version) -> isImmuneToPoison = line.getIsImmune()
         line.checkWikiKey("immunevenom", version) -> isImmuneToVenom = line.getIsImmune()
         line.checkWikiKey("attack speed", version) -> attackSpeed = line.getWikiInt()
-        line.checkWikiKey("astyle", version) -> attackStyle = line.getWikiString()
+        line.checkWikiKey("attack style", version) -> attackStyles = line.getWikiString()
+            ?.replace("[", "")?.replace("]", "")?.split(",")
         line.checkWikiKey("max hit", version) -> maxHit = line.getWikiInt()
         line.checkWikiKey("cat", version) -> category = line.getWikiString()
         line.checkWikiKey("krystilia", version) -> line.addSlayerMaster("krystilia")
@@ -92,22 +93,19 @@ class NpcWikiDefinition : WikiDefinition<NpcWikiDefinition>() {
         line.checkWikiKey("att", version) -> attackStat = line.getWikiInt()
         line.checkWikiKey("str",  version) -> strengthStat = line.getWikiInt()
         line.checkWikiKey("def", version) -> defenceStat = line.getWikiInt()
-        line.checkWikiKey("mage", version) -> mageStat = line.getWikiInt()
-        line.checkWikiKey("range", version) -> rangeState = line.getWikiInt()
-        line.checkWikiKey("astab", version) -> attBonusStab = line.getWikiInt()
-        line.checkWikiKey("aslash", version) -> attBonusSlash = line.getWikiInt()
-        line.checkWikiKey("acrush", version) -> attBonusCrush = line.getWikiInt()
-        line.checkWikiKey("amagic", version) -> attBonusMagic = line.getWikiInt()
-        line.checkWikiKey("arange", version) -> attBonusRange = line.getWikiInt()
+        line.checkWikiKey("mage", version) -> magicStat = line.getWikiInt()
+        line.checkWikiKey("range", version) -> rangeStat = line.getWikiInt()
+        line.checkWikiKey("attbns", version) -> attackBonusMelee = line.getWikiInt()
+        line.checkWikiKey("arange", version) -> attackBonusRange = line.getWikiInt()
+        line.checkWikiKey("amagic", version) -> attackBonusMagic = line.getWikiInt()
+        line.checkWikiKey("strbns", version) -> strengthBonus = line.getWikiInt()
+        line.checkWikiKey("rngbns", version) -> rangeStrengthBonus = line.getWikiInt()
+        line.checkWikiKey("mbns", version) -> magicStrengthBonus = line.getWikiInt()
         line.checkWikiKey("dstab", version) -> defBonusStab = line.getWikiInt()
         line.checkWikiKey("dslash", version) -> defBonusSlash = line.getWikiInt()
         line.checkWikiKey("dcrush", version) -> defBonusCrush = line.getWikiInt()
         line.checkWikiKey("dmagic", version) -> defBonusMagic = line.getWikiInt()
         line.checkWikiKey("drange", version) -> defBonusRange = line.getWikiInt()
-        line.checkWikiKey("strbns", version) -> strengthBonus = line.getWikiInt()
-        line.checkWikiKey("rngbns", version) -> rangeStrengthBonus = line.getWikiInt()
-        line.checkWikiKey("attbns", version) -> attackBonus = line.getWikiInt()
-        line.checkWikiKey("mbns", version) -> magicBonus = line.getWikiInt()
         else -> {}
     }
 

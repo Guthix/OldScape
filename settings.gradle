@@ -15,3 +15,9 @@ includeBuild('../cache') {
         substitute module('io.guthix.oldscape:oldscape-cache') with project(':')
     }
 }
+
+includeBuild('../server') {
+    dependencySubstitution {
+        substitute module('io.guthix.oldscape:oldscape-server-blueprints') with project(':blueprints')
+    }
+}

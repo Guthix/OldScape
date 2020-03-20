@@ -21,8 +21,11 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory
 import com.fasterxml.jackson.dataformat.yaml.YAMLGenerator
 import com.fasterxml.jackson.module.kotlin.registerKotlinModule
+import io.guthix.oldscape.server.blueprints.*
 import io.guthix.oldscape.wiki.npcWikiDownloader
 import io.guthix.oldscape.wiki.objectWikiDownloader
+import io.guthix.oldscape.wiki.wikitext.NpcWikiDefinition
+import io.guthix.oldscape.wiki.wikitext.ObjectWikiDefinition
 import mu.KotlinLogging
 import java.nio.file.Path
 
@@ -45,13 +48,106 @@ object YamlDownloader {
 
 
         val objectFile = Path.of(javaClass.getResource("/").toURI()).resolve("Objects.yaml").toFile()
-        val objectsWiki = objectWikiDownloader(cacheDir)
-        objectMapper.writeValue(objectFile, objectsWiki)
-        logger.info { "Done writing objects" }
+        val extraObjConfigs = objectWikiDownloader(cacheDir).filter { it.ids != null }.map { it.toExtraConfig() }
+        objectMapper.writeValue(objectFile, extraObjConfigs)
+        logger.info { "Done writing objects to ${objectFile.absoluteFile.absolutePath}" }
 
         val npcFile = Path.of(javaClass.getResource("/").toURI()).resolve("Npcs.yaml").toFile()
-        val npcWikiData = npcWikiDownloader(cacheDir)
+        val npcWikiData = npcWikiDownloader(cacheDir).filter { it.ids != null }.map { it.toExtraConfig() }
         objectMapper.writeValue(npcFile, npcWikiData)
-        logger.info { "Done writing npcs" }
+        logger.info { "Done writing npcs to ${npcFile.absoluteFile.absolutePath}" }
     }
+}
+
+val equipmentSlotMapping = mapOf(
+    "head" to EquipmentSlot.HEAD,
+    "cape" to EquipmentSlot.CAPE,
+    "neck" to EquipmentSlot.NECK,
+    "ammo" to EquipmentSlot.AMMUNITION,
+    "weapon" to EquipmentSlot.WEAPON,
+    "shield" to EquipmentSlot.SHIELD,
+    "2h" to EquipmentSlot.TWO_HAND,
+    "body" to EquipmentSlot.BODY,
+    "legs" to EquipmentSlot.LEGS,
+    "hands" to EquipmentSlot.HANDS,
+    "feet" to EquipmentSlot.FEET,
+    "ring" to EquipmentSlot.RING
+)
+
+fun ObjectWikiDefinition.toExtraConfig(): ExtraObjectConfig {
+    val equipment = if(isEquipable == true && slot != null) {
+        val slot = equipmentSlotMapping[slot!!] ?: throw IllegalStateException("Unmapped slot found: $slot.")
+        ObjectBlueprint.Equipment(
+            slot,
+            StyleBonus(
+                attBonusStab ?: 0,
+                attBonusSlash ?: 0,
+                attBonusCrush ?: 0,
+                attBonusRange ?: 0,
+                attBonusMagic ?: 0
+            ),
+            StyleBonus(
+                defBonusStab ?: 0,
+                defBonusSlash?: 0,
+                defBonusCrush ?: 0,
+                defBonusRange ?: 0,
+                defBonusMagic ?: 0
+            ),
+            StrengthBonus(
+                strengthBonus ?: 0,
+                rangeStrengthBonus ?: 0,
+                magicDamageBonus ?: 0
+            ),
+            prayerBonus ?: 0
+        )
+    } else null
+    return ExtraObjectConfig(
+        ids!!,
+        weight ?: 0f,
+        examine ?: "",
+        equipment
+    )
+}
+
+fun NpcWikiDefinition.toExtraConfig(): ExtraNpcConfig {
+    val combat = if(combatLvl != null) {
+        NpcBlueprint.Combat(
+            combatLvl!!,
+            attackStyles ?: emptyList(),
+            isAggressive ?: false,
+            isPoisonous ?: false,
+            isImmuneToPoison ?: false,
+            isImmuneToVenom ?: false,
+            NpcBlueprint.Combat.Stats(
+                hitPoints ?: 0,
+                attackStat ?: 0,
+                strengthStat ?: 0,
+                defenceStat ?: 0,
+                magicStat ?: 0,
+                rangeStat ?: 0
+            ),
+            NpcBlueprint.Combat.AggressiveStats(
+                attackBonusMelee ?: 0,
+                attackBonusRange ?: 0,
+                attackBonusMagic ?: 0,
+                StrengthBonus(
+                    strengthBonus ?: 0,
+                    rangeStrengthBonus ?: 0,
+                    magicStrengthBonus ?: 0
+                )
+            ),
+            StyleBonus(
+                defBonusStab ?: 0,
+                defBonusSlash ?: 0,
+                defBonusCrush ?: 0,
+                defBonusRange ?: 0,
+                defBonusMagic ?: 0
+            )
+        )
+    } else null
+    return ExtraNpcConfig(
+        ids!!,
+        examine ?: "",
+        combat
+    )
 }
