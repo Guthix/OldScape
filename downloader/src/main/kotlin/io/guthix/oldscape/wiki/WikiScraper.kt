@@ -78,6 +78,10 @@ fun scrapeObjectWikiConfigs(cacheConfigs: Map<Int, ObjectConfig>)= runBlocking {
                     logger.warn { e.message }
                     continue
                 }
+                if(!wikiText.contains("Infobox Item", ignoreCase = true)) {
+                    logger.info { "Scraped page for object $id is not an obj" }
+                    continue
+                }
                 parseWikiString<ObjectWikiDefinition>(wikiText).forEach { wikiConfig ->
                     wikiConfig.name = cacheConfig.name
                     val ids = wikiConfig.ids?.toList() ?: listOf(id)
@@ -108,6 +112,12 @@ fun scrapeNpcWikiConfigs(cacheConfigs: Map<Int, NpcConfig>)= runBlocking {
                     client.scrapeWikiText(NpcWikiDefinition.queryString, id, cacheConfig.name)
                 } catch (e: PageNotFoundException) {
                     logger.warn { e.message }
+                    continue
+                }
+                if(!wikiText.contains("Infobox NPC", ignoreCase = true) &&
+                    !wikiText.contains("Infobox Monster", ignoreCase = true)
+                ) {
+                    logger.info { "Scraped page for npc $id is not a npc" }
                     continue
                 }
                 parseWikiString<NpcWikiDefinition>(wikiText).forEach { wikiConfig ->
