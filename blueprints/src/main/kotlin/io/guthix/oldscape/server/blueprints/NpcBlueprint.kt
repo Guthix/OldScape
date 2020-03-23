@@ -16,11 +16,10 @@
  */
 package io.guthix.oldscape.server.blueprints
 
-import io.guthix.oldscape.cache.config.NpcConfig
-
 class NpcBlueprint(
     val id: Int,
     val name: String?,
+    val examine: String,
     val size: Int,
     val combatLevel: Int?,
     val isInteractable: Boolean,
@@ -29,11 +28,13 @@ class NpcBlueprint(
     var walkRightSequence: Int?,
     var walkBackSequence: Int?,
     var turnLeftSequence: Int?,
-    var turnRightSequence: Int?
+    var turnRightSequence: Int?,
+    val combat: NpcBlueprint.Combat?
 ) {
     class Combat(
         val level: Int,
         val attackStyled: List<String>,
+        val attackSpeed: Int,
         val isAggressive: Boolean,
         val isPoisonous: Boolean,
         val isImmumePoison: Boolean,
@@ -56,25 +57,6 @@ class NpcBlueprint(
             val range: Int,
             val magic: Int,
             val strengthBonus: StrengthBonus
-        )
-    }
-
-
-
-
-    companion object {
-        fun create(config: NpcConfig) = NpcBlueprint(
-            config.id,
-            config.name,
-            config.size.toInt(),
-            config.combatLevel,
-            config.isInteractable,
-            config.walkSequence,
-            config.walkLeftSequence,
-            config.walkRightSequence,
-            config.walkBackSequence,
-            config.turnLeftSequence,
-            config.turnRightSequence
         )
     }
 }
