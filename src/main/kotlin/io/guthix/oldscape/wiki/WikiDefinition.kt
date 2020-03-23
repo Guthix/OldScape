@@ -44,13 +44,13 @@ abstract class WikiDefinition<P : WikiDefinition<P>> {
 
     abstract fun parseKeyValueLine(line: String, version: Int?)
 
-    protected fun String.checkWikiKey(string: String, version: Int?): Boolean {
-        val pageCheck = substringBefore("=").replace(" ", "").substring(1)
-        val stringCheck = string.replace(" ", "")
+    protected fun String.checkWikiKey(matcher: String, version: Int?): Boolean {
+        val lineCheck = substringBefore("=").replace(" ", "").substring(1)
+        val matchCheck = matcher.replace(" ", "")
         return if(version == null) {
-            stringCheck.equals(pageCheck, true)
+            matchCheck.equals(lineCheck, true)
         } else {
-            "$stringCheck$version".equals(pageCheck, true)
+            matchCheck.equals(lineCheck, true) or "$matchCheck$version".equals(lineCheck, true)
         }
     }
 
