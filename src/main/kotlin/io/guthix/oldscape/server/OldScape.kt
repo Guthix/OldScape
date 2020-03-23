@@ -28,13 +28,18 @@ import io.guthix.cache.js5.container.heap.Js5HeapStore
 import io.guthix.oldscape.cache.BinariesArchive
 import io.guthix.oldscape.cache.ConfigArchive
 import io.guthix.oldscape.cache.MapArchive
+import io.guthix.oldscape.cache.config.NpcConfig
+import io.guthix.oldscape.cache.config.ObjectConfig
 import io.guthix.oldscape.cache.xtea.MapXtea
 import io.guthix.oldscape.server.api.Enums
 import io.guthix.oldscape.server.api.Huffman
 import io.guthix.oldscape.server.api.blueprint.InventoryBlueprints
 import io.guthix.oldscape.server.api.Varbits
 import io.guthix.oldscape.server.api.blueprint.LocationBlueprints
+import io.guthix.oldscape.server.api.blueprint.NpcBlueprints
 import io.guthix.oldscape.server.api.blueprint.ObjectBlueprints
+import io.guthix.oldscape.server.blueprints.ExtraNpcConfig
+import io.guthix.oldscape.server.blueprints.ExtraObjectConfig
 import io.guthix.oldscape.server.event.script.EventBus
 import io.guthix.oldscape.server.net.OldScapeServer
 import io.guthix.oldscape.server.net.state.game.GamePacketDecoder
@@ -49,21 +54,35 @@ fun main(args: Array<String>) {
 object OldScape {
     @JvmStatic
     fun main(args: Array<String>) {
-        val config = loadConfig(Path.of(ServerConfig::class.java.getResource("/Config.yaml").toURI()))
-        val cacheDir = Path.of(ServerConfig::class.java.getResource("/cache").toURI())
+        val yamlMapper = ObjectMapper(YAMLFactory()).registerKotlinModule()
+        val config = yamlMapper.loadConfig(Path.of(javaClass.getResource("/Config.yaml").toURI()))
+
+        val cacheDir = Path.of(javaClass.getResource("/cache").toURI())
         val store = Js5HeapStore.open(Js5DiskStore.open(cacheDir), appendVersions = false)
         val cache = Js5Cache(store)
         store.write(Js5Store.MASTER_INDEX, Js5Store.MASTER_INDEX, Js5Container(
             cache.generateValidator(includeWhirlpool = false, includeSizes = false).encode()).encode()
         )
         val configArchive = cache.readArchive(ConfigArchive.id)
+
         Enums.load(configArchive)
         InventoryBlueprints.load(configArchive)
         Varbits.load(configArchive)
         LocationBlueprints.load(configArchive)
-        ObjectBlueprints.load(configArchive)
+        val extraObjConfig = yamlMapper.readValue(
+            Path.of(javaClass.getResource("/Objects.yaml").toURI()).toFile(),
+            object : TypeReference<List<ExtraObjectConfig>>() { }
+        )
+        ObjectBlueprints.load(ObjectConfig.load(configArchive.readGroup(ObjectConfig.id)), extraObjConfig)
+        val extraNpcConfig = yamlMapper.readValue(
+            Path.of(javaClass.getResource("/Npcs.yaml").toURI()).toFile(),
+            object : TypeReference<List<ExtraNpcConfig>>() { }
+        )
+        NpcBlueprints.load(NpcConfig.load(configArchive.readGroup(NpcConfig.id)), extraNpcConfig)
         val binariesArchive = cache.readArchive(BinariesArchive.id)
         Huffman.load(binariesArchive)
+
+
         EventBus.loadScripts()
         GamePacketDecoder.loadIncPackets()
         val mapSquareXteas = loadMapSquareXteaKeys(cacheDir.resolve("xteas.json"))
@@ -73,9 +92,7 @@ object OldScape {
         OldScapeServer(config.revision, config.port, config.rsa.privateKey, config.rsa.modulus, world, store).run()
     }
 
-    private fun loadConfig(path: Path) = ObjectMapper(YAMLFactory()).registerKotlinModule().readValue(
-        path.toFile(), ServerConfig::class.java
-    )
+    private fun ObjectMapper.loadConfig(path: Path) = readValue(path.toFile(), ServerConfig::class.java)
 
     private fun loadMapSquareXteaKeys(path: Path): List<MapXtea> {
         val mapper = ObjectMapper().registerKotlinModule()

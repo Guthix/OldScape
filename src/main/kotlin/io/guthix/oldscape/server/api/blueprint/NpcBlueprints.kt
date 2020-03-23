@@ -16,44 +16,44 @@
  */
 package io.guthix.oldscape.server.api.blueprint
 
-import io.guthix.oldscape.cache.config.ObjectConfig
-import io.guthix.oldscape.server.blueprints.ExtraObjectConfig
-import io.guthix.oldscape.server.blueprints.ObjectBlueprint
+import io.guthix.oldscape.cache.config.NpcConfig
+import io.guthix.oldscape.server.blueprints.ExtraNpcConfig
+import io.guthix.oldscape.server.blueprints.NpcBlueprint
 import mu.KotlinLogging
 import java.io.IOException
 
 private val logger = KotlinLogging.logger {  }
 
-object ObjectBlueprints {
-    private lateinit var blueprints: Map<Int, ObjectBlueprint>
+object NpcBlueprints {
+    private lateinit var blueprints: Map<Int, NpcBlueprint>
 
-    operator fun get(index: Int): ObjectBlueprint {
+    operator fun get(index: Int): NpcBlueprint {
         return blueprints[index] ?: throw IOException("Could not find blueprint $index.")
     }
 
-    fun load(cacheConfigs: Map<Int, ObjectConfig>, extraObjConfigs: List<ExtraObjectConfig>) {
-        val bps = mutableMapOf<Int, ObjectBlueprint>()
+    fun load(cacheConfigs: Map<Int, NpcConfig>, extraObjConfigs: List<ExtraNpcConfig>) {
+        val bps = mutableMapOf<Int, NpcBlueprint>()
         extraObjConfigs.forEach { extraConfig ->
             extraConfig.ids.forEach {  id ->
                 val cacheConfig = cacheConfigs[id] ?: error("Extra config for id $id is not found in the cache.")
-                bps[id] = ObjectBlueprint(
+                bps[id] = NpcBlueprint(
                     cacheConfig.id,
                     cacheConfig.name,
-                    extraConfig.weight,
                     extraConfig.examine,
-                    cacheConfig.stackable,
-                    cacheConfig.tradable,
-                    cacheConfig.notedId,
-                    cacheConfig.isNoted,
-                    cacheConfig.placeholderId,
-                    cacheConfig.isPlaceHolder,
-                    cacheConfig.iop,
-                    cacheConfig.groundActions,
-                    extraConfig.equipment
+                    cacheConfig.size.toInt(),
+                    cacheConfig.combatLevel,
+                    cacheConfig.isInteractable,
+                    cacheConfig.walkSequence,
+                    cacheConfig.walkLeftSequence,
+                    cacheConfig.walkRightSequence,
+                    cacheConfig.walkBackSequence,
+                    cacheConfig.turnLeftSequence,
+                    cacheConfig.turnRightSequence,
+                    extraConfig.combat
                 )
             }
         }
         blueprints = bps.toMap()
-        logger.info { "Loaded ${blueprints.size} object blueprints" }
+        logger.info { "Loaded ${blueprints.size} npc blueprints" }
     }
 }

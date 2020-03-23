@@ -18,7 +18,7 @@ package io.guthix.oldscape.server.blueprints
 
 import io.guthix.oldscape.cache.config.ObjectConfig
 
-class ObjectBlueprint private constructor(
+class ObjectBlueprint(
     val id: Int,
     val name: String,
     val weight: Float?,
@@ -40,26 +40,6 @@ class ObjectBlueprint private constructor(
         val strengthBonus: StrengthBonus,
         val prayerBonus: Int
     )
-
-    companion object {
-        fun create(config: ObjectConfig, extraConfig: ExtraObjectConfig): ObjectBlueprint {
-            return ObjectBlueprint(
-                config.id,
-                config.name,
-                extraConfig.weight,
-                extraConfig.examine,
-                config.stackable,
-                config.tradable,
-                config.notedId,
-                config.isNoted,
-                config.placeholderId,
-                config.isPlaceHolder,
-                config.iop,
-                config.groundActions,
-                extraConfig.equipment
-            )
-        }
-    }
 }
 
 class ExtraObjectConfig(
