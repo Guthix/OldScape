@@ -112,9 +112,6 @@ fun ObjectWikiDefinition.toExtraConfig(): ExtraObjectConfig {
 fun NpcWikiDefinition.toExtraConfig(): ExtraNpcConfig {
     val combat = if(combatLvl != null) {
         NpcBlueprint.Combat(
-            combatLvl!!,
-            attackStyles ?: emptyList(),
-            attackSpeed ?: 1,
             isAggressive ?: false,
             isPoisonous ?: false,
             isImmuneToPoison ?: false,
