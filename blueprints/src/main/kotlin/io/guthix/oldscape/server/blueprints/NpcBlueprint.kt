@@ -32,9 +32,6 @@ class NpcBlueprint(
     val combat: NpcBlueprint.Combat?
 ) {
     class Combat(
-        val level: Int,
-        val attackStyled: List<String>,
-        val attackSpeed: Int,
         val isAggressive: Boolean,
         val isPoisonous: Boolean,
         val isImmumePoison: Boolean,
