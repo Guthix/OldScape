@@ -53,6 +53,11 @@ fun objectWikiDownloader(cachePath: Path): List<ObjectWikiDefinition> {
 fun scrapeObjectWikiConfigs(cacheConfigs: Map<Int, ObjectConfig>)= runBlocking {
     val wikiConfigs = HttpClient(Apache) {
         followRedirects = false
+        engine {
+            socketTimeout = 100_000
+            connectTimeout = 100_000
+            connectionRequestTimeout = 200_000
+        }
     }.use { client ->
         val wikiConfigs = mutableMapOf<Int, ObjectWikiDefinition>()
         for((id, cacheConfig) in cacheConfigs) {
