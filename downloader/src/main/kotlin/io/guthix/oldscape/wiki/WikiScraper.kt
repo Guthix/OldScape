@@ -78,16 +78,18 @@ fun scrapeObjectWikiConfigs(cacheConfigs: Map<Int, ObjectConfig>)= runBlocking {
                     logger.warn { e.message }
                     continue
                 }
-                if(!wikiText.contains("Infobox Item", ignoreCase = true)) {
-                    logger.info { "Scraped page for object $id is not an obj" }
-                    continue
-                }
-                parseWikiString<ObjectWikiDefinition>(wikiText).forEach { wikiConfig ->
-                    wikiConfig.name = cacheConfig.name
-                    val ids = wikiConfig.ids?.toList() ?: listOf(id)
-                    ids.forEach { wikiId ->
-                        logger.info { "Downloaded config for name: ${wikiConfig.name} id: $wikiId" }
-                        wikiConfigs[wikiId] = wikiConfig
+                inner@ for(entry in wikiText.split("}}", ignoreCase = true)) {
+                    if(!entry.contains("Infobox Item", ignoreCase = true)) {
+                        logger.info { "Scraped page for object $id is not an obj" }
+                        continue@inner
+                    }
+                    parseWikiString<ObjectWikiDefinition>(entry).forEach { wikiConfig ->
+                        wikiConfig.name = cacheConfig.name
+                        val ids = wikiConfig.ids?.toList() ?: listOf(id)
+                        ids.forEach { wikiId ->
+                            logger.info { "Downloaded config for name: ${wikiConfig.name} id: $wikiId" }
+                            wikiConfigs[wikiId] = wikiConfig
+                        }
                     }
                 }
             } else {
@@ -114,20 +116,23 @@ fun scrapeNpcWikiConfigs(cacheConfigs: Map<Int, NpcConfig>)= runBlocking {
                     logger.warn { e.message }
                     continue
                 }
-                if(!wikiText.contains("Infobox NPC", ignoreCase = true) &&
-                    !wikiText.contains("Infobox Monster", ignoreCase = true)
-                ) {
-                    logger.info { "Scraped page for npc $id is not a npc" }
-                    continue
-                }
-                parseWikiString<NpcWikiDefinition>(wikiText).forEach { wikiConfig ->
-                    wikiConfig.name = cacheConfig.name
-                    val ids = wikiConfig.ids?.toList() ?: listOf(id)
-                    ids.forEach { wikiId ->
-                        logger.info { "Downloaded config for name: ${wikiConfig.name} id: $wikiId" }
-                        wikiConfigs[wikiId] = wikiConfig
+                inner@ for(entry in wikiText.split("}}", ignoreCase = true)) {
+                    if(!entry.contains("Infobox NPC", ignoreCase = true) &&
+                        !entry.contains("Infobox Monster", ignoreCase = true)
+                    ) {
+                        logger.info { "Scraped page for npc $id is not a npc" }
+                        continue@inner
+                    }
+                    parseWikiString<NpcWikiDefinition>(entry).forEach { wikiConfig ->
+                        wikiConfig.name = cacheConfig.name
+                        val ids = wikiConfig.ids?.toList() ?: listOf(id)
+                        ids.forEach { wikiId ->
+                            logger.info { "Downloaded config for name: ${wikiConfig.name} id: $wikiId" }
+                            wikiConfigs[wikiId] = wikiConfig
+                        }
                     }
                 }
+
             } else {
                 logger.info { "Config $id ${cacheConfig.name} already downloaded" }
             }
