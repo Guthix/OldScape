@@ -19,41 +19,71 @@ package io.guthix.oldscape.server.api.blueprint
 import io.guthix.oldscape.cache.config.ObjectConfig
 import io.guthix.oldscape.server.blueprints.ExtraObjectConfig
 import io.guthix.oldscape.server.blueprints.ObjectBlueprint
+import io.guthix.oldscape.server.blueprints.equipment.*
 import mu.KotlinLogging
+import java.io.FileNotFoundException
 import java.io.IOException
 
 private val logger = KotlinLogging.logger {  }
 
 object ObjectBlueprints {
-    private lateinit var blueprints: Map<Int, ObjectBlueprint>
+    lateinit var blueprints: Map<Int, ObjectBlueprint>
 
-    operator fun get(index: Int): ObjectBlueprint {
-        return blueprints[index] ?: throw IOException("Could not find blueprint $index.")
+    inline operator fun <reified T : ObjectBlueprint> get(index: Int): T {
+        val bp = blueprints[index] ?: throw IOException("Could not find blueprint $index.")
+        if(bp !is T) {
+            throw TypeCastException("")
+        } else {
+            return bp
+        }
     }
 
-    fun load(cacheConfigs: Map<Int, ObjectConfig>, extraObjConfigs: List<ExtraObjectConfig>) {
-        val bps = mutableMapOf<Int, ObjectBlueprint>()
-        extraObjConfigs.forEach { extraConfig ->
-            extraConfig.ids.forEach {  id ->
-                val cacheConfig = cacheConfigs[id] ?: error("Extra config for id $id is not found in the cache.")
-                bps[id] = ObjectBlueprint(
-                    cacheConfig.id,
-                    cacheConfig.name,
-                    extraConfig.weight,
-                    extraConfig.examine,
-                    cacheConfig.stackable,
-                    cacheConfig.tradable,
-                    cacheConfig.notedId,
-                    cacheConfig.isNoted,
-                    cacheConfig.placeholderId,
-                    cacheConfig.isPlaceHolder,
-                    cacheConfig.iop,
-                    cacheConfig.groundActions,
-                    extraConfig.equipment
+    fun load(
+        cConfigs: Map<Int, ObjectConfig>,
+        eObjectConfigs: List<ExtraObjectConfig>,
+        eHeadConfigs: List<ExtraHeadConfig>,
+        extraCapeConfigs: List<ExtraEquipmentConfig>,
+        eNeckConfigs: List<ExtraEquipmentConfig>,
+        eAmmunitionConfigs: List<ExtraEquipmentConfig>,
+        eWeaponConfigs: List<ExtraEquipmentConfig>,
+        eShieldConfigs: List<ExtraEquipmentConfig>,
+        eTwoHandedConfigs: List<ExtraEquipmentConfig>,
+        eBodyConfigs: List<ExtraBodyConfig>,
+        eLegConfigs: List<ExtraEquipmentConfig>,
+        eHandConfigs: List<ExtraEquipmentConfig>,
+        eFeetConfigs: List<ExtraEquipmentConfig>,
+        eRingConfigs: List<ExtraEquipmentConfig>
+    ) {
+        blueprints = mutableMapOf<Int, ObjectBlueprint>().apply {
+            addBlueprints(cConfigs, eObjectConfigs) { cConfig, eConfig -> ObjectBlueprint(cConfig, eConfig) }
+            addBlueprints(cConfigs, eHeadConfigs) { cConfig, eConfig -> HeadEquipmentBlueprint(cConfig, eConfig) }
+            addBlueprints(cConfigs, extraCapeConfigs) { cConfig, eConfig -> CapeBlueprint(cConfig, eConfig) }
+            addBlueprints(cConfigs, eNeckConfigs) { cConfig, eConfig -> NeckEquipmentBlueprint(cConfig, eConfig) }
+            addBlueprints(cConfigs, eAmmunitionConfigs) { cConfig, eConfig -> AmmunitionBlueprint(cConfig, eConfig) }
+            addBlueprints(cConfigs, eWeaponConfigs) { cConfig, eConfig -> WeaponBlueprint(cConfig, eConfig) }
+            addBlueprints(cConfigs, eShieldConfigs) { cConfig, eConfig -> ShieldBlueprint(cConfig, eConfig) }
+            addBlueprints(cConfigs, eTwoHandedConfigs) { cConfig, eConfig -> TwoHandedBlueprint(cConfig, eConfig) }
+            addBlueprints(cConfigs, eBodyConfigs) { cConfig, eConfig -> BodyBlueprint(cConfig, eConfig) }
+            addBlueprints(cConfigs, eLegConfigs) { cConfig, eConfig -> LegsBlueprint(cConfig, eConfig) }
+            addBlueprints(cConfigs, eHandConfigs) { cConfig, eConfig -> HandsBlueprint(cConfig, eConfig) }
+            addBlueprints(cConfigs, eFeetConfigs) { cConfig, eConfig -> FeetBlueprint(cConfig, eConfig) }
+            addBlueprints(cConfigs, eRingConfigs) { cConfig, eConfig -> RingBlueprint(cConfig, eConfig) }
+        }
+        logger.info { "Loaded ${blueprints.size} object blueprints" }
+    }
+
+    private fun <E : ExtraObjectConfig, B : ObjectBlueprint> MutableMap<Int, ObjectBlueprint>.addBlueprints(
+        cacheConfigs: Map<Int, ObjectConfig>,
+        extraObjectConfigs: List<E>,
+        construct: (ObjectConfig, E) -> B
+    ) {
+        extraObjectConfigs.forEach { extraConfig ->
+            extraConfig.ids.forEach { id ->
+                val cacheConfig = cacheConfigs[id] ?: throw FileNotFoundException(
+                    "Could not find object config for id $id."
                 )
+                put(id, construct.invoke(cacheConfig, extraConfig))
             }
         }
-        blueprints = bps.toMap()
-        logger.info { "Loaded ${blueprints.size} object blueprints" }
     }
 }

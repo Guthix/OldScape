@@ -14,11 +14,21 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with Foobar. If not, see <https://www.gnu.org/licenses/>.
  */
-package io.guthix.oldscape.server.world.entity
+package io.guthix.oldscape.server.blueprints.equipment
 
-import io.guthix.oldscape.server.blueprints.ObjectBlueprint
+import io.guthix.oldscape.cache.config.ObjectConfig
 
-open class Obj(
-    open val blueprint: ObjectBlueprint,
-    var quantity: Int
-)
+class ExtraBodyConfig(
+    ids: List<Int>,
+    weight: Float,
+    examine: String,
+    val isFullBody: Boolean = false,
+    equipment: EquipmentBlueprint.Equipment
+) : ExtraEquipmentConfig(ids, weight, examine, equipment)
+
+class BodyBlueprint(
+    cacheConfig: ObjectConfig,
+    override val extraConfig: ExtraBodyConfig
+) : EquipmentBlueprint(cacheConfig, extraConfig) {
+    val isFullBody get() = extraConfig.isFullBody
+}

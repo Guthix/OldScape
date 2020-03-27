@@ -18,33 +18,26 @@ package io.guthix.oldscape.server.blueprints
 
 import io.guthix.oldscape.cache.config.ObjectConfig
 
-class ObjectBlueprint(
-    val id: Int,
-    val name: String,
-    val weight: Float?,
-    val examines: String,
-    val isStackable: Boolean,
-    val isTradable: Boolean,
-    val notedId: Int?,
-    val isNoted: Boolean,
-    val placeHolderId: Int?,
-    val isPlaceHolder: Boolean,
-    val interfaceOperations: Array<String?>,
-    val groundOperations: Array<String?>,
-    val equipment: Equipment?
-) {
-    class Equipment(
-        val slot: EquipmentSlot,
-        val attackBonus: StyleBonus,
-        val defenceBonus: StyleBonus,
-        val strengthBonus: StrengthBonus,
-        val prayerBonus: Int
-    )
-}
-
-class ExtraObjectConfig(
+open class ExtraObjectConfig(
     val ids: List<Int>,
     val weight: Float,
-    val examine: String,
-    val equipment: ObjectBlueprint.Equipment?
+    val examine: String
 )
+
+open class ObjectBlueprint(
+    private val cacheConfig: ObjectConfig,
+    protected open val extraConfig: ExtraObjectConfig
+) {
+    val id get() = cacheConfig.id
+    val name get() = cacheConfig.name
+    val weight get() = extraConfig.weight
+    val examines get() = extraConfig.examine
+    val isStackable get() = cacheConfig.stackable
+    val isTradable get() = cacheConfig.tradable
+    val notedId get() = cacheConfig.notedId
+    val isNoted get() = cacheConfig.isNoted
+    val placeHolderId get() = cacheConfig.placeholderId
+    val isPlaceHolder get() = cacheConfig.isPlaceHolder
+    val interfaceOperations get() = cacheConfig.iop
+    val groundOperations get() = cacheConfig.groundActions
+}
