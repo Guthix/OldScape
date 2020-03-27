@@ -54,9 +54,9 @@ fun scrapeObjectWikiConfigs(cacheConfigs: Map<Int, ObjectConfig>)= runBlocking {
     val wikiConfigs = HttpClient(Apache) {
         followRedirects = false
         engine {
-            socketTimeout = 100_000
-            connectTimeout = 100_000
-            connectionRequestTimeout = 200_000
+            socketTimeout = 200_000
+            connectTimeout = 200_000
+            connectionRequestTimeout = 400_000
         }
     }.use { client ->
         val wikiConfigs = mutableMapOf<Int, ObjectWikiDefinition>()
@@ -78,9 +78,10 @@ fun scrapeObjectWikiConfigs(cacheConfigs: Map<Int, ObjectConfig>)= runBlocking {
                     logger.warn { e.message }
                     continue
                 }
-                inner@ for(entry in wikiText.split("}}", ignoreCase = true)) {
-                    if(!entry.contains("Infobox Item", ignoreCase = true)) {
-                        logger.info { "Scraped page for object $id is not an obj" }
+
+                inner@ for(entry in wikiText.split("(?=Infobox Item)", ignoreCase = true)) {
+                    if(!wikiText.contains("Infobox Item", ignoreCase = true)) { // remove wrong queries
+                        logger.info { "Scraped page for object $id is not an object" }
                         continue@inner
                     }
                     parseWikiString<ObjectWikiDefinition>(entry).forEach { wikiConfig ->
@@ -116,10 +117,11 @@ fun scrapeNpcWikiConfigs(cacheConfigs: Map<Int, NpcConfig>)= runBlocking {
                     logger.warn { e.message }
                     continue
                 }
-                inner@ for(entry in wikiText.split("}}", ignoreCase = true)) {
-                    if(!entry.contains("Infobox NPC", ignoreCase = true) &&
-                        !entry.contains("Infobox Monster", ignoreCase = true)
-                    ) {
+
+                inner@ for(entry in wikiText.split("(?=Infobox NPC)", "(?=Infobox Monster)", ignoreCase = true)) {
+                    if(!wikiText.contains("Infobox NPC", ignoreCase = true) &&
+                        !wikiText.contains("Infobox Monster", ignoreCase = true)
+                    ) { // remove wrong queries
                         logger.info { "Scraped page for npc $id is not a npc" }
                         continue@inner
                     }
