@@ -26,15 +26,16 @@ data class Appearance(
     var animations: Animations
 ) {
     data class Equipment(
-        var head: Head?,
-        var cape: Cape?,
-        var neck: Neck?,
-        var weapon: Weapon?,
-        var body: Body?,
-        var shield: Shield?,
-        var legs: Legs?,
-        var hands: Hands?,
-        var feet: Feet?
+        var head: HeadEquipment?,
+        var cape: CapeEquipment?,
+        var neck: NeckEquipment?,
+        var ammunition: AmmunitionEquipment?,
+        var weapon: WeaponEquipment?,
+        var body: BodyEquipment?,
+        var shield: ShieldEquipment?,
+        var legs: LegsEquipment?,
+        var hands: HandsEquipment?,
+        var feet: FeetEquipment?
     )
 
     data class Style(

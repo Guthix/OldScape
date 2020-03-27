@@ -16,121 +16,60 @@
  */
 package io.guthix.oldscape.server.world.entity.character.player
 
-import io.guthix.oldscape.server.blueprints.ObjectBlueprint
+import io.guthix.oldscape.server.blueprints.equipment.*
 import io.guthix.oldscape.server.world.entity.Obj
 
-abstract class Equipment(
-    val slot: Int,
-    val attackBonus: StyleBonus,
-    val defenceBonus: StyleBonus,
-    val strengthBonus: StrengthBonus,
-    val prayerBonus: Int,
-    amount: Int,
-    blueprint: ObjectBlueprint
-) : Obj(blueprint, amount) {
-    class StyleBonus(
-        val stab: Int,
-        val slash: Int,
-        val crush: Int,
-        val magic: Int,
-        val range: Int
-    )
+class HeadEquipment(
+    override val blueprint: HeadEquipmentBlueprint,
+    quantity: Int
+) : Obj(blueprint, quantity)
 
-    class StrengthBonus(
-        val melee: Int,
-        val range: Int,
-        val magic: Int
-    )
-}
+class CapeEquipment(
+    override val blueprint: CapeBlueprint,
+    quantity: Int
+) : Obj(blueprint, quantity)
 
-class Head(
-    val coversScalp: Boolean,
-    val coversFace: Boolean,
-    attackBonus: StyleBonus,
-    defenceBonus: StyleBonus,
-    strengthBonus: StrengthBonus,
-    prayerBonus: Int,
-    blueprint: ObjectBlueprint
-) : Equipment(0, attackBonus, defenceBonus, strengthBonus, prayerBonus, 1, blueprint)
+class NeckEquipment(
+    override val blueprint: NeckEquipmentBlueprint,
+    quantity: Int
+) : Obj(blueprint, quantity)
 
-class Cape(
-    attackBonus: StyleBonus,
-    defenceBonus: StyleBonus,
-    strengthBonus: StrengthBonus,
-    prayerBonus: Int,
-    blueprint: ObjectBlueprint
-) : Equipment(1, attackBonus, defenceBonus, strengthBonus, prayerBonus, 1, blueprint)
+class AmmunitionEquipment(
+    override val blueprint: AmmunitionBlueprint,
+    quantity: Int
+) : Obj(blueprint, quantity)
 
-class Neck(
-    attackBonus: StyleBonus,
-    defenceBonus: StyleBonus,
-    strengthBonus: StrengthBonus,
-    prayerBonus: Int,
-    blueprint: ObjectBlueprint
-) : Equipment(2, attackBonus, defenceBonus, strengthBonus, prayerBonus, 1, blueprint)
+class WeaponEquipment(
+    override val blueprint: WeaponBlueprint,
+    quantity: Int
+) : Obj(blueprint, quantity)
 
-class Ammunition(
-    attackBonus: StyleBonus,
-    defenceBonus: StyleBonus,
-    strengthBonus: StrengthBonus,
-    prayerBonus: Int,
-    amount: Int,
-    blueprint: ObjectBlueprint
-) : Equipment(3, attackBonus, defenceBonus, strengthBonus, prayerBonus, amount, blueprint)
+class ShieldEquipment(
+    override val blueprint: ShieldBlueprint,
+    quantity: Int
+) : Obj(blueprint, quantity)
 
-class Weapon(
-    attackBonus: StyleBonus,
-    defenceBonus: StyleBonus,
-    strengthBonus: StrengthBonus,
-    prayerBonus: Int,
-    blueprint: ObjectBlueprint
-) : Equipment(4, attackBonus, defenceBonus, strengthBonus, prayerBonus, 1, blueprint)
+class BodyEquipment(
+    override val blueprint: BodyBlueprint,
+    quantity: Int
+) : Obj(blueprint, quantity)
 
-class Body(
-    val fullBody: Boolean,
-    attackBonus: StyleBonus,
-    defenceBonus: StyleBonus,
-    strengthBonus: StrengthBonus,
-    prayerBonus: Int,
-    blueprint: ObjectBlueprint
-) : Equipment(5, attackBonus, defenceBonus, strengthBonus, prayerBonus, 1, blueprint)
+class LegsEquipment(
+    override val blueprint: LegsBlueprint,
+    quantity: Int
+) : Obj(blueprint, quantity)
 
-class Shield(
-    attackBonus: StyleBonus,
-    defenceBonus: StyleBonus,
-    strengthBonus: StrengthBonus,
-    prayerBonus: Int,
-    blueprint: ObjectBlueprint
-) : Equipment(6, attackBonus, defenceBonus, strengthBonus, prayerBonus, 1, blueprint)
+class HandsEquipment(
+    override val blueprint: HandsBlueprint,
+    quantity: Int
+) : Obj(blueprint, quantity)
 
-class Legs(
-    attackBonus: StyleBonus,
-    defenceBonus: StyleBonus,
-    strengthBonus: StrengthBonus,
-    prayerBonus: Int,
-    blueprint: ObjectBlueprint
-) : Equipment(7, attackBonus, defenceBonus, strengthBonus, prayerBonus, 1, blueprint)
+class FeetEquipment(
+    override val blueprint: FeetBlueprint,
+    quantity: Int
+) : Obj(blueprint, quantity)
 
-class Ring(
-    attackBonus: StyleBonus,
-    defenceBonus: StyleBonus,
-    strengthBonus: StrengthBonus,
-    prayerBonus: Int,
-    blueprint: ObjectBlueprint
-) : Equipment(8, attackBonus, defenceBonus, strengthBonus, prayerBonus, 1, blueprint)
-
-class Hands(
-    attackBonus: StyleBonus,
-    defenceBonus: StyleBonus,
-    strengthBonus: StrengthBonus,
-    prayerBonus: Int,
-    blueprint: ObjectBlueprint
-) : Equipment(9, attackBonus, defenceBonus, strengthBonus, prayerBonus, 1, blueprint)
-
-class Feet(
-    attackBonus: StyleBonus,
-    defenceBonus: StyleBonus,
-    strengthBonus: StrengthBonus,
-    prayerBonus: Int,
-    blueprint: ObjectBlueprint
-) : Equipment(10, attackBonus, defenceBonus, strengthBonus, prayerBonus, 1, blueprint)
+class RingEquipment(
+    override val blueprint: TwoHandedBlueprint,
+    quantity: Int
+) : Obj(blueprint, quantity)

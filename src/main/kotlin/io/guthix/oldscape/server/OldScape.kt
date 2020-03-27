@@ -19,6 +19,7 @@ package io.guthix.oldscape.server
 import com.fasterxml.jackson.core.type.TypeReference
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory
+import com.fasterxml.jackson.dataformat.yaml.YAMLMapper
 import com.fasterxml.jackson.module.kotlin.registerKotlinModule
 import io.guthix.cache.js5.Js5Cache
 import io.guthix.cache.js5.container.Js5Container
@@ -40,6 +41,10 @@ import io.guthix.oldscape.server.api.blueprint.NpcBlueprints
 import io.guthix.oldscape.server.api.blueprint.ObjectBlueprints
 import io.guthix.oldscape.server.blueprints.ExtraNpcConfig
 import io.guthix.oldscape.server.blueprints.ExtraObjectConfig
+import io.guthix.oldscape.server.blueprints.equipment.ExtraBodyConfig
+import io.guthix.oldscape.server.blueprints.equipment.ExtraEquipmentConfig
+import io.guthix.oldscape.server.blueprints.equipment.ExtraHeadConfig
+import io.guthix.oldscape.server.blueprints.equipment.HeadEquipmentBlueprint
 import io.guthix.oldscape.server.event.script.EventBus
 import io.guthix.oldscape.server.net.OldScapeServer
 import io.guthix.oldscape.server.net.state.game.GamePacketDecoder
@@ -69,13 +74,24 @@ object OldScape {
         InventoryBlueprints.load(configArchive)
         Varbits.load(configArchive)
         LocationBlueprints.load(configArchive)
-        val extraObjConfig = yamlMapper.readValue(
-            Path.of(javaClass.getResource("/Objects.yaml").toURI()).toFile(),
-            object : TypeReference<List<ExtraObjectConfig>>() { }
+        ObjectBlueprints.load(
+            ObjectConfig.load(configArchive.readGroup(ObjectConfig.id)),
+            yamlMapper.readObjectConfig("Objects.yaml"),
+            yamlMapper.readHeadConfig("HeadEquipment.yaml"),
+            yamlMapper.readEquipmentConfig("CapeEquipment.yaml"),
+            yamlMapper.readEquipmentConfig("NeckEquipment.yaml"),
+            yamlMapper.readEquipmentConfig("AmmunitionEquipment.yaml"),
+            yamlMapper.readEquipmentConfig("WeaponEquipment.yaml"),
+            yamlMapper.readEquipmentConfig("ShieldEquipment.yaml"),
+            yamlMapper.readEquipmentConfig("TwoHandedEquipment.yaml"),
+            yamlMapper.readBodyConfig("BodyEquipment.yaml"),
+            yamlMapper.readEquipmentConfig("LegsEquipment.yaml"),
+            yamlMapper.readEquipmentConfig("HandsEquipment.yaml"),
+            yamlMapper.readEquipmentConfig("FeetEquipment.yaml"),
+            yamlMapper.readEquipmentConfig("RingEquipment.yaml")
         )
-        ObjectBlueprints.load(ObjectConfig.load(configArchive.readGroup(ObjectConfig.id)), extraObjConfig)
         val extraNpcConfig = yamlMapper.readValue(
-            Path.of(javaClass.getResource("/Npcs.yaml").toURI()).toFile(),
+            Path.of(javaClass.getResource("/config/Npcs.yaml").toURI()).toFile(),
             object : TypeReference<List<ExtraNpcConfig>>() { }
         )
         NpcBlueprints.load(NpcConfig.load(configArchive.readGroup(NpcConfig.id)), extraNpcConfig)
@@ -98,4 +114,24 @@ object OldScape {
         val mapper = ObjectMapper().registerKotlinModule()
         return mapper.readValue(path.toFile(), object : TypeReference<List<MapXtea>>(){})
     }
+
+    private fun ObjectMapper.readObjectConfig(filePath: String): List<ExtraObjectConfig> = readValue(
+        Path.of(javaClass.getResource("/config/$filePath").toURI()).toFile(),
+        object : TypeReference<List<ExtraObjectConfig>>() { }
+    )
+
+    private fun ObjectMapper.readEquipmentConfig(filePath: String): List<ExtraEquipmentConfig> = readValue(
+        Path.of(javaClass.getResource("/config/equipment/$filePath").toURI()).toFile(),
+        object : TypeReference<List<ExtraEquipmentConfig>>() { }
+    )
+
+    private fun ObjectMapper.readHeadConfig(filePath: String): List<ExtraHeadConfig> = readValue(
+        Path.of(javaClass.getResource("/config/equipment/$filePath").toURI()).toFile(),
+        object : TypeReference<List<ExtraHeadConfig>>() { }
+    )
+
+    private fun ObjectMapper.readBodyConfig(filePath: String): List<ExtraBodyConfig> = readValue(
+        Path.of(javaClass.getResource("/config/equipment/$filePath").toURI()).toFile(),
+        object : TypeReference<List<ExtraBodyConfig>>() { }
+    )
 }

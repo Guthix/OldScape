@@ -17,6 +17,7 @@
 package io.guthix.oldscape.server.event
 
 import io.guthix.oldscape.server.api.blueprint.ObjectBlueprints
+import io.guthix.oldscape.server.blueprints.ObjectBlueprint
 import io.guthix.oldscape.server.event.script.InGameEvent
 import io.guthix.oldscape.server.net.state.game.ClientEvent
 import io.guthix.oldscape.server.world.World
@@ -29,7 +30,8 @@ internal data class InventoryClickClientEvent(
     val option: Int
 ) : ClientEvent {
     override fun toGameEvent(world: World): InGameEvent {
-        val op = ObjectBlueprints[objId].interfaceOperations[option - 1] ?: error("Item $objId doesn't exist.")
+        val op = ObjectBlueprints.get<ObjectBlueprint>(objId).interfaceOperations[option - 1]
+            ?: error("Item $objId doesn't exist.")
         return InventoryClickEvent(interfaceId, interfaceSlot, objId, inventorySlot, op)
     }
 }

@@ -407,13 +407,13 @@ class PlayerInfoPacket(
                 writeShort(512 + it.blueprint.id)
             } ?: run { writeByte(0) }
             player.appearance.equipment.body?.let { // write arms
-                if(it.fullBody) writeByte(0) else writeShort(256 + player.appearance.style.arms)
+                if(it.blueprint.isFullBody) writeByte(0) else writeShort(256 + player.appearance.style.arms)
             } ?: run { writeShort(256 + player.appearance.style.arms) }
             player.appearance.equipment.legs?.let { // write legs
                 writeShort(512 + it.blueprint.id)
             } ?: run { writeShort(256 + player.appearance.style.legs) }
             player.appearance.equipment.head?.let { // write hair
-                if(it.coversScalp) writeByte(0) else writeShort(256 + player.appearance.style.hair)
+                if(it.blueprint.coversHair) writeByte(0) else writeShort(256 + player.appearance.style.hair)
             } ?: run { writeShort(256 + player.appearance.style.hair) }
             player.appearance.equipment.hands?.let {  // write hands
                 writeShort(512 + it.blueprint.id)
@@ -423,7 +423,7 @@ class PlayerInfoPacket(
             } ?: run { writeShort(256 + player.appearance.style.feet)}
             if(player.appearance.gender == Appearance.Gender.MALE) { //write beard
                 player.appearance.equipment.head?.let {
-                    if(it.coversFace) writeByte(0) else writeShort(256 + player.appearance.style.beard)
+                    if(it.blueprint.coversFace) writeByte(0) else writeShort(256 + player.appearance.style.beard)
                 } ?: run { writeShort(256 + player.appearance.style.beard) }
             } else {
                 writeByte(0)

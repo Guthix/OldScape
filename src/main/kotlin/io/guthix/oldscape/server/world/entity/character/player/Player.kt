@@ -158,8 +158,7 @@ data class Player(
             feet = 42
         ),
         equipment = Appearance.Equipment(
-            null, null, null, null, null, null, null, null, null
-        ),
+            null, null, null, null, null, null, null, null, null, null),
         colours = Appearance.Colours(0,0,0,0,0),
         animations = Appearance.Animations(
             stand = 808,
