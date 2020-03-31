@@ -4817,28 +4817,6 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 20601
-  weight: 3.0
-  examine: "An elder maul."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 135
-      magic: 0
-      range: -4
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 147
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
   - 20756
   weight: 3.6
   examine: "A brutal weapon popular among giants."

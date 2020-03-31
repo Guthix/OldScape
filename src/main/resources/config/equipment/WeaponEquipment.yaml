@@ -3724,28 +3724,6 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 1397
-  weight: 2.267
-  examine: "It's a slightly magical stick."
-  equipment:
-    attackBonus:
-      stab: 7
-      slash: -1
-      crush: 28
-      magic: 0
-      range: 10
-    defenceBonus:
-      stab: 2
-      slash: 3
-      crush: 1
-      magic: 0
-      range: 10
-    strengthBonus:
-      melee: 35
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
   - 1399
   weight: 2.267
   examine: "It's a slightly magical stick."
@@ -11266,28 +11244,6 @@
       melee: -10
       range: 0
       magic: 0
-    prayerBonus: 0
-- ids:
-  - 20604
-  weight: 0.0
-  examine: "An elder wand."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 28
-    defenceBonus:
-      stab: 0
-      slash: 3
-      crush: 3
-      magic: 0
-      range: 20
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 5
     prayerBonus: 0
 - ids:
   - 20720

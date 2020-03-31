@@ -6186,66 +6186,6 @@
       magic: 10
       range: 10
 - ids:
-  - 5643
-  - 5646
-  examine: "I'm glad I can't see the rest of it!"
-  combat:
-    isAggressive: true
-    isPoisonous: false
-    isImmumePoison: false
-    isImmuneVenom: false
-    stats:
-      health: 75
-      attack: 115
-      strength: 76
-      defence: 75
-      range: 50
-      magic: 115
-    aggressiveStats:
-      attack: 0
-      range: 0
-      magic: 0
-      strengthBonus:
-        melee: 0
-        range: 0
-        magic: 0
-    defensiveStats:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-- ids:
-  - 5643
-  - 5646
-  examine: "I'm glad I can't see the rest of it!"
-  combat:
-    isAggressive: true
-    isPoisonous: false
-    isImmumePoison: false
-    isImmuneVenom: false
-    stats:
-      health: 75
-      attack: 115
-      strength: 76
-      defence: 75
-      range: 50
-      magic: 115
-    aggressiveStats:
-      attack: 0
-      range: 0
-      magic: 0
-      strengthBonus:
-        melee: 0
-        range: 0
-        magic: 0
-    defensiveStats:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-- ids:
   - 130
   examine: "He guards the dungeon with the faithfulness of the undead."
   combat:
@@ -6274,9 +6214,6 @@
       crush: -2
       magic: 4
       range: 1
-- ids:
-  - 13367
-  examine: "Beware of the dog!"
 - ids:
   - 131
   examine: "Beware of the dog!"
@@ -6307,9 +6244,6 @@
       magic: 0
       range: 0
 - ids:
-  - 13368
-  examine: "He doesn't look very welcoming."
-- ids:
   - 132
   examine: "He doesn't look very welcoming."
   combat:
@@ -6338,9 +6272,6 @@
       crush: 0
       magic: 0
       range: 0
-- ids:
-  - 13369
-  examine: "A pet Troll."
 - ids:
   - 133
   examine: "Young, but still dangerous."
@@ -6371,9 +6302,6 @@
       magic: 200
       range: 200
 - ids:
-  - 13370
-  examine: "No spider could grow that big! It's unrealistic!"
-- ids:
   - 134
   examine: "No spider could grow that big! It's unrealistic!"
   combat:
@@ -6402,9 +6330,6 @@
       crush: 0
       magic: 0
       range: 0
-- ids:
-  - 2715
-  examine: "Good doggy..."
 - ids:
   - 135
   examine: "Good doggy..."
@@ -6586,9 +6511,6 @@
       magic: 0
       range: 0
 - ids:
-  - 13372
-  examine: "Young, but still dangerous."
-- ids:
   - 137
   examine: "Young, but still dangerous."
   combat:
@@ -6617,9 +6539,6 @@
       crush: 50
       magic: 30
       range: 40
-- ids:
-  - 13374
-  examine: "I don't think insect repellent will work..."
 - ids:
   - 138
   examine: "I don't think insect repellent will work..."
@@ -6650,9 +6569,6 @@
       magic: 50
       range: 50
 - ids:
-  - 13375
-  examine: "Its scales seem to be made of steel."
-- ids:
   - 139
   examine: "Its scales seem to be made of steel."
   combat:
@@ -6681,9 +6597,6 @@
       crush: 70
       magic: 90
       range: 30
-- ids:
-  - 13376
-  examine: "A darkened horror from the ocean depths."
 - ids:
   - 140
   examine: "A darkened horror from the ocean depths."
@@ -6714,9 +6627,6 @@
       magic: 50
       range: 50
 - ids:
-  - 13377
-  examine: "I don't like the look of those spines..."
-- ids:
   - 141
   examine: "I don't like the look of those spines..."
   combat:
@@ -6746,9 +6656,6 @@
       magic: 0
       range: 0
 - ids:
-  - 13378
-  examine: "Arrgh! Look at its pointy teeth!"
-- ids:
   - 142
   examine: "Arrgh! Look at its pointy teeth!"
   combat:
@@ -6777,9 +6684,6 @@
       crush: 0
       magic: 0
       range: -10
-- ids:
-  - 13373
-  examine: "He's full of pent-up aggression."
 - ids:
   - 143
   examine: "It's full of pent-up aggression."
@@ -17072,37 +16976,11 @@
       magic: 14
       range: -4
 - ids:
-  - 537
-  examine: "A bouncy fungus."
-  combat:
-    isAggressive: false
-    isPoisonous: false
-    isImmumePoison: false
-    isImmuneVenom: false
-    stats:
-      health: 65
-      attack: 65
-      strength: 65
-      defence: 65
-      range: 65
-      magic: 65
-    aggressiveStats:
-      attack: 30
-      range: 0
-      magic: 0
-      strengthBonus:
-        melee: 0
-        range: 0
-        magic: 0
-    defensiveStats:
-      stab: 10
-      slash: 10
-      crush: 10
-      magic: 20
-      range: 20
-- ids:
-  - 1024
-  examine: "A bouncy fungus."
+  - 533
+  - 535
+  - 538
+  - 637
+  examine: "A fun guy. No wait, that's awful. Plus it doesn't even make sense."
   combat:
     isAggressive: false
     isPoisonous: false
@@ -17135,24 +17013,96 @@
   - 538
   - 637
   examine: "A fun guy. No wait, that's awful. Plus it doesn't even make sense."
+  combat:
+    isAggressive: false
+    isPoisonous: false
+    isImmumePoison: false
+    isImmuneVenom: false
+    stats:
+      health: 75
+      attack: 75
+      strength: 75
+      defence: 75
+      range: 75
+      magic: 75
+    aggressiveStats:
+      attack: 30
+      range: 0
+      magic: 0
+      strengthBonus:
+        melee: 0
+        range: 0
+        magic: 0
+    defensiveStats:
+      stab: 10
+      slash: 10
+      crush: 10
+      magic: 20
+      range: 20
 - ids:
   - 533
   - 535
   - 538
   - 637
   examine: "A fun guy. No wait, that's awful. Plus it doesn't even make sense."
+  combat:
+    isAggressive: false
+    isPoisonous: false
+    isImmumePoison: false
+    isImmuneVenom: false
+    stats:
+      health: 75
+      attack: 75
+      strength: 75
+      defence: 75
+      range: 75
+      magic: 75
+    aggressiveStats:
+      attack: 30
+      range: 0
+      magic: 0
+      strengthBonus:
+        melee: 0
+        range: 0
+        magic: 0
+    defensiveStats:
+      stab: 10
+      slash: 10
+      crush: 10
+      magic: 20
+      range: 20
 - ids:
   - 533
   - 535
   - 538
   - 637
   examine: "A fun guy. No wait, that's awful. Plus it doesn't even make sense."
-- ids:
-  - 533
-  - 535
-  - 538
-  - 637
-  examine: "A fun guy. No wait, that's awful. Plus it doesn't even make sense."
+  combat:
+    isAggressive: false
+    isPoisonous: false
+    isImmumePoison: false
+    isImmuneVenom: false
+    stats:
+      health: 75
+      attack: 75
+      strength: 75
+      defence: 75
+      range: 75
+      magic: 75
+    aggressiveStats:
+      attack: 30
+      range: 0
+      magic: 0
+      strengthBonus:
+        melee: 0
+        range: 0
+        magic: 0
+    defensiveStats:
+      stab: 10
+      slash: 10
+      crush: 10
+      magic: 20
+      range: 20
 - ids:
   - 534
   examine: "Interesting assortment of clothes on offer..."
@@ -28816,95 +28766,8 @@
   - 944
   examine: "The animated spirit of a soul not at rest."
 - ids:
-  - 946
-  examine: "Aaargh... a Ghast!"
-  combat:
-    isAggressive: false
-    isPoisonous: false
-    isImmumePoison: false
-    isImmuneVenom: false
-    stats:
-      health: 22
-      attack: 22
-      strength: 22
-      defence: 18
-      range: 1
-      magic: 1
-    aggressiveStats:
-      attack: 0
-      range: 0
-      magic: 0
-      strengthBonus:
-        melee: 0
-        range: 0
-        magic: 0
-    defensiveStats:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-- ids:
-  - 5625
-  examine: "Aaargh... a Ghast!"
-  combat:
-    isAggressive: true
-    isPoisonous: false
-    isImmumePoison: true
-    isImmuneVenom: false
-    stats:
-      health: 115
-      attack: 80
-      strength: 30
-      defence: 60
-      range: 30
-      magic: 30
-    aggressiveStats:
-      attack: 0
-      range: 0
-      magic: 0
-      strengthBonus:
-        melee: 0
-        range: 0
-        magic: 0
-    defensiveStats:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-- ids:
-  - 5626
-  examine: "Aaargh... a Ghast!"
-  combat:
-    isAggressive: true
-    isPoisonous: false
-    isImmumePoison: false
-    isImmuneVenom: false
-    stats:
-      health: 135
-      attack: 110
-      strength: 70
-      defence: 70
-      range: 30
-      magic: 30
-    aggressiveStats:
-      attack: 0
-      range: 0
-      magic: 0
-      strengthBonus:
-        melee: 0
-        range: 0
-        magic: 0
-    defensiveStats:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-- ids:
   - 5627
-  examine: "Aaargh... a Ghast!"
+  examine: "Arrghhh... A Ghast."
   combat:
     isAggressive: true
     isPoisonous: false
@@ -30442,213 +30305,6 @@
   - 5048
   examine: "Looks like the leader of the Myreque."
 - ids:
-  - 5322
-  examine: "Advisor to the Duke of Lumbridge."
-- ids:
-  - 990
-  - 991
-  - 992
-  - 993
-  - 994
-  - 4328
-  examine: "Former advisor to the Duke of Lumbridge."
-  combat:
-    isAggressive: true
-    isPoisonous: false
-    isImmumePoison: false
-    isImmuneVenom: true
-    stats:
-      health: 60
-      attack: 45
-      strength: 45
-      defence: 24
-      range: 1
-      magic: 1
-    aggressiveStats:
-      attack: 0
-      range: 0
-      magic: 8
-      strengthBonus:
-        melee: 0
-        range: 0
-        magic: 0
-    defensiveStats:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-- ids:
-  - 990
-  - 991
-  - 992
-  - 993
-  - 994
-  - 4328
-  examine: "Former advisor to the Duke of Lumbridge."
-  combat:
-    isAggressive: true
-    isPoisonous: false
-    isImmumePoison: false
-    isImmuneVenom: true
-    stats:
-      health: 60
-      attack: 45
-      strength: 45
-      defence: 24
-      range: 1
-      magic: 1
-    aggressiveStats:
-      attack: 0
-      range: 0
-      magic: 8
-      strengthBonus:
-        melee: 0
-        range: 0
-        magic: 0
-    defensiveStats:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-- ids:
-  - 990
-  - 991
-  - 992
-  - 993
-  - 994
-  - 4328
-  examine: "Former advisor to the Duke of Lumbridge."
-  combat:
-    isAggressive: true
-    isPoisonous: false
-    isImmumePoison: false
-    isImmuneVenom: true
-    stats:
-      health: 60
-      attack: 45
-      strength: 45
-      defence: 24
-      range: 1
-      magic: 1
-    aggressiveStats:
-      attack: 0
-      range: 0
-      magic: 8
-      strengthBonus:
-        melee: 0
-        range: 0
-        magic: 0
-    defensiveStats:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-- ids:
-  - 990
-  - 991
-  - 992
-  - 993
-  - 994
-  - 4328
-  examine: "Former advisor to the Duke of Lumbridge."
-  combat:
-    isAggressive: true
-    isPoisonous: false
-    isImmumePoison: false
-    isImmuneVenom: true
-    stats:
-      health: 60
-      attack: 45
-      strength: 45
-      defence: 24
-      range: 1
-      magic: 1
-    aggressiveStats:
-      attack: 0
-      range: 0
-      magic: 8
-      strengthBonus:
-        melee: 0
-        range: 0
-        magic: 0
-    defensiveStats:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-- ids:
-  - 990
-  - 991
-  - 992
-  - 993
-  - 994
-  - 4328
-  examine: "Former advisor to the Duke of Lumbridge."
-  combat:
-    isAggressive: true
-    isPoisonous: false
-    isImmumePoison: false
-    isImmuneVenom: true
-    stats:
-      health: 60
-      attack: 45
-      strength: 45
-      defence: 24
-      range: 1
-      magic: 1
-    aggressiveStats:
-      attack: 0
-      range: 0
-      magic: 8
-      strengthBonus:
-        melee: 0
-        range: 0
-        magic: 0
-    defensiveStats:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-- ids:
-  - 990
-  - 991
-  - 992
-  - 993
-  - 994
-  - 4328
-  examine: "Former advisor to the Duke of Lumbridge."
-  combat:
-    isAggressive: true
-    isPoisonous: false
-    isImmumePoison: false
-    isImmuneVenom: true
-    stats:
-      health: 60
-      attack: 45
-      strength: 45
-      defence: 24
-      range: 1
-      magic: 1
-    aggressiveStats:
-      attack: 0
-      range: 0
-      magic: 8
-      strengthBonus:
-        melee: 0
-        range: 0
-        magic: 0
-    defensiveStats:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-- ids:
   - 5139
   - 5142
   - 5143
@@ -32183,75 +31839,6 @@
   - 1056
   examine: "An old man."
 - ids:
-  - 1059
-  examine: "A Kid."
-- ids:
-  - 1057
-  - 1058
-  examine: "Where did his boot go?"
-- ids:
-  - 1057
-  - 1058
-  examine: "Where did his boot go?"
-- ids:
-  - 1075
-  examine: "Is that really Tolna?"
-  combat:
-    isAggressive: true
-    isPoisonous: true
-    isImmumePoison: false
-    isImmuneVenom: false
-    stats:
-      health: 37
-      attack: 42
-      strength: 41
-      defence: 40
-      range: 1
-      magic: 1
-    aggressiveStats:
-      attack: 0
-      range: 0
-      magic: 0
-      strengthBonus:
-        melee: 0
-        range: 0
-        magic: 0
-    defensiveStats:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 50
-      range: 50
-- ids:
-  - 1076
-  examine: "Is that really Tolna?"
-  combat:
-    isAggressive: true
-    isPoisonous: true
-    isImmumePoison: false
-    isImmuneVenom: false
-    stats:
-      health: 37
-      attack: 42
-      strength: 41
-      defence: 40
-      range: 1
-      magic: 1
-    aggressiveStats:
-      attack: 0
-      range: 0
-      magic: 0
-      strengthBonus:
-        melee: 0
-        range: 0
-        magic: 0
-    defensiveStats:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 50
-      range: 50
-- ids:
   - 1077
   examine: "Is that really Tolna?"
   combat:
@@ -33176,344 +32763,11 @@
   - 1113
   examine: "He tries to keep order around here."
 - ids:
-  - 1114
-  - 5285
-  - 5286
-  - 5287
-  examine: "A mourner, or plague healer."
-  combat:
-    isAggressive: false
-    isPoisonous: false
-    isImmumePoison: false
-    isImmuneVenom: false
-    stats:
-      health: 19
-      attack: 8
-      strength: 8
-      defence: 8
-      range: 1
-      magic: 1
-    aggressiveStats:
-      attack: 6
-      range: 0
-      magic: 0
-      strengthBonus:
-        melee: 2
-        range: 0
-        magic: 0
-    defensiveStats:
-      stab: 6
-      slash: 6
-      crush: 9
-      magic: 0
-      range: 0
-- ids:
-  - 1114
-  - 5285
-  - 5286
-  - 5287
-  examine: "A mourner, or plague healer."
-  combat:
-    isAggressive: false
-    isPoisonous: false
-    isImmumePoison: false
-    isImmuneVenom: false
-    stats:
-      health: 19
-      attack: 8
-      strength: 8
-      defence: 8
-      range: 1
-      magic: 1
-    aggressiveStats:
-      attack: 6
-      range: 0
-      magic: 0
-      strengthBonus:
-        melee: 2
-        range: 0
-        magic: 0
-    defensiveStats:
-      stab: 6
-      slash: 6
-      crush: 9
-      magic: 0
-      range: 0
-- ids:
-  - 1114
-  - 5285
-  - 5286
-  - 5287
-  examine: "A mourner, or plague healer."
-  combat:
-    isAggressive: false
-    isPoisonous: false
-    isImmumePoison: false
-    isImmuneVenom: false
-    stats:
-      health: 19
-      attack: 8
-      strength: 8
-      defence: 8
-      range: 1
-      magic: 1
-    aggressiveStats:
-      attack: 6
-      range: 0
-      magic: 0
-      strengthBonus:
-        melee: 2
-        range: 0
-        magic: 0
-    defensiveStats:
-      stab: 6
-      slash: 6
-      crush: 9
-      magic: 0
-      range: 0
-- ids:
-  - 1114
-  - 5285
-  - 5286
-  - 5287
-  examine: "A mourner, or plague healer."
-  combat:
-    isAggressive: false
-    isPoisonous: false
-    isImmumePoison: false
-    isImmuneVenom: false
-    stats:
-      health: 19
-      attack: 8
-      strength: 8
-      defence: 8
-      range: 1
-      magic: 1
-    aggressiveStats:
-      attack: 6
-      range: 0
-      magic: 0
-      strengthBonus:
-        melee: 2
-        range: 0
-        magic: 0
-    defensiveStats:
-      stab: 6
-      slash: 6
-      crush: 9
-      magic: 0
-      range: 0
-- ids:
-  - 1150
-  examine: "A mourner, or plague healer."
-  combat:
-    isAggressive: false
-    isPoisonous: false
-    isImmumePoison: false
-    isImmuneVenom: false
-    stats:
-      health: 13
-      attack: 10
-      strength: 10
-      defence: 10
-      range: 1
-      magic: 1
-    aggressiveStats:
-      attack: 0
-      range: 0
-      magic: 0
-      strengthBonus:
-        melee: 0
-        range: 0
-        magic: 0
-    defensiveStats:
-      stab: 3
-      slash: 2
-      crush: 4
-      magic: 0
-      range: 0
-- ids:
-  - 1149
-  examine: "A mourner, or plague healer."
-  combat:
-    isAggressive: false
-    isPoisonous: false
-    isImmumePoison: false
-    isImmuneVenom: false
-    stats:
-      health: 19
-      attack: 10
-      strength: 10
-      defence: 10
-      range: 1
-      magic: 1
-    aggressiveStats:
-      attack: 0
-      range: 0
-      magic: 0
-      strengthBonus:
-        melee: 0
-        range: 0
-        magic: 0
-    defensiveStats:
-      stab: 3
-      slash: 2
-      crush: 4
-      magic: 0
-      range: 0
-- ids:
-  - 1136
-  examine: "A mourner, or plague healer."
-  combat:
-    isAggressive: false
-    isPoisonous: false
-    isImmumePoison: false
-    isImmuneVenom: false
-    stats:
-      health: 13
-      attack: 17
-      strength: 17
-      defence: 17
-      range: 1
-      magic: 1
-    aggressiveStats:
-      attack: 5
-      range: 0
-      magic: 0
-      strengthBonus:
-        melee: 5
-        range: 0
-        magic: 0
-    defensiveStats:
-      stab: 5
-      slash: 5
-      crush: 7
-      magic: 0
-      range: 0
-- ids:
-  - 1115
-  examine: "A mourner, or plague healer."
-  combat:
-    isAggressive: false
-    isPoisonous: false
-    isImmumePoison: false
-    isImmuneVenom: false
-    stats:
-      health: 25
-      attack: 20
-      strength: 20
-      defence: 20
-      range: 1
-      magic: 1
-    aggressiveStats:
-      attack: 0
-      range: 0
-      magic: 0
-      strengthBonus:
-        melee: 0
-        range: 0
-        magic: 0
-    defensiveStats:
-      stab: 3
-      slash: 2
-      crush: 4
-      magic: 0
-      range: 0
-- ids:
-  - 1148
-  examine: "A mourner, or plague healer."
-  combat:
-    isAggressive: false
-    isPoisonous: false
-    isImmumePoison: false
-    isImmuneVenom: false
-    stats:
-      health: 25
-      attack: 20
-      strength: 20
-      defence: 20
-      range: 1
-      magic: 1
-    aggressiveStats:
-      attack: 0
-      range: 0
-      magic: 0
-      strengthBonus:
-        melee: 0
-        range: 0
-        magic: 0
-    defensiveStats:
-      stab: 2
-      slash: 1
-      crush: 3
-      magic: 0
-      range: 0
-- ids:
-  - 4006
-  - 5311
-  - 5312
-  examine: "A mourner, or plague healer."
-  combat:
-    isAggressive: false
-    isPoisonous: false
-    isImmumePoison: false
-    isImmuneVenom: false
-    stats:
-      health: 105
-      attack: 95
-      strength: 95
-      defence: 80
-      range: 1
-      magic: 0
-    aggressiveStats:
-      attack: 0
-      range: 0
-      magic: 0
-      strengthBonus:
-        melee: 0
-        range: 0
-        magic: 0
-    defensiveStats:
-      stab: 50
-      slash: 70
-      crush: 70
-      magic: 50
-      range: 60
-- ids:
-  - 4006
-  - 5311
-  - 5312
-  examine: "A mourner, or plague healer."
-  combat:
-    isAggressive: false
-    isPoisonous: false
-    isImmumePoison: false
-    isImmuneVenom: false
-    stats:
-      health: 105
-      attack: 95
-      strength: 95
-      defence: 80
-      range: 1
-      magic: 0
-    aggressiveStats:
-      attack: 0
-      range: 0
-      magic: 0
-      strengthBonus:
-        melee: 0
-        range: 0
-        magic: 0
-    defensiveStats:
-      stab: 50
-      slash: 70
-      crush: 70
-      magic: 50
-      range: 60
-- ids:
-  - 4006
-  - 5311
-  - 5312
+  - 1151
+  - 4259
+  - 4260
+  - 4261
+  - 4273
   examine: "A mourner, or plague healer."
   combat:
     isAggressive: false
@@ -33548,6 +32802,32 @@
   - 4261
   - 4273
   examine: "A mourner, or plague healer."
+  combat:
+    isAggressive: false
+    isPoisonous: false
+    isImmumePoison: false
+    isImmuneVenom: false
+    stats:
+      health: 105
+      attack: 95
+      strength: 95
+      defence: 80
+      range: 1
+      magic: 0
+    aggressiveStats:
+      attack: 0
+      range: 0
+      magic: 0
+      strengthBonus:
+        melee: 0
+        range: 0
+        magic: 0
+    defensiveStats:
+      stab: 50
+      slash: 70
+      crush: 70
+      magic: 50
+      range: 60
 - ids:
   - 1151
   - 4259
@@ -33555,6 +32835,32 @@
   - 4261
   - 4273
   examine: "A mourner, or plague healer."
+  combat:
+    isAggressive: false
+    isPoisonous: false
+    isImmumePoison: false
+    isImmuneVenom: false
+    stats:
+      health: 105
+      attack: 95
+      strength: 95
+      defence: 80
+      range: 1
+      magic: 0
+    aggressiveStats:
+      attack: 0
+      range: 0
+      magic: 0
+      strengthBonus:
+        melee: 0
+        range: 0
+        magic: 0
+    defensiveStats:
+      stab: 50
+      slash: 70
+      crush: 70
+      magic: 50
+      range: 60
 - ids:
   - 1151
   - 4259
@@ -33562,6 +32868,32 @@
   - 4261
   - 4273
   examine: "A mourner, or plague healer."
+  combat:
+    isAggressive: false
+    isPoisonous: false
+    isImmumePoison: false
+    isImmuneVenom: false
+    stats:
+      health: 105
+      attack: 95
+      strength: 95
+      defence: 80
+      range: 1
+      magic: 0
+    aggressiveStats:
+      attack: 0
+      range: 0
+      magic: 0
+      strengthBonus:
+        melee: 0
+        range: 0
+        magic: 0
+    defensiveStats:
+      stab: 50
+      slash: 70
+      crush: 70
+      magic: 50
+      range: 60
 - ids:
   - 1151
   - 4259
@@ -33569,13 +32901,32 @@
   - 4261
   - 4273
   examine: "A mourner, or plague healer."
-- ids:
-  - 1151
-  - 4259
-  - 4260
-  - 4261
-  - 4273
-  examine: "A mourner, or plague healer."
+  combat:
+    isAggressive: false
+    isPoisonous: false
+    isImmumePoison: false
+    isImmuneVenom: false
+    stats:
+      health: 105
+      attack: 95
+      strength: 95
+      defence: 80
+      range: 1
+      magic: 0
+    aggressiveStats:
+      attack: 0
+      range: 0
+      magic: 0
+      strengthBonus:
+        melee: 0
+        range: 0
+        magic: 0
+    defensiveStats:
+      stab: 50
+      slash: 70
+      crush: 70
+      magic: 50
+      range: 60
 - ids:
   - 1116
   examine: "He looks shifty."
@@ -35773,7 +35124,7 @@
     \ drinking beer:''' He looks like he should stay away from Khali brew. <br/> '''After\
     \ quest:''' He looks like he's had a drink or ten."
 - ids:
-  - 1213
+  - 3510
   examine: "He looks really nasty. Smells bad too."
   combat:
     isAggressive: false
@@ -35801,9 +35152,6 @@
       crush: 0
       magic: 0
       range: 0
-- ids:
-  - 3510
-  examine: "He looks really nasty. Smells bad too."
 - ids:
   - 1214
   examine: "A tough looking barman."
@@ -37878,81 +37226,6 @@
   - 1398
   examine: "A master of the wilderness."
 - ids:
-  - 1399
-  - 5215
-  - 8042
-  examine: "Varrock's resident monarch."
-- ids:
-  - 1399
-  - 5215
-  - 8042
-  examine: "Varrock's resident monarch."
-- ids:
-  - 1399
-  - 5215
-  - 8042
-  examine: "Varrock's resident monarch."
-- ids:
-  - 4163
-  - 6389
-  examine: "Varrock's resident monarch. He looks strangely evil!"
-  combat:
-    isAggressive: true
-    isPoisonous: false
-    isImmumePoison: true
-    isImmuneVenom: true
-    stats:
-      health: 75
-      attack: 35
-      strength: 30
-      defence: 30
-      range: 1
-      magic: 1
-    aggressiveStats:
-      attack: 0
-      range: 0
-      magic: 0
-      strengthBonus:
-        melee: 0
-        range: 0
-        magic: 0
-    defensiveStats:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-- ids:
-  - 4163
-  - 6389
-  examine: "Varrock's resident monarch. He looks strangely evil!"
-  combat:
-    isAggressive: true
-    isPoisonous: false
-    isImmumePoison: true
-    isImmuneVenom: true
-    stats:
-      health: 75
-      attack: 35
-      strength: 30
-      defence: 30
-      range: 1
-      magic: 1
-    aggressiveStats:
-      attack: 0
-      range: 0
-      magic: 0
-      strengthBonus:
-        melee: 0
-        range: 0
-        magic: 0
-    defensiveStats:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-- ids:
   - 6328
   examine: "Varrock's resident monarch. He looks strangely evil!"
   combat:
@@ -38401,30 +37674,6 @@
 - ids:
   - 4647
   examine: "A familiar looking young gnome."
-- ids:
-  - 1425
-  - 2061
-  - 7100
-  - 7115
-  examine: "A rough looking gnome."
-- ids:
-  - 1425
-  - 2061
-  - 7100
-  - 7115
-  examine: "A rough looking gnome."
-- ids:
-  - 1425
-  - 2061
-  - 7100
-  - 7115
-  examine: "A rough looking gnome."
-- ids:
-  - 1425
-  - 2061
-  - 7100
-  - 7115
-  examine: "A rough looking gnome."
 - ids:
   - 7101
   - 7102
@@ -39265,7 +38514,7 @@
   - 1473
   examine: "A green skinned croaker, loves the swamp."
 - ids:
-  - 1475
+  - 1476
   examine: "A large boisterous bird, a delicacy for ogres."
   combat:
     isAggressive: false
@@ -39293,9 +38542,6 @@
       crush: 0
       magic: 0
       range: 0
-- ids:
-  - 1476
-  examine: "A large boisterous bird, a delicacy for ogres."
 - ids:
   - 1477
   examine: "Buys wholesale, sells retail."
@@ -45058,25 +44304,25 @@
   - 1930
   - 1931
   - 1932
-  examine: "<nowiki/>"
+  examine: ""
 - ids:
   - 1929
   - 1930
   - 1931
   - 1932
-  examine: "<nowiki/>"
+  examine: ""
 - ids:
   - 1929
   - 1930
   - 1931
   - 1932
-  examine: "<nowiki/>"
+  examine: ""
 - ids:
   - 1929
   - 1930
   - 1931
   - 1932
-  examine: "<nowiki/>"
+  examine: ""
 - ids:
   - 1933
   examine: "Wheelbarrow loader."
@@ -57141,21 +56387,6 @@
   - 8118
   examine: "A graceful feline."
 - ids:
-  - 2639
-  - 8124
-  - 8129
-  examine: "A battle hardened hero."
-- ids:
-  - 2639
-  - 8124
-  - 8129
-  examine: "A battle hardened hero."
-- ids:
-  - 2639
-  - 8124
-  - 8129
-  examine: "A battle hardened hero."
-- ids:
   - 8057
   examine: "A battle hardened hero."
   combat:
@@ -65042,174 +64273,6 @@
   - 3414
   examine: "An elven hunting party leader."
 - ids:
-  - 3415
-  examine: ""
-- ids:
-  - 8847
-  - 8871
-  - 8872
-  - 8950
-  - 9016
-  examine: "The ferocious henchman of Lord Iorwerth."
-  combat:
-    isAggressive: true
-    isPoisonous: false
-    isImmumePoison: true
-    isImmuneVenom: true
-    stats:
-      health: 320
-      attack: 268
-      strength: 268
-      defence: 104
-      range: 104
-      magic: 342
-    aggressiveStats:
-      attack: 0
-      range: 0
-      magic: 0
-      strengthBonus:
-        melee: 28
-        range: 28
-        magic: 0
-    defensiveStats:
-      stab: 40
-      slash: 40
-      crush: 20
-      magic: 120
-      range: 30
-- ids:
-  - 8847
-  - 8871
-  - 8872
-  - 8950
-  - 9016
-  examine: "The ferocious henchman of Lord Iorwerth."
-  combat:
-    isAggressive: true
-    isPoisonous: false
-    isImmumePoison: true
-    isImmuneVenom: true
-    stats:
-      health: 320
-      attack: 268
-      strength: 268
-      defence: 104
-      range: 104
-      magic: 342
-    aggressiveStats:
-      attack: 0
-      range: 0
-      magic: 0
-      strengthBonus:
-        melee: 28
-        range: 28
-        magic: 0
-    defensiveStats:
-      stab: 40
-      slash: 40
-      crush: 20
-      magic: 120
-      range: 30
-- ids:
-  - 8847
-  - 8871
-  - 8872
-  - 8950
-  - 9016
-  examine: "The ferocious henchman of Lord Iorwerth."
-  combat:
-    isAggressive: true
-    isPoisonous: false
-    isImmumePoison: true
-    isImmuneVenom: true
-    stats:
-      health: 320
-      attack: 268
-      strength: 268
-      defence: 104
-      range: 104
-      magic: 342
-    aggressiveStats:
-      attack: 0
-      range: 0
-      magic: 0
-      strengthBonus:
-        melee: 28
-        range: 28
-        magic: 0
-    defensiveStats:
-      stab: 40
-      slash: 40
-      crush: 20
-      magic: 120
-      range: 30
-- ids:
-  - 8847
-  - 8871
-  - 8872
-  - 8950
-  - 9016
-  examine: "The ferocious henchman of Lord Iorwerth."
-  combat:
-    isAggressive: true
-    isPoisonous: false
-    isImmumePoison: true
-    isImmuneVenom: true
-    stats:
-      health: 320
-      attack: 268
-      strength: 268
-      defence: 104
-      range: 104
-      magic: 342
-    aggressiveStats:
-      attack: 0
-      range: 0
-      magic: 0
-      strengthBonus:
-        melee: 28
-        range: 28
-        magic: 0
-    defensiveStats:
-      stab: 40
-      slash: 40
-      crush: 20
-      magic: 120
-      range: 30
-- ids:
-  - 8847
-  - 8871
-  - 8872
-  - 8950
-  - 9016
-  examine: "The ferocious henchman of Lord Iorwerth."
-  combat:
-    isAggressive: true
-    isPoisonous: false
-    isImmumePoison: true
-    isImmuneVenom: true
-    stats:
-      health: 320
-      attack: 268
-      strength: 268
-      defence: 104
-      range: 104
-      magic: 342
-    aggressiveStats:
-      attack: 0
-      range: 0
-      magic: 0
-      strengthBonus:
-        melee: 28
-        range: 28
-        magic: 0
-    defensiveStats:
-      stab: 40
-      slash: 40
-      crush: 20
-      magic: 120
-      range: 30
-- ids:
   - 9247
   - 9249
   examine: "The ferocious henchman of Lord Iorwerth."
@@ -65532,74 +64595,6 @@
 - ids:
   - 3430
   examine: "An elven city guard."
-- ids:
-  - 3432
-  - 5292
-  examine: "A concerned looking elf."
-- ids:
-  - 3432
-  - 5292
-  examine: "A concerned looking elf."
-- ids:
-  - 8865
-  - 9248
-  examine: "A concerned looking elf."
-  combat:
-    isAggressive: true
-    isPoisonous: false
-    isImmumePoison: true
-    isImmuneVenom: true
-    stats:
-      health: 300
-      attack: 0
-      strength: 0
-      defence: 102
-      range: 102
-      magic: 368
-    aggressiveStats:
-      attack: 0
-      range: 84
-      magic: 0
-      strengthBonus:
-        melee: 0
-        range: 0
-        magic: 0
-    defensiveStats:
-      stab: 80
-      slash: 80
-      crush: 80
-      magic: 180
-      range: 260
-- ids:
-  - 8865
-  - 9248
-  examine: "A concerned looking elf."
-  combat:
-    isAggressive: true
-    isPoisonous: false
-    isImmumePoison: true
-    isImmuneVenom: true
-    stats:
-      health: 300
-      attack: 0
-      strength: 0
-      defence: 102
-      range: 102
-      magic: 368
-    aggressiveStats:
-      attack: 0
-      range: 84
-      magic: 0
-      strengthBonus:
-        melee: 0
-        range: 0
-        magic: 0
-    defensiveStats:
-      stab: 80
-      slash: 80
-      crush: 80
-      magic: 180
-      range: 260
 - ids:
   - 9246
   examine: "A concerned looking elf."
@@ -66704,9 +65699,6 @@
       magic: 0
       range: 0
 - ids:
-  - 3519
-  examine: "One of the knights of the Round Table."
-- ids:
   - 4344
   - 4354
   examine: "One of the Knights of the Round Table."
@@ -66766,14 +65758,6 @@
       crush: 300
       magic: 0
       range: 0
-- ids:
-  - 3520
-  - 4351
-  examine: "One of the Knights of the Round Table."
-- ids:
-  - 3520
-  - 4351
-  examine: "One of the Knights of the Round Table."
 - ids:
   - 4348
   - 4356
@@ -66835,14 +65819,6 @@
       magic: 0
       range: 0
 - ids:
-  - 3521
-  - 4352
-  examine: "One of the Knights of the Round Table."
-- ids:
-  - 3521
-  - 4352
-  examine: "One of the Knights of the Round Table."
-- ids:
   - 4349
   - 4355
   examine: "One of the Knights of the Round Table."
@@ -66902,9 +65878,6 @@
       crush: 65
       magic: 0
       range: 0
-- ids:
-  - 3522
-  examine: "One of the Knights of the Round Table."
 - ids:
   - 4345
   - 4361
@@ -66966,9 +65939,6 @@
       magic: 0
       range: 0
 - ids:
-  - 3523
-  examine: "One of the Knights of the Round Table."
-- ids:
   - 4346
   - 4359
   examine: "One of the Knights of the Round Table."
@@ -67028,14 +65998,6 @@
       crush: 225
       magic: 0
       range: 0
-- ids:
-  - 3524
-  - 4350
-  examine: "One of the Knights of the Round Table."
-- ids:
-  - 3524
-  - 4350
-  examine: "One of the Knights of the Round Table."
 - ids:
   - 4347
   - 4360
@@ -67097,9 +66059,6 @@
       magic: 0
       range: 0
 - ids:
-  - 3525
-  examine: "One of the Knights of the Round Table."
-- ids:
   - 4342
   - 4357
   examine: "One of the Knights of the Round Table."
@@ -67159,9 +66118,6 @@
       crush: 45
       magic: 0
       range: 0
-- ids:
-  - 3526
-  examine: "One of the Knights of the Round Table."
 - ids:
   - 4343
   - 4358
@@ -71820,30 +70776,6 @@
       magic: 0
       range: 0
 - ids:
-  - 5056
-  - 5058
-  examine: "A curious fellow."
-- ids:
-  - 5056
-  - 5058
-  examine: "A curious fellow."
-- ids:
-  - 5059
-  - 5060
-  examine: "An evil vampire."
-- ids:
-  - 5059
-  - 5060
-  examine: "An evil vampire."
-- ids:
-  - 3733
-  - 8238
-  examine: "A curious fellow."
-- ids:
-  - 3733
-  - 8238
-  examine: "A curious fellow."
-- ids:
   - 3734
   - 3735
   - 3736
@@ -72162,236 +71094,6 @@
   - 3742
   - 3743
   examine: "A powerful female vampyre."
-- ids:
-  - 3744
-  - 8241
-  examine: "He looks haughty and arrogant."
-- ids:
-  - 3744
-  - 8241
-  examine: "He looks haughty and arrogant."
-- ids:
-  - 3745
-  - 3746
-  - 3747
-  examine: "He looks haughty and arrogant.<br/> '''Upon defeat:''' No so haughty or\
-    \ arrogant any more."
-- ids:
-  - 3745
-  - 3746
-  - 3747
-  examine: "He looks haughty and arrogant.<br/> '''Upon defeat:''' No so haughty or\
-    \ arrogant any more."
-- ids:
-  - 3745
-  - 3746
-  - 3747
-  examine: "He looks haughty and arrogant.<br/> '''Upon defeat:''' No so haughty or\
-    \ arrogant any more."
-- ids:
-  - 8242
-  - 8243
-  - 8244
-  - 8245
-  - 8246
-  - 8247
-  examine: "He looks haughty and arrogant."
-  combat:
-    isAggressive: true
-    isPoisonous: false
-    isImmumePoison: true
-    isImmuneVenom: true
-    stats:
-      health: 400
-      attack: 120
-      strength: 120
-      defence: 120
-      range: 120
-      magic: 1
-    aggressiveStats:
-      attack: 0
-      range: 0
-      magic: 0
-      strengthBonus:
-        melee: 34
-        range: 0
-        magic: 34
-    defensiveStats:
-      stab: 60
-      slash: 60
-      crush: 60
-      magic: 60
-      range: 60
-- ids:
-  - 8242
-  - 8243
-  - 8244
-  - 8245
-  - 8246
-  - 8247
-  examine: "He looks haughty and arrogant."
-  combat:
-    isAggressive: true
-    isPoisonous: false
-    isImmumePoison: true
-    isImmuneVenom: true
-    stats:
-      health: 400
-      attack: 120
-      strength: 120
-      defence: 120
-      range: 120
-      magic: 1
-    aggressiveStats:
-      attack: 0
-      range: 0
-      magic: 0
-      strengthBonus:
-        melee: 34
-        range: 0
-        magic: 34
-    defensiveStats:
-      stab: 60
-      slash: 60
-      crush: 60
-      magic: 60
-      range: 60
-- ids:
-  - 8242
-  - 8243
-  - 8244
-  - 8245
-  - 8246
-  - 8247
-  examine: "He looks haughty and arrogant."
-  combat:
-    isAggressive: true
-    isPoisonous: false
-    isImmumePoison: true
-    isImmuneVenom: true
-    stats:
-      health: 400
-      attack: 120
-      strength: 120
-      defence: 120
-      range: 120
-      magic: 1
-    aggressiveStats:
-      attack: 0
-      range: 0
-      magic: 0
-      strengthBonus:
-        melee: 34
-        range: 0
-        magic: 34
-    defensiveStats:
-      stab: 60
-      slash: 60
-      crush: 60
-      magic: 60
-      range: 60
-- ids:
-  - 8242
-  - 8243
-  - 8244
-  - 8245
-  - 8246
-  - 8247
-  examine: "He looks haughty and arrogant."
-  combat:
-    isAggressive: true
-    isPoisonous: false
-    isImmumePoison: true
-    isImmuneVenom: true
-    stats:
-      health: 400
-      attack: 120
-      strength: 120
-      defence: 120
-      range: 120
-      magic: 1
-    aggressiveStats:
-      attack: 0
-      range: 0
-      magic: 0
-      strengthBonus:
-        melee: 34
-        range: 0
-        magic: 34
-    defensiveStats:
-      stab: 60
-      slash: 60
-      crush: 60
-      magic: 60
-      range: 60
-- ids:
-  - 8242
-  - 8243
-  - 8244
-  - 8245
-  - 8246
-  - 8247
-  examine: "He looks haughty and arrogant."
-  combat:
-    isAggressive: true
-    isPoisonous: false
-    isImmumePoison: true
-    isImmuneVenom: true
-    stats:
-      health: 400
-      attack: 120
-      strength: 120
-      defence: 120
-      range: 120
-      magic: 1
-    aggressiveStats:
-      attack: 0
-      range: 0
-      magic: 0
-      strengthBonus:
-        melee: 34
-        range: 0
-        magic: 34
-    defensiveStats:
-      stab: 60
-      slash: 60
-      crush: 60
-      magic: 60
-      range: 60
-- ids:
-  - 8242
-  - 8243
-  - 8244
-  - 8245
-  - 8246
-  - 8247
-  examine: "He looks haughty and arrogant."
-  combat:
-    isAggressive: true
-    isPoisonous: false
-    isImmumePoison: true
-    isImmuneVenom: true
-    stats:
-      health: 400
-      attack: 120
-      strength: 120
-      defence: 120
-      range: 120
-      magic: 1
-    aggressiveStats:
-      attack: 0
-      range: 0
-      magic: 0
-      strengthBonus:
-        melee: 34
-        range: 0
-        magic: 34
-    defensiveStats:
-      stab: 60
-      slash: 60
-      crush: 60
-      magic: 60
-      range: 60
 - ids:
   - 8248
   examine: "He looks haughty and arrogant."
@@ -74392,38 +73094,6 @@
   - 9280
   examine: "A Fremennik hero."
 - ids:
-  - 3897
-  - 3898
-  - 3899
-  - 3900
-  examine: "* Your challenge awaits!"
-- ids:
-  - 3897
-  - 3898
-  - 3899
-  - 3900
-  examine: "* Your challenge awaits!"
-- ids:
-  - 3897
-  - 3898
-  - 3899
-  - 3900
-  examine: "* Your challenge awaits!"
-- ids:
-  - 3897
-  - 3898
-  - 3899
-  - 3900
-  examine: "* Your challenge awaits!"
-- ids:
-  - 8151
-  - 8152
-  examine: ""
-- ids:
-  - 8151
-  - 8152
-  examine: ""
-- ids:
   - 9281
   examine: ""
 - ids:
@@ -75136,68 +73806,8 @@
   - 3961
   examine: "An eccentric shopkeeper, related to the Grand Vizier of the Legends Guild."
 - ids:
-  - 3962
-  - 6379
-  examine: "An ancient, powerful demon of the underworld."
-  combat:
-    isAggressive: true
-    isPoisonous: false
-    isImmumePoison: false
-    isImmuneVenom: false
-    stats:
-      health: 150
-      attack: 165
-      strength: 168
-      defence: 167
-      range: 160
-      magic: 160
-    aggressiveStats:
-      attack: 0
-      range: 0
-      magic: 0
-      strengthBonus:
-        melee: 0
-        range: 0
-        magic: 0
-    defensiveStats:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-- ids:
-  - 3962
-  - 6379
-  examine: "An ancient, powerful demon of the underworld."
-  combat:
-    isAggressive: true
-    isPoisonous: false
-    isImmumePoison: false
-    isImmuneVenom: false
-    stats:
-      health: 150
-      attack: 165
-      strength: 168
-      defence: 167
-      range: 160
-      magic: 160
-    aggressiveStats:
-      attack: 0
-      range: 0
-      magic: 0
-      strengthBonus:
-        melee: 0
-        range: 0
-        magic: 0
-    defensiveStats:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-- ids:
-  - 6318
-  examine: "An ancient, powerful demon of the underworld."
+  - 3968
+  examine: "A spirit of the underworld."
   combat:
     isAggressive: true
     isPoisonous: false
@@ -75224,9 +73834,6 @@
       crush: 0
       magic: 0
       range: 0
-- ids:
-  - 3968
-  examine: "A spirit of the underworld."
 - ids:
   - 3963
   examine: "The spirit of a long-dead wizard."
@@ -76867,41 +75474,6 @@
   - 4084
   - 4085
   examine: "A sergeant of the Imperial Guard."
-- ids:
-  - 4086
-  - 4087
-  - 4089
-  - 4090
-  - 4091
-  examine: "A soldier of the Imperial Guard."
-- ids:
-  - 4086
-  - 4087
-  - 4089
-  - 4090
-  - 4091
-  examine: "A soldier of the Imperial Guard."
-- ids:
-  - 4086
-  - 4087
-  - 4089
-  - 4090
-  - 4091
-  examine: "A soldier of the Imperial Guard."
-- ids:
-  - 4086
-  - 4087
-  - 4089
-  - 4090
-  - 4091
-  examine: "A soldier of the Imperial Guard."
-- ids:
-  - 4086
-  - 4087
-  - 4089
-  - 4090
-  - 4091
-  examine: "A soldier of the Imperial Guard."
 - ids:
   - 4088
   examine: "A soldier of the Imperial Guard."
@@ -87504,8 +86076,8 @@
   - 5367
   examine: "A man, learned in the ways of the stars."
 - ids:
-  - 5369
-  examine: "He doesn't look like he'd trust his own mother."
+  - 5368
+  examine: "Sleeping like an ugly baby."
   combat:
     isAggressive: false
     isPoisonous: false
@@ -87532,9 +86104,6 @@
       crush: 6
       magic: 0
       range: 0
-- ids:
-  - 5368
-  examine: "Sleeping like an ugly baby."
 - ids:
   - 5371
   examine: "The essence of evil."
@@ -88358,6 +86927,36 @@
       magic: 0
       range: 0
 - ids:
+  - 5643
+  - 5646
+  examine: "I'm glad I can't see the rest of it!"
+  combat:
+    isAggressive: true
+    isPoisonous: false
+    isImmumePoison: false
+    isImmuneVenom: false
+    stats:
+      health: 75
+      attack: 115
+      strength: 76
+      defence: 75
+      range: 50
+      magic: 115
+    aggressiveStats:
+      attack: 0
+      range: 0
+      magic: 0
+      strengthBonus:
+        melee: 0
+        range: 0
+        magic: 0
+    defensiveStats:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+- ids:
   - 5644
   - 5645
   examine: "I'm glad I can't see the rest of it!"
@@ -88403,6 +87002,36 @@
       defence: 75
       range: 50
       magic: 50
+    aggressiveStats:
+      attack: 0
+      range: 0
+      magic: 0
+      strengthBonus:
+        melee: 0
+        range: 0
+        magic: 0
+    defensiveStats:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+- ids:
+  - 5643
+  - 5646
+  examine: "I'm glad I can't see the rest of it!"
+  combat:
+    isAggressive: true
+    isPoisonous: false
+    isImmumePoison: false
+    isImmuneVenom: false
+    stats:
+      health: 75
+      attack: 115
+      strength: 76
+      defence: 75
+      range: 50
+      magic: 115
     aggressiveStats:
       attack: 0
       range: 0
@@ -95135,38 +93764,6 @@
       magic: 0
       range: 0
 - ids:
-  - 6475
-  examine: "A mad man."
-- ids:
-  - 6477
-  examine: "I preferred him when he was human."
-  combat:
-    isAggressive: true
-    isPoisonous: false
-    isImmumePoison: false
-    isImmuneVenom: false
-    stats:
-      health: 80
-      attack: 40
-      strength: 80
-      defence: 40
-      range: 1
-      magic: 1
-    aggressiveStats:
-      attack: 0
-      range: 0
-      magic: 0
-      strengthBonus:
-        melee: 0
-        range: 0
-        magic: 0
-    defensiveStats:
-      stab: 50
-      slash: 50
-      crush: 50
-      magic: 50
-      range: 50
-- ids:
   - 6476
   examine: "A mad man."
   combat:
@@ -95556,35 +94153,6 @@
       crush: 90
       magic: 70
       range: 80
-- ids:
-  - 7234
-  examine: "He ent such a bad guy."
-  combat:
-    isAggressive: true
-    isPoisonous: false
-    isImmumePoison: false
-    isImmuneVenom: true
-    stats:
-      health: 75
-      attack: 75
-      strength: 75
-      defence: 75
-      range: 1
-      magic: 1
-    aggressiveStats:
-      attack: 35
-      range: 0
-      magic: 0
-      strengthBonus:
-        melee: 65
-        range: 0
-        magic: 0
-    defensiveStats:
-      stab: 50
-      slash: 70
-      crush: 70
-      magic: 30
-      range: 40
 - ids:
   - 6594
   examine: "The trunk of a dead Ent."
@@ -103414,8 +101982,9 @@
       magic: 70
       range: 99
 - ids:
-  - 7797
-  examine: "Not in the ground anymore! It looks a little wobbly."
+  - 8690
+  - 8691
+  examine: "An old mushroom, rooted in the ground. It looks strong and stable."
   combat:
     isAggressive: false
     isPoisonous: false
@@ -103446,16 +102015,38 @@
   - 8690
   - 8691
   examine: "An old mushroom, rooted in the ground. It looks strong and stable."
-- ids:
-  - 8690
-  - 8691
-  examine: "An old mushroom, rooted in the ground. It looks strong and stable."
+  combat:
+    isAggressive: false
+    isPoisonous: false
+    isImmumePoison: false
+    isImmuneVenom: false
+    stats:
+      health: 150
+      attack: 80
+      strength: 80
+      defence: 80
+      range: 80
+      magic: 80
+    aggressiveStats:
+      attack: 50
+      range: 0
+      magic: 0
+      strengthBonus:
+        melee: 0
+        range: 0
+        magic: 0
+    defensiveStats:
+      stab: 20
+      slash: 20
+      crush: 20
+      magic: 30
+      range: 30
 - ids:
   - 7798
   examine: "Ironically, makes a living from swords."
 - ids:
-  - 7799
-  examine: "Praise Helix!"
+  - 7800
+  examine: "An outcrop embedded with an ammonite fossil."
   combat:
     isAggressive: true
     isPoisonous: false
@@ -103482,9 +102073,6 @@
       crush: 0
       magic: 0
       range: 0
-- ids:
-  - 7800
-  examine: "An outcrop embedded with an ammonite fossil."
 - ids:
   - 7802
   examine: "Must catch the tail."
@@ -104472,72 +103060,6 @@
   - 7941
   examine: "An Ultimate Iron Man."
 - ids:
-  - 7961
-  - 7963
-  examine: "Navigator of the Corsairs."
-- ids:
-  - 7961
-  - 7963
-  examine: "Navigator of the Corsairs."
-- ids:
-  - 7964
-  examine: "He's so fired."
-  combat:
-    isAggressive: true
-    isPoisonous: false
-    isImmumePoison: false
-    isImmuneVenom: false
-    stats:
-      health: 55
-      attack: 1
-      strength: 1
-      defence: 30
-      range: 30
-      magic: 1
-    aggressiveStats:
-      attack: 0
-      range: 0
-      magic: 0
-      strengthBonus:
-        melee: 0
-        range: 0
-        magic: 0
-    defensiveStats:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-- ids:
-  - 7949
-  examine: "A Corsair gone bad."
-  combat:
-    isAggressive: true
-    isPoisonous: false
-    isImmumePoison: false
-    isImmuneVenom: false
-    stats:
-      health: 55
-      attack: 1
-      strength: 1
-      defence: 30
-      range: 30
-      magic: 1
-    aggressiveStats:
-      attack: 0
-      range: 0
-      magic: 0
-      strengthBonus:
-        melee: 0
-        range: 0
-        magic: 0
-    defensiveStats:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-- ids:
   - 7948
   examine: "A Corsair gone bad."
   combat:
@@ -105084,9 +103606,6 @@
       magic: 80
       range: 204
 - ids:
-  - 31984
-  examine: "Its scales seem to be made of runite."
-- ids:
   - 8027
   examine: "Its scales seem to be made of runite."
   combat:
@@ -105620,160 +104139,6 @@
       magic: 10
       range: 20
 - ids:
-  - 8094
-  - 8095
-  - 8177
-  examine: "This is what fear looks like.<br/>'''When dead:''' This is what death\
-    \ looks like."
-  combat:
-    isAggressive: true
-    isPoisonous: false
-    isImmumePoison: true
-    isImmuneVenom: true
-    stats:
-      health: 1200
-      attack: 632
-      strength: 268
-      defence: 188
-      range: 160
-      magic: 246
-    aggressiveStats:
-      attack: 34
-      range: 180
-      magic: 160
-      strengthBonus:
-        melee: 0
-        range: 6
-        magic: 42
-    defensiveStats:
-      stab: 80
-      slash: 140
-      crush: 140
-      magic: 86
-      range: 280
-- ids:
-  - 8094
-  - 8095
-  - 8177
-  examine: "This is what fear looks like.<br/>'''When dead:''' This is what death\
-    \ looks like."
-  combat:
-    isAggressive: true
-    isPoisonous: false
-    isImmumePoison: true
-    isImmuneVenom: true
-    stats:
-      health: 1200
-      attack: 632
-      strength: 268
-      defence: 188
-      range: 160
-      magic: 246
-    aggressiveStats:
-      attack: 34
-      range: 180
-      magic: 160
-      strengthBonus:
-        melee: 0
-        range: 6
-        magic: 42
-    defensiveStats:
-      stab: 80
-      slash: 140
-      crush: 140
-      magic: 86
-      range: 280
-- ids:
-  - 8094
-  - 8095
-  - 8177
-  examine: "This is what fear looks like.<br/>'''When dead:''' This is what death\
-    \ looks like."
-  combat:
-    isAggressive: true
-    isPoisonous: false
-    isImmumePoison: true
-    isImmuneVenom: true
-    stats:
-      health: 1200
-      attack: 632
-      strength: 268
-      defence: 188
-      range: 160
-      magic: 246
-    aggressiveStats:
-      attack: 34
-      range: 180
-      magic: 160
-      strengthBonus:
-        melee: 0
-        range: 6
-        magic: 42
-    defensiveStats:
-      stab: 80
-      slash: 140
-      crush: 140
-      magic: 86
-      range: 280
-- ids:
-  - 8097
-  examine: "This is what fear looks like."
-  combat:
-    isAggressive: true
-    isPoisonous: false
-    isImmumePoison: true
-    isImmuneVenom: true
-    stats:
-      health: 1200
-      attack: 632
-      strength: 268
-      defence: 188
-      range: 160
-      magic: 246
-    aggressiveStats:
-      attack: 34
-      range: 180
-      magic: 160
-      strengthBonus:
-        melee: 0
-        range: 6
-        magic: 42
-    defensiveStats:
-      stab: 80
-      slash: 140
-      crush: 140
-      magic: 86
-      range: 280
-- ids:
-  - 8096
-  examine: "This is what fear looks like."
-  combat:
-    isAggressive: true
-    isPoisonous: false
-    isImmumePoison: true
-    isImmuneVenom: true
-    stats:
-      health: 1200
-      attack: 632
-      strength: 268
-      defence: 188
-      range: 160
-      magic: 246
-    aggressiveStats:
-      attack: 34
-      range: 180
-      magic: 160
-      strengthBonus:
-        melee: 0
-        range: 6
-        magic: 42
-    defensiveStats:
-      stab: 80
-      slash: 140
-      crush: 140
-      magic: 86
-      range: 280
-- ids:
   - 8098
   - 8178
   - 8179
@@ -106277,162 +104642,6 @@
   - 8233
   examine: "A fighter for the Myreque."
 - ids:
-  - 8250
-  examine: "There's something very disconcerting about her."
-- ids:
-  - 8369
-  - 8370
-  - 8371
-  examine: "There's something very disconcerting about her."
-  combat:
-    isAggressive: false
-    isPoisonous: false
-    isImmumePoison: true
-    isImmuneVenom: true
-    stats:
-      health: 2000
-      attack: 400
-      strength: 400
-      defence: 20
-      range: 400
-      magic: 400
-    aggressiveStats:
-      attack: 0
-      range: 80
-      magic: 80
-      strengthBonus:
-        melee: 0
-        range: 80
-        magic: 150
-    defensiveStats:
-      stab: 20
-      slash: 20
-      crush: 20
-      magic: 20
-      range: 20
-- ids:
-  - 8369
-  - 8370
-  - 8371
-  examine: "There's something very disconcerting about her."
-  combat:
-    isAggressive: false
-    isPoisonous: false
-    isImmumePoison: true
-    isImmuneVenom: true
-    stats:
-      health: 2000
-      attack: 400
-      strength: 400
-      defence: 20
-      range: 400
-      magic: 400
-    aggressiveStats:
-      attack: 0
-      range: 80
-      magic: 80
-      strengthBonus:
-        melee: 0
-        range: 80
-        magic: 150
-    defensiveStats:
-      stab: 20
-      slash: 20
-      crush: 20
-      magic: 20
-      range: 20
-- ids:
-  - 8369
-  - 8370
-  - 8371
-  examine: "There's something very disconcerting about her."
-  combat:
-    isAggressive: false
-    isPoisonous: false
-    isImmumePoison: true
-    isImmuneVenom: true
-    stats:
-      health: 2000
-      attack: 400
-      strength: 400
-      defence: 20
-      range: 400
-      magic: 400
-    aggressiveStats:
-      attack: 0
-      range: 80
-      magic: 80
-      strengthBonus:
-        melee: 0
-        range: 80
-        magic: 150
-    defensiveStats:
-      stab: 20
-      slash: 20
-      crush: 20
-      magic: 20
-      range: 20
-- ids:
-  - 8372
-  - 8373
-  examine: "There's something very disconcerting about her."
-  combat:
-    isAggressive: true
-    isPoisonous: false
-    isImmumePoison: true
-    isImmuneVenom: true
-    stats:
-      health: 3250
-      attack: 400
-      strength: 400
-      defence: 200
-      range: 400
-      magic: 400
-    aggressiveStats:
-      attack: 0
-      range: 80
-      magic: 80
-      strengthBonus:
-        melee: 0
-        range: 80
-        magic: 80
-    defensiveStats:
-      stab: 100
-      slash: 60
-      crush: 100
-      magic: 250
-      range: 70
-- ids:
-  - 8372
-  - 8373
-  examine: "There's something very disconcerting about her."
-  combat:
-    isAggressive: true
-    isPoisonous: false
-    isImmumePoison: true
-    isImmuneVenom: true
-    stats:
-      health: 3250
-      attack: 400
-      strength: 400
-      defence: 200
-      range: 400
-      magic: 400
-    aggressiveStats:
-      attack: 0
-      range: 80
-      magic: 80
-      strengthBonus:
-        melee: 0
-        range: 80
-        magic: 80
-    defensiveStats:
-      stab: 100
-      slash: 60
-      crush: 100
-      magic: 250
-      range: 70
-- ids:
   - 8374
   - 8375
   examine: "There's something very disconcerting about her."
@@ -106785,14 +104994,6 @@
 - ids:
   - 8327
   examine: "A juvenile vampyre. They're guarding the door."
-- ids:
-  - 8338
-  - 8339
-  examine: "King of the Yarasa."
-- ids:
-  - 8338
-  - 8339
-  examine: "King of the Yarasa."
 - ids:
   - 8340
   - 8341
@@ -107764,14 +105965,6 @@
   - 8424
   examine: "A visitor from a colder land."
 - ids:
-  - 8425
-  - 8426
-  examine: "He's the boss of the trolls of Weiss."
-- ids:
-  - 8425
-  - 8426
-  examine: "He's the boss of the trolls of Weiss."
-- ids:
   - 8428
   - 8429
   - 8430
@@ -107875,14 +106068,6 @@
   - 8434
   - 8435
   examine: "A troll with an unusual capacity for imagination and invention."
-- ids:
-  - 8438
-  - 8440
-  examine: "A troll of Weiss."
-- ids:
-  - 8438
-  - 8440
-  examine: "A troll of Weiss."
 - ids:
   - 8439
   examine: "A troll of Weiss."
@@ -108380,9 +106565,6 @@
       magic: 80
       range: 80
 - ids:
-  - 8584
-  examine: "The open flower of a nasty creeping plant."
-- ids:
   - 8585
   examine: "The closed flower of a nasty creeping plant."
 - ids:
@@ -108827,9 +107009,6 @@
   - 8707
   - 8708
   examine: "A treasure hunter trapped within the Forthos Dungeon."
-- ids:
-  - 8710
-  examine: "Seems more like a faeded beast than a shaeded beast..."
 - ids:
   - 8709
   examine: "A terrible creature manipulating the powers of the dark altar."
@@ -110134,7 +108313,7 @@
     stats:
       health: 1000
       attack: 22
-      strength: 0
+      strength: 31
       defence: 0
       range: 0
       magic: 0

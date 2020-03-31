@@ -1208,6 +1208,10 @@
   weight: 0.1
   examine: "Useless without the head."
 - ids:
+  - 7952
+  weight: 0.1
+  examine: "Useless without the head."
+- ids:
   - 494
   weight: 0.907
   examine: "Bob can fix this for me."
@@ -2102,6 +2106,10 @@
   weight: 0.0
   examine: "Lovely money!"
 - ids:
+  - 1397
+  weight: 2.267
+  examine: "It's a slightly magical stick."
+- ids:
   - 1410
   weight: 2.2
   examine: "I'll need to get this repaired before I can use it."
@@ -2840,8 +2848,8 @@
   examine: "An imprint of Anna's fingerprint."
 - ids:
   - 1817
-  weight: 0.0
-  examine: "Perhaps arr oldest piratical relatives?"
+  weight: 0.01
+  examine: "An imprint of Bob's fingerprint."
 - ids:
   - 1818
   weight: 0.0
@@ -2876,8 +2884,8 @@
   examine: "A half empty waterskin with two portions of water."
 - ids:
   - 1825
-  weight: 0.0
-  examine: "A native monkey."
+  weight: 0.85
+  examine: "A nearly full waterskin with three portions of water."
 - ids:
   - 1823
   weight: 1.1
@@ -89084,16 +89092,6 @@
   weight: 0.0
   examine: "A magic talisman in the shape of a big zombie monkey head."
 - ids:
-  - 5279
-  - 5280
-  weight: 0.0
-  examine: "This poor pet monkey looks very lost."
-- ids:
-  - 5279
-  - 5280
-  weight: 0.0
-  examine: "This poor pet monkey looks very lost."
-- ids:
   - 4033
   weight: 15.0
   examine: "It's a monkey in your backpack. As you look it pokes you."
@@ -90272,6 +90270,10 @@
   weight: 0.55
   examine: "A cheeky little lager."
 - ids:
+  - 4653
+  weight: 0.028
+  examine: "Hot!"
+- ids:
   - 4654
   weight: 0.51
   examine: "A copy of the engravings found on a mysterious stone tablet."
@@ -90786,6 +90788,10 @@
   - 5106
   weight: 0.0
   examine: "A poison ivy bush seed - plant in a bush patch."
+- ids:
+  - 5280
+  weight: 0.0
+  examine: "A Cactus seed - plant in a cactus patch."
 - ids:
   - 5281
   weight: 0.0
@@ -95655,34 +95661,6 @@
   weight: 0.0
   examine: "A tablet containing a magic spell."
 - ids:
-  - 8437
-  weight: 10.0
-  examine: "You can plant this in your garden."
-- ids:
-  - 8439
-  weight: 10.0
-  examine: "You can plant this in your garden."
-- ids:
-  - 8441
-  weight: 10.0
-  examine: "You can plant this in your garden."
-- ids:
-  - 8443
-  weight: 10.0
-  examine: "You can plant this in your garden."
-- ids:
-  - 8445
-  weight: 10.0
-  examine: "You can plant this in your garden."
-- ids:
-  - 8447
-  weight: 10.0
-  examine: "You can plant this in your garden."
-- ids:
-  - 8449
-  weight: 10.0
-  examine: "You can plant this in your garden."
-- ids:
   - 8417
   weight: 10.0
   examine: "You can plant this in your garden."
@@ -95720,6 +95698,34 @@
   examine: "You can plant this in your garden."
 - ids:
   - 8435
+  weight: 10.0
+  examine: "You can plant this in your garden."
+- ids:
+  - 8437
+  weight: 10.0
+  examine: "You can plant this in your garden."
+- ids:
+  - 8439
+  weight: 10.0
+  examine: "You can plant this in your garden."
+- ids:
+  - 8441
+  weight: 10.0
+  examine: "You can plant this in your garden."
+- ids:
+  - 8443
+  weight: 10.0
+  examine: "You can plant this in your garden."
+- ids:
+  - 8445
+  weight: 10.0
+  examine: "You can plant this in your garden."
+- ids:
+  - 8447
+  weight: 10.0
+  examine: "You can plant this in your garden."
+- ids:
+  - 8449
   weight: 10.0
   examine: "You can plant this in your garden."
 - ids:
@@ -96246,10 +96252,6 @@
   - 8945
   weight: 0.0
   examine: "Bluuuuuuuue Monkeeeeeey!"
-- ids:
-  - 1826
-  weight: 0.0
-  examine: "A native monkey."
 - ids:
   - 8946
   - 8947
@@ -99287,6 +99289,10 @@
   - 10834
   weight: 5.443
   examine: "A hefty tax bag."
+- ids:
+  - 10835
+  weight: 7.257
+  examine: "A bulging taxbag."
 - ids:
   - 10841
   weight: 0.0
