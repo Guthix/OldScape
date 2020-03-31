@@ -726,29 +726,6 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 1161
-  - 20561
-  weight: 3.175
-  examine: "A full face helmet."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: -2
-      range: -6
-    defenceBonus:
-      stab: 19
-      slash: 21
-      crush: 16
-      magic: 19
-      range: -1
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
   - 1163
   weight: 2.721
   examine: "A full face helmet."
@@ -2073,29 +2050,6 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 3385
-  - 20568
-  weight: 0.907
-  examine: "A wooden helmet."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: -2
-      range: 3
-    defenceBonus:
-      stab: 10
-      slash: 9
-      crush: 11
-      magic: 0
-      range: 3
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
   - 3486
   weight: 2.721
   examine: "Rune full helmet with gold plate."
@@ -2134,29 +2088,6 @@
       crush: 16
       magic: 19
       range: -1
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 3749
-  - 20572
-  weight: 2.721
-  examine: "This helmet is worn by archers."
-  equipment:
-    attackBonus:
-      stab: -5
-      slash: -5
-      crush: -5
-      magic: 6
-      range: -5
-    defenceBonus:
-      stab: 6
-      slash: 8
-      crush: 10
-      magic: 6
-      range: 6
     strengthBonus:
       melee: 0
       range: 0
@@ -2231,52 +2162,6 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 3753
-  - 20571
-  weight: 2.721
-  examine: "This helmet is worn by warriors."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 5
-      crush: 0
-      magic: -5
-      range: -5
-    defenceBonus:
-      stab: 31
-      slash: 33
-      crush: 29
-      magic: 30
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 3755
-  - 20573
-  weight: 2.721
-  examine: "This helmet is worn by farseers."
-  equipment:
-    attackBonus:
-      stab: -5
-      slash: -5
-      crush: -5
-      magic: -5
-      range: 6
-    defenceBonus:
-      stab: 8
-      slash: 10
-      crush: 12
-      magic: 0
-      range: 6
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
   - 3755
   - 20573
   weight: 2.721
@@ -2338,29 +2223,6 @@
       crush: 6
       magic: 7
       range: -1
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 4089
-  - 20562
-  weight: 0.4
-  examine: "A magical hat."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 4
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 4
     strengthBonus:
       melee: 0
       range: 0
@@ -6527,29 +6389,6 @@
       magic: 0
     prayerBonus: 4
 - ids:
-  - 9672
-  - 20563
-  weight: 2.0
-  examine: "A Proselyte Temple Knight's helm."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: -2
-      range: -6
-    defenceBonus:
-      stab: 19
-      slash: 21
-      crush: 16
-      magic: 19
-      range: -1
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 4
-- ids:
   - 9729
   weight: 0.113
   examine: "A magic helmet."
@@ -8729,77 +8568,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 11850
-  - 11851
-  weight: 0.0
-  examine: "A sign of your grace."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
   - 13579
   - 13580
-  weight: 0.0
-  examine: "A sign of your grace and loyalty."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 13579
-  - 13580
-  weight: 0.0
-  examine: "A sign of your grace and loyalty."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 13591
-  - 13592
   weight: 0.0
   examine: "A sign of your grace and loyalty."
   equipment:
@@ -8867,77 +8637,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13603
-  - 13604
-  weight: 0.0
-  examine: "A sign of your grace and loyalty."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
   - 13615
   - 13616
-  weight: 0.0
-  examine: "A sign of your grace and loyalty."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 13615
-  - 13616
-  weight: 0.0
-  examine: "A sign of your grace and loyalty."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 13627
-  - 13628
   weight: 0.0
   examine: "A sign of your grace and loyalty."
   equipment:
@@ -8986,52 +8687,6 @@
   - 13668
   weight: 0.0
   examine: "A sign of your grace and unity."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 13667
-  - 13668
-  weight: 0.0
-  examine: "A sign of your grace and unity."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 21061
-  - 21063
-  weight: 0.0
-  examine: "A sign of your grace."
   equipment:
     attackBonus:
       stab: 0
