@@ -72,21 +72,6 @@ object YamlDownloader {
     }
 }
 
-val equipmentSlotMapping = mapOf(
-    "head" to EquipmentBlueprint.EquipmentSlot.HEAD,
-    "cape" to EquipmentBlueprint.EquipmentSlot.CAPE,
-    "neck" to EquipmentBlueprint.EquipmentSlot.NECK,
-    "ammo" to EquipmentBlueprint.EquipmentSlot.AMMUNITION,
-    "weapon" to EquipmentBlueprint.EquipmentSlot.WEAPON,
-    "shield" to EquipmentBlueprint.EquipmentSlot.SHIELD,
-    "2h" to EquipmentBlueprint.EquipmentSlot.TWO_HAND,
-    "body" to EquipmentBlueprint.EquipmentSlot.BODY,
-    "legs" to EquipmentBlueprint.EquipmentSlot.LEGS,
-    "hands" to EquipmentBlueprint.EquipmentSlot.HANDS,
-    "feet" to EquipmentBlueprint.EquipmentSlot.FEET,
-    "ring" to EquipmentBlueprint.EquipmentSlot.RING
-)
-
 fun ObjectWikiDefinition.toExtraObjectConfig() = ExtraObjectConfig(
     ids!!,
     weight ?: 0f,

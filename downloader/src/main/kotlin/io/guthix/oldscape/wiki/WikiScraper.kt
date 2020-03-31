@@ -99,7 +99,7 @@ fun scrapeObjectWikiConfigs(cacheConfigs: Map<Int, ObjectConfig>)= runBlocking {
         }
         wikiConfigs
     }
-    wikiConfigs.values.toList()
+    wikiConfigs.values.distinct()
 }
 
 fun scrapeNpcWikiConfigs(cacheConfigs: Map<Int, NpcConfig>)= runBlocking {
@@ -141,7 +141,7 @@ fun scrapeNpcWikiConfigs(cacheConfigs: Map<Int, NpcConfig>)= runBlocking {
         }
         wikiConfigs
     }
-    wikiConfigs.values.toList()
+    wikiConfigs.values.distinct()
 }
 
 /** Scrapes the wiki and retrieves the wiki text.*/
