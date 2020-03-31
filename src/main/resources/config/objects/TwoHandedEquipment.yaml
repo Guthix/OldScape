@@ -176,29 +176,6 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 853
-  - 20403
-  weight: 1.36
-  examine: "A shortbow made out of Maple, still effective."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 29
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
   - 855
   weight: 1.814
   examine: "A nice sturdy bow made out of yew."
@@ -244,55 +221,9 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 857
-  - 20401
-  weight: 1.36
-  examine: "A shortbow made out of yew, still effective."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 47
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
   - 859
   weight: 1.814
   examine: "A nice sturdy magical bow."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 69
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 861
-  - 20558
-  weight: 1.36
-  examine: "Short and magical, but still effective."
   equipment:
     attackBonus:
       stab: 0
@@ -1260,29 +1191,6 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 1319
-  - 20555
-  weight: 3.628
-  examine: "A two handed sword."
-  equipment:
-    attackBonus:
-      stab: -4
-      slash: 69
-      crush: 50
-      magic: 0
-      range: -4
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: -1
-      range: 0
-    strengthBonus:
-      melee: 70
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
   - 1419
   weight: 3.175
   examine: "It's a Scythe."
@@ -1697,29 +1605,6 @@
       range: 0
     strengthBonus:
       melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 4153
-  - 20557
-  weight: 4.535
-  examine: "Simplicity is the best weapon."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 81
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 79
       range: 0
       magic: 0
     prayerBonus: 0
@@ -2848,29 +2733,6 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 7158
-  - 20559
-  weight: 3.628
-  examine: "A two-handed Dragon Sword."
-  equipment:
-    attackBonus:
-      stab: -4
-      slash: 92
-      crush: 80
-      magic: 0
-      range: -4
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: -1
-      range: 0
-    strengthBonus:
-      melee: 93
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
   - 7414
   weight: 0.02
   examine: "With it, you row."
@@ -3422,29 +3284,6 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 11235
-  - 20408
-  weight: 1.814
-  examine: "A bow from a darker dimension."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 95
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
   - 12765
   weight: 1.9
   examine: "A bow from a darker dimension, painted green."
@@ -3820,29 +3659,6 @@
       magic: 0
     prayerBonus: 8
 - ids:
-  - 11802
-  - 20593
-  weight: 11.0
-  examine: "A beautiful, heavy sword."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 132
-      crush: 80
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 132
-      range: 0
-      magic: 0
-    prayerBonus: 8
-- ids:
   - 11804
   weight: 10.0
   examine: "A brutally heavy sword."
@@ -4043,52 +3859,6 @@
 - ids:
   - 12809
   - 18360
-  weight: 3.0
-  examine: "The blade of an Icyene, blessed with a tear from Saradomin himself."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 100
-      crush: 60
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 88
-      range: 0
-      magic: 0
-    prayerBonus: 2
-- ids:
-  - 12809
-  - 18360
-  weight: 3.0
-  examine: "The blade of an Icyene, blessed with a tear from Saradomin himself."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 100
-      crush: 60
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 88
-      range: 0
-      magic: 0
-    prayerBonus: 2
-- ids:
-  - 12808
-  - 18359
   weight: 3.0
   examine: "The blade of an Icyene, blessed with a tear from Saradomin himself."
   equipment:
@@ -4530,29 +4300,6 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13652
-  - 20784
-  weight: 0.0
-  examine: "A set of fighting claws."
-  equipment:
-    attackBonus:
-      stab: 41
-      slash: 57
-      crush: -4
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 13
-      slash: 26
-      crush: 7
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 56
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
   - 19478
   weight: 4.0
   examine: "A weapon forged from the wreckage of an airship."
@@ -4882,29 +4629,6 @@
       range: 20
       magic: 0
     prayerBonus: 4
-- ids:
-  - 21003
-  - 21205
-  weight: 5.4
-  examine: "A maul crafted from the component parts of Tekton."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 135
-      magic: 0
-      range: -4
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 147
-      range: 0
-      magic: 0
-    prayerBonus: 0
 - ids:
   - 21003
   - 21205

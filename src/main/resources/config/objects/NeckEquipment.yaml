@@ -242,29 +242,6 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 1478
-  - 20584
-  weight: 0.0
-  examine: "It increases my aim."
-  equipment:
-    attackBonus:
-      stab: 4
-      slash: 4
-      crush: 4
-      magic: 4
-      range: 4
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
   - 1575
   weight: 0.01
   examine: "For feline training expertise."
@@ -574,29 +551,6 @@
       magic: 0
     prayerBonus: 3
 - ids:
-  - 1704
-  - 20586
-  weight: 0.01
-  examine: "A very powerful dragonstone amulet."
-  equipment:
-    attackBonus:
-      stab: 10
-      slash: 10
-      crush: 10
-      magic: 10
-      range: 10
-    defenceBonus:
-      stab: 3
-      slash: 3
-      crush: 3
-      magic: 3
-      range: 3
-    strengthBonus:
-      melee: 6
-      range: 0
-      magic: 0
-    prayerBonus: 3
-- ids:
   - 1706
   weight: 0.01
   examine: "A dragonstone amulet with 1 magic charge."
@@ -882,29 +836,6 @@
       range: 0
       magic: 0
     prayerBonus: 0
-- ids:
-  - 1731
-  - 20585
-  weight: 0.01
-  examine: "An enchanted diamond amulet of power."
-  equipment:
-    attackBonus:
-      stab: 6
-      slash: 6
-      crush: 6
-      magic: 6
-      range: 6
-    defenceBonus:
-      stab: 6
-      slash: 6
-      crush: 6
-      magic: 6
-      range: 6
-    strengthBonus:
-      melee: 6
-      range: 0
-      magic: 0
-    prayerBonus: 1
 - ids:
   - 1731
   - 20585

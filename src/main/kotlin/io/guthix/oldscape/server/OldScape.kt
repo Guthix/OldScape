@@ -91,7 +91,7 @@ object OldScape {
             yamlMapper.readEquipmentConfig("RingEquipment.yaml")
         )
         val extraNpcConfig = yamlMapper.readValue(
-            Path.of(javaClass.getResource("/config/Npcs.yaml").toURI()).toFile(),
+            Path.of(javaClass.getResource("/config/npcs/Npcs.yaml").toURI()).toFile(),
             object : TypeReference<List<ExtraNpcConfig>>() { }
         )
         NpcBlueprints.load(NpcConfig.load(configArchive.readGroup(NpcConfig.id)), extraNpcConfig)
@@ -116,22 +116,22 @@ object OldScape {
     }
 
     private fun ObjectMapper.readObjectConfig(filePath: String): List<ExtraObjectConfig> = readValue(
-        Path.of(javaClass.getResource("/config/$filePath").toURI()).toFile(),
+        Path.of(javaClass.getResource("/config/objects/$filePath").toURI()).toFile(),
         object : TypeReference<List<ExtraObjectConfig>>() { }
     )
 
     private fun ObjectMapper.readEquipmentConfig(filePath: String): List<ExtraEquipmentConfig> = readValue(
-        Path.of(javaClass.getResource("/config/equipment/$filePath").toURI()).toFile(),
+        Path.of(javaClass.getResource("/config/objects/$filePath").toURI()).toFile(),
         object : TypeReference<List<ExtraEquipmentConfig>>() { }
     )
 
     private fun ObjectMapper.readHeadConfig(filePath: String): List<ExtraHeadConfig> = readValue(
-        Path.of(javaClass.getResource("/config/equipment/$filePath").toURI()).toFile(),
+        Path.of(javaClass.getResource("/config/objects/$filePath").toURI()).toFile(),
         object : TypeReference<List<ExtraHeadConfig>>() { }
     )
 
     private fun ObjectMapper.readBodyConfig(filePath: String): List<ExtraBodyConfig> = readValue(
-        Path.of(javaClass.getResource("/config/equipment/$filePath").toURI()).toFile(),
+        Path.of(javaClass.getResource("/config/objects/$filePath").toURI()).toFile(),
         object : TypeReference<List<ExtraBodyConfig>>() { }
     )
 }

@@ -1,7 +1,7 @@
 - ids:
-  - 78
-  weight: 0.0
-  examine: "Can only be fired from yew, magic, dark or twisted bows."
+  - 1007
+  weight: 0.453
+  examine: "A bright red cape."
   equipment:
     attackBonus:
       stab: 0
@@ -11,19 +11,19 @@
       range: 0
     defenceBonus:
       stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
+      slash: 1
+      crush: 1
+      magic: 2
       range: 0
     strengthBonus:
       melee: 0
-      range: 16
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 598
-  weight: 0.0
-  examine: "Arrows with bronze heads and oil-soaked cloth."
+  - 1019
+  weight: 0.453
+  examine: "A warm black cape."
   equipment:
     attackBonus:
       stab: 0
@@ -33,1277 +33,217 @@
       range: 0
     defenceBonus:
       stab: 0
+      slash: 1
+      crush: 1
+      magic: 2
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 1021
+  weight: 0.453
+  examine: "A thick blue cape."
+  equipment:
+    attackBonus:
+      stab: 0
       slash: 0
       crush: 0
       magic: 0
       range: 0
+    defenceBonus:
+      stab: 0
+      slash: 1
+      crush: 1
+      magic: 2
+      range: 0
     strengthBonus:
       melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 1023
+  weight: 0.453
+  examine: "A thick yellow cape."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 1
+      crush: 1
+      magic: 2
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 1027
+  weight: 0.453
+  examine: "A thick green cape."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 1
+      crush: 1
+      magic: 2
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 1029
+  weight: 0.453
+  examine: "A thick purple cape."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 1
+      crush: 1
+      magic: 2
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 1031
+  weight: 0.453
+  examine: "A thick orange cape."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 1
+      crush: 1
+      magic: 2
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 1052
+  weight: 1.814
+  examine: "The cape worn by members of the Legends Guild."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 7
+      slash: 7
+      crush: 7
+      magic: 7
       range: 7
+    strengthBonus:
+      melee: 0
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 942
-  weight: 0.0
-  examine: "These bronze-headed arrows are ablaze with fire."
+  - 2412
+  weight: 0.453
+  examine: "A cape from the almighty god Saradomin."
   equipment:
     attackBonus:
       stab: 0
       slash: 0
       crush: 0
       magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 7
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 825
-  weight: 0.0
-  examine: "A bronze tipped javelin."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 25
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 831
-  weight: 0.0
-  examine: "A bronze tipped javelin."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 25
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 5642
-  weight: 0.0
-  examine: "A bronze tipped javelin."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 25
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 5648
-  weight: 0.0
-  examine: "A bronze tipped javelin."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 25
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 826
-  weight: 0.0
-  examine: "An iron tipped javelin."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 42
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 832
-  weight: 0.0
-  examine: "An iron tipped javelin."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 42
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 5643
-  weight: 0.0
-  examine: "An iron tipped javelin."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 42
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 5649
-  weight: 0.0
-  examine: "An iron tipped javelin."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 42
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 827
-  weight: 0.0
-  examine: "A steel tipped javelin."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 64
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 833
-  weight: 0.0
-  examine: "A steel tipped javelin."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 64
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 5644
-  weight: 0.0
-  examine: "A steel tipped javelin."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 64
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 5650
-  weight: 0.0
-  examine: "A steel tipped javelin."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 64
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 828
-  weight: 0.0
-  examine: "A mithril tipped javelin."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 85
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 834
-  weight: 0.0
-  examine: "A mithril tipped javelin."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 85
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 5645
-  weight: 0.0
-  examine: "A mithril tipped javelin."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 85
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 5651
-  weight: 0.0
-  examine: "A mithril tipped javelin."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 85
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 829
-  weight: 0.0
-  examine: "An adamant tipped javelin."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 107
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 835
-  weight: 0.0
-  examine: "An adamant tipped javelin."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 107
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 5646
-  weight: 0.0
-  examine: "An adamant tipped javelin."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 107
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 5652
-  weight: 0.0
-  examine: "An adamant tipped javelin."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 107
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 830
-  weight: 0.0
-  examine: "A rune tipped javelin."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 124
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 836
-  weight: 0.0
-  examine: "A rune tipped javelin."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 124
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 5647
-  weight: 0.0
-  examine: "A rune tipped javelin."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 124
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 5653
-  weight: 0.0
-  examine: "A rune tipped javelin."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 124
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 877
-  weight: 0.0
-  examine: "Bronze crossbow bolts."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
       range: 10
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 878
-  weight: 0.0
-  examine: "Some poisoned bronze bolts."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
     defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
+      stab: 1
+      slash: 1
+      crush: 2
       magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
       range: 10
+    strengthBonus:
+      melee: 0
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 6061
-  weight: 0.0
-  examine: "Some poisoned bronze bolts."
+  - 2413
+  weight: 0.453
+  examine: "A cape from the almighty god Guthix."
   equipment:
     attackBonus:
       stab: 0
       slash: 0
       crush: 0
       magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
       range: 10
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 6062
-  weight: 0.0
-  examine: "Super poisoned bronze bolts."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
     defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
+      stab: 1
+      slash: 1
+      crush: 2
       magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
       range: 10
+    strengthBonus:
+      melee: 0
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 879
-  weight: 0.0
-  examine: "Opal tipped Bronze crossbow bolts."
+  - 2414
+  weight: 0.453
+  examine: "A cape from the almighty god Zamorak."
   equipment:
     attackBonus:
       stab: 0
       slash: 0
       crush: 0
       magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 14
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 880
-  weight: 0.0
-  examine: "Pearl tipped Iron crossbow bolts."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 48
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 881
-  weight: 0.0
-  examine: "Great if you have a crossbow!"
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 12
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 882
-  weight: 0.0
-  examine: "Arrows with bronze heads."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 7
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 883
-  weight: 0.0
-  examine: "Venomous-looking arrows."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 7
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 5616
-  weight: 0.0
-  examine: "Venomous-looking arrows."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 7
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 5622
-  weight: 0.0
-  examine: "Venomous-looking arrows."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 7
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 884
-  weight: 0.0
-  examine: "Arrows with iron heads."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
       range: 10
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 885
-  weight: 0.0
-  examine: "Venomous-looking arrows."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
     defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
+      stab: 1
+      slash: 1
+      crush: 2
       magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
       range: 10
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 5617
-  weight: 0.0
-  examine: "Venomous-looking arrows."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 10
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 5623
-  weight: 0.0
-  examine: "Venomous-looking arrows."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 10
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 886
-  weight: 0.0
-  examine: "Arrows with steel heads."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 16
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 887
-  weight: 0.0
-  examine: "Venomous-looking arrows."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 16
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 5618
-  weight: 0.0
-  examine: "Venomous-looking arrows."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 16
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 5624
-  weight: 0.0
-  examine: "Venomous-looking arrows."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 16
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 888
-  weight: 0.0
-  examine: "Arrows with mithril heads."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 22
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 889
-  weight: 0.0
-  examine: "Venomous-looking arrows."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 22
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 5619
-  weight: 0.0
-  examine: "Venomous-looking arrows."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 22
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 5625
-  weight: 0.0
-  examine: "Venomous-looking arrows."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 22
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 890
-  - 20388
-  weight: 0.0
-  examine: "Arrows with adamant heads."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 31
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 890
-  - 20388
-  weight: 0.0
-  examine: "Arrows with adamant heads."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 31
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 891
-  weight: 0.0
-  examine: "Venomous-looking arrows."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 31
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 5620
-  weight: 0.0
-  examine: "Venomous-looking arrows."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 31
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 5626
-  weight: 0.0
-  examine: "Venomous-looking arrows."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 31
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 892
-  - 20600
-  weight: 0.0
-  examine: "Arrows with rune heads."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 49
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 892
-  - 20600
-  weight: 0.0
-  examine: "Arrows with rune heads."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 49
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 893
-  weight: 0.0
-  examine: "Venomous-looking arrows."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
     strengthBonus:
       melee: 0
-      range: 49
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 5621
-  weight: 0.0
-  examine: "Venomous-looking arrows."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
       range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 49
       magic: 0
     prayerBonus: 0
 - ids:
-  - 5627
-  weight: 0.0
-  examine: "Venomous-looking arrows."
+  - 3759
+  weight: 0.453
+  examine: "The latest fashion in Rellekka."
   equipment:
     attackBonus:
       stab: 0
@@ -1313,19 +253,19 @@
       range: 0
     defenceBonus:
       stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
+      slash: 1
+      crush: 1
+      magic: 2
       range: 0
     strengthBonus:
       melee: 0
-      range: 49
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 2532
-  weight: 0.0
-  examine: "Arrows with iron heads and oil-soaked cloth."
+  - 3761
+  weight: 0.453
+  examine: "The latest fashion in Rellekka."
   equipment:
     attackBonus:
       stab: 0
@@ -1335,19 +275,19 @@
       range: 0
     defenceBonus:
       stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
+      slash: 1
+      crush: 1
+      magic: 2
       range: 0
     strengthBonus:
       melee: 0
-      range: 10
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 2533
-  weight: 0.0
-  examine: "These iron-headed arrows are ablaze with fire."
+  - 3763
+  weight: 0.453
+  examine: "The latest fashion in Rellekka."
   equipment:
     attackBonus:
       stab: 0
@@ -1357,19 +297,19 @@
       range: 0
     defenceBonus:
       stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
+      slash: 1
+      crush: 1
+      magic: 2
       range: 0
     strengthBonus:
       melee: 0
-      range: 10
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 2534
-  weight: 0.0
-  examine: "Arrows with steel heads and oil-soaked cloth."
+  - 3765
+  weight: 0.453
+  examine: "The latest fashion in Rellekka."
   equipment:
     attackBonus:
       stab: 0
@@ -1379,19 +319,19 @@
       range: 0
     defenceBonus:
       stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
+      slash: 1
+      crush: 1
+      magic: 2
       range: 0
     strengthBonus:
       melee: 0
-      range: 16
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 2535
-  weight: 0.0
-  examine: "These steel-headed arrows are ablaze with fire."
+  - 3777
+  weight: 0.453
+  examine: "The latest fashion in Rellekka."
   equipment:
     attackBonus:
       stab: 0
@@ -1401,19 +341,19 @@
       range: 0
     defenceBonus:
       stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
+      slash: 1
+      crush: 1
+      magic: 2
       range: 0
     strengthBonus:
       melee: 0
-      range: 16
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 2536
-  weight: 0.0
-  examine: "Arrows with mithril heads and oil-soaked cloth."
+  - 3779
+  weight: 0.453
+  examine: "The latest fashion in Rellekka."
   equipment:
     attackBonus:
       stab: 0
@@ -1423,19 +363,19 @@
       range: 0
     defenceBonus:
       stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
+      slash: 1
+      crush: 1
+      magic: 2
       range: 0
     strengthBonus:
       melee: 0
-      range: 22
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 2537
-  weight: 0.0
-  examine: "These mithril-headed arrows are ablaze with fire."
+  - 3781
+  weight: 0.453
+  examine: "The latest fashion in Rellekka."
   equipment:
     attackBonus:
       stab: 0
@@ -1445,19 +385,19 @@
       range: 0
     defenceBonus:
       stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
+      slash: 1
+      crush: 1
+      magic: 2
       range: 0
     strengthBonus:
       melee: 0
-      range: 22
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 2538
-  weight: 0.0
-  examine: "Arrows with adamant heads and oil-soaked cloth."
+  - 3783
+  weight: 0.453
+  examine: "The latest fashion in Rellekka."
   equipment:
     attackBonus:
       stab: 0
@@ -1467,19 +407,19 @@
       range: 0
     defenceBonus:
       stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
+      slash: 1
+      crush: 1
+      magic: 2
       range: 0
     strengthBonus:
       melee: 0
-      range: 31
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 2539
-  weight: 0.0
-  examine: "These adamant-headed arrows are ablaze with fire."
+  - 3785
+  weight: 0.453
+  examine: "The latest fashion in Rellekka."
   equipment:
     attackBonus:
       stab: 0
@@ -1489,19 +429,19 @@
       range: 0
     defenceBonus:
       stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
+      slash: 1
+      crush: 1
+      magic: 2
       range: 0
     strengthBonus:
       melee: 0
-      range: 31
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 2540
-  weight: 0.0
-  examine: "Arrows with rune heads and oil-soaked cloth."
+  - 3787
+  weight: 0.453
+  examine: "The latest fashion in Rellekka."
   equipment:
     attackBonus:
       stab: 0
@@ -1511,19 +451,19 @@
       range: 0
     defenceBonus:
       stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
+      slash: 1
+      crush: 1
+      magic: 2
       range: 0
     strengthBonus:
       melee: 0
-      range: 49
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 2541
-  weight: 0.0
-  examine: "These rune-headed arrows are ablaze with fire."
+  - 3789
+  weight: 0.453
+  examine: "The latest fashion in Rellekka."
   equipment:
     attackBonus:
       stab: 0
@@ -1533,19 +473,19 @@
       range: 0
     defenceBonus:
       stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
+      slash: 1
+      crush: 1
+      magic: 2
       range: 0
     strengthBonus:
       melee: 0
-      range: 49
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 2866
-  weight: 0.0
-  examine: "A large ogre arrow with a bone tip."
+  - 4041
+  weight: 1.0
+  examine: "The colours of Saradomin."
   equipment:
     attackBonus:
       stab: 0
@@ -1561,13 +501,13 @@
       range: 0
     strengthBonus:
       melee: 0
-      range: 22
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4160
-  weight: 0.0
-  examine: "Arrows with a wider than normal tip."
+  - 4042
+  weight: 1.0
+  examine: "The colours of Zamorak."
   equipment:
     attackBonus:
       stab: 0
@@ -1583,13 +523,13 @@
       range: 0
     strengthBonus:
       melee: 0
-      range: 28
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4740
-  weight: 0.0
-  examine: "Must need a special type of crossbow to use this."
+  - 4304
+  weight: 0.453
+  examine: "A HAM cape."
   equipment:
     attackBonus:
       stab: 0
@@ -1599,19 +539,19 @@
       range: 0
     defenceBonus:
       stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
+      slash: 1
+      crush: 1
+      magic: 2
       range: 0
     strengthBonus:
       melee: 0
-      range: 55
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4773
-  weight: 0.0
-  examine: "Blunt bronze arrow... ouch."
+  - 4315
+  weight: 0.453
+  examine: "Ooohhh look at the pretty colours..."
   equipment:
     attackBonus:
       stab: 0
@@ -1621,19 +561,19 @@
       range: 0
     defenceBonus:
       stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
+      slash: 1
+      crush: 1
+      magic: 2
       range: 0
     strengthBonus:
       melee: 0
-      range: 11
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4778
-  weight: 0.0
-  examine: "Blunt iron arrow... ouch."
+  - 4317
+  weight: 0.453
+  examine: "Ooohhh look at the pretty colours..."
   equipment:
     attackBonus:
       stab: 0
@@ -1643,19 +583,19 @@
       range: 0
     defenceBonus:
       stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
+      slash: 1
+      crush: 1
+      magic: 2
       range: 0
     strengthBonus:
       melee: 0
-      range: 13
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4783
-  weight: 0.0
-  examine: "Blunt steel arrow... ouch."
+  - 4319
+  weight: 0.453
+  examine: "Ooohhh look at the pretty colours..."
   equipment:
     attackBonus:
       stab: 0
@@ -1665,19 +605,19 @@
       range: 0
     defenceBonus:
       stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
+      slash: 1
+      crush: 1
+      magic: 2
       range: 0
     strengthBonus:
       melee: 0
-      range: 19
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4788
-  weight: 0.0
-  examine: "Blunt black arrow... ouch."
+  - 4321
+  weight: 0.453
+  examine: "Ooohhh look at the pretty colours..."
   equipment:
     attackBonus:
       stab: 0
@@ -1687,19 +627,19 @@
       range: 0
     defenceBonus:
       stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
+      slash: 1
+      crush: 1
+      magic: 2
       range: 0
     strengthBonus:
       melee: 0
-      range: 22
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4793
-  weight: 0.0
-  examine: "Blunt mithril arrow... ouch."
+  - 4323
+  weight: 0.453
+  examine: "Ooohhh look at the pretty colours..."
   equipment:
     attackBonus:
       stab: 0
@@ -1709,19 +649,19 @@
       range: 0
     defenceBonus:
       stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
+      slash: 1
+      crush: 1
+      magic: 2
       range: 0
     strengthBonus:
       melee: 0
-      range: 34
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4798
-  weight: 0.0
-  examine: "Blunt adamantite arrow... ouch."
+  - 4325
+  weight: 0.453
+  examine: "Ooohhh look at the pretty colours..."
   equipment:
     attackBonus:
       stab: 0
@@ -1731,19 +671,19 @@
       range: 0
     defenceBonus:
       stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
+      slash: 1
+      crush: 1
+      magic: 2
       range: 0
     strengthBonus:
       melee: 0
-      range: 45
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4803
-  weight: 0.0
-  examine: "Blunt rune arrow... ouch."
+  - 4327
+  weight: 0.453
+  examine: "Ooohhh look at the pretty colours..."
   equipment:
     attackBonus:
       stab: 0
@@ -1753,19 +693,19 @@
       range: 0
     defenceBonus:
       stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
+      slash: 1
+      crush: 1
+      magic: 2
       range: 0
     strengthBonus:
       melee: 0
-      range: 60
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 8882
-  weight: 0.0
-  examine: "Good if you have a bone crossbow!"
+  - 4329
+  weight: 0.453
+  examine: "Ooohhh look at the pretty colours..."
   equipment:
     attackBonus:
       stab: 0
@@ -1775,19 +715,19 @@
       range: 0
     defenceBonus:
       stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
+      slash: 1
+      crush: 1
+      magic: 2
       range: 0
     strengthBonus:
       melee: 0
-      range: 49
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 9139
-  weight: 0.0
-  examine: "Blurite crossbow bolts."
+  - 4331
+  weight: 0.453
+  examine: "Ooohhh look at the pretty colours..."
   equipment:
     attackBonus:
       stab: 0
@@ -1797,19 +737,19 @@
       range: 0
     defenceBonus:
       stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
+      slash: 1
+      crush: 1
+      magic: 2
       range: 0
     strengthBonus:
       melee: 0
-      range: 28
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 9286
-  weight: 0.0
-  examine: "Some poisoned blurite bolts."
+  - 4333
+  weight: 0.453
+  examine: "Ooohhh look at the pretty colours..."
   equipment:
     attackBonus:
       stab: 0
@@ -1819,19 +759,19 @@
       range: 0
     defenceBonus:
       stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
+      slash: 1
+      crush: 1
+      magic: 2
       range: 0
     strengthBonus:
       melee: 0
-      range: 28
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 9293
-  weight: 0.0
-  examine: "Some poisoned blurite bolts."
+  - 4335
+  weight: 0.453
+  examine: "Ooohhh look at the pretty colours..."
   equipment:
     attackBonus:
       stab: 0
@@ -1841,19 +781,19 @@
       range: 0
     defenceBonus:
       stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
+      slash: 1
+      crush: 1
+      magic: 2
       range: 0
     strengthBonus:
       melee: 0
-      range: 28
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 9300
-  weight: 0.0
-  examine: "Super poisoned blurite bolts."
+  - 4337
+  weight: 0.453
+  examine: "Ooohhh look at the pretty colours..."
   equipment:
     attackBonus:
       stab: 0
@@ -1863,19 +803,19 @@
       range: 0
     defenceBonus:
       stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
+      slash: 1
+      crush: 1
+      magic: 2
       range: 0
     strengthBonus:
       melee: 0
-      range: 28
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 9140
-  weight: 0.0
-  examine: "Iron crossbow bolts."
+  - 4339
+  weight: 0.453
+  examine: "Ooohhh look at the pretty colours..."
   equipment:
     attackBonus:
       stab: 0
@@ -1885,19 +825,19 @@
       range: 0
     defenceBonus:
       stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
+      slash: 1
+      crush: 1
+      magic: 2
       range: 0
     strengthBonus:
       melee: 0
-      range: 46
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 9287
-  weight: 0.0
-  examine: "Some poisoned iron bolts."
+  - 4341
+  weight: 0.453
+  examine: "Ooohhh look at the pretty colours..."
   equipment:
     attackBonus:
       stab: 0
@@ -1907,19 +847,19 @@
       range: 0
     defenceBonus:
       stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
+      slash: 1
+      crush: 1
+      magic: 2
       range: 0
     strengthBonus:
       melee: 0
-      range: 46
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 9294
-  weight: 0.0
-  examine: "Some poisoned iron bolts."
+  - 4343
+  weight: 0.453
+  examine: "Ooohhh look at the pretty colours..."
   equipment:
     attackBonus:
       stab: 0
@@ -1929,19 +869,19 @@
       range: 0
     defenceBonus:
       stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
+      slash: 1
+      crush: 1
+      magic: 2
       range: 0
     strengthBonus:
       melee: 0
-      range: 46
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 9301
-  weight: 0.0
-  examine: "Super poisoned iron bolts."
+  - 4345
+  weight: 0.453
+  examine: "Ooohhh look at the pretty colours..."
   equipment:
     attackBonus:
       stab: 0
@@ -1951,19 +891,19 @@
       range: 0
     defenceBonus:
       stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
+      slash: 1
+      crush: 1
+      magic: 2
       range: 0
     strengthBonus:
       melee: 0
-      range: 46
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 9141
-  weight: 0.0
-  examine: "Steel crossbow bolts."
+  - 4347
+  weight: 0.453
+  examine: "Ooohhh look at the pretty colours..."
   equipment:
     attackBonus:
       stab: 0
@@ -1973,19 +913,19 @@
       range: 0
     defenceBonus:
       stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
+      slash: 1
+      crush: 1
+      magic: 2
       range: 0
     strengthBonus:
       melee: 0
-      range: 64
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 9288
-  weight: 0.0
-  examine: "Some poisoned steel bolts."
+  - 4349
+  weight: 0.453
+  examine: "Ooohhh look at the pretty colours..."
   equipment:
     attackBonus:
       stab: 0
@@ -1995,19 +935,19 @@
       range: 0
     defenceBonus:
       stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
+      slash: 1
+      crush: 1
+      magic: 2
       range: 0
     strengthBonus:
       melee: 0
-      range: 64
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 9295
-  weight: 0.0
-  examine: "Some poisoned steel bolts."
+  - 4351
+  weight: 0.453
+  examine: "Ooohhh look at the pretty colours..."
   equipment:
     attackBonus:
       stab: 0
@@ -2017,19 +957,19 @@
       range: 0
     defenceBonus:
       stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
+      slash: 1
+      crush: 1
+      magic: 2
       range: 0
     strengthBonus:
       melee: 0
-      range: 64
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 9302
-  weight: 0.0
-  examine: "Super poisoned steel bolts."
+  - 4353
+  weight: 0.453
+  examine: "Ooohhh look at the pretty colours..."
   equipment:
     attackBonus:
       stab: 0
@@ -2039,19 +979,19 @@
       range: 0
     defenceBonus:
       stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
+      slash: 1
+      crush: 1
+      magic: 2
       range: 0
     strengthBonus:
       melee: 0
-      range: 64
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 9142
-  weight: 0.0
-  examine: "Mithril crossbow bolts."
+  - 4355
+  weight: 0.453
+  examine: "Ooohhh look at the pretty colours..."
   equipment:
     attackBonus:
       stab: 0
@@ -2061,19 +1001,19 @@
       range: 0
     defenceBonus:
       stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
+      slash: 1
+      crush: 1
+      magic: 2
       range: 0
     strengthBonus:
       melee: 0
-      range: 82
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 9289
-  weight: 0.0
-  examine: "Some poisoned mithril bolts."
+  - 4357
+  weight: 0.453
+  examine: "Ooohhh look at the pretty colours..."
   equipment:
     attackBonus:
       stab: 0
@@ -2083,19 +1023,19 @@
       range: 0
     defenceBonus:
       stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
+      slash: 1
+      crush: 1
+      magic: 2
       range: 0
     strengthBonus:
       melee: 0
-      range: 82
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 9296
-  weight: 0.0
-  examine: "Some poisoned mithril bolts."
+  - 4359
+  weight: 0.453
+  examine: "Ooohhh look at the pretty colours..."
   equipment:
     attackBonus:
       stab: 0
@@ -2105,19 +1045,19 @@
       range: 0
     defenceBonus:
       stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
+      slash: 1
+      crush: 1
+      magic: 2
       range: 0
     strengthBonus:
       melee: 0
-      range: 82
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 9303
-  weight: 0.0
-  examine: "Super poisoned mithril bolts."
+  - 4361
+  weight: 0.453
+  examine: "Ooohhh look at the pretty colours..."
   equipment:
     attackBonus:
       stab: 0
@@ -2127,19 +1067,19 @@
       range: 0
     defenceBonus:
       stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
+      slash: 1
+      crush: 1
+      magic: 2
       range: 0
     strengthBonus:
       melee: 0
-      range: 82
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 9143
-  weight: 0.0
-  examine: "Adamantite crossbow bolts."
+  - 4363
+  weight: 0.453
+  examine: "Ooohhh look at the pretty colours..."
   equipment:
     attackBonus:
       stab: 0
@@ -2149,19 +1089,19 @@
       range: 0
     defenceBonus:
       stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
+      slash: 1
+      crush: 1
+      magic: 2
       range: 0
     strengthBonus:
       melee: 0
-      range: 100
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 9290
-  weight: 0.0
-  examine: "Some poisoned adamantite bolts."
+  - 4365
+  weight: 0.453
+  examine: "Ooohhh look at the pretty colours..."
   equipment:
     attackBonus:
       stab: 0
@@ -2171,19 +1111,19 @@
       range: 0
     defenceBonus:
       stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
+      slash: 1
+      crush: 1
+      magic: 2
       range: 0
     strengthBonus:
       melee: 0
-      range: 100
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 9297
-  weight: 0.0
-  examine: "Some poisoned adamantite bolts."
+  - 4367
+  weight: 0.453
+  examine: "Ooohhh look at the pretty colours..."
   equipment:
     attackBonus:
       stab: 0
@@ -2193,19 +1133,19 @@
       range: 0
     defenceBonus:
       stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
+      slash: 1
+      crush: 1
+      magic: 2
       range: 0
     strengthBonus:
       melee: 0
-      range: 100
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 9304
-  weight: 0.0
-  examine: "Super poisoned adamantite bolts."
+  - 4369
+  weight: 0.453
+  examine: "Ooohhh look at the pretty colours..."
   equipment:
     attackBonus:
       stab: 0
@@ -2215,19 +1155,19 @@
       range: 0
     defenceBonus:
       stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
+      slash: 1
+      crush: 1
+      magic: 2
       range: 0
     strengthBonus:
       melee: 0
-      range: 100
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 9144
-  weight: 0.0
-  examine: "Runite crossbow bolts."
+  - 4371
+  weight: 0.453
+  examine: "Ooohhh look at the pretty colours..."
   equipment:
     attackBonus:
       stab: 0
@@ -2237,19 +1177,19 @@
       range: 0
     defenceBonus:
       stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
+      slash: 1
+      crush: 1
+      magic: 2
       range: 0
     strengthBonus:
       melee: 0
-      range: 115
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 9291
-  weight: 0.0
-  examine: "Some poisoned runite bolts."
+  - 4373
+  weight: 0.453
+  examine: "Ooohhh look at the pretty colours..."
   equipment:
     attackBonus:
       stab: 0
@@ -2259,19 +1199,19 @@
       range: 0
     defenceBonus:
       stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
+      slash: 1
+      crush: 1
+      magic: 2
       range: 0
     strengthBonus:
       melee: 0
-      range: 115
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 9298
-  weight: 0.0
-  examine: "Some poisoned runite bolts."
+  - 4375
+  weight: 0.453
+  examine: "Ooohhh look at the pretty colours..."
   equipment:
     attackBonus:
       stab: 0
@@ -2281,19 +1221,19 @@
       range: 0
     defenceBonus:
       stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
+      slash: 1
+      crush: 1
+      magic: 2
       range: 0
     strengthBonus:
       melee: 0
-      range: 115
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 9305
-  weight: 0.0
-  examine: "Super poisoned runite bolts."
+  - 4377
+  weight: 0.453
+  examine: "Ooohhh look at the pretty colours..."
   equipment:
     attackBonus:
       stab: 0
@@ -2303,19 +1243,19 @@
       range: 0
     defenceBonus:
       stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
+      slash: 1
+      crush: 1
+      magic: 2
       range: 0
     strengthBonus:
       melee: 0
-      range: 115
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 9145
-  weight: 0.0
-  examine: "Silver crossbow bolts."
+  - 4379
+  weight: 0.453
+  examine: "Ooohhh look at the pretty colours..."
   equipment:
     attackBonus:
       stab: 0
@@ -2325,19 +1265,19 @@
       range: 0
     defenceBonus:
       stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
+      slash: 1
+      crush: 1
+      magic: 2
       range: 0
     strengthBonus:
       melee: 0
-      range: 36
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 9292
-  weight: 0.0
-  examine: "Some poisoned silver bolts."
+  - 4381
+  weight: 0.453
+  examine: "Ooohhh look at the pretty colours..."
   equipment:
     attackBonus:
       stab: 0
@@ -2347,19 +1287,19 @@
       range: 0
     defenceBonus:
       stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
+      slash: 1
+      crush: 1
+      magic: 2
       range: 0
     strengthBonus:
       melee: 0
-      range: 36
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 9299
-  weight: 0.0
-  examine: "Some poisoned silver bolts."
+  - 4383
+  weight: 0.453
+  examine: "Ooohhh look at the pretty colours..."
   equipment:
     attackBonus:
       stab: 0
@@ -2369,19 +1309,19 @@
       range: 0
     defenceBonus:
       stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
+      slash: 1
+      crush: 1
+      magic: 2
       range: 0
     strengthBonus:
       melee: 0
-      range: 36
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 9306
-  weight: 0.0
-  examine: "Some poisoned silver bolts."
+  - 4385
+  weight: 0.453
+  examine: "Ooohhh look at the pretty colours..."
   equipment:
     attackBonus:
       stab: 0
@@ -2391,19 +1331,19 @@
       range: 0
     defenceBonus:
       stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
+      slash: 1
+      crush: 1
+      magic: 2
       range: 0
     strengthBonus:
       melee: 0
-      range: 36
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 9236
-  weight: 0.0
-  examine: "Enchanted Opal tipped Bronze Crossbow Bolts."
+  - 4387
+  weight: 0.453
+  examine: "Ooohhh look at the pretty colours..."
   equipment:
     attackBonus:
       stab: 0
@@ -2413,19 +1353,19 @@
       range: 0
     defenceBonus:
       stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
+      slash: 1
+      crush: 1
+      magic: 2
       range: 0
     strengthBonus:
       melee: 0
-      range: 14
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 9237
-  weight: 0.0
-  examine: "Enchanted Jade tipped Blurite Crossbow Bolts."
+  - 4389
+  weight: 0.453
+  examine: "Ooohhh look at the pretty colours..."
   equipment:
     attackBonus:
       stab: 0
@@ -2435,19 +1375,19 @@
       range: 0
     defenceBonus:
       stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
+      slash: 1
+      crush: 1
+      magic: 2
       range: 0
     strengthBonus:
       melee: 0
-      range: 30
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 9238
-  weight: 0.0
-  examine: "Enchanted Pearl tipped Iron Crossbow Bolts."
+  - 4391
+  weight: 0.453
+  examine: "Ooohhh look at the pretty colours..."
   equipment:
     attackBonus:
       stab: 0
@@ -2457,19 +1397,19 @@
       range: 0
     defenceBonus:
       stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
+      slash: 1
+      crush: 1
+      magic: 2
       range: 0
     strengthBonus:
       melee: 0
-      range: 48
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 9239
-  weight: 0.0
-  examine: "Enchanted Red Topaz tipped Steel Crossbow Bolts."
+  - 4393
+  weight: 0.453
+  examine: "Ooohhh look at the pretty colours..."
   equipment:
     attackBonus:
       stab: 0
@@ -2479,19 +1419,19 @@
       range: 0
     defenceBonus:
       stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
+      slash: 1
+      crush: 1
+      magic: 2
       range: 0
     strengthBonus:
       melee: 0
-      range: 66
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 9240
-  weight: 0.0
-  examine: "Enchanted Sapphire tipped Mithril Crossbow Bolts."
+  - 4395
+  weight: 0.453
+  examine: "Ooohhh look at the pretty colours..."
   equipment:
     attackBonus:
       stab: 0
@@ -2501,19 +1441,19 @@
       range: 0
     defenceBonus:
       stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
+      slash: 1
+      crush: 1
+      magic: 2
       range: 0
     strengthBonus:
       melee: 0
-      range: 83
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 9241
-  weight: 0.0
-  examine: "Enchanted Emerald tipped Mithril Crossbow Bolts."
+  - 4397
+  weight: 0.453
+  examine: "Ooohhh look at the pretty colours..."
   equipment:
     attackBonus:
       stab: 0
@@ -2523,19 +1463,19 @@
       range: 0
     defenceBonus:
       stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
+      slash: 1
+      crush: 1
+      magic: 2
       range: 0
     strengthBonus:
       melee: 0
-      range: 85
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 9242
-  weight: 0.0
-  examine: "Enchanted Ruby tipped Adamantite Crossbow Bolts."
+  - 4399
+  weight: 0.453
+  examine: "Ooohhh look at the pretty colours..."
   equipment:
     attackBonus:
       stab: 0
@@ -2545,19 +1485,19 @@
       range: 0
     defenceBonus:
       stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
+      slash: 1
+      crush: 1
+      magic: 2
       range: 0
     strengthBonus:
       melee: 0
-      range: 103
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 9243
-  weight: 0.0
-  examine: "Enchanted Diamond tipped Adamantite Crossbow Bolts."
+  - 4401
+  weight: 0.453
+  examine: "Ooohhh look at the pretty colours..."
   equipment:
     attackBonus:
       stab: 0
@@ -2567,19 +1507,19 @@
       range: 0
     defenceBonus:
       stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
+      slash: 1
+      crush: 1
+      magic: 2
       range: 0
     strengthBonus:
       melee: 0
-      range: 105
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 9244
-  weight: 0.0
-  examine: "Enchanted Dragonstone tipped Runite Crossbow Bolts."
+  - 4403
+  weight: 0.453
+  examine: "Ooohhh look at the pretty colours..."
   equipment:
     attackBonus:
       stab: 0
@@ -2589,19 +1529,19 @@
       range: 0
     defenceBonus:
       stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
+      slash: 1
+      crush: 1
+      magic: 2
       range: 0
     strengthBonus:
       melee: 0
-      range: 117
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 9245
-  weight: 0.0
-  examine: "Enchanted Onyx tipped Runite Crossbow Bolts."
+  - 4405
+  weight: 0.453
+  examine: "Ooohhh look at the pretty colours..."
   equipment:
     attackBonus:
       stab: 0
@@ -2611,19 +1551,19 @@
       range: 0
     defenceBonus:
       stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
+      slash: 1
+      crush: 1
+      magic: 2
       range: 0
     strengthBonus:
       melee: 0
-      range: 120
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 9335
-  weight: 0.0
-  examine: "Jade tipped Blurite crossbow bolts."
+  - 4407
+  weight: 0.453
+  examine: "Ooohhh look at the pretty colours..."
   equipment:
     attackBonus:
       stab: 0
@@ -2633,19 +1573,19 @@
       range: 0
     defenceBonus:
       stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
+      slash: 1
+      crush: 1
+      magic: 2
       range: 0
     strengthBonus:
       melee: 0
-      range: 30
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 9336
-  weight: 0.0
-  examine: "Topaz tipped Steel crossbow bolts."
+  - 4409
+  weight: 0.453
+  examine: "Ooohhh look at the pretty colours..."
   equipment:
     attackBonus:
       stab: 0
@@ -2655,19 +1595,19 @@
       range: 0
     defenceBonus:
       stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
+      slash: 1
+      crush: 1
+      magic: 2
       range: 0
     strengthBonus:
       melee: 0
-      range: 66
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 9337
-  weight: 0.0
-  examine: "Sapphire tipped Mithril crossbow bolts."
+  - 4411
+  weight: 0.453
+  examine: "Ooohhh look at the pretty colours..."
   equipment:
     attackBonus:
       stab: 0
@@ -2677,19 +1617,19 @@
       range: 0
     defenceBonus:
       stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
+      slash: 1
+      crush: 1
+      magic: 2
       range: 0
     strengthBonus:
       melee: 0
-      range: 83
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 9338
-  weight: 0.0
-  examine: "Emerald tipped Mithril crossbow bolts."
+  - 4413
+  weight: 0.453
+  examine: "Ooohhh look at the pretty colours..."
   equipment:
     attackBonus:
       stab: 0
@@ -2699,19 +1639,19 @@
       range: 0
     defenceBonus:
       stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
+      slash: 1
+      crush: 1
+      magic: 2
       range: 0
     strengthBonus:
       melee: 0
-      range: 85
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 9339
-  weight: 0.0
-  examine: "Ruby tipped Adamantite crossbow bolts."
+  - 4514
+  weight: 0.45
+  examine: "A fine castlewars Cape."
   equipment:
     attackBonus:
       stab: 0
@@ -2721,19 +1661,19 @@
       range: 0
     defenceBonus:
       stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
+      slash: 1
+      crush: 1
+      magic: 2
       range: 0
     strengthBonus:
       melee: 0
-      range: 103
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 9340
-  weight: 0.0
-  examine: "Diamond tipped Adamantite crossbow bolts."
+  - 4516
+  weight: 0.453
+  examine: "A fine castlewars Cape."
   equipment:
     attackBonus:
       stab: 0
@@ -2743,19 +1683,19 @@
       range: 0
     defenceBonus:
       stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
+      slash: 1
+      crush: 1
+      magic: 2
       range: 0
     strengthBonus:
       melee: 0
-      range: 105
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 9341
-  weight: 0.0
-  examine: "Dragonstone tipped Runite crossbow bolts."
+  - 5607
+  weight: 5.0
+  examine: "A sack full of grain."
   equipment:
     attackBonus:
       stab: 0
@@ -2771,13 +1711,13 @@
       range: 0
     strengthBonus:
       melee: 0
-      range: 117
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 9342
-  weight: 0.0
-  examine: "Onyx tipped Runite crossbow bolts."
+  - 6070
+  weight: 2.267
+  examine: "A dull brown cape."
   equipment:
     attackBonus:
       stab: 0
@@ -2793,13 +1733,123 @@
       range: 0
     strengthBonus:
       melee: 0
-      range: 120
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 9419
+  - 6111
   weight: 0.001
-  examine: "A mithril grapple tipped bolt with a rope."
+  examine: "Made of a strange ghostly material..."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 5
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 5
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 6568
+  weight: 1.814
+  examine: "A cape of woven obsidian plates."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 9
+      slash: 9
+      crush: 9
+      magic: 9
+      range: 9
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 6570
+  weight: 1.814
+  examine: "A cape of fire."
+  equipment:
+    attackBonus:
+      stab: 1
+      slash: 1
+      crush: 1
+      magic: 1
+      range: 1
+    defenceBonus:
+      stab: 11
+      slash: 11
+      crush: 11
+      magic: 11
+      range: 11
+    strengthBonus:
+      melee: 4
+      range: 0
+      magic: 0
+    prayerBonus: 2
+- ids:
+  - 24223
+  weight: 1.814
+  examine: "A cape of fire."
+  equipment:
+    attackBonus:
+      stab: 1
+      slash: 1
+      crush: 1
+      magic: 1
+      range: 1
+    defenceBonus:
+      stab: 11
+      slash: 11
+      crush: 11
+      magic: 11
+      range: 11
+    strengthBonus:
+      melee: 4
+      range: 0
+      magic: 0
+    prayerBonus: 2
+- ids:
+  - 6959
+  weight: 0.453
+  examine: "It's a bit pink."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 1
+      crush: 1
+      magic: 2
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 7535
+  weight: 10.0
+  examine: "I'll need a helmet to make this work."
   equipment:
     attackBonus:
       stab: 0
@@ -2819,9 +1869,9 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 9706
-  weight: 0.0
-  examine: "Standard training arrows."
+  - 7918
+  weight: 0.003
+  examine: "The Bonesack is a little old item that protects like leather."
   equipment:
     attackBonus:
       stab: 0
@@ -2830,42 +1880,42 @@
       magic: 0
       range: 0
     defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
+      stab: 4
+      slash: 4
+      crush: 4
+      magic: 4
+      range: 4
     strengthBonus:
       melee: 0
-      range: 7
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 10142
-  weight: 0.0
-  examine: "A thick, foul-smelling, tar-like substance with a green tinge."
+  - 9074
+  weight: 0.453
+  examine: "A mystical cape."
   equipment:
     attackBonus:
       stab: 0
       slash: 0
       crush: 0
-      magic: 0
-      range: 0
+      magic: -2
+      range: 2
     defenceBonus:
       stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
+      slash: 1
+      crush: 1
+      magic: -2
+      range: 2
     strengthBonus:
       melee: 0
-      range: 16
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 10143
-  weight: 0.0
-  examine: "A thick, foul-smelling, tar-like substance with an orange tinge."
+  - 9101
+  weight: 0.453
+  examine: "Oooo pretty!"
   equipment:
     attackBonus:
       stab: 0
@@ -2875,19 +1925,19 @@
       range: 0
     defenceBonus:
       stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
+      slash: 1
+      crush: 1
+      magic: 2
       range: 0
     strengthBonus:
       melee: 0
-      range: 22
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 10144
-  weight: 0.0
-  examine: "A thick, foul-smelling, tar-like substance with a red tinge."
+  - 9747
+  weight: 0.453
+  examine: "The cape worn by masters of Attack."
   equipment:
     attackBonus:
       stab: 0
@@ -2896,20 +1946,20 @@
       magic: 0
       range: 0
     defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
+      stab: 9
+      slash: 9
+      crush: 9
+      magic: 9
+      range: 9
     strengthBonus:
       melee: 0
-      range: 31
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 10145
-  weight: 0.0
-  examine: "A dark, thick, foul-smelling, tar-like substance."
+  - 9748
+  weight: 0.453
+  examine: "The cape worn by masters of Attack."
   equipment:
     attackBonus:
       stab: 0
@@ -2918,20 +1968,42 @@
       magic: 0
       range: 0
     defenceBonus:
+      stab: 9
+      slash: 9
+      crush: 9
+      magic: 9
+      range: 9
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 4
+- ids:
+  - 9750
+  weight: 0.453
+  examine: "The cape worn by only the strongest people."
+  equipment:
+    attackBonus:
       stab: 0
       slash: 0
       crush: 0
       magic: 0
       range: 0
+    defenceBonus:
+      stab: 9
+      slash: 9
+      crush: 9
+      magic: 9
+      range: 9
     strengthBonus:
       melee: 0
-      range: 49
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 10158
-  weight: 0.0
-  examine: "Bolts made from the spikes of a prickly kebbit."
+  - 9751
+  weight: 0.453
+  examine: "The cape worn by only the strongest people."
   equipment:
     attackBonus:
       stab: 0
@@ -2940,20 +2012,42 @@
       magic: 0
       range: 0
     defenceBonus:
+      stab: 9
+      slash: 9
+      crush: 9
+      magic: 9
+      range: 9
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 4
+- ids:
+  - 9753
+  weight: 0.453
+  examine: "The cape worn by masters of the art of Defence."
+  equipment:
+    attackBonus:
       stab: 0
       slash: 0
       crush: 0
       magic: 0
       range: 0
+    defenceBonus:
+      stab: 9
+      slash: 9
+      crush: 9
+      magic: 9
+      range: 9
     strengthBonus:
       melee: 0
-      range: 28
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 10159
-  weight: 0.0
-  examine: "Bolts made from the spikes of a razor-backed kebbit."
+  - 9754
+  weight: 0.453
+  examine: "The cape worn by masters of the art of Defence."
   equipment:
     attackBonus:
       stab: 0
@@ -2962,21 +2056,42 @@
       magic: 0
       range: 0
     defenceBonus:
+      stab: 9
+      slash: 9
+      crush: 9
+      magic: 9
+      range: 9
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 4
+- ids:
+  - 9756
+  weight: 0.453
+  examine: "The cape worn by master archers."
+  equipment:
+    attackBonus:
       stab: 0
       slash: 0
       crush: 0
       magic: 0
       range: 0
+    defenceBonus:
+      stab: 9
+      slash: 9
+      crush: 9
+      magic: 9
+      range: 9
     strengthBonus:
       melee: 0
-      range: 38
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 11212
-  - 20389
-  weight: 0.0
-  examine: "An arrow made using a dragon's talon."
+  - 9757
+  weight: 0.4
+  examine: "The cape worn by master archers."
   equipment:
     attackBonus:
       stab: 0
@@ -2985,21 +2100,42 @@
       magic: 0
       range: 0
     defenceBonus:
+      stab: 9
+      slash: 9
+      crush: 9
+      magic: 9
+      range: 9
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 4
+- ids:
+  - 9759
+  weight: 0.453
+  examine: "The cape worn by the most pious of heroes."
+  equipment:
+    attackBonus:
       stab: 0
       slash: 0
       crush: 0
       magic: 0
       range: 0
+    defenceBonus:
+      stab: 9
+      slash: 9
+      crush: 9
+      magic: 9
+      range: 9
     strengthBonus:
       melee: 0
-      range: 60
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 11212
-  - 20389
-  weight: 0.0
-  examine: "An arrow made using a dragon's talon."
+  - 9760
+  weight: 0.453
+  examine: "The cape worn by the most pious of heroes."
   equipment:
     attackBonus:
       stab: 0
@@ -3008,20 +2144,42 @@
       magic: 0
       range: 0
     defenceBonus:
+      stab: 9
+      slash: 9
+      crush: 9
+      magic: 9
+      range: 9
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 4
+- ids:
+  - 9762
+  weight: 0.453
+  examine: "The cape worn by the most powerful mages."
+  equipment:
+    attackBonus:
       stab: 0
       slash: 0
       crush: 0
       magic: 0
       range: 0
+    defenceBonus:
+      stab: 9
+      slash: 9
+      crush: 9
+      magic: 9
+      range: 9
     strengthBonus:
       melee: 0
-      range: 60
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 11227
-  weight: 0.0
-  examine: "Venomous-looking arrows."
+  - 9763
+  weight: 0.453
+  examine: "The cape worn by the most powerful mages."
   equipment:
     attackBonus:
       stab: 0
@@ -3030,20 +2188,42 @@
       magic: 0
       range: 0
     defenceBonus:
+      stab: 9
+      slash: 9
+      crush: 9
+      magic: 9
+      range: 9
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 4
+- ids:
+  - 9765
+  weight: 0.453
+  examine: "The cape worn by master runecrafters."
+  equipment:
+    attackBonus:
       stab: 0
       slash: 0
       crush: 0
       magic: 0
       range: 0
+    defenceBonus:
+      stab: 9
+      slash: 9
+      crush: 9
+      magic: 9
+      range: 9
     strengthBonus:
       melee: 0
-      range: 60
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 11228
-  weight: 0.0
-  examine: "Venomous-looking arrows."
+  - 9766
+  weight: 0.453
+  examine: "The cape worn by master runecrafters."
   equipment:
     attackBonus:
       stab: 0
@@ -3052,20 +2232,42 @@
       magic: 0
       range: 0
     defenceBonus:
+      stab: 9
+      slash: 9
+      crush: 9
+      magic: 9
+      range: 9
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 4
+- ids:
+  - 9768
+  weight: 0.453
+  examine: "The cape worn by the healthiest adventurers."
+  equipment:
+    attackBonus:
       stab: 0
       slash: 0
       crush: 0
       magic: 0
       range: 0
+    defenceBonus:
+      stab: 9
+      slash: 9
+      crush: 9
+      magic: 9
+      range: 9
     strengthBonus:
       melee: 0
-      range: 60
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 11229
-  weight: 0.0
-  examine: "Venomous-looking arrows."
+  - 9769
+  weight: 0.453
+  examine: "The cape worn by the healthiest adventurers."
   equipment:
     attackBonus:
       stab: 0
@@ -3074,20 +2276,44 @@
       magic: 0
       range: 0
     defenceBonus:
+      stab: 9
+      slash: 9
+      crush: 9
+      magic: 9
+      range: 9
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 4
+- ids:
+  - 9771
+  - 13340
+  weight: 0.0
+  examine: "The cape worn by the most agile of heroes."
+  equipment:
+    attackBonus:
       stab: 0
       slash: 0
       crush: 0
       magic: 0
       range: 0
+    defenceBonus:
+      stab: 9
+      slash: 9
+      crush: 9
+      magic: 9
+      range: 9
     strengthBonus:
       melee: 0
-      range: 60
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 11217
+  - 9772
+  - 13341
   weight: 0.0
-  examine: "Arrows with dragon heads and oil-soaked cloth."
+  examine: "The cape worn by the most agile of heroes."
   equipment:
     attackBonus:
       stab: 0
@@ -3096,20 +2322,42 @@
       magic: 0
       range: 0
     defenceBonus:
+      stab: 9
+      slash: 9
+      crush: 9
+      magic: 9
+      range: 9
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 4
+- ids:
+  - 9774
+  weight: 0.4
+  examine: "The cape worn by the most skilled at the art of Herblore."
+  equipment:
+    attackBonus:
       stab: 0
       slash: 0
       crush: 0
       magic: 0
       range: 0
+    defenceBonus:
+      stab: 9
+      slash: 9
+      crush: 9
+      magic: 9
+      range: 9
     strengthBonus:
       melee: 0
-      range: 60
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 11222
-  weight: 0.0
-  examine: "These dragon-headed arrows are ablaze with fire."
+  - 9775
+  weight: 0.453
+  examine: "The cape worn by the most skilled at the art of Herblore."
   equipment:
     attackBonus:
       stab: 0
@@ -3118,20 +2366,42 @@
       magic: 0
       range: 0
     defenceBonus:
+      stab: 9
+      slash: 9
+      crush: 9
+      magic: 9
+      range: 9
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 4
+- ids:
+  - 9777
+  weight: 0.453
+  examine: "The cape worn by master thieves."
+  equipment:
+    attackBonus:
       stab: 0
       slash: 0
       crush: 0
       magic: 0
       range: 0
+    defenceBonus:
+      stab: 9
+      slash: 9
+      crush: 9
+      magic: 9
+      range: 9
     strengthBonus:
       melee: 0
-      range: 60
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 11875
-  weight: 0.0
-  examine: "Crossbow bolts with broad tips."
+  - 9778
+  weight: 0.453
+  examine: "The cape worn by master thieves."
   equipment:
     attackBonus:
       stab: 0
@@ -3140,20 +2410,42 @@
       magic: 0
       range: 0
     defenceBonus:
+      stab: 9
+      slash: 9
+      crush: 9
+      magic: 9
+      range: 9
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 4
+- ids:
+  - 9780
+  weight: 0.453
+  examine: "The cape worn by master craftworkers."
+  equipment:
+    attackBonus:
       stab: 0
       slash: 0
       crush: 0
       magic: 0
       range: 0
+    defenceBonus:
+      stab: 9
+      slash: 9
+      crush: 9
+      magic: 9
+      range: 9
     strengthBonus:
       melee: 0
-      range: 100
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 19484
-  weight: 0.0
-  examine: "A dragon tipped javelin."
+  - 9781
+  weight: 0.453
+  examine: "The cape worn by master craftworkers."
   equipment:
     attackBonus:
       stab: 0
@@ -3162,20 +2454,42 @@
       magic: 0
       range: 0
     defenceBonus:
+      stab: 9
+      slash: 9
+      crush: 9
+      magic: 9
+      range: 9
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 4
+- ids:
+  - 9783
+  weight: 0.453
+  examine: "The cape worn by the best of fletchers."
+  equipment:
+    attackBonus:
       stab: 0
       slash: 0
       crush: 0
       magic: 0
       range: 0
+    defenceBonus:
+      stab: 9
+      slash: 9
+      crush: 9
+      magic: 9
+      range: 9
     strengthBonus:
       melee: 0
-      range: 150
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 19486
-  weight: 0.0
-  examine: "A dragon tipped javelin."
+  - 9784
+  weight: 0.453
+  examine: "The cape worn by the best of fletchers."
   equipment:
     attackBonus:
       stab: 0
@@ -3184,20 +2498,42 @@
       magic: 0
       range: 0
     defenceBonus:
+      stab: 9
+      slash: 9
+      crush: 9
+      magic: 9
+      range: 9
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 4
+- ids:
+  - 9786
+  weight: 0.453
+  examine: "The cape worn by Slayer masters."
+  equipment:
+    attackBonus:
       stab: 0
       slash: 0
       crush: 0
       magic: 0
       range: 0
+    defenceBonus:
+      stab: 9
+      slash: 9
+      crush: 9
+      magic: 9
+      range: 9
     strengthBonus:
       melee: 0
-      range: 150
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 19488
-  weight: 0.0
-  examine: "A dragon tipped javelin."
+  - 9787
+  weight: 0.453
+  examine: "The cape worn by Slayer masters."
   equipment:
     attackBonus:
       stab: 0
@@ -3206,20 +2542,42 @@
       magic: 0
       range: 0
     defenceBonus:
+      stab: 9
+      slash: 9
+      crush: 9
+      magic: 9
+      range: 9
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 4
+- ids:
+  - 9789
+  weight: 0.453
+  examine: "The cape worn by master builders."
+  equipment:
+    attackBonus:
       stab: 0
       slash: 0
       crush: 0
       magic: 0
       range: 0
+    defenceBonus:
+      stab: 9
+      slash: 9
+      crush: 9
+      magic: 9
+      range: 9
     strengthBonus:
       melee: 0
-      range: 150
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 19490
-  weight: 0.0
-  examine: "A dragon tipped javelin."
+  - 9790
+  weight: 0.453
+  examine: "The cape worn by master builders."
   equipment:
     attackBonus:
       stab: 0
@@ -3228,21 +2586,42 @@
       magic: 0
       range: 0
     defenceBonus:
+      stab: 9
+      slash: 9
+      crush: 9
+      magic: 9
+      range: 9
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 4
+- ids:
+  - 9792
+  weight: 0.453
+  examine: "The cape worn by the most skilled miners."
+  equipment:
+    attackBonus:
       stab: 0
       slash: 0
       crush: 0
       magic: 0
       range: 0
+    defenceBonus:
+      stab: 9
+      slash: 9
+      crush: 9
+      magic: 9
+      range: 9
     strengthBonus:
       melee: 0
-      range: 150
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 20220
-  weight: 0.0
-  examine: "The path of the righteous man is beset on all sides by the inequities\
-    \ of the selfish and the tyranny of evil men."
+  - 9793
+  weight: 0.453
+  examine: "The cape worn by the most skilled miners."
   equipment:
     attackBonus:
       stab: 0
@@ -3251,21 +2630,20 @@
       magic: 0
       range: 0
     defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
+      stab: 9
+      slash: 9
+      crush: 9
+      magic: 9
+      range: 9
     strengthBonus:
       melee: 0
       range: 0
       magic: 0
-    prayerBonus: 1
+    prayerBonus: 4
 - ids:
-  - 20223
-  weight: 0.0
-  examine: "The Dark Lord will rise again with his servant's aid, greater and more\
-    \ terrible than ever he was."
+  - 9795
+  weight: 0.453
+  examine: "The cape worn by master smiths."
   equipment:
     attackBonus:
       stab: 0
@@ -3274,131 +2652,351 @@
       magic: 0
       range: 0
     defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
+      stab: 9
+      slash: 9
+      crush: 9
+      magic: 9
+      range: 9
     strengthBonus:
       melee: 0
       range: 0
-      magic: 0
-    prayerBonus: 1
-- ids:
-  - 20226
-  weight: 0.0
-  examine: "Life and death, old and new, day and night. Balance is the key to all."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 1
-- ids:
-  - 20229
-  weight: 0.0
-  examine: "Law is not law if it violates the principles of eternal justice."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 1
-- ids:
-  - 20232
-  weight: 0.0
-  examine: "The blood of the soldier makes the glory of the general."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 1
-- ids:
-  - 20235
-  weight: 0.0
-  examine: "The misery that is now upon us is but the passing of greed, the bitterness\
-    \ of those who fear the way of Zarosian progress."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 1
-- ids:
-  - 21316
-  weight: 0.0
-  examine: "Crossbow bolts with amethyst broad tips."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 115
       magic: 0
     prayerBonus: 0
 - ids:
-  - 21318
+  - 9796
+  weight: 0.453
+  examine: "The cape worn by master smiths."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 9
+      slash: 9
+      crush: 9
+      magic: 9
+      range: 9
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 4
+- ids:
+  - 9798
+  weight: 0.453
+  examine: "The cape worn by the best fishermen."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 9
+      slash: 9
+      crush: 9
+      magic: 9
+      range: 9
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 9799
+  weight: 0.453
+  examine: "The cape worn by the best fishermen."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 9
+      slash: 9
+      crush: 9
+      magic: 9
+      range: 9
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 4
+- ids:
+  - 9801
+  weight: 0.453
+  examine: "The cape worn by the world's best chefs."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 9
+      slash: 9
+      crush: 9
+      magic: 9
+      range: 9
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 9802
+  weight: 0.453
+  examine: "The cape worn by the world's best chefs."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 9
+      slash: 9
+      crush: 9
+      magic: 9
+      range: 9
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 4
+- ids:
+  - 9804
+  weight: 0.453
+  examine: "The cape worn by master firelighters."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 9
+      slash: 9
+      crush: 9
+      magic: 9
+      range: 9
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 9805
+  weight: 0.453
+  examine: "The cape worn by master firelighters."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 9
+      slash: 9
+      crush: 9
+      magic: 9
+      range: 9
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 4
+- ids:
+  - 9807
+  weight: 0.453
+  examine: "The cape worn by master woodcutters."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 9
+      slash: 9
+      crush: 9
+      magic: 9
+      range: 9
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 9808
+  weight: 0.4
+  examine: "The cape worn by master woodcutters."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 9
+      slash: 9
+      crush: 9
+      magic: 9
+      range: 9
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 4
+- ids:
+  - 9810
+  weight: 0.453
+  examine: "The cape worn by master farmers."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 9
+      slash: 9
+      crush: 9
+      magic: 9
+      range: 9
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 9811
+  weight: 0.453
+  examine: "The cape worn by master farmers."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 9
+      slash: 9
+      crush: 9
+      magic: 9
+      range: 9
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 4
+- ids:
+  - 9813
+  weight: 0.453
+  examine: "The cape worn by only the most experienced adventurers."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 9
+      slash: 9
+      crush: 9
+      magic: 9
+      range: 9
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 85
+- ids:
+  - 13068
   weight: 0.0
-  examine: "An amethyst tipped javelin."
+  examine: "The cape worn by only the most experienced adventurers."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 9
+      slash: 9
+      crush: 9
+      magic: 9
+      range: 9
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 85
+- ids:
+  - 9948
+  weight: 0.453
+  examine: "The cape worn by master hunters."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 9
+      slash: 9
+      crush: 9
+      magic: 9
+      range: 9
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 9949
+  weight: 0.453
+  examine: "The cape worn by master hunters."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 9
+      slash: 9
+      crush: 9
+      magic: 9
+      range: 9
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 4
+- ids:
+  - 10069
+  - 10073
+  weight: 0.0
+  examine: "A surprisingly aerodynamic cape."
   equipment:
     attackBonus:
       stab: 0
@@ -3408,19 +3006,20 @@
       range: 0
     defenceBonus:
       stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
+      slash: 1
+      crush: 1
+      magic: 2
       range: 0
     strengthBonus:
       melee: 0
-      range: 135
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 21320
+  - 10071
+  - 10074
   weight: 0.0
-  examine: "An amethyst tipped javelin."
+  examine: "A really surprisingly aerodynamic cape."
   equipment:
     attackBonus:
       stab: 0
@@ -3430,811 +3029,19 @@
       range: 0
     defenceBonus:
       stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
+      slash: 1
+      crush: 1
+      magic: 2
       range: 0
     strengthBonus:
       melee: 0
-      range: 135
+      range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-  - 21322
-  weight: 0.0
-  examine: "An amethyst tipped javelin."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 135
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 21324
-  weight: 0.0
-  examine: "An amethyst tipped javelin."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 135
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 21326
-  weight: 0.0
-  examine: "Arrows with amethyst heads."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 55
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 21332
-  weight: 0.0
-  examine: "Venomous-looking arrows."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 55
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 21334
-  weight: 0.0
-  examine: "Venomous-looking arrows."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 55
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 21336
-  weight: 0.0
-  examine: "Venomous-looking arrows."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 55
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 21328
-  weight: 0.0
-  examine: "Arrows with amethyst heads and oil-soaked cloth."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 55
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 21330
-  weight: 0.0
-  examine: "These amethyst-headed arrows are ablaze with fire."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 55
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 21905
-  weight: 0.0
-  examine: "Dragon crossbow bolts."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 122
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 21924
-  weight: 0.0
-  examine: "Some poisoned dragon bolts."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 122
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 21926
-  weight: 0.0
-  examine: "Some poisoned dragon bolts."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 122
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 21928
-  weight: 0.0
-  examine: "Super poisoned dragon bolts."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 122
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 21932
-  weight: 0.0
-  examine: "Enchanted Dragon crossbow bolts, tipped with opal."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 122
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 21934
-  weight: 0.0
-  examine: "Enchanted Dragon crossbow bolts, tipped with jade."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 122
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 21936
-  weight: 0.0
-  examine: "Enchanted Dragon crossbow bolts, tipped with pearl."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 122
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 21938
-  weight: 0.0
-  examine: "Enchanted Dragon crossbow bolts, tipped with red topaz."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 122
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 21940
-  weight: 0.0
-  examine: "Enchanted Dragon crossbow bolts, tipped with sapphire."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 122
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 21942
-  weight: 0.0
-  examine: "Enchanted Dragon crossbow bolts, tipped with emerald."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 122
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 21944
-  weight: 0.0
-  examine: "Enchanted Dragon crossbow bolts, tipped with ruby."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 122
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 21946
-  weight: 0.0
-  examine: "Enchanted Dragon crossbow bolts, tipped with diamond."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 122
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 21948
-  weight: 0.0
-  examine: "Enchanted Dragon crossbow bolts, tipped with dragonstone. Double dragon!"
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 122
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 21950
-  weight: 0.0
-  examine: "Enchanted Dragon crossbow bolts, tipped with onyx."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 122
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 21955
-  weight: 0.0
-  examine: "Dragon crossbow bolts, tipped with opal."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 122
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 21957
-  weight: 0.0
-  examine: "Dragon crossbow bolts, tipped with jade."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 122
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 21959
-  weight: 0.0
-  examine: "Dragon crossbow bolts, tipped with pearl."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 122
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 21961
-  weight: 0.0
-  examine: "Dragon crossbow bolts, tipped with red topaz."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 122
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 21963
-  weight: 0.0
-  examine: "Dragon crossbow bolts, tipped with sapphire."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 122
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 21965
-  weight: 0.0
-  examine: "Dragon crossbow bolts, tipped with emerald."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 122
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 21967
-  weight: 0.0
-  examine: "Dragon crossbow bolts, tipped with ruby."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 122
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 21969
-  weight: 0.0
-  examine: "Dragon crossbow bolts, tipped with diamond."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 122
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 21971
-  weight: 0.0
-  examine: "Dragon crossbow bolts, tipped with dragonstone. Double dragon!"
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 122
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 21973
-  weight: 0.0
-  examine: "Dragon crossbow bolts, tipped with onyx."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 122
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 22227
-  weight: 0.0
-  examine: "Arrows with bullet heads."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 46
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 125
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 22228
-  weight: 0.0
-  examine: "Arrows with field heads."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 46
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 125
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 22229
-  weight: 0.0
-  examine: "Arrows with blunt heads."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 46
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 125
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 22230
-  weight: 0.0
-  examine: "Arrows with barbed heads."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 46
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 125
-      magic: 0
-    prayerBonus: 0
-- ids:
-  - 22941
-  weight: 0.0
-  examine: "A blessing scroll from distant lands."
+  - 10171
+  weight: 0.226
+  examine: "A cape made from giant eagle feathers."
   equipment:
     attackBonus:
       stab: 0
@@ -4254,9 +3061,120 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 22943
+  - 10446
+  weight: 0.4
+  examine: "A Saradomin cloak."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 1
+    defenceBonus:
+      stab: 3
+      slash: 3
+      crush: 3
+      magic: 3
+      range: 3
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 3
+- ids:
+  - 10448
+  weight: 0.4
+  examine: "A Guthix cloak."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 1
+    defenceBonus:
+      stab: 3
+      slash: 3
+      crush: 3
+      magic: 3
+      range: 3
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 3
+- ids:
+  - 10450
+  weight: 0.4
+  examine: "A Zamorak cloak."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 1
+    defenceBonus:
+      stab: 3
+      slash: 3
+      crush: 3
+      magic: 3
+      range: 3
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 3
+- ids:
+  - 10498
+  weight: 4.535
+  examine: "A bagged chicken ready to serve you, magnet in claw."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 2
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 2
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 10499
+  weight: 4.535
+  examine: "A superior bagged chicken ready to serve you, magnet in claw."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 4
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 1
+      crush: 0
+      magic: 0
+      range: 4
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 11852
+  - 11853
   weight: 0.0
-  examine: "A blessing scroll from distant lands."
+  examine: "A sign of your grace."
   equipment:
     attackBonus:
       stab: 0
@@ -4274,11 +3192,12 @@
       melee: 0
       range: 0
       magic: 0
-    prayerBonus: 1
+    prayerBonus: 0
 - ids:
-  - 22945
+  - 13581
+  - 13582
   weight: 0.0
-  examine: "A blessing scroll from distant lands."
+  examine: "A sign of your grace and loyalty."
   equipment:
     attackBonus:
       stab: 0
@@ -4296,11 +3215,12 @@
       melee: 0
       range: 0
       magic: 0
-    prayerBonus: 1
+    prayerBonus: 0
 - ids:
-  - 22947
+  - 13593
+  - 13594
   weight: 0.0
-  examine: "A blessing scroll from distant lands."
+  examine: "A sign of your grace and loyalty."
   equipment:
     attackBonus:
       stab: 0
@@ -4314,8 +3234,1952 @@
       crush: 0
       magic: 0
       range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 13605
+  - 13606
+  weight: 0.0
+  examine: "A sign of your grace and loyalty."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 13617
+  - 13618
+  weight: 0.0
+  examine: "A sign of your grace and loyalty."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 13629
+  - 13630
+  weight: 0.0
+  examine: "A sign of your grace and loyalty."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 13669
+  - 13670
+  weight: 0.0
+  examine: "A sign of your grace and unity."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 21064
+  - 21066
+  weight: 0.0
+  examine: "A sign of your grace."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 11901
+  weight: 8.155
+  examine: "Very decorative armour."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 4
+      slash: 4
+      crush: 4
+      magic: 4
+      range: 4
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 24168
+  weight: 8.155
+  examine: "Very decorative armour."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 4
+      slash: 4
+      crush: 4
+      magic: 4
+      range: 4
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 12197
+  weight: 1.0
+  examine: "An Ancient cloak."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 1
+    defenceBonus:
+      stab: 3
+      slash: 3
+      crush: 3
+      magic: 3
+      range: 3
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 3
+- ids:
+  - 12261
+  weight: 1.0
+  examine: "An Armadyl cloak."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 1
+    defenceBonus:
+      stab: 3
+      slash: 3
+      crush: 3
+      magic: 3
+      range: 3
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 3
+- ids:
+  - 12273
+  weight: 1.0
+  examine: "A Bandos cloak."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 1
+    defenceBonus:
+      stab: 3
+      slash: 3
+      crush: 3
+      magic: 3
+      range: 3
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 3
+- ids:
+  - 12437
+  weight: 3.0
+  examine: "A beautiful cloak woven by ancient tailors."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 9
+      slash: 9
+      crush: 9
+      magic: 9
+      range: 9
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 5
+- ids:
+  - 12514
+  weight: 2.0
+  examine: "I'm the Backpack loaded up with things and knick knacks too."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 19476
+  weight: 0.4
+  examine: "The cape worn by experienced adventurers."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 9
+      slash: 9
+      crush: 9
+      magic: 9
+      range: 9
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 4
+- ids:
+  - 13069
+  weight: 0.4
+  examine: "The cape worn by only the most elite and experienced adventurers."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 9
+      slash: 9
+      crush: 9
+      magic: 9
+      range: 9
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 4
+- ids:
+  - 13121
+  weight: 1.0
+  examine: "A shadowy Ardougne cloak."
+  equipment:
+    attackBonus:
+      stab: 2
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 2
+    defenceBonus:
+      stab: 2
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 2
     strengthBonus:
       melee: 0
       range: 0
       magic: 0
     prayerBonus: 2
+- ids:
+  - 13122
+  weight: 1.0
+  examine: "A shadowy Ardougne cloak."
+  equipment:
+    attackBonus:
+      stab: 4
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 4
+    defenceBonus:
+      stab: 4
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 4
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 4
+- ids:
+  - 13123
+  weight: 0.0
+  examine: "A shadowy Ardougne cloak."
+  equipment:
+    attackBonus:
+      stab: 5
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 5
+    defenceBonus:
+      stab: 5
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 5
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 5
+- ids:
+  - 13124
+  weight: 0.0
+  examine: "A shadowy Ardougne cloak."
+  equipment:
+    attackBonus:
+      stab: 6
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 6
+    defenceBonus:
+      stab: 6
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 6
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 6
+- ids:
+  - 13221
+  weight: 0.4
+  examine: "The cape worn by music aficionados."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 9
+      slash: 9
+      crush: 9
+      magic: 9
+      range: 9
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 13222
+  weight: 0.4
+  examine: "The cape worn by music aficionados."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 9
+      slash: 9
+      crush: 9
+      magic: 9
+      range: 9
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 4
+- ids:
+  - 13280
+  - 13342
+  weight: 0.0
+  examine: "The cape worn by only the most experienced players."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 9
+      slash: 9
+      crush: 9
+      magic: 9
+      range: 9
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 4
+- ids:
+  - 24191
+  weight: 0.0
+  examine: "Dark and sinister, just like a deadman."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 13319
+  weight: 0.0
+  examine: "Dark and sinister, just like a deadman."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 1
+      crush: 1
+      magic: 2
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 13329
+  weight: 0.453
+  examine: "The cape worn by only the most experienced players."
+  equipment:
+    attackBonus:
+      stab: 1
+      slash: 1
+      crush: 1
+      magic: 1
+      range: 1
+    defenceBonus:
+      stab: 11
+      slash: 11
+      crush: 11
+      magic: 11
+      range: 11
+    strengthBonus:
+      melee: 4
+      range: 0
+      magic: 0
+    prayerBonus: 2
+- ids:
+  - 24134
+  weight: 0.453
+  examine: "The cape worn by only the most experienced players."
+  equipment:
+    attackBonus:
+      stab: 1
+      slash: 1
+      crush: 1
+      magic: 1
+      range: 1
+    defenceBonus:
+      stab: 11
+      slash: 11
+      crush: 11
+      magic: 11
+      range: 11
+    strengthBonus:
+      melee: 4
+      range: 0
+      magic: 0
+    prayerBonus: 2
+- ids:
+  - 13331
+  weight: 0.453
+  examine: "The cape worn by only the most experienced players."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 10
+    defenceBonus:
+      stab: 1
+      slash: 1
+      crush: 2
+      magic: 0
+      range: 10
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 13333
+  weight: 0.453
+  examine: "The cape worn by only the most experienced players."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 10
+    defenceBonus:
+      stab: 1
+      slash: 1
+      crush: 2
+      magic: 0
+      range: 10
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 13335
+  weight: 0.453
+  examine: "The cape worn by only the most experienced players."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 10
+    defenceBonus:
+      stab: 1
+      slash: 1
+      crush: 2
+      magic: 0
+      range: 10
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 13337
+  weight: 0.453
+  examine: "The cape worn by only the most experienced players."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 4
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 1
+      crush: 0
+      magic: 0
+      range: 4
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 13679
+  weight: 0.4
+  examine: "The cape worn by master cabbage pickers."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 1
+      crush: 1
+      magic: 2
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 19556
+  weight: 0.0
+  examine: "A monkey retrieved from the wreckage of Glough's airship laboratory."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 19697
+  weight: 1.0
+  examine: "Winter is coming."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 1
+      crush: 1
+      magic: 2
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 20050
+  weight: 1.8
+  examine: "A cape of woven obsidian plates."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 9
+      slash: 9
+      crush: 9
+      magic: 9
+      range: 9
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 20211
+  weight: 0.0
+  examine: "Ooohhh look at the dirty colours..."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 1
+      crush: 1
+      magic: 2
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 20214
+  weight: 0.0
+  examine: "Ooohhh look at the dirty colours..."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 1
+      crush: 1
+      magic: 2
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 20217
+  weight: 0.0
+  examine: "Ooohhh look at the dirty colours..."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 1
+      crush: 1
+      magic: 2
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 20760
+  weight: 0.453
+  examine: "The cape worn by only the most experienced players."
+  equipment:
+    attackBonus:
+      stab: 6
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 6
+    defenceBonus:
+      stab: 6
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 6
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 6
+- ids:
+  - 20834
+  weight: 0.0
+  examine: "You too can look like Santa."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 21285
+  weight: 0.453
+  examine: "The cape worn by only the most experienced players."
+  equipment:
+    attackBonus:
+      stab: 4
+      slash: 4
+      crush: 4
+      magic: 1
+      range: 1
+    defenceBonus:
+      stab: 12
+      slash: 12
+      crush: 12
+      magic: 12
+      range: 12
+    strengthBonus:
+      melee: 8
+      range: 0
+      magic: 0
+    prayerBonus: 2
+- ids:
+  - 24133
+  weight: 0.453
+  examine: "The cape worn by only the most experienced players."
+  equipment:
+    attackBonus:
+      stab: 4
+      slash: 4
+      crush: 4
+      magic: 1
+      range: 1
+    defenceBonus:
+      stab: 12
+      slash: 12
+      crush: 12
+      magic: 12
+      range: 12
+    strengthBonus:
+      melee: 8
+      range: 0
+      magic: 0
+    prayerBonus: 2
+- ids:
+  - 21295
+  weight: 1.814
+  examine: "Whose idea was it to have a cape made of lava anyway?"
+  equipment:
+    attackBonus:
+      stab: 4
+      slash: 4
+      crush: 4
+      magic: 1
+      range: 1
+    defenceBonus:
+      stab: 12
+      slash: 12
+      crush: 12
+      magic: 12
+      range: 12
+    strengthBonus:
+      melee: 8
+      range: 0
+      magic: 0
+    prayerBonus: 2
+- ids:
+  - 24224
+  weight: 1.814
+  examine: "Whose idea was it to have a cape made of lava anyway?"
+  equipment:
+    attackBonus:
+      stab: 4
+      slash: 4
+      crush: 4
+      magic: 1
+      range: 1
+    defenceBonus:
+      stab: 12
+      slash: 12
+      crush: 12
+      magic: 12
+      range: 12
+    strengthBonus:
+      melee: 8
+      range: 0
+      magic: 0
+    prayerBonus: 2
+- ids:
+  - 21439
+  weight: 0.0
+  examine: "Formerly owned by Leon d'Cour, the Champion of Champions."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 21723
+  weight: 10.0
+  examine: "Some basic diving apparatus."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 21776
+  weight: 0.453
+  examine: "The cape worn by only the most experienced players."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 15
+    defenceBonus:
+      stab: 3
+      slash: 3
+      crush: 3
+      magic: 0
+      range: 15
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 2
+    prayerBonus: 0
+- ids:
+  - 24232
+  weight: 0.453
+  examine: "The cape worn by only the most experienced players."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 15
+    defenceBonus:
+      stab: 3
+      slash: 3
+      crush: 3
+      magic: 0
+      range: 15
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 2
+    prayerBonus: 0
+- ids:
+  - 21780
+  weight: 0.453
+  examine: "The cape worn by only the most experienced players."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 15
+    defenceBonus:
+      stab: 3
+      slash: 3
+      crush: 3
+      magic: 0
+      range: 15
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 2
+    prayerBonus: 0
+- ids:
+  - 24233
+  weight: 0.453
+  examine: "The cape worn by only the most experienced players."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 15
+    defenceBonus:
+      stab: 3
+      slash: 3
+      crush: 3
+      magic: 0
+      range: 15
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 2
+    prayerBonus: 0
+- ids:
+  - 21784
+  weight: 0.453
+  examine: "The cape worn by only the most experienced players."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 15
+    defenceBonus:
+      stab: 3
+      slash: 3
+      crush: 3
+      magic: 0
+      range: 15
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 2
+    prayerBonus: 0
+- ids:
+  - 24234
+  weight: 0.453
+  examine: "The cape worn by only the most experienced players."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 15
+    defenceBonus:
+      stab: 3
+      slash: 3
+      crush: 3
+      magic: 0
+      range: 15
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 2
+    prayerBonus: 0
+- ids:
+  - 21791
+  weight: 0.453
+  examine: "A cape from the almighty god Saradomin, imbued with great power."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 15
+    defenceBonus:
+      stab: 3
+      slash: 3
+      crush: 3
+      magic: 0
+      range: 15
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 2
+    prayerBonus: 0
+- ids:
+  - 24248
+  weight: 0.453
+  examine: "A cape from the almighty god Saradomin, imbued with great power."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 15
+    defenceBonus:
+      stab: 3
+      slash: 3
+      crush: 3
+      magic: 0
+      range: 15
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 2
+    prayerBonus: 0
+- ids:
+  - 21793
+  weight: 0.453
+  examine: "A cape from the almighty god Guthix, imbued with great power."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 15
+    defenceBonus:
+      stab: 3
+      slash: 3
+      crush: 3
+      magic: 0
+      range: 15
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 2
+    prayerBonus: 0
+- ids:
+  - 24249
+  weight: 0.453
+  examine: "A cape from the almighty god Guthix, imbued with great power."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 15
+    defenceBonus:
+      stab: 3
+      slash: 3
+      crush: 3
+      magic: 0
+      range: 15
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 2
+    prayerBonus: 0
+- ids:
+  - 21795
+  weight: 0.453
+  examine: "A cape from the almighty god Zamorak, imbued with great power."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 15
+    defenceBonus:
+      stab: 3
+      slash: 3
+      crush: 3
+      magic: 0
+      range: 15
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 2
+    prayerBonus: 0
+- ids:
+  - 24250
+  weight: 0.453
+  examine: "A cape from the almighty god Zamorak, imbued with great power."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 15
+    defenceBonus:
+      stab: 3
+      slash: 3
+      crush: 3
+      magic: 0
+      range: 15
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 2
+    prayerBonus: 0
+- ids:
+  - 21853
+  weight: 0.0
+  examine: "A poorly made fake snow imp tail."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 21898
+  weight: 0.453
+  examine: "The cape worn by only the most experienced players."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 8
+      range: 0
+    defenceBonus:
+      stab: 1
+      slash: 1
+      crush: 1
+      magic: 2
+      range: 8
+    strengthBonus:
+      melee: 0
+      range: 2
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 24135
+  weight: 0.453
+  examine: "The cape worn by only the most experienced players."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 8
+      range: 0
+    defenceBonus:
+      stab: 1
+      slash: 1
+      crush: 1
+      magic: 2
+      range: 8
+    strengthBonus:
+      melee: 0
+      range: 2
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 22114
+  weight: 1.0
+  examine: "The cape worn by members of the Myths' Guild."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 6
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 8
+      slash: 8
+      crush: 8
+      magic: 8
+      range: 8
+    strengthBonus:
+      melee: 1
+      range: 0
+      magic: 0
+    prayerBonus: 1
+- ids:
+  - 22109
+  weight: 5.896
+  examine: "A superior bagged chicken empowered by Vorkath, ready to serve you, magnet\
+    \ in claw."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 8
+      range: 0
+    defenceBonus:
+      stab: 1
+      slash: 1
+      crush: 1
+      magic: 2
+      range: 8
+    strengthBonus:
+      melee: 0
+      range: 2
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 24222
+  weight: 5.896
+  examine: "A superior bagged chicken empowered by Vorkath, ready to serve you, magnet\
+    \ in claw."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 8
+      range: 0
+    defenceBonus:
+      stab: 1
+      slash: 1
+      crush: 1
+      magic: 2
+      range: 8
+    strengthBonus:
+      melee: 0
+      range: 2
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 22388
+  weight: 0.0
+  examine: "Awarded for completing 100 Chambers of Xeric in challenge mode."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 22390
+  weight: 0.0
+  examine: "Awarded for completing 500 Chambers of Xeric in challenge mode."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 22392
+  weight: 0.0
+  examine: "Awarded for completing 1000 Chambers of Xeric in challenge mode."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 22394
+  weight: 0.0
+  examine: "Awarded for completing 1500 Chambers of Xeric in challenge mode."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 22396
+  weight: 0.0
+  examine: "Awarded for completing 2000 Chambers of Xeric in challenge mode."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 22494
+  weight: 0.0
+  examine: "A cape fit for those experienced in the Theatre."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 22496
+  weight: 0.0
+  examine: "A cape fit for those experienced in the Theatre."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 22498
+  weight: 0.0
+  examine: "A cape fit for those experienced in the Theatre."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 22500
+  weight: 0.0
+  examine: "A cape fit for those experienced in the Theatre."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 22502
+  weight: 0.0
+  examine: "A cape fit for those experienced in the Theatre."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 22675
+  weight: 0.0
+  examine: "Gosh, you really seem to love clue scrolls."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 22838
+  weight: 2.0
+  examine: "There's something fishy about this..."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 1
+      crush: 1
+      magic: 2
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 23099
+  weight: 0.4
+  examine: "An ornate armoured cape."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 1
+      crush: 1
+      magic: 2
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 23224
+  weight: 0.4
+  examine: "A good place to store your stolen goods."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 23297
+  weight: 0.4
+  examine: "A jester cape."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 23300
+  weight: 0.4
+  examine: "Polly want a cracker?"
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 23345
+  weight: 0.4
+  examine: "A fabulously ancient vine cloak as worn by the druids of old."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 1
+    defenceBonus:
+      stab: 3
+      slash: 3
+      crush: 3
+      magic: 3
+      range: 3
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 3
+- ids:
+  - 23351
+  weight: 0.4
+  examine: "Lets the person behind you know that you mean business."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 9
+      slash: 9
+      crush: 9
+      magic: 9
+      range: 9
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 23410
+  weight: 0.4
+  examine: "A very warm wolf cloak."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 23859
+  weight: 0.0
+  examine: "Earned by only the most accomplished warriors of Prifddinas."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 24207
+  weight: 0.0
+  examine: "Shows your prowess in Last Man Standing."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 24209
+  weight: 0.0
+  examine: "Shows your prowess in Last Man Standing."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 24211
+  weight: 0.0
+  examine: "Shows your prowess in Last Man Standing."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 24213
+  weight: 0.0
+  examine: "Shows your prowess in Last Man Standing."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 24215
+  weight: 0.0
+  examine: "Shows your prowess in Last Man Standing."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 24520
+  weight: 0.0
+  examine: "Shows your prowess in Last Man Standing."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
