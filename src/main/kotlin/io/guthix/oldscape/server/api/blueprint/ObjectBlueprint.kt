@@ -56,9 +56,9 @@ object ObjectBlueprints {
     ) {
         blueprints = mutableMapOf<Int, ObjectBlueprint>().apply {
             addBlueprints(cConfigs, eObjectConfigs) { cConfig, eConfig -> ObjectBlueprint(cConfig, eConfig) }
-            addBlueprints(cConfigs, eHeadConfigs) { cConfig, eConfig -> HeadEquipmentBlueprint(cConfig, eConfig) }
+            addBlueprints(cConfigs, eHeadConfigs) { cConfig, eConfig -> HeadBlueprint(cConfig, eConfig) }
             addBlueprints(cConfigs, extraCapeConfigs) { cConfig, eConfig -> CapeBlueprint(cConfig, eConfig) }
-            addBlueprints(cConfigs, eNeckConfigs) { cConfig, eConfig -> NeckEquipmentBlueprint(cConfig, eConfig) }
+            addBlueprints(cConfigs, eNeckConfigs) { cConfig, eConfig -> NeckBlueprint(cConfig, eConfig) }
             addBlueprints(cConfigs, eAmmunitionConfigs) { cConfig, eConfig -> AmmunitionBlueprint(cConfig, eConfig) }
             addBlueprints(cConfigs, eWeaponConfigs) { cConfig, eConfig -> WeaponBlueprint(cConfig, eConfig) }
             addBlueprints(cConfigs, eShieldConfigs) { cConfig, eConfig -> ShieldBlueprint(cConfig, eConfig) }

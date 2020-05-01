@@ -30,16 +30,18 @@ internal data class InventoryClickClientEvent(
     val option: Int
 ) : ClientEvent {
     override fun toGameEvent(world: World): InGameEvent {
-        val op = ObjectBlueprints.get<ObjectBlueprint>(objId).interfaceOperations[option - 1]
-            ?: error("Item $objId doesn't exist.")
-        return InventoryClickEvent(interfaceId, interfaceSlot, objId, inventorySlot, op)
+        val bp = ObjectBlueprints.get<ObjectBlueprint>(objId)
+        val op = bp.interfaceOperations[option - 1] ?: error(
+            "Interface option $option does not exist for object $bp."
+        )
+        return InventoryObjectClickEvent(interfaceId, interfaceSlot, inventorySlot, op, bp)
     }
 }
 
-data class InventoryClickEvent(
+open class InventoryObjectClickEvent(
     val interfaceId: Int,
     val interfaceSlot: Int,
-    val objId: Int,
     val inventorySlot: Int,
-    val option: String
+    val option: String,
+    open val objBlueprint: ObjectBlueprint
 ) : InGameEvent

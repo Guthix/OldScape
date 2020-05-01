@@ -31,11 +31,12 @@ open class ExtraEquipmentConfig(
 
 open class EquipmentBlueprint(
     cacheConfig: ObjectConfig,
+    val slot: EquipmentSlot,
     override val extraConfig: ExtraEquipmentConfig
 ) : ObjectBlueprint(cacheConfig, extraConfig) {
     val equipment get() = extraConfig.equipment
 
-    enum class EquipmentSlot(val slot: Int) {
+    enum class EquipmentSlot(val id: Int) {
         HEAD(0),
         CAPE(1),
         NECK(2),

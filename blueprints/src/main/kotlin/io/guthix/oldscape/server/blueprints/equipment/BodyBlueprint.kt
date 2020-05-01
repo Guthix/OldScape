@@ -29,6 +29,6 @@ class ExtraBodyConfig(
 class BodyBlueprint(
     cacheConfig: ObjectConfig,
     override val extraConfig: ExtraBodyConfig
-) : EquipmentBlueprint(cacheConfig, extraConfig) {
+) : EquipmentBlueprint(cacheConfig, EquipmentSlot.BODY, extraConfig) {
     val isFullBody get() = extraConfig.isFullBody
 }
