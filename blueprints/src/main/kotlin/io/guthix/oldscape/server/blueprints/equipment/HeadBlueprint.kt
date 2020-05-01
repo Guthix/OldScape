@@ -18,7 +18,19 @@ package io.guthix.oldscape.server.blueprints.equipment
 
 import io.guthix.oldscape.cache.config.ObjectConfig
 
-class AmmunitionBlueprint(
+class ExtraHeadConfig(
+    ids: List<Int>,
+    weight: Float,
+    examine: String,
+    val coversFace: Boolean = false,
+    val coversHair: Boolean = false,
+    equipment: EquipmentBlueprint.Equipment
+) : ExtraEquipmentConfig(ids, weight, examine, equipment)
+
+class HeadBlueprint(
     cacheConfig: ObjectConfig,
-    extraConfig: ExtraEquipmentConfig
-) : EquipmentBlueprint(cacheConfig, EquipmentSlot.AMMUNITION, extraConfig)
+    override val extraConfig: ExtraHeadConfig
+) : EquipmentBlueprint(cacheConfig, EquipmentSlot.HEAD, extraConfig) {
+    val coversHair get() = extraConfig.coversHair
+    val coversFace get() = extraConfig.coversFace
+}

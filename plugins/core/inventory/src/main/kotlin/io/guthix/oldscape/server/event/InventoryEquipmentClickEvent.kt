@@ -14,23 +14,15 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with Foobar. If not, see <https://www.gnu.org/licenses/>.
  */
-package io.guthix.oldscape.server.blueprints.equipment
+package io.guthix.oldscape.server.event
 
-import io.guthix.oldscape.cache.config.ObjectConfig
+import io.guthix.oldscape.server.blueprints.equipment.*
 
-class ExtraHeadConfig(
-    ids: List<Int>,
-    weight: Float,
-    examine: String,
-    val coversFace: Boolean = false,
-    val coversHair: Boolean = false,
-    equipment: EquipmentBlueprint.Equipment
-) : ExtraEquipmentConfig(ids, weight, examine, equipment)
+open class InventoryEquipmentClickEvent(
+    interfaceId: Int,
+    interfaceSlot: Int,
+    inventorySlot: Int,
+    option: String,
+    override val objBlueprint: EquipmentBlueprint
+) : InventoryObjectClickEvent(interfaceId, interfaceSlot, inventorySlot, option, objBlueprint)
 
-class HeadEquipmentBlueprint(
-    cacheConfig: ObjectConfig,
-    override val extraConfig: ExtraHeadConfig
-) : EquipmentBlueprint(cacheConfig, extraConfig) {
-    val coversHair get() = extraConfig.coversHair
-    val coversFace get() = extraConfig.coversFace
-}

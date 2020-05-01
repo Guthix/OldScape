@@ -14,11 +14,14 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with Foobar. If not, see <https://www.gnu.org/licenses/>.
  */
-package io.guthix.oldscape.server.blueprints.equipment
+package io.guthix.oldscape.server.event
 
-import io.guthix.oldscape.cache.config.ObjectConfig
+import io.guthix.oldscape.server.blueprints.equipment.CapeBlueprint
 
-class AmmunitionBlueprint(
-    cacheConfig: ObjectConfig,
-    extraConfig: ExtraEquipmentConfig
-) : EquipmentBlueprint(cacheConfig, EquipmentSlot.AMMUNITION, extraConfig)
+class InventoryCapeClickEvent(
+    interfaceId: Int,
+    interfaceSlot: Int,
+    inventorySlot: Int,
+    option: String,
+    override val objBlueprint: CapeBlueprint
+) : InventoryEquipmentClickEvent(interfaceId, interfaceSlot, inventorySlot, option, objBlueprint)

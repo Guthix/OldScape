@@ -18,7 +18,7 @@ package io.guthix.oldscape.server.blueprints.equipment
 
 import io.guthix.oldscape.cache.config.ObjectConfig
 
-class AmmunitionBlueprint(
+class NeckBlueprint(
     cacheConfig: ObjectConfig,
     extraConfig: ExtraEquipmentConfig
-) : EquipmentBlueprint(cacheConfig, EquipmentSlot.AMMUNITION, extraConfig)
+) : EquipmentBlueprint(cacheConfig, EquipmentSlot.NECK, extraConfig)

@@ -17,59 +17,65 @@
 package io.guthix.oldscape.server.world.entity.character.player
 
 import io.guthix.oldscape.server.blueprints.equipment.*
+import io.guthix.oldscape.server.blueprints.equipment.NeckBlueprint
 import io.guthix.oldscape.server.world.entity.Obj
 
-class HeadEquipment(
-    override val blueprint: HeadEquipmentBlueprint,
+abstract class Equipment(
+    override val blueprint: EquipmentBlueprint,
     quantity: Int
 ) : Obj(blueprint, quantity)
+
+class HeadEquipment(
+    override val blueprint: HeadBlueprint,
+    quantity: Int
+) : Equipment(blueprint, quantity)
 
 class CapeEquipment(
     override val blueprint: CapeBlueprint,
     quantity: Int
-) : Obj(blueprint, quantity)
+) : Equipment(blueprint, quantity)
 
 class NeckEquipment(
-    override val blueprint: NeckEquipmentBlueprint,
+    override val blueprint: NeckBlueprint,
     quantity: Int
-) : Obj(blueprint, quantity)
+) : Equipment(blueprint, quantity)
 
 class AmmunitionEquipment(
     override val blueprint: AmmunitionBlueprint,
     quantity: Int
-) : Obj(blueprint, quantity)
+) : Equipment(blueprint, quantity)
 
 class WeaponEquipment(
     override val blueprint: WeaponBlueprint,
     quantity: Int
-) : Obj(blueprint, quantity)
+) : Equipment(blueprint, quantity)
 
 class ShieldEquipment(
     override val blueprint: ShieldBlueprint,
     quantity: Int
-) : Obj(blueprint, quantity)
+) : Equipment(blueprint, quantity)
 
 class BodyEquipment(
     override val blueprint: BodyBlueprint,
     quantity: Int
-) : Obj(blueprint, quantity)
+) : Equipment(blueprint, quantity)
 
 class LegsEquipment(
     override val blueprint: LegsBlueprint,
     quantity: Int
-) : Obj(blueprint, quantity)
+) : Equipment(blueprint, quantity)
 
 class HandsEquipment(
     override val blueprint: HandsBlueprint,
     quantity: Int
-) : Obj(blueprint, quantity)
+) : Equipment(blueprint, quantity)
 
 class FeetEquipment(
     override val blueprint: FeetBlueprint,
     quantity: Int
-) : Obj(blueprint, quantity)
+) : Equipment(blueprint, quantity)
 
 class RingEquipment(
     override val blueprint: TwoHandedBlueprint,
     quantity: Int
-) : Obj(blueprint, quantity)
+) : Equipment(blueprint, quantity)

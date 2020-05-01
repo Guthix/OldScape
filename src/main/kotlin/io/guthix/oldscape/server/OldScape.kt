@@ -19,7 +19,6 @@ package io.guthix.oldscape.server
 import com.fasterxml.jackson.core.type.TypeReference
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory
-import com.fasterxml.jackson.dataformat.yaml.YAMLMapper
 import com.fasterxml.jackson.module.kotlin.registerKotlinModule
 import io.guthix.cache.js5.Js5Cache
 import io.guthix.cache.js5.container.Js5Container
@@ -44,7 +43,6 @@ import io.guthix.oldscape.server.blueprints.ExtraObjectConfig
 import io.guthix.oldscape.server.blueprints.equipment.ExtraBodyConfig
 import io.guthix.oldscape.server.blueprints.equipment.ExtraEquipmentConfig
 import io.guthix.oldscape.server.blueprints.equipment.ExtraHeadConfig
-import io.guthix.oldscape.server.blueprints.equipment.HeadEquipmentBlueprint
 import io.guthix.oldscape.server.event.script.EventBus
 import io.guthix.oldscape.server.net.OldScapeServer
 import io.guthix.oldscape.server.net.state.game.GamePacketDecoder

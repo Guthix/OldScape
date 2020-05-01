@@ -30,16 +30,7 @@ on(ClientCheatEvent::class).where { event.string == "drop" }.then {
         Tile(
             player.position.floor, player.position.x + 1.tiles, player.position.y+ 1.tiles
         ),
-        Obj(ObjectBlueprints[1753], 1)
-    )
-}
-
-on(ClientCheatEvent::class).where { event.string == "pickup" }.then {
-    world.map.removeObject(
-        Tile(
-            player.position.floor, player.position.x + 1.tiles, player.position.y+ 1.tiles
-        ),
-        995
+        Obj(ObjectBlueprints[1163], 1)
     )
 }
 
@@ -69,8 +60,8 @@ on(ClientCheatEvent::class).where { event.string == "locremove" }.then {
     )
 }
 
-on(ClientCheatEvent::class).where { event.string == "obj" }.then {
-    player.inventory.addNextSlot(Obj(ObjectBlueprints[1753], 1))
+on(ClientCheatEvent::class).where { event.string == "inv" }.then {
+    player.inventory.addNextSlot(Obj(ObjectBlueprints[1163], 1))
 }
 
 on(ClientCheatEvent::class).where { event.string == "shout" }.then {
