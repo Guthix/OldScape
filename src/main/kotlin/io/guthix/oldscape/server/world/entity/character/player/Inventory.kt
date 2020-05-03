@@ -51,24 +51,28 @@ class Inventory(
     fun addNextSlot(obj: Obj) = setObject(objs.indexOfFirst { it == null }, obj)
 
     fun setObject(slot: Int, obj: Obj) {
+        println("$id set obj $obj to slot $slot")
         require(slot in 0 until maxSize && amountInInventory != maxSize)
         objs[slot] = obj
         objsToUpdate[slot] = obj
         amountInInventory++
     }
 
-    fun removeObject(slot: Int) {
+    fun removeObject(slot: Int): Obj? {
         val obj = objs[slot]
         objs[slot] = null
-        objsToUpdate[slot] = obj
+        objsToUpdate[slot] = null
         amountInInventory--
+        return obj
     }
 
     fun update() {
         if(objsToUpdate.isNotEmpty()) {
             if(objsToUpdate.size == amountInInventory) {
+                println("$id full update!")
                 player.addFullInventory(interfaceId, slotId, id, objs.toList())
             } else {
+                println("$id partial update!")
                 player.addPartialInventory(interfaceId, slotId, id, objsToUpdate.toMap())
             }
             objsToUpdate.clear()

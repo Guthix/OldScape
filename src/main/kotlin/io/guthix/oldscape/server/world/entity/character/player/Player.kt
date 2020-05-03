@@ -66,23 +66,24 @@ data class Player(
         }
     }
 
-    val playerInterest = PlayerInterestManager()
+    val playerInterestManager = PlayerInterestManager()
 
-    val mapInterest = MapInterestManager(this)
+    val mapInterestManager = MapInterestManager(this)
 
     val inventory = Inventory(this, 93, 149, 0)
 
-    val equipment = Inventory(this, 94)
+    val equipmentInventory = Inventory(this, 94)
 
     fun initializeInterest(worldMap: WorldMap, worldPlayers: PlayerList, pZone: Zone) {
-        playerInterest.initialize(this, worldPlayers)
-        mapInterest.initialize(pZone, worldMap)
-        val xteas = mapInterest.getInterestedXteas(worldMap)
+        playerInterestManager.initialize(this, worldPlayers)
+        mapInterestManager.initialize(pZone, worldMap)
+        val xteas = mapInterestManager.getInterestedXteas(worldMap)
         ctx.write(InterestInitPacket(this, worldPlayers, xteas, position.x.inZones, position.y.inZones))
     }
 
     fun interestSynchronize(world: World): ChannelFuture {
         inventory.update()
+        equipmentInventory.update()
         val pZone = world.map.getZone(position) ?: error("Player is outside of the map.")
         synchronizeMapInterest(pZone, world.map)
         return ctx.writeAndFlush(PlayerInfoPacket(this, world.players))
@@ -90,8 +91,8 @@ data class Player(
 
 
     fun synchronizeMapInterest(pZone: Zone, worldMap: WorldMap) {
-        mapInterest.checkReload(pZone, worldMap)
-        mapInterest.packetCache.forEachIndexed { x, yPacketList ->
+        mapInterestManager.checkReload(pZone, worldMap)
+        mapInterestManager.packetCache.forEachIndexed { x, yPacketList ->
             yPacketList.forEachIndexed { y, packetList ->
                 if(packetList.size == 1) {
                     ctx.write(UpdateZonePartialFollowsPacket(x.zones.inTiles, y.zones.inTiles))
@@ -237,7 +238,7 @@ data class Player(
     }
 
     fun setMapFlag(x: TileUnit, y: TileUnit) {
-        ctx.write(SetMapFlagPacket(x - mapInterest.baseX.inTiles, y - mapInterest.baseY.inTiles))
+        ctx.write(SetMapFlagPacket(x - mapInterestManager.baseX.inTiles, y - mapInterestManager.baseY.inTiles))
     }
 
     fun updateVarbit(varbitId: Int, value: Int) {
@@ -370,7 +371,7 @@ data class Player(
     }
 
     fun clearMap() {
-        mapInterest.packetCache.forEachIndexed { x, yPacketList ->
+        mapInterestManager.packetCache.forEachIndexed { x, yPacketList ->
             yPacketList.forEachIndexed { y, _ ->
                 ctx.write(UpdateZoneFullFollowsPacket(x.zones.inTiles, y.zones.inTiles))
             }

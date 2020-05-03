@@ -17,11 +17,12 @@
 package io.guthix.oldscape.server.event
 
 import io.guthix.oldscape.server.blueprints.equipment.CapeBlueprint
+import io.guthix.oldscape.server.event.script.InGameEvent
 
 class InventoryCapeClickEvent(
-    interfaceId: Int,
-    interfaceSlot: Int,
-    inventorySlot: Int,
-    option: String,
-    override val objBlueprint: CapeBlueprint
-) : InventoryEquipmentClickEvent(interfaceId, interfaceSlot, inventorySlot, option, objBlueprint)
+    val interfaceId: Int,
+    val interfaceSlot: Int,
+    val inventorySlot: Int,
+    val option: String,
+    val objBlueprint: CapeBlueprint
+) : InGameEvent

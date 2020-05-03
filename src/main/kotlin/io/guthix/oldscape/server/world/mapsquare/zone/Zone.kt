@@ -63,7 +63,7 @@ class Zone(
 
     fun addObject(tile: Tile, obj: Obj) {
         groundObjects.getOrPut(tile, { mutableMapOf() }).getOrPut(obj.blueprint.id, { mutableListOf() }).add(obj)
-        players.forEach { player -> player.mapInterest.addObject(tile, obj) }
+        players.forEach { player -> player.mapInterestManager.addObject(tile, obj) }
     }
 
     fun removeObject(tile: Tile, id: Int): Obj {
@@ -76,18 +76,18 @@ class Zone(
         val obj = objList.removeFirst()
         if(objIdMap.isEmpty()) groundObjects.remove(tile)
         if(objList.isEmpty()) groundObjects[tile]?.remove(id)
-        players.forEach { player -> player.mapInterest.removeObject(tile, obj) }
+        players.forEach { player -> player.mapInterestManager.removeObject(tile, obj) }
         return obj
     }
 
     fun addDynamicLoc(loc: Loc) {
         staticLocations[loc.mapKey] = loc
-        players.forEach { player -> player.mapInterest.addDynamicLoc(loc) }
+        players.forEach { player -> player.mapInterestManager.addDynamicLoc(loc) }
     }
 
     fun removeDynamicLoc(loc: Loc) {
         staticLocations.remove(loc.mapKey)
-        players.forEach { player -> player.mapInterest.removeDynamicLoc(loc) }
+        players.forEach { player -> player.mapInterestManager.removeDynamicLoc(loc) }
     }
 
     override fun toString() = "Zone(z=${floor.value}, x=${x.value}, y=${y.value})"

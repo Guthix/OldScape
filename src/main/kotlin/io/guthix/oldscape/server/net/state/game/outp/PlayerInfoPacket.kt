@@ -52,14 +52,14 @@ class PlayerInfoPacket(
         processLocalPlayers(mainBuf.toBitMode(), maskBuf, false)
         processExternalPlayers(mainBuf.toBitMode(), maskBuf, false)
         processExternalPlayers(mainBuf.toBitMode(), maskBuf, true)
-        player.playerInterest.localPlayerCount = 0
-        player.playerInterest.externalPlayerCount = 0
+        player.playerInterestManager.localPlayerCount = 0
+        player.playerInterestManager.externalPlayerCount = 0
         for (index in 1 until World.MAX_PLAYERS) {
-            player.playerInterest.skipFlags[index] = (player.playerInterest.skipFlags[index].toInt() shr 1).toByte()
-            if (player.playerInterest.localPlayers[index] != null) {
-                player.playerInterest.localPlayerIndexes[player.playerInterest.localPlayerCount++] = index
+            player.playerInterestManager.skipFlags[index] = (player.playerInterestManager.skipFlags[index].toInt() shr 1).toByte()
+            if (player.playerInterestManager.localPlayers[index] != null) {
+                player.playerInterestManager.localPlayerIndexes[player.playerInterestManager.localPlayerCount++] = index
             } else {
-                player.playerInterest.externalPlayerIndexes[player.playerInterest.externalPlayerCount++] = index
+                player.playerInterestManager.externalPlayerIndexes[player.playerInterestManager.externalPlayerCount++] = index
             }
         }
         mainBuf.writeBytes(maskBuf)
@@ -101,7 +101,7 @@ class PlayerInfoPacket(
             } else if (!player.isInterestedIn(localPlayer)) {
                 bitBuf.writeBits(value = 0, amount = 2)
                 bitBuf.writeBoolean(false)
-                player.playerInterest.localPlayers[localPlayer.index] = null
+                player.playerInterestManager.localPlayers[localPlayer.index] = null
             } else if (localPlayer.movementType == Character.MovementUpdateType.WALK) {
                 bitBuf.writeBits(value = 1, amount = 2)
                 bitBuf.writeBits(value = getDirectionWalk(localPlayer), amount = 3)
@@ -117,10 +117,10 @@ class PlayerInfoPacket(
         }
 
         fun skipLocalPlayers(bitBuf: BitBuf, currentIndex: Int, nsn: Boolean) {
-            for (i in (currentIndex + 1) until player.playerInterest.localPlayerCount) {
-                val nextPlayerIndex = player.playerInterest.localPlayerIndexes[i]
+            for (i in (currentIndex + 1) until player.playerInterestManager.localPlayerCount) {
+                val nextPlayerIndex = player.playerInterestManager.localPlayerIndexes[i]
                 if (hasBeenSkippedLastTick(nextPlayerIndex, nsn)) {
-                    val nextPlayer = player.playerInterest.localPlayers[nextPlayerIndex]
+                    val nextPlayer = player.playerInterestManager.localPlayers[nextPlayerIndex]
                     val updateRequired = nextPlayer != null && localUpdateRequired(player, nextPlayer)
                     if (updateRequired) break
                     skip++
@@ -131,14 +131,14 @@ class PlayerInfoPacket(
 
 
         skip = 0
-        for (i in 0 until player.playerInterest.localPlayerCount) {
-            val localPlayerIndex = player.playerInterest.localPlayerIndexes[i]
+        for (i in 0 until player.playerInterestManager.localPlayerCount) {
+            val localPlayerIndex = player.playerInterestManager.localPlayerIndexes[i]
             if (hasBeenSkippedLastTick(localPlayerIndex, nsn)) {
                 if (skip > 0) {
                     skip--
                     markPlayerAsSkipped(localPlayerIndex)
                 } else {
-                    val localPlayer = player.playerInterest.localPlayers[localPlayerIndex]
+                    val localPlayer = player.playerInterestManager.localPlayers[localPlayerIndex]
                     val updateRequired = localPlayer != null && localUpdateRequired(player, localPlayer)
                     buf.writeBoolean(updateRequired)
                     if (!updateRequired) {
@@ -155,10 +155,10 @@ class PlayerInfoPacket(
 
     private fun processExternalPlayers(buf: BitBuf, maskBuf: ByteBuf, nsn: Boolean) {
         fun externalUpdateRequired(player: Player, externalPlayer: Player) = player.isInterestedIn(externalPlayer)
-                || player.playerInterest.fieldIds[externalPlayer.index] != externalPlayer.position.regionId
+                || player.playerInterestManager.fieldIds[externalPlayer.index] != externalPlayer.position.regionId
 
         fun updateField(buf: BitBuf, externalPlayer: Player) {
-            val lastFieldId = player.playerInterest.fieldIds[externalPlayer.index]
+            val lastFieldId = player.playerInterestManager.fieldIds[externalPlayer.index]
             val lastFieldY = lastFieldId and 0xFF
             val lastFieldX = (lastFieldId shr 8) and 0xFF
             val lastFieldZ = lastFieldId shr 16
@@ -181,13 +181,13 @@ class PlayerInfoPacket(
                 buf.writeBits(value = 3, amount = 2)
                 buf.writeBits(value = Tile(dz.floors, dx.tiles, dy.tiles).regionId, amount = 18)
             }
-            player.playerInterest.fieldIds[externalPlayer.index] = curentFieldId
+            player.playerInterestManager.fieldIds[externalPlayer.index] = curentFieldId
         }
 
         fun updateExternalPlayer(buf: BitBuf, maskBuf: ByteBuf, externalPlayer: Player) {
             if (player.isInterestedIn(externalPlayer)) {
                 buf.writeBits(value = 0, amount = 2)
-                if (player.playerInterest.fieldIds[externalPlayer.index] != externalPlayer.position.regionId) {
+                if (player.playerInterestManager.fieldIds[externalPlayer.index] != externalPlayer.position.regionId) {
                     buf.writeBoolean(true)
                     updateField(buf, externalPlayer)
                 } else {
@@ -197,15 +197,15 @@ class PlayerInfoPacket(
                 buf.writeBits(value = externalPlayer.position.y.value, amount = 13)
                 buf.writeBoolean(true)
                 updateLocalPlayerVisual(externalPlayer, maskBuf, sortedSetOf(appearance, orientation, movementCached))
-                player.playerInterest.localPlayers[externalPlayer.index] = externalPlayer
+                player.playerInterestManager.localPlayers[externalPlayer.index] = externalPlayer
             } else {
                 updateField(buf, externalPlayer)
             }
         }
 
         fun skipExternalPlayers(buf: BitBuf, currentIndex: Int, nsn: Boolean) {
-            for (i in (currentIndex + 1) until player.playerInterest.externalPlayerCount) {
-                val externalPlayerIndex = player.playerInterest.externalPlayerIndexes[i]
+            for (i in (currentIndex + 1) until player.playerInterestManager.externalPlayerCount) {
+                val externalPlayerIndex = player.playerInterestManager.externalPlayerIndexes[i]
                 if (hasBeenSkippedLastTick(externalPlayerIndex, nsn)) {
                     val nextPlayer = worldPlayers[externalPlayerIndex]
                     val requiresFlagUpdates = nextPlayer != null && externalUpdateRequired(player, nextPlayer)
@@ -219,8 +219,8 @@ class PlayerInfoPacket(
         }
 
         skip = 0
-        for (i in 0 until player.playerInterest.externalPlayerCount) {
-            val externalPlayerIndex = player.playerInterest.externalPlayerIndexes[i]
+        for (i in 0 until player.playerInterestManager.externalPlayerCount) {
+            val externalPlayerIndex = player.playerInterestManager.externalPlayerIndexes[i]
             if (hasBeenSkippedLastTick(externalPlayerIndex, nsn)) {
                 if (skip > 0) {
                     skip--
@@ -251,13 +251,13 @@ class PlayerInfoPacket(
     private fun getDirectionType(dx: Int, dy: Int) = MOVEMENT[2 - dy][dx + 2]
 
     private fun markPlayerAsSkipped(playerIndex: Int) {
-        player.playerInterest.skipFlags[playerIndex] = (player.playerInterest.skipFlags[playerIndex].toInt() or 0x2).toByte()
+        player.playerInterestManager.skipFlags[playerIndex] = (player.playerInterestManager.skipFlags[playerIndex].toInt() or 0x2).toByte()
     }
 
     private fun hasBeenSkippedLastTick(playerIndex: Int, nsn: Boolean) = if (nsn) {
-        player.playerInterest.skipFlags[playerIndex].toInt() and 0x1 == 0
+        player.playerInterestManager.skipFlags[playerIndex].toInt() and 0x1 == 0
     } else {
-        player.playerInterest.skipFlags[playerIndex].toInt() and 0x1 != 0
+        player.playerInterestManager.skipFlags[playerIndex].toInt() and 0x1 != 0
     }
 
     private fun BitBuf.writeSkip(amount: Int) {

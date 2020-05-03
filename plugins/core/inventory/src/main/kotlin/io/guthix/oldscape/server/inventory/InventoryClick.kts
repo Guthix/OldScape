@@ -23,24 +23,76 @@ import io.guthix.oldscape.server.event.*
 
 
 on(InventoryObjectClickEvent::class).then {
-    if(event.objBlueprint is EquipmentBlueprint) {
-        EventBus.schedule(event as InventoryEquipmentClickEvent, world, player)
+    if (event.objBlueprint is EquipmentBlueprint) {
+        EventBus.schedule(
+            InventoryEquipmentClickEvent(event.interfaceId, event.interfaceSlot, event.inventorySlot, event.option,
+                event.objBlueprint as EquipmentBlueprint
+            ), world, player
+        )
     }
 }
 
 on(InventoryEquipmentClickEvent::class).then {
-    when(event.objBlueprint) {
-        is WeaponBlueprint -> EventBus.schedule(event as InventoryWeaponClickEvent, world, player)
-        is ShieldBlueprint -> EventBus.schedule(event as InventoryShieldClickEvent, world, player)
-        is TwoHandedBlueprint -> EventBus.schedule(event as InventoryTwoHandedClickEvent, world, player)
-        is AmmunitionBlueprint -> EventBus.schedule(event as InventoryAmmunitionClickEvent, world, player)
-        is HeadBlueprint -> EventBus.schedule(event as InventoryHeadEquipmentClickEvent, world, player)
-        is BodyBlueprint -> EventBus.schedule(event as InventoryBodyClickEvent, world, player)
-        is LegsBlueprint -> EventBus.schedule(event as InventoryLegsClickEvent, world, player)
-        is FeetBlueprint -> EventBus.schedule(event as InventoryFeetClickEvent, world, player)
-        is HandsBlueprint -> EventBus.schedule(event as InventoryHandsClickEvent, world, player)
-        is NeckBlueprint -> EventBus.schedule(event as InventoryNeckEquipmentClickEvent, world, player)
-        is RingBlueprint -> EventBus.schedule(event as InventoryRingClickEvent, world, player)
-        is CapeBlueprint -> EventBus.schedule(event as InventoryCapeClickEvent, world, player)
+    when (event.objBlueprint) {
+        is WeaponBlueprint -> EventBus.schedule(
+            InventoryWeaponClickEvent(event.interfaceId, event.interfaceSlot, event.inventorySlot, event.option,
+                event.objBlueprint as WeaponBlueprint
+            ), world, player
+        )
+        is ShieldBlueprint -> EventBus.schedule(
+            InventoryShieldClickEvent(event.interfaceId, event.interfaceSlot, event.inventorySlot, event.option,
+                event.objBlueprint as ShieldBlueprint
+            ), world, player
+        )
+        is TwoHandedBlueprint -> EventBus.schedule(
+            InventoryTwoHandedClickEvent(event.interfaceId, event.interfaceSlot, event.inventorySlot, event.option,
+                event.objBlueprint as TwoHandedBlueprint
+            ), world, player
+        )
+        is AmmunitionBlueprint -> EventBus.schedule(
+            InventoryAmmunitionClickEvent(event.interfaceId, event.interfaceSlot, event.inventorySlot, event.option,
+                event.objBlueprint as AmmunitionBlueprint
+            ), world, player
+        )
+        is HeadBlueprint -> EventBus.schedule(
+            InventoryHeadClickEvent(event.interfaceId, event.interfaceSlot, event.inventorySlot, event.option,
+                event.objBlueprint as HeadBlueprint
+            ), world, player
+        )
+        is BodyBlueprint -> EventBus.schedule(
+            InventoryBodyClickEvent(event.interfaceId, event.interfaceSlot, event.inventorySlot, event.option,
+                event.objBlueprint as BodyBlueprint
+            ), world, player
+        )
+        is LegsBlueprint -> EventBus.schedule(
+            InventoryLegsClickEvent(event.interfaceId, event.interfaceSlot, event.inventorySlot, event.option,
+                event.objBlueprint as LegsBlueprint
+            ), world, player
+        )
+        is FeetBlueprint -> EventBus.schedule(
+            InventoryFeetClickEvent(event.interfaceId, event.interfaceSlot, event.inventorySlot, event.option,
+                event.objBlueprint as FeetBlueprint
+            ), world, player
+        )
+        is HandsBlueprint -> EventBus.schedule(
+            InventoryHandsClickEvent(event.interfaceId, event.interfaceSlot, event.inventorySlot, event.option,
+                event.objBlueprint as HandsBlueprint
+            ), world, player
+        )
+        is NeckBlueprint -> EventBus.schedule(
+            InventoryNeckClickEvent(event.interfaceId, event.interfaceSlot, event.inventorySlot, event.option,
+                event.objBlueprint as NeckBlueprint
+            ), world, player
+        )
+        is RingBlueprint -> EventBus.schedule(
+            InventoryRingClickEvent(event.interfaceId, event.interfaceSlot, event.inventorySlot, event.option,
+                event.objBlueprint as RingBlueprint
+            ), world, player
+        )
+        is CapeBlueprint -> EventBus.schedule(
+            InventoryCapeClickEvent(event.interfaceId, event.interfaceSlot, event.inventorySlot, event.option,
+                event.objBlueprint as CapeBlueprint
+            ), world, player
+        )
     }
 }
