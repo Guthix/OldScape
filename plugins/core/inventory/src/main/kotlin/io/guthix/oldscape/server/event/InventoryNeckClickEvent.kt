@@ -17,11 +17,12 @@
 package io.guthix.oldscape.server.event
 
 import io.guthix.oldscape.server.blueprints.equipment.NeckBlueprint
+import io.guthix.oldscape.server.event.script.InGameEvent
 
-class InventoryNeckEquipmentClickEvent(
-    interfaceId: Int,
-    interfaceSlot: Int,
-    inventorySlot: Int,
-    option: String,
-    override val objBlueprint: NeckBlueprint
-) : InventoryEquipmentClickEvent(interfaceId, interfaceSlot, inventorySlot, option, objBlueprint)
+class InventoryNeckClickEvent(
+    val interfaceId: Int,
+    val interfaceSlot: Int,
+    val inventorySlot: Int,
+    val option: String,
+    val objBlueprint: NeckBlueprint
+) : InGameEvent

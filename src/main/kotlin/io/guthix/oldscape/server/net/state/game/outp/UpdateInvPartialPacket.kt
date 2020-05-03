@@ -38,6 +38,7 @@ class UpdateInvPartialPacket(
         buf.writeInt((interfaceId shl Short.SIZE_BITS) or slotId)
         buf.writeShort(subInterfaceId)
         for((slot, obj) in objs) {
+            println("$interfaceId, $subInterfaceId, $slotId, ${obj?.quantity}")
             buf.writeSmallSmart(slot)
             if(obj == null) {
                 buf.writeShort(0)

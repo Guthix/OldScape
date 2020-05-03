@@ -729,6 +729,8 @@
   - 1163
   weight: 2.721
   examine: "A full face helmet."
+  coversFace: true
+  coversHair: true
   equipment:
     attackBonus:
       stab: 0
