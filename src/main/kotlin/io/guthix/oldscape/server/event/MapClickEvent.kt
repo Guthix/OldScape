@@ -17,8 +17,8 @@
 package io.guthix.oldscape.server.event
 
 import io.guthix.oldscape.server.dimensions.TileUnit
-import io.guthix.oldscape.server.net.state.game.ClientEvent
 import io.guthix.oldscape.server.event.script.InGameEvent
+import io.guthix.oldscape.server.net.game.ClientEvent
 import io.guthix.oldscape.server.world.World
 
 data class MapClickEvent(val x: TileUnit, val y: TileUnit, val type: Int) : ClientEvent, InGameEvent {

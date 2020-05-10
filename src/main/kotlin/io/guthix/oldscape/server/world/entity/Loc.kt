@@ -18,16 +18,16 @@ package io.guthix.oldscape.server.world.entity
 
 import io.guthix.oldscape.server.dimensions.TileUnit
 import io.guthix.oldscape.server.blueprints.LocationBlueprint
-import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
-import kotlin.reflect.KProperty
+import io.guthix.oldscape.server.world.map.Tile
 
 class Loc(
-    override val position: Tile,
+    private val pos: Tile,
     val blueprint: LocationBlueprint,
     val type: Int,
-    override var orientation: Int,
-    override val attributes: MutableMap<KProperty<*>, Any?> = mutableMapOf()
-) : Entity(position, attributes) {
+    override var orientation: Int
+) : Entity() {
+    override val position: Tile get() = pos
+
     override val sizeX get() = if (orientation == 0 || orientation == 2) blueprint.width else blueprint.length
 
     override val sizeY get() = if (orientation == 0 || orientation == 2) blueprint.length else blueprint.width
@@ -47,7 +47,7 @@ class Loc(
 
         val MAP_SLOTS = intArrayOf(0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3)
 
-        fun generateMapKey(localX: TileUnit, localY: TileUnit, slot: Int) =
-            (localX.value shl 5) or (localY.value shl 2) or slot
+        fun generateMapKey(localX: TileUnit, localY: TileUnit, slot: Int) = (localX.value shl 5) or
+            (localY.value shl 2) or slot
     }
 }

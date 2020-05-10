@@ -18,14 +18,13 @@ package io.guthix.oldscape.server.world
 
 import io.guthix.oldscape.server.event.LoginEvent
 import io.guthix.oldscape.server.event.script.EventBus
-import io.guthix.oldscape.server.net.state.game.GameDecoder
-import io.guthix.oldscape.server.net.state.game.GameEncoder
-import io.guthix.oldscape.server.net.state.game.GameHandler
-import io.guthix.oldscape.server.net.state.login.*
-import io.guthix.oldscape.server.world.entity.character.player.PlayerList
+import io.guthix.oldscape.server.net.game.GameDecoder
+import io.guthix.oldscape.server.net.game.GameEncoder
+import io.guthix.oldscape.server.net.game.GameHandler
+import io.guthix.oldscape.server.net.login.*
 import io.netty.util.concurrent.*
-import java.util.*
 import java.util.concurrent.*
+import java.util.*
 
 class World : TimerTask() {
     val map = WorldMap(mutableMapOf())
@@ -39,14 +38,16 @@ class World : TimerTask() {
     override fun run() {
         processLogins()
         processPlayerEvents()
+        proccessMovment()
+        synchronizeInterest()
     }
 
     private fun processLogins() {
-        while(loginQueue.isNotEmpty()) {
+        while (loginQueue.isNotEmpty()) {
             val request = loginQueue.poll()
             val player = players.create(request)
             player.clientSettings = request.clientSettings
-            request.ctx.writeAndFlush(LoginResponse(player.index, player.rights))
+            request.ctx.writeAndFlush(LoginResponse(player.index, player.visualInterestManager.rights))
             request.ctx.pipeline().replace(LoginDecoder::class.qualifiedName, GameDecoder::class.qualifiedName,
                 GameDecoder(request.isaacPair.decodeGen)
             )
@@ -61,12 +62,18 @@ class World : TimerTask() {
     }
 
     private fun processPlayerEvents() {
-        for(player in players) player.processInEvents()
-        for(player in players) player.move()
-        val writing = PromiseCombiner(ImmediateEventExecutor.INSTANCE)
-        players.forEach { writing.add(it.interestSynchronize(this)) }
-        writing.finish(DefaultPromise<Void>(ImmediateEventExecutor.INSTANCE).addListener {
-            for(player in players) player.postProcess()
+        for (player in players) player.processInEvents()
+    }
+
+    private fun proccessMovment() {
+        for (player in players) player.visualInterestManager.move()
+    }
+
+    private fun synchronizeInterest() {
+        val futures = PromiseCombiner(ImmediateEventExecutor.INSTANCE)
+        players.forEach { it.synchronize(this).forEach { futures.add(it) } }
+        futures.finish(DefaultPromise<Void>(ImmediateEventExecutor.INSTANCE).addListener {
+            for (player in players) player.postProcess()
         })
     }
 

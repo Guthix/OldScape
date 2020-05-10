@@ -17,7 +17,7 @@
 package io.guthix.oldscape.server.event.script
 
 import io.guthix.oldscape.server.world.World
-import io.guthix.oldscape.server.world.entity.character.player.Player
+import io.guthix.oldscape.server.world.entity.Player
 import kotlin.coroutines.intrinsics.createCoroutineUnintercepted
 import kotlin.reflect.KClass
 import kotlin.script.experimental.annotations.KotlinScript

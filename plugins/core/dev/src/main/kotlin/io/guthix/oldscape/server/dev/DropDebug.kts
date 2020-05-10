@@ -18,18 +18,15 @@ package io.guthix.oldscape.server.dev
 
 import io.guthix.oldscape.server.event.ClientCheatEvent
 import io.guthix.oldscape.server.world.entity.Obj
-import io.guthix.oldscape.server.api.blueprint.ObjectBlueprints
-import io.guthix.oldscape.server.api.blueprint.LocationBlueprints
 import io.guthix.oldscape.server.world.entity.Loc
-import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
+import io.guthix.oldscape.server.world.entity.SpotAnimation
+import io.guthix.oldscape.server.world.map.Tile
 import io.guthix.oldscape.server.dimensions.tiles
-import io.guthix.oldscape.server.world.entity.character.SpotAnimation
+import io.guthix.oldscape.server.api.*
 
 on(ClientCheatEvent::class).where { event.string == "drop" }.then {
     world.map.addObject(
-        Tile(
-            player.position.floor, player.position.x + 1.tiles, player.position.y+ 1.tiles
-        ),
+        Tile(player.position.floor, player.position.x + 1.tiles, player.position.y + 1.tiles),
         Obj(ObjectBlueprints[1163], 1)
     )
 }
@@ -37,9 +34,7 @@ on(ClientCheatEvent::class).where { event.string == "drop" }.then {
 on(ClientCheatEvent::class).where { event.string == "locadd" }.then {
     world.map.addDynamicLoc(
         Loc(
-            Tile(
-                player.position.floor, player.position.x + 2.tiles, player.position.y+ 2.tiles
-            ),
+            Tile(player.position.floor, player.position.x + 2.tiles, player.position.y + 2.tiles),
             LocationBlueprints[4],
             type = 0,
             orientation = 0
@@ -50,9 +45,7 @@ on(ClientCheatEvent::class).where { event.string == "locadd" }.then {
 on(ClientCheatEvent::class).where { event.string == "locremove" }.then {
     world.map.removeDynamicLoc(
         Loc(
-            Tile(
-                player.position.floor, player.position.x + 2.tiles, player.position.y+ 2.tiles
-            ),
+            Tile(player.position.floor, player.position.x + 2.tiles, player.position.y + 2.tiles),
             LocationBlueprints[4],
             type = 0,
             orientation = 0
@@ -61,11 +54,11 @@ on(ClientCheatEvent::class).where { event.string == "locremove" }.then {
 }
 
 on(ClientCheatEvent::class).where { event.string == "inv" }.then {
-    player.inventory.addNextSlot(Obj(ObjectBlueprints[1163], 1))
+    player.topInterface.inventory.addNextSlot(Obj(ObjectBlueprints[1163], 1))
 }
 
 on(ClientCheatEvent::class).where { event.string == "shout" }.then {
-    player.shoutMessage = "testing!"
+    player.visualInterestManager.shoutMessage = "testing!"
 }
 
 on(ClientCheatEvent::class).where { event.string == "sequence" }.then {

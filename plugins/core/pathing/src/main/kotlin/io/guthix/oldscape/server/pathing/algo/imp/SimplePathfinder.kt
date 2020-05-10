@@ -20,7 +20,7 @@ import io.guthix.oldscape.server.pathing.algo.*
 import io.guthix.oldscape.server.pathing.algo.canWalkNorth
 import io.guthix.oldscape.server.pathing.algo.canWalkSouth
 import io.guthix.oldscape.server.world.WorldMap
-import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
+import io.guthix.oldscape.server.world.map.Tile
 import io.guthix.oldscape.server.dimensions.TileUnit
 
 fun simplePathSearch(start: Tile, dest: Destination, moverSize: TileUnit, map: WorldMap): MutableList<Tile> {

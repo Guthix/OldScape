@@ -18,7 +18,7 @@ package io.guthix.oldscape.server.event.script
 
 import io.github.classgraph.ClassGraph
 import io.guthix.oldscape.server.world.World
-import io.guthix.oldscape.server.world.entity.character.player.Player
+import io.guthix.oldscape.server.world.entity.Player
 import mu.KotlinLogging
 import kotlin.reflect.KClass
 

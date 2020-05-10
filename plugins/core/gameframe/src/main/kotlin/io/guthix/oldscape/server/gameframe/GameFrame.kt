@@ -18,7 +18,7 @@ package io.guthix.oldscape.server.gameframe
 
 import io.guthix.oldscape.server.api.Enums
 import io.guthix.oldscape.server.api.readComponent
-import io.guthix.oldscape.server.world.entity.character.player.Player
+import io.guthix.oldscape.server.world.entity.Player
 
 enum class GameFrame(val interfaceId: Int, val enumId: Int) {
     FIXED(interfaceId = 548, enumId = 1129),

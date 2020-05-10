@@ -17,7 +17,7 @@
 package io.guthix.oldscape.server.gameframe
 
 import io.guthix.oldscape.server.event.PlayerInitialized
-import io.guthix.oldscape.server.world.entity.character.player.intface.Interface
+import io.guthix.oldscape.server.world.entity.intface.Interface
 
 on(PlayerInitialized::class).then {
     val topInterface = player.openTopInterface(id = 165)

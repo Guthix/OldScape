@@ -16,10 +16,10 @@
  */
 package io.guthix.oldscape.server.event
 
-import io.guthix.oldscape.server.api.blueprint.ObjectBlueprints
+import io.guthix.oldscape.server.api.ObjectBlueprints
 import io.guthix.oldscape.server.blueprints.ObjectBlueprint
 import io.guthix.oldscape.server.event.script.InGameEvent
-import io.guthix.oldscape.server.net.state.game.ClientEvent
+import io.guthix.oldscape.server.net.game.ClientEvent
 import io.guthix.oldscape.server.world.World
 
 internal data class InventoryClickClientEvent(

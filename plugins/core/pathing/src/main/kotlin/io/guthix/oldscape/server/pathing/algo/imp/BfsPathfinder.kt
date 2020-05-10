@@ -20,7 +20,7 @@ import io.guthix.oldscape.server.pathing.algo.*
 import io.guthix.oldscape.server.pathing.algo.canWalkEast
 import io.guthix.oldscape.server.pathing.algo.canWalkWest
 import io.guthix.oldscape.server.world.WorldMap
-import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
+import io.guthix.oldscape.server.world.map.Tile
 import io.guthix.oldscape.server.dimensions.TileUnit
 import io.guthix.oldscape.server.dimensions.tiles
 import kotlin.math.abs

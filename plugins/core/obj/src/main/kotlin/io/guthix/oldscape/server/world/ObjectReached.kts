@@ -17,12 +17,12 @@
 package io.guthix.oldscape.server.world
 
 import io.guthix.oldscape.server.event.ObjectReachedEvent
-import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
+import io.guthix.oldscape.server.world.map.Tile
 
 on(ObjectReachedEvent::class).then {
     val tile = Tile(player.position.floor, event.x, event.y)
     val obj = world.map.removeObject(tile, event.id) ?: error(
         "Can not pick up object for id ${event.id} at position $tile."
     )
-    player.inventory.setObject(obj)
+    player.topInterface.inventory.setObject(obj)
 }

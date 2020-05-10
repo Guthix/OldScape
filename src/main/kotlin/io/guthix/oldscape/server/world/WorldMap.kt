@@ -25,9 +25,9 @@ import io.guthix.oldscape.server.dimensions.ZoneUnit
 import io.guthix.oldscape.server.dimensions.mapsquares
 import io.guthix.oldscape.server.world.entity.Loc
 import io.guthix.oldscape.server.world.entity.Obj
-import io.guthix.oldscape.server.world.mapsquare.Mapsquare
-import io.guthix.oldscape.server.world.mapsquare.zone.ZoneCollision
-import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
+import io.guthix.oldscape.server.world.map.Mapsquare
+import io.guthix.oldscape.server.world.map.Tile
+import io.guthix.oldscape.server.world.map.ZoneCollision
 
 class WorldMap(val mapsquares: MutableMap<Int, Mapsquare>) {
     private fun id(x: TileUnit, y: TileUnit) = Mapsquare.id(x.inMapsquares, y.inMapsquares)
@@ -36,7 +36,7 @@ class WorldMap(val mapsquares: MutableMap<Int, Mapsquare>) {
 
     fun init(archive: Js5Archive, xteas: List<MapXtea>): WorldMap {
         val mapArchive = MapArchive.load(archive, xteas)
-        for(mapXtea in xteas) {
+        for (mapXtea in xteas) {
             val mapsquare = mapArchive.mapsquares[mapXtea.id] ?: continue
             mapsquares[mapXtea.id] = Mapsquare(mapsquare.x.mapsquares, mapsquare.y.mapsquares, mapXtea.key, this)
         }

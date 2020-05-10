@@ -17,7 +17,7 @@
 package io.guthix.oldscape.server.pathing.algo
 
 import io.guthix.oldscape.server.world.WorldMap
-import io.guthix.oldscape.server.world.mapsquare.zone.ZoneCollision
+import io.guthix.oldscape.server.world.map.ZoneCollision
 import io.guthix.oldscape.server.dimensions.FloorUnit
 import io.guthix.oldscape.server.dimensions.TileUnit
 import io.guthix.oldscape.server.dimensions.tiles

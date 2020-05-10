@@ -21,8 +21,7 @@ import io.guthix.oldscape.server.event.PlayerInitialized
 import io.guthix.oldscape.server.event.script.EventBus
 
 on(LoginEvent::class).then {
-    val pZone = world.map.getZone(player.position) ?: error("Player location can't be null")
-    player.initializeInterest(world.map, world.players, pZone)
+    player.initialize(world)
     for(skillId in 0 until 23) {
         player.updateStat(skillId, 13034431, 99)
     }
@@ -30,6 +29,6 @@ on(LoginEvent::class).then {
     player.updateRunEnergy(100)
     player.updateVarbit(8119, 1)
     player.senGameMessage("Welcome to OldScape Emulator!")
-    player.synchronizeContextMenu()
+    player.updateContextMenu()
     EventBus.schedule(PlayerInitialized(), world, player)
 }
