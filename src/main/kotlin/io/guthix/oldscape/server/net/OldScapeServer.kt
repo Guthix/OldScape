@@ -24,8 +24,6 @@ import io.netty.bootstrap.ServerBootstrap
 import io.netty.channel.ChannelInitializer
 import io.netty.channel.ChannelOption
 import io.netty.channel.WriteBufferWaterMark
-import io.netty.channel.epoll.Epoll
-import io.netty.channel.epoll.EpollServerSocketChannel
 import io.netty.channel.nio.NioEventLoopGroup
 import io.netty.channel.socket.SocketChannel
 import io.netty.channel.socket.nio.NioServerSocketChannel
@@ -48,11 +46,7 @@ class OldScapeServer(
         try {
             val bootstrap = ServerBootstrap().apply {
                 group(bossGroup, loopGroup)
-                channel(if(Epoll.isAvailable()) {
-                    EpollServerSocketChannel::class.java
-                } else {
-                    NioServerSocketChannel::class.java
-                })
+                channel(NioServerSocketChannel::class.java)
                 childOption(ChannelOption.SO_KEEPALIVE, true)
                 childOption(ChannelOption.TCP_NODELAY, true)
                 childOption(ChannelOption.WRITE_BUFFER_WATER_MARK, WriteBufferWaterMark(8192, 131072))
