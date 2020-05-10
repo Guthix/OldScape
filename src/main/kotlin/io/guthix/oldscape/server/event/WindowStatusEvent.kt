@@ -16,8 +16,8 @@
  */
 package io.guthix.oldscape.server.event
 
-import io.guthix.oldscape.server.net.state.game.ClientEvent
 import io.guthix.oldscape.server.event.script.InGameEvent
+import io.guthix.oldscape.server.net.game.ClientEvent
 import io.guthix.oldscape.server.world.World
 
 data class WindowStatusEvent(val isResized: Boolean, val width: Int, val height: Int) : ClientEvent, InGameEvent {

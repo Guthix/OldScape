@@ -31,13 +31,7 @@ import io.guthix.oldscape.cache.MapArchive
 import io.guthix.oldscape.cache.config.NpcConfig
 import io.guthix.oldscape.cache.config.ObjectConfig
 import io.guthix.oldscape.cache.xtea.MapXtea
-import io.guthix.oldscape.server.api.Enums
-import io.guthix.oldscape.server.api.Huffman
-import io.guthix.oldscape.server.api.blueprint.InventoryBlueprints
-import io.guthix.oldscape.server.api.Varbits
-import io.guthix.oldscape.server.api.blueprint.LocationBlueprints
-import io.guthix.oldscape.server.api.blueprint.NpcBlueprints
-import io.guthix.oldscape.server.api.blueprint.ObjectBlueprints
+import io.guthix.oldscape.server.api.*
 import io.guthix.oldscape.server.blueprints.ExtraNpcConfig
 import io.guthix.oldscape.server.blueprints.ExtraObjectConfig
 import io.guthix.oldscape.server.blueprints.equipment.ExtraBodyConfig
@@ -45,7 +39,7 @@ import io.guthix.oldscape.server.blueprints.equipment.ExtraEquipmentConfig
 import io.guthix.oldscape.server.blueprints.equipment.ExtraHeadConfig
 import io.guthix.oldscape.server.event.script.EventBus
 import io.guthix.oldscape.server.net.OldScapeServer
-import io.guthix.oldscape.server.net.state.game.GamePacketDecoder
+import io.guthix.oldscape.server.net.game.GamePacketDecoder
 import io.guthix.oldscape.server.world.World
 import java.nio.file.Path
 import java.util.*
@@ -90,7 +84,7 @@ object OldScape {
         )
         val extraNpcConfig = yamlMapper.readValue(
             Path.of(javaClass.getResource("/config/npcs/Npcs.yaml").toURI()).toFile(),
-            object : TypeReference<List<ExtraNpcConfig>>() { }
+            object : TypeReference<List<ExtraNpcConfig>>() {}
         )
         NpcBlueprints.load(NpcConfig.load(configArchive.readGroup(NpcConfig.id)), extraNpcConfig)
         val binariesArchive = cache.readArchive(BinariesArchive.id)
@@ -110,26 +104,26 @@ object OldScape {
 
     private fun loadMapSquareXteaKeys(path: Path): List<MapXtea> {
         val mapper = ObjectMapper().registerKotlinModule()
-        return mapper.readValue(path.toFile(), object : TypeReference<List<MapXtea>>(){})
+        return mapper.readValue(path.toFile(), object : TypeReference<List<MapXtea>>() {})
     }
 
     private fun ObjectMapper.readObjectConfig(filePath: String): List<ExtraObjectConfig> = readValue(
         Path.of(javaClass.getResource("/config/objects/$filePath").toURI()).toFile(),
-        object : TypeReference<List<ExtraObjectConfig>>() { }
+        object : TypeReference<List<ExtraObjectConfig>>() {}
     )
 
     private fun ObjectMapper.readEquipmentConfig(filePath: String): List<ExtraEquipmentConfig> = readValue(
         Path.of(javaClass.getResource("/config/objects/$filePath").toURI()).toFile(),
-        object : TypeReference<List<ExtraEquipmentConfig>>() { }
+        object : TypeReference<List<ExtraEquipmentConfig>>() {}
     )
 
     private fun ObjectMapper.readHeadConfig(filePath: String): List<ExtraHeadConfig> = readValue(
         Path.of(javaClass.getResource("/config/objects/$filePath").toURI()).toFile(),
-        object : TypeReference<List<ExtraHeadConfig>>() { }
+        object : TypeReference<List<ExtraHeadConfig>>() {}
     )
 
     private fun ObjectMapper.readBodyConfig(filePath: String): List<ExtraBodyConfig> = readValue(
         Path.of(javaClass.getResource("/config/objects/$filePath").toURI()).toFile(),
-        object : TypeReference<List<ExtraBodyConfig>>() { }
+        object : TypeReference<List<ExtraBodyConfig>>() {}
     )
 }

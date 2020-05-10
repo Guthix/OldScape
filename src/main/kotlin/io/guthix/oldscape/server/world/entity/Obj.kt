@@ -18,7 +18,4 @@ package io.guthix.oldscape.server.world.entity
 
 import io.guthix.oldscape.server.blueprints.ObjectBlueprint
 
-open class Obj(
-    open val blueprint: ObjectBlueprint,
-    var quantity: Int
-)
+open class Obj(open val blueprint: ObjectBlueprint, var quantity: Int)

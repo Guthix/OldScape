@@ -20,8 +20,8 @@ import io.guthix.oldscape.server.event.MapClickEvent
 import io.guthix.oldscape.server.event.MiniMapClickEvent
 import io.guthix.oldscape.server.pathing.algo.DestinationTile
 import io.guthix.oldscape.server.pathing.algo.imp.breadthFirstSearch
-import io.guthix.oldscape.server.world.entity.character.player.Player
-import io.guthix.oldscape.server.world.mapsquare.zone.tile.Tile
+import io.guthix.oldscape.server.world.entity.Player
+import io.guthix.oldscape.server.world.map.Tile
 import io.guthix.oldscape.server.world.WorldMap
 import io.guthix.oldscape.server.event.script.Routine
 import io.guthix.oldscape.server.dimensions.TileUnit
@@ -36,7 +36,7 @@ on(MapClickEvent::class).then {
 }
 
 fun Player.startWalkingToTile(floor: FloorUnit, x: TileUnit, y: TileUnit, map: WorldMap) {
-    path = breadthFirstSearch(position, DestinationTile(floor, x, y), size, true, map)
-    path.lastOrNull()?.let { dest -> if(dest != Tile(floor, x, y)) setMapFlag(dest.x, dest.y) }
+    visualInterestManager.path = breadthFirstSearch(position, DestinationTile(floor, x, y), size, true, map)
+    visualInterestManager.path.lastOrNull()?.let { dest -> if(dest != Tile(floor, x, y)) setMapFlag(dest.x, dest.y) }
     cancelRoutine(Routine.Type.NormalAction)
 }

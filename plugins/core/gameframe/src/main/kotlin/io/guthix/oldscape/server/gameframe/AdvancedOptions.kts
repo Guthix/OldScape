@@ -17,7 +17,7 @@
 package io.guthix.oldscape.server.gameframe
 
 import io.guthix.oldscape.server.event.ButtonClickEvent
-import io.guthix.oldscape.server.world.entity.character.player.intface.Interface
+import io.guthix.oldscape.server.world.entity.intface.Interface
 
 on(ButtonClickEvent::class).where { event.interfaceId == 261 && event.buttonId == 35 }.then {
     player.topInterface.openModal(subId = 60, type = Interface.Type.OVERLAYINTERFACE)
