@@ -22,7 +22,7 @@ import io.guthix.oldscape.server.pathing.algo.imp.breadthFirstSearch
 import io.guthix.oldscape.server.pathing.algo.imp.simplePathSearch
 import io.guthix.oldscape.server.event.script.Routine
 
-on(PlayerClickEvent::class).where { event.option == "Follow" }.then(Routine.Type.NormalAction) {
+on(PlayerClickEvent::class).where { event.option == "Follow" }.then(Routine.Type.Normal) {
     val followed = event.player
     var dest = DestinationTile(followed.visualInterestManager.followPosition)
     player.visualInterestManager.path = breadthFirstSearch(player.position, dest, player.size, true, world.map)

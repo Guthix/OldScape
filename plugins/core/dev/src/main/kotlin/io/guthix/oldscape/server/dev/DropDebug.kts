@@ -58,7 +58,7 @@ on(ClientCheatEvent::class).where { event.string == "inv" }.then {
 }
 
 on(ClientCheatEvent::class).where { event.string == "shout" }.then {
-    player.visualInterestManager.shoutMessage = "testing!"
+    player.shoutMessage = "testing!"
 }
 
 on(ClientCheatEvent::class).where { event.string == "sequence" }.then {

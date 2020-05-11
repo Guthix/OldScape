@@ -19,8 +19,8 @@ package io.guthix.oldscape.server.event.script
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.Player
 import kotlin.coroutines.intrinsics.createCoroutineUnintercepted
-import kotlin.reflect.KClass
 import kotlin.script.experimental.annotations.KotlinScript
+import kotlin.reflect.KClass
 
 @KotlinScript
 abstract class Script {
@@ -35,66 +35,68 @@ class ScriptFilter<E: InGameEvent>(private val type: KClass<E>) {
         return this
     }
 
-    fun then(script: EventHandler<E>.() -> Unit) = DefaultScriptScheduler(type, condition, script)
+    fun then(handler: EventHandler<E>.() -> Unit) = DefaultScriptScheduler(type, condition, handler)
 
-    fun then(routineType: Routine.Type, script: suspend Routine<E>.() -> Unit) = RoutineScriptScheduler(
-        type, condition, routineType, script
-    )
+    fun then(
+        routineType: Routine.Type,
+        replace: Boolean = false,
+        handler: suspend SuspendableEventHandler<E>.() -> Unit
+    ) = SuspendableScriptScheduler(type, condition, routineType, replace, handler)
 }
 
 abstract class ScriptScheduler<E : InGameEvent>(
     protected val type: KClass<E>,
-    val condition: EventHandler<E>.() -> Boolean
+    protected val condition: EventHandler<E>.() -> Boolean
 ) {
-    abstract fun schedule(event: E, world: World, player: Player)
+    abstract fun schedule(event: E, player: Player, world: World)
 }
 
 class DefaultScriptScheduler<E: InGameEvent>(
     type: KClass<E>,
     condition: EventHandler<E>.() -> Boolean,
-    val script: EventHandler<E>.() -> Unit
+    private val script: EventHandler<E>.() -> Unit
 ) : ScriptScheduler<E>(type, condition) {
     init {
         EventBus.register(type, this)
     }
 
-    override fun schedule(event: E, world: World, player: Player) {
-        val handler = EventHandler(event, world, player)
-        if (handler.condition()) {
-            player.inEvents.add { handler.script() }
-        }
+    override fun schedule(event: E, player: Player, world: World) {
+        val handler = DefaultEventHandler(Routine.Type.Event, event, player, world, script)
+        if (handler.condition()) { player.inEvents.add(handler) }
     }
 }
 
-class RoutineScriptScheduler<E : InGameEvent>(
+class SuspendableScriptScheduler<E : InGameEvent>(
     type: KClass<E>,
     condition: EventHandler<E>.() -> Boolean,
-    val routineType: Routine.Type,
-    val script: suspend Routine<E>.() -> Unit
+    private val routineType: Routine.Type,
+    private val replace: Boolean = false,
+    private val script: suspend SuspendableEventHandler<E>.() -> Unit
 ) : ScriptScheduler<E>(type, condition) {
     init {
         EventBus.register(type, this)
     }
 
-    var onCancel: EventHandler<E>.() -> Unit = {}
+    private var onCancel: suspend SuspendableEventHandler<E>.() -> Unit = {}
 
-    fun onCancel(routine: EventHandler<E>.() -> Unit) {
+    fun onCancel(routine: suspend SuspendableEventHandler<E>.() -> Unit) {
         onCancel = routine
     }
 
     @Suppress("UNCHECKED_CAST")
-    override fun schedule(event: E, world: World, player: Player) {
-        val routine = Routine(routineType, event, world, player)
+    override fun schedule(event: E, player: Player, world: World) {
+        val routine = SuspendableEventHandler(routineType, event, player, world)
         if (routine.condition()) {
-            routine.next = ConditionalContinuation(
-                InitialCondition, script.createCoroutineUnintercepted(routine, routine)
-            )
+            routine.next = ConditionalContinuation(TrueCondition, script.createCoroutineUnintercepted(routine, routine))
             routine.onCancel(onCancel)
-            player.routines[routineType]?.cancel()
-            player.routines[routineType] = routine as Routine<InGameEvent>
-            routine.resumeIfPossible()
+            if(replace) {
+                val routines = player.routines.remove(routineType)
+                routines?.forEach { it.cancel() }
+                player.routines[routineType] = mutableListOf<Routine>(routine)
+            } else {
+                player.routines.getOrPut(routineType) { mutableListOf() }.add(routine)
+            }
+            routine.run()
         }
     }
 }
-
-open class EventHandler<E : InGameEvent>(val event: E, val world: World, val player: Player)

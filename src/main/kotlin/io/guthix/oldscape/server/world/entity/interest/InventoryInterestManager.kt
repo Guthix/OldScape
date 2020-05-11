@@ -68,7 +68,6 @@ class InventoryInterestManager(
     }
 
     fun removeObject(slot: Int): Obj? {
-        println("$inventoryId Remove from slot $slot")
         val obj = objs[slot]
         objs[slot] = null
         updateCache[slot] = null
@@ -86,12 +85,10 @@ class InventoryInterestManager(
         val futures = mutableListOf<ChannelFuture>()
         if(updateCache.isNotEmpty()) {
             if(updateCache.size == objCount) {
-                println("$inventoryId Full update")
                 futures.add(player.ctx.write(
                     UpdateInvFullPacket(interfaceId, interfaceSlotId, inventoryId, updateCache.values.toList())
                 ))
             } else {
-                println("$inventoryId Partial update")
                 futures.add(player.ctx.write(
                     UpdateInvPartialPacket(interfaceId, interfaceSlotId, inventoryId, updateCache.toMap())
                 ))

@@ -50,7 +50,6 @@ class MapInterestManager : InterestManager {
 
     fun checkReload(curZone: Zone, map: WorldMap, player: Player) {
         if(reloadRequired(curZone)) {
-            println("reload required")
             val oldZone = middleZone
             middleZone = curZone
             val xteas = getInterestedXteas(map)

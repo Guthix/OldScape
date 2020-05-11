@@ -18,23 +18,21 @@ package io.guthix.oldscape.server.event.script
 
 import kotlin.coroutines.Continuation
 
-interface RoutineCondition {
+interface SuspensionCondition {
     fun canResume(): Boolean
 }
 
-class TickCondition(private var tickCount: Int) : RoutineCondition {
+class TickCondition(private var tickCount: Int) : SuspensionCondition {
     override fun canResume() = --tickCount == 0
 }
 
-class LambdaCondition(private val cond: () -> Boolean) : RoutineCondition {
+class LambdaCondition(private val cond: () -> Boolean) : SuspensionCondition {
     override fun canResume() = cond.invoke()
 }
 
-object InitialCondition : RoutineCondition {
-    override fun canResume() = true
-}
+object TrueCondition : SuspensionCondition { override fun canResume() = true }
 
 class ConditionalContinuation(
-    val condition: RoutineCondition,
+    val condition: SuspensionCondition,
     val continuation: Continuation<Unit>
-) : RoutineCondition by condition
+) : SuspensionCondition by condition
