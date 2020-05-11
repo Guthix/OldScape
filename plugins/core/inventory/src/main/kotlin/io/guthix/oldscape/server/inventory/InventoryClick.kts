@@ -27,7 +27,7 @@ on(InventoryObjectClickEvent::class).then {
         EventBus.schedule(
             InventoryEquipmentClickEvent(event.interfaceId, event.interfaceSlot, event.inventorySlot, event.option,
                 event.objBlueprint as EquipmentBlueprint
-            ), world, player
+            ), player, world
         )
     }
 }
@@ -37,62 +37,62 @@ on(InventoryEquipmentClickEvent::class).then {
         is WeaponBlueprint -> EventBus.schedule(
             InventoryWeaponClickEvent(event.interfaceId, event.interfaceSlot, event.inventorySlot, event.option,
                 event.objBlueprint as WeaponBlueprint
-            ), world, player
+            ), player, world
         )
         is ShieldBlueprint -> EventBus.schedule(
             InventoryShieldClickEvent(event.interfaceId, event.interfaceSlot, event.inventorySlot, event.option,
                 event.objBlueprint as ShieldBlueprint
-            ), world, player
+            ), player, world
         )
         is TwoHandedBlueprint -> EventBus.schedule(
             InventoryTwoHandedClickEvent(event.interfaceId, event.interfaceSlot, event.inventorySlot, event.option,
                 event.objBlueprint as TwoHandedBlueprint
-            ), world, player
+            ), player, world
         )
         is AmmunitionBlueprint -> EventBus.schedule(
             InventoryAmmunitionClickEvent(event.interfaceId, event.interfaceSlot, event.inventorySlot, event.option,
                 event.objBlueprint as AmmunitionBlueprint
-            ), world, player
+            ), player, world
         )
         is HeadBlueprint -> EventBus.schedule(
             InventoryHeadClickEvent(event.interfaceId, event.interfaceSlot, event.inventorySlot, event.option,
                 event.objBlueprint as HeadBlueprint
-            ), world, player
+            ), player, world
         )
         is BodyBlueprint -> EventBus.schedule(
             InventoryBodyClickEvent(event.interfaceId, event.interfaceSlot, event.inventorySlot, event.option,
                 event.objBlueprint as BodyBlueprint
-            ), world, player
+            ), player, world
         )
         is LegsBlueprint -> EventBus.schedule(
             InventoryLegsClickEvent(event.interfaceId, event.interfaceSlot, event.inventorySlot, event.option,
                 event.objBlueprint as LegsBlueprint
-            ), world, player
+            ), player, world
         )
         is FeetBlueprint -> EventBus.schedule(
             InventoryFeetClickEvent(event.interfaceId, event.interfaceSlot, event.inventorySlot, event.option,
                 event.objBlueprint as FeetBlueprint
-            ), world, player
+            ), player, world
         )
         is HandsBlueprint -> EventBus.schedule(
             InventoryHandsClickEvent(event.interfaceId, event.interfaceSlot, event.inventorySlot, event.option,
                 event.objBlueprint as HandsBlueprint
-            ), world, player
+            ), player, world
         )
         is NeckBlueprint -> EventBus.schedule(
             InventoryNeckClickEvent(event.interfaceId, event.interfaceSlot, event.inventorySlot, event.option,
                 event.objBlueprint as NeckBlueprint
-            ), world, player
+            ), player, world
         )
         is RingBlueprint -> EventBus.schedule(
             InventoryRingClickEvent(event.interfaceId, event.interfaceSlot, event.inventorySlot, event.option,
                 event.objBlueprint as RingBlueprint
-            ), world, player
+            ), player, world
         )
         is CapeBlueprint -> EventBus.schedule(
             InventoryCapeClickEvent(event.interfaceId, event.interfaceSlot, event.inventorySlot, event.option,
                 event.objBlueprint as CapeBlueprint
-            ), world, player
+            ), player, world
         )
     }
 }

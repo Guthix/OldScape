@@ -30,5 +30,5 @@ on(LoginEvent::class).then {
     player.updateVarbit(8119, 1)
     player.senGameMessage("Welcome to OldScape Emulator!")
     player.updateContextMenu()
-    EventBus.schedule(PlayerInitialized(), world, player)
+    EventBus.schedule(PlayerInitialized(), player, world)
 }

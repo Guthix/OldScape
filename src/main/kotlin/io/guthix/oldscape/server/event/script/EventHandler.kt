@@ -14,21 +14,37 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with Foobar. If not, see <https://www.gnu.org/licenses/>.
  */
-package io.guthix.oldscape.server.net.game
+package io.guthix.oldscape.server.event.script
 
-import io.guthix.oldscape.server.event.script.EventBus
-import io.guthix.oldscape.server.net.PacketInboundHandler
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.Player
-import io.netty.channel.ChannelHandlerContext
 
-class GameHandler(val world: World, val player: Player) : PacketInboundHandler<ClientEvent>() {
-    override fun channelRegistered(ctx: ChannelHandlerContext) {
-        super.channelRegistered(ctx)
-        player.ctx = ctx
-    }
-
-    override fun channelRead0(ctx: ChannelHandlerContext, msg: ClientEvent) {
-        EventBus.schedule(msg.toGameEvent(world), player, world)
-    }
+interface EventHandler<E : InGameEvent> {
+    val event: E
+    val player: Player
+    val world: World
 }
+
+class DefaultEventHandler<E : InGameEvent>(
+    type: Type,
+    override val event: E,
+    override val player: Player,
+    override val world: World,
+    private val routine: EventHandler<E>.() -> Unit
+) : Routine(type, player), EventHandler<E> {
+    override fun run(): Boolean {
+        routine()
+        return false
+    }
+
+    override fun cancel() { }
+
+    override fun postProcess() { }
+}
+
+class SuspendableEventHandler<E : InGameEvent>(
+    type: Type,
+    override val event: E,
+    override val player: Player,
+    override val world: World
+) : SuspendableRoutine(type, player), EventHandler<E>

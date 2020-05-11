@@ -24,7 +24,7 @@ import io.guthix.oldscape.server.event.script.EventBus
 import io.guthix.oldscape.server.pathing.algo.DestinationLocation
 import io.guthix.oldscape.server.pathing.algo.imp.breadthFirstSearch
 
-on(LocationClickEvent::class).then(Routine.Type.NormalAction) {
+on(LocationClickEvent::class).then(Routine.Type.Normal) {
     val loc = world.map.getLoc(event.id, player.position.floor, event.x, event.y) ?: error(
         "Could not find location at ${Tile(player.position.floor, event.x, event.y)}."
     )
@@ -32,5 +32,5 @@ on(LocationClickEvent::class).then(Routine.Type.NormalAction) {
     player.visualInterestManager.path = breadthFirstSearch(player.position, destination, player.size, true, world.map)
     player.visualInterestManager.path.lastOrNull()?.let { dest -> player.setMapFlag(dest.x, dest.y) }
     wait{ destination.reached(player.position.x, player.position.y, player.size) }
-    EventBus.schedule(LocationReachedEvent(loc), world, player)
+    EventBus.schedule(LocationReachedEvent(loc), player, world)
 }

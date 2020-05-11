@@ -19,14 +19,14 @@ package io.guthix.oldscape.server.world.entity
 import io.guthix.oldscape.server.dimensions.TileUnit
 import io.guthix.oldscape.server.api.Varbits
 import io.guthix.oldscape.server.event.PublicMessageEvent
-import io.guthix.oldscape.server.event.script.InGameEvent
-import io.guthix.oldscape.server.event.script.Routine
+import io.guthix.oldscape.server.event.script.*
 import io.guthix.oldscape.server.net.game.out.*
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.interest.MapInterestManager
 import io.guthix.oldscape.server.world.entity.interest.PlayerInterestManager
 import io.guthix.oldscape.server.world.entity.intface.IfComponent
 import io.guthix.oldscape.server.world.entity.intface.TopInterface
+import kotlin.coroutines.intrinsics.createCoroutineUnintercepted
 import io.guthix.oldscape.server.world.map.Zone
 import io.netty.channel.ChannelFuture
 import io.netty.channel.ChannelHandlerContext
@@ -41,11 +41,11 @@ data class Player(
     val username: String,
     var ctx: ChannelHandlerContext
 ) : Character(index, visualInterestManager), Comparable<Player> {
-    internal val routines = sortedMapOf<Routine.Type, Routine<InGameEvent>>()
+    internal val inEvents = ConcurrentLinkedQueue<Routine>()
+
+    internal val routines = sortedMapOf<Routine.Type, MutableList<Routine>>()
 
     internal val mapInterestManager = MapInterestManager()
-
-    var topInterface = TopInterface(ctx, id = 165)
 
     lateinit var clientSettings: ClientSettings // TODO pass in through constructor?
 
@@ -53,15 +53,25 @@ data class Player(
 
     var contextMenu = arrayOf("Follow", "Trade with", "Report")
 
-    internal val inEvents = ConcurrentLinkedQueue<() -> Unit>()
+    var topInterface = TopInterface(ctx, id = 165)
+
+    var shoutMessage
+        get() = visualInterestManager.shoutMessage
+        set(value) {
+            visualInterestManager.shoutMessage = value
+            visualInterestManager.updateFlags.add(PlayerInfoPacket.shout)
+            addSuspendableRoutine(Routine.Type.Background) {
+                wait(ticks = 4)
+                visualInterestManager.shoutMessage = null
+            }
+        }
+
 
     internal fun processInEvents() {
         while(true) {
-            while(inEvents.isNotEmpty()) {
-                inEvents.poll().invoke()
-            }
-            val resumed = routines.toMap().map { (_, u) -> u.resumeIfPossible() }
-            if(resumed.all { !it } && inEvents.isEmpty()) break // if can't progress in routines and no events left
+            while (inEvents.isNotEmpty()) inEvents.poll().run()
+            val resumed = routines.values.flatMap { routineList -> routineList.map { it.run() } }
+            if(resumed.all { !it } && inEvents.isEmpty()) break // TODO add live lock detection
         }
     }
 
@@ -86,7 +96,7 @@ data class Player(
         topInterface.postProcess()
         mapInterestManager.postProcess()
         visualInterestManager.postProcess()
-        routines.values.forEach { it.tickSuspended = false }
+        routines.values.forEach { it.forEach { it.postProcess() } }
     }
 
     fun openTopInterface(id: Int, modalSlot: Int? = null, moves: Map<Int, Int> = mutableMapOf()): TopInterface {
@@ -107,8 +117,14 @@ data class Player(
         return topInterface
     }
 
+    fun addSuspendableRoutine(type: Routine.Type, r: suspend SuspendableRoutine.() -> Unit) {
+        val routine = SuspendableRoutine(type, this)
+        routine.next = ConditionalContinuation(TrueCondition, r.createCoroutineUnintercepted(routine, routine))
+        routines.getOrPut(Routine.Type.Background) { mutableListOf() }.add(routine)
+    }
+
     fun cancelRoutine(type: Routine.Type) {
-        routines[type]?.cancel()
+        routines[type]?.forEach { it.cancel() }
         routines.remove(type)
     }
 
