@@ -66,6 +66,8 @@ object OldScape {
         InventoryBlueprints.load(configArchive)
         Varbits.load(configArchive)
         LocationBlueprints.load(configArchive)
+        SequenceBlueprints.load(configArchive)
+        SpotAnimBlueprints.load(configArchive)
         ObjectBlueprints.load(
             ObjectConfig.load(configArchive.readGroup(ObjectConfig.id)),
             yamlMapper.readObjectConfig("Objects.yaml"),

@@ -27,11 +27,11 @@ object InventoryBlueprints {
     private lateinit var configs: Map<Int, InventoryConfig>
 
     operator fun get(index: Int): InventoryConfig {
-        return configs[index] ?: throw IOException("Could not find enum $index.")
+        return configs[index] ?: throw IOException("Could not find inventoryu $index.")
     }
 
     fun load(archive: Js5Archive) {
         configs = InventoryConfig.load(archive.readGroup(InventoryConfig.id))
-        logger.info { "Loaded ${configs.size} enums" }
+        logger.info { "Loaded ${configs.size} inventories" }
     }
 }

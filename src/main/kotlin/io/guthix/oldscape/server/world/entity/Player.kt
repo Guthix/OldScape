@@ -100,7 +100,10 @@ data class Player(
             visualInterestManager.sequence = value
             visualInterestManager.updateFlags.add(PlayerInfoPacket.sequence)
             addSuspendableRoutine(Routine.Type.Background) {
-                wait(ticks = 4) // TODO calculate amount of ticks
+                val duration = visualInterestManager.sequence?.duration ?: throw IllegalStateException(
+                    "Can't start routine because sequence does not exist."
+                )
+                wait(ticks = duration)
                 visualInterestManager.sequence = null
             }
         }
@@ -111,7 +114,10 @@ data class Player(
             visualInterestManager.spotAnimation = value
             visualInterestManager.updateFlags.add(PlayerInfoPacket.spotAnimation)
             addSuspendableRoutine(Routine.Type.Background) {
-                wait(ticks = 4) // TODO calculate amount of ticks
+                val duration = visualInterestManager.spotAnimation?.sequence?.duration ?: throw IllegalStateException(
+                    "Can't start routine because spot animation or sequence does not exist."
+                )
+                wait(ticks = duration)
                 visualInterestManager.spotAnimation = null
             }
         }

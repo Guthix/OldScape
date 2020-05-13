@@ -16,4 +16,14 @@
  */
 package io.guthix.oldscape.server.world.entity
 
-class SpotAnimation(val id: Int, val height: Int, val delay: Int = 0)
+import io.guthix.oldscape.server.api.SpotAnimBlueprints
+
+class SpotAnimation(val id: Int, val height: Int, val delay: Int = 0) {
+    private val blueprint = SpotAnimBlueprints[id]
+
+    val sequence: Sequence by lazy {
+        blueprint.sequenceId?.let { Sequence(it) } ?: throw IllegalStateException(
+            "Sequence $id has no duration."
+        )
+    }
+}
