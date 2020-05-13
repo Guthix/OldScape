@@ -20,7 +20,7 @@ import io.guthix.oldscape.server.world.map.Tile
 
 abstract class Character(
     open val index: Int,
-    open val visualInterestManager: CharacterVisual
+    internal open val visualInterestManager: CharacterVisual
 ) : Entity() {
     override val position: Tile get() = visualInterestManager.position
 }

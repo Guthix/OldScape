@@ -330,7 +330,7 @@ class PlayerInfoPacket(
             writeStringCP1252(player.visualInterestManager.shoutMessage!!) // TODO
         }
 
-        val spotAnim = UpdateType(10, 0x400) { player ->
+        val spotAnimation = UpdateType(10, 0x400) { player ->
             writeShortLEADD(player.visualInterestManager.spotAnimation?.id ?: 65535)
             writeInt(((player.visualInterestManager.spotAnimation?.height ?: 0) shl 16) or (player.visualInterestManager.spotAnimation?.delay ?:0))
         }
@@ -342,7 +342,7 @@ class PlayerInfoPacket(
         }
 
         val sequence = UpdateType(2, 0x4) { player ->
-            writeShort(player.visualInterestManager.sequenceId ?: 65535)
+            writeShort(player.sequence?.id ?: 65535)
             writeByteADD(0)
         }
 

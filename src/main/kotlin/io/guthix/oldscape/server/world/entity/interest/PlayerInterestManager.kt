@@ -35,7 +35,7 @@ class PlayerInterestManager : CharacterVisual(), InterestManager {
 
     var path = mutableListOf<Tile>()
 
-    var sequenceId: Int? = null
+    var sequence: Sequence? = null
 
     var spotAnimation: SpotAnimation? = null
 

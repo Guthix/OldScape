@@ -20,8 +20,10 @@ import io.guthix.oldscape.server.event.ClientCheatEvent
 import io.guthix.oldscape.server.world.entity.Obj
 import io.guthix.oldscape.server.world.entity.Loc
 import io.guthix.oldscape.server.world.entity.SpotAnimation
+import io.guthix.oldscape.server.world.entity.Sequence
 import io.guthix.oldscape.server.world.map.Tile
 import io.guthix.oldscape.server.dimensions.tiles
+
 import io.guthix.oldscape.server.api.*
 
 on(ClientCheatEvent::class).where { event.string == "drop" }.then {
@@ -61,14 +63,9 @@ on(ClientCheatEvent::class).where { event.string == "shout" }.then {
     player.shoutMessage = "testing!"
 }
 
-on(ClientCheatEvent::class).where { event.string == "sequence" }.then {
-    player.startSequence(1162)
-    player.startSpotAnimation(SpotAnimation(id = 99, height = 92))
-}
-
-on(ClientCheatEvent::class).where { event.string == "follow" }.then {
-    val player2 = world.players[2]
-    player.turnToLock(player2)
+on(ClientCheatEvent::class).where { event.string == "animation" }.then {
+    player.sequence = io.guthix.oldscape.server.world.entity.Sequence(id = 1162)
+    player.spotAnimation = SpotAnimation(id = 99, height = 92)
 }
 
 on(ClientCheatEvent::class).where { event.string == "clear" }.then {
