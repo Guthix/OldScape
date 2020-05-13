@@ -29,8 +29,8 @@ on(LocationClickEvent::class).then(Routine.Type.Normal) {
         "Could not find location at ${Tile(player.position.floor, event.x, event.y)}."
     )
     val destination = DestinationLocation(loc, world.map)
-    player.visualInterestManager.path = breadthFirstSearch(player.position, destination, player.size, true, world.map)
-    player.visualInterestManager.path.lastOrNull()?.let { dest -> player.setMapFlag(dest.x, dest.y) }
+    player.path = breadthFirstSearch(player.position, destination, player.size, true, world.map)
+    player.path.lastOrNull()?.let { dest -> player.setMapFlag(dest.x, dest.y) }
     wait{ destination.reached(player.position.x, player.position.y, player.size) }
     EventBus.schedule(LocationReachedEvent(loc), player, world)
 }

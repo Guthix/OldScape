@@ -18,7 +18,6 @@ package io.guthix.oldscape.server.world.entity
 
 import io.guthix.oldscape.server.dimensions.TileUnit
 import io.guthix.oldscape.server.api.Varbits
-import io.guthix.oldscape.server.event.PublicMessageEvent
 import io.guthix.oldscape.server.event.script.*
 import io.guthix.oldscape.server.net.game.out.*
 import io.guthix.oldscape.server.world.World
@@ -36,16 +35,17 @@ import kotlin.math.pow
 
 data class Player(
     override val index: Int,
-    override val visualInterestManager: PlayerInterestManager,
     var priority: Int,
     val username: String,
-    var ctx: ChannelHandlerContext
+    var ctx: ChannelHandlerContext,
+    override val visualInterestManager: PlayerInterestManager,
+    internal val mapInterestManager: MapInterestManager
 ) : Character(index, visualInterestManager), Comparable<Player> {
     internal val inEvents = ConcurrentLinkedQueue<Routine>()
 
     internal val routines = sortedMapOf<Routine.Type, MutableList<Routine>>()
 
-    internal val mapInterestManager = MapInterestManager()
+
 
     lateinit var clientSettings: ClientSettings // TODO pass in through constructor?
 
@@ -54,6 +54,34 @@ data class Player(
     var contextMenu = arrayOf("Follow", "Trade with", "Report")
 
     var topInterface = TopInterface(ctx, id = 165)
+
+    var inRunMode
+        get() = visualInterestManager.inRunMode
+        set(value) {
+            visualInterestManager.inRunMode = value
+            visualInterestManager.updateFlags.add(PlayerInfoPacket.movementCached)
+        }
+
+    var followPosition
+        get() = visualInterestManager.followPosition
+        set(value) { visualInterestManager.followPosition = value }
+
+    var path
+        get() = visualInterestManager.path
+        set(value) { visualInterestManager.path = value }
+
+    val equipment get() = visualInterestManager.equipment
+
+    var publicMessage
+        get() = visualInterestManager.publicMessage
+        set(value) {
+            visualInterestManager.publicMessage = value
+            visualInterestManager.updateFlags.add(PlayerInfoPacket.chat)
+            addSuspendableRoutine(Routine.Type.Background) {
+                wait(ticks = 4)
+                visualInterestManager.publicMessage = null
+            }
+        }
 
     var shoutMessage
         get() = visualInterestManager.shoutMessage
@@ -65,6 +93,29 @@ data class Player(
                 visualInterestManager.shoutMessage = null
             }
         }
+
+    var sequence
+        get() = visualInterestManager.sequence
+        set(value) {
+            visualInterestManager.sequence = value
+            visualInterestManager.updateFlags.add(PlayerInfoPacket.sequence)
+            addSuspendableRoutine(Routine.Type.Background) {
+                wait(ticks = 4) // TODO calculate amount of ticks
+                visualInterestManager.sequence = null
+            }
+        }
+
+    var spotAnimation
+        get() = visualInterestManager.spotAnimation
+        set(value) {
+            visualInterestManager.spotAnimation = value
+            visualInterestManager.updateFlags.add(PlayerInfoPacket.spotAnimation)
+            addSuspendableRoutine(Routine.Type.Background) {
+                wait(ticks = 4) // TODO calculate amount of ticks
+                visualInterestManager.spotAnimation = null
+            }
+        }
+
 
 
     internal fun processInEvents() {
@@ -194,30 +245,6 @@ data class Player(
 
     fun clearInv(interfaceId: Int, interfacePosition: Int) {
         ctx.write(UpdateInvClearPacket(interfaceId, interfacePosition))
-    }
-
-    fun startSequence(seqId: Int) {
-        visualInterestManager.sequenceId = seqId
-    }
-
-    fun stopSequence() {
-        visualInterestManager.sequenceId = null
-    }
-
-    fun startSpotAnimation(spotAnim: SpotAnimation) {
-        visualInterestManager.spotAnimation = spotAnim
-    }
-
-    fun stopSpotAnimation() {
-        visualInterestManager.spotAnimation = null
-    }
-
-    fun shout(message: String) {
-        visualInterestManager.shoutMessage = message
-    }
-
-    fun chat(message: PublicMessageEvent) {
-        visualInterestManager.publicMessage = message
     }
 
     fun senGameMessage(message: String) {

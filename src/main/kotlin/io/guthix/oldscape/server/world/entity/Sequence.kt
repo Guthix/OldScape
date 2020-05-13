@@ -14,8 +14,6 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with Foobar. If not, see <https://www.gnu.org/licenses/>.
  */
-package io.guthix.oldscape.server.publicchat
+package io.guthix.oldscape.server.world.entity
 
-import io.guthix.oldscape.server.event.PublicMessageEvent
-
-on(PublicMessageEvent::class).then { player.publicMessage = event }
+class Sequence(val id: Int)
