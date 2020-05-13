@@ -14,18 +14,24 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with Foobar. If not, see <https://www.gnu.org/licenses/>.
  */
-package io.guthix.oldscape.server.world.entity
+package io.guthix.oldscape.server.api
 
-import io.guthix.oldscape.server.api.SequenceBlueprints
+import io.guthix.cache.js5.Js5Archive
+import io.guthix.oldscape.cache.config.SequenceConfig
+import mu.KotlinLogging
+import java.io.IOException
 
-class Sequence(id: Int) {
-    private val blueprint = SequenceBlueprints[id]
+private val logger = KotlinLogging.logger {  }
 
-    val id get() = blueprint.id
+object SequenceBlueprints {
+    private lateinit var configs: Map<Int, SequenceConfig>
 
-    val duration: Int by lazy {
-        blueprint.frameDuration?.sum()?.toDouble()?.div(30)?.toInt() ?: throw IllegalStateException(
-            "Sequence $id has no duration."
-        )
+    operator fun get(index: Int): SequenceConfig {
+        return configs[index] ?: throw IOException("Could not find sequence $index.")
+    }
+
+    fun load(archive: Js5Archive) {
+        configs = SequenceConfig.load(archive.readGroup(SequenceConfig.id))
+        logger.info { "Loaded ${configs.size} sequences" }
     }
 }

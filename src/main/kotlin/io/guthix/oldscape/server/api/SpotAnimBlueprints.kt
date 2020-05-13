@@ -14,18 +14,24 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with Foobar. If not, see <https://www.gnu.org/licenses/>.
  */
-package io.guthix.oldscape.server.world.entity
+package io.guthix.oldscape.server.api
 
-import io.guthix.oldscape.server.api.SequenceBlueprints
+import io.guthix.cache.js5.Js5Archive
+import io.guthix.oldscape.cache.config.SpotAnimConfig
+import mu.KotlinLogging
+import java.io.IOException
 
-class Sequence(id: Int) {
-    private val blueprint = SequenceBlueprints[id]
+private val logger = KotlinLogging.logger {  }
 
-    val id get() = blueprint.id
+object SpotAnimBlueprints {
+    private lateinit var configs: Map<Int, SpotAnimConfig>
 
-    val duration: Int by lazy {
-        blueprint.frameDuration?.sum()?.toDouble()?.div(30)?.toInt() ?: throw IllegalStateException(
-            "Sequence $id has no duration."
-        )
+    operator fun get(index: Int): SpotAnimConfig {
+        return configs[index] ?: throw IOException("Could not find spot animation $index.")
+    }
+
+    fun load(archive: Js5Archive) {
+        configs = SpotAnimConfig.load(archive.readGroup(SpotAnimConfig.id))
+        logger.info { "Loaded ${configs.size} spot animations" }
     }
 }
