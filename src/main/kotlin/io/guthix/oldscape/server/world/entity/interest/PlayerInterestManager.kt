@@ -67,7 +67,7 @@ class PlayerInterestManager(val index: Int, val username: String) : CharacterVis
 
     val colours = Colours(0, 0, 0, 0, 0)
 
-    val equipment = Equipment(null, null, null, null, null, null, null, null, null, null)
+    val equipment = Equipment(null, null, null, null, null, null, null, null, null, null, null)
 
     val animations = Animations(
         stand = 808,
@@ -150,18 +150,52 @@ class PlayerInterestManager(val index: Int, val username: String) : CharacterVis
 
     override fun postProcess() = updateFlags.clear()
 
-    data class Equipment(
-        var head: HeadEquipment?,
-        var cape: CapeEquipment?,
-        var neck: NeckEquipment?,
-        var ammunition: AmmunitionEquipment?,
-        var weapon: WeaponEquipment?,
-        var body: BodyEquipment?,
-        var shield: ShieldEquipment?,
-        var legs: LegsEquipment?,
-        var hands: HandsEquipment?,
-        var feet: FeetEquipment?
-    )
+    class Equipment(
+        head: HeadEquipment?,
+        cape: CapeEquipment?,
+        neck: NeckEquipment?,
+        ammunition: AmmunitionEquipment?,
+        weapon: WeaponEquipment?,
+        body: BodyEquipment?,
+        shield: ShieldEquipment?,
+        legs: LegsEquipment?,
+        hands: HandsEquipment?,
+        feet: FeetEquipment?,
+        ring: RingEquipment?
+    ) {
+        var head = head
+            internal set
+
+        var cape = cape
+            internal set
+
+        var neck = neck
+            internal set
+
+        var ammunition = ammunition
+            internal set
+
+        var weapon = weapon
+            internal set
+
+        var body = body
+            internal set
+
+        var shield = shield
+            internal set
+
+        var legs = legs
+            internal set
+
+        var hands = hands
+            internal set
+
+        var feet = feet
+            internal set
+
+        var ring = ring
+            internal set
+    }
 
     data class Style(
         val hair: Int,

@@ -17,12 +17,10 @@
 package io.guthix.oldscape.server.equipment
 
 import io.guthix.oldscape.server.event.*
-import io.guthix.oldscape.server.net.game.out.PlayerInfoPacket
 import io.guthix.oldscape.server.world.entity.HeadEquipment
 
 on(InventoryHeadClickEvent::class).where { event.option == "Wear" }.then {
     val obj = player.topInterface.inventory.removeObject(event.inventorySlot) ?: return@then
     player.topInterface.equipment.setObject(event.objBlueprint.slot.id, obj)
-    player.equipment.head = HeadEquipment(event.objBlueprint, 1) // TODO get typed equipment from obj
-   // player.visualInterestManager.updateFlags.add(PlayerInfoPacket.appearance) // TODO
+    player.equip(HeadEquipment(event.objBlueprint, 1)) // TODO get typed equipment from obj
 }
