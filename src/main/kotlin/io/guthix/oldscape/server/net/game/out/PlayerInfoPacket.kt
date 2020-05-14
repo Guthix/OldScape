@@ -37,7 +37,7 @@ import kotlin.math.abs
 
 class PlayerInfoPacket(
     private val worldPlayers: PlayerList,
-    private val player: Player
+    private val im: PlayerInterestManager
 ) : OutGameEvent {
     override val opcode = 41
 
@@ -52,14 +52,14 @@ class PlayerInfoPacket(
         processLocalPlayers(mainBuf.toBitMode(), maskBuf, false)
         processExternalPlayers(mainBuf.toBitMode(), maskBuf, false)
         processExternalPlayers(mainBuf.toBitMode(), maskBuf, true)
-        player.visualInterestManager.localPlayerCount = 0
-        player.visualInterestManager.externalPlayerCount = 0
+        im.localPlayerCount = 0
+        im.externalPlayerCount = 0
         for (index in 1 until World.MAX_PLAYERS) {
-           player.visualInterestManager.skipFlags[index] = (player.visualInterestManager.skipFlags[index].toInt() shr 1).toByte()
-            if (player.visualInterestManager.localPlayers[index] != null) {
-                player.visualInterestManager.localPlayerIndexes[player.visualInterestManager.localPlayerCount++] = index
+           im.skipFlags[index] = (im.skipFlags[index].toInt() shr 1).toByte()
+            if (im.localPlayers[index] != null) {
+                im.localPlayerIndexes[im.localPlayerCount++] = index
             } else {
-                player.visualInterestManager.externalPlayerIndexes[player.visualInterestManager.externalPlayerCount++] = index
+                im.externalPlayerIndexes[im.externalPlayerCount++] = index
             }
         }
         mainBuf.writeBytes(maskBuf)
@@ -70,21 +70,21 @@ class PlayerInfoPacket(
 
     private fun processLocalPlayers(buf: BitBuf, maskBuf: ByteBuf, nsn: Boolean) {
         //TODO logout
-        fun localUpdateRequired(player: Player, localPlayer: Player) = (localPlayer.visualInterestManager.updateFlags.isNotEmpty()
-            || !player.isInterestedIn(localPlayer)
-            || localPlayer.visualInterestManager.movementType != CharacterVisual.MovementUpdateType.STAY
+        fun localUpdateRequired(im: PlayerInterestManager, localPlayer: Player) = (this.im.updateFlags.isNotEmpty()
+            || !im.position.isInterestedIn(localPlayer.position)
+            || this.im.movementType != CharacterVisual.MovementUpdateType.STAY
             )
 
         fun updateLocalPlayer(localPlayer: Player, bitBuf: BitBuf, maskBuf: ByteBuf) {
-            val flagUpdateRequired = localPlayer.visualInterestManager.updateFlags.isNotEmpty()
+            val flagUpdateRequired = im.updateFlags.isNotEmpty()
             bitBuf.writeBoolean(flagUpdateRequired)
-            if (localPlayer.visualInterestManager.movementType == CharacterVisual.MovementUpdateType.TELEPORT) {
+            if (im.movementType == CharacterVisual.MovementUpdateType.TELEPORT) {
                 bitBuf.writeBits(value = 3, amount = 2)
-                var localPlayerOutsideView = !player.isInterestedIn(localPlayer)
-                if (player == localPlayer) localPlayerOutsideView = true
+                var localPlayerOutsideView = !im.position.isInterestedIn(localPlayer.position)
+                if (im.index == localPlayer.index) localPlayerOutsideView = true
                 bitBuf.writeBoolean(localPlayerOutsideView)
-                var dx = (localPlayer.position.x - localPlayer.visualInterestManager.lastPostion.x).value
-                var dy = (localPlayer.position.y - localPlayer.visualInterestManager.lastPostion.y).value
+                var dx = (localPlayer.position.x - im.lastPostion.x).value
+                var dy = (localPlayer.position.y - im.lastPostion.y).value
                 if (localPlayerOutsideView) {
                     buf.writeBits(
                         ((localPlayer.position.floor.value and 0x3) shl 28) or ((dx and 0x3fff) shl 14) or (dy and 0x3fff),
@@ -98,30 +98,30 @@ class PlayerInfoPacket(
                         12
                     )
                 }
-            } else if (!player.isInterestedIn(localPlayer)) {
+            } else if (!im.position.isInterestedIn(localPlayer.position)) {
                 bitBuf.writeBits(value = 0, amount = 2)
                 bitBuf.writeBoolean(false)
-                player.visualInterestManager.localPlayers[localPlayer.index] = null
-            } else if (localPlayer.visualInterestManager.movementType == CharacterVisual.MovementUpdateType.WALK) {
+                im.localPlayers[localPlayer.index] = null
+            } else if (im.movementType == CharacterVisual.MovementUpdateType.WALK) {
                 bitBuf.writeBits(value = 1, amount = 2)
                 bitBuf.writeBits(value = getDirectionWalk(localPlayer), amount = 3)
-            } else if (localPlayer.visualInterestManager.movementType == CharacterVisual.MovementUpdateType.RUN) {
+            } else if (im.movementType == CharacterVisual.MovementUpdateType.RUN) {
                 bitBuf.writeBits(value = 2, amount = 2)
                 bitBuf.writeBits(value = getDirectionWalk(localPlayer), amount = 4)
             } else if (flagUpdateRequired) {
                 bitBuf.writeBits(value = 0, amount = 2)
             }
             if (flagUpdateRequired) {
-                updateLocalPlayerVisual(localPlayer, maskBuf)
+                updateLocalPlayerVisual(localPlayer.visualInterestManager, maskBuf)
             }
         }
 
         fun skipLocalPlayers(bitBuf: BitBuf, currentIndex: Int, nsn: Boolean) {
-            for (i in (currentIndex + 1) until player.visualInterestManager.localPlayerCount) {
-                val nextPlayerIndex = player.visualInterestManager.localPlayerIndexes[i]
+            for (i in (currentIndex + 1) until im.localPlayerCount) {
+                val nextPlayerIndex = im.localPlayerIndexes[i]
                 if (hasBeenSkippedLastTick(nextPlayerIndex, nsn)) {
-                    val nextPlayer = player.visualInterestManager.localPlayers[nextPlayerIndex]
-                    val updateRequired = nextPlayer != null && localUpdateRequired(player, nextPlayer)
+                    val nextPlayer = im.localPlayers[nextPlayerIndex]
+                    val updateRequired = nextPlayer != null && localUpdateRequired(im, nextPlayer)
                     if (updateRequired) break
                     skip++
                 }
@@ -131,15 +131,15 @@ class PlayerInfoPacket(
 
 
         skip = 0
-        for (i in 0 until player.visualInterestManager.localPlayerCount) {
-            val localPlayerIndex = player.visualInterestManager.localPlayerIndexes[i]
+        for (i in 0 until im.localPlayerCount) {
+            val localPlayerIndex = im.localPlayerIndexes[i]
             if (hasBeenSkippedLastTick(localPlayerIndex, nsn)) {
                 if (skip > 0) {
                     skip--
                     markPlayerAsSkipped(localPlayerIndex)
                 } else {
-                    val localPlayer = player.visualInterestManager.localPlayers[localPlayerIndex]
-                    val updateRequired = localPlayer != null && localUpdateRequired(player, localPlayer)
+                    val localPlayer = im.localPlayers[localPlayerIndex]
+                    val updateRequired = localPlayer != null && localUpdateRequired(im, localPlayer)
                     buf.writeBoolean(updateRequired)
                     if (!updateRequired) {
                         skipLocalPlayers(buf, i, nsn)
@@ -154,11 +154,12 @@ class PlayerInfoPacket(
     }
 
     private fun processExternalPlayers(buf: BitBuf, maskBuf: ByteBuf, nsn: Boolean) {
-        fun externalUpdateRequired(player: Player, externalPlayer: Player) = player.isInterestedIn(externalPlayer)
-                || player.visualInterestManager.fieldIds[externalPlayer.index] != externalPlayer.position.regionId
+        fun externalUpdateRequired(player: PlayerInterestManager, externalPlayer: Player) =
+            player.position.isInterestedIn(externalPlayer.position)
+                || im.fieldIds[externalPlayer.index] != externalPlayer.position.regionId
 
         fun updateField(buf: BitBuf, externalPlayer: Player) {
-            val lastFieldId = player.visualInterestManager.fieldIds[externalPlayer.index]
+            val lastFieldId = im.fieldIds[externalPlayer.index]
             val lastFieldY = lastFieldId and 0xFF
             val lastFieldX = (lastFieldId shr 8) and 0xFF
             val lastFieldZ = lastFieldId shr 16
@@ -181,13 +182,13 @@ class PlayerInfoPacket(
                 buf.writeBits(value = 3, amount = 2)
                 buf.writeBits(value = Tile(dz.floors, dx.tiles, dy.tiles).regionId, amount = 18)
             }
-           player.visualInterestManager.fieldIds[externalPlayer.index] = curentFieldId
+           im.fieldIds[externalPlayer.index] = curentFieldId
         }
 
         fun updateExternalPlayer(buf: BitBuf, maskBuf: ByteBuf, externalPlayer: Player) {
-            if (player.isInterestedIn(externalPlayer)) {
+            if (im.position.isInterestedIn(externalPlayer.position)) {
                 buf.writeBits(value = 0, amount = 2)
-                if (player.visualInterestManager.fieldIds[externalPlayer.index] != externalPlayer.position.regionId) {
+                if (im.fieldIds[externalPlayer.index] != externalPlayer.position.regionId) {
                     buf.writeBoolean(true)
                     updateField(buf, externalPlayer)
                 } else {
@@ -196,19 +197,19 @@ class PlayerInfoPacket(
                 buf.writeBits(value = externalPlayer.position.x.value, amount = 13)
                 buf.writeBits(value = externalPlayer.position.y.value, amount = 13)
                 buf.writeBoolean(true)
-                updateLocalPlayerVisual(externalPlayer, maskBuf, sortedSetOf(appearance, orientation, movementCached))
-                player.visualInterestManager.localPlayers[externalPlayer.index] = externalPlayer
+                updateLocalPlayerVisual(externalPlayer.visualInterestManager, maskBuf, sortedSetOf(appearance, orientation, movementCached))
+                im.localPlayers[externalPlayer.index] = externalPlayer
             } else {
                 updateField(buf, externalPlayer)
             }
         }
 
         fun skipExternalPlayers(buf: BitBuf, currentIndex: Int, nsn: Boolean) {
-            for (i in (currentIndex + 1) until player.visualInterestManager.externalPlayerCount) {
-                val externalPlayerIndex = player.visualInterestManager.externalPlayerIndexes[i]
+            for (i in (currentIndex + 1) until im.externalPlayerCount) {
+                val externalPlayerIndex = im.externalPlayerIndexes[i]
                 if (hasBeenSkippedLastTick(externalPlayerIndex, nsn)) {
                     val nextPlayer = worldPlayers[externalPlayerIndex]
-                    val requiresFlagUpdates = nextPlayer != null && externalUpdateRequired(player, nextPlayer)
+                    val requiresFlagUpdates = nextPlayer != null && externalUpdateRequired(im, nextPlayer)
                     if (requiresFlagUpdates) {
                         break
                     }
@@ -219,15 +220,15 @@ class PlayerInfoPacket(
         }
 
         skip = 0
-        for (i in 0 until player.visualInterestManager.externalPlayerCount) {
-            val externalPlayerIndex = player.visualInterestManager.externalPlayerIndexes[i]
+        for (i in 0 until im.externalPlayerCount) {
+            val externalPlayerIndex = im.externalPlayerIndexes[i]
             if (hasBeenSkippedLastTick(externalPlayerIndex, nsn)) {
                 if (skip > 0) {
                     skip--
                     markPlayerAsSkipped(externalPlayerIndex)
                 } else {
                     val externalPlayer = worldPlayers[externalPlayerIndex]
-                    val updateRequired = externalPlayer != null && externalUpdateRequired(player, externalPlayer)
+                    val updateRequired = externalPlayer != null && externalUpdateRequired(im, externalPlayer)
                     buf.writeBoolean(updateRequired)
                     if (!updateRequired) {
                         skipExternalPlayers(buf, i, nsn)
@@ -243,21 +244,21 @@ class PlayerInfoPacket(
     }
 
     private fun getDirectionWalk(localPlayer: Player): Int {
-        val dx = localPlayer.position.x - localPlayer.visualInterestManager.lastPostion.x
-        val dy = localPlayer.position.y - localPlayer.visualInterestManager.lastPostion.y
+        val dx = localPlayer.position.x - im.lastPostion.x
+        val dy = localPlayer.position.y - im.lastPostion.y
         return getDirectionType(dx.value, dy.value)
     }
 
     private fun getDirectionType(dx: Int, dy: Int) = MOVEMENT[2 - dy][dx + 2]
 
     private fun markPlayerAsSkipped(playerIndex: Int) {
-       player.visualInterestManager.skipFlags[playerIndex] = (player.visualInterestManager.skipFlags[playerIndex].toInt() or 0x2).toByte()
+       im.skipFlags[playerIndex] = (im.skipFlags[playerIndex].toInt() or 0x2).toByte()
     }
 
     private fun hasBeenSkippedLastTick(playerIndex: Int, nsn: Boolean) = if (nsn) {
-        player.visualInterestManager.skipFlags[playerIndex].toInt() and 0x1 == 0
+        im.skipFlags[playerIndex].toInt() and 0x1 == 0
     } else {
-        player.visualInterestManager.skipFlags[playerIndex].toInt() and 0x1 != 0
+        im.skipFlags[playerIndex].toInt() and 0x1 != 0
     }
 
     private fun BitBuf.writeSkip(amount: Int) {
@@ -281,12 +282,12 @@ class PlayerInfoPacket(
     }
 
     private fun updateLocalPlayerVisual(
-        localPlayer: Player,
+        im: PlayerInterestManager,
         maskBuf: ByteBuf,
         privateUpdates: SortedSet<UpdateType> = sortedSetOf()
     ) {
         var mask = 0
-        privateUpdates.addAll(localPlayer.visualInterestManager.updateFlags)
+        privateUpdates.addAll(im.updateFlags)
         privateUpdates.forEach { update ->
             mask = mask or update.mask
         }
@@ -297,14 +298,14 @@ class PlayerInfoPacket(
             maskBuf.writeByte(mask)
         }
         privateUpdates.forEach { updateType ->
-            updateType.encode(maskBuf, localPlayer)
+            updateType.encode(maskBuf, im)
         }
     }
 
     class UpdateType(
         priority: Int,
         mask: Int,
-        val encode: ByteBuf.(player: Player) -> Unit
+        val encode: ByteBuf.(im: PlayerInterestManager) -> Unit
     ) : CharacterVisual.UpdateType(priority, mask)
 
     companion object {
@@ -312,7 +313,7 @@ class PlayerInfoPacket(
 
         private val INTEREST_RANGE = INTEREST_SIZE / 2.tiles
 
-        private fun Player.isInterestedIn(player: Player) = position.withInDistanceOf(player.position, INTEREST_RANGE)
+        private fun Tile.isInterestedIn(other: Tile) = withInDistanceOf(other, INTEREST_RANGE)
 
         private val MOVEMENT = arrayOf(
             intArrayOf(11, 12, 13, 14, 15),
@@ -322,127 +323,127 @@ class PlayerInfoPacket(
             intArrayOf(0, 1, 2, 3, 4)
         )
 
-        val movementTemporary = UpdateType(8, 0x200) { player ->
-            writeByteNEG(if(player.visualInterestManager.movementType == CharacterVisual.MovementUpdateType.TELEPORT) 127 else 0)
+        val movementTemporary = UpdateType(8, 0x200) { im ->
+            writeByteNEG(if(im.movementType == CharacterVisual.MovementUpdateType.TELEPORT) 127 else 0)
         }
 
-        val shout = UpdateType(3, 0x10) { player ->
-            writeStringCP1252(player.visualInterestManager.shoutMessage!!) // TODO
+        val shout = UpdateType(3, 0x10) { im ->
+            writeStringCP1252(im.shoutMessage!!) // TODO
         }
 
-        val spotAnimation = UpdateType(10, 0x400) { player ->
-            writeShortLEADD(player.visualInterestManager.spotAnimation?.id ?: 65535)
-            writeInt(((player.visualInterestManager.spotAnimation?.height ?: 0) shl 16) or (player.visualInterestManager.spotAnimation?.delay ?:0))
+        val spotAnimation = UpdateType(10, 0x400) { im ->
+            writeShortLEADD(im.spotAnimation?.id ?: 65535)
+            writeInt(((im.spotAnimation?.height ?: 0) shl 16) or (im.spotAnimation?.delay ?:0))
         }
 
-        val nameModifiers = UpdateType(12, 0x1000) { player ->
-            player.visualInterestManager.nameModifiers.forEach { entry ->
+        val nameModifiers = UpdateType(12, 0x1000) { im ->
+            im.nameModifiers.forEach { entry ->
                 writeStringCP1252(entry)
             }
         }
 
-        val sequence = UpdateType(2, 0x4) { player ->
-            writeShort(player.sequence?.id ?: 65535)
+        val sequence = UpdateType(2, 0x4) { im ->
+            writeShort(im.sequence?.id ?: 65535)
             writeByteADD(0)
         }
 
-        val chat = UpdateType(1, 0x80) { player ->
-            writeShortLEADD((player.visualInterestManager.publicMessage!!.color shl 8) or player.visualInterestManager.publicMessage!!.effect)
-            writeByteSUB(player.visualInterestManager.rights)
+        val chat = UpdateType(1, 0x80) { im ->
+            writeShortLEADD((im.publicMessage!!.color shl 8) or im.publicMessage!!.effect)
+            writeByteSUB(im.rights)
             writeByte(0) // some boolean
             val compressed = Unpooled.compositeBuffer(2).apply {
                 addComponents(true,
-                    Unpooled.buffer(2).apply { writeSmallSmart(player.visualInterestManager.publicMessage!!.length) },
-                    Unpooled.wrappedBuffer(Huffman.compress(player.visualInterestManager.publicMessage!!.message))
+                    Unpooled.buffer(2).apply { writeSmallSmart(im.publicMessage!!.length) },
+                    Unpooled.wrappedBuffer(Huffman.compress(im.publicMessage!!.message))
                 )
             }
             writeByte(compressed.readableBytes())
             writeBytesReversedADD(compressed)
         }
 
-        val movementCached = UpdateType(4, 0x800) { player ->
-            writeByteADD(if(player.visualInterestManager.inRunMode) 2 else 1)
+        val movementCached = UpdateType(4, 0x800) { im ->
+            writeByteADD(if(im.inRunMode) 2 else 1)
         }
 
-        val hit = UpdateType(11, 0x1) { player ->
+        val hit = UpdateType(11, 0x1) { im ->
             //TODO
         }
 
-        val movementForced = UpdateType(7, 0x100) { player ->
+        val movementForced = UpdateType(7, 0x100) { im ->
             //TODO
         }
 
-        val lockTurnToCharacter = UpdateType(9, 0x40) { player ->
-            if(player.visualInterestManager.interacting == null) {
+        val lockTurnToCharacter = UpdateType(9, 0x40) { im ->
+            if(im.interacting == null) {
                 writeShort(65535)
             } else {
-                player.visualInterestManager.interacting?.let {
-                    writeShort(it.index + 32768)
+                im.interacting?.let {
+                    writeShort(im.index + 32768)
                 }
             }
         }
 
-        val appearance = UpdateType(6, 0x8) { player ->
+        val appearance = UpdateType(6, 0x8) { im ->
             val lengthIndex = writerIndex()
             writeByte(0) //place holder for length
-            writeByte(player.visualInterestManager.gender.opcode)
-            writeByte(if(player.visualInterestManager.isSkulled) 1 else -1)
-            writeByte(player.visualInterestManager.prayerIcon)
-            player.visualInterestManager.equipment.head?.let { // write head gear
+            writeByte(im.gender.opcode)
+            writeByte(if(im.isSkulled) 1 else -1)
+            writeByte(im.prayerIcon)
+            im.equipment.head?.let { // write head gear
                 writeShort(512 + it.blueprint.id)
             } ?: run { writeByte(0) }
-            player.visualInterestManager.equipment.cape?.let {  // write cape
+            im.equipment.cape?.let {  // write cape
                 writeShort(512 + it.blueprint.id)
             } ?: run { writeByte(0) }
-            player.visualInterestManager.equipment.neck?.let {  // write neck gear
+            im.equipment.neck?.let {  // write neck gear
                 writeShort(512 + it.blueprint.id)
             } ?: run { writeByte(0) }
-            player.visualInterestManager.equipment.weapon?.let { // write weapon
+            im.equipment.weapon?.let { // write weapon
                 writeShort(512 + it.blueprint.id)
             } ?: run { writeByte(0) }
-            player.visualInterestManager.equipment.body?.let { // write body
+            im.equipment.body?.let { // write body
                 writeShort(512 + it.blueprint.id)
-            } ?: run { writeShort(256 + player.visualInterestManager.style.torso) }
-            player.visualInterestManager.equipment.shield?.let {  // write shield gear
+            } ?: run { writeShort(256 + im.style.torso) }
+            im.equipment.shield?.let {  // write shield gear
                 writeShort(512 + it.blueprint.id)
             } ?: run { writeByte(0) }
-            player.visualInterestManager.equipment.body?.let { // write arms
-                if(it.blueprint.isFullBody) writeByte(0) else writeShort(256 + player.visualInterestManager.style.arms)
-            } ?: run { writeShort(256 + player.visualInterestManager.style.arms) }
-            player.visualInterestManager.equipment.legs?.let { // write legs
+            im.equipment.body?.let { // write arms
+                if(it.blueprint.isFullBody) writeByte(0) else writeShort(256 + im.style.arms)
+            } ?: run { writeShort(256 + im.style.arms) }
+            im.equipment.legs?.let { // write legs
                 writeShort(512 + it.blueprint.id)
-            } ?: run { writeShort(256 + player.visualInterestManager.style.legs) }
-            player.visualInterestManager.equipment.head?.let { // write hair
-                if(it.blueprint.coversHair) writeByte(0) else writeShort(256 + player.visualInterestManager.style.hair)
-            } ?: run { writeShort(256 + player.visualInterestManager.style.hair) }
-            player.visualInterestManager.equipment.hands?.let {  // write hands
+            } ?: run { writeShort(256 + im.style.legs) }
+            im.equipment.head?.let { // write hair
+                if(it.blueprint.coversHair) writeByte(0) else writeShort(256 + im.style.hair)
+            } ?: run { writeShort(256 + im.style.hair) }
+            im.equipment.hands?.let {  // write hands
                 writeShort(512 + it.blueprint.id)
-            } ?: run { writeShort(256 + player.visualInterestManager.style.hands) }
-            player.visualInterestManager.equipment.feet?.let { // write feet
+            } ?: run { writeShort(256 + im.style.hands) }
+            im.equipment.feet?.let { // write feet
                 writeShort(512 + it.blueprint.id)
-            } ?: run { writeShort(256 + player.visualInterestManager.style.feet)}
-            if(player.visualInterestManager.gender == PlayerInterestManager.Gender.MALE) { //write beard
-                player.visualInterestManager.equipment.head?.let {
-                    if(it.blueprint.coversFace) writeByte(0) else writeShort(256 + player.visualInterestManager.style.beard)
-                } ?: run { writeShort(256 + player.visualInterestManager.style.beard) }
+            } ?: run { writeShort(256 + im.style.feet)}
+            if(im.gender == PlayerInterestManager.Gender.MALE) { //write beard
+                im.equipment.head?.let {
+                    if(it.blueprint.coversFace) writeByte(0) else writeShort(256 + im.style.beard)
+                } ?: run { writeShort(256 + im.style.beard) }
             } else {
                 writeByte(0)
             }
-            writeByte(player.visualInterestManager.colours.hair)
-            writeByte(player.visualInterestManager.colours.torso)
-            writeByte(player.visualInterestManager.colours.legs)
-            writeByte(player.visualInterestManager.colours.feet)
-            writeByte(player.visualInterestManager.colours.skin)
+            writeByte(im.colours.hair)
+            writeByte(im.colours.torso)
+            writeByte(im.colours.legs)
+            writeByte(im.colours.feet)
+            writeByte(im.colours.skin)
 
-            writeShort(player.visualInterestManager.animations.stand)
-            writeShort(player.visualInterestManager.animations.turn)
-            writeShort(player.visualInterestManager.animations.walk)
-            writeShort(player.visualInterestManager.animations.turn180)
-            writeShort(player.visualInterestManager.animations.turn90CW)
-            writeShort(player.visualInterestManager.animations.turn90CCW)
-            writeShort(player.visualInterestManager.animations.run)
-            writeStringCP1252(player.username) // username
-            writeByte(player.visualInterestManager.combatLevel) // combat level
+            writeShort(im.animations.stand)
+            writeShort(im.animations.turn)
+            writeShort(im.animations.walk)
+            writeShort(im.animations.turn180)
+            writeShort(im.animations.turn90CW)
+            writeShort(im.animations.turn90CCW)
+            writeShort(im.animations.run)
+            writeStringCP1252(im.username) // username
+            writeByte(im.combatLevel) // combat level
             writeShort(0) // skillId level
             writeByte(0) // hidden
             setByteNEG(lengthIndex, writerIndex() - lengthIndex - 1)

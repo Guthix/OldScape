@@ -41,7 +41,7 @@ class PlayerList(capacity: Int) : Iterable<Player> {
     fun create(req: LoginRequest): Player {
         val index = freeIndexes.pop()
         val priority = Random.nextInt(occupiedIndexes.size + 1)
-        val player = Player(index, priority, req.username, req.ctx, PlayerInterestManager(), MapInterestManager())
+        val player = Player(priority, req.ctx, PlayerInterestManager(index, req.username), MapInterestManager())
         players[player.index] = player
         player.priority = priority
         occupiedIndexes.add(priority, player.index)

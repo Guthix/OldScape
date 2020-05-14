@@ -24,7 +24,7 @@ import io.guthix.oldscape.server.world.entity.*
 import io.guthix.oldscape.server.world.map.Tile
 import io.netty.channel.ChannelFuture
 
-class PlayerInterestManager : CharacterVisual(), InterestManager {
+class PlayerInterestManager(val index: Int, val username: String) : CharacterVisual(), InterestManager {
     var nameModifiers = arrayOf("", "", "")
 
     var inRunMode = false
@@ -133,10 +133,10 @@ class PlayerInterestManager : CharacterVisual(), InterestManager {
         updateFlags.add(PlayerInfoPacket.appearance)
         updateFlags.add(PlayerInfoPacket.orientation)
         updateFlags.add(PlayerInfoPacket.nameModifiers)
-        localPlayers[player.index] = player
-        localPlayerIndexes[localPlayerCount++] = player.index
+        localPlayers[index] = player
+        localPlayerIndexes[localPlayerCount++] = index
         for (playerIndex in 1 until World.MAX_PLAYERS) {
-            if (player.index != playerIndex) {
+            if (index != playerIndex) {
                 val externalPlayer = world.players[playerIndex]
                 fieldIds[playerIndex] = externalPlayer?.position?.regionId ?: 0
                 externalPlayerIndexes[externalPlayerCount++] = playerIndex
@@ -145,7 +145,7 @@ class PlayerInterestManager : CharacterVisual(), InterestManager {
     }
 
     override fun synchronize(world: World, player: Player): List<ChannelFuture> {
-        return listOf(player.ctx.write(PlayerInfoPacket(world.players, player)))
+        return listOf(player.ctx.write(PlayerInfoPacket(world.players, this)))
     }
 
     override fun postProcess() = updateFlags.clear()
@@ -199,6 +199,8 @@ class PlayerInterestManager : CharacterVisual(), InterestManager {
         val RANGE = SIZE / 2.tiles
 
         val REGION_SIZE = 8192.tiles
+
+        const val MESSAGE_DURATION = 4
     }
 }
 
