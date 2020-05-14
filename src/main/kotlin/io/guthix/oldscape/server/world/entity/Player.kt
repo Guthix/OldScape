@@ -34,18 +34,14 @@ import kotlin.math.atan2
 import kotlin.math.pow
 
 data class Player(
-    override val index: Int,
     var priority: Int,
-    val username: String,
     var ctx: ChannelHandlerContext,
     override val visualInterestManager: PlayerInterestManager,
     internal val mapInterestManager: MapInterestManager
-) : Character(index, visualInterestManager), Comparable<Player> {
+) : Character(visualInterestManager), Comparable<Player> {
     internal val inEvents = ConcurrentLinkedQueue<Routine>()
 
     internal val routines = sortedMapOf<Routine.Type, MutableList<Routine>>()
-
-
 
     lateinit var clientSettings: ClientSettings // TODO pass in through constructor?
 
@@ -54,6 +50,8 @@ data class Player(
     var contextMenu = arrayOf("Follow", "Trade with", "Report")
 
     var topInterface = TopInterface(ctx, id = 165)
+
+    val index get() = visualInterestManager.index
 
     var inRunMode
         get() = visualInterestManager.inRunMode
@@ -78,7 +76,7 @@ data class Player(
             visualInterestManager.publicMessage = value
             visualInterestManager.updateFlags.add(PlayerInfoPacket.chat)
             addSuspendableRoutine(Routine.Type.Background) {
-                wait(ticks = 4)
+                wait(ticks = PlayerInterestManager.MESSAGE_DURATION)
                 visualInterestManager.publicMessage = null
             }
         }
@@ -89,7 +87,7 @@ data class Player(
             visualInterestManager.shoutMessage = value
             visualInterestManager.updateFlags.add(PlayerInfoPacket.shout)
             addSuspendableRoutine(Routine.Type.Background) {
-                wait(ticks = 4)
+                wait(ticks = PlayerInterestManager.MESSAGE_DURATION)
                 visualInterestManager.shoutMessage = null
             }
         }
