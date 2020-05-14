@@ -54,6 +54,11 @@ class ShieldEquipment(
     quantity: Int
 ) : Equipment(blueprint, quantity)
 
+class TwoHandEquipment(
+    override val blueprint: TwoHandedBlueprint,
+    quantity: Int
+) : Equipment(blueprint, quantity)
+
 class BodyEquipment(
     override val blueprint: BodyBlueprint,
     quantity: Int

@@ -60,12 +60,12 @@ on(ClientCheatEvent::class).where { event.string == "inv" }.then {
 }
 
 on(ClientCheatEvent::class).where { event.string == "shout" }.then {
-    player.shoutMessage = "testing!"
+    player.shout("testing!")
 }
 
 on(ClientCheatEvent::class).where { event.string == "animation" }.then {
-    player.sequence = io.guthix.oldscape.server.world.entity.Sequence(id = 1162)
-    player.spotAnimation = SpotAnimation(id = 99, height = 92)
+    player.animate(Sequence(id = 1162))
+    player.spotAnimate(SpotAnimation(id = 99, height = 92))
 }
 
 on(ClientCheatEvent::class).where { event.string == "clear" }.then {

@@ -18,6 +18,7 @@ package io.guthix.oldscape.server.world.entity
 
 import io.guthix.oldscape.server.dimensions.TileUnit
 import io.guthix.oldscape.server.api.Varbits
+import io.guthix.oldscape.server.event.PublicMessageEvent
 import io.guthix.oldscape.server.event.script.*
 import io.guthix.oldscape.server.net.game.out.*
 import io.guthix.oldscape.server.world.World
@@ -70,57 +71,13 @@ data class Player(
 
     val equipment get() = visualInterestManager.equipment
 
-    var publicMessage
-        get() = visualInterestManager.publicMessage
-        set(value) {
-            visualInterestManager.publicMessage = value
-            visualInterestManager.updateFlags.add(PlayerInfoPacket.chat)
-            addSuspendableRoutine(Routine.Type.Background) {
-                wait(ticks = PlayerInterestManager.MESSAGE_DURATION)
-                visualInterestManager.publicMessage = null
-            }
-        }
+    val publicMessage get() = visualInterestManager.publicMessage
 
-    var shoutMessage
-        get() = visualInterestManager.shoutMessage
-        set(value) {
-            visualInterestManager.shoutMessage = value
-            visualInterestManager.updateFlags.add(PlayerInfoPacket.shout)
-            addSuspendableRoutine(Routine.Type.Background) {
-                wait(ticks = PlayerInterestManager.MESSAGE_DURATION)
-                visualInterestManager.shoutMessage = null
-            }
-        }
+    val shoutMessage get() = visualInterestManager.shoutMessage
 
-    var sequence
-        get() = visualInterestManager.sequence
-        set(value) {
-            visualInterestManager.sequence = value
-            visualInterestManager.updateFlags.add(PlayerInfoPacket.sequence)
-            addSuspendableRoutine(Routine.Type.Background) {
-                val duration = visualInterestManager.sequence?.duration ?: throw IllegalStateException(
-                    "Can't start routine because sequence does not exist."
-                )
-                wait(ticks = duration)
-                visualInterestManager.sequence = null
-            }
-        }
+    val sequence get() = visualInterestManager.sequence
 
-    var spotAnimation
-        get() = visualInterestManager.spotAnimation
-        set(value) {
-            visualInterestManager.spotAnimation = value
-            visualInterestManager.updateFlags.add(PlayerInfoPacket.spotAnimation)
-            addSuspendableRoutine(Routine.Type.Background) {
-                val duration = visualInterestManager.spotAnimation?.sequence?.duration ?: throw IllegalStateException(
-                    "Can't start routine because spot animation or sequence does not exist."
-                )
-                wait(ticks = duration)
-                visualInterestManager.spotAnimation = null
-            }
-        }
-
-
+    val spotAnimation get() = visualInterestManager.spotAnimation
 
     internal fun processInEvents() {
         while(true) {
@@ -172,15 +129,131 @@ data class Player(
         return topInterface
     }
 
-    fun addSuspendableRoutine(type: Routine.Type, r: suspend SuspendableRoutine.() -> Unit) {
+    fun addSuspendableRoutine(type: Routine.Type, replace: Boolean = false, r: suspend SuspendableRoutine.() -> Unit) {
         val routine = SuspendableRoutine(type, this)
         routine.next = ConditionalContinuation(TrueCondition, r.createCoroutineUnintercepted(routine, routine))
-        routines.getOrPut(Routine.Type.Background) { mutableListOf() }.add(routine)
+        if(replace) {
+            val toRemove = routines.remove(type)
+            toRemove?.forEach { it.cancel() }
+            routines[type] = mutableListOf<Routine>(routine)
+        } else {
+            routines.getOrPut(type) { mutableListOf() }.add(routine)
+        }
     }
 
     fun cancelRoutine(type: Routine.Type) {
         routines[type]?.forEach { it.cancel() }
         routines.remove(type)
+    }
+
+    fun talk(message: PublicMessageEvent) {
+        visualInterestManager.publicMessage = message
+        visualInterestManager.shoutMessage = null
+        visualInterestManager.updateFlags.add(PlayerInfoPacket.chat)
+        addSuspendableRoutine(Routine.Type.Chat, replace = true) {
+            wait(ticks = PlayerInterestManager.MESSAGE_DURATION)
+            visualInterestManager.publicMessage = null
+        }
+    }
+
+    fun shout(message: String) {
+        visualInterestManager.publicMessage = null
+        visualInterestManager.shoutMessage = message
+        visualInterestManager.updateFlags.add(PlayerInfoPacket.shout)
+        addSuspendableRoutine(Routine.Type.Chat, replace = true) {
+            wait(ticks = PlayerInterestManager.MESSAGE_DURATION)
+            visualInterestManager.shoutMessage = null
+        }
+    }
+
+    fun animate(sequence: Sequence) {
+        visualInterestManager.sequence = sequence
+        visualInterestManager.updateFlags.add(PlayerInfoPacket.sequence)
+        addSuspendableRoutine(Routine.Type.Weak) {
+            val duration = visualInterestManager.sequence?.duration ?: throw IllegalStateException(
+                "Can't start routine because sequence does not exist."
+            )
+            wait(ticks = duration)
+            visualInterestManager.sequence = null
+        }
+    }
+
+    fun stopAnimation() {
+        visualInterestManager.sequence = null
+        visualInterestManager.updateFlags.add(PlayerInfoPacket.sequence)
+        cancelRoutine(Routine.Type.Weak)
+    }
+
+    fun spotAnimate(spotAnimation: SpotAnimation) {
+        visualInterestManager.spotAnimation = spotAnimation
+        visualInterestManager.updateFlags.add(PlayerInfoPacket.spotAnimation)
+        addSuspendableRoutine(Routine.Type.Weak) {
+            val duration = visualInterestManager.spotAnimation?.sequence?.duration ?: throw IllegalStateException(
+                "Can't start routine because spot animation or sequence does not exist."
+            )
+            wait(ticks = duration)
+            visualInterestManager.spotAnimation = null
+        }
+    }
+
+    fun stopSpotAnimation() {
+        visualInterestManager.spotAnimation = null
+        visualInterestManager.updateFlags.add(PlayerInfoPacket.spotAnimation)
+        cancelRoutine(Routine.Type.Weak)
+    }
+
+    fun equip(head: HeadEquipment?) {
+        visualInterestManager.equipment.head = head
+        visualInterestManager.updateFlags.add(PlayerInfoPacket.appearance)
+    }
+
+    fun equip(cape: CapeEquipment?) {
+        visualInterestManager.equipment.cape = cape
+        visualInterestManager.updateFlags.add(PlayerInfoPacket.appearance)
+    }
+
+    fun equip(neck: NeckEquipment?) {
+        visualInterestManager.equipment.neck = neck
+        visualInterestManager.updateFlags.add(PlayerInfoPacket.appearance)
+    }
+
+    fun equip(ammunition: AmmunitionEquipment?) {
+        visualInterestManager.equipment.ammunition = ammunition
+        visualInterestManager.updateFlags.add(PlayerInfoPacket.appearance)
+    }
+
+    fun equip(weapon: WeaponEquipment?) {
+        visualInterestManager.equipment.weapon = weapon
+        visualInterestManager.updateFlags.add(PlayerInfoPacket.appearance)
+    }
+
+    fun equip(shield: ShieldEquipment?) {
+        visualInterestManager.equipment.shield = shield
+        visualInterestManager.updateFlags.add(PlayerInfoPacket.appearance)
+    }
+
+    fun equip(body: BodyEquipment?) {
+        visualInterestManager.equipment.body = body
+        visualInterestManager.updateFlags.add(PlayerInfoPacket.appearance)
+    }
+
+    fun equip(legs: LegsEquipment?) {
+        visualInterestManager.equipment.legs = legs
+        visualInterestManager.updateFlags.add(PlayerInfoPacket.appearance)
+    }
+
+    fun equip(hands: HandsEquipment?) {
+        visualInterestManager.equipment.hands = hands
+        visualInterestManager.updateFlags.add(PlayerInfoPacket.appearance)
+    }
+
+    fun equip(feet: FeetEquipment?) {
+        visualInterestManager.equipment.feet = feet
+        visualInterestManager.updateFlags.add(PlayerInfoPacket.appearance)
+    }
+
+    fun equip(ring: RingEquipment?) {
+        visualInterestManager.equipment.ring = ring
     }
 
     fun updateMap(zone: Zone, xteas: List<IntArray>) {

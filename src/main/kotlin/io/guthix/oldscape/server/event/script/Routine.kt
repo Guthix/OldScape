@@ -23,7 +23,7 @@ import kotlin.coroutines.intrinsics.createCoroutineUnintercepted
 import kotlin.coroutines.*
 
 abstract class Routine(protected val type: Type, protected open val player: Player) {
-    enum class Type { Event, Strong, Normal, Weak, Background }
+    enum class Type { Event, Strong, Normal, Weak, Chat, Background }
 
     internal abstract fun run(): Boolean
 
