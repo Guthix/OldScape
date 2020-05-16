@@ -26,7 +26,6 @@ import io.guthix.oldscape.server.world.entity.Obj
 import io.guthix.oldscape.server.world.entity.intface.Interface
 import io.guthix.oldscape.server.world.entity.Player
 import io.netty.channel.ChannelFuture
-
 /**
  * Manages [Player] inventories. An inventory is an [Interface] that holds [Obj]s. Two types of interfaces exists,
  * the old format (if1) which require an [interfaceId] and [interfaceSlotId] to be passed and the newer version (if3)
@@ -50,7 +49,7 @@ class InventoryManager(
             if(slot == -1) { // obj not already in inventory
                 addNextSlot(obj)
             } else {
-                val iObj = objs[slot] ?: error("No object in slot $slot of inventory $interfaceId")
+                val iObj = objs[slot] ?: error("No object in slot $slot of inventory $interfaceId.")
                 iObj.quantity += obj.quantity
                 changes[slot] = iObj
             }
@@ -68,12 +67,13 @@ class InventoryManager(
         objCount++
     }
 
-    fun removeObject(slot: Int): Obj? {
+    fun<O : Obj> removeObject(slot: Int): O? {
         val obj = objs[slot]
         objs[slot] = null
         changes[slot] = null
         objCount--
-        return obj
+        @Suppress("UNCHECKED_CAST")
+        return obj as O
     }
 
     fun release(player: Player) {

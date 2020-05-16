@@ -20,7 +20,7 @@ import io.guthix.oldscape.server.event.*
 import io.guthix.oldscape.server.world.entity.HeadEquipment
 
 on(InventoryHeadClickEvent::class).where { event.option == "Wear" }.then {
-    val obj = player.topInterface.inventory.removeObject(event.inventorySlot) ?: return@then
+    val obj = player.topInterface.inventory.removeObject<HeadEquipment>(event.inventorySlot) ?: return@then
     player.topInterface.equipment.setObject(event.objBlueprint.slot.id, obj)
-    player.equip(HeadEquipment(event.objBlueprint, 1)) // TODO get typed equipment from obj
+    player.equip(obj)
 }

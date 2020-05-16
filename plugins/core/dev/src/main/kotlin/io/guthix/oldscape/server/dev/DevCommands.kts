@@ -23,6 +23,7 @@ import io.guthix.oldscape.server.world.entity.SpotAnimation
 import io.guthix.oldscape.server.world.entity.Sequence
 import io.guthix.oldscape.server.world.map.Tile
 import io.guthix.oldscape.server.dimensions.tiles
+import io.guthix.oldscape.server.world.entity.HeadEquipment
 
 import io.guthix.oldscape.server.api.*
 
@@ -56,7 +57,8 @@ on(ClientCheatEvent::class).where { event.string == "locremove" }.then {
 }
 
 on(ClientCheatEvent::class).where { event.string == "inv" }.then {
-    player.topInterface.inventory.addNextSlot(Obj(ObjectBlueprints[1163], 1))
+    val head = HeadEquipment(ObjectBlueprints[1163], 1)
+    player.topInterface.inventory.addNextSlot(head)
 }
 
 on(ClientCheatEvent::class).where { event.string == "shout" }.then {
