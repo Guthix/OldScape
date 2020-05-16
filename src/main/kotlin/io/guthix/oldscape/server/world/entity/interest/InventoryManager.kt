@@ -17,6 +17,7 @@
 package io.guthix.oldscape.server.world.entity.interest
 
 import io.guthix.oldscape.server.api.InventoryBlueprints
+import io.guthix.oldscape.server.net.game.out.UpdateInvClearPacket
 import io.guthix.oldscape.server.net.game.out.UpdateInvFullPacket
 import io.guthix.oldscape.server.net.game.out.UpdateInvPartialPacket
 import io.guthix.oldscape.server.net.game.out.UpdateInvStopTransmitPacket
@@ -31,7 +32,7 @@ import io.netty.channel.ChannelFuture
  * the old format (if1) which require an [interfaceId] and [interfaceSlotId] to be passed and the newer version (if3)
  * which doesn't need this.
  */
-class InventoryInterestManager(
+class InventoryManager(
     private val inventoryId: Int,
     private val interfaceId: Int = -1,
     private val interfaceSlotId: Int = 0,
@@ -41,7 +42,7 @@ class InventoryInterestManager(
 
     private var objCount = objs.count { it != null }
 
-    private val updateCache = mutableMapOf<Int, Obj?>()
+    private val changes = mutableMapOf<Int, Obj?>()
 
     fun setObject(obj: Obj) {
         if(obj.blueprint.isStackable) {
@@ -51,7 +52,7 @@ class InventoryInterestManager(
             } else {
                 val iObj = objs[slot] ?: error("No object in slot $slot of inventory $interfaceId")
                 iObj.quantity += obj.quantity
-                updateCache[slot] = iObj
+                changes[slot] = iObj
             }
         } else {
             addNextSlot(obj)
@@ -63,14 +64,14 @@ class InventoryInterestManager(
     fun setObject(slot: Int, obj: Obj) {
         require(slot in 0 until maxSize && objCount != maxSize)
         objs[slot] = obj
-        updateCache[slot] = obj
+        changes[slot] = obj
         objCount++
     }
 
     fun removeObject(slot: Int): Obj? {
         val obj = objs[slot]
         objs[slot] = null
-        updateCache[slot] = null
+        changes[slot] = null
         objCount--
         return obj
     }
@@ -79,26 +80,28 @@ class InventoryInterestManager(
         player.ctx.write(UpdateInvStopTransmitPacket(inventoryId))
     }
 
-    override fun initialize(world: World, player: Player) = objs.forEachIndexed { i, obj -> updateCache[i] = obj }
+    fun clear(player: Player) {
+        player.ctx.write(UpdateInvClearPacket(interfaceId, interfaceSlotId))
+    }
+
+    override fun initialize(world: World, player: Player) = objs.forEachIndexed { i, obj -> changes[i] = obj }
 
     override fun synchronize(world: World, player: Player): List<ChannelFuture> {
         val futures = mutableListOf<ChannelFuture>()
-        if(updateCache.isNotEmpty()) {
-            if(updateCache.size == objCount) {
+        if(changes.isNotEmpty()) {
+            if(changes.size == objCount) {
                 futures.add(player.ctx.write(
-                    UpdateInvFullPacket(interfaceId, interfaceSlotId, inventoryId, updateCache.values.toList())
+                    UpdateInvFullPacket(interfaceId, interfaceSlotId, inventoryId, changes.values.toList())
                 ))
             } else {
                 futures.add(player.ctx.write(
-                    UpdateInvPartialPacket(interfaceId, interfaceSlotId, inventoryId, updateCache.toMap())
+                    UpdateInvPartialPacket(interfaceId, interfaceSlotId, inventoryId, changes.toMap())
                 ))
             }
-            updateCache.clear()
+            changes.clear()
         }
         return futures
     }
 
     override fun postProcess() { }
-
-
 }

@@ -18,8 +18,7 @@ package io.guthix.oldscape.server.world
 
 import io.guthix.oldscape.server.net.login.LoginRequest
 import io.guthix.oldscape.server.world.entity.Player
-import io.guthix.oldscape.server.world.entity.interest.MapInterestManager
-import io.guthix.oldscape.server.world.entity.interest.PlayerInterestManager
+import io.guthix.oldscape.server.world.entity.interest.*
 import java.util.*
 import kotlin.random.Random
 
@@ -41,7 +40,9 @@ class PlayerList(capacity: Int) : Iterable<Player> {
     fun create(req: LoginRequest): Player {
         val index = freeIndexes.pop()
         val priority = Random.nextInt(occupiedIndexes.size + 1)
-        val player = Player(priority, req.ctx, PlayerInterestManager(index, req.username), MapInterestManager())
+        val player = Player(priority, req.ctx, req.clientSettings, PlayerManager(index, req.username), MapManager(),
+            ContextMenuManager(), VarpManager(), StatManager(), EnergyManager()
+        )
         players[player.index] = player
         player.priority = priority
         occupiedIndexes.add(priority, player.index)

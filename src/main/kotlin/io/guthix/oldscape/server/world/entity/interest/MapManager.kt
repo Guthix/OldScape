@@ -28,7 +28,7 @@ import io.guthix.oldscape.server.world.map.Tile
 import io.guthix.oldscape.server.world.map.Zone
 import io.netty.channel.ChannelFuture
 
-class MapInterestManager : InterestManager {
+class MapManager : InterestManager {
     lateinit var middleZone: Zone
 
     val baseX get() = middleZone.x - RANGE
@@ -39,7 +39,7 @@ class MapInterestManager : InterestManager {
         arrayOfNulls<Zone>(SIZE.value)
     }
 
-    val packetCache = Array(SIZE.value) {
+    val changes = Array(SIZE.value) {
         Array(SIZE.value) {
             mutableListOf<ZoneOutGameEvent>()
         }
@@ -53,7 +53,7 @@ class MapInterestManager : InterestManager {
             val oldZone = middleZone
             middleZone = curZone
             val xteas = getInterestedXteas(map)
-            player.updateMap(curZone, xteas)
+            player.ctx.write(RebuildNormalPacket(xteas, curZone.x, curZone.y))
             unsubscribeZones(player)
             subscribeToZones(oldZone, player, map)
         }
@@ -65,9 +65,7 @@ class MapInterestManager : InterestManager {
             for(mSquareY in middleZone.y.startMapInterest..middleZone.y.endMapInterest) {
                 if(onTutorialIsland(mSquareX, mSquareY)) continue
                 val id = (mSquareX.value shl 8) or mSquareY.value
-                val xtea = map.mapsquares[id]?.xtea ?: error(
-                    "Could not find XTEA for id $id."
-                )
+                val xtea = map.mapsquares[id]?.xtea ?: error("Could not find XTEA for id $id.")
                 interestedXteas.add(xtea)
             }
         }
@@ -83,8 +81,8 @@ class MapInterestManager : InterestManager {
     }
 
     fun subscribeToZones(oldZone: Zone, player: Player, map: WorldMap) {
-        val prevPacketCache = packetCache.copyOf()
-        packetCache.forEach { it.forEach { pCache -> pCache.clear() } }
+        val prevPacketCache = changes.copyOf()
+        changes.forEach { it.forEach { pCache -> pCache.clear() } }
         ((middleZone.x - RANGE)..(middleZone.x + RANGE)).forEachIndexed { i, zoneX ->
             ((middleZone.y - RANGE)..(middleZone.y + RANGE)).forEachIndexed { j, zoneY ->
                 val zone = map.getZone(middleZone.floor, zoneX, zoneY)
@@ -94,7 +92,7 @@ class MapInterestManager : InterestManager {
                     val prevLocalX = (zone.x - (oldZone.x - RANGE))
                     val prevLocalY = (zone.y - (oldZone.y - RANGE))
                     if(middleZone.floor == oldZone.floor && prevLocalX in REL_RANGE && prevLocalY in REL_RANGE) {
-                        packetCache[i][j].addAll(prevPacketCache[prevLocalX.value][prevLocalY.value]) // move packet cache
+                        changes[i][j].addAll(prevPacketCache[prevLocalX.value][prevLocalY.value]) // move packet cache
                     } else {
                         addInterestPackets(zone)
                     }
@@ -114,19 +112,19 @@ class MapInterestManager : InterestManager {
     }
 
     fun addObject(tile: Tile, obj: Obj) {
-        packetCache[(tile.x.inZones - baseX).value][(tile.y.inZones - baseY).value].add(
+        changes[(tile.x.inZones - baseX).value][(tile.y.inZones - baseY).value].add(
             ObjAddPacket(obj.blueprint.id, obj.quantity, tile.x.relativeZone, tile.y.relativeZone)
         )
     }
 
     fun removeObject(tile: Tile, obj: Obj) {
-        packetCache[(tile.x.inZones - baseX).value][(tile.y.inZones - baseY).value].add(
+        changes[(tile.x.inZones - baseX).value][(tile.y.inZones - baseY).value].add(
             ObjDelPacket(obj.blueprint.id, tile.x.relativeZone, tile.y.relativeZone)
         )
     }
 
     fun addDynamicLoc(loc: Loc) {
-        packetCache[(loc.position.x.inZones - baseX).value][(loc.position.y.inZones - baseY).value].add(
+        changes[(loc.position.x.inZones - baseX).value][(loc.position.y.inZones - baseY).value].add(
             LocAddChangePacket(
                 loc.blueprint.id, loc.type, loc.orientation, loc.position.x.relativeZone, loc.position.y.relativeZone
             )
@@ -134,13 +132,13 @@ class MapInterestManager : InterestManager {
     }
 
     fun removeDynamicLoc(loc: Loc) {
-        packetCache[(loc.position.x.inZones - baseX).value][(loc.position.y.inZones - baseY).value].add(
+        changes[(loc.position.x.inZones - baseX).value][(loc.position.y.inZones - baseY).value].add(
             LocDelPacket(loc.type, loc.orientation, loc.position.x.relativeZone, loc.position.y.relativeZone)
         )
     }
 
     fun clear(player: Player) {
-        packetCache.forEachIndexed { x, yPacketList ->
+        changes.forEachIndexed { x, yPacketList ->
             yPacketList.forEachIndexed { y, _ ->
                 player.ctx.write(UpdateZoneFullFollowsPacket(x.zones.inTiles, y.zones.inTiles))
             }
@@ -165,7 +163,7 @@ class MapInterestManager : InterestManager {
         val futures = mutableListOf<ChannelFuture>()
         val pZone = world.map.getZone(player.position) ?: error("Could not find $player on the map.")
         checkReload(pZone, world.map, player)
-        packetCache.forEachIndexed { x, yPacketList ->
+        changes.forEachIndexed { x, yPacketList ->
             yPacketList.forEachIndexed { y, packetList ->
                 if(packetList.size == 1) {
                     futures.add(player.ctx.write(UpdateZonePartialFollowsPacket(x.zones.inTiles, y.zones.inTiles)))
@@ -180,7 +178,7 @@ class MapInterestManager : InterestManager {
         return futures
     }
 
-    override fun postProcess() = packetCache.forEach { it.forEach { it.clear() } }
+    override fun postProcess() = changes.forEach { it.forEach { it.clear() } }
 
     companion object {
         val SIZE = 13.zones
@@ -189,7 +187,7 @@ class MapInterestManager : InterestManager {
 
         val RANGE = SIZE / 2.zones
 
-        val UPDATE_RANGE = RANGE - PlayerInterestManager.RANGE.inZones
+        val UPDATE_RANGE = RANGE - PlayerManager.RANGE.inZones
 
         private val ZoneUnit.startMapInterest get() = (this - RANGE).inMapsquares
 

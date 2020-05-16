@@ -20,5 +20,5 @@ import io.guthix.oldscape.server.event.ButtonClickEvent
 
 on(ButtonClickEvent::class).where { event.interfaceId == 160 && event.buttonId == 22 }.then {
     player.inRunMode = !player.inRunMode
-    player.updateVarp(173, if(player.inRunMode) 1 else 0)
+    player.updateVarbit(173, if(player.inRunMode) 1 else 0)
 }
