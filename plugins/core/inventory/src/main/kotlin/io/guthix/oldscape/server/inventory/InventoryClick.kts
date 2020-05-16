@@ -21,7 +21,6 @@ import io.guthix.oldscape.server.event.script.EventBus
 import io.guthix.oldscape.server.blueprints.equipment.*
 import io.guthix.oldscape.server.event.*
 
-
 on(InventoryObjectClickEvent::class).then {
     if (event.objBlueprint is EquipmentBlueprint) {
         EventBus.schedule(

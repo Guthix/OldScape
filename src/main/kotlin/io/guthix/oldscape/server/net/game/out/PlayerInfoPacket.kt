@@ -26,7 +26,7 @@ import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.PlayerList
 import io.guthix.oldscape.server.world.entity.CharacterVisual
 import io.guthix.oldscape.server.world.entity.Player
-import io.guthix.oldscape.server.world.entity.interest.PlayerInterestManager
+import io.guthix.oldscape.server.world.entity.interest.PlayerManager
 import io.guthix.oldscape.server.world.entity.interest.regionId
 import io.guthix.oldscape.server.world.map.Tile
 import io.netty.buffer.ByteBuf
@@ -37,7 +37,7 @@ import kotlin.math.abs
 
 class PlayerInfoPacket(
     private val worldPlayers: PlayerList,
-    private val im: PlayerInterestManager
+    private val im: PlayerManager
 ) : OutGameEvent {
     override val opcode = 41
 
@@ -70,7 +70,7 @@ class PlayerInfoPacket(
 
     private fun processLocalPlayers(buf: BitBuf, maskBuf: ByteBuf, nsn: Boolean) {
         //TODO logout
-        fun localUpdateRequired(im: PlayerInterestManager, localPlayer: Player) = (this.im.updateFlags.isNotEmpty()
+        fun localUpdateRequired(im: PlayerManager, localPlayer: Player) = (this.im.updateFlags.isNotEmpty()
             || !im.position.isInterestedIn(localPlayer.position)
             || this.im.movementType != CharacterVisual.MovementUpdateType.STAY
             )
@@ -112,7 +112,7 @@ class PlayerInfoPacket(
                 bitBuf.writeBits(value = 0, amount = 2)
             }
             if (flagUpdateRequired) {
-                updateLocalPlayerVisual(localPlayer.visualInterestManager, maskBuf)
+                updateLocalPlayerVisual(localPlayer.visualManager, maskBuf)
             }
         }
 
@@ -154,7 +154,7 @@ class PlayerInfoPacket(
     }
 
     private fun processExternalPlayers(buf: BitBuf, maskBuf: ByteBuf, nsn: Boolean) {
-        fun externalUpdateRequired(player: PlayerInterestManager, externalPlayer: Player) =
+        fun externalUpdateRequired(player: PlayerManager, externalPlayer: Player) =
             player.position.isInterestedIn(externalPlayer.position)
                 || im.fieldIds[externalPlayer.index] != externalPlayer.position.regionId
 
@@ -197,7 +197,7 @@ class PlayerInfoPacket(
                 buf.writeBits(value = externalPlayer.position.x.value, amount = 13)
                 buf.writeBits(value = externalPlayer.position.y.value, amount = 13)
                 buf.writeBoolean(true)
-                updateLocalPlayerVisual(externalPlayer.visualInterestManager, maskBuf, sortedSetOf(appearance, orientation, movementCached))
+                updateLocalPlayerVisual(externalPlayer.visualManager, maskBuf, sortedSetOf(appearance, orientation, movementCached))
                 im.localPlayers[externalPlayer.index] = externalPlayer
             } else {
                 updateField(buf, externalPlayer)
@@ -282,7 +282,7 @@ class PlayerInfoPacket(
     }
 
     private fun updateLocalPlayerVisual(
-        im: PlayerInterestManager,
+        im: PlayerManager,
         maskBuf: ByteBuf,
         privateUpdates: SortedSet<UpdateType> = sortedSetOf()
     ) {
@@ -305,7 +305,7 @@ class PlayerInfoPacket(
     class UpdateType(
         priority: Int,
         mask: Int,
-        val encode: ByteBuf.(im: PlayerInterestManager) -> Unit
+        val encode: ByteBuf.(im: PlayerManager) -> Unit
     ) : CharacterVisual.UpdateType(priority, mask)
 
     companion object {
@@ -422,7 +422,7 @@ class PlayerInfoPacket(
             im.equipment.feet?.let { // write feet
                 writeShort(512 + it.blueprint.id)
             } ?: run { writeShort(256 + im.style.feet)}
-            if(im.gender == PlayerInterestManager.Gender.MALE) { //write beard
+            if(im.gender == PlayerManager.Gender.MALE) { //write beard
                 im.equipment.head?.let {
                     if(it.blueprint.coversFace) writeByte(0) else writeShort(256 + im.style.beard)
                 } ?: run { writeShort(256 + im.style.beard) }

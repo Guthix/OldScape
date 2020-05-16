@@ -14,27 +14,28 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with Foobar. If not, see <https://www.gnu.org/licenses/>.
  */
-package io.guthix.oldscape.server.world.entity.intface
+package io.guthix.oldscape.server.world.entity.interest
 
 import io.guthix.oldscape.server.net.game.out.IfClosesubPacket
 import io.guthix.oldscape.server.net.game.out.IfOpensubPacket
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.Player
-import io.guthix.oldscape.server.world.entity.interest.InterestManager
-import io.guthix.oldscape.server.world.entity.interest.InventoryInterestManager
+import io.guthix.oldscape.server.world.entity.intface.IfComponent
+import io.guthix.oldscape.server.world.entity.intface.Interface
+import io.guthix.oldscape.server.world.entity.intface.SubInterface
 import io.netty.channel.ChannelFuture
 import io.netty.channel.ChannelHandlerContext
 
-class TopInterface(
+class TopInterfaceManager(
     ctx: ChannelHandlerContext,
     id: Int,
     var modalOpen: Boolean = false,
     var modalSlot: Int? = null,
     children: MutableMap<Int, IfComponent> = mutableMapOf()
 ) : Interface(ctx, id, Type.TOPLEVELINTERFACE, children), InterestManager {
-    val inventory = InventoryInterestManager(93, 149, 0)
+    val inventory = InventoryManager(93, 149, 0)
 
-    val equipment = InventoryInterestManager(94)
+    val equipment = InventoryManager(94)
 
     override fun initialize(world: World, player: Player) {
         inventory.initialize(world, player)

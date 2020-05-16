@@ -46,8 +46,7 @@ class World : TimerTask() {
         while (loginQueue.isNotEmpty()) {
             val request = loginQueue.poll()
             val player = players.create(request)
-            player.clientSettings = request.clientSettings
-            request.ctx.writeAndFlush(LoginResponse(player.index, player.visualInterestManager.rights))
+            request.ctx.writeAndFlush(LoginResponse(player.index, player.visualManager.rights))
             request.ctx.pipeline().replace(LoginDecoder::class.qualifiedName, GameDecoder::class.qualifiedName,
                 GameDecoder(request.isaacPair.decodeGen)
             )
@@ -66,7 +65,7 @@ class World : TimerTask() {
     }
 
     private fun proccessMovment() {
-        for (player in players) player.visualInterestManager.move()
+        for (player in players) player.visualManager.move()
     }
 
     private fun synchronizeInterest() {

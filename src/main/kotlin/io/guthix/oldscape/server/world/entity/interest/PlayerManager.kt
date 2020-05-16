@@ -24,7 +24,7 @@ import io.guthix.oldscape.server.world.entity.*
 import io.guthix.oldscape.server.world.map.Tile
 import io.netty.channel.ChannelFuture
 
-class PlayerInterestManager(val index: Int, val username: String) : CharacterVisual(), InterestManager {
+class PlayerManager(val index: Int, val username: String) : CharacterVisual(), InterestManager {
     var nameModifiers = arrayOf("", "", "")
 
     var inRunMode = false
@@ -238,5 +238,5 @@ class PlayerInterestManager(val index: Int, val username: String) : CharacterVis
     }
 }
 
-val Tile.regionId get() = (floor.value shl 16) or ((x / PlayerInterestManager.REGION_SIZE).value shl 8) or
-    (y / PlayerInterestManager.REGION_SIZE).value
+val Tile.regionId get() = (floor.value shl 16) or ((x / PlayerManager.REGION_SIZE).value shl 8) or
+    (y / PlayerManager.REGION_SIZE).value
