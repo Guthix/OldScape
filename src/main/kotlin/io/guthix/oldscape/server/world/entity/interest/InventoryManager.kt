@@ -67,13 +67,12 @@ class InventoryManager(
         objCount++
     }
 
-    fun<O : Obj> removeObject(slot: Int): O? {
+    fun removeObject(slot: Int): Obj? {
         val obj = objs[slot]
         objs[slot] = null
         changes[slot] = null
         objCount--
-        @Suppress("UNCHECKED_CAST")
-        return obj as O
+        return obj
     }
 
     fun release(player: Player) {

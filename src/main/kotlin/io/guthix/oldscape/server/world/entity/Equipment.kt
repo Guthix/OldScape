@@ -69,7 +69,7 @@ class LegsEquipment(
     quantity: Int
 ) : Equipment(blueprint, quantity)
 
-class HandsEquipment(
+class HandEquipment(
     override val blueprint: HandsBlueprint,
     quantity: Int
 ) : Equipment(blueprint, quantity)
