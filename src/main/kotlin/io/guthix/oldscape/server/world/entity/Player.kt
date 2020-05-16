@@ -259,7 +259,7 @@ data class Player(
         visualManager.updateFlags.add(PlayerInfoPacket.appearance)
     }
 
-    fun equip(hands: HandsEquipment?) {
+    fun equip(hands: HandEquipment?) {
         visualManager.equipment.hands = hands
         visualManager.updateFlags.add(PlayerInfoPacket.appearance)
     }

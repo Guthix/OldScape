@@ -159,7 +159,7 @@ class PlayerManager(val index: Int, val username: String) : CharacterVisual(), I
         body: BodyEquipment?,
         shield: ShieldEquipment?,
         legs: LegsEquipment?,
-        hands: HandsEquipment?,
+        hands: HandEquipment?,
         feet: FeetEquipment?,
         ring: RingEquipment?
     ) {
