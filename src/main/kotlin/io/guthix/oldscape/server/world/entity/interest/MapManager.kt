@@ -113,13 +113,13 @@ class MapManager : InterestManager {
 
     fun addObject(tile: Tile, obj: Obj) {
         changes[(tile.x.inZones - baseX).value][(tile.y.inZones - baseY).value].add(
-            ObjAddPacket(obj.blueprint.id, obj.quantity, tile.x.relativeZone, tile.y.relativeZone)
+            ObjAddPacket(obj.id, obj.quantity, tile.x.relativeZone, tile.y.relativeZone)
         )
     }
 
     fun removeObject(tile: Tile, obj: Obj) {
         changes[(tile.x.inZones - baseX).value][(tile.y.inZones - baseY).value].add(
-            ObjDelPacket(obj.blueprint.id, tile.x.relativeZone, tile.y.relativeZone)
+            ObjDelPacket(obj.id, tile.x.relativeZone, tile.y.relativeZone)
         )
     }
 

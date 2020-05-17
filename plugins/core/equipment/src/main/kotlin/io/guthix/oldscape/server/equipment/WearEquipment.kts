@@ -23,47 +23,47 @@ on(InventoryObjectClickEvent::class).where { event.option == "Wear" }.then {
     val obj = player.topInterface.inventory.removeObject(event.inventorySlot) ?: return@then
     when(obj) {
         is WeaponEquipment -> {
-            player.topInterface.equipment.setObject(obj.blueprint.slot.id, obj)
+            player.topInterface.equipment.setObject(obj.slot.id, obj)
             player.equip(obj)
         }
         is ShieldEquipment -> {
-            player.topInterface.equipment.setObject(obj.blueprint.slot.id, obj)
+            player.topInterface.equipment.setObject(obj.slot.id, obj)
             player.equip(obj)
         }
         is HeadEquipment -> {
-            player.topInterface.equipment.setObject(obj.blueprint.slot.id, obj)
+            player.topInterface.equipment.setObject(obj.slot.id, obj)
             player.equip(obj)
         }
         is BodyEquipment -> {
-            player.topInterface.equipment.setObject(obj.blueprint.slot.id, obj)
+            player.topInterface.equipment.setObject(obj.slot.id, obj)
             player.equip(obj)
         }
         is LegsEquipment -> {
-            player.topInterface.equipment.setObject(obj.blueprint.slot.id, obj)
+            player.topInterface.equipment.setObject(obj.slot.id, obj)
             player.equip(obj)
         }
         is AmmunitionEquipment -> {
-            player.topInterface.equipment.setObject(obj.blueprint.slot.id, obj)
+            player.topInterface.equipment.setObject(obj.slot.id, obj)
             player.equip(obj)
         }
         is CapeEquipment -> {
-            player.topInterface.equipment.setObject(obj.blueprint.slot.id, obj)
+            player.topInterface.equipment.setObject(obj.slot.id, obj)
             player.equip(obj)
         }
         is RingEquipment -> {
-            player.topInterface.equipment.setObject(obj.blueprint.slot.id, obj)
+            player.topInterface.equipment.setObject(obj.slot.id, obj)
             player.equip(obj)
         }
         is NeckEquipment -> {
-            player.topInterface.equipment.setObject(obj.blueprint.slot.id, obj)
+            player.topInterface.equipment.setObject(obj.slot.id, obj)
             player.equip(obj)
         }
         is HandEquipment -> {
-            player.topInterface.equipment.setObject(obj.blueprint.slot.id, obj)
+            player.topInterface.equipment.setObject(obj.slot.id, obj)
             player.equip(obj)
         }
         is FeetEquipment -> {
-            player.topInterface.equipment.setObject(obj.blueprint.slot.id, obj)
+            player.topInterface.equipment.setObject(obj.slot.id, obj)
             player.equip(obj)
         }
     }

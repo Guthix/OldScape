@@ -390,41 +390,41 @@ class PlayerInfoPacket(
             writeByte(if(im.isSkulled) 1 else -1)
             writeByte(im.prayerIcon)
             im.equipment.head?.let { // write head gear
-                writeShort(512 + it.blueprint.id)
+                writeShort(512 + it.id)
             } ?: run { writeByte(0) }
             im.equipment.cape?.let {  // write cape
-                writeShort(512 + it.blueprint.id)
+                writeShort(512 + it.id)
             } ?: run { writeByte(0) }
             im.equipment.neck?.let {  // write neck gear
-                writeShort(512 + it.blueprint.id)
+                writeShort(512 + it.id)
             } ?: run { writeByte(0) }
             im.equipment.weapon?.let { // write weapon
-                writeShort(512 + it.blueprint.id)
+                writeShort(512 + it.id)
             } ?: run { writeByte(0) }
             im.equipment.body?.let { // write body
-                writeShort(512 + it.blueprint.id)
+                writeShort(512 + it.id)
             } ?: run { writeShort(256 + im.style.torso) }
             im.equipment.shield?.let {  // write shield gear
-                writeShort(512 + it.blueprint.id)
+                writeShort(512 + it.id)
             } ?: run { writeByte(0) }
             im.equipment.body?.let { // write arms
-                if(it.blueprint.isFullBody) writeByte(0) else writeShort(256 + im.style.arms)
+                if(it.isFullBody) writeByte(0) else writeShort(256 + im.style.arms)
             } ?: run { writeShort(256 + im.style.arms) }
             im.equipment.legs?.let { // write legs
-                writeShort(512 + it.blueprint.id)
+                writeShort(512 + it.id)
             } ?: run { writeShort(256 + im.style.legs) }
             im.equipment.head?.let { // write hair
-                if(it.blueprint.coversHair) writeByte(0) else writeShort(256 + im.style.hair)
+                if(it.coversHair) writeByte(0) else writeShort(256 + im.style.hair)
             } ?: run { writeShort(256 + im.style.hair) }
             im.equipment.hands?.let {  // write hands
-                writeShort(512 + it.blueprint.id)
+                writeShort(512 + it.id)
             } ?: run { writeShort(256 + im.style.hands) }
             im.equipment.feet?.let { // write feet
-                writeShort(512 + it.blueprint.id)
+                writeShort(512 + it.id)
             } ?: run { writeShort(256 + im.style.feet)}
             if(im.gender == PlayerManager.Gender.MALE) { //write beard
                 im.equipment.head?.let {
-                    if(it.blueprint.coversFace) writeByte(0) else writeShort(256 + im.style.beard)
+                    if(it.coversFace) writeByte(0) else writeShort(256 + im.style.beard)
                 } ?: run { writeShort(256 + im.style.beard) }
             } else {
                 writeByte(0)

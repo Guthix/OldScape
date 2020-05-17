@@ -60,7 +60,7 @@ class Zone(
     fun addUnwalkableTile(localX: TileUnit, localY: TileUnit) = collisions.addUnwalkableTile(localX, localY)
 
     fun addObject(tile: Tile, obj: Obj) {
-        groundObjects.getOrPut(tile, { mutableMapOf() }).getOrPut(obj.blueprint.id, { mutableListOf() }).add(obj)
+        groundObjects.getOrPut(tile, { mutableMapOf() }).getOrPut(obj.id, { mutableListOf() }).add(obj)
         players.forEach { player -> player.mapManager.addObject(tile, obj) }
     }
 

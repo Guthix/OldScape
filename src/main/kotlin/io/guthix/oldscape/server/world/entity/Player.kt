@@ -92,7 +92,7 @@ data class Player(
         visualManager.initialize(world, this)
         mapManager.initialize(world, this)
         val xteas = mapManager.getInterestedXteas(world.map)
-        ctx.write(InterestInitPacket(this, world.players, xteas, position.x.inZones, position.y.inZones))
+        ctx.write(InterestInitPacket(world.players, this, xteas, position.x.inZones, position.y.inZones))
         topInterface.initialize(world, this)
         contextMenuManager.initialize(world, this)
         varpManager.initialize(world, this)
