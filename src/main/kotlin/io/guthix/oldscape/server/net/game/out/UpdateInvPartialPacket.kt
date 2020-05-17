@@ -42,7 +42,7 @@ class UpdateInvPartialPacket(
             if(obj == null) {
                 buf.writeShort(0)
             } else {
-                buf.writeShort(obj.blueprint.id + 1)
+                buf.writeShort(obj.id + 1)
                 if(obj.quantity <= 255) {
                     buf.writeByte(obj.quantity)
                 } else {

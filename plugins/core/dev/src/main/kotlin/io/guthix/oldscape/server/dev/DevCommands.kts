@@ -30,7 +30,7 @@ import io.guthix.oldscape.server.api.*
 on(ClientCheatEvent::class).where { event.string == "drop" }.then {
     world.map.addObject(
         Tile(player.position.floor, player.position.x + 1.tiles, player.position.y + 1.tiles),
-        Obj(ObjectBlueprints[1163], 1)
+        Obj(1163, 1)
     )
 }
 
@@ -57,7 +57,7 @@ on(ClientCheatEvent::class).where { event.string == "locremove" }.then {
 }
 
 on(ClientCheatEvent::class).where { event.string == "inv" }.then {
-    val head = HeadEquipment(ObjectBlueprints[1163], 1)
+    val head = HeadEquipment(1163, 1)
     player.topInterface.inventory.addNextSlot(head)
 }
 

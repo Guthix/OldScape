@@ -30,8 +30,8 @@ import io.netty.channel.ChannelHandlerContext
 import kotlin.math.ceil
 
 class InterestInitPacket(
-    private val player: Player,
     private val playersInWorld: PlayerList,
+    private val player: Player,
     private val xteas: List<IntArray>,
     private val x: ZoneUnit,
     private val y: ZoneUnit

@@ -44,8 +44,8 @@ class InventoryManager(
     private val changes = mutableMapOf<Int, Obj?>()
 
     fun setObject(obj: Obj) {
-        if(obj.blueprint.isStackable) {
-            val slot = objs.indexOfFirst { it?.blueprint?.id == obj.blueprint.id }
+        if(obj.isStackable) {
+            val slot = objs.indexOfFirst { it?.id == obj.id }
             if(slot == -1) { // obj not already in inventory
                 addNextSlot(obj)
             } else {
