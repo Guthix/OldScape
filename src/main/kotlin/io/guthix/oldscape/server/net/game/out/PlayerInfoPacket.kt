@@ -69,10 +69,11 @@ class PlayerInfoPacket(
 
 
     private fun processLocalPlayers(buf: BitBuf, maskBuf: ByteBuf, nsn: Boolean) {
-        //TODO logout
-        fun localUpdateRequired(im: PlayerManager, localPlayer: Player) = (this.im.updateFlags.isNotEmpty()
+        //TODO teleport
+        fun localUpdateRequired(im: PlayerManager, localPlayer: Player) = (im.updateFlags.isNotEmpty()
             || !im.position.isInterestedIn(localPlayer.pos)
-            || this.im.movementType != CharacterVisual.MovementUpdateType.STAY
+            || localPlayer.isLoggingOut
+            || im.movementType != CharacterVisual.MovementUpdateType.STAY
             )
 
         fun updateLocalPlayer(localPlayer: Player, bitBuf: BitBuf, maskBuf: ByteBuf) {
@@ -98,7 +99,7 @@ class PlayerInfoPacket(
                         12
                     )
                 }
-            } else if (!im.position.isInterestedIn(localPlayer.pos)) {
+            } else if (!im.position.isInterestedIn(localPlayer.pos) || localPlayer.isLoggingOut) {
                 bitBuf.writeBits(value = 0, amount = 2)
                 bitBuf.writeBoolean(false)
                 im.localPlayers[localPlayer.index] = null

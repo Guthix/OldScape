@@ -46,6 +46,8 @@ data class Player(
 
     internal val routines = sortedMapOf<Routine.Type, MutableList<Routine>>()
 
+    var isLoggingOut = false
+
     val contextMenu get() = contextMenuManager.contextMenu
 
     var topInterface = TopInterfaceManager(ctx, id = 165)
@@ -298,6 +300,13 @@ data class Player(
     fun turnToLock(char: Character?) {
         visualManager.interacting = char
         char?.let { setOrientation(char) }
+    }
+
+    internal fun stageLogout() {
+        isLoggingOut = true
+        inEvents.clear()
+        routines.clear()
+        ctx.writeAndFlush(LogoutFullPacket())
     }
 
     private fun setOrientation(entity: Entity) {

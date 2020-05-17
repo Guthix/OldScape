@@ -14,12 +14,21 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with Foobar. If not, see <https://www.gnu.org/licenses/>.
  */
-package io.guthix.oldscape.server
+package io.guthix.oldscape.server.net.game.out
 
-import java.math.BigInteger
+import io.guthix.oldscape.server.net.game.FixedSize
+import io.guthix.oldscape.server.net.game.OutGameEvent
+import io.netty.buffer.Unpooled
+import io.netty.channel.ChannelHandlerContext
 
-data class ServerConfig(val revision: Int, val port: Int, val rsa: RSA) {
-    data class RSA(val publicKey: BigInteger, val privateKey: BigInteger, val modulus: BigInteger)
+class LogoutFullPacket : OutGameEvent {
+    override val opcode = 21
+
+    override val size = FixedSize(STATIC_SIZE)
+
+    override fun encode(ctx: ChannelHandlerContext) = Unpooled.EMPTY_BUFFER
+
+    companion object {
+        const val STATIC_SIZE = 0
+    }
 }
-
-
