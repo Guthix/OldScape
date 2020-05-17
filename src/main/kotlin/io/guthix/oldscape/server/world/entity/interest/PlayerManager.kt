@@ -138,7 +138,7 @@ class PlayerManager(val index: Int, val username: String) : CharacterVisual(), I
         for (playerIndex in 1 until World.MAX_PLAYERS) {
             if (index != playerIndex) {
                 val externalPlayer = world.players[playerIndex]
-                fieldIds[playerIndex] = externalPlayer?.position?.regionId ?: 0
+                fieldIds[playerIndex] = externalPlayer?.pos?.regionId ?: 0
                 externalPlayerIndexes[externalPlayerCount++] = playerIndex
             }
         }

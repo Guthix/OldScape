@@ -16,21 +16,31 @@
  */
 package io.guthix.oldscape.server.world.entity
 
+import io.guthix.oldscape.server.api.LocationBlueprints
 import io.guthix.oldscape.server.dimensions.TileUnit
-import io.guthix.oldscape.server.blueprints.LocationBlueprint
 import io.guthix.oldscape.server.world.map.Tile
 
 class Loc(
-    private val pos: Tile,
-    val blueprint: LocationBlueprint,
+    id: Int,
     val type: Int,
+    override val pos: Tile,
     override var orientation: Int
 ) : Entity() {
-    override val position: Tile get() = pos
+    private val blueprint =  LocationBlueprints[id]
 
-    override val sizeX get() = if (orientation == 0 || orientation == 2) blueprint.width else blueprint.length
+    val id get() = blueprint.id
 
-    override val sizeY get() = if (orientation == 0 || orientation == 2) blueprint.length else blueprint.width
+    val impenetrable get() = blueprint.impenetrable
+
+    val clipType get() = blueprint.clipType
+
+    val width get() = blueprint.width
+
+    val length get() = blueprint.length
+
+    override val sizeX get() = if (orientation == 0 || orientation == 2) width else length
+
+    override val sizeY get() = if (orientation == 0 || orientation == 2) length else width
 
     val accessBlockFlags get() = if (orientation != 0) {
         (blueprint.accessBlockFlags shl orientation and 0xF) + (blueprint.accessBlockFlags shr 4 - orientation)
@@ -40,7 +50,7 @@ class Loc(
 
     val slot get() = MAP_SLOTS[type]
 
-    internal val mapKey get() = (position.x.relativeZone.value shl 5) or (position.y.relativeZone.value shl 2) or slot
+    internal val mapKey get() = (pos.x.relativeZone.value shl 5) or (pos.y.relativeZone.value shl 2) or slot
 
     companion object {
         const val UNIQUE_SLOTS = 4

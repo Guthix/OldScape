@@ -19,7 +19,6 @@ package io.guthix.oldscape.server.world.map
 import io.guthix.oldscape.cache.map.MapDefinition
 import io.guthix.oldscape.cache.map.MapLocDefinition
 import io.guthix.oldscape.cache.map.MapSquareDefinition
-import io.guthix.oldscape.server.api.LocationBlueprints
 import io.guthix.oldscape.server.dimensions.*
 import io.guthix.oldscape.server.world.WorldMap
 import io.guthix.oldscape.server.world.entity.Obj
@@ -54,13 +53,12 @@ class Mapsquare(val x: MapsquareUnit, val y: MapsquareUnit, val xtea: IntArray, 
             locations.forEach { loc ->
                 get(loc.floor).addStaticLocation(
                     Loc(
-                        Tile(
-                            loc.floor.floors,
+                        loc.id,
+                        loc.type,
+                        Tile(loc.floor.floors,
                             def.x.mapsquares.inTiles + loc.localX.tiles,
                             def.y.mapsquares.inTiles + loc.localY.tiles
                         ),
-                        LocationBlueprints[loc.id],
-                        loc.type,
                         loc.orientation
                     )
                 )
@@ -91,9 +89,9 @@ class Mapsquare(val x: MapsquareUnit, val y: MapsquareUnit, val xtea: IntArray, 
 
     fun removeObject(tile: Tile, id: Int) = floors[tile.floor.value].removeObject(tile, id)
 
-    fun addDynamicLoc(loc: Loc) = floors[loc.position.floor.value].addDynamicLoc(loc)
+    fun addDynamicLoc(loc: Loc) = floors[loc.pos.floor.value].addDynamicLoc(loc)
 
-    fun removeDynamicLoc(loc: Loc) = floors[loc.position.floor.value].removeDynamicLoc(loc)
+    fun removeDynamicLoc(loc: Loc) = floors[loc.pos.floor.value].removeDynamicLoc(loc)
 
     companion object {
         const val FLOOR_COUNT = 4

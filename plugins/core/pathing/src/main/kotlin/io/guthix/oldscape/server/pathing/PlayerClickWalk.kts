@@ -28,15 +28,15 @@ import io.guthix.oldscape.server.dimensions.TileUnit
 import io.guthix.oldscape.server.dimensions.FloorUnit
 
 on(MiniMapClickEvent::class).then {
-    player.startWalkingToTile(player.position.floor, event.x, event.y, world.map)
+    player.startWalkingToTile(player.pos.floor, event.x, event.y, world.map)
 }
 
 on(MapClickEvent::class).then {
-    player.startWalkingToTile(player.position.floor, event.x, event.y, world.map)
+    player.startWalkingToTile(player.pos.floor, event.x, event.y, world.map)
 }
 
 fun Player.startWalkingToTile(floor: FloorUnit, x: TileUnit, y: TileUnit, map: WorldMap) {
-    path = breadthFirstSearch(position, DestinationTile(floor, x, y), size, true, map)
+    path = breadthFirstSearch(pos, DestinationTile(floor, x, y), size, true, map)
     path.lastOrNull()?.let { dest -> if(dest != Tile(floor, x, y)) setMapFlag(dest.x, dest.y) }
     cancelRoutine(Routine.Type.Normal)
 }

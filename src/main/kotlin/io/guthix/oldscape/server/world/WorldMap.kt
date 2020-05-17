@@ -75,7 +75,7 @@ class WorldMap(val mapsquares: MutableMap<Int, Mapsquare>) {
 
     fun removeObject(tile: Tile, id: Int) = mapsquares[id(tile.x, tile.y)]?.removeObject(tile, id)
 
-    fun addDynamicLoc(loc: Loc) = mapsquares[id(loc.position.x, loc.position.y)]?.addDynamicLoc(loc)
+    fun addDynamicLoc(loc: Loc) = mapsquares[id(loc.pos.x, loc.pos.y)]?.addDynamicLoc(loc)
 
-    fun removeDynamicLoc(loc: Loc) = mapsquares[id(loc.position.x, loc.position.y)]?.removeDynamicLoc(loc)
+    fun removeDynamicLoc(loc: Loc) = mapsquares[id(loc.pos.x, loc.pos.y)]?.removeDynamicLoc(loc)
 }

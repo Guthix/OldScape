@@ -16,17 +16,15 @@
  */
 package io.guthix.oldscape.server.world.entity
 
-import io.guthix.oldscape.server.dimensions.tiles
+import io.guthix.oldscape.server.dimensions.TileUnit
 import io.guthix.oldscape.server.world.map.Tile
 
 abstract class Entity {
-    abstract val position: Tile
+    abstract val pos: Tile
 
-    open val sizeX get() = size
+    abstract val sizeX: TileUnit
 
-    open val sizeY get() = size
+    abstract val sizeY: TileUnit
 
     open var orientation: Int = 0
-
-    val size = 1.tiles // TODO
 }

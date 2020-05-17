@@ -47,7 +47,7 @@ class Zone(
         for(slot in 0 until Loc.UNIQUE_SLOTS) {
             val key = Loc.generateMapKey(localX, localY, slot)
             val mapObject = staticLocations[key] ?: dynamicLocations[key]
-            mapObject?.let { if(id == it.blueprint.id) return it }
+            mapObject?.let { if(id == it.id) return it }
         }
         return null
     }

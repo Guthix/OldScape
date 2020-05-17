@@ -46,8 +46,8 @@ class MapsquareFloor(
         .getLoc(id, localX.relativeZone, localY.relativeZone)
 
     fun addStaticLocation(loc: Loc) {
-        val zoneX = loc.position.x.inZones.relativeMapSquare
-        val zoneY = loc.position.y.inZones.relativeMapSquare
+        val zoneX = loc.pos.x.inZones.relativeMapSquare
+        val zoneY = loc.pos.y.inZones.relativeMapSquare
         zones[zoneX.value][zoneY.value].addStaticLoc(loc)
     }
 
@@ -67,14 +67,14 @@ class MapsquareFloor(
     }
 
     fun addDynamicLoc(loc: Loc) {
-        val zoneX = loc.position.x.inZones.relativeMapSquare
-        val zoneY = loc.position.y.inZones.relativeMapSquare
+        val zoneX = loc.pos.x.inZones.relativeMapSquare
+        val zoneY = loc.pos.y.inZones.relativeMapSquare
         zones[zoneX.value][zoneY.value].addDynamicLoc(loc)
     }
 
     fun removeDynamicLoc(loc: Loc) {
-        val zoneX = loc.position.x.inZones.relativeMapSquare
-        val zoneY = loc.position.y.inZones.relativeMapSquare
+        val zoneX = loc.pos.x.inZones.relativeMapSquare
+        val zoneY = loc.pos.y.inZones.relativeMapSquare
         zones[zoneX.value][zoneY.value].removeDynamicLoc(loc)
     }
 

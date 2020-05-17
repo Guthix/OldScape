@@ -25,22 +25,22 @@ import io.guthix.oldscape.server.event.script.Routine
 on(PlayerClickEvent::class).where { event.option == "Follow" }.then(Routine.Type.Normal) {
     val followed = event.player
     var dest = DestinationTile(followed.followPosition)
-    player.path = breadthFirstSearch(player.position, dest, player.size, true, world.map)
+    player.path = breadthFirstSearch(player.pos, dest, player.size, true, world.map)
     player.turnToLock(followed)
     var currentTarget = player.followPosition
     while(true) {
-        if(dest.reached(player.position.x, player.position.y, player.size)) {
+        if(dest.reached(player.pos.x, player.pos.y, player.size)) {
             break
         }
         if(currentTarget != followed.followPosition) {
-            player.path = breadthFirstSearch(player.position, dest, player.size, true, world.map)
+            player.path = breadthFirstSearch(player.pos, dest, player.size, true, world.map)
         }
         wait(1)
     }
     while(true) {
         wait { currentTarget != followed.followPosition }
         dest = DestinationTile(followed.followPosition)
-        player.path = simplePathSearch(player.position, dest, player.size, world.map)
+        player.path = simplePathSearch(player.pos, dest, player.size, world.map)
         currentTarget = followed.followPosition
     }
 }.onCancel {
