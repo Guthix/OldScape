@@ -41,29 +41,27 @@ class ZoneCollision(val zone: Zone) {
     fun addLocation(loc: Loc) {
         when (loc.type) {
             in 0..3 -> {
-                if (loc.blueprint.clipType != 0) {
+                if (loc.clipType != 0) {
                     addWall(
-                        loc.position.x.relativeZone, loc.position.y.relativeZone, loc.type, loc.orientation,
-                        loc.blueprint.impenetrable
+                        loc.pos.x.relativeZone, loc.pos.y.relativeZone, loc.type, loc.orientation,
+                        loc.impenetrable
                     )
                 }
             }
             in 9..21 -> {
-                if (loc.blueprint.clipType != 0) {
-                    var sizeX = loc.blueprint.width
-                    var sizeY = loc.blueprint.length
+                if (loc.clipType != 0) {
+                    var sizeX = loc.width
+                    var sizeY = loc.length
                     if (loc.orientation == 1 || loc.orientation == 3) {
-                        sizeX = loc.blueprint.length
-                        sizeY = loc.blueprint.width
+                        sizeX = loc.length
+                        sizeY = loc.width
                     }
-                    addObject(loc.position.x.relativeZone, loc.position.y.relativeZone, sizeX, sizeY,
-                        loc.blueprint.impenetrable
-                    )
+                    addObject(loc.pos.x.relativeZone, loc.pos.y.relativeZone, sizeX, sizeY, loc.impenetrable)
                 }
             }
             22 -> {
-                if (loc.blueprint.clipType == 1) {
-                    addDecoration(loc.position.x.relativeZone, loc.position.y.relativeZone)
+                if (loc.clipType == 1) {
+                    addDecoration(loc.pos.x.relativeZone, loc.pos.y.relativeZone)
                 }
             }
         }

@@ -16,10 +16,13 @@
  */
 package io.guthix.oldscape.server.world.entity
 
+import io.guthix.oldscape.server.dimensions.TileUnit
 import io.guthix.oldscape.server.world.map.Tile
 
 abstract class Character(
     internal open val visualInterestManager: CharacterVisual
 ) : Entity() {
-    override val position: Tile get() = visualInterestManager.position
+    abstract val size: TileUnit
+
+    override val pos: Tile get() = visualInterestManager.position
 }

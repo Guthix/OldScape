@@ -38,7 +38,7 @@ class DestinationTile(floor: FloorUnit, x: TileUnit, y: TileUnit) : Destination(
 class DestinationPlayer(
     private val player: Player,
     private val map: WorldMap
-) : Destination(player.position.floor, player.position.x, player.position.y) {
+) : Destination(player.pos.floor, player.pos.x, player.pos.y) {
     override fun reached(moverX: TileUnit, moverY: TileUnit, moverSize: TileUnit): Boolean {
         val srcEndX = moverX + moverSize
         val srcEndY = moverY + moverSize
@@ -94,7 +94,7 @@ class DestinationNpc(floor: FloorUnit, x: TileUnit, y: TileUnit) : Destination(f
 class DestinationLocation(
     private val loc: Loc,
     private val map: WorldMap
-) : Destination(loc.position.floor, loc.position.x, loc.position.y) {
+) : Destination(loc.pos.floor, loc.pos.x, loc.pos.y) {
     override fun reached(moverX: TileUnit, moverY: TileUnit, moverSize: TileUnit): Boolean {
         return when (loc.type) {
             in 0..3, 9 -> reachedWall(moverX, moverY, moverSize)

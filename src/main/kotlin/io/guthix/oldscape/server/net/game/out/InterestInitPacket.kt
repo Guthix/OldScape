@@ -42,11 +42,11 @@ class InterestInitPacket(
 
     override fun encode(ctx: ChannelHandlerContext): ByteBuf {
         val bitBuf = player.ctx.alloc().buffer(STATIC_SIZE).toBitMode()
-        bitBuf.writeBits(player.position.bitpack, 30)
+        bitBuf.writeBits(player.pos.bitpack, 30)
         for(playerIndex in 1 until World.MAX_PLAYERS) {
             val externalPlayer = playersInWorld[playerIndex]
             if(playerIndex != player.index) {
-                bitBuf.writeBits(externalPlayer?.position?.regionId ?: 0, 18)
+                bitBuf.writeBits(externalPlayer?.pos?.regionId ?: 0, 18)
             }
         }
         val gpiInitBuf = bitBuf.toByteMode()

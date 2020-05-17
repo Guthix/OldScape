@@ -25,11 +25,9 @@ import io.guthix.oldscape.server.world.map.Tile
 import io.guthix.oldscape.server.dimensions.tiles
 import io.guthix.oldscape.server.world.entity.HeadEquipment
 
-import io.guthix.oldscape.server.api.*
-
 on(ClientCheatEvent::class).where { event.string == "drop" }.then {
     world.map.addObject(
-        Tile(player.position.floor, player.position.x + 1.tiles, player.position.y + 1.tiles),
+        Tile(player.pos.floor, player.pos.x + 1.tiles, player.pos.y + 1.tiles),
         Obj(1163, 1)
     )
 }
@@ -37,9 +35,9 @@ on(ClientCheatEvent::class).where { event.string == "drop" }.then {
 on(ClientCheatEvent::class).where { event.string == "locadd" }.then {
     world.map.addDynamicLoc(
         Loc(
-            Tile(player.position.floor, player.position.x + 2.tiles, player.position.y + 2.tiles),
-            LocationBlueprints[4],
+            id = 4,
             type = 0,
+            pos = Tile(player.pos.floor, player.pos.x + 2.tiles, player.pos.y + 2.tiles),
             orientation = 0
         )
     )
@@ -48,9 +46,9 @@ on(ClientCheatEvent::class).where { event.string == "locadd" }.then {
 on(ClientCheatEvent::class).where { event.string == "locremove" }.then {
     world.map.removeDynamicLoc(
         Loc(
-            Tile(player.position.floor, player.position.x + 2.tiles, player.position.y + 2.tiles),
-            LocationBlueprints[4],
+            id = 4,
             type = 0,
+            pos = Tile(player.pos.floor, player.pos.x + 2.tiles, player.pos.y + 2.tiles),
             orientation = 0
         )
     )
@@ -75,5 +73,5 @@ on(ClientCheatEvent::class).where { event.string == "clear" }.then {
 }
 
 on(ClientCheatEvent::class).where { event.string == "pos" }.then {
-    println("Position ${player.position}")
+    println("Position ${player.pos}")
 }

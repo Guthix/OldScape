@@ -17,6 +17,7 @@
 package io.guthix.oldscape.server.world.entity
 
 import io.guthix.oldscape.server.dimensions.TileUnit
+import io.guthix.oldscape.server.dimensions.tiles
 import io.guthix.oldscape.server.event.PublicMessageEvent
 import io.guthix.oldscape.server.event.script.*
 import io.guthix.oldscape.server.net.game.out.*
@@ -74,6 +75,12 @@ data class Player(
 
     val spotAnimation get() = visualManager.spotAnimation
 
+    override val size = 1.tiles
+
+    override val sizeX = size
+
+    override val sizeY = size
+
     var weight get() = energyManager.weight
         set(value) { energyManager.weight = value }
 
@@ -92,7 +99,7 @@ data class Player(
         visualManager.initialize(world, this)
         mapManager.initialize(world, this)
         val xteas = mapManager.getInterestedXteas(world.map)
-        ctx.write(InterestInitPacket(world.players, this, xteas, position.x.inZones, position.y.inZones))
+        ctx.write(InterestInitPacket(world.players, this, xteas, pos.x.inZones, pos.y.inZones))
         topInterface.initialize(world, this)
         contextMenuManager.initialize(world, this)
         varpManager.initialize(world, this)
@@ -294,11 +301,11 @@ data class Player(
     }
 
     private fun setOrientation(entity: Entity) {
-        val dx = (position.x.value + (sizeX.value.toDouble() / 2)) -
-            (entity.position.x.value + (entity.sizeX.value.toDouble() / 2))
-        val dy = (position.y.value + (sizeY.value.toDouble() / 2)) -
-            (entity.position.y.value + (entity.sizeY.value.toDouble() / 2))
-        if (dx.toInt() != 0 || dy.toInt() != 0) orientation = (atan2(dx, dy) * 325.949).toInt() and 0x7FF
+        val dx = (pos.x.value + (sizeX.value.toDouble() / 2)) -
+            (entity.pos.x.value + (entity.sizeX.value.toDouble() / 2))
+        val dy = (pos.y.value + (sizeY.value.toDouble() / 2)) -
+            (entity.pos.y.value + (entity.sizeY.value.toDouble() / 2))
+        if (dx.toInt() != 0 || dy.toInt() != 0) visualManager.orientation = (atan2(dx, dy) * 325.949).toInt() and 0x7FF
     }
 
     override fun compareTo(other: Player) = when {

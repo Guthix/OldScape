@@ -37,7 +37,7 @@ abstract class CharacterVisual {
 
     fun getOrientation(prev: Tile, new: Tile) = getOrientation(new.x - prev.x, new.y - prev.y)
 
-    fun getOrientation(dx: TileUnit, dy: TileUnit): Int = moveDirection[2 - dy.value][dx.value + 2]
+    fun getOrientation(dx: TileUnit, dy: TileUnit) = moveDirection[2 - dy.value][dx.value + 2]
 
     abstract class UpdateType(private val priority: Int, internal val mask: Int) : Comparable<UpdateType> {
         override fun compareTo(other: UpdateType) = when {

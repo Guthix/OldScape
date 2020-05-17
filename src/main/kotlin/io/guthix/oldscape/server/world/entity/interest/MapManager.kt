@@ -124,16 +124,16 @@ class MapManager : InterestManager {
     }
 
     fun addDynamicLoc(loc: Loc) {
-        changes[(loc.position.x.inZones - baseX).value][(loc.position.y.inZones - baseY).value].add(
+        changes[(loc.pos.x.inZones - baseX).value][(loc.pos.y.inZones - baseY).value].add(
             LocAddChangePacket(
-                loc.blueprint.id, loc.type, loc.orientation, loc.position.x.relativeZone, loc.position.y.relativeZone
+                loc.id, loc.type, loc.orientation, loc.pos.x.relativeZone, loc.pos.y.relativeZone
             )
         )
     }
 
     fun removeDynamicLoc(loc: Loc) {
-        changes[(loc.position.x.inZones - baseX).value][(loc.position.y.inZones - baseY).value].add(
-            LocDelPacket(loc.type, loc.orientation, loc.position.x.relativeZone, loc.position.y.relativeZone)
+        changes[(loc.pos.x.inZones - baseX).value][(loc.pos.y.inZones - baseY).value].add(
+            LocDelPacket(loc.type, loc.orientation, loc.pos.x.relativeZone, loc.pos.y.relativeZone)
         )
     }
 
@@ -146,7 +146,7 @@ class MapManager : InterestManager {
     }
 
     override fun initialize(world: World, player: Player) {
-        middleZone = world.map.getZone(player.position) ?: error("Could not find $player on the map.")
+        middleZone = world.map.getZone(player.pos) ?: error("Could not find $player on the map.")
         ((middleZone.x - RANGE)..(middleZone.x + RANGE)).forEachIndexed { i, zoneX ->
             ((middleZone.y - RANGE)..(middleZone.y + RANGE)).forEachIndexed { j, zoneY ->
                 val zone = world.map.getZone(middleZone.floor, zoneX, zoneY)
@@ -161,7 +161,7 @@ class MapManager : InterestManager {
 
     override fun synchronize(world: World, player: Player): List<ChannelFuture> {
         val futures = mutableListOf<ChannelFuture>()
-        val pZone = world.map.getZone(player.position) ?: error("Could not find $player on the map.")
+        val pZone = world.map.getZone(player.pos) ?: error("Could not find $player on the map.")
         checkReload(pZone, world.map, player)
         changes.forEachIndexed { x, yPacketList ->
             yPacketList.forEachIndexed { y, packetList ->
