@@ -22,6 +22,7 @@ import io.guthix.oldscape.server.net.game.GameDecoder
 import io.guthix.oldscape.server.net.game.GameEncoder
 import io.guthix.oldscape.server.net.game.GameHandler
 import io.guthix.oldscape.server.net.login.*
+import io.guthix.oldscape.server.world.entity.Player
 import io.netty.util.concurrent.*
 import java.util.concurrent.*
 import java.util.*
@@ -31,15 +32,18 @@ class World : TimerTask() {
 
     internal val loginQueue = ConcurrentLinkedQueue<LoginRequest>()
 
+    internal val logoutQueue = ConcurrentLinkedQueue<Player>()
+
     val players = PlayerList(MAX_PLAYERS)
 
-    val isFull get(): Boolean = players.size + loginQueue.size >= MAX_PLAYERS
+    val isFull get() = players.size + loginQueue.size >= MAX_PLAYERS
 
     override fun run() {
         processLogins()
         processPlayerEvents()
-        proccessMovment()
+        proccessMovement()
         synchronizeInterest()
+        processLogouts()
     }
 
     private fun processLogins() {
@@ -60,11 +64,23 @@ class World : TimerTask() {
         }
     }
 
+    fun stagePlayerLogout(player: Player) {
+        player.stageLogout()
+        logoutQueue.add(player)
+    }
+
+    private fun processLogouts() {
+        while (logoutQueue.isNotEmpty()) {
+            val player = logoutQueue.poll()
+            players.remove(player)
+        }
+    }
+
     private fun processPlayerEvents() {
         for (player in players) player.processInEvents()
     }
 
-    private fun proccessMovment() {
+    private fun proccessMovement() {
         for (player in players) player.visualManager.move()
     }
 
