@@ -89,7 +89,7 @@ class PlayerManager(val index: Int, val username: String) : CharacterVisual(), I
 
     val externalPlayerIndexes = IntArray(World.MAX_PLAYERS)
 
-    val fieldIds = IntArray(World.MAX_PLAYERS)
+    val regionIds = IntArray(World.MAX_PLAYERS)
 
     val skipFlags = ByteArray(World.MAX_PLAYERS)
 
@@ -138,7 +138,7 @@ class PlayerManager(val index: Int, val username: String) : CharacterVisual(), I
         for (playerIndex in 1 until World.MAX_PLAYERS) {
             if (index != playerIndex) {
                 val externalPlayer = world.players[playerIndex]
-                fieldIds[playerIndex] = externalPlayer?.pos?.regionId ?: 0
+                regionIds[playerIndex] = externalPlayer?.position?.regionId ?: 0
                 externalPlayerIndexes[externalPlayerCount++] = playerIndex
             }
         }
