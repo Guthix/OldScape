@@ -71,7 +71,7 @@ class PlayerInfoPacket(
     private fun processLocalPlayers(buf: BitBuf, maskBuf: ByteBuf, nsn: Boolean) {
         //TODO logout
         fun localUpdateRequired(im: PlayerManager, localPlayer: Player) = (localPlayer.visualManager.updateFlags.isNotEmpty()
-            || !im.position.isInterestedIn(localPlayer.position)
+            || !im.position.isInterestedIn(localPlayer.pos)
             || localPlayer.visualManager.movementType != CharacterVisual.MovementUpdateType.STAY
             )
 
@@ -80,25 +80,25 @@ class PlayerInfoPacket(
             bitBuf.writeBoolean(flagUpdateRequired)
             if (localPlayer.visualManager.movementType == CharacterVisual.MovementUpdateType.TELEPORT) {
                 bitBuf.writeBits(value = 3, amount = 2)
-                var localPlayerOutsideView = !im.position.isInterestedIn(localPlayer.position)
+                var localPlayerOutsideView = !im.position.isInterestedIn(localPlayer.pos)
                 if (im.index == localPlayer.index) localPlayerOutsideView = true
                 bitBuf.writeBoolean(localPlayerOutsideView)
-                var dx = (localPlayer.position.x - im.lastPostion.x).value // TODO maybe this is broken
-                var dy = (localPlayer.position.y - im.lastPostion.y).value
+                var dx = (localPlayer.pos.x - im.lastPostion.x).value // TODO maybe this is broken
+                var dy = (localPlayer.pos.y - im.lastPostion.y).value
                 if (localPlayerOutsideView) {
                     buf.writeBits(
-                        ((localPlayer.position.floor.value and 0x3) shl 28) or ((dx and 0x3fff) shl 14) or (dy and 0x3fff),
+                        ((localPlayer.pos.floor.value and 0x3) shl 28) or ((dx and 0x3fff) shl 14) or (dy and 0x3fff),
                         30
                     )
                 } else {
                     if (dx < 0) dx += 32
                     if (dy < 0) dy += 32
                     buf.writeBits(
-                        ((localPlayer.position.floor.value and 0x3) shl 10) or ((dx and 0x1F) shl 5) or (dy and 0x1F),
+                        ((localPlayer.pos.floor.value and 0x3) shl 10) or ((dx and 0x1F) shl 5) or (dy and 0x1F),
                         12
                     )
                 }
-            } else if (!localPlayer.position.isInterestedIn(localPlayer.position)) {
+            } else if (!localPlayer.pos.isInterestedIn(localPlayer.pos)) {
                 bitBuf.writeBits(value = 0, amount = 2)
                 bitBuf.writeBoolean(false)
                 im.localPlayers[localPlayer.index] = null
@@ -155,8 +155,8 @@ class PlayerInfoPacket(
 
     private fun processExternalPlayers(buf: BitBuf, maskBuf: ByteBuf, nsn: Boolean) {
         fun externalUpdateRequired(player: PlayerManager, externalPlayer: Player) =
-            player.position.isInterestedIn(externalPlayer.position)
-                || im.regionIds[externalPlayer.index] != externalPlayer.position.regionId
+            player.position.isInterestedIn(externalPlayer.pos)
+                || im.regionIds[externalPlayer.index] != externalPlayer.pos.regionId
 
         fun updateField(buf: BitBuf, externalPlayer: Player) {
             val lastFieldId = im.regionIds[externalPlayer.index]
@@ -164,7 +164,7 @@ class PlayerInfoPacket(
             val lastFieldX = (lastFieldId shr 8) and 0xFF
             val lastFieldZ = lastFieldId shr 16
 
-            val curentFieldId = externalPlayer.position.regionId
+            val curentFieldId = externalPlayer.pos.regionId
             val curentFieldY = curentFieldId and 0xFF
             val curentFieldX = (curentFieldId shr 8) and 0xFF
             val curentFieldZ = curentFieldId shr 16
@@ -186,16 +186,16 @@ class PlayerInfoPacket(
         }
 
         fun updateExternalPlayer(buf: BitBuf, maskBuf: ByteBuf, externalPlayer: Player) {
-            if (im.position.isInterestedIn(externalPlayer.position)) {
+            if (im.position.isInterestedIn(externalPlayer.pos)) {
                 buf.writeBits(value = 0, amount = 2)
-                if (im.regionIds[externalPlayer.index] != externalPlayer.position.regionId) {
+                if (im.regionIds[externalPlayer.index] != externalPlayer.pos.regionId) {
                     buf.writeBoolean(true)
                     updateField(buf, externalPlayer)
                 } else {
                     buf.writeBoolean(false)
                 }
-                buf.writeBits(value = externalPlayer.position.x.value, amount = 13)
-                buf.writeBits(value = externalPlayer.position.y.value, amount = 13)
+                buf.writeBits(value = externalPlayer.pos.x.value, amount = 13)
+                buf.writeBits(value = externalPlayer.pos.y.value, amount = 13)
                 buf.writeBoolean(true)
                 updateLocalPlayerVisual(externalPlayer.visualManager, maskBuf, sortedSetOf(appearance, orientation, movementCached))
                 im.localPlayers[externalPlayer.index] = externalPlayer
@@ -244,8 +244,8 @@ class PlayerInfoPacket(
     }
 
     private fun getDirectionWalk(localPlayer: Player): Int {
-        val dx = localPlayer.position.x - localPlayer.visualManager.lastPostion.x
-        val dy = localPlayer.position.y - localPlayer.visualManager.lastPostion.y
+        val dx = localPlayer.pos.x - localPlayer.visualManager.lastPostion.x
+        val dy = localPlayer.pos.y - localPlayer.visualManager.lastPostion.y
         return getDirectionType(dx.value, dy.value)
     }
 
