@@ -24,7 +24,7 @@ import io.guthix.oldscape.server.world.entity.*
 import io.guthix.oldscape.server.world.map.Tile
 import io.netty.channel.ChannelFuture
 
-class PlayerManager(val index: Int, val username: String) : CharacterVisual(), InterestManager {
+class PlayerManager(index: Int, val username: String) : CharacterVisual(index), InterestManager {
     var nameModifiers = arrayOf("", "", "")
 
     var inRunMode = false

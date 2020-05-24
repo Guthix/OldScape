@@ -22,6 +22,8 @@ import io.guthix.oldscape.server.world.map.Tile
 abstract class Character(
     internal open val visualInterestManager: CharacterVisual
 ) : Entity() {
+    val index get() = visualInterestManager.index
+
     abstract val size: TileUnit
 
     override val pos: Tile get() = visualInterestManager.pos
