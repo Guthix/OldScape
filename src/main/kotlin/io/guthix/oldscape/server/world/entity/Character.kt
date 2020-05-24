@@ -24,5 +24,5 @@ abstract class Character(
 ) : Entity() {
     abstract val size: TileUnit
 
-    override val pos: Tile get() = visualInterestManager.position
+    override val pos: Tile get() = visualInterestManager.pos
 }

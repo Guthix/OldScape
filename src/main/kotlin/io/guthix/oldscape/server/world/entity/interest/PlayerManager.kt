@@ -100,16 +100,16 @@ class PlayerManager(val index: Int, val username: String) : CharacterVisual(), I
     }
 
     private fun takeStep() {
-        lastPostion = position
-        position = when {
+        lastPostion = pos
+        pos = when {
             inRunMode -> when {
                 path.size == 1 -> {
                     movementType = MovementUpdateType.WALK
                     updateFlags.add(PlayerInfoPacket.movementTemporary)
-                    followPosition = position
+                    followPosition = pos
                     path.removeAt(0)
                 }
-                path.size > 1 && position.withInDistanceOf(path[1], 1.tiles) -> { // running corners
+                path.size > 1 && pos.withInDistanceOf(path[1], 1.tiles) -> { // running corners
                     movementType = MovementUpdateType.WALK
                     followPosition = path.removeAt(0)
                     path.removeAt(0)
@@ -122,11 +122,11 @@ class PlayerManager(val index: Int, val username: String) : CharacterVisual(), I
             }
             else -> {
                 movementType = MovementUpdateType.WALK
-                followPosition = position
+                followPosition = pos
                 path.removeAt(0)
             }
         }
-        orientation = getOrientation(followPosition, position)
+        orientation = getOrientation(followPosition, pos)
     }
 
     override fun initialize(world: World, player: Player) {
@@ -138,7 +138,7 @@ class PlayerManager(val index: Int, val username: String) : CharacterVisual(), I
         for (playerIndex in 1 until World.MAX_PLAYERS) {
             if (index != playerIndex) {
                 val externalPlayer = world.players[playerIndex]
-                regionIds[playerIndex] = externalPlayer?.position?.regionId ?: 0
+                regionIds[playerIndex] = externalPlayer?.pos?.regionId ?: 0
                 externalPlayerIndexes[externalPlayerCount++] = playerIndex
             }
         }

@@ -27,9 +27,9 @@ abstract class CharacterVisual {
 
     var movementType = MovementUpdateType.STAY
 
-    var position: Tile = Tile(0.floors, 3231.tiles, 3222.tiles)
+    var pos: Tile = Tile(0.floors, 3231.tiles, 3222.tiles)
 
-    var lastPostion = position.copy(x = position.x - 1.tiles)
+    var lastPostion = pos.copy(x = pos.x - 1.tiles)
 
     var followPosition = lastPostion.copy()
 
