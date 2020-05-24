@@ -378,7 +378,7 @@ class PlayerInfoPacket(
                 writeShort(65535)
             } else {
                 im.interacting?.let {
-                    writeShort(im.index + 32768)
+                    writeShort(it.index + 32768)
                 }
             }
         }
@@ -449,8 +449,9 @@ class PlayerInfoPacket(
             setByteNEG(lengthIndex, writerIndex() - lengthIndex - 1)
         }
 
-        val orientation = UpdateType(5, 0x20) { player ->
-            writeShortLEADD(player.orientation)
+        val orientation = UpdateType(5, 0x20) { im ->
+            println("Encode orientation to ${im.orientation}")
+            writeShortLEADD(im.orientation)
         }
     }
 }

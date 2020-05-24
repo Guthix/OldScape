@@ -22,7 +22,7 @@ import io.guthix.oldscape.server.dimensions.tiles
 import io.guthix.oldscape.server.world.map.Tile
 import java.util.*
 
-abstract class CharacterVisual {
+abstract class CharacterVisual(val index: Int) {
     abstract val updateFlags: SortedSet<out UpdateType>
 
     var movementType = MovementUpdateType.STAY

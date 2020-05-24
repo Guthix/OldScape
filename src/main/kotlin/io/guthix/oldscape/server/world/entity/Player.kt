@@ -53,8 +53,6 @@ data class Player(
     var topInterface = TopInterfaceManager(ctx, id = 165)
         private set
 
-    val index get() = visualManager.index
-
     var inRunMode get() = visualManager.inRunMode
         set(value) {
             visualManager.inRunMode = value
@@ -165,7 +163,6 @@ data class Player(
 
     fun cancelRoutine(type: Routine.Type) {
         routines[type]?.forEach { it.cancel() }
-        routines.remove(type)
     }
 
     fun talk(message: PublicMessageEvent) {
@@ -300,6 +297,8 @@ data class Player(
     fun turnToLock(char: Character?) {
         visualManager.interacting = char
         char?.let { setOrientation(char) }
+        println("Turn to lock $char")
+        visualManager.updateFlags.add(PlayerInfoPacket.lockTurnToCharacter)
     }
 
     internal fun stageLogout() {
