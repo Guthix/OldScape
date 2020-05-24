@@ -69,10 +69,11 @@ class PlayerInfoPacket(
 
 
     private fun processLocalPlayers(buf: BitBuf, maskBuf: ByteBuf, nsn: Boolean) {
-        //TODO logout
+        //TODO teleport
         fun localUpdateRequired(im: PlayerManager, localPlayer: Player) = (localPlayer.visualManager.updateFlags.isNotEmpty()
-            || !im.position.isInterestedIn(localPlayer.pos)
+            || !im.pos.isInterestedIn(localPlayer.pos)
             || localPlayer.visualManager.movementType != CharacterVisual.MovementUpdateType.STAY
+            || localPlayer.isLoggingOut
             )
 
         fun updateLocalPlayer(localPlayer: Player, bitBuf: BitBuf, maskBuf: ByteBuf) {
@@ -80,7 +81,7 @@ class PlayerInfoPacket(
             bitBuf.writeBoolean(flagUpdateRequired)
             if (localPlayer.visualManager.movementType == CharacterVisual.MovementUpdateType.TELEPORT) {
                 bitBuf.writeBits(value = 3, amount = 2)
-                var localPlayerOutsideView = !im.position.isInterestedIn(localPlayer.pos)
+                var localPlayerOutsideView = !im.pos.isInterestedIn(localPlayer.pos)
                 if (im.index == localPlayer.index) localPlayerOutsideView = true
                 bitBuf.writeBoolean(localPlayerOutsideView)
                 var dx = (localPlayer.pos.x - im.lastPostion.x).value // TODO maybe this is broken
@@ -98,9 +99,8 @@ class PlayerInfoPacket(
                         12
                     )
                 }
-            } else if (!localPlayer.pos.isInterestedIn(localPlayer.pos)) {
+            } else if (!im.pos.isInterestedIn(localPlayer.pos) || localPlayer.isLoggingOut) {
                 bitBuf.writeBits(value = 0, amount = 2)
-                bitBuf.writeBoolean(false)
                 im.localPlayers[localPlayer.index] = null
             } else if (localPlayer.visualManager.movementType == CharacterVisual.MovementUpdateType.WALK) {
                 bitBuf.writeBits(value = 1, amount = 2)
@@ -153,40 +153,40 @@ class PlayerInfoPacket(
         buf.toByteMode()
     }
 
+    fun updateField(buf: BitBuf, externalPlayer: Player) {
+        val lastFieldId = im.regionIds[externalPlayer.index]
+        val lastFieldY = lastFieldId and 0xFF
+        val lastFieldX = (lastFieldId shr 8) and 0xFF
+        val lastFieldZ = lastFieldId shr 16
+
+        val curentFieldId = externalPlayer.pos.regionId
+        val curentFieldY = curentFieldId and 0xFF
+        val curentFieldX = (curentFieldId shr 8) and 0xFF
+        val curentFieldZ = curentFieldId shr 16
+
+        val dx = curentFieldX - lastFieldX
+        val dy = curentFieldY - lastFieldY
+        val dz = (curentFieldZ - lastFieldZ) and 0x3
+        if (dx == 0 && dy == 0) { // change floors
+            buf.writeBits(value = 1, amount = 2)
+            buf.writeBits(value = dz, amount = 2)
+        } else if (abs(dx) <= 1 && abs(dy) <= 1) { // change regions & floors
+            buf.writeBits(value = 2, amount = 2)
+            buf.writeBits(value = (dz shl 3) or getDirectionType(dx, dy), amount = 5)
+        } else { // new entry
+            buf.writeBits(value = 3, amount = 2)
+            buf.writeBits(value = Tile(dz.floors, dx.tiles, dy.tiles).regionId, amount = 18)
+        }
+        im.regionIds[externalPlayer.index] = curentFieldId
+    }
+
     private fun processExternalPlayers(buf: BitBuf, maskBuf: ByteBuf, nsn: Boolean) {
         fun externalUpdateRequired(player: PlayerManager, externalPlayer: Player) =
-            player.position.isInterestedIn(externalPlayer.pos)
+            player.pos.isInterestedIn(externalPlayer.pos)
                 || im.regionIds[externalPlayer.index] != externalPlayer.pos.regionId
 
-        fun updateField(buf: BitBuf, externalPlayer: Player) {
-            val lastFieldId = im.regionIds[externalPlayer.index]
-            val lastFieldY = lastFieldId and 0xFF
-            val lastFieldX = (lastFieldId shr 8) and 0xFF
-            val lastFieldZ = lastFieldId shr 16
-
-            val curentFieldId = externalPlayer.pos.regionId
-            val curentFieldY = curentFieldId and 0xFF
-            val curentFieldX = (curentFieldId shr 8) and 0xFF
-            val curentFieldZ = curentFieldId shr 16
-
-            val dx = curentFieldX - lastFieldX
-            val dy = curentFieldY - lastFieldY
-            val dz = (curentFieldZ - lastFieldZ) and 0x3
-            if (dx == 0 && dy == 0) {
-                buf.writeBits(value = 1, amount = 2)
-                buf.writeBits(value = dz, amount = 2)
-            } else if (abs(dx) <= 1 && abs(dy) <= 1) {
-                buf.writeBits(value = 2, amount = 2)
-                buf.writeBits(value = (dz shl 3) or getDirectionType(dx, dy), amount = 5)
-            } else {
-                buf.writeBits(value = 3, amount = 2)
-                buf.writeBits(value = Tile(dz.floors, dx.tiles, dy.tiles).regionId, amount = 18)
-            }
-           im.regionIds[externalPlayer.index] = curentFieldId
-        }
-
         fun updateExternalPlayer(buf: BitBuf, maskBuf: ByteBuf, externalPlayer: Player) {
-            if (im.position.isInterestedIn(externalPlayer.pos)) {
+            if (im.pos.isInterestedIn(externalPlayer.pos)) {
                 buf.writeBits(value = 0, amount = 2)
                 if (im.regionIds[externalPlayer.index] != externalPlayer.pos.regionId) {
                     buf.writeBoolean(true)
