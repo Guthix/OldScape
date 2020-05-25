@@ -23,6 +23,7 @@ import io.guthix.oldscape.server.net.game.GameEncoder
 import io.guthix.oldscape.server.net.game.GameHandler
 import io.guthix.oldscape.server.net.login.*
 import io.guthix.oldscape.server.world.entity.Player
+import io.guthix.oldscape.server.world.map.Tile
 import io.netty.util.concurrent.*
 import java.util.concurrent.*
 import java.util.*
@@ -35,6 +36,8 @@ class World : TimerTask() {
     internal val logoutQueue = ConcurrentLinkedQueue<Player>()
 
     val players = PlayerList(MAX_PLAYERS)
+
+    val npcs = NpcList(MAX_NPCS)
 
     val isFull get() = players.size + loginQueue.size >= MAX_PLAYERS
 
@@ -50,7 +53,7 @@ class World : TimerTask() {
         while (loginQueue.isNotEmpty()) {
             val request = loginQueue.poll()
             val player = players.create(request)
-            request.ctx.writeAndFlush(LoginResponse(player.index, player.visualManager.rights))
+            request.ctx.writeAndFlush(LoginResponse(player.index, player.playerManager.rights))
             request.ctx.pipeline().replace(LoginDecoder::class.qualifiedName, GameDecoder::class.qualifiedName,
                 GameDecoder(request.isaacPair.decodeGen)
             )
@@ -62,6 +65,10 @@ class World : TimerTask() {
             )
             EventBus.schedule(LoginEvent(), player, this)
         }
+    }
+
+    fun addNpc(id: Int, tile: Tile) {
+        npcs.create(id, tile)
     }
 
     fun stagePlayerLogout(player: Player) {
@@ -81,7 +88,7 @@ class World : TimerTask() {
     }
 
     private fun proccessMovement() {
-        for (player in players) player.visualManager.move()
+        for (player in players) player.playerManager.move()
     }
 
     private fun synchronizeInterest() {
@@ -94,5 +101,7 @@ class World : TimerTask() {
 
     companion object {
         const val MAX_PLAYERS = 2048
+
+        const val MAX_NPCS = 32768
     }
 }

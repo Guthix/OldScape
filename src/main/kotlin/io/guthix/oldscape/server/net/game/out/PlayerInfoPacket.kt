@@ -38,7 +38,7 @@ import kotlin.math.abs
 class PlayerInfoPacket(
     private val worldPlayers: PlayerList,
     private val im: PlayerManager
-) : OutGameEvent {
+) : OutGameEvent, CharacterInfoPacket() {
     override val opcode = 41
 
     override val size = VarShortSize
@@ -70,49 +70,51 @@ class PlayerInfoPacket(
 
     private fun processLocalPlayers(buf: BitBuf, maskBuf: ByteBuf, nsn: Boolean) {
         //TODO teleport
-        fun localUpdateRequired(im: PlayerManager, localPlayer: Player) = (localPlayer.visualManager.updateFlags.isNotEmpty()
+        fun localUpdateRequired(im: PlayerManager, localPlayer: Player) = (localPlayer.playerManager.updateFlags.isNotEmpty()
             || !im.pos.isInterestedIn(localPlayer.pos)
-            || localPlayer.visualManager.movementType != CharacterVisual.MovementUpdateType.STAY
+            || localPlayer.playerManager.movementType != CharacterVisual.MovementUpdateType.STAY
             || localPlayer.isLoggingOut
             )
 
         fun updateLocalPlayer(localPlayer: Player, bitBuf: BitBuf, maskBuf: ByteBuf) {
-            val flagUpdateRequired = localPlayer.visualManager.updateFlags.isNotEmpty()
+            val flagUpdateRequired = localPlayer.playerManager.updateFlags.isNotEmpty()
             bitBuf.writeBoolean(flagUpdateRequired)
-            if (localPlayer.visualManager.movementType == CharacterVisual.MovementUpdateType.TELEPORT) {
+            if (localPlayer.playerManager.movementType == CharacterVisual.MovementUpdateType.TELEPORT) {
                 bitBuf.writeBits(value = 3, amount = 2)
                 var localPlayerOutsideView = !im.pos.isInterestedIn(localPlayer.pos)
                 if (im.index == localPlayer.index) localPlayerOutsideView = true
                 bitBuf.writeBoolean(localPlayerOutsideView)
-                var dx = (localPlayer.pos.x - im.lastPostion.x).value // TODO maybe this is broken
-                var dy = (localPlayer.pos.y - im.lastPostion.y).value
+                var dx = localPlayer.pos.x - im.lastPos.x // TODO maybe this is broken
+                var dy = localPlayer.pos.y - im.lastPos.y
                 if (localPlayerOutsideView) {
                     buf.writeBits(
-                        ((localPlayer.pos.floor.value and 0x3) shl 28) or ((dx and 0x3fff) shl 14) or (dy and 0x3fff),
-                        30
+                        ((localPlayer.pos.floor.value and 0x3) shl 28) or
+                            ((dx.value and 0x3fff) shl 14) or
+                            (dy.value and 0x3fff), 30
                     )
                 } else {
-                    if (dx < 0) dx += 32
-                    if (dy < 0) dy += 32
+                    if (dx < 0.tiles) dx += INTEREST_SIZE
+                    if (dy < 0.tiles) dy += INTEREST_SIZE
                     buf.writeBits(
-                        ((localPlayer.pos.floor.value and 0x3) shl 10) or ((dx and 0x1F) shl 5) or (dy and 0x1F),
-                        12
+                        ((localPlayer.pos.floor.value and 0x3) shl 10) or
+                            ((dx.value and 0x1F) shl 5) or
+                            (dy.value and 0x1F), 12
                     )
                 }
             } else if (!im.pos.isInterestedIn(localPlayer.pos) || localPlayer.isLoggingOut) {
                 bitBuf.writeBits(value = 0, amount = 2)
                 im.localPlayers[localPlayer.index] = null
-            } else if (localPlayer.visualManager.movementType == CharacterVisual.MovementUpdateType.WALK) {
+            } else if (localPlayer.playerManager.movementType == CharacterVisual.MovementUpdateType.WALK) {
                 bitBuf.writeBits(value = 1, amount = 2)
                 bitBuf.writeBits(value = getDirectionWalk(localPlayer), amount = 3)
-            } else if (localPlayer.visualManager.movementType == CharacterVisual.MovementUpdateType.RUN) {
+            } else if (localPlayer.playerManager.movementType == CharacterVisual.MovementUpdateType.RUN) {
                 bitBuf.writeBits(value = 2, amount = 2)
                 bitBuf.writeBits(value = getDirectionWalk(localPlayer), amount = 4)
             } else if (flagUpdateRequired) {
                 bitBuf.writeBits(value = 0, amount = 2)
             }
             if (flagUpdateRequired) {
-                updateLocalPlayerVisual(localPlayer.visualManager, maskBuf)
+                updateLocalPlayerVisual(localPlayer.playerManager, maskBuf)
             }
         }
 
@@ -197,7 +199,7 @@ class PlayerInfoPacket(
                 buf.writeBits(value = externalPlayer.pos.x.value, amount = 13)
                 buf.writeBits(value = externalPlayer.pos.y.value, amount = 13)
                 buf.writeBoolean(true)
-                updateLocalPlayerVisual(externalPlayer.visualManager, maskBuf, sortedSetOf(appearance, orientation, movementCached))
+                updateLocalPlayerVisual(externalPlayer.playerManager, maskBuf, sortedSetOf(appearance, orientation, movementCached))
                 im.localPlayers[externalPlayer.index] = externalPlayer
             } else {
                 updateField(buf, externalPlayer)
@@ -244,8 +246,8 @@ class PlayerInfoPacket(
     }
 
     private fun getDirectionWalk(localPlayer: Player): Int {
-        val dx = localPlayer.pos.x - localPlayer.visualManager.lastPostion.x
-        val dy = localPlayer.pos.y - localPlayer.visualManager.lastPostion.y
+        val dx = localPlayer.pos.x - localPlayer.playerManager.lastPos.x
+        val dy = localPlayer.pos.y - localPlayer.playerManager.lastPos.y
         return getDirectionType(dx.value, dy.value)
     }
 
@@ -309,12 +311,6 @@ class PlayerInfoPacket(
     ) : CharacterVisual.UpdateType(priority, mask)
 
     companion object {
-        private val INTEREST_SIZE = 32.tiles
-
-        private val INTEREST_RANGE = INTEREST_SIZE / 2.tiles
-
-        private fun Tile.isInterestedIn(other: Tile) = withInDistanceOf(other, INTEREST_RANGE)
-
         private val MOVEMENT = arrayOf(
             intArrayOf(11, 12, 13, 14, 15),
             intArrayOf(9, 5, 6, 7, 10),
@@ -450,7 +446,6 @@ class PlayerInfoPacket(
         }
 
         val orientation = UpdateType(5, 0x20) { im ->
-            println("Encode orientation to ${im.orientation}")
             writeShortLEADD(im.orientation)
         }
     }

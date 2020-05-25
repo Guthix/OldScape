@@ -23,6 +23,7 @@ import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.*
 import io.guthix.oldscape.server.world.map.Tile
 import io.netty.channel.ChannelFuture
+import java.util.*
 
 class PlayerManager(index: Int, val username: String) : CharacterVisual(index), InterestManager {
     var nameModifiers = arrayOf("", "", "")
@@ -100,7 +101,7 @@ class PlayerManager(index: Int, val username: String) : CharacterVisual(index), 
     }
 
     private fun takeStep() {
-        lastPostion = pos
+        lastPos = pos
         pos = when {
             inRunMode -> when {
                 path.size == 1 -> {

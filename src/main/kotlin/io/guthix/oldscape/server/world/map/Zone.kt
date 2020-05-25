@@ -21,6 +21,7 @@ import io.guthix.oldscape.server.dimensions.TileUnit
 import io.guthix.oldscape.server.dimensions.ZoneUnit
 import io.guthix.oldscape.server.world.entity.Obj
 import io.guthix.oldscape.server.world.entity.Loc
+import io.guthix.oldscape.server.world.entity.Npc
 import io.guthix.oldscape.server.world.entity.Player
 
 class Zone(
@@ -32,6 +33,8 @@ class Zone(
     val collisions = ZoneCollision(this)
 
     val players = mutableListOf<Player>()
+
+    val npcs = mutableListOf<Npc>()
 
     val groundObjects = mutableMapOf<Tile, MutableMap<Int, MutableList<Obj>>>()
 

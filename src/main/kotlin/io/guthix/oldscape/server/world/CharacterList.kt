@@ -17,10 +17,49 @@
 package io.guthix.oldscape.server.world
 
 import io.guthix.oldscape.server.net.login.LoginRequest
+import io.guthix.oldscape.server.world.entity.Npc
+import io.guthix.oldscape.server.world.entity.NpcVisual
 import io.guthix.oldscape.server.world.entity.Player
 import io.guthix.oldscape.server.world.entity.interest.*
+import io.guthix.oldscape.server.world.map.Tile
 import java.util.*
 import kotlin.random.Random
+
+class NpcList(capacity: Int) : Iterable<Npc> {
+    private val npcs = arrayOfNulls<Npc>(capacity)
+
+    private val occupiedIndexes = TreeSet<Int>()
+
+    private val freeIndexes = Stack<Int>()
+
+    val size get() = occupiedIndexes.size
+
+    init { for (index in capacity downTo 1) freeIndexes.push(index) }
+
+    fun create(id: Int, pos: Tile): Npc {
+        val index = freeIndexes.pop()
+        val npc = Npc(id, pos, NpcVisual(index))
+        npcs[npc.index] = npc
+        occupiedIndexes.add(npc.index)
+        return npc
+    }
+
+    fun remove(npc: Npc) {
+        npcs[npc.index] = null
+        occupiedIndexes.remove(npc.index)
+        freeIndexes.add(npc.index)
+    }
+
+    override fun iterator() = IndexIterator()
+
+    inner class IndexIterator : Iterator<Npc> {
+        var indexIterator = occupiedIndexes.iterator()
+
+        override fun hasNext() = indexIterator.hasNext()
+
+        override fun next(): Npc = npcs[indexIterator.next()] ?: next()
+    }
+}
 
 class PlayerList(capacity: Int) : Iterable<Player> {
     private val players = arrayOfNulls<Player>(capacity)
@@ -33,15 +72,13 @@ class PlayerList(capacity: Int) : Iterable<Player> {
 
     val size get() = occupiedIndexes.size
 
-    init {
-        for (index in capacity downTo 1) freeIndexes.push(index)
-    }
+    init { for (index in capacity downTo 1) freeIndexes.push(index) }
 
     fun create(req: LoginRequest): Player {
         val index = freeIndexes.pop()
         val priority = Random.nextInt(occupiedIndexes.size + 1)
-        val player = Player(priority, req.ctx, req.clientSettings, PlayerManager(index, req.username), MapManager(),
-            ContextMenuManager(), VarpManager(), StatManager(), EnergyManager()
+        val player = Player(priority, req.ctx, req.clientSettings, PlayerManager(index, req.username), NpcManager(),
+            MapManager(), ContextMenuManager(), VarpManager(), StatManager(), EnergyManager()
         )
         players[player.index] = player
         player.priority = priority
@@ -64,12 +101,12 @@ class PlayerList(capacity: Int) : Iterable<Player> {
 
     operator fun get(index: Int) = players[index]
 
-    override fun iterator(): Iterator<Player> = PriorityIterator()
+    override fun iterator() = PriorityIterator()
 
     inner class PriorityIterator : MutableIterator<Player> {
         internal var currentIndex = 0
 
-        override fun hasNext(): Boolean = currentIndex < occupiedIndexes.size
+        override fun hasNext() = currentIndex < occupiedIndexes.size
 
         override fun next(): Player = players[occupiedIndexes[currentIndex++]] ?: next()
 
