@@ -41,6 +41,7 @@ object NpcBlueprints {
                     cacheConfig.name,
                     extraConfig.examine,
                     cacheConfig.size.toInt(),
+                    cacheConfig.options,
                     cacheConfig.combatLevel,
                     cacheConfig.isInteractable,
                     cacheConfig.walkSequence,
