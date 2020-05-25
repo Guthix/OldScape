@@ -30,6 +30,8 @@ class Npc(id: Int, override var pos: Tile, val visual: NpcVisual) : Character(vi
     val id get() = blueprint.id
 
     override val size get() = blueprint.size.tiles
+
+    val contextMenu get() = blueprint.contextMenu
 }
 
 class NpcVisual(index: Int) : CharacterVisual(index) {

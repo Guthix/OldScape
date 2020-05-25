@@ -50,6 +50,8 @@ class NpcList(capacity: Int) : Iterable<Npc> {
         freeIndexes.add(npc.index)
     }
 
+    operator fun get(index: Int) = npcs[index]
+
     override fun iterator() = IndexIterator()
 
     inner class IndexIterator : Iterator<Npc> {

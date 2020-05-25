@@ -21,6 +21,7 @@ class NpcBlueprint(
     val name: String?,
     val examine: String,
     val size: Int,
+    val contextMenu: Array<String?>,
     val combatLevel: Int?,
     val isInteractable: Boolean,
     var walkSequence: Int?,
