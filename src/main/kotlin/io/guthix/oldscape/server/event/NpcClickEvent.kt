@@ -37,7 +37,7 @@ internal class NpcClickClientEvent(
 }
 
 class NpcClickEvent(
-    val player: Npc,
+    val npc: Npc,
     val buttonPressed: Boolean,
     val option: String
 ) : InGameEvent

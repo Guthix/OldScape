@@ -24,7 +24,7 @@ import io.guthix.oldscape.server.event.script.EventBus
 import io.guthix.oldscape.server.pathing.algo.DestinationLocation
 import io.guthix.oldscape.server.pathing.algo.imp.breadthFirstSearch
 
-on(LocationClickEvent::class).then(Routine.Type.Normal) {
+on(LocationClickEvent::class).then(Routine.Type.Normal, replace = true) {
     val loc = world.map.getLoc(event.id, player.pos.floor, event.x, event.y) ?: error(
         "Could not find location at ${Tile(player.pos.floor, event.x, event.y)}."
     )
