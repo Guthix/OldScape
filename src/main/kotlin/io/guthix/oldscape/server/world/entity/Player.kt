@@ -31,18 +31,19 @@ import io.netty.channel.ChannelHandlerContext
 import java.util.concurrent.ConcurrentLinkedQueue
 import kotlin.math.atan2
 
-data class Player(
+class Player(
     var priority: Int,
     var ctx: ChannelHandlerContext,
     val clientSettings: ClientSettings,
-    val playerManager: PlayerManager,
-    internal val npcManager: NpcManager,
+    val playerVisual: PlayerVisual,
+    private val playerManager: PlayerManager,
+    internal val npcManager: NpcManager, //TODO stop exposing
     internal val mapManager: MapManager,
-    internal val contextMenuManager: ContextMenuManager,
-    internal val varpManager: VarpManager,
-    internal val statManager: StatManager,
-    internal val energyManager: EnergyManager
-) : Character(playerManager), Comparable<Player> {
+    private val contextMenuManager: ContextMenuManager,
+    private val varpManager: VarpManager,
+    private val statManager: StatManager,
+    private val energyManager: EnergyManager
+) : Character(playerManager.index, playerVisual), Comparable<Player> {
     internal val inEvents = ConcurrentLinkedQueue<Routine>()
 
     internal val routines = sortedMapOf<Routine.Type, MutableList<Routine>>()
@@ -54,27 +55,27 @@ data class Player(
     var topInterface = TopInterfaceManager(ctx, id = 165)
         private set
 
-    var inRunMode get() = playerManager.inRunMode
+    var inRunMode get() = playerVisual.inRunMode
         set(value) {
-            playerManager.inRunMode = value
-            playerManager.updateFlags.add(PlayerInfoPacket.movementCached)
+            playerVisual.inRunMode = value
+            playerVisual.updateFlags.add(PlayerInfoPacket.movementCached)
         }
 
-    var followPosition get() = playerManager.followPosition
-        set(value) { playerManager.followPosition = value }
+    var followPosition get() = playerVisual.followPosition
+        set(value) { playerVisual.followPosition = value }
 
-    var path get() = playerManager.path
-        set(value) { playerManager.path = value }
+    var path get() = playerVisual.path
+        set(value) { playerVisual.path = value }
 
-    val equipment get() = playerManager.equipment
+    val equipment get() = playerVisual.equipment
 
-    val publicMessage get() = playerManager.publicMessage
+    val publicMessage get() = playerVisual.publicMessage
 
-    val shoutMessage get() = playerManager.shoutMessage
+    val shoutMessage get() = playerVisual.shoutMessage
 
-    val sequence get() = playerManager.sequence
+    val sequence get() = playerVisual.sequence
 
-    val spotAnimation get() = playerManager.spotAnimation
+    val spotAnimation get() = playerVisual.spotAnimation
 
     override val size = 1.tiles
 
@@ -97,6 +98,7 @@ data class Player(
         mapManager.initialize(world, this)
         val xteas = mapManager.getInterestedXteas(world.map)
         ctx.write(InterestInitPacket(world.players, this, xteas, pos.x.inZones, pos.y.inZones))
+        playerVisual.initialize(world, this)
         npcManager.initialize(world, this)
         topInterface.initialize(world, this)
         contextMenuManager.initialize(world, this)
@@ -115,6 +117,7 @@ data class Player(
         futures.addAll(mapManager.synchronize(world, this))
         futures.addAll(npcManager.synchronize(world, this))
         futures.addAll(playerManager.synchronize(world, this))
+        futures.addAll(playerVisual.synchronize(world, this))
         ctx.flush()
         return futures
     }
@@ -128,6 +131,7 @@ data class Player(
         mapManager.postProcess()
         npcManager.postProcess()
         playerManager.postProcess()
+        playerVisual.postProcess()
         routines.values.forEach { it.forEach { routine -> routine.postProcess() } }
     }
 
@@ -166,22 +170,22 @@ data class Player(
     }
 
     fun talk(message: PublicMessageEvent) {
-        playerManager.publicMessage = message
-        playerManager.shoutMessage = null
-        playerManager.updateFlags.add(PlayerInfoPacket.chat)
+        playerVisual.publicMessage = message
+        playerVisual.shoutMessage = null
+        playerVisual.updateFlags.add(PlayerInfoPacket.chat)
         addSuspendableRoutine(Routine.Type.Chat, replace = true) {
             wait(ticks = PlayerManager.MESSAGE_DURATION)
-            playerManager.publicMessage = null
+            playerVisual.publicMessage = null
         }
     }
 
     fun shout(message: String) {
-        playerManager.publicMessage = null
-        playerManager.shoutMessage = message
-        playerManager.updateFlags.add(PlayerInfoPacket.shout)
+        playerVisual.publicMessage = null
+        playerVisual.shoutMessage = message
+        playerVisual.updateFlags.add(PlayerInfoPacket.shout)
         addSuspendableRoutine(Routine.Type.Chat, replace = true) {
             wait(ticks = PlayerManager.MESSAGE_DURATION)
-            playerManager.shoutMessage = null
+            playerVisual.shoutMessage = null
         }
     }
 
@@ -190,93 +194,93 @@ data class Player(
     }
 
     fun animate(sequence: Sequence) {
-        playerManager.sequence = sequence
-        playerManager.updateFlags.add(PlayerInfoPacket.sequence)
+        playerVisual.sequence = sequence
+        playerVisual.updateFlags.add(PlayerInfoPacket.sequence)
         addSuspendableRoutine(Routine.Type.Weak) {
-            val duration = playerManager.sequence?.duration ?: throw IllegalStateException(
+            val duration = playerVisual.sequence?.duration ?: throw IllegalStateException(
                 "Can't start routine because sequence does not exist."
             )
             wait(ticks = duration)
-            playerManager.sequence = null
+            playerVisual.sequence = null
         }
     }
 
     fun stopAnimation() {
-        playerManager.sequence = null
-        playerManager.updateFlags.add(PlayerInfoPacket.sequence)
+        playerVisual.sequence = null
+        playerVisual.updateFlags.add(PlayerInfoPacket.sequence)
         cancelRoutine(Routine.Type.Weak)
     }
 
     fun spotAnimate(spotAnimation: SpotAnimation) {
-        playerManager.spotAnimation = spotAnimation
-        playerManager.updateFlags.add(PlayerInfoPacket.spotAnimation)
+        playerVisual.spotAnimation = spotAnimation
+        playerVisual.updateFlags.add(PlayerInfoPacket.spotAnimation)
         addSuspendableRoutine(Routine.Type.Weak) {
-            val duration = playerManager.spotAnimation?.sequence?.duration ?: throw IllegalStateException(
+            val duration = playerVisual.spotAnimation?.sequence?.duration ?: throw IllegalStateException(
                 "Can't start routine because spot animation or sequence does not exist."
             )
             wait(ticks = duration)
-            playerManager.spotAnimation = null
+            playerVisual.spotAnimation = null
         }
     }
 
     fun stopSpotAnimation() {
-        playerManager.spotAnimation = null
-        playerManager.updateFlags.add(PlayerInfoPacket.spotAnimation)
+        playerVisual.spotAnimation = null
+        playerVisual.updateFlags.add(PlayerInfoPacket.spotAnimation)
         cancelRoutine(Routine.Type.Weak)
     }
 
     fun equip(head: HeadEquipment?) {
-        playerManager.equipment.head = head
-        playerManager.updateFlags.add(PlayerInfoPacket.appearance)
+        playerVisual.equipment.head = head
+        playerVisual.updateFlags.add(PlayerInfoPacket.appearance)
     }
 
     fun equip(cape: CapeEquipment?) {
-        playerManager.equipment.cape = cape
-        playerManager.updateFlags.add(PlayerInfoPacket.appearance)
+        playerVisual.equipment.cape = cape
+        playerVisual.updateFlags.add(PlayerInfoPacket.appearance)
     }
 
     fun equip(neck: NeckEquipment?) {
-        playerManager.equipment.neck = neck
-        playerManager.updateFlags.add(PlayerInfoPacket.appearance)
+        playerVisual.equipment.neck = neck
+        playerVisual.updateFlags.add(PlayerInfoPacket.appearance)
     }
 
     fun equip(ammunition: AmmunitionEquipment?) {
-        playerManager.equipment.ammunition = ammunition
-        playerManager.updateFlags.add(PlayerInfoPacket.appearance)
+        playerVisual.equipment.ammunition = ammunition
+        playerVisual.updateFlags.add(PlayerInfoPacket.appearance)
     }
 
     fun equip(weapon: WeaponEquipment?) {
-        playerManager.equipment.weapon = weapon
-        playerManager.updateFlags.add(PlayerInfoPacket.appearance)
+        playerVisual.equipment.weapon = weapon
+        playerVisual.updateFlags.add(PlayerInfoPacket.appearance)
     }
 
     fun equip(shield: ShieldEquipment?) {
-        playerManager.equipment.shield = shield
-        playerManager.updateFlags.add(PlayerInfoPacket.appearance)
+        playerVisual.equipment.shield = shield
+        playerVisual.updateFlags.add(PlayerInfoPacket.appearance)
     }
 
     fun equip(body: BodyEquipment?) {
-        playerManager.equipment.body = body
-        playerManager.updateFlags.add(PlayerInfoPacket.appearance)
+        playerVisual.equipment.body = body
+        playerVisual.updateFlags.add(PlayerInfoPacket.appearance)
     }
 
     fun equip(legs: LegsEquipment?) {
-        playerManager.equipment.legs = legs
-        playerManager.updateFlags.add(PlayerInfoPacket.appearance)
+        playerVisual.equipment.legs = legs
+        playerVisual.updateFlags.add(PlayerInfoPacket.appearance)
     }
 
     fun equip(hands: HandEquipment?) {
-        playerManager.equipment.hands = hands
-        playerManager.updateFlags.add(PlayerInfoPacket.appearance)
+        playerVisual.equipment.hands = hands
+        playerVisual.updateFlags.add(PlayerInfoPacket.appearance)
     }
 
     fun equip(feet: FeetEquipment?) {
-        playerManager.equipment.feet = feet
-        playerManager.updateFlags.add(PlayerInfoPacket.appearance)
+        playerVisual.equipment.feet = feet
+        playerVisual.updateFlags.add(PlayerInfoPacket.appearance)
     }
 
     fun equip(ring: RingEquipment?) {
-        playerManager.equipment.ring = ring
+        playerVisual.equipment.ring = ring
     }
 
     fun updateVarbit(id: Int, value: Int) = varpManager.updateVarbit(id, value)
@@ -291,13 +295,13 @@ data class Player(
 
     fun turnTo(entity: Entity) {
         setOrientation(entity)
-        playerManager.updateFlags.add(PlayerInfoPacket.orientation)
+        playerVisual.updateFlags.add(PlayerInfoPacket.orientation)
     }
 
     fun turnToLock(char: Character?) {
-        playerManager.interacting = char
+        playerVisual.interacting = char
         char?.let { setOrientation(char) }
-        playerManager.updateFlags.add(PlayerInfoPacket.lockTurnToCharacter)
+        playerVisual.updateFlags.add(PlayerInfoPacket.lockTurnToCharacter)
     }
 
     internal fun stageLogout() {
@@ -312,8 +316,10 @@ data class Player(
             (entity.pos.x.value + (entity.sizeX.value.toDouble() / 2))
         val dy = (pos.y.value + (sizeY.value.toDouble() / 2)) -
             (entity.pos.y.value + (entity.sizeY.value.toDouble() / 2))
-        if (dx.toInt() != 0 || dy.toInt() != 0) playerManager.orientation = (atan2(dx, dy) * 325.949).toInt() and 0x7FF
+        if (dx.toInt() != 0 || dy.toInt() != 0) playerVisual.orientation = (atan2(dx, dy) * 325.949).toInt() and 0x7FF
     }
+
+
 
     override fun compareTo(other: Player) = when {
         priority < other.priority -> -1

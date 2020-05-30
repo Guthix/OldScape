@@ -23,10 +23,9 @@ import io.guthix.oldscape.server.world.map.Tile
 import java.util.*
 
 abstract class Character(
+    val index: Int,
     internal open val visualInterestManager: CharacterVisual
 ) : Entity() {
-    val index get() = visualInterestManager.index
-
     abstract val size: TileUnit
 
     override val sizeX get() = size
@@ -36,42 +35,4 @@ abstract class Character(
     override val pos: Tile get() = visualInterestManager.pos
 
     val lastPos: Tile get() = visualInterestManager.lastPos
-}
-
-abstract class CharacterVisual(val index: Int) {
-    abstract val updateFlags: SortedSet<out UpdateType>
-
-    var movementType = MovementUpdateType.STAY
-
-    var pos: Tile = Tile(0.floors, 3231.tiles, 3222.tiles)
-
-    var lastPos = pos.copy(x = pos.x - 1.tiles)
-
-    var followPosition = lastPos.copy()
-
-    open var orientation: Int = 0
-
-    fun getOrientation(prev: Tile, new: Tile) = getOrientation(new.x - prev.x, new.y - prev.y)
-
-    fun getOrientation(dx: TileUnit, dy: TileUnit) = moveDirection[2 - dy.value][dx.value + 2]
-
-    abstract class UpdateType(private val priority: Int, internal val mask: Int) : Comparable<UpdateType> {
-        override fun compareTo(other: UpdateType) = when {
-            priority < other.priority -> -1
-            priority > other.priority -> 1
-            else -> 0
-        }
-    }
-
-    enum class MovementUpdateType { TELEPORT, RUN, WALK, STAY }
-
-    companion object {
-        private val moveDirection = arrayOf(
-            intArrayOf(768, 768, 1024, 1280, 1280),
-            intArrayOf(768, 768, 1024, 1280, 1280),
-            intArrayOf(512, 512, -1, 1536, 1536),
-            intArrayOf(256, 256, 0, 1792, 1792),
-            intArrayOf(256, 256, 0, 1792, 1792)
-        )
-    }
 }
