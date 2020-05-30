@@ -38,7 +38,7 @@ class NpcList(capacity: Int) : Iterable<Npc> {
 
     fun create(id: Int, pos: Tile): Npc {
         val index = freeIndexes.pop()
-        val npc = Npc(id, pos, NpcVisual(index))
+        val npc = Npc(index, id, pos, NpcVisual())
         npcs[npc.index] = npc
         occupiedIndexes.add(npc.index)
         return npc
@@ -79,8 +79,8 @@ class PlayerList(capacity: Int) : Iterable<Player> {
     fun create(req: LoginRequest): Player {
         val index = freeIndexes.pop()
         val priority = Random.nextInt(occupiedIndexes.size + 1)
-        val player = Player(priority, req.ctx, req.clientSettings, PlayerManager(index, req.username), NpcManager(),
-            MapManager(), ContextMenuManager(), VarpManager(), StatManager(), EnergyManager()
+        val player = Player(priority, req.ctx, req.clientSettings, PlayerVisual(req.username), PlayerManager(index),
+            NpcManager(), MapManager(), ContextMenuManager(), VarpManager(), StatManager(), EnergyManager()
         )
         players[player.index] = player
         player.priority = priority

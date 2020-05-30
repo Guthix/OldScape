@@ -25,61 +25,7 @@ import io.guthix.oldscape.server.world.map.Tile
 import io.netty.channel.ChannelFuture
 import java.util.*
 
-class PlayerManager(index: Int, val username: String) : CharacterVisual(index), InterestManager {
-    var nameModifiers = arrayOf("", "", "")
-
-    var inRunMode = false
-
-    override val updateFlags = sortedSetOf<PlayerInfoPacket.UpdateType>()
-
-    override var orientation: Int = 0
-
-    var path = mutableListOf<Tile>()
-
-    var sequence: Sequence? = null
-
-    var spotAnimation: SpotAnimation? = null
-
-    var publicMessage: PublicMessageEvent? = null
-
-    var shoutMessage: String? = null
-
-    var interacting: Character? = null
-
-    val gender = Gender.MALE
-
-    val isSkulled = false
-
-    val prayerIcon = -1
-
-    var rights = 2
-
-    val combatLevel = 126
-
-    val style = Style(
-        hair = 0,
-        beard = 10,
-        torso = 18,
-        arms = 26,
-        legs = 36,
-        hands = 33,
-        feet = 42
-    )
-
-    val colours = Colours(0, 0, 0, 0, 0)
-
-    val equipment = Equipment(null, null, null, null, null, null, null, null, null, null, null)
-
-    val animations = Animations(
-        stand = 808,
-        turn = 823,
-        walk = 819,
-        turn180 = 820,
-        turn90CW = 821,
-        turn90CCW = 822,
-        run = 824
-    )
-
+class PlayerManager(val index: Int) : InterestManager {
     var localPlayerCount = 0
 
     val localPlayers = arrayOfNulls<Player>(World.MAX_PLAYERS)
@@ -94,46 +40,7 @@ class PlayerManager(index: Int, val username: String) : CharacterVisual(index), 
 
     val skipFlags = ByteArray(World.MAX_PLAYERS)
 
-    fun move() = if (path.isEmpty()) {
-        movementType = MovementUpdateType.STAY
-    } else {
-        takeStep()
-    }
-
-    private fun takeStep() {
-        lastPos = pos
-        pos = when {
-            inRunMode -> when {
-                path.size == 1 -> {
-                    movementType = MovementUpdateType.WALK
-                    updateFlags.add(PlayerInfoPacket.movementTemporary)
-                    followPosition = pos
-                    path.removeAt(0)
-                }
-                path.size > 1 && pos.withInDistanceOf(path[1], 1.tiles) -> { // running corners
-                    movementType = MovementUpdateType.WALK
-                    followPosition = path.removeAt(0)
-                    path.removeAt(0)
-                }
-                else -> {
-                    movementType = MovementUpdateType.RUN
-                    followPosition = path.removeAt(0)
-                    path.removeAt(0)
-                }
-            }
-            else -> {
-                movementType = MovementUpdateType.WALK
-                followPosition = pos
-                path.removeAt(0)
-            }
-        }
-        orientation = getOrientation(followPosition, pos)
-    }
-
     override fun initialize(world: World, player: Player) {
-        updateFlags.add(PlayerInfoPacket.appearance)
-        updateFlags.add(PlayerInfoPacket.orientation)
-        updateFlags.add(PlayerInfoPacket.nameModifiers)
         localPlayers[index] = player
         localPlayerIndexes[localPlayerCount++] = index
         for (playerIndex in 1 until World.MAX_PLAYERS) {
@@ -146,10 +53,10 @@ class PlayerManager(index: Int, val username: String) : CharacterVisual(index), 
     }
 
     override fun synchronize(world: World, player: Player): List<ChannelFuture> {
-        return listOf(player.ctx.write(PlayerInfoPacket(world.players, this)))
+        return listOf(player.ctx.write(PlayerInfoPacket(world.players, this, player.playerVisual)))
     }
 
-    override fun postProcess() = updateFlags.clear()
+    override fun postProcess() { }
 
     class Equipment(
         head: HeadEquipment?,

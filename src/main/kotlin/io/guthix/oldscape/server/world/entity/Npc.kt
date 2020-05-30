@@ -24,7 +24,7 @@ import io.guthix.oldscape.server.net.game.out.NpcInfoSmallViewportPacket
 import io.guthix.oldscape.server.world.map.Tile
 import java.util.*
 
-class Npc(id: Int, override var pos: Tile, val visual: NpcVisual) : Character(visual) {
+class Npc(index: Int, id: Int, override var pos: Tile, val visual: NpcVisual) : Character(index, visual) {
     private val blueprint = NpcBlueprints[id]
 
     val id get() = blueprint.id
@@ -34,6 +34,6 @@ class Npc(id: Int, override var pos: Tile, val visual: NpcVisual) : Character(vi
     val contextMenu get() = blueprint.contextMenu
 }
 
-class NpcVisual(index: Int) : CharacterVisual(index) {
+class NpcVisual : CharacterVisual() {
     override val updateFlags = sortedSetOf<NpcInfoSmallViewportPacket.UpdateType>()
 }
