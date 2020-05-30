@@ -23,7 +23,7 @@ import io.guthix.oldscape.server.pathing.algo.imp.breadthFirstSearch
 import io.guthix.oldscape.server.event.script.Routine
 import io.guthix.oldscape.server.event.script.EventBus
 
-on(ObjectClickEvent::class).then(Routine.Type.Normal) {
+on(ObjectClickEvent::class).then(Routine.Type.Normal, replace = true) {
     val destination = DestinationTile(player.pos.floor, event.x, event.y)
     player.path = breadthFirstSearch(player.pos, destination, player.size, true, world.map)
     wait{ destination.reached(player.pos.x, player.pos.y, player.size) }

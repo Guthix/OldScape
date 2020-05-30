@@ -297,7 +297,6 @@ data class Player(
     fun turnToLock(char: Character?) {
         playerManager.interacting = char
         char?.let { setOrientation(char) }
-        println("Turn to lock $char")
         playerManager.updateFlags.add(PlayerInfoPacket.lockTurnToCharacter)
     }
 

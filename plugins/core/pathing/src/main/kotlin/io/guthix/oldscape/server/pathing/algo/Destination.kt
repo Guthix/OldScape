@@ -24,6 +24,7 @@ import io.guthix.oldscape.server.dimensions.FloorUnit
 import io.guthix.oldscape.server.world.map.Tile
 import io.guthix.oldscape.server.dimensions.TileUnit
 import io.guthix.oldscape.server.dimensions.tiles
+import io.guthix.oldscape.server.world.entity.Npc
 
 abstract class Destination(val floor: FloorUnit, val x: TileUnit, val y: TileUnit) {
     abstract fun reached(moverX: TileUnit, moverY: TileUnit, moverSize: TileUnit): Boolean
@@ -33,6 +34,56 @@ class DestinationTile(floor: FloorUnit, x: TileUnit, y: TileUnit) : Destination(
     constructor(tile: Tile) : this(tile.floor, tile.x, tile.y)
 
     override fun reached(moverX: TileUnit, moverY: TileUnit, moverSize: TileUnit) = x == moverX && y == moverY
+}
+
+class DesinationNpc(
+    private val npc: Npc,
+    private val map: WorldMap
+) : Destination(npc.pos.floor, npc.pos.x, npc.pos.y) {
+    override fun reached(moverX: TileUnit, moverY: TileUnit, moverSize: TileUnit): Boolean {
+        val srcEndX = moverX + moverSize
+        val srcEndY = moverY + moverSize
+        val destEndX = x + npc.sizeX
+        val destEndY = y + npc.sizeY
+        if (moverY == destEndY) {
+            var maxX = if (moverX > x) moverX else x
+            val maxXSize = if (srcEndX < destEndX) srcEndX else destEndX
+            while (maxX < maxXSize) {
+                if (map.getCollisionMask(floor, maxX, destEndY - 1.tiles) and ZoneCollision.MASK_WALL_N == 0) {
+                    return true
+                }
+                maxX++
+            }
+        } else if (destEndX == moverX) {
+            var maxY = if (moverY > y) moverY else y
+            val maxYSize = if (srcEndY < destEndY) srcEndY else destEndY
+            while (maxY < maxYSize) {
+                if (map.getCollisionMask(floor, destEndX - 1.tiles, maxY) and ZoneCollision.MASK_WALL_E == 0) {
+                    return true
+                }
+                maxY++
+            }
+        } else if (y == srcEndY) {
+            var maxX = if (moverX > x) moverX else x
+            val maxXSize = if (srcEndX < destEndX) srcEndX else destEndX
+            while (maxX < maxXSize) {
+                if (map.getCollisionMask(floor, maxX, y) and ZoneCollision.MASK_WALL_S == 0) {
+                    return true
+                }
+                maxX++
+            }
+        } else if (srcEndX == x) {
+            var maxY = if (moverY > y) moverY else y
+            val maxYSize = if (srcEndY < destEndY) srcEndY else destEndY
+            while (maxY < maxYSize) {
+                if (map.getCollisionMask(floor, x, maxY) and ZoneCollision.MASK_WALL_W == 0) {
+                    return true
+                }
+                maxY++
+            }
+        }
+        return false
+    }
 }
 
 class DestinationPlayer(

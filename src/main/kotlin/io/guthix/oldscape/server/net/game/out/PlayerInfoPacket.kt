@@ -25,6 +25,7 @@ import io.guthix.oldscape.server.net.game.VarShortSize
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.PlayerList
 import io.guthix.oldscape.server.world.entity.CharacterVisual
+import io.guthix.oldscape.server.world.entity.Npc
 import io.guthix.oldscape.server.world.entity.Player
 import io.guthix.oldscape.server.world.entity.interest.PlayerManager
 import io.guthix.oldscape.server.world.entity.interest.regionId
@@ -370,13 +371,12 @@ class PlayerInfoPacket(
         }
 
         val lockTurnToCharacter = UpdateType(9, 0x40) { im ->
-            if(im.interacting == null) {
-                writeShort(65535)
-            } else {
-                im.interacting?.let {
-                    writeShort(it.index + 32768)
-                }
+            val index = when(val interacting = im.interacting) {
+                is Npc -> interacting.index
+                is Player -> interacting.index + 32768
+                else -> 65535
             }
+            writeShort(index)
         }
 
         val appearance = UpdateType(6, 0x8) { im ->
