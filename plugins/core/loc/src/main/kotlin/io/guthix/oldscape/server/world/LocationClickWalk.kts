@@ -14,15 +14,15 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with Foobar. If not, see <https://www.gnu.org/licenses/>.
  */
-package io.guthix.oldscape.server.pathing
+package io.guthix.oldscape.server.world
 
 import io.guthix.oldscape.server.event.LocationClickEvent
 import io.guthix.oldscape.server.world.map.Tile
 import io.guthix.oldscape.server.event.LocationReachedEvent
 import io.guthix.oldscape.server.event.script.Routine
 import io.guthix.oldscape.server.event.script.EventBus
-import io.guthix.oldscape.server.pathing.algo.DestinationLocation
-import io.guthix.oldscape.server.pathing.algo.imp.breadthFirstSearch
+import io.guthix.oldscape.server.pathing.DestinationLocation
+import io.guthix.oldscape.server.pathing.breadthFirstSearch
 
 on(LocationClickEvent::class).then(Routine.Type.Normal, replace = true) {
     val loc = world.map.getLoc(event.id, player.pos.floor, event.x, event.y) ?: error(

@@ -14,12 +14,12 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with Foobar. If not, see <https://www.gnu.org/licenses/>.
  */
-package io.guthix.oldscape.server.pathing
+package io.guthix.oldscape.server.follow
 
 import io.guthix.oldscape.server.event.PlayerClickEvent
-import io.guthix.oldscape.server.pathing.algo.DestinationTile
-import io.guthix.oldscape.server.pathing.algo.imp.breadthFirstSearch
-import io.guthix.oldscape.server.pathing.algo.imp.simplePathSearch
+import io.guthix.oldscape.server.pathing.DestinationTile
+import io.guthix.oldscape.server.pathing.breadthFirstSearch
+import io.guthix.oldscape.server.pathing.simplePathSearch
 import io.guthix.oldscape.server.event.script.Routine
 
 on(PlayerClickEvent::class).where { event.option == "Follow" }.then(Routine.Type.Normal, replace = true) {

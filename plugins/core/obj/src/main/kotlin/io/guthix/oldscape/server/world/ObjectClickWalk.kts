@@ -14,12 +14,12 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with Foobar. If not, see <https://www.gnu.org/licenses/>.
  */
-package io.guthix.oldscape.server.pathing
+package io.guthix.oldscape.server.world
 
 import io.guthix.oldscape.server.event.ObjectClickEvent
 import io.guthix.oldscape.server.event.ObjectReachedEvent
-import io.guthix.oldscape.server.pathing.algo.DestinationTile
-import io.guthix.oldscape.server.pathing.algo.imp.breadthFirstSearch
+import io.guthix.oldscape.server.pathing.DestinationTile
+import io.guthix.oldscape.server.pathing.breadthFirstSearch
 import io.guthix.oldscape.server.event.script.Routine
 import io.guthix.oldscape.server.event.script.EventBus
 

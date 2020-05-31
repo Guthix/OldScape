@@ -14,7 +14,7 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with Foobar. If not, see <https://www.gnu.org/licenses/>.
  */
-package io.guthix.oldscape.server.pathing.algo.imp
+package io.guthix.oldscape.server.pathing
 
 import io.guthix.oldscape.server.world.WorldMap
 import io.guthix.oldscape.server.world.map.ZoneCollision
