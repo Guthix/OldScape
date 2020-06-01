@@ -22,7 +22,7 @@ import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 
 class IfClosesubPacket(val parentId: Int, val slot: Int) : OutGameEvent {
-    override val opcode = 46
+    override val opcode = 70
 
     override val size = FixedSize(STATIC_SIZE)
 

@@ -17,6 +17,7 @@
 package io.guthix.oldscape.server.net.game.out
 
 import io.guthix.buffer.writeIntME
+import io.guthix.buffer.writeShortLEADD
 import io.guthix.oldscape.server.net.game.FixedSize
 import io.guthix.oldscape.server.net.game.OutGameEvent
 import io.netty.buffer.ByteBuf
@@ -28,14 +29,14 @@ class IfSetobjectPacket(
     private val itemId: Int,
     private val amount: Int
 ) : OutGameEvent {
-    override val opcode = 50
+    override val opcode = 74
 
     override val size = FixedSize(STATIC_SIZE)
 
     override fun encode(ctx: ChannelHandlerContext): ByteBuf {
         val buf = ctx.alloc().buffer(STATIC_SIZE)
-        buf.writeShort(itemId)
-        buf.writeInt(amount)
+        buf.writeShortLEADD(itemId)
+        buf.writeIntLE(amount)
         buf.writeIntME((rootInterfaceId shl 16) or slotId)
         return buf
     }

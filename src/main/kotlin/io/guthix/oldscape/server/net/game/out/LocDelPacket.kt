@@ -29,7 +29,7 @@ class LocDelPacket(
     localX: TileUnit,
     localY: TileUnit
 ) : ZoneOutGameEvent(localX, localY) {
-    override val opcode = 36
+    override val opcode = 85
 
     override val enclOpcode = 8
 

@@ -28,14 +28,14 @@ class IfSetnpcheadPacket(
     private val slotId: Int,
     private val modelId: Int
 ) : OutGameEvent {
-    override val opcode = 61
+    override val opcode = 22
 
     override val size = FixedSize(STATIC_SIZE)
 
     override fun encode(ctx: ChannelHandlerContext): ByteBuf {
         val buf = ctx.alloc().buffer(STATIC_SIZE)
-        buf.writeShortADD(modelId)
         buf.writeIntIME((rootInterfaceId shl 16) or slotId)
+        buf.writeShortADD(modelId)
         return buf
     }
 

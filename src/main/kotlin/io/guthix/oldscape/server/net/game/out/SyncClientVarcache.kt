@@ -23,7 +23,7 @@ import io.netty.buffer.Unpooled
 import io.netty.channel.ChannelHandlerContext
 
 class SyncClientVarcache : OutGameEvent {
-    override val opcode = 79
+    override val opcode = 12
 
     override val size = FixedSize(0)
 

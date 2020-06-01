@@ -26,14 +26,14 @@ class IfSetscrollposPacket(
     private val slotId: Int,
     private val scrollPos: Int
 ) : OutGameEvent {
-    override val opcode = 35
+    override val opcode = 41
 
     override val size = FixedSize(STATIC_SIZE)
 
     override fun encode(ctx: ChannelHandlerContext): ByteBuf {
         val buf = ctx.alloc().buffer(STATIC_SIZE)
-        buf.writeIntLE((rootInterfaceId shl 16) or slotId)
         buf.writeShortLE(scrollPos)
+        buf.writeIntLE((rootInterfaceId shl 16) or slotId)
         return buf
     }
 

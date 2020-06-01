@@ -22,7 +22,7 @@ import io.guthix.oldscape.server.net.game.GamePacketDecoder
 import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 
-class EventMouseClickPacket : GamePacketDecoder(37, FixedSize(6)) {
+class EventMouseClickPacket : GamePacketDecoder(2, FixedSize(6)) {
     override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): MouseClickEvent {
         val bitPack = data.readShort().toInt()
         val mouseX = data.readShort().toInt()

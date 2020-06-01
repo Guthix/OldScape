@@ -28,14 +28,14 @@ class RebuildNormalPacket(
     private val x: ZoneUnit,
     private val y: ZoneUnit
 ) : OutGameEvent {
-    override val opcode = 73
+    override val opcode = 17
 
     override val size = VarShortSize
 
     override fun encode(ctx: ChannelHandlerContext): ByteBuf {
         val buf = ctx.alloc().buffer(STATIC_SIZE + xteas.size * XTEA_KEY_SIZE * Int.SIZE_BYTES)
-        buf.writeShortLE(y.value)
-        buf.writeShort(x.value)
+        buf.writeShort(y.value)
+        buf.writeShortLE(x.value)
         buf.writeShort(xteas.size)
         xteas.forEach { xteaKey ->
             xteaKey.forEach { keyPart ->

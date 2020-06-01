@@ -30,7 +30,7 @@ class UpdateInvFullPacket(
     private val containerId: Int,
     private val objs: List<Obj?>
 ) : OutGameEvent {
-    override val opcode = 47
+    override val opcode = 71
 
     override val size = VarShortSize
 

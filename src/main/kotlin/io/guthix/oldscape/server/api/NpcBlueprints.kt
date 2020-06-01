@@ -34,8 +34,11 @@ object NpcBlueprints {
     fun load(cacheConfigs: Map<Int, NpcConfig>, extraObjConfigs: List<ExtraNpcConfig>) {
         val bps = mutableMapOf<Int, NpcBlueprint>()
         extraObjConfigs.forEach { extraConfig ->
-            extraConfig.ids.forEach {  id ->
-                val cacheConfig = cacheConfigs[id] ?: error("Extra config for id $id is not found in the cache.")
+            extraConfig.ids.forEach inner@ {  id ->
+                val cacheConfig = cacheConfigs[id] ?: run {
+                    logger.warn {  "Extra config for id $id is not found in the cache."}
+                    return@inner
+                }
                 bps[id] = NpcBlueprint(
                     cacheConfig.id,
                     cacheConfig.name,

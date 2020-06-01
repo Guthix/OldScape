@@ -22,7 +22,7 @@ import io.netty.buffer.Unpooled
 import io.netty.channel.ChannelHandlerContext
 
 class LogoutFullPacket : OutGameEvent {
-    override val opcode = 21
+    override val opcode = 82
 
     override val size = FixedSize(STATIC_SIZE)
 

@@ -22,7 +22,7 @@ import io.guthix.oldscape.server.net.game.GamePacketDecoder
 import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 
-class WindowStatusPacket : GamePacketDecoder(76, FixedSize(5)) {
+class WindowStatusPacket : GamePacketDecoder(52, FixedSize(5)) {
     override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): WindowStatusEvent {
         val isResized = data.readUnsignedByte().toInt() == 2
         val width = data.readUnsignedShort()

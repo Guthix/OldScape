@@ -23,7 +23,7 @@ import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 
 class SetMapFlagPacket(val localX: TileUnit, val localY: TileUnit) : OutGameEvent {
-    override val opcode = 58
+    override val opcode = 25
 
     override val size = FixedSize(STATIC_SIZE)
 

@@ -78,10 +78,11 @@ object ObjectBlueprints {
         construct: (ObjectConfig, E) -> B
     ) {
         extraObjectConfigs.forEach { extraConfig ->
-            extraConfig.ids.forEach { id ->
-                val cacheConfig = cacheConfigs[id] ?: throw FileNotFoundException(
-                    "Could not find object config for id $id."
-                )
+             extraConfig.ids.forEach inner@ { id ->
+                val cacheConfig = cacheConfigs[id] ?: kotlin.run {
+                    logger.warn {  "Could not find object config for id $id." }
+                    return@inner
+                }
                 put(id, construct.invoke(cacheConfig, extraConfig))
             }
         }

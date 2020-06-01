@@ -18,6 +18,8 @@ package io.guthix.oldscape.server.net.game.out
 
 import io.guthix.buffer.writeByteADD
 import io.guthix.buffer.writeByteNEG
+import io.guthix.buffer.writeByteSUB
+import io.guthix.buffer.writeShortADD
 import io.guthix.oldscape.server.dimensions.FloorUnit
 import io.guthix.oldscape.server.dimensions.TileUnit
 import io.guthix.oldscape.server.net.game.FixedSize
@@ -33,7 +35,7 @@ class SoundAreaPacket(
     localX: TileUnit,
     localY: TileUnit
 ) : ZoneOutGameEvent(localX, localY) {
-    override val opcode = 33
+    override val opcode = 42
 
     override val enclOpcode = 4
 
@@ -41,10 +43,10 @@ class SoundAreaPacket(
 
     override fun encode(ctx: ChannelHandlerContext): ByteBuf {
         val buf = ctx.alloc().buffer(STATIC_SIZE)
-        buf.writeByteNEG(delay)
-        buf.writeByteADD((floor.value shr 4) or loopCount)
-        buf.writeByteADD(posBitPack)
-        buf.writeShortLE(id)
+        buf.writeByte(delay)
+        buf.writeByteSUB(posBitPack)
+        buf.writeShortADD(id)
+        buf.writeByteSUB((floor.value shr 4) or loopCount)
         return buf
     }
 

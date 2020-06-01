@@ -17,9 +17,7 @@
 package io.guthix.oldscape.server.world
 
 import io.guthix.oldscape.server.net.login.LoginRequest
-import io.guthix.oldscape.server.world.entity.Npc
-import io.guthix.oldscape.server.world.entity.NpcVisual
-import io.guthix.oldscape.server.world.entity.Player
+import io.guthix.oldscape.server.world.entity.*
 import io.guthix.oldscape.server.world.entity.interest.*
 import io.guthix.oldscape.server.world.map.Tile
 import java.util.*
@@ -38,7 +36,7 @@ class NpcList(capacity: Int) : Iterable<Npc> {
 
     fun create(id: Int, pos: Tile): Npc {
         val index = freeIndexes.pop()
-        val npc = Npc(index, id, pos, NpcVisual())
+        val npc = Monster(index, id, pos, MonsterVisual()) // TODO make distinction between npc and monster
         npcs[npc.index] = npc
         occupiedIndexes.add(npc.index)
         return npc

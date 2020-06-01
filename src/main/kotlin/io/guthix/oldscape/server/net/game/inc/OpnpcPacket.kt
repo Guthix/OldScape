@@ -28,49 +28,49 @@ import io.guthix.oldscape.server.net.game.GamePacketDecoder
 import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 
-class Opnpc1Packet : GamePacketDecoder(2, FixedSize(3)) {
+class Opnpc1Packet : GamePacketDecoder(56, FixedSize(3)) {
     override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): ClientEvent {
         val index = data.readUnsignedShortLE()
-        val pressed = data.readUnsignedByteSUB().toInt() == 1
+        val pressed = data.readUnsignedByteNEG().toInt() == 1
         return NpcClickClientEvent(index, pressed, 1)
     }
 }
 
-class Opnpc2Packet : GamePacketDecoder(93, FixedSize(3)) {
+class Opnpc2Packet : GamePacketDecoder(4, FixedSize(3)) {
     override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): ClientEvent {
-        val index = data.readUnsignedShortLEADD()
+        val index = data.readUnsignedShort()
         val pressed = data.readUnsignedByteNEG().toInt() == 1
         return NpcClickClientEvent(index, pressed, 2)
     }
 }
 
-class Opnpc3Packet : GamePacketDecoder(12, FixedSize(3)) {
+class Opnpc3Packet : GamePacketDecoder(46, FixedSize(3)) {
     override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): ClientEvent {
-        val pressed = data.readUnsignedByte().toInt() == 1
-        val index = data.readUnsignedShortLE()
+        val index = data.readUnsignedShortADD()
+        val pressed = data.readUnsignedByteNEG().toInt() == 1
         return NpcClickClientEvent(index, pressed, 3)
     }
 }
 
-class Opnpc4Packet : GamePacketDecoder(89, FixedSize(3)) {
+class Opnpc4Packet : GamePacketDecoder(12, FixedSize(3)) {
     override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): ClientEvent {
-        val index = data.readUnsignedShort()
         val pressed = data.readUnsignedByteSUB().toInt() == 1
+        val index = data.readUnsignedShortLE()
         return NpcClickClientEvent(index, pressed, 4)
     }
 }
 
-class Opnpc5Packet : GamePacketDecoder(21, FixedSize(3)) {
+class Opnpc5Packet : GamePacketDecoder(37, FixedSize(3)) {
     override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): ClientEvent {
-        val pressed = data.readUnsignedByteNEG().toInt() == 1
-        val index = data.readUnsignedShortADD()
+        val pressed = data.readUnsignedByte().toInt() == 1
+        val index = data.readUnsignedShort()
         return NpcClickClientEvent(index, pressed, 5)
     }
 }
 
-class Opnpc6Packet : GamePacketDecoder(83, FixedSize(2)) {
+class Opnpc6Packet : GamePacketDecoder(91, FixedSize(2)) {
     override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): ClientEvent {
-        val id = data.readUnsignedShort()
+        val id = data.readUnsignedShortLEADD()
         return NpcExamineClientEvent(id)
     }
 }

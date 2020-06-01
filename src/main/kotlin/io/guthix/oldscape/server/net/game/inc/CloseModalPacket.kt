@@ -23,7 +23,7 @@ import io.guthix.oldscape.server.net.game.GamePacketDecoder
 import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 
-class CloseModalPacket : GamePacketDecoder(86, FixedSize(0)) {
+class CloseModalPacket : GamePacketDecoder(30, FixedSize(0)) {
     override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): ClientEvent {
         return CloseModalEvent()
     }

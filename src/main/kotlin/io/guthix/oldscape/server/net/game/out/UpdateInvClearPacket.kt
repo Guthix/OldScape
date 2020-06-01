@@ -25,13 +25,13 @@ class UpdateInvClearPacket(
     private val interfaceId: Int,
     private val interfacePosition: Int
 ) : OutGameEvent {
-    override val opcode = 54
+    override val opcode = 63
 
     override val size = FixedSize(STATIC_SIZE)
 
     override fun encode(ctx: ChannelHandlerContext): ByteBuf {
         val buf = ctx.alloc().buffer()
-        buf.writeInt((interfaceId shl 16) or interfacePosition)
+        buf.writeIntLE((interfaceId shl 16) or interfacePosition)
         return buf
     }
 

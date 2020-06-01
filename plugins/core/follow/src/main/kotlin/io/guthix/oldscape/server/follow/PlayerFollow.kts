@@ -44,6 +44,5 @@ on(PlayerClickEvent::class).where { event.option == "Follow" }.then(Routine.Type
         currentTarget = followed.followPosition
     }
 }.onCancel {
-    println("cancel")
     player.turnToLock(null)
 }

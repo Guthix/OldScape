@@ -17,14 +17,11 @@
 package io.guthix.oldscape.server.world.entity
 
 import io.guthix.oldscape.server.dimensions.TileUnit
-import io.guthix.oldscape.server.dimensions.floors
-import io.guthix.oldscape.server.dimensions.tiles
 import io.guthix.oldscape.server.world.map.Tile
-import java.util.*
 
 abstract class Character(
     val index: Int,
-    internal open val visualInterestManager: CharacterVisual
+    internal open val visual: CharacterVisual
 ) : Entity() {
     abstract val size: TileUnit
 
@@ -32,7 +29,7 @@ abstract class Character(
 
     override val sizeY get() = size
 
-    override val pos: Tile get() = visualInterestManager.pos
+    override val pos: Tile get() = visual.pos
 
-    val lastPos: Tile get() = visualInterestManager.lastPos
+    val lastPos: Tile get() = visual.lastPos
 }

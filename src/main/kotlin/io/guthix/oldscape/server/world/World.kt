@@ -96,6 +96,7 @@ class World : TimerTask() {
         players.forEach { it.synchronize(this).forEach { futures.add(it) } }
         futures.finish(DefaultPromise<Void>(ImmediateEventExecutor.INSTANCE).addListener {
             for (player in players) player.postProcess()
+            for (npc in npcs) npc.postProcess()
         })
     }
 

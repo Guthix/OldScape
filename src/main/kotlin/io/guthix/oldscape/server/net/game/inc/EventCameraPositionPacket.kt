@@ -16,7 +16,6 @@
  */
 package io.guthix.oldscape.server.net.game.inc
 
-import io.guthix.buffer.readUnsignedShortADD
 import io.guthix.buffer.readUnsignedShortLEADD
 import io.guthix.oldscape.server.event.CameraPositionChangeEvent
 import io.guthix.oldscape.server.net.game.ClientEvent
@@ -25,9 +24,9 @@ import io.guthix.oldscape.server.net.game.GamePacketDecoder
 import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 
-class EventCameraPositionPacket : GamePacketDecoder(1, FixedSize(4)) {
+class EventCameraPositionPacket : GamePacketDecoder(66, FixedSize(4)) {
     override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): ClientEvent {
-        val angle = data.readUnsignedShortADD()
+        val angle = data.readUnsignedShortLEADD()
         val pitch = data.readUnsignedShortLEADD()
         return CameraPositionChangeEvent(angle, pitch)
     }
