@@ -25,7 +25,6 @@ import io.guthix.oldscape.server.world.NpcList
 import io.guthix.oldscape.server.world.entity.*
 import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
-import kotlin.contracts.contract
 
 class NpcInfoSmallViewportPacket(
     private val player: Player,
@@ -100,12 +99,13 @@ class NpcInfoSmallViewportPacket(
             if (npcsAdded > 16) break
             if (needsAdd(npc)) {
                 buf.writeBits(value = npc.index, amount = 15)
-                buf.writeBits(value = npc.orientation, amount = 3) //TODO fix rotation
-                buf.writeBits(value = getRespectiveLocation(npc.pos.x, player.pos.x).value, amount = 5)
                 buf.writeBits(value = getRespectiveLocation(npc.pos.y, player.pos.y).value, amount = 5)
+                buf.writeBits(value = npc.orientation, amount = 3) //TODO fix rotation
                 buf.writeBoolean(false) // Is teleport
-                buf.writeBits(value = npc.id, amount = 14)
                 buf.writeBoolean(npc.visual.updateFlags.isNotEmpty())
+                buf.writeBits(value = getRespectiveLocation(npc.pos.x, player.pos.x).value, amount = 5)
+                buf.writeBits(value = npc.id, amount = 14)
+
                 player.npcManager.localNpcs.add(npc)
                 npcsAdded++
             }
@@ -174,11 +174,11 @@ class NpcInfoSmallViewportPacket(
 
         val hit = UpdateType(5, 0x1) { visual ->
             check(visual is MonsterVisual)
-            writeByteSUB(visual.hitSplatQueue.size)
-            visual.hitSplatQueue.forEach { hitSplat ->
-                writeSmallSmart(hitSplat.id)
-                writeSmallSmart(hitSplat.damage)
-                writeSmallSmart(hitSplat.delay)
+            writeByteSUB(visual.hitMarkQueue.size)
+            visual.hitMarkQueue.forEach { hitMark ->
+                writeSmallSmart(hitMark.colour.id)
+                writeSmallSmart(hitMark.damage)
+                writeSmallSmart(hitMark.delay)
             }
             writeByteNEG(visual.healthBarQueue.size)
             visual.healthBarQueue.forEach { healthBar ->
