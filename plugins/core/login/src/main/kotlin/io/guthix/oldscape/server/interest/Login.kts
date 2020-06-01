@@ -22,7 +22,9 @@ import io.guthix.oldscape.server.event.script.EventBus
 
 on(LoginEvent::class).then {
     player.initialize(world)
-    player.updateVarbit(8119, 1)
+    player.updateVarbit(id = 8119, value = 1) // enable chat
+    player.updateVarp(id = 1306, value = 2) // set attack option for npcs (0, 1, 2, 3)
+    player.updateVarp(id = 1107, value = 2) // set attack option for players (0, 1, 2, 3)
     player.senGameMessage("Welcome to OldScape Emulator!")
     EventBus.schedule(PlayerInitialized(), player, world)
 }

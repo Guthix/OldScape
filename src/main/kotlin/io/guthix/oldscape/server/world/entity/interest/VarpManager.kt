@@ -28,6 +28,10 @@ class VarpManager: InterestManager {
 
     private val changes = mutableMapOf<Int, Int>()
 
+    fun updateVarp(id: Int, value: Int) {
+        changes[id] = value
+    }
+
     fun updateVarbit(id: Int, value: Int) {
         val config = Varbits[id]
         val bitSize = (config.msb.toInt() - config.lsb.toInt()) + 1

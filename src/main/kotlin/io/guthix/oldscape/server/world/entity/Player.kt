@@ -283,6 +283,8 @@ class Player(
         playerVisual.equipment.ring = ring
     }
 
+    fun updateVarp(id: Int, value: Int) = varpManager.updateVarp(id, value)
+
     fun updateVarbit(id: Int, value: Int) = varpManager.updateVarbit(id, value)
 
     fun runClientScript(id: Int, vararg args: Any) {
