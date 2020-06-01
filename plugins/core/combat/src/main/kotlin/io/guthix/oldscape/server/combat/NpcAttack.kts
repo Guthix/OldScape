@@ -22,7 +22,7 @@ import io.guthix.oldscape.server.event.script.Routine
 import io.guthix.oldscape.server.pathing.DesinationNpc
 import io.guthix.oldscape.server.pathing.breadthFirstSearch
 import io.guthix.oldscape.server.world.entity.Sequence
-import io.guthix.oldscape.server.world.entity.DamageHitSplat
+import io.guthix.oldscape.server.world.entity.HitMark
 
 on(NpcClickEvent::class).where { event.option == "Attack" }.then(Routine.Type.Normal, replace = true) {
     val npc = event.npc
@@ -31,9 +31,10 @@ on(NpcClickEvent::class).where { event.option == "Attack" }.then(Routine.Type.No
     player.turnToLock(npc)
     player.path = breadthFirstSearch(player.pos, destination, player.size, true, world.map)
     wait{ destination.reached(player.pos.x, player.pos.y, player.size) }
+    var index = 0
     while(true) { // start combat sequence
         player.animate(Sequence(id = 422))
-        npc.hit(DamageHitSplat(10, 0))
+        npc.hit(HitMark.Colour.RED, 10, 0)
         wait(ticks = 3)
     }
 }.onCancel {

@@ -16,16 +16,23 @@
  */
 package io.guthix.oldscape.server.world.entity
 
-sealed class HitSplat(val id: Int, val damage: Int, val delay: Int)
+class HitMark(val colour: Colour, val damage: Int, val delay: Int) {
+    enum class Colour(val id: Int) {
+        GREEN(2),
+        DARK_YELLOW(3),
+        DARK_YELLOW_SPLAT(4),
+        DARK_GREEN(5),
+        MAGENTA(6),
+        BUE(12),
+        BLUE_TINTED(13),
+        RED(16),
+        RED_TINTED(17),
+        LIGHT_GREEN(18),
+        ORANGE(20),
+        YELLOW(22),
+        YELLOW_TINTED(23),
+        GREY(24),
+        BLACK(25),
+    }
+}
 
-class MissHitSplat(damage: Int, delay: Int) : HitSplat(0, damage, delay)
-
-class DamageHitSplat(damage: Int, delay: Int) : HitSplat(1, damage, delay)
-
-class PoisonHitSplat(damage: Int, delay: Int) : HitSplat(2, damage, delay)
-
-class HeatHitSplat(damage: Int, delay: Int) : HitSplat(3, damage, delay)
-
-class DiseaseHitSplat(damage: Int, delay: Int) : HitSplat(4, damage, delay)
-
-class VenomHitSplat(damage: Int, delay: Int) : HitSplat(5, damage, delay)
