@@ -26,7 +26,7 @@ class MapProjanimPacket(
     localX: TileUnit,
     localY: TileUnit
 ) : ZoneOutGameEvent(localX, localY) {
-    override val opcode = 65
+    override val opcode = 2
 
     override val enclOpcode = 6
 

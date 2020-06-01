@@ -16,7 +16,6 @@
  */
 package io.guthix.oldscape.server.net.game.out
 
-import io.guthix.buffer.writeIntME
 import io.guthix.buffer.writeStringCP1252
 import io.guthix.oldscape.server.net.game.OutGameEvent
 import io.guthix.oldscape.server.net.game.VarShortSize
@@ -28,13 +27,13 @@ class IfSettextPacket(
     private val slot: Int,
     private val text: String
 ) : OutGameEvent {
-    override val opcode = 19
+    override val opcode = 15
 
     override val size = VarShortSize
 
     override fun encode(ctx: ChannelHandlerContext): ByteBuf {
         val buf = ctx.alloc().buffer(STATIC_SIZE + text.length)
-        buf.writeIntME((parentId shl 16) or slot)
+        buf.writeInt((parentId shl 16) or slot)
         buf.writeStringCP1252(text)
         return buf
     }

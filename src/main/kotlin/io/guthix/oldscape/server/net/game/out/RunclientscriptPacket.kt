@@ -23,7 +23,7 @@ import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 
 class RunclientscriptPacket(private val id: Int, vararg val params: Any) : OutGameEvent {
-    override val opcode = 83
+    override val opcode = 49
 
     override val size = VarShortSize
 

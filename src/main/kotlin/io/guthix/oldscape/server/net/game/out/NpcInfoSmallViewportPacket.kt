@@ -16,25 +16,22 @@
  */
 package io.guthix.oldscape.server.net.game.out
 
-import io.guthix.buffer.BitBuf
-import io.guthix.buffer.toBitMode
+import io.guthix.buffer.*
 import io.guthix.oldscape.server.dimensions.TileUnit
 import io.guthix.oldscape.server.dimensions.tiles
 import io.guthix.oldscape.server.net.game.OutGameEvent
 import io.guthix.oldscape.server.net.game.VarShortSize
 import io.guthix.oldscape.server.world.NpcList
-import io.guthix.oldscape.server.world.entity.CharacterVisual
-import io.guthix.oldscape.server.world.entity.Npc
-import io.guthix.oldscape.server.world.entity.NpcVisual
-import io.guthix.oldscape.server.world.entity.Player
+import io.guthix.oldscape.server.world.entity.*
 import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
+import kotlin.contracts.contract
 
 class NpcInfoSmallViewportPacket(
     private val player: Player,
     private val npcs: NpcList
 ) : OutGameEvent, CharacterInfoPacket() {
-    override val opcode = 7
+    override val opcode = 62
 
     override val size = VarShortSize
 
@@ -113,6 +110,9 @@ class NpcInfoSmallViewportPacket(
                 npcsAdded++
             }
         }
+        if(player.npcManager.localNpcs.any { it.visual.updateFlags.isNotEmpty() }) {
+            buf.writeBits(value = 32767, amount = 15)
+        }
         return buf
     }
 
@@ -131,9 +131,7 @@ class NpcInfoSmallViewportPacket(
         }
         maskBuf.writeByte(mask)
         npc.visual.updateFlags.forEach { updateType ->
-            if (npc.visual.updateFlags.contains(updateType)) {
-                updateType.encode(maskBuf, npc.visual)
-            }
+            updateType.encode(maskBuf, npc.visual)
         }
     }
 
@@ -150,31 +148,48 @@ class NpcInfoSmallViewportPacket(
             intArrayOf(5, 6, 7)
         )
 
-        val graphic = UpdateType(0, 0x4) { player ->
+        val sequence = UpdateType(0, 0x80) { visual ->
             //TODO
         }
 
-        val orientation = UpdateType(0, 0x1) { player ->
+        val orientation = UpdateType(1, 0x10) { visual ->
             //TODO
         }
 
-        val hit = UpdateType(0, 0x40) { player ->
+        val transform = UpdateType(2, 0x20) { visual ->
             //TODO
         }
 
-        val transform = UpdateType(0, 0x8) { player ->
+        val lockTurnToCharacter = UpdateType(3, 0x8) { visual ->
             //TODO
         }
 
-        val lockTurnToCharacter = UpdateType(0, 0x10) { player ->
+        val spotAnimation = UpdateType(4, 0x2) { visual ->
             //TODO
         }
 
-        val animation = UpdateType(0, 0x20) { player ->
+        val shout = UpdateType(4, 0x40) { visual ->
             //TODO
         }
 
-        val shout = UpdateType(0, 0x2) { player ->
+        val hit = UpdateType(5, 0x1) { visual ->
+            check(visual is MonsterVisual)
+            writeByteSUB(visual.hitSplatQueue.size)
+            visual.hitSplatQueue.forEach { hitSplat ->
+                writeSmallSmart(hitSplat.id)
+                writeSmallSmart(hitSplat.damage)
+                writeSmallSmart(hitSplat.delay)
+            }
+            writeByteNEG(visual.healthBarQueue.size)
+            visual.healthBarQueue.forEach { healthBar ->
+                writeSmallSmart(healthBar.id)
+                writeSmallSmart(healthBar.decreaseSpeed)
+                writeSmallSmart(healthBar.delay)
+                writeByte(healthBar.amount)
+            }
+        }
+
+        val forceMovement = UpdateType(6, 0x4) { visual ->
             //TODO
         }
     }

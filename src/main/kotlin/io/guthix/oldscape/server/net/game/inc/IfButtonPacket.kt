@@ -22,7 +22,7 @@ import io.guthix.oldscape.server.net.game.GamePacketDecoder
 import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 
-class IfButton1Packet : GamePacketDecoder(62, FixedSize(8)) {
+class IfButton1Packet : GamePacketDecoder(57, FixedSize(8)) {
     override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): ButtonClickEvent {
         val bitpack = data.readUnsignedInt().toInt()
         val componentId = data.readUnsignedShort()
@@ -31,7 +31,7 @@ class IfButton1Packet : GamePacketDecoder(62, FixedSize(8)) {
     }
 }
 
-class IfButton2Packet : GamePacketDecoder(39, FixedSize(8)) {
+class IfButton2Packet : GamePacketDecoder(73, FixedSize(8)) {
     override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): ButtonClickEvent {
         val bitpack = data.readUnsignedInt().toInt()
         val componentId = data.readUnsignedShort()
@@ -40,7 +40,7 @@ class IfButton2Packet : GamePacketDecoder(39, FixedSize(8)) {
     }
 }
 
-class IfButton3Packet : GamePacketDecoder(69, FixedSize(8)) {
+class IfButton3Packet : GamePacketDecoder(71, FixedSize(8)) {
     override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): ButtonClickEvent {
         val bitpack = data.readUnsignedInt().toInt()
         val componentId = data.readUnsignedShort()
@@ -49,7 +49,7 @@ class IfButton3Packet : GamePacketDecoder(69, FixedSize(8)) {
     }
 }
 
-class IfButton4Packet : GamePacketDecoder(71, FixedSize(8)) {
+class IfButton4Packet : GamePacketDecoder(19, FixedSize(8)) {
     override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): ButtonClickEvent {
         val bitpack = data.readUnsignedInt().toInt()
         val componentId = data.readUnsignedShort()
@@ -58,7 +58,7 @@ class IfButton4Packet : GamePacketDecoder(71, FixedSize(8)) {
     }
 }
 
-class IfButton5Packet : GamePacketDecoder(52, FixedSize(8)) {
+class IfButton5Packet : GamePacketDecoder(62, FixedSize(8)) {
     override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): ButtonClickEvent {
         val bitpack = data.readUnsignedInt().toInt()
         val componentId = data.readUnsignedShort()
@@ -67,7 +67,7 @@ class IfButton5Packet : GamePacketDecoder(52, FixedSize(8)) {
     }
 }
 
-class IfButton6Packet : GamePacketDecoder(84, FixedSize(8)) {
+class IfButton6Packet : GamePacketDecoder(23, FixedSize(8)) {
     override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): ButtonClickEvent {
         val bitpack = data.readUnsignedInt().toInt()
         val componentId = data.readUnsignedShort()
@@ -76,7 +76,7 @@ class IfButton6Packet : GamePacketDecoder(84, FixedSize(8)) {
     }
 }
 
-class IfButton7Packet : GamePacketDecoder(91, FixedSize(8)) {
+class IfButton7Packet : GamePacketDecoder(49, FixedSize(8)) {
     override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): ButtonClickEvent {
         val bitpack = data.readUnsignedInt().toInt()
         val componentId = data.readUnsignedShort()
@@ -85,7 +85,7 @@ class IfButton7Packet : GamePacketDecoder(91, FixedSize(8)) {
     }
 }
 
-class IfButton8Packet : GamePacketDecoder(23, FixedSize(8)) {
+class IfButton8Packet : GamePacketDecoder(55, FixedSize(8)) {
     override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): ButtonClickEvent {
         val bitpack = data.readUnsignedInt().toInt()
         val componentId = data.readUnsignedShort()
@@ -94,7 +94,7 @@ class IfButton8Packet : GamePacketDecoder(23, FixedSize(8)) {
     }
 }
 
-class IfButton9Packet : GamePacketDecoder(7, FixedSize(8)) {
+class IfButton9Packet : GamePacketDecoder(96, FixedSize(8)) {
     override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): ButtonClickEvent {
         val bitpack = data.readUnsignedInt().toInt()
         val componentId = data.readUnsignedShort()
@@ -103,7 +103,7 @@ class IfButton9Packet : GamePacketDecoder(7, FixedSize(8)) {
     }
 }
 
-class IfButton10Packet : GamePacketDecoder(80, FixedSize(8)) {
+class IfButton10Packet : GamePacketDecoder(48, FixedSize(8)) {
     override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): ButtonClickEvent {
         val bitpack = data.readUnsignedInt().toInt()
         val componentId = data.readUnsignedShort()

@@ -16,7 +16,6 @@
  */
 package io.guthix.oldscape.server.net.game.inc
 
-import io.guthix.buffer.readUnsignedByteADD
 import io.guthix.oldscape.server.dimensions.tiles
 import io.guthix.oldscape.server.event.MapClickEvent
 import io.guthix.oldscape.server.net.game.ClientEvent
@@ -25,10 +24,10 @@ import io.guthix.oldscape.server.net.game.VarByteSize
 import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 
-class MoveGameclickPacket : GamePacketDecoder(64, VarByteSize) {
+class MoveGameclickPacket : GamePacketDecoder(85, VarByteSize) {
     override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): ClientEvent {
         val x = data.readUnsignedShort()
-        val type = data.readUnsignedByteADD().toInt()
+        val type = data.readUnsignedByte().toInt()
         val y = data.readUnsignedShort()
         return MapClickEvent(x.tiles, y.tiles, type)
     }

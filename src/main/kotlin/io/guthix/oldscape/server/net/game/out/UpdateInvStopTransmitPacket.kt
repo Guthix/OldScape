@@ -22,7 +22,7 @@ import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 
 class UpdateInvStopTransmitPacket(private val containerId: Int) : OutGameEvent {
-    override val opcode = 45
+    override val opcode = 23
 
     override val size = FixedSize(STATIC_SIZE)
 

@@ -42,7 +42,7 @@ class PlayerInfoPacket(
     private val im: PlayerManager,
     private val playerVisual: PlayerVisual
 ) : OutGameEvent, CharacterInfoPacket() {
-    override val opcode = 41
+    override val opcode = 79
 
     override val size = VarShortSize
 
@@ -301,7 +301,7 @@ class PlayerInfoPacket(
             mask = mask or update.mask
         }
         if (mask >= 0xff) {
-            maskBuf.writeByte(mask or 0x2)
+            maskBuf.writeByte(mask or 0x40)
             maskBuf.writeByte(mask shr 8)
         } else {
             maskBuf.writeByte(mask)
@@ -326,133 +326,134 @@ class PlayerInfoPacket(
             intArrayOf(0, 1, 2, 3, 4)
         )
 
-        val movementTemporary = UpdateType(8, 0x200) { im ->
-            writeByteNEG(if(im.movementType == CharacterVisual.MovementUpdateType.TELEPORT) 127 else 0)
+        val movementForced = UpdateType(0, 0x200) { im ->
+            //TODO
         }
 
-        val shout = UpdateType(3, 0x10) { im ->
+        val spotAnimation = UpdateType(1, 0x800) { im ->
+            writeShortADD(im.spotAnimation?.id ?: 65535)
+            writeIntLE(((im.spotAnimation?.height ?: 0) shl 16) or (im.spotAnimation?.delay ?:0))
+        }
+
+        val sequence = UpdateType(2, 0x80) { im ->
+            writeShortLE(im.sequence?.id ?: 65535)
+            writeByteNEG(0)
+        }
+
+        val appearance = UpdateType(3, 0x2) { im ->
+            val tempBuf = Unpooled.buffer() // TODO use pooling
+            tempBuf.writeByte(im.gender.opcode)
+            tempBuf.writeByte(if(im.isSkulled) 1 else -1)
+            tempBuf.writeByte(im.prayerIcon)
+            im.equipment.head?.let { // write head gear
+                tempBuf.writeShort(512 + it.id)
+            } ?: run { tempBuf.writeByte(0) }
+            im.equipment.cape?.let {  // write cape
+                tempBuf.writeShort(512 + it.id)
+            } ?: run { tempBuf.writeByte(0) }
+            im.equipment.neck?.let {  // write neck gear
+                tempBuf.writeShort(512 + it.id)
+            } ?: run { tempBuf.writeByte(0) }
+            im.equipment.weapon?.let { // write weapon
+                tempBuf.writeShort(512 + it.id)
+            } ?: run { tempBuf.writeByte(0) }
+            im.equipment.body?.let { // write body
+                tempBuf.writeShort(512 + it.id)
+            } ?: run { tempBuf.writeShort(256 + im.style.torso) }
+            im.equipment.shield?.let {  // write shield gear
+                tempBuf.writeShort(512 + it.id)
+            } ?: run { tempBuf.writeByte(0) }
+            im.equipment.body?.let { // write arms
+                if(it.isFullBody) tempBuf.writeByte(0) else tempBuf.writeShort(256 + im.style.arms)
+            } ?: run { tempBuf.writeShort(256 + im.style.arms) }
+            im.equipment.legs?.let { // write legs
+                tempBuf.writeShort(512 + it.id)
+            } ?: run { tempBuf.writeShort(256 + im.style.legs) }
+            im.equipment.head?.let { // write hair
+                if(it.coversHair) tempBuf.writeByte(0) else tempBuf.writeShort(256 + im.style.hair)
+            } ?: run { tempBuf.writeShort(256 + im.style.hair) }
+            im.equipment.hands?.let {  // write hands
+                tempBuf.writeShort(512 + it.id)
+            } ?: run { tempBuf.writeShort(256 + im.style.hands) }
+            im.equipment.feet?.let { // write feet
+                tempBuf.writeShort(512 + it.id)
+            } ?: run { tempBuf.writeShort(256 + im.style.feet)}
+            if(im.gender == PlayerManager.Gender.MALE) { //tBuf.write beard
+                im.equipment.head?.let {
+                    if(it.coversFace) tempBuf.writeByte(0) else tempBuf.writeShort(256 + im.style.beard)
+                } ?: run { tempBuf.writeShort(256 + im.style.beard) }
+            } else {
+                tempBuf.writeByte(0)
+            }
+            tempBuf.writeByte(im.colours.hair)
+            tempBuf.writeByte(im.colours.torso)
+            tempBuf.writeByte(im.colours.legs)
+            tempBuf.writeByte(im.colours.feet)
+            tempBuf.writeByte(im.colours.skin)
+
+            tempBuf.writeShort(im.animations.stand)
+            tempBuf.writeShort(im.animations.turn)
+            tempBuf.writeShort(im.animations.walk)
+            tempBuf.writeShort(im.animations.turn180)
+            tempBuf.writeShort(im.animations.turn90CW)
+            tempBuf.writeShort(im.animations.turn90CCW)
+            tempBuf.writeShort(im.animations.run)
+            tempBuf.writeStringCP1252(im.username) // username
+            tempBuf.writeByte(im.combatLevel) // combat level
+            tempBuf.writeShort(0) // skillId level
+            tempBuf.writeByte(0) // hidden
+            writeByte(tempBuf.writerIndex())
+            writeBytesReversedADD(tempBuf)
+        }
+
+        val shout = UpdateType(4, 0x20) { im ->
             writeStringCP1252(im.shoutMessage!!) // TODO
         }
 
-        val spotAnimation = UpdateType(10, 0x400) { im ->
-            writeShortLEADD(im.spotAnimation?.id ?: 65535)
-            writeInt(((im.spotAnimation?.height ?: 0) shl 16) or (im.spotAnimation?.delay ?:0))
-        }
-
-        val nameModifiers = UpdateType(12, 0x1000) { im ->
-            im.nameModifiers.forEach { entry ->
-                writeStringCP1252(entry)
+        val lockTurnToCharacter = UpdateType(5, 0x4) { im ->
+            val index = when(val interacting = im.interacting) {
+                is Npc -> interacting.index
+                is Player -> interacting.index + 32768
+                else -> 65535
             }
+            writeShortLEADD(index)
         }
 
-        val sequence = UpdateType(2, 0x4) { im ->
-            writeShort(im.sequence?.id ?: 65535)
-            writeByteADD(0)
+        val movementCached = UpdateType(6, 0x1000) { im ->
+            writeByteNEG(if(im.inRunMode) 2 else 1)
         }
 
-        val chat = UpdateType(1, 0x80) { im ->
-            writeShortLEADD((im.publicMessage!!.color shl 8) or im.publicMessage!!.effect)
-            writeByteSUB(im.rights)
-            writeByte(0) // some boolean
+        val chat = UpdateType(7, 0x1) { im ->
+            writeShortADD((im.publicMessage!!.color shl 8) or im.publicMessage!!.effect)
+            writeByteNEG(im.rights)
+            writeByteNEG(0) // some boolean
             val compressed = Unpooled.compositeBuffer(2).apply {
                 addComponents(true,
                     Unpooled.buffer(2).apply { writeSmallSmart(im.publicMessage!!.length) },
                     Unpooled.wrappedBuffer(Huffman.compress(im.publicMessage!!.message))
                 )
             }
-            writeByte(compressed.readableBytes())
-            writeBytesReversedADD(compressed)
+            writeByteADD(compressed.readableBytes())
+            writeBytes(compressed)
         }
 
-        val movementCached = UpdateType(4, 0x800) { im ->
-            writeByteADD(if(im.inRunMode) 2 else 1)
+
+        val nameModifiers = UpdateType(8, 0x100) { im ->
+            im.nameModifiers.forEach { entry ->
+                writeStringCP1252(entry)
+            }
         }
 
-        val hit = UpdateType(11, 0x1) { im ->
+        val hit = UpdateType(9, 0x10) { im ->
             //TODO
         }
 
-        val movementForced = UpdateType(7, 0x100) { im ->
-            //TODO
+        val movementTemporary = UpdateType(10, 0x400) { im ->
+            writeByteNEG(if(im.movementType == CharacterVisual.MovementUpdateType.TELEPORT) 127 else 0)
         }
 
-        val lockTurnToCharacter = UpdateType(9, 0x40) { im ->
-            val index = when(val interacting = im.interacting) {
-                is Npc -> interacting.index
-                is Player -> interacting.index + 32768
-                else -> 65535
-            }
-            writeShort(index)
-        }
-
-        val appearance = UpdateType(6, 0x8) { im ->
-            val lengthIndex = writerIndex()
-            writeByte(0) //place holder for length
-            writeByte(im.gender.opcode)
-            writeByte(if(im.isSkulled) 1 else -1)
-            writeByte(im.prayerIcon)
-            im.equipment.head?.let { // write head gear
-                writeShort(512 + it.id)
-            } ?: run { writeByte(0) }
-            im.equipment.cape?.let {  // write cape
-                writeShort(512 + it.id)
-            } ?: run { writeByte(0) }
-            im.equipment.neck?.let {  // write neck gear
-                writeShort(512 + it.id)
-            } ?: run { writeByte(0) }
-            im.equipment.weapon?.let { // write weapon
-                writeShort(512 + it.id)
-            } ?: run { writeByte(0) }
-            im.equipment.body?.let { // write body
-                writeShort(512 + it.id)
-            } ?: run { writeShort(256 + im.style.torso) }
-            im.equipment.shield?.let {  // write shield gear
-                writeShort(512 + it.id)
-            } ?: run { writeByte(0) }
-            im.equipment.body?.let { // write arms
-                if(it.isFullBody) writeByte(0) else writeShort(256 + im.style.arms)
-            } ?: run { writeShort(256 + im.style.arms) }
-            im.equipment.legs?.let { // write legs
-                writeShort(512 + it.id)
-            } ?: run { writeShort(256 + im.style.legs) }
-            im.equipment.head?.let { // write hair
-                if(it.coversHair) writeByte(0) else writeShort(256 + im.style.hair)
-            } ?: run { writeShort(256 + im.style.hair) }
-            im.equipment.hands?.let {  // write hands
-                writeShort(512 + it.id)
-            } ?: run { writeShort(256 + im.style.hands) }
-            im.equipment.feet?.let { // write feet
-                writeShort(512 + it.id)
-            } ?: run { writeShort(256 + im.style.feet)}
-            if(im.gender == PlayerManager.Gender.MALE) { //write beard
-                im.equipment.head?.let {
-                    if(it.coversFace) writeByte(0) else writeShort(256 + im.style.beard)
-                } ?: run { writeShort(256 + im.style.beard) }
-            } else {
-                writeByte(0)
-            }
-            writeByte(im.colours.hair)
-            writeByte(im.colours.torso)
-            writeByte(im.colours.legs)
-            writeByte(im.colours.feet)
-            writeByte(im.colours.skin)
-
-            writeShort(im.animations.stand)
-            writeShort(im.animations.turn)
-            writeShort(im.animations.walk)
-            writeShort(im.animations.turn180)
-            writeShort(im.animations.turn90CW)
-            writeShort(im.animations.turn90CCW)
-            writeShort(im.animations.run)
-            writeStringCP1252(im.username) // username
-            writeByte(im.combatLevel) // combat level
-            writeShort(0) // skillId level
-            writeByte(0) // hidden
-            setByteNEG(lengthIndex, writerIndex() - lengthIndex - 1)
-        }
-
-        val orientation = UpdateType(5, 0x20) { im ->
-            writeShortLEADD(im.orientation)
+        val orientation = UpdateType(11, 0x8) { im ->
+            writeShortADD(im.orientation)
         }
     }
 }

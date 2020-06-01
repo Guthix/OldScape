@@ -24,7 +24,7 @@ import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 
 //TODO
-class EventMouseMovePacket : GamePacketDecoder(4, VarByteSize) {
+class EventMouseMovePacket : GamePacketDecoder(74, VarByteSize) {
     override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): ClientEvent {
         val bytes = data.readBytes(size)
         return MouseMoveEvent()

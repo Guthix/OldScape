@@ -22,6 +22,6 @@ import io.guthix.oldscape.server.net.game.GamePacketDecoder
 import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 
-class EventMouseIdlePacket : GamePacketDecoder(42, FixedSize(0)) {
+class EventMouseIdlePacket : GamePacketDecoder(44, FixedSize(0)) {
     override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext) = MouseIdleEvent()
 }

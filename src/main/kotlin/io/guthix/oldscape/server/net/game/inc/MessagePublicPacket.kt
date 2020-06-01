@@ -25,7 +25,7 @@ import io.guthix.oldscape.server.net.game.VarByteSize
 import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 
-class MessagePublicPacket : GamePacketDecoder(3, VarByteSize) {
+class MessagePublicPacket : GamePacketDecoder(22, VarByteSize) {
     override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): ClientEvent {
         data.readUnsignedByte()
         val color = data.readUnsignedByte().toInt()

@@ -24,66 +24,66 @@ import io.guthix.oldscape.server.net.game.GamePacketDecoder
 import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 
-class Opplayer1Packet : GamePacketDecoder(14, FixedSize(3)) {
+class Opplayer1Packet : GamePacketDecoder(60, FixedSize(3)) {
     override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): ClientEvent {
-        val index = data.readUnsignedShort()
         val buttonPressed = data.readUnsignedByte().toInt() == 1
+        val index = data.readUnsignedShortLEADD()
         return PlayerClickClientEvent(index, buttonPressed, 1)
     }
 }
 
-class Opplayer2Packet : GamePacketDecoder(78, FixedSize(3)) {
+class Opplayer2Packet : GamePacketDecoder(25, FixedSize(3)) {
     override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): ClientEvent {
-        val buttonPressed = data.readUnsignedByteSUB().toInt() == 1
-        val index = data.readUnsignedShortLE()
+        val index = data.readUnsignedShortADD()
+        val buttonPressed = data.readUnsignedByteADD().toInt() == 1
         return PlayerClickClientEvent(index, buttonPressed, 2)
     }
 }
 
-class Opplayer3Packet : GamePacketDecoder(46, FixedSize(3)) {
+class Opplayer3Packet : GamePacketDecoder(59, FixedSize(3)) {
     override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): ClientEvent {
         val buttonPressed = data.readUnsignedByteADD().toInt() == 1
-        val index = data.readUnsignedShortLEADD()
+        val index = data.readUnsignedShort()
         return PlayerClickClientEvent(index, buttonPressed, 3)
     }
 }
 
-class Opplayer4Packet : GamePacketDecoder(50, FixedSize(3)) {
+class Opplayer4Packet : GamePacketDecoder(75, FixedSize(3)) {
     override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): ClientEvent {
-        val index = data.readUnsignedShortLEADD()
-        val buttonPressed = data.readUnsignedByteADD().toInt() == 1
+        val index = data.readUnsignedShort()
+        val buttonPressed = data.readUnsignedByteSUB().toInt() == 1
         return PlayerClickClientEvent(index, buttonPressed, 4)
     }
 }
 
-class Opplayer5Packet : GamePacketDecoder(24, FixedSize(3)) {
+class Opplayer5Packet : GamePacketDecoder(51, FixedSize(3)) {
     override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): ClientEvent {
-        val buttonPressed = data.readUnsignedByteSUB().toInt() == 1
-        val index = data.readUnsignedShortADD()
+        val buttonPressed = data.readUnsignedByteADD().toInt() == 1
+        val index = data.readUnsignedShort()
         return PlayerClickClientEvent(index, buttonPressed, 5)
     }
 }
 
-class Opplayer6Packet : GamePacketDecoder(57, FixedSize(3)) {
+class Opplayer6Packet : GamePacketDecoder(43, FixedSize(3)) {
     override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): ClientEvent {
         val buttonPressed = data.readUnsignedByteNEG().toInt() == 1
-        val index = data.readUnsignedShort()
+        val index = data.readUnsignedShortLEADD()
         return PlayerClickClientEvent(index, buttonPressed, 6)
     }
 }
 
-class Opplayer7Packet : GamePacketDecoder(72, FixedSize(3)) {
+class Opplayer7Packet : GamePacketDecoder(94, FixedSize(3)) {
     override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): ClientEvent {
-        val index = data.readUnsignedShortLE()
         val buttonPressed = data.readUnsignedByte().toInt() == 1
+        val index = data.readUnsignedShort()
         return PlayerClickClientEvent(index, buttonPressed, 7)
     }
 }
 
-class Opplayer8Packet : GamePacketDecoder(56, FixedSize(3)) {
+class Opplayer8Packet : GamePacketDecoder(40, FixedSize(3)) {
     override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): ClientEvent {
-        val index = data.readUnsignedShortLEADD()
-        val buttonPressed = data.readUnsignedByteNEG().toInt() == 1
+        val buttonPressed = data.readUnsignedByte().toInt() == 1
+        val index = data.readUnsignedShort()
         return PlayerClickClientEvent(index, buttonPressed, 8)
     }
 }

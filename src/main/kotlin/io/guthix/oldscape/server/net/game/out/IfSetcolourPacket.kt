@@ -28,14 +28,14 @@ class IfSetcolourPacket(
     private val green: Int,
     private val blue: Int
 ) : OutGameEvent {
-    override val opcode = 25
+    override val opcode = 58
 
     override val size = FixedSize(STATIC_SIZE)
 
     override fun encode(ctx: ChannelHandlerContext): ByteBuf {
         val buf = ctx.alloc().buffer(STATIC_SIZE)
-        buf.writeIntLE((rootInterfaceId shl 16) or slotId)
         buf.writeShortLE((red shl 10) or (green shl 5) or blue)
+        buf.writeInt((rootInterfaceId shl 16) or slotId)
         return buf
     }
 

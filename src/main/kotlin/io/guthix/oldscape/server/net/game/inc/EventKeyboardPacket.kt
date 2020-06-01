@@ -25,12 +25,12 @@ import io.guthix.oldscape.server.net.game.VarShortSize
 import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 
-class EventKeyboardPacket : GamePacketDecoder(8, VarShortSize) {
+class EventKeyboardPacket : GamePacketDecoder(3, VarShortSize) {
     override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): ClientEvent {
         val keyPresses = mutableListOf<KeyPress>()
         for (button in 0 until (size / 4)) {
+            val timeInterval = data.readUnsignedMediumLE()
             val keyCode = data.readUnsignedByte().toInt()
-            val timeInterval = data.readUnsignedMedium()
             keyPresses.add(KeyPress(KeyboardKey.get(keyCode), timeInterval))
         }
         return KeyboardPressEvent(keyPresses.toList())

@@ -16,20 +16,19 @@
  */
 package io.guthix.oldscape.server.net.game.out
 
-import io.guthix.buffer.writeShortADD
 import io.guthix.oldscape.server.net.game.FixedSize
 import io.guthix.oldscape.server.net.game.OutGameEvent
 import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 
 class IfOpentopPacket(private val topInterface: Int) : OutGameEvent {
-    override val opcode = 0
+    override val opcode = 60
 
     override val size = FixedSize(STATIC_SIZE)
 
     override fun encode(ctx: ChannelHandlerContext): ByteBuf {
         val buf = ctx.alloc().buffer(Short.SIZE_BYTES)
-        buf.writeShortADD(topInterface)
+        buf.writeShort(topInterface)
         return buf
     }
 

@@ -46,16 +46,16 @@ class LocPrefetchPacket(
 
     override fun encode(ctx: ChannelHandlerContext): ByteBuf {
         val buf = ctx.alloc().buffer(STATIC_SIZE)
-        buf.writeShortLEADD(cycleRange.first)
-        buf.writeShort(locId)
+        buf.writeByteSUB(yRange.first.value)
+        buf.writeShortLEADD(cycleRange.last)
+        buf.writeShort(playerId)
+        buf.writeShortLEADD(locId)
         buf.writeByteNEG((locType shl 2) or (locRotation and 0x3))
-        buf.writeShort(cycleRange.last)
-        buf.writeByteSUB(xRange.last.value)
-        buf.writeByteADD(posBitPack)
-        buf.writeShortLE(playerId)
-        buf.writeByteADD(yRange.last.value)
         buf.writeByte(xRange.first.value)
-        buf.writeByteNEG(yRange.first.value)
+        buf.writeByteADD(posBitPack)
+        buf.writeByteADD(xRange.last.value)
+        buf.writeShortLEADD(cycleRange.first)
+        buf.writeByteADD(yRange.last.value)
         return buf
     }
 

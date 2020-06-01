@@ -14,17 +14,18 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with Foobar. If not, see <https://www.gnu.org/licenses/>.
  */
-package io.guthix.oldscape.server.net.game.inc
+package io.guthix.oldscape.server.world.entity
 
-import io.guthix.oldscape.server.event.AppletFocusEvent
-import io.guthix.oldscape.server.net.game.FixedSize
-import io.guthix.oldscape.server.net.game.GamePacketDecoder
-import io.netty.buffer.ByteBuf
-import io.netty.channel.ChannelHandlerContext
+sealed class HitSplat(val id: Int, val damage: Int, val delay: Int)
 
-class EventAppletFocusPacket : GamePacketDecoder(54, FixedSize(1)) {
-    override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): AppletFocusEvent {
-        val isFocus = data.readUnsignedByte().toInt() == 1
-        return AppletFocusEvent(isFocus)
-    }
-}
+class MissHitSplat(damage: Int, delay: Int) : HitSplat(0, damage, delay)
+
+class DamageHitSplat(damage: Int, delay: Int) : HitSplat(1, damage, delay)
+
+class PoisonHitSplat(damage: Int, delay: Int) : HitSplat(2, damage, delay)
+
+class HeatHitSplat(damage: Int, delay: Int) : HitSplat(3, damage, delay)
+
+class DiseaseHitSplat(damage: Int, delay: Int) : HitSplat(4, damage, delay)
+
+class VenomHitSplat(damage: Int, delay: Int) : HitSplat(5, damage, delay)

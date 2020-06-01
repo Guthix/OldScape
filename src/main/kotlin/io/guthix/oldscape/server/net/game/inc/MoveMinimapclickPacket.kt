@@ -16,7 +16,6 @@
  */
 package io.guthix.oldscape.server.net.game.inc
 
-import io.guthix.buffer.readByteADD
 import io.guthix.oldscape.server.dimensions.tiles
 import io.guthix.oldscape.server.event.MiniMapClickEvent
 import io.guthix.oldscape.server.net.game.GamePacketDecoder
@@ -27,7 +26,7 @@ import io.netty.channel.ChannelHandlerContext
 class MoveMinimapclickPacket : GamePacketDecoder(87, VarByteSize) {
     override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): MiniMapClickEvent {
         val x = data.readUnsignedShort()
-        val type = data.readByteADD().toInt()
+        val type = data.readByte().toInt()
         val y = data.readUnsignedShort()
         val mouseDx = data.readUnsignedByte().toInt()
         val mouseDy = data.readUnsignedByte().toInt()

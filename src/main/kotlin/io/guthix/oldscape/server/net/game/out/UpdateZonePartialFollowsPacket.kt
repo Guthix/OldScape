@@ -27,14 +27,14 @@ class UpdateZonePartialFollowsPacket(
     private val localX: TileUnit,
     private val localY: TileUnit
 ) : OutGameEvent {
-    override val opcode = 63
+    override val opcode = 40
 
     override val size = FixedSize(STATIC_SIZE)
 
     override fun encode(ctx: ChannelHandlerContext): ByteBuf {
         val buf = ctx.alloc().buffer(STATIC_SIZE)
-        buf.writeByte(localX.value)
         buf.writeByteSUB(localY.value)
+        buf.writeByteSUB(localX.value)
         return buf
     }
 

@@ -16,28 +16,27 @@
  */
 package io.guthix.oldscape.server.world.entity
 
-import io.guthix.oldscape.server.api.NpcBlueprints
-import io.guthix.oldscape.server.dimensions.TileUnit
-import io.guthix.oldscape.server.dimensions.floors
-import io.guthix.oldscape.server.dimensions.tiles
 import io.guthix.oldscape.server.net.game.out.NpcInfoSmallViewportPacket
 import io.guthix.oldscape.server.world.map.Tile
-import java.util.*
 
-open class Npc(index: Int, id: Int, override var pos: Tile, override val visual: NpcVisual) : Character(index, visual) {
-    private val blueprint = NpcBlueprints[id]
+class Monster(index: Int, id: Int, pos: Tile, override val visual: MonsterVisual) : Npc(index, id, pos, visual) {
+    fun hit(splat: HitSplat) {
+        visual.updateFlags.add(NpcInfoSmallViewportPacket.hit)
+        visual.hitSplatQueue.add(splat)
+        visual.healthBarQueue.add(HealthBar(2, 0, 0, 100))
+    }
 
-    val id get() = blueprint.id
-
-    override val size get() = blueprint.size.tiles
-
-    val contextMenu get() = blueprint.contextMenu
-
-    open fun postProcess() {
-        visual.updateFlags.clear()
+    override fun postProcess() {
+        super.postProcess()
+        visual.hitSplatQueue.clear()
+        visual.healthBarQueue.clear()
     }
 }
 
-open class NpcVisual : CharacterVisual() {
-    override val updateFlags = sortedSetOf<NpcInfoSmallViewportPacket.UpdateType>()
+class MonsterVisual : NpcVisual() {
+    var health = 100
+
+    val hitSplatQueue = mutableListOf<HitSplat>()
+
+    val healthBarQueue = mutableListOf<HealthBar>()
 }

@@ -17,6 +17,7 @@
 package io.guthix.oldscape.server.net.game.out
 
 import io.guthix.buffer.writeByteNEG
+import io.guthix.buffer.writeByteSUB
 import io.guthix.oldscape.server.dimensions.TileUnit
 import io.guthix.oldscape.server.net.game.FixedSize
 import io.guthix.oldscape.server.net.game.ZoneOutGameEvent
@@ -28,7 +29,7 @@ class ObjDelPacket(
     localX: TileUnit,
     localY: TileUnit
 ) : ZoneOutGameEvent(localX, localY) {
-    override val opcode = 10
+    override val opcode = 12
 
     override val enclOpcode = 3
 
@@ -36,8 +37,8 @@ class ObjDelPacket(
 
     override fun encode(ctx: ChannelHandlerContext): ByteBuf {
         val buf = ctx.alloc().buffer(STATIC_SIZE)
+        buf.writeByteSUB(posBitPack)
         buf.writeShort(id)
-        buf.writeByteNEG(posBitPack)
         return buf
     }
 

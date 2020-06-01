@@ -28,7 +28,7 @@ class MessageGamePacket(
     private val isInteractingMessage: Boolean,
     private val message: String
 ) : OutGameEvent {
-    override val opcode = 6
+    override val opcode = 39
 
     override val size = VarByteSize
 

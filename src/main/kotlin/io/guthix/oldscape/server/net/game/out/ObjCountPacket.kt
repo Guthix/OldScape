@@ -16,7 +16,6 @@
  */
 package io.guthix.oldscape.server.net.game.out
 
-import io.guthix.buffer.writeShortADD
 import io.guthix.buffer.writeShortLEADD
 import io.guthix.oldscape.server.dimensions.TileUnit
 import io.guthix.oldscape.server.net.game.FixedSize
@@ -31,7 +30,7 @@ class ObjCountPacket(
     localX: TileUnit,
     localY: TileUnit
 ) : ZoneOutGameEvent(localX, localY) {
-    override val opcode = 68
+    override val opcode = 43
 
     override val enclOpcode = 7
 
@@ -39,10 +38,10 @@ class ObjCountPacket(
 
     override fun encode(ctx: ChannelHandlerContext): ByteBuf {
         val buf = ctx.alloc().buffer(STATIC_SIZE)
-        buf.writeShortADD(id)
-        buf.writeShortLEADD(newCount)
+        buf.writeShort(oldCount)
+        buf.writeShortLEADD(id)
+        buf.writeShortLE(newCount)
         buf.writeByte(posBitPack)
-        buf.writeShortADD(oldCount)
         return buf
     }
 

@@ -16,7 +16,6 @@
  */
 package io.guthix.oldscape.server.net.game.out
 
-import io.guthix.buffer.writeByteNEG
 import io.guthix.buffer.writeByteSUB
 import io.guthix.buffer.writeShortLEADD
 import io.guthix.oldscape.server.dimensions.TileUnit
@@ -32,7 +31,7 @@ class LocAddChangePacket(
     localX: TileUnit,
     localY: TileUnit
 ) : ZoneOutGameEvent(localX, localY) {
-    override val opcode = 16
+    override val opcode = 32
 
     override val enclOpcode = 0
 
@@ -40,7 +39,7 @@ class LocAddChangePacket(
 
     override fun encode(ctx: ChannelHandlerContext): ByteBuf {
         val buf = ctx.alloc().buffer(STATIC_SIZE)
-        buf.writeByteNEG(posBitPack)
+        buf.writeByte(posBitPack)
         buf.writeShortLEADD(id)
         buf.writeByteSUB((type shl 2) or (orientation and 0x3))
         return buf

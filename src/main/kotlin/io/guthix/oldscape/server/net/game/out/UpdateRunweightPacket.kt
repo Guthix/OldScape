@@ -22,7 +22,7 @@ import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 
 class UpdateRunweightPacket(private val weight: Int) : OutGameEvent {
-    override val opcode = 8
+    override val opcode = 77
 
     override val size = FixedSize(STATIC_SIZE)
 

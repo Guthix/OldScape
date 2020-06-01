@@ -24,11 +24,11 @@ import io.guthix.oldscape.server.net.game.GamePacketDecoder
 import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 
-class Opheld1Packet : GamePacketDecoder(82, FixedSize(8)) {
+class Opheld1Packet : GamePacketDecoder(97, FixedSize(8)) {
     override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): ClientEvent {
-        val bitpack = data.readIntIME()
-        val itemId = data.readUnsignedShortLEADD()
-        val inventorySlotId = data.readUnsignedShortADD()
+        val inventorySlotId = data.readUnsignedShortLE()
+        val bitpack = data.readIntLE()
+        val itemId = data.readUnsignedShort()
         return InventoryClickClientEvent(bitpack shr Short.SIZE_BITS, bitpack and 0xFFFF, itemId, inventorySlotId, 1)
     }
 }
@@ -36,34 +36,34 @@ class Opheld1Packet : GamePacketDecoder(82, FixedSize(8)) {
 class Opheld2Packet : GamePacketDecoder(58, FixedSize(8)) {
     override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): ClientEvent {
         val bitpack = data.readInt()
-        val itemId = data.readUnsignedShortLEADD()
         val inventorySlotId = data.readUnsignedShortADD()
+        val itemId = data.readUnsignedShortLEADD()
         return InventoryClickClientEvent(bitpack shr Short.SIZE_BITS, bitpack and 0xFFFF, itemId, inventorySlotId, 2)
     }
 }
 
-class Opheld3Packet : GamePacketDecoder(44, FixedSize(8)) {
+class Opheld3Packet : GamePacketDecoder(61, FixedSize(8)) {
     override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): ClientEvent {
+        val bitpack = data.readInt()
+        val inventorySlotId = data.readUnsignedShortLE()
         val itemId = data.readUnsignedShort()
-        val bitpack = data.readIntME()
-        val inventorySlotId = data.readUnsignedShortADD()
         return InventoryClickClientEvent(bitpack shr Short.SIZE_BITS, bitpack and 0xFFFF, itemId, inventorySlotId, 3)
     }
 }
 
-class Opheld4Packet : GamePacketDecoder(74, FixedSize(8)) {
+class Opheld4Packet : GamePacketDecoder(13, FixedSize(8)) {
     override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): ClientEvent {
-        val bitpack = data.readIntIME()
         val itemId = data.readUnsignedShortLE()
-        val inventorySlotId = data.readUnsignedShort()
+        val bitpack = data.readIntLE()
+        val inventorySlotId = data.readUnsignedShortLE()
         return InventoryClickClientEvent(bitpack shr Short.SIZE_BITS, bitpack and 0xFFFF, itemId, inventorySlotId, 4)
     }
 }
 
-class Opheld5Packet : GamePacketDecoder(40, FixedSize(8)) {
+class Opheld5Packet : GamePacketDecoder(5, FixedSize(8)) {
     override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): ClientEvent {
-        val bitpack = data.readIntIME()
-        val itemId = data.readUnsignedShortLE()
+        val itemId = data.readUnsignedShortLEADD()
+        val bitpack = data.readIntME()
         val inventorySlotId = data.readUnsignedShortADD()
         return InventoryClickClientEvent(bitpack shr Short.SIZE_BITS, bitpack and 0xFFFF, itemId, inventorySlotId, 5)
     }

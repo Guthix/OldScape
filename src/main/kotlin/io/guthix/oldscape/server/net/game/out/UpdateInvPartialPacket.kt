@@ -29,7 +29,7 @@ class UpdateInvPartialPacket(
     private val subInterfaceId: Int,
     private val objs: Map<Int, Obj?>
 ) : OutGameEvent {
-    override val opcode = 13
+    override val opcode = 35
 
     override val size = VarShortSize
 

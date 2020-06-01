@@ -16,7 +16,9 @@
  */
 package io.guthix.oldscape.server.net.game.out
 
-import io.guthix.buffer.writeByteSUB
+import io.guthix.buffer.writeByteNEG
+import io.guthix.buffer.writeIntIME
+import io.guthix.buffer.writeShortADD
 import io.guthix.oldscape.server.net.game.FixedSize
 import io.guthix.oldscape.server.net.game.OutGameEvent
 import io.netty.buffer.ByteBuf
@@ -28,15 +30,15 @@ class IfOpensubPacket(
     private val childInterface: Int,
     private val type: Int
 ) : OutGameEvent {
-    override val opcode = 52
+    override val opcode = 64
 
     override val size = FixedSize(STATIC_SIZE)
 
     override fun encode(ctx: ChannelHandlerContext): ByteBuf {
         val buf = ctx.alloc().buffer(STATIC_SIZE)
-        buf.writeShortLE(childInterface)
-        buf.writeByteSUB(type)
-        buf.writeInt((parentInterface shl 16) or slot)
+        buf.writeByteNEG(type)
+        buf.writeShortADD(childInterface)
+        buf.writeIntIME((parentInterface shl 16) or slot)
         return buf
     }
 
