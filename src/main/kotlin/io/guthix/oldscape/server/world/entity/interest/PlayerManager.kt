@@ -17,13 +17,11 @@
 package io.guthix.oldscape.server.world.entity.interest
 
 import io.guthix.oldscape.server.dimensions.tiles
-import io.guthix.oldscape.server.event.PublicMessageEvent
 import io.guthix.oldscape.server.net.game.out.PlayerInfoPacket
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.*
 import io.guthix.oldscape.server.world.map.Tile
 import io.netty.channel.ChannelFuture
-import java.util.*
 
 class PlayerManager(val index: Int) : InterestManager {
     var localPlayerCount = 0
@@ -53,7 +51,7 @@ class PlayerManager(val index: Int) : InterestManager {
     }
 
     override fun synchronize(world: World, player: Player): List<ChannelFuture> {
-        return listOf(player.ctx.write(PlayerInfoPacket(world.players, this, player.playerVisual)))
+        return listOf(player.ctx.write(PlayerInfoPacket(world.players, this, player)))
     }
 
     override fun postProcess() { }

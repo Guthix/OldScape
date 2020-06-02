@@ -31,7 +31,7 @@ on(NpcClickEvent::class).where { event.option == "Attack" }.then(Routine.Type.No
     player.turnToLock(npc)
     player.path = breadthFirstSearch(player.pos, destination, player.size, true, world.map)
     wait{ destination.reached(player.pos.x, player.pos.y, player.size) }
-    var index = 0
+    npc.turnToLock(player)
     while(true) { // start combat sequence
         player.animate(Sequence(id = 422))
         npc.hit(HitMark.Colour.RED, 10, 0)

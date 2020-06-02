@@ -19,24 +19,22 @@ package io.guthix.oldscape.server.world.entity
 import io.guthix.oldscape.server.net.game.out.NpcInfoSmallViewportPacket
 import io.guthix.oldscape.server.world.map.Tile
 
-class Monster(index: Int, id: Int, pos: Tile, override val visual: MonsterVisual) : Npc(index, id, pos, visual) {
-    fun hit(colour: HitMark.Colour, damage: Int, delay: Int) {
-        visual.updateFlags.add(NpcInfoSmallViewportPacket.hit)
-        visual.hitMarkQueue.add(HitMark(colour, damage, delay))
-        visual.healthBarQueue.add(HealthBar(2, 0, 0, 100))
-    }
-
-    override fun postProcess() {
-        super.postProcess()
-        visual.hitMarkQueue.clear()
-        visual.healthBarQueue.clear()
-    }
-}
-
-class MonsterVisual : NpcVisual() {
+class Monster(index: Int, id: Int, pos: Tile) : Npc(index, id, pos) {
     var health = 100
 
     val hitMarkQueue = mutableListOf<HitMark>()
 
     val healthBarQueue = mutableListOf<HealthBar>()
+
+    fun hit(colour: HitMark.Colour, damage: Int, delay: Int) {
+        updateFlags.add(NpcInfoSmallViewportPacket.hit)
+        hitMarkQueue.add(HitMark(colour, damage, delay))
+        healthBarQueue.add(HealthBar(2, 0, 0, 100))
+    }
+
+    override fun postProcess() {
+        super.postProcess()
+        hitMarkQueue.clear()
+        healthBarQueue.clear()
+    }
 }
