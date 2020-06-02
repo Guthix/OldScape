@@ -23,6 +23,8 @@ import io.guthix.oldscape.server.net.game.OutGameEvent
 import io.guthix.oldscape.server.net.game.VarShortSize
 import io.guthix.oldscape.server.world.NpcList
 import io.guthix.oldscape.server.world.entity.*
+import io.guthix.oldscape.server.world.entity.interest.MovementInterestUpdate
+import io.guthix.oldscape.server.world.entity.interest.NpcUpdateType
 import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 
@@ -41,7 +43,7 @@ class NpcInfoSmallViewportPacket(
         externalNpcUpdate(bitBuf)
         val byteBuf = bitBuf.toByteMode()
         for (npc in player.npcManager.localNpcs) {
-            if (npc.visual.updateFlags.isNotEmpty()) {
+            if (npc.updateFlags.isNotEmpty()) {
                 updateLocalNpcVisual(npc, byteBuf)
             }
         }
@@ -53,24 +55,24 @@ class NpcInfoSmallViewportPacket(
         val removals = mutableListOf<Npc>()
         for (npc in player.npcManager.localNpcs) {
             when {
-                npc.visual.updateFlags.isNotEmpty() -> {
+                npc.updateFlags.isNotEmpty() -> {
                     buf.writeBoolean(true)
                     buf.writeBits(value = 0, amount = 2)
                 }
-                npc.visual.movementType == CharacterVisual.MovementUpdateType.WALK -> {
+                npc.movementType == MovementInterestUpdate.WALK -> {
                     buf.writeBoolean(true)
                     buf.writeBits(value = 1, amount = 2)
                     buf.writeBits(value = getDirectionWalk(npc), amount = 3)
-                    buf.writeBoolean(npc.visual.updateFlags.isNotEmpty())
+                    buf.writeBoolean(npc.updateFlags.isNotEmpty())
                 }
-                npc.visual.movementType == CharacterVisual.MovementUpdateType.RUN -> {
+                npc.movementType == MovementInterestUpdate.RUN -> {
                     buf.writeBoolean(true)
                     buf.writeBits(value = 2, amount = 2)
                     buf.writeBits(value = getDirectionWalk(npc), amount = 3)
                     buf.writeBits(value = getDirectionWalk(npc), amount = 3) //TODO Needs to send second step
-                    buf.writeBoolean(npc.visual.updateFlags.isNotEmpty())
+                    buf.writeBoolean(npc.updateFlags.isNotEmpty())
                 }
-                npc.index == -1 || npc.visual.movementType == CharacterVisual.MovementUpdateType.TELEPORT
+                npc.index == -1 || npc.movementType == MovementInterestUpdate.TELEPORT
                     || !player.pos.isInterestedIn(npc.pos) -> {
                     buf.writeBoolean(true)
                     buf.writeBits(value = 3, amount = 2)
@@ -102,7 +104,7 @@ class NpcInfoSmallViewportPacket(
                 buf.writeBits(value = getRespectiveLocation(npc.pos.y, player.pos.y).value, amount = 5)
                 buf.writeBits(value = npc.orientation, amount = 3) //TODO fix rotation
                 buf.writeBoolean(false) // Is teleport
-                buf.writeBoolean(npc.visual.updateFlags.isNotEmpty())
+                buf.writeBoolean(npc.updateFlags.isNotEmpty())
                 buf.writeBits(value = getRespectiveLocation(npc.pos.x, player.pos.x).value, amount = 5)
                 buf.writeBits(value = npc.id, amount = 14)
 
@@ -110,7 +112,7 @@ class NpcInfoSmallViewportPacket(
                 npcsAdded++
             }
         }
-        if(player.npcManager.localNpcs.any { it.visual.updateFlags.isNotEmpty() }) {
+        if(player.npcManager.localNpcs.any { it.updateFlags.isNotEmpty() }) {
             buf.writeBits(value = 32767, amount = 15)
         }
         return buf
@@ -126,20 +128,14 @@ class NpcInfoSmallViewportPacket(
 
     private fun updateLocalNpcVisual(npc: Npc, maskBuf: ByteBuf) {
         var mask = 0
-        npc.visual.updateFlags.forEach { update ->
+        npc.updateFlags.forEach { update ->
             mask = mask or update.mask
         }
         maskBuf.writeByte(mask)
-        npc.visual.updateFlags.forEach { updateType ->
-            updateType.encode(maskBuf, npc.visual)
+        npc.updateFlags.forEach { updateType ->
+            updateType.encode(maskBuf, npc)
         }
     }
-
-    class UpdateType(
-        priority: Int,
-        mask: Int,
-        val encode: ByteBuf.(im: NpcVisual) -> Unit
-    ) : CharacterVisual.UpdateType(priority, mask)
 
     companion object {
         private val movementOpcodes = arrayOf(
@@ -148,40 +144,45 @@ class NpcInfoSmallViewportPacket(
             intArrayOf(5, 6, 7)
         )
 
-        val sequence = UpdateType(0, 0x80) { visual ->
+        val sequence = NpcUpdateType(0, 0x80) { npc ->
             //TODO
         }
 
-        val orientation = UpdateType(1, 0x10) { visual ->
+        val orientation = NpcUpdateType(1, 0x10) { npc ->
             //TODO
         }
 
-        val transform = UpdateType(2, 0x20) { visual ->
+        val transform = NpcUpdateType(2, 0x20) { npc ->
             //TODO
         }
 
-        val lockTurnToCharacter = UpdateType(3, 0x8) { visual ->
+        val turnLockTo = NpcUpdateType(3, 0x8) { npc ->
+            val index = when(val interacting = npc.interacting) {
+                is Npc -> interacting.index
+                is Player -> interacting.index + 32768
+                else -> 65535
+            }
+            writeShort(index)
+        }
+
+        val spotAnimation = NpcUpdateType(4, 0x2) { npc ->
             //TODO
         }
 
-        val spotAnimation = UpdateType(4, 0x2) { visual ->
+        val shout = NpcUpdateType(4, 0x40) { npc ->
             //TODO
         }
 
-        val shout = UpdateType(4, 0x40) { visual ->
-            //TODO
-        }
-
-        val hit = UpdateType(5, 0x1) { visual ->
-            check(visual is MonsterVisual)
-            writeByteSUB(visual.hitMarkQueue.size)
-            visual.hitMarkQueue.forEach { hitMark ->
+        val hit = NpcUpdateType(5, 0x1) { npc ->
+            check(npc is Monster)
+            writeByteSUB(npc.hitMarkQueue.size)
+            npc.hitMarkQueue.forEach { hitMark ->
                 writeSmallSmart(hitMark.colour.id)
                 writeSmallSmart(hitMark.damage)
                 writeSmallSmart(hitMark.delay)
             }
-            writeByteNEG(visual.healthBarQueue.size)
-            visual.healthBarQueue.forEach { healthBar ->
+            writeByteNEG(npc.healthBarQueue.size)
+            npc.healthBarQueue.forEach { healthBar ->
                 writeSmallSmart(healthBar.id)
                 writeSmallSmart(healthBar.decreaseSpeed)
                 writeSmallSmart(healthBar.delay)
@@ -189,7 +190,7 @@ class NpcInfoSmallViewportPacket(
             }
         }
 
-        val forceMovement = UpdateType(6, 0x4) { visual ->
+        val forceMovement = NpcUpdateType(6, 0x4) { npc ->
             //TODO
         }
     }

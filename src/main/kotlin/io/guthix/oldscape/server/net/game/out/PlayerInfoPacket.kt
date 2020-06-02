@@ -24,11 +24,11 @@ import io.guthix.oldscape.server.net.game.OutGameEvent
 import io.guthix.oldscape.server.net.game.VarShortSize
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.PlayerList
-import io.guthix.oldscape.server.world.entity.CharacterVisual
 import io.guthix.oldscape.server.world.entity.Npc
 import io.guthix.oldscape.server.world.entity.Player
+import io.guthix.oldscape.server.world.entity.interest.MovementInterestUpdate
 import io.guthix.oldscape.server.world.entity.interest.PlayerManager
-import io.guthix.oldscape.server.world.entity.interest.PlayerVisual
+import io.guthix.oldscape.server.world.entity.interest.PlayerUpdateType
 import io.guthix.oldscape.server.world.entity.interest.regionId
 import io.guthix.oldscape.server.world.map.Tile
 import io.netty.buffer.ByteBuf
@@ -40,7 +40,7 @@ import kotlin.math.abs
 class PlayerInfoPacket(
     private val worldPlayers: PlayerList,
     private val im: PlayerManager,
-    private val playerVisual: PlayerVisual
+    private val player: Player
 ) : OutGameEvent, CharacterInfoPacket() {
     override val opcode = 79
 
@@ -73,22 +73,22 @@ class PlayerInfoPacket(
 
     private fun processLocalPlayers(buf: BitBuf, maskBuf: ByteBuf, nsn: Boolean) {
         //TODO teleport
-        fun localUpdateRequired(im: PlayerVisual, localPlayer: Player) = (localPlayer.playerVisual.updateFlags.isNotEmpty()
-            || !im.pos.isInterestedIn(localPlayer.pos)
-            || localPlayer.playerVisual.movementType != CharacterVisual.MovementUpdateType.STAY
+        fun localUpdateRequired(thisPlayer: Player, localPlayer: Player) = (localPlayer.updateFlags.isNotEmpty()
+            || !thisPlayer.pos.isInterestedIn(localPlayer.pos)
+            || localPlayer.movementType != MovementInterestUpdate.STAY
             || localPlayer.isLoggingOut
             )
 
         fun updateLocalPlayer(localPlayer: Player, bitBuf: BitBuf, maskBuf: ByteBuf) {
-            val flagUpdateRequired = localPlayer.playerVisual.updateFlags.isNotEmpty()
+            val flagUpdateRequired = localPlayer.updateFlags.isNotEmpty()
             bitBuf.writeBoolean(flagUpdateRequired)
-            if (localPlayer.playerVisual.movementType == CharacterVisual.MovementUpdateType.TELEPORT) {
+            if (localPlayer.movementType == MovementInterestUpdate.TELEPORT) {
                 bitBuf.writeBits(value = 3, amount = 2)
-                var localPlayerOutsideView = !playerVisual.pos.isInterestedIn(localPlayer.pos)
+                var localPlayerOutsideView = !player.pos.isInterestedIn(localPlayer.pos)
                 if (im.index == localPlayer.index) localPlayerOutsideView = true
                 bitBuf.writeBoolean(localPlayerOutsideView)
-                var dx = localPlayer.pos.x - playerVisual.lastPos.x // TODO maybe this is broken
-                var dy = localPlayer.pos.y - playerVisual.lastPos.y
+                var dx = localPlayer.pos.x - player.lastPos.x // TODO maybe this is broken
+                var dy = localPlayer.pos.y - player.lastPos.y
                 if (localPlayerOutsideView) {
                     buf.writeBits(
                         ((localPlayer.pos.floor.value and 0x3) shl 28) or
@@ -104,20 +104,20 @@ class PlayerInfoPacket(
                             (dy.value and 0x1F), 12
                     )
                 }
-            } else if (!playerVisual.pos.isInterestedIn(localPlayer.pos) || localPlayer.isLoggingOut) {
+            } else if (!player.pos.isInterestedIn(localPlayer.pos) || localPlayer.isLoggingOut) {
                 bitBuf.writeBits(value = 0, amount = 2)
                 im.localPlayers[localPlayer.index] = null
-            } else if (localPlayer.playerVisual.movementType == CharacterVisual.MovementUpdateType.WALK) {
+            } else if (localPlayer.movementType == MovementInterestUpdate.WALK) {
                 bitBuf.writeBits(value = 1, amount = 2)
                 bitBuf.writeBits(value = getDirectionWalk(localPlayer), amount = 3)
-            } else if (localPlayer.playerVisual.movementType == CharacterVisual.MovementUpdateType.RUN) {
+            } else if (localPlayer.movementType == MovementInterestUpdate.RUN) {
                 bitBuf.writeBits(value = 2, amount = 2)
                 bitBuf.writeBits(value = getDirectionWalk(localPlayer), amount = 4)
             } else if (flagUpdateRequired) {
                 bitBuf.writeBits(value = 0, amount = 2)
             }
             if (flagUpdateRequired) {
-                updateLocalPlayerVisual(localPlayer.playerVisual, maskBuf)
+                updateLocalPlayerVisual(localPlayer, maskBuf)
             }
         }
 
@@ -126,7 +126,7 @@ class PlayerInfoPacket(
                 val nextPlayerIndex = im.localPlayerIndexes[i]
                 if (hasBeenSkippedLastTick(nextPlayerIndex, nsn)) {
                     val nextPlayer = im.localPlayers[nextPlayerIndex]
-                    val updateRequired = nextPlayer != null && localUpdateRequired(playerVisual, nextPlayer)
+                    val updateRequired = nextPlayer != null && localUpdateRequired(player, nextPlayer)
                     if (updateRequired) break
                     skip++
                 }
@@ -144,7 +144,7 @@ class PlayerInfoPacket(
                     markPlayerAsSkipped(localPlayerIndex)
                 } else {
                     val localPlayer = im.localPlayers[localPlayerIndex]
-                    val updateRequired = localPlayer != null && localUpdateRequired(playerVisual, localPlayer)
+                    val updateRequired = localPlayer != null && localUpdateRequired(player, localPlayer)
                     buf.writeBoolean(updateRequired)
                     if (!updateRequired) {
                         skipLocalPlayers(buf, i, nsn)
@@ -186,12 +186,12 @@ class PlayerInfoPacket(
     }
 
     private fun processExternalPlayers(buf: BitBuf, maskBuf: ByteBuf, nsn: Boolean) {
-        fun externalUpdateRequired(player: PlayerVisual, externalPlayer: Player) =
+        fun externalUpdateRequired(player: Player, externalPlayer: Player) =
             player.pos.isInterestedIn(externalPlayer.pos)
                 || im.regionIds[externalPlayer.index] != externalPlayer.pos.regionId
 
         fun updateExternalPlayer(buf: BitBuf, maskBuf: ByteBuf, externalPlayer: Player) {
-            if (playerVisual.pos.isInterestedIn(externalPlayer.pos)) {
+            if (player.pos.isInterestedIn(externalPlayer.pos)) {
                 buf.writeBits(value = 0, amount = 2)
                 if (im.regionIds[externalPlayer.index] != externalPlayer.pos.regionId) {
                     buf.writeBoolean(true)
@@ -202,7 +202,7 @@ class PlayerInfoPacket(
                 buf.writeBits(value = externalPlayer.pos.x.value, amount = 13)
                 buf.writeBits(value = externalPlayer.pos.y.value, amount = 13)
                 buf.writeBoolean(true)
-                updateLocalPlayerVisual(externalPlayer.playerVisual, maskBuf, sortedSetOf(appearance, orientation, movementCached))
+                updateLocalPlayerVisual(externalPlayer, maskBuf, sortedSetOf(appearance, orientation, movementCached))
                 im.localPlayers[externalPlayer.index] = externalPlayer
             } else {
                 updateField(buf, externalPlayer)
@@ -215,7 +215,7 @@ class PlayerInfoPacket(
                 if (hasBeenSkippedLastTick(externalPlayerIndex, nsn)) {
                     val nextPlayer = worldPlayers[externalPlayerIndex]
                     val requiresFlagUpdates = nextPlayer != null && externalUpdateRequired(
-                        playerVisual, nextPlayer
+                        player, nextPlayer
                     )
                     if (requiresFlagUpdates) {
                         break
@@ -236,7 +236,7 @@ class PlayerInfoPacket(
                 } else {
                     val externalPlayer = worldPlayers[externalPlayerIndex]
                     val updateRequired = externalPlayer != null && externalUpdateRequired(
-                        playerVisual, externalPlayer
+                        player, externalPlayer
                     )
                     buf.writeBoolean(updateRequired)
                     if (!updateRequired) {
@@ -253,8 +253,8 @@ class PlayerInfoPacket(
     }
 
     private fun getDirectionWalk(localPlayer: Player): Int {
-        val dx = localPlayer.pos.x - localPlayer.playerVisual.lastPos.x
-        val dy = localPlayer.pos.y - localPlayer.playerVisual.lastPos.y
+        val dx = localPlayer.pos.x - localPlayer.lastPos.x
+        val dy = localPlayer.pos.y - localPlayer.lastPos.y
         return getDirectionType(dx.value, dy.value)
     }
 
@@ -291,9 +291,9 @@ class PlayerInfoPacket(
     }
 
     private fun updateLocalPlayerVisual(
-        localPlayer: PlayerVisual,
+        localPlayer: Player,
         maskBuf: ByteBuf,
-        privateUpdates: SortedSet<UpdateType> = sortedSetOf()
+        privateUpdates: SortedSet<PlayerUpdateType> = sortedSetOf()
     ) {
         var mask = 0
         privateUpdates.addAll(localPlayer.updateFlags)
@@ -311,12 +311,6 @@ class PlayerInfoPacket(
         }
     }
 
-    class UpdateType(
-        priority: Int,
-        mask: Int,
-        val encode: ByteBuf.(im: PlayerVisual) -> Unit
-    ) : CharacterVisual.UpdateType(priority, mask)
-
     companion object {
         private val MOVEMENT = arrayOf(
             intArrayOf(11, 12, 13, 14, 15),
@@ -326,21 +320,21 @@ class PlayerInfoPacket(
             intArrayOf(0, 1, 2, 3, 4)
         )
 
-        val movementForced = UpdateType(0, 0x200) { im ->
+        val movementForced = PlayerUpdateType(0, 0x200) { im ->
             //TODO
         }
 
-        val spotAnimation = UpdateType(1, 0x800) { im ->
+        val spotAnimation = PlayerUpdateType(1, 0x800) { im ->
             writeShortADD(im.spotAnimation?.id ?: 65535)
             writeIntLE(((im.spotAnimation?.height ?: 0) shl 16) or (im.spotAnimation?.delay ?:0))
         }
 
-        val sequence = UpdateType(2, 0x80) { im ->
+        val sequence = PlayerUpdateType(2, 0x80) { im ->
             writeShortLE(im.sequence?.id ?: 65535)
             writeByteNEG(0)
         }
 
-        val appearance = UpdateType(3, 0x2) { im ->
+        val appearance = PlayerUpdateType(3, 0x2) { im ->
             val tempBuf = Unpooled.buffer() // TODO use pooling
             tempBuf.writeByte(im.gender.opcode)
             tempBuf.writeByte(if(im.isSkulled) 1 else -1)
@@ -406,11 +400,11 @@ class PlayerInfoPacket(
             writeBytesReversedADD(tempBuf)
         }
 
-        val shout = UpdateType(4, 0x20) { im ->
+        val shout = PlayerUpdateType(4, 0x20) { im ->
             writeStringCP1252(im.shoutMessage!!) // TODO
         }
 
-        val lockTurnToCharacter = UpdateType(5, 0x4) { im ->
+        val lockTurnTo = PlayerUpdateType(5, 0x4) { im ->
             val index = when(val interacting = im.interacting) {
                 is Npc -> interacting.index
                 is Player -> interacting.index + 32768
@@ -419,11 +413,11 @@ class PlayerInfoPacket(
             writeShortLEADD(index)
         }
 
-        val movementCached = UpdateType(6, 0x1000) { im ->
+        val movementCached = PlayerUpdateType(6, 0x1000) { im ->
             writeByteNEG(if(im.inRunMode) 2 else 1)
         }
 
-        val chat = UpdateType(7, 0x1) { im ->
+        val chat = PlayerUpdateType(7, 0x1) { im ->
             writeShortADD((im.publicMessage!!.color shl 8) or im.publicMessage!!.effect)
             writeByteNEG(im.rights)
             writeByteNEG(0) // some boolean
@@ -438,21 +432,21 @@ class PlayerInfoPacket(
         }
 
 
-        val nameModifiers = UpdateType(8, 0x100) { im ->
+        val nameModifiers = PlayerUpdateType(8, 0x100) { im ->
             im.nameModifiers.forEach { entry ->
                 writeStringCP1252(entry)
             }
         }
 
-        val hit = UpdateType(9, 0x10) { im ->
+        val hit = PlayerUpdateType(9, 0x10) { im ->
             //TODO
         }
 
-        val movementTemporary = UpdateType(10, 0x400) { im ->
-            writeByteNEG(if(im.movementType == CharacterVisual.MovementUpdateType.TELEPORT) 127 else 0)
+        val movementTemporary = PlayerUpdateType(10, 0x400) { im ->
+            writeByteNEG(if(im.movementType == MovementInterestUpdate.TELEPORT) 127 else 0)
         }
 
-        val orientation = UpdateType(11, 0x8) { im ->
+        val orientation = PlayerUpdateType(11, 0x8) { im ->
             writeShortADD(im.orientation)
         }
     }

@@ -17,15 +17,15 @@
 package io.guthix.oldscape.server.world.entity
 
 import io.guthix.oldscape.server.api.NpcBlueprints
-import io.guthix.oldscape.server.dimensions.TileUnit
-import io.guthix.oldscape.server.dimensions.floors
 import io.guthix.oldscape.server.dimensions.tiles
 import io.guthix.oldscape.server.net.game.out.NpcInfoSmallViewportPacket
+import io.guthix.oldscape.server.world.entity.interest.NpcUpdateType
 import io.guthix.oldscape.server.world.map.Tile
-import java.util.*
 
-open class Npc(index: Int, id: Int, override var pos: Tile, override val visual: NpcVisual) : Character(index, visual) {
+open class Npc(index: Int, id: Int, override var pos: Tile) : Character(index) {
     private val blueprint = NpcBlueprints[id]
+
+    override val updateFlags = sortedSetOf<NpcUpdateType>()
 
     val id get() = blueprint.id
 
@@ -33,11 +33,9 @@ open class Npc(index: Int, id: Int, override var pos: Tile, override val visual:
 
     val contextMenu get() = blueprint.contextMenu
 
-    open fun postProcess() {
-        visual.updateFlags.clear()
-    }
-}
+    open fun postProcess() = updateFlags.clear()
 
-open class NpcVisual : CharacterVisual() {
-    override val updateFlags = sortedSetOf<NpcInfoSmallViewportPacket.UpdateType>()
+    override fun addOrientationFlag() = updateFlags.add(NpcInfoSmallViewportPacket.orientation)
+
+    override fun addTurnToLockFlag() = updateFlags.add(NpcInfoSmallViewportPacket.turnLockTo)
 }
