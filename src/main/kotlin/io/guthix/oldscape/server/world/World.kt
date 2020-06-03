@@ -84,7 +84,7 @@ class World : TimerTask() {
     }
 
     private fun processPlayerEvents() {
-        for (player in players) player.processInEvents()
+        for (player in players) player.processTasks()
     }
 
     private fun proccessMovement() {

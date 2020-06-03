@@ -23,7 +23,7 @@ import io.guthix.oldscape.server.pathing.breadthFirstSearch
 import io.guthix.oldscape.server.world.entity.Player
 import io.guthix.oldscape.server.world.map.Tile
 import io.guthix.oldscape.server.world.WorldMap
-import io.guthix.oldscape.server.event.script.Routine
+import io.guthix.oldscape.server.event.script.NormalTask
 import io.guthix.oldscape.server.dimensions.TileUnit
 import io.guthix.oldscape.server.dimensions.FloorUnit
 
@@ -38,5 +38,5 @@ on(MapClickEvent::class).then {
 fun Player.startWalkingToTile(floor: FloorUnit, x: TileUnit, y: TileUnit, map: WorldMap) {
     path = breadthFirstSearch(pos, DestinationTile(floor, x, y), size, true, map)
     path.lastOrNull()?.let { dest -> if(dest != Tile(floor, x, y)) setMapFlag(dest.x, dest.y) }
-    cancelRoutine(Routine.Type.Normal)
+    cancelTask(NormalTask)
 }

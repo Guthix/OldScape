@@ -19,13 +19,20 @@ package io.guthix.oldscape.server.world.entity
 import io.guthix.oldscape.server.dimensions.TileUnit
 import io.guthix.oldscape.server.dimensions.floors
 import io.guthix.oldscape.server.dimensions.tiles
+import io.guthix.oldscape.server.event.script.ConditionalContinuation
+import io.guthix.oldscape.server.event.script.Task
+import io.guthix.oldscape.server.event.script.TaskType
+import io.guthix.oldscape.server.event.script.TrueCondition
 import io.guthix.oldscape.server.world.entity.interest.InterestUpdateType
 import io.guthix.oldscape.server.world.entity.interest.MovementInterestUpdate
 import io.guthix.oldscape.server.world.map.Tile
 import java.util.*
+import kotlin.coroutines.intrinsics.createCoroutineUnintercepted
 import kotlin.math.atan2
 
 abstract class Character(val index: Int) : Entity() {
+    internal val tasks = mutableMapOf<TaskType, MutableList<Task>>()
+
     internal abstract val updateFlags: SortedSet<out InterestUpdateType>
 
     var movementType = MovementInterestUpdate.STAY
@@ -58,6 +65,25 @@ abstract class Character(val index: Int) : Entity() {
     protected abstract fun addOrientationFlag(): Boolean
 
     protected abstract fun addTurnToLockFlag(): Boolean
+
+    abstract fun processTasks()
+
+    fun addTask(type: TaskType, replace: Boolean = false, r: suspend Task.() -> Unit): Task {
+        val task = Task(type, this)
+        task.next = ConditionalContinuation(TrueCondition, r.createCoroutineUnintercepted(task, task))
+        if(replace) {
+            val toRemove = tasks.remove(type)
+            toRemove?.forEach { it.cancel() }
+            tasks[type] = mutableListOf(task)
+        } else {
+            tasks.getOrPut(type) { mutableListOf() }.add(task)
+        }
+        return task
+    }
+
+    fun cancelTask(type: TaskType) {
+        tasks[type]?.forEach { it.cancel() }
+    }
 
     fun getOrientation(prev: Tile, new: Tile) = getOrientation(new.x - prev.x, new.y - prev.y)
 
