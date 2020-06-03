@@ -18,21 +18,21 @@ package io.guthix.oldscape.server.event.script
 
 import kotlin.coroutines.Continuation
 
-interface SuspensionCondition {
+interface TaskWaitCondition {
     fun canResume(): Boolean
 }
 
-class TickCondition(private var tickCount: Int) : SuspensionCondition {
+class TickCondition(private var tickCount: Int) : TaskWaitCondition {
     override fun canResume() = --tickCount == 0
 }
 
-class LambdaCondition(private val cond: () -> Boolean) : SuspensionCondition {
+class LambdaCondition(private val cond: () -> Boolean) : TaskWaitCondition {
     override fun canResume() = cond.invoke()
 }
 
-object TrueCondition : SuspensionCondition { override fun canResume() = true }
+object TrueCondition : TaskWaitCondition { override fun canResume() = true }
 
 class ConditionalContinuation(
-    val condition: SuspensionCondition,
+    val condition: TaskWaitCondition,
     val continuation: Continuation<Unit>
-) : SuspensionCondition by condition
+) : TaskWaitCondition by condition

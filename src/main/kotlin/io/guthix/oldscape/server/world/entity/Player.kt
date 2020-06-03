@@ -46,9 +46,7 @@ class Player(
 ) : Character(playerManager.index), Comparable<Player> {
     override val updateFlags = sortedSetOf<PlayerUpdateType>()
 
-    internal val inEvents = ConcurrentLinkedQueue<Routine>()
-
-    internal val routines = sortedMapOf<Routine.Type, MutableList<Routine>>()
+    internal val inEvents = ConcurrentLinkedQueue<EventHandler<out InGameEvent>>()
 
     var isLoggingOut = false
 
@@ -107,42 +105,6 @@ class Player(
         run = 824
     )
 
-    fun move() = if (path.isEmpty()) {
-        movementType = MovementInterestUpdate.STAY
-    } else {
-        takeStep()
-    }
-
-    private fun takeStep() {
-        lastPos = pos
-        pos = when {
-            inRunMode -> when {
-                path.size == 1 -> {
-                    movementType = MovementInterestUpdate.WALK
-                    updateFlags.add(PlayerInfoPacket.movementTemporary)
-                    followPosition = pos
-                    path.removeAt(0)
-                }
-                path.size > 1 && pos.withInDistanceOf(path[1], 1.tiles) -> { // running corners
-                    movementType = MovementInterestUpdate.WALK
-                    followPosition = path.removeAt(0)
-                    path.removeAt(0)
-                }
-                else -> {
-                    movementType = MovementInterestUpdate.RUN
-                    followPosition = path.removeAt(0)
-                    path.removeAt(0)
-                }
-            }
-            else -> {
-                movementType = MovementInterestUpdate.WALK
-                followPosition = pos
-                path.removeAt(0)
-            }
-        }
-        orientation = getOrientation(followPosition, pos)
-    }
-
     override val size = 1.tiles
 
     var weight get() = energyManager.weight
@@ -151,10 +113,10 @@ class Player(
     var energy get() = energyManager.energy
         set(value) { energyManager.energy = value }
 
-    internal fun processInEvents() {
+    override fun processTasks() {
         while(true) {
-            while (inEvents.isNotEmpty()) inEvents.poll().run()
-            val resumed = routines.values.flatMap { routineList -> routineList.map { it.run() } }
+            while (inEvents.isNotEmpty()) inEvents.poll().handle()
+            val resumed = tasks.values.flatMap { routineList -> routineList.toList().map { it.run() } } // TODO optimize toList()
             if(resumed.all { !it } && inEvents.isEmpty()) break // TODO add live lock detection
         }
     }
@@ -199,7 +161,7 @@ class Player(
         npcManager.postProcess()
         playerManager.postProcess()
         updateFlags.clear()
-        routines.values.forEach { it.forEach { routine -> routine.postProcess() } }
+        tasks.values.forEach { it.forEach { routine -> routine.postProcess() } }
     }
 
     fun openTopInterface(id: Int, modalSlot: Int? = null, moves: Map<Int, Int> = mutableMapOf()): TopInterfaceManager {
@@ -220,27 +182,13 @@ class Player(
         return topInterface
     }
 
-    fun addSuspendableRoutine(type: Routine.Type, replace: Boolean = false, r: suspend SuspendableRoutine.() -> Unit) {
-        val routine = SuspendableRoutine(type, this)
-        routine.next = ConditionalContinuation(TrueCondition, r.createCoroutineUnintercepted(routine, routine))
-        if(replace) {
-            val toRemove = routines.remove(type)
-            toRemove?.forEach { it.cancel() }
-            routines[type] = mutableListOf<Routine>(routine)
-        } else {
-            routines.getOrPut(type) { mutableListOf() }.add(routine)
-        }
-    }
-
-    fun cancelRoutine(type: Routine.Type) {
-        routines[type]?.forEach { it.cancel() }
-    }
+    private object ChatTask : TaskType
 
     fun talk(message: PublicMessageEvent) {
         publicMessage = message
         shoutMessage = null
         updateFlags.add(PlayerInfoPacket.chat)
-        addSuspendableRoutine(Routine.Type.Chat, replace = true) {
+        addTask(ChatTask, replace = true) {
             wait(ticks = PlayerManager.MESSAGE_DURATION)
             publicMessage = null
         }
@@ -250,7 +198,7 @@ class Player(
         publicMessage = null
         shoutMessage = message
         updateFlags.add(PlayerInfoPacket.shout)
-        addSuspendableRoutine(Routine.Type.Chat, replace = true) {
+        addTask(ChatTask, replace = true) {
             wait(ticks = PlayerManager.MESSAGE_DURATION)
             shoutMessage = null
         }
@@ -263,7 +211,7 @@ class Player(
     fun animate(animation: Sequence) {
         sequence = animation
         updateFlags.add(PlayerInfoPacket.sequence)
-        addSuspendableRoutine(Routine.Type.Weak) {
+        addTask(NormalTask) {
             val duration = sequence?.duration ?: throw IllegalStateException(
                 "Can't start routine because sequence does not exist."
             )
@@ -275,13 +223,13 @@ class Player(
     fun stopAnimation() {
         sequence = null
         updateFlags.add(PlayerInfoPacket.sequence)
-        cancelRoutine(Routine.Type.Weak)
+        cancelTask(NormalTask)
     }
 
     fun spotAnimate(spotAnim: SpotAnimation) {
         spotAnimation = spotAnim
         updateFlags.add(PlayerInfoPacket.spotAnimation)
-        addSuspendableRoutine(Routine.Type.Weak) {
+        addTask(NormalTask) {
             val duration = spotAnimation?.sequence?.duration ?: throw IllegalStateException(
                 "Can't start routine because spot animation or sequence does not exist."
             )
@@ -293,7 +241,7 @@ class Player(
     fun stopSpotAnimation() {
         spotAnimation = null
         updateFlags.add(PlayerInfoPacket.spotAnimation)
-        cancelRoutine(Routine.Type.Weak)
+        cancelTask(NormalTask)
     }
 
     fun equip(head: HeadEquipment?) {
@@ -366,10 +314,46 @@ class Player(
 
     override fun addTurnToLockFlag() = updateFlags.add(PlayerInfoPacket.lockTurnTo)
 
+    fun move() = if (path.isEmpty()) {
+        movementType = MovementInterestUpdate.STAY
+    } else {
+        takeStep()
+    }
+
+    private fun takeStep() {
+        lastPos = pos
+        pos = when {
+            inRunMode -> when {
+                path.size == 1 -> {
+                    movementType = MovementInterestUpdate.WALK
+                    updateFlags.add(PlayerInfoPacket.movementTemporary)
+                    followPosition = pos
+                    path.removeAt(0)
+                }
+                path.size > 1 && pos.withInDistanceOf(path[1], 1.tiles) -> { // running corners
+                    movementType = MovementInterestUpdate.WALK
+                    followPosition = path.removeAt(0)
+                    path.removeAt(0)
+                }
+                else -> {
+                    movementType = MovementInterestUpdate.RUN
+                    followPosition = path.removeAt(0)
+                    path.removeAt(0)
+                }
+            }
+            else -> {
+                movementType = MovementInterestUpdate.WALK
+                followPosition = pos
+                path.removeAt(0)
+            }
+        }
+        orientation = getOrientation(followPosition, pos)
+    }
+
     internal fun stageLogout() {
         isLoggingOut = true
         inEvents.clear()
-        routines.clear()
+        tasks.clear()
         ctx.writeAndFlush(LogoutFullPacket())
     }
 

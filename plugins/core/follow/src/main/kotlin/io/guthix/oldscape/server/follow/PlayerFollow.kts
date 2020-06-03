@@ -20,29 +20,27 @@ import io.guthix.oldscape.server.event.PlayerClickEvent
 import io.guthix.oldscape.server.pathing.DestinationTile
 import io.guthix.oldscape.server.pathing.breadthFirstSearch
 import io.guthix.oldscape.server.pathing.simplePathSearch
-import io.guthix.oldscape.server.event.script.Routine
+import io.guthix.oldscape.server.event.script.NormalTask
 
-on(PlayerClickEvent::class).where { event.option == "Follow" }.then(Routine.Type.Normal, replace = true) {
+on(PlayerClickEvent::class).where { event.option == "Follow" }.then {
     val followed = event.player
-    var dest = DestinationTile(followed.followPosition)
+    val dest = DestinationTile(followed.followPosition)
     player.path = breadthFirstSearch(player.pos, dest, player.size, true, world.map)
     player.turnToLock(followed)
-    var currentTarget = player.followPosition
-    while(true) {
-        if(dest.reached(player.pos.x, player.pos.y, player.size)) {
-            break
+    val currentTarget = player.followPosition
+    player.addTask(NormalTask, replace = true) {
+        while(true) {
+            if(dest.reached(player.pos.x, player.pos.y, player.size)) break
+            if(currentTarget != followed.followPosition) {
+                player.path = breadthFirstSearch(player.pos, dest, player.size, true, world.map)
+            }
+            wait(1)
         }
-        if(currentTarget != followed.followPosition) {
-            player.path = breadthFirstSearch(player.pos, dest, player.size, true, world.map)
+        while(true) {
+            wait { currentTarget != followed.followPosition }
+            player.path = simplePathSearch(player.pos, DestinationTile(followed.followPosition), player.size, world.map)
         }
-        wait(1)
+    }.onCancel {
+        player.turnToLock(null)
     }
-    while(true) {
-        wait { currentTarget != followed.followPosition }
-        dest = DestinationTile(followed.followPosition)
-        player.path = simplePathSearch(player.pos, dest, player.size, world.map)
-        currentTarget = followed.followPosition
-    }
-}.onCancel {
-    player.turnToLock(null)
 }

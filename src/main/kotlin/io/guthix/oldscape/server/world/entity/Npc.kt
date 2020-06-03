@@ -33,6 +33,13 @@ open class Npc(index: Int, id: Int, override var pos: Tile) : Character(index) {
 
     val contextMenu get() = blueprint.contextMenu
 
+    override fun processTasks() {
+        while(true) {
+            val resumed = tasks.values.flatMap { routineList -> routineList.toList().map { it.run() } } // TODO optimize toList()
+            if(resumed.all { !it }) break // TODO add live lock detection
+        }
+    }
+
     open fun postProcess() = updateFlags.clear()
 
     override fun addOrientationFlag() = updateFlags.add(NpcInfoSmallViewportPacket.orientation)

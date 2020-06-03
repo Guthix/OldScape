@@ -18,25 +18,27 @@ package io.guthix.oldscape.server.combat
 
 import io.guthix.oldscape.server.event.NpcClickEvent
 import io.guthix.oldscape.server.world.entity.Monster
-import io.guthix.oldscape.server.event.script.Routine
+import io.guthix.oldscape.server.event.script.NormalTask
 import io.guthix.oldscape.server.pathing.DesinationNpc
 import io.guthix.oldscape.server.pathing.breadthFirstSearch
 import io.guthix.oldscape.server.world.entity.Sequence
 import io.guthix.oldscape.server.world.entity.HitMark
 
-on(NpcClickEvent::class).where { event.option == "Attack" }.then(Routine.Type.Normal, replace = true) {
+on(NpcClickEvent::class).where { event.option == "Attack" }.then {
     val npc = event.npc
-    check(npc is Monster) { "Player $player can't attack NPC $npc because it's not a monster."}
+    check(npc is Monster) { "Player $player can't attack NPC $npc because it's not a monster." }
     val destination = DesinationNpc(npc, world.map)
     player.turnToLock(npc)
     player.path = breadthFirstSearch(player.pos, destination, player.size, true, world.map)
-    wait{ destination.reached(player.pos.x, player.pos.y, player.size) }
-    npc.turnToLock(player)
-    while(true) { // start combat sequence
-        player.animate(Sequence(id = 422))
-        npc.hit(HitMark.Colour.RED, 10, 0)
-        wait(ticks = 3)
+    player.addTask(NormalTask, replace = true) {
+        wait{ destination.reached(player.pos.x, player.pos.y, player.size) }
+        npc.turnToLock(player)
+        while(true) { // start combat sequence
+            player.animate(Sequence(id = 422))
+            npc.hit(HitMark.Colour.RED, 10, 0)
+            wait(ticks = 3)
+        }
+    }.onCancel {
+        player.turnToLock(null)
     }
-}.onCancel {
-    player.turnToLock(null)
 }

@@ -16,26 +16,14 @@
  */
 package io.guthix.oldscape.server.event.script
 
+import io.guthix.oldscape.server.world.entity.Character
 import io.guthix.oldscape.server.world.entity.Player
 import kotlin.coroutines.intrinsics.COROUTINE_SUSPENDED
 import kotlin.coroutines.intrinsics.suspendCoroutineUninterceptedOrReturn
 import kotlin.coroutines.intrinsics.createCoroutineUnintercepted
 import kotlin.coroutines.*
 
-abstract class Routine(protected val type: Type, protected open val player: Player) {
-    enum class Type { Event, Strong, Normal, Weak, Chat, Background }
-
-    internal abstract fun run(): Boolean
-
-    internal abstract fun cancel()
-
-    internal abstract fun postProcess()
-}
-
-open class SuspendableRoutine(
-    type: Type,
-    player: Player
-) : Routine(type, player), Continuation<Unit> {
+open class Task(val type: TaskType, private val character: Character) : Continuation<Unit> {
     private var tickSuspended = false
 
     internal var next: ConditionalContinuation? = null
@@ -44,23 +32,27 @@ open class SuspendableRoutine(
 
     override val context: CoroutineContext = EmptyCoroutineContext
 
-    override fun run(): Boolean {
+    fun run(): Boolean {
         return next?.let {
             if(!tickSuspended && it.canResume()) {
-                player.routines.remove(type)
+                character.tasks[type]?.remove(this)
                 it.continuation.resume(Unit)
                 true
             } else false
-        } ?: false
+        } ?: run {
+            character.tasks[type]?.remove(this)
+            false
+        }
     }
 
-    override fun cancel() { next = cancelation }
+    fun cancel() {
+        next = cancelation
+    }
 
-    override fun postProcess() { tickSuspended = false }
+    fun postProcess() { tickSuspended = false }
 
-    fun <E : Routine>onCancel(action: suspend E.() -> Unit) {
-        @Suppress("UNCHECKED_CAST")
-        cancelation = ConditionalContinuation(TrueCondition, action.createCoroutineUnintercepted(this as E, this))
+    fun onCancel(action: suspend Task.() -> Unit) {
+        cancelation = ConditionalContinuation(TrueCondition, action.createCoroutineUnintercepted(this, this))
     }
 
     override fun resumeWith(result: Result<Unit>) { }
@@ -74,12 +66,19 @@ open class SuspendableRoutine(
         suspend(LambdaCondition(cond))
     }
 
-    @Suppress("UNCHECKED_CAST")
-    private suspend fun suspend(condition: SuspensionCondition) {
-        player.routines.getOrPut(type) { mutableListOf() }.add(this)
+    private suspend fun suspend(condition: TaskWaitCondition) {
+        character.tasks.getOrPut(type) { mutableListOf() }.add(this)
         return suspendCoroutineUninterceptedOrReturn { cont ->
             next = ConditionalContinuation(condition, cont)
             COROUTINE_SUSPENDED
         }
     }
 }
+
+interface TaskType
+
+object StrongTask : TaskType
+
+object NormalTask : TaskType
+
+object WeakTask : TaskType
