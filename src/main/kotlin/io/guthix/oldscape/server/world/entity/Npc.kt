@@ -40,9 +40,13 @@ open class Npc(index: Int, id: Int, override var pos: Tile) : Character(index) {
         }
     }
 
-    open fun postProcess() = updateFlags.clear()
-
     override fun addOrientationFlag() = updateFlags.add(NpcInfoSmallViewportPacket.orientation)
 
     override fun addTurnToLockFlag() = updateFlags.add(NpcInfoSmallViewportPacket.turnLockTo)
+
+    override fun addSequenceFlag() = updateFlags.add(NpcInfoSmallViewportPacket.sequence)
+
+    override fun addSpotAnimationFlag() = updateFlags.add(NpcInfoSmallViewportPacket.spotAnimation)
+
+    override fun addHitUpdateFlag() = updateFlags.add(NpcInfoSmallViewportPacket.hit)
 }

@@ -320,92 +320,92 @@ class PlayerInfoPacket(
             intArrayOf(0, 1, 2, 3, 4)
         )
 
-        val movementForced = PlayerUpdateType(0, 0x200) { im ->
+        val movementForced = PlayerUpdateType(0, 0x200) { player ->
             //TODO
         }
 
-        val spotAnimation = PlayerUpdateType(1, 0x800) { im ->
-            writeShortADD(im.spotAnimation?.id ?: 65535)
-            writeIntLE(((im.spotAnimation?.height ?: 0) shl 16) or (im.spotAnimation?.delay ?:0))
+        val spotAnimation = PlayerUpdateType(1, 0x800) { player ->
+            writeShortADD(player.spotAnimation?.id ?: 65535)
+            writeIntLE(((player.spotAnimation?.height ?: 0) shl 16) or (player.spotAnimation?.delay ?:0))
         }
 
-        val sequence = PlayerUpdateType(2, 0x80) { im ->
-            writeShortLE(im.sequence?.id ?: 65535)
-            writeByteNEG(0)
+        val sequence = PlayerUpdateType(2, 0x80) { player ->
+            writeShortLE(player.sequence?.id ?: 65535)
+            writeByteNEG(player.sequence?.duration ?: 0)
         }
 
-        val appearance = PlayerUpdateType(3, 0x2) { im ->
+        val appearance = PlayerUpdateType(3, 0x2) { player ->
             val tempBuf = Unpooled.buffer() // TODO use pooling
-            tempBuf.writeByte(im.gender.opcode)
-            tempBuf.writeByte(if(im.isSkulled) 1 else -1)
-            tempBuf.writeByte(im.prayerIcon)
-            im.equipment.head?.let { // write head gear
+            tempBuf.writeByte(player.gender.opcode)
+            tempBuf.writeByte(if(player.isSkulled) 1 else -1)
+            tempBuf.writeByte(player.prayerIcon)
+            player.equipment.head?.let { // write head gear
                 tempBuf.writeShort(512 + it.id)
             } ?: run { tempBuf.writeByte(0) }
-            im.equipment.cape?.let {  // write cape
+            player.equipment.cape?.let {  // write cape
                 tempBuf.writeShort(512 + it.id)
             } ?: run { tempBuf.writeByte(0) }
-            im.equipment.neck?.let {  // write neck gear
+            player.equipment.neck?.let {  // write neck gear
                 tempBuf.writeShort(512 + it.id)
             } ?: run { tempBuf.writeByte(0) }
-            im.equipment.weapon?.let { // write weapon
+            player.equipment.weapon?.let { // write weapon
                 tempBuf.writeShort(512 + it.id)
             } ?: run { tempBuf.writeByte(0) }
-            im.equipment.body?.let { // write body
+            player.equipment.body?.let { // write body
                 tempBuf.writeShort(512 + it.id)
-            } ?: run { tempBuf.writeShort(256 + im.style.torso) }
-            im.equipment.shield?.let {  // write shield gear
+            } ?: run { tempBuf.writeShort(256 + player.style.torso) }
+            player.equipment.shield?.let {  // write shield gear
                 tempBuf.writeShort(512 + it.id)
             } ?: run { tempBuf.writeByte(0) }
-            im.equipment.body?.let { // write arms
-                if(it.isFullBody) tempBuf.writeByte(0) else tempBuf.writeShort(256 + im.style.arms)
-            } ?: run { tempBuf.writeShort(256 + im.style.arms) }
-            im.equipment.legs?.let { // write legs
+            player.equipment.body?.let { // write arms
+                if(it.isFullBody) tempBuf.writeByte(0) else tempBuf.writeShort(256 + player.style.arms)
+            } ?: run { tempBuf.writeShort(256 + player.style.arms) }
+            player.equipment.legs?.let { // write legs
                 tempBuf.writeShort(512 + it.id)
-            } ?: run { tempBuf.writeShort(256 + im.style.legs) }
-            im.equipment.head?.let { // write hair
-                if(it.coversHair) tempBuf.writeByte(0) else tempBuf.writeShort(256 + im.style.hair)
-            } ?: run { tempBuf.writeShort(256 + im.style.hair) }
-            im.equipment.hands?.let {  // write hands
+            } ?: run { tempBuf.writeShort(256 + player.style.legs) }
+            player.equipment.head?.let { // write hair
+                if(it.coversHair) tempBuf.writeByte(0) else tempBuf.writeShort(256 + player.style.hair)
+            } ?: run { tempBuf.writeShort(256 + player.style.hair) }
+            player.equipment.hands?.let {  // write hands
                 tempBuf.writeShort(512 + it.id)
-            } ?: run { tempBuf.writeShort(256 + im.style.hands) }
-            im.equipment.feet?.let { // write feet
+            } ?: run { tempBuf.writeShort(256 + player.style.hands) }
+            player.equipment.feet?.let { // write feet
                 tempBuf.writeShort(512 + it.id)
-            } ?: run { tempBuf.writeShort(256 + im.style.feet)}
-            if(im.gender == PlayerManager.Gender.MALE) { //tBuf.write beard
-                im.equipment.head?.let {
-                    if(it.coversFace) tempBuf.writeByte(0) else tempBuf.writeShort(256 + im.style.beard)
-                } ?: run { tempBuf.writeShort(256 + im.style.beard) }
+            } ?: run { tempBuf.writeShort(256 + player.style.feet)}
+            if(player.gender == PlayerManager.Gender.MALE) { //tBuf.write beard
+                player.equipment.head?.let {
+                    if(it.coversFace) tempBuf.writeByte(0) else tempBuf.writeShort(256 + player.style.beard)
+                } ?: run { tempBuf.writeShort(256 + player.style.beard) }
             } else {
                 tempBuf.writeByte(0)
             }
-            tempBuf.writeByte(im.colours.hair)
-            tempBuf.writeByte(im.colours.torso)
-            tempBuf.writeByte(im.colours.legs)
-            tempBuf.writeByte(im.colours.feet)
-            tempBuf.writeByte(im.colours.skin)
+            tempBuf.writeByte(player.colours.hair)
+            tempBuf.writeByte(player.colours.torso)
+            tempBuf.writeByte(player.colours.legs)
+            tempBuf.writeByte(player.colours.feet)
+            tempBuf.writeByte(player.colours.skin)
 
-            tempBuf.writeShort(im.animations.stand)
-            tempBuf.writeShort(im.animations.turn)
-            tempBuf.writeShort(im.animations.walk)
-            tempBuf.writeShort(im.animations.turn180)
-            tempBuf.writeShort(im.animations.turn90CW)
-            tempBuf.writeShort(im.animations.turn90CCW)
-            tempBuf.writeShort(im.animations.run)
-            tempBuf.writeStringCP1252(im.username) // username
-            tempBuf.writeByte(im.combatLevel) // combat level
+            tempBuf.writeShort(player.animations.stand)
+            tempBuf.writeShort(player.animations.turn)
+            tempBuf.writeShort(player.animations.walk)
+            tempBuf.writeShort(player.animations.turn180)
+            tempBuf.writeShort(player.animations.turn90CW)
+            tempBuf.writeShort(player.animations.turn90CCW)
+            tempBuf.writeShort(player.animations.run)
+            tempBuf.writeStringCP1252(player.username) // username
+            tempBuf.writeByte(player.combatLevel) // combat level
             tempBuf.writeShort(0) // skillId level
             tempBuf.writeByte(0) // hidden
             writeByte(tempBuf.writerIndex())
             writeBytesReversedADD(tempBuf)
         }
 
-        val shout = PlayerUpdateType(4, 0x20) { im ->
-            writeStringCP1252(im.shoutMessage!!) // TODO
+        val shout = PlayerUpdateType(4, 0x20) { player ->
+            writeStringCP1252(player.shoutMessage!!) // TODO
         }
 
-        val lockTurnTo = PlayerUpdateType(5, 0x4) { im ->
-            val index = when(val interacting = im.interacting) {
+        val lockTurnTo = PlayerUpdateType(5, 0x4) { player ->
+            val index = when(val interacting = player.interacting) {
                 is Npc -> interacting.index
                 is Player -> interacting.index + 32768
                 else -> 65535
@@ -413,18 +413,18 @@ class PlayerInfoPacket(
             writeShortLEADD(index)
         }
 
-        val movementCached = PlayerUpdateType(6, 0x1000) { im ->
-            writeByteNEG(if(im.inRunMode) 2 else 1)
+        val movementCached = PlayerUpdateType(6, 0x1000) { player ->
+            writeByteNEG(if(player.inRunMode) 2 else 1)
         }
 
-        val chat = PlayerUpdateType(7, 0x1) { im ->
-            writeShortADD((im.publicMessage!!.color shl 8) or im.publicMessage!!.effect)
-            writeByteNEG(im.rights)
+        val chat = PlayerUpdateType(7, 0x1) { player ->
+            writeShortADD((player.publicMessage!!.color shl 8) or player.publicMessage!!.effect)
+            writeByteNEG(player.rights)
             writeByteNEG(0) // some boolean
             val compressed = Unpooled.compositeBuffer(2).apply {
                 addComponents(true,
-                    Unpooled.buffer(2).apply { writeSmallSmart(im.publicMessage!!.length) },
-                    Unpooled.wrappedBuffer(Huffman.compress(im.publicMessage!!.message))
+                    Unpooled.buffer(2).apply { writeSmallSmart(player.publicMessage!!.length) },
+                    Unpooled.wrappedBuffer(Huffman.compress(player.publicMessage!!.message))
                 )
             }
             writeByteADD(compressed.readableBytes())
@@ -432,22 +432,34 @@ class PlayerInfoPacket(
         }
 
 
-        val nameModifiers = PlayerUpdateType(8, 0x100) { im ->
-            im.nameModifiers.forEach { entry ->
+        val nameModifiers = PlayerUpdateType(8, 0x100) { player ->
+            player.nameModifiers.forEach { entry ->
                 writeStringCP1252(entry)
             }
         }
 
-        val hit = PlayerUpdateType(9, 0x10) { im ->
-            //TODO
+        val hit = PlayerUpdateType(9, 0x10) { player ->
+            writeByte(player.hitMarkQueue.size)
+            player.hitMarkQueue.forEach { hitMark ->
+                writeSmallSmart(hitMark.colour.id)
+                writeSmallSmart(hitMark.damage)
+                writeSmallSmart(hitMark.delay)
+            }
+            writeByte(player.healthBarQueue.size)
+            player.healthBarQueue.forEach { healthBar ->
+                writeSmallSmart(healthBar.id)
+                writeSmallSmart(healthBar.decreaseSpeed)
+                writeSmallSmart(healthBar.delay)
+                writeByte(healthBar.amount)
+            }
         }
 
-        val movementTemporary = PlayerUpdateType(10, 0x400) { im ->
-            writeByteNEG(if(im.movementType == MovementInterestUpdate.TELEPORT) 127 else 0)
+        val movementTemporary = PlayerUpdateType(10, 0x400) { player ->
+            writeByteNEG(if(player.movementType == MovementInterestUpdate.TELEPORT) 127 else 0)
         }
 
-        val orientation = PlayerUpdateType(11, 0x8) { im ->
-            writeShortADD(im.orientation)
+        val orientation = PlayerUpdateType(11, 0x8) { player ->
+            writeShortADD(player.orientation)
         }
     }
 }

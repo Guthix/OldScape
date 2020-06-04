@@ -19,10 +19,7 @@ package io.guthix.oldscape.server.world.entity
 import io.guthix.oldscape.server.dimensions.TileUnit
 import io.guthix.oldscape.server.dimensions.floors
 import io.guthix.oldscape.server.dimensions.tiles
-import io.guthix.oldscape.server.event.script.ConditionalContinuation
-import io.guthix.oldscape.server.event.script.Task
-import io.guthix.oldscape.server.event.script.TaskType
-import io.guthix.oldscape.server.event.script.TrueCondition
+import io.guthix.oldscape.server.event.script.*
 import io.guthix.oldscape.server.world.entity.interest.InterestUpdateType
 import io.guthix.oldscape.server.world.entity.interest.MovementInterestUpdate
 import io.guthix.oldscape.server.world.map.Tile
@@ -51,6 +48,12 @@ abstract class Character(val index: Int) : Entity() {
 
     var interacting: Character? = null
 
+    var sequence: Sequence? = null
+
+    var spotAnimation: SpotAnimation? = null
+
+    var shoutMessage: String? = null
+
     fun turnTo(entity: Entity) {
         setOrientation(entity)
         addOrientationFlag()
@@ -62,9 +65,70 @@ abstract class Character(val index: Int) : Entity() {
         addTurnToLockFlag()
     }
 
+    fun animate(animation: Sequence) {
+        sequence = animation
+        addSequenceFlag()
+        addTask(NormalTask) {
+            val duration = sequence?.duration ?: throw IllegalStateException(
+                "Can't start routine because sequence does not exist."
+            )
+            wait(ticks = duration)
+            sequence = null
+        }
+    }
+
+    fun stopAnimation() {
+        sequence = null
+        addSequenceFlag()
+        cancelTask(NormalTask)
+    }
+
+    fun spotAnimate(spotAnim: SpotAnimation) {
+        spotAnimation = spotAnim
+        addSpotAnimationFlag()
+        addTask(NormalTask) {
+            val duration = spotAnimation?.sequence?.duration ?: throw IllegalStateException(
+                "Can't start routine because spot animation or sequence does not exist."
+            )
+            wait(ticks = duration)
+            spotAnimation = null
+        }
+    }
+
+    fun stopSpotAnimation() {
+        spotAnimation = null
+        addSpotAnimationFlag()
+        cancelTask(NormalTask)
+    }
+
+    var health = 100
+
+    val hitMarkQueue = mutableListOf<HitMark>()
+
+    val healthBarQueue = mutableListOf<HealthBar>()
+
+    fun hit(colour: HitMark.Colour, damage: Int, delay: Int) {
+        addHitUpdateFlag()
+        hitMarkQueue.add(HitMark(colour, damage, delay))
+        healthBarQueue.add(HealthBar(2, 0, 0, 100)) // TODO do something better here
+    }
+
+    open fun postProcess() {
+        updateFlags.clear()
+        hitMarkQueue.clear()
+        healthBarQueue.clear()
+        tasks.values.forEach { it.forEach { routine -> routine.postProcess() } }
+    }
+
     protected abstract fun addOrientationFlag(): Boolean
 
     protected abstract fun addTurnToLockFlag(): Boolean
+
+    protected abstract fun addSequenceFlag(): Boolean
+
+    protected abstract fun addSpotAnimationFlag(): Boolean
+
+    protected abstract fun addHitUpdateFlag(): Boolean
 
     abstract fun processTasks()
 
