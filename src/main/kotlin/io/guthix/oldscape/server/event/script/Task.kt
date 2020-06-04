@@ -17,6 +17,7 @@
 package io.guthix.oldscape.server.event.script
 
 import io.guthix.oldscape.server.world.entity.Character
+import io.guthix.oldscape.server.world.entity.Npc
 import io.guthix.oldscape.server.world.entity.Player
 import kotlin.coroutines.intrinsics.COROUTINE_SUSPENDED
 import kotlin.coroutines.intrinsics.suspendCoroutineUninterceptedOrReturn

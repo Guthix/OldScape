@@ -37,6 +37,7 @@ class NpcInfoSmallViewportPacket(
     override val size = VarShortSize
 
     override fun encode(ctx: ChannelHandlerContext): ByteBuf {
+
         val buf = ctx.alloc().buffer()
         val bitBuf = buf.toBitMode()
         localNpcUpdate(bitBuf)
@@ -145,7 +146,8 @@ class NpcInfoSmallViewportPacket(
         )
 
         val sequence = NpcUpdateType(0, 0x80) { npc ->
-            //TODO
+            writeShortLEADD(npc.sequence?.id ?: 65535)
+            writeByte(npc.sequence?.duration ?: 0)
         }
 
         val orientation = NpcUpdateType(1, 0x10) { npc ->
@@ -174,7 +176,6 @@ class NpcInfoSmallViewportPacket(
         }
 
         val hit = NpcUpdateType(5, 0x1) { npc ->
-            check(npc is Monster)
             writeByteSUB(npc.hitMarkQueue.size)
             npc.hitMarkQueue.forEach { hitMark ->
                 writeSmallSmart(hitMark.colour.id)

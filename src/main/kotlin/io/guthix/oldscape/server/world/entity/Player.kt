@@ -26,7 +26,6 @@ import io.guthix.oldscape.server.world.entity.interest.*
 import io.guthix.oldscape.server.world.entity.intface.IfComponent
 import io.guthix.oldscape.server.world.entity.interest.TopInterfaceManager
 import io.guthix.oldscape.server.world.map.Tile
-import kotlin.coroutines.intrinsics.createCoroutineUnintercepted
 import io.netty.channel.ChannelFuture
 import io.netty.channel.ChannelHandlerContext
 import java.util.concurrent.ConcurrentLinkedQueue
@@ -63,13 +62,7 @@ class Player(
 
     var path = mutableListOf<Tile>()
 
-    var sequence: Sequence? = null
-
-    var spotAnimation: SpotAnimation? = null
-
     var publicMessage: PublicMessageEvent? = null
-
-    var shoutMessage: String? = null
 
     val gender = PlayerManager.Gender.MALE
 
@@ -151,7 +144,8 @@ class Player(
         return futures
     }
 
-    fun postProcess() {
+    override fun postProcess() {
+        super.postProcess()
         topInterface.postProcess()
         contextMenuManager.postProcess()
         varpManager.postProcess()
@@ -160,8 +154,6 @@ class Player(
         mapManager.postProcess()
         npcManager.postProcess()
         playerManager.postProcess()
-        updateFlags.clear()
-        tasks.values.forEach { it.forEach { routine -> routine.postProcess() } }
     }
 
     fun openTopInterface(id: Int, modalSlot: Int? = null, moves: Map<Int, Int> = mutableMapOf()): TopInterfaceManager {
@@ -194,7 +186,7 @@ class Player(
         }
     }
 
-    fun shout(message: String) {
+    fun shout(message: String) { // TODO move this to character
         publicMessage = null
         shoutMessage = message
         updateFlags.add(PlayerInfoPacket.shout)
@@ -206,42 +198,6 @@ class Player(
 
     fun senGameMessage(message: String) {
         ctx.write(MessageGamePacket(0, false, message))
-    }
-
-    fun animate(animation: Sequence) {
-        sequence = animation
-        updateFlags.add(PlayerInfoPacket.sequence)
-        addTask(NormalTask) {
-            val duration = sequence?.duration ?: throw IllegalStateException(
-                "Can't start routine because sequence does not exist."
-            )
-            wait(ticks = duration)
-            sequence = null
-        }
-    }
-
-    fun stopAnimation() {
-        sequence = null
-        updateFlags.add(PlayerInfoPacket.sequence)
-        cancelTask(NormalTask)
-    }
-
-    fun spotAnimate(spotAnim: SpotAnimation) {
-        spotAnimation = spotAnim
-        updateFlags.add(PlayerInfoPacket.spotAnimation)
-        addTask(NormalTask) {
-            val duration = spotAnimation?.sequence?.duration ?: throw IllegalStateException(
-                "Can't start routine because spot animation or sequence does not exist."
-            )
-            wait(ticks = duration)
-            spotAnimation = null
-        }
-    }
-
-    fun stopSpotAnimation() {
-        spotAnimation = null
-        updateFlags.add(PlayerInfoPacket.spotAnimation)
-        cancelTask(NormalTask)
     }
 
     fun equip(head: HeadEquipment?) {
@@ -313,6 +269,12 @@ class Player(
     override fun addOrientationFlag() = updateFlags.add(PlayerInfoPacket.orientation)
 
     override fun addTurnToLockFlag() = updateFlags.add(PlayerInfoPacket.lockTurnTo)
+
+    override fun addSequenceFlag() = updateFlags.add(PlayerInfoPacket.sequence)
+
+    override fun addSpotAnimationFlag() = updateFlags.add(PlayerInfoPacket.spotAnimation)
+
+    override fun addHitUpdateFlag() = updateFlags.add(PlayerInfoPacket.hit)
 
     fun move() = if (path.isEmpty()) {
         movementType = MovementInterestUpdate.STAY

@@ -20,7 +20,7 @@ import io.guthix.oldscape.server.world.entity.Npc
 import io.guthix.oldscape.server.world.entity.Player
 import io.netty.buffer.ByteBuf
 
-abstract class InterestUpdateType(private val priority: Int, internal val mask: Int) : Comparable<InterestUpdateType> {
+abstract class InterestUpdateType(val priority: Int, internal val mask: Int) : Comparable<InterestUpdateType> {
     override fun compareTo(other: InterestUpdateType) = when {
         priority < other.priority -> -1
         priority > other.priority -> 1

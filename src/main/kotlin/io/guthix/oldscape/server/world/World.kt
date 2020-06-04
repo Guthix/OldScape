@@ -43,6 +43,7 @@ class World : TimerTask() {
 
     override fun run() {
         processLogins()
+        processNpcs()
         processPlayerEvents()
         proccessMovement()
         synchronizeInterest()
@@ -81,6 +82,10 @@ class World : TimerTask() {
             val player = logoutQueue.poll()
             players.remove(player)
         }
+    }
+
+    private fun processNpcs() {
+        for (npc in npcs) npc.processTasks()
     }
 
     private fun processPlayerEvents() {

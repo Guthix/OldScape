@@ -77,5 +77,5 @@ on(ClientCheatEvent::class).where { event.string == "pos" }.then {
 }
 
 on(ClientCheatEvent::class).where { event.string == "npc" }.then {
-    world.addNpc(26, player.pos.copy(x = player.pos.x + 2.tiles))
+    world.addNpc(42, player.pos.copy(x = player.pos.x + 2.tiles))
 }
