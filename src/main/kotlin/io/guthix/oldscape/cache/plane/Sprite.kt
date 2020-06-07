@@ -14,7 +14,6 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with Foobar. If not, see <https://www.gnu.org/licenses/>.
  */
-@file:Suppress("unused")
 package io.guthix.oldscape.cache.plane
 
 import io.netty.buffer.ByteBuf
@@ -36,16 +35,16 @@ class Sprite(val id: Int, val width: Int, val height: Int, val images: Array<Buf
             val width = data.readUnsignedShort()
             val height = data.readUnsignedShort()
             val palette = IntArray(data.readUnsignedByte().toInt() + 1)
-            for(i in 0 until spriteCount) {
+            for (i in 0 until spriteCount) {
                 offsetsX[i] = data.readUnsignedShort()
             }
-            for(i in 0 until spriteCount) {
+            for (i in 0 until spriteCount) {
                 offsetsY[i] = data.readUnsignedShort()
             }
-            for(i in 0 until spriteCount) {
+            for (i in 0 until spriteCount) {
                 subWidths[i] = data.readUnsignedShort()
             }
-            for(i in 0 until spriteCount) {
+            for (i in 0 until spriteCount) {
                 subHeights[i] = data.readUnsignedShort()
             }
 

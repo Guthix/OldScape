@@ -23,7 +23,7 @@ import java.io.IOException
 data class SequenceConfig(override val id: Int) : Config(id) {
     var frameIds: IntArray? = null
     var field3048: IntArray? = null
-    var frameLengths: IntArray? = null
+    var frameDuration: IntArray? = null
     var interleave: IntArray? = null
     var stretches = false
     var forcedPriority: Short = 5
@@ -38,7 +38,7 @@ data class SequenceConfig(override val id: Int) : Config(id) {
 
     override fun encode(): ByteBuf {
         val data = Unpooled.buffer()
-        frameLengths?.let { frameLengths -> frameIds?.let { frameIds ->
+        frameDuration?.let { frameLengths -> frameIds?.let { frameIds ->
             if(frameLengths.size != frameIds.size) throw IOException("Frame lengths don't match frame ids.")
             data.writeOpcode(1)
             data.writeShort(frameLengths.size)
@@ -123,7 +123,7 @@ data class SequenceConfig(override val id: Int) : Config(id) {
                     0 -> break@decoder
                     1 -> {
                         val length = data.readUnsignedShort()
-                        sequenceConfig.frameLengths = IntArray(length) { data.readUnsignedShort() }
+                        sequenceConfig.frameDuration = IntArray(length) { data.readUnsignedShort() }
                         val frameIds = IntArray(length) { data.readUnsignedShort() }
                         for(i in 0 until length) {
                             frameIds[i] += data.readUnsignedShort() shl 16

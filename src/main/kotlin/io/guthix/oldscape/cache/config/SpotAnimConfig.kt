@@ -21,7 +21,7 @@ import io.netty.buffer.Unpooled
 import java.io.IOException
 
 data class SpotAnimConfig(override val id: Int) : Config(id) {
-    var animationId: Int? = null
+    var sequenceId: Int? = null
     var rotation: Int = 0
     var resizeY: Int = 128
     var resizeX: Int = 128
@@ -39,21 +39,21 @@ data class SpotAnimConfig(override val id: Int) : Config(id) {
             data.writeOpcode(1)
             data.writeShort(modelId)
         }
-        animationId?.let {
+        sequenceId?.let {
             data.writeOpcode(2)
-            data.writeShort(animationId!!.toInt())
+            data.writeShort(sequenceId!!.toInt())
         }
-        if(resizeX.toInt() != 128) {
+        if(resizeX != 128) {
             data.writeOpcode(4)
-            data.writeByte(resizeX.toInt())
+            data.writeByte(resizeX)
         }
-        if(resizeY.toInt() != 128) {
+        if(resizeY != 128) {
             data.writeOpcode(5)
-            data.writeByte(resizeY.toInt())
+            data.writeByte(resizeY)
         }
-        if(rotation.toInt() != 0) {
+        if(rotation != 0) {
             data.writeOpcode(6)
-            data.writeShort(rotation.toInt())
+            data.writeShort(rotation)
         }
         if(ambient.toInt() != 0) {
             data.writeOpcode(7)
@@ -92,7 +92,7 @@ data class SpotAnimConfig(override val id: Int) : Config(id) {
                 when (val opcode = data.readUnsignedByte().toInt()) {
                     0 -> break@decoder
                     1 -> spotAnimConfig.modelId = data.readUnsignedShort()
-                    2 -> spotAnimConfig.animationId = data.readUnsignedShort()
+                    2 -> spotAnimConfig.sequenceId = data.readUnsignedShort()
                     4 -> spotAnimConfig.resizeX = data.readUnsignedShort()
                     5 -> spotAnimConfig.resizeY = data.readUnsignedShort()
                     6 -> spotAnimConfig.rotation = data.readUnsignedShort()

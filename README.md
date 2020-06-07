@@ -1,6 +1,8 @@
 # OldScape Cache
+[![License](https://img.shields.io/github/license/guthix/OldScape-Cache)](https://github.com/guthix/OldScape-Cache/blob/master/LICENSE)
+[![JDK](https://img.shields.io/badge/JDK-11%2B-blue)](https://openjdk.java.net/projects/jdk/11/)
 
-A library for reading and writing OSRS cache files
+A library for reading and writing Oldschool Runescape cache files.
 
 ## Archives
 | id  | name             |
@@ -27,5 +29,3 @@ A library for reading and writing OSRS cache files
 |  19 |  World Map         |
 |  20 |  World Map Ground         |    
 
-## Acknowledgements
-- [RuneLite](https://runelite.net/) for providing CS2 instruction names

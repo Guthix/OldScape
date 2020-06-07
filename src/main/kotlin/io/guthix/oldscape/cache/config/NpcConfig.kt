@@ -37,8 +37,8 @@ data class NpcConfig(override val id: Int) : NamedConfig(id) {
     var walkLeftSequence: Int? = null
     var walkRightSequence: Int? = null
     var walkBackSequence: Int? = null
-    var turnLeftAnimation: Int? = null
-    var turnRightAnimation: Int? = null
+    var turnLeftSequence: Int? = null
+    var turnRightSequence: Int? = null
     var colorReplace: IntArray? = null
     var colorFind: IntArray? = null
     var textureReplace: IntArray? = null
@@ -83,11 +83,11 @@ data class NpcConfig(override val id: Int) : NamedConfig(id) {
                 data.writeShort(it)
             }
         }
-        turnLeftAnimation?.let {
+        turnLeftSequence?.let {
             data.writeOpcode(15)
             data.writeShort(it)
         }
-        turnRightAnimation?.let {
+        turnRightSequence?.let {
             data.writeOpcode(16)
             data.writeShort(it)
         }
@@ -202,8 +202,8 @@ data class NpcConfig(override val id: Int) : NamedConfig(id) {
                     12 -> npcConfig.size = data.readUnsignedByte()
                     13 -> npcConfig.stanceAnimation = data.readUnsignedShort()
                     14 -> npcConfig.walkSequence = data.readUnsignedShort()
-                    15 -> npcConfig.turnLeftAnimation = data.readUnsignedShort()
-                    16 -> npcConfig.turnRightAnimation = data.readUnsignedShort()
+                    15 -> npcConfig.turnLeftSequence = data.readUnsignedShort()
+                    16 -> npcConfig.turnRightSequence = data.readUnsignedShort()
                     17 -> {
                         npcConfig.walkSequence = data.readUnsignedShort()
                         npcConfig.walkBackSequence = data.readUnsignedShort()

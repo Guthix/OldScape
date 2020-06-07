@@ -14,7 +14,6 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with Foobar. If not, see <https://www.gnu.org/licenses/>.
  */
-@file:Suppress("unused")
 package io.guthix.oldscape.cache.plane
 
 import io.netty.buffer.ByteBuf

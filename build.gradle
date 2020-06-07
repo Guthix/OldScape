@@ -59,7 +59,7 @@ publishing {
             pom {
                 name = 'oldscape-cache'
                 description = 'A library for modifying OldScape caches'
-                url = "https://github.com/guthix/OldScape.git"
+                url = "https://github.com/guthix/OldScape-Cache.git"
                 licenses {
                     license {
                         name = 'GNU Lesser General Public License v3.0'
