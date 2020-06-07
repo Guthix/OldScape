@@ -20,17 +20,17 @@ package io.guthix.oldscape.cache.model
 import io.guthix.buffer.readSmallSmart
 import io.netty.buffer.ByteBuf
 
-class Frame(
-    val frameMapId: Int,
-    val translateX: IntArray,
-    val translateY: IntArray,
-    val translateZ: IntArray,
-    val translateCount: Int?,
-    val indexFrameIds: IntArray,
-    val showing: Boolean
+public class Frame(
+    public val frameMapId: Int,
+    public val translateX: IntArray,
+    public val translateY: IntArray,
+    public val translateZ: IntArray,
+    public val translateCount: Int?,
+    public val indexFrameIds: IntArray,
+    public val showing: Boolean
 ) {
-    companion object {
-        fun decode(frameMaps: FrameMap, data: ByteBuf): Frame {
+    public companion object {
+        public fun decode(frameMaps: FrameMap, data: ByteBuf): Frame {
             val data0 = data.duplicate()
             val frameMapId = data.readUnsignedShort()
             val length = data.readUnsignedByte().toInt()

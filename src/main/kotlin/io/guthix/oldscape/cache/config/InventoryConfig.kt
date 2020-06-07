@@ -20,7 +20,7 @@ import io.netty.buffer.ByteBuf
 import io.netty.buffer.Unpooled
 import java.io.IOException
 
-data class InventoryConfig(override val id: Int) : Config(id) {
+public data class InventoryConfig(override val id: Int) : Config(id) {
     var capacity: Int = 0
 
     override fun encode(): ByteBuf = if(capacity != 0) {
@@ -35,8 +35,8 @@ data class InventoryConfig(override val id: Int) : Config(id) {
         }
     }
 
-    companion object : ConfigCompanion<InventoryConfig>() {
-        override val id = 5
+    public companion object : ConfigCompanion<InventoryConfig>() {
+        override val id: Int = 5
 
         override fun decode(id: Int, data: ByteBuf): InventoryConfig {
             val inventoryConfig = InventoryConfig(id)

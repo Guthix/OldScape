@@ -25,7 +25,7 @@ import kotlin.text.StringBuilder
 
 private val logger = KotlinLogging.logger {}
 
-data class MachineScript(
+public data class MachineScript(
     val id: Int,
     val instructions: Array<InstructionDefinition>,
     val localIntCount: Int,
@@ -80,11 +80,11 @@ data class MachineScript(
                 }
             }
         }
-        return strBuilder.toString()
+        return "$strBuilder"
     }
 
-    companion object {
-        fun decode(id: Int, data: ByteBuf): MachineScript {
+    public companion object {
+        public fun decode(id: Int, data: ByteBuf): MachineScript {
             val switchDataLength = data.getUnsignedShort(data.writerIndex() - 2)
             val opcodeEndPos = data.writerIndex() - 2 - switchDataLength - 12
             data.readerIndex(opcodeEndPos)

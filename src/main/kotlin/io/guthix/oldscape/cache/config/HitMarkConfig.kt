@@ -21,9 +21,9 @@ import io.netty.buffer.ByteBuf
 import io.netty.buffer.Unpooled
 import java.io.IOException
 
-data class HitMarkConfig(override val id: Int) : Config(id) {
+public data class HitMarkConfig(override val id: Int) : Config(id) {
     var fontId: Int? = null
-    var textColor = 16777215
+    var textColor: Int = 16777215
     var int1: Int? = null
     var int2: Int? = null
     var int3: Int? = null
@@ -101,7 +101,7 @@ data class HitMarkConfig(override val id: Int) : Config(id) {
             data.writeOpcode(if(transforms.last() == null) 18 else 17)
             if(transformVarbit == null) data.writeShort(65535) else data.writeShort(transformVarbit!!.toInt())
             if(transformVarp == null) data.writeShort(65535) else data.writeShort(transformVarp!!.toInt())
-            transforms.last()?.let { data.writeShort(it) }
+            transforms.last()?.let(data::writeShort)
             val size = transforms.size - 2
             data.writeByte(size)
             for(i in 0..size) {
@@ -117,8 +117,8 @@ data class HitMarkConfig(override val id: Int) : Config(id) {
         return data
     }
 
-    companion object : ConfigCompanion<HitMarkConfig>() {
-        override val id = 32
+    public companion object : ConfigCompanion<HitMarkConfig>() {
+        override val id: Int = 32
 
         override fun decode(id: Int, data: ByteBuf): HitMarkConfig {
             val hitmarkConfig = HitMarkConfig(id)

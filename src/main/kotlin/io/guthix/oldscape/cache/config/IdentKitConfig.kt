@@ -20,15 +20,15 @@ import io.netty.buffer.ByteBuf
 import io.netty.buffer.Unpooled
 import java.io.IOException
 
-data class IdentKitConfig(override val id: Int) : Config(id) {
+public data class IdentKitConfig(override val id: Int) : Config(id) {
     var colorFind: IntArray? = null
     var colorReplace: IntArray? = null
     var textureFind: IntArray? = null
     var textureReplace: IntArray? = null
     var bodyPartId: Short? = null
     var modelIds: IntArray? = null
-    val models = intArrayOf(-1, -1, -1, -1, -1)
-    var nonSelectable = false
+    val models: IntArray = intArrayOf(-1, -1, -1, -1, -1)
+    var nonSelectable: Boolean = false
 
     @ExperimentalUnsignedTypes
     override fun encode(): ByteBuf {
@@ -69,8 +69,8 @@ data class IdentKitConfig(override val id: Int) : Config(id) {
         return data
     }
 
-    companion object : ConfigCompanion<IdentKitConfig>() {
-        override val id = 3
+    public companion object : ConfigCompanion<IdentKitConfig>() {
+        override val id: Int = 3
 
         override fun decode(id: Int, data: ByteBuf): IdentKitConfig {
             val identKitConfig = IdentKitConfig(id)

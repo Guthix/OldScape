@@ -22,20 +22,20 @@ import io.netty.buffer.ByteBuf
 import io.netty.buffer.Unpooled
 import java.io.IOException
 
-data class ObjectConfig(override val id: Int) : NamedConfig(id) {
-    override var name = "null"
+public data class ObjectConfig(override val id: Int) : NamedConfig(id) {
+    override var name: String = "null"
     var model: Int = 0
-    var zoom2d = 2000
+    var zoom2d: Int = 2000
     var xan2d: Int = 0
     var yan2d: Int = 0
     var zan2d: Int = 0
     var xoff2d: Int = 0
     var yoff2d: Int = 0
-    var stackable = false
-    var cost = 1
-    var members = false
-    val groundActions = arrayOf(null, null, "Take", null, null)
-    val iop= arrayOf(null, null, null, null, "Drop")
+    var stackable: Boolean = false
+    var cost: Int = 1
+    var members: Boolean = false
+    val groundActions: Array<String?> = arrayOf(null, null, "Take", null, null)
+    val iop: Array<String?> = arrayOf(null, null, null, null, "Drop")
     var shiftClickDropIndex: Byte = -2
     var maleModel0: Int? = null
     var maleModel1: Int? = null
@@ -57,7 +57,7 @@ data class ObjectConfig(override val id: Int) : NamedConfig(id) {
     var ambient: Byte = 0
     var contrast: Byte = 0
     var team: Short = 0
-    var tradable = false
+    var tradable: Boolean = false
     var colorFind: IntArray? = null
     var colorReplace: IntArray? = null
     var textureFind: IntArray? = null
@@ -69,10 +69,8 @@ data class ObjectConfig(override val id: Int) : NamedConfig(id) {
     var placeholderId: Int? = null
     var placeholderTemplateId: Int? = null
     var params: MutableMap<Int, Any>? = null
-
-    val isNoted get() = notedTemplateId == 799
-
-    val isPlaceHolder get() = placeholderTemplateId == 14401
+    val isNoted: Boolean get() = notedTemplateId == 799
+    val isPlaceHolder: Boolean get() = placeholderTemplateId == 14401
 
     override fun encode(): ByteBuf {
         val data = Unpooled.buffer()
@@ -247,8 +245,8 @@ data class ObjectConfig(override val id: Int) : NamedConfig(id) {
         return data
     }
 
-    companion object : NamedConfigCompanion<ObjectConfig>() {
-        override val id = 10
+    public companion object : NamedConfigCompanion<ObjectConfig>() {
+        override val id: Int = 10
 
         override fun decode(id: Int, data: ByteBuf): ObjectConfig {
             val itemConfig = ObjectConfig(id)

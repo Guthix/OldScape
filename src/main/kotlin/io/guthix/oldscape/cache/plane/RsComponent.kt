@@ -19,14 +19,14 @@ package io.guthix.oldscape.cache.plane
 import io.guthix.buffer.readStringCP1252
 import io.netty.buffer.ByteBuf
 
-data class RsComponent(val id: Int) {
-    var hasScript = false
-    var menuType = 0
+public data class RsComponent(val id: Int) {
+    var hasScript: Boolean = false
+    var menuType: Int = 0
     var contentType: Int = 0
     var originalX: Short = 0
     var originalY: Short = 0
-    var originalWidth = 0
-    var originalHeight = 0
+    var originalWidth: Int = 0
+    var originalHeight: Int = 0
     var opacity: Short = 0
     var parentId: Int? = null
     var hoveredSiblingId: Int? = null
@@ -36,28 +36,28 @@ data class RsComponent(val id: Int) {
     var isHidden: Boolean = false
     var itemIds: IntArray? = null
     var itemQuantities: IntArray? = null
-    var clickMask = 0
+    var clickMask: Int = 0
     var xPitch: Short = 0
     var yPitch: Short = 0
     var xOffsets: ShortArray? = null
     var yOffsets: ShortArray? = null
     var sprites: Array<Int?>? = null
     var configActions: Array<String?>? = null
-    var isFilled = false
+    var isFilled: Boolean = false
     var xTextAlignment: Short = 0
     var yTextAlignment: Short = 0
     var lineHeight: Short = 0
     var fontId: Int? = null
-    var textIsShadowed = false
-    var text = ""
-    var alternateText = ""
-    var textColor = 0
-    var alternateTextColor = 0
-    var hoveredTextColor = 0
-    var alternateHoveredTextColor = 0
+    var textIsShadowed: Boolean = false
+    var text: String = ""
+    var alternateText: String = ""
+    var textColor: Int = 0
+    var alternateTextColor: Int = 0
+    var hoveredTextColor: Int = 0
+    var alternateHoveredTextColor: Int = 0
     var spriteId: Int? = null
     var alternateSpriteId: Int? = null
-    var modelType = 1
+    var modelType: Int = 1
     var modelId: Int? = null
     var alternateModelId: Int? = null
     var animationId: Int? = null
@@ -66,31 +66,31 @@ data class RsComponent(val id: Int) {
     var rotationX: Int = 0
     var rotationY: Int = 0
     var rotationZ: Int = 0
-    var targetVerb = ""
-    var spellName = ""
-    var tooltip = "Ok"
+    var targetVerb: String = ""
+    var spellName: String = ""
+    var tooltip: String = "Ok"
     var dynamicWidth: Byte = 0
     var buttonType: Byte = 0
     var dynamicX: Byte = 0
     var dynamicY: Byte = 0
-    var noClickThrough = false
+    var noClickThrough: Boolean = false
     var textureId: Int = 0
-    var spriteTiling = false
+    var spriteTiling: Boolean = false
     var borderThickness: Short = 0
-    var sprite2 = 0
+    var sprite2: Int = 0
     var flippedVertically: Boolean? = null
     var flippedHorizontally: Boolean? = null
     var offsetX2d: Short = 0
     var offsetY2d: Short = 0
-    var orthogonal = false
+    var orthogonal: Boolean = false
     var modelHeightOverride: Int = 0
     var lineWidth: Short = 0
-    var lineDirection = false
+    var lineDirection: Boolean = false
     var opBase: String = ""
     var actions: Array<String?>? = null
     var dragDeadZone: Short = 0
     var dragDeadTime: Short = 0
-    var dragRenderBehavior = false
+    var dragRenderBehavior: Boolean = false
     var onLoadListener: Array<Any?>? = null
     var onMouseOverListener: Array<Any?>? = null
     var onMouseLeaveListener: Array<Any?>? = null
@@ -113,8 +113,8 @@ data class RsComponent(val id: Int) {
     var invTransmitTriggers: IntArray? = null
     var statTransmitTriggers: IntArray? = null
 
-    companion object {
-        fun decode(id: Int, data: ByteBuf): RsComponent {
+    public companion object {
+        public fun decode(id: Int, data: ByteBuf): RsComponent {
             return when(data.getByte(data.readerIndex() + 1).toInt()) {
                 -1 -> decodeIf3(id, data)
                 else -> decodeIf1(id, data)

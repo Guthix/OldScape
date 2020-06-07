@@ -22,16 +22,16 @@ import io.netty.buffer.ByteBuf
 import io.netty.buffer.Unpooled
 import java.io.IOException
 
-data class NpcConfig(override val id: Int) : NamedConfig(id) {
-    override var name = "null"
+public data class NpcConfig(override val id: Int) : NamedConfig(id) {
+    override var name: String = "null"
     var size: Short = 1
     var combatLevel: Int? = null
-    var isInteractable = true
-    var drawMapDot = true
-    var isClickable = true
+    var isInteractable: Boolean = true
+    var drawMapDot: Boolean = true
+    var isClickable: Boolean = true
     var rotation: Int = 32
     var headIcon: Int? = null
-    val options = arrayOfNulls<String>(5)
+    val options: Array<String?> = arrayOfNulls(5)
     var stanceAnimation: Int? = null
     var walkSequence: Int? = null
     var walkLeftSequence: Int? = null
@@ -47,13 +47,13 @@ data class NpcConfig(override val id: Int) : NamedConfig(id) {
     var models2: IntArray? = null
     var resizeX: Int = 128
     var resizeY: Int = 128
-    var contrast = 0
+    var contrast: Int = 0
     var ambient: Byte = 0
-    var hasRenderPriority = false
+    var hasRenderPriority: Boolean = false
     var transformVarbit: Int? = null
     var transformVarp: Int? = null
     var transforms: Array<Int?>? = null
-    var aBool2190 = false
+    var aBool2190: Boolean = false
     var params: MutableMap<Int, Any>? = null
 
     override fun encode(): ByteBuf {
@@ -163,7 +163,7 @@ data class NpcConfig(override val id: Int) : NamedConfig(id) {
             data.writeOpcode(if(transforms.last() == null) 118 else 106)
             if(transformVarbit == null) data.writeShort(65535) else data.writeShort(transformVarbit!!.toInt())
             if(transformVarp == null) data.writeShort(65535) else data.writeShort(transformVarp!!.toInt())
-            transforms.last()?.let { data.writeShort(it) }
+            transforms.last()?.let(data::writeShort)
             val size = transforms.size - 2
             data.writeByte(size)
             for(i in 0..size) {
@@ -186,8 +186,8 @@ data class NpcConfig(override val id: Int) : NamedConfig(id) {
         return data
     }
 
-    companion object : NamedConfigCompanion<NpcConfig>() {
-        override val id = 9
+    public companion object : NamedConfigCompanion<NpcConfig>() {
+        override val id: Int = 9
 
         override fun decode(id: Int, data: ByteBuf): NpcConfig {
             val npcConfig = NpcConfig(id)

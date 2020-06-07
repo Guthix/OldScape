@@ -16,7 +16,7 @@
  */
 package io.guthix.oldscape.cache.script
 
-data class AssemblyScript(
+public data class AssemblyScript(
     val id: Int,
     val instructions: Array<InstructionDefinition>,
     val localIntCount: Int,
@@ -81,11 +81,11 @@ data class AssemblyScript(
                 }
             }
         }
-        return strBuilder.toString()
+        return "$strBuilder"
     }
 
-    companion object {
-        fun disassemble(script: MachineScript): AssemblyScript {
+    public companion object {
+        public fun disassemble(script: MachineScript): AssemblyScript {
             val instructions = Array(script.instructions.size) { curLine ->
                 val machineInstr = script.instructions[curLine]
                 if(machineInstr is IntInstruction && machineInstr.isJump) {

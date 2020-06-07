@@ -22,7 +22,7 @@ import io.netty.buffer.ByteBuf
 import io.netty.buffer.Unpooled
 import java.io.IOException
 
-data class HitBarConfig(override val id: Int) : Config(id) {
+public data class HitBarConfig(override val id: Int) : Config(id) {
     var int1: Short = 255
     var int2: Short = 255
     var int3: Int? = null
@@ -74,8 +74,8 @@ data class HitBarConfig(override val id: Int) : Config(id) {
         return data
     }
 
-    companion object : ConfigCompanion<HitBarConfig>() {
-        override val id = 33
+    public companion object : ConfigCompanion<HitBarConfig>() {
+        override val id: Int = 33
 
         override fun decode(id: Int, data: ByteBuf): HitBarConfig {
             val hitBarConfig = HitBarConfig(id)

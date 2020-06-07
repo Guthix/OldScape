@@ -21,10 +21,10 @@ import io.netty.buffer.Unpooled
 import java.awt.Color
 import java.io.IOException
 
-data class OverlayConfig(override val id: Int) : Config(id) {
-    var color = Color(0)
+public data class OverlayConfig(override val id: Int) : Config(id) {
+    var color: Color = Color(0)
     var texture: Short? = null
-    var isHidden = true
+    var isHidden: Boolean = true
     var otherColor: Color? = null
 
     override fun encode(): ByteBuf {
@@ -46,8 +46,8 @@ data class OverlayConfig(override val id: Int) : Config(id) {
         return data
     }
 
-    companion object : ConfigCompanion<OverlayConfig>() {
-        override val id = 4
+    public companion object : ConfigCompanion<OverlayConfig>() {
+        override val id: Int = 4
 
         override fun decode(id: Int, data: ByteBuf): OverlayConfig {
             val overlayConfig = OverlayConfig(id)

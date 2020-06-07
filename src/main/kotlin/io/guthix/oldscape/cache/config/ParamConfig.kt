@@ -24,7 +24,7 @@ import io.netty.buffer.ByteBuf
 import io.netty.buffer.Unpooled
 import java.io.IOException
 
-data class ParamConfig(override val id: Int) : Config(id) {
+public data class ParamConfig(override val id: Int) : Config(id) {
     var stackType: Char? = null
     var autoDisable: Boolean = true
     var defaultInt: Int? = null
@@ -49,8 +49,8 @@ data class ParamConfig(override val id: Int) : Config(id) {
         return data
     }
 
-    companion object : ConfigCompanion<ParamConfig>() {
-        override val id = 11
+    public companion object : ConfigCompanion<ParamConfig>() {
+        override val id: Int = 11
 
         override fun decode(id: Int, data: ByteBuf): ParamConfig {
             val paramConfig = ParamConfig(id)

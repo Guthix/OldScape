@@ -19,11 +19,11 @@ package io.guthix.oldscape.cache
 import io.guthix.cache.js5.Js5Archive
 import io.guthix.oldscape.cache.sound.SoundEffect
 
-class SoundEffectArchive(val soundEffects: List<SoundEffect>) {
-    companion object  {
-        const val id = 4
+public class SoundEffectArchive(public val soundEffects: List<SoundEffect>) {
+    public companion object  {
+        public const val id: Int = 4
 
-        fun load(archive: Js5Archive): SoundEffectArchive {
+        public fun load(archive: Js5Archive): SoundEffectArchive {
             val soundEffects = mutableListOf<SoundEffect>()
             archive.groupSettings.forEach { (groupId, _) ->
                 val group = archive.readGroup(groupId)

@@ -21,20 +21,20 @@ import io.netty.buffer.ByteBuf
 import io.netty.buffer.Unpooled
 import java.io.IOException
 
-data class AreaConfig(override val id: Int) : Config(id) {
-    var name: String? = null
-    var spriteId1: Int? = null
-    var spriteId2: Int? = null
-    var field3033: Int? = null
-    var textSize: Short = 0
-    val iop = arrayOfNulls<String>(5)
-    var shortArray: ShortArray? = null
-    var intArray: IntArray? = null
-    var byteArray: ByteArray? = null
-    var menuTargetName: String? = null
-    var category: Int? = null
-    var horizontalAlignment: Short? = null
-    var verticalAlignment: Short? = null
+public class AreaConfig(override val id: Int) : Config(id) {
+    public var name: String? = null
+    public var spriteId1: Int? = null
+    public var spriteId2: Int? = null
+    public var field3033: Int? = null
+    public var textSize: Short = 0
+    public val iop: Array<String?> = arrayOfNulls(5)
+    public var shortArray: ShortArray? = null
+    public var intArray: IntArray? = null
+    public var byteArray: ByteArray? = null
+    public var menuTargetName: String? = null
+    public var category: Int? = null
+    public var horizontalAlignment: Short? = null
+    public var verticalAlignment: Short? = null
 
     override fun encode(): ByteBuf {
         val data = Unpooled.buffer()
@@ -54,7 +54,7 @@ data class AreaConfig(override val id: Int) : Config(id) {
             data.writeOpcode(4)
             data.writeMedium(it)
         }
-        if(textSize.toInt() != 0) {
+        if (textSize.toInt() != 0) {
             data.writeOpcode(6)
             data.writeByte(textSize.toInt())
         }
@@ -64,15 +64,19 @@ data class AreaConfig(override val id: Int) : Config(id) {
                 data.writeStringCP1252(menuAction)
             }
         }
-        shortArray?.let { shortArray -> intArray?.let { intArray -> byteArray?.let { byteArray ->
-            data.writeOpcode(15)
-            data.writeByte(shortArray.size / 2)
-            shortArray.forEach { data.writeShort(it.toInt()) }
-            data.writeInt(0)
-            data.writeByte(intArray.size)
-            intArray.forEach { data.writeInt(it) }
-            byteArray.forEach { data.writeByte(it.toInt()) }
-        } } }
+        shortArray?.let { shortArray ->
+            intArray?.let { intArray ->
+                byteArray?.let { byteArray ->
+                    data.writeOpcode(15)
+                    data.writeByte(shortArray.size / 2)
+                    shortArray.forEach { data.writeShort(it.toInt()) }
+                    data.writeInt(0)
+                    data.writeByte(intArray.size)
+                    intArray.forEach { data.writeInt(it) }
+                    byteArray.forEach { data.writeByte(it.toInt()) }
+                }
+            }
+        }
         menuTargetName?.let {
             data.writeOpcode(17)
             data.writeStringCP1252(it)
@@ -85,8 +89,8 @@ data class AreaConfig(override val id: Int) : Config(id) {
         return data
     }
 
-    companion object : ConfigCompanion<AreaConfig>() {
-        override val id = 35
+    public companion object : ConfigCompanion<AreaConfig>() {
+        override val id: Int = 35
 
         override fun decode(id: Int, data: ByteBuf): AreaConfig {
             val areaConfig = AreaConfig(id)

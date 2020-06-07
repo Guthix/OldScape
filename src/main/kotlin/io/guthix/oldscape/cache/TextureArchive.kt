@@ -19,11 +19,11 @@ package io.guthix.oldscape.cache
 import io.guthix.cache.js5.Js5Archive
 import io.guthix.oldscape.cache.plane.Texture
 
-class TextureArchive(val textures: List<Texture>) {
-    companion object {
-        const val id = 9
+public class TextureArchive(public val textures: List<Texture>) {
+    public companion object {
+        public const val id: Int = 9
 
-        fun load(archive: Js5Archive): TextureArchive {
+        public fun load(archive: Js5Archive): TextureArchive {
             val textures = mutableListOf<Texture>()
             archive.groupSettings.forEach { (groupId, _) ->
                 val group = archive.readGroup(groupId)

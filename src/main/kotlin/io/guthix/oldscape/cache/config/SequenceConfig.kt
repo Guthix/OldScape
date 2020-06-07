@@ -20,12 +20,12 @@ import io.netty.buffer.ByteBuf
 import io.netty.buffer.Unpooled
 import java.io.IOException
 
-data class SequenceConfig(override val id: Int) : Config(id) {
+public data class SequenceConfig(override val id: Int) : Config(id) {
     var frameIds: IntArray? = null
     var field3048: IntArray? = null
     var frameDuration: IntArray? = null
     var interleave: IntArray? = null
-    var stretches = false
+    var stretches: Boolean = false
     var forcedPriority: Short = 5
     var maxLoops: Short = 99
     var field3056: IntArray? = null
@@ -113,8 +113,8 @@ data class SequenceConfig(override val id: Int) : Config(id) {
         return data
     }
 
-    companion object : ConfigCompanion<SequenceConfig>() {
-        override val id = 12
+    public companion object : ConfigCompanion<SequenceConfig>() {
+        override val id: Int = 12
 
         override fun decode(id: Int, data: ByteBuf): SequenceConfig {
             val sequenceConfig = SequenceConfig(id)

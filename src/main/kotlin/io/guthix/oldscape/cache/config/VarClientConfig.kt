@@ -20,8 +20,8 @@ import io.netty.buffer.ByteBuf
 import io.netty.buffer.Unpooled
 import java.io.IOException
 
-data class VarClientConfig(override val id: Int) : Config(id) {
-    var isPeristent = false
+public data class VarClientConfig(override val id: Int) : Config(id) {
+    var isPeristent: Boolean = false
 
     override fun encode(): ByteBuf = if(isPeristent) {
         Unpooled.buffer(2).apply {
@@ -32,8 +32,8 @@ data class VarClientConfig(override val id: Int) : Config(id) {
         Unpooled.buffer(1).apply { writeOpcode(0) }
     }
 
-    companion object : ConfigCompanion<VarClientConfig>() {
-        override val id = 19
+    public companion object : ConfigCompanion<VarClientConfig>() {
+        override val id: Int = 19
 
         override fun decode(id: Int, data: ByteBuf): VarClientConfig {
             val varClientConfig = VarClientConfig(id)

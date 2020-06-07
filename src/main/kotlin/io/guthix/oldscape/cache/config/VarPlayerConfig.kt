@@ -20,7 +20,7 @@ import io.netty.buffer.ByteBuf
 import io.netty.buffer.Unpooled
 import java.io.IOException
 
-data class VarPlayerConfig(override val id: Int) : Config(id) {
+public data class VarPlayerConfig(override val id: Int) : Config(id) {
     var type: Int = 0
 
     override fun encode(): ByteBuf = if(type != 0) {
@@ -33,8 +33,8 @@ data class VarPlayerConfig(override val id: Int) : Config(id) {
         Unpooled.buffer(1).apply { writeOpcode(0) }
     }
 
-    companion object : ConfigCompanion<VarPlayerConfig>() {
-        override val id = 16
+    public companion object : ConfigCompanion<VarPlayerConfig>() {
+        override val id: Int = 16
 
         override fun decode(id: Int, data: ByteBuf): VarPlayerConfig {
             val varPlayerConfig = VarPlayerConfig(id)

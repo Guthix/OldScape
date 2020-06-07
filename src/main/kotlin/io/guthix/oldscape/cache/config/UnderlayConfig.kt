@@ -20,8 +20,8 @@ import io.netty.buffer.ByteBuf
 import io.netty.buffer.Unpooled
 import java.io.IOException
 
-data class UnderlayConfig(override val id: Int) : Config(id) {
-    var color = 0
+public data class UnderlayConfig(override val id: Int) : Config(id) {
+    var color: Int = 0
 
     override fun encode(): ByteBuf = if(color != 0) {
         Unpooled.buffer(2).apply {
@@ -33,8 +33,8 @@ data class UnderlayConfig(override val id: Int) : Config(id) {
         Unpooled.buffer(1).apply { writeOpcode(0) }
     }
 
-    companion object : ConfigCompanion<UnderlayConfig>() {
-        override val id = 1
+    public companion object : ConfigCompanion<UnderlayConfig>() {
+        override val id: Int = 1
 
         override fun decode(id: Int, data: ByteBuf): UnderlayConfig {
             val underlayConfig = UnderlayConfig(id)

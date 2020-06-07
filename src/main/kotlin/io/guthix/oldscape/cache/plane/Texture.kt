@@ -19,19 +19,19 @@ package io.guthix.oldscape.cache.plane
 import io.netty.buffer.ByteBuf
 import java.io.IOException
 
-class Texture(
-    val id: Int,
-    val field1527: Int,
-    val field1530: Boolean,
-    val fileIds: IntArray,
-    val field1535: ShortArray?,
-    val field1532: ShortArray?,
-    val field1536: IntArray,
-    val field1537: Short,
-    val field1538: Short
+public class Texture(
+    public val id: Int,
+    public val field1527: Int,
+    public val field1530: Boolean,
+    public val fileIds: IntArray,
+    public val field1535: ShortArray?,
+    public val field1532: ShortArray?,
+    public val field1536: IntArray,
+    public val field1537: Short,
+    public val field1538: Short
 ) {
-    companion object {
-        fun decode(id: Int, data: ByteBuf): Texture {
+    public companion object {
+        public fun decode(id: Int, data: ByteBuf): Texture {
             val field1527 = data.readUnsignedShort()
             val field1530 = data.readUnsignedByte().toInt() == 1
             val amount = data.readUnsignedByte().toInt()

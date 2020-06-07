@@ -19,11 +19,11 @@ package io.guthix.oldscape.cache
 import io.guthix.cache.js5.Js5Archive
 import io.guthix.oldscape.cache.sound.MidiFile
 
-class MusicTrackArchive(val tracks: List<MidiFile>) {
-    companion object  {
-        const val id = 6
+public class MusicTrackArchive(public val tracks: List<MidiFile>) {
+    public companion object  {
+        public const val id: Int = 6
 
-        fun load(archive: Js5Archive): MusicTrackArchive {
+        public fun load(archive: Js5Archive): MusicTrackArchive {
             val tracks = mutableListOf<MidiFile>()
             archive.groupSettings.forEach { (groupId, _) ->
                 val group = archive.readGroup(groupId)

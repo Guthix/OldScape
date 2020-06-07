@@ -20,7 +20,7 @@ import io.netty.buffer.ByteBuf
 import io.netty.buffer.Unpooled
 import java.io.IOException
 
-data class SpotAnimConfig(override val id: Int) : Config(id) {
+public data class SpotAnimConfig(override val id: Int) : Config(id) {
     var sequenceId: Int? = null
     var rotation: Int = 0
     var resizeY: Int = 128
@@ -83,8 +83,8 @@ data class SpotAnimConfig(override val id: Int) : Config(id) {
         return data
     }
 
-    companion object : ConfigCompanion<SpotAnimConfig>() {
-        override val id = 13
+    public companion object : ConfigCompanion<SpotAnimConfig>() {
+        override val id: Int = 13
 
         override fun decode(id: Int, data: ByteBuf): SpotAnimConfig {
             val spotAnimConfig = SpotAnimConfig(id)

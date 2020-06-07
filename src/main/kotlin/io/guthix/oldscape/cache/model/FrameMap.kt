@@ -19,9 +19,9 @@ package io.guthix.oldscape.cache.model
 
 import io.netty.buffer.ByteBuf
 
-class FrameMap(val types: ShortArray, val frameMaps: Array<ShortArray>) {
-    companion object {
-        fun decode(data: ByteBuf): FrameMap {
+public class FrameMap(public val types: ShortArray, public val frameMaps: Array<ShortArray>) {
+    public companion object {
+        public fun decode(data: ByteBuf): FrameMap {
             val length = data.readUnsignedByte().toInt()
             val types = ShortArray(length) {
                 data.readUnsignedByte()

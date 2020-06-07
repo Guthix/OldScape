@@ -19,11 +19,11 @@ package io.guthix.oldscape.cache
 import io.guthix.cache.js5.Js5Archive
 import io.guthix.oldscape.cache.model.Model
 
-class ModelArchive(val models: List<Model>) {
-    companion object {
-        const val id = 7
+public class ModelArchive(public val models: List<Model>) {
+    public companion object {
+        public const val id: Int = 7
 
-        fun load(archive: Js5Archive): ModelArchive {
+        public fun load(archive: Js5Archive): ModelArchive {
             val models = mutableListOf<Model>()
             archive.groupSettings.forEach { (groupId, _) ->
                 val group = archive.readGroup(groupId)

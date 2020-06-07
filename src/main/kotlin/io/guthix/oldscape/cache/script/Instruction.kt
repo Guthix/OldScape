@@ -16,17 +16,24 @@
  */
 package io.guthix.oldscape.cache.script
 
-class SwitchInstruction(opcode: Int, name: String, val operand: Map<Int, Int>): InstructionDefinition(opcode, name)
+public class SwitchInstruction(
+    opcode: Int, name: String,
+    public val operand: Map<Int, Int>
+) : InstructionDefinition(opcode, name)
 
-class StringInstruction(opcode: Int, name: String, val operand: String): InstructionDefinition(opcode, name)
+public class StringInstruction(
+    opcode: Int, name: String,
+    public val operand: String
+) : InstructionDefinition(opcode, name)
 
-class IntInstruction(opcode: Int, name: String, val operand: Int): InstructionDefinition(opcode, name)
+public class IntInstruction(opcode: Int, name: String, public val operand: Int) : InstructionDefinition(opcode, name)
 
-open class InstructionDefinition(val opcode: Int, val name: String) {
-    val isJump get() = when (this) {
-        JUMP, IF_ICMPEQ, IF_ICMPGE, IF_ICMPGT, IF_ICMPLE, IF_ICMPLT, IF_ICMPNE -> true
-        else -> false
-    }
+public open class InstructionDefinition(public val opcode: Int, public val name: String) {
+    public val isJump: Boolean
+        get() = when (this) {
+            JUMP, IF_ICMPEQ, IF_ICMPGE, IF_ICMPGT, IF_ICMPLE, IF_ICMPLT, IF_ICMPNE -> true
+            else -> false
+        }
 
     internal companion object {
         val byName = mutableMapOf<String, InstructionDefinition>()

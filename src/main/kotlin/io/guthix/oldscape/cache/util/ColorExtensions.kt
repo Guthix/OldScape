@@ -21,7 +21,7 @@ import java.lang.IllegalStateException
 import kotlin.math.max
 import kotlin.math.min
 
-fun Color.getHSLComponents(): IntArray {
+internal fun Color.getHSLComponents(): IntArray {
     val r = red / 256.0
     val g = green / 256.0
     val b = blue / 256.0

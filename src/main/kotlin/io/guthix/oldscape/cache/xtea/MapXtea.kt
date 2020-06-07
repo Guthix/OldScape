@@ -16,10 +16,10 @@
  */
 package io.guthix.oldscape.cache.xtea
 
-data class MapXtea(val id: Int, val key: IntArray) {
-    val x get() = id shr 8
+public data class MapXtea(val id: Int, val key: IntArray) {
+    val x: Int get() = id shr 8
 
-    val y get() = id and 0xFF
+    val y: Int get() = id and 0xFF
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

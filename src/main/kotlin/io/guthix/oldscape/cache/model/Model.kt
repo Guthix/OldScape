@@ -20,40 +20,40 @@ import io.guthix.buffer.readSmallSmart
 import io.netty.buffer.ByteBuf
 import kotlin.math.sqrt
 
-class Model(var id: Int) {
-    var vertexCount = 0
-    var triangleCount = 0
-    var textureTriangleCount = 0
-    var renderPriority: Byte? = null
+public class Model(public var id: Int) {
+    public var vertexCount: Int = 0
+    public var triangleCount: Int = 0
+    public var textureTriangleCount: Int = 0
+    public var renderPriority: Byte? = null
 
-    var vertexPositionsX: IntArray? = null
-    var vertexPositionsY: IntArray? = null
-    var vertexPositionsZ: IntArray? = null
-    var vertexSkins: IntArray? = null
+    public var vertexPositionsX: IntArray? = null
+    public var vertexPositionsY: IntArray? = null
+    public var vertexPositionsZ: IntArray? = null
+    public var vertexSkins: IntArray? = null
 
-    var triangleVertex1: IntArray? = null
-    var triangleVertex2: IntArray? = null
-    var triangleVertex3: IntArray? = null
-    var triangleAlphas: ByteArray? = null
-    var triangleColors: IntArray? = null
-    var triangleRenderPriorities: ByteArray? = null
-    var triangleRenderTypes: ByteArray? = null
-    var triangleTextures: IntArray? = null
-    var triangleSkins: IntArray? = null
+    public var triangleVertex1: IntArray? = null
+    public var triangleVertex2: IntArray? = null
+    public var triangleVertex3: IntArray? = null
+    public var triangleAlphas: ByteArray? = null
+    public var triangleColors: IntArray? = null
+    public var triangleRenderPriorities: ByteArray? = null
+    public var triangleRenderTypes: ByteArray? = null
+    public var triangleTextures: IntArray? = null
+    public var triangleSkins: IntArray? = null
 
-    var textureTriangleVertex1: IntArray? = null
-    var textureTriangleVertex2: IntArray? = null
-    var textureTriangleVertex3: IntArray? = null
-    var textureCoordinates: ByteArray? = null
-    var textureRenderTypes: ByteArray? = null
+    public var textureTriangleVertex1: IntArray? = null
+    public var textureTriangleVertex2: IntArray? = null
+    public var textureTriangleVertex3: IntArray? = null
+    public var textureCoordinates: ByteArray? = null
+    public var textureRenderTypes: ByteArray? = null
 
-    var vertexNormals: Array<VertexNormal>? = null
-    var faceNormals: Array<FaceNormal?>? = null
+    public var vertexNormals: Array<VertexNormal>? = null
+    public var faceNormals: Array<FaceNormal?>? = null
 
-    var triangleTextUCo: Array<FloatArray?>? = null
-    var triangleTextVCo: Array<FloatArray?>? = null
+    public var triangleTextUCo: Array<FloatArray?>? = null
+    public var triangleTextVCo: Array<FloatArray?>? = null
 
-    fun computeNormals() {
+    public fun computeNormals() {
         vertexNormals = Array(vertexCount) { VertexNormal() }
         for(i in 0 until triangleCount) {
             val vertexA = triangleVertex1!![i]
@@ -115,7 +115,7 @@ class Model(var id: Int) {
         }
     }
 
-    fun computeTextureUVCoordinates() {
+    public fun computeTextureUVCoordinates() {
         triangleTextUCo = arrayOfNulls(triangleCount)
         triangleTextVCo = arrayOfNulls(triangleCount)
 
@@ -147,46 +147,45 @@ class Model(var id: Int) {
                         val textureVertexId2 = textureTriangleVertex2!![textureCoordinate]
                         val textureVertexId3 = textureTriangleVertex3!![textureCoordinate]
 
-                        val triangleX = vertexPositionsX!![textureVertexId1].toFloat()
-                        val triangleY = vertexPositionsY!![textureVertexId1].toFloat()
-                        val triangleZ = vertexPositionsZ!![textureVertexId1].toFloat()
+                        val triangleX1 = vertexPositionsX!![textureVertexId1].toFloat()
+                        val triangleY1 = vertexPositionsY!![textureVertexId1].toFloat()
+                        val triangleZ1 = vertexPositionsZ!![textureVertexId1].toFloat()
+                        val triangleX2 = vertexPositionsX!![textureVertexId2].toFloat() - triangleX1
+                        val triangleY2 = vertexPositionsY!![textureVertexId2].toFloat() - triangleY1
+                        val triangleZ2 = vertexPositionsZ!![textureVertexId2].toFloat() - triangleZ1
+                        val triangleX3 = vertexPositionsX!![textureVertexId3].toFloat() - triangleX1
+                        val triangleY3 = vertexPositionsY!![textureVertexId3].toFloat() - triangleY1
+                        val triangleZ3 = vertexPositionsZ!![textureVertexId3].toFloat() - triangleZ1
+                        val x1 = vertexPositionsX!![vertexId1].toFloat() - triangleX1
+                        val y1 = vertexPositionsY!![vertexId1].toFloat() - triangleY1
+                        val z1 = vertexPositionsZ!![vertexId1].toFloat() - triangleZ1
+                        val x2 = vertexPositionsX!![vertexId2].toFloat() - triangleX1
+                        val y2 = vertexPositionsY!![vertexId2].toFloat() - triangleY1
+                        val z2 = vertexPositionsZ!![vertexId2].toFloat() - triangleZ1
+                        val x3 = vertexPositionsX!![vertexId3].toFloat() - triangleX1
+                        val y3 = vertexPositionsY!![vertexId3].toFloat() - triangleY1
+                        val z3 = vertexPositionsZ!![vertexId3].toFloat() - triangleZ1
 
-                        val f_882_ = vertexPositionsX!![textureVertexId2].toFloat() - triangleX
-                        val f_883_ = vertexPositionsY!![textureVertexId2].toFloat() - triangleY
-                        val f_884_ = vertexPositionsZ!![textureVertexId2].toFloat() - triangleZ
-                        val f_885_ = vertexPositionsX!![textureVertexId3].toFloat() - triangleX
-                        val f_886_ = vertexPositionsY!![textureVertexId3].toFloat() - triangleY
-                        val f_887_ = vertexPositionsZ!![textureVertexId3].toFloat() - triangleZ
-                        val f_888_ = vertexPositionsX!![vertexId1].toFloat() - triangleX
-                        val f_889_ = vertexPositionsY!![vertexId1].toFloat() - triangleY
-                        val f_890_ = vertexPositionsZ!![vertexId1].toFloat() - triangleZ
-                        val f_891_ = vertexPositionsX!![vertexId2].toFloat() - triangleX
-                        val f_892_ = vertexPositionsY!![vertexId2].toFloat() - triangleY
-                        val f_893_ = vertexPositionsZ!![vertexId2].toFloat() - triangleZ
-                        val f_894_ = vertexPositionsX!![vertexId3].toFloat() - triangleX
-                        val f_895_ = vertexPositionsY!![vertexId3].toFloat() - triangleY
-                        val f_896_ = vertexPositionsZ!![vertexId3].toFloat() - triangleZ
+                        val yz = triangleY2 * triangleZ3 - triangleZ2 * triangleY3
+                        val zx = triangleZ2 * triangleX3 - triangleX2 * triangleZ3
+                        val xy = triangleX2 * triangleY3 - triangleY2 * triangleX3
+                        var xyz = triangleY3 * xy - triangleZ3 * zx
+                        var yzx = triangleZ3 * yz - triangleX3 * xy
+                        var zxy = triangleX3 * zx - triangleY3 * yz
+                        var res = 1.0f / (xyz * triangleX2 + yzx * triangleY2 + zxy * triangleZ2)
 
-                        val f_897_ = f_883_ * f_887_ - f_884_ * f_886_
-                        val f_898_ = f_884_ * f_885_ - f_882_ * f_887_
-                        val f_899_ = f_882_ * f_886_ - f_883_ * f_885_
-                        var f_900_ = f_886_ * f_899_ - f_887_ * f_898_
-                        var f_901_ = f_887_ * f_897_ - f_885_ * f_899_
-                        var f_902_ = f_885_ * f_898_ - f_886_ * f_897_
-                        var f_903_ = 1.0f / (f_900_ * f_882_ + f_901_ * f_883_ + f_902_ * f_884_)
+                        u[0] = (xyz * x1 + yzx * y1 + zxy * z1) * res
+                        u[1] = (xyz * x2 + yzx * y2 + zxy * z2) * res
+                        u[2] = (xyz * x3 + yzx * y3 + zxy * z3) * res
 
-                        u[0] = (f_900_ * f_888_ + f_901_ * f_889_ + f_902_ * f_890_) * f_903_
-                        u[1] = (f_900_ * f_891_ + f_901_ * f_892_ + f_902_ * f_893_) * f_903_
-                        u[2] = (f_900_ * f_894_ + f_901_ * f_895_ + f_902_ * f_896_) * f_903_
+                        xyz = triangleY2 * xy - triangleZ2 * zx
+                        yzx = triangleZ2 * yz - triangleX2 * xy
+                        zxy = triangleX2 * zx - triangleY2 * yz
+                        res = 1.0f / (xyz * triangleX3 + yzx * triangleY3 + zxy * triangleZ3)
 
-                        f_900_ = f_883_ * f_899_ - f_884_ * f_898_
-                        f_901_ = f_884_ * f_897_ - f_882_ * f_899_
-                        f_902_ = f_882_ * f_898_ - f_883_ * f_897_
-                        f_903_ = 1.0f / (f_900_ * f_885_ + f_901_ * f_886_ + f_902_ * f_887_)
-
-                        v[0] = (f_900_ * f_888_ + f_901_ * f_889_ + f_902_ * f_890_) * f_903_
-                        v[1] = (f_900_ * f_891_ + f_901_ * f_892_ + f_902_ * f_893_) * f_903_
-                        v[2] = (f_900_ * f_894_ + f_901_ * f_895_ + f_902_ * f_896_) * f_903_
+                        v[0] = (xyz * x1 + yzx * y1 + zxy * z1) * res
+                        v[1] = (xyz * x2 + yzx * y2 + zxy * z2) * res
+                        v[2] = (xyz * x3 + yzx * y3 + zxy * z3) * res
                     }
                 }
                 triangleTextUCo!![i] = u
@@ -195,8 +194,8 @@ class Model(var id: Int) {
         }
     }
 
-    companion object {
-        fun decode(id: Int, data: ByteBuf): Model {
+    public companion object {
+        public fun decode(id: Int, data: ByteBuf): Model {
             val model = Model(id)
             return if (data.getByte(data.writerIndex() - 1).toInt() == -1 &&
                 data.getByte(data.writerIndex() - 2).toInt() == -1
@@ -207,7 +206,7 @@ class Model(var id: Int) {
             }
         }
 
-        fun decodeNew(model: Model, data: ByteBuf): Model {
+        private fun decodeNew(model: Model, data: ByteBuf): Model {
             val buf1 = data.duplicate()
             val buf2 = data.duplicate()
             val buf3 = data.duplicate()
@@ -339,7 +338,7 @@ class Model(var id: Int) {
             return model
         }
 
-        fun decodeOld(model: Model, data: ByteBuf): Model {
+        private fun decodeOld(model: Model, data: ByteBuf): Model {
             var hasFaceRenderTypes = false
             var hasFaceTextures = false
             val buf1 = data.duplicate()
@@ -492,7 +491,7 @@ class Model(var id: Int) {
             return model
         }
 
-        fun decodeTriangles(model: Model, data: ByteBuf, vertexIdPos: Int, triangleTypePos: Int) {
+        private fun decodeTriangles(model: Model, data: ByteBuf, vertexIdPos: Int, triangleTypePos: Int) {
             val vertexIdBuffer = data.duplicate().readerIndex(vertexIdPos)
             val triangleTypeBuffer = data.duplicate().readerIndex(triangleTypePos)
             var vertexId1 = 0
@@ -540,7 +539,7 @@ class Model(var id: Int) {
             }
         }
 
-        fun decodeVertexPositions(
+        private fun decodeVertexPositions(
             model: Model,
             hasVertexSkins: Int,
             data: ByteBuf,
@@ -578,7 +577,7 @@ class Model(var id: Int) {
             }
         }
 
-        fun decodeTextureVertexPositionsNew(
+        private fun decodeTextureVertexPositionsNew(
             model: Model,
             textureTriangleCount: Int,
             data: ByteBuf,
@@ -594,7 +593,7 @@ class Model(var id: Int) {
             }
         }
 
-        fun decodeTextureVertexPositionsOld(
+        private fun decodeTextureVertexPositionsOld(
             model: Model,
             textureTriangleCount: Int,
             data: ByteBuf,

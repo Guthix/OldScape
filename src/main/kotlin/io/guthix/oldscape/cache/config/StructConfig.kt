@@ -20,7 +20,7 @@ import io.netty.buffer.ByteBuf
 import io.netty.buffer.Unpooled
 import java.io.IOException
 
-data class StructConfig(override val id: Int) : Config(id) {
+public data class StructConfig(override val id: Int) : Config(id) {
     var params: MutableMap<Int, Any>? = null
 
     override fun encode(): ByteBuf {
@@ -33,8 +33,8 @@ data class StructConfig(override val id: Int) : Config(id) {
         return data
     }
 
-    companion object : ConfigCompanion<StructConfig>() {
-        override val id = 34
+    public companion object : ConfigCompanion<StructConfig>() {
+        override val id: Int = 34
 
         @ExperimentalUnsignedTypes
         override fun decode(id: Int, data: ByteBuf): StructConfig {

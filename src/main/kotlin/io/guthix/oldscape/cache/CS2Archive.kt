@@ -19,11 +19,11 @@ package io.guthix.oldscape.cache
 import io.guthix.cache.js5.Js5Archive
 import io.guthix.oldscape.cache.script.MachineScript
 
-class CS2Archive(val scripts: Map<Int, MachineScript>) {
-    companion object  {
-        const val id = 12
+public class CS2Archive(public val scripts: Map<Int, MachineScript>) {
+    public companion object  {
+        public const val id: Int = 12
 
-        fun load(archive: Js5Archive): CS2Archive {
+        public fun load(archive: Js5Archive): CS2Archive {
             val scripts = mutableMapOf<Int, MachineScript>()
             archive.groupSettings.forEach { (groupId, _) ->
                 val group = archive.readGroup(groupId)

@@ -22,18 +22,18 @@ import io.guthix.buffer.readUnsignedSmallSmart
 import io.netty.buffer.ByteBuf
 import kotlin.math.cos
 
-class MapSquareDefinition(
-    val x: Int,
-    val y: Int,
-    val mapDefinition: MapDefinition,
-    val locationDefinitions: List<MapLocDefinition>
+public class MapSquareDefinition(
+    public val x: Int,
+    public val y: Int,
+    public val mapDefinition: MapDefinition,
+    public val locationDefinitions: List<MapLocDefinition>
 ) {
-    companion object {
-        const val FLOOR_COUNT = 4
+    public companion object {
+        public const val FLOOR_COUNT: Int = 4
 
-        const val SIZE = 64
+        public const val SIZE: Int = 64
 
-        fun decode(landData: ByteBuf, mapData: ByteBuf, x: Int, y: Int): MapSquareDefinition {
+        public fun decode(landData: ByteBuf, mapData: ByteBuf, x: Int, y: Int): MapSquareDefinition {
             val mapDefinitions = MapDefinition.decode(landData, x, y)
             val mapLocDefinitions = MapLocDefinition.decode(mapData, mapDefinitions.renderRules)
             return MapSquareDefinition(x, y, mapDefinitions, mapLocDefinitions)
@@ -41,18 +41,18 @@ class MapSquareDefinition(
     }
 }
 
-class MapDefinition(
-    val tileHeights: Array<Array<IntArray>>,
-    val renderRules: Array<Array<ShortArray>>,
-    val overlayIds: Array<Array<ByteArray>>,
-    val overlayPaths: Array<Array<ShortArray>>,
-    val overlayRotations: Array<Array<ShortArray>>,
-    val underlayIds: Array<Array<ShortArray>>
+public class MapDefinition(
+    public val tileHeights: Array<Array<IntArray>>,
+    public val renderRules: Array<Array<ShortArray>>,
+    public val overlayIds: Array<Array<ByteArray>>,
+    public val overlayPaths: Array<Array<ShortArray>>,
+    public val overlayRotations: Array<Array<ShortArray>>,
+    public val underlayIds: Array<Array<ShortArray>>
 ) {
-    companion object {
-        const val BLOCKED_TILE_MASK: Short = 0x1
-        const val BRIDGE_TILE_MASK: Short = 0x2
-        const val ROOF_TILE_MASK: Short = 0x4
+    public companion object {
+        public const val BLOCKED_TILE_MASK: Short = 0x1
+        public const val BRIDGE_TILE_MASK: Short = 0x2
+        public const val ROOF_TILE_MASK: Short = 0x4
         private const val JAGEX_CIRCULAR_ANGLE = 2048
         private const val ANGULAR_RATIO = 360.0 / JAGEX_CIRCULAR_ANGLE
         private val JAGEX_RADIAN = Math.toRadians(ANGULAR_RATIO)
@@ -60,7 +60,7 @@ class MapDefinition(
             ((0xFFFF + 1) * cos(it.toDouble() * JAGEX_RADIAN).toInt())
         }
 
-        fun decode(data: ByteBuf, baseX: Int, baseY: Int): MapDefinition {
+        public fun decode(data: ByteBuf, baseX: Int, baseY: Int): MapDefinition {
             val tileHeights = Array(MapSquareDefinition.FLOOR_COUNT) { Array(MapSquareDefinition.SIZE) { IntArray(
                 MapSquareDefinition.SIZE
             ) } }
@@ -73,9 +73,9 @@ class MapDefinition(
             val overlayPaths = Array(MapSquareDefinition.FLOOR_COUNT) { Array(MapSquareDefinition.SIZE) { ShortArray(
                 MapSquareDefinition.SIZE
             ) } }
-            val overlayRotations = Array(MapSquareDefinition.FLOOR_COUNT) { Array(MapSquareDefinition.SIZE) { ShortArray(
-                MapSquareDefinition.SIZE
-            ) } }
+            val overlayRotations = Array(MapSquareDefinition.FLOOR_COUNT) { Array(MapSquareDefinition.SIZE) {
+                ShortArray(MapSquareDefinition.SIZE)
+            } }
             val underlayIds = Array(MapSquareDefinition.FLOOR_COUNT) { Array(MapSquareDefinition.SIZE) { ShortArray(
                 MapSquareDefinition.SIZE
             ) } }
@@ -164,7 +164,7 @@ class MapDefinition(
     }
 }
 
-class MapLocDefinition(
+public data class MapLocDefinition(
     val id: Int,
     val floor: Int,
     val localX: Int,
@@ -172,8 +172,8 @@ class MapLocDefinition(
     val type: Int,
     val orientation: Int
 ) {
-    companion object {
-        fun decode(data: ByteBuf, renderRules: Array<Array<ShortArray>>): List<MapLocDefinition> {
+    public companion object {
+        public fun decode(data: ByteBuf, renderRules: Array<Array<ShortArray>>): List<MapLocDefinition> {
             var id = -1
             var offset = data.readIncrSmallSmart()
             val locations = mutableListOf<MapLocDefinition>()

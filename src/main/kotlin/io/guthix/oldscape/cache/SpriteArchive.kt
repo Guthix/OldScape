@@ -19,11 +19,11 @@ package io.guthix.oldscape.cache
 import io.guthix.cache.js5.Js5Archive
 import io.guthix.oldscape.cache.plane.Sprite
 
-class SpriteArchive(val sprites: List<Sprite>) {
-    companion object {
-        const val id = 8
+public class SpriteArchive(public val sprites: List<Sprite>) {
+    public companion object {
+        public const val id: Int = 8
 
-        fun load(archive: Js5Archive): SpriteArchive {
+        public fun load(archive: Js5Archive): SpriteArchive {
             val sprites = mutableListOf<Sprite>()
             archive.groupSettings.forEach { (groupId, _) ->
                 val group = archive.readGroup(groupId)

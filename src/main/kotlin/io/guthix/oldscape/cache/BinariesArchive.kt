@@ -19,12 +19,11 @@ package io.guthix.oldscape.cache
 import io.guthix.cache.js5.Js5Archive
 import io.guthix.oldscape.cache.binary.Huffman
 
-class BinariesArchive(val huffman: Huffman) {
-    companion object {
-        const val id = 10
+public class BinariesArchive(public val huffman: Huffman) {
+    public companion object {
+        public const val id: Int = 10
 
-        fun load(archive: Js5Archive): BinariesArchive {
-            return BinariesArchive(Huffman.load(archive.readGroup("huffman").files[0]!!.data))
-        }
+        public fun load(archive: Js5Archive): BinariesArchive =
+            BinariesArchive(Huffman.load(archive.readGroup("huffman").files[0]!!.data))
     }
 }

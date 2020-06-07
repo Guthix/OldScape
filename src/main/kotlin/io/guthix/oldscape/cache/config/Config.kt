@@ -21,12 +21,12 @@ import io.guthix.buffer.writeStringCP1252
 import io.guthix.cache.js5.Js5Group
 import io.netty.buffer.ByteBuf
 
-abstract class NamedConfig(id: Int) : Config(id) {
-    abstract val name: String
+public abstract class NamedConfig(id: Int) : Config(id) {
+    public abstract val name: String
 }
 
-abstract class Config(open val id: Int) {
-    abstract fun encode(): ByteBuf
+public abstract class Config(public open val id: Int) {
+    public abstract fun encode(): ByteBuf
 
     protected fun ByteBuf.writeOpcode(opcode: Int): ByteBuf = writeByte(opcode)
 
@@ -41,12 +41,12 @@ abstract class Config(open val id: Int) {
     }
 }
 
-abstract class NamedConfigCompanion<out T: NamedConfig> : ConfigCompanion<T>()
+public abstract class NamedConfigCompanion<out T: NamedConfig> : ConfigCompanion<T>()
 
-abstract class ConfigCompanion<out T: Config> {
-    abstract val id: Int
+public abstract class ConfigCompanion<out T: Config> {
+    public abstract val id: Int
 
-    fun load(group: Js5Group): Map<Int, T> {
+    public fun load(group: Js5Group): Map<Int, T> {
         val configs = mutableMapOf<Int, T>()
         group.files.forEach{ (fileId, file) ->
             configs[fileId] = decode(fileId, file.data)
@@ -54,7 +54,7 @@ abstract class ConfigCompanion<out T: Config> {
         return configs
     }
 
-    abstract fun decode(id: Int, data: ByteBuf): T
+    public abstract fun decode(id: Int, data: ByteBuf): T
 
     protected fun ByteBuf.readParams(): MutableMap<Int, Any> {
         val amount = readUnsignedByte()

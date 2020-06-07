@@ -21,11 +21,11 @@ import io.guthix.oldscape.cache.map.MapSquareDefinition
 import io.guthix.oldscape.cache.xtea.MapXtea
 import java.io.FileNotFoundException
 
-class MapArchive(val mapsquares: Map<Int, MapSquareDefinition>) {
-    companion object  {
-        const val id = 5
+public class MapArchive(public val mapsquares: Map<Int, MapSquareDefinition>) {
+    public companion object  {
+        public const val id: Int = 5
 
-        fun load(archive: Js5Archive, xteas: List<MapXtea>): MapArchive {
+        public fun load(archive: Js5Archive, xteas: List<MapXtea>): MapArchive {
             val mapSquares = mutableMapOf<Int, MapSquareDefinition>()
             xteas.forEach {
                 val mapFile = archive.readGroup("m${it.x}_${it.y}").files[0] ?: throw FileNotFoundException(

@@ -18,8 +18,8 @@ package io.guthix.oldscape.cache.binary
 
 import io.netty.buffer.ByteBuf
 
-class Huffman(val frequencies: ByteArray, val masks: IntArray, val keys: IntArray) {
-    fun compress(text: String): ByteArray {
+public class Huffman(private val frequencies: ByteArray, private val masks: IntArray, private val keys: IntArray) {
+    public fun compress(text: String): ByteArray {
         val output = ByteArray(256)
         var key = 0
 
@@ -61,7 +61,7 @@ class Huffman(val frequencies: ByteArray, val masks: IntArray, val keys: IntArra
         return output.sliceArray(0..(7 + currentPos shr 3))
     }
 
-    fun decompress(compressed: ByteArray, decompressedLength: Int): ByteArray {
+    public fun decompress(compressed: ByteArray, decompressedLength: Int): ByteArray {
         val decompressed = ByteArray(decompressedLength)
         if (decompressedLength == 0) {
             return decompressed
@@ -142,8 +142,8 @@ class Huffman(val frequencies: ByteArray, val masks: IntArray, val keys: IntArra
         }
     }
 
-    companion object {
-        fun load(buf: ByteBuf): Huffman {
+    public companion object {
+        public fun load(buf: ByteBuf): Huffman {
             val frequencies = ByteArray(buf.readableBytes()).apply {
                 buf.readBytes(this)
             }

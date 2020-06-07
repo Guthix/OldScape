@@ -22,8 +22,8 @@ import io.netty.buffer.ByteBuf
 import io.netty.buffer.Unpooled
 import java.io.IOException
 
-class MidiFile(val midi: ByteArray) {
-    companion object {
+public class MidiFile(public val midi: ByteArray) {
+    public companion object {
         // Headers
         private const val MTHD_MAGIC = 1297377380
         private const val MTRK_MAGIC = 1297379947
@@ -71,7 +71,7 @@ class MidiFile(val midi: ByteArray) {
         private const val CONTROLLER_RESET_ALL_CONTROLLERS = 121
         private const val CONTROLLER_ALL_NOTES_OFF = 123
 
-        fun decode(data: ByteBuf): MidiFile {
+        public fun decode(data: ByteBuf): MidiFile {
             data.readerIndex(data.writerIndex() - 3)
             val tracks = data.readUnsignedByte().toInt()
             val division = data.readUnsignedShort()

@@ -22,12 +22,12 @@ import io.netty.buffer.ByteBuf
 import io.netty.buffer.Unpooled
 import java.io.IOException
 
-data class EnumConfig(override val id: Int) : Config(id) {
+public data class EnumConfig(override val id: Int) : Config(id) {
     var keyType: Char? = null
     var valType: Char? = null
-    var defaultString = "null"
+    var defaultString: String = "null"
     var defaultInt: Int? = null
-    val keyValuePairs = mutableMapOf<Int, Any>()
+    val keyValuePairs: MutableMap<Int, Any> = mutableMapOf<Int, Any>()
 
     override fun encode(): ByteBuf {
         val data = Unpooled.buffer()
@@ -68,8 +68,8 @@ data class EnumConfig(override val id: Int) : Config(id) {
         return data
     }
 
-    companion object : ConfigCompanion<EnumConfig>() {
-        override val id = 8
+    public companion object : ConfigCompanion<EnumConfig>() {
+        override val id: Int = 8
 
         override fun decode(id: Int, data: ByteBuf): EnumConfig {
             val enumConfig = EnumConfig(id)

@@ -22,17 +22,17 @@ import io.netty.buffer.ByteBuf
 import io.netty.buffer.Unpooled
 import java.io.IOException
 
-data class LocationConfig(override val id: Int): NamedConfig(id) {
-    override var name = "null"
+public data class LocationConfig(override val id: Int): NamedConfig(id) {
+    override var name: String = "null"
     var width: Short = 1
     var length: Short = 1
     var mapIconId: Int? = null
-    val options = arrayOfNulls<String>(5)
-    var clipType = 2
-    var isClipped = true
-    var modelClipped = false
-    var isHollow = false
-    var impenetrable = true
+    val options: Array<String?> = arrayOfNulls(5)
+    var clipType: Int = 2
+    var isClipped: Boolean = true
+    var modelClipped: Boolean = false
+    var isHollow: Boolean = false
+    var impenetrable: Boolean = true
     var accessBlock: Short = 0
     var objectModels: IntArray? = null
     var objectTypes: ShortArray? = null
@@ -43,7 +43,7 @@ data class LocationConfig(override val id: Int): NamedConfig(id) {
     var anInt2088: Short? = null
     var animationId: Int? = null
     var ambient: Byte = 0
-    var contrast = 0
+    var contrast: Int = 0
     var mapSceneId: Int? = null
     var modelSizeX: Int = 128
     var modelSizeHeight: Int = 128
@@ -52,9 +52,9 @@ data class LocationConfig(override val id: Int): NamedConfig(id) {
     var offsetHeight: Short = 0
     var offsetY: Short = 0
     var decorDisplacement: Short = 16
-    var isMirrored = false
-    var obstructsGround = false
-    var nonFlatShading = false
+    var isMirrored: Boolean = false
+    var obstructsGround: Boolean = false
+    var nonFlatShading: Boolean = false
     var contouredGround: Int? = null
     var supportItems: Short? = null
     var transformVarbit: Int? = null
@@ -198,7 +198,7 @@ data class LocationConfig(override val id: Int): NamedConfig(id) {
             data.writeOpcode(if(transforms.last() == null) 118 else 106)
             if(transformVarbit == null) data.writeShort(65535) else data.writeShort(transformVarbit!!.toInt())
             if(transformVarp == null) data.writeShort(65535) else data.writeShort(transformVarp!!.toInt())
-            transforms.last()?.let { data.writeShort(it) }
+            transforms.last()?.let(data::writeShort)
             val size = transforms.size - 2
             data.writeByte(size)
             for(i in 0..size) {
@@ -235,8 +235,8 @@ data class LocationConfig(override val id: Int): NamedConfig(id) {
         return data
     }
 
-    companion object : NamedConfigCompanion<LocationConfig>() {
-        override val id = 6
+    public companion object : NamedConfigCompanion<LocationConfig>() {
+        override val id: Int = 6
 
         override fun decode(id: Int, data: ByteBuf): LocationConfig {
             val objectConfig = LocationConfig(id)
@@ -363,10 +363,8 @@ data class LocationConfig(override val id: Int): NamedConfig(id) {
                 ) {
                     objectConfig.anInt2088 = 1
                 }
-                for (i in 0 until 5) {
-                    if (objectConfig.options[i] != null) {
-                        objectConfig.anInt2088 = 1
-                    }
+                for (it in (0 until 5).filter { objectConfig.options[it] != null }) {
+                    objectConfig.anInt2088 = 1
                 }
             }
             if (objectConfig.supportItems == null) {

@@ -20,7 +20,7 @@ import io.netty.buffer.ByteBuf
 import io.netty.buffer.Unpooled
 import java.io.IOException
 
-data class VarbitConfig(override val id: Int) : Config(id) {
+public data class VarbitConfig(override val id: Int) : Config(id) {
     var varpId: Int = 0
     var lsb: Short = 0
     var msb: Short = 0
@@ -37,8 +37,8 @@ data class VarbitConfig(override val id: Int) : Config(id) {
         Unpooled.buffer(1).apply { writeOpcode(0) }
     }
 
-    companion object : ConfigCompanion<VarbitConfig>() {
-        override val id = 14
+    public companion object : ConfigCompanion<VarbitConfig>() {
+        override val id: Int = 14
 
         override fun decode(id: Int, data: ByteBuf): VarbitConfig {
             val varbitConfig = VarbitConfig(id)

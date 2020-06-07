@@ -20,11 +20,11 @@ import io.guthix.buffer.readSmallSmart
 import io.guthix.buffer.readUnsignedSmallSmart
 import io.netty.buffer.ByteBuf
 
-class SoundEffect(val start: Int, val end: Int, val instruments: Array<AudioInstrument?>) {
-    companion object {
+public class SoundEffect(public val start: Int, public val end: Int, public val instruments: Array<AudioInstrument?>) {
+    public companion object {
         private const val INSTRUMENT_COUNT = 10
 
-        fun decode(data: ByteBuf): SoundEffect {
+        public fun decode(data: ByteBuf): SoundEffect {
             val instruments = arrayOfNulls<AudioInstrument>(INSTRUMENT_COUNT)
             for (i in 0 until INSTRUMENT_COUNT) {
                 val volume = data.readUnsignedByte().toInt()
@@ -40,29 +40,29 @@ class SoundEffect(val start: Int, val end: Int, val instruments: Array<AudioInst
     }
 }
 
-class AudioInstrument(
-    val pitch: AudioEnvelope,
-    val volume: AudioEnvelope,
-    val pitchModifier: AudioEnvelope?,
-    val pitchModifierAmplitude: AudioEnvelope?,
-    val volumeMultiplier: AudioEnvelope?,
-    val volumeMultiplierAmplitude: AudioEnvelope?,
-    val release: AudioEnvelope?,
-    val field1397: AudioEnvelope?,
-    val oscillatorVolume: IntArray,
-    val oscillatorPitch: IntArray,
-    val oscillatorDelays: IntArray,
-    val delayTime: Int,
-    val delayDecay: Int,
-    val duration: Int,
-    val offset: Int,
-    val filterEnvelope: AudioEnvelope,
-    val filter: AudioFilter
+public class AudioInstrument(
+    public val pitch: AudioEnvelope,
+    public val volume: AudioEnvelope,
+    public val pitchModifier: AudioEnvelope?,
+    public val pitchModifierAmplitude: AudioEnvelope?,
+    public val volumeMultiplier: AudioEnvelope?,
+    public val volumeMultiplierAmplitude: AudioEnvelope?,
+    public val release: AudioEnvelope?,
+    public val field1397: AudioEnvelope?,
+    public val oscillatorVolume: IntArray,
+    public val oscillatorPitch: IntArray,
+    public val oscillatorDelays: IntArray,
+    public val delayTime: Int,
+    public val delayDecay: Int,
+    public val duration: Int,
+    public val offset: Int,
+    public val filterEnvelope: AudioEnvelope,
+    public val filter: AudioFilter
 ) {
-    companion object {
+    public companion object {
         private const val OSCILLATOR_COUNT = 10
 
-        fun decode(data: ByteBuf): AudioInstrument {
+        public fun decode(data: ByteBuf): AudioInstrument {
             val pitch = AudioEnvelope.decode(data)
             val volume = AudioEnvelope.decode(data)
             val (pitchModifier, pitchModifierAmplitude) = if (data.readUnsignedByte().toInt() != 0) {
@@ -105,14 +105,14 @@ class AudioInstrument(
     }
 }
 
-class AudioEnvelope {
-    var form: Short? = null
-    var start: Int? = null
-    var end: Int? = null
-    var durations: IntArray? = null
-    var phases: IntArray? = null
+public class AudioEnvelope {
+    public var form: Short? = null
+    public var start: Int? = null
+    public var end: Int? = null
+    public var durations: IntArray? = null
+    public var phases: IntArray? = null
 
-    fun decodeSegments(data: ByteBuf): AudioEnvelope {
+    public fun decodeSegments(data: ByteBuf): AudioEnvelope {
         val segmentCount = data.readUnsignedByte().toInt()
         durations = IntArray(segmentCount)
         phases = IntArray(segmentCount)
@@ -123,8 +123,8 @@ class AudioEnvelope {
         return this
     }
 
-    companion object {
-        fun decode(data: ByteBuf): AudioEnvelope {
+    public companion object {
+        public fun decode(data: ByteBuf): AudioEnvelope {
             val audioEnvelope = AudioEnvelope()
             audioEnvelope.form = data.readUnsignedByte()
             audioEnvelope.start = data.readInt()
@@ -134,17 +134,17 @@ class AudioEnvelope {
     }
 }
 
-class AudioFilter(
-    val pairs: IntArray,
-    val unity: IntArray,
-    val phases: Array<Array<IntArray>>,
-    val magnitudes: Array<Array<IntArray>>
+public class AudioFilter(
+    public val pairs: IntArray,
+    public val unity: IntArray,
+    public val phases: Array<Array<IntArray>>,
+    public val magnitudes: Array<Array<IntArray>>
 ) {
 
-    companion object {
-        const val SIZE = 2
+    public companion object {
+        public const val SIZE: Int = 2
 
-        fun decode(data: ByteBuf, audioEnvelope: AudioEnvelope): AudioFilter {
+        public fun decode(data: ByteBuf, audioEnvelope: AudioEnvelope): AudioFilter {
             val pair = data.readUnsignedByte().toInt()
             val pairs = IntArray(SIZE)
             pairs[0] = pair shr 4

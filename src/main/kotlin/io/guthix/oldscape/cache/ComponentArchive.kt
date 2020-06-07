@@ -19,11 +19,11 @@ package io.guthix.oldscape.cache
 import io.guthix.cache.js5.Js5Archive
 import io.guthix.oldscape.cache.plane.RsComponent
 
-class ComponentArchive(val components: List<RsComponent>) {
-    companion object {
-        const val id = 3
+public class ComponentArchive(public val components: List<RsComponent>) {
+    public companion object {
+        public const val id: Int = 3
 
-        fun load(archive: Js5Archive): ComponentArchive {
+        public fun load(archive: Js5Archive): ComponentArchive {
             val components = mutableListOf<RsComponent>()
             archive.groupSettings.forEach { (groupId, _) ->
                 val group = archive.readGroup(groupId)

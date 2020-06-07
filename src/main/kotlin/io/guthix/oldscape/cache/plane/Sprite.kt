@@ -19,12 +19,17 @@ package io.guthix.oldscape.cache.plane
 import io.netty.buffer.ByteBuf
 import java.awt.image.BufferedImage
 
-class Sprite(val id: Int, val width: Int, val height: Int, val images: Array<BufferedImage>) {
-    companion object {
+public class Sprite(
+    public val id: Int,
+    public val width: Int,
+    public val height: Int,
+    public val images: Array<BufferedImage>
+) {
+    public companion object {
         private const val FLAG_VERTICAL = 0x01
         private const val FLAG_ALPHA = 0x02
 
-        fun decode(id: Int, data: ByteBuf): Sprite {
+        public fun decode(id: Int, data: ByteBuf): Sprite {
             data.readerIndex(data.writerIndex() - 2)
             val spriteCount = data.readUnsignedShort()
             val offsetsX = IntArray(spriteCount)
