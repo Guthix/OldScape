@@ -43,9 +43,10 @@ class World : TimerTask() {
 
     override fun run() {
         processLogins()
-        processNpcs()
-        processPlayerEvents()
-        proccessMovement()
+        processNpcTasks()
+        proccessNpcMovement()
+        processPlayerTasks()
+        proccessPlayerMovement()
         synchronizeInterest()
         processLogouts()
     }
@@ -84,15 +85,19 @@ class World : TimerTask() {
         }
     }
 
-    private fun processNpcs() {
+    private fun processNpcTasks() {
         for (npc in npcs) npc.processTasks()
     }
 
-    private fun processPlayerEvents() {
+    private fun processPlayerTasks() {
         for (player in players) player.processTasks()
     }
 
-    private fun proccessMovement() {
+    private fun proccessNpcMovement() {
+        for (npc in npcs) npc.move()
+    }
+
+    private fun proccessPlayerMovement() {
         for (player in players) player.move()
     }
 

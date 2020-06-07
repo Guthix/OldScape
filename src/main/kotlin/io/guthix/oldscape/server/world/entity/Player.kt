@@ -54,13 +54,9 @@ class Player(
     var topInterface = TopInterfaceManager(ctx, id = 165)
         private set
 
-    var inRunMode = false
-
     var nameModifiers = arrayOf("", "", "")
 
     override var orientation: Int = 0
-
-    var path = mutableListOf<Tile>()
 
     var publicMessage: PublicMessageEvent? = null
 
@@ -275,42 +271,6 @@ class Player(
     override fun addSpotAnimationFlag() = updateFlags.add(PlayerInfoPacket.spotAnimation)
 
     override fun addHitUpdateFlag() = updateFlags.add(PlayerInfoPacket.hit)
-
-    fun move() = if (path.isEmpty()) {
-        movementType = MovementInterestUpdate.STAY
-    } else {
-        takeStep()
-    }
-
-    private fun takeStep() {
-        lastPos = pos
-        pos = when {
-            inRunMode -> when {
-                path.size == 1 -> {
-                    movementType = MovementInterestUpdate.WALK
-                    updateFlags.add(PlayerInfoPacket.movementTemporary)
-                    followPosition = pos
-                    path.removeAt(0)
-                }
-                path.size > 1 && pos.withInDistanceOf(path[1], 1.tiles) -> { // running corners
-                    movementType = MovementInterestUpdate.WALK
-                    followPosition = path.removeAt(0)
-                    path.removeAt(0)
-                }
-                else -> {
-                    movementType = MovementInterestUpdate.RUN
-                    followPosition = path.removeAt(0)
-                    path.removeAt(0)
-                }
-            }
-            else -> {
-                movementType = MovementInterestUpdate.WALK
-                followPosition = pos
-                path.removeAt(0)
-            }
-        }
-        orientation = getOrientation(followPosition, pos)
-    }
 
     internal fun stageLogout() {
         isLoggingOut = true

@@ -19,26 +19,36 @@ package io.guthix.oldscape.server.combat
 import io.guthix.oldscape.server.event.NpcClickEvent
 import io.guthix.oldscape.server.event.script.NormalTask
 import io.guthix.oldscape.server.pathing.DesinationNpc
+import io.guthix.oldscape.server.pathing.DestinationPlayer
 import io.guthix.oldscape.server.pathing.breadthFirstSearch
+import io.guthix.oldscape.server.pathing.simplePathSearch
 import io.guthix.oldscape.server.world.entity.Sequence
 import io.guthix.oldscape.server.world.entity.HitMark
+import io.guthix.oldscape.server.world.entity.interest.MovementInterestUpdate
 
 on(NpcClickEvent::class).where { event.option == "Attack" }.then {
-    val destination = DesinationNpc(event.npc, world.map)
+    val npcDestination = DesinationNpc(event.npc, world.map)
     player.turnToLock(event.npc)
-    player.path = breadthFirstSearch(player.pos, destination, player.size, true, world.map)
+    player.path = breadthFirstSearch(player.pos, npcDestination, player.size, true, world.map)
     player.addTask(NormalTask, replace = true) {
-        wait{ destination.reached(player.pos.x, player.pos.y, player.size) }
+        wait{ npcDestination.reached(player.pos.x, player.pos.y, player.size) }
         event.npc.addTask(NormalTask, replace = true) { // start npc combat
-            event.npc.turnToLock(player)
             while(true) {
                 event.npc.animate(Sequence(id = 5578))
                 player.hit(HitMark.Colour.RED, 10, 0)
-                println("Suspend")
                 wait(ticks = 5)
-                println("After wait")
             }
-
+        }
+        event.npc.addTask(NormalTask) {
+            event.npc.turnToLock(player)
+            while(true) {
+                wait { player.movementType != MovementInterestUpdate.STAY }
+                val playerDestination = DestinationPlayer(player, world.map)
+                event.npc.path = simplePathSearch(event.npc.pos, playerDestination, event.npc.size, world.map)
+                wait(ticks = 1)
+            }
+        }.onCancel {
+            event.npc.turnToLock(null)
         }
         while(true) { // start player combat
             player.animate(Sequence(id = 422))
