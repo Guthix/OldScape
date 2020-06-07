@@ -20,6 +20,7 @@ import io.guthix.oldscape.server.dimensions.TileUnit
 import io.guthix.oldscape.server.dimensions.floors
 import io.guthix.oldscape.server.dimensions.tiles
 import io.guthix.oldscape.server.event.script.*
+import io.guthix.oldscape.server.net.game.out.PlayerInfoPacket
 import io.guthix.oldscape.server.world.entity.interest.InterestUpdateType
 import io.guthix.oldscape.server.world.entity.interest.MovementInterestUpdate
 import io.guthix.oldscape.server.world.map.Tile
@@ -53,6 +54,48 @@ abstract class Character(val index: Int) : Entity() {
     var spotAnimation: SpotAnimation? = null
 
     var shoutMessage: String? = null
+
+    var path = mutableListOf<Tile>()
+
+    var inRunMode = false
+
+    fun move() {
+        lastPos = pos
+        if (path.isEmpty()) {
+            movementType = MovementInterestUpdate.STAY
+        } else {
+            takeStep()
+        }
+    }
+
+    private fun takeStep() {
+        pos = when {
+            inRunMode -> when {
+                path.size == 1 -> {
+                    movementType = MovementInterestUpdate.WALK
+                    if(this is Player) updateFlags.add(PlayerInfoPacket.movementTemporary) // TODO improve this
+                    followPosition = pos
+                    path.removeAt(0)
+                }
+                path.size > 1 && pos.withInDistanceOf(path[1], 1.tiles) -> { // running corners
+                    movementType = MovementInterestUpdate.WALK
+                    followPosition = path.removeAt(0)
+                    path.removeAt(0)
+                }
+                else -> {
+                    movementType = MovementInterestUpdate.RUN
+                    followPosition = path.removeAt(0)
+                    path.removeAt(0)
+                }
+            }
+            else -> {
+                movementType = MovementInterestUpdate.WALK
+                followPosition = pos
+                path.removeAt(0)
+            }
+        }
+        orientation = getOrientation(followPosition, pos)
+    }
 
     fun turnTo(entity: Entity) {
         setOrientation(entity)
