@@ -3,8 +3,9 @@
 plugins {
     idea
     `maven-publish`
-    id("com.github.hierynomus.license") version "0.15.0"
     kotlin("jvm") version "1.4-M2"
+    id("org.jetbrains.dokka") version "0.10.0"
+    id("com.github.hierynomus.license") version "0.15.0"
 }
 
 group = "io.guthix"
@@ -25,6 +26,7 @@ allprojects {
 
     repositories {
         mavenCentral()
+        jcenter()
         maven("https://dl.bintray.com/kotlin/kotlin-eap")
         maven("https://jitpack.io")
     }
@@ -60,14 +62,23 @@ license {
     header = licenseHeader
 }
 
-java {
-    withJavadocJar()
-    withSourcesJar()
+tasks.dokka {
+    outputFormat = "html"
+    outputDirectory = "$buildDir/javadoc"
+}
+
+val dokkaJar: Jar by tasks.creating(Jar::class) {
+    group = JavaBasePlugin.DOCUMENTATION_GROUP
+    description = "Assembles Kotlin docs with Dokka"
+    classifier = "javadoc"
+    from(tasks.dokka)
 }
 
 publishing {
     publications {
-        create<MavenPublication>("mavenJava") {
+        create<MavenPublication>("default") {
+            from(components["java"])
+            artifact(dokkaJar)
             pom {
                 url.set("https://github.com/guthix/OldScape-Cache")
                 licenses {
