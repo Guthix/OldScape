@@ -21,14 +21,13 @@ import io.guthix.oldscape.cache.config.InventoryConfig
 import mu.KotlinLogging
 import java.io.IOException
 
-private val logger = KotlinLogging.logger {  }
+private val logger = KotlinLogging.logger { }
 
 object InventoryBlueprints {
     private lateinit var configs: Map<Int, InventoryConfig>
 
-    operator fun get(index: Int): InventoryConfig {
-        return configs[index] ?: throw IOException("Could not find inventoryu $index.")
-    }
+    operator fun get(index: Int): InventoryConfig = configs[index]
+        ?: throw IOException("Could not find inventoryu $index.")
 
     fun load(archive: Js5Archive) {
         configs = InventoryConfig.load(archive.readGroup(InventoryConfig.id))

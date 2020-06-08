@@ -21,14 +21,13 @@ import io.guthix.oldscape.cache.config.VarbitConfig
 import mu.KotlinLogging
 import java.io.IOException
 
-private val logger = KotlinLogging.logger {  }
+private val logger = KotlinLogging.logger { }
 
 object Varbits {
     private lateinit var configs: Map<Int, VarbitConfig>
 
-    operator fun get(index: Int): VarbitConfig {
-        return configs[index] ?: throw IOException("Could not find varbit $index.")
-    }
+    operator fun get(index: Int): VarbitConfig = configs[index]
+        ?: throw IOException("Could not find varbit $index.")
 
     fun load(archive: Js5Archive) {
         configs = VarbitConfig.load(archive.readGroup(VarbitConfig.id))

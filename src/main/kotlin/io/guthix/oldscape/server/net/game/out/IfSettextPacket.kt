@@ -27,9 +27,9 @@ class IfSettextPacket(
     private val slot: Int,
     private val text: String
 ) : OutGameEvent {
-    override val opcode = 15
+    override val opcode: Int = 15
 
-    override val size = VarShortSize
+    override val size: VarShortSize = VarShortSize
 
     override fun encode(ctx: ChannelHandlerContext): ByteBuf {
         val buf = ctx.alloc().buffer(STATIC_SIZE + text.length)
@@ -39,6 +39,6 @@ class IfSettextPacket(
     }
 
     companion object {
-        const val STATIC_SIZE = Int.SIZE_BYTES
+        const val STATIC_SIZE: Int = Int.SIZE_BYTES
     }
 }

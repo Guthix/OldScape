@@ -23,13 +23,13 @@ import io.guthix.oldscape.server.world.entity.Player
 import io.netty.channel.ChannelFuture
 
 class NpcManager : InterestManager {
-    val localNpcs = mutableListOf<Npc>()
+    val localNpcs: MutableList<Npc> = mutableListOf()
 
-    override fun initialize(world: World, player: Player) { }
+    override fun initialize(world: World, player: Player) {}
 
-    override fun synchronize(world: World, player: Player): List<ChannelFuture> {
-        return listOf(player.ctx.write(NpcInfoSmallViewportPacket(player, world.npcs)))
-    }
+    override fun synchronize(world: World, player: Player): List<ChannelFuture> = listOf(
+        player.ctx.write(NpcInfoSmallViewportPacket(player, world.npcs))
+    )
 
-    override fun postProcess() { }
+    override fun postProcess() {}
 }

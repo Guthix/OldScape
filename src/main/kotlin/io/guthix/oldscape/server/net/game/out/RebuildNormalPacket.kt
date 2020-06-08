@@ -28,9 +28,9 @@ class RebuildNormalPacket(
     private val x: ZoneUnit,
     private val y: ZoneUnit
 ) : OutGameEvent {
-    override val opcode = 17
+    override val opcode: Int = 17
 
-    override val size = VarShortSize
+    override val size: VarShortSize = VarShortSize
 
     override fun encode(ctx: ChannelHandlerContext): ByteBuf {
         val buf = ctx.alloc().buffer(STATIC_SIZE + xteas.size * XTEA_KEY_SIZE * Int.SIZE_BYTES)
@@ -46,6 +46,6 @@ class RebuildNormalPacket(
     }
 
     companion object {
-        const val STATIC_SIZE = Short.SIZE_BYTES + Short.SIZE_BYTES + Short.SIZE_BYTES
+        const val STATIC_SIZE: Int = Short.SIZE_BYTES + Short.SIZE_BYTES + Short.SIZE_BYTES
     }
 }

@@ -23,9 +23,7 @@ import io.guthix.oldscape.server.net.game.ClientEvent
 import io.guthix.oldscape.server.world.World
 
 internal class NpcExamineClientEvent(private val id: Int) : ClientEvent {
-    override fun toGameEvent(world: World): InGameEvent {
-        return NpcExamineEvent(NpcBlueprints[id])
-    }
+    override fun toGameEvent(world: World): InGameEvent = NpcExamineEvent(NpcBlueprints[id])
 }
 
 class NpcExamineEvent(val blueprint: NpcBlueprint) : InGameEvent

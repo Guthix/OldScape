@@ -23,5 +23,5 @@ import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 
 class NoTimeoutPacket : GamePacketDecoder(30, FixedSize(0)) {
-    override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext) = NoTimeoutEvent()
+    override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): NoTimeoutEvent = NoTimeoutEvent()
 }

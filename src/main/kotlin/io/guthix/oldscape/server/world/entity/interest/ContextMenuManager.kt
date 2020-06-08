@@ -19,11 +19,12 @@ package io.guthix.oldscape.server.world.entity.interest
 import io.guthix.oldscape.server.net.game.out.SetPlayerOpPacket
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.Player
+import io.netty.channel.ChannelFuture
 
 class ContextMenuManager : InterestManager {
-    var contextMenu = arrayOf("Follow", "Trade with", "Report")
+    var contextMenu: Array<String> = arrayOf("Follow", "Trade with", "Report")
 
-    var changes = mutableMapOf<Int, String>()
+    var changes: MutableMap<Int, String> = mutableMapOf()
 
     override fun initialize(world: World, player: Player) {
         contextMenu.forEachIndexed { i, text ->
@@ -31,9 +32,9 @@ class ContextMenuManager : InterestManager {
         }
     }
 
-    override fun synchronize(world: World, player: Player) = changes.map { (slot, text) ->
+    override fun synchronize(world: World, player: Player): List<ChannelFuture> = changes.map { (slot, text) ->
         player.ctx.write(SetPlayerOpPacket(false, slot + 1, text))
     }
 
-    override fun postProcess() = changes.clear()
+    override fun postProcess(): Unit = changes.clear()
 }

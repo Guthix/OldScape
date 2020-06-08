@@ -24,22 +24,24 @@ import io.guthix.oldscape.server.net.game.GameHandler
 import io.guthix.oldscape.server.net.login.*
 import io.guthix.oldscape.server.world.entity.Player
 import io.guthix.oldscape.server.world.map.Tile
-import io.netty.util.concurrent.*
-import java.util.concurrent.*
+import io.netty.util.concurrent.DefaultPromise
+import io.netty.util.concurrent.ImmediateEventExecutor
+import io.netty.util.concurrent.PromiseCombiner
 import java.util.*
+import java.util.concurrent.ConcurrentLinkedQueue
 
 class World : TimerTask() {
-    val map = WorldMap(mutableMapOf())
+    val map: WorldMap = WorldMap(mutableMapOf())
 
     internal val loginQueue = ConcurrentLinkedQueue<LoginRequest>()
 
     internal val logoutQueue = ConcurrentLinkedQueue<Player>()
 
-    val players = PlayerList(MAX_PLAYERS)
+    val players: PlayerList = PlayerList(MAX_PLAYERS)
 
-    val npcs = NpcList(MAX_NPCS)
+    val npcs: NpcList = NpcList(MAX_NPCS)
 
-    val isFull get() = players.size + loginQueue.size >= MAX_PLAYERS
+    val isFull: Boolean get() = players.size + loginQueue.size >= MAX_PLAYERS
 
     override fun run() {
         processLogins()
@@ -103,7 +105,7 @@ class World : TimerTask() {
 
     private fun synchronizeInterest() {
         val futures = PromiseCombiner(ImmediateEventExecutor.INSTANCE)
-        players.forEach { it.synchronize(this).forEach { futures.add(it) } }
+        players.forEach { it.synchronize(this).forEach(futures::add) }
         futures.finish(DefaultPromise<Void>(ImmediateEventExecutor.INSTANCE).addListener {
             for (player in players) player.postProcess()
             for (npc in npcs) npc.postProcess()
@@ -111,8 +113,8 @@ class World : TimerTask() {
     }
 
     companion object {
-        const val MAX_PLAYERS = 2048
+        const val MAX_PLAYERS: Int = 2048
 
-        const val MAX_NPCS = 32768
+        const val MAX_NPCS: Int = 32768
     }
 }

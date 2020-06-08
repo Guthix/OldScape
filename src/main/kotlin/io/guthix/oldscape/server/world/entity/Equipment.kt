@@ -22,14 +22,14 @@ import io.guthix.oldscape.server.blueprints.equipment.*
 abstract class Equipment(id: Int, quantity: Int) : Obj(id, quantity) {
     override val blueprint: EquipmentBlueprint = ObjectBlueprints[id]
 
-    val slot get() = blueprint.slot
+    val slot: EquipmentBlueprint.EquipmentSlot get() = blueprint.slot
 }
 
 class HeadEquipment(id: Int, quantity: Int) : Equipment(id, quantity) {
     override val blueprint: HeadBlueprint = ObjectBlueprints[id]
 
-    val coversFace get() = blueprint.coversFace
-    val coversHair get() = blueprint.coversHair
+    val coversFace: Boolean get() = blueprint.coversFace
+    val coversHair: Boolean get() = blueprint.coversHair
 }
 
 class CapeEquipment(id: Int, quantity: Int) : Equipment(id, quantity) {
@@ -59,7 +59,7 @@ class TwoHandEquipment(id: Int, quantity: Int) : Equipment(id, quantity) {
 class BodyEquipment(id: Int, quantity: Int) : Equipment(id, quantity) {
     override val blueprint: BodyBlueprint = ObjectBlueprints[id]
 
-    val isFullBody get() = blueprint.isFullBody
+    val isFullBody: Boolean get() = blueprint.isFullBody
 }
 
 class LegsEquipment(id: Int, quantity: Int) : Equipment(id, quantity) {

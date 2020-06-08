@@ -26,9 +26,9 @@ class IfSetplayerheadPacket(
     private val rootInterfaceId: Int,
     private val slotId: Int
 ) : OutGameEvent {
-    override val opcode = 5
+    override val opcode: Int = 5
 
-    override val size = FixedSize(STATIC_SIZE)
+    override val size: FixedSize = FixedSize(STATIC_SIZE)
 
     override fun encode(ctx: ChannelHandlerContext): ByteBuf {
         val buf = ctx.alloc().buffer(STATIC_SIZE)
@@ -37,6 +37,6 @@ class IfSetplayerheadPacket(
     }
 
     companion object {
-        const val STATIC_SIZE = Int.SIZE_BYTES
+        const val STATIC_SIZE: Int = Int.SIZE_BYTES
     }
 }

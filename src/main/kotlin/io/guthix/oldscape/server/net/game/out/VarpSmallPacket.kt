@@ -23,9 +23,9 @@ import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 
 class VarpSmallPacket(private val id: Int, private val state: Int) : OutGameEvent {
-    override val opcode = 1
+    override val opcode: Int = 1
 
-    override val size = FixedSize(STATIC_SIZE)
+    override val size: FixedSize = FixedSize(STATIC_SIZE)
 
     override fun encode(ctx: ChannelHandlerContext): ByteBuf {
         val buf = ctx.alloc().buffer(STATIC_SIZE)
@@ -35,6 +35,6 @@ class VarpSmallPacket(private val id: Int, private val state: Int) : OutGameEven
     }
 
     companion object {
-        const val STATIC_SIZE = Short.SIZE_BYTES + Byte.SIZE_BYTES
+        const val STATIC_SIZE: Int = Short.SIZE_BYTES + Byte.SIZE_BYTES
     }
 }

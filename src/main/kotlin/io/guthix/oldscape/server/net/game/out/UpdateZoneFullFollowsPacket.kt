@@ -27,9 +27,9 @@ class UpdateZoneFullFollowsPacket(
     private val localX: TileUnit,
     private val localY: TileUnit
 ) : OutGameEvent {
-    override val opcode = 16
+    override val opcode: Int = 16
 
-    override val size = FixedSize(STATIC_SIZE)
+    override val size: FixedSize = FixedSize(STATIC_SIZE)
 
     override fun encode(ctx: ChannelHandlerContext): ByteBuf {
         val buf = ctx.alloc().buffer(STATIC_SIZE)
@@ -39,6 +39,6 @@ class UpdateZoneFullFollowsPacket(
     }
 
     companion object {
-        const val STATIC_SIZE = Byte.SIZE_BYTES + Byte.SIZE_BYTES
+        const val STATIC_SIZE: Int = Byte.SIZE_BYTES + Byte.SIZE_BYTES
     }
 }

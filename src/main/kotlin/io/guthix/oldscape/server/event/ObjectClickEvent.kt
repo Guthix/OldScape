@@ -28,5 +28,5 @@ data class ObjectClickEvent(
     val buttonPressed: Boolean,
     val option: Int
 ) : ClientEvent, InGameEvent {
-    override fun toGameEvent(world: World) = this
+    override fun toGameEvent(world: World): ObjectClickEvent = this
 }

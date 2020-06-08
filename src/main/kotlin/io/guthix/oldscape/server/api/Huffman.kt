@@ -21,14 +21,14 @@ import io.guthix.oldscape.cache.BinariesArchive
 import io.guthix.oldscape.cache.binary.Huffman
 import mu.KotlinLogging
 
-private val logger = KotlinLogging.logger {  }
+private val logger = KotlinLogging.logger { }
 
 object Huffman {
     private lateinit var huffman: Huffman
 
-    fun compress(text: String) = huffman.compress(text)
+    fun compress(text: String): ByteArray = huffman.compress(text)
 
-    fun decompress(comp: ByteArray, length: Int) = huffman.decompress(comp, length)
+    fun decompress(comp: ByteArray, length: Int): ByteArray = huffman.decompress(comp, length)
 
     fun load(archive: Js5Archive) {
         huffman = BinariesArchive.load(archive).huffman

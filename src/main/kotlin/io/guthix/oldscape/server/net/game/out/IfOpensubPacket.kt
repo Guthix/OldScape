@@ -30,9 +30,9 @@ class IfOpensubPacket(
     private val childInterface: Int,
     private val type: Int
 ) : OutGameEvent {
-    override val opcode = 64
+    override val opcode: Int = 64
 
-    override val size = FixedSize(STATIC_SIZE)
+    override val size: FixedSize = FixedSize(STATIC_SIZE)
 
     override fun encode(ctx: ChannelHandlerContext): ByteBuf {
         val buf = ctx.alloc().buffer(STATIC_SIZE)
@@ -43,6 +43,6 @@ class IfOpensubPacket(
     }
 
     companion object {
-        const val STATIC_SIZE = Short.SIZE_BYTES + Byte.SIZE_BYTES + Int.SIZE_BYTES
+        const val STATIC_SIZE: Int = Short.SIZE_BYTES + Byte.SIZE_BYTES + Int.SIZE_BYTES
     }
 }

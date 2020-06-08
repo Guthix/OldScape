@@ -23,8 +23,8 @@ import io.netty.channel.ChannelFuture
 
 class Stat(val statusLevel: Int, val level: Int, val xp: Int)
 
-class StatManager: InterestManager {
-    val skills = arrayOf(
+class StatManager : InterestManager {
+    val skills: Array<Stat> = arrayOf(
         Stat(statusLevel = 99, level = 99, xp = 13_034_431),
         Stat(statusLevel = 99, level = 99, xp = 13_034_431),
         Stat(statusLevel = 99, level = 99, xp = 13_034_431),
@@ -50,15 +50,15 @@ class StatManager: InterestManager {
         Stat(statusLevel = 99, level = 99, xp = 13_034_431)
     )
 
-    val changes = mutableMapOf<Int, Stat>()
+    val changes: MutableMap<Int, Stat> = mutableMapOf()
 
     override fun initialize(world: World, player: Player) {
         skills.forEachIndexed { id, stat -> player.ctx.write(UpdateStatPacket(id, stat.xp, stat.statusLevel)) }
     }
 
-    override fun synchronize(world: World, player: Player) = changes.map { (id, stat) ->
+    override fun synchronize(world: World, player: Player): List<ChannelFuture> = changes.map { (id, stat) ->
         player.ctx.write(UpdateStatPacket(id, stat.xp, stat.statusLevel))
     }
 
-    override fun postProcess() = changes.clear()
+    override fun postProcess(): Unit = changes.clear()
 }

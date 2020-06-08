@@ -33,9 +33,9 @@ class TopInterfaceManager(
     var modalSlot: Int? = null,
     children: MutableMap<Int, IfComponent> = mutableMapOf()
 ) : Interface(ctx, id, Type.TOPLEVELINTERFACE, children), InterestManager {
-    val inventory = InventoryManager(93, 149, 0)
+    val inventory: InventoryManager = InventoryManager(93, 149, 0)
 
-    val equipment = InventoryManager(94)
+    val equipment: InventoryManager = InventoryManager(94)
 
     override fun initialize(world: World, player: Player) {
         inventory.initialize(world, player)

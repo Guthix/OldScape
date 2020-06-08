@@ -28,7 +28,7 @@ internal data class PlayerClickClientEvent(
 ) : ClientEvent {
     override fun toGameEvent(world: World): InGameEvent {
         val player = world.players[index] ?: error("Player $index doesn't exist.")
-        return PlayerClickEvent(player, buttonPressed, player.contextMenu[option -1])
+        return PlayerClickEvent(player, buttonPressed, player.contextMenu[option - 1])
     }
 }
 

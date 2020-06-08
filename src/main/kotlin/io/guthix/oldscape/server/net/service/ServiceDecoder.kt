@@ -23,14 +23,14 @@ import java.io.IOException
 
 class ServiceDecoder : ByteToMessageDecoder() {
     override fun decode(ctx: ChannelHandlerContext, inc: ByteBuf, out: MutableList<Any>) {
-        if(!inc.isReadable) return
+        if (!inc.isReadable) return
         inc.markReaderIndex()
-        when(val opcode = inc.readUnsignedByte().toInt()) {
+        when (val opcode = inc.readUnsignedByte().toInt()) {
             ServiceType.GAME.opcode -> {
                 out.add(GameConnectionRequest())
             }
             ServiceType.JS5.opcode -> {
-                if(!inc.isReadable(4)) {
+                if (!inc.isReadable(4)) {
                     inc.resetReaderIndex()
                     return
                 }

@@ -20,8 +20,8 @@ import io.guthix.buffer.toBitMode
 import io.guthix.oldscape.server.dimensions.ZoneUnit
 import io.guthix.oldscape.server.net.game.OutGameEvent
 import io.guthix.oldscape.server.net.game.VarShortSize
-import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.PlayerList
+import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.Player
 import io.guthix.oldscape.server.world.entity.interest.regionId
 import io.guthix.oldscape.server.world.map.Tile
@@ -36,16 +36,16 @@ class InterestInitPacket(
     private val x: ZoneUnit,
     private val y: ZoneUnit
 ) : OutGameEvent {
-    override val opcode = 73
+    override val opcode: Int = 73
 
-    override val size = VarShortSize
+    override val size: VarShortSize = VarShortSize
 
     override fun encode(ctx: ChannelHandlerContext): ByteBuf {
         val bitBuf = player.ctx.alloc().buffer(STATIC_SIZE).toBitMode()
         bitBuf.writeBits(player.pos.bitpack, 30)
-        for(playerIndex in 1 until World.MAX_PLAYERS) {
+        for (playerIndex in 1 until World.MAX_PLAYERS) {
             val externalPlayer = playersInWorld[playerIndex]
-            if(playerIndex != player.index) {
+            if (playerIndex != player.index) {
                 bitBuf.writeBits(externalPlayer?.pos?.regionId ?: 0, 18)
             }
         }
@@ -57,7 +57,8 @@ class InterestInitPacket(
     companion object {
         private val Tile.bitpack get() = (floor.value shl 28) or (x.value shl 14) or y.value
 
-        val STATIC_SIZE get() = ceil((30 + (World.MAX_PLAYERS - 2) * 18).toDouble() / Byte.SIZE_BITS).toInt() +
-            RebuildNormalPacket.STATIC_SIZE
+        val STATIC_SIZE: Int
+            get() = ceil((30 + (World.MAX_PLAYERS - 2) * 18).toDouble() / Byte.SIZE_BITS).toInt() +
+                RebuildNormalPacket.STATIC_SIZE
     }
 }

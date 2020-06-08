@@ -22,7 +22,8 @@ import io.guthix.oldscape.server.dimensions.tiles
 import io.guthix.oldscape.server.net.game.OutGameEvent
 import io.guthix.oldscape.server.net.game.VarShortSize
 import io.guthix.oldscape.server.world.NpcList
-import io.guthix.oldscape.server.world.entity.*
+import io.guthix.oldscape.server.world.entity.Npc
+import io.guthix.oldscape.server.world.entity.Player
 import io.guthix.oldscape.server.world.entity.interest.MovementInterestUpdate
 import io.guthix.oldscape.server.world.entity.interest.NpcUpdateType
 import io.netty.buffer.ByteBuf
@@ -32,22 +33,17 @@ class NpcInfoSmallViewportPacket(
     private val player: Player,
     private val npcs: NpcList
 ) : OutGameEvent, CharacterInfoPacket() {
-    override val opcode = 62
+    override val opcode: Int = 62
 
-    override val size = VarShortSize
+    override val size: VarShortSize = VarShortSize
 
     override fun encode(ctx: ChannelHandlerContext): ByteBuf {
-
         val buf = ctx.alloc().buffer()
         val bitBuf = buf.toBitMode()
         localNpcUpdate(bitBuf)
         externalNpcUpdate(bitBuf)
         val byteBuf = bitBuf.toByteMode()
-        for (npc in player.npcManager.localNpcs) {
-            if (npc.updateFlags.isNotEmpty()) {
-                updateLocalNpcVisual(npc, byteBuf)
-            }
-        }
+        player.npcManager.localNpcs.filter { it.updateFlags.isNotEmpty() }.forEach { updateLocalNpcVisual(it, byteBuf) }
         return buf
     }
 
@@ -113,7 +109,7 @@ class NpcInfoSmallViewportPacket(
                 npcsAdded++
             }
         }
-        if(player.npcManager.localNpcs.any { it.updateFlags.isNotEmpty() }) {
+        if (player.npcManager.localNpcs.any { it.updateFlags.isNotEmpty() }) {
             buf.writeBits(value = 32767, amount = 15)
         }
         return buf
@@ -145,21 +141,21 @@ class NpcInfoSmallViewportPacket(
             intArrayOf(5, 6, 7)
         )
 
-        val sequence = NpcUpdateType(0, 0x80) { npc ->
+        val sequence: NpcUpdateType = NpcUpdateType(0, 0x80) { npc ->
             writeShortLEADD(npc.sequence?.id ?: 65535)
             writeByte(npc.sequence?.duration ?: 0)
         }
 
-        val orientation = NpcUpdateType(1, 0x10) { npc ->
+        val orientation: NpcUpdateType = NpcUpdateType(1, 0x10) { npc ->
             //TODO
         }
 
-        val transform = NpcUpdateType(2, 0x20) { npc ->
+        val transform: NpcUpdateType = NpcUpdateType(2, 0x20) { npc ->
             //TODO
         }
 
-        val turnLockTo = NpcUpdateType(3, 0x8) { npc ->
-            val index = when(val interacting = npc.interacting) {
+        val turnLockTo: NpcUpdateType = NpcUpdateType(3, 0x8) { npc ->
+            val index = when (val interacting = npc.interacting) {
                 is Npc -> interacting.index
                 is Player -> interacting.index + 32768
                 else -> 65535
@@ -167,15 +163,15 @@ class NpcInfoSmallViewportPacket(
             writeShort(index)
         }
 
-        val spotAnimation = NpcUpdateType(4, 0x2) { npc ->
+        val spotAnimation: NpcUpdateType = NpcUpdateType(4, 0x2) { npc ->
             //TODO
         }
 
-        val shout = NpcUpdateType(4, 0x40) { npc ->
+        val shout: NpcUpdateType = NpcUpdateType(4, 0x40) { npc ->
             //TODO
         }
 
-        val hit = NpcUpdateType(5, 0x1) { npc ->
+        val hit: NpcUpdateType = NpcUpdateType(5, 0x1) { npc ->
             writeByteSUB(npc.hitMarkQueue.size)
             npc.hitMarkQueue.forEach { hitMark ->
                 writeSmallSmart(hitMark.colour.id)
@@ -191,7 +187,7 @@ class NpcInfoSmallViewportPacket(
             }
         }
 
-        val forceMovement = NpcUpdateType(6, 0x4) { npc ->
+        val forceMovement: NpcUpdateType = NpcUpdateType(6, 0x4) { npc ->
             //TODO
         }
     }

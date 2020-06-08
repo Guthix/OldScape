@@ -33,19 +33,19 @@ abstract class Character(val index: Int) : Entity() {
 
     internal abstract val updateFlags: SortedSet<out InterestUpdateType>
 
-    var movementType = MovementInterestUpdate.STAY
+    var movementType: MovementInterestUpdate = MovementInterestUpdate.STAY
 
     abstract val size: TileUnit
 
-    override val sizeX get() = size
+    override val sizeX: TileUnit get() = size
 
-    override val sizeY get() = size
+    override val sizeY: TileUnit get() = size
 
-    override var pos = Tile(0.floors, 3231.tiles, 3222.tiles)
+    override var pos: Tile = Tile(0.floors, 3231.tiles, 3222.tiles)
 
-    var lastPos = Tile(0.floors, 3231.tiles, 3222.tiles)
+    var lastPos: Tile = Tile(0.floors, 3231.tiles, 3222.tiles)
 
-    var followPosition = lastPos.copy()
+    var followPosition: Tile = lastPos.copy()
 
     var interacting: Character? = null
 
@@ -55,9 +55,9 @@ abstract class Character(val index: Int) : Entity() {
 
     var shoutMessage: String? = null
 
-    var path = mutableListOf<Tile>()
+    var path: MutableList<Tile> = mutableListOf()
 
-    var inRunMode = false
+    var inRunMode: Boolean = false
 
     fun move() {
         lastPos = pos
@@ -73,7 +73,7 @@ abstract class Character(val index: Int) : Entity() {
             inRunMode -> when {
                 path.size == 1 -> {
                     movementType = MovementInterestUpdate.WALK
-                    if(this is Player) updateFlags.add(PlayerInfoPacket.movementTemporary) // TODO improve this
+                    if (this is Player) updateFlags.add(PlayerInfoPacket.movementTemporary) // TODO improve this
                     followPosition = pos
                     path.removeAt(0)
                 }
@@ -144,11 +144,11 @@ abstract class Character(val index: Int) : Entity() {
         cancelTask(NormalTask)
     }
 
-    var health = 100
+    var health: Int = 100
 
-    val hitMarkQueue = mutableListOf<HitMark>()
+    val hitMarkQueue: MutableList<HitMark> = mutableListOf()
 
-    val healthBarQueue = mutableListOf<HealthBar>()
+    val healthBarQueue: MutableList<HealthBar> = mutableListOf()
 
     fun hit(colour: HitMark.Colour, damage: Int, delay: Int) {
         addHitUpdateFlag()
@@ -160,7 +160,7 @@ abstract class Character(val index: Int) : Entity() {
         updateFlags.clear()
         hitMarkQueue.clear()
         healthBarQueue.clear()
-        tasks.values.forEach { it.forEach { routine -> routine.postProcess() } }
+        tasks.values.forEach { it.forEach(Task::postProcess) }
     }
 
     protected abstract fun addOrientationFlag(): Boolean
@@ -178,9 +178,9 @@ abstract class Character(val index: Int) : Entity() {
     fun addTask(type: TaskType, replace: Boolean = false, r: suspend Task.() -> Unit): Task {
         val task = Task(type, this)
         task.next = ConditionalContinuation(TrueCondition, r.createCoroutineUnintercepted(task, task))
-        if(replace) {
+        if (replace) {
             val toRemove = tasks.remove(type)
-            toRemove?.forEach { it.cancel() }
+            toRemove?.forEach(Task::cancel)
             tasks[type] = mutableListOf(task)
         } else {
             tasks.getOrPut(type) { mutableListOf() }.add(task)
@@ -189,12 +189,12 @@ abstract class Character(val index: Int) : Entity() {
     }
 
     fun cancelTask(type: TaskType) {
-        tasks[type]?.forEach { it.cancel() }
+        tasks[type]?.forEach(Task::cancel)
     }
 
-    fun getOrientation(prev: Tile, new: Tile) = getOrientation(new.x - prev.x, new.y - prev.y)
+    fun getOrientation(prev: Tile, new: Tile): Int = getOrientation(new.x - prev.x, new.y - prev.y)
 
-    fun getOrientation(dx: TileUnit, dy: TileUnit) = moveDirection[2 - dy.value][dx.value + 2]
+    fun getOrientation(dx: TileUnit, dy: TileUnit): Int = moveDirection[2 - dy.value][dx.value + 2]
 
     protected fun setOrientation(entity: Entity) {
         val dx = (pos.x.value + (sizeX.value.toDouble() / 2)) -

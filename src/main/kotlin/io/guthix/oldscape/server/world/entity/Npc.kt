@@ -17,7 +17,9 @@
 package io.guthix.oldscape.server.world.entity
 
 import io.guthix.oldscape.server.api.NpcBlueprints
+import io.guthix.oldscape.server.dimensions.TileUnit
 import io.guthix.oldscape.server.dimensions.tiles
+import io.guthix.oldscape.server.event.script.Task
 import io.guthix.oldscape.server.net.game.out.NpcInfoSmallViewportPacket
 import io.guthix.oldscape.server.world.entity.interest.NpcUpdateType
 import io.guthix.oldscape.server.world.map.Tile
@@ -27,26 +29,26 @@ open class Npc(index: Int, id: Int, override var pos: Tile) : Character(index) {
 
     override val updateFlags = sortedSetOf<NpcUpdateType>()
 
-    val id get() = blueprint.id
+    val id: Int get() = blueprint.id
 
-    override val size get() = blueprint.size.tiles
+    override val size: TileUnit get() = blueprint.size.tiles
 
-    val contextMenu get() = blueprint.contextMenu
+    val contextMenu: Array<String?> get() = blueprint.contextMenu
 
     override fun processTasks() {
-        while(true) {
-            val resumed = tasks.values.flatMap { routineList -> routineList.toList().map { it.run() } } // TODO optimize toList()
-            if(resumed.all { !it }) break // TODO add live lock detection
+        while (true) {
+            val resumed = tasks.values.flatMap { routineList -> routineList.toList().map(Task::run) } // TODO optimize
+            if (resumed.all { !it }) break // TODO add live lock detection
         }
     }
 
-    override fun addOrientationFlag() = updateFlags.add(NpcInfoSmallViewportPacket.orientation)
+    override fun addOrientationFlag(): Boolean = updateFlags.add(NpcInfoSmallViewportPacket.orientation)
 
-    override fun addTurnToLockFlag() = updateFlags.add(NpcInfoSmallViewportPacket.turnLockTo)
+    override fun addTurnToLockFlag(): Boolean = updateFlags.add(NpcInfoSmallViewportPacket.turnLockTo)
 
-    override fun addSequenceFlag() = updateFlags.add(NpcInfoSmallViewportPacket.sequence)
+    override fun addSequenceFlag(): Boolean = updateFlags.add(NpcInfoSmallViewportPacket.sequence)
 
-    override fun addSpotAnimationFlag() = updateFlags.add(NpcInfoSmallViewportPacket.spotAnimation)
+    override fun addSpotAnimationFlag(): Boolean = updateFlags.add(NpcInfoSmallViewportPacket.spotAnimation)
 
-    override fun addHitUpdateFlag() = updateFlags.add(NpcInfoSmallViewportPacket.hit)
+    override fun addHitUpdateFlag(): Boolean = updateFlags.add(NpcInfoSmallViewportPacket.hit)
 }

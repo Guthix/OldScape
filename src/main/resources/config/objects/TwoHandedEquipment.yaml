@@ -1,5 +1,5 @@
 - ids:
-  - 839
+    - 839
   weight: 1.814
   examine: "A nice sturdy bow."
   equipment:
@@ -21,7 +21,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 841
+    - 841
   weight: 1.36
   examine: "Short but effective."
   equipment:
@@ -43,7 +43,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 843
+    - 843
   weight: 1.814
   examine: "A shortbow made out of oak, still effective."
   equipment:
@@ -65,7 +65,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 845
+    - 845
   weight: 2.267
   examine: "A nice sturdy bow made out of oak."
   equipment:
@@ -87,7 +87,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 847
+    - 847
   weight: 1.814
   examine: "A nice sturdy bow made out of willow."
   equipment:
@@ -109,7 +109,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 849
+    - 849
   weight: 1.0
   examine: "A shortbow made out of willow, still effective."
   equipment:
@@ -131,7 +131,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 851
+    - 851
   weight: 1.814
   examine: "A nice sturdy bow made out of Maple."
   equipment:
@@ -153,8 +153,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 853
-  - 20403
+    - 853
+    - 20403
   weight: 1.36
   examine: "A shortbow made out of Maple, still effective."
   equipment:
@@ -176,7 +176,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 855
+    - 855
   weight: 1.814
   examine: "A nice sturdy bow made out of yew."
   equipment:
@@ -198,8 +198,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 857
-  - 20401
+    - 857
+    - 20401
   weight: 1.36
   examine: "A shortbow made out of yew, still effective."
   equipment:
@@ -221,7 +221,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 859
+    - 859
   weight: 1.814
   examine: "A nice sturdy magical bow."
   equipment:
@@ -243,8 +243,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 861
-  - 20558
+    - 861
+    - 20558
   weight: 1.36
   examine: "Short and magical, but still effective."
   equipment:
@@ -266,7 +266,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 1237
+    - 1237
   weight: 2.267
   examine: "A bronze tipped spear."
   equipment:
@@ -288,7 +288,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 1251
+    - 1251
   weight: 2.267
   examine: "A poisoned bronze tipped spear."
   equipment:
@@ -310,7 +310,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 5704
+    - 5704
   weight: 2.267
   examine: "A poisoned bronze tipped spear."
   equipment:
@@ -332,7 +332,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 5718
+    - 5718
   weight: 2.267
   examine: "A poisoned bronze tipped spear."
   equipment:
@@ -354,7 +354,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 3170
+    - 3170
   weight: 2.267
   examine: "A Karambwan poisoned bronze tipped spear."
   equipment:
@@ -376,7 +376,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 1239
+    - 1239
   weight: 2.267
   examine: "An iron tipped spear."
   equipment:
@@ -398,7 +398,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 1253
+    - 1253
   weight: 2.267
   examine: "A poisoned iron tipped spear."
   equipment:
@@ -420,7 +420,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 5706
+    - 5706
   weight: 2.267
   examine: "A poisoned iron tipped spear."
   equipment:
@@ -442,7 +442,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 5720
+    - 5720
   weight: 2.267
   examine: "A poisoned iron tipped spear."
   equipment:
@@ -464,7 +464,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 3171
+    - 3171
   weight: 2.267
   examine: "A Karambwan poisoned iron tipped spear."
   equipment:
@@ -486,7 +486,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 1241
+    - 1241
   weight: 2.267
   examine: "A steel tipped spear."
   equipment:
@@ -508,7 +508,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 1255
+    - 1255
   weight: 2.267
   examine: "A poisoned steel tipped spear."
   equipment:
@@ -530,7 +530,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 5708
+    - 5708
   weight: 2.267
   examine: "A poisoned steel tipped spear."
   equipment:
@@ -552,7 +552,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 5722
+    - 5722
   weight: 2.267
   examine: "A poisoned steel tipped spear."
   equipment:
@@ -574,7 +574,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 3172
+    - 3172
   weight: 2.267
   examine: "A Karambwan poisoned steel tipped spear."
   equipment:
@@ -596,7 +596,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 1243
+    - 1243
   weight: 1.814
   examine: "A mithril tipped spear."
   equipment:
@@ -618,7 +618,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 1257
+    - 1257
   weight: 1.8
   examine: "A poisoned mithril tipped spear."
   equipment:
@@ -640,7 +640,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 5710
+    - 5710
   weight: 1.814
   examine: "A poisoned mithril tipped spear."
   equipment:
@@ -662,7 +662,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 5724
+    - 5724
   weight: 1.814
   examine: "A poisoned mithril tipped spear."
   equipment:
@@ -684,7 +684,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 3173
+    - 3173
   weight: 1.814
   examine: "A Karambwan poisoned mithril tipped spear."
   equipment:
@@ -706,7 +706,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 1245
+    - 1245
   weight: 2.721
   examine: "An adamantite tipped spear."
   equipment:
@@ -728,7 +728,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 1259
+    - 1259
   weight: 2.721
   examine: "A poisoned adamantite tipped spear."
   equipment:
@@ -750,7 +750,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 5712
+    - 5712
   weight: 2.721
   examine: "A poisoned adamantite tipped spear."
   equipment:
@@ -772,7 +772,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 5726
+    - 5726
   weight: 2.721
   examine: "A poisoned adamantite tipped spear."
   equipment:
@@ -794,7 +794,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 3174
+    - 3174
   weight: 2.721
   examine: "A Karambwan poisoned adamantite tipped spear."
   equipment:
@@ -816,7 +816,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 1247
+    - 1247
   weight: 2.267
   examine: "A rune tipped spear."
   equipment:
@@ -838,7 +838,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 1261
+    - 1261
   weight: 2.267
   examine: "A poisoned rune tipped spear."
   equipment:
@@ -860,7 +860,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 5714
+    - 5714
   weight: 2.267
   examine: "A poisoned rune tipped spear."
   equipment:
@@ -882,7 +882,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 5728
+    - 5728
   weight: 2.2
   examine: "A poisoned rune tipped spear."
   equipment:
@@ -904,7 +904,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 3175
+    - 3175
   weight: 2.267
   examine: "A Karambwan poisoned rune tipped spear."
   equipment:
@@ -926,7 +926,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 1249
+    - 1249
   weight: 2.267
   examine: "A dragon tipped spear."
   equipment:
@@ -948,7 +948,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 1263
+    - 1263
   weight: 2.267
   examine: "A poisoned dragon tipped spear."
   equipment:
@@ -970,7 +970,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 5716
+    - 5716
   weight: 2.267
   examine: "A poisoned dragon tipped spear."
   equipment:
@@ -992,7 +992,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 5730
+    - 5730
   weight: 2.267
   examine: "A poisoned dragon tipped spear."
   equipment:
@@ -1014,7 +1014,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 3176
+    - 3176
   weight: 2.267
   examine: "A Karambwan poisoned dragon tipped spear."
   equipment:
@@ -1036,7 +1036,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 1307
+    - 1307
   weight: 3.628
   examine: "A two handed sword."
   equipment:
@@ -1058,7 +1058,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 1309
+    - 1309
   weight: 3.628
   examine: "A two handed sword."
   equipment:
@@ -1080,7 +1080,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 1311
+    - 1311
   weight: 3.628
   examine: "A two handed sword."
   equipment:
@@ -1102,7 +1102,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 1313
+    - 1313
   weight: 3.628
   examine: "A two handed sword."
   equipment:
@@ -1124,7 +1124,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 1315
+    - 1315
   weight: 3.175
   examine: "A two handed sword."
   equipment:
@@ -1146,7 +1146,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 1317
+    - 1317
   weight: 4.082
   examine: "A two handed sword."
   equipment:
@@ -1168,8 +1168,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 1319
-  - 20555
+    - 1319
+    - 20555
   weight: 3.628
   examine: "A two handed sword."
   equipment:
@@ -1191,7 +1191,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 1419
+    - 1419
   weight: 3.175
   examine: "It's a Scythe."
   equipment:
@@ -1213,7 +1213,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 2883
+    - 2883
   weight: 1.814
   examine: "More powerful than a normal bow, useful against large game birds."
   equipment:
@@ -1235,7 +1235,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 3095
+    - 3095
   weight: 0.907
   examine: "A set of fighting claws."
   equipment:
@@ -1257,7 +1257,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 3096
+    - 3096
   weight: 0.907
   examine: "A set of fighting claws."
   equipment:
@@ -1279,7 +1279,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 3097
+    - 3097
   weight: 0.907
   examine: "A set of fighting claws."
   equipment:
@@ -1301,7 +1301,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 3098
+    - 3098
   weight: 0.907
   examine: "A set of fighting claws."
   equipment:
@@ -1323,7 +1323,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 3099
+    - 3099
   weight: 0.907
   examine: "A set of fighting claws."
   equipment:
@@ -1345,7 +1345,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 3100
+    - 3100
   weight: 0.907
   examine: "A set of fighting claws."
   equipment:
@@ -1367,7 +1367,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 3101
+    - 3101
   weight: 0.907
   examine: "A set of fighting claws."
   equipment:
@@ -1389,7 +1389,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 3190
+    - 3190
   weight: 3.175
   examine: "A bronze halberd."
   equipment:
@@ -1411,7 +1411,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 3192
+    - 3192
   weight: 3.175
   examine: "An iron halberd."
   equipment:
@@ -1433,7 +1433,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 3194
+    - 3194
   weight: 3.175
   examine: "A steel halberd."
   equipment:
@@ -1455,7 +1455,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 3196
+    - 3196
   weight: 3.175
   examine: "A black halberd."
   equipment:
@@ -1477,7 +1477,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 3198
+    - 3198
   weight: 2.721
   examine: "A mithril halberd."
   equipment:
@@ -1499,7 +1499,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 3200
+    - 3200
   weight: 3.628
   examine: "An adamant halberd."
   equipment:
@@ -1521,7 +1521,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 3202
+    - 3202
   weight: 3.175
   examine: "A rune halberd."
   equipment:
@@ -1543,7 +1543,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 3204
+    - 3204
   weight: 3.175
   examine: "A dragon halberd."
   equipment:
@@ -1565,7 +1565,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 3695
+    - 3695
   weight: 1.36
   examine: "The lowest maintenance pet you will ever have."
   equipment:
@@ -1587,7 +1587,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4084
+    - 4084
   weight: 0.018
   examine: "A waxed sled."
   equipment:
@@ -1609,8 +1609,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4153
-  - 20557
+    - 4153
+    - 20557
   weight: 4.535
   examine: "Simplicity is the best weapon."
   equipment:
@@ -1632,7 +1632,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 24225
+    - 24225
   weight: 4.535
   examine: "Simplicity is the best weapon."
   equipment:
@@ -1654,7 +1654,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4158
+    - 4158
   weight: 2.267
   examine: "A spear with a leaf-shaped point."
   equipment:
@@ -1676,7 +1676,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4236
+    - 4236
   weight: 2.267
   examine: "This bow has been signed by Robin, Master Bowman."
   equipment:
@@ -1698,7 +1698,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4580
+    - 4580
   weight: 2.267
   examine: "A black tipped spear."
   equipment:
@@ -1720,7 +1720,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4582
+    - 4582
   weight: 2.267
   examine: "A poisoned black tipped spear."
   equipment:
@@ -1742,7 +1742,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 5734
+    - 5734
   weight: 2.267
   examine: "A poisoned black tipped spear."
   equipment:
@@ -1764,7 +1764,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 5736
+    - 5736
   weight: 2.267
   examine: "A poisoned black tipped spear."
   equipment:
@@ -1786,7 +1786,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4584
+    - 4584
   weight: 2.267
   examine: "A Karambwan poisoned black tipped spear."
   equipment:
@@ -1808,7 +1808,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4718
+    - 4718
   weight: 3.175
   examine: "Dharok the Wretched's greataxe."
   equipment:
@@ -1830,7 +1830,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4886
+    - 4886
   weight: 3.175
   examine: "Dharok the Wretched's greataxe."
   equipment:
@@ -1852,7 +1852,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4887
+    - 4887
   weight: 3.175
   examine: "Dharok the Wretched's greataxe."
   equipment:
@@ -1874,7 +1874,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4888
+    - 4888
   weight: 3.175
   examine: "Dharok the Wretched's greataxe."
   equipment:
@@ -1896,7 +1896,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4889
+    - 4889
   weight: 3.175
   examine: "Dharok the Wretched's greataxe."
   equipment:
@@ -1918,7 +1918,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4890
+    - 4890
   weight: 3.175
   examine: "Dharok the Wretched's greataxe."
   equipment:
@@ -1940,7 +1940,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4726
+    - 4726
   weight: 2.267
   examine: "Guthan the Infested's warspear."
   equipment:
@@ -1962,7 +1962,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4910
+    - 4910
   weight: 2.267
   examine: "Guthan the Infested's warspear."
   equipment:
@@ -1984,7 +1984,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4911
+    - 4911
   weight: 2.267
   examine: "Guthan the Infested's warspear."
   equipment:
@@ -2006,7 +2006,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4912
+    - 4912
   weight: 2.2
   examine: "Guthan the Infested's warspear."
   equipment:
@@ -2028,7 +2028,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4913
+    - 4913
   weight: 2.267
   examine: "Guthan the Infested's warspear."
   equipment:
@@ -2050,7 +2050,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4914
+    - 4914
   weight: 2.267
   examine: "Guthan the Infested's warspear."
   equipment:
@@ -2072,7 +2072,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4734
+    - 4734
   weight: 3.628
   examine: "Karil the Tainted's repeating crossbow."
   equipment:
@@ -2094,7 +2094,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4934
+    - 4934
   weight: 3.628
   examine: "Karil the Tainted's repeating crossbow."
   equipment:
@@ -2116,7 +2116,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4935
+    - 4935
   weight: 3.628
   examine: "Karil the Tainted's repeating crossbow."
   equipment:
@@ -2138,7 +2138,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4936
+    - 4936
   weight: 3.628
   examine: "Karil the Tainted's repeating crossbow."
   equipment:
@@ -2160,7 +2160,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4937
+    - 4937
   weight: 3.628
   examine: "Karil the Tainted's repeating crossbow."
   equipment:
@@ -2182,7 +2182,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4938
+    - 4938
   weight: 3.628
   examine: "Karil the Tainted's repeating crossbow."
   equipment:
@@ -2204,7 +2204,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4747
+    - 4747
   weight: 3.628
   examine: "Torag the Corrupted's twin hammers."
   equipment:
@@ -2226,7 +2226,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4958
+    - 4958
   weight: 3.628
   examine: "Torag the Corrupted's twin hammers."
   equipment:
@@ -2248,7 +2248,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4959
+    - 4959
   weight: 3.628
   examine: "Torag the Corrupted's twin hammers."
   equipment:
@@ -2270,7 +2270,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4960
+    - 4960
   weight: 3.628
   examine: "Torag the Corrupted's twin hammers."
   equipment:
@@ -2292,7 +2292,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4961
+    - 4961
   weight: 3.628
   examine: "Torag the Corrupted's twin hammers."
   equipment:
@@ -2314,7 +2314,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4962
+    - 4962
   weight: 3.628
   examine: "Torag the Corrupted's twin hammers."
   equipment:
@@ -2336,7 +2336,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4755
+    - 4755
   weight: 2.267
   examine: "Verac the Defiled's flail."
   equipment:
@@ -2358,7 +2358,7 @@
       magic: 0
     prayerBonus: 6
 - ids:
-  - 4982
+    - 4982
   weight: 2.267
   examine: "Verac the Defiled's flail."
   equipment:
@@ -2380,7 +2380,7 @@
       magic: 0
     prayerBonus: 6
 - ids:
-  - 4983
+    - 4983
   weight: 2.267
   examine: "Verac the Defiled's flail."
   equipment:
@@ -2402,7 +2402,7 @@
       magic: 0
     prayerBonus: 6
 - ids:
-  - 4984
+    - 4984
   weight: 2.267
   examine: "Verac the Defiled's flail."
   equipment:
@@ -2424,7 +2424,7 @@
       magic: 0
     prayerBonus: 6
 - ids:
-  - 4985
+    - 4985
   weight: 2.267
   examine: "Verac the Defiled's flail."
   equipment:
@@ -2446,7 +2446,7 @@
       magic: 0
     prayerBonus: 6
 - ids:
-  - 4986
+    - 4986
   weight: 2.267
   examine: "Verac the Defiled's flail."
   equipment:
@@ -2468,7 +2468,7 @@
       magic: 0
     prayerBonus: 6
 - ids:
-  - 4827
+    - 4827
   weight: 1.814
   examine: "A composite ogre bow."
   equipment:
@@ -2490,7 +2490,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 6082
+    - 6082
   weight: 4.0
   examine: "A device for firing dye."
   equipment:
@@ -2512,7 +2512,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 6526
+    - 6526
   weight: 1.814
   examine: "A staff of obsidian."
   equipment:
@@ -2534,7 +2534,7 @@
       magic: 0
     prayerBonus: 5
 - ids:
-  - 6528
+    - 6528
   weight: 3.628
   examine: "A maul of obsidian."
   equipment:
@@ -2556,7 +2556,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 6587
+    - 6587
   weight: 0.907
   examine: "A set of fighting claws."
   equipment:
@@ -2578,7 +2578,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-  - 6599
+    - 6599
   weight: 3.175
   examine: "A white halberd."
   equipment:
@@ -2600,7 +2600,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-  - 6609
+    - 6609
   weight: 3.628
   examine: "A two handed sword."
   equipment:
@@ -2622,7 +2622,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-  - 6724
+    - 6724
   weight: 1.36
   examine: "An ancient Fremennik bow that was once used to battle the Moon Clan."
   equipment:
@@ -2644,7 +2644,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 6760
+    - 6760
   weight: 2.267
   examine: "A Guthix Mjolnir."
   equipment:
@@ -2666,7 +2666,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 6762
+    - 6762
   weight: 2.267
   examine: "A Saradomin Mjolnir."
   equipment:
@@ -2688,7 +2688,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 6764
+    - 6764
   weight: 2.267
   examine: "A Zamorak Mjolnir."
   equipment:
@@ -2710,8 +2710,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 7158
-  - 20559
+    - 7158
+    - 20559
   weight: 3.628
   examine: "A two-handed Dragon Sword."
   equipment:
@@ -2733,7 +2733,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 7414
+    - 7414
   weight: 0.02
   examine: "With it, you row."
   equipment:
@@ -2755,7 +2755,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 7439
+    - 7439
   weight: 3.628
   examine: "A large spatula... of doom!"
   equipment:
@@ -2777,7 +2777,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 7668
+    - 7668
   weight: 1.814
   examine: "A specially crafted hammer with strange markings on it."
   equipment:
@@ -2799,7 +2799,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 7809
+    - 7809
   weight: 0.003
   examine: "A heavy duty spear."
   equipment:
@@ -2821,7 +2821,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 8871
+    - 8871
   weight: 32.0
   examine: "It's got Zanik in it."
   equipment:
@@ -2843,7 +2843,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 9050
+    - 9050
   weight: 2.0
   examine: "This sceptre has no remaining charges."
   equipment:
@@ -2865,7 +2865,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 9048
+    - 9048
   weight: 2.0
   examine: "This sceptre has one remaining charge."
   equipment:
@@ -2887,7 +2887,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 9046
+    - 9046
   weight: 2.0
   examine: "This sceptre has two remaining charges."
   equipment:
@@ -2909,7 +2909,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 9044
+    - 9044
   weight: 2.0
   examine: "This sceptre is fully charged."
   equipment:
@@ -2931,7 +2931,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13078
+    - 13078
   weight: 2.0
   examine: "This sceptre is fully charged."
   equipment:
@@ -2953,7 +2953,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13077
+    - 13077
   weight: 2.0
   examine: "This sceptre is fully charged."
   equipment:
@@ -2975,7 +2975,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13076
+    - 13076
   weight: 2.0
   examine: "This sceptre is fully charged."
   equipment:
@@ -2997,7 +2997,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13075
+    - 13075
   weight: 2.0
   examine: "This sceptre is fully charged."
   equipment:
@@ -3019,7 +3019,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13074
+    - 13074
   weight: 2.0
   examine: "This sceptre is fully charged."
   equipment:
@@ -3041,7 +3041,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 9705
+    - 9705
   weight: 1.36
   examine: "Light and flexible, good for a beginner."
   equipment:
@@ -3063,7 +3063,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 10146
+    - 10146
   weight: 4.0
   examine: "Slightly slimy but kind of cute."
   equipment:
@@ -3085,7 +3085,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 10147
+    - 10147
   weight: 4.0
   examine: "Slightly slimy but certainly striking."
   equipment:
@@ -3107,7 +3107,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 10148
+    - 10148
   weight: 4.0
   examine: "Slightly slimy and somewhat menacing."
   equipment:
@@ -3129,7 +3129,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 10149
+    - 10149
   weight: 4.0
   examine: "A very slimy and generally disgusting green lizard."
   equipment:
@@ -3151,7 +3151,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 10280
+    - 10280
   weight: 1.8
   examine: "A powerful bow made from willow wood."
   equipment:
@@ -3173,7 +3173,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 10282
+    - 10282
   weight: 1.8
   examine: "A powerful bow made from yew wood."
   equipment:
@@ -3195,7 +3195,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 10284
+    - 10284
   weight: 1.0
   examine: "A powerful bow made from magic wood."
   equipment:
@@ -3217,7 +3217,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 10858
+    - 10858
   weight: 3.628
   examine: "A shadow sword."
   equipment:
@@ -3239,7 +3239,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 10887
+    - 10887
   weight: 30.0
   examine: "This is likely to put my back out..."
   equipment:
@@ -3261,8 +3261,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 11235
-  - 20408
+    - 11235
+    - 20408
   weight: 1.814
   examine: "A bow from a darker dimension."
   equipment:
@@ -3284,7 +3284,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 12765
+    - 12765
   weight: 1.9
   examine: "A bow from a darker dimension, painted green."
   equipment:
@@ -3306,7 +3306,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 12766
+    - 12766
   weight: 1.9
   examine: "A bow from a darker dimension, painted blue."
   equipment:
@@ -3328,7 +3328,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 12767
+    - 12767
   weight: 1.9
   examine: "A bow from a darker dimension, painted yellow."
   equipment:
@@ -3350,7 +3350,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 12768
+    - 12768
   weight: 1.9
   examine: "A bow from a darker dimension, painted white."
   equipment:
@@ -3372,7 +3372,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 11708
+    - 11708
   weight: 2.0
   examine: "A curse has been placed on this bow."
   equipment:
@@ -3394,7 +3394,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 11748
+    - 11748
   weight: 2.0
   examine: "A nice sturdy magical bow."
   equipment:
@@ -3416,7 +3416,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 11749
+    - 11749
   weight: 2.0
   examine: "A nice sturdy magical bow."
   equipment:
@@ -3438,7 +3438,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 11750
+    - 11750
   weight: 2.0
   examine: "A nice sturdy magical bow."
   equipment:
@@ -3460,7 +3460,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 11751
+    - 11751
   weight: 2.0
   examine: "A nice sturdy magical bow."
   equipment:
@@ -3482,7 +3482,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 11752
+    - 11752
   weight: 2.0
   examine: "A nice sturdy magical bow."
   equipment:
@@ -3504,7 +3504,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 11753
+    - 11753
   weight: 2.0
   examine: "A nice sturdy magical bow."
   equipment:
@@ -3526,7 +3526,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 11754
+    - 11754
   weight: 2.0
   examine: "A nice sturdy magical bow."
   equipment:
@@ -3548,7 +3548,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 11755
+    - 11755
   weight: 2.0
   examine: "A nice sturdy magical bow."
   equipment:
@@ -3570,7 +3570,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 11756
+    - 11756
   weight: 2.0
   examine: "A nice sturdy magical bow."
   equipment:
@@ -3592,7 +3592,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 11757
+    - 11757
   weight: 2.0
   examine: "A nice sturdy magical bow."
   equipment:
@@ -3614,7 +3614,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 11758
+    - 11758
   weight: 2.0
   examine: "A nice sturdy magical bow."
   equipment:
@@ -3636,8 +3636,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 11802
-  - 20593
+    - 11802
+    - 20593
   weight: 11.0
   examine: "A beautiful, heavy sword."
   equipment:
@@ -3659,7 +3659,7 @@
       magic: 0
     prayerBonus: 8
 - ids:
-  - 11804
+    - 11804
   weight: 10.0
   examine: "A brutally heavy sword."
   equipment:
@@ -3681,7 +3681,7 @@
       magic: 0
     prayerBonus: 8
 - ids:
-  - 11806
+    - 11806
   weight: 10.0
   examine: "A gracious, heavy sword."
   equipment:
@@ -3703,7 +3703,7 @@
       magic: 0
     prayerBonus: 8
 - ids:
-  - 11808
+    - 11808
   weight: 10.0
   examine: "A terrifying, heavy sword."
   equipment:
@@ -3725,7 +3725,7 @@
       magic: 0
     prayerBonus: 8
 - ids:
-  - 11824
+    - 11824
   weight: 3.0
   examine: "An evil spear."
   equipment:
@@ -3747,7 +3747,7 @@
       magic: 0
     prayerBonus: 2
 - ids:
-  - 11838
+    - 11838
   weight: 3.0
   examine: "The incredible blade of an Icyene."
   equipment:
@@ -3769,7 +3769,7 @@
       magic: 0
     prayerBonus: 2
 - ids:
-  - 12357
+    - 12357
   weight: 0.0
   examine: "Created by Hattori Hanzo in the Eastern Lands."
   equipment:
@@ -3791,7 +3791,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 12424
+    - 12424
   weight: 1.5
   examine: "A beautifully crafted bow carved by ancient archers."
   equipment:
@@ -3813,7 +3813,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 12727
+    - 12727
   weight: 1.0
   examine: "A Rocket Paint Gun."
   equipment:
@@ -3835,7 +3835,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 12788
+    - 12788
   weight: 1.0
   examine: "Short and magical, but still effective."
   equipment:
@@ -3857,8 +3857,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 12809
-  - 18360
+    - 12809
+    - 18360
   weight: 3.0
   examine: "The blade of an Icyene, blessed with a tear from Saradomin himself."
   equipment:
@@ -3880,8 +3880,8 @@
       magic: 0
     prayerBonus: 2
 - ids:
-  - 12808
-  - 18359
+    - 12808
+    - 18359
   weight: 3.0
   examine: "The blade of an Icyene, blessed with a tear from Saradomin himself."
   equipment:
@@ -3903,7 +3903,7 @@
       magic: 0
     prayerBonus: 2
 - ids:
-  - 12848
+    - 12848
   weight: 4.5
   examine: "Its power should not be taken for granited."
   equipment:
@@ -3925,7 +3925,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 24227
+    - 24227
   weight: 4.5
   examine: "Its power should not be taken for granited."
   equipment:
@@ -3947,7 +3947,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 12924
+    - 12924
   weight: 0.0
   examine: "Fires darts while coating them with venom."
   equipment:
@@ -3969,7 +3969,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 12926
+    - 12926
   weight: 0.0
   examine: "Fires darts while coating them with venom."
   equipment:
@@ -3991,7 +3991,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13080
+    - 13080
   weight: 2.0
   examine: "A nice sturdy pike."
   equipment:
@@ -4013,7 +4013,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13081
+    - 13081
   weight: 2.0
   examine: "A nice sturdy pike."
   equipment:
@@ -4035,7 +4035,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13082
+    - 13082
   weight: 2.0
   examine: "A nice sturdy pike."
   equipment:
@@ -4057,7 +4057,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13083
+    - 13083
   weight: 2.0
   examine: "A nice sturdy pike."
   equipment:
@@ -4079,7 +4079,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13084
+    - 13084
   weight: 2.0
   examine: "A nice sturdy pike."
   equipment:
@@ -4101,7 +4101,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13085
+    - 13085
   weight: 2.0
   examine: "A nice sturdy pike."
   equipment:
@@ -4123,7 +4123,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13086
+    - 13086
   weight: 2.0
   examine: "A nice sturdy pike."
   equipment:
@@ -4145,7 +4145,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13087
+    - 13087
   weight: 2.0
   examine: "A nice sturdy pike."
   equipment:
@@ -4167,7 +4167,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13088
+    - 13088
   weight: 2.0
   examine: "A nice sturdy pike."
   equipment:
@@ -4189,7 +4189,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13089
+    - 13089
   weight: 2.0
   examine: "A nice sturdy pike."
   equipment:
@@ -4211,7 +4211,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13090
+    - 13090
   weight: 2.0
   examine: "A nice sturdy pike."
   equipment:
@@ -4233,7 +4233,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13195
+    - 13195
   weight: 0.0
   examine: "Ball taken!"
   equipment:
@@ -4255,7 +4255,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13263
+    - 13263
   weight: 6.0
   examine: "Elements of deceased Abyssal Sires have been fused together."
   equipment:
@@ -4277,8 +4277,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13652
-  - 20784
+    - 13652
+    - 20784
   weight: 0.0
   examine: "A set of fighting claws."
   equipment:
@@ -4300,7 +4300,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 19478
+    - 19478
   weight: 4.0
   examine: "A weapon forged from the wreckage of an airship."
   equipment:
@@ -4322,7 +4322,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 19481
+    - 19481
   weight: 6.0
   examine: "A powerful weapon forged from the wreckage of an airship."
   equipment:
@@ -4344,7 +4344,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 19918
+    - 19918
   weight: 1.0
   examine: "A pair of Nunchaku, smells of pizza."
   equipment:
@@ -4366,7 +4366,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 19941
+    - 19941
   weight: 15.0
   examine: "Full to the brim with loot... Where's that key gone?"
   equipment:
@@ -4388,7 +4388,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 20155
+    - 20155
   weight: 3.0
   examine: "A two handed sword with gold plate."
   equipment:
@@ -4410,7 +4410,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 20158
+    - 20158
   weight: 3.0
   examine: "A rune tipped spear with gold plate."
   equipment:
@@ -4432,7 +4432,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 20164
+    - 20164
   weight: 3.0
   examine: "Can you dig it?"
   equipment:
@@ -4454,7 +4454,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 20368
+    - 20368
   weight: 11.0
   examine: "An ornamented, beautiful, heavy sword."
   equipment:
@@ -4476,7 +4476,7 @@
       magic: 0
     prayerBonus: 8
 - ids:
-  - 20370
+    - 20370
   weight: 10.0
   examine: "An ornamented, brutally heavy sword."
   equipment:
@@ -4498,7 +4498,7 @@
       magic: 0
     prayerBonus: 8
 - ids:
-  - 20372
+    - 20372
   weight: 10.0
   examine: "An ornamented, gracious, heavy sword."
   equipment:
@@ -4520,7 +4520,7 @@
       magic: 0
     prayerBonus: 8
 - ids:
-  - 20374
+    - 20374
   weight: 10.0
   examine: "An ornamented, terrifying, heavy sword."
   equipment:
@@ -4542,7 +4542,7 @@
       magic: 0
     prayerBonus: 8
 - ids:
-  - 20397
+    - 20397
   weight: 3.0
   examine: "A large makeshift spear."
   equipment:
@@ -4564,7 +4564,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 20756
+    - 20756
   weight: 3.6
   examine: "A brutal weapon popular among giants."
   equipment:
@@ -4586,7 +4586,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 20836
+    - 20836
   weight: 15.0
   examine: "That's one ginormous present."
   equipment:
@@ -4608,7 +4608,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 20997
+    - 20997
   weight: 1.8
   examine: "A mystical bow carved from the twisted remains of the Great Olm."
   equipment:
@@ -4630,8 +4630,8 @@
       magic: 0
     prayerBonus: 4
 - ids:
-  - 21003
-  - 21205
+    - 21003
+    - 21205
   weight: 5.4
   examine: "A maul crafted from the component parts of Tekton."
   equipment:
@@ -4653,7 +4653,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 21015
+    - 21015
   weight: 30.0
   examine: "Is it... looking at me?"
   equipment:
@@ -4675,7 +4675,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 21649
+    - 21649
   weight: 0.0
   examine: "An iron tipped trident."
   equipment:
@@ -4697,7 +4697,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 22486
+    - 22486
   weight: 3.175
   examine: "A powerful scythe. It is currently uncharged."
   equipment:
@@ -4719,7 +4719,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 22325
+    - 22325
   weight: 3.175
   examine: "A powerful scythe."
   equipment:
@@ -4741,7 +4741,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 22333
+    - 22333
   weight: 1.5
   examine: "A bow from a starter pack."
   equipment:
@@ -4763,7 +4763,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 22547
+    - 22547
   weight: 3.175
   examine: "This bow once belonged to a formidable follower of Armadyl."
   equipment:
@@ -4785,7 +4785,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 22550
+    - 22550
   weight: 3.175
   examine: "This bow once belonged to a formidable follower of Armadyl."
   equipment:
@@ -4807,7 +4807,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 22610
+    - 22610
   weight: 2.2
   examine: "A powerful spear."
   equipment:
@@ -4829,7 +4829,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 23108
+    - 23108
   weight: 0.4
   examine: "Totally jammin' with jam in."
   equipment:
@@ -4851,7 +4851,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 23206
+    - 23206
   weight: 1.0
   examine: "A pair of aggressive Sai."
   equipment:
@@ -4873,7 +4873,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 23235
+    - 23235
   weight: 3.628
   examine: "A maul of obsidian with trim and spikes."
   equipment:
@@ -4895,7 +4895,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 23282
+    - 23282
   weight: 3.0
   examine: "Oh, I'm a gold digger?"
   equipment:
@@ -4917,7 +4917,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 23357
+    - 23357
   weight: 1.36
   examine: "Short but effective and very colourful."
   equipment:
@@ -4939,7 +4939,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 23446
+    - 23446
   weight: 15.0
   examine: "That's one ginormous Easter egg."
   equipment:
@@ -4961,7 +4961,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 23849
+    - 23849
   weight: 1.5
   examine: "A wooden stick with some corrupted on the end."
   equipment:
@@ -4983,7 +4983,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-  - 23850
+    - 23850
   weight: 1.5
   examine: "A wooden stick with some more corrupted on the end."
   equipment:
@@ -5005,7 +5005,7 @@
       magic: 0
     prayerBonus: 2
 - ids:
-  - 23851
+    - 23851
   weight: 1.5
   examine: "A wooden stick with a lot of corrupted on the end."
   equipment:
@@ -5027,7 +5027,7 @@
       magic: 0
     prayerBonus: 3
 - ids:
-  - 23852
+    - 23852
   weight: 1.5
   examine: "A basic staff of corrupted crystal."
   equipment:
@@ -5049,7 +5049,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-  - 23853
+    - 23853
   weight: 1.5
   examine: "A sturdy staff of corrupted crystal."
   equipment:
@@ -5071,7 +5071,7 @@
       magic: 0
     prayerBonus: 2
 - ids:
-  - 23854
+    - 23854
   weight: 1.5
   examine: "A powerful staff of corrupted crystal."
   equipment:
@@ -5093,7 +5093,7 @@
       magic: 0
     prayerBonus: 3
 - ids:
-  - 23855
+    - 23855
   weight: 1.5
   examine: "A basic bow formed from corrupted crystal and wood."
   equipment:
@@ -5115,7 +5115,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-  - 23856
+    - 23856
   weight: 1.5
   examine: "A sturdy bow formed from corrupted crystal and wood."
   equipment:
@@ -5137,7 +5137,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-  - 23857
+    - 23857
   weight: 1.5
   examine: "A powerful bow formed from corrupted crystal and wood."
   equipment:
@@ -5159,7 +5159,7 @@
       magic: 0
     prayerBonus: 3
 - ids:
-  - 23895
+    - 23895
   weight: 1.5
   examine: "A wooden stick with some crystal on the end."
   equipment:
@@ -5181,7 +5181,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-  - 23896
+    - 23896
   weight: 1.5
   examine: "A wooden stick with some more crystal on the end."
   equipment:
@@ -5203,7 +5203,7 @@
       magic: 0
     prayerBonus: 2
 - ids:
-  - 23897
+    - 23897
   weight: 1.5
   examine: "A wooden stick with a lot of crystal on the end."
   equipment:
@@ -5225,7 +5225,7 @@
       magic: 0
     prayerBonus: 3
 - ids:
-  - 23898
+    - 23898
   weight: 1.5
   examine: "A basic staff of crystal."
   equipment:
@@ -5247,7 +5247,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-  - 23899
+    - 23899
   weight: 1.5
   examine: "A sturdy staff of crystal."
   equipment:
@@ -5269,7 +5269,7 @@
       magic: 0
     prayerBonus: 2
 - ids:
-  - 23900
+    - 23900
   weight: 1.5
   examine: "A powerful staff of crystal."
   equipment:
@@ -5291,7 +5291,7 @@
       magic: 0
     prayerBonus: 3
 - ids:
-  - 23901
+    - 23901
   weight: 1.5
   examine: "A basic bow formed from crystal and wood."
   equipment:
@@ -5313,7 +5313,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-  - 23902
+    - 23902
   weight: 1.5
   examine: "A sturdy bow formed from crystal and wood."
   equipment:
@@ -5335,7 +5335,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-  - 23903
+    - 23903
   weight: 1.5
   examine: "A powerful bow formed from crystal and wood."
   equipment:
@@ -5357,7 +5357,7 @@
       magic: 0
     prayerBonus: 3
 - ids:
-  - 23983
+    - 23983
   weight: 2.0
   examine: "A nice sturdy magical bow."
   equipment:
@@ -5379,7 +5379,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 23987
+    - 23987
   weight: 2.0
   examine: "A nice sturdy pike."
   equipment:
@@ -5401,7 +5401,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 24327
+    - 24327
   weight: 0.0
   examine: "Alas... I'm sure someone knew him well."
   equipment:
@@ -5423,7 +5423,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 24372
+    - 24372
   weight: 15.0
   examine: "A Dragon trophy for competing in the Twisted League. (14th Nov 2019 to\
     \ 16th Jan 2020)"
@@ -5446,7 +5446,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 24374
+    - 24374
   weight: 15.0
   examine: "A Rune trophy for competing in the Twisted League. (14th Nov 2019 to 16th\
     \ Jan 2020)"
@@ -5469,7 +5469,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 24376
+    - 24376
   weight: 15.0
   examine: "An Adamant trophy for competing in the Twisted League. (14th Nov 2019\
     \ to 16th Jan 2020)"
@@ -5492,7 +5492,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 24378
+    - 24378
   weight: 1.0
   examine: "A Mithril trophy for competing in the Twisted League. (14th Nov 2019 to\
     \ 16th Jan 2020)"
@@ -5515,7 +5515,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 24380
+    - 24380
   weight: 1.0
   examine: "A Steel trophy for competing in the Twisted League. (14th Nov 2019 to\
     \ 16th Jan 2020)"
@@ -5538,7 +5538,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 24382
+    - 24382
   weight: 1.0
   examine: "An Iron trophy for competing in the Twisted League. (14th Nov 2019 to\
     \ 16th Jan 2020)"
@@ -5561,7 +5561,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 24384
+    - 24384
   weight: 1.0
   examine: "A Bronze trophy for competing in the Twisted League. (14th Nov 2019 to\
     \ 16th Jan 2020)"

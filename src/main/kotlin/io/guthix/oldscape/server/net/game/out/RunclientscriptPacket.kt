@@ -23,9 +23,9 @@ import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 
 class RunclientscriptPacket(private val id: Int, vararg val params: Any) : OutGameEvent {
-    override val opcode = 49
+    override val opcode: Int = 49
 
-    override val size = VarShortSize
+    override val size: VarShortSize = VarShortSize
 
     override fun encode(ctx: ChannelHandlerContext): ByteBuf {
         val buf = ctx.alloc().buffer()
@@ -37,7 +37,7 @@ class RunclientscriptPacket(private val id: Int, vararg val params: Any) : OutGa
                 argumentListIdentifier.append("i")
             }
         }
-        buf.writeStringCP1252(argumentListIdentifier.toString())
+        buf.writeStringCP1252("$argumentListIdentifier")
         for (param in params) {
             if (param is String) {
                 buf.writeStringCP1252(param)

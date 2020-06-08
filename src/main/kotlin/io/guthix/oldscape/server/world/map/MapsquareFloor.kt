@@ -18,8 +18,8 @@ package io.guthix.oldscape.server.world.map
 
 import io.guthix.oldscape.server.dimensions.*
 import io.guthix.oldscape.server.world.World
-import io.guthix.oldscape.server.world.entity.Obj
 import io.guthix.oldscape.server.world.entity.Loc
+import io.guthix.oldscape.server.world.entity.Obj
 
 class MapsquareFloor(
     val floor: FloorUnit,
@@ -29,20 +29,20 @@ class MapsquareFloor(
 ) {
     lateinit var world: World
 
-    val zones = Array(MapsquareUnit.SIZE_ZONE.value) { zoneX ->
+    val zones: Array<Array<Zone>> = Array(MapsquareUnit.SIZE_ZONE.value) { zoneX ->
         Array(MapsquareUnit.SIZE_ZONE.value) { zoneY ->
             Zone(floor, x.inZones + zoneX.zones, y.inZones + zoneY.zones, this)
         }
     }
 
-    fun getZone(localX: TileUnit, localY: TileUnit) = zones[localX.inZones.value][localY.inZones.value]
+    fun getZone(localX: TileUnit, localY: TileUnit): Zone = zones[localX.inZones.value][localY.inZones.value]
 
-    fun getZone(localX: ZoneUnit, localY: ZoneUnit) = zones[localX.value][localY.value]
+    fun getZone(localX: ZoneUnit, localY: ZoneUnit): Zone = zones[localX.value][localY.value]
 
-    fun getCollisionMask(localX: TileUnit, localY: TileUnit) = zones[localX.inZones.value][localY.inZones.value]
+    fun getCollisionMask(localX: TileUnit, localY: TileUnit): Int = zones[localX.inZones.value][localY.inZones.value]
         .getCollisionMask(localX.relativeZone, localY.relativeZone)
 
-    fun getLoc(id: Int, localX: TileUnit, localY: TileUnit) = zones[localX.inZones.value][localY.inZones.value]
+    fun getLoc(id: Int, localX: TileUnit, localY: TileUnit): Loc? = zones[localX.inZones.value][localY.inZones.value]
         .getLoc(id, localX.relativeZone, localY.relativeZone)
 
     fun addStaticLocation(loc: Loc) {
@@ -51,7 +51,7 @@ class MapsquareFloor(
         zones[zoneX.value][zoneY.value].addStaticLoc(loc)
     }
 
-    fun addUnwalkableTile(localX: TileUnit, localY: TileUnit) = zones[localX.inZones.value][localY.inZones.value]
+    fun addUnwalkableTile(localX: TileUnit, localY: TileUnit): Unit = zones[localX.inZones.value][localY.inZones.value]
         .addUnwalkableTile(localX.relativeZone, localY.relativeZone)
 
     fun addObject(tile: Tile, obj: Obj) {

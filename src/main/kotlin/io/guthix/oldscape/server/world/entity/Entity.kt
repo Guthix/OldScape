@@ -18,7 +18,6 @@ package io.guthix.oldscape.server.world.entity
 
 import io.guthix.oldscape.server.dimensions.TileUnit
 import io.guthix.oldscape.server.world.map.Tile
-import kotlin.math.atan2
 
 abstract class Entity {
     abstract val pos: Tile

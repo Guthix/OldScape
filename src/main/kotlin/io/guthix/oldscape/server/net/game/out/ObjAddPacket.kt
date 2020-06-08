@@ -29,21 +29,21 @@ class ObjAddPacket(
     localX: TileUnit,
     localY: TileUnit
 ) : ZoneOutGameEvent(localX, localY) {
-    override val opcode = 66
+    override val opcode: Int = 66
 
-    override val enclOpcode = 1
+    override val enclOpcode: Int = 1
 
-    override val size = FixedSize(STATIC_SIZE)
+    override val size: FixedSize = FixedSize(STATIC_SIZE)
 
     override fun encode(ctx: ChannelHandlerContext): ByteBuf {
         val buf = ctx.alloc().buffer(STATIC_SIZE)
         buf.writeShortADD(id)
-        buf.writeShortLE(if(quantity > 65535)  65535 else quantity)
+        buf.writeShortLE(if (quantity > 65535) 65535 else quantity)
         buf.writeByte(posBitPack)
         return buf
     }
 
     companion object {
-        const val STATIC_SIZE = Short.SIZE_BYTES + Short.SIZE_BYTES + Byte.SIZE_BYTES
+        const val STATIC_SIZE: Int = Short.SIZE_BYTES + Short.SIZE_BYTES + Byte.SIZE_BYTES
     }
 }

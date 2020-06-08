@@ -21,5 +21,5 @@ import io.guthix.oldscape.server.net.game.ClientEvent
 import io.guthix.oldscape.server.world.World
 
 class MouseIdleEvent : ClientEvent, InGameEvent {
-    override fun toGameEvent(world: World) = this
+    override fun toGameEvent(world: World): MouseIdleEvent = this
 }

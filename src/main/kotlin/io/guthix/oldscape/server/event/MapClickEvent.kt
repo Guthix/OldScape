@@ -22,5 +22,5 @@ import io.guthix.oldscape.server.net.game.ClientEvent
 import io.guthix.oldscape.server.world.World
 
 data class MapClickEvent(val x: TileUnit, val y: TileUnit, val type: Int) : ClientEvent, InGameEvent {
-    override fun toGameEvent(world: World) = this
+    override fun toGameEvent(world: World): MapClickEvent = this
 }

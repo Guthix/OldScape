@@ -21,14 +21,13 @@ import io.guthix.oldscape.cache.config.SpotAnimConfig
 import mu.KotlinLogging
 import java.io.IOException
 
-private val logger = KotlinLogging.logger {  }
+private val logger = KotlinLogging.logger { }
 
 object SpotAnimBlueprints {
     private lateinit var configs: Map<Int, SpotAnimConfig>
 
-    operator fun get(index: Int): SpotAnimConfig {
-        return configs[index] ?: throw IOException("Could not find spot animation $index.")
-    }
+    operator fun get(index: Int): SpotAnimConfig = configs[index]
+        ?: throw IOException("Could not find spot animation $index.")
 
     fun load(archive: Js5Archive) {
         configs = SpotAnimConfig.load(archive.readGroup(SpotAnimConfig.id))

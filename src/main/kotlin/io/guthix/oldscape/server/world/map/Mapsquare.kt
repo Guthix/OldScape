@@ -21,11 +21,11 @@ import io.guthix.oldscape.cache.map.MapLocDefinition
 import io.guthix.oldscape.cache.map.MapSquareDefinition
 import io.guthix.oldscape.server.dimensions.*
 import io.guthix.oldscape.server.world.WorldMap
-import io.guthix.oldscape.server.world.entity.Obj
 import io.guthix.oldscape.server.world.entity.Loc
+import io.guthix.oldscape.server.world.entity.Obj
 
 class Mapsquare(val x: MapsquareUnit, val y: MapsquareUnit, val xtea: IntArray, val world: WorldMap) {
-    val id get() = id(x, y)
+    val id: Int get() = id(x, y)
 
     val floors: Array<MapsquareFloor> = Array(FLOOR_COUNT) {
         MapsquareFloor(it.floors, x, y, this)
@@ -49,53 +49,54 @@ class Mapsquare(val x: MapsquareUnit, val y: MapsquareUnit, val xtea: IntArray, 
                 }
             }
         }
+
         fun Array<MapsquareFloor>.loadStaticLocations(locations: List<MapLocDefinition>) {
-            locations.forEach { loc ->
-                get(loc.floor).addStaticLocation(
+            locations.forEach { (id1, floor, localX, localY, type, orientation) ->
+                get(floor).addStaticLocation(
                     Loc(
-                        loc.id,
-                        loc.type,
-                        Tile(loc.floor.floors,
-                            def.x.mapsquares.inTiles + loc.localX.tiles,
-                            def.y.mapsquares.inTiles + loc.localY.tiles
+                        id1,
+                        type,
+                        Tile(floor.floors,
+                            def.x.mapsquares.inTiles + localX.tiles,
+                            def.y.mapsquares.inTiles + localY.tiles
                         ),
-                        loc.orientation
+                        orientation
                     )
                 )
             }
         }
-       floors.apply {
+        floors.apply {
             loadUnwalkableTiles(def.mapDefinition.renderRules)
             loadStaticLocations(def.locationDefinitions)
         }
     }
 
-    fun getZone(floor: FloorUnit, localX: TileUnit, localY: TileUnit) = floors[floor.value]
+    fun getZone(floor: FloorUnit, localX: TileUnit, localY: TileUnit): Zone = floors[floor.value]
         .getZone(localX, localY)
 
-    fun getZone(floor: FloorUnit, localX: ZoneUnit, localY: ZoneUnit) = floors[floor.value]
+    fun getZone(floor: FloorUnit, localX: ZoneUnit, localY: ZoneUnit): Zone = floors[floor.value]
         .getZone(localX, localY)
 
-    fun getCollisionMask(floor: FloorUnit, localX: TileUnit, localY: TileUnit) = floors[floor.value]
+    fun getCollisionMask(floor: FloorUnit, localX: TileUnit, localY: TileUnit): Int = floors[floor.value]
         .getCollisionMask(localX, localY)
 
-    fun getLoc(id: Int, floor: FloorUnit, localX: TileUnit, localY: TileUnit) = floors[floor.value]
+    fun getLoc(id: Int, floor: FloorUnit, localX: TileUnit, localY: TileUnit): Loc? = floors[floor.value]
         .getLoc(id, localX, localY)
 
-    fun addUnwalkableTile(floor: FloorUnit, localX: TileUnit, localY: TileUnit) = floors[floor.value]
+    fun addUnwalkableTile(floor: FloorUnit, localX: TileUnit, localY: TileUnit): Unit = floors[floor.value]
         .addUnwalkableTile(localX.relativeZone, localY.relativeZone)
 
-    fun addObject(tile: Tile, obj: Obj) = floors[tile.floor.value].addObject(tile, obj)
+    fun addObject(tile: Tile, obj: Obj): Unit = floors[tile.floor.value].addObject(tile, obj)
 
-    fun removeObject(tile: Tile, id: Int) = floors[tile.floor.value].removeObject(tile, id)
+    fun removeObject(tile: Tile, id: Int): Obj = floors[tile.floor.value].removeObject(tile, id)
 
-    fun addDynamicLoc(loc: Loc) = floors[loc.pos.floor.value].addDynamicLoc(loc)
+    fun addDynamicLoc(loc: Loc): Unit = floors[loc.pos.floor.value].addDynamicLoc(loc)
 
-    fun removeDynamicLoc(loc: Loc) = floors[loc.pos.floor.value].removeDynamicLoc(loc)
+    fun removeDynamicLoc(loc: Loc): Unit = floors[loc.pos.floor.value].removeDynamicLoc(loc)
 
     companion object {
-        const val FLOOR_COUNT = 4
+        const val FLOOR_COUNT: Int = 4
 
-        fun id(x: MapsquareUnit, y: MapsquareUnit) = (x.value shl 8) or y.value
+        fun id(x: MapsquareUnit, y: MapsquareUnit): Int = (x.value shl 8) or y.value
     }
 }

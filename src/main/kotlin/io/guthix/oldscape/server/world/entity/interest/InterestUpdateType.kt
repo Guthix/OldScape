@@ -21,7 +21,7 @@ import io.guthix.oldscape.server.world.entity.Player
 import io.netty.buffer.ByteBuf
 
 abstract class InterestUpdateType(val priority: Int, internal val mask: Int) : Comparable<InterestUpdateType> {
-    override fun compareTo(other: InterestUpdateType) = when {
+    override fun compareTo(other: InterestUpdateType): Int = when {
         priority < other.priority -> -1
         priority > other.priority -> 1
         else -> 0
@@ -30,6 +30,10 @@ abstract class InterestUpdateType(val priority: Int, internal val mask: Int) : C
 
 enum class MovementInterestUpdate { TELEPORT, RUN, WALK, STAY }
 
-class PlayerUpdateType(priority: Int, mask: Int, val encode: ByteBuf.(Player) -> Unit) : InterestUpdateType(priority, mask)
+class PlayerUpdateType(
+    priority: Int,
+    mask: Int,
+    val encode: ByteBuf.(Player) -> Unit
+) : InterestUpdateType(priority, mask)
 
 class NpcUpdateType(priority: Int, mask: Int, val encode: ByteBuf.(Npc) -> Unit) : InterestUpdateType(priority, mask)

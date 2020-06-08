@@ -31,25 +31,25 @@ import io.netty.channel.ChannelFuture
 class MapManager : InterestManager {
     lateinit var middleZone: Zone
 
-    val baseX get() = middleZone.x - RANGE
+    val baseX: ZoneUnit get() = middleZone.x - RANGE
 
-    val baseY get() = middleZone.y - RANGE
+    val baseY: ZoneUnit get() = middleZone.y - RANGE
 
-    val zones = Array(SIZE.value) {
-        arrayOfNulls<Zone>(SIZE.value)
+    val zones: Array<Array<Zone?>> = Array(SIZE.value) {
+        arrayOfNulls(SIZE.value)
     }
 
-    val changes = Array(SIZE.value) {
+    val changes: Array<Array<MutableList<ZoneOutGameEvent>>> = Array(SIZE.value) {
         Array(SIZE.value) {
-            mutableListOf<ZoneOutGameEvent>()
+            mutableListOf()
         }
     }
 
-    fun reloadRequired(curZone: Zone) = abs(middleZone.x - curZone.x) > UPDATE_RANGE ||
+    fun reloadRequired(curZone: Zone): Boolean = abs(middleZone.x - curZone.x) > UPDATE_RANGE ||
         abs(middleZone.y - curZone.y) > UPDATE_RANGE
 
     fun checkReload(curZone: Zone, map: WorldMap, player: Player) {
-        if(reloadRequired(curZone)) {
+        if (reloadRequired(curZone)) {
             val oldZone = middleZone
             middleZone = curZone
             val xteas = getInterestedXteas(map)
@@ -61,9 +61,9 @@ class MapManager : InterestManager {
 
     fun getInterestedXteas(map: WorldMap): List<IntArray> {
         val interestedXteas = mutableListOf<IntArray>()
-        for(mSquareX in middleZone.x.startMapInterest..middleZone.x.endMapInterest) {
-            for(mSquareY in middleZone.y.startMapInterest..middleZone.y.endMapInterest) {
-                if(onTutorialIsland(mSquareX, mSquareY)) continue
+        for (mSquareX in middleZone.x.startMapInterest..middleZone.x.endMapInterest) {
+            for (mSquareY in middleZone.y.startMapInterest..middleZone.y.endMapInterest) {
+                if (onTutorialIsland(mSquareX, mSquareY)) continue
                 val id = (mSquareX.value shl 8) or mSquareY.value
                 val xtea = map.mapsquares[id]?.xtea ?: error("Could not find XTEA for id $id.")
                 interestedXteas.add(xtea)
@@ -82,7 +82,7 @@ class MapManager : InterestManager {
 
     fun subscribeToZones(oldZone: Zone, player: Player, map: WorldMap) {
         val prevPacketCache = changes.copyOf()
-        changes.forEach { it.forEach { pCache -> pCache.clear() } }
+        changes.forEach { it.forEach(MutableList<ZoneOutGameEvent>::clear) }
         ((middleZone.x - RANGE)..(middleZone.x + RANGE)).forEachIndexed { i, zoneX ->
             ((middleZone.y - RANGE)..(middleZone.y + RANGE)).forEachIndexed { j, zoneY ->
                 val zone = map.getZone(middleZone.floor, zoneX, zoneY)
@@ -91,7 +91,7 @@ class MapManager : InterestManager {
                     zone.players.add(player)
                     val prevLocalX = (zone.x - (oldZone.x - RANGE))
                     val prevLocalY = (zone.y - (oldZone.y - RANGE))
-                    if(middleZone.floor == oldZone.floor && prevLocalX in REL_RANGE && prevLocalY in REL_RANGE) {
+                    if (middleZone.floor == oldZone.floor && prevLocalX in REL_RANGE && prevLocalY in REL_RANGE) {
                         changes[i][j].addAll(prevPacketCache[prevLocalX.value][prevLocalY.value]) // move packet cache
                     } else {
                         addInterestPackets(zone)
@@ -165,10 +165,10 @@ class MapManager : InterestManager {
         checkReload(pZone, world.map, player)
         changes.forEachIndexed { x, yPacketList ->
             yPacketList.forEachIndexed { y, packetList ->
-                if(packetList.size == 1) {
+                if (packetList.size == 1) {
                     futures.add(player.ctx.write(UpdateZonePartialFollowsPacket(x.zones.inTiles, y.zones.inTiles)))
                     futures.add(player.ctx.write(packetList.first()))
-                } else if(packetList.size > 1) {
+                } else if (packetList.size > 1) {
                     futures.add(player.ctx.write(
                         UpdateZonePartialEnclosedPacket(x.zones.inTiles, y.zones.inTiles, packetList.toList())
                     ))
@@ -178,16 +178,16 @@ class MapManager : InterestManager {
         return futures
     }
 
-    override fun postProcess() = changes.forEach { it.forEach { it.clear() } }
+    override fun postProcess(): Unit = changes.forEach { it.forEach(MutableList<ZoneOutGameEvent>::clear) }
 
     companion object {
-        val SIZE = 13.zones
+        val SIZE: ZoneUnit = 13.zones
 
-        val REL_RANGE = (0.zones until SIZE)
+        val REL_RANGE: ZoneUnitRange = (0.zones until SIZE)
 
-        val RANGE = SIZE / 2.zones
+        val RANGE: ZoneUnit = SIZE / 2.zones
 
-        val UPDATE_RANGE = RANGE - PlayerManager.RANGE.inZones
+        val UPDATE_RANGE: ZoneUnit = RANGE - PlayerManager.RANGE.inZones
 
         private val ZoneUnit.startMapInterest get() = (this - RANGE).inMapsquares
 

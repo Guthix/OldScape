@@ -21,10 +21,11 @@ import io.guthix.oldscape.server.net.game.out.VarpLargePacket
 import io.guthix.oldscape.server.net.game.out.VarpSmallPacket
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.Player
+import io.netty.channel.ChannelFuture
 import kotlin.math.pow
 
-class VarpManager: InterestManager {
-    val varps = mutableMapOf<Int, Int>()
+class VarpManager : InterestManager {
+    val varps: MutableMap<Int, Int> = mutableMapOf()
 
     private val changes = mutableMapOf<Int, Int>()
 
@@ -35,7 +36,7 @@ class VarpManager: InterestManager {
     fun updateVarbit(id: Int, value: Int) {
         val config = Varbits[id]
         val bitSize = (config.msb.toInt() - config.lsb.toInt()) + 1
-        if(value > 2.0.pow(bitSize) - 1) throw IllegalArgumentException("Value $value to big for this varbit.")
+        if (value > 2.0.pow(bitSize) - 1) throw IllegalArgumentException("Value $value to big for this varbit.")
         var curVarp = varps[config.varpId] ?: 0
         curVarp.clearBits(config.msb.toInt(), config.lsb.toInt())
         curVarp = curVarp or value shl config.lsb.toInt()
@@ -44,12 +45,13 @@ class VarpManager: InterestManager {
     }
 
     private fun Int.setBits(msb: Int, lsb: Int): Int = this xor ((1 shl (msb + 1)) - 1) xor ((1 shl lsb) - 1)
+
     @Suppress("INTEGER_OVERFLOW")
     private fun Int.clearBits(msb: Int, lsb: Int) = ((1 shl 4 * 8 - 1) - 1).setBits(msb, lsb) and this
 
-    override fun initialize(world: World, player: Player) { }
+    override fun initialize(world: World, player: Player) {}
 
-    override fun synchronize(world: World, player: Player) = changes.map { (id, value) ->
+    override fun synchronize(world: World, player: Player): List<ChannelFuture> = changes.map { (id, value) ->
         if (value <= Byte.MIN_VALUE || value >= Byte.MAX_VALUE) {
             player.ctx.write(VarpLargePacket(id, value))
         } else {
@@ -57,5 +59,5 @@ class VarpManager: InterestManager {
         }
     }
 
-    override fun postProcess() = changes.clear()
+    override fun postProcess(): Unit = changes.clear()
 }

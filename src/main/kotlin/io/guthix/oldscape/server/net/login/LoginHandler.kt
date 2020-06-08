@@ -24,11 +24,11 @@ import io.netty.channel.ChannelHandlerContext
 
 class LoginHandler(val world: World, val sessionId: Long) : PacketInboundHandler<LoginRequest>() {
     override fun channelRead0(ctx: ChannelHandlerContext, msg: LoginRequest) {
-        if(msg.sessionId != sessionId) {
+        if (msg.sessionId != sessionId) {
             ctx.writeAndFlush(StatusResponse.BAD_SESSION_ID)
             return
         }
-        if(world.isFull) {
+        if (world.isFull) {
             ctx.writeAndFlush(StatusResponse.SERVER_FULL)
         }
         ctx.write(StatusResponse.NORMAL)

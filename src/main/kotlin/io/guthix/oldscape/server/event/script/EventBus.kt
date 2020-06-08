@@ -25,9 +25,9 @@ import kotlin.reflect.KClass
 private val logger = KotlinLogging.logger { }
 
 object EventBus {
-    const val pkg = "io.guthix.oldscape.server"
+    const val pkg: String = "io.guthix.oldscape.server"
 
-    private val eventListeners = mutableMapOf<KClass<out InGameEvent>, MutableList<ScriptScheduler<in InGameEvent>>>()
+    private val eventListeners = mutableMapOf<KClass<out InGameEvent>, MutableList<ScriptScheduler<InGameEvent>>>()
 
     fun loadScripts() {
         ClassGraph().whitelistPackages(pkg).scan().use { scanResult ->
@@ -41,9 +41,11 @@ object EventBus {
         }
     }
 
-    fun <E : InGameEvent> schedule(event: E, player: Player, world: World) = eventListeners[event::class]?.let {
-        for (listener in it) {
-            listener.schedule(event, player, world)
+    fun <E : InGameEvent> schedule(event: E, player: Player, world: World) {
+        eventListeners[event::class]?.let {
+            for (listener in it) {
+                listener.schedule(event, player, world)
+            }
         }
     }
 

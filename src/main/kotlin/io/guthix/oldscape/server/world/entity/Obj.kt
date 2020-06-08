@@ -18,21 +18,20 @@ package io.guthix.oldscape.server.world.entity
 
 import io.guthix.oldscape.server.api.ObjectBlueprints
 import io.guthix.oldscape.server.blueprints.ObjectBlueprint
-import io.guthix.oldscape.server.blueprints.equipment.*
 
 open class Obj(id: Int, var quantity: Int) {
     protected open val blueprint: ObjectBlueprint = ObjectBlueprints[id]
-    
-    val id get() = blueprint.id
-    val name get() = blueprint.name
-    val weight get() = blueprint.weight
-    val examines get() = blueprint.examines
-    val isStackable get() = blueprint.isStackable
-    val isTradable get() = blueprint.isTradable
-    val notedId get() = blueprint.notedId
-    val isNoted get() = blueprint.isNoted
-    val placeHolderId get() = blueprint.placeHolderId
-    val isPlaceHolder get() = blueprint.isPlaceHolder
-    val interfaceOperations get() = blueprint.interfaceOperations
-    val groundOperations get() = blueprint.groundOperations
+
+    val id: Int get() = blueprint.id
+    val name: String get() = blueprint.name
+    val weight: Float get() = blueprint.weight
+    val examines: String get() = blueprint.examines
+    val isStackable: Boolean get() = blueprint.isStackable
+    val isTradable: Boolean get() = blueprint.isTradable
+    val notedId: Int? get() = blueprint.notedId
+    val isNoted: Boolean get() = blueprint.isNoted
+    val placeHolderId: Int? get() = blueprint.placeHolderId
+    val isPlaceHolder: Boolean get() = blueprint.isPlaceHolder
+    val interfaceOperations: Array<String?> get() = blueprint.interfaceOperations
+    val groundOperations: Array<String?> get() = blueprint.groundOperations
 }

@@ -34,7 +34,7 @@ open class EquipmentBlueprint(
     val slot: EquipmentSlot,
     override val extraConfig: ExtraEquipmentConfig
 ) : ObjectBlueprint(cacheConfig, extraConfig) {
-    val equipment get() = extraConfig.equipment
+    val equipment: Equipment get() = extraConfig.equipment
 
     enum class EquipmentSlot(val id: Int) {
         HEAD(0),

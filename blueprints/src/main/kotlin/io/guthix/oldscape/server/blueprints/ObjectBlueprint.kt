@@ -28,16 +28,16 @@ open class ObjectBlueprint(
     private val cacheConfig: ObjectConfig,
     protected open val extraConfig: ExtraObjectConfig
 ) {
-    val id get() = cacheConfig.id
-    val name get() = cacheConfig.name
-    val weight get() = extraConfig.weight
-    val examines get() = extraConfig.examine
-    val isStackable get() = cacheConfig.stackable
-    val isTradable get() = cacheConfig.tradable
-    val notedId get() = cacheConfig.notedId
-    val isNoted get() = cacheConfig.isNoted
-    val placeHolderId get() = cacheConfig.placeholderId
-    val isPlaceHolder get() = cacheConfig.isPlaceHolder
-    val interfaceOperations get() = cacheConfig.iop
-    val groundOperations get() = cacheConfig.groundActions
+    val id: Int get() = cacheConfig.id
+    val name: String get() = cacheConfig.name
+    val weight: Float get() = extraConfig.weight
+    val examines: String get() = extraConfig.examine
+    val isStackable: Boolean get() = cacheConfig.stackable
+    val isTradable: Boolean get() = cacheConfig.tradable
+    val notedId: Int? get() = cacheConfig.notedId
+    val isNoted: Boolean get() = cacheConfig.isNoted
+    val placeHolderId: Int? get() = cacheConfig.placeholderId
+    val isPlaceHolder: Boolean get() = cacheConfig.isPlaceHolder
+    val interfaceOperations: Array<String?> get() = cacheConfig.iop
+    val groundOperations: Array<String?> get() = cacheConfig.groundActions
 }

@@ -21,10 +21,10 @@ import io.guthix.oldscape.server.net.game.ClientEvent
 import io.guthix.oldscape.server.world.World
 
 data class KeyboardPressEvent(val keyPresses: List<KeyPress>) : ClientEvent, InGameEvent {
-    override fun toGameEvent(world: World) = this
+    override fun toGameEvent(world: World): KeyboardPressEvent = this
 }
 
-class KeyPress(key: KeyboardKey, interval: Int)
+class KeyPress(val key: KeyboardKey, val interval: Int)
 
 enum class KeyboardKey(val opcode: Int) {
     F1(1),

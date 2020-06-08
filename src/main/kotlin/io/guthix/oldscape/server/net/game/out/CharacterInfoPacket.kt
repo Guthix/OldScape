@@ -16,15 +16,16 @@
  */
 package io.guthix.oldscape.server.net.game.out
 
+import io.guthix.oldscape.server.dimensions.TileUnit
 import io.guthix.oldscape.server.dimensions.tiles
 import io.guthix.oldscape.server.world.map.Tile
 
 abstract class CharacterInfoPacket {
     companion object {
-        val INTEREST_SIZE = 32.tiles
+        val INTEREST_SIZE: TileUnit = 32.tiles
 
         private val INTEREST_RANGE = INTEREST_SIZE / 2.tiles
 
-        fun Tile.isInterestedIn(other: Tile) = withInDistanceOf(other, INTEREST_RANGE)
+        fun Tile.isInterestedIn(other: Tile): Boolean = withInDistanceOf(other, INTEREST_RANGE)
     }
 }

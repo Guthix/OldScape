@@ -26,38 +26,39 @@ class Loc(
     override val pos: Tile,
     override var orientation: Int
 ) : Entity() {
-    private val blueprint =  LocationBlueprints[id]
+    private val blueprint = LocationBlueprints[id]
 
-    val id get() = blueprint.id
+    val id: Int get() = blueprint.id
 
-    val impenetrable get() = blueprint.impenetrable
+    val impenetrable: Boolean get() = blueprint.impenetrable
 
-    val clipType get() = blueprint.clipType
+    val clipType: Int get() = blueprint.clipType
 
-    val width get() = blueprint.width
+    val width: TileUnit get() = blueprint.width
 
-    val length get() = blueprint.length
+    val length: TileUnit get() = blueprint.length
 
-    override val sizeX get() = if (orientation == 0 || orientation == 2) width else length
+    override val sizeX: TileUnit get() = if (orientation == 0 || orientation == 2) width else length
 
-    override val sizeY get() = if (orientation == 0 || orientation == 2) length else width
+    override val sizeY: TileUnit get() = if (orientation == 0 || orientation == 2) length else width
 
-    val accessBlockFlags get() = if (orientation != 0) {
-        (blueprint.accessBlockFlags shl orientation and 0xF) + (blueprint.accessBlockFlags shr 4 - orientation)
-    } else {
-        blueprint.accessBlockFlags
-    }
+    val accessBlockFlags: Int
+        get() = if (orientation != 0) {
+            (blueprint.accessBlockFlags shl orientation and 0xF) + (blueprint.accessBlockFlags shr 4 - orientation)
+        } else {
+            blueprint.accessBlockFlags
+        }
 
-    val slot get() = MAP_SLOTS[type]
+    val slot: Int get() = MAP_SLOTS[type]
 
     internal val mapKey get() = (pos.x.relativeZone.value shl 5) or (pos.y.relativeZone.value shl 2) or slot
 
     companion object {
-        const val UNIQUE_SLOTS = 4
+        const val UNIQUE_SLOTS: Int = 4
 
-        val MAP_SLOTS = intArrayOf(0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3)
+        val MAP_SLOTS: IntArray = intArrayOf(0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3)
 
-        fun generateMapKey(localX: TileUnit, localY: TileUnit, slot: Int) = (localX.value shl 5) or
+        fun generateMapKey(localX: TileUnit, localY: TileUnit, slot: Int): Int = (localX.value shl 5) or
             (localY.value shl 2) or slot
     }
 }

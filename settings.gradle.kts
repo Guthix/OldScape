@@ -27,12 +27,12 @@ includeModules("plugins")
 fun includeModules(module: String) {
     val pluginRootDir: Path = rootProject.projectDir.toPath().resolve(module)
     if (pluginRootDir.toFile().exists()) {
-        val gradleBuildFiles = FileNameFinder().getFileNames(pluginRootDir.toString(), "**/*.gradle.kts")
+        val gradleBuildFiles = FileNameFinder().getFileNames("$pluginRootDir", "**/*.gradle.kts")
         gradleBuildFiles.forEach { filename ->
             val buildFilePath = Paths.get(filename)
             val moduleDir = buildFilePath.parent
             val relativePath = pluginRootDir.relativize(moduleDir)
-            val pluginName = relativePath.toString().replace(File.separator, ":")
+            val pluginName = "$relativePath".replace(File.separator, ":")
             include(":$module:$pluginName")
         }
     }

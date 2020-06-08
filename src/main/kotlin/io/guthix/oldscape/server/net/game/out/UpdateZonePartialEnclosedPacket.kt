@@ -30,9 +30,9 @@ class UpdateZonePartialEnclosedPacket(
     private val localY: TileUnit,
     private val packets: List<ZoneOutGameEvent>
 ) : OutGameEvent {
-    override val opcode = 59
+    override val opcode: Int = 59
 
-    override val size = VarShortSize
+    override val size: VarShortSize = VarShortSize
 
     override fun encode(ctx: ChannelHandlerContext): ByteBuf {
         val buf = Unpooled.compositeBuffer(1 + packets.size * 2)
@@ -49,6 +49,6 @@ class UpdateZonePartialEnclosedPacket(
     }
 
     companion object {
-        const val STATIC_SIZE = Byte.SIZE_BYTES + Byte.SIZE_BYTES
+        const val STATIC_SIZE: Int = Byte.SIZE_BYTES + Byte.SIZE_BYTES
     }
 }

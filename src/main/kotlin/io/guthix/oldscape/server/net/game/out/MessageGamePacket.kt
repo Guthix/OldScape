@@ -28,9 +28,9 @@ class MessageGamePacket(
     private val isInteractingMessage: Boolean,
     private val message: String
 ) : OutGameEvent {
-    override val opcode = 39
+    override val opcode: Int = 39
 
-    override val size = VarByteSize
+    override val size: VarByteSize = VarByteSize
 
     override fun encode(ctx: ChannelHandlerContext): ByteBuf {
         val buf = ctx.alloc().buffer(message.length + STATIC_SIZE)
@@ -41,6 +41,6 @@ class MessageGamePacket(
     }
 
     companion object {
-        const val STATIC_SIZE = Short.SIZE_BYTES + Byte.SIZE_BYTES
+        const val STATIC_SIZE: Int = Short.SIZE_BYTES + Byte.SIZE_BYTES
     }
 }

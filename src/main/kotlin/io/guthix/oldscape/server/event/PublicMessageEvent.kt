@@ -21,7 +21,7 @@ import io.guthix.oldscape.server.net.game.ClientEvent
 import io.guthix.oldscape.server.world.World
 
 data class PublicMessageEvent(val color: Int, val effect: Int, val message: String) : ClientEvent, InGameEvent {
-    val length get() = message.length
+    val length: Int get() = message.length
 
-    override fun toGameEvent(world: World) = this
+    override fun toGameEvent(world: World): PublicMessageEvent = this
 }

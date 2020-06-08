@@ -30,21 +30,21 @@ class UpdateInvFullPacket(
     private val containerId: Int,
     private val objs: List<Obj?>
 ) : OutGameEvent {
-    override val opcode = 71
+    override val opcode: Int = 71
 
-    override val size = VarShortSize
+    override val size: VarShortSize = VarShortSize
 
     override fun encode(ctx: ChannelHandlerContext): ByteBuf {
         val buf = ctx.alloc().buffer()
         buf.writeInt((interfaceId shl 16) or interfacePosition)
         buf.writeShort(containerId)
         buf.writeShort(objs.size)
-        for(obj in objs) {
-            if(obj == null) {
+        for (obj in objs) {
+            if (obj == null) {
                 buf.writeByteADD(0)
                 buf.writeShortLEADD(0)
             } else {
-                if(obj.quantity <= 255) {
+                if (obj.quantity <= 255) {
                     buf.writeByteADD(obj.quantity)
                 } else {
                     buf.writeByteADD(255)

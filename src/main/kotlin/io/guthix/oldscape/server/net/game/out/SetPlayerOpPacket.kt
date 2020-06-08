@@ -25,19 +25,19 @@ import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 
 class SetPlayerOpPacket(val prioritized: Boolean, val slot: Int, val text: String) : OutGameEvent {
-    override val opcode = 44
+    override val opcode: Int = 44
 
-    override val size = VarByteSize
+    override val size: VarByteSize = VarByteSize
 
     override fun encode(ctx: ChannelHandlerContext): ByteBuf {
         val buf = ctx.alloc().buffer(STATIC_SIZE + text.length)
         buf.writeStringCP1252(text)
-        buf.writeByteNEG(if(prioritized) 1 else 0)
+        buf.writeByteNEG(if (prioritized) 1 else 0)
         buf.writeByteADD(slot)
         return buf
     }
 
     companion object {
-        const val STATIC_SIZE = Byte.SIZE_BYTES + Byte.SIZE_BYTES
+        const val STATIC_SIZE: Int = Byte.SIZE_BYTES + Byte.SIZE_BYTES
     }
 }

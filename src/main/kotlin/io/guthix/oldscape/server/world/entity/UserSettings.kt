@@ -41,7 +41,7 @@ data class MachineSettings(
         OTHER(4);
 
         companion object {
-            fun get(opcode: Int): OperatingSystem = OperatingSystem.values().first { it.opcode == opcode }
+            fun get(opcode: Int): OperatingSystem = values().first { it.opcode == opcode }
         }
     }
 
@@ -53,7 +53,7 @@ data class MachineSettings(
         ORACLE(5);
 
         companion object {
-            fun get(opcode: Int): JavaVendor = JavaVendor.values().first { it.opcode == opcode }
+            fun get(opcode: Int): JavaVendor = values().first { it.opcode == opcode }
         }
     }
 }

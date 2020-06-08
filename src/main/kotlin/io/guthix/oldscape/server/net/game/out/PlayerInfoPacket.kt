@@ -17,13 +17,13 @@
 package io.guthix.oldscape.server.net.game.out
 
 import io.guthix.buffer.*
-import io.guthix.oldscape.server.dimensions.tiles
 import io.guthix.oldscape.server.api.Huffman
 import io.guthix.oldscape.server.dimensions.floors
+import io.guthix.oldscape.server.dimensions.tiles
 import io.guthix.oldscape.server.net.game.OutGameEvent
 import io.guthix.oldscape.server.net.game.VarShortSize
-import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.PlayerList
+import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.Npc
 import io.guthix.oldscape.server.world.entity.Player
 import io.guthix.oldscape.server.world.entity.interest.MovementInterestUpdate
@@ -42,9 +42,9 @@ class PlayerInfoPacket(
     private val im: PlayerManager,
     private val player: Player
 ) : OutGameEvent, CharacterInfoPacket() {
-    override val opcode = 79
+    override val opcode: Int = 79
 
-    override val size = VarShortSize
+    override val size: VarShortSize = VarShortSize
 
     private var skip = 0
 
@@ -58,7 +58,7 @@ class PlayerInfoPacket(
         im.localPlayerCount = 0
         im.externalPlayerCount = 0
         for (index in 1 until World.MAX_PLAYERS) {
-           im.skipFlags[index] = (im.skipFlags[index].toInt() shr 1).toByte()
+            im.skipFlags[index] = (im.skipFlags[index].toInt() shr 1).toByte()
             if (im.localPlayers[index] != null) {
                 im.localPlayerIndexes[im.localPlayerCount++] = index
             } else {
@@ -122,15 +122,15 @@ class PlayerInfoPacket(
         }
 
         fun skipLocalPlayers(bitBuf: BitBuf, currentIndex: Int, nsn: Boolean) {
-            for (i in (currentIndex + 1) until im.localPlayerCount) {
-                val nextPlayerIndex = im.localPlayerIndexes[i]
-                if (hasBeenSkippedLastTick(nextPlayerIndex, nsn)) {
-                    val nextPlayer = im.localPlayers[nextPlayerIndex]
-                    val updateRequired = nextPlayer != null && localUpdateRequired(player, nextPlayer)
-                    if (updateRequired) break
-                    skip++
-                }
-            }
+            ((currentIndex + 1) until im.localPlayerCount)
+                .asSequence()
+                .map { im.localPlayerIndexes[it] }
+                .filter { hasBeenSkippedLastTick(it, nsn) }
+                .map { im.localPlayers[it] }
+                .map { it != null && localUpdateRequired(player, it) }
+                .takeWhile { !it }
+                .toList()
+                .forEach { _ -> skip++ }
             bitBuf.writeSkip(skip)
         }
 
@@ -210,19 +210,15 @@ class PlayerInfoPacket(
         }
 
         fun skipExternalPlayers(buf: BitBuf, currentIndex: Int, nsn: Boolean) {
-            for (i in (currentIndex + 1) until im.externalPlayerCount) {
-                val externalPlayerIndex = im.externalPlayerIndexes[i]
-                if (hasBeenSkippedLastTick(externalPlayerIndex, nsn)) {
-                    val nextPlayer = worldPlayers[externalPlayerIndex]
-                    val requiresFlagUpdates = nextPlayer != null && externalUpdateRequired(
-                        player, nextPlayer
-                    )
-                    if (requiresFlagUpdates) {
-                        break
-                    }
-                    skip++
-                }
-            }
+            ((currentIndex + 1) until im.externalPlayerCount)
+                .asSequence()
+                .map { im.externalPlayerIndexes[it] }
+                .filter { hasBeenSkippedLastTick(it, nsn) }
+                .map { worldPlayers[it] }
+                .map { it != null && externalUpdateRequired(player, it) }
+                .takeWhile { !it }
+                .toList()
+                .forEach { _ -> skip++ }
             buf.writeSkip(skip)
         }
 
@@ -261,7 +257,7 @@ class PlayerInfoPacket(
     private fun getDirectionType(dx: Int, dy: Int) = MOVEMENT[2 - dy][dx + 2]
 
     private fun markPlayerAsSkipped(playerIndex: Int) {
-       im.skipFlags[playerIndex] = (im.skipFlags[playerIndex].toInt() or 0x2).toByte()
+        im.skipFlags[playerIndex] = (im.skipFlags[playerIndex].toInt() or 0x2).toByte()
     }
 
     private fun hasBeenSkippedLastTick(playerIndex: Int, nsn: Boolean) = if (nsn) {
@@ -320,24 +316,24 @@ class PlayerInfoPacket(
             intArrayOf(0, 1, 2, 3, 4)
         )
 
-        val movementForced = PlayerUpdateType(0, 0x200) { player ->
+        val movementForced: PlayerUpdateType = PlayerUpdateType(0, 0x200) { player ->
             //TODO
         }
 
-        val spotAnimation = PlayerUpdateType(1, 0x800) { player ->
+        val spotAnimation: PlayerUpdateType = PlayerUpdateType(1, 0x800) { player ->
             writeShortADD(player.spotAnimation?.id ?: 65535)
-            writeIntLE(((player.spotAnimation?.height ?: 0) shl 16) or (player.spotAnimation?.delay ?:0))
+            writeIntLE(((player.spotAnimation?.height ?: 0) shl 16) or (player.spotAnimation?.delay ?: 0))
         }
 
-        val sequence = PlayerUpdateType(2, 0x80) { player ->
+        val sequence: PlayerUpdateType = PlayerUpdateType(2, 0x80) { player ->
             writeShortLE(player.sequence?.id ?: 65535)
             writeByteNEG(player.sequence?.duration ?: 0)
         }
 
-        val appearance = PlayerUpdateType(3, 0x2) { player ->
+        val appearance: PlayerUpdateType = PlayerUpdateType(3, 0x2) { player ->
             val tempBuf = Unpooled.buffer() // TODO use pooling
             tempBuf.writeByte(player.gender.opcode)
-            tempBuf.writeByte(if(player.isSkulled) 1 else -1)
+            tempBuf.writeByte(if (player.isSkulled) 1 else -1)
             tempBuf.writeByte(player.prayerIcon)
             player.equipment.head?.let { // write head gear
                 tempBuf.writeShort(512 + it.id)
@@ -358,23 +354,23 @@ class PlayerInfoPacket(
                 tempBuf.writeShort(512 + it.id)
             } ?: run { tempBuf.writeByte(0) }
             player.equipment.body?.let { // write arms
-                if(it.isFullBody) tempBuf.writeByte(0) else tempBuf.writeShort(256 + player.style.arms)
+                if (it.isFullBody) tempBuf.writeByte(0) else tempBuf.writeShort(256 + player.style.arms)
             } ?: run { tempBuf.writeShort(256 + player.style.arms) }
             player.equipment.legs?.let { // write legs
                 tempBuf.writeShort(512 + it.id)
             } ?: run { tempBuf.writeShort(256 + player.style.legs) }
             player.equipment.head?.let { // write hair
-                if(it.coversHair) tempBuf.writeByte(0) else tempBuf.writeShort(256 + player.style.hair)
+                if (it.coversHair) tempBuf.writeByte(0) else tempBuf.writeShort(256 + player.style.hair)
             } ?: run { tempBuf.writeShort(256 + player.style.hair) }
             player.equipment.hands?.let {  // write hands
                 tempBuf.writeShort(512 + it.id)
             } ?: run { tempBuf.writeShort(256 + player.style.hands) }
             player.equipment.feet?.let { // write feet
                 tempBuf.writeShort(512 + it.id)
-            } ?: run { tempBuf.writeShort(256 + player.style.feet)}
-            if(player.gender == PlayerManager.Gender.MALE) { //tBuf.write beard
+            } ?: run { tempBuf.writeShort(256 + player.style.feet) }
+            if (player.gender == PlayerManager.Gender.MALE) { //tBuf.write beard
                 player.equipment.head?.let {
-                    if(it.coversFace) tempBuf.writeByte(0) else tempBuf.writeShort(256 + player.style.beard)
+                    if (it.coversFace) tempBuf.writeByte(0) else tempBuf.writeShort(256 + player.style.beard)
                 } ?: run { tempBuf.writeShort(256 + player.style.beard) }
             } else {
                 tempBuf.writeByte(0)
@@ -400,12 +396,12 @@ class PlayerInfoPacket(
             writeBytesReversedADD(tempBuf)
         }
 
-        val shout = PlayerUpdateType(4, 0x20) { player ->
+        val shout: PlayerUpdateType = PlayerUpdateType(4, 0x20) { player ->
             writeStringCP1252(player.shoutMessage!!) // TODO
         }
 
-        val lockTurnTo = PlayerUpdateType(5, 0x4) { player ->
-            val index = when(val interacting = player.interacting) {
+        val lockTurnTo: PlayerUpdateType = PlayerUpdateType(5, 0x4) { player ->
+            val index = when (val interacting = player.interacting) {
                 is Npc -> interacting.index
                 is Player -> interacting.index + 32768
                 else -> 65535
@@ -413,11 +409,11 @@ class PlayerInfoPacket(
             writeShortLEADD(index)
         }
 
-        val movementCached = PlayerUpdateType(6, 0x1000) { player ->
-            writeByteNEG(if(player.inRunMode) 2 else 1)
+        val movementCached: PlayerUpdateType = PlayerUpdateType(6, 0x1000) { player ->
+            writeByteNEG(if (player.inRunMode) 2 else 1)
         }
 
-        val chat = PlayerUpdateType(7, 0x1) { player ->
+        val chat: PlayerUpdateType = PlayerUpdateType(7, 0x1) { player ->
             writeShortADD((player.publicMessage!!.color shl 8) or player.publicMessage!!.effect)
             writeByteNEG(player.rights)
             writeByteNEG(0) // some boolean
@@ -432,13 +428,13 @@ class PlayerInfoPacket(
         }
 
 
-        val nameModifiers = PlayerUpdateType(8, 0x100) { player ->
+        val nameModifiers: PlayerUpdateType = PlayerUpdateType(8, 0x100) { player ->
             player.nameModifiers.forEach { entry ->
                 writeStringCP1252(entry)
             }
         }
 
-        val hit = PlayerUpdateType(9, 0x10) { player ->
+        val hit: PlayerUpdateType = PlayerUpdateType(9, 0x10) { player ->
             writeByte(player.hitMarkQueue.size)
             player.hitMarkQueue.forEach { hitMark ->
                 writeSmallSmart(hitMark.colour.id)
@@ -454,11 +450,11 @@ class PlayerInfoPacket(
             }
         }
 
-        val movementTemporary = PlayerUpdateType(10, 0x400) { player ->
-            writeByteNEG(if(player.movementType == MovementInterestUpdate.TELEPORT) 127 else 0)
+        val movementTemporary: PlayerUpdateType = PlayerUpdateType(10, 0x400) { player ->
+            writeByteNEG(if (player.movementType == MovementInterestUpdate.TELEPORT) 127 else 0)
         }
 
-        val orientation = PlayerUpdateType(11, 0x8) { player ->
+        val orientation: PlayerUpdateType = PlayerUpdateType(11, 0x8) { player ->
             writeShortADD(player.orientation)
         }
     }
