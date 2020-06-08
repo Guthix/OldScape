@@ -3,13 +3,13 @@
 plugins {
     idea
     application
-    kotlin("jvm") version "1.4-M2"
-    id("com.github.hierynomus.license") version "0.15.0"
+    kotlin("jvm")
+    id("com.github.hierynomus.license")
 }
 
 group = "io.guthix"
 version = "0.1-SNAPSHOT"
-description = "An Oldschool Runescape Cache EmulaTOR"
+description = "An Oldschool Runescape Server Emulator"
 
 val licenseHeader by extra(file("AGPLv3.txt"))
 
@@ -23,7 +23,7 @@ val nettyVersion by extra("4.1.42.Final")
 val jacksonVersion by extra("2.10.2")
 val oldscapeCacheVersion by extra("1a531f49a8")
 val jagexByteBufVersion by extra("555807fda4")
-val kotlinVersion by extra("1.4-M2")
+val kotlinVersion: String by extra
 
 allprojects {
     apply(plugin = "kotlin")
@@ -48,6 +48,19 @@ allprojects {
         include("**/*.kts")
         mapping("kts", "JAVADOC_STYLE")
     }
+
+    tasks {
+        compileKotlin {
+            kotlinOptions.jvmTarget = "11"
+            kotlinOptions.freeCompilerArgs = listOf(
+                "-Xopt-in=kotlin.ExperimentalStdlibApi", "-XXLanguage:+InlineClasses"
+            )
+        }
+
+        compileTestKotlin {
+            kotlinOptions.jvmTarget = "11"
+        }
+    }
 }
 
 dependencies {
@@ -70,15 +83,4 @@ dependencies {
     implementation(group = "com.fasterxml.jackson.core", name = "jackson-databind", version = jacksonVersion)
     implementation(group = "com.fasterxml.jackson.dataformat", name = "jackson-dataformat-yaml", version = jacksonVersion)
     implementation(group = "com.fasterxml.jackson.module", name = "jackson-module-kotlin", version = jacksonVersion)
-}
-
-tasks {
-    compileKotlin {
-        kotlinOptions.jvmTarget = "11"
-        kotlinOptions.freeCompilerArgs = listOf("-Xopt-in=kotlin.ExperimentalStdlibApi", "-XXLanguage:+InlineClasses")
-    }
-
-    compileTestKotlin {
-        kotlinOptions.jvmTarget = "11"
-    }
 }
