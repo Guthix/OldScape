@@ -13,9 +13,7 @@ description = "An Oldschool Runescape Cache EmulaTOR"
 
 val licenseHeader by extra(file("AGPLv3.txt"))
 
-application {
-    mainClass.set("io.guthix.oldscape.server.OldScape")
-}
+application { mainClass.set("io.guthix.oldscape.server.OldScape") }
 
 val kotlinLoggingVersion by extra("1.7.6")
 val kotlinCoroutinesVersion by extra("1.3.2")
@@ -60,8 +58,8 @@ dependencies {
     }
     api(project(":dimensions"))
     api(project(":blueprints"))
-    api(group = "com.github.Guthix", name = "Oldscape-Cache", version = oldscapeCacheVersion)
-    implementation(group = "com.github.guthix", name = "Jagex-ByteBuf", version =  jagexByteBufVersion)
+    api(group = "com.github.guthix", name = "oldscape-cache", version = oldscapeCacheVersion)
+    implementation(group = "com.github.guthix", name = "jagex-byteBuf", version =  jagexByteBufVersion)
     implementation(group = "org.jetbrains.kotlin", name = "kotlin-reflect", version =  kotlinVersion)
     implementation(group = "org.jetbrains.kotlin", name = "kotlin-scripting-common", version =  kotlinVersion)
     implementation(group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version =  kotlinCoroutinesVersion)
@@ -77,7 +75,7 @@ dependencies {
 tasks {
     compileKotlin {
         kotlinOptions.jvmTarget = "11"
-        kotlinOptions.freeCompilerArgs = listOf("-Xopt-in=kotlin.ExperimentalStdlibApi")
+        kotlinOptions.freeCompilerArgs = listOf("-Xopt-in=kotlin.ExperimentalStdlibApi", "-XXLanguage:+InlineClasses")
     }
 
     compileTestKotlin {
