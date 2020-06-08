@@ -1,9 +1,0 @@
-compileKotlin {
-    kotlinOptions {
-        freeCompilerArgs = ['-XXLanguage:+InlineClasses']
-    }
-}
-
-license {
-    header = licenseHeader
-}
