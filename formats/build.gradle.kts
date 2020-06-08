@@ -1,4 +1,4 @@
-val jgltfVersion: String = "2.0.0"
+val jgltfVersion: String by extra("2.0.0")
 
 dependencies {
     api(rootProject)

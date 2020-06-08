@@ -3,26 +3,27 @@
 plugins {
     idea
     `maven-publish`
-    kotlin("jvm") version "1.4-M2"
-    id("org.jetbrains.dokka") version "0.10.0"
-    id("com.github.hierynomus.license") version "0.15.0"
+    kotlin("jvm")
+    id("org.jetbrains.dokka")
+    id("com.github.hierynomus.license")
 }
 
 group = "io.guthix"
 version = "0.1-SNAPSHOT"
 description = "A library for modifying OldScape caches"
 
-protected val licenseHeader: File = file("LGPLv3.txt")
+val licenseHeader: File by extra(file("LGPLv3.txt"))
 
-val jagexByteBufVersion: String = "555807fda4"
-val jagexCacheVersion: String = "b95030a6f6"
-val kotlinLoggingVersion: String = "1.7.6"
-val kotlinVersion: String = "1.3.70"
-val licensePluginVersion: String = "0.15.0"
-val logbackVersion: String = "1.2.3"
+val jagexByteBufVersion: String by extra("555807fda4")
+val jagexCacheVersion: String by extra("b95030a6f6")
+val kotlinLoggingVersion: String by extra("1.7.6")
+val kotlinVersion: String by extra("1.3.70")
+val licensePluginVersion: String by extra("0.15.0")
+val logbackVersion: String by extra("1.2.3")
 
 allprojects {
     apply(plugin = "kotlin")
+    apply(plugin = "com.github.hierynomus.license")
 
     repositories {
         mavenCentral()
@@ -34,32 +35,29 @@ allprojects {
     dependencies {
         implementation(kotlin("stdlib-jdk8"))
     }
-}
 
-kotlin {
-    explicitApi()
-}
+    tasks {
+        compileKotlin {
+            kotlinOptions.jvmTarget = "11"
+        }
 
-tasks {
-    compileKotlin {
-        kotlinOptions.jvmTarget = "1.8"
+        compileTestKotlin {
+            kotlinOptions.jvmTarget = "11"
+        }
     }
 
-    compileTestKotlin {
-        kotlinOptions.jvmTarget = "1.8"
+    license {
+        header = licenseHeader
     }
 }
 
+kotlin { explicitApi() }
 
 dependencies {
     api(group = "com.github.guthix", name = "Jagex-Store-5", version = jagexCacheVersion)
     implementation(group = "com.github.guthix", name = "Jagex-ByteBuf", version = jagexByteBufVersion)
     implementation(group = "io.github.microutils", name = "kotlin-logging", version = kotlinLoggingVersion)
     implementation(group = "ch.qos.logback", name = "logback-classic", version = logbackVersion)
-}
-
-license {
-    header = licenseHeader
 }
 
 tasks.dokka {
