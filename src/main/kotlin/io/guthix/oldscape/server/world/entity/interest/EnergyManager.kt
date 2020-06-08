@@ -25,7 +25,7 @@ import io.netty.channel.ChannelFuture
 class EnergyManager : InterestManager {
     private var weightChanged = false
 
-    var weight = 50
+    var weight: Int = 50
         set(value) {
             weightChanged = true
             field = value
@@ -33,7 +33,7 @@ class EnergyManager : InterestManager {
 
     private var energyChanged = false
 
-    var energy = 100
+    var energy: Int = 100
         set(value) {
             energyChanged = true
             field = value

@@ -23,6 +23,6 @@ enum class LoginType(val opcode: Int) {
     RECONNECT_LOGIN_CONNECTION(18);
 
     companion object {
-        fun find(opcode: Int) = LoginType.values().first{ it.opcode == opcode}
+        fun find(opcode: Int): LoginType = values().first { it.opcode == opcode }
     }
 }

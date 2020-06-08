@@ -27,5 +27,5 @@ data class LocationClickEvent(
     val id: Int, val
     pressed: Boolean
 ) : ClientEvent, InGameEvent {
-    override fun toGameEvent(world: World) = this
+    override fun toGameEvent(world: World): LocationClickEvent = this
 }

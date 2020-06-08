@@ -31,11 +31,11 @@ class LocAddChangePacket(
     localX: TileUnit,
     localY: TileUnit
 ) : ZoneOutGameEvent(localX, localY) {
-    override val opcode = 32
+    override val opcode: Int = 32
 
-    override val enclOpcode = 0
+    override val enclOpcode: Int = 0
 
-    override val size = FixedSize(STATIC_SIZE)
+    override val size: FixedSize = FixedSize(STATIC_SIZE)
 
     override fun encode(ctx: ChannelHandlerContext): ByteBuf {
         val buf = ctx.alloc().buffer(STATIC_SIZE)
@@ -46,6 +46,6 @@ class LocAddChangePacket(
     }
 
     companion object {
-        const val STATIC_SIZE = Short.SIZE_BYTES + Byte.SIZE_BYTES + Byte.SIZE_BYTES
+        const val STATIC_SIZE: Int = Short.SIZE_BYTES + Byte.SIZE_BYTES + Byte.SIZE_BYTES
     }
 }

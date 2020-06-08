@@ -23,9 +23,10 @@ import io.guthix.oldscape.server.net.game.out.UpdateInvPartialPacket
 import io.guthix.oldscape.server.net.game.out.UpdateInvStopTransmitPacket
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.Obj
-import io.guthix.oldscape.server.world.entity.intface.Interface
 import io.guthix.oldscape.server.world.entity.Player
+import io.guthix.oldscape.server.world.entity.intface.Interface
 import io.netty.channel.ChannelFuture
+
 /**
  * Manages [Player] inventories. An inventory is an [Interface] that holds [Obj]s. Two types of interfaces exists,
  * the old format (if1) which require an [interfaceId] and [interfaceSlotId] to be passed and the newer version (if3)
@@ -44,9 +45,9 @@ class InventoryManager(
     private val changes = mutableMapOf<Int, Obj?>()
 
     fun setObject(obj: Obj) {
-        if(obj.isStackable) {
+        if (obj.isStackable) {
             val slot = objs.indexOfFirst { it?.id == obj.id }
-            if(slot == -1) { // obj not already in inventory
+            if (slot == -1) { // obj not already in inventory
                 addNextSlot(obj)
             } else {
                 val iObj = objs[slot] ?: error("No object in slot $slot of inventory $interfaceId.")
@@ -58,7 +59,7 @@ class InventoryManager(
         }
     }
 
-    fun addNextSlot(obj: Obj) = setObject(objs.indexOfFirst { it == null }, obj)
+    fun addNextSlot(obj: Obj): Unit = setObject(objs.indexOfFirst { it == null }, obj)
 
     fun setObject(slot: Int, obj: Obj) {
         require(slot in 0 until maxSize && objCount != maxSize)
@@ -83,12 +84,12 @@ class InventoryManager(
         player.ctx.write(UpdateInvClearPacket(interfaceId, interfaceSlotId))
     }
 
-    override fun initialize(world: World, player: Player) = objs.forEachIndexed { i, obj -> changes[i] = obj }
+    override fun initialize(world: World, player: Player): Unit = objs.forEachIndexed { i, obj -> changes[i] = obj }
 
     override fun synchronize(world: World, player: Player): List<ChannelFuture> {
         val futures = mutableListOf<ChannelFuture>()
-        if(changes.isNotEmpty()) {
-            if(changes.size == objCount) {
+        if (changes.isNotEmpty()) {
+            if (changes.size == objCount) {
                 futures.add(player.ctx.write(
                     UpdateInvFullPacket(interfaceId, interfaceSlotId, inventoryId, changes.values.toList())
                 ))
@@ -102,5 +103,5 @@ class InventoryManager(
         return futures
     }
 
-    override fun postProcess() { }
+    override fun postProcess() {}
 }

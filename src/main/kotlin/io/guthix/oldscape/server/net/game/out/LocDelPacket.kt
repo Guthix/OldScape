@@ -29,11 +29,11 @@ class LocDelPacket(
     localX: TileUnit,
     localY: TileUnit
 ) : ZoneOutGameEvent(localX, localY) {
-    override val opcode = 85
+    override val opcode: Int = 85
 
-    override val enclOpcode = 8
+    override val enclOpcode: Int = 8
 
-    override val size = FixedSize(STATIC_SIZE)
+    override val size: FixedSize = FixedSize(STATIC_SIZE)
 
     override fun encode(ctx: ChannelHandlerContext): ByteBuf {
         val buf = ctx.alloc().buffer(STATIC_SIZE)
@@ -43,6 +43,6 @@ class LocDelPacket(
     }
 
     companion object {
-        const val STATIC_SIZE = Byte.SIZE_BYTES + Byte.SIZE_BYTES
+        const val STATIC_SIZE: Int = Byte.SIZE_BYTES + Byte.SIZE_BYTES
     }
 }

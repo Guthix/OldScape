@@ -31,5 +31,5 @@ data class MiniMapClickEvent(
     val playerX: TileUnit,
     val playerY: TileUnit
 ) : ClientEvent, InGameEvent {
-    override fun toGameEvent(world: World) = this
+    override fun toGameEvent(world: World): MiniMapClickEvent = this
 }

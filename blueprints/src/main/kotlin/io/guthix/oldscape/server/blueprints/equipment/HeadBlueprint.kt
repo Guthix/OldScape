@@ -31,6 +31,6 @@ class HeadBlueprint(
     cacheConfig: ObjectConfig,
     override val extraConfig: ExtraHeadConfig
 ) : EquipmentBlueprint(cacheConfig, EquipmentSlot.HEAD, extraConfig) {
-    val coversHair get() = extraConfig.coversHair
-    val coversFace get() = extraConfig.coversFace
+    val coversHair: Boolean get() = extraConfig.coversHair
+    val coversFace: Boolean get() = extraConfig.coversFace
 }

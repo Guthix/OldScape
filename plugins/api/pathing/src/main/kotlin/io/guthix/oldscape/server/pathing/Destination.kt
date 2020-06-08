@@ -33,7 +33,7 @@ abstract class Destination(val floor: FloorUnit, val x: TileUnit, val y: TileUni
 class DestinationTile(floor: FloorUnit, x: TileUnit, y: TileUnit) : Destination(floor, x, y) {
     constructor(tile: Tile) : this(tile.floor, tile.x, tile.y)
 
-    override fun reached(moverX: TileUnit, moverY: TileUnit, moverSize: TileUnit) = x == moverX && y == moverY
+    override fun reached(moverX: TileUnit, moverY: TileUnit, moverSize: TileUnit): Boolean = x == moverX && y == moverY
 }
 
 class DesinationNpc(
@@ -45,41 +45,46 @@ class DesinationNpc(
         val srcEndY = moverY + moverSize
         val destEndX = x + npc.sizeX
         val destEndY = y + npc.sizeY
-        if (moverY == destEndY) {
-            var maxX = if (moverX > x) moverX else x
-            val maxXSize = if (srcEndX < destEndX) srcEndX else destEndX
-            while (maxX < maxXSize) {
-                if (map.getCollisionMask(floor, maxX, destEndY - 1.tiles) and ZoneCollision.MASK_WALL_N == 0) {
-                    return true
+        when {
+            moverY == destEndY -> {
+                var maxX = if (moverX > x) moverX else x
+                val maxXSize = if (srcEndX < destEndX) srcEndX else destEndX
+                while (maxX < maxXSize) {
+                    if (map.getCollisionMask(floor, maxX, destEndY - 1.tiles) and ZoneCollision.MASK_WALL_N == 0) {
+                        return true
+                    }
+                    maxX++
                 }
-                maxX++
             }
-        } else if (destEndX == moverX) {
-            var maxY = if (moverY > y) moverY else y
-            val maxYSize = if (srcEndY < destEndY) srcEndY else destEndY
-            while (maxY < maxYSize) {
-                if (map.getCollisionMask(floor, destEndX - 1.tiles, maxY) and ZoneCollision.MASK_WALL_E == 0) {
-                    return true
+            destEndX == moverX -> {
+                var maxY = if (moverY > y) moverY else y
+                val maxYSize = if (srcEndY < destEndY) srcEndY else destEndY
+                while (maxY < maxYSize) {
+                    if (map.getCollisionMask(floor, destEndX - 1.tiles, maxY) and ZoneCollision.MASK_WALL_E == 0) {
+                        return true
+                    }
+                    maxY++
                 }
-                maxY++
             }
-        } else if (y == srcEndY) {
-            var maxX = if (moverX > x) moverX else x
-            val maxXSize = if (srcEndX < destEndX) srcEndX else destEndX
-            while (maxX < maxXSize) {
-                if (map.getCollisionMask(floor, maxX, y) and ZoneCollision.MASK_WALL_S == 0) {
-                    return true
+            y == srcEndY -> {
+                var maxX = if (moverX > x) moverX else x
+                val maxXSize = if (srcEndX < destEndX) srcEndX else destEndX
+                while (maxX < maxXSize) {
+                    if (map.getCollisionMask(floor, maxX, y) and ZoneCollision.MASK_WALL_S == 0) {
+                        return true
+                    }
+                    maxX++
                 }
-                maxX++
             }
-        } else if (srcEndX == x) {
-            var maxY = if (moverY > y) moverY else y
-            val maxYSize = if (srcEndY < destEndY) srcEndY else destEndY
-            while (maxY < maxYSize) {
-                if (map.getCollisionMask(floor, x, maxY) and ZoneCollision.MASK_WALL_W == 0) {
-                    return true
+            srcEndX == x -> {
+                var maxY = if (moverY > y) moverY else y
+                val maxYSize = if (srcEndY < destEndY) srcEndY else destEndY
+                while (maxY < maxYSize) {
+                    if (map.getCollisionMask(floor, x, maxY) and ZoneCollision.MASK_WALL_W == 0) {
+                        return true
+                    }
+                    maxY++
                 }
-                maxY++
             }
         }
         return false
@@ -95,50 +100,49 @@ class DestinationPlayer(
         val srcEndY = moverY + moverSize
         val destEndX = x + player.sizeX
         val destEndY = y + player.sizeY
-        if (moverY == destEndY) {
-            var maxX = if (moverX > x) moverX else x
-            val maxXSize = if (srcEndX < destEndX) srcEndX else destEndX
-            while (maxX < maxXSize) {
-                if (map.getCollisionMask(floor, maxX, destEndY - 1.tiles) and ZoneCollision.MASK_WALL_N == 0) {
-                    return true
+        when {
+            moverY == destEndY -> {
+                var maxX = if (moverX > x) moverX else x
+                val maxXSize = if (srcEndX < destEndX) srcEndX else destEndX
+                while (maxX < maxXSize) {
+                    if (map.getCollisionMask(floor, maxX, destEndY - 1.tiles) and ZoneCollision.MASK_WALL_N == 0) {
+                        return true
+                    }
+                    maxX++
                 }
-                maxX++
             }
-        } else if (destEndX == moverX) {
-            var maxY = if (moverY > y) moverY else y
-            val maxYSize = if (srcEndY < destEndY) srcEndY else destEndY
-            while (maxY < maxYSize) {
-                if (map.getCollisionMask(floor, destEndX - 1.tiles, maxY) and ZoneCollision.MASK_WALL_E == 0) {
-                    return true
+            destEndX == moverX -> {
+                var maxY = if (moverY > y) moverY else y
+                val maxYSize = if (srcEndY < destEndY) srcEndY else destEndY
+                while (maxY < maxYSize) {
+                    if (map.getCollisionMask(floor, destEndX - 1.tiles, maxY) and ZoneCollision.MASK_WALL_E == 0) {
+                        return true
+                    }
+                    maxY++
                 }
-                maxY++
             }
-        } else if (y == srcEndY) {
-            var maxX = if (moverX > x) moverX else x
-            val maxXSize = if (srcEndX < destEndX) srcEndX else destEndX
-            while (maxX < maxXSize) {
-                if (map.getCollisionMask(floor, maxX, y) and ZoneCollision.MASK_WALL_S == 0) {
-                    return true
+            y == srcEndY -> {
+                var maxX = if (moverX > x) moverX else x
+                val maxXSize = if (srcEndX < destEndX) srcEndX else destEndX
+                while (maxX < maxXSize) {
+                    if (map.getCollisionMask(floor, maxX, y) and ZoneCollision.MASK_WALL_S == 0) {
+                        return true
+                    }
+                    maxX++
                 }
-                maxX++
             }
-        } else if (srcEndX == x) {
-            var maxY = if (moverY > y) moverY else y
-            val maxYSize = if (srcEndY < destEndY) srcEndY else destEndY
-            while (maxY < maxYSize) {
-                if (map.getCollisionMask(floor, x, maxY) and ZoneCollision.MASK_WALL_W == 0) {
-                    return true
+            srcEndX == x -> {
+                var maxY = if (moverY > y) moverY else y
+                val maxYSize = if (srcEndY < destEndY) srcEndY else destEndY
+                while (maxY < maxYSize) {
+                    if (map.getCollisionMask(floor, x, maxY) and ZoneCollision.MASK_WALL_W == 0) {
+                        return true
+                    }
+                    maxY++
                 }
-                maxY++
             }
         }
         return false
-    }
-}
-
-class DestinationNpc(floor: FloorUnit, x: TileUnit, y: TileUnit) : Destination(floor, x, y) {
-    override fun reached(moverX: TileUnit, moverY: TileUnit, moverSize: TileUnit): Boolean {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }
 
@@ -467,13 +471,13 @@ class DestinationLocation(
     }
 
     companion object {
-        const val ORIENTATION_NORTH = 0
-        const val ORIENTATION_EAST = 1
-        const val ORIENTATION_SOUTH = 2
-        const val ORIENTATION_WEST = 3
-        const val MASK_ENTRANCE_NORTH = 0x1
-        const val MASK_ENTRANCE_EAST = 0x2
-        const val MASK_ENTRANCE_SOUTH = 0x4
-        const val MASK_ENTRANCE_WEST = 0x8
+        const val ORIENTATION_NORTH: Int = 0
+        const val ORIENTATION_EAST: Int = 1
+        const val ORIENTATION_SOUTH: Int = 2
+        const val ORIENTATION_WEST: Int = 3
+        const val MASK_ENTRANCE_NORTH: Int = 0x1
+        const val MASK_ENTRANCE_EAST: Int = 0x2
+        const val MASK_ENTRANCE_SOUTH: Int = 0x4
+        const val MASK_ENTRANCE_WEST: Int = 0x8
     }
 }

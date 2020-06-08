@@ -16,6 +16,7 @@
  */
 package io.guthix.oldscape.server.world.entity.interest
 
+import io.guthix.oldscape.server.dimensions.TileUnit
 import io.guthix.oldscape.server.dimensions.tiles
 import io.guthix.oldscape.server.net.game.out.PlayerInfoPacket
 import io.guthix.oldscape.server.world.World
@@ -24,19 +25,19 @@ import io.guthix.oldscape.server.world.map.Tile
 import io.netty.channel.ChannelFuture
 
 class PlayerManager(val index: Int) : InterestManager {
-    var localPlayerCount = 0
+    var localPlayerCount: Int = 0
 
-    val localPlayers = arrayOfNulls<Player>(World.MAX_PLAYERS)
+    val localPlayers: Array<Player?> = arrayOfNulls(World.MAX_PLAYERS)
 
-    val localPlayerIndexes = IntArray(World.MAX_PLAYERS)
+    val localPlayerIndexes: IntArray = IntArray(World.MAX_PLAYERS)
 
-    var externalPlayerCount = 0
+    var externalPlayerCount: Int = 0
 
-    val externalPlayerIndexes = IntArray(World.MAX_PLAYERS)
+    val externalPlayerIndexes: IntArray = IntArray(World.MAX_PLAYERS)
 
-    val regionIds = IntArray(World.MAX_PLAYERS)
+    val regionIds: IntArray = IntArray(World.MAX_PLAYERS)
 
-    val skipFlags = ByteArray(World.MAX_PLAYERS)
+    val skipFlags: ByteArray = ByteArray(World.MAX_PLAYERS)
 
     override fun initialize(world: World, player: Player) {
         localPlayers[index] = player
@@ -50,11 +51,11 @@ class PlayerManager(val index: Int) : InterestManager {
         }
     }
 
-    override fun synchronize(world: World, player: Player): List<ChannelFuture> {
-        return listOf(player.ctx.write(PlayerInfoPacket(world.players, this, player)))
-    }
+    override fun synchronize(world: World, player: Player): List<ChannelFuture> = listOf(
+        player.ctx.write(PlayerInfoPacket(world.players, this, player))
+    )
 
-    override fun postProcess() { }
+    override fun postProcess() {}
 
     class Equipment(
         head: HeadEquipment?,
@@ -69,37 +70,37 @@ class PlayerManager(val index: Int) : InterestManager {
         feet: FeetEquipment?,
         ring: RingEquipment?
     ) {
-        var head = head
+        var head: HeadEquipment? = head
             internal set
 
-        var cape = cape
+        var cape: CapeEquipment? = cape
             internal set
 
-        var neck = neck
+        var neck: NeckEquipment? = neck
             internal set
 
-        var ammunition = ammunition
+        var ammunition: AmmunitionEquipment? = ammunition
             internal set
 
-        var weapon = weapon
+        var weapon: WeaponEquipment? = weapon
             internal set
 
-        var body = body
+        var body: BodyEquipment? = body
             internal set
 
-        var shield = shield
+        var shield: ShieldEquipment? = shield
             internal set
 
-        var legs = legs
+        var legs: LegsEquipment? = legs
             internal set
 
-        var hands = hands
+        var hands: HandEquipment? = hands
             internal set
 
-        var feet = feet
+        var feet: FeetEquipment? = feet
             internal set
 
-        var ring = ring
+        var ring: RingEquipment? = ring
             internal set
     }
 
@@ -134,15 +135,16 @@ class PlayerManager(val index: Int) : InterestManager {
     enum class Gender(val opcode: Int) { MALE(0), FEMALE(1) }
 
     companion object {
-        val SIZE = 32.tiles
+        val SIZE: TileUnit = 32.tiles
 
-        val RANGE = SIZE / 2.tiles
+        val RANGE: TileUnit = SIZE / 2.tiles
 
-        val REGION_SIZE = 8192.tiles
+        val REGION_SIZE: TileUnit = 8192.tiles
 
-        const val MESSAGE_DURATION = 4
+        const val MESSAGE_DURATION: Int = 4
     }
 }
 
-val Tile.regionId get() = (floor.value shl 16) or ((x / PlayerManager.REGION_SIZE).value shl 8) or
-    (y / PlayerManager.REGION_SIZE).value
+val Tile.regionId: Int
+    get() = (floor.value shl 16) or ((x / PlayerManager.REGION_SIZE).value shl 8) or
+        (y / PlayerManager.REGION_SIZE).value

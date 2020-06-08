@@ -27,6 +27,7 @@ import io.guthix.oldscape.server.world.entity.Loc
 import io.guthix.oldscape.server.world.entity.Obj
 import io.guthix.oldscape.server.world.map.Mapsquare
 import io.guthix.oldscape.server.world.map.Tile
+import io.guthix.oldscape.server.world.map.Zone
 import io.guthix.oldscape.server.world.map.ZoneCollision
 
 class WorldMap(val mapsquares: MutableMap<Int, Mapsquare>) {
@@ -36,9 +37,9 @@ class WorldMap(val mapsquares: MutableMap<Int, Mapsquare>) {
 
     fun init(archive: Js5Archive, xteas: List<MapXtea>): WorldMap {
         val mapArchive = MapArchive.load(archive, xteas)
-        for (mapXtea in xteas) {
-            val mapsquare = mapArchive.mapsquares[mapXtea.id] ?: continue
-            mapsquares[mapXtea.id] = Mapsquare(mapsquare.x.mapsquares, mapsquare.y.mapsquares, mapXtea.key, this)
+        for ((id, key) in xteas) {
+            val mapsquare = mapArchive.mapsquares[id] ?: continue
+            mapsquares[id] = Mapsquare(mapsquare.x.mapsquares, mapsquare.y.mapsquares, key, this)
         }
         mapsquares.forEach { (id, mapsquare) ->
             val def = mapArchive.mapsquares[id] ?: throw IllegalStateException(
@@ -49,33 +50,33 @@ class WorldMap(val mapsquares: MutableMap<Int, Mapsquare>) {
         return this
     }
 
-    fun getZone(tile: Tile) = getZone(tile.floor, tile.x, tile.y)
+    fun getZone(tile: Tile): Zone? = getZone(tile.floor, tile.x, tile.y)
 
-    fun getZone(floor: FloorUnit, x: TileUnit, y: TileUnit) = mapsquares[id(x, y)]?.getZone(
+    fun getZone(floor: FloorUnit, x: TileUnit, y: TileUnit): Zone? = mapsquares[id(x, y)]?.getZone(
         floor, x.relativeMapSquare, y.relativeMapSquare
     )
 
-    fun getZone(floor: FloorUnit, x: ZoneUnit, y: ZoneUnit) = mapsquares[id(x, y)]?.getZone(
+    fun getZone(floor: FloorUnit, x: ZoneUnit, y: ZoneUnit): Zone? = mapsquares[id(x, y)]?.getZone(
         floor, x.relativeMapSquare, y.relativeMapSquare
     )
 
-    fun getLoc(id: Int, floor: FloorUnit, x: TileUnit, y: TileUnit) = mapsquares[id(x, y)]?.getLoc(
+    fun getLoc(id: Int, floor: FloorUnit, x: TileUnit, y: TileUnit): Loc? = mapsquares[id(x, y)]?.getLoc(
         id, floor, x.relativeMapSquare, y.relativeMapSquare
     )
 
-    fun getCollisionMask(floor: FloorUnit, x: TileUnit, y: TileUnit) = mapsquares[id(x, y)]?.getCollisionMask(
+    fun getCollisionMask(floor: FloorUnit, x: TileUnit, y: TileUnit): Int = mapsquares[id(x, y)]?.getCollisionMask(
         floor, x.relativeMapSquare, y.relativeMapSquare
     ) ?: ZoneCollision.MASK_TERRAIN_BLOCK
 
-    fun addUnwalkableTile(floor: FloorUnit, x: TileUnit, y: TileUnit) = mapsquares[id(x, y)]?.addUnwalkableTile(
+    fun addUnwalkableTile(floor: FloorUnit, x: TileUnit, y: TileUnit): Unit? = mapsquares[id(x, y)]?.addUnwalkableTile(
         floor, x.relativeMapSquare, y.relativeMapSquare
     )
 
-    fun addObject(tile: Tile, obj: Obj) = mapsquares[id(tile.x, tile.y)]?.addObject(tile, obj)
+    fun addObject(tile: Tile, obj: Obj): Unit? = mapsquares[id(tile.x, tile.y)]?.addObject(tile, obj)
 
-    fun removeObject(tile: Tile, id: Int) = mapsquares[id(tile.x, tile.y)]?.removeObject(tile, id)
+    fun removeObject(tile: Tile, id: Int): Obj? = mapsquares[id(tile.x, tile.y)]?.removeObject(tile, id)
 
-    fun addDynamicLoc(loc: Loc) = mapsquares[id(loc.pos.x, loc.pos.y)]?.addDynamicLoc(loc)
+    fun addDynamicLoc(loc: Loc): Unit? = mapsquares[id(loc.pos.x, loc.pos.y)]?.addDynamicLoc(loc)
 
-    fun removeDynamicLoc(loc: Loc) = mapsquares[id(loc.pos.x, loc.pos.y)]?.removeDynamicLoc(loc)
+    fun removeDynamicLoc(loc: Loc): Unit? = mapsquares[id(loc.pos.x, loc.pos.y)]?.removeDynamicLoc(loc)
 }

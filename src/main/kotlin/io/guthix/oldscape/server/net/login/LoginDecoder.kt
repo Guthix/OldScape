@@ -37,17 +37,17 @@ class LoginDecoder(
     private val rsaMod: BigInteger
 ) : ByteToMessageDecoder() {
     override fun decode(ctx: ChannelHandlerContext, inc: ByteBuf, out: MutableList<Any>) {
-        if(!inc.isReadable(3)) return
+        if (!inc.isReadable(3)) return
         inc.markReaderIndex()
         val loginType = LoginType.find(inc.readUnsignedByte().toInt())
         val size = inc.readUnsignedShort()
-        if(!inc.isReadable(size)) {
+        if (!inc.isReadable(size)) {
             inc.resetReaderIndex()
             return
         }
         val revision = inc.readInt()
-        if(inc.readInt() != 1) throw IOException(
-                "Error while decoding login header."
+        if (inc.readInt() != 1) throw IOException(
+            "Error while decoding login header."
         )
         inc.readByte() // param
         val encryptedSize = inc.readUnsignedShort()
@@ -106,8 +106,8 @@ class LoginDecoder(
 
     private fun ByteBuf.decodeMachineSettings(): MachineSettings {
         val check = readUnsignedByte().toInt()
-        if(check != 8) throw IOException(
-                "First byte of machine settings decoding should be 8 but was $check."
+        if (check != 8) throw IOException(
+            "First byte of machine settings decoding should be 8 but was $check."
         )
         val operatingSystem = MachineSettings.OperatingSystem.get(readUnsignedByte().toInt())
         val is64Bit = readUnsignedByte().toInt() == 1
@@ -148,7 +148,7 @@ class LoginDecoder(
                 9 -> "6.2"
                 10 -> "6.3"
                 11 -> "10.0"
-                else -> opcode.toString()
+                else -> "$opcode"
             }
             MachineSettings.OperatingSystem.OSX -> when (opcode) {
                 20 -> "10.4"
@@ -161,9 +161,9 @@ class LoginDecoder(
                 27 -> "10.11"
                 28 -> "10.12"
                 39 -> "10.13"
-                else -> opcode.toString()
+                else -> "$opcode"
             }
-            else -> opcode.toString()
+            else -> "$opcode"
         }
     }
 }

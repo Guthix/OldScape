@@ -22,21 +22,20 @@ import io.guthix.oldscape.server.blueprints.NpcBlueprint
 import mu.KotlinLogging
 import java.io.IOException
 
-private val logger = KotlinLogging.logger {  }
+private val logger = KotlinLogging.logger { }
 
 object NpcBlueprints {
     private lateinit var blueprints: Map<Int, NpcBlueprint>
 
-    operator fun get(index: Int): NpcBlueprint {
-        return blueprints[index] ?: throw IOException("Could not find blueprint $index.")
-    }
+    operator fun get(index: Int): NpcBlueprint = blueprints[index]
+        ?: throw IOException("Could not find blueprint $index.")
 
     fun load(cacheConfigs: Map<Int, NpcConfig>, extraObjConfigs: List<ExtraNpcConfig>) {
         val bps = mutableMapOf<Int, NpcBlueprint>()
         extraObjConfigs.forEach { extraConfig ->
-            extraConfig.ids.forEach inner@ {  id ->
+            extraConfig.ids.forEach inner@{ id ->
                 val cacheConfig = cacheConfigs[id] ?: run {
-                    logger.warn {  "Extra config for id $id is not found in the cache."}
+                    logger.warn { "Extra config for id $id is not found in the cache." }
                     return@inner
                 }
                 bps[id] = NpcBlueprint(

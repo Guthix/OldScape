@@ -1,5 +1,5 @@
 - ids:
-  - 775
+    - 775
   weight: 0.226
   examine: "These gauntlets empower with a greater ability to cook fish."
   equipment:
@@ -21,7 +21,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 776
+    - 776
   weight: 0.226
   examine: "These gauntlets empower the bearer whilst making gold."
   equipment:
@@ -43,7 +43,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 777
+    - 777
   weight: 0.226
   examine: "These gauntlets empower spell casters."
   equipment:
@@ -65,7 +65,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 778
+    - 778
   weight: 0.226
   examine: "My reward for assisting the Fitzharmon family."
   equipment:
@@ -87,7 +87,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 1059
+    - 1059
   weight: 0.226
   examine: "These will keep my hands warm!"
   equipment:
@@ -109,7 +109,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 1063
+    - 1063
   weight: 0.226
   examine: "Better than no armour!"
   equipment:
@@ -131,7 +131,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 1065
+    - 1065
   weight: 0.283
   examine: "Vambraces made from 100% real dragonhide."
   equipment:
@@ -153,7 +153,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 1495
+    - 1495
   weight: 0.2
   examine: "Strong dwarvish gloves."
   equipment:
@@ -175,7 +175,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 1580
+    - 1580
   weight: 0.2
   examine: "These will keep my hands cold!"
   equipment:
@@ -197,7 +197,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 2487
+    - 2487
   weight: 0.283
   examine: "Vambraces made from 100% real dragonhide."
   equipment:
@@ -219,7 +219,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 2489
+    - 2489
   weight: 0.283
   examine: "Vambraces made from 100% real dragonhide."
   equipment:
@@ -241,7 +241,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 2491
+    - 2491
   weight: 0.283
   examine: "Vambraces made from 100% real dragonhide."
   equipment:
@@ -263,7 +263,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 2902
+    - 2902
   weight: 0.453
   examine: "These will keep my hands warm!"
   equipment:
@@ -285,7 +285,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 2912
+    - 2912
   weight: 0.453
   examine: "These will keep my hands warm!"
   equipment:
@@ -307,7 +307,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 2922
+    - 2922
   weight: 0.453
   examine: "These will keep my hands warm!"
   equipment:
@@ -329,7 +329,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 2932
+    - 2932
   weight: 0.453
   examine: "These will keep my hands warm!"
   equipment:
@@ -351,7 +351,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 2942
+    - 2942
   weight: 0.453
   examine: "These will keep my hands warm!"
   equipment:
@@ -373,7 +373,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 2997
+    - 2997
   weight: 0.3
   examine: "You should see the shark..."
   equipment:
@@ -395,7 +395,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 3060
+    - 3060
   weight: 0.001
   examine: "A mime would wear these."
   equipment:
@@ -417,7 +417,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 3391
+    - 3391
   weight: 0.907
   examine: "These should keep my hands safe."
   equipment:
@@ -439,7 +439,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 3799
+    - 3799
   weight: 0.453
   examine: "These will keep my hands warm!"
   equipment:
@@ -461,7 +461,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4095
+    - 4095
   weight: 0.453
   examine: "Magical gloves."
   equipment:
@@ -483,7 +483,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4105
+    - 4105
   weight: 0.453
   examine: "Dark magical gloves."
   equipment:
@@ -505,7 +505,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4115
+    - 4115
   weight: 0.453
   examine: "Bright magical gloves."
   equipment:
@@ -527,7 +527,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4308
+    - 4308
   weight: 0.453
   examine: "HAM gloves as worn by the Humans Against Monsters group."
   equipment:
@@ -549,7 +549,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 5556
+    - 5556
   weight: 0.453
   examine: "Black banded leather gloves, a rogue's dream!"
   equipment:
@@ -571,7 +571,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 6068
+    - 6068
   weight: 2.0
   examine: "These will keep my hands warm!"
   equipment:
@@ -593,7 +593,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 6110
+    - 6110
   weight: 0.001
   examine: "They seem to fade in and out of existence..."
   equipment:
@@ -615,7 +615,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 6149
+    - 6149
   weight: 3.175
   examine: "Fremennik gloves stitched together from spined dagannoth hide."
   equipment:
@@ -637,7 +637,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 6151
+    - 6151
   weight: 3.175
   examine: "Fremennik gloves stitched together from rock crab shell shards."
   equipment:
@@ -659,7 +659,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 6153
+    - 6153
   weight: 3.0
   examine: "Fremennik gloves stitched together from wallasalki bones fragments."
   equipment:
@@ -681,7 +681,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 6330
+    - 6330
   weight: 0.283
   examine: "Made from 100% real snake."
   equipment:
@@ -703,7 +703,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 6347
+    - 6347
   weight: 0.68
   examine: "A brown armband, as worn by the Tai Bwo Wannai locals."
   equipment:
@@ -725,7 +725,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 6359
+    - 6359
   weight: 0.68
   examine: "A light blue armband, as worn by the Tai Bwo Wannai locals."
   equipment:
@@ -747,7 +747,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 6369
+    - 6369
   weight: 0.68
   examine: "A dark blue armband, as worn by the Tai Bwo Wannai locals."
   equipment:
@@ -769,7 +769,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 6379
+    - 6379
   weight: 0.68
   examine: "A white armband, as worn by the Tai Bwo Wannai locals."
   equipment:
@@ -791,7 +791,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 6629
+    - 6629
   weight: 0.2
   examine: "These will keep my hands warm!"
   equipment:
@@ -813,7 +813,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-  - 6720
+    - 6720
   weight: 0.226
   examine: "Especially good against diseased arachnids."
   equipment:
@@ -835,7 +835,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 6922
+    - 6922
   weight: 0.453
   examine: "Mystical gloves."
   equipment:
@@ -857,7 +857,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 7453
+    - 7453
   weight: 0.226
   examine: "A pair of gloves."
   equipment:
@@ -879,7 +879,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 7454
+    - 7454
   weight: 0.226
   examine: "A pair of gloves."
   equipment:
@@ -901,7 +901,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 7455
+    - 7455
   weight: 0.226
   examine: "A pair of gloves."
   equipment:
@@ -923,7 +923,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 7456
+    - 7456
   weight: 0.226
   examine: "A pair of gloves."
   equipment:
@@ -945,7 +945,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 7457
+    - 7457
   weight: 0.226
   examine: "A pair of nice gloves."
   equipment:
@@ -967,8 +967,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 7458
-  - 20581
+    - 7458
+    - 20581
   weight: 0.226
   examine: "A pair of nice gloves."
   equipment:
@@ -990,8 +990,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 7459
-  - 20582
+    - 7459
+    - 20582
   weight: 0.226
   examine: "A pair of nice gloves."
   equipment:
@@ -1013,8 +1013,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 7460
-  - 20583
+    - 7460
+    - 20583
   weight: 0.226
   examine: "A pair of very nice gloves."
   equipment:
@@ -1036,7 +1036,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 7461
+    - 7461
   weight: 0.226
   examine: "A pair of very nice gloves."
   equipment:
@@ -1058,7 +1058,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 7462
+    - 7462
   weight: 0.2
   examine: "A pair of very nice gloves."
   equipment:
@@ -1080,7 +1080,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 7537
+    - 7537
   weight: 0.907
   examine: "If it's good enough for crabs, it's good enough for me!"
   equipment:
@@ -1102,7 +1102,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 7595
+    - 7595
   weight: 0.003
   examine: "Smells pretty funky."
   equipment:
@@ -1124,7 +1124,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 8842
+    - 8842
   weight: 0.453
   examine: "Gloves as used by the order of the Void Knights."
   equipment:
@@ -1146,7 +1146,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 24182
+    - 24182
   weight: 0.453
   examine: "Gloves as used by the order of the Void Knights."
   equipment:
@@ -1168,7 +1168,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 8929
+    - 8929
   weight: 1.0
   examine: "Tied together so they don't come apart."
   equipment:
@@ -1190,7 +1190,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 9072
+    - 9072
   weight: 0.907
   examine: "These should keep my hands safe."
   equipment:
@@ -1212,7 +1212,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 9099
+    - 9099
   weight: 0.907
   examine: "These should keep my hands safe."
   equipment:
@@ -1234,7 +1234,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 9922
+    - 9922
   weight: 2.267
   examine: "Some skeletal gloves."
   equipment:
@@ -1256,7 +1256,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 10075
+    - 10075
   weight: 0.226
   examine: "Made from dark kebbit fur, these are perfect for tasks of a stealthier\
     \ nature."
@@ -1279,7 +1279,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 10077
+    - 10077
   weight: 0.226
   examine: "Attack at your own risk."
   equipment:
@@ -1301,7 +1301,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 10079
+    - 10079
   weight: 0.283
   examine: "Vambraces made from 100% real dragonhide. Now with added spikiness."
   equipment:
@@ -1323,7 +1323,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 10081
+    - 10081
   weight: 0.283
   examine: "Vambraces made from 100% real dragonhide. Now with added spikiness."
   equipment:
@@ -1345,7 +1345,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 10083
+    - 10083
   weight: 0.283
   examine: "Vambraces made from 100% real dragonhide. Now with added spikiness."
   equipment:
@@ -1367,7 +1367,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 10085
+    - 10085
   weight: 0.283
   examine: "Vambraces made from 100% real dragonhide. Now with added spikiness."
   equipment:
@@ -1389,7 +1389,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 10336
+    - 10336
   weight: 1.0
   examine: "Fabulously ancient range protection crafted from white dragonhide."
   equipment:
@@ -1411,7 +1411,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 10368
+    - 10368
   weight: 1.0
   examine: "Zamorak blessed dragonhide vambraces."
   equipment:
@@ -1433,7 +1433,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-  - 10376
+    - 10376
   weight: 1.0
   examine: "Guthix blessed dragonhide vambraces."
   equipment:
@@ -1455,7 +1455,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-  - 10384
+    - 10384
   weight: 1.0
   examine: "Saradomin blessed dragonhide vambraces."
   equipment:
@@ -1477,8 +1477,8 @@
       magic: 0
     prayerBonus: 1
 - ids:
-  - 10553
-  - 10554
+    - 10553
+    - 10554
   weight: 0.0
   examine: "These gloves seem unbelievably light!"
   equipment:
@@ -1500,7 +1500,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 11069
+    - 11069
   weight: 0.25
   examine: "I wonder if this is valuable."
   equipment:
@@ -1522,7 +1522,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 11072
+    - 11072
   weight: 0.25
   examine: "I wonder if this is valuable."
   equipment:
@@ -1544,7 +1544,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 11074
+    - 11074
   weight: 0.25
   examine: "Now I can become a potter."
   equipment:
@@ -1566,7 +1566,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 11076
+    - 11076
   weight: 0.25
   examine: "I wonder if this is valuable."
   equipment:
@@ -1588,7 +1588,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 11083
+    - 11083
   weight: 0.25
   examine: "Must be worn as you enter the game to receive the bonus for that game."
   equipment:
@@ -1610,7 +1610,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 11081
+    - 11081
   weight: 0.25
   examine: "Must be worn as you enter the game to receive the bonus for that game."
   equipment:
@@ -1632,7 +1632,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 11079
+    - 11079
   weight: 0.25
   examine: "Must be worn as you enter the game to receive the bonus for that game."
   equipment:
@@ -1654,7 +1654,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 11085
+    - 11085
   weight: 0.25
   examine: "I wonder if this is valuable."
   equipment:
@@ -1676,7 +1676,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 11088
+    - 11088
   weight: 0.25
   examine: "It eases diseases!"
   equipment:
@@ -1698,7 +1698,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 11092
+    - 11092
   weight: 0.25
   examine: "I wonder if this is valuable."
   equipment:
@@ -1720,7 +1720,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 11103
+    - 11103
   weight: 0.25
   examine: "Makes using the Abyss just slightly safer."
   equipment:
@@ -1742,7 +1742,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 11101
+    - 11101
   weight: 0.25
   examine: "Makes using the Abyss just slightly safer."
   equipment:
@@ -1764,7 +1764,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 11099
+    - 11099
   weight: 0.25
   examine: "Makes using the Abyss just slightly safer."
   equipment:
@@ -1786,7 +1786,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 11097
+    - 11097
   weight: 0.25
   examine: "Makes using the Abyss just slightly safer."
   equipment:
@@ -1808,7 +1808,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 11095
+    - 11095
   weight: 0.25
   examine: "Makes using the Abyss just slightly safer."
   equipment:
@@ -1830,7 +1830,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 11115
+    - 11115
   weight: 0.25
   examine: "I wonder if this is valuable."
   equipment:
@@ -1852,7 +1852,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 11126
+    - 11126
   weight: 0.25
   examine: "You will need to recharge the bracelet at the Legends Guild."
   equipment:
@@ -1874,7 +1874,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 11124
+    - 11124
   weight: 0.25
   examine: "A handy way to get around."
   equipment:
@@ -1896,7 +1896,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 11122
+    - 11122
   weight: 0.25
   examine: "A handy way to get around."
   equipment:
@@ -1918,7 +1918,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 11120
+    - 11120
   weight: 0.25
   examine: "A handy way to get around."
   equipment:
@@ -1940,7 +1940,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 11118
+    - 11118
   weight: 0.25
   examine: "A handy way to get around."
   equipment:
@@ -1962,7 +1962,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 11974
+    - 11974
   weight: 0.25
   examine: "A handy way to get around."
   equipment:
@@ -1984,7 +1984,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 11972
+    - 11972
   weight: 0.25
   examine: "A handy way to get around."
   equipment:
@@ -2006,7 +2006,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 11130
+    - 11130
   weight: 0.25
   examine: "Yep, this is most definitely valuable!"
   equipment:
@@ -2028,7 +2028,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 11133
+    - 11133
   weight: 0.25
   examine: "Helps to restore Hitpoints."
   equipment:
@@ -2050,7 +2050,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 11136
+    - 11136
   weight: 0.226
   examine: "A pair of gloves from Karamja."
   equipment:
@@ -2072,7 +2072,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 11138
+    - 11138
   weight: 0.226
   examine: "A pair of gloves from Karamja."
   equipment:
@@ -2094,7 +2094,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 11140
+    - 11140
   weight: 0.226
   examine: "A pair of gloves from Karamja."
   equipment:
@@ -2116,8 +2116,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 11858
-  - 11859
+    - 11858
+    - 11859
   weight: 0.0
   examine: "A sign of your grace."
   equipment:
@@ -2139,8 +2139,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13587
-  - 13588
+    - 13587
+    - 13588
   weight: 0.0
   examine: "A sign of your grace and loyalty."
   equipment:
@@ -2162,8 +2162,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13599
-  - 13600
+    - 13599
+    - 13600
   weight: 0.0
   examine: "A sign of your grace and loyalty."
   equipment:
@@ -2185,8 +2185,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13611
-  - 13612
+    - 13611
+    - 13612
   weight: 0.0
   examine: "A sign of your grace and loyalty."
   equipment:
@@ -2208,8 +2208,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13623
-  - 13624
+    - 13623
+    - 13624
   weight: 0.0
   examine: "A sign of your grace and loyalty."
   equipment:
@@ -2231,8 +2231,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13635
-  - 13636
+    - 13635
+    - 13636
   weight: 0.0
   examine: "A sign of your grace and loyalty."
   equipment:
@@ -2254,8 +2254,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13675
-  - 13676
+    - 13675
+    - 13676
   weight: 0.0
   examine: "A sign of your grace and unity."
   equipment:
@@ -2277,8 +2277,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 21073
-  - 21075
+    - 21073
+    - 21075
   weight: 0.0
   examine: "A sign of your grace."
   equipment:
@@ -2300,7 +2300,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 12490
+    - 12490
   weight: 0.0
   examine: "Ancient blessed dragonhide vambraces."
   equipment:
@@ -2322,7 +2322,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-  - 12498
+    - 12498
   weight: 1.0
   examine: "Bandos blessed dragonhide vambraces."
   equipment:
@@ -2344,7 +2344,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-  - 12506
+    - 12506
   weight: 1.0
   examine: "Armadyl blessed dragonhide vambraces."
   equipment:
@@ -2366,7 +2366,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-  - 12890
+    - 12890
   weight: 0.0
   examine: "These let Santa distribute gifts without catching germs from the recipients."
   equipment:
@@ -2388,7 +2388,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 12895
+    - 12895
   weight: 0.0
   examine: "Keeps the coal-dust off."
   equipment:
@@ -2410,7 +2410,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 12958
+    - 12958
   weight: 0.5
   examine: "It looks like a cow's hoofs."
   equipment:
@@ -2432,7 +2432,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13103
+    - 13103
   weight: 0.0
   examine: "A pair of gloves from Karamja."
   equipment:
@@ -2454,7 +2454,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13287
+    - 13287
   weight: 0.5
   examine: "They protect your hands from the rough handles of spades."
   equipment:
@@ -2476,7 +2476,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13357
+    - 13357
   weight: 0.0
   examine: "Dress like a tier 1 Shayzien soldier."
   equipment:
@@ -2498,7 +2498,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13362
+    - 13362
   weight: 0.0
   examine: "Dress like a tier 2 Shayzien soldier."
   equipment:
@@ -2520,7 +2520,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13367
+    - 13367
   weight: 0.0
   examine: "Dress like a tier 3 Shayzien soldier."
   equipment:
@@ -2542,7 +2542,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13372
+    - 13372
   weight: 0.0
   examine: "Dress like a tier 4 Shayzien soldier."
   equipment:
@@ -2564,7 +2564,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13377
+    - 13377
   weight: 0.0
   examine: "Dress like a tier 5 Shayzien soldier."
   equipment:
@@ -2586,7 +2586,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13665
+    - 13665
   weight: 0.1
   examine: "Floofy."
   equipment:
@@ -2608,7 +2608,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 19532
+    - 19532
   weight: 0.0
   examine: "A fiery glow emanates from this bracelet."
   equipment:
@@ -2630,7 +2630,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 19544
+    - 19544
   weight: 0.0
   examine: "A deep sense of torment burns within this powerful bracelet."
   equipment:
@@ -2652,7 +2652,7 @@
       magic: 5
     prayerBonus: 2
 - ids:
-  - 19691
+    - 19691
   weight: 0.5
   examine: "Warm leather gloves lined with wolf fur."
   equipment:
@@ -2674,7 +2674,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 19961
+    - 19961
   weight: 0.0
   examine: "Linked tuxedo cuffs with a dark trim."
   equipment:
@@ -2696,7 +2696,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 19976
+    - 19976
   weight: 0.0
   examine: "Linked tuxedo cuffs with a gold trim."
   equipment:
@@ -2718,7 +2718,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 19994
+    - 19994
   weight: 0.0
   examine: "Lightweight gloves ideal for rangers."
   equipment:
@@ -2740,7 +2740,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 19997
+    - 19997
   weight: 0.0
   examine: "Holy handwear!"
   equipment:
@@ -2762,7 +2762,7 @@
       magic: 0
     prayerBonus: 3
 - ids:
-  - 20041
+    - 20041
   weight: 0.4
   examine: "Armoured gloves of the Samurai."
   equipment:
@@ -2784,7 +2784,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 20086
+    - 20086
   weight: 0.0
   examine: "A mummy's hands."
   equipment:
@@ -2806,7 +2806,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 20101
+    - 20101
   weight: 0.0
   examine: "These gloves will make your flesh transparent."
   equipment:
@@ -2828,7 +2828,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 20134
+    - 20134
   weight: 0.4
   examine: "A dark power is woven into these gloves."
   equipment:
@@ -2850,7 +2850,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 20712
+    - 20712
   weight: 0.45
   examine: "Possibly fireproof. Possibly."
   equipment:
@@ -2872,7 +2872,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 21117
+    - 21117
   weight: 0.0
   examine: "I wonder if this is valuable."
   equipment:
@@ -2894,7 +2894,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 21120
+    - 21120
   weight: 0.0
   examine: "I wonder if this is valuable."
   equipment:
@@ -2916,7 +2916,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 21123
+    - 21123
   weight: 0.0
   examine: "I wonder if this is valuable."
   equipment:
@@ -2938,7 +2938,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 21177
+    - 21177
   weight: 0.0
   examine: "Allows one slayer kill to count as two."
   equipment:
@@ -2960,7 +2960,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 21180
+    - 21180
   weight: 0.0
   examine: "Helps when building the Shades of Mort'ton temple."
   equipment:
@@ -2982,7 +2982,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 21183
+    - 21183
   weight: 0.0
   examine: "Occasionally prevents slayer kill count being decremented."
   equipment:
@@ -3004,7 +3004,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 21343
+    - 21343
   weight: 0.2
   examine: "These will help me mine Silver, Coal and Gold."
   equipment:
@@ -3026,7 +3026,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 21345
+    - 21345
   weight: 0.2
   examine: "These will help me mine Mithril, Adamantite and Runite."
   equipment:
@@ -3048,7 +3048,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 21392
+    - 21392
   weight: 0.2
   examine: "These will help me mine Silver, Coal, Gold, Mithril, Adamantite, Runite\
     \ and Amethyst."
@@ -3071,7 +3071,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 21736
+    - 21736
   weight: 1.0
   examine: "Never take these for granite."
   equipment:
@@ -3093,7 +3093,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 21817
+    - 21817
   weight: 0.2
   examine: "The bracelet is dull and powerless."
   equipment:
@@ -3115,7 +3115,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 21816
+    - 21816
   weight: 0.2
   examine: "The bracelet glows with ethereal power."
   equipment:
@@ -3137,7 +3137,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 21855
+    - 21855
   weight: 0.0
   examine: "Poorly made fake snow imp gloves."
   equipment:
@@ -3159,7 +3159,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 22981
+    - 22981
   weight: 0.0
   examine: "A pair of very very nice gloves."
   equipment:
@@ -3181,7 +3181,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 23056
+    - 23056
   weight: 0.453
   examine: "Dusky magical gloves."
   equipment:
@@ -3203,7 +3203,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 23091
+    - 23091
   weight: 0.5
   examine: "Some ornate armoured gloves."
   equipment:
@@ -3225,7 +3225,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 23261
+    - 23261
   weight: 1.0
   examine: "Made with 100% golden dragonhide."
   equipment:
@@ -3247,7 +3247,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 23444
+    - 23444
   weight: 0.0
   examine: "A deep sense of torment burns within this powerful bracelet."
   equipment:
@@ -3269,7 +3269,7 @@
       magic: 5
     prayerBonus: 2
 - ids:
-  - 24006
+    - 24006
   weight: 4.5
   examine: "Decorative elven gloves."
   equipment:
@@ -3291,7 +3291,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 24046
+    - 24046
   weight: 0.226
   examine: "A stylish pair of rune gauntlets inlaid with dragonstones."
   equipment:
@@ -3313,7 +3313,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 24311
+    - 24311
   weight: 0.1
   examine: "A spooky pair of gloves cut from a bedsheet!"
   equipment:
@@ -3335,7 +3335,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 24321
+    - 24321
   weight: 0.1
   examine: "A spooky pair of gloves cut from a bedsheet!"
   equipment:

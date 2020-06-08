@@ -22,14 +22,13 @@ import io.guthix.oldscape.server.blueprints.LocationBlueprint
 import mu.KotlinLogging
 import java.io.IOException
 
-private val logger = KotlinLogging.logger {  }
+private val logger = KotlinLogging.logger { }
 
 object LocationBlueprints {
     private lateinit var blueprints: Map<Int, LocationBlueprint>
 
-    operator fun get(index: Int): LocationBlueprint {
-        return blueprints[index] ?: throw IOException("Could not find blueprint $index.")
-    }
+    operator fun get(index: Int): LocationBlueprint = blueprints[index]
+        ?: throw IOException("Could not find blueprint $index.")
 
     fun load(archive: Js5Archive) {
         val locConfigs = LocationConfig.load(archive.readGroup(LocationConfig.id))

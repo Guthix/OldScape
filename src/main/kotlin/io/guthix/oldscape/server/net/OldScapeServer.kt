@@ -1,4 +1,4 @@
- /**
+/**
  * This file is part of Guthix OldScape.
  *
  * Guthix OldScape is free software: you can redistribute it and/or modify
@@ -61,7 +61,7 @@ class OldScapeServer(
             }
             val bind = bootstrap.bind(port).sync().addListener {
                 if (it.isSuccess) {
-                    logger.info{ "Server now listening to port $port" }
+                    logger.info { "Server now listening to port $port" }
                 } else {
                     logger.error(it.cause()) { "Server failed to connect to port $port" }
                 }

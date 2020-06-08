@@ -26,17 +26,17 @@ class MapProjanimPacket(
     localX: TileUnit,
     localY: TileUnit
 ) : ZoneOutGameEvent(localX, localY) {
-    override val opcode = 2
+    override val opcode: Int = 2
 
-    override val enclOpcode = 6
+    override val enclOpcode: Int = 6
 
-    override val size = FixedSize(STATIC_SIZE)
+    override val size: FixedSize = FixedSize(STATIC_SIZE)
 
     override fun encode(ctx: ChannelHandlerContext): ByteBuf {
         TODO("not implemented")
     }
 
     companion object {
-        const val STATIC_SIZE = 15
+        const val STATIC_SIZE: Int = 15
     }
 }

@@ -23,9 +23,9 @@ import io.netty.buffer.Unpooled
 import io.netty.channel.ChannelHandlerContext
 
 class ResetClientVarcache : OutGameEvent {
-    override val opcode = 7
+    override val opcode: Int = 7
 
-    override val size = FixedSize(0)
+    override val size: FixedSize = FixedSize(0)
 
-    override fun encode(ctx: ChannelHandlerContext): ByteBuf  = Unpooled.EMPTY_BUFFER
+    override fun encode(ctx: ChannelHandlerContext): ByteBuf = Unpooled.EMPTY_BUFFER
 }

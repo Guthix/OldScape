@@ -17,12 +17,13 @@
 package io.guthix.oldscape.server.event.script
 
 import io.guthix.oldscape.server.world.entity.Character
-import io.guthix.oldscape.server.world.entity.Npc
-import io.guthix.oldscape.server.world.entity.Player
+import kotlin.coroutines.Continuation
+import kotlin.coroutines.CoroutineContext
+import kotlin.coroutines.EmptyCoroutineContext
 import kotlin.coroutines.intrinsics.COROUTINE_SUSPENDED
-import kotlin.coroutines.intrinsics.suspendCoroutineUninterceptedOrReturn
 import kotlin.coroutines.intrinsics.createCoroutineUnintercepted
-import kotlin.coroutines.*
+import kotlin.coroutines.intrinsics.suspendCoroutineUninterceptedOrReturn
+import kotlin.coroutines.resume
 
 open class Task(val type: TaskType, private val character: Character) : Continuation<Unit> {
     private var tickSuspended = false
@@ -35,7 +36,7 @@ open class Task(val type: TaskType, private val character: Character) : Continua
 
     fun run(): Boolean {
         return next?.let {
-            if(!tickSuspended && it.canResume()) {
+            if (!tickSuspended && it.canResume()) {
                 character.tasks[type]?.remove(this)
                 it.continuation.resume(Unit)
                 true
@@ -50,13 +51,15 @@ open class Task(val type: TaskType, private val character: Character) : Continua
         next = cancelation
     }
 
-    fun postProcess() { tickSuspended = false }
+    fun postProcess() {
+        tickSuspended = false
+    }
 
     fun onCancel(action: suspend Task.() -> Unit) {
         cancelation = ConditionalContinuation(TrueCondition, action.createCoroutineUnintercepted(this, this))
     }
 
-    override fun resumeWith(result: Result<Unit>) { }
+    override fun resumeWith(result: Result<Unit>) {}
 
     suspend fun wait(ticks: Int) {
         tickSuspended = true

@@ -29,9 +29,9 @@ class IfSetobjectPacket(
     private val itemId: Int,
     private val amount: Int
 ) : OutGameEvent {
-    override val opcode = 74
+    override val opcode: Int = 74
 
-    override val size = FixedSize(STATIC_SIZE)
+    override val size: FixedSize = FixedSize(STATIC_SIZE)
 
     override fun encode(ctx: ChannelHandlerContext): ByteBuf {
         val buf = ctx.alloc().buffer(STATIC_SIZE)
@@ -42,6 +42,6 @@ class IfSetobjectPacket(
     }
 
     companion object {
-        const val STATIC_SIZE = Short.SIZE_BYTES + Int.SIZE_BYTES + Int.SIZE_BYTES
+        const val STATIC_SIZE: Int = Short.SIZE_BYTES + Int.SIZE_BYTES + Int.SIZE_BYTES
     }
 }

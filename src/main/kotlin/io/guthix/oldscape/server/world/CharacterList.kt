@@ -17,7 +17,8 @@
 package io.guthix.oldscape.server.world
 
 import io.guthix.oldscape.server.net.login.LoginRequest
-import io.guthix.oldscape.server.world.entity.*
+import io.guthix.oldscape.server.world.entity.Npc
+import io.guthix.oldscape.server.world.entity.Player
 import io.guthix.oldscape.server.world.entity.interest.*
 import io.guthix.oldscape.server.world.map.Tile
 import java.util.*
@@ -30,9 +31,11 @@ class NpcList(capacity: Int) : Iterable<Npc> {
 
     private val freeIndexes = Stack<Int>()
 
-    val size get() = occupiedIndexes.size
+    val size: Int get() = occupiedIndexes.size
 
-    init { for (index in capacity downTo 1) freeIndexes.push(index) }
+    init {
+        for (index in capacity downTo 1) freeIndexes.push(index)
+    }
 
     fun create(id: Int, pos: Tile): Npc {
         val index = freeIndexes.pop()
@@ -48,14 +51,14 @@ class NpcList(capacity: Int) : Iterable<Npc> {
         freeIndexes.add(npc.index)
     }
 
-    operator fun get(index: Int) = npcs[index]
+    operator fun get(index: Int): Npc? = npcs[index]
 
-    override fun iterator() = IndexIterator()
+    override fun iterator(): IndexIterator = IndexIterator()
 
     inner class IndexIterator : Iterator<Npc> {
-        var indexIterator = occupiedIndexes.iterator()
+        var indexIterator: MutableIterator<Int> = occupiedIndexes.iterator()
 
-        override fun hasNext() = indexIterator.hasNext()
+        override fun hasNext(): Boolean = indexIterator.hasNext()
 
         override fun next(): Npc = npcs[indexIterator.next()] ?: next()
     }
@@ -70,9 +73,11 @@ class PlayerList(capacity: Int) : Iterable<Player> {
 
     private val iterator = PriorityIterator()
 
-    val size get() = occupiedIndexes.size
+    val size: Int get() = occupiedIndexes.size
 
-    init { for (index in capacity downTo 1) freeIndexes.push(index) }
+    init {
+        for (index in capacity downTo 1) freeIndexes.push(index)
+    }
 
     fun create(req: LoginRequest): Player {
         val index = freeIndexes.pop()
@@ -99,14 +104,14 @@ class PlayerList(capacity: Int) : Iterable<Player> {
         }
     }
 
-    operator fun get(index: Int) = players[index]
+    operator fun get(index: Int): Player? = players[index]
 
-    override fun iterator() = PriorityIterator()
+    override fun iterator(): PriorityIterator = PriorityIterator()
 
     inner class PriorityIterator : MutableIterator<Player> {
         internal var currentIndex = 0
 
-        override fun hasNext() = currentIndex < occupiedIndexes.size
+        override fun hasNext(): Boolean = currentIndex < occupiedIndexes.size
 
         override fun next(): Player = players[occupiedIndexes[currentIndex++]] ?: next()
 

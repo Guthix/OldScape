@@ -21,21 +21,19 @@ import io.guthix.oldscape.server.blueprints.ExtraObjectConfig
 import io.guthix.oldscape.server.blueprints.ObjectBlueprint
 import io.guthix.oldscape.server.blueprints.equipment.*
 import mu.KotlinLogging
-import java.io.FileNotFoundException
 import java.io.IOException
 
-private val logger = KotlinLogging.logger {  }
+private val logger = KotlinLogging.logger { }
 
 object ObjectBlueprints {
     lateinit var blueprints: Map<Int, ObjectBlueprint>
 
     inline operator fun <reified T : ObjectBlueprint> get(index: Int): T {
         val bp = blueprints[index] ?: throw IOException("Could not find blueprint $index.")
-        if(bp !is T) {
+        if (bp !is T) {
             throw TypeCastException("")
-        } else {
-            return bp
         }
+        return bp
     }
 
     fun load(
@@ -55,19 +53,19 @@ object ObjectBlueprints {
         eRingConfigs: List<ExtraEquipmentConfig>
     ) {
         blueprints = mutableMapOf<Int, ObjectBlueprint>().apply {
-            addBlueprints(cConfigs, eObjectConfigs) { cConfig, eConfig -> ObjectBlueprint(cConfig, eConfig) }
-            addBlueprints(cConfigs, eHeadConfigs) { cConfig, eConfig -> HeadBlueprint(cConfig, eConfig) }
-            addBlueprints(cConfigs, extraCapeConfigs) { cConfig, eConfig -> CapeBlueprint(cConfig, eConfig) }
-            addBlueprints(cConfigs, eNeckConfigs) { cConfig, eConfig -> NeckBlueprint(cConfig, eConfig) }
-            addBlueprints(cConfigs, eAmmunitionConfigs) { cConfig, eConfig -> AmmunitionBlueprint(cConfig, eConfig) }
-            addBlueprints(cConfigs, eWeaponConfigs) { cConfig, eConfig -> WeaponBlueprint(cConfig, eConfig) }
-            addBlueprints(cConfigs, eShieldConfigs) { cConfig, eConfig -> ShieldBlueprint(cConfig, eConfig) }
-            addBlueprints(cConfigs, eTwoHandedConfigs) { cConfig, eConfig -> TwoHandedBlueprint(cConfig, eConfig) }
-            addBlueprints(cConfigs, eBodyConfigs) { cConfig, eConfig -> BodyBlueprint(cConfig, eConfig) }
-            addBlueprints(cConfigs, eLegConfigs) { cConfig, eConfig -> LegsBlueprint(cConfig, eConfig) }
-            addBlueprints(cConfigs, eHandConfigs) { cConfig, eConfig -> HandsBlueprint(cConfig, eConfig) }
-            addBlueprints(cConfigs, eFeetConfigs) { cConfig, eConfig -> FeetBlueprint(cConfig, eConfig) }
-            addBlueprints(cConfigs, eRingConfigs) { cConfig, eConfig -> RingBlueprint(cConfig, eConfig) }
+            addBlueprints(cConfigs, eObjectConfigs, ::ObjectBlueprint)
+            addBlueprints(cConfigs, eHeadConfigs, ::HeadBlueprint)
+            addBlueprints(cConfigs, extraCapeConfigs, ::CapeBlueprint)
+            addBlueprints(cConfigs, eNeckConfigs, ::NeckBlueprint)
+            addBlueprints(cConfigs, eAmmunitionConfigs, ::AmmunitionBlueprint)
+            addBlueprints(cConfigs, eWeaponConfigs, ::WeaponBlueprint)
+            addBlueprints(cConfigs, eShieldConfigs, ::ShieldBlueprint)
+            addBlueprints(cConfigs, eTwoHandedConfigs, ::TwoHandedBlueprint)
+            addBlueprints(cConfigs, eBodyConfigs, ::BodyBlueprint)
+            addBlueprints(cConfigs, eLegConfigs, ::LegsBlueprint)
+            addBlueprints(cConfigs, eHandConfigs, ::HandsBlueprint)
+            addBlueprints(cConfigs, eFeetConfigs, ::FeetBlueprint)
+            addBlueprints(cConfigs, eRingConfigs, ::RingBlueprint)
         }
         logger.info { "Loaded ${blueprints.size} object blueprints" }
     }
@@ -78,9 +76,9 @@ object ObjectBlueprints {
         construct: (ObjectConfig, E) -> B
     ) {
         extraObjectConfigs.forEach { extraConfig ->
-             extraConfig.ids.forEach inner@ { id ->
+            extraConfig.ids.forEach inner@{ id ->
                 val cacheConfig = cacheConfigs[id] ?: kotlin.run {
-                    logger.warn {  "Could not find object config for id $id." }
+                    logger.warn { "Could not find object config for id $id." }
                     return@inner
                 }
                 put(id, construct.invoke(cacheConfig, extraConfig))

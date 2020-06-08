@@ -26,5 +26,5 @@ data class MouseClickEvent(
     val mouseX: Int,
     val mouseY: Int
 ) : ClientEvent, InGameEvent {
-    override fun toGameEvent(world: World) = this
+    override fun toGameEvent(world: World): MouseClickEvent = this
 }

@@ -16,8 +16,6 @@
  */
 package io.guthix.oldscape.server.net.game.out
 
-import io.guthix.buffer.writeByteADD
-import io.guthix.buffer.writeByteNEG
 import io.guthix.buffer.writeByteSUB
 import io.guthix.buffer.writeShortADD
 import io.guthix.oldscape.server.dimensions.FloorUnit
@@ -35,11 +33,11 @@ class SoundAreaPacket(
     localX: TileUnit,
     localY: TileUnit
 ) : ZoneOutGameEvent(localX, localY) {
-    override val opcode = 42
+    override val opcode: Int = 42
 
-    override val enclOpcode = 4
+    override val enclOpcode: Int = 4
 
-    override val size = FixedSize(STATIC_SIZE)
+    override val size: FixedSize = FixedSize(STATIC_SIZE)
 
     override fun encode(ctx: ChannelHandlerContext): ByteBuf {
         val buf = ctx.alloc().buffer(STATIC_SIZE)
@@ -51,6 +49,6 @@ class SoundAreaPacket(
     }
 
     companion object {
-        const val STATIC_SIZE = Byte.SIZE_BYTES + Byte.SIZE_BYTES + Byte.SIZE_BYTES + Short.SIZE_BYTES
+        const val STATIC_SIZE: Int = Byte.SIZE_BYTES + Byte.SIZE_BYTES + Byte.SIZE_BYTES + Short.SIZE_BYTES
     }
 }

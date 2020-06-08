@@ -19,13 +19,14 @@ package io.guthix.oldscape.server.world.entity
 import io.guthix.oldscape.server.dimensions.TileUnit
 import io.guthix.oldscape.server.dimensions.tiles
 import io.guthix.oldscape.server.event.PublicMessageEvent
-import io.guthix.oldscape.server.event.script.*
+import io.guthix.oldscape.server.event.script.EventHandler
+import io.guthix.oldscape.server.event.script.InGameEvent
+import io.guthix.oldscape.server.event.script.Task
+import io.guthix.oldscape.server.event.script.TaskType
 import io.guthix.oldscape.server.net.game.out.*
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.interest.*
 import io.guthix.oldscape.server.world.entity.intface.IfComponent
-import io.guthix.oldscape.server.world.entity.interest.TopInterfaceManager
-import io.guthix.oldscape.server.world.map.Tile
 import io.netty.channel.ChannelFuture
 import io.netty.channel.ChannelHandlerContext
 import java.util.concurrent.ConcurrentLinkedQueue
@@ -45,32 +46,32 @@ class Player(
 ) : Character(playerManager.index), Comparable<Player> {
     override val updateFlags = sortedSetOf<PlayerUpdateType>()
 
-    internal val inEvents = ConcurrentLinkedQueue<EventHandler<out InGameEvent>>()
+    internal val inEvents = ConcurrentLinkedQueue<EventHandler<InGameEvent>>()
 
-    var isLoggingOut = false
+    var isLoggingOut: Boolean = false
 
-    val contextMenu get() = contextMenuManager.contextMenu
+    val contextMenu: Array<String> get() = contextMenuManager.contextMenu
 
-    var topInterface = TopInterfaceManager(ctx, id = 165)
+    var topInterface: TopInterfaceManager = TopInterfaceManager(ctx, id = 165)
         private set
 
-    var nameModifiers = arrayOf("", "", "")
+    var nameModifiers: Array<String> = arrayOf("", "", "")
 
     override var orientation: Int = 0
 
     var publicMessage: PublicMessageEvent? = null
 
-    val gender = PlayerManager.Gender.MALE
+    val gender: PlayerManager.Gender = PlayerManager.Gender.MALE
 
-    val isSkulled = false
+    var isSkulled: Boolean = false
 
-    val prayerIcon = -1
+    val prayerIcon: Int = -1
 
-    var rights = 2
+    var rights: Int = 2
 
-    val combatLevel = 126
+    val combatLevel: Int = 126
 
-    val style = PlayerManager.Style(
+    val style: PlayerManager.Style = PlayerManager.Style(
         hair = 0,
         beard = 10,
         torso = 18,
@@ -80,11 +81,13 @@ class Player(
         feet = 42
     )
 
-    val colours = PlayerManager.Colours(0, 0, 0, 0, 0)
+    val colours: PlayerManager.Colours = PlayerManager.Colours(0, 0, 0, 0, 0)
 
-    val equipment = PlayerManager.Equipment(null, null, null, null, null, null, null, null, null, null, null)
+    val equipment: PlayerManager.Equipment = PlayerManager.Equipment(
+        null, null, null, null, null, null, null, null, null, null, null
+    )
 
-    val animations = PlayerManager.Animations(
+    val animations: PlayerManager.Animations = PlayerManager.Animations(
         stand = 808,
         turn = 823,
         walk = 819,
@@ -94,19 +97,25 @@ class Player(
         run = 824
     )
 
-    override val size = 1.tiles
+    override val size: TileUnit = 1.tiles
 
-    var weight get() = energyManager.weight
-        set(value) { energyManager.weight = value }
+    var weight: Int
+        get() = energyManager.weight
+        set(value) {
+            energyManager.weight = value
+        }
 
-    var energy get() = energyManager.energy
-        set(value) { energyManager.energy = value }
+    var energy: Int
+        get() = energyManager.energy
+        set(value) {
+            energyManager.energy = value
+        }
 
     override fun processTasks() {
-        while(true) {
+        while (true) {
             while (inEvents.isNotEmpty()) inEvents.poll().handle()
-            val resumed = tasks.values.flatMap { routineList -> routineList.toList().map { it.run() } } // TODO optimize toList()
-            if(resumed.all { !it } && inEvents.isEmpty()) break // TODO add live lock detection
+            val resumed = tasks.values.flatMap { routineList -> routineList.toList().map(Task::run) } // TODO optimize
+            if (resumed.all { !it } && inEvents.isEmpty()) break // TODO add live lock detection
         }
     }
 
@@ -155,13 +164,13 @@ class Player(
     fun openTopInterface(id: Int, modalSlot: Int? = null, moves: Map<Int, Int> = mutableMapOf()): TopInterfaceManager {
         val movedChildren = mutableMapOf<Int, IfComponent>()
         ctx.write(IfOpentopPacket(id))
-        for((fromSlot, toSlot) in moves) {
+        for ((fromSlot, toSlot) in moves) {
             movedChildren[toSlot] = topInterface.children[fromSlot] ?: continue
             ctx.write(IfMovesubPacket(topInterface.id, fromSlot, id, toSlot))
         }
         topInterface.modalSlot?.let { curModalSlot ->
             modalSlot?.let { newModalSlot ->
-                if(topInterface.modalOpen && curModalSlot != newModalSlot) {
+                if (topInterface.modalOpen && curModalSlot != newModalSlot) {
                     ctx.write(IfMovesubPacket(topInterface.id, curModalSlot, id, newModalSlot))
                 }
             }
@@ -250,9 +259,9 @@ class Player(
         equipment.ring = ring
     }
 
-    fun updateVarp(id: Int, value: Int) = varpManager.updateVarp(id, value)
+    fun updateVarp(id: Int, value: Int): Unit = varpManager.updateVarp(id, value)
 
-    fun updateVarbit(id: Int, value: Int) = varpManager.updateVarbit(id, value)
+    fun updateVarbit(id: Int, value: Int): Unit = varpManager.updateVarbit(id, value)
 
     fun runClientScript(id: Int, vararg args: Any) {
         ctx.write(RunclientscriptPacket(id, *args))
@@ -262,15 +271,15 @@ class Player(
         ctx.write(SetMapFlagPacket(x - mapManager.baseX.inTiles, y - mapManager.baseY.inTiles))
     }
 
-    override fun addOrientationFlag() = updateFlags.add(PlayerInfoPacket.orientation)
+    override fun addOrientationFlag(): Boolean = updateFlags.add(PlayerInfoPacket.orientation)
 
-    override fun addTurnToLockFlag() = updateFlags.add(PlayerInfoPacket.lockTurnTo)
+    override fun addTurnToLockFlag(): Boolean = updateFlags.add(PlayerInfoPacket.lockTurnTo)
 
-    override fun addSequenceFlag() = updateFlags.add(PlayerInfoPacket.sequence)
+    override fun addSequenceFlag(): Boolean = updateFlags.add(PlayerInfoPacket.sequence)
 
-    override fun addSpotAnimationFlag() = updateFlags.add(PlayerInfoPacket.spotAnimation)
+    override fun addSpotAnimationFlag(): Boolean = updateFlags.add(PlayerInfoPacket.spotAnimation)
 
-    override fun addHitUpdateFlag() = updateFlags.add(PlayerInfoPacket.hit)
+    override fun addHitUpdateFlag(): Boolean = updateFlags.add(PlayerInfoPacket.hit)
 
     internal fun stageLogout() {
         isLoggingOut = true
@@ -279,11 +288,11 @@ class Player(
         ctx.writeAndFlush(LogoutFullPacket())
     }
 
-    override fun compareTo(other: Player) = when {
+    override fun compareTo(other: Player): Int = when {
         priority < other.priority -> -1
         priority > other.priority -> 1
         else -> 0
     }
 
-    fun clearMap() = mapManager.clear(this)
+    fun clearMap(): Unit = mapManager.clear(this)
 }

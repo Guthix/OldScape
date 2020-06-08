@@ -25,10 +25,11 @@ class GameEncoder(private val encodeCipher: IsaacRandom) : MessageToByteEncoder<
     override fun encode(ctx: ChannelHandlerContext, msg: OutGameEvent, out: ByteBuf) {
         val packet = msg.toPacket(ctx)
         out.writeByte(packet.opcode + encodeCipher.nextInt())
-        when(packet.type) {
+        when (packet.type) {
             VarShortSize -> out.writeShort(packet.payload.readableBytes())
             VarByteSize -> out.writeByte(packet.payload.readableBytes())
-            else -> { }
+            else -> {
+            }
         }
         out.writeBytes(packet.payload)
     }

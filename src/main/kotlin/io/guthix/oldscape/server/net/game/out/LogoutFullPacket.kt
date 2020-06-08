@@ -18,17 +18,18 @@ package io.guthix.oldscape.server.net.game.out
 
 import io.guthix.oldscape.server.net.game.FixedSize
 import io.guthix.oldscape.server.net.game.OutGameEvent
+import io.netty.buffer.ByteBuf
 import io.netty.buffer.Unpooled
 import io.netty.channel.ChannelHandlerContext
 
 class LogoutFullPacket : OutGameEvent {
-    override val opcode = 82
+    override val opcode: Int = 82
 
-    override val size = FixedSize(STATIC_SIZE)
+    override val size: FixedSize = FixedSize(STATIC_SIZE)
 
-    override fun encode(ctx: ChannelHandlerContext) = Unpooled.EMPTY_BUFFER
+    override fun encode(ctx: ChannelHandlerContext): ByteBuf = Unpooled.EMPTY_BUFFER
 
     companion object {
-        const val STATIC_SIZE = 0
+        const val STATIC_SIZE: Int = 0
     }
 }

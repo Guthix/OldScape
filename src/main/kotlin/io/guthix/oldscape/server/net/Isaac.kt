@@ -16,7 +16,7 @@
  */
 package io.guthix.oldscape.server.net
 
-class IsaacRandomPair(val encodeGen : IsaacRandom, val decodeGen: IsaacRandom)
+class IsaacRandomPair(val encodeGen: IsaacRandom, val decodeGen: IsaacRandom)
 
 class IsaacRandom(seed: IntArray) {
     private var valuesRemaining = 0
@@ -65,8 +65,8 @@ class IsaacRandom(seed: IntArray) {
 
     private fun initState() {
         val arr = IntArray(8) { GOLDEN_RATIO }
-        for(i in 0 until 4) shuffle(arr)
-        for(i in 0 until 256 step 8) {
+        for (i in 0 until 4) shuffle(arr)
+        for (i in 0 until 256 step 8) {
             arr[7] += rsl[i]
             arr[6] += rsl[i + 1]
             arr[5] += rsl[i + 2]
@@ -78,7 +78,7 @@ class IsaacRandom(seed: IntArray) {
             shuffle(arr)
             setState(i, arr)
         }
-        for(i in 0 until 256 step 8) {
+        for (i in 0 until 256 step 8) {
             arr[7] += mem[i]
             arr[6] += mem[i + 1]
             arr[5] += mem[i + 2]
@@ -133,6 +133,6 @@ class IsaacRandom(seed: IntArray) {
     }
 
     companion object {
-        const val GOLDEN_RATIO = -1640531527
+        const val GOLDEN_RATIO: Int = -1640531527
     }
 }

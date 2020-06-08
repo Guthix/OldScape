@@ -23,5 +23,5 @@ import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 
 class EventMouseIdlePacket : GamePacketDecoder(44, FixedSize(0)) {
-    override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext) = MouseIdleEvent()
+    override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): MouseIdleEvent = MouseIdleEvent()
 }

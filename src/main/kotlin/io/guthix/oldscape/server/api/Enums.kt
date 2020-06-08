@@ -17,27 +17,23 @@
 package io.guthix.oldscape.server.api
 
 import io.guthix.cache.js5.Js5Archive
-import io.guthix.cache.js5.Js5Cache
-import io.guthix.oldscape.cache.ConfigArchive
 import io.guthix.oldscape.cache.config.EnumConfig
 import mu.KotlinLogging
 import java.io.IOException
 
-private val logger = KotlinLogging.logger {  }
+private val logger = KotlinLogging.logger { }
 
 data class Component(val interfaceId: Int, val slot: Int)
 
 fun readComponent(value: Int): Component? {
-    if(value == -1) return null
+    if (value == -1) return null
     return Component(value shr Short.SIZE_BITS, value and 0xFFFF)
 }
 
 object Enums {
     private lateinit var configs: Map<Int, EnumConfig>
 
-    operator fun get(index: Int): EnumConfig {
-        return configs[index] ?: throw IOException("Could not find enum $index.")
-    }
+    operator fun get(index: Int): EnumConfig = configs[index] ?: throw IOException("Could not find enum $index.")
 
     fun load(archive: Js5Archive) {
         configs = EnumConfig.load(archive.readGroup(EnumConfig.id))

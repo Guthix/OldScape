@@ -30,7 +30,7 @@ class NpcBlueprint(
     var walkBackSequence: Int?,
     var turnLeftSequence: Int?,
     var turnRightSequence: Int?,
-    val combat: NpcBlueprint.Combat?
+    val combat: Combat?
 ) {
     class Combat(
         val isAggressive: Boolean,

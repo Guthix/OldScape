@@ -22,9 +22,9 @@ import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 
 class IfOpentopPacket(private val topInterface: Int) : OutGameEvent {
-    override val opcode = 60
+    override val opcode: Int = 60
 
-    override val size = FixedSize(STATIC_SIZE)
+    override val size: FixedSize = FixedSize(STATIC_SIZE)
 
     override fun encode(ctx: ChannelHandlerContext): ByteBuf {
         val buf = ctx.alloc().buffer(Short.SIZE_BYTES)
@@ -33,6 +33,6 @@ class IfOpentopPacket(private val topInterface: Int) : OutGameEvent {
     }
 
     companion object {
-        const val STATIC_SIZE = Short.SIZE_BYTES
+        const val STATIC_SIZE: Int = Short.SIZE_BYTES
     }
 }

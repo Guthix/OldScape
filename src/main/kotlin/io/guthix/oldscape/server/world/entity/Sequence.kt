@@ -21,7 +21,7 @@ import io.guthix.oldscape.server.api.SequenceBlueprints
 class Sequence(id: Int) {
     private val blueprint = SequenceBlueprints[id]
 
-    val id get() = blueprint.id
+    val id: Int get() = blueprint.id
 
     val duration: Int by lazy {
         blueprint.frameDuration?.sum()?.toDouble()?.div(30)?.toInt() ?: throw IllegalStateException(

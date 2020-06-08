@@ -18,26 +18,26 @@ package io.guthix.oldscape.server.dimensions
 
 import kotlin.math.abs
 
-fun abs(n: TileUnit) = abs(n.value).tiles
+fun abs(n: TileUnit): TileUnit = abs(n.value).tiles
 
-val Int.tiles get() = TileUnit(this)
+val Int.tiles: TileUnit get() = TileUnit(this)
 
 inline class TileUnit(val value: Int): Comparable<TileUnit> {
-    val inZones get() = ZoneUnit(value / ZoneUnit.SIZE_TILE.value)
-    val inMapsquares get() = MapsquareUnit(value / MapsquareUnit.SIZE_TILE.value)
-    val relativeZone get() = TileUnit(value % ZoneUnit.SIZE_TILE.value)
-    val relativeMapSquare get() = TileUnit(value % MapsquareUnit.SIZE_TILE.value)
+    val inZones: ZoneUnit get() = ZoneUnit(value / ZoneUnit.SIZE_TILE.value)
+    val inMapsquares: MapsquareUnit get() = MapsquareUnit(value / MapsquareUnit.SIZE_TILE.value)
+    val relativeZone: TileUnit get() = TileUnit(value % ZoneUnit.SIZE_TILE.value)
+    val relativeMapSquare: TileUnit get() = TileUnit(value % MapsquareUnit.SIZE_TILE.value)
 
-    operator fun plus(other: TileUnit) = TileUnit(value + other.value)
-    operator fun minus(other: TileUnit) = TileUnit(value - other.value)
-    operator fun times(other: TileUnit) = TileUnit(value * other.value)
-    operator fun div(other: TileUnit) = TileUnit(value / other.value)
-    operator fun rem(other: TileUnit) = TileUnit(value % other.value)
-    operator fun inc() = TileUnit(value + 1)
-    operator fun dec() = TileUnit(value - 1)
-    operator fun unaryPlus() = this
-    operator fun unaryMinus() = TileUnit(-value)
-    operator fun rangeTo(other: TileUnit) = TileUnitRange(this, other)
+    operator fun plus(other: TileUnit): TileUnit = TileUnit(value + other.value)
+    operator fun minus(other: TileUnit): TileUnit = TileUnit(value - other.value)
+    operator fun times(other: TileUnit): TileUnit = TileUnit(value * other.value)
+    operator fun div(other: TileUnit): TileUnit = TileUnit(value / other.value)
+    operator fun rem(other: TileUnit): TileUnit = TileUnit(value % other.value)
+    operator fun inc(): TileUnit = TileUnit(value + 1)
+    operator fun dec(): TileUnit = TileUnit(value - 1)
+    operator fun unaryPlus(): TileUnit = this
+    operator fun unaryMinus(): TileUnit = TileUnit(-value)
+    operator fun rangeTo(other: TileUnit): TileUnitRange = TileUnitRange(this, other)
     override fun compareTo(other: TileUnit): Int = when {
         value < other.value -> -1
         value > other.value -> 1
@@ -45,22 +45,20 @@ inline class TileUnit(val value: Int): Comparable<TileUnit> {
     }
 }
 
-infix fun TileUnit.until(to: TileUnit): TileUnitRange {
-    return this..(to - 1.tiles)
-}
+infix fun TileUnit.until(to: TileUnit): TileUnitRange = this..(to - 1.tiles)
 
 class TileUnitRange(
     start: TileUnit,
     endInclusive: TileUnit
 ) : TileUnitProgression(start, endInclusive, 1), ClosedRange<TileUnit> {
-    override val start get() = first
-    override val endInclusive get() = last
+    override val start: TileUnit get() = first
+    override val endInclusive: TileUnit get() = last
     override fun contains(value: TileUnit): Boolean = value.value in first.value..last.value
-    override fun isEmpty() = first > last
+    override fun isEmpty(): Boolean = first > last
     override fun equals(other: Any?): Boolean = other is TileUnitRange &&
         (isEmpty() && other.isEmpty() || first == other.first && last == other.last)
-    override fun hashCode() = if (isEmpty()) -1 else (31 * first.value + last.value)
-    override fun toString() = "$first..$last"
+    override fun hashCode(): Int = if (isEmpty()) -1 else (31 * first.value + last.value)
+    override fun toString(): String = "$first..$last"
 }
 
 open class TileUnitProgression(start: TileUnit, endInclusive: TileUnit, var step: Int = 1) : Iterable<TileUnit> {
@@ -70,24 +68,24 @@ open class TileUnitProgression(start: TileUnit, endInclusive: TileUnit, var step
             "Step must be greater than Int.MIN_VALUE to avoid overflow on negation."
         }
     }
-    val first = start
-    val last = getProgressionLastElement(start, endInclusive, step)
-    override fun iterator() = TileUnitProgressionIterator(first, last, step)
-    open fun isEmpty() = if (step > 0) first > last else first < last
-    override fun equals(other: Any?) = other is TileUnitProgression &&
+    val first: TileUnit = start
+    val last: TileUnit = getProgressionLastElement(start, endInclusive, step)
+    override fun iterator(): TileUnitProgressionIterator = TileUnitProgressionIterator(first, last, step)
+    open fun isEmpty(): Boolean = if (step > 0) first > last else first < last
+    override fun equals(other: Any?): Boolean = other is TileUnitProgression &&
         (isEmpty() && other.isEmpty() || first == other.first && last == other.last && step == other.step)
-    override fun hashCode() = if (isEmpty()) -1 else (31 * (31 * first.value + last.value) + step)
-    override fun toString() = if (step > 0) "$first..$last step $step" else "$first downTo $last step ${-step}"
-    infix fun step(step: TileUnit) = this.apply { this.step = step.value }
-    infix fun step(step: ZoneUnit) = this.apply { this.step = step.inTiles.value }
-    infix fun step(step: MapsquareUnit) = this.apply { this.step = step.inTiles.value }
+    override fun hashCode(): Int = if (isEmpty()) -1 else (31 * (31 * first.value + last.value) + step)
+    override fun toString(): String = if (step > 0) "$first..$last step $step" else "$first downTo $last step ${-step}"
+    infix fun step(step: TileUnit): TileUnitProgression = apply { this.step = step.value }
+    infix fun step(step: ZoneUnit): TileUnitProgression = apply { this.step = step.inTiles.value }
+    infix fun step(step: MapsquareUnit): TileUnitProgression = apply { this.step = step.inTiles.value }
 }
 
 class TileUnitProgressionIterator(first: TileUnit, last: TileUnit, private val step: Int) : Iterator<TileUnit> {
     private val finalElement = last
     private var hasNext = if (step > 0) first <= last else first >= last
     private var next = if (hasNext) first else finalElement
-    override fun hasNext() = hasNext
+    override fun hasNext(): Boolean = hasNext
     override fun next(): TileUnit {
         val value = next
         if (value == finalElement) {

@@ -28,9 +28,9 @@ class IfMovesubPacket(
     private val toParentId: Int,
     private val toSlot: Int
 ) : OutGameEvent {
-    override val opcode = 6
+    override val opcode: Int = 6
 
-    override val size = FixedSize(STATIC_SIZE)
+    override val size: FixedSize = FixedSize(STATIC_SIZE)
 
     override fun encode(ctx: ChannelHandlerContext): ByteBuf {
         val buf = ctx.alloc().buffer(STATIC_SIZE)
@@ -40,6 +40,6 @@ class IfMovesubPacket(
     }
 
     companion object {
-        const val STATIC_SIZE = Int.SIZE_BYTES + Int.SIZE_BYTES
+        const val STATIC_SIZE: Int = Int.SIZE_BYTES + Int.SIZE_BYTES
     }
 }

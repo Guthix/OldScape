@@ -18,15 +18,15 @@ package io.guthix.oldscape.server.event.script
 
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.Player
-import kotlin.script.experimental.annotations.KotlinScript
 import kotlin.reflect.KClass
+import kotlin.script.experimental.annotations.KotlinScript
 
 @KotlinScript
 abstract class Script {
-    fun <E: InGameEvent>on(type: KClass<E>) = ScriptFilter(type)
+    fun <E : InGameEvent> on(type: KClass<E>): ScriptFilter<E> = ScriptFilter(type)
 }
 
-class ScriptFilter<E: InGameEvent>(private val type: KClass<E>) {
+class ScriptFilter<E : InGameEvent>(private val type: KClass<E>) {
     private var condition: EventHandler<E>.() -> Boolean = { true }
 
     fun where(condition: EventHandler<E>.() -> Boolean): ScriptFilter<E> {
@@ -34,10 +34,10 @@ class ScriptFilter<E: InGameEvent>(private val type: KClass<E>) {
         return this
     }
 
-    fun then(handler: EventHandler<E>.() -> Unit) = ScriptScheduler(type, condition, handler)
+    fun then(handler: EventHandler<E>.() -> Unit): ScriptScheduler<E> = ScriptScheduler(type, condition, handler)
 }
 
-class ScriptScheduler<E: InGameEvent>(
+class ScriptScheduler<in E : InGameEvent>(
     type: KClass<E>,
     private val condition: EventHandler<E>.() -> Boolean,
     private val script: EventHandler<E>.() -> Unit
@@ -48,16 +48,20 @@ class ScriptScheduler<E: InGameEvent>(
 
     fun schedule(event: E, player: Player, world: World) {
         val handler = EventHandler(event, player, world, script)
-        if (handler.condition()) { player.inEvents.add(handler) }
+        if (handler.condition()) {
+            player.inEvents.add(handler)
+        }
     }
 }
 
-class EventHandler<E : InGameEvent>(
+class EventHandler<out E : InGameEvent>(
     val event: E,
     val player: Player,
     val world: World,
     private val script: EventHandler<E>.() -> Unit
-)  {
-    fun handle() = script()
+) {
+    fun handle() {
+        script()
+    }
 }
 

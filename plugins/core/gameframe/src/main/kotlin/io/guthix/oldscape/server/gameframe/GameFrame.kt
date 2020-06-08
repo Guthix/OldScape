@@ -27,7 +27,7 @@ enum class GameFrame(val interfaceId: Int, val enumId: Int) {
     BLACK_SCREEN(interfaceId = 165, enumId = 1132);
 
     companion object {
-        fun findByInterfaceId(id: Int) = values().first { it.interfaceId == id }
+        fun findByInterfaceId(id: Int): GameFrame = values().first { it.interfaceId == id }
     }
 }
 

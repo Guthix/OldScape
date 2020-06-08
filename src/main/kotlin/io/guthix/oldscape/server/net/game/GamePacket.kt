@@ -44,7 +44,7 @@ abstract class ZoneOutGameEvent(
     private val localX: TileUnit,
     private val localY: TileUnit
 ) : OutGameEvent {
-    val posBitPack get() = (localX.value shl 4) or (localY.value and 7)
+    val posBitPack: Int get() = (localX.value shl 4) or (localY.value and 7)
 
     abstract val enclOpcode: Int
 }
@@ -56,7 +56,7 @@ interface OutGameEvent {
 
     fun encode(ctx: ChannelHandlerContext): ByteBuf
 
-    fun toPacket(ctx: ChannelHandlerContext) = GamePacket(opcode, size, encode(ctx))
+    fun toPacket(ctx: ChannelHandlerContext): GamePacket = GamePacket(opcode, size, encode(ctx))
 }
 
 abstract class GamePacketDecoder(val opcode: Int, val packetSize: PacketSize) {
@@ -65,7 +65,7 @@ abstract class GamePacketDecoder(val opcode: Int, val packetSize: PacketSize) {
     companion object {
         private const val pkg = "io.guthix.oldscape.server.net.game.inc"
 
-        val inc = mutableMapOf<Int, GamePacketDecoder>()
+        val inc: MutableMap<Int, GamePacketDecoder> = mutableMapOf()
 
         fun loadIncPackets() {
             ClassGraph().whitelistPackages(pkg).scan().use { scanResult ->

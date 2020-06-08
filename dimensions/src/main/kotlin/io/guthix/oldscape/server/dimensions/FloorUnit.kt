@@ -16,19 +16,19 @@
  */
 package io.guthix.oldscape.server.dimensions
 
-val Int.floors get() = FloorUnit(this)
+val Int.floors: FloorUnit get() = FloorUnit(this)
 
 inline class FloorUnit(val value: Int) : Comparable<FloorUnit> {
-    operator fun plus(other: FloorUnit) = FloorUnit(value + other.value)
-    operator fun minus(other: FloorUnit) = FloorUnit(value - other.value)
-    operator fun times(other: FloorUnit) = FloorUnit(value * other.value)
-    operator fun div(other: FloorUnit) = FloorUnit(value / other.value)
-    operator fun rem(other: FloorUnit) = FloorUnit(value % other.value)
-    operator fun inc() = FloorUnit(value + 1)
-    operator fun dec() = FloorUnit(value - 1)
-    operator fun unaryPlus() = this
-    operator fun unaryMinus() = FloorUnit(-value)
-    operator fun rangeTo(other: FloorUnit) = FloorUnitRange(this, other)
+    operator fun plus(other: FloorUnit): FloorUnit = FloorUnit(value + other.value)
+    operator fun minus(other: FloorUnit): FloorUnit = FloorUnit(value - other.value)
+    operator fun times(other: FloorUnit): FloorUnit = FloorUnit(value * other.value)
+    operator fun div(other: FloorUnit): FloorUnit = FloorUnit(value / other.value)
+    operator fun rem(other: FloorUnit): FloorUnit = FloorUnit(value % other.value)
+    operator fun inc(): FloorUnit = FloorUnit(value + 1)
+    operator fun dec(): FloorUnit = FloorUnit(value - 1)
+    operator fun unaryPlus(): FloorUnit = this
+    operator fun unaryMinus(): FloorUnit = FloorUnit(-value)
+    operator fun rangeTo(other: FloorUnit): FloorUnitRange = FloorUnitRange(this, other)
     override fun compareTo(other: FloorUnit): Int = when {
         value < other.value -> -1
         value > other.value -> 1
@@ -40,14 +40,14 @@ class FloorUnitRange(
     start: FloorUnit,
     endInclusive: FloorUnit
 ) : FloorUnitProgression(start, endInclusive, 1), ClosedRange<FloorUnit> {
-    override val start get() = first
-    override val endInclusive get() = last
+    override val start: FloorUnit get() = first
+    override val endInclusive: FloorUnit get() = last
     override fun contains(value: FloorUnit): Boolean = value in first..last
-    override fun isEmpty() = first > last
+    override fun isEmpty(): Boolean = first > last
     override fun equals(other: Any?): Boolean = other is FloorUnitRange &&
         (isEmpty() && other.isEmpty() || first == other.first && last == other.last)
-    override fun hashCode() = if (isEmpty()) -1 else (31 * first.value + last.value)
-    override fun toString() = "$first..$last"
+    override fun hashCode(): Int = if (isEmpty()) -1 else (31 * first.value + last.value)
+    override fun toString(): String = "$first..$last"
 }
 
 open class FloorUnitProgression(start: FloorUnit, endInclusive: FloorUnit, var step: Int = 1) : Iterable<FloorUnit> {
@@ -57,22 +57,22 @@ open class FloorUnitProgression(start: FloorUnit, endInclusive: FloorUnit, var s
             "Step must be greater than Int.MIN_VALUE to avoid overflow on negation."
         }
     }
-    val first = start
-    val last = getProgressionLastElement(start, endInclusive, step)
-    override fun iterator() = FloorUnitProgressionIterator(first, last, step)
-    open fun isEmpty() = if (step > 0) first > last else first < last
-    override fun equals(other: Any?) = other is FloorUnitProgression &&
+    val first: FloorUnit = start
+    val last: FloorUnit = getProgressionLastElement(start, endInclusive, step)
+    override fun iterator(): FloorUnitProgressionIterator = FloorUnitProgressionIterator(first, last, step)
+    open fun isEmpty(): Boolean = if (step > 0) first > last else first < last
+    override fun equals(other: Any?): Boolean = other is FloorUnitProgression &&
         (isEmpty() && other.isEmpty() || first == other.first && last == other.last && step == other.step)
-    override fun hashCode() = if (isEmpty()) -1 else (31 * (31 * first.value + last.value) + step)
-    override fun toString() = if (step > 0) "$first..$last step $step" else "$first downTo $last step ${-step}"
-    infix fun step(step: FloorUnit) = this.apply { this.step = step.value }
+    override fun hashCode(): Int = if (isEmpty()) -1 else (31 * (31 * first.value + last.value) + step)
+    override fun toString(): String = if (step > 0) "$first..$last step $step" else "$first downTo $last step ${-step}"
+    infix fun step(step: FloorUnit): FloorUnitProgression = apply { this.step = step.value }
 }
 
 class FloorUnitProgressionIterator(first: FloorUnit, last: FloorUnit, private val step: Int) : Iterator<FloorUnit> {
     private val finalElement = last
     private var hasNext = if (step > 0) first <= last else first >= last
     private var next = if (hasNext) first else finalElement
-    override fun hasNext() = hasNext
+    override fun hasNext(): Boolean = hasNext
     override fun next(): FloorUnit {
         val value = next
         if (value == finalElement) {

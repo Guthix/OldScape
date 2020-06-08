@@ -19,9 +19,9 @@ package io.guthix.oldscape.server.world.map
 import io.guthix.oldscape.server.dimensions.FloorUnit
 import io.guthix.oldscape.server.dimensions.TileUnit
 import io.guthix.oldscape.server.dimensions.ZoneUnit
-import io.guthix.oldscape.server.world.entity.Obj
 import io.guthix.oldscape.server.world.entity.Loc
 import io.guthix.oldscape.server.world.entity.Npc
+import io.guthix.oldscape.server.world.entity.Obj
 import io.guthix.oldscape.server.world.entity.Player
 
 class Zone(
@@ -30,27 +30,25 @@ class Zone(
     val y: ZoneUnit,
     val mapsquareFloor: MapsquareFloor
 ) {
-    val collisions = ZoneCollision(this)
+    val collisions: ZoneCollision = ZoneCollision(this)
 
-    val players = mutableListOf<Player>()
+    val players: MutableList<Player> = mutableListOf()
 
-    val npcs = mutableListOf<Npc>()
+    val npcs: MutableList<Npc> = mutableListOf()
 
-    val groundObjects = mutableMapOf<Tile, MutableMap<Int, MutableList<Obj>>>()
+    val groundObjects: MutableMap<Tile, MutableMap<Int, MutableList<Obj>>> = mutableMapOf()
 
     val staticLocations: MutableMap<Int, Loc> = mutableMapOf()
 
     val dynamicLocations: MutableMap<Int, Loc> = mutableMapOf()
 
-    fun getCollisionMask(localX: TileUnit, localY: TileUnit): Int {
-        return collisions.masks[localX.value][localY.value]
-    }
+    fun getCollisionMask(localX: TileUnit, localY: TileUnit): Int = collisions.masks[localX.value][localY.value]
 
     fun getLoc(id: Int, localX: TileUnit, localY: TileUnit): Loc? {
-        for(slot in 0 until Loc.UNIQUE_SLOTS) {
+        for (slot in 0 until Loc.UNIQUE_SLOTS) {
             val key = Loc.generateMapKey(localX, localY, slot)
             val mapObject = staticLocations[key] ?: dynamicLocations[key]
-            mapObject?.let { if(id == it.id) return it }
+            mapObject?.let { if (id == it.id) return@getLoc it }
         }
         return null
     }
@@ -60,7 +58,7 @@ class Zone(
         collisions.addLocation(loc)
     }
 
-    fun addUnwalkableTile(localX: TileUnit, localY: TileUnit) = collisions.addUnwalkableTile(localX, localY)
+    fun addUnwalkableTile(localX: TileUnit, localY: TileUnit): Unit = collisions.addUnwalkableTile(localX, localY)
 
     fun addObject(tile: Tile, obj: Obj) {
         groundObjects.getOrPut(tile, { mutableMapOf() }).getOrPut(obj.id, { mutableListOf() }).add(obj)
@@ -75,8 +73,8 @@ class Zone(
             "Object $id does not exist at tile $tile."
         )
         val obj = objList.removeFirst()
-        if(objIdMap.isEmpty()) groundObjects.remove(tile)
-        if(objList.isEmpty()) groundObjects[tile]?.remove(id)
+        if (objIdMap.isEmpty()) groundObjects.remove(tile)
+        if (objList.isEmpty()) groundObjects[tile]?.remove(id)
         players.forEach { player -> player.mapManager.removeObject(tile, obj) }
         return obj
     }
@@ -91,5 +89,5 @@ class Zone(
         players.forEach { player -> player.mapManager.removeDynamicLoc(loc) }
     }
 
-    override fun toString() = "Zone(z=${floor.value}, x=${x.value}, y=${y.value})"
+    override fun toString(): String = "Zone(z=${floor.value}, x=${x.value}, y=${y.value})"
 }

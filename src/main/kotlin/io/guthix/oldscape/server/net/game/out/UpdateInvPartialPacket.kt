@@ -29,21 +29,21 @@ class UpdateInvPartialPacket(
     private val subInterfaceId: Int,
     private val objs: Map<Int, Obj?>
 ) : OutGameEvent {
-    override val opcode = 35
+    override val opcode: Int = 35
 
-    override val size = VarShortSize
+    override val size: VarShortSize = VarShortSize
 
     override fun encode(ctx: ChannelHandlerContext): ByteBuf {
         val buf = ctx.alloc().buffer()
         buf.writeInt((interfaceId shl Short.SIZE_BITS) or slotId)
         buf.writeShort(subInterfaceId)
-        for((slot, obj) in objs) {
+        for ((slot, obj) in objs) {
             buf.writeSmallSmart(slot)
-            if(obj == null) {
+            if (obj == null) {
                 buf.writeShort(0)
             } else {
                 buf.writeShort(obj.id + 1)
-                if(obj.quantity <= 255) {
+                if (obj.quantity <= 255) {
                     buf.writeByte(obj.quantity)
                 } else {
                     buf.writeByte(255)
@@ -55,6 +55,6 @@ class UpdateInvPartialPacket(
     }
 
     companion object {
-        const val STATIC_SIZE = Int.SIZE_BYTES + Short.SIZE_BYTES
+        const val STATIC_SIZE: Int = Int.SIZE_BYTES + Short.SIZE_BYTES
     }
 }

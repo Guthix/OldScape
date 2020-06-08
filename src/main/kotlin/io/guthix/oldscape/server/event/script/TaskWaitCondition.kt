@@ -23,14 +23,16 @@ interface TaskWaitCondition {
 }
 
 class TickCondition(private var tickCount: Int) : TaskWaitCondition {
-    override fun canResume() = --tickCount == 0
+    override fun canResume(): Boolean = --tickCount == 0
 }
 
 class LambdaCondition(private val cond: () -> Boolean) : TaskWaitCondition {
-    override fun canResume() = cond.invoke()
+    override fun canResume(): Boolean = cond.invoke()
 }
 
-object TrueCondition : TaskWaitCondition { override fun canResume() = true }
+object TrueCondition : TaskWaitCondition {
+    override fun canResume(): Boolean = true
+}
 
 class ConditionalContinuation(
     val condition: TaskWaitCondition,

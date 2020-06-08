@@ -21,14 +21,13 @@ import io.guthix.oldscape.cache.config.SequenceConfig
 import mu.KotlinLogging
 import java.io.IOException
 
-private val logger = KotlinLogging.logger {  }
+private val logger = KotlinLogging.logger { }
 
 object SequenceBlueprints {
     private lateinit var configs: Map<Int, SequenceConfig>
 
-    operator fun get(index: Int): SequenceConfig {
-        return configs[index] ?: throw IOException("Could not find sequence $index.")
-    }
+    operator fun get(index: Int): SequenceConfig = configs[index]
+        ?: throw IOException("Could not find sequence $index.")
 
     fun load(archive: Js5Archive) {
         configs = SequenceConfig.load(archive.readGroup(SequenceConfig.id))
