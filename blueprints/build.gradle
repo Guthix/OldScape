@@ -1,8 +1,0 @@
-dependencies {
-    implementation group: 'io.guthix.oldscape', name: 'oldscape-cache'
-    implementation project(':dimensions')
-}
-
-license {
-    header = licenseHeader
-}
