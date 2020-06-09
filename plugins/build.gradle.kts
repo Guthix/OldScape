@@ -1,3 +1,5 @@
+@file:Suppress("ConvertLambdaToReference")
+
 subprojects {
     dependencies {
         implementation(rootProject)
