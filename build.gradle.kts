@@ -5,7 +5,9 @@ import org.jetbrains.kotlin.gradle.plugin.getKotlinPluginVersion
 plugins {
     idea
     application
+    `maven-publish`
     kotlin("jvm")
+    id("org.jetbrains.dokka")
     id("com.github.hierynomus.license")
 }
 
@@ -30,11 +32,19 @@ val kotlinVersion: String by extra(project.getKotlinPluginVersion()!!)
 allprojects {
     apply(plugin = "kotlin")
     apply(plugin = "com.github.hierynomus.license")
+    apply(plugin = "maven-publish")
+    apply(plugin = "org.jetbrains.dokka")
 
     repositories {
         mavenCentral()
+        jcenter()
         maven("https://dl.bintray.com/kotlin/kotlin-eap")
         maven("https://jitpack.io")
+    }
+
+    java {
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
 
     dependencies {
@@ -52,6 +62,11 @@ allprojects {
     }
 
     tasks {
+        dokka {
+            outputFormat = "html"
+            outputDirectory = "$buildDir/javadoc"
+        }
+
         compileKotlin {
             kotlinOptions.jvmTarget = "11"
             kotlinOptions.freeCompilerArgs = listOf(
