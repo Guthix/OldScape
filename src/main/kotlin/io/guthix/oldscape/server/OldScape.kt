@@ -42,6 +42,8 @@ import io.guthix.oldscape.server.event.script.EventBus
 import io.guthix.oldscape.server.net.OldScapeServer
 import io.guthix.oldscape.server.net.game.GamePacketDecoder
 import io.guthix.oldscape.server.world.World
+import java.io.FileNotFoundException
+import java.net.URL
 import java.nio.file.Path
 import java.util.*
 
@@ -111,32 +113,36 @@ object OldScape {
     }
 
     private fun ObjectMapper.readNpcConfig(filePath: String): List<ExtraNpcConfig> = readValue(
-        Path.of(javaClass.getResource("/config/npcs/$filePath").toURI()).toFile(),
+        Path.of(getResource("/config/npcs/$filePath").toURI()).toFile(),
         object : TypeReference<List<ExtraNpcConfig>>() {}
     )
 
     private fun ObjectMapper.readMonsterConfig(filePath: String): List<ExtraMonsterConfig> = readValue(
-        Path.of(javaClass.getResource("/config/npcs/$filePath").toURI()).toFile(),
+        Path.of(getResource("/config/npcs/$filePath").toURI()).toFile(),
         object : TypeReference<List<ExtraMonsterConfig>>() {}
     )
 
     private fun ObjectMapper.readObjectConfig(filePath: String): List<ExtraObjectConfig> = readValue(
-        Path.of(javaClass.getResource("/config/objects/$filePath").toURI()).toFile(),
+        Path.of(getResource("/config/objects/$filePath").toURI()).toFile(),
         object : TypeReference<List<ExtraObjectConfig>>() {}
     )
 
     private fun ObjectMapper.readEquipmentConfig(filePath: String): List<ExtraEquipmentConfig> = readValue(
-        Path.of(javaClass.getResource("/config/objects/$filePath").toURI()).toFile(),
+        Path.of(getResource("/config/objects/$filePath").toURI()).toFile(),
         object : TypeReference<List<ExtraEquipmentConfig>>() {}
     )
 
     private fun ObjectMapper.readHeadConfig(filePath: String): List<ExtraHeadConfig> = readValue(
-        Path.of(javaClass.getResource("/config/objects/$filePath").toURI()).toFile(),
+        Path.of(getResource("/config/objects/$filePath").toURI()).toFile(),
         object : TypeReference<List<ExtraHeadConfig>>() {}
     )
 
     private fun ObjectMapper.readBodyConfig(filePath: String): List<ExtraBodyConfig> = readValue(
-        Path.of(javaClass.getResource("/config/objects/$filePath").toURI()).toFile(),
+        Path.of(getResource("/config/objects/$filePath").toURI()).toFile(),
         object : TypeReference<List<ExtraBodyConfig>>() {}
+    )
+
+    private fun getResource(filePath: String) = javaClass.getResource(filePath) ?: throw FileNotFoundException(
+        "Could not find resource file $filePath."
     )
 }

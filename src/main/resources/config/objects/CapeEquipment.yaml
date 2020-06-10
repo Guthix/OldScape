@@ -1,5 +1,5 @@
 - ids:
-    - 1007
+  - 1007
   weight: 0.453
   examine: "A bright red cape."
   equipment:
@@ -21,7 +21,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1019
+  - 1019
   weight: 0.453
   examine: "A warm black cape."
   equipment:
@@ -43,7 +43,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1021
+  - 1021
   weight: 0.453
   examine: "A thick blue cape."
   equipment:
@@ -65,7 +65,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1023
+  - 1023
   weight: 0.453
   examine: "A thick yellow cape."
   equipment:
@@ -87,7 +87,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1027
+  - 1027
   weight: 0.453
   examine: "A thick green cape."
   equipment:
@@ -109,7 +109,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1029
+  - 1029
   weight: 0.453
   examine: "A thick purple cape."
   equipment:
@@ -131,7 +131,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1031
+  - 1031
   weight: 0.453
   examine: "A thick orange cape."
   equipment:
@@ -153,7 +153,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1052
+  - 1052
   weight: 1.814
   examine: "The cape worn by members of the Legends Guild."
   equipment:
@@ -175,7 +175,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 2412
+  - 2412
   weight: 0.453
   examine: "A cape from the almighty god Saradomin."
   equipment:
@@ -197,7 +197,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 2413
+  - 2413
   weight: 0.453
   examine: "A cape from the almighty god Guthix."
   equipment:
@@ -219,7 +219,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 2414
+  - 2414
   weight: 0.453
   examine: "A cape from the almighty god Zamorak."
   equipment:
@@ -241,7 +241,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 3759
+  - 3759
   weight: 0.453
   examine: "The latest fashion in Rellekka."
   equipment:
@@ -263,7 +263,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 3761
+  - 3761
   weight: 0.453
   examine: "The latest fashion in Rellekka."
   equipment:
@@ -285,7 +285,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 3763
+  - 3763
   weight: 0.453
   examine: "The latest fashion in Rellekka."
   equipment:
@@ -307,7 +307,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 3765
+  - 3765
   weight: 0.453
   examine: "The latest fashion in Rellekka."
   equipment:
@@ -329,7 +329,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 3777
+  - 3777
   weight: 0.453
   examine: "The latest fashion in Rellekka."
   equipment:
@@ -351,7 +351,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 3779
+  - 3779
   weight: 0.453
   examine: "The latest fashion in Rellekka."
   equipment:
@@ -373,7 +373,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 3781
+  - 3781
   weight: 0.453
   examine: "The latest fashion in Rellekka."
   equipment:
@@ -395,7 +395,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 3783
+  - 3783
   weight: 0.453
   examine: "The latest fashion in Rellekka."
   equipment:
@@ -417,7 +417,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 3785
+  - 3785
   weight: 0.453
   examine: "The latest fashion in Rellekka."
   equipment:
@@ -439,7 +439,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 3787
+  - 3787
   weight: 0.453
   examine: "The latest fashion in Rellekka."
   equipment:
@@ -461,7 +461,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 3789
+  - 3789
   weight: 0.453
   examine: "The latest fashion in Rellekka."
   equipment:
@@ -483,7 +483,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4041
+  - 4041
   weight: 1.0
   examine: "The colours of Saradomin."
   equipment:
@@ -505,7 +505,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4042
+  - 4042
   weight: 1.0
   examine: "The colours of Zamorak."
   equipment:
@@ -527,7 +527,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4304
+  - 4304
   weight: 0.453
   examine: "A HAM cape."
   equipment:
@@ -549,7 +549,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4315
+  - 4315
   weight: 0.453
   examine: "Ooohhh look at the pretty colours..."
   equipment:
@@ -571,7 +571,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4317
+  - 4317
   weight: 0.453
   examine: "Ooohhh look at the pretty colours..."
   equipment:
@@ -593,7 +593,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4319
+  - 4319
   weight: 0.453
   examine: "Ooohhh look at the pretty colours..."
   equipment:
@@ -615,7 +615,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4321
+  - 4321
   weight: 0.453
   examine: "Ooohhh look at the pretty colours..."
   equipment:
@@ -637,7 +637,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4323
+  - 4323
   weight: 0.453
   examine: "Ooohhh look at the pretty colours..."
   equipment:
@@ -659,7 +659,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4325
+  - 4325
   weight: 0.453
   examine: "Ooohhh look at the pretty colours..."
   equipment:
@@ -681,7 +681,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4327
+  - 4327
   weight: 0.453
   examine: "Ooohhh look at the pretty colours..."
   equipment:
@@ -703,7 +703,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4329
+  - 4329
   weight: 0.453
   examine: "Ooohhh look at the pretty colours..."
   equipment:
@@ -725,7 +725,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4331
+  - 4331
   weight: 0.453
   examine: "Ooohhh look at the pretty colours..."
   equipment:
@@ -747,7 +747,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4333
+  - 4333
   weight: 0.453
   examine: "Ooohhh look at the pretty colours..."
   equipment:
@@ -769,7 +769,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4335
+  - 4335
   weight: 0.453
   examine: "Ooohhh look at the pretty colours..."
   equipment:
@@ -791,7 +791,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4337
+  - 4337
   weight: 0.453
   examine: "Ooohhh look at the pretty colours..."
   equipment:
@@ -813,7 +813,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4339
+  - 4339
   weight: 0.453
   examine: "Ooohhh look at the pretty colours..."
   equipment:
@@ -835,7 +835,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4341
+  - 4341
   weight: 0.453
   examine: "Ooohhh look at the pretty colours..."
   equipment:
@@ -857,7 +857,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4343
+  - 4343
   weight: 0.453
   examine: "Ooohhh look at the pretty colours..."
   equipment:
@@ -879,7 +879,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4345
+  - 4345
   weight: 0.453
   examine: "Ooohhh look at the pretty colours..."
   equipment:
@@ -901,7 +901,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4347
+  - 4347
   weight: 0.453
   examine: "Ooohhh look at the pretty colours..."
   equipment:
@@ -923,7 +923,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4349
+  - 4349
   weight: 0.453
   examine: "Ooohhh look at the pretty colours..."
   equipment:
@@ -945,7 +945,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4351
+  - 4351
   weight: 0.453
   examine: "Ooohhh look at the pretty colours..."
   equipment:
@@ -967,7 +967,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4353
+  - 4353
   weight: 0.453
   examine: "Ooohhh look at the pretty colours..."
   equipment:
@@ -989,7 +989,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4355
+  - 4355
   weight: 0.453
   examine: "Ooohhh look at the pretty colours..."
   equipment:
@@ -1011,7 +1011,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4357
+  - 4357
   weight: 0.453
   examine: "Ooohhh look at the pretty colours..."
   equipment:
@@ -1033,7 +1033,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4359
+  - 4359
   weight: 0.453
   examine: "Ooohhh look at the pretty colours..."
   equipment:
@@ -1055,7 +1055,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4361
+  - 4361
   weight: 0.453
   examine: "Ooohhh look at the pretty colours..."
   equipment:
@@ -1077,7 +1077,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4363
+  - 4363
   weight: 0.453
   examine: "Ooohhh look at the pretty colours..."
   equipment:
@@ -1099,7 +1099,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4365
+  - 4365
   weight: 0.453
   examine: "Ooohhh look at the pretty colours..."
   equipment:
@@ -1121,7 +1121,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4367
+  - 4367
   weight: 0.453
   examine: "Ooohhh look at the pretty colours..."
   equipment:
@@ -1143,7 +1143,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4369
+  - 4369
   weight: 0.453
   examine: "Ooohhh look at the pretty colours..."
   equipment:
@@ -1165,7 +1165,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4371
+  - 4371
   weight: 0.453
   examine: "Ooohhh look at the pretty colours..."
   equipment:
@@ -1187,7 +1187,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4373
+  - 4373
   weight: 0.453
   examine: "Ooohhh look at the pretty colours..."
   equipment:
@@ -1209,7 +1209,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4375
+  - 4375
   weight: 0.453
   examine: "Ooohhh look at the pretty colours..."
   equipment:
@@ -1231,7 +1231,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4377
+  - 4377
   weight: 0.453
   examine: "Ooohhh look at the pretty colours..."
   equipment:
@@ -1253,7 +1253,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4379
+  - 4379
   weight: 0.453
   examine: "Ooohhh look at the pretty colours..."
   equipment:
@@ -1275,7 +1275,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4381
+  - 4381
   weight: 0.453
   examine: "Ooohhh look at the pretty colours..."
   equipment:
@@ -1297,7 +1297,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4383
+  - 4383
   weight: 0.453
   examine: "Ooohhh look at the pretty colours..."
   equipment:
@@ -1319,7 +1319,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4385
+  - 4385
   weight: 0.453
   examine: "Ooohhh look at the pretty colours..."
   equipment:
@@ -1341,7 +1341,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4387
+  - 4387
   weight: 0.453
   examine: "Ooohhh look at the pretty colours..."
   equipment:
@@ -1363,7 +1363,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4389
+  - 4389
   weight: 0.453
   examine: "Ooohhh look at the pretty colours..."
   equipment:
@@ -1385,7 +1385,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4391
+  - 4391
   weight: 0.453
   examine: "Ooohhh look at the pretty colours..."
   equipment:
@@ -1407,7 +1407,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4393
+  - 4393
   weight: 0.453
   examine: "Ooohhh look at the pretty colours..."
   equipment:
@@ -1429,7 +1429,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4395
+  - 4395
   weight: 0.453
   examine: "Ooohhh look at the pretty colours..."
   equipment:
@@ -1451,7 +1451,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4397
+  - 4397
   weight: 0.453
   examine: "Ooohhh look at the pretty colours..."
   equipment:
@@ -1473,7 +1473,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4399
+  - 4399
   weight: 0.453
   examine: "Ooohhh look at the pretty colours..."
   equipment:
@@ -1495,7 +1495,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4401
+  - 4401
   weight: 0.453
   examine: "Ooohhh look at the pretty colours..."
   equipment:
@@ -1517,7 +1517,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4403
+  - 4403
   weight: 0.453
   examine: "Ooohhh look at the pretty colours..."
   equipment:
@@ -1539,7 +1539,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4405
+  - 4405
   weight: 0.453
   examine: "Ooohhh look at the pretty colours..."
   equipment:
@@ -1561,7 +1561,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4407
+  - 4407
   weight: 0.453
   examine: "Ooohhh look at the pretty colours..."
   equipment:
@@ -1583,7 +1583,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4409
+  - 4409
   weight: 0.453
   examine: "Ooohhh look at the pretty colours..."
   equipment:
@@ -1605,7 +1605,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4411
+  - 4411
   weight: 0.453
   examine: "Ooohhh look at the pretty colours..."
   equipment:
@@ -1627,7 +1627,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4413
+  - 4413
   weight: 0.453
   examine: "Ooohhh look at the pretty colours..."
   equipment:
@@ -1649,7 +1649,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4514
+  - 4514
   weight: 0.45
   examine: "A fine castlewars Cape."
   equipment:
@@ -1671,7 +1671,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4516
+  - 4516
   weight: 0.453
   examine: "A fine castlewars Cape."
   equipment:
@@ -1693,7 +1693,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 5607
+  - 5607
   weight: 5.0
   examine: "A sack full of grain."
   equipment:
@@ -1715,7 +1715,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 6070
+  - 6070
   weight: 2.267
   examine: "A dull brown cape."
   equipment:
@@ -1737,7 +1737,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 6111
+  - 6111
   weight: 0.001
   examine: "Made of a strange ghostly material..."
   equipment:
@@ -1759,7 +1759,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 6568
+  - 6568
   weight: 1.814
   examine: "A cape of woven obsidian plates."
   equipment:
@@ -1781,7 +1781,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 6570
+  - 6570
   weight: 1.814
   examine: "A cape of fire."
   equipment:
@@ -1803,7 +1803,7 @@
       magic: 0
     prayerBonus: 2
 - ids:
-    - 24223
+  - 24223
   weight: 1.814
   examine: "A cape of fire."
   equipment:
@@ -1825,7 +1825,7 @@
       magic: 0
     prayerBonus: 2
 - ids:
-    - 6959
+  - 6959
   weight: 0.453
   examine: "It's a bit pink."
   equipment:
@@ -1847,7 +1847,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 7535
+  - 7535
   weight: 10.0
   examine: "I'll need a helmet to make this work."
   equipment:
@@ -1869,7 +1869,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 7918
+  - 7918
   weight: 0.003
   examine: "The Bonesack is a little old item that protects like leather."
   equipment:
@@ -1891,7 +1891,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 9074
+  - 9074
   weight: 0.453
   examine: "A mystical cape."
   equipment:
@@ -1913,7 +1913,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 9101
+  - 9101
   weight: 0.453
   examine: "Oooo pretty!"
   equipment:
@@ -1935,7 +1935,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 9747
+  - 9747
   weight: 0.453
   examine: "The cape worn by masters of Attack."
   equipment:
@@ -1957,7 +1957,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 9748
+  - 9748
   weight: 0.453
   examine: "The cape worn by masters of Attack."
   equipment:
@@ -1979,7 +1979,7 @@
       magic: 0
     prayerBonus: 4
 - ids:
-    - 9750
+  - 9750
   weight: 0.453
   examine: "The cape worn by only the strongest people."
   equipment:
@@ -2001,7 +2001,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 9751
+  - 9751
   weight: 0.453
   examine: "The cape worn by only the strongest people."
   equipment:
@@ -2023,7 +2023,7 @@
       magic: 0
     prayerBonus: 4
 - ids:
-    - 9753
+  - 9753
   weight: 0.453
   examine: "The cape worn by masters of the art of Defence."
   equipment:
@@ -2045,7 +2045,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 9754
+  - 9754
   weight: 0.453
   examine: "The cape worn by masters of the art of Defence."
   equipment:
@@ -2067,7 +2067,7 @@
       magic: 0
     prayerBonus: 4
 - ids:
-    - 9756
+  - 9756
   weight: 0.453
   examine: "The cape worn by master archers."
   equipment:
@@ -2089,7 +2089,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 9757
+  - 9757
   weight: 0.4
   examine: "The cape worn by master archers."
   equipment:
@@ -2111,7 +2111,7 @@
       magic: 0
     prayerBonus: 4
 - ids:
-    - 9759
+  - 9759
   weight: 0.453
   examine: "The cape worn by the most pious of heroes."
   equipment:
@@ -2133,7 +2133,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 9760
+  - 9760
   weight: 0.453
   examine: "The cape worn by the most pious of heroes."
   equipment:
@@ -2155,7 +2155,7 @@
       magic: 0
     prayerBonus: 4
 - ids:
-    - 9762
+  - 9762
   weight: 0.453
   examine: "The cape worn by the most powerful mages."
   equipment:
@@ -2177,7 +2177,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 9763
+  - 9763
   weight: 0.453
   examine: "The cape worn by the most powerful mages."
   equipment:
@@ -2199,7 +2199,7 @@
       magic: 0
     prayerBonus: 4
 - ids:
-    - 9765
+  - 9765
   weight: 0.453
   examine: "The cape worn by master runecrafters."
   equipment:
@@ -2221,7 +2221,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 9766
+  - 9766
   weight: 0.453
   examine: "The cape worn by master runecrafters."
   equipment:
@@ -2243,7 +2243,7 @@
       magic: 0
     prayerBonus: 4
 - ids:
-    - 9768
+  - 9768
   weight: 0.453
   examine: "The cape worn by the healthiest adventurers."
   equipment:
@@ -2265,7 +2265,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 9769
+  - 9769
   weight: 0.453
   examine: "The cape worn by the healthiest adventurers."
   equipment:
@@ -2287,8 +2287,8 @@
       magic: 0
     prayerBonus: 4
 - ids:
-    - 9771
-    - 13340
+  - 9771
+  - 13340
   weight: 0.0
   examine: "The cape worn by the most agile of heroes."
   equipment:
@@ -2310,8 +2310,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 9772
-    - 13341
+  - 9772
+  - 13341
   weight: 0.0
   examine: "The cape worn by the most agile of heroes."
   equipment:
@@ -2333,7 +2333,7 @@
       magic: 0
     prayerBonus: 4
 - ids:
-    - 9774
+  - 9774
   weight: 0.4
   examine: "The cape worn by the most skilled at the art of Herblore."
   equipment:
@@ -2355,7 +2355,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 9775
+  - 9775
   weight: 0.453
   examine: "The cape worn by the most skilled at the art of Herblore."
   equipment:
@@ -2377,7 +2377,7 @@
       magic: 0
     prayerBonus: 4
 - ids:
-    - 9777
+  - 9777
   weight: 0.453
   examine: "The cape worn by master thieves."
   equipment:
@@ -2399,7 +2399,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 9778
+  - 9778
   weight: 0.453
   examine: "The cape worn by master thieves."
   equipment:
@@ -2421,7 +2421,7 @@
       magic: 0
     prayerBonus: 4
 - ids:
-    - 9780
+  - 9780
   weight: 0.453
   examine: "The cape worn by master craftworkers."
   equipment:
@@ -2443,7 +2443,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 9781
+  - 9781
   weight: 0.453
   examine: "The cape worn by master craftworkers."
   equipment:
@@ -2465,7 +2465,7 @@
       magic: 0
     prayerBonus: 4
 - ids:
-    - 9783
+  - 9783
   weight: 0.453
   examine: "The cape worn by the best of fletchers."
   equipment:
@@ -2487,7 +2487,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 9784
+  - 9784
   weight: 0.453
   examine: "The cape worn by the best of fletchers."
   equipment:
@@ -2509,7 +2509,7 @@
       magic: 0
     prayerBonus: 4
 - ids:
-    - 9786
+  - 9786
   weight: 0.453
   examine: "The cape worn by Slayer masters."
   equipment:
@@ -2531,7 +2531,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 9787
+  - 9787
   weight: 0.453
   examine: "The cape worn by Slayer masters."
   equipment:
@@ -2553,7 +2553,7 @@
       magic: 0
     prayerBonus: 4
 - ids:
-    - 9789
+  - 9789
   weight: 0.453
   examine: "The cape worn by master builders."
   equipment:
@@ -2575,7 +2575,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 9790
+  - 9790
   weight: 0.453
   examine: "The cape worn by master builders."
   equipment:
@@ -2597,7 +2597,7 @@
       magic: 0
     prayerBonus: 4
 - ids:
-    - 9792
+  - 9792
   weight: 0.453
   examine: "The cape worn by the most skilled miners."
   equipment:
@@ -2619,7 +2619,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 9793
+  - 9793
   weight: 0.453
   examine: "The cape worn by the most skilled miners."
   equipment:
@@ -2641,7 +2641,7 @@
       magic: 0
     prayerBonus: 4
 - ids:
-    - 9795
+  - 9795
   weight: 0.453
   examine: "The cape worn by master smiths."
   equipment:
@@ -2663,7 +2663,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 9796
+  - 9796
   weight: 0.453
   examine: "The cape worn by master smiths."
   equipment:
@@ -2685,7 +2685,7 @@
       magic: 0
     prayerBonus: 4
 - ids:
-    - 9798
+  - 9798
   weight: 0.453
   examine: "The cape worn by the best fishermen."
   equipment:
@@ -2707,7 +2707,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 9799
+  - 9799
   weight: 0.453
   examine: "The cape worn by the best fishermen."
   equipment:
@@ -2729,7 +2729,7 @@
       magic: 0
     prayerBonus: 4
 - ids:
-    - 9801
+  - 9801
   weight: 0.453
   examine: "The cape worn by the world's best chefs."
   equipment:
@@ -2751,7 +2751,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 9802
+  - 9802
   weight: 0.453
   examine: "The cape worn by the world's best chefs."
   equipment:
@@ -2773,7 +2773,7 @@
       magic: 0
     prayerBonus: 4
 - ids:
-    - 9804
+  - 9804
   weight: 0.453
   examine: "The cape worn by master firelighters."
   equipment:
@@ -2795,7 +2795,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 9805
+  - 9805
   weight: 0.453
   examine: "The cape worn by master firelighters."
   equipment:
@@ -2817,7 +2817,7 @@
       magic: 0
     prayerBonus: 4
 - ids:
-    - 9807
+  - 9807
   weight: 0.453
   examine: "The cape worn by master woodcutters."
   equipment:
@@ -2839,7 +2839,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 9808
+  - 9808
   weight: 0.4
   examine: "The cape worn by master woodcutters."
   equipment:
@@ -2861,7 +2861,7 @@
       magic: 0
     prayerBonus: 4
 - ids:
-    - 9810
+  - 9810
   weight: 0.453
   examine: "The cape worn by master farmers."
   equipment:
@@ -2883,7 +2883,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 9811
+  - 9811
   weight: 0.453
   examine: "The cape worn by master farmers."
   equipment:
@@ -2905,7 +2905,7 @@
       magic: 0
     prayerBonus: 4
 - ids:
-    - 9813
+  - 9813
   weight: 0.453
   examine: "The cape worn by only the most experienced adventurers."
   equipment:
@@ -2927,7 +2927,7 @@
       magic: 0
     prayerBonus: 85
 - ids:
-    - 13068
+  - 13068
   weight: 0.0
   examine: "The cape worn by only the most experienced adventurers."
   equipment:
@@ -2949,7 +2949,7 @@
       magic: 0
     prayerBonus: 85
 - ids:
-    - 9948
+  - 9948
   weight: 0.453
   examine: "The cape worn by master hunters."
   equipment:
@@ -2971,7 +2971,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 9949
+  - 9949
   weight: 0.453
   examine: "The cape worn by master hunters."
   equipment:
@@ -2993,8 +2993,8 @@
       magic: 0
     prayerBonus: 4
 - ids:
-    - 10069
-    - 10073
+  - 10069
+  - 10073
   weight: 0.0
   examine: "A surprisingly aerodynamic cape."
   equipment:
@@ -3016,8 +3016,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10071
-    - 10074
+  - 10071
+  - 10074
   weight: 0.0
   examine: "A really surprisingly aerodynamic cape."
   equipment:
@@ -3039,7 +3039,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10171
+  - 10171
   weight: 0.226
   examine: "A cape made from giant eagle feathers."
   equipment:
@@ -3061,7 +3061,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10446
+  - 10446
   weight: 0.4
   examine: "A Saradomin cloak."
   equipment:
@@ -3083,7 +3083,7 @@
       magic: 0
     prayerBonus: 3
 - ids:
-    - 10448
+  - 10448
   weight: 0.4
   examine: "A Guthix cloak."
   equipment:
@@ -3105,7 +3105,7 @@
       magic: 0
     prayerBonus: 3
 - ids:
-    - 10450
+  - 10450
   weight: 0.4
   examine: "A Zamorak cloak."
   equipment:
@@ -3127,7 +3127,7 @@
       magic: 0
     prayerBonus: 3
 - ids:
-    - 10498
+  - 10498
   weight: 4.535
   examine: "A bagged chicken ready to serve you, magnet in claw."
   equipment:
@@ -3149,7 +3149,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10499
+  - 10499
   weight: 4.535
   examine: "A superior bagged chicken ready to serve you, magnet in claw."
   equipment:
@@ -3171,8 +3171,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11852
-    - 11853
+  - 11852
+  - 11853
   weight: 0.0
   examine: "A sign of your grace."
   equipment:
@@ -3194,8 +3194,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13581
-    - 13582
+  - 13581
+  - 13582
   weight: 0.0
   examine: "A sign of your grace and loyalty."
   equipment:
@@ -3217,8 +3217,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13593
-    - 13594
+  - 13593
+  - 13594
   weight: 0.0
   examine: "A sign of your grace and loyalty."
   equipment:
@@ -3240,8 +3240,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13605
-    - 13606
+  - 13605
+  - 13606
   weight: 0.0
   examine: "A sign of your grace and loyalty."
   equipment:
@@ -3263,8 +3263,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13617
-    - 13618
+  - 13617
+  - 13618
   weight: 0.0
   examine: "A sign of your grace and loyalty."
   equipment:
@@ -3286,8 +3286,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13629
-    - 13630
+  - 13629
+  - 13630
   weight: 0.0
   examine: "A sign of your grace and loyalty."
   equipment:
@@ -3309,8 +3309,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13669
-    - 13670
+  - 13669
+  - 13670
   weight: 0.0
   examine: "A sign of your grace and unity."
   equipment:
@@ -3332,8 +3332,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 21064
-    - 21066
+  - 21064
+  - 21066
   weight: 0.0
   examine: "A sign of your grace."
   equipment:
@@ -3355,7 +3355,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11901
+  - 11901
   weight: 8.155
   examine: "Very decorative armour."
   equipment:
@@ -3377,7 +3377,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 24168
+  - 24168
   weight: 8.155
   examine: "Very decorative armour."
   equipment:
@@ -3399,7 +3399,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12197
+  - 12197
   weight: 1.0
   examine: "An Ancient cloak."
   equipment:
@@ -3421,7 +3421,7 @@
       magic: 0
     prayerBonus: 3
 - ids:
-    - 12261
+  - 12261
   weight: 1.0
   examine: "An Armadyl cloak."
   equipment:
@@ -3443,7 +3443,7 @@
       magic: 0
     prayerBonus: 3
 - ids:
-    - 12273
+  - 12273
   weight: 1.0
   examine: "A Bandos cloak."
   equipment:
@@ -3465,7 +3465,7 @@
       magic: 0
     prayerBonus: 3
 - ids:
-    - 12437
+  - 12437
   weight: 3.0
   examine: "A beautiful cloak woven by ancient tailors."
   equipment:
@@ -3487,7 +3487,7 @@
       magic: 0
     prayerBonus: 5
 - ids:
-    - 12514
+  - 12514
   weight: 2.0
   examine: "I'm the Backpack loaded up with things and knick knacks too."
   equipment:
@@ -3509,7 +3509,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 19476
+  - 19476
   weight: 0.4
   examine: "The cape worn by experienced adventurers."
   equipment:
@@ -3531,7 +3531,7 @@
       magic: 0
     prayerBonus: 4
 - ids:
-    - 13069
+  - 13069
   weight: 0.4
   examine: "The cape worn by only the most elite and experienced adventurers."
   equipment:
@@ -3553,7 +3553,7 @@
       magic: 0
     prayerBonus: 4
 - ids:
-    - 13121
+  - 13121
   weight: 1.0
   examine: "A shadowy Ardougne cloak."
   equipment:
@@ -3575,7 +3575,7 @@
       magic: 0
     prayerBonus: 2
 - ids:
-    - 13122
+  - 13122
   weight: 1.0
   examine: "A shadowy Ardougne cloak."
   equipment:
@@ -3597,7 +3597,7 @@
       magic: 0
     prayerBonus: 4
 - ids:
-    - 13123
+  - 13123
   weight: 0.0
   examine: "A shadowy Ardougne cloak."
   equipment:
@@ -3619,7 +3619,7 @@
       magic: 0
     prayerBonus: 5
 - ids:
-    - 13124
+  - 13124
   weight: 0.0
   examine: "A shadowy Ardougne cloak."
   equipment:
@@ -3641,7 +3641,7 @@
       magic: 0
     prayerBonus: 6
 - ids:
-    - 13221
+  - 13221
   weight: 0.4
   examine: "The cape worn by music aficionados."
   equipment:
@@ -3663,7 +3663,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13222
+  - 13222
   weight: 0.4
   examine: "The cape worn by music aficionados."
   equipment:
@@ -3685,8 +3685,8 @@
       magic: 0
     prayerBonus: 4
 - ids:
-    - 13280
-    - 13342
+  - 13280
+  - 13342
   weight: 0.0
   examine: "The cape worn by only the most experienced players."
   equipment:
@@ -3708,7 +3708,7 @@
       magic: 0
     prayerBonus: 4
 - ids:
-    - 24191
+  - 24191
   weight: 0.0
   examine: "Dark and sinister, just like a deadman."
   equipment:
@@ -3730,7 +3730,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13319
+  - 13319
   weight: 0.0
   examine: "Dark and sinister, just like a deadman."
   equipment:
@@ -3752,7 +3752,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13329
+  - 13329
   weight: 0.453
   examine: "The cape worn by only the most experienced players."
   equipment:
@@ -3774,7 +3774,7 @@
       magic: 0
     prayerBonus: 2
 - ids:
-    - 24134
+  - 24134
   weight: 0.453
   examine: "The cape worn by only the most experienced players."
   equipment:
@@ -3796,7 +3796,7 @@
       magic: 0
     prayerBonus: 2
 - ids:
-    - 13331
+  - 13331
   weight: 0.453
   examine: "The cape worn by only the most experienced players."
   equipment:
@@ -3818,7 +3818,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13333
+  - 13333
   weight: 0.453
   examine: "The cape worn by only the most experienced players."
   equipment:
@@ -3840,7 +3840,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13335
+  - 13335
   weight: 0.453
   examine: "The cape worn by only the most experienced players."
   equipment:
@@ -3862,7 +3862,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13337
+  - 13337
   weight: 0.453
   examine: "The cape worn by only the most experienced players."
   equipment:
@@ -3884,7 +3884,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13679
+  - 13679
   weight: 0.4
   examine: "The cape worn by master cabbage pickers."
   equipment:
@@ -3906,8 +3906,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 19556
-  weight: 0.0
+  - 19556
+  weight: 0.01
   examine: "A monkey retrieved from the wreckage of Glough's airship laboratory."
   equipment:
     attackBonus:
@@ -3928,7 +3928,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 19697
+  - 19697
   weight: 1.0
   examine: "Winter is coming."
   equipment:
@@ -3950,7 +3950,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 20050
+  - 20050
   weight: 1.8
   examine: "A cape of woven obsidian plates."
   equipment:
@@ -3972,7 +3972,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 20211
+  - 20211
   weight: 0.0
   examine: "Ooohhh look at the dirty colours..."
   equipment:
@@ -3994,7 +3994,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 20214
+  - 20214
   weight: 0.0
   examine: "Ooohhh look at the dirty colours..."
   equipment:
@@ -4016,7 +4016,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 20217
+  - 20217
   weight: 0.0
   examine: "Ooohhh look at the dirty colours..."
   equipment:
@@ -4038,7 +4038,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 20760
+  - 20760
   weight: 0.453
   examine: "The cape worn by only the most experienced players."
   equipment:
@@ -4060,7 +4060,7 @@
       magic: 0
     prayerBonus: 6
 - ids:
-    - 20834
+  - 20834
   weight: 0.0
   examine: "You too can look like Santa."
   equipment:
@@ -4082,7 +4082,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 21285
+  - 21285
   weight: 0.453
   examine: "The cape worn by only the most experienced players."
   equipment:
@@ -4104,7 +4104,7 @@
       magic: 0
     prayerBonus: 2
 - ids:
-    - 24133
+  - 24133
   weight: 0.453
   examine: "The cape worn by only the most experienced players."
   equipment:
@@ -4126,7 +4126,7 @@
       magic: 0
     prayerBonus: 2
 - ids:
-    - 21295
+  - 21295
   weight: 1.814
   examine: "Whose idea was it to have a cape made of lava anyway?"
   equipment:
@@ -4148,7 +4148,7 @@
       magic: 0
     prayerBonus: 2
 - ids:
-    - 24224
+  - 24224
   weight: 1.814
   examine: "Whose idea was it to have a cape made of lava anyway?"
   equipment:
@@ -4170,7 +4170,7 @@
       magic: 0
     prayerBonus: 2
 - ids:
-    - 21439
+  - 21439
   weight: 0.0
   examine: "Formerly owned by Leon d'Cour, the Champion of Champions."
   equipment:
@@ -4192,7 +4192,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 21723
+  - 21723
   weight: 10.0
   examine: "Some basic diving apparatus."
   equipment:
@@ -4214,7 +4214,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 21776
+  - 21776
   weight: 0.453
   examine: "The cape worn by only the most experienced players."
   equipment:
@@ -4236,7 +4236,7 @@
       magic: 2
     prayerBonus: 0
 - ids:
-    - 24232
+  - 24232
   weight: 0.453
   examine: "The cape worn by only the most experienced players."
   equipment:
@@ -4258,7 +4258,7 @@
       magic: 2
     prayerBonus: 0
 - ids:
-    - 21780
+  - 21780
   weight: 0.453
   examine: "The cape worn by only the most experienced players."
   equipment:
@@ -4280,7 +4280,7 @@
       magic: 2
     prayerBonus: 0
 - ids:
-    - 24233
+  - 24233
   weight: 0.453
   examine: "The cape worn by only the most experienced players."
   equipment:
@@ -4302,7 +4302,7 @@
       magic: 2
     prayerBonus: 0
 - ids:
-    - 21784
+  - 21784
   weight: 0.453
   examine: "The cape worn by only the most experienced players."
   equipment:
@@ -4324,7 +4324,7 @@
       magic: 2
     prayerBonus: 0
 - ids:
-    - 24234
+  - 24234
   weight: 0.453
   examine: "The cape worn by only the most experienced players."
   equipment:
@@ -4346,7 +4346,7 @@
       magic: 2
     prayerBonus: 0
 - ids:
-    - 21791
+  - 21791
   weight: 0.453
   examine: "A cape from the almighty god Saradomin, imbued with great power."
   equipment:
@@ -4368,7 +4368,7 @@
       magic: 2
     prayerBonus: 0
 - ids:
-    - 24248
+  - 24248
   weight: 0.453
   examine: "A cape from the almighty god Saradomin, imbued with great power."
   equipment:
@@ -4390,7 +4390,7 @@
       magic: 2
     prayerBonus: 0
 - ids:
-    - 21793
+  - 21793
   weight: 0.453
   examine: "A cape from the almighty god Guthix, imbued with great power."
   equipment:
@@ -4412,7 +4412,7 @@
       magic: 2
     prayerBonus: 0
 - ids:
-    - 24249
+  - 24249
   weight: 0.453
   examine: "A cape from the almighty god Guthix, imbued with great power."
   equipment:
@@ -4434,7 +4434,7 @@
       magic: 2
     prayerBonus: 0
 - ids:
-    - 21795
+  - 21795
   weight: 0.453
   examine: "A cape from the almighty god Zamorak, imbued with great power."
   equipment:
@@ -4456,7 +4456,7 @@
       magic: 2
     prayerBonus: 0
 - ids:
-    - 24250
+  - 24250
   weight: 0.453
   examine: "A cape from the almighty god Zamorak, imbued with great power."
   equipment:
@@ -4478,7 +4478,7 @@
       magic: 2
     prayerBonus: 0
 - ids:
-    - 21853
+  - 21853
   weight: 0.0
   examine: "A poorly made fake snow imp tail."
   equipment:
@@ -4500,7 +4500,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 21898
+  - 21898
   weight: 0.453
   examine: "The cape worn by only the most experienced players."
   equipment:
@@ -4522,7 +4522,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 24135
+  - 24135
   weight: 0.453
   examine: "The cape worn by only the most experienced players."
   equipment:
@@ -4544,8 +4544,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 22114
-  weight: 1.0
+  - 22114
+  weight: 1.814
   examine: "The cape worn by members of the Myths' Guild."
   equipment:
     attackBonus:
@@ -4566,7 +4566,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-    - 22109
+  - 22109
   weight: 5.896
   examine: "A superior bagged chicken empowered by Vorkath, ready to serve you, magnet\
     \ in claw."
@@ -4589,7 +4589,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 24222
+  - 24222
   weight: 5.896
   examine: "A superior bagged chicken empowered by Vorkath, ready to serve you, magnet\
     \ in claw."
@@ -4612,7 +4612,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 22388
+  - 22388
   weight: 0.0
   examine: "Awarded for completing 100 Chambers of Xeric in challenge mode."
   equipment:
@@ -4634,7 +4634,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 22390
+  - 22390
   weight: 0.0
   examine: "Awarded for completing 500 Chambers of Xeric in challenge mode."
   equipment:
@@ -4656,7 +4656,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 22392
+  - 22392
   weight: 0.0
   examine: "Awarded for completing 1000 Chambers of Xeric in challenge mode."
   equipment:
@@ -4678,7 +4678,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 22394
+  - 22394
   weight: 0.0
   examine: "Awarded for completing 1500 Chambers of Xeric in challenge mode."
   equipment:
@@ -4700,7 +4700,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 22396
+  - 22396
   weight: 0.0
   examine: "Awarded for completing 2000 Chambers of Xeric in challenge mode."
   equipment:
@@ -4722,7 +4722,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 22494
+  - 22494
   weight: 0.0
   examine: "A cape fit for those experienced in the Theatre."
   equipment:
@@ -4744,7 +4744,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 22496
+  - 22496
   weight: 0.0
   examine: "A cape fit for those experienced in the Theatre."
   equipment:
@@ -4766,7 +4766,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 22498
+  - 22498
   weight: 0.0
   examine: "A cape fit for those experienced in the Theatre."
   equipment:
@@ -4788,7 +4788,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 22500
+  - 22500
   weight: 0.0
   examine: "A cape fit for those experienced in the Theatre."
   equipment:
@@ -4810,7 +4810,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 22502
+  - 22502
   weight: 0.0
   examine: "A cape fit for those experienced in the Theatre."
   equipment:
@@ -4832,7 +4832,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 22675
+  - 22675
   weight: 0.0
   examine: "Gosh, you really seem to love clue scrolls."
   equipment:
@@ -4854,7 +4854,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 22838
+  - 22838
   weight: 2.0
   examine: "There's something fishy about this..."
   equipment:
@@ -4876,7 +4876,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 23099
+  - 23099
   weight: 0.4
   examine: "An ornate armoured cape."
   equipment:
@@ -4898,7 +4898,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 23224
+  - 23224
   weight: 0.4
   examine: "A good place to store your stolen goods."
   equipment:
@@ -4920,7 +4920,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 23297
+  - 23297
   weight: 0.4
   examine: "A jester cape."
   equipment:
@@ -4942,7 +4942,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 23300
+  - 23300
   weight: 0.4
   examine: "Polly want a cracker?"
   equipment:
@@ -4964,7 +4964,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 23345
+  - 23345
   weight: 0.4
   examine: "A fabulously ancient vine cloak as worn by the druids of old."
   equipment:
@@ -4986,7 +4986,7 @@
       magic: 0
     prayerBonus: 3
 - ids:
-    - 23351
+  - 23351
   weight: 0.4
   examine: "Lets the person behind you know that you mean business."
   equipment:
@@ -5008,7 +5008,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 23410
+  - 23410
   weight: 0.4
   examine: "A very warm wolf cloak."
   equipment:
@@ -5030,7 +5030,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 23859
+  - 23859
   weight: 0.0
   examine: "Earned by only the most accomplished warriors of Prifddinas."
   equipment:
@@ -5052,7 +5052,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 24207
+  - 24207
   weight: 0.0
   examine: "Shows your prowess in Last Man Standing."
   equipment:
@@ -5074,7 +5074,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 24209
+  - 24209
   weight: 0.0
   examine: "Shows your prowess in Last Man Standing."
   equipment:
@@ -5096,7 +5096,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 24211
+  - 24211
   weight: 0.0
   examine: "Shows your prowess in Last Man Standing."
   equipment:
@@ -5118,7 +5118,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 24213
+  - 24213
   weight: 0.0
   examine: "Shows your prowess in Last Man Standing."
   equipment:
@@ -5140,7 +5140,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 24215
+  - 24215
   weight: 0.0
   examine: "Shows your prowess in Last Man Standing."
   equipment:
@@ -5162,9 +5162,32 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 24520
+  - 24520
   weight: 0.0
   examine: "Shows your prowess in Last Man Standing."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 24746
+  - 24748
+  weight: 0.0
+  examine: ""
   equipment:
     attackBonus:
       stab: 0
