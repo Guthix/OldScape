@@ -4,7 +4,6 @@ import org.jetbrains.kotlin.gradle.plugin.getKotlinPluginVersion
 
 plugins {
     idea
-    `maven-publish`
     kotlin("jvm")
     id("org.jetbrains.dokka")
     id("com.github.hierynomus.license")
@@ -16,7 +15,7 @@ description = "A library for interfacing with the Oldschool Runescape Wiki"
 
 val licenseHeader: File by extra(file("LGPLv3.txt"))
 
-val oldscapeServerVersion: String by extra("3b4c3bdac5")
+val oldscapeServerVersion: String by extra("4a068498af")
 val oldscapeCacheVersion: String by extra("6d3cc20a7f")
 val kotlinCoroutinesVersion by extra("1.3.4")
 val licensePluginVersion by extra("0.15.0")
@@ -29,6 +28,7 @@ val kotlinVersion: String by extra(project.getKotlinPluginVersion()!!)
 allprojects {
     apply(plugin = "kotlin")
     apply(plugin = "com.github.hierynomus.license")
+    apply(plugin = "org.jetbrains.dokka")
 
     repositories {
         mavenCentral()
@@ -42,6 +42,11 @@ allprojects {
     }
 
     tasks {
+        dokka {
+            outputFormat = "html"
+            outputDirectory = "$buildDir/javadoc"
+        }
+
         compileKotlin {
             kotlinOptions.jvmTarget = "11"
         }
@@ -60,42 +65,6 @@ allprojects {
     }
 }
 
-dependencies {
-    implementation(group = "org.jetbrains.kotlin", name = "kotlin-reflect", version = kotlinVersion)
-}
-
-kotlin { explicitApi() }
-
-tasks.dokka {
-    outputFormat = "html"
-    outputDirectory = "$buildDir/javadoc"
-}
-
-val dokkaJar: Jar by tasks.creating(Jar::class) {
-    group = JavaBasePlugin.DOCUMENTATION_GROUP
-    description = "Assembles Kotlin docs with Dokka"
-    classifier = "javadoc"
-    from(tasks.dokka)
-}
-
-publishing {
-    publications {
-        create<MavenPublication>("default") {
-            from(components["java"])
-            artifact(dokkaJar)
-            pom {
-                url.set("https://github.com/guthix/OldScape-Wiki")
-                licenses {
-                    license {
-                        name.set("GNU Lesser General Public License v3.0")
-                        url.set("https://www.gnu.org/licenses/lgpl-3.0.txt")
-                    }
-                }
-                scm {
-                    connection.set("scm:git:git://github.com/guthix/OldScape-Wiki.git")
-                    developerConnection.set("scm:git:ssh://github.com/guthix/OldScape-Wiki.git")
-                }
-            }
-        }
-    }
+gradle.buildFinished {
+    buildDir.deleteRecursively()
 }

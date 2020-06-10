@@ -73,10 +73,10 @@ public class ObjectWikiDefinition : WikiDefinition<ObjectWikiDefinition>() {
             line.checkWikiKey("update", version) -> update = line.getWikiString()
             line.checkWikiKey("members", version) -> isMembers = line.getWikiBool()
             line.checkWikiKey("quest", version) -> {
-                if(line.getWikiString().equals("No", ignoreCase = true)) {
-                    quests = null
+                quests = if(line.getWikiString().equals("No", ignoreCase = true)) {
+                    null
                 } else {
-                    quests = line.getWikiStrings()
+                    line.getWikiStrings()
                         ?.map { it.replace("[", "").replace("]", "") }
                 }
             }
@@ -89,13 +89,13 @@ public class ObjectWikiDefinition : WikiDefinition<ObjectWikiDefinition>() {
             line.checkWikiKey("destroy", version) -> destroy = line.getWikiString()
             line.checkWikiKey("value", version) -> valuePrice = line.getWikiInt()
             line.checkWikiKey("store", version) ->  {
-                if(line.getWikiString().equals("No", ignoreCase = true)
+                storePrice = if(line.getWikiString().equals("No", ignoreCase = true)
                     || line.contains("Not sold", ignoreCase = true)
                 ) {
-                    storePrice = null
+                    null
                 } else {
                     val prices = line.getWikiStrings()
-                    storePrice = prices?.map { it.replace(",", "").replace(" ", "").toInt() }
+                    prices?.map { it.replace(",", "").replace(" ", "").toInt() }
                 }
             }
 

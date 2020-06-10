@@ -2,18 +2,18 @@ plugins {
     application
 }
 
-repositories {
-    maven("https://jitpack.io")
-}
-
 val oldscapeServerVersion: String by rootProject.extra
 val logbackVersion: String by rootProject.extra
 val jacksonVersion: String by rootProject.extra
 
+
+repositories {
+    maven("https://jitpack.io")
+}
+
 application { mainClass.set("io.guthix.oldscape.wiki.yaml.YamlDownloader") }
 
 dependencies {
-    implementation(rootProject)
     implementation(project(":downloader"))
     implementation(group = "com.github.guthix", name = "oldscape-server", version = oldscapeServerVersion)
     implementation(group = "ch.qos.logback", name = "logback-classic", version = logbackVersion)

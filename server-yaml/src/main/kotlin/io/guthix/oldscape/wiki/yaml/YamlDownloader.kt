@@ -40,7 +40,7 @@ fun main(args: Array<String>) {
 object YamlDownloader {
     @JvmStatic
     fun main(args: Array<String>) {
-        val cacheDir = Path.of("../yaml/src/main/resources/cache")
+        val cacheDir = Path.of("../server-yaml/src/main/resources/cache")
         println(cacheDir.toFile().absolutePath)
         val yamlFactory = YAMLFactory()
             .disable(YAMLGenerator.Feature.WRITE_DOC_START_MARKER)
@@ -50,7 +50,7 @@ object YamlDownloader {
 
         val extraObjConfigs = objectWikiDownloader(cacheDir).filter { it.ids != null }
             .groupBy { it.isEquipable == true && it.slot != null }
-        val normalObjectConfigs = extraObjConfigs[false]?.map { it.toExtraObjectConfig() }
+        val normalObjectConfigs = extraObjConfigs[false]?.map(ObjectWikiDefinition::toExtraObjectConfig)
             ?: throw IllegalStateException("No normal objects.")
         val equipmentConfigs = extraObjConfigs[true]
             ?: throw IllegalStateException("No equipable objects.")
@@ -58,21 +58,28 @@ object YamlDownloader {
         val objectFile = Path.of(javaClass.getResource("/").toURI()).resolve("Objects.yaml").toFile()
         objectMapper.writeValue(objectFile, normalObjectConfigs)
         logger.info { "Done writing objects to ${objectFile.absoluteFile.absolutePath}" }
-        equipmentConfigs.groupBy { it.slot }.forEach { (slotStr, list) ->
+        equipmentConfigs.groupBy(ObjectWikiDefinition::slot).forEach { (slotStr, list) ->
             val fileName = slotStr?.replaceFirst(slotStr.first(), slotStr.first().toUpperCase())
-            val eqFile = Path.of(javaClass.getResource("/").toURI())
-                .resolve("${fileName}Equipment.yaml").toFile()
-            objectMapper.writeValue(eqFile, list.map { it.toExtraEquipmentConfig() })
+            val eqFile = Path.of(javaClass.getResource("/").toURI()).resolve("${fileName}Equipment.yaml").toFile()
+            objectMapper.writeValue(eqFile, list.map(ObjectWikiDefinition::toExtraEquipmentConfig))
+            logger.info { "Done writing fileName equipment to ${eqFile.absoluteFile.absolutePath}" }
         }
 
+        val npcWikiData = npcWikiDownloader(cacheDir).filter { it.ids != null }
         val npcFile = Path.of(javaClass.getResource("/").toURI()).resolve("Npcs.yaml").toFile()
-        val npcWikiData = npcWikiDownloader(cacheDir).filter { it.ids != null }.map { it.toExtraEquipmentConfig() }
-        objectMapper.writeValue(npcFile, npcWikiData)
+        objectMapper.writeValue(npcFile, npcWikiData.filter { it.combatLvl == null }
+            .map(NpcWikiDefinition::toExtraNpcConfig))
         logger.info { "Done writing npcs to ${npcFile.absoluteFile.absolutePath}" }
+        val monsterFile = Path.of(javaClass.getResource("/").toURI()).resolve("Monsters.yaml").toFile()
+        objectMapper.writeValue(monsterFile, npcWikiData.filter { it.combatLvl != null }
+            .map(NpcWikiDefinition::toExtraMonsterConfig)
+        )
+        logger.info { "Done writing mosters to ${monsterFile.absoluteFile.absolutePath}" }
+
     }
 }
 
-fun ObjectWikiDefinition.toExtraObjectConfig() = ExtraObjectConfig(
+fun ObjectWikiDefinition.toExtraObjectConfig(): ExtraObjectConfig = ExtraObjectConfig(
     ids!!,
     weight ?: 0f,
     examine ?: ""
@@ -111,14 +118,22 @@ fun ObjectWikiDefinition.toExtraEquipmentConfig(): ExtraObjectConfig {
     )
 }
 
-fun NpcWikiDefinition.toExtraEquipmentConfig(): ExtraNpcConfig {
+fun NpcWikiDefinition.toExtraNpcConfig(): ExtraNpcConfig {
+    return ExtraNpcConfig(
+        ids!!,
+        examine ?: ""
+    )
+}
+
+fun NpcWikiDefinition.toExtraMonsterConfig(): ExtraMonsterConfig {
     val combat = if(combatLvl != null) {
-        NpcBlueprint.Combat(
+        MonsterBlueprint.Combat(
+            combatLvl,
             isAggressive ?: false,
             isPoisonous ?: false,
             isImmuneToPoison ?: false,
             isImmuneToVenom ?: false,
-            NpcBlueprint.Combat.Stats(
+            MonsterBlueprint.Combat.Stats(
                 hitPoints ?: 0,
                 attackStat ?: 0,
                 strengthStat ?: 0,
@@ -126,7 +141,7 @@ fun NpcWikiDefinition.toExtraEquipmentConfig(): ExtraNpcConfig {
                 magicStat ?: 0,
                 rangeStat ?: 0
             ),
-            NpcBlueprint.Combat.AggressiveStats(
+            MonsterBlueprint.Combat.AggressiveStats(
                 attackBonusMelee ?: 0,
                 attackBonusRange ?: 0,
                 attackBonusMagic ?: 0,
@@ -144,8 +159,8 @@ fun NpcWikiDefinition.toExtraEquipmentConfig(): ExtraNpcConfig {
                 defBonusMagic ?: 0
             )
         )
-    } else null
-    return ExtraNpcConfig(
+    } else throw IllegalCallerException("Monster must have combat level.")
+    return ExtraMonsterConfig(
         ids!!,
         examine ?: "",
         combat

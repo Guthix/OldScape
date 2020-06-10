@@ -4,23 +4,13 @@ plugins {
     `maven-publish`
 }
 
-repositories {
-    maven("https://jitpack.io")
-}
-
-val oldscapeCacheVersion: String by rootProject.extra
-val kotlinCoroutinesVersion: String by rootProject.extra
-val ktorVersion: String by rootProject.extra
-
-kotlin { explicitApi() }
+val kotlinVersion: String by rootProject.extra
 
 dependencies {
-    api(project(":parser"))
-    api(group = "com.github.guthix", name = "oldscape-cache", version = oldscapeCacheVersion)
-    implementation(group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version = kotlinCoroutinesVersion)
-    implementation(group = "io.ktor", name = "ktor-server-core", version = ktorVersion)
-    implementation(group = "io.ktor", name = "ktor-client-apache", version = ktorVersion)
+    implementation(group = "org.jetbrains.kotlin", name = "kotlin-reflect", version = kotlinVersion)
 }
+
+kotlin { explicitApi() }
 
 val dokkaJar: Jar by tasks.creating(Jar::class) {
     group = JavaBasePlugin.DOCUMENTATION_GROUP

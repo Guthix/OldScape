@@ -18,5 +18,6 @@ pluginManagement {
 
 rootProject.name = "oldscape-wiki"
 
+include("parser")
 include("downloader")
-include("yaml")
+include("server-yaml")

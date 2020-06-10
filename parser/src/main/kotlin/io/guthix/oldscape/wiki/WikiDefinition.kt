@@ -97,7 +97,7 @@ public abstract class WikiDefinition<P : WikiDefinition<P>> {
     protected fun String.getIds(): List<Int>? = if (getWikiString().equals("Removed", ignoreCase = true)) {
         null
     } else {
-        getWikiStrings()?.map { it.toInt() }
+        getWikiStrings()?.map(String::toInt)
     }
 }
 
