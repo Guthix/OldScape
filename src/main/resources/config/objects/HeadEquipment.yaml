@@ -1,5 +1,5 @@
 - ids:
-    - 74
+  - 74
   weight: 2.721
   examine: "A helmet, as worn by the minions of General Khazard."
   equipment:
@@ -21,7 +21,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 579
+  - 579
   weight: 0.453
   examine: "A silly pointed hat."
   equipment:
@@ -43,7 +43,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 656
+  - 656
   weight: 0.453
   examine: "A silly pink pointed hat."
   equipment:
@@ -65,7 +65,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 658
+  - 658
   weight: 0.453
   examine: "A silly green pointed hat."
   equipment:
@@ -87,7 +87,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 660
+  - 660
   weight: 0.453
   examine: "A silly blue pointed hat."
   equipment:
@@ -109,7 +109,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 662
+  - 662
   weight: 0.4
   examine: "A silly cream pointed hat."
   equipment:
@@ -131,7 +131,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 664
+  - 664
   weight: 0.453
   examine: "A silly turquoise pointed hat."
   equipment:
@@ -153,7 +153,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1017
+  - 1017
   weight: 0.453
   examine: "A silly pointed hat."
   equipment:
@@ -175,7 +175,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1025
+  - 1025
   weight: 0.006
   examine: "A black piece of cloth on a string."
   equipment:
@@ -197,7 +197,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1037
+  - 1037
   weight: 0.226
   examine: "A rabbit-like adornment."
   equipment:
@@ -219,7 +219,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1038
+  - 1038
   weight: 0.056
   examine: "A nice hat from a cracker."
   equipment:
@@ -241,7 +241,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1040
+  - 1040
   weight: 0.056
   examine: "A nice hat from a cracker."
   equipment:
@@ -263,7 +263,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1042
+  - 1042
   weight: 0.056
   examine: "A nice hat from a cracker."
   equipment:
@@ -285,7 +285,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1044
+  - 1044
   weight: 0.056
   examine: "A nice hat from a cracker."
   equipment:
@@ -307,7 +307,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1046
+  - 1046
   weight: 0.056
   examine: "A nice hat from a cracker."
   equipment:
@@ -329,7 +329,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1048
+  - 1048
   weight: 0.056
   examine: "A nice hat from a cracker."
   equipment:
@@ -351,7 +351,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1050
+  - 1050
   weight: 0.113
   examine: "It's a Santa hat."
   equipment:
@@ -373,7 +373,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1053
+  - 1053
   weight: 0.0
   examine: "Aaaarrrghhh ... I'm a monster."
   equipment:
@@ -395,7 +395,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1055
+  - 1055
   weight: 0.34
   examine: "Aaaarrrghhh ... I'm a monster."
   equipment:
@@ -417,7 +417,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1057
+  - 1057
   weight: 0.34
   examine: "Aaaarrrghhh ... I'm a monster."
   equipment:
@@ -439,7 +439,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1137
+  - 1137
   weight: 1.814
   examine: "A medium sized helmet."
   equipment:
@@ -461,7 +461,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1139
+  - 1139
   weight: 1.814
   examine: "A medium sized helmet."
   equipment:
@@ -483,7 +483,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1141
+  - 1141
   weight: 1.814
   examine: "A medium sized helmet."
   equipment:
@@ -505,7 +505,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1143
+  - 1143
   weight: 1.36
   examine: "A medium sized helmet."
   equipment:
@@ -527,7 +527,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1145
+  - 1145
   weight: 2.267
   examine: "A medium sized helmet."
   equipment:
@@ -549,7 +549,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1147
+  - 1147
   weight: 1.814
   examine: "A medium sized helmet."
   equipment:
@@ -571,7 +571,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1149
+  - 1149
   weight: 1.36
   examine: "Makes the wearer pretty intimidating."
   equipment:
@@ -593,7 +593,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1151
+  - 1151
   weight: 1.814
   examine: "A medium sized helmet."
   equipment:
@@ -615,7 +615,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1153
+  - 1153
   weight: 2.721
   examine: "A full face helmet."
   equipment:
@@ -637,7 +637,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1155
+  - 1155
   weight: 2.7
   examine: "A full face helmet."
   equipment:
@@ -659,7 +659,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1157
+  - 1157
   weight: 2.721
   examine: "A full face helmet."
   equipment:
@@ -681,7 +681,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1159
+  - 1159
   weight: 2.267
   examine: "A full face helmet."
   equipment:
@@ -703,8 +703,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1161
-    - 20561
+  - 1161
+  - 20561
   weight: 3.175
   examine: "A full face helmet."
   equipment:
@@ -726,11 +726,9 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1163
+  - 1163
   weight: 2.721
   examine: "A full face helmet."
-  coversFace: true
-  coversHair: true
   equipment:
     attackBonus:
       stab: 0
@@ -750,7 +748,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1165
+  - 1165
   weight: 2.721
   examine: "A full face helmet."
   equipment:
@@ -772,7 +770,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1167
+  - 1167
   weight: 0.907
   examine: "Better than no armour!"
   equipment:
@@ -794,7 +792,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1169
+  - 1169
   weight: 0.907
   examine: "Light weight head protection."
   equipment:
@@ -816,7 +814,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1506
+  - 1506
   weight: 0.255
   examine: "Stops me from breathing nasty stuff!"
   equipment:
@@ -838,7 +836,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1949
+  - 1949
   weight: 0.907
   examine: "What a silly hat."
   equipment:
@@ -860,7 +858,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 2581
+  - 2581
   weight: 0.283
   examine: "Endorsed by Robin Hood."
   equipment:
@@ -882,7 +880,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 2587
+  - 2587
   weight: 2.721
   examine: "Black full helmet with trim."
   equipment:
@@ -904,7 +902,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 2595
+  - 2595
   weight: 2.721
   examine: "Black full helmet with gold trim."
   equipment:
@@ -926,7 +924,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 2605
+  - 2605
   weight: 3.175
   examine: "Adamant full helmet with trim."
   equipment:
@@ -948,7 +946,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 2613
+  - 2613
   weight: 3.175
   examine: "Adamant full helmet with gold trim."
   equipment:
@@ -970,7 +968,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 2619
+  - 2619
   weight: 2.721
   examine: "Rune full helmet with gold trim."
   equipment:
@@ -992,7 +990,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 2627
+  - 2627
   weight: 2.721
   examine: "Rune full helmet with trim."
   equipment:
@@ -1014,7 +1012,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 2631
+  - 2631
   weight: 0.02
   examine: "Your money or your life!"
   equipment:
@@ -1036,7 +1034,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 2633
+  - 2633
   weight: 0.04
   examine: "Parlez-vous francais?"
   equipment:
@@ -1058,7 +1056,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 2635
+  - 2635
   weight: 0.04
   examine: "Parlez-vous francais?"
   equipment:
@@ -1080,7 +1078,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 2637
+  - 2637
   weight: 0.04
   examine: "Parlez-vous francais?"
   equipment:
@@ -1102,7 +1100,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 2639
+  - 2639
   weight: 0.08
   examine: "All for one and one for all!"
   equipment:
@@ -1124,7 +1122,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 2641
+  - 2641
   weight: 0.001
   examine: "All for one and one for all!"
   equipment:
@@ -1146,7 +1144,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 2643
+  - 2643
   weight: 0.08
   examine: "All for one and one for all!"
   equipment:
@@ -1168,7 +1166,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 2645
+  - 2645
   weight: 0.04
   examine: "A minimalist's hat."
   equipment:
@@ -1190,7 +1188,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 2647
+  - 2647
   weight: 0.04
   examine: "A minimalist's hat."
   equipment:
@@ -1212,7 +1210,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 2649
+  - 2649
   weight: 0.04
   examine: "A minimalist's hat."
   equipment:
@@ -1234,7 +1232,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 2651
+  - 2651
   weight: 0.0
   examine: "Shiver me timbers!"
   equipment:
@@ -1256,7 +1254,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 2657
+  - 2657
   weight: 2.721
   examine: "Rune full helmet in the colours of Zamorak."
   equipment:
@@ -1278,7 +1276,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-    - 2665
+  - 2665
   weight: 2.721
   examine: "Rune full helmet in the colours of Saradomin."
   equipment:
@@ -1300,7 +1298,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-    - 2673
+  - 2673
   weight: 2.721
   examine: "A rune full face helmet in the colours of Guthix."
   equipment:
@@ -1322,7 +1320,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-    - 2900
+  - 2900
   weight: 0.453
   examine: "A silly pointed hat."
   equipment:
@@ -1344,7 +1342,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 2910
+  - 2910
   weight: 0.453
   examine: "A silly pointed hat."
   equipment:
@@ -1366,7 +1364,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 2920
+  - 2920
   weight: 0.453
   examine: "A silly pointed hat."
   equipment:
@@ -1388,7 +1386,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 2930
+  - 2930
   weight: 0.453
   examine: "A silly pointed hat."
   equipment:
@@ -1410,7 +1408,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 2940
+  - 2940
   weight: 0.0
   examine: "A silly pointed hat."
   equipment:
@@ -1432,7 +1430,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 2978
+  - 2978
   weight: 0.453
   examine: "A symbol of your chompy bird hunting prowess: Ogre Bowman (30 kills)"
   equipment:
@@ -1454,7 +1452,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 2979
+  - 2979
   weight: 0.453
   examine: "A symbol of your chompy bird hunting prowess: Bowman (40 kills)"
   equipment:
@@ -1476,7 +1474,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 2980
+  - 2980
   weight: 0.453
   examine: "A symbol of your chompy bird hunting prowess: Ogre Yeoman (50 kills)"
   equipment:
@@ -1498,7 +1496,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 2981
+  - 2981
   weight: 0.453
   examine: "A symbol of your chompy bird hunting prowess: Yeoman (70 kills)"
   equipment:
@@ -1520,7 +1518,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 2982
+  - 2982
   weight: 0.453
   examine: "A symbol of your chompy bird hunting prowess: Ogre Marksman (95 kills)"
   equipment:
@@ -1542,7 +1540,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 2983
+  - 2983
   weight: 0.453
   examine: "A symbol of your chompy bird hunting prowess: Marksman (125 kills)"
   equipment:
@@ -1564,7 +1562,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 2984
+  - 2984
   weight: 0.453
   examine: "A symbol of your chompy bird hunting prowess: Ogre Woodsman (170 kills)"
   equipment:
@@ -1586,7 +1584,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 2985
+  - 2985
   weight: 0.453
   examine: "A symbol of your chompy bird hunting prowess: Woodsman (225 kills)"
   equipment:
@@ -1608,7 +1606,29 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 2987
+  - 2986
+  weight: 0.453
+  examine: "A symbol of your chompy bird hunting prowess:Ogre Forester (300 kills)"
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 2987
   weight: 0.453
   examine: "A symbol of your chompy bird hunting prowess: Forester (400 kills)"
   equipment:
@@ -1630,7 +1650,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 2988
+  - 2988
   weight: 0.453
   examine: "A symbol of your chompy bird hunting prowess: Ogre Bowmaster (550 kills)"
   equipment:
@@ -1652,7 +1672,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 2989
+  - 2989
   weight: 0.453
   examine: "A symbol of your chompy bird hunting prowess: Bowmaster (700 kills)"
   equipment:
@@ -1674,7 +1694,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 2990
+  - 2990
   weight: 0.453
   examine: "A symbol of your chompy bird hunting prowess: Ogre Expert (1,000 kills)"
   equipment:
@@ -1696,7 +1716,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 2991
+  - 2991
   weight: 0.33
   examine: "A symbol of your chompy bird hunting prowess: Expert (1,300 kills)"
   equipment:
@@ -1718,7 +1738,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 2992
+  - 2992
   weight: 0.453
   examine: "A symbol of your chompy bird hunting prowess: Ogre Dragon Archer (1,700\
     \ kills)"
@@ -1741,7 +1761,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 2993
+  - 2993
   weight: 0.453
   examine: "A symbol of your chompy bird hunting prowess: Dragon Archer (2,250 kills)"
   equipment:
@@ -1763,7 +1783,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 2994
+  - 2994
   weight: 0.453
   examine: "A symbol of your chompy bird hunting prowess: Expert Ogre Dragon Archer\
     \ (3,000 kills)"
@@ -1786,7 +1806,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 2995
+  - 2995
   weight: 0.453
   examine: "A symbol of your chompy bird hunting prowess: Expert Dragon Archer (4,000\
     \ kills)"
@@ -1809,7 +1829,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 3057
+  - 3057
   weight: 0.001
   examine: "A mime would wear this."
   equipment:
@@ -1831,7 +1851,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 3327
+  - 3327
   weight: 2.0
   examine: "A marshy coloured snail shell helmet."
   equipment:
@@ -1853,7 +1873,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 3329
+  - 3329
   weight: 2.0
   examine: "A red and black Snail shell helmet."
   equipment:
@@ -1875,7 +1895,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 3331
+  - 3331
   weight: 2.0
   examine: "A muddy yellow snail shell helmet."
   equipment:
@@ -1897,7 +1917,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 3333
+  - 3333
   weight: 2.0
   examine: "A moody blue snail shell helmet."
   equipment:
@@ -1919,7 +1939,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 3335
+  - 3335
   weight: 2.0
   examine: "An orange and bark coloured snail shell helmet."
   equipment:
@@ -1941,7 +1961,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 3337
+  - 3337
   weight: 2.0
   examine: "A swamp coloured pointed snail shell helmet."
   equipment:
@@ -1963,7 +1983,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 3339
+  - 3339
   weight: 2.0
   examine: "A red and black pointed snail shell helmet."
   equipment:
@@ -1985,7 +2005,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 3341
+  - 3341
   weight: 2.0
   examine: "A muddy yellow coloured pointed snail shell helmet."
   equipment:
@@ -2007,7 +2027,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 3343
+  - 3343
   weight: 2.0
   examine: "A moody blue pointed snail shell helmet."
   equipment:
@@ -2029,8 +2049,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 3385
-    - 20568
+  - 3385
+  - 20568
   weight: 0.907
   examine: "A wooden helmet."
   equipment:
@@ -2052,7 +2072,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 3486
+  - 3486
   weight: 2.721
   examine: "Rune full helmet with gold plate."
   equipment:
@@ -2074,7 +2094,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 3748
+  - 3748
   weight: 2.721
   examine: "A sturdy helm worn only by Fremennik clan members."
   equipment:
@@ -2096,8 +2116,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 3749
-    - 20572
+  - 3749
+  - 20572
   weight: 2.721
   examine: "This helmet is worn by archers."
   equipment:
@@ -2119,7 +2139,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 3751
+  - 3751
   weight: 2.721
   examine: "This helmet is worn by berserkers."
   equipment:
@@ -2141,8 +2161,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 3753
-    - 20571
+  - 3753
+  - 20571
   weight: 2.721
   examine: "This helmet is worn by warriors."
   equipment:
@@ -2164,8 +2184,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 3755
-    - 20573
+  - 3755
+  - 20573
   weight: 2.721
   examine: "This helmet is worn by farseers."
   equipment:
@@ -2187,7 +2207,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 3797
+  - 3797
   weight: 0.453
   examine: "A silly pointed hat."
   equipment:
@@ -2209,7 +2229,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4071
+  - 4071
   weight: 1.36
   examine: "A very decorative helm."
   equipment:
@@ -2231,8 +2251,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4089
-    - 20562
+  - 4089
+  - 20562
   weight: 0.4
   examine: "A magical hat."
   equipment:
@@ -2254,7 +2274,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4099
+  - 4099
   weight: 0.4
   examine: "A dark magical hat."
   equipment:
@@ -2276,29 +2296,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4109
-  weight: 0.4
-  examine: "A bright magical hat."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 4
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 4
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-    - 4164
+  - 4164
   weight: 0.1
   examine: "Stops me breathing in too much dust."
   equipment:
@@ -2320,7 +2318,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4166
+  - 4166
   weight: 0.113
   examine: "These will protect my ears from loud noise."
   equipment:
@@ -2342,7 +2340,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4168
+  - 4168
   weight: 0.001
   examine: "Protects me from any bad smells."
   equipment:
@@ -2364,7 +2362,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4284
+  - 4284
   weight: 1.0
   examine: "It's a bedsheet."
   equipment:
@@ -2386,7 +2384,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4285
+  - 4285
   weight: 1.0
   examine: "It's an ectoplasm-covered bedsheet."
   equipment:
@@ -2408,7 +2406,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4302
+  - 4302
   weight: 0.453
   examine: "Light-weight head protection and eye shield."
   equipment:
@@ -2430,7 +2428,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4502
+  - 4502
   weight: 0.453
   examine: "Quite ferocious looking."
   equipment:
@@ -2452,7 +2450,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4506
+  - 4506
   weight: 1.36
   examine: "A very decorative helm."
   equipment:
@@ -2474,7 +2472,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4511
+  - 4511
   weight: 1.36
   examine: "A very decorative helm."
   equipment:
@@ -2496,7 +2494,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 24160
+  - 24160
   weight: 1.36
   examine: "A very decorative helm."
   equipment:
@@ -2518,7 +2516,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4513
+  - 4513
   weight: 0.453
   examine: "The colours of Saradomin."
   equipment:
@@ -2540,7 +2538,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4515
+  - 4515
   weight: 0.45
   examine: "The colours of Zamorak."
   equipment:
@@ -2562,7 +2560,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4551
+  - 4551
   weight: 2.267
   examine: "You don't want to wear it inside-out."
   equipment:
@@ -2584,7 +2582,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4567
+  - 4567
   weight: 31.751
   examine: "Made of gold and white gold."
   equipment:
@@ -2606,7 +2604,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4611
+  - 4611
   weight: 0.04
   examine: "A disguise suitable for the desert."
   equipment:
@@ -2628,7 +2626,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4708
+  - 4708
   weight: 0.907
   examine: "Ahrim the Blighted's leather hood."
   equipment:
@@ -2650,7 +2648,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4856
+  - 4856
   weight: 0.907
   examine: "Ahrim the Blighted's leather hood."
   equipment:
@@ -2672,7 +2670,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4857
+  - 4857
   weight: 0.907
   examine: "Ahrim the Blighted's leather hood."
   equipment:
@@ -2694,7 +2692,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4858
+  - 4858
   weight: 0.907
   examine: "Ahrim the Blighted's leather hood."
   equipment:
@@ -2716,7 +2714,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4859
+  - 4859
   weight: 0.907
   examine: "Ahrim the Blighted's leather hood."
   equipment:
@@ -2738,7 +2736,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4860
+  - 4860
   weight: 0.907
   examine: "Ahrim the Blighted's leather hood."
   equipment:
@@ -2746,21 +2744,21 @@
       stab: 0
       slash: 0
       crush: 0
-      magic: -2
-      range: 6
-    defenceBonus:
-      stab: 15
-      slash: 13
-      crush: 16
       magic: 0
-      range: 6
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
     strengthBonus:
       melee: 0
       range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4716
+  - 4716
   weight: 1.814
   examine: "Dharok the Wretched's helm."
   equipment:
@@ -2782,7 +2780,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4880
+  - 4880
   weight: 1.814
   examine: "Dharok the Wretched's helm."
   equipment:
@@ -2804,7 +2802,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4881
+  - 4881
   weight: 1.814
   examine: "Dharok the Wretched's helm."
   equipment:
@@ -2826,7 +2824,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4882
+  - 4882
   weight: 1.814
   examine: "Dharok the Wretched's helm."
   equipment:
@@ -2848,7 +2846,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4883
+  - 4883
   weight: 1.814
   examine: "Dharok the Wretched's helm."
   equipment:
@@ -2870,7 +2868,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4884
+  - 4884
   weight: 1.814
   examine: "Dharok the Wretched's helm."
   equipment:
@@ -2878,21 +2876,21 @@
       stab: 0
       slash: 0
       crush: 0
-      magic: -1
-      range: -3
+      magic: 0
+      range: 0
     defenceBonus:
-      stab: 45
-      slash: 48
-      crush: 44
-      magic: 51
-      range: -1
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
     strengthBonus:
       melee: 0
       range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4724
+  - 4724
   weight: 2.721
   examine: "Guthan the Infested's helm."
   equipment:
@@ -2914,7 +2912,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4904
+  - 4904
   weight: 2.721
   examine: "Guthan the Infested's helm."
   equipment:
@@ -2936,7 +2934,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4905
+  - 4905
   weight: 2.721
   examine: "Guthan the Infested's helm."
   equipment:
@@ -2958,7 +2956,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4906
+  - 4906
   weight: 2.721
   examine: "Guthan the Infested's helm."
   equipment:
@@ -2980,7 +2978,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4907
+  - 4907
   weight: 2.721
   examine: "Guthan the Infested's helm."
   equipment:
@@ -3002,7 +3000,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4908
+  - 4908
   weight: 2.721
   examine: "Guthan the Infested's helm."
   equipment:
@@ -3010,21 +3008,21 @@
       stab: 0
       slash: 0
       crush: 0
-      magic: -2
-      range: -6
+      magic: 0
+      range: 0
     defenceBonus:
-      stab: 55
-      slash: 58
-      crush: 54
-      magic: 62
-      range: -1
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
     strengthBonus:
       melee: 0
       range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4732
+  - 4732
   weight: 0.907
   examine: "Karil the Tainted's coif."
   equipment:
@@ -3046,7 +3044,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4928
+  - 4928
   weight: 0.907
   examine: "Karil the Tainted's coif."
   equipment:
@@ -3068,7 +3066,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4929
+  - 4929
   weight: 1.0
   examine: "Karil the Tainted's coif."
   equipment:
@@ -3090,7 +3088,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4930
+  - 4930
   weight: 0.907
   examine: "Karil the Tainted's coif."
   equipment:
@@ -3112,7 +3110,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4931
+  - 4931
   weight: 0.907
   examine: "Karil the Tainted's coif."
   equipment:
@@ -3134,7 +3132,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4932
+  - 4932
   weight: 0.907
   examine: "Karil the Tainted's coif."
   equipment:
@@ -3142,21 +3140,21 @@
       stab: 0
       slash: 0
       crush: 0
-      magic: 7
-      range: -1
+      magic: 0
+      range: 0
     defenceBonus:
-      stab: 6
-      slash: 9
-      crush: 12
-      magic: 10
-      range: 6
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
     strengthBonus:
       melee: 0
       range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4745
+  - 4745
   weight: 2.721
   examine: "Torag the Corrupted's helm."
   equipment:
@@ -3178,7 +3176,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4952
+  - 4952
   weight: 2.721
   examine: "Torag the Corrupted's helm."
   equipment:
@@ -3200,7 +3198,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4953
+  - 4953
   weight: 2.721
   examine: "Torag the Corrupted's helm."
   equipment:
@@ -3222,7 +3220,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4954
+  - 4954
   weight: 2.721
   examine: "Torag the Corrupted's helm."
   equipment:
@@ -3244,7 +3242,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4955
+  - 4955
   weight: 2.721
   examine: "Torag the Corrupted's helm."
   equipment:
@@ -3266,7 +3264,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4956
+  - 4956
   weight: 2.721
   examine: "Torag the Corrupted's helm."
   equipment:
@@ -3274,21 +3272,21 @@
       stab: 0
       slash: 0
       crush: 0
-      magic: -2
-      range: -6
+      magic: 0
+      range: 0
     defenceBonus:
-      stab: 55
-      slash: 58
-      crush: 54
-      magic: 62
-      range: -1
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
     strengthBonus:
       melee: 0
       range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4753
+  - 4753
   weight: 1.36
   examine: "Verac the Defiled's helm."
   equipment:
@@ -3310,7 +3308,7 @@
       magic: 0
     prayerBonus: 3
 - ids:
-    - 4976
+  - 4976
   weight: 1.36
   examine: "Verac the Defiled's helm."
   equipment:
@@ -3332,7 +3330,7 @@
       magic: 0
     prayerBonus: 3
 - ids:
-    - 4977
+  - 4977
   weight: 1.36
   examine: "Verac the Defiled's helm."
   equipment:
@@ -3354,7 +3352,7 @@
       magic: 0
     prayerBonus: 3
 - ids:
-    - 4978
+  - 4978
   weight: 1.36
   examine: "Verac the Defiled's helm."
   equipment:
@@ -3376,7 +3374,7 @@
       magic: 0
     prayerBonus: 3
 - ids:
-    - 4979
+  - 4979
   weight: 1.36
   examine: "Verac the Defiled's helm."
   equipment:
@@ -3398,7 +3396,7 @@
       magic: 0
     prayerBonus: 3
 - ids:
-    - 4980
+  - 4980
   weight: 1.0
   examine: "Verac the Defiled's helm."
   equipment:
@@ -3406,21 +3404,21 @@
       stab: 0
       slash: 0
       crush: 0
-      magic: -2
-      range: -6
+      magic: 0
+      range: 0
     defenceBonus:
-      stab: 55
-      slash: 58
-      crush: 54
-      magic: 56
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
       range: 0
     strengthBonus:
       melee: 0
       range: 0
       magic: 0
-    prayerBonus: 3
+    prayerBonus: 0
 - ids:
-    - 5014
+  - 5014
   weight: 0.9
   examine: "A helmet with an unlit lamp on it."
   equipment:
@@ -3442,7 +3440,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 5013
+  - 5013
   weight: 0.907
   examine: "A helmet with a lamp on it."
   equipment:
@@ -3464,7 +3462,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 5525
+  - 5525
   weight: 1.0
   examine: "Makes me feel like a Princess."
   equipment:
@@ -3486,7 +3484,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 5527
+  - 5527
   weight: 1.0
   examine: "A tiara infused with the properties of air."
   equipment:
@@ -3508,7 +3506,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 5529
+  - 5529
   weight: 1.0
   examine: "A tiara infused with the properties of the mind."
   equipment:
@@ -3530,7 +3528,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 5531
+  - 5531
   weight: 1.0
   examine: "A tiara infused with the properties of water."
   equipment:
@@ -3552,7 +3550,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 5533
+  - 5533
   weight: 1.0
   examine: "A tiara infused with the properties of the body."
   equipment:
@@ -3574,7 +3572,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 5535
+  - 5535
   weight: 1.0
   examine: "A tiara infused with the properties of the earth."
   equipment:
@@ -3596,7 +3594,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 5537
+  - 5537
   weight: 1.0
   examine: "A tiara infused with the properties of fire."
   equipment:
@@ -3618,7 +3616,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 5539
+  - 5539
   weight: 1.0
   examine: "A tiara infused with the properties of the cosmos."
   equipment:
@@ -3640,7 +3638,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 5541
+  - 5541
   weight: 1.0
   examine: "A tiara infused with the properties of nature."
   equipment:
@@ -3662,7 +3660,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 5543
+  - 5543
   weight: 1.0
   examine: "A tiara infused with the properties of chaos."
   equipment:
@@ -3684,7 +3682,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 5545
+  - 5545
   weight: 1.0
   examine: "A tiara infused with the properties of law."
   equipment:
@@ -3706,7 +3704,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 5547
+  - 5547
   weight: 1.0
   examine: "A tiara infused with the properties of death."
   equipment:
@@ -3728,7 +3726,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 5549
+  - 5549
   weight: 1.0
   examine: "A tiara infused with the properties of blood."
   equipment:
@@ -3750,7 +3748,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 5551
+  - 5551
   weight: 1.0
   examine: "A tiara infused with the properties of the soul."
   equipment:
@@ -3772,7 +3770,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 5554
+  - 5554
   weight: 0.453
   examine: "Black banded leather armour, a rogue's dream!"
   equipment:
@@ -3794,7 +3792,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 5574
+  - 5574
   weight: 2.267
   examine: "An initiate Temple Knight's helm."
   equipment:
@@ -3816,7 +3814,7 @@
       magic: 0
     prayerBonus: 3
 - ids:
-    - 6109
+  - 6109
   weight: 0.001
   examine: "A ghostly hood, fit for a ghostly head."
   equipment:
@@ -3838,7 +3836,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 6128
+  - 6128
   weight: 2.721
   examine: "Protective headwear made from crabs. Better than that sounds."
   equipment:
@@ -3860,7 +3858,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 6131
+  - 6131
   weight: 2.721
   examine: "A helm fit for any Fremennik ranger."
   equipment:
@@ -3882,7 +3880,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 6137
+  - 6137
   weight: 1.36
   examine: "Make your foes cower by wearing a skull as a helmet!"
   equipment:
@@ -3904,7 +3902,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 6182
+  - 6182
   weight: 2.267
   examine: "A hat with a goat's hair attached."
   equipment:
@@ -3926,7 +3924,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 6188
+  - 6188
   weight: 0.453
   examine: "Now that's just silly."
   equipment:
@@ -3948,7 +3946,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 6326
+  - 6326
   weight: 0.907
   examine: "Lightweight head protection."
   equipment:
@@ -3970,7 +3968,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 6335
+  - 6335
   weight: 2.0
   examine: "A ceremonial wooden mask."
   equipment:
@@ -3992,7 +3990,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 6337
+  - 6337
   weight: 2.0
   examine: "A ceremonial wooden mask."
   equipment:
@@ -4014,7 +4012,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 6339
+  - 6339
   weight: 2.0
   examine: "A ceremonial wooden mask."
   equipment:
@@ -4036,7 +4034,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 6345
+  - 6345
   weight: 0.907
   examine: "A brightly coloured hat prized by the Tai Bwo Wannai peoples."
   equipment:
@@ -4058,7 +4056,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 6355
+  - 6355
   weight: 0.907
   examine: "A brightly coloured hat prized by the Tai Bwo Wannai peoples."
   equipment:
@@ -4080,7 +4078,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 6365
+  - 6365
   weight: 0.907
   examine: "A brightly coloured hat prized by the Tai Bwo Wannai peoples."
   equipment:
@@ -4102,7 +4100,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 6375
+  - 6375
   weight: 0.907
   examine: "A brightly coloured hat prized by the Tai Bwo Wannai peoples."
   equipment:
@@ -4124,7 +4122,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 6382
+  - 6382
   weight: 0.005
   examine: "A Fez hat. Juss like that."
   equipment:
@@ -4146,7 +4144,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 6392
+  - 6392
   weight: 0.005
   examine: "Good for keeping the sun off my neck."
   equipment:
@@ -4168,7 +4166,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 6400
+  - 6400
   weight: 0.005
   examine: "Good for keeping the sun off my neck."
   equipment:
@@ -4190,7 +4188,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 6547
+  - 6547
   weight: 0.3
   examine: "A mirror helps reflect light on the subject."
   equipment:
@@ -4212,7 +4210,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 6548
+  - 6548
   weight: 0.2
   examine: "A nurse's hat, but does it have healing powers?"
   equipment:
@@ -4234,7 +4232,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 6621
+  - 6621
   weight: 1.814
   examine: "A medium sized helmet."
   equipment:
@@ -4256,7 +4254,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-    - 6623
+  - 6623
   weight: 2.721
   examine: "A full face helmet."
   equipment:
@@ -4278,7 +4276,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-    - 6656
+  - 6656
   weight: 2.267
   examine: "Examine what?"
   equipment:
@@ -4300,7 +4298,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 6665
+  - 6665
   weight: 0.453
   examine: "Fishy, damp and smelly."
   equipment:
@@ -4322,7 +4320,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 6856
+  - 6856
   weight: 0.25
   examine: "A woolly bobble hat."
   equipment:
@@ -4344,7 +4342,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 6858
+  - 6858
   weight: 0.25
   examine: "A woolly jester hat."
   equipment:
@@ -4366,7 +4364,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 6860
+  - 6860
   weight: 0.25
   examine: "A woolly triple bobble jester hat."
   equipment:
@@ -4388,7 +4386,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 6862
+  - 6862
   weight: 0.25
   examine: "A woolly tobogganing hat."
   equipment:
@@ -4410,7 +4408,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 6885
+  - 6885
   weight: 0.0
   examine: "A magic training arena progress hat."
   equipment:
@@ -4432,7 +4430,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 6886
+  - 6886
   weight: 0.0
   examine: "A magic training arena progress hat."
   equipment:
@@ -4454,7 +4452,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 6887
+  - 6887
   weight: 0.0
   examine: "A magic training arena progress hat."
   equipment:
@@ -4476,7 +4474,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 6918
+  - 6918
   weight: 0.0
   examine: "A mystic hat."
   equipment:
@@ -4498,7 +4496,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 7003
+  - 7003
   weight: 0.5
   examine: "Blend in in the desert."
   equipment:
@@ -4520,7 +4518,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 7112
+  - 7112
   weight: 0.1
   examine: "Essential pirate wear."
   equipment:
@@ -4542,7 +4540,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 7124
+  - 7124
   weight: 0.1
   examine: "Essential pirate wear."
   equipment:
@@ -4564,7 +4562,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 7130
+  - 7130
   weight: 0.1
   examine: "Essential pirate wear."
   equipment:
@@ -4586,7 +4584,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 7136
+  - 7136
   weight: 0.1
   examine: "Essential pirate wear."
   equipment:
@@ -4608,7 +4606,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 7319
+  - 7319
   weight: 0.01
   examine: "Stylish!"
   equipment:
@@ -4630,7 +4628,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 7321
+  - 7321
   weight: 0.01
   examine: "Stylish!"
   equipment:
@@ -4652,7 +4650,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 7323
+  - 7323
   weight: 0.01
   examine: "Stylish!"
   equipment:
@@ -4674,7 +4672,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 7325
+  - 7325
   weight: 0.01
   examine: "Stylish!"
   equipment:
@@ -4696,7 +4694,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 7327
+  - 7327
   weight: 0.01
   examine: "Stylish!"
   equipment:
@@ -4718,7 +4716,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 7394
+  - 7394
   weight: 1.0
   examine: "A silly pointed hat, with colourful trim."
   equipment:
@@ -4740,7 +4738,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 7396
+  - 7396
   weight: 0.453
   examine: "A silly pointed hat, with colourful trim."
   equipment:
@@ -4762,7 +4760,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 7400
+  - 7400
   weight: 0.453
   examine: "A three pointed hat of magic."
   equipment:
@@ -4784,7 +4782,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 7534
+  - 7534
   weight: 5.0
   examine: "You'll look daft, but at least you won't drown!"
   equipment:
@@ -4806,7 +4804,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 7539
+  - 7539
   weight: 0.907
   examine: "If it's good enough for crabs, it's good enough for me!"
   equipment:
@@ -4828,7 +4826,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 7594
+  - 7594
   weight: 0.003
   examine: "I look 40,000 years old in this..."
   equipment:
@@ -4850,7 +4848,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 7917
+  - 7917
   weight: 3.175
   examine: "Makes me feel baaad to the bone."
   equipment:
@@ -4872,7 +4870,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 8464
+  - 8464
   weight: 2.721
   examine: "The colours represent the symbol of Arrav."
   equipment:
@@ -4894,7 +4892,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 8466
+  - 8466
   weight: 2.721
   examine: "The colours represent Asgarnia."
   equipment:
@@ -4916,7 +4914,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 8468
+  - 8468
   weight: 2.721
   examine: "The colours represent the Dorgeshuun brooch."
   equipment:
@@ -4938,7 +4936,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 8470
+  - 8470
   weight: 2.721
   examine: "The colours represent a dragon."
   equipment:
@@ -4960,7 +4958,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 8472
+  - 8472
   weight: 2.721
   examine: "The colours represent a fairy."
   equipment:
@@ -4982,7 +4980,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 8474
+  - 8474
   weight: 2.721
   examine: "The colours represent Guthix."
   equipment:
@@ -5004,7 +5002,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 8476
+  - 8476
   weight: 2.721
   examine: "The colours represent the HAM cult."
   equipment:
@@ -5026,7 +5024,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 8478
+  - 8478
   weight: 2.721
   examine: "The colours represent the mythical 'horse'."
   equipment:
@@ -5048,7 +5046,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 8480
+  - 8480
   weight: 2.721
   examine: "The colours represent a Jogre."
   equipment:
@@ -5070,7 +5068,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 8482
+  - 8482
   weight: 2.7
   examine: "The colours represent Kandarin."
   equipment:
@@ -5092,7 +5090,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 8484
+  - 8484
   weight: 2.721
   examine: "The colours represent Misthalin."
   equipment:
@@ -5114,7 +5112,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 8486
+  - 8486
   weight: 2.721
   examine: "The colours represent money."
   equipment:
@@ -5136,7 +5134,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 8488
+  - 8488
   weight: 2.721
   examine: "The colours represent Saradomin."
   equipment:
@@ -5158,7 +5156,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 8490
+  - 8490
   weight: 2.721
   examine: "The colours represent a skull."
   equipment:
@@ -5180,7 +5178,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 8492
+  - 8492
   weight: 2.721
   examine: "The colours represent Varrock."
   equipment:
@@ -5202,7 +5200,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 8494
+  - 8494
   weight: 2.721
   examine: "The colours represent Zamorak."
   equipment:
@@ -5224,7 +5222,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 8682
+  - 8682
   weight: 2.721
   examine: "The colours represent the symbol of Arrav."
   equipment:
@@ -5246,7 +5244,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 8684
+  - 8684
   weight: 2.721
   examine: "The colours represent Asgarnia."
   equipment:
@@ -5268,7 +5266,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 8686
+  - 8686
   weight: 2.7
   examine: "The colours represent the Dorgeshuun brooch."
   equipment:
@@ -5290,7 +5288,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 8688
+  - 8688
   weight: 2.721
   examine: "The colours represent a dragon."
   equipment:
@@ -5312,7 +5310,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 8690
+  - 8690
   weight: 2.721
   examine: "The colours represent a fairy."
   equipment:
@@ -5334,7 +5332,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 8692
+  - 8692
   weight: 2.721
   examine: "The colours represent Guthix."
   equipment:
@@ -5356,7 +5354,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 8694
+  - 8694
   weight: 2.721
   examine: "The colours represent the HAM cult."
   equipment:
@@ -5378,7 +5376,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 8696
+  - 8696
   weight: 2.721
   examine: "The colours represent the mythical 'horse'."
   equipment:
@@ -5400,7 +5398,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 8698
+  - 8698
   weight: 2.721
   examine: "The colours represent a Jogre."
   equipment:
@@ -5422,7 +5420,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 8700
+  - 8700
   weight: 2.721
   examine: "The colours represent Kandarin."
   equipment:
@@ -5444,7 +5442,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 8702
+  - 8702
   weight: 2.721
   examine: "The colours represent Misthalin."
   equipment:
@@ -5466,7 +5464,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 8704
+  - 8704
   weight: 2.721
   examine: "The colours represent money."
   equipment:
@@ -5488,7 +5486,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 8706
+  - 8706
   weight: 2.721
   examine: "The colours represent Saradomin."
   equipment:
@@ -5510,7 +5508,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 8708
+  - 8708
   weight: 2.721
   examine: "The colours represent a skull."
   equipment:
@@ -5532,7 +5530,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 8710
+  - 8710
   weight: 2.721
   examine: "The colours represent Varrock."
   equipment:
@@ -5554,7 +5552,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 8712
+  - 8712
   weight: 2.721
   examine: "The colours represent Zamorak."
   equipment:
@@ -5576,7 +5574,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 8860
+  - 8860
   weight: 4.535
   examine: "To put on your head."
   equipment:
@@ -5598,7 +5596,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 8861
+  - 8861
   weight: 9.071
   examine: "To put on your head."
   equipment:
@@ -5620,7 +5618,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 8862
+  - 8862
   weight: 13.607
   examine: "To put on your head."
   equipment:
@@ -5642,7 +5640,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 8863
+  - 8863
   weight: 18.143
   examine: "To put on your head."
   equipment:
@@ -5664,7 +5662,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 8864
+  - 8864
   weight: 22.679
   examine: "To put on your head."
   equipment:
@@ -5686,7 +5684,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 8921
+  - 8921
   weight: 10.0
   examine: "An inert-seeming cave horror mask."
   equipment:
@@ -5708,7 +5706,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 8919
+  - 8919
   weight: 10.0
   examine: "A magic cave horror mask."
   equipment:
@@ -5730,7 +5728,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 8917
+  - 8917
   weight: 10.0
   examine: "A magic cave horror mask."
   equipment:
@@ -5752,7 +5750,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 8915
+  - 8915
   weight: 10.0
   examine: "A magic cave horror mask."
   equipment:
@@ -5774,7 +5772,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 8913
+  - 8913
   weight: 10.0
   examine: "A magic cave horror mask."
   equipment:
@@ -5796,7 +5794,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 8911
+  - 8911
   weight: 10.0
   examine: "A magic cave horror mask."
   equipment:
@@ -5818,7 +5816,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 8909
+  - 8909
   weight: 10.0
   examine: "A magic cave horror mask."
   equipment:
@@ -5840,7 +5838,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 8907
+  - 8907
   weight: 9.5
   examine: "A magic cave horror mask."
   equipment:
@@ -5862,7 +5860,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 8905
+  - 8905
   weight: 10.0
   examine: "A magic cave horror mask."
   equipment:
@@ -5884,7 +5882,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 8903
+  - 8903
   weight: 10.0
   examine: "A magic cave horror mask."
   equipment:
@@ -5906,7 +5904,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 8901
+  - 8901
   weight: 10.0
   examine: "A magic cave horror mask."
   equipment:
@@ -5928,7 +5926,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 8924
+  - 8924
   weight: 0.15
   examine: "Essential pirate wear."
   equipment:
@@ -5950,7 +5948,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 8925
+  - 8925
   weight: 0.15
   examine: "Essential pirate wear."
   equipment:
@@ -5972,7 +5970,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 8926
+  - 8926
   weight: 0.15
   examine: "Essential pirate wear."
   equipment:
@@ -5994,7 +5992,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 8927
+  - 8927
   weight: 0.15
   examine: "Essential pirate wear."
   equipment:
@@ -6016,7 +6014,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 8928
+  - 8928
   weight: 0.15
   examine: "Essential pirate wear."
   equipment:
@@ -6038,7 +6036,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 8949
+  - 8949
   weight: 0.003
   examine: "A blue bandana."
   equipment:
@@ -6060,7 +6058,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 8950
+  - 8950
   weight: 0.003
   examine: "A red pirate hat."
   equipment:
@@ -6082,7 +6080,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 8959
+  - 8959
   weight: 0.003
   examine: "I could never look square in this."
   equipment:
@@ -6104,7 +6102,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 8960
+  - 8960
   weight: 0.003
   examine: "I could never look square in this."
   equipment:
@@ -6126,7 +6124,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 8961
+  - 8961
   weight: 0.003
   examine: "I could never look square in this."
   equipment:
@@ -6148,7 +6146,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 8962
+  - 8962
   weight: 0.003
   examine: "I could never look square in this."
   equipment:
@@ -6170,7 +6168,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 8963
+  - 8963
   weight: 0.003
   examine: "I could never look square in this."
   equipment:
@@ -6192,7 +6190,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 8964
+  - 8964
   weight: 0.003
   examine: "I could never look square in this."
   equipment:
@@ -6214,7 +6212,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 8965
+  - 8965
   weight: 0.003
   examine: "I could never look square in this."
   equipment:
@@ -6236,7 +6234,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 9068
+  - 9068
   weight: 0.907
   examine: "Mystical headgear."
   equipment:
@@ -6258,7 +6256,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 9069
+  - 9069
   weight: 0.907
   examine: "A mystical hat."
   equipment:
@@ -6280,7 +6278,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 9096
+  - 9096
   weight: 0.907
   examine: "A mystical helmet."
   equipment:
@@ -6302,7 +6300,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 9106
+  - 9106
   weight: 1.0
   examine: "A tiara infused with the properties of the heavens."
   equipment:
@@ -6324,7 +6322,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 9472
+  - 9472
   weight: 0.01
   examine: "Tally Ho!"
   equipment:
@@ -6346,7 +6344,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 9629
+  - 9629
   weight: 0.907
   examine: "As used by King Tyras' personal guard."
   equipment:
@@ -6368,8 +6366,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 9672
-    - 20563
+  - 9672
+  - 20563
   weight: 2.0
   examine: "A Proselyte Temple Knight's helm."
   equipment:
@@ -6391,7 +6389,7 @@
       magic: 0
     prayerBonus: 4
 - ids:
-    - 9729
+  - 9729
   weight: 0.113
   examine: "A magic helmet."
   equipment:
@@ -6413,7 +6411,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 9733
+  - 9733
   weight: 0.113
   examine: "A magic helmet."
   equipment:
@@ -6435,7 +6433,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 9749
+  - 9749
   weight: 0.453
   examine: "Attack skillcape hood."
   equipment:
@@ -6457,7 +6455,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 9752
+  - 9752
   weight: 0.453
   examine: "Strength skillcape hood."
   equipment:
@@ -6479,7 +6477,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 9755
+  - 9755
   weight: 0.453
   examine: "Defence skillcape hood."
   equipment:
@@ -6501,7 +6499,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 9758
+  - 9758
   weight: 0.453
   examine: "Range skillcape hood."
   equipment:
@@ -6523,7 +6521,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 9761
+  - 9761
   weight: 0.453
   examine: "Prayer skillcape hood."
   equipment:
@@ -6545,7 +6543,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 9764
+  - 9764
   weight: 0.453
   examine: "Magic skillcape hood."
   equipment:
@@ -6567,7 +6565,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 9767
+  - 9767
   weight: 0.453
   examine: "Runecraft skillcape hood."
   equipment:
@@ -6589,7 +6587,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 9770
+  - 9770
   weight: 0.453
   examine: "Hitpoints skillcape hood."
   equipment:
@@ -6611,7 +6609,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 9773
+  - 9773
   weight: 0.453
   examine: "Agility skillcape hood."
   equipment:
@@ -6633,7 +6631,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 9776
+  - 9776
   weight: 0.453
   examine: "Herblore skillcape hood."
   equipment:
@@ -6655,7 +6653,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 9779
+  - 9779
   weight: 0.453
   examine: "Thieving skillcape hood."
   equipment:
@@ -6677,7 +6675,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 9782
+  - 9782
   weight: 0.453
   examine: "Crafting skillcape hood."
   equipment:
@@ -6699,7 +6697,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 9785
+  - 9785
   weight: 0.453
   examine: "Fletching skillcape hood."
   equipment:
@@ -6721,7 +6719,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 9788
+  - 9788
   weight: 0.453
   examine: "Slayer skillcape hood."
   equipment:
@@ -6743,7 +6741,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 9791
+  - 9791
   weight: 0.4
   examine: "Construction skillcape hood."
   equipment:
@@ -6765,7 +6763,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 9794
+  - 9794
   weight: 0.453
   examine: "Mining skillcape hood."
   equipment:
@@ -6787,7 +6785,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 9797
+  - 9797
   weight: 0.453
   examine: "Smithing skillcape hood."
   equipment:
@@ -6809,7 +6807,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 9800
+  - 9800
   weight: 0.453
   examine: "Fishing skillcape hood."
   equipment:
@@ -6831,7 +6829,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 9803
+  - 9803
   weight: 0.453
   examine: "Cooking skillcape hood."
   equipment:
@@ -6853,7 +6851,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 9806
+  - 9806
   weight: 0.453
   examine: "Firemaking skillcape hood."
   equipment:
@@ -6875,7 +6873,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 9809
+  - 9809
   weight: 0.453
   examine: "Woodcutting skillcape hood."
   equipment:
@@ -6897,7 +6895,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 9812
+  - 9812
   weight: 0.453
   examine: "Farming skillcape hood."
   equipment:
@@ -6919,7 +6917,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 9814
+  - 9814
   weight: 0.453
   examine: "Quest point cape hood."
   equipment:
@@ -6941,7 +6939,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 9920
+  - 9920
   weight: 0.003
   examine: "Better not light it!"
   equipment:
@@ -6963,7 +6961,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 9925
+  - 9925
   weight: 2.267
   examine: "A scary skeleton mask."
   equipment:
@@ -6985,7 +6983,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 9945
+  - 9945
   weight: 0.001
   examine: "The red baron would be jealous."
   equipment:
@@ -7007,7 +7005,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 9946
+  - 9946
   weight: 0.001
   examine: "For better flying vision."
   equipment:
@@ -7029,7 +7027,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 9950
+  - 9950
   weight: 0.453
   examine: "Hunter skillcape hood."
   equipment:
@@ -7051,7 +7049,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10039
+  - 10039
   weight: 0.226
   examine: "This should make me harder to spot in polar areas."
   equipment:
@@ -7073,7 +7071,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10045
+  - 10045
   weight: 0.226
   examine: "This should make me harder to spot in woodland and jungle areas."
   equipment:
@@ -7095,7 +7093,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10051
+  - 10051
   weight: 0.226
   examine: "This should make me harder to spot in desert areas."
   equipment:
@@ -7117,7 +7115,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10172
+  - 10172
   weight: 0.01
   examine: "A cheaply made fake beak."
   equipment:
@@ -7139,7 +7137,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10286
+  - 10286
   weight: 2.721
   examine: "A rune helmet with a heraldic design."
   equipment:
@@ -7161,7 +7159,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10288
+  - 10288
   weight: 2.721
   examine: "A rune helmet with a heraldic design."
   equipment:
@@ -7183,7 +7181,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10290
+  - 10290
   weight: 2.721
   examine: "A rune helmet with a heraldic design."
   equipment:
@@ -7205,7 +7203,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10292
+  - 10292
   weight: 2.721
   examine: "A rune helmet with a heraldic design."
   equipment:
@@ -7227,7 +7225,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10294
+  - 10294
   weight: 2.721
   examine: "A rune helmet with a heraldic design."
   equipment:
@@ -7249,7 +7247,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10296
+  - 10296
   weight: 3.175
   examine: "An adamant helmet with a heraldic design."
   equipment:
@@ -7271,7 +7269,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10298
+  - 10298
   weight: 3.175
   examine: "An adamant helmet with a heraldic design."
   equipment:
@@ -7293,7 +7291,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10300
+  - 10300
   weight: 3.175
   examine: "An adamant helmet with a heraldic design."
   equipment:
@@ -7315,7 +7313,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10302
+  - 10302
   weight: 3.175
   examine: "An adamant helmet with a heraldic design."
   equipment:
@@ -7337,7 +7335,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10304
+  - 10304
   weight: 3.175
   examine: "An adamant helmet with a heraldic design."
   equipment:
@@ -7359,7 +7357,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10306
+  - 10306
   weight: 2.721
   examine: "A black helmet with a heraldic design."
   equipment:
@@ -7381,7 +7379,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10308
+  - 10308
   weight: 2.721
   examine: "A black helmet with a heraldic design."
   equipment:
@@ -7403,7 +7401,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10310
+  - 10310
   weight: 2.721
   examine: "A black helmet with a heraldic design."
   equipment:
@@ -7425,7 +7423,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10312
+  - 10312
   weight: 2.721
   examine: "A black helmet with a heraldic design."
   equipment:
@@ -7447,7 +7445,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10314
+  - 10314
   weight: 2.721
   examine: "A black helmet with a heraldic design."
   equipment:
@@ -7469,7 +7467,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10334
+  - 10334
   weight: 1.0
   examine: "Fabulously ancient range protection crafted from white dragonhide."
   equipment:
@@ -7491,7 +7489,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10342
+  - 10342
   weight: 0.4
   examine: "Fabulously ancient mage protection enchanted in the 3rd Age."
   equipment:
@@ -7513,7 +7511,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10350
+  - 10350
   weight: 0.907
   examine: "Fabulously ancient armour beaten from magical silver."
   equipment:
@@ -7535,7 +7533,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10374
+  - 10374
   weight: 0.9
   examine: "Zamorak blessed dragonhide coif."
   equipment:
@@ -7557,7 +7555,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-    - 10382
+  - 10382
   weight: 0.9
   examine: "Guthix blessed dragonhide coif."
   equipment:
@@ -7579,7 +7577,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-    - 10390
+  - 10390
   weight: 0.9
   examine: "Saradomin blessed dragonhide coif."
   equipment:
@@ -7601,7 +7599,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-    - 10392
+  - 10392
   weight: 0.4
   examine: "A big do about nothing."
   equipment:
@@ -7623,7 +7621,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10398
+  - 10398
   weight: 0.4
   examine: "A cap for wearing whilzzzzzzzzzz."
   equipment:
@@ -7645,7 +7643,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10452
+  - 10452
   weight: 0.3
   examine: "A Saradomin mitre."
   equipment:
@@ -7667,7 +7665,7 @@
       magic: 0
     prayerBonus: 5
 - ids:
-    - 10454
+  - 10454
   weight: 0.0
   examine: "A Guthix mitre."
   equipment:
@@ -7689,7 +7687,7 @@
       magic: 0
     prayerBonus: 5
 - ids:
-    - 10456
+  - 10456
   weight: 0.3
   examine: "A Zamorak mitre."
   equipment:
@@ -7711,7 +7709,7 @@
       magic: 0
     prayerBonus: 5
 - ids:
-    - 10507
+  - 10507
   weight: 2.0
   examine: "A reindeer hat and a matching flashing nose."
   equipment:
@@ -7733,7 +7731,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10547
+  - 10547
   weight: 2.0
   examine: "A Penance Healer hat."
   equipment:
@@ -7755,7 +7753,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 24172
+  - 24172
   weight: 2.0
   examine: "A Penance Healer hat."
   equipment:
@@ -7777,7 +7775,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10548
+  - 10548
   weight: 2.0
   examine: "A Penance Fighter hat."
   equipment:
@@ -7799,7 +7797,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 24173
+  - 24173
   weight: 2.0
   examine: "A Penance Fighter hat."
   equipment:
@@ -7821,7 +7819,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10549
+  - 10549
   weight: 1.0
   examine: "A Penance Runner hat."
   equipment:
@@ -7843,7 +7841,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 24533
+  - 24533
   weight: 1.0
   examine: "A Penance Runner hat."
   equipment:
@@ -7865,7 +7863,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10550
+  - 10550
   weight: 2.0
   examine: "A Penance Ranger hat."
   equipment:
@@ -7887,7 +7885,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 24174
+  - 24174
   weight: 2.0
   examine: "A Penance Ranger hat."
   equipment:
@@ -7909,7 +7907,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10589
+  - 10589
   weight: 4.535
   examine: "A stone helmet."
   equipment:
@@ -7931,7 +7929,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10828
+  - 10828
   weight: 2.2
   examine: "A gift from Neitiznot's Burgher."
   equipment:
@@ -7953,7 +7951,7 @@
       magic: 0
     prayerBonus: 3
 - ids:
-    - 10836
+  - 10836
   weight: 2.721
   examine: "A silly hat with bells."
   equipment:
@@ -7975,7 +7973,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10862
+  - 10862
   weight: 2.0
   examine: "Can't get any safer than this."
   equipment:
@@ -7997,7 +7995,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10941
+  - 10941
   weight: 0.453
   examine: "You'll certainly be alright wearing this."
   equipment:
@@ -8019,7 +8017,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11021
+  - 11021
   weight: 0.25
   examine: "Cock-a-doodle-do!"
   equipment:
@@ -8041,7 +8039,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11200
+  - 11200
   weight: 1.9
   examine: "A sturdy helmet that belonged to Rupert the Beard."
   equipment:
@@ -8063,7 +8061,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11280
+  - 11280
   weight: 1.0
   examine: "I hope I don't meet any roundheads..."
   equipment:
@@ -8085,7 +8083,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11282
+  - 11282
   weight: 1.0
   examine: "Essential mime wear."
   equipment:
@@ -8107,7 +8105,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11335
+  - 11335
   weight: 2.0
   examine: "Protects your head and looks impressive too."
   equipment:
@@ -8129,7 +8127,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11663
+  - 11663
   weight: 0.453
   examine: "A mage helm from the order of the Void Knights."
   equipment:
@@ -8151,7 +8149,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 24183
+  - 24183
   weight: 0.453
   examine: "A mage helm from the order of the Void Knights."
   equipment:
@@ -8173,7 +8171,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11664
+  - 11664
   weight: 0.453
   examine: "A ranger helm from the order of the Void Knights."
   equipment:
@@ -8195,7 +8193,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 24184
+  - 24184
   weight: 0.453
   examine: "A ranger helm from the order of the Void Knights."
   equipment:
@@ -8217,7 +8215,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11665
+  - 11665
   weight: 0.453
   examine: "A melee helm from the order of the Void Knights."
   equipment:
@@ -8239,7 +8237,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 24185
+  - 24185
   weight: 0.453
   examine: "A melee helm from the order of the Void Knights."
   equipment:
@@ -8261,7 +8259,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11784
+  - 11784
   weight: 10.0
   examine: "An inert-seeming cave horror mask."
   equipment:
@@ -8283,7 +8281,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11783
+  - 11783
   weight: 10.0
   examine: "A magic cave horror mask."
   equipment:
@@ -8305,7 +8303,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11782
+  - 11782
   weight: 10.0
   examine: "A magic cave horror mask."
   equipment:
@@ -8327,7 +8325,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11781
+  - 11781
   weight: 10.0
   examine: "A magic cave horror mask."
   equipment:
@@ -8349,7 +8347,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11780
+  - 11780
   weight: 10.0
   examine: "A magic cave horror mask."
   equipment:
@@ -8371,7 +8369,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11779
+  - 11779
   weight: 10.0
   examine: "A magic cave horror mask."
   equipment:
@@ -8393,7 +8391,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11778
+  - 11778
   weight: 10.0
   examine: "A magic cave horror mask."
   equipment:
@@ -8415,7 +8413,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11777
+  - 11777
   weight: 10.0
   examine: "A magic cave horror mask."
   equipment:
@@ -8437,7 +8435,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11776
+  - 11776
   weight: 10.0
   examine: "A magic cave horror mask."
   equipment:
@@ -8459,7 +8457,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11775
+  - 11775
   weight: 10.0
   examine: "A magic cave horror mask."
   equipment:
@@ -8481,7 +8479,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11774
+  - 11774
   weight: 10.0
   examine: "A magic cave horror mask."
   equipment:
@@ -8503,7 +8501,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11826
+  - 11826
   weight: 1.0
   examine: "A helmet of great craftsmanship."
   equipment:
@@ -8525,7 +8523,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-    - 11847
+  - 11847
   weight: 0.0
   examine: "Aaaarrrghhh, I'm an old-school monster!"
   equipment:
@@ -8547,8 +8545,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11850
-    - 11851
+  - 11850
+  - 11851
   weight: 0.0
   examine: "A sign of your grace."
   equipment:
@@ -8570,8 +8568,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13579
-    - 13580
+  - 13579
+  - 13580
   weight: 0.0
   examine: "A sign of your grace and loyalty."
   equipment:
@@ -8593,8 +8591,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13591
-    - 13592
+  - 13591
+  - 13592
   weight: 0.0
   examine: "A sign of your grace and loyalty."
   equipment:
@@ -8616,8 +8614,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13603
-    - 13604
+  - 13603
+  - 13604
   weight: 0.0
   examine: "A sign of your grace and loyalty."
   equipment:
@@ -8639,8 +8637,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13615
-    - 13616
+  - 13615
+  - 13616
   weight: 0.0
   examine: "A sign of your grace and loyalty."
   equipment:
@@ -8662,8 +8660,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13627
-    - 13628
+  - 13627
+  - 13628
   weight: 0.0
   examine: "A sign of your grace and loyalty."
   equipment:
@@ -8685,8 +8683,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13667
-    - 13668
+  - 13667
+  - 13668
   weight: 0.0
   examine: "A sign of your grace and unity."
   equipment:
@@ -8708,8 +8706,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 21061
-    - 21063
+  - 21061
+  - 21063
   weight: 0.0
   examine: "A sign of your grace."
   equipment:
@@ -8731,7 +8729,30 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11862
+  - 24743
+  - 24745
+  weight: 0.0
+  examine: ""
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 11862
   weight: 0.5
   examine: "A dark hat produced by Shanty Claws."
   equipment:
@@ -8753,7 +8774,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11863
+  - 11863
   weight: 0.5
   examine: "A colourful hat produced by Shanty Claws."
   equipment:
@@ -8775,7 +8796,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11864
+  - 11864
   weight: 2.2
   examine: "You don't want to wear it inside-out."
   equipment:
@@ -8797,7 +8818,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11865
+  - 11865
   weight: 2.2
   examine: "You really don't want to wear it inside-out."
   equipment:
@@ -8819,7 +8840,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11898
+  - 11898
   weight: 8.155
   examine: "Very decorative armour."
   equipment:
@@ -8841,7 +8862,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 24165
+  - 24165
   weight: 8.155
   examine: "Very decorative armour."
   equipment:
@@ -8863,7 +8884,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11919
+  - 11919
   weight: 0.0
   examine: "It looks like a cow's head."
   equipment:
@@ -8885,7 +8906,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11990
+  - 11990
   weight: 0.0
   examine: "Makes you look fedorable."
   equipment:
@@ -8907,7 +8928,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12013
+  - 12013
   weight: 0.5
   examine: "Helps you when you're mining."
   equipment:
@@ -8929,7 +8950,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12203
+  - 12203
   weight: 0.0
   examine: "An Ancient mitre."
   equipment:
@@ -8951,7 +8972,7 @@
       magic: 0
     prayerBonus: 5
 - ids:
-    - 12211
+  - 12211
   weight: 2.7
   examine: "Bronze full helm with gold trim."
   equipment:
@@ -8973,7 +8994,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12221
+  - 12221
   weight: 2.7
   examine: "Bronze full helm with trim."
   equipment:
@@ -8995,7 +9016,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12231
+  - 12231
   weight: 2.0
   examine: "Iron full helm with trim."
   equipment:
@@ -9017,7 +9038,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12241
+  - 12241
   weight: 2.0
   examine: "Iron full helm with gold trim."
   equipment:
@@ -9039,7 +9060,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12245
+  - 12245
   weight: 0.0
   examine: "Weeeeeee!"
   equipment:
@@ -9061,7 +9082,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12247
+  - 12247
   weight: 0.0
   examine: "Parlez-vous francais?"
   equipment:
@@ -9083,7 +9104,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12249
+  - 12249
   weight: 0.0
   examine: "What mischief can I get up to with this?"
   equipment:
@@ -9105,7 +9126,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12251
+  - 12251
   weight: 0.0
   examine: "Let's start a flash mob!"
   equipment:
@@ -9127,7 +9148,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12259
+  - 12259
   weight: 0.0
   examine: "An Armadyl mitre."
   equipment:
@@ -9149,7 +9170,7 @@
       magic: 0
     prayerBonus: 5
 - ids:
-    - 12271
+  - 12271
   weight: 0.0
   examine: "A Bandos mitre."
   equipment:
@@ -9171,7 +9192,7 @@
       magic: 0
     prayerBonus: 5
 - ids:
-    - 12283
+  - 12283
   weight: 2.2
   examine: "Mithril full helm with gold trim."
   equipment:
@@ -9193,7 +9214,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12293
+  - 12293
   weight: 2.2
   examine: "Mithril full helm with trim."
   equipment:
@@ -9215,7 +9236,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12299
+  - 12299
   weight: 0.0
   examine: "A minimalist's hat."
   equipment:
@@ -9237,7 +9258,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12301
+  - 12301
   weight: 0.0
   examine: "A minimalist's hat."
   equipment:
@@ -9259,7 +9280,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12303
+  - 12303
   weight: 0.0
   examine: "A minimalist's hat."
   equipment:
@@ -9281,7 +9302,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12305
+  - 12305
   weight: 0.0
   examine: "A minimalist's hat."
   equipment:
@@ -9303,7 +9324,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12307
+  - 12307
   weight: 0.0
   examine: "A minimalist's hat."
   equipment:
@@ -9325,7 +9346,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12309
+  - 12309
   weight: 0.0
   examine: "Stylish!"
   equipment:
@@ -9347,7 +9368,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12311
+  - 12311
   weight: 0.0
   examine: "Stylish!"
   equipment:
@@ -9369,7 +9390,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12313
+  - 12313
   weight: 0.0
   examine: "Stylish!"
   equipment:
@@ -9391,7 +9412,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12319
+  - 12319
   weight: 0.0
   examine: "Hear ye! Hear ye!"
   equipment:
@@ -9413,7 +9434,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12321
+  - 12321
   weight: 0.0
   examine: "All for one and one for all!"
   equipment:
@@ -9435,7 +9456,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12323
+  - 12323
   weight: 0.0
   examine: "All for one and one for all!"
   equipment:
@@ -9457,7 +9478,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12325
+  - 12325
   weight: 0.0
   examine: "All for one and one for all!"
   equipment:
@@ -9479,7 +9500,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12337
+  - 12337
   weight: 0.0
   examine: "Do they make me look... old?"
   equipment:
@@ -9501,7 +9522,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12351
+  - 12351
   weight: 0.5
   examine: "Engarde!"
   equipment:
@@ -9523,7 +9544,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12353
+  - 12353
   weight: 0.0
   examine: "Hmm, shallow and pedantic."
   equipment:
@@ -9545,7 +9566,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12355
+  - 12355
   weight: 0.0
   examine: "Yarrr!"
   equipment:
@@ -9567,8 +9588,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12359
-  weight: 0.0
+  - 12359
+  weight: 2.267
   examine: "Top o' the morning!"
   equipment:
     attackBonus:
@@ -9589,7 +9610,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12361
+  - 12361
   weight: 0.0
   examine: "Miaow!"
   equipment:
@@ -9611,7 +9632,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12363
+  - 12363
   weight: 2.0
   examine: "Do I look scary?"
   equipment:
@@ -9633,7 +9654,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12365
+  - 12365
   weight: 2.0
   examine: "Do I look scary?"
   equipment:
@@ -9655,7 +9676,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12367
+  - 12367
   weight: 2.0
   examine: "Do I look scary?"
   equipment:
@@ -9677,7 +9698,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12369
+  - 12369
   weight: 2.267
   examine: "Do I look scary?"
   equipment:
@@ -9699,7 +9720,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12371
+  - 12371
   weight: 2.0
   examine: "Do I look scary?"
   equipment:
@@ -9721,7 +9742,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12397
+  - 12397
   weight: 0.0
   examine: "Who said I'd never be royal?"
   equipment:
@@ -9743,7 +9764,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12399
+  - 12399
   weight: 0.1
   examine: "I have the sudden urge to rob the bank..."
   equipment:
@@ -9765,7 +9786,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12412
+  - 12412
   weight: 0.1
   examine: "All I need now is a parrot."
   equipment:
@@ -9787,7 +9808,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12417
+  - 12417
   weight: 2.0
   examine: "Protects your head and looks impressive too."
   equipment:
@@ -9809,7 +9830,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12419
+  - 12419
   weight: 0.0
   examine: "A mystic hat with a light recolour."
   equipment:
@@ -9831,7 +9852,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12428
+  - 12428
   weight: 1.0
   examine: "Thankfully this doesn't reset every week."
   equipment:
@@ -9853,7 +9874,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12430
+  - 12430
   weight: 0.2
   examine: "Wild!"
   equipment:
@@ -9875,7 +9896,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12432
+  - 12432
   weight: 0.0
   examine: "Aint no rabbits in this hat."
   equipment:
@@ -9897,7 +9918,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12434
+  - 12434
   weight: 0.1
   examine: "Like a sir."
   equipment:
@@ -9919,7 +9940,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12453
+  - 12453
   weight: 0.4
   examine: "A silly pointed hat, with colourful trim."
   equipment:
@@ -9941,7 +9962,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12455
+  - 12455
   weight: 0.4
   examine: "A silly pointed hat, with colourful trim."
   equipment:
@@ -9963,7 +9984,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12457
+  - 12457
   weight: 0.0
   examine: "A mystic hat with a dark recolour."
   equipment:
@@ -9985,7 +10006,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12466
+  - 12466
   weight: 2.0
   examine: "Rune full helmet in the colours of a long-forgotten god."
   equipment:
@@ -10007,7 +10028,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-    - 12476
+  - 12476
   weight: 2.0
   examine: "Rune full helmet in the colours of Armadyl."
   equipment:
@@ -10029,7 +10050,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-    - 12486
+  - 12486
   weight: 2.0
   examine: "Rune full helmet in the colours of Bandos."
   equipment:
@@ -10051,7 +10072,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-    - 12496
+  - 12496
   weight: 0.0
   examine: "Ancient blessed dragonhide coif."
   equipment:
@@ -10073,7 +10094,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-    - 12504
+  - 12504
   weight: 0.9
   examine: "Bandos blessed dragonhide coif."
   equipment:
@@ -10095,7 +10116,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-    - 12512
+  - 12512
   weight: 0.0
   examine: "Armadyl blessed dragonhide coif."
   equipment:
@@ -10117,7 +10138,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-    - 12516
+  - 12516
   weight: 0.5
   examine: "Official explorer headgear!"
   equipment:
@@ -10139,7 +10160,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12518
+  - 12518
   weight: 2.0
   examine: "Do I look scary?"
   equipment:
@@ -10161,7 +10182,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12520
+  - 12520
   weight: 2.0
   examine: "Do I look scary?"
   equipment:
@@ -10183,7 +10204,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12522
+  - 12522
   weight: 2.0
   examine: "Do I look scary?"
   equipment:
@@ -10205,7 +10226,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12524
+  - 12524
   weight: 2.0
   examine: "Do I look scary?"
   equipment:
@@ -10227,7 +10248,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12540
+  - 12540
   weight: 0.0
   examine: "Elementary!"
   equipment:
@@ -10249,7 +10270,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12600
+  - 12600
   weight: 0.7
   examine: "This one's more common than you'd expect."
   equipment:
@@ -10271,7 +10292,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12637
+  - 12637
   weight: 0.3
   examine: "Halo with the protection of Saradomin."
   equipment:
@@ -10293,7 +10314,7 @@
       magic: 0
     prayerBonus: 3
 - ids:
-    - 24169
+  - 24169
   weight: 0.3
   examine: "Halo with the protection of Saradomin."
   equipment:
@@ -10315,7 +10336,7 @@
       magic: 0
     prayerBonus: 3
 - ids:
-    - 12638
+  - 12638
   weight: 0.3
   examine: "Halo with the protection of Zamorak."
   equipment:
@@ -10337,7 +10358,7 @@
       magic: 0
     prayerBonus: 3
 - ids:
-    - 24170
+  - 24170
   weight: 0.3
   examine: "Halo with the protection of Zamorak."
   equipment:
@@ -10359,7 +10380,7 @@
       magic: 0
     prayerBonus: 3
 - ids:
-    - 12639
+  - 12639
   weight: 0.3
   examine: "Halo with the protection of Guthix."
   equipment:
@@ -10381,7 +10402,7 @@
       magic: 0
     prayerBonus: 3
 - ids:
-    - 24171
+  - 24171
   weight: 0.3
   examine: "Halo with the protection of Guthix."
   equipment:
@@ -10403,7 +10424,7 @@
       magic: 0
     prayerBonus: 3
 - ids:
-    - 12810
+  - 12810
   weight: 2.0
   examine: "For just a rather very independent scaper."
   equipment:
@@ -10425,7 +10446,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12813
+  - 12813
   weight: 2.0
   examine: "For just a rather very independent scaper."
   equipment:
@@ -10447,8 +10468,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12845
-  weight: 0.0
+  - 12845
+  weight: 0.003
   examine: "Allows me to imitate the bringer of doom, the stealer of souls, the eternal\
     \ end..."
   equipment:
@@ -10470,7 +10491,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12855
+  - 12855
   weight: 0.0
   examine: "Go forth, bold and proud."
   equipment:
@@ -10492,7 +10513,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12856
+  - 12856
   weight: 0.0
   examine: "Lurk in the shadows, a lone wolf defeater."
   equipment:
@@ -10514,8 +10535,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12887
-  weight: 0.0
+  - 12887
+  weight: 0.3
   examine: "Gets your head into the holiday mood."
   equipment:
     attackBonus:
@@ -10536,8 +10557,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12892
-  weight: 0.0
+  - 12892
+  weight: 0.3
   examine: "He sees you when you're sleeping."
   equipment:
     attackBonus:
@@ -10558,7 +10579,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12929
+  - 12929
   weight: 0.0
   examine: "Needs to be charged with Zulrah's scales."
   equipment:
@@ -10569,18 +10590,18 @@
       magic: -5
       range: -5
     defenceBonus:
-      stab: 52
-      slash: 55
-      crush: 58
-      magic: 50
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
       range: 0
     strengthBonus:
-      melee: 5
+      melee: 0
       range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12931
+  - 12931
   weight: 0.0
   examine: "Protects the wearer from poison and venom, and helps envenom monsters."
   equipment:
@@ -10602,7 +10623,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13070
+  - 13070
   weight: 0.0
   examine: "Achievement diary cape hood."
   equipment:
@@ -10624,7 +10645,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13137
+  - 13137
   weight: 0.0
   examine: "A hat with a jewelled eye upon it."
   equipment:
@@ -10646,7 +10667,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13138
+  - 13138
   weight: 0.0
   examine: "A helm with a jewelled eye upon it."
   equipment:
@@ -10668,7 +10689,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13139
+  - 13139
   weight: 0.0
   examine: "A helm with a jewelled eye upon it."
   equipment:
@@ -10690,7 +10711,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13140
+  - 13140
   weight: 0.0
   examine: "A full helm with a jewelled eye upon it."
   equipment:
@@ -10712,7 +10733,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13197
+  - 13197
   weight: 0.0
   examine: "Protects the wearer from poison and venom, and helps envenom monsters."
   equipment:
@@ -10734,7 +10755,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13199
+  - 13199
   weight: 0.0
   examine: "Protects the wearer from poison and venom, and helps envenom monsters."
   equipment:
@@ -10756,7 +10777,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13203
+  - 13203
   weight: 5.0
   examine: "A shining mask of balance{{sic}}"
   equipment:
@@ -10778,7 +10799,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13223
+  - 13223
   weight: 0.0
   examine: "Music cape hood."
   equipment:
@@ -10800,7 +10821,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13258
+  - 13258
   weight: 0.5
   examine: "This will help with fishing."
   equipment:
@@ -10822,7 +10843,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13281
+  - 13281
   weight: 0.4
   examine: "The hood worn by only the most experienced players."
   equipment:
@@ -10844,7 +10865,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13283
+  - 13283
   weight: 0.0
   examine: "It's now easy being green."
   equipment:
@@ -10866,7 +10887,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13330
+  - 13330
   weight: 0.453
   examine: "The hood worn by only the most experienced players."
   equipment:
@@ -10888,7 +10909,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13332
+  - 13332
   weight: 0.453
   examine: "The hood worn by only the most experienced players."
   equipment:
@@ -10910,7 +10931,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13334
+  - 13334
   weight: 0.453
   examine: "The hood worn by only the most experienced players."
   equipment:
@@ -10932,7 +10953,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13336
+  - 13336
   weight: 0.453
   examine: "The hood worn by only the most experienced players."
   equipment:
@@ -10954,7 +10975,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13338
+  - 13338
   weight: 0.453
   examine: "The hood worn by only the most experienced players."
   equipment:
@@ -10976,8 +10997,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13343
-  weight: 0.0
+  - 13343
+  weight: 0.113
   examine: "A black Santa hat produced by Anti-Santa."
   equipment:
     attackBonus:
@@ -10998,8 +11019,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13344
-  weight: 0.0
+  - 13344
+  weight: 0.113
   examine: "An inverted Santa hat worn by Santa's White Knight bodyguards."
   equipment:
     attackBonus:
@@ -11020,7 +11041,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13359
+  - 13359
   weight: 2.0
   examine: "Dress like a tier 1 Shayzien soldier."
   equipment:
@@ -11042,7 +11063,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13364
+  - 13364
   weight: 2.0
   examine: "Dress like a tier 2 Shayzien soldier."
   equipment:
@@ -11064,7 +11085,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13369
+  - 13369
   weight: 2.0
   examine: "Dress like a tier 3 Shayzien soldier."
   equipment:
@@ -11086,7 +11107,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13374
+  - 13374
   weight: 2.0
   examine: "Dress like a tier 4 Shayzien soldier."
   equipment:
@@ -11108,7 +11129,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13379
+  - 13379
   weight: 2.0
   examine: "Dress like a tier 5 Shayzien soldier."
   equipment:
@@ -11130,7 +11151,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13385
+  - 13385
   weight: 0.0
   examine: "The forgotten magicks of Xeric imbue this garment with a little power."
   equipment:
@@ -11152,7 +11173,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13646
+  - 13646
   weight: 0.9
   examine: "This will help with farming."
   equipment:
@@ -11174,7 +11195,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13647
+  - 13647
   weight: 0.9
   examine: "This will help with farming."
   equipment:
@@ -11196,7 +11217,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13655
+  - 13655
   weight: 0.0
   examine: "Stylish, by gnome child standards."
   equipment:
@@ -11218,7 +11239,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 19639
+  - 19639
   weight: 2.2
   examine: "You don't want to wear it inside-out."
   equipment:
@@ -11240,7 +11261,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 19641
+  - 19641
   weight: 2.2
   examine: "You really don't want to wear it inside-out."
   equipment:
@@ -11262,7 +11283,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 19643
+  - 19643
   weight: 2.2
   examine: "You don't want to wear it inside-out."
   equipment:
@@ -11284,7 +11305,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 19645
+  - 19645
   weight: 2.2
   examine: "You really don't want to wear it inside-out."
   equipment:
@@ -11306,7 +11327,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 19647
+  - 19647
   weight: 2.2
   examine: "You don't want to wear it inside-out."
   equipment:
@@ -11328,7 +11349,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 19649
+  - 19649
   weight: 2.2
   examine: "You really don't want to wear it inside-out."
   equipment:
@@ -11350,7 +11371,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 19687
+  - 19687
   weight: 1.0
   examine: "An ancient helmet of King Raedwald Indanorf. First discovered by Pikachu\
     \ Yip."
@@ -11373,7 +11394,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 19699
+  - 19699
   weight: 1.0
   examine: "A helm to celebrate the summer solstice."
   equipment:
@@ -11395,7 +11416,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 19724
+  - 19724
   weight: 0.0
   examine: "A black piece of cloth on a string."
   equipment:
@@ -11417,7 +11438,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 19727
+  - 19727
   weight: 0.0
   examine: "A black piece of cloth on a string."
   equipment:
@@ -11439,7 +11460,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 19915
+  - 19915
   weight: 0.0
   examine: "You'd expect this to interfere with your 3D vision."
   equipment:
@@ -11461,7 +11482,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 19988
+  - 19988
   weight: 1.0
   examine: "A helm worn by blacksmiths."
   equipment:
@@ -11483,7 +11504,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 19991
+  - 19991
   weight: 1.0
   examine: "A helm made from a bucket."
   equipment:
@@ -11505,7 +11526,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 20008
+  - 20008
   weight: 0.0
   examine: "Call me princess."
   equipment:
@@ -11527,7 +11548,29 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 20020
+  - 20020
+  weight: 0.8
+  examine: "Evil."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 20023
   weight: 0.0
   examine: "Evil."
   equipment:
@@ -11549,7 +11592,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 20023
+  - 20026
   weight: 0.0
   examine: "Evil."
   equipment:
@@ -11571,29 +11614,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 20026
-  weight: 0.0
-  examine: "Evil."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-    - 20029
+  - 20029
   weight: 0.0
   examine: "Lost in time."
   equipment:
@@ -11615,7 +11636,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 20032
+  - 20032
   weight: 0.0
   examine: "A mask resembling a visage of a Greater Jungle demon."
   equipment:
@@ -11637,7 +11658,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 20035
+  - 20035
   weight: 0.6
   examine: "A conical hat."
   equipment:
@@ -11659,7 +11680,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 20053
+  - 20053
   weight: 0.0
   examine: "The two halfs would surely make a full moon?"
   equipment:
@@ -11681,7 +11702,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 20059
+  - 20059
   weight: 1.0
   examine: "A helm made from a golden bucket."
   equipment:
@@ -11703,7 +11724,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 20080
+  - 20080
   weight: 0.0
   examine: "A mummy's head."
   equipment:
@@ -11725,7 +11746,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 20095
+  - 20095
   weight: 0.0
   examine: "This mask will make your flesh transparent."
   equipment:
@@ -11747,7 +11768,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 20110
+  - 20110
   weight: 0.0
   examine: "The bowl wig."
   equipment:
@@ -11769,7 +11790,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 20113
+  - 20113
   weight: 0.0
   examine: "A rare hood from Arceuus."
   equipment:
@@ -11791,7 +11812,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 20116
+  - 20116
   weight: 0.0
   examine: "A rare hood from Hosidius."
   equipment:
@@ -11813,7 +11834,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 20119
+  - 20119
   weight: 0.0
   examine: "A rare hood from Lovakengj."
   equipment:
@@ -11835,7 +11856,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 20122
+  - 20122
   weight: 0.0
   examine: "A rare hood from Port Piscarilius."
   equipment:
@@ -11857,7 +11878,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 20125
+  - 20125
   weight: 0.0
   examine: "A rare hood from Shayzien."
   equipment:
@@ -11879,7 +11900,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 20128
+  - 20128
   weight: 0.4
   examine: "A dark power is woven into this hood."
   equipment:
@@ -11901,7 +11922,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 20146
+  - 20146
   weight: 2.0
   examine: "A medium sized helmet with gold plate."
   equipment:
@@ -11923,7 +11944,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 20178
+  - 20178
   weight: 2.7
   examine: "A steel full helmet with gold trim."
   equipment:
@@ -11945,7 +11966,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 20193
+  - 20193
   weight: 2.7
   examine: "A steel full helmet with trim."
   equipment:
@@ -11967,7 +11988,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 20205
+  - 20205
   weight: 0.0
   examine: "What a perfectly reasonable hat."
   equipment:
@@ -11989,8 +12010,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 20246
-  weight: 2.0
+  - 20246
+  weight: 2.267
   examine: "Try as they will, and try as they might, who steals me gold won't live\
     \ through the night."
   equipment:
@@ -12012,7 +12033,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 20266
+  - 20266
   weight: 0.0
   examine: "Pointy shadows."
   equipment:
@@ -12034,7 +12055,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 20269
+  - 20269
   weight: 0.0
   examine: "Pointy rainbows."
   equipment:
@@ -12056,7 +12077,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 20439
+  - 20439
   weight: 0.25
   examine: "Cock-a-doodle-do!"
   equipment:
@@ -12078,7 +12099,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 20595
+  - 20595
   weight: 0.1
   examine: "The hood worn by the dangerous elder druids."
   equipment:
@@ -12100,7 +12121,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 20708
+  - 20708
   weight: 0.18
   examine: "The hood of the Pyromancers."
   equipment:
@@ -12122,7 +12143,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 20764
+  - 20764
   weight: 0.453
   examine: "The hood worn by only the most experienced players."
   equipment:
@@ -12144,7 +12165,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 20773
+  - 20773
   weight: 0.0
   examine: "Makes me want to scream."
   equipment:
@@ -12166,8 +12187,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 20792
-  weight: 2.0
+  - 20792
+  weight: 0.0
   examine: "For those who stand alone."
   equipment:
     attackBonus:
@@ -12188,7 +12209,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 20838
+  - 20838
   weight: 2.0
   examine: "The helmet of a forgotton warrior, corrupted by the dark altar."
   equipment:
@@ -12210,7 +12231,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 21018
+  - 21018
   weight: 0.453
   examine: "The hat of a powerful sorceress from a bygone era."
   equipment:
@@ -12232,7 +12253,7 @@
       magic: 2
     prayerBonus: 0
 - ids:
-    - 21211
+  - 21211
   weight: 0.0
   examine: "A celebration of 4 great years."
   equipment:
@@ -12254,7 +12275,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 21214
+  - 21214
   weight: 0.0
   examine: "Egg head!"
   equipment:
@@ -12276,7 +12297,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 21264
+  - 21264
   weight: 2.2
   examine: "You don't want to wear it inside-out."
   equipment:
@@ -12298,7 +12319,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 21266
+  - 21266
   weight: 2.2
   examine: "You really don't want to wear it inside-out."
   equipment:
@@ -12320,7 +12341,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 21282
+  - 21282
   weight: 0.453
   examine: "The hood worn by only the most experienced players."
   equipment:
@@ -12342,7 +12363,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 21298
+  - 21298
   weight: 3.0
   examine: "Provides excellent protection."
   equipment:
@@ -12364,7 +12385,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 21720
+  - 21720
   weight: 0.0
   examine: "Too spoopy."
   equipment:
@@ -12386,7 +12407,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 21722
+  - 21722
   weight: 5.0
   examine: "A rudimentary diving helmet."
   equipment:
@@ -12408,7 +12429,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 21778
+  - 21778
   weight: 0.453
   examine: "The hood worn by only the most experienced players."
   equipment:
@@ -12430,7 +12451,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 21782
+  - 21782
   weight: 0.453
   examine: "The hood worn by only the most experienced players."
   equipment:
@@ -12452,7 +12473,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 21786
+  - 21786
   weight: 0.453
   examine: "The hood worn by only the most experienced players."
   equipment:
@@ -12474,7 +12495,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 21838
+  - 21838
   weight: 2.0
   examine: "The mask worn by ogre shamans."
   equipment:
@@ -12496,7 +12517,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 21847
+  - 21847
   weight: 0.0
   examine: "A poorly made fake snow imp head."
   equipment:
@@ -12518,7 +12539,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 21859
+  - 21859
   weight: 0.0
   examine: "It's a Santa hat++."
   equipment:
@@ -12540,7 +12561,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 21888
+  - 21888
   weight: 2.2
   examine: "You don't want to wear it inside-out."
   equipment:
@@ -12562,7 +12583,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 21890
+  - 21890
   weight: 2.2
   examine: "You really don't want to wear it inside-out."
   equipment:
@@ -12584,7 +12605,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 21900
+  - 21900
   weight: 0.453
   examine: "The hood worn by only the most experienced players."
   equipment:
@@ -12606,7 +12627,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 22121
+  - 22121
   weight: 1.0
   examine: "A tiara infused with the properties of wrath."
   equipment:
@@ -12628,7 +12649,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 22159
+  - 22159
   weight: 3.0
   examine: "The colours represent the symbol of Arrav."
   equipment:
@@ -12650,7 +12671,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 22161
+  - 22161
   weight: 3.0
   examine: "The colours represent Asgarnia."
   equipment:
@@ -12672,7 +12693,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 22163
+  - 22163
   weight: 3.0
   examine: "The colours represent the Dorgeshuun brooch."
   equipment:
@@ -12694,7 +12715,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 22165
+  - 22165
   weight: 3.0
   examine: "The colours represent a dragon."
   equipment:
@@ -12716,7 +12737,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 22167
+  - 22167
   weight: 3.0
   examine: "The colours represent a fairy."
   equipment:
@@ -12738,7 +12759,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 22169
+  - 22169
   weight: 3.0
   examine: "The colours represent Guthix."
   equipment:
@@ -12760,7 +12781,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 22171
+  - 22171
   weight: 3.0
   examine: "The colours represent the HAM cult."
   equipment:
@@ -12782,7 +12803,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 22173
+  - 22173
   weight: 3.0
   examine: "The colours represent the mythical 'horse'."
   equipment:
@@ -12804,7 +12825,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 22175
+  - 22175
   weight: 3.0
   examine: "The colours represent a Jogre."
   equipment:
@@ -12826,7 +12847,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 22177
+  - 22177
   weight: 3.0
   examine: "The colours represent Kandarin."
   equipment:
@@ -12848,7 +12869,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 22179
+  - 22179
   weight: 3.0
   examine: "The colours represent Misthalin."
   equipment:
@@ -12870,7 +12891,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 22181
+  - 22181
   weight: 3.0
   examine: "The colours represent money."
   equipment:
@@ -12892,7 +12913,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 22183
+  - 22183
   weight: 3.0
   examine: "The colours represent Saradomin."
   equipment:
@@ -12914,7 +12935,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 22185
+  - 22185
   weight: 3.0
   examine: "The colours represent a skull."
   equipment:
@@ -12936,7 +12957,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 22187
+  - 22187
   weight: 3.0
   examine: "The colours represent Varrock."
   equipment:
@@ -12958,7 +12979,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 22189
+  - 22189
   weight: 3.0
   examine: "The colours represent Zamorak."
   equipment:
@@ -12980,7 +13001,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 22326
+  - 22326
   weight: 2.7
   examine: "A helm that once belonged to a Justiciar, a loyal zealot of Saradomin."
   equipment:
@@ -13002,7 +13023,7 @@
       magic: 0
     prayerBonus: 2
 - ids:
-    - 22625
+  - 22625
   weight: 2.7
   examine: "A powerful helmet."
   equipment:
@@ -13024,7 +13045,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 22638
+  - 22638
   weight: 0.9
   examine: "A powerful coif."
   equipment:
@@ -13046,7 +13067,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 22650
+  - 22650
   weight: 0.9
   examine: "A powerful hood."
   equipment:
@@ -13068,7 +13089,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 22689
+  - 22689
   weight: 0.5
   examine: "Boo!"
   equipment:
@@ -13090,7 +13111,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 22713
+  - 22713
   weight: 0.1
   examine: "Say hello to my little star."
   equipment:
@@ -13112,7 +13133,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 23047
+  - 23047
   weight: 0.4
   examine: "A dusky magical hat."
   equipment:
@@ -13134,7 +13155,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 23073
+  - 23073
   weight: 2.2
   examine: "You don't want to wear it inside-out."
   equipment:
@@ -13156,7 +13177,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 23075
+  - 23075
   weight: 2.2
   examine: "You really don't want to wear it inside-out."
   equipment:
@@ -13178,7 +13199,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 23101
+  - 23101
   weight: 2.0
   examine: "An ornate helm, first discovered by the Crack the Clue Community."
   equipment:
@@ -13200,7 +13221,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 23252
+  - 23252
   weight: 0.5
   examine: "Worn on head. Warning: Smelly."
   equipment:
@@ -13222,7 +13243,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 23255
+  - 23255
   weight: 2.2
   examine: "This is top secret comrade..."
   equipment:
@@ -13244,7 +13265,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 23258
+  - 23258
   weight: 0.9
   examine: "Made with 100% golden dragonhide."
   equipment:
@@ -13266,7 +13287,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 23270
+  - 23270
   weight: 2.0
   examine: "Do I look scary?"
   equipment:
@@ -13288,7 +13309,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 23273
+  - 23273
   weight: 2.0
   examine: "Do I look scary?"
   equipment:
@@ -13310,7 +13331,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 23312
+  - 23312
   weight: 0.9
   examine: "A hat worn by a sandwich lady."
   equipment:
@@ -13332,7 +13353,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 23407
+  - 23407
   weight: 2.2
   examine: "Howwwallll!"
   equipment:
@@ -13354,7 +13375,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 23448
+  - 23448
   weight: 0.3
   examine: "Hippity, hoppity, the Bunnyman is on his way."
   equipment:
@@ -13376,7 +13397,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 23522
+  - 23522
   weight: 0.3
   examine: "A creepy mask worn during a blood moon."
   equipment:
@@ -13398,7 +13419,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 23785
+  - 23785
   weight: 2.721
   examine: "A full face helm worn by the Knights of Ardougne."
   equipment:
@@ -13420,16 +13441,16 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 23840
+  - 23840
   weight: 2.5
   examine: "A shiny helmet that provides a little protection from corrupted creatures."
   equipment:
     attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
+      stab: 2
+      slash: 2
+      crush: 1
+      magic: 2
+      range: 2
     defenceBonus:
       stab: 28
       slash: 28
@@ -13442,16 +13463,16 @@
       magic: 0
     prayerBonus: 1
 - ids:
-    - 23841
+  - 23841
   weight: 2.5
   examine: "A shinier helmet that provides some protection from corrupted creatures."
   equipment:
     attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
+      stab: 6
+      slash: 6
+      crush: 2
+      magic: 6
+      range: 6
     defenceBonus:
       stab: 48
       slash: 48
@@ -13464,16 +13485,16 @@
       magic: 0
     prayerBonus: 2
 - ids:
-    - 23842
+  - 23842
   weight: 2.5
   examine: "The shiniest helmet that provides a lot of protection from corrupted creatures."
   equipment:
     attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
+      stab: 10
+      slash: 10
+      crush: 3
+      magic: 10
+      range: 10
     defenceBonus:
       stab: 68
       slash: 68
@@ -13486,16 +13507,16 @@
       magic: 0
     prayerBonus: 3
 - ids:
-    - 23886
+  - 23886
   weight: 2.5
   examine: "A shiny helmet that provides a little protection from crystalline creatures."
   equipment:
     attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
+      stab: 2
+      slash: 2
+      crush: 1
+      magic: 2
+      range: 2
     defenceBonus:
       stab: 28
       slash: 28
@@ -13508,16 +13529,16 @@
       magic: 0
     prayerBonus: 1
 - ids:
-    - 23887
+  - 23887
   weight: 2.5
   examine: "A shinier helmet that provides some protection from crystalline creatures."
   equipment:
     attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
+      stab: 6
+      slash: 6
+      crush: 2
+      magic: 6
+      range: 6
     defenceBonus:
       stab: 48
       slash: 48
@@ -13530,17 +13551,17 @@
       magic: 0
     prayerBonus: 2
 - ids:
-    - 23888
+  - 23888
   weight: 2.5
   examine: "The shiniest helmet that provides a lot of protection from crystalline\
     \ creatures."
   equipment:
     attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
+      stab: 10
+      slash: 10
+      crush: 3
+      magic: 10
+      range: 10
     defenceBonus:
       stab: 68
       slash: 68
@@ -13553,7 +13574,7 @@
       magic: 0
     prayerBonus: 3
 - ids:
-    - 23911
+  - 23911
   weight: 0.3
   examine: "A crown fit for the most wealthy of elves."
   equipment:
@@ -13575,7 +13596,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 23913
+  - 23913
   weight: 0.3
   examine: "A crown fit for the most wealthy of elves."
   equipment:
@@ -13597,7 +13618,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 23915
+  - 23915
   weight: 0.3
   examine: "A crown fit for the most wealthy of elves."
   equipment:
@@ -13619,7 +13640,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 23917
+  - 23917
   weight: 0.3
   examine: "A crown fit for the most wealthy of elves."
   equipment:
@@ -13641,7 +13662,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 23919
+  - 23919
   weight: 0.3
   examine: "A crown fit for the most wealthy of elves."
   equipment:
@@ -13663,7 +13684,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 23921
+  - 23921
   weight: 0.3
   examine: "A crown fit for the most wealthy of elves."
   equipment:
@@ -13685,7 +13706,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 23923
+  - 23923
   weight: 0.3
   examine: "A crown fit for the most wealthy of elves."
   equipment:
@@ -13707,7 +13728,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 23925
+  - 23925
   weight: 0.3
   examine: "A crown fit for the most wealthy of elves."
   equipment:
@@ -13729,7 +13750,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 23971
+  - 23971
   weight: 2.0
   examine: "This helmet shines bright, like a diamond."
   equipment:
@@ -13751,7 +13772,7 @@
       magic: 0
     prayerBonus: 2
 - ids:
-    - 23973
+  - 23973
   weight: 2.0
   examine: "This helmet shines bright, like a diamond."
   equipment:
@@ -13773,7 +13794,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 24034
+  - 24034
   weight: 2.721
   examine: "A stylish rune full helm inlaid with dragonstones."
   equipment:
@@ -13795,7 +13816,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 24192
+  - 24192
   weight: 0.3
   examine: "Halo with the protection of Armadyl."
   equipment:
@@ -13817,7 +13838,7 @@
       magic: 0
     prayerBonus: 3
 - ids:
-    - 24194
+  - 24194
   weight: 0.3
   examine: "Halo with the protection of Armadyl."
   equipment:
@@ -13839,7 +13860,7 @@
       magic: 0
     prayerBonus: 3
 - ids:
-    - 24195
+  - 24195
   weight: 0.3
   examine: "Halo with the protection of Bandos."
   equipment:
@@ -13861,7 +13882,7 @@
       magic: 0
     prayerBonus: 3
 - ids:
-    - 24197
+  - 24197
   weight: 0.3
   examine: "Halo with the protection of Bandos."
   equipment:
@@ -13883,7 +13904,7 @@
       magic: 0
     prayerBonus: 3
 - ids:
-    - 24198
+  - 24198
   weight: 0.3
   examine: "Halo with the protection of Seren."
   equipment:
@@ -13905,7 +13926,7 @@
       magic: 0
     prayerBonus: 3
 - ids:
-    - 24200
+  - 24200
   weight: 0.3
   examine: "Halo with the protection of Seren."
   equipment:
@@ -13927,7 +13948,7 @@
       magic: 0
     prayerBonus: 3
 - ids:
-    - 24201
+  - 24201
   weight: 0.3
   examine: "Halo with the protection of an ancient god."
   equipment:
@@ -13949,7 +13970,7 @@
       magic: 0
     prayerBonus: 3
 - ids:
-    - 24203
+  - 24203
   weight: 0.3
   examine: "Halo with the protection of an ancient god."
   equipment:
@@ -13971,7 +13992,7 @@
       magic: 0
     prayerBonus: 3
 - ids:
-    - 24204
+  - 24204
   weight: 0.3
   examine: "Halo with the protection of a healthy diet and the smell of flatulence."
   equipment:
@@ -13993,7 +14014,7 @@
       magic: 0
     prayerBonus: 3
 - ids:
-    - 24206
+  - 24206
   weight: 0.3
   examine: "Halo with the protection of a healthy diet and the smell of flatulence."
   equipment:
@@ -14015,7 +14036,7 @@
       magic: 0
     prayerBonus: 3
 - ids:
-    - 24271
+  - 24271
   weight: 2.7
   examine: "A gift from Neitiznot's Burgher enhanced with the jaw of a Basilisk."
   equipment:
@@ -14037,7 +14058,7 @@
       magic: 0
     prayerBonus: 3
 - ids:
-    - 24288
+  - 24288
   weight: 0.6
   examine: "A hat worn by members of the Dagon'hai."
   equipment:
@@ -14059,7 +14080,7 @@
       magic: 0
     prayerBonus: 2
 - ids:
-    - 24305
+  - 24305
   weight: 0.5
   examine: "A spooky hood cut from a bedsheet!"
   equipment:
@@ -14081,7 +14102,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 24315
+  - 24315
   weight: 0.5
   examine: "A spooky hood cut from a bedsheet!"
   equipment:
@@ -14103,7 +14124,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 24338
+  - 24338
   weight: 0.4
   examine: "A hat fit for the newest of player killers."
   equipment:
@@ -14125,7 +14146,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 24340
+  - 24340
   weight: 0.4
   examine: "A hat fit for the casual player killers."
   equipment:
@@ -14147,7 +14168,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 24342
+  - 24342
   weight: 0.4
   examine: "A hat fit for hobbiest player killers."
   equipment:
@@ -14169,7 +14190,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 24344
+  - 24344
   weight: 0.4
   examine: "A hat fit for experienced player killers."
   equipment:
@@ -14191,7 +14212,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 24346
+  - 24346
   weight: 0.4
   examine: "A hat fit for advanced player killers."
   equipment:
@@ -14213,7 +14234,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 24348
+  - 24348
   weight: 0.4
   examine: "A hat fit for only the most esteemed player killer."
   equipment:
@@ -14235,7 +14256,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 24370
+  - 24370
   weight: 2.2
   examine: "You really don't want to wear it inside-out."
   equipment:
@@ -14257,7 +14278,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 24387
+  - 24387
   weight: 0.4
   examine: "The headgear of a twisted relic hunter."
   equipment:
@@ -14279,7 +14300,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 24397
+  - 24397
   weight: 0.4
   examine: "The headgear of a twisted relic hunter."
   equipment:
@@ -14301,7 +14322,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 24405
+  - 24405
   weight: 0.4
   examine: "The headgear of a twisted relic hunter."
   equipment:
@@ -14323,7 +14344,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 24419
+  - 24419
   weight: 2.7
   examine: "The great helmet of the turncloak Justiciar."
   equipment:
@@ -14345,7 +14366,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-    - 24444
+  - 24444
   weight: 2.2
   examine: "You really don't want to wear it inside-out."
   equipment:
@@ -14367,7 +14388,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 24527
+  - 24527
   weight: 0.0
   examine: "A hellish piece of head gear."
   equipment:
@@ -14387,4 +14408,26 @@
       melee: 0
       range: 0
       magic: 0
+    prayerBonus: 0
+- ids:
+  - 24664
+  weight: 0.453
+  examine: "The hat of a powerful sorceress from a bygone era."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: -2
+      range: 8
+    defenceBonus:
+      stab: 12
+      slash: 11
+      crush: 13
+      magic: 0
+      range: 5
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 2
     prayerBonus: 0

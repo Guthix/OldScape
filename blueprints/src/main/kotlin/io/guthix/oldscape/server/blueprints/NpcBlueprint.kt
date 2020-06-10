@@ -16,23 +16,12 @@
  */
 package io.guthix.oldscape.server.blueprints
 
+import io.guthix.oldscape.cache.config.NpcConfig
+
 class MonsterBlueprint(
-    id: Int,
-    name: String?,
-    examine: String,
-    size: Int,
-    contextMenu: Array<String?>,
-    isInteractable: Boolean,
-    walkSequence: Int?,
-    walkLeftSequence: Int?,
-    walkRightSequence: Int?,
-    walkBackSequence: Int?,
-    turnLeftSequence: Int?,
-    turnRightSequence: Int?,
-    var combat: Combat?
-) : NpcBlueprint(id, name, examine, size, contextMenu, isInteractable, walkSequence, walkLeftSequence,
-    walkRightSequence, walkBackSequence, turnLeftSequence, turnRightSequence
-) {
+    cacheConfig: NpcConfig,
+    override val extraConfig: ExtraMonsterConfig,
+) : NpcBlueprint(cacheConfig, extraConfig) {
     class Combat(
         val lvl: Int?,
         val isAggressive: Boolean,
@@ -62,19 +51,13 @@ class MonsterBlueprint(
 }
 
 open class NpcBlueprint(
-    val id: Int,
-    val name: String?,
-    val examine: String,
-    val size: Int,
-    val contextMenu: Array<String?>,
-    val isInteractable: Boolean,
-    var walkSequence: Int?,
-    var walkLeftSequence: Int?,
-    var walkRightSequence: Int?,
-    var walkBackSequence: Int?,
-    var turnLeftSequence: Int?,
-    var turnRightSequence: Int?,
-)
+    private val cacheConfig: NpcConfig,
+    protected open val extraConfig: ExtraNpcConfig
+) {
+    val id: Int get() = cacheConfig.id
+    val size: Int get() = cacheConfig.size.toInt()
+    val contextMenu: Array<String?> get() = cacheConfig.options
+}
 
 class ExtraMonsterConfig(
     ids: List<Int>,
