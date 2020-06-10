@@ -17,22 +17,21 @@
 package io.guthix.oldscape.wiki
 
 import mu.KotlinLogging
-import java.lang.Exception
 import java.time.LocalDate
 import java.time.Month
 import kotlin.reflect.full.createInstance
 
 private val logger = KotlinLogging.logger {}
 
-abstract class WikiDefinition<P : WikiDefinition<P>> {
-    open var ids: List<Int>? = null
-    open var name: String? = null
+public abstract class WikiDefinition<P : WikiDefinition<P>> {
+    public open var ids: List<Int>? = null
+    public open var name: String? = null
 
     @Suppress("UNCHECKED_CAST")
-    open fun parse(page: String, version: Int? = null): P {
+    public open fun parse(page: String, version: Int? = null): P {
         page.reader().readLines().forEach { pageLine ->
             try {
-                if(pageLine.startsWith("|")) {
+                if (pageLine.startsWith("|")) {
                     parseKeyValueLine(pageLine, version)
                 }
             } catch (e: Exception) {
@@ -42,12 +41,12 @@ abstract class WikiDefinition<P : WikiDefinition<P>> {
         return this as P
     }
 
-    abstract fun parseKeyValueLine(line: String, version: Int?)
+    public abstract fun parseKeyValueLine(line: String, version: Int?)
 
     protected fun String.checkWikiKey(matcher: String, version: Int?): Boolean {
         val lineCheck = substringBefore("=").replace(" ", "").substring(1)
         val matchCheck = matcher.replace(" ", "")
-        return if(version == null) {
+        return if (version == null) {
             matchCheck.equals(lineCheck, true)
         } else {
             matchCheck.equals(lineCheck, true) or "$matchCheck$version".equals(lineCheck, true)
@@ -56,34 +55,34 @@ abstract class WikiDefinition<P : WikiDefinition<P>> {
 
     protected fun String.getWikiString(): String? {
         val str = substringAfter("=").removePrefix(" ")
-        return if(str.equals("", ignoreCase = true) || str.equals("N/A", ignoreCase = true)) null else str
+        return if (str.equals("", ignoreCase = true) || str.equals("N/A", ignoreCase = true)) null else str
     }
 
-    protected fun String.getWikiStrings() = getWikiString()
+    protected fun String.getWikiStrings(): List<String>? = getWikiString()
         ?.split(",")?.map { it.replace(' ', ',') }
 
-    protected fun String.getWikiBool() = getWikiString()
+    protected fun String.getWikiBool(): Boolean? = getWikiString()
         ?.replace(" ", "")
         ?.equals("Yes", ignoreCase = true)
 
-    protected fun String.getWikiInt() = getWikiString()
-        ?.replace(",","")
+    protected fun String.getWikiInt(): Int? = getWikiString()
+        ?.replace(",", "")
         ?.replace("\\D", "")
         ?.replace(" ", "")
         ?.toInt()
 
-    protected fun String.getWikiFloat() = getWikiString()
+    protected fun String.getWikiFloat(): Float? = getWikiString()
         ?.toFloat()
 
     protected fun String.getWikiNoString(): String? {
-        if(contains("No", ignoreCase = true)) return null
+        if (contains("No", ignoreCase = true)) return null
         return getWikiString()
     }
 
-    protected fun String.getWikiNoInt() = getWikiNoString()
+    protected fun String.getWikiNoInt(): Int? = getWikiNoString()
         ?.toInt()
 
-    protected fun String.getWikiNoDouble() = getWikiNoString()
+    protected fun String.getWikiNoDouble(): Double? = getWikiNoString()
         ?.toDouble()
 
     protected fun String.getWikiDate(): LocalDate {
@@ -95,22 +94,22 @@ abstract class WikiDefinition<P : WikiDefinition<P>> {
         )
     }
 
-    protected fun String.getIds(): List<Int>? = if(getWikiString().equals("Removed", ignoreCase = true)) {
+    protected fun String.getIds(): List<Int>? = if (getWikiString().equals("Removed", ignoreCase = true)) {
         null
     } else {
         getWikiStrings()?.map { it.toInt() }
     }
 }
 
-inline fun <reified P : WikiDefinition<P>> parseWikiString(wikiString: String): List<P> {
+public inline fun <reified P : WikiDefinition<P>> parseWikiString(wikiString: String): List<P> {
     val definitions = mutableListOf<P>()
-    if(wikiString.contains("|id1 = ")) {
+    if (wikiString.contains("|id1 = ")) {
         var version = 1
         do {
             val def = P::class.createInstance().parse(wikiString, version)
             definitions.add(def)
             version++
-        } while(wikiString.contains("|id$version = "))
+        } while (wikiString.contains("|id$version = "))
     } else {
         val def = P::class.createInstance().parse(wikiString, null)
         definitions.add(def)
@@ -118,6 +117,6 @@ inline fun <reified P : WikiDefinition<P>> parseWikiString(wikiString: String): 
     return definitions
 }
 
-abstract class WikiConfigCompanion {
-    abstract val queryString: String
+public abstract class WikiConfigCompanion {
+    public abstract val queryString: String
 }

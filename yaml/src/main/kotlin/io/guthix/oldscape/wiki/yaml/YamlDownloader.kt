@@ -40,7 +40,7 @@ fun main(args: Array<String>) {
 object YamlDownloader {
     @JvmStatic
     fun main(args: Array<String>) {
-        val cacheDir = Path.of("../../server/src/main/resources/cache")
+        val cacheDir = Path.of("../yaml/src/main/resources/cache")
         println(cacheDir.toFile().absolutePath)
         val yamlFactory = YAMLFactory()
             .disable(YAMLGenerator.Feature.WRITE_DOC_START_MARKER)
