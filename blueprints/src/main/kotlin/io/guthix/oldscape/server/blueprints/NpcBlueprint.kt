@@ -16,23 +16,25 @@
  */
 package io.guthix.oldscape.server.blueprints
 
-class NpcBlueprint(
-    val id: Int,
-    val name: String?,
-    val examine: String,
-    val size: Int,
-    val contextMenu: Array<String?>,
-    val combatLevel: Int?,
-    val isInteractable: Boolean,
-    var walkSequence: Int?,
-    var walkLeftSequence: Int?,
-    var walkRightSequence: Int?,
-    var walkBackSequence: Int?,
-    var turnLeftSequence: Int?,
-    var turnRightSequence: Int?,
-    val combat: Combat?
+class MonsterBlueprint(
+    id: Int,
+    name: String?,
+    examine: String,
+    size: Int,
+    contextMenu: Array<String?>,
+    isInteractable: Boolean,
+    walkSequence: Int?,
+    walkLeftSequence: Int?,
+    walkRightSequence: Int?,
+    walkBackSequence: Int?,
+    turnLeftSequence: Int?,
+    turnRightSequence: Int?,
+    var combat: Combat?
+) : NpcBlueprint(id, name, examine, size, contextMenu, isInteractable, walkSequence, walkLeftSequence,
+    walkRightSequence, walkBackSequence, turnLeftSequence, turnRightSequence
 ) {
     class Combat(
+        val lvl: Int?,
         val isAggressive: Boolean,
         val isPoisonous: Boolean,
         val isImmumePoison: Boolean,
@@ -59,8 +61,28 @@ class NpcBlueprint(
     }
 }
 
-class ExtraNpcConfig(
-    val ids: List<Int>,
+open class NpcBlueprint(
+    val id: Int,
+    val name: String?,
     val examine: String,
-    val combat: NpcBlueprint.Combat?
+    val size: Int,
+    val contextMenu: Array<String?>,
+    val isInteractable: Boolean,
+    var walkSequence: Int?,
+    var walkLeftSequence: Int?,
+    var walkRightSequence: Int?,
+    var walkBackSequence: Int?,
+    var turnLeftSequence: Int?,
+    var turnRightSequence: Int?,
+)
+
+class ExtraMonsterConfig(
+    ids: List<Int>,
+    examine: String,
+    val combat: MonsterBlueprint.Combat?
+) : ExtraNpcConfig(ids, examine)
+
+open class ExtraNpcConfig(
+    val ids: List<Int>,
+    val examine: String
 )

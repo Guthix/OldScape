@@ -17,6 +17,7 @@
 package io.guthix.oldscape.server.world.entity
 
 import io.guthix.oldscape.server.api.NpcBlueprints
+import io.guthix.oldscape.server.blueprints.NpcBlueprint
 import io.guthix.oldscape.server.dimensions.TileUnit
 import io.guthix.oldscape.server.dimensions.tiles
 import io.guthix.oldscape.server.event.script.Task
@@ -25,7 +26,7 @@ import io.guthix.oldscape.server.world.entity.interest.NpcUpdateType
 import io.guthix.oldscape.server.world.map.Tile
 
 open class Npc(index: Int, id: Int, override var pos: Tile) : Character(index) {
-    private val blueprint = NpcBlueprints[id]
+    private val blueprint: NpcBlueprint = NpcBlueprints[id]
 
     override val updateFlags = sortedSetOf<NpcUpdateType>()
 

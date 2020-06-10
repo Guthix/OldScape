@@ -17,22 +17,30 @@
 package io.guthix.oldscape.server.api
 
 import io.guthix.oldscape.cache.config.NpcConfig
-import io.guthix.oldscape.server.blueprints.ExtraNpcConfig
-import io.guthix.oldscape.server.blueprints.NpcBlueprint
+import io.guthix.oldscape.server.blueprints.*
 import mu.KotlinLogging
 import java.io.IOException
 
 private val logger = KotlinLogging.logger { }
 
 object NpcBlueprints {
-    private lateinit var blueprints: Map<Int, NpcBlueprint>
+    lateinit var blueprints: Map<Int, NpcBlueprint>
 
-    operator fun get(index: Int): NpcBlueprint = blueprints[index]
-        ?: throw IOException("Could not find blueprint $index.")
+    inline operator fun <reified T : NpcBlueprint> get(index: Int): T {
+        val bp = blueprints[index] ?: throw IOException("Could not find blueprint $index.")
+        if (bp !is T) {
+            throw TypeCastException("")
+        }
+        return bp
+    }
 
-    fun load(cacheConfigs: Map<Int, NpcConfig>, extraObjConfigs: List<ExtraNpcConfig>) {
+    fun load(
+        cacheConfigs: Map<Int, NpcConfig>,
+        extraNpcConfigs: List<ExtraNpcConfig>,
+        extraMonsterConfigs: List<ExtraMonsterConfig>
+    ) {
         val bps = mutableMapOf<Int, NpcBlueprint>()
-        extraObjConfigs.forEach { extraConfig ->
+        extraNpcConfigs.forEach { extraConfig ->
             extraConfig.ids.forEach inner@{ id ->
                 val cacheConfig = cacheConfigs[id] ?: run {
                     logger.warn { "Extra config for id $id is not found in the cache." }
@@ -44,7 +52,28 @@ object NpcBlueprints {
                     extraConfig.examine,
                     cacheConfig.size.toInt(),
                     cacheConfig.options,
-                    cacheConfig.combatLevel,
+                    cacheConfig.isInteractable,
+                    cacheConfig.walkSequence,
+                    cacheConfig.walkLeftSequence,
+                    cacheConfig.walkRightSequence,
+                    cacheConfig.walkBackSequence,
+                    cacheConfig.turnLeftSequence,
+                    cacheConfig.turnRightSequence
+                )
+            }
+        }
+        extraMonsterConfigs.forEach { extraConfig ->
+            extraConfig.ids.forEach inner@{ id ->
+                val cacheConfig = cacheConfigs[id] ?: run {
+                    logger.warn { "Extra config for id $id is not found in the cache." }
+                    return@inner
+                }
+                bps[id] = MonsterBlueprint(
+                    cacheConfig.id,
+                    cacheConfig.name,
+                    extraConfig.examine,
+                    cacheConfig.size.toInt(),
+                    cacheConfig.options,
                     cacheConfig.isInteractable,
                     cacheConfig.walkSequence,
                     cacheConfig.walkLeftSequence,

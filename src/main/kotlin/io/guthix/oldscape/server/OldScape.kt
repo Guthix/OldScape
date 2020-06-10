@@ -32,6 +32,7 @@ import io.guthix.oldscape.cache.config.NpcConfig
 import io.guthix.oldscape.cache.config.ObjectConfig
 import io.guthix.oldscape.cache.xtea.MapXtea
 import io.guthix.oldscape.server.api.*
+import io.guthix.oldscape.server.blueprints.ExtraMonsterConfig
 import io.guthix.oldscape.server.blueprints.ExtraNpcConfig
 import io.guthix.oldscape.server.blueprints.ExtraObjectConfig
 import io.guthix.oldscape.server.blueprints.equipment.ExtraBodyConfig
@@ -84,11 +85,11 @@ object OldScape {
             yamlMapper.readEquipmentConfig("FeetEquipment.yaml"),
             yamlMapper.readEquipmentConfig("RingEquipment.yaml")
         )
-        val extraNpcConfig = yamlMapper.readValue(
-            Path.of(javaClass.getResource("/config/npcs/Npcs.yaml").toURI()).toFile(),
-            object : TypeReference<List<ExtraNpcConfig>>() {}
+        NpcBlueprints.load(
+            NpcConfig.load(configArchive.readGroup(NpcConfig.id)),
+            yamlMapper.readNpcConfig("Npcs.yaml"),
+            yamlMapper.readMonsterConfig("Monsters.yaml")
         )
-        NpcBlueprints.load(NpcConfig.load(configArchive.readGroup(NpcConfig.id)), extraNpcConfig)
         val binariesArchive = cache.readArchive(BinariesArchive.id)
         Huffman.load(binariesArchive)
 
@@ -108,6 +109,16 @@ object OldScape {
         val mapper = ObjectMapper().registerKotlinModule()
         return mapper.readValue(path.toFile(), object : TypeReference<List<MapXtea>>() {})
     }
+
+    private fun ObjectMapper.readNpcConfig(filePath: String): List<ExtraNpcConfig> = readValue(
+        Path.of(javaClass.getResource("/config/npcs/$filePath").toURI()).toFile(),
+        object : TypeReference<List<ExtraNpcConfig>>() {}
+    )
+
+    private fun ObjectMapper.readMonsterConfig(filePath: String): List<ExtraMonsterConfig> = readValue(
+        Path.of(javaClass.getResource("/config/npcs/$filePath").toURI()).toFile(),
+        object : TypeReference<List<ExtraMonsterConfig>>() {}
+    )
 
     private fun ObjectMapper.readObjectConfig(filePath: String): List<ExtraObjectConfig> = readValue(
         Path.of(javaClass.getResource("/config/objects/$filePath").toURI()).toFile(),
