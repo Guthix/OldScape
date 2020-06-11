@@ -32,7 +32,6 @@ import io.guthix.oldscape.cache.config.NpcConfig
 import io.guthix.oldscape.cache.config.ObjectConfig
 import io.guthix.oldscape.cache.xtea.MapXtea
 import io.guthix.oldscape.server.api.*
-import io.guthix.oldscape.server.blueprints.ExtraMonsterConfig
 import io.guthix.oldscape.server.blueprints.ExtraNpcConfig
 import io.guthix.oldscape.server.blueprints.ExtraObjectConfig
 import io.guthix.oldscape.server.blueprints.equipment.ExtraBodyConfig
@@ -43,7 +42,6 @@ import io.guthix.oldscape.server.net.OldScapeServer
 import io.guthix.oldscape.server.net.game.GamePacketDecoder
 import io.guthix.oldscape.server.world.World
 import java.io.FileNotFoundException
-import java.net.URL
 import java.nio.file.Path
 import java.util.*
 
@@ -89,8 +87,7 @@ object OldScape {
         )
         NpcBlueprints.load(
             NpcConfig.load(configArchive.readGroup(NpcConfig.id)),
-            yamlMapper.readNpcConfig("Npcs.yaml"),
-            yamlMapper.readMonsterConfig("Monsters.yaml")
+            yamlMapper.readNpcConfig("Npcs.yaml")
         )
         val binariesArchive = cache.readArchive(BinariesArchive.id)
         Huffman.load(binariesArchive)
@@ -115,11 +112,6 @@ object OldScape {
     private fun ObjectMapper.readNpcConfig(filePath: String): List<ExtraNpcConfig> = readValue(
         Path.of(getResource("/config/npcs/$filePath").toURI()).toFile(),
         object : TypeReference<List<ExtraNpcConfig>>() {}
-    )
-
-    private fun ObjectMapper.readMonsterConfig(filePath: String): List<ExtraMonsterConfig> = readValue(
-        Path.of(getResource("/config/npcs/$filePath").toURI()).toFile(),
-        object : TypeReference<List<ExtraMonsterConfig>>() {}
     )
 
     private fun ObjectMapper.readObjectConfig(filePath: String): List<ExtraObjectConfig> = readValue(
