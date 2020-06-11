@@ -30,8 +30,9 @@ on(LocationClickEvent::class).then {
     )
     val destination = DestinationLocation(loc, world.map)
     player.path = breadthFirstSearch(player.pos, destination, player.size, true, world.map)
-    player.path.lastOrNull()?.let { dest -> player.setMapFlag(dest.x, dest.y) }
-    player.addTask(NormalTask, replace = true) {
+    player.path.lastOrNull()?.let { (_, x, y) -> player.setMapFlag(x, y) }
+    player.cancelTasks(NormalTask)
+    player.addTask(NormalTask) {
         wait{ destination.reached(player.pos.x, player.pos.y, player.size) }
         EventBus.schedule(LocationReachedEvent(loc), player, world)
     }

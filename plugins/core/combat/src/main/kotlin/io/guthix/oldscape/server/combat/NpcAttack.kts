@@ -30,10 +30,12 @@ on(NpcClickEvent::class).where { event.option == "Attack" }.then {
     val npcDestination = DesinationNpc(event.npc, world.map)
     player.turnToLock(event.npc)
     player.path = breadthFirstSearch(player.pos, npcDestination, player.size, true, world.map)
-    player.addTask(NormalTask, replace = true) {
+    event.npc.cancelTasks(NormalTask)
+    player.addTask(NormalTask) {
         wait{ npcDestination.reached(player.pos.x, player.pos.y, player.size) }
         var playerDestination = DestinationPlayer(player, world.map)
-        event.npc.addTask(NormalTask, replace = true) { // start npc combat
+        event.npc.cancelTasks(NormalTask)
+        event.npc.addTask(NormalTask) { // start npc combat
             while(true) {
                 event.npc.animate(Sequence(id = 5578))
                 player.hit(HitMark.Colour.RED, 10, 0)
@@ -47,7 +49,6 @@ on(NpcClickEvent::class).where { event.option == "Attack" }.then {
                 wait { player.movementType != MovementInterestUpdate.STAY }
                 playerDestination = DestinationPlayer(player, world.map)
                 event.npc.path = simplePathSearch(event.npc.pos, playerDestination, event.npc.size, world.map)
-                println(event.npc.path)
                 wait(ticks = 1)
             }
         }.onCancel {
@@ -61,5 +62,4 @@ on(NpcClickEvent::class).where { event.option == "Attack" }.then {
     }.onCancel {
         player.turnToLock(null)
     }
-
 }

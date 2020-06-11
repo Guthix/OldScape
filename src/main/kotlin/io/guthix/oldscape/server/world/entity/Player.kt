@@ -191,7 +191,8 @@ class Player(
         publicMessage = message
         shoutMessage = null
         updateFlags.add(PlayerInfoPacket.chat)
-        addTask(ChatTask, replace = true) {
+        cancelTasks(ChatTask)
+        addTask(ChatTask) {
             wait(ticks = PlayerManager.MESSAGE_DURATION)
             publicMessage = null
         }
@@ -201,7 +202,8 @@ class Player(
         publicMessage = null
         shoutMessage = message
         updateFlags.add(PlayerInfoPacket.shout)
-        addTask(ChatTask, replace = true) {
+        cancelTasks(ChatTask)
+        addTask(ChatTask) {
             wait(ticks = PlayerManager.MESSAGE_DURATION)
             shoutMessage = null
         }

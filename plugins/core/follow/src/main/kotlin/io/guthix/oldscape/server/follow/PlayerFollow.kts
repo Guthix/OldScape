@@ -28,7 +28,8 @@ on(PlayerClickEvent::class).where { event.option == "Follow" }.then {
     player.path = breadthFirstSearch(player.pos, dest, player.size, true, world.map)
     player.turnToLock(followed)
     val currentTarget = player.followPosition
-    player.addTask(NormalTask, replace = true) {
+    player.cancelTasks(NormalTask)
+    player.addTask(NormalTask) {
         while(true) {
             if(dest.reached(player.pos.x, player.pos.y, player.size)) break
             if(currentTarget != followed.followPosition) {
