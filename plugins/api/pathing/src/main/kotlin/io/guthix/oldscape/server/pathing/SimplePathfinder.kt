@@ -19,6 +19,7 @@ package io.guthix.oldscape.server.pathing
 import io.guthix.oldscape.server.world.WorldMap
 import io.guthix.oldscape.server.world.map.Tile
 import io.guthix.oldscape.server.dimensions.TileUnit
+import io.guthix.oldscape.server.dimensions.tiles
 
 fun simplePathSearch(start: Tile, dest: Destination, moverSize: TileUnit, map: WorldMap): MutableList<Tile> {
     var curX = start.x
@@ -53,28 +54,36 @@ fun simplePathSearch(start: Tile, dest: Destination, moverSize: TileUnit, map: W
                     finalDestinationFound = false
                     break@directions
                 }
-                Direction.SOUTH_WEST -> if(map.canWalkSouthWest(start.floor, curX, curY, moverSize)) {
+                Direction.SOUTH_WEST -> if(map.canWalkSouthWest(start.floor, curX, curY, moverSize)
+                    && !(dest.x == curX - 1.tiles && dest.y == curY - 1.tiles)
+                ) {
                     curX--
                     curY--
                     path.add(Tile(start.floor, curX, curY))
                     finalDestinationFound = false
                     break@directions
                 }
-                Direction.NORTH_WEST -> if(map.canWalkNorthWest(start.floor, curX, curY, moverSize)) {
+                Direction.NORTH_WEST -> if(map.canWalkNorthWest(start.floor, curX, curY, moverSize)
+                    && !(dest.x == curX - 1.tiles && dest.y == curY + 1.tiles)
+                ) {
                     curX--
                     curY++
                     path.add(Tile(start.floor, curX, curY))
                     finalDestinationFound = false
                     break@directions
                 }
-                Direction.SOUTH_EAST -> if(map.canWalkSouthEast(start.floor, curX, curY, moverSize)) {
+                Direction.SOUTH_EAST -> if(map.canWalkSouthEast(start.floor, curX, curY, moverSize)
+                    && !(dest.x == curX + 1.tiles && dest.y == curY - 1.tiles)
+                ) {
                     curX++
                     curY--
                     path.add(Tile(start.floor, curX, curY))
                     finalDestinationFound = false
                     break@directions
                 }
-                Direction.NORTH_EAST -> if(map.canWalkNorthEast(start.floor, curX, curY, moverSize)) {
+                Direction.NORTH_EAST -> if(map.canWalkNorthEast(start.floor, curX, curY, moverSize)
+                    && !(dest.x == curX + 1.tiles && dest.y == curY + 1.tiles)
+                ) {
                     curX++
                     curY++ // TODO mabe optimize this use Directions array?
                     path.add(Tile(start.floor, curX, curY))

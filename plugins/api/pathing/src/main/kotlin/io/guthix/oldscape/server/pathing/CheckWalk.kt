@@ -23,35 +23,18 @@ import io.guthix.oldscape.server.dimensions.TileUnit
 import io.guthix.oldscape.server.dimensions.tiles
 import io.guthix.oldscape.server.dimensions.until
 
-internal fun WorldMap.canWalkWest(floor: FloorUnit, x: TileUnit, y: TileUnit, moverSize: TileUnit): Boolean {
-    for(i in 0.tiles until moverSize) {
-        if(getCollisionMask(floor, x - 1.tiles, y + i) and ZoneCollision.BLOCK_E != 0) return false
-    }
-    return true
-}
+internal fun WorldMap.canWalkWest(floor: FloorUnit, x: TileUnit, y: TileUnit, moverSize: TileUnit) =
+    (0.tiles until moverSize).none { getCollisionMask(floor, x - 1.tiles, y + it) and ZoneCollision.BLOCK_E != 0 }
 
+internal fun WorldMap.canWalkEast(floor: FloorUnit, x: TileUnit, y: TileUnit, moverSize: TileUnit) =
+    (0.tiles until moverSize).none { getCollisionMask(floor, x + moverSize, y + it) and ZoneCollision.BLOCK_W != 0 }
 
-internal fun WorldMap.canWalkEast(floor: FloorUnit, x: TileUnit, y: TileUnit, moverSize: TileUnit): Boolean {
-    for (i in 0.tiles until moverSize) {
-        if(getCollisionMask(floor, x + moverSize, y + i) and ZoneCollision.BLOCK_W != 0) return false
-    }
-    return true
-}
+internal fun WorldMap.canWalkSouth(floor: FloorUnit, x: TileUnit, y: TileUnit, moverSize: TileUnit) =
+    (0.tiles until moverSize).none { getCollisionMask(floor, x + it, y - 1.tiles) and ZoneCollision.BLOCK_N != 0 }
 
+internal fun WorldMap.canWalkNorth(floor: FloorUnit, x: TileUnit, y: TileUnit, moverSize: TileUnit) =
+    (0.tiles until moverSize).none { getCollisionMask(floor, x + it, y + moverSize) and ZoneCollision.BLOCK_S != 0 }
 
-internal fun WorldMap.canWalkSouth(floor: FloorUnit, x: TileUnit, y: TileUnit, moverSize: TileUnit): Boolean {
-    for (i in 0.tiles until moverSize) {
-        if(getCollisionMask(floor, x + i, y - 1.tiles) and ZoneCollision.BLOCK_N != 0) return false
-    }
-    return true
-}
-
-internal fun WorldMap.canWalkNorth(floor: FloorUnit, x: TileUnit, y: TileUnit, moverSize: TileUnit): Boolean {
-    for (i in 0.tiles until moverSize) {
-        if(getCollisionMask(floor, x + i, y + moverSize) and ZoneCollision.BLOCK_S != 0) return false
-    }
-    return true
-}
 
 internal fun WorldMap.canWalkSouthWest(floor: FloorUnit, x: TileUnit, y: TileUnit, moverSize: TileUnit): Boolean {
     if(getCollisionMask(floor, x + moverSize - 1.tiles, y - 1.tiles) and ZoneCollision.BLOCK_N != 0) return false
