@@ -37,12 +37,10 @@ object NpcBlueprints {
 
     fun load(
         cConfigs: Map<Int, NpcConfig>,
-        extraNpcConfigs: List<ExtraNpcConfig>,
-        extraMonsterConfigs: List<ExtraMonsterConfig>
+        extraNpcConfigs: List<ExtraNpcConfig>
     ) {
         blueprints = mutableMapOf<Int, NpcBlueprint>().apply {
             addBlueprints(cConfigs, extraNpcConfigs, ::NpcBlueprint)
-            addBlueprints(cConfigs, extraMonsterConfigs, ::MonsterBlueprint)
         }
         logger.info { "Loaded ${blueprints.size} npc blueprints" }
     }
