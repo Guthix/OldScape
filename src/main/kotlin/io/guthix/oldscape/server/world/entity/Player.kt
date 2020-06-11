@@ -97,6 +97,12 @@ class Player(
         run = 824
     )
 
+    override var inRunMode: Boolean = super.inRunMode
+        set(value) {
+            field = value
+            updateFlags.add(PlayerInfoPacket.movementCached)
+        }
+
     override val size: TileUnit = 1.tiles
 
     var weight: Int
