@@ -32,19 +32,22 @@ on(NpcClickEvent::class).where { event.option == "Attack" }.then {
     player.path = breadthFirstSearch(player.pos, npcDestination, player.size, true, world.map)
     player.addTask(NormalTask, replace = true) {
         wait{ npcDestination.reached(player.pos.x, player.pos.y, player.size) }
+        var playerDestination = DestinationPlayer(player, world.map)
         event.npc.addTask(NormalTask, replace = true) { // start npc combat
             while(true) {
                 event.npc.animate(Sequence(id = 5578))
                 player.hit(HitMark.Colour.RED, 10, 0)
                 wait(ticks = 5)
+                wait { playerDestination.reached(event.npc.pos.x, event.npc.pos.y, event.npc.size) }
             }
         }
         event.npc.addTask(NormalTask) {
             event.npc.turnToLock(player)
             while(true) {
                 wait { player.movementType != MovementInterestUpdate.STAY }
-                val playerDestination = DestinationPlayer(player, world.map)
+                playerDestination = DestinationPlayer(player, world.map)
                 event.npc.path = simplePathSearch(event.npc.pos, playerDestination, event.npc.size, world.map)
+                println(event.npc.path)
                 wait(ticks = 1)
             }
         }.onCancel {
