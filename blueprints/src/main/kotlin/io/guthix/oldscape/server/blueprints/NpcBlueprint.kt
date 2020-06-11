@@ -18,36 +18,45 @@ package io.guthix.oldscape.server.blueprints
 
 import io.guthix.oldscape.cache.config.NpcConfig
 
+class MonsterStats(
+    val health: Int,
+    val attack: Int,
+    val strength: Int,
+    val defence: Int,
+    val range: Int,
+    val magic: Int
+)
+
+class MonsterAggressiveStats(
+    val attack: Int,
+    val range: Int,
+    val magic: Int,
+    val strengthBonus: StrengthBonus
+)
+
+class MonsterCombat(
+    val lvl: Int?,
+    val isAggressive: Boolean,
+    val isPoisonous: Boolean,
+    val isImmumePoison: Boolean,
+    val isImmuneVenom: Boolean,
+    val stats: MonsterStats,
+    val aggressiveStats: MonsterAggressiveStats,
+    val defensiveStats: StyleBonus
+)
+
 class MonsterBlueprint(
     cacheConfig: NpcConfig,
     override val extraConfig: ExtraMonsterConfig,
 ) : NpcBlueprint(cacheConfig, extraConfig) {
-    class Combat(
-        val lvl: Int?,
-        val isAggressive: Boolean,
-        val isPoisonous: Boolean,
-        val isImmumePoison: Boolean,
-        val isImmuneVenom: Boolean,
-        val stats: Stats,
-        val aggressiveStats: AggressiveStats,
-        val defensiveStats: StyleBonus
-    ) {
-        class Stats(
-            val health: Int,
-            val attack: Int,
-            val strength: Int,
-            val defence: Int,
-            val range: Int,
-            val magic: Int
-        )
-
-        class AggressiveStats(
-            val attack: Int,
-            val range: Int,
-            val magic: Int,
-            val strengthBonus: StrengthBonus
-        )
-    }
+    val level: Int? get() = extraConfig.combat.lvl
+    val isAggressive: Boolean get() = extraConfig.combat.isAggressive
+    val isPoisonous: Boolean get() = extraConfig.combat.isPoisonous
+    val isImmumePoison: Boolean get() = extraConfig.combat.isImmumePoison
+    val isImmuneVenom: Boolean get() = extraConfig.combat.isImmuneVenom
+    val stats: MonsterStats get() = extraConfig.combat.stats
+    val aggressiveStats: MonsterAggressiveStats get() = extraConfig.combat.aggressiveStats
+    val defensiveStats: StyleBonus get() = extraConfig.combat.defensiveStats
 }
 
 open class NpcBlueprint(
@@ -62,7 +71,7 @@ open class NpcBlueprint(
 class ExtraMonsterConfig(
     ids: List<Int>,
     examine: String,
-    val combat: MonsterBlueprint.Combat?
+    val combat: MonsterCombat
 ) : ExtraNpcConfig(ids, examine)
 
 open class ExtraNpcConfig(
