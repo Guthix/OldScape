@@ -124,7 +124,7 @@ abstract class Character(val index: Int) : Entity() {
     fun stopAnimation() {
         sequence = null
         addSequenceFlag()
-        cancelTask(NormalTask)
+        cancelTasks(NormalTask)
     }
 
     fun spotAnimate(spotAnim: SpotAnimation) {
@@ -142,7 +142,7 @@ abstract class Character(val index: Int) : Entity() {
     fun stopSpotAnimation() {
         spotAnimation = null
         addSpotAnimationFlag()
-        cancelTask(NormalTask)
+        cancelTasks(NormalTask)
     }
 
     var health: Int = 100
@@ -176,20 +176,14 @@ abstract class Character(val index: Int) : Entity() {
 
     abstract fun processTasks()
 
-    fun addTask(type: TaskType, replace: Boolean = false, r: suspend Task.() -> Unit): Task {
+    fun addTask(type: TaskType, routine: suspend Task.() -> Unit): Task {
         val task = Task(type, this)
-        task.next = ConditionalContinuation(TrueCondition, r.createCoroutineUnintercepted(task, task))
-        if (replace) {
-            val toRemove = tasks.remove(type)
-            toRemove?.forEach(Task::cancel)
-            tasks[type] = mutableListOf(task)
-        } else {
-            tasks.getOrPut(type) { mutableListOf() }.add(task)
-        }
+        task.next = ConditionalContinuation(TrueCondition, routine.createCoroutineUnintercepted(task, task))
+        tasks.getOrPut(type) { mutableListOf() }.add(task)
         return task
     }
 
-    fun cancelTask(type: TaskType) {
+    fun cancelTasks(type: TaskType) {
         tasks[type]?.forEach(Task::cancel)
     }
 

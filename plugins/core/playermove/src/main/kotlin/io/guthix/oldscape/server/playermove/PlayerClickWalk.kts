@@ -38,5 +38,5 @@ on(MapClickEvent::class).then {
 fun Player.startWalkingToTile(floor: FloorUnit, x: TileUnit, y: TileUnit, map: WorldMap) {
     path = breadthFirstSearch(pos, DestinationTile(floor, x, y), size, true, map)
     path.lastOrNull()?.let { dest -> if(dest != Tile(floor, x, y)) setMapFlag(dest.x, dest.y) }
-    cancelTask(NormalTask)
+    cancelTasks(NormalTask)
 }

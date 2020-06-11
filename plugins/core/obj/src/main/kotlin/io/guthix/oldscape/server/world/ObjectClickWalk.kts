@@ -26,7 +26,8 @@ import io.guthix.oldscape.server.event.script.EventBus
 on(ObjectClickEvent::class).then {
     val destination = DestinationTile(player.pos.floor, event.x, event.y)
     player.path = breadthFirstSearch(player.pos, destination, player.size, true, world.map)
-    player.addTask(NormalTask, replace = true) {
+    player.cancelTasks(NormalTask)
+    player.addTask(NormalTask) {
         wait{ destination.reached(player.pos.x, player.pos.y, player.size) }
         EventBus.schedule(ObjectReachedEvent(event.id, event.x, event.y), player, world)
     }
