@@ -15,14 +15,14 @@ description = "A library for interfacing with the Oldschool Runescape Wiki"
 
 val licenseHeader: File by extra(file("LGPLv3.txt"))
 
-val oldscapeServerVersion: String by extra("4a068498af")
+val oldscapeServerVersion: String by extra("8b13ed1e7a")
 val oldscapeCacheVersion: String by extra("6d3cc20a7f")
-val kotlinCoroutinesVersion by extra("1.3.4")
-val licensePluginVersion by extra("0.15.0")
-val kotlinLoggingVersion by extra("1.7.6")
-val logbackVersion by extra("1.2.3")
-val ktorVersion by extra("1.3.1")
-val jacksonVersion by extra("2.10.2")
+val kotlinCoroutinesVersion: String by extra("1.3.4")
+val licensePluginVersion: String by extra("0.15.0")
+val kotlinLoggingVersion: String by extra("1.7.6")
+val logbackVersion: String by extra("1.2.3")
+val ktorVersion: String by extra("1.3.1")
+val jacksonVersion: String by extra("2.10.2")
 val kotlinVersion: String by extra(project.getKotlinPluginVersion()!!)
 
 allprojects {

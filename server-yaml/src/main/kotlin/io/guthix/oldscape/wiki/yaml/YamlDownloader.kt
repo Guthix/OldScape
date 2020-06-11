@@ -67,15 +67,8 @@ object YamlDownloader {
 
         val npcWikiData = npcWikiDownloader(cacheDir).filter { it.ids != null }
         val npcFile = Path.of(javaClass.getResource("/").toURI()).resolve("Npcs.yaml").toFile()
-        objectMapper.writeValue(npcFile, npcWikiData.filter { it.combatLvl == null }
-            .map(NpcWikiDefinition::toExtraNpcConfig))
+        objectMapper.writeValue(npcFile, npcWikiData.map(NpcWikiDefinition::toExtraNpcConfig))
         logger.info { "Done writing npcs to ${npcFile.absoluteFile.absolutePath}" }
-        val monsterFile = Path.of(javaClass.getResource("/").toURI()).resolve("Monsters.yaml").toFile()
-        objectMapper.writeValue(monsterFile, npcWikiData.filter { it.combatLvl != null }
-            .map(NpcWikiDefinition::toExtraMonsterConfig)
-        )
-        logger.info { "Done writing mosters to ${monsterFile.absoluteFile.absolutePath}" }
-
     }
 }
 
@@ -119,21 +112,14 @@ fun ObjectWikiDefinition.toExtraEquipmentConfig(): ExtraObjectConfig {
 }
 
 fun NpcWikiDefinition.toExtraNpcConfig(): ExtraNpcConfig {
-    return ExtraNpcConfig(
-        ids!!,
-        examine ?: ""
-    )
-}
-
-fun NpcWikiDefinition.toExtraMonsterConfig(): ExtraMonsterConfig {
     val combat = if(combatLvl != null) {
-        MonsterBlueprint.Combat(
+        NpcCombat(
             combatLvl,
             isAggressive ?: false,
             isPoisonous ?: false,
             isImmuneToPoison ?: false,
             isImmuneToVenom ?: false,
-            MonsterBlueprint.Combat.Stats(
+            NpcStats(
                 hitPoints ?: 0,
                 attackStat ?: 0,
                 strengthStat ?: 0,
@@ -141,7 +127,7 @@ fun NpcWikiDefinition.toExtraMonsterConfig(): ExtraMonsterConfig {
                 magicStat ?: 0,
                 rangeStat ?: 0
             ),
-            MonsterBlueprint.Combat.AggressiveStats(
+            NpcAggressiveStats(
                 attackBonusMelee ?: 0,
                 attackBonusRange ?: 0,
                 attackBonusMagic ?: 0,
@@ -159,8 +145,8 @@ fun NpcWikiDefinition.toExtraMonsterConfig(): ExtraMonsterConfig {
                 defBonusMagic ?: 0
             )
         )
-    } else throw IllegalCallerException("Monster must have combat level.")
-    return ExtraMonsterConfig(
+    } else null
+    return ExtraNpcConfig(
         ids!!,
         examine ?: "",
         combat
