@@ -57,7 +57,7 @@ abstract class Character(val index: Int) : Entity() {
 
     var path: MutableList<Tile> = mutableListOf()
 
-    var inRunMode: Boolean = false
+    open var inRunMode: Boolean = false
 
     fun move() {
         lastPos = pos
@@ -83,6 +83,7 @@ abstract class Character(val index: Int) : Entity() {
                     path.removeAt(0)
                 }
                 else -> {
+                    println("RUN")
                     movementType = MovementInterestUpdate.RUN
                     followPosition = path.removeAt(0)
                     path.removeAt(0)
