@@ -22,6 +22,7 @@ import io.guthix.oldscape.server.dimensions.TileUnit
 import io.guthix.oldscape.server.dimensions.tiles
 import io.guthix.oldscape.server.event.script.Task
 import io.guthix.oldscape.server.net.game.out.NpcInfoSmallViewportPacket
+import io.guthix.oldscape.server.net.game.out.PlayerInfoPacket
 import io.guthix.oldscape.server.world.entity.interest.NpcUpdateType
 import io.guthix.oldscape.server.world.map.Tile
 
@@ -52,4 +53,6 @@ open class Npc(index: Int, id: Int, override var pos: Tile) : Character(index) {
     override fun addSpotAnimationFlag(): Boolean = updateFlags.add(NpcInfoSmallViewportPacket.spotAnimation)
 
     override fun addHitUpdateFlag(): Boolean = updateFlags.add(NpcInfoSmallViewportPacket.hit)
+
+    override fun addShoutFlag(): Boolean = updateFlags.add(NpcInfoSmallViewportPacket.shout)
 }
