@@ -19,10 +19,12 @@ package io.guthix.oldscape.server.world.entity
 import io.guthix.oldscape.server.dimensions.TileUnit
 import io.guthix.oldscape.server.dimensions.floors
 import io.guthix.oldscape.server.dimensions.tiles
+import io.guthix.oldscape.server.event.PublicMessageEvent
 import io.guthix.oldscape.server.event.script.*
 import io.guthix.oldscape.server.net.game.out.PlayerInfoPacket
 import io.guthix.oldscape.server.world.entity.interest.InterestUpdateType
 import io.guthix.oldscape.server.world.entity.interest.MovementInterestUpdate
+import io.guthix.oldscape.server.world.entity.interest.PlayerManager
 import io.guthix.oldscape.server.world.map.Tile
 import java.util.*
 import kotlin.coroutines.intrinsics.createCoroutineUnintercepted
@@ -44,6 +46,8 @@ abstract class Character(val index: Int) : Entity() {
     override var pos: Tile = Tile(0.floors, 3231.tiles, 3222.tiles)
 
     var lastPos: Tile = Tile(0.floors, 3231.tiles, 3222.tiles)
+
+    var publicMessage: PublicMessageEvent? = null
 
     var followPosition: Tile = lastPos.copy()
 
@@ -83,7 +87,6 @@ abstract class Character(val index: Int) : Entity() {
                     path.removeAt(0)
                 }
                 else -> {
-                    println("RUN")
                     movementType = MovementInterestUpdate.RUN
                     followPosition = path.removeAt(0)
                     path.removeAt(0)
@@ -145,6 +148,19 @@ abstract class Character(val index: Int) : Entity() {
         cancelTasks(NormalTask)
     }
 
+    fun shout(message: String) {
+        publicMessage = null
+        shoutMessage = message
+        addShoutFlag()
+        cancelTasks(ChatTask)
+        addTask(ChatTask) {
+            wait(ticks = PlayerManager.MESSAGE_DURATION)
+            shoutMessage = null
+        }
+    }
+
+    protected object ChatTask : TaskType
+
     var health: Int = 100
 
     val hitMarkQueue: MutableList<HitMark> = mutableListOf()
@@ -173,6 +189,8 @@ abstract class Character(val index: Int) : Entity() {
     protected abstract fun addSpotAnimationFlag(): Boolean
 
     protected abstract fun addHitUpdateFlag(): Boolean
+
+    protected abstract fun addShoutFlag(): Boolean
 
     abstract fun processTasks()
 

@@ -22,7 +22,6 @@ import io.guthix.oldscape.server.event.PublicMessageEvent
 import io.guthix.oldscape.server.event.script.EventHandler
 import io.guthix.oldscape.server.event.script.InGameEvent
 import io.guthix.oldscape.server.event.script.Task
-import io.guthix.oldscape.server.event.script.TaskType
 import io.guthix.oldscape.server.net.game.out.*
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.interest.*
@@ -58,8 +57,6 @@ class Player(
     var nameModifiers: Array<String> = arrayOf("", "", "")
 
     override var orientation: Int = 0
-
-    var publicMessage: PublicMessageEvent? = null
 
     val gender: PlayerManager.Gender = PlayerManager.Gender.MALE
 
@@ -185,8 +182,6 @@ class Player(
         return topInterface
     }
 
-    private object ChatTask : TaskType
-
     fun talk(message: PublicMessageEvent) {
         publicMessage = message
         shoutMessage = null
@@ -195,17 +190,6 @@ class Player(
         addTask(ChatTask) {
             wait(ticks = PlayerManager.MESSAGE_DURATION)
             publicMessage = null
-        }
-    }
-
-    fun shout(message: String) { // TODO move this to character
-        publicMessage = null
-        shoutMessage = message
-        updateFlags.add(PlayerInfoPacket.shout)
-        cancelTasks(ChatTask)
-        addTask(ChatTask) {
-            wait(ticks = PlayerManager.MESSAGE_DURATION)
-            shoutMessage = null
         }
     }
 
@@ -288,6 +272,8 @@ class Player(
     override fun addSpotAnimationFlag(): Boolean = updateFlags.add(PlayerInfoPacket.spotAnimation)
 
     override fun addHitUpdateFlag(): Boolean = updateFlags.add(PlayerInfoPacket.hit)
+
+    override fun addShoutFlag(): Boolean = updateFlags.add(PlayerInfoPacket.shout)
 
     internal fun stageLogout() {
         isLoggingOut = true
