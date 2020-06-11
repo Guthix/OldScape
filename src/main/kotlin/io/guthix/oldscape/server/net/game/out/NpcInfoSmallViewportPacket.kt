@@ -52,10 +52,6 @@ class NpcInfoSmallViewportPacket(
         val removals = mutableListOf<Npc>()
         for (npc in player.npcManager.localNpcs) {
             when {
-                npc.updateFlags.isNotEmpty() -> {
-                    buf.writeBoolean(true)
-                    buf.writeBits(value = 0, amount = 2)
-                }
                 npc.movementType == MovementInterestUpdate.WALK -> {
                     buf.writeBoolean(true)
                     buf.writeBits(value = 1, amount = 2)
@@ -74,6 +70,10 @@ class NpcInfoSmallViewportPacket(
                     buf.writeBoolean(true)
                     buf.writeBits(value = 3, amount = 2)
                     removals.add(npc)
+                }
+                npc.updateFlags.isNotEmpty() -> {
+                    buf.writeBoolean(true)
+                    buf.writeBits(value = 0, amount = 2)
                 }
                 else -> buf.writeBoolean(false)
             }
@@ -121,7 +121,7 @@ class NpcInfoSmallViewportPacket(
         return getDirectionType(dx, dy)
     }
 
-    private fun getDirectionType(dx: TileUnit, dy: TileUnit) = movementOpcodes[2 - dy.value][dx.value + 2]
+    private fun getDirectionType(dx: TileUnit, dy: TileUnit) = movementOpcodes[1 - dy.value][dx.value + 1]
 
     private fun updateLocalNpcVisual(npc: Npc, maskBuf: ByteBuf) {
         var mask = 0

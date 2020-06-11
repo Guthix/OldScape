@@ -50313,7 +50313,6 @@
       magic: 0
       range: -10
 - ids:
-  - 28924
   - 7289
   - 7291
   - 7293
@@ -58586,12 +58585,6 @@
 - ids:
   - 9482
   examine: "Aww, how cute."
-- ids:
-  - 37727
-  examine: "They look very cute together."
-- ids:
-  - 37728
-  examine: "They look very cute together."
 - ids:
   - 9483
   examine: "He's busy Alching."
