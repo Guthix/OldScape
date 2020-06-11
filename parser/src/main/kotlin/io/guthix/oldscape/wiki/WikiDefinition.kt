@@ -59,7 +59,7 @@ public abstract class WikiDefinition<P : WikiDefinition<P>> {
     }
 
     protected fun String.getWikiStrings(): List<String>? = getWikiString()
-        ?.split(",")?.map { it.replace(' ', ',') }
+        ?.split(",")?.map { it.replace(" ", "") }
 
     protected fun String.getWikiBool(): Boolean? = getWikiString()
         ?.replace(" ", "")
