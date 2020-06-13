@@ -1,13 +1,9 @@
 @file:Suppress("ConvertLambdaToReference")
 
-subprojects {
+allprojects {
     dependencies {
         implementation(rootProject)
     }
 
     gradle.buildFinished { if(!buildFile.exists()) buildDir.deleteRecursively() }
-}
-
-gradle.buildFinished {
-    buildDir.deleteRecursively()
 }

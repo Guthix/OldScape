@@ -40,7 +40,7 @@ class Player(
     internal val mapManager: MapManager,
     private val contextMenuManager: ContextMenuManager,
     private val varpManager: VarpManager,
-    private val statManager: StatManager,
+    val stats: StatManager,
     private val energyManager: EnergyManager
 ) : Character(playerManager.index), Comparable<Player> {
     override val updateFlags = sortedSetOf<PlayerUpdateType>()
@@ -80,7 +80,7 @@ class Player(
 
     val colours: PlayerManager.Colours = PlayerManager.Colours(0, 0, 0, 0, 0)
 
-    val equipment: PlayerManager.Equipment = PlayerManager.Equipment(
+    val equipment: PlayerManager.EquipmentSet = PlayerManager.EquipmentSet(
         null, null, null, null, null, null, null, null, null, null, null
     )
 
@@ -134,7 +134,7 @@ class Player(
         topInterface.initialize(world, this)
         contextMenuManager.initialize(world, this)
         varpManager.initialize(world, this)
-        statManager.initialize(world, this)
+        stats.initialize(world, this)
         energyManager.initialize(world, this)
     }
 
@@ -143,7 +143,7 @@ class Player(
         futures.addAll(topInterface.synchronize(world, this))
         futures.addAll(contextMenuManager.synchronize(world, this))
         futures.addAll(varpManager.synchronize(world, this))
-        futures.addAll(statManager.synchronize(world, this))
+        futures.addAll(stats.synchronize(world, this))
         futures.addAll(energyManager.synchronize(world, this))
         futures.addAll(mapManager.synchronize(world, this))
         futures.addAll(npcManager.synchronize(world, this))
@@ -157,7 +157,7 @@ class Player(
         topInterface.postProcess()
         contextMenuManager.postProcess()
         varpManager.postProcess()
-        statManager.postProcess()
+        stats.postProcess()
         energyManager.postProcess()
         mapManager.postProcess()
         npcManager.postProcess()

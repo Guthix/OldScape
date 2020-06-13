@@ -17,15 +17,52 @@
 package io.guthix.oldscape.server.blueprints
 
 class StyleBonus(
-    val stab: Int,
-    val slash: Int,
-    val crush: Int,
-    val magic: Int,
-    val range: Int
-)
+    var stab: Int,
+    var slash: Int,
+    var crush: Int,
+    var magic: Int,
+    var range: Int
+) {
+    operator fun plus(value: StyleBonus?): StyleBonus {
+        if(value == null) return this
+        stab += value.stab
+        slash += value.slash
+        crush += value.crush
+        magic += value.magic
+        range += value.range
+        return this
+    }
+
+    operator fun minus(value: StyleBonus?): StyleBonus {
+        if(value == null) return this
+        stab -= value.stab
+        slash -= value.slash
+        crush -= value.crush
+        magic -= value.magic
+        range -= value.range
+        return this
+    }
+}
 
 class StrengthBonus(
-    val melee: Int,
-    val range: Int,
-    val magic: Int
-)
+    var melee: Int,
+    var range: Int,
+    var magic: Int
+) {
+    operator fun plus(value: StrengthBonus?): StrengthBonus {
+        if(value == null) return this
+        melee += value.melee
+        range += value.range
+        magic += value.magic
+        return this
+    }
+
+    operator fun minus(value: StrengthBonus?): StrengthBonus {
+        if(value == null) return this
+        melee -= value.melee
+        range -= value.range
+        magic -= value.magic
+        return this
+    }
+}
+
