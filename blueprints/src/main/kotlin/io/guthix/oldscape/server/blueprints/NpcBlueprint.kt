@@ -24,7 +24,8 @@ class NpcAttackStats(
 )
 
 class NpcCombat(
-    val lvl: Int?,
+    val lvl: Int,
+    val attackStyle: AttackStyle?,
     val isAggressive: Boolean,
     val isPoisonous: Boolean,
     val isImmumePoison: Boolean,
