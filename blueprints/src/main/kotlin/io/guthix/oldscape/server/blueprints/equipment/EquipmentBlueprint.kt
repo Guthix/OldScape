@@ -19,7 +19,7 @@ package io.guthix.oldscape.server.blueprints.equipment
 import io.guthix.oldscape.cache.config.ObjectConfig
 import io.guthix.oldscape.server.blueprints.ExtraObjectConfig
 import io.guthix.oldscape.server.blueprints.ObjectBlueprint
-import io.guthix.oldscape.server.blueprints.StrengthBonus
+import io.guthix.oldscape.server.blueprints.CombatBonus
 import io.guthix.oldscape.server.blueprints.StyleBonus
 
 open class ExtraEquipmentConfig(
@@ -36,7 +36,7 @@ open class EquipmentBlueprint(
 ) : ObjectBlueprint(cacheConfig, extraConfig) {
     val attackBonus: StyleBonus get() = extraConfig.equipment.attackBonus
 
-    val strengthBonus: StrengthBonus get() = extraConfig.equipment.strengthBonus
+    val strengthBonus: CombatBonus get() = extraConfig.equipment.strengthBonus
 
     val defenceBonus: StyleBonus get() = extraConfig.equipment.defenceBonus
 
@@ -60,7 +60,7 @@ open class EquipmentBlueprint(
     class Equipment(
         val attackBonus: StyleBonus,
         val defenceBonus: StyleBonus,
-        val strengthBonus: StrengthBonus,
+        val strengthBonus: CombatBonus,
         val prayerBonus: Int
     )
 }

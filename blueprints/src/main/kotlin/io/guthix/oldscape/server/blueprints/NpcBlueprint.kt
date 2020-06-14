@@ -18,20 +18,9 @@ package io.guthix.oldscape.server.blueprints
 
 import io.guthix.oldscape.cache.config.NpcConfig
 
-class NpcStats(
-    val health: Int,
-    val attack: Int,
-    val strength: Int,
-    val defence: Int,
-    val range: Int,
-    val magic: Int
-)
-
-class NpcAggressiveStats(
-    val attack: Int,
-    val range: Int,
-    val magic: Int,
-    val strengthBonus: StrengthBonus
+class NpcAttackStats(
+    val typeBonus: CombatBonus,
+    val strengthBonus: CombatBonus
 )
 
 class NpcCombat(
@@ -40,8 +29,8 @@ class NpcCombat(
     val isPoisonous: Boolean,
     val isImmumePoison: Boolean,
     val isImmuneVenom: Boolean,
-    val stats: NpcStats,
-    val aggressiveStats: NpcAggressiveStats,
+    val stats: CombatStats,
+    val attackStats: NpcAttackStats,
     val defensiveStats: StyleBonus
 )
 
@@ -57,8 +46,8 @@ open class NpcBlueprint(
     val isPoisonous: Boolean? get() = extraConfig.combat?.isPoisonous
     val isImmumePoison: Boolean? get() = extraConfig.combat?.isImmumePoison
     val isImmuneVenom: Boolean? get() = extraConfig.combat?.isImmuneVenom
-    val stats: NpcStats? get() = extraConfig.combat?.stats
-    val aggressiveStats: NpcAggressiveStats? get() = extraConfig.combat?.aggressiveStats
+    val stats: CombatStats? get() = extraConfig.combat?.stats
+    val aggressiveStats: NpcAttackStats? get() = extraConfig.combat?.attackStats
     val defensiveStats: StyleBonus? get() = extraConfig.combat?.defensiveStats
 }
 
