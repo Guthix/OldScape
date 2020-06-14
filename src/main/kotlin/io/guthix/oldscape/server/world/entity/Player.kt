@@ -16,6 +16,9 @@
  */
 package io.guthix.oldscape.server.world.entity
 
+import io.guthix.oldscape.server.blueprints.AttackStyle
+import io.guthix.oldscape.server.blueprints.CombatBonus
+import io.guthix.oldscape.server.blueprints.StyleBonus
 import io.guthix.oldscape.server.dimensions.TileUnit
 import io.guthix.oldscape.server.dimensions.tiles
 import io.guthix.oldscape.server.event.PublicMessageEvent
@@ -31,6 +34,7 @@ import io.guthix.oldscape.server.world.entity.intface.IfComponent
 import io.netty.channel.ChannelFuture
 import io.netty.channel.ChannelHandlerContext
 import java.util.concurrent.ConcurrentLinkedQueue
+import kotlin.math.floor
 
 class Player(
     var priority: Int,
@@ -82,15 +86,25 @@ class Player(
 
     val colours: PlayerManager.Colours = PlayerManager.Colours(0, 0, 0, 0, 0)
 
-    val stance: MeleeCombatStance = MeleeCombatStance.ACCURATE
-
-    val prayerBonus: MultiplierBonus = MultiplierBonus(
-        attack = 0.0, strength = 0.0, defence = 0.0, range = 0.0, magic = 0.0
-    )
-
     val equipment: PlayerManager.EquipmentSet = PlayerManager.EquipmentSet(
         null, null, null, null, null, null, null, null, null, null, null
     )
+
+    override val attackStat: Int get() = stats.attack.status
+
+    override val strengthStat: Int get() = stats.strength.status
+
+    override val defenceStat: Int get() = stats.defence.status
+
+    override val rangeStat: Int get() = stats.ranged.status
+
+    override val magicStat: Int get() = stats.magic.status
+
+    override val attackBonus: Int get() = equipment.attackBonus.findByStyle(attackStyle)
+
+    override val strengthBonus: CombatBonus get() = equipment.strengtBonus // TODO set depending on type
+
+    override val defenceBonus: StyleBonus get() = equipment.defenceBonus
 
     val animations: PlayerManager.Animations = PlayerManager.Animations(
         stand = 808,

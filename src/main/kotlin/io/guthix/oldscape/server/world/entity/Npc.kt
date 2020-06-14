@@ -17,16 +17,17 @@
 package io.guthix.oldscape.server.world.entity
 
 import io.guthix.oldscape.server.api.NpcBlueprints
+import io.guthix.oldscape.server.blueprints.CombatBonus
 import io.guthix.oldscape.server.blueprints.NpcBlueprint
+import io.guthix.oldscape.server.blueprints.StyleBonus
 import io.guthix.oldscape.server.dimensions.TileUnit
 import io.guthix.oldscape.server.dimensions.tiles
 import io.guthix.oldscape.server.event.script.Task
 import io.guthix.oldscape.server.net.game.out.NpcInfoSmallViewportPacket
-import io.guthix.oldscape.server.net.game.out.PlayerInfoPacket
 import io.guthix.oldscape.server.world.entity.interest.NpcUpdateType
 import io.guthix.oldscape.server.world.map.Tile
 
-open class Npc(index: Int, id: Int, override var pos: Tile) : Character(index) {
+class Npc(index: Int, id: Int, override var pos: Tile) : Character(index) {
     private val blueprint: NpcBlueprint = NpcBlueprints[id]
 
     override val updateFlags = sortedSetOf<NpcUpdateType>()
@@ -36,6 +37,22 @@ open class Npc(index: Int, id: Int, override var pos: Tile) : Character(index) {
     override val size: TileUnit get() = blueprint.size.tiles
 
     val contextMenu: Array<String?> get() = blueprint.contextMenu
+
+    override val attackStat: Int get() = blueprint.stats?.attack ?: 0
+
+    override val strengthStat: Int get() = blueprint.stats?.strength ?: 0
+
+    override val defenceStat: Int get() = blueprint.stats?.defence ?: 0
+
+    override val rangeStat: Int get() = blueprint.stats?.range ?: 0
+
+    override val magicStat: Int get() = blueprint.stats?.magic ?: 0
+
+    override val attackBonus: Int get() = blueprint.attackStats?.typeBonus?.findByStyle(attackStyle) ?: 0
+
+    override val strengthBonus: CombatBonus get() = blueprint.attackStats?.strengthBonus ?: CombatBonus(0, 0, 0)
+
+    override val defenceBonus: StyleBonus get() = blueprint.defensiveStats ?: StyleBonus(0, 0, 0, 0, 0)
 
     override fun processTasks() {
         while (true) {

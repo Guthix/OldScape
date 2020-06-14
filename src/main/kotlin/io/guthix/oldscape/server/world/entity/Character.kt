@@ -16,12 +16,17 @@
  */
 package io.guthix.oldscape.server.world.entity
 
+import io.guthix.oldscape.server.blueprints.AttackStyle
+import io.guthix.oldscape.server.blueprints.CombatBonus
+import io.guthix.oldscape.server.blueprints.StyleBonus
 import io.guthix.oldscape.server.dimensions.TileUnit
 import io.guthix.oldscape.server.dimensions.floors
 import io.guthix.oldscape.server.dimensions.tiles
 import io.guthix.oldscape.server.event.PublicMessageEvent
 import io.guthix.oldscape.server.event.script.*
 import io.guthix.oldscape.server.net.game.out.PlayerInfoPacket
+import io.guthix.oldscape.server.world.entity.combat.MeleeCombatStance
+import io.guthix.oldscape.server.world.entity.combat.MultiplierBonus
 import io.guthix.oldscape.server.world.entity.interest.InterestUpdateType
 import io.guthix.oldscape.server.world.entity.interest.MovementInterestUpdate
 import io.guthix.oldscape.server.world.entity.interest.PlayerManager
@@ -62,6 +67,34 @@ abstract class Character(val index: Int) : Entity() {
     var path: MutableList<Tile> = mutableListOf()
 
     open var inRunMode: Boolean = false
+
+    val attackStance: MeleeCombatStance = MeleeCombatStance.ACCURATE
+
+    val prayerBonus: MultiplierBonus = MultiplierBonus(
+        attack = 1.0, strength = 1.0, defence = 1.0, range = 1.0, magic = 1.0
+    )
+
+    val damageMultiplier: MultiplierBonus = MultiplierBonus(
+        attack = 1.0, strength = 1.0, defence = 1.0, range = 1.0, magic = 1.0
+    )
+
+    val attackStyle: AttackStyle = AttackStyle.STAB
+
+    abstract val attackStat: Int
+
+    abstract val strengthStat: Int
+
+    abstract val defenceStat: Int
+
+    abstract val rangeStat: Int
+
+    abstract val magicStat: Int
+
+    abstract val attackBonus: Int
+
+    abstract val strengthBonus: CombatBonus
+
+    abstract val defenceBonus: StyleBonus
 
     fun move() {
         lastPos = pos
@@ -167,9 +200,9 @@ abstract class Character(val index: Int) : Entity() {
 
     val healthBarQueue: MutableList<HealthBar> = mutableListOf()
 
-    fun hit(colour: HitMark.Colour, damage: Int, delay: Int) {
+    fun hit(color: HitMark.Color, damage: Int, delay: Int) {
         addHitUpdateFlag()
-        hitMarkQueue.add(HitMark(colour, damage, delay))
+        hitMarkQueue.add(HitMark(color, damage, delay))
         healthBarQueue.add(HealthBar(2, 0, 0, 100)) // TODO do something better here
     }
 
