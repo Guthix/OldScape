@@ -17,7 +17,7 @@
 package io.guthix.oldscape.server.world.entity
 
 import io.guthix.oldscape.server.api.ObjectBlueprints
-import io.guthix.oldscape.server.blueprints.StrengthBonus
+import io.guthix.oldscape.server.blueprints.CombatBonus
 import io.guthix.oldscape.server.blueprints.StyleBonus
 import io.guthix.oldscape.server.blueprints.equipment.*
 
@@ -30,7 +30,7 @@ abstract class Equipment(id: Int, quantity: Int) : Obj(id, quantity) {
 
     val defenceBonus: StyleBonus get() = blueprint.defenceBonus
 
-    val strengthBonus: StrengthBonus get() = blueprint.strengthBonus
+    val strengthBonus: CombatBonus get() = blueprint.strengthBonus
 
     val prayerBonus: Int get() = blueprint.prayerBonus
 }

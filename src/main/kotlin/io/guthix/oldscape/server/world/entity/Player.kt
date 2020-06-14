@@ -24,6 +24,8 @@ import io.guthix.oldscape.server.event.script.InGameEvent
 import io.guthix.oldscape.server.event.script.Task
 import io.guthix.oldscape.server.net.game.out.*
 import io.guthix.oldscape.server.world.World
+import io.guthix.oldscape.server.world.entity.combat.MeleeCombatStance
+import io.guthix.oldscape.server.world.entity.combat.MultiplierBonus
 import io.guthix.oldscape.server.world.entity.interest.*
 import io.guthix.oldscape.server.world.entity.intface.IfComponent
 import io.netty.channel.ChannelFuture
@@ -79,6 +81,12 @@ class Player(
     )
 
     val colours: PlayerManager.Colours = PlayerManager.Colours(0, 0, 0, 0, 0)
+
+    val stance: MeleeCombatStance = MeleeCombatStance.ACCURATE
+
+    val prayerBonus: MultiplierBonus = MultiplierBonus(
+        attack = 0.0, strength = 0.0, defence = 0.0, range = 0.0, magic = 0.0
+    )
 
     val equipment: PlayerManager.EquipmentSet = PlayerManager.EquipmentSet(
         null, null, null, null, null, null, null, null, null, null, null

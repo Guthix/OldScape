@@ -16,6 +16,15 @@
  */
 package io.guthix.oldscape.server.blueprints
 
+class CombatStats(
+    val health: Int,
+    val attack: Int,
+    val strength: Int,
+    val defence: Int,
+    val range: Int,
+    val magic: Int
+)
+
 class StyleBonus(
     var stab: Int,
     var slash: Int,
@@ -44,12 +53,12 @@ class StyleBonus(
     }
 }
 
-class StrengthBonus(
+class CombatBonus(
     var melee: Int,
     var range: Int,
     var magic: Int
 ) {
-    operator fun plus(value: StrengthBonus?): StrengthBonus {
+    operator fun plus(value: CombatBonus?): CombatBonus {
         if(value == null) return this
         melee += value.melee
         range += value.range
@@ -57,7 +66,7 @@ class StrengthBonus(
         return this
     }
 
-    operator fun minus(value: StrengthBonus?): StrengthBonus {
+    operator fun minus(value: CombatBonus?): CombatBonus {
         if(value == null) return this
         melee -= value.melee
         range -= value.range
