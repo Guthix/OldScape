@@ -41,7 +41,6 @@ object YamlDownloader {
     @JvmStatic
     fun main(args: Array<String>) {
         val cacheDir = Path.of("../server-yaml/src/main/resources/cache")
-        println(cacheDir.toFile().absolutePath)
         val yamlFactory = YAMLFactory()
             .disable(YAMLGenerator.Feature.WRITE_DOC_START_MARKER)
         val objectMapper = ObjectMapper(yamlFactory)
@@ -95,7 +94,7 @@ fun ObjectWikiDefinition.toExtraEquipmentConfig(): ExtraObjectConfig {
             defBonusRange ?: 0,
             defBonusMagic ?: 0
         ),
-        StrengthBonus(
+        CombatBonus(
             strengthBonus ?: 0,
             rangeStrengthBonus ?: 0,
             magicDamageBonus ?: 0
@@ -119,7 +118,7 @@ fun NpcWikiDefinition.toExtraNpcConfig(): ExtraNpcConfig {
             isPoisonous ?: false,
             isImmuneToPoison ?: false,
             isImmuneToVenom ?: false,
-            NpcStats(
+            CombatStats(
                 hitPoints ?: 0,
                 attackStat ?: 0,
                 strengthStat ?: 0,
@@ -127,11 +126,13 @@ fun NpcWikiDefinition.toExtraNpcConfig(): ExtraNpcConfig {
                 magicStat ?: 0,
                 rangeStat ?: 0
             ),
-            NpcAggressiveStats(
-                attackBonusMelee ?: 0,
-                attackBonusRange ?: 0,
-                attackBonusMagic ?: 0,
-                StrengthBonus(
+            NpcAttackStats(
+                CombatBonus(
+                    attackBonusMelee ?: 0,
+                    attackBonusRange ?: 0,
+                    attackBonusMagic ?: 0,
+                ),
+                CombatBonus(
                     strengthBonus ?: 0,
                     rangeStrengthBonus ?: 0,
                     magicStrengthBonus ?: 0
