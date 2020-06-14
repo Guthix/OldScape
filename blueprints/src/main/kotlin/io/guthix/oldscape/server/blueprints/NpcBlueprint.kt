@@ -25,6 +25,7 @@ class NpcAttackStats(
 
 class NpcCombat(
     val lvl: Int,
+    val maxHit: Int?,
     val attackStyle: AttackStyle?,
     val isAggressive: Boolean,
     val isPoisonous: Boolean,
@@ -43,6 +44,7 @@ open class NpcBlueprint(
     val size: Int get() = cacheConfig.size.toInt()
     val contextMenu: Array<String?> get() = cacheConfig.options
     val level: Int? get() = extraConfig.combat?.lvl
+    val attackStyle: AttackStyle? get() = extraConfig.combat?.attackStyle
     val isAggressive: Boolean? get() = extraConfig.combat?.isAggressive
     val isPoisonous: Boolean? get() = extraConfig.combat?.isPoisonous
     val isImmumePoison: Boolean? get() = extraConfig.combat?.isImmumePoison

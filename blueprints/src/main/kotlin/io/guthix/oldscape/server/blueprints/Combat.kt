@@ -16,7 +16,7 @@
  */
 package io.guthix.oldscape.server.blueprints
 
-enum class AttackStyle { STAB, SLASH, CRUSH, RANGED, MAGIC }
+enum class AttackStyle { STAB, SLASH, CRUSH, RANGED, MAGIC, NONE }
 
 class CombatStats(
     val health: Int,
@@ -60,6 +60,7 @@ class StyleBonus(
         AttackStyle.CRUSH -> crush
         AttackStyle.RANGED -> range
         AttackStyle.MAGIC -> magic
+        AttackStyle.NONE -> 0
     }
 }
 
@@ -88,6 +89,7 @@ class CombatBonus(
         AttackStyle.STAB, AttackStyle.SLASH, AttackStyle.CRUSH -> melee
         AttackStyle.RANGED -> range
         AttackStyle.MAGIC -> magic
+        AttackStyle.NONE -> 0
     }
 }
 
