@@ -16,14 +16,14 @@
  */
 package io.guthix.oldscape.server.world.entity
 
-class HitMark(val colour: Colour, val damage: Int, val delay: Int) {
-    enum class Colour(val id: Int) {
+class HitMark(val color: Color, val damage: Int, val delay: Int) {
+    enum class Color(val id: Int) {
         GREEN(2),
         DARK_YELLOW(3),
         DARK_YELLOW_SPLAT(4),
         DARK_GREEN(5),
         MAGENTA(6),
-        BUE(12),
+        BLUE(12),
         BLUE_TINTED(13),
         RED(16),
         RED_TINTED(17),

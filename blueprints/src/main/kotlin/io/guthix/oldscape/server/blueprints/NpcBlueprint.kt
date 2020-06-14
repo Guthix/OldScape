@@ -47,7 +47,7 @@ open class NpcBlueprint(
     val isImmumePoison: Boolean? get() = extraConfig.combat?.isImmumePoison
     val isImmuneVenom: Boolean? get() = extraConfig.combat?.isImmuneVenom
     val stats: CombatStats? get() = extraConfig.combat?.stats
-    val aggressiveStats: NpcAttackStats? get() = extraConfig.combat?.attackStats
+    val attackStats: NpcAttackStats? get() = extraConfig.combat?.attackStats
     val defensiveStats: StyleBonus? get() = extraConfig.combat?.defensiveStats
 }
 

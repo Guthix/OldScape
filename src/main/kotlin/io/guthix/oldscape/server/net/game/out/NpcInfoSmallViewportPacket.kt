@@ -174,7 +174,7 @@ class NpcInfoSmallViewportPacket(
         val hit: NpcUpdateType = NpcUpdateType(5, 0x1) { npc ->
             writeByteSUB(npc.hitMarkQueue.size)
             npc.hitMarkQueue.forEach { hitMark ->
-                writeSmallSmart(hitMark.colour.id)
+                writeSmallSmart(hitMark.color.id)
                 writeSmallSmart(hitMark.damage)
                 writeSmallSmart(hitMark.delay)
             }

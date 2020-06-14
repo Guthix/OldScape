@@ -38,7 +38,7 @@ on(NpcClickEvent::class).where { event.option == "Attack" }.then {
         event.npc.addTask(NormalTask) { // start npc combat
             while(true) {
                 event.npc.animate(Sequence(id = 5578))
-                player.hit(HitMark.Colour.RED, 10, 0)
+                player.hit(HitMark.Color.RED, 10, 0)
                 wait(ticks = 5)
                 wait { playerDestination.reached(event.npc.pos.x, event.npc.pos.y, event.npc.size) }
             }
@@ -56,7 +56,9 @@ on(NpcClickEvent::class).where { event.option == "Attack" }.then {
         }
         while(true) { // start player combat
             player.animate(Sequence(id = 422))
-            event.npc.hit(HitMark.Colour.RED, 10, 0)
+            val damage = player.calcHit(event.npc) ?: 0
+            val hmColor = if(damage == 0) HitMark.Color.BLUE else HitMark.Color.RED
+            event.npc.hit(hmColor, damage, 0)
             wait(ticks = 4)
         }
     }.onCancel {

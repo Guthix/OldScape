@@ -437,7 +437,7 @@ class PlayerInfoPacket(
         val hit: PlayerUpdateType = PlayerUpdateType(9, 0x10) { player ->
             writeByte(player.hitMarkQueue.size)
             player.hitMarkQueue.forEach { hitMark ->
-                writeSmallSmart(hitMark.colour.id)
+                writeSmallSmart(hitMark.color.id)
                 writeSmallSmart(hitMark.damage)
                 writeSmallSmart(hitMark.delay)
             }
