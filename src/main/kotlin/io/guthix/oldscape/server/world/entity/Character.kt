@@ -34,9 +34,12 @@ import io.guthix.oldscape.server.world.map.Tile
 import java.util.*
 import kotlin.coroutines.intrinsics.createCoroutineUnintercepted
 import kotlin.math.atan2
+import kotlin.reflect.KProperty
 
 abstract class Character(val index: Int) : Entity() {
     internal val tasks = mutableMapOf<TaskType, MutableList<Task>>()
+
+    val properties: MutableMap<KProperty<*>, Any> = mutableMapOf()
 
     internal abstract val updateFlags: SortedSet<out InterestUpdateType>
 
