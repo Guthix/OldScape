@@ -1,3 +1,3 @@
 dependencies {
-    implementation(project(":plugins:api:pathing"))
+    implementation(project(":plugins:core:pathing"))
 }
