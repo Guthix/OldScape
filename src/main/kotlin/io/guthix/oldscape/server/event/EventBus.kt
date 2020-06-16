@@ -14,9 +14,11 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with Foobar. If not, see <https://www.gnu.org/licenses/>.
  */
-package io.guthix.oldscape.server.event.script
+package io.guthix.oldscape.server.event
 
 import io.github.classgraph.ClassGraph
+import io.guthix.oldscape.server.script.Script
+import io.guthix.oldscape.server.script.ScriptScheduler
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.Player
 import mu.KotlinLogging
@@ -32,7 +34,7 @@ object EventBus {
     fun loadScripts() {
         ClassGraph().whitelistPackages(pkg).scan().use { scanResult ->
             val pluginClassList = scanResult
-                .getSubclasses("io.guthix.oldscape.server.event.script.Script")
+                .getSubclasses("io.guthix.oldscape.server.script.Script")
                 .directOnly()
             pluginClassList.forEach {
                 it.loadClass(Script::class.java).getDeclaredConstructor().newInstance()

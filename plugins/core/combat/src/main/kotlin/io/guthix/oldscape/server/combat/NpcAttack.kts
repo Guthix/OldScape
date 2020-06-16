@@ -19,7 +19,7 @@ package io.guthix.oldscape.server.combat
 import io.guthix.oldscape.server.combat.dmg.calcHit
 import io.guthix.oldscape.server.combat.dmg.maxMeleeHit
 import io.guthix.oldscape.server.event.NpcClickEvent
-import io.guthix.oldscape.server.event.script.NormalTask
+import io.guthix.oldscape.server.task.NormalTask
 import io.guthix.oldscape.server.pathing.DesinationNpc
 import io.guthix.oldscape.server.pathing.DestinationPlayer
 import io.guthix.oldscape.server.pathing.breadthFirstSearch

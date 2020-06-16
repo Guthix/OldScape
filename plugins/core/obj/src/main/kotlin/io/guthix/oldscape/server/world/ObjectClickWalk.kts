@@ -18,8 +18,8 @@ package io.guthix.oldscape.server.world
 
 import io.guthix.oldscape.server.event.ObjectClickEvent
 import io.guthix.oldscape.server.event.ObjectReachedEvent
-import io.guthix.oldscape.server.event.script.EventBus
-import io.guthix.oldscape.server.event.script.NormalTask
+import io.guthix.oldscape.server.event.EventBus
+import io.guthix.oldscape.server.task.NormalTask
 import io.guthix.oldscape.server.pathing.DestinationTile
 import io.guthix.oldscape.server.pathing.breadthFirstSearch
 
