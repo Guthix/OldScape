@@ -1,12 +1,12 @@
 /**
- * This file is part of Guthix OldScape.
+ * This file is part of Guthix OldScape-Server.
  *
- * Guthix OldScape is free software: you can redistribute it and/or modify
+ * Guthix OldScape-Server is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * Guthix OldScape is distributed in the hope that it will be useful,
+ * Guthix OldScape-Server is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU Affero General Public License for more details.
@@ -32,7 +32,7 @@ on(NpcClickEvent::class).where { event.option == "Attack" }.then {
     val npcDestination = DesinationNpc(event.npc, world.map)
     player.turnToLock(event.npc)
     player.path = breadthFirstSearch(player.pos, npcDestination, player.size, true, world.map)
-    event.npc.cancelTasks(NormalTask)
+    player.cancelTasks(NormalTask)
     player.addTask(NormalTask) {
         wait { npcDestination.reached(player.pos.x, player.pos.y, player.size) }
         var playerDestination = DestinationPlayer(player, world.map)
