@@ -19,7 +19,7 @@ package io.guthix.oldscape.server.world.entity
 import io.guthix.oldscape.server.dimensions.TileUnit
 import io.guthix.oldscape.server.dimensions.tiles
 import io.guthix.oldscape.server.event.PublicMessageEvent
-import io.guthix.oldscape.server.script.EventHandler
+import io.guthix.oldscape.server.plugin.EventHandler
 import io.guthix.oldscape.server.event.InGameEvent
 import io.guthix.oldscape.server.task.Task
 import io.guthix.oldscape.server.net.game.out.*
