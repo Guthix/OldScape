@@ -35,7 +35,7 @@ class StyleBonus(
     var range: Int
 ) {
     operator fun plus(value: StyleBonus?): StyleBonus {
-        if(value == null) return this
+        if (value == null) return this
         stab += value.stab
         slash += value.slash
         crush += value.crush
@@ -45,7 +45,7 @@ class StyleBonus(
     }
 
     operator fun minus(value: StyleBonus?): StyleBonus {
-        if(value == null) return this
+        if (value == null) return this
         stab -= value.stab
         slash -= value.slash
         crush -= value.crush
@@ -61,7 +61,7 @@ class CombatBonus(
     var magic: Int
 ) {
     operator fun plus(value: CombatBonus?): CombatBonus {
-        if(value == null) return this
+        if (value == null) return this
         melee += value.melee
         range += value.range
         magic += value.magic
@@ -69,7 +69,7 @@ class CombatBonus(
     }
 
     operator fun minus(value: CombatBonus?): CombatBonus {
-        if(value == null) return this
+        if (value == null) return this
         melee -= value.melee
         range -= value.range
         magic -= value.magic

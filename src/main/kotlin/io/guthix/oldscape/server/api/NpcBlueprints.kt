@@ -17,8 +17,8 @@
 package io.guthix.oldscape.server.api
 
 import io.guthix.oldscape.cache.config.NpcConfig
-import io.guthix.oldscape.cache.config.ObjectConfig
-import io.guthix.oldscape.server.blueprints.*
+import io.guthix.oldscape.server.blueprints.ExtraNpcConfig
+import io.guthix.oldscape.server.blueprints.NpcBlueprint
 import mu.KotlinLogging
 import java.io.IOException
 

@@ -1,10 +1,26 @@
+/**
+ * This file is part of Guthix OldScape.
+ *
+ * Guthix OldScape is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Guthix OldScape is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with Foobar. If not, see <https://www.gnu.org/licenses/>.
+ */
 package io.guthix.oldscape.server.combat.dmg
 
 import io.guthix.oldscape.server.world.entity.Npc
 import io.guthix.oldscape.server.world.entity.Player
 import kotlin.random.Random
 
-private fun calcDamage(accuracy: Double, maxHit: Int): Int? = if(Random.nextInt(1) < accuracy) {
+private fun calcDamage(accuracy: Double, maxHit: Int): Int? = if (Random.nextInt(1) < accuracy) {
     Random.nextInt(maxHit + 1)
 } else null
 

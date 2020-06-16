@@ -37,10 +37,10 @@ fun Player.changeGameFrame(gameFrame: GameFrame) {
     val fromEnum = Enums[GameFrame.findByInterfaceId(topInterface.id).enumId]
     val toEnum = Enums[gameFrame.enumId]
     val moves = mutableMapOf<Int, Int>()
-    for((key, value) in fromEnum.keyValuePairs) {
+    for ((key, value) in fromEnum.keyValuePairs) {
         val from = readComponent(value as Int)
         val to = readComponent(toEnum.keyValuePairs[key] as Int)
-        if(from != null && to != null) {
+        if (from != null && to != null) {
             moves[from.slot] = to.slot
         }
     }

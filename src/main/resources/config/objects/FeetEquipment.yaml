@@ -1,6 +1,6 @@
 - ids:
-  - 88
-  - 89
+    - 88
+    - 89
   weight: 0.0
   examine: "Magic boots that make you lighter than normal."
   equipment:
@@ -22,7 +22,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 626
+    - 626
   weight: 0.34
   examine: "They're soft, silky and pink."
   equipment:
@@ -44,7 +44,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 628
+    - 628
   weight: 0.3
   examine: "They're soft, silky and green."
   equipment:
@@ -66,7 +66,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 630
+    - 630
   weight: 0.34
   examine: "They're soft, silky and blue."
   equipment:
@@ -88,7 +88,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 632
+    - 632
   weight: 0.34
   examine: "They're soft, silky and cream."
   equipment:
@@ -110,7 +110,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 634
+    - 634
   weight: 0.34
   examine: "They're soft, silky and turquoise."
   equipment:
@@ -132,7 +132,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 1061
+    - 1061
   weight: 0.34
   examine: "Comfortable leather boots."
   equipment:
@@ -154,7 +154,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 1837
+    - 1837
   weight: 0.226
   examine: "Comfortable desert shoes."
   equipment:
@@ -176,7 +176,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 1846
+    - 1846
   weight: 0.68
   examine: "A set of filthy, smelly, flea infested desert slave boots."
   equipment:
@@ -198,7 +198,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 2577
+    - 2577
   weight: 0.283
   examine: "Lightweight boots ideal for rangers."
   equipment:
@@ -220,7 +220,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 2579
+    - 2579
   weight: 0.283
   examine: "Slightly magical boots."
   equipment:
@@ -242,7 +242,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 2894
+    - 2894
   weight: 0.34
   examine: "Very stylish!"
   equipment:
@@ -264,7 +264,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 2904
+    - 2904
   weight: 0.34
   examine: "Very stylish!"
   equipment:
@@ -286,7 +286,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 2914
+    - 2914
   weight: 0.34
   examine: "Very stylish!"
   equipment:
@@ -308,7 +308,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 2924
+    - 2924
   weight: 0.34
   examine: "Very stylish!"
   equipment:
@@ -330,7 +330,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 2934
+    - 2934
   weight: 0.34
   examine: "Very stylish!"
   equipment:
@@ -352,7 +352,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 3061
+    - 3061
   weight: 0.34
   examine: "A mime would wear these."
   equipment:
@@ -374,8 +374,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 3105
-  - 20578
+    - 3105
+    - 20578
   weight: 0.34
   examine: "Boots made for climbing."
   equipment:
@@ -397,7 +397,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 3393
+    - 3393
   weight: 0.907
   examine: "Wooden foot protection."
   equipment:
@@ -419,7 +419,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 3791
+    - 3791
   weight: 0.34
   examine: "Very stylish!"
   equipment:
@@ -441,8 +441,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4097
-  - 20579
+    - 4097
+    - 20579
   weight: 0.453
   examine: "Magical boots."
   equipment:
@@ -464,7 +464,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4107
+    - 4107
   weight: 0.453
   examine: "Dark magical boots."
   equipment:
@@ -486,7 +486,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4117
+    - 4117
   weight: 0.453
   examine: "Bright magical boots."
   equipment:
@@ -508,7 +508,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4119
+    - 4119
   weight: 1.36
   examine: "These will protect my feet."
   equipment:
@@ -530,7 +530,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4121
+    - 4121
   weight: 1.36
   examine: "These will protect my feet."
   equipment:
@@ -552,7 +552,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4123
+    - 4123
   weight: 1.36
   examine: "These will protect my feet."
   equipment:
@@ -574,7 +574,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4125
+    - 4125
   weight: 1.36
   examine: "These will protect my feet."
   equipment:
@@ -596,7 +596,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4127
+    - 4127
   weight: 1.36
   examine: "These will protect my feet."
   equipment:
@@ -618,7 +618,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4129
+    - 4129
   weight: 1.36
   examine: "These will protect my feet."
   equipment:
@@ -640,7 +640,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4131
+    - 4131
   weight: 1.36
   examine: "These will protect my feet."
   equipment:
@@ -662,7 +662,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4310
+    - 4310
   weight: 0.34
   examine: "HAM boots as worn by the Humans Against Monsters group."
   equipment:
@@ -684,7 +684,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 5345
+    - 5345
   weight: 0.34
   examine: "A pair of gardening boots."
   equipment:
@@ -706,7 +706,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 5557
+    - 5557
   weight: 0.453
   examine: "Black banded leather boots, a rogue's dream!"
   equipment:
@@ -728,7 +728,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 6069
+    - 6069
   weight: 1.36
   examine: "Comfortable leather boots."
   equipment:
@@ -750,7 +750,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 6106
+    - 6106
   weight: 0.001
   examine: "They seem to be not quite of this world..."
   equipment:
@@ -772,7 +772,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 6143
+    - 6143
   weight: 3.175
   examine: "Some finely crafted Fremennik boots, made from spined dagannoth hide."
   equipment:
@@ -794,7 +794,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 6145
+    - 6145
   weight: 3.175
   examine: "Some Fremennik boots, made from the shards of a rock crab's shell."
   equipment:
@@ -816,7 +816,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 6147
+    - 6147
   weight: 3.175
   examine: "Some finely crafted Fremennik boots, made from the bones of a wallasalki."
   equipment:
@@ -838,8 +838,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 6328
-  - 20580
+    - 6328
+    - 20580
   weight: 0.34
   examine: "Made from snakes."
   equipment:
@@ -861,7 +861,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 6349
+    - 6349
   weight: 0.68
   examine: "A brightly coloured pair of local sandals."
   equipment:
@@ -883,7 +883,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 6357
+    - 6357
   weight: 0.68
   examine: "A brightly coloured pair of local sandals."
   equipment:
@@ -905,7 +905,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 6367
+    - 6367
   weight: 0.68
   examine: "A brightly coloured pair of local sandals."
   equipment:
@@ -927,7 +927,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 6377
+    - 6377
   weight: 0.68
   examine: "A brightly coloured pair of local sandals."
   equipment:
@@ -949,7 +949,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 6619
+    - 6619
   weight: 1.36
   examine: "These will protect my feet."
   equipment:
@@ -971,7 +971,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-  - 6666
+    - 6666
   weight: 0.34
   examine: "Strangely uncomfortable flippers."
   equipment:
@@ -993,7 +993,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 6790
+    - 6790
   weight: 0.226
   examine: "Awusah's Shoes."
   equipment:
@@ -1015,7 +1015,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 6920
+    - 6920
   weight: 0.453
   examine: "Mystical boots."
   equipment:
@@ -1037,7 +1037,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 7114
+    - 7114
   weight: 4.0
   examine: "Not for land lubbers."
   equipment:
@@ -1059,7 +1059,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 7159
+    - 7159
   weight: 1.36
   examine: "They're heavily insulated wellies."
   equipment:
@@ -1081,7 +1081,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 7596
+    - 7596
   weight: 0.003
   examine: "Thrilling."
   equipment:
@@ -1103,7 +1103,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 9005
+    - 9005
   weight: 0.01
   examine: "Very nice boots from the Stronghold of Security."
   equipment:
@@ -1125,7 +1125,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 9006
+    - 9006
   weight: 0.01
   examine: "Very nice boots from the Stronghold of Security."
   equipment:
@@ -1147,7 +1147,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 9073
+    - 9073
   weight: 0.907
   examine: "Groovy foot protection."
   equipment:
@@ -1169,7 +1169,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 9100
+    - 9100
   weight: 0.907
   examine: "Mystical foot protection."
   equipment:
@@ -1191,7 +1191,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 9638
+    - 9638
   weight: 0.9
   examine: "Dress like the powerful vyrewatch!"
   equipment:
@@ -1213,7 +1213,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 9644
+    - 9644
   weight: 0.907
   examine: "Ghetto disguise!"
   equipment:
@@ -1235,7 +1235,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 9921
+    - 9921
   weight: 2.267
   examine: "Skeleton feet."
   equipment:
@@ -1257,7 +1257,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 10552
+    - 10552
   weight: 0.34
   examine: "Boots made from a Penance Runner."
   equipment:
@@ -1279,7 +1279,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 10839
+    - 10839
   weight: 1.36
   examine: "Silly jester boots."
   equipment:
@@ -1301,7 +1301,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 10865
+    - 10865
   weight: 0.45
   examine: "They'll offer good protection for my toes."
   equipment:
@@ -1323,7 +1323,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 10933
+    - 10933
   weight: 0.907
   examine: "You'll certainly be alright wearing these."
   equipment:
@@ -1345,7 +1345,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 10958
+    - 10958
   weight: 1.0
   examine: "Boots made out of frog hide."
   equipment:
@@ -1367,7 +1367,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 11019
+    - 11019
   weight: 0.25
   examine: "Perfect for crossing the road."
   equipment:
@@ -1389,7 +1389,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 11836
+    - 11836
   weight: 6.0
   examine: "Some sturdy boots."
   equipment:
@@ -1411,7 +1411,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-  - 11840
+    - 11840
   weight: 1.0
   examine: "These will protect my feet."
   equipment:
@@ -1433,8 +1433,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 11860
-  - 11861
+    - 11860
+    - 11861
   weight: 0.0
   examine: "For your graceful feet."
   equipment:
@@ -1456,8 +1456,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13589
-  - 13590
+    - 13589
+    - 13590
   weight: 0.0
   examine: "For your graceful feet."
   equipment:
@@ -1479,8 +1479,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13601
-  - 13602
+    - 13601
+    - 13602
   weight: 0.0
   examine: "For your graceful feet."
   equipment:
@@ -1502,8 +1502,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13613
-  - 13614
+    - 13613
+    - 13614
   weight: 0.0
   examine: "For your graceful feet."
   equipment:
@@ -1525,8 +1525,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13625
-  - 13626
+    - 13625
+    - 13626
   weight: 0.0
   examine: "For your graceful feet."
   equipment:
@@ -1548,8 +1548,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13637
-  - 13638
+    - 13637
+    - 13638
   weight: 0.0
   examine: "For your graceful feet."
   equipment:
@@ -1571,8 +1571,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13677
-  - 13678
+    - 13677
+    - 13678
   weight: 0.0
   examine: "For your graceful feet."
   equipment:
@@ -1594,8 +1594,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 21076
-  - 21078
+    - 21076
+    - 21078
   weight: 0.0
   examine: "For your graceful feet."
   equipment:
@@ -1617,7 +1617,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 12016
+    - 12016
   weight: 0.5
   examine: "Helps you when you're mining."
   equipment:
@@ -1639,7 +1639,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 12391
+    - 12391
   weight: 1.3
   examine: "Rune boots with gold plate."
   equipment:
@@ -1661,7 +1661,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 12598
+    - 12598
   weight: 0.0
   examine: "Holy footwear!"
   equipment:
@@ -1683,7 +1683,7 @@
       magic: 0
     prayerBonus: 3
 - ids:
-  - 12891
+    - 12891
   weight: 0.4
   examine: "Designed to minimise damage to rooftops when disembarking from a sleigh."
   equipment:
@@ -1705,7 +1705,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 12896
+    - 12896
   weight: 0.4
   examine: "Definitely no jingle-bells on these boots."
   equipment:
@@ -1727,7 +1727,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 12959
+    - 12959
   weight: 0.5
   examine: "It looks like a cow's hoofs."
   equipment:
@@ -1749,7 +1749,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13129
+    - 13129
   weight: 0.0
   examine: "Sturdy boots for northern winters."
   equipment:
@@ -1771,7 +1771,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13130
+    - 13130
   weight: 0.0
   examine: "Sturdy boots for northern winters."
   equipment:
@@ -1793,7 +1793,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13131
+    - 13131
   weight: 0.0
   examine: "Sturdy boots for northern winters."
   equipment:
@@ -1815,7 +1815,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13132
+    - 13132
   weight: 0.0
   examine: "Sturdy boots for northern winters."
   equipment:
@@ -1837,7 +1837,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13182
+    - 13182
   weight: 0.0
   examine: "Bigger and softer than a rabbit's foot necklace."
   equipment:
@@ -1859,7 +1859,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13235
+    - 13235
   weight: 1.0
   examine: "A pair of upgraded infinity boots."
   equipment:
@@ -1881,7 +1881,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13237
+    - 13237
   weight: 1.0
   examine: "A pair of upgraded ranger boots."
   equipment:
@@ -1903,7 +1903,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13239
+    - 13239
   weight: 1.0
   examine: "A pair of upgraded dragon boots."
   equipment:
@@ -1925,7 +1925,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13261
+    - 13261
   weight: 1.0
   examine: "Where's Welly?"
   equipment:
@@ -1947,7 +1947,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13286
+    - 13286
   weight: 0.5
   examine: "If there's something sticky on the underside, don't ask who it was."
   equipment:
@@ -1969,7 +1969,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13358
+    - 13358
   weight: 0.0
   examine: "Dress like a tier 1 Shayzien soldier."
   equipment:
@@ -1991,7 +1991,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13363
+    - 13363
   weight: 1.0
   examine: "Dress like a tier 2 Shayzien soldier."
   equipment:
@@ -2013,7 +2013,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13368
+    - 13368
   weight: 1.0
   examine: "Dress like a tier 3 Shayzien soldier."
   equipment:
@@ -2035,7 +2035,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13373
+    - 13373
   weight: 1.0
   examine: "Dress like a tier 4 Shayzien soldier."
   equipment:
@@ -2057,7 +2057,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13378
+    - 13378
   weight: 1.0
   examine: "Dress like a tier 5 Shayzien soldier."
   equipment:
@@ -2079,7 +2079,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13644
+    - 13644
   weight: 0.9
   examine: "This will help with farming."
   equipment:
@@ -2101,7 +2101,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13645
+    - 13645
   weight: 0.9
   examine: "This will help with farming."
   equipment:
@@ -2123,7 +2123,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 19695
+    - 19695
   weight: 0.5
   examine: "Warm leather boots lined with wolf fur."
   equipment:
@@ -2145,7 +2145,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 19921
+    - 19921
   weight: 1.0
   examine: "Ancient blessed dragonhide boots."
   equipment:
@@ -2167,7 +2167,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-  - 19924
+    - 19924
   weight: 1.0
   examine: "Bandos blessed dragonhide boots."
   equipment:
@@ -2189,7 +2189,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-  - 19927
+    - 19927
   weight: 1.0
   examine: "Guthix blessed dragonhide boots."
   equipment:
@@ -2211,7 +2211,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-  - 19930
+    - 19930
   weight: 1.0
   examine: "Armadyl blessed dragonhide boots."
   equipment:
@@ -2233,7 +2233,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-  - 19933
+    - 19933
   weight: 1.0
   examine: "Saradomin blessed dragonhide boots."
   equipment:
@@ -2255,7 +2255,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-  - 19936
+    - 19936
   weight: 1.0
   examine: "Zamorak blessed dragonhide boots."
   equipment:
@@ -2277,7 +2277,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-  - 19967
+    - 19967
   weight: 0.0
   examine: "Dark shoes to match your dark tuxedo."
   equipment:
@@ -2299,7 +2299,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 19982
+    - 19982
   weight: 0.0
   examine: "Light shoes to match your light tuxedo."
   equipment:
@@ -2321,7 +2321,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 20047
+    - 20047
   weight: 0.9
   examine: "Armoured socks of the Samurai."
   equipment:
@@ -2343,7 +2343,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 20092
+    - 20092
   weight: 0.0
   examine: "A mummy's feet."
   equipment:
@@ -2365,7 +2365,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 20107
+    - 20107
   weight: 0.0
   examine: "These socks will make your flesh transparent."
   equipment:
@@ -2387,7 +2387,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 20140
+    - 20140
   weight: 0.4
   examine: "A dark power is woven into these boots."
   equipment:
@@ -2409,7 +2409,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 20433
+    - 20433
   weight: 0.25
   examine: "Perfect for crossing the road in an evil manner."
   equipment:
@@ -2431,7 +2431,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 20710
+    - 20710
   weight: 1.36
   examine: "The boots of the Pyromancers."
   equipment:
@@ -2453,7 +2453,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 21643
+    - 21643
   weight: 2.0
   examine: "These will protect my feet, but are a bit heavy."
   equipment:
@@ -2475,7 +2475,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 21733
+    - 21733
   weight: 7.0
   examine: "Some sturdy Bandos boots, made sturdier with the blackened tourmaline\
     \ core of the Grotesque Guardians."
@@ -2498,7 +2498,7 @@
       magic: 0
     prayerBonus: 2
 - ids:
-  - 21857
+    - 21857
   weight: 0.0
   examine: "Poorly made fake snow imp feet."
   equipment:
@@ -2520,7 +2520,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 22234
+    - 22234
   weight: 1.0
   examine: "These fancy boots will protect my feet."
   equipment:
@@ -2542,7 +2542,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 22701
+    - 22701
   weight: 0.1
   examine: "Great for floating."
   equipment:
@@ -2564,7 +2564,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 22951
+    - 22951
   weight: 3.1
   examine: "A pair of heat resistant boots charged with the claw of the ferocious\
     \ Drake."
@@ -2587,7 +2587,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 22954
+    - 22954
   weight: 0.5
   examine: "A pair of Devout Boots."
   equipment:
@@ -2609,7 +2609,7 @@
       magic: 0
     prayerBonus: 5
 - ids:
-  - 23037
+    - 23037
   weight: 3.175
   examine: "A pair of heat resistant boots with rocky soles."
   equipment:
@@ -2631,7 +2631,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 23059
+    - 23059
   weight: 0.4
   examine: "Dusky magical boots."
   equipment:
@@ -2653,7 +2653,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 23093
+    - 23093
   weight: 1.0
   examine: "Some ornate armoured boots."
   equipment:
@@ -2675,7 +2675,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 23285
+    - 23285
   weight: 0.2
   examine: "Cute mole slippers."
   equipment:
@@ -2697,7 +2697,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 23288
+    - 23288
   weight: 0.2
   examine: "Cute frog slippers."
   equipment:
@@ -2719,7 +2719,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 23291
+    - 23291
   weight: 0.2
   examine: "Vicious bear slippers."
   equipment:
@@ -2741,7 +2741,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 23294
+    - 23294
   weight: 0.2
   examine: "Vicious demon slippers."
   equipment:
@@ -2763,7 +2763,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 23389
+    - 23389
   weight: 3.0
   examine: "Some very spikey metal bands, better make sure I don't cut myself while\
     \ walking."
@@ -2786,7 +2786,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 23413
+    - 23413
   weight: 0.34
   examine: "Boots made for climbing. Nice trim!"
   equipment:
@@ -2808,7 +2808,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 24003
+    - 24003
   weight: 4.5
   examine: "Decorative elven boots."
   equipment:
@@ -2830,7 +2830,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 24043
+    - 24043
   weight: 1.36
   examine: "A stylish pair of rune boots inlaid with dragonstones."
   equipment:
@@ -2852,7 +2852,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 24313
+    - 24313
   weight: 0.1
   examine: "A spooky pair of boots cut from a bedsheet!"
   equipment:
@@ -2874,7 +2874,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 24323
+    - 24323
   weight: 0.1
   examine: "A spooky pair of boots cut from a bedsheet!"
   equipment:
@@ -2896,7 +2896,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 24393
+    - 24393
   weight: 0.3
   examine: "The boots of a twisted relic hunter."
   equipment:
@@ -2918,7 +2918,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 24403
+    - 24403
   weight: 0.3
   examine: "The boots of a twisted relic hunter."
   equipment:
@@ -2940,7 +2940,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 24411
+    - 24411
   weight: 0.3
   examine: "The boots of a twisted relic hunter."
   equipment:
@@ -2962,7 +2962,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 24680
+    - 24680
   weight: 0.907
   examine: "Lets you dress like a vampyre noble."
   equipment:
@@ -2984,8 +2984,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 24758
-  - 24760
+    - 24758
+    - 24760
   weight: 0.0
   examine: "For your graceful feet."
   equipment:

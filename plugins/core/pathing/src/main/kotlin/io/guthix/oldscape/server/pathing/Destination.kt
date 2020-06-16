@@ -16,15 +16,15 @@
  */
 package io.guthix.oldscape.server.pathing
 
-import io.guthix.oldscape.server.world.WorldMap
-import io.guthix.oldscape.server.world.entity.Loc
-import io.guthix.oldscape.server.world.entity.Player
-import io.guthix.oldscape.server.world.map.ZoneCollision
 import io.guthix.oldscape.server.dimensions.FloorUnit
-import io.guthix.oldscape.server.world.map.Tile
 import io.guthix.oldscape.server.dimensions.TileUnit
 import io.guthix.oldscape.server.dimensions.tiles
+import io.guthix.oldscape.server.world.WorldMap
+import io.guthix.oldscape.server.world.entity.Loc
 import io.guthix.oldscape.server.world.entity.Npc
+import io.guthix.oldscape.server.world.entity.Player
+import io.guthix.oldscape.server.world.map.Tile
+import io.guthix.oldscape.server.world.map.ZoneCollision
 
 abstract class Destination(val floor: FloorUnit, val x: TileUnit, val y: TileUnit) {
     abstract fun reached(moverX: TileUnit, moverY: TileUnit, moverSize: TileUnit): Boolean
@@ -166,28 +166,28 @@ class DestinationLocation(
             when (loc.type) {
                 0 -> {
                     when (loc.orientation) {
-                        ORIENTATION_NORTH -> if(
+                        ORIENTATION_NORTH -> if (
                             (y == moverY && moverX == x - 1.tiles) ||
                             (x == moverX && moverY == y + 1.tiles &&
                                 map.getCollisionMask(floor, moverX, moverY) and ZoneCollision.BLOCK_S == 0) ||
                             (x == moverX && moverY == y - 1.tiles &&
                                 map.getCollisionMask(floor, moverX, moverY) and ZoneCollision.BLOCK_N == 0)
                         ) return true
-                        ORIENTATION_EAST -> if(
+                        ORIENTATION_EAST -> if (
                             (x == moverX && moverY == y + 1.tiles) ||
                             (y == moverY && moverX == x - 1.tiles &&
                                 map.getCollisionMask(floor, moverX, moverY) and ZoneCollision.BLOCK_E == 0) ||
                             (y == moverY && moverX == x + 1.tiles &&
                                 map.getCollisionMask(floor, moverX, moverY) and ZoneCollision.BLOCK_W == 0)
                         ) return true
-                        ORIENTATION_SOUTH -> if(
+                        ORIENTATION_SOUTH -> if (
                             (y == moverY && moverX == x + 1.tiles) ||
                             (y == moverY && moverX == x + 1.tiles &&
                                 map.getCollisionMask(floor, moverX, moverY) and ZoneCollision.BLOCK_S == 0) ||
                             (x == moverX && moverY == y - 1.tiles &&
                                 map.getCollisionMask(floor, moverX, moverY) and ZoneCollision.BLOCK_N == 0)
                         ) return true
-                        ORIENTATION_WEST -> if(
+                        ORIENTATION_WEST -> if (
                             (x == moverX && moverY == y - 1.tiles) ||
                             (y == moverY && moverX == x - 1.tiles &&
                                 map.getCollisionMask(floor, moverX, moverY) and ZoneCollision.BLOCK_E == 0) ||
@@ -198,7 +198,7 @@ class DestinationLocation(
                 }
                 2 -> {
                     when (loc.orientation) {
-                        ORIENTATION_NORTH -> if(
+                        ORIENTATION_NORTH -> if (
                             (y == moverY && moverX == x - 1.tiles) ||
                             (x == moverX && moverY == y + 1.tiles) ||
                             (y == moverY && moverX == x + 1.tiles &&
@@ -206,7 +206,7 @@ class DestinationLocation(
                             (x == moverX && moverY == y - 1.tiles &&
                                 map.getCollisionMask(floor, moverX, moverY) and ZoneCollision.BLOCK_N == 0)
                         ) return true
-                        ORIENTATION_EAST -> if(
+                        ORIENTATION_EAST -> if (
                             (x == moverX && moverY == y + 1.tiles) ||
                             (y == moverY && moverX == x + 1.tiles) ||
                             (y == moverY && moverX == x - 1.tiles &&
@@ -214,7 +214,7 @@ class DestinationLocation(
                             (x == moverX && moverY == y - 1.tiles &&
                                 map.getCollisionMask(floor, moverX, moverY) and ZoneCollision.BLOCK_N == 0)
                         ) return true
-                        ORIENTATION_SOUTH -> if(
+                        ORIENTATION_SOUTH -> if (
                             (y == moverY && moverX == x + 1.tiles) ||
                             (x == moverX && moverY == y - 1.tiles) ||
                             (x == moverX && moverY == y + 1.tiles &&
@@ -222,7 +222,7 @@ class DestinationLocation(
                             (y == moverY && moverX == x - 1.tiles &&
                                 map.getCollisionMask(floor, moverX, moverY) and ZoneCollision.BLOCK_E == 0)
                         ) return true
-                        ORIENTATION_WEST -> if(
+                        ORIENTATION_WEST -> if (
                             (y == moverY && moverX == x - 1.tiles) ||
                             (x == moverX && moverY == y - 1.tiles) ||
                             (x == moverX && moverY == y + 1.tiles &&
@@ -232,7 +232,7 @@ class DestinationLocation(
                         ) return true
                     }
                 }
-                9 -> if(
+                9 -> if (
                     (x == moverX && moverY == y + 1.tiles &&
                         map.getCollisionMask(floor, moverX, moverY) and ZoneCollision.MASK_WALL_S == 0) ||
                     (x == moverX && moverY == y - 1.tiles &&
@@ -252,28 +252,28 @@ class DestinationLocation(
             when (loc.type) {
                 0 -> {
                     when (loc.orientation) {
-                        ORIENTATION_NORTH -> if(
+                        ORIENTATION_NORTH -> if (
                             (y in moverY..actorMaxY && moverY == x - moverSize) ||
                             (x in moverX..actorMaxX && moverY == y + 1.tiles &&
                                 map.getCollisionMask(floor, x, moverY) and ZoneCollision.BLOCK_S == 0) ||
                             (x in moverX..actorMaxX && moverY == y - moverSize &&
                                 map.getCollisionMask(floor, x, actorMaxY) and ZoneCollision.BLOCK_N == 0)
                         ) return true
-                        ORIENTATION_EAST -> if(
+                        ORIENTATION_EAST -> if (
                             (x in moverX..actorMaxX && moverY == y + 1.tiles) ||
                             (y in moverY..actorMaxY && moverX == x + 1.tiles &&
                                 map.getCollisionMask(floor, moverX, y) and ZoneCollision.BLOCK_W == 0) ||
                             (y in moverY..actorMaxY && moverX == x - moverSize &&
                                 map.getCollisionMask(floor, actorMaxX, y) and ZoneCollision.BLOCK_E == 0)
                         ) return true
-                        ORIENTATION_SOUTH -> if(
+                        ORIENTATION_SOUTH -> if (
                             (y in moverY..actorMaxY && moverX == x + 1.tiles) ||
                             (x in moverX..actorMaxX && moverY == y + 1.tiles &&
                                 map.getCollisionMask(floor, x, moverY) and ZoneCollision.BLOCK_S == 0) ||
                             (x in moverX..actorMaxX && moverY == y - moverSize &&
                                 map.getCollisionMask(floor, x, actorMaxY) and ZoneCollision.BLOCK_N == 0)
                         ) return true
-                        ORIENTATION_WEST -> if(
+                        ORIENTATION_WEST -> if (
                             (x in moverX..actorMaxX && moverY == y - moverSize) ||
                             (y in moverY..actorMaxY && moverX == x + 1.tiles &&
                                 map.getCollisionMask(floor, moverX, y) and ZoneCollision.BLOCK_W == 0) ||
@@ -284,7 +284,7 @@ class DestinationLocation(
                 }
                 2 -> {
                     when (loc.orientation) {
-                        ORIENTATION_NORTH -> if(
+                        ORIENTATION_NORTH -> if (
                             (y in moverY..actorMaxY && moverX == x - moverSize) ||
                             (x in moverX..actorMaxX && moverY == y + 1.tiles) ||
                             (y in moverY..actorMaxY && moverX == x + 1.tiles &&
@@ -292,7 +292,7 @@ class DestinationLocation(
                             (x in moverX..actorMaxX && moverY == y - moverSize &&
                                 map.getCollisionMask(floor, x, actorMaxY) and ZoneCollision.BLOCK_N == 0)
                         ) return true
-                        ORIENTATION_EAST -> if(
+                        ORIENTATION_EAST -> if (
                             (x in moverX..actorMaxX && moverY == y + 1.tiles) ||
                             (y in moverY..actorMaxY && moverX == x + 1.tiles) ||
                             (y in moverY..actorMaxY && moverX == x - moverSize &&
@@ -300,7 +300,7 @@ class DestinationLocation(
                             (x in moverX..actorMaxX && moverY == y - moverSize
                                 && map.getCollisionMask(floor, x, actorMaxY) and ZoneCollision.BLOCK_N == 0)
                         ) return true
-                        ORIENTATION_SOUTH -> if(
+                        ORIENTATION_SOUTH -> if (
                             (y in moverY..actorMaxY && moverX == x + 1.tiles) ||
                             (x in moverX..actorMaxX && moverY == y - moverSize) ||
                             (x in moverX..actorMaxX && moverY == y + 1.tiles &&
@@ -308,7 +308,7 @@ class DestinationLocation(
                             (y in moverY..actorMaxY && moverX == x - moverSize &&
                                 map.getCollisionMask(floor, actorMaxX, y) and ZoneCollision.BLOCK_E == 0)
                         ) return true
-                        ORIENTATION_WEST -> if(
+                        ORIENTATION_WEST -> if (
                             (y in moverY..actorMaxY && moverX == x - moverSize) ||
                             (x in moverX..actorMaxX && moverY == y - moverSize) ||
                             (x in moverX..actorMaxX && moverY == y + 1.tiles &&
@@ -318,7 +318,7 @@ class DestinationLocation(
                         ) return true
                     }
                 }
-                9 -> if(
+                9 -> if (
                     (x in moverX..actorMaxX && moverY == y + 1.tiles
                         && map.getCollisionMask(floor, x, moverY) and ZoneCollision.BLOCK_S == 0) ||
                     (y in moverY..actorMaxY && moverX == x + 1.tiles
@@ -347,25 +347,25 @@ class DestinationLocation(
                         orientation = orientation + 2 and 0x3
                     }
                     when (orientation) {
-                        ORIENTATION_NORTH -> if(
+                        ORIENTATION_NORTH -> if (
                             (y == moverY && moverX == x + 1.tiles && mask and ZoneCollision.MASK_WALL_W == 0) ||
                             (x == moverX && moverY == y - 1.tiles && mask and ZoneCollision.MASK_WALL_N == 0)
                         ) return true
-                        ORIENTATION_EAST -> if(
+                        ORIENTATION_EAST -> if (
                             (y == moverY && moverX == x - 1.tiles && mask and ZoneCollision.MASK_WALL_E == 0) ||
                             (x == moverX && moverY == y - 1.tiles && mask and ZoneCollision.MASK_WALL_N == 0)
                         ) return true
-                        ORIENTATION_SOUTH -> if(
+                        ORIENTATION_SOUTH -> if (
                             (y == moverY && moverX == x - 1.tiles && mask and ZoneCollision.MASK_WALL_E == 0) ||
                             (x == moverX && moverY == y + 1.tiles && mask and ZoneCollision.MASK_WALL_S == 0)
                         ) return true
-                        ORIENTATION_WEST -> if(
+                        ORIENTATION_WEST -> if (
                             (y == moverY && moverX == x + 1.tiles && mask and ZoneCollision.MASK_WALL_W == 0) ||
                             (x == moverX && moverY == y + 1.tiles && mask and ZoneCollision.MASK_WALL_S == 0)
                         ) return true
                     }
                 }
-                8 -> if(
+                8 -> if (
                     (x == moverX && moverY == y + 1.tiles && mask and ZoneCollision.MASK_WALL_S == 0) ||
                     (x == moverX && moverY == y - 1.tiles && mask and ZoneCollision.MASK_WALL_N == 0) ||
                     (y == moverY && moverX == x + 1.tiles && mask and ZoneCollision.MASK_WALL_W == 0) ||
@@ -384,25 +384,25 @@ class DestinationLocation(
                         orientation = 0x3 and 2 + orientation
                     }
                     when (orientation) {
-                        ORIENTATION_NORTH -> if(
+                        ORIENTATION_NORTH -> if (
                             (x in moverX..actorMaxX && moverY == y - moverSize &&
                                 map.getCollisionMask(floor, x, actorMaxY) and ZoneCollision.MASK_WALL_N == 0) ||
                             (y in moverY..actorMaxY && moverX == x + 1.tiles
                                 && map.getCollisionMask(floor, moverX, y) and ZoneCollision.MASK_WALL_W == 0)
                         ) return true
-                        ORIENTATION_EAST -> if(
+                        ORIENTATION_EAST -> if (
                             (x in moverX..actorMaxX && moverY == y - moverSize &&
                                 map.getCollisionMask(floor, x, actorMaxY) and ZoneCollision.MASK_WALL_N == 0) ||
                             (y in moverY..actorMaxY && moverX == x - moverSize &&
                                 map.getCollisionMask(floor, actorMaxX, y) and ZoneCollision.MASK_WALL_E == 0)
                         ) return true
-                        ORIENTATION_SOUTH -> if(
+                        ORIENTATION_SOUTH -> if (
                             (y in moverY..actorMaxY && moverX == x - moverSize &&
                                 map.getCollisionMask(floor, actorMaxX, y) and ZoneCollision.MASK_WALL_E == 0) ||
                             (x in moverX..actorMaxX && moverY == y + 1.tiles &&
                                 map.getCollisionMask(floor, x, moverY) and ZoneCollision.MASK_WALL_S == 0)
                         ) return true
-                        ORIENTATION_WEST -> if(
+                        ORIENTATION_WEST -> if (
                             (x in moverX..actorMaxX && moverY == y + 1.tiles &&
                                 map.getCollisionMask(floor, x, moverY) and ZoneCollision.MASK_WALL_S == 0) ||
                             (y in moverY..actorMaxY && moverX == x + 1.tiles &&
@@ -410,7 +410,7 @@ class DestinationLocation(
                         ) return true
                     }
                 }
-                8 -> if(
+                8 -> if (
                     (x in moverX..actorMaxX && moverY == y - moverSize &&
                         map.getCollisionMask(floor, x, actorMaxY) and ZoneCollision.MASK_WALL_N == 0) ||
                     (y in moverY..actorMaxY && moverX == x - moverSize

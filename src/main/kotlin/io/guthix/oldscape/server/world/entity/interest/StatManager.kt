@@ -39,7 +39,9 @@ class Stat(val id: Int, status: Int, xp: Int, private val changes: MutableList<S
             changes.add(this)
         }
 
-    init { changes.add(this) }
+    init {
+        changes.add(this)
+    }
 
     // TODO add level/xp cap
     fun addXp(amount: Int): Boolean {
@@ -79,7 +81,7 @@ class StatManager : InterestManager {
 
     val attack: Stat = Stat(id = 0, status = 99, xp = 13_034_431, changes)
     val defence: Stat = Stat(id = 1, status = 99, xp = 13_034_431, changes)
-    val strength: Stat = Stat(id = 2, status = 99, xp = 13_034_431,  changes)
+    val strength: Stat = Stat(id = 2, status = 99, xp = 13_034_431, changes)
     val hitpoints: Stat = Stat(id = 3, status = 99, xp = 13_034_431, changes)
     val ranged: Stat = Stat(id = 4, status = 99, xp = 13_034_431, changes)
     val prayer: Stat = Stat(id = 5, status = 99, xp = 13_034_431, changes)
@@ -101,7 +103,7 @@ class StatManager : InterestManager {
     val hunter: Stat = Stat(id = 21, status = 99, xp = 13_034_431, changes)
     val construction: Stat = Stat(id = 22, status = 99, xp = 13_034_431, changes)
 
-    override fun initialize(world: World, player: Player) { }
+    override fun initialize(world: World, player: Player) {}
 
     override fun synchronize(world: World, player: Player): List<ChannelFuture> = changes.map { stat ->
         player.ctx.write(UpdateStatPacket(stat.id, stat.xp, stat.status))

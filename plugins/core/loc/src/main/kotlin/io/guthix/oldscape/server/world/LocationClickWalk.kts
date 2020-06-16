@@ -17,12 +17,12 @@
 package io.guthix.oldscape.server.world
 
 import io.guthix.oldscape.server.event.LocationClickEvent
-import io.guthix.oldscape.server.world.map.Tile
 import io.guthix.oldscape.server.event.LocationReachedEvent
-import io.guthix.oldscape.server.event.script.NormalTask
 import io.guthix.oldscape.server.event.script.EventBus
+import io.guthix.oldscape.server.event.script.NormalTask
 import io.guthix.oldscape.server.pathing.DestinationLocation
 import io.guthix.oldscape.server.pathing.breadthFirstSearch
+import io.guthix.oldscape.server.world.map.Tile
 
 on(LocationClickEvent::class).then {
     val loc = world.map.getLoc(event.id, player.pos.floor, event.x, event.y) ?: error(
@@ -33,7 +33,7 @@ on(LocationClickEvent::class).then {
     player.path.lastOrNull()?.let { (_, x, y) -> player.setMapFlag(x, y) }
     player.cancelTasks(NormalTask)
     player.addTask(NormalTask) {
-        wait{ destination.reached(player.pos.x, player.pos.y, player.size) }
+        wait { destination.reached(player.pos.x, player.pos.y, player.size) }
         EventBus.schedule(LocationReachedEvent(loc), player, world)
     }
 }

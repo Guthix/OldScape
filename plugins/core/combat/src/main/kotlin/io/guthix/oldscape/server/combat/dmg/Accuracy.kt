@@ -1,9 +1,24 @@
+/**
+ * This file is part of Guthix OldScape.
+ *
+ * Guthix OldScape is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Guthix OldScape is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with Foobar. If not, see <https://www.gnu.org/licenses/>.
+ */
 package io.guthix.oldscape.server.combat.dmg
 
 import io.guthix.oldscape.server.blueprints.AttackStyle
 import io.guthix.oldscape.server.combat.*
 import io.guthix.oldscape.server.prayer.prayerMultiplier
-import io.guthix.oldscape.server.world.entity.Character
 import io.guthix.oldscape.server.world.entity.Npc
 import io.guthix.oldscape.server.world.entity.Player
 import kotlin.math.floor
@@ -55,7 +70,7 @@ private fun Npc.maxDefenceRol(attackStyle: AttackStyle): Double =
     effectiveDefence() * ((blueprint.defensiveStats?.findBonus(attackStyle) ?: 0) + 64)
 
 private fun calcRoll(attackRoll: Double, defenceRoll: Double) =
-    if(attackRoll > defenceRoll) 1 - (defenceRoll + 2) / (2 * (attackRoll + 1))
+    if (attackRoll > defenceRoll) 1 - (defenceRoll + 2) / (2 * (attackRoll + 1))
     else attackRoll / (2 * (defenceRoll + 1))
 
 internal fun Player.accuracy(other: Player): Double = calcRoll(maxAttackRol(), other.maxDefenceRol(attackStyle))

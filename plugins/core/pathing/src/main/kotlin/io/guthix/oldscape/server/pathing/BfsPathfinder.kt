@@ -16,10 +16,10 @@
  */
 package io.guthix.oldscape.server.pathing
 
-import io.guthix.oldscape.server.world.WorldMap
-import io.guthix.oldscape.server.world.map.Tile
 import io.guthix.oldscape.server.dimensions.TileUnit
 import io.guthix.oldscape.server.dimensions.tiles
+import io.guthix.oldscape.server.world.WorldMap
+import io.guthix.oldscape.server.world.map.Tile
 import kotlin.math.abs
 
 private const val MAX_QUEUE_LENGTH = 4096
@@ -43,7 +43,7 @@ fun breadthFirstSearch(
     }
     val directions = Array(SEARCH_SIZE.value) { IntArray(SEARCH_SIZE.value) }
     val distances = Array(SEARCH_SIZE.value) { IntArray(SEARCH_SIZE.value) { Int.MAX_VALUE } }
-    
+
     fun canFindPath(start: Tile, dest: Destination, moverSize: TileUnit): Boolean {
         val bufferX = IntArray(MAX_QUEUE_LENGTH)
         val bufferY = IntArray(MAX_QUEUE_LENGTH)

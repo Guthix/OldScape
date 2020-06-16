@@ -73,11 +73,11 @@ class PlayerManager(val index: Int) : InterestManager {
         feet: FeetEquipment?,
         ring: RingEquipment?
     ) {
-        var attackBonus: StyleBonus = StyleBonus(0,0,0,0,0) + head?.attackBonus +
+        var attackBonus: StyleBonus = StyleBonus(0, 0, 0, 0, 0) + head?.attackBonus +
             cape?.attackBonus + neck?.attackBonus + ammunition?.attackBonus + weapon?.attackBonus + body?.attackBonus +
             shield?.attackBonus + legs?.attackBonus + hands?.attackBonus + feet?.attackBonus + ring?.attackBonus
 
-        var defenceBonus: StyleBonus = StyleBonus(0,0,0,0,0) + head?.defenceBonus +
+        var defenceBonus: StyleBonus = StyleBonus(0, 0, 0, 0, 0) + head?.defenceBonus +
             cape?.defenceBonus + neck?.defenceBonus + ammunition?.defenceBonus + weapon?.defenceBonus +
             body?.defenceBonus + shield?.defenceBonus + legs?.defenceBonus + hands?.defenceBonus + feet?.defenceBonus +
             ring?.defenceBonus

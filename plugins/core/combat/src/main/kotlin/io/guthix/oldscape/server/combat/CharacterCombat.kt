@@ -1,10 +1,25 @@
+/**
+ * This file is part of Guthix OldScape.
+ *
+ * Guthix OldScape is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Guthix OldScape is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with Foobar. If not, see <https://www.gnu.org/licenses/>.
+ */
 package io.guthix.oldscape.server.combat
 
 import io.guthix.oldscape.server.blueprints.AttackStyle
 import io.guthix.oldscape.server.stat.StatMultiplier
-import io.guthix.oldscape.server.world.entity.CharacterProperty
 import io.guthix.oldscape.server.world.entity.Character
-import io.guthix.oldscape.server.world.entity.Npc
+import io.guthix.oldscape.server.world.entity.CharacterProperty
 
 enum class MeleeCombatStance(val attack: Int = 0, val strength: Int = 0, val defence: Int = 0, val range: Int = 0) {
     ACCURATE(attack = 3),

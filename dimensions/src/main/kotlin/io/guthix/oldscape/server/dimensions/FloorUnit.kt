@@ -46,6 +46,7 @@ class FloorUnitRange(
     override fun isEmpty(): Boolean = first > last
     override fun equals(other: Any?): Boolean = other is FloorUnitRange &&
         (isEmpty() && other.isEmpty() || first == other.first && last == other.last)
+
     override fun hashCode(): Int = if (isEmpty()) -1 else (31 * first.value + last.value)
     override fun toString(): String = "$first..$last"
 }
@@ -57,12 +58,14 @@ open class FloorUnitProgression(start: FloorUnit, endInclusive: FloorUnit, var s
             "Step must be greater than Int.MIN_VALUE to avoid overflow on negation."
         }
     }
+
     val first: FloorUnit = start
     val last: FloorUnit = getProgressionLastElement(start, endInclusive, step)
     override fun iterator(): FloorUnitProgressionIterator = FloorUnitProgressionIterator(first, last, step)
     open fun isEmpty(): Boolean = if (step > 0) first > last else first < last
     override fun equals(other: Any?): Boolean = other is FloorUnitProgression &&
         (isEmpty() && other.isEmpty() || first == other.first && last == other.last && step == other.step)
+
     override fun hashCode(): Int = if (isEmpty()) -1 else (31 * (31 * first.value + last.value) + step)
     override fun toString(): String = if (step > 0) "$first..$last step $step" else "$first downTo $last step ${-step}"
     infix fun step(step: FloorUnit): FloorUnitProgression = apply { this.step = step.value }
