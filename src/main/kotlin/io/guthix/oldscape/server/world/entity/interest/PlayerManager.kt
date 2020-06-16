@@ -23,7 +23,6 @@ import io.guthix.oldscape.server.dimensions.tiles
 import io.guthix.oldscape.server.net.game.out.PlayerInfoPacket
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.*
-import io.guthix.oldscape.server.world.entity.combat.MultiplierBonus
 import io.guthix.oldscape.server.world.map.Tile
 import io.netty.channel.ChannelFuture
 import kotlin.properties.Delegates
@@ -92,10 +91,6 @@ class PlayerManager(val index: Int) : InterestManager {
             (ammunition?.prayerBonus ?: 0) + (weapon?.prayerBonus ?: 0) + (body?.prayerBonus ?: 0) +
             (shield?.prayerBonus ?: 0) + (legs?.prayerBonus ?: 0) + (hands?.prayerBonus ?: 0) +
             (feet?.prayerBonus ?: 0) + (ring?.prayerBonus ?: 0)
-
-        val multiplierBonus: MultiplierBonus = MultiplierBonus(
-            attack = 0.0, strength = 0.0, defence = 0.0, range = 0.0, magic = 0.0
-        )
 
         var head: HeadEquipment? by Delegates.observable(head) { _, old, new -> updateBonuses(old, new) }
 

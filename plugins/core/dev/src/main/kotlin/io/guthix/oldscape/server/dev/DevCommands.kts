@@ -17,13 +17,9 @@
 package io.guthix.oldscape.server.dev
 
 import io.guthix.oldscape.server.event.ClientCheatEvent
-import io.guthix.oldscape.server.world.entity.Obj
-import io.guthix.oldscape.server.world.entity.Loc
-import io.guthix.oldscape.server.world.entity.SpotAnimation
-import io.guthix.oldscape.server.world.entity.Sequence
 import io.guthix.oldscape.server.world.map.Tile
 import io.guthix.oldscape.server.dimensions.tiles
-import io.guthix.oldscape.server.world.entity.HeadEquipment
+import io.guthix.oldscape.server.world.entity.*
 
 on(ClientCheatEvent::class).where { event.string == "drop" }.then {
     world.map.addObject(
@@ -74,6 +70,10 @@ on(ClientCheatEvent::class).where { event.string == "clear" }.then {
 
 on(ClientCheatEvent::class).where { event.string == "pos" }.then {
     println("Position ${player.pos}")
+}
+
+on(ClientCheatEvent::class).where { event.string == "npc" }.then {
+    world.addNpc(42, player.pos.copy(x = player.pos.x + 2.tiles))
 }
 
 on(ClientCheatEvent::class).where { event.string == "npc" }.then {

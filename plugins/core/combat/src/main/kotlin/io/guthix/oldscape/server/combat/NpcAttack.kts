@@ -25,6 +25,8 @@ import io.guthix.oldscape.server.pathing.simplePathSearch
 import io.guthix.oldscape.server.world.entity.Sequence
 import io.guthix.oldscape.server.world.entity.HitMark
 import io.guthix.oldscape.server.world.entity.interest.MovementInterestUpdate
+import io.guthix.oldscape.server.combat.dmg.calcHit
+import io.guthix.oldscape.server.combat.dmg.maxMeleeHit
 
 on(NpcClickEvent::class).where { event.option == "Attack" }.then {
     val npcDestination = DesinationNpc(event.npc, world.map)
@@ -38,7 +40,9 @@ on(NpcClickEvent::class).where { event.option == "Attack" }.then {
         event.npc.addTask(NormalTask) { // start npc combat
             while(true) {
                 event.npc.animate(Sequence(id = 5578))
-                player.hit(HitMark.Color.RED, 10, 0)
+                val damage = event.npc.calcHit(player) ?: 0
+                val hmColor = if(damage == 0) HitMark.Color.BLUE else HitMark.Color.RED
+                player.hit(hmColor, damage, 0)
                 wait(ticks = 5)
                 wait { playerDestination.reached(event.npc.pos.x, event.npc.pos.y, event.npc.size) }
             }
@@ -56,7 +60,7 @@ on(NpcClickEvent::class).where { event.option == "Attack" }.then {
         }
         while(true) { // start player combat
             player.animate(Sequence(id = 422))
-            val damage = player.calcHit(event.npc) ?: 0
+            val damage = player.calcHit(event.npc, player.maxMeleeHit()) ?: 0
             val hmColor = if(damage == 0) HitMark.Color.BLUE else HitMark.Color.RED
             event.npc.hit(hmColor, damage, 0)
             wait(ticks = 4)
