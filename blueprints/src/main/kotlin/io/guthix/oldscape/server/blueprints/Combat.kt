@@ -25,14 +25,7 @@ class CombatStats(
     val defence: Int,
     val range: Int,
     val magic: Int
-) {
-    fun findByStyle(attackStyle: AttackStyle): Int = when(attackStyle) {
-        AttackStyle.STAB, AttackStyle.SLASH, AttackStyle.CRUSH -> attack
-        AttackStyle.RANGED -> range
-        AttackStyle.MAGIC -> magic
-        AttackStyle.NONE -> 0
-    }
-}
+)
 
 class StyleBonus(
     var stab: Int,
@@ -60,15 +53,6 @@ class StyleBonus(
         range -= value.range
         return this
     }
-
-    fun findByStyle(attackStyle: AttackStyle): Int = when(attackStyle) {
-        AttackStyle.STAB -> stab
-        AttackStyle.SLASH -> slash
-        AttackStyle.CRUSH -> crush
-        AttackStyle.RANGED -> range
-        AttackStyle.MAGIC -> magic
-        AttackStyle.NONE -> 0
-    }
 }
 
 class CombatBonus(
@@ -90,13 +74,6 @@ class CombatBonus(
         range -= value.range
         magic -= value.magic
         return this
-    }
-
-    fun findByStyle(attackStyle: AttackStyle): Int = when(attackStyle) {
-        AttackStyle.STAB, AttackStyle.SLASH, AttackStyle.CRUSH -> melee
-        AttackStyle.RANGED -> range
-        AttackStyle.MAGIC -> magic
-        AttackStyle.NONE -> 0
     }
 }
 

@@ -16,9 +16,6 @@
  */
 package io.guthix.oldscape.server.world.entity
 
-import io.guthix.oldscape.server.blueprints.AttackStyle
-import io.guthix.oldscape.server.blueprints.CombatBonus
-import io.guthix.oldscape.server.blueprints.StyleBonus
 import io.guthix.oldscape.server.dimensions.TileUnit
 import io.guthix.oldscape.server.dimensions.tiles
 import io.guthix.oldscape.server.event.PublicMessageEvent
@@ -27,14 +24,11 @@ import io.guthix.oldscape.server.event.script.InGameEvent
 import io.guthix.oldscape.server.event.script.Task
 import io.guthix.oldscape.server.net.game.out.*
 import io.guthix.oldscape.server.world.World
-import io.guthix.oldscape.server.world.entity.combat.MeleeCombatStance
-import io.guthix.oldscape.server.world.entity.combat.MultiplierBonus
 import io.guthix.oldscape.server.world.entity.interest.*
 import io.guthix.oldscape.server.world.entity.intface.IfComponent
 import io.netty.channel.ChannelFuture
 import io.netty.channel.ChannelHandlerContext
 import java.util.concurrent.ConcurrentLinkedQueue
-import kotlin.math.floor
 
 class Player(
     var priority: Int,
@@ -89,22 +83,6 @@ class Player(
     val equipment: PlayerManager.EquipmentSet = PlayerManager.EquipmentSet(
         null, null, null, null, null, null, null, null, null, null, null
     )
-
-    override val attackStat: Int get() = stats.attack.status
-
-    override val strengthStat: Int get() = stats.strength.status
-
-    override val defenceStat: Int get() = stats.defence.status
-
-    override val rangeStat: Int get() = stats.ranged.status
-
-    override val magicStat: Int get() = stats.magic.status
-
-    override val attackBonus: Int get() = equipment.attackBonus.findByStyle(attackStyle)
-
-    override val strengthBonus: CombatBonus get() = equipment.strengtBonus // TODO set depending on type
-
-    override val defenceBonus: StyleBonus get() = equipment.defenceBonus
 
     val animations: PlayerManager.Animations = PlayerManager.Animations(
         stand = 808,
