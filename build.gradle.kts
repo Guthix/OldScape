@@ -1,5 +1,7 @@
 @file:Suppress("ConvertLambdaToReference")
 
+import org.jetbrains.kotlin.gradle.plugin.getKotlinPluginVersion
+
 plugins {
     idea
     `maven-publish`
@@ -12,14 +14,14 @@ group = "io.guthix"
 version = "0.1-SNAPSHOT"
 description = "A library for modifying OldScape caches"
 
-val licenseHeader: File by extra(file("LGPLv3.txt"))
+val licenseHeader: File by extra(file("gradle/LICENSE_HEADER"))
 
 val jagexByteBufVersion: String by extra("555807fda4")
 val jagexCacheVersion: String by extra("b95030a6f6")
 val kotlinLoggingVersion: String by extra("1.7.6")
-val kotlinVersion: String by extra("1.3.70")
 val licensePluginVersion: String by extra("0.15.0")
 val logbackVersion: String by extra("1.2.3")
+val kotlinVersion: String by extra(project.getKotlinPluginVersion()!!)
 
 allprojects {
     apply(plugin = "kotlin")
@@ -68,7 +70,7 @@ tasks.dokka {
 val dokkaJar: Jar by tasks.creating(Jar::class) {
     group = JavaBasePlugin.DOCUMENTATION_GROUP
     description = "Assembles Kotlin docs with Dokka"
-    classifier = "javadoc"
+    archiveClassifier.set("javadoc")
     from(tasks.dokka)
 }
 
