@@ -4,7 +4,7 @@ description = "Server Dimensions"
 val dokkaJar: Jar by tasks.creating(Jar::class) {
     group = JavaBasePlugin.DOCUMENTATION_GROUP
     description = "Assembles Kotlin docs with Dokka"
-    classifier = "javadoc"
+    archiveClassifier.set("javadoc")
     from(tasks.dokka)
 }
 

@@ -15,7 +15,7 @@ group = "io.guthix"
 version = "0.1-SNAPSHOT"
 description = "An Oldschool Runescape Server Emulator"
 
-val licenseHeader: File by extra(file("AGPLv3.txt"))
+val licenseHeader: File by extra(file("gradle/LICENSE_HEADER"))
 
 application { mainClass.set("io.guthix.oldscape.server.OldScape") }
 
