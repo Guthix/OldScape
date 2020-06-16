@@ -34,7 +34,7 @@ import kotlin.reflect.KProperty
 abstract class Character(val index: Int) : Entity() {
     internal val tasks = mutableMapOf<TaskType, MutableList<Task>>()
 
-    val properties: MutableMap<KProperty<*>, Any> = mutableMapOf()
+    val properties: MutableMap<KProperty<*>, Any?> = mutableMapOf()
 
     internal abstract val updateFlags: SortedSet<out InterestUpdateType>
 
