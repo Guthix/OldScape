@@ -53,11 +53,14 @@ allprojects {
 
     license {
         header = licenseHeader
+        strictCheck = true
         exclude("*\\main_file_cache.*")
         exclude("**/*.json")
         exclude("**/*.xml")
         exclude("**/*.yaml")
+        include("**/*.kt")
         include("**/*.kts")
+        mapping("kt", "JAVADOC_STYLE")
         mapping("kts", "JAVADOC_STYLE")
     }
 
@@ -82,7 +85,7 @@ allprojects {
 
 dependencies {
     project(":plugins").dependencyProject.subprojects.forEach { pluginProject ->
-        if(pluginProject.buildFile.exists()) {
+        if (pluginProject.buildFile.exists()) {
             runtimeOnly(pluginProject)
         }
     }
@@ -93,9 +96,9 @@ dependencies {
     implementation(group = "org.jetbrains.kotlin", name = "kotlin-reflect", version = kotlinVersion)
     implementation(group = "org.jetbrains.kotlin", name = "kotlin-scripting-common", version = kotlinVersion)
     implementation(group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version = kotlinCoroutinesVersion)
-    implementation(group = "io.netty", name = "netty-all", version =  nettyVersion)
-    implementation(group = "io.github.classgraph", name = "classgraph", version =  classGraphVersion)
-    implementation(group = "io.github.microutils", name = "kotlin-logging", version =  kotlinLoggingVersion)
+    implementation(group = "io.netty", name = "netty-all", version = nettyVersion)
+    implementation(group = "io.github.classgraph", name = "classgraph", version = classGraphVersion)
+    implementation(group = "io.github.microutils", name = "kotlin-logging", version = kotlinLoggingVersion)
     implementation(group = "ch.qos.logback", name = "logback-classic", version = logbackVersion)
     implementation(group = "com.fasterxml.jackson.core", name = "jackson-databind", version = jacksonVersion)
     implementation(

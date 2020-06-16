@@ -16,10 +16,10 @@
  */
 package io.guthix.oldscape.server.pathing
 
-import io.guthix.oldscape.server.world.WorldMap
-import io.guthix.oldscape.server.world.map.Tile
 import io.guthix.oldscape.server.dimensions.TileUnit
 import io.guthix.oldscape.server.dimensions.tiles
+import io.guthix.oldscape.server.world.WorldMap
+import io.guthix.oldscape.server.world.map.Tile
 
 fun simplePathSearch(start: Tile, dest: Destination, moverSize: TileUnit, map: WorldMap): MutableList<Tile> {
     var curX = start.x
@@ -30,31 +30,31 @@ fun simplePathSearch(start: Tile, dest: Destination, moverSize: TileUnit, map: W
         var finalDestinationFound = true
         directions@ for (dir in directions) {
             when (dir) {
-                Direction.SOUTH -> if(map.canWalkSouth(start.floor, curX, curY, moverSize)) {
+                Direction.SOUTH -> if (map.canWalkSouth(start.floor, curX, curY, moverSize)) {
                     curY--
                     path.add(Tile(start.floor, curX, curY))
                     finalDestinationFound = false
                     break@directions
                 }
-                Direction.NORTH -> if(map.canWalkNorth(start.floor, curX, curY, moverSize)) {
+                Direction.NORTH -> if (map.canWalkNorth(start.floor, curX, curY, moverSize)) {
                     curY++
                     path.add(Tile(start.floor, curX, curY))
                     finalDestinationFound = false
                     break@directions
                 }
-                Direction.WEST -> if(map.canWalkWest(start.floor, curX, curY, moverSize)) {
+                Direction.WEST -> if (map.canWalkWest(start.floor, curX, curY, moverSize)) {
                     curX--
                     path.add(Tile(start.floor, curX, curY))
                     finalDestinationFound = false
                     break@directions
                 }
-                Direction.EAST -> if(map.canWalkEast(start.floor, curX, curY, moverSize)) {
+                Direction.EAST -> if (map.canWalkEast(start.floor, curX, curY, moverSize)) {
                     curX++
                     path.add(Tile(start.floor, curX, curY))
                     finalDestinationFound = false
                     break@directions
                 }
-                Direction.SOUTH_WEST -> if(map.canWalkSouthWest(start.floor, curX, curY, moverSize)
+                Direction.SOUTH_WEST -> if (map.canWalkSouthWest(start.floor, curX, curY, moverSize)
                     && !(dest.x == curX - 1.tiles && dest.y == curY - 1.tiles)
                 ) {
                     curX--
@@ -63,7 +63,7 @@ fun simplePathSearch(start: Tile, dest: Destination, moverSize: TileUnit, map: W
                     finalDestinationFound = false
                     break@directions
                 }
-                Direction.NORTH_WEST -> if(map.canWalkNorthWest(start.floor, curX, curY, moverSize)
+                Direction.NORTH_WEST -> if (map.canWalkNorthWest(start.floor, curX, curY, moverSize)
                     && !(dest.x == curX - 1.tiles && dest.y == curY + 1.tiles)
                 ) {
                     curX--
@@ -72,7 +72,7 @@ fun simplePathSearch(start: Tile, dest: Destination, moverSize: TileUnit, map: W
                     finalDestinationFound = false
                     break@directions
                 }
-                Direction.SOUTH_EAST -> if(map.canWalkSouthEast(start.floor, curX, curY, moverSize)
+                Direction.SOUTH_EAST -> if (map.canWalkSouthEast(start.floor, curX, curY, moverSize)
                     && !(dest.x == curX + 1.tiles && dest.y == curY - 1.tiles)
                 ) {
                     curX++
@@ -81,7 +81,7 @@ fun simplePathSearch(start: Tile, dest: Destination, moverSize: TileUnit, map: W
                     finalDestinationFound = false
                     break@directions
                 }
-                Direction.NORTH_EAST -> if(map.canWalkNorthEast(start.floor, curX, curY, moverSize)
+                Direction.NORTH_EAST -> if (map.canWalkNorthEast(start.floor, curX, curY, moverSize)
                     && !(dest.x == curX + 1.tiles && dest.y == curY + 1.tiles)
                 ) {
                     curX++

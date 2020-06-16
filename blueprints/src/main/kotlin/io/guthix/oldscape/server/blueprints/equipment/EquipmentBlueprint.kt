@@ -17,9 +17,9 @@
 package io.guthix.oldscape.server.blueprints.equipment
 
 import io.guthix.oldscape.cache.config.ObjectConfig
+import io.guthix.oldscape.server.blueprints.CombatBonus
 import io.guthix.oldscape.server.blueprints.ExtraObjectConfig
 import io.guthix.oldscape.server.blueprints.ObjectBlueprint
-import io.guthix.oldscape.server.blueprints.CombatBonus
 import io.guthix.oldscape.server.blueprints.StyleBonus
 
 open class ExtraEquipmentConfig(

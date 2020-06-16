@@ -17,10 +17,10 @@
 package io.guthix.oldscape.server.follow
 
 import io.guthix.oldscape.server.event.PlayerClickEvent
+import io.guthix.oldscape.server.event.script.NormalTask
 import io.guthix.oldscape.server.pathing.DestinationTile
 import io.guthix.oldscape.server.pathing.breadthFirstSearch
 import io.guthix.oldscape.server.pathing.simplePathSearch
-import io.guthix.oldscape.server.event.script.NormalTask
 
 on(PlayerClickEvent::class).where { event.option == "Follow" }.then {
     val followed = event.player
@@ -30,14 +30,14 @@ on(PlayerClickEvent::class).where { event.option == "Follow" }.then {
     val currentTarget = player.followPosition
     player.cancelTasks(NormalTask)
     player.addTask(NormalTask) {
-        while(true) {
-            if(dest.reached(player.pos.x, player.pos.y, player.size)) break
-            if(currentTarget != followed.followPosition) {
+        while (true) {
+            if (dest.reached(player.pos.x, player.pos.y, player.size)) break
+            if (currentTarget != followed.followPosition) {
                 player.path = breadthFirstSearch(player.pos, dest, player.size, true, world.map)
             }
             wait(1)
         }
-        while(true) {
+        while (true) {
             wait { currentTarget != followed.followPosition }
             player.path = simplePathSearch(player.pos, DestinationTile(followed.followPosition), player.size, world.map)
         }

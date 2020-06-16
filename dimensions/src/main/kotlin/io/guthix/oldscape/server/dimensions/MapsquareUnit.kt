@@ -22,7 +22,7 @@ fun abs(n: MapsquareUnit): MapsquareUnit = abs(n.value).mapsquares
 
 val Int.mapsquares: MapsquareUnit get() = MapsquareUnit(this)
 
-inline class MapsquareUnit(val value: Int): Comparable<MapsquareUnit> {
+inline class MapsquareUnit(val value: Int) : Comparable<MapsquareUnit> {
     val inTiles: TileUnit get() = TileUnit(value * SIZE_TILE.value)
     val inZones: ZoneUnit get() = ZoneUnit(value * SIZE_ZONE.value)
 
@@ -58,6 +58,7 @@ class MapSquareUnitRange(
     override fun isEmpty(): Boolean = first > last
     override fun equals(other: Any?): Boolean = other is MapSquareUnitRange &&
         (isEmpty() && other.isEmpty() || first == other.first && last == other.last)
+
     override fun hashCode(): Int = if (isEmpty()) -1 else (31 * first.value + last.value)
     override fun toString(): String = "$first..$last"
 }
@@ -73,12 +74,14 @@ open class MapSquareUnitProgression(
             "Step must be greater than Int.MIN_VALUE to avoid overflow on negation."
         }
     }
+
     val first: MapsquareUnit = start
     val last: MapsquareUnit = getProgressionLastElement(start, endInclusive, step)
     override fun iterator(): MapSquareUnitProgressionIterator = MapSquareUnitProgressionIterator(first, last, step)
     open fun isEmpty(): Boolean = if (step > 0) first > last else first < last
     override fun equals(other: Any?): Boolean = other is MapSquareUnitProgression &&
         (isEmpty() && other.isEmpty() || first == other.first && last == other.last && step == other.step)
+
     override fun hashCode(): Int = if (isEmpty()) -1 else (31 * (31 * first.value + last.value) + step)
     override fun toString(): String = if (step > 0) "$first..$last step $step" else "$first downTo $last step ${-step}"
     infix fun step(step: TileUnit): MapSquareUnitProgression = apply { this.step = step.inMapsquares.value }

@@ -16,10 +16,10 @@
  */
 package io.guthix.oldscape.server.dev
 
-import io.guthix.oldscape.server.event.ClientCheatEvent
-import io.guthix.oldscape.server.world.map.Tile
 import io.guthix.oldscape.server.dimensions.tiles
+import io.guthix.oldscape.server.event.ClientCheatEvent
 import io.guthix.oldscape.server.world.entity.*
+import io.guthix.oldscape.server.world.map.Tile
 
 on(ClientCheatEvent::class).where { event.string == "drop" }.then {
     world.map.addObject(

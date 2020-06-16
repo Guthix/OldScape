@@ -1,6 +1,6 @@
-import java.nio.file.Paths
-import java.nio.file.Path
 import groovy.util.FileNameFinder
+import java.nio.file.Path
+import java.nio.file.Paths
 
 pluginManagement {
     val kotlinVersion by extra("1.4-M2")

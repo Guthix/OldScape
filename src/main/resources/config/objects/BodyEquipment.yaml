@@ -1,5 +1,5 @@
 - ids:
-  - 24794
+    - 24794
   weight: 0.907
   examine: "Lets you dress like a vampyre noble."
   equipment:
@@ -21,7 +21,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 24798
+    - 24798
   weight: 0.907
   examine: "Lets you dress like a vampyre noble."
   equipment:
@@ -43,7 +43,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 24802
+    - 24802
   weight: 0.907
   examine: "Lets you dress like a vampyre noble."
   equipment:
@@ -65,7 +65,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 24806
+    - 24806
   weight: 0.907
   examine: "Lets you dress like a vampyre noble."
   equipment:
@@ -87,7 +87,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 24810
+    - 24810
   weight: 0.907
   examine: "Lets you dress like a vampyre noble."
   equipment:
@@ -109,7 +109,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 24814
+    - 24814
   weight: 0.907
   examine: "Lets you dress like a vampyre noble."
   equipment:
@@ -131,7 +131,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 24818
+    - 24818
   weight: 0.907
   examine: "Lets you dress like a vampyre noble."
   equipment:
@@ -153,7 +153,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 24822
+    - 24822
   weight: 0.907
   examine: "Lets you dress like a vampyre noble."
   equipment:
@@ -175,7 +175,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 24826
+    - 24826
   weight: 0.907
   examine: "Lets you dress like a vampyre noble."
   equipment:
@@ -197,7 +197,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 24830
+    - 24830
   weight: 0.907
   examine: "Lets you dress like a vampyre noble."
   equipment:
@@ -219,7 +219,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 24834
+    - 24834
   weight: 0.907
   examine: "Lets you dress like a vampyre noble."
   equipment:
@@ -241,7 +241,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 24838
+    - 24838
   weight: 0.907
   examine: "Lets you dress like a vampyre noble."
   equipment:
