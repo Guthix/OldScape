@@ -1,6 +1,6 @@
 # OldScape Server
 [![Revision](https://img.shields.io/badge/revision-189-blueviolet)](https://oldschool.runescape.wiki/w/Update:Chambers_of_Xeric_Improvements)
-[![License](https://img.shields.io/badge/license-APGL--3.0-orange)](https://github.com/guthix/OldScape/blob/master/server/LICENSE)
+[![License](https://img.shields.io/github/license/guthix/OldScape-Server)](https://github.com/guthix/OldScape-Server/blob/master/LICENSE)
 [![JDK](https://img.shields.io/badge/JDK-11%2B-blue)](https://openjdk.java.net/projects/jdk/11/)
 
 
