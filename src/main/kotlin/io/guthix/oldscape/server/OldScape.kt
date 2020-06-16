@@ -37,7 +37,7 @@ import io.guthix.oldscape.server.blueprints.ExtraObjectConfig
 import io.guthix.oldscape.server.blueprints.equipment.ExtraBodyConfig
 import io.guthix.oldscape.server.blueprints.equipment.ExtraEquipmentConfig
 import io.guthix.oldscape.server.blueprints.equipment.ExtraHeadConfig
-import io.guthix.oldscape.server.event.script.EventBus
+import io.guthix.oldscape.server.event.EventBus
 import io.guthix.oldscape.server.net.OldScapeServer
 import io.guthix.oldscape.server.net.game.GamePacketDecoder
 import io.guthix.oldscape.server.world.World

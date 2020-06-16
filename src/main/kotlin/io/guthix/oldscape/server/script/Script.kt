@@ -14,8 +14,10 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with Foobar. If not, see <https://www.gnu.org/licenses/>.
  */
-package io.guthix.oldscape.server.event.script
+package io.guthix.oldscape.server.script
 
+import io.guthix.oldscape.server.event.EventBus
+import io.guthix.oldscape.server.event.InGameEvent
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.Player
 import kotlin.reflect.KClass

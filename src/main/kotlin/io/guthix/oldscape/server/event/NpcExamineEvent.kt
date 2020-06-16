@@ -18,7 +18,6 @@ package io.guthix.oldscape.server.event
 
 import io.guthix.oldscape.server.api.NpcBlueprints
 import io.guthix.oldscape.server.blueprints.NpcBlueprint
-import io.guthix.oldscape.server.event.script.InGameEvent
 import io.guthix.oldscape.server.net.game.ClientEvent
 import io.guthix.oldscape.server.world.World
 

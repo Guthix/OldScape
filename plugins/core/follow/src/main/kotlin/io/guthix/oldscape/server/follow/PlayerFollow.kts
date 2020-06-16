@@ -17,7 +17,7 @@
 package io.guthix.oldscape.server.follow
 
 import io.guthix.oldscape.server.event.PlayerClickEvent
-import io.guthix.oldscape.server.event.script.NormalTask
+import io.guthix.oldscape.server.task.NormalTask
 import io.guthix.oldscape.server.pathing.DestinationTile
 import io.guthix.oldscape.server.pathing.breadthFirstSearch
 import io.guthix.oldscape.server.pathing.simplePathSearch
