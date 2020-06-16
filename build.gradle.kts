@@ -13,7 +13,7 @@ group = "io.guthix"
 version = "0.1-SNAPSHOT"
 description = "A library for interfacing with the Oldschool Runescape Wiki"
 
-val licenseHeader: File by extra(file("LGPLv3.txt"))
+val licenseHeader: File by extra(file("gradle/LICENSE_HEADER"))
 
 val oldscapeServerVersion: String by extra("55e2e62c94")
 val oldscapeCacheVersion: String by extra("6d3cc20a7f")
