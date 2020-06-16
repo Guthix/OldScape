@@ -15,7 +15,7 @@ description = "A library for interfacing with the Oldschool Runescape Wiki"
 
 val licenseHeader: File by extra(file("LGPLv3.txt"))
 
-val oldscapeServerVersion: String by extra("219c0b20eb")
+val oldscapeServerVersion: String by extra("55e2e62c94")
 val oldscapeCacheVersion: String by extra("6d3cc20a7f")
 val kotlinCoroutinesVersion: String by extra("1.3.4")
 val licensePluginVersion: String by extra("0.15.0")

@@ -22,6 +22,7 @@ import com.fasterxml.jackson.dataformat.yaml.YAMLFactory
 import com.fasterxml.jackson.dataformat.yaml.YAMLGenerator
 import com.fasterxml.jackson.module.kotlin.registerKotlinModule
 import io.guthix.oldscape.server.blueprints.*
+import io.guthix.oldscape.server.blueprints.AttackStyle
 import io.guthix.oldscape.server.blueprints.equipment.EquipmentBlueprint
 import io.guthix.oldscape.server.blueprints.equipment.ExtraEquipmentConfig
 import io.guthix.oldscape.wiki.npcWikiDownloader
@@ -71,6 +72,20 @@ object YamlDownloader {
     }
 }
 
+fun getStyleMapping(str: String?): AttackStyle? = when {
+    str == null -> null
+    str.equals("stab", true) -> AttackStyle.STAB
+    str.equals("slash", true) -> AttackStyle.SLASH
+    str.equals("crush", true) -> AttackStyle.CRUSH
+    str.equals("range", true) -> AttackStyle.RANGED
+    str.equals("ranged", true) -> AttackStyle.RANGED
+    str.equals("magic", true) -> AttackStyle.MAGIC
+    else -> {
+        logger.info { "Couldn't get attackstyle for $str." }
+        null
+    }
+}
+
 fun ObjectWikiDefinition.toExtraObjectConfig(): ExtraObjectConfig = ExtraObjectConfig(
     ids!!,
     weight ?: 0f,
@@ -113,7 +128,9 @@ fun ObjectWikiDefinition.toExtraEquipmentConfig(): ExtraObjectConfig {
 fun NpcWikiDefinition.toExtraNpcConfig(): ExtraNpcConfig {
     val combat = if(combatLvl != null) {
         NpcCombat(
-            combatLvl,
+            combatLvl ?: throw IllegalStateException("Combat lvl can't be null."),
+            maxHit,
+            getStyleMapping(attackStyles?.first()),
             isAggressive ?: false,
             isPoisonous ?: false,
             isImmuneToPoison ?: false,
