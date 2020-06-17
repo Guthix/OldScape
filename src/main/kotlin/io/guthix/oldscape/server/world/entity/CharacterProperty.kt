@@ -18,29 +18,15 @@ package io.guthix.oldscape.server.world.entity
 
 import kotlin.reflect.KProperty
 
-class CharacterProperty<T : Any?>(
-    val initializer: Character.() -> T = { throw IllegalStateException("Not initialized.") }
+class CharacterProperty<in C : Character, T : Any?>(
+    val initializer: C.() -> T = { throw IllegalStateException("Not initialized.") }
 ) {
     @Suppress("UNCHECKED_CAST")
-    operator fun getValue(thisRef: Character, property: KProperty<*>): T = thisRef.properties.getOrPut(property) {
+    operator fun getValue(thisRef: C, property: KProperty<*>): T = thisRef.properties.getOrPut(property) {
         initializer(thisRef)
     } as T
 
-    operator fun setValue(thisRef: Character, property: KProperty<*>, value: T): T {
-        thisRef.properties[property] = value
-        return value
-    }
-}
-
-class CharacterPropertyNullable<T : Any>(
-    val initializer: Character.() -> T? = { throw IllegalStateException("Not initialized.") }
-) {
-    @Suppress("UNCHECKED_CAST")
-    operator fun getValue(thisRef: Character, property: KProperty<*>): T? = thisRef.properties.getOrPut(property) {
-        initializer(thisRef)
-    } as T?
-
-    operator fun setValue(thisRef: Character, property: KProperty<*>, value: T?): T? {
+    operator fun setValue(thisRef: C, property: KProperty<*>, value: T): T {
         thisRef.properties[property] = value
         return value
     }

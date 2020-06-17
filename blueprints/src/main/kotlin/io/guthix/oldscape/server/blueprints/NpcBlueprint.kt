@@ -31,6 +31,8 @@ class NpcCombat(
     val isPoisonous: Boolean,
     val isImmumePoison: Boolean,
     val isImmuneVenom: Boolean,
+    val attackSpeed: Int?,
+    val sequences: CombatSequences?,
     val stats: CombatStats,
     val attackStats: NpcAttackStats,
     val defensiveStats: StyleBonus
@@ -50,6 +52,8 @@ open class NpcBlueprint(
     val isPoisonous: Boolean? get() = extraConfig.combat?.isPoisonous
     val isImmumePoison: Boolean? get() = extraConfig.combat?.isImmumePoison
     val isImmuneVenom: Boolean? get() = extraConfig.combat?.isImmuneVenom
+    val attackSpeed: Int get() = extraConfig.combat?.attackSpeed ?: 0
+    val combatSequences: CombatSequences? get() = extraConfig.combat?.sequences
     val stats: CombatStats? get() = extraConfig.combat?.stats
     val attackStats: NpcAttackStats? get() = extraConfig.combat?.attackStats
     val defensiveStats: StyleBonus? get() = extraConfig.combat?.defensiveStats

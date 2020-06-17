@@ -312,6 +312,11 @@
       defence: 18
       range: 1
       magic: 1
+    attackSpeed: 4
+    sequences:
+      attack: 5578
+      defence: 5579
+      death: 5580
     attackStats:
       typeBonus:
         melee: 0

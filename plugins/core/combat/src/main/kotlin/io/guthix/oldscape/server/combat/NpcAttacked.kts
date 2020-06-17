@@ -23,23 +23,25 @@ import io.guthix.oldscape.server.task.NormalTask
 import io.guthix.oldscape.server.world.entity.HitMark
 import io.guthix.oldscape.server.world.entity.interest.MovementInterestUpdate
 import io.guthix.oldscape.server.combat.dmg.calcHit
+import io.guthix.oldscape.server.world.entity.Sequence
 
 on(NpcAttackedEvent::class).then {
     if(event.npc.inCombatWith == player) return@then
     var playerDestination = DestinationPlayer(player, world.map)
     event.npc.inCombatWith = player
     event.npc.cancelTasks(NormalTask)
-    event.npc.addTask(NormalTask) { // start npc combat
+    event.npc.addTask(NormalTask) { // combat fighting task
         while (true) {
-            event.npc.animate(io.guthix.oldscape.server.world.entity.Sequence(id = 5578))
+            println("Animate npc ${event.npc.combatSequences?.attack ?: -1}")
+            event.npc.animate(Sequence(id = event.npc.combatSequences?.attack ?: -1))
             val damage = event.npc.calcHit(player) ?: 0
             val hmColor = if (damage == 0) HitMark.Color.BLUE else HitMark.Color.RED
             player.hit(hmColor, damage, 0)
-            wait(ticks = 5)
+            wait(ticks = event.npc.attackSpeed)
             wait { playerDestination.reached(event.npc.pos.x, event.npc.pos.y, event.npc.size) }
         }
     }
-    event.npc.addTask(NormalTask) {
+    event.npc.addTask(NormalTask) { // following task
         event.npc.turnToLock(player)
         while (true) {
             wait { player.movementType != MovementInterestUpdate.STAY }
