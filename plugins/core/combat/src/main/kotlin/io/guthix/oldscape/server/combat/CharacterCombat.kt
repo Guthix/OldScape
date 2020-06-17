@@ -17,6 +17,7 @@
 package io.guthix.oldscape.server.combat
 
 import io.guthix.oldscape.server.blueprints.AttackStyle
+import io.guthix.oldscape.server.blueprints.StyleBonus
 import io.guthix.oldscape.server.stat.StatMultiplier
 import io.guthix.oldscape.server.world.entity.Character
 import io.guthix.oldscape.server.world.entity.CharacterProperty
@@ -43,10 +44,28 @@ val Character.damageMultiplier: StatMultiplier by CharacterProperty {
     )
 }
 
+var Character.inCombatWith: Character? by CharacterProperty { null }
+
 val Character.attackStance: MeleeCombatStance by CharacterProperty {
     MeleeCombatStance.ACCURATE
 }
 
 val Character.attackStyle: AttackStyle by CharacterProperty {
     AttackStyle.STAB
+}
+
+internal fun StyleBonus.findMeleeBonus(attackStyle: AttackStyle): Int = when (attackStyle) {
+    AttackStyle.STAB -> stab
+    AttackStyle.SLASH -> slash
+    AttackStyle.CRUSH -> crush
+    else -> throw IllegalCallerException("Attack style must be a melee style.")
+}
+
+internal fun StyleBonus.findBonus(attackStyle: AttackStyle): Int = when (attackStyle) {
+    AttackStyle.STAB -> stab
+    AttackStyle.SLASH -> slash
+    AttackStyle.CRUSH -> crush
+    AttackStyle.RANGED -> range
+    AttackStyle.MAGIC -> magic
+    AttackStyle.NONE -> throw IllegalCallerException("Can't attack without selecting attack style.")
 }
