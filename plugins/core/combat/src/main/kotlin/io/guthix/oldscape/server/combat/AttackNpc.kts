@@ -19,45 +19,24 @@ package io.guthix.oldscape.server.combat
 import io.guthix.oldscape.server.combat.dmg.calcHit
 import io.guthix.oldscape.server.combat.dmg.maxMeleeHit
 import io.guthix.oldscape.server.event.NpcClickEvent
+import io.guthix.oldscape.server.event.EventBus
+import io.guthix.oldscape.server.event.NpcAttackedEvent
 import io.guthix.oldscape.server.task.NormalTask
 import io.guthix.oldscape.server.pathing.DesinationNpc
-import io.guthix.oldscape.server.pathing.DestinationPlayer
 import io.guthix.oldscape.server.pathing.breadthFirstSearch
-import io.guthix.oldscape.server.pathing.simplePathSearch
 import io.guthix.oldscape.server.world.entity.HitMark
 import io.guthix.oldscape.server.world.entity.Sequence
-import io.guthix.oldscape.server.world.entity.interest.MovementInterestUpdate
 
 on(NpcClickEvent::class).where { event.option == "Attack" }.then {
+    if(player.inCombatWith == event.npc) return@then
     val npcDestination = DesinationNpc(event.npc, world.map)
     player.turnToLock(event.npc)
     player.path = breadthFirstSearch(player.pos, npcDestination, player.size, true, world.map)
+    player.inCombatWith = event.npc
     player.cancelTasks(NormalTask)
     player.addTask(NormalTask) {
         wait { npcDestination.reached(player.pos.x, player.pos.y, player.size) }
-        var playerDestination = DestinationPlayer(player, world.map)
-        event.npc.cancelTasks(NormalTask)
-        event.npc.addTask(NormalTask) { // start npc combat
-            while (true) {
-                event.npc.animate(Sequence(id = 5578))
-                val damage = event.npc.calcHit(player) ?: 0
-                val hmColor = if (damage == 0) HitMark.Color.BLUE else HitMark.Color.RED
-                player.hit(hmColor, damage, 0)
-                wait(ticks = 5)
-                wait { playerDestination.reached(event.npc.pos.x, event.npc.pos.y, event.npc.size) }
-            }
-        }
-        event.npc.addTask(NormalTask) {
-            event.npc.turnToLock(player)
-            while (true) {
-                wait { player.movementType != MovementInterestUpdate.STAY }
-                playerDestination = DestinationPlayer(player, world.map)
-                event.npc.path = simplePathSearch(event.npc.pos, playerDestination, event.npc.size, world.map)
-                wait(ticks = 1)
-            }
-        }.onCancel {
-            event.npc.turnToLock(null)
-        }
+        EventBus.schedule(NpcAttackedEvent(event.npc), player, world)
         while (true) { // start player combat
             player.animate(Sequence(id = 422))
             val damage = player.calcHit(event.npc, player.maxMeleeHit()) ?: 0
@@ -66,6 +45,7 @@ on(NpcClickEvent::class).where { event.option == "Attack" }.then {
             wait(ticks = 4)
         }
     }.onCancel {
+        player.inCombatWith = null
         player.turnToLock(null)
     }
 }
