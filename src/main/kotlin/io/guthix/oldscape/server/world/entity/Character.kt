@@ -115,10 +115,14 @@ abstract class Character(val index: Int) : Entity() {
         addTurnToLockFlag()
     }
 
+    object SequenceTask : TaskType
+
     fun animate(animation: Sequence) {
+        val isNewSequence = addSequenceFlag() // check if sequence is already added this tick
+        if(isNewSequence && sequence != null) return
         sequence = animation
-        addSequenceFlag()
-        addTask(NormalTask) {
+        cancelTasks(SequenceTask)
+        addTask(SequenceTask) {
             val duration = sequence?.duration ?: throw IllegalStateException(
                 "Can't start routine because sequence does not exist."
             )
@@ -133,10 +137,14 @@ abstract class Character(val index: Int) : Entity() {
         cancelTasks(NormalTask)
     }
 
+    object SpotAnimTask : TaskType
+
     fun spotAnimate(spotAnim: SpotAnimation) {
+        val isNewSpotAnimation = addSpotAnimationFlag() // check if an spot animation is already added this tick
+        if(isNewSpotAnimation && spotAnimation != null) return
         spotAnimation = spotAnim
-        addSpotAnimationFlag()
-        addTask(NormalTask) {
+        cancelTasks(SpotAnimTask)
+        addTask(SpotAnimTask) {
             val duration = spotAnimation?.sequence?.duration ?: throw IllegalStateException(
                 "Can't start routine because spot animation or sequence does not exist."
             )

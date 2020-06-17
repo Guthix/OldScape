@@ -32,7 +32,6 @@ on(NpcAttackedEvent::class).then {
     event.npc.cancelTasks(NormalTask)
     event.npc.addTask(NormalTask) { // combat fighting task
         while (true) {
-            println("Animate npc ${event.npc.combatSequences?.attack ?: -1}")
             event.npc.animate(Sequence(id = event.npc.combatSequences?.attack ?: -1))
             val damage = event.npc.calcHit(player) ?: 0
             val hmColor = if (damage == 0) HitMark.Color.BLUE else HitMark.Color.RED

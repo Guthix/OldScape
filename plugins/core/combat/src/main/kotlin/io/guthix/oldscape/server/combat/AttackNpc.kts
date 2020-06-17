@@ -42,7 +42,7 @@ on(NpcClickEvent::class).where { event.option == "Attack" }.then {
             val damage = player.calcHit(event.npc, player.maxMeleeHit()) ?: 0
             val hmColor = if (damage == 0) HitMark.Color.BLUE else HitMark.Color.RED
             event.npc.hit(hmColor, damage, 0)
-            //event.npc.animate(Sequence(id = event.npc.combatSequences?.defence ?: -1))
+            event.npc.animate(Sequence(id = event.npc.combatSequences?.defence ?: -1))
             wait(ticks = player.attackSpeed)
         }
     }.onCancel {
