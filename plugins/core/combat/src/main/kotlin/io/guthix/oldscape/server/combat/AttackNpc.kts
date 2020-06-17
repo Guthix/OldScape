@@ -38,11 +38,12 @@ on(NpcClickEvent::class).where { event.option == "Attack" }.then {
         wait { npcDestination.reached(player.pos.x, player.pos.y, player.size) }
         EventBus.schedule(NpcAttackedEvent(event.npc), player, world)
         while (true) { // start player combat
-            player.animate(Sequence(id = 422))
+            player.animate(Sequence(id = player.combatSequences.attack))
             val damage = player.calcHit(event.npc, player.maxMeleeHit()) ?: 0
             val hmColor = if (damage == 0) HitMark.Color.BLUE else HitMark.Color.RED
             event.npc.hit(hmColor, damage, 0)
-            wait(ticks = 4)
+            //event.npc.animate(Sequence(id = event.npc.combatSequences?.defence ?: -1))
+            wait(ticks = player.attackSpeed)
         }
     }.onCancel {
         player.inCombatWith = null

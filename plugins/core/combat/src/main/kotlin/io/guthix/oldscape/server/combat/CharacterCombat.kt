@@ -17,10 +17,13 @@
 package io.guthix.oldscape.server.combat
 
 import io.guthix.oldscape.server.blueprints.AttackStyle
+import io.guthix.oldscape.server.blueprints.CombatSequences
 import io.guthix.oldscape.server.blueprints.StyleBonus
 import io.guthix.oldscape.server.stat.StatMultiplier
 import io.guthix.oldscape.server.world.entity.Character
 import io.guthix.oldscape.server.world.entity.CharacterProperty
+import io.guthix.oldscape.server.world.entity.Npc
+import io.guthix.oldscape.server.world.entity.Player
 
 enum class MeleeCombatStance(val attack: Int = 0, val strength: Int = 0, val defence: Int = 0, val range: Int = 0) {
     ACCURATE(attack = 3),
@@ -41,6 +44,20 @@ val Character.damageMultiplier: StatMultiplier by CharacterProperty {
         rangeStrength = 1.0,
         magicStrength = 1.0,
         defence = 1.0
+    )
+}
+
+var Npc.attackSpeed: Int by CharacterProperty { blueprint.attackSpeed }
+
+val Npc.combatSequences: CombatSequences? by CharacterProperty { blueprint.combatSequences }
+
+val Player.attackSpeed: Int by CharacterProperty { 5 } // TODO
+
+val Player.combatSequences: CombatSequences by CharacterProperty {
+    CombatSequences(
+        attack = 422,
+        defence = -1, // TODO
+        death = -1, // TODO
     )
 }
 

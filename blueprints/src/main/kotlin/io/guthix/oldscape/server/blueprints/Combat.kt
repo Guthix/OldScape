@@ -27,6 +27,13 @@ class CombatStats(
     val magic: Int
 )
 
+class CombatSequences(
+    val spawn: Int? = null,
+    val attack: Int,
+    val defence: Int,
+    val death: Int
+)
+
 class StyleBonus(
     var stab: Int,
     var slash: Int,
