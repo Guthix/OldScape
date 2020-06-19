@@ -47,18 +47,14 @@ val Character.damageMultiplier: StatMultiplier by CharacterProperty {
     )
 }
 
-var Npc.attackSpeed: Int by CharacterProperty { blueprint.attackSpeed }
+var Npc.attackDelay: Int by CharacterProperty { blueprint.attackSpeed }
 
 val Npc.combatSequences: CombatSequences? by CharacterProperty { blueprint.combatSequences }
 
-val Player.attackSpeed: Int by CharacterProperty { 5 } // TODO
+val Player.attackDelay: Int by CharacterProperty { 5 } // TODO
 
 val Player.combatSequences: CombatSequences by CharacterProperty {
-    CombatSequences(
-        attack = 422,
-        defence = -1, // TODO
-        death = -1, // TODO
-    )
+    CombatSequences(attack = 422, defence = 424, death = 836)
 }
 
 var Character.inCombatWith: Character? by CharacterProperty { null }

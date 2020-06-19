@@ -26,6 +26,7 @@ import io.guthix.oldscape.server.pathing.DesinationNpc
 import io.guthix.oldscape.server.pathing.breadthFirstSearch
 import io.guthix.oldscape.server.world.entity.HitMark
 import io.guthix.oldscape.server.world.entity.Sequence
+import kotlin.math.log
 
 on(NpcClickEvent::class).where { event.option == "Attack" }.then {
     if(player.inCombatWith == event.npc) return@then
@@ -43,7 +44,7 @@ on(NpcClickEvent::class).where { event.option == "Attack" }.then {
             val hmColor = if (damage == 0) HitMark.Color.BLUE else HitMark.Color.RED
             event.npc.hit(hmColor, damage, 0)
             event.npc.animate(Sequence(id = event.npc.combatSequences?.defence ?: -1))
-            wait(ticks = player.attackSpeed)
+            wait(ticks = player.attackDelay)
         }
     }.onCancel {
         player.inCombatWith = null

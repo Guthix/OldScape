@@ -25,9 +25,7 @@ import kotlin.coroutines.intrinsics.createCoroutineUnintercepted
 import kotlin.coroutines.intrinsics.suspendCoroutineUninterceptedOrReturn
 import kotlin.coroutines.resume
 
-open class Task(val type: TaskType, private val character: Character) : Continuation<Unit> {
-    private var tickSuspended = false
-
+class Task(val type: TaskType, private val character: Character) : Continuation<Unit> {
     internal var next: ConditionalContinuation? = null
 
     private var cancelation: ConditionalContinuation? = null
@@ -36,7 +34,7 @@ open class Task(val type: TaskType, private val character: Character) : Continua
 
     fun run(): Boolean {
         return next?.let {
-            if (!tickSuspended && it.canResume()) {
+            if (it.canResume()) {
                 character.tasks[type]?.remove(this)
                 it.continuation.resume(Unit)
                 true
@@ -51,18 +49,15 @@ open class Task(val type: TaskType, private val character: Character) : Continua
         next = cancelation
     }
 
-    fun postProcess() {
-        tickSuspended = false
-    }
-
     fun onCancel(action: suspend Task.() -> Unit) {
         cancelation = ConditionalContinuation(TrueCondition, action.createCoroutineUnintercepted(this, this))
     }
 
+    fun postProcess() { next?.postProcess() }
+
     override fun resumeWith(result: Result<Unit>) {}
 
     suspend fun wait(ticks: Int) {
-        tickSuspended = true
         suspend(TickCondition(ticks))
     }
 

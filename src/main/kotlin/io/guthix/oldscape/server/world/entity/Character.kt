@@ -34,6 +34,8 @@ import kotlin.reflect.KProperty
 abstract class Character(val index: Int) : Entity() {
     internal val tasks = mutableMapOf<TaskType, MutableList<Task>>()
 
+    internal val postTasks = mutableListOf<() -> Unit>()
+
     val properties: MutableMap<KProperty<*>, Any?> = mutableMapOf()
 
     internal abstract val updateFlags: SortedSet<out InterestUpdateType>
@@ -115,19 +117,21 @@ abstract class Character(val index: Int) : Entity() {
         addTurnToLockFlag()
     }
 
+
     object SequenceTask : TaskType
 
     fun animate(animation: Sequence) {
-        val isNewSequence = addSequenceFlag() // check if sequence is already added this tick
-        if(isNewSequence && sequence != null) return
+        val hasSequenceFlag = checkSequenceFlag() // check if sequence is already added this tick
+        if(!hasSequenceFlag && sequence != null) return
+        addSequenceFlag()
         sequence = animation
         cancelTasks(SequenceTask)
         addTask(SequenceTask) {
             val duration = sequence?.duration ?: throw IllegalStateException(
                 "Can't start routine because sequence does not exist."
             )
-            wait(ticks = duration)
-            sequence = null
+            wait(ticks = duration - 1)
+            addPostTask { sequence = null }
         }
     }
 
@@ -148,8 +152,8 @@ abstract class Character(val index: Int) : Entity() {
             val duration = spotAnimation?.sequence?.duration ?: throw IllegalStateException(
                 "Can't start routine because spot animation or sequence does not exist."
             )
-            wait(ticks = duration)
-            spotAnimation = null
+            wait(ticks = duration - 1)
+            addPostTask { spotAnimation = null }
         }
     }
 
@@ -165,8 +169,8 @@ abstract class Character(val index: Int) : Entity() {
         addShoutFlag()
         cancelTasks(ChatTask)
         addTask(ChatTask) {
-            wait(ticks = PlayerManager.MESSAGE_DURATION)
-            shoutMessage = null
+            wait(ticks = PlayerManager.MESSAGE_DURATION - 1)
+            addPostTask { shoutMessage = null }
         }
     }
 
@@ -189,6 +193,8 @@ abstract class Character(val index: Int) : Entity() {
         hitMarkQueue.clear()
         healthBarQueue.clear()
         tasks.values.forEach { it.forEach(Task::postProcess) }
+        postTasks.forEach { it.invoke() }
+        postTasks.clear()
     }
 
     protected abstract fun addOrientationFlag(): Boolean
@@ -196,6 +202,8 @@ abstract class Character(val index: Int) : Entity() {
     protected abstract fun addTurnToLockFlag(): Boolean
 
     protected abstract fun addSequenceFlag(): Boolean
+
+    protected abstract fun checkSequenceFlag(): Boolean
 
     protected abstract fun addSpotAnimationFlag(): Boolean
 
@@ -214,6 +222,10 @@ abstract class Character(val index: Int) : Entity() {
 
     fun cancelTasks(type: TaskType) {
         tasks[type]?.forEach(Task::cancel)
+    }
+
+    fun addPostTask(task: () -> Unit) {
+        postTasks.add(task)
     }
 
     fun getOrientation(prev: Tile, new: Tile): Int = getOrientation(new.x - prev.x, new.y - prev.y)

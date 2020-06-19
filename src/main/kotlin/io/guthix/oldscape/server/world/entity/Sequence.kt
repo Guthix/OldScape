@@ -23,9 +23,7 @@ class Sequence(id: Int) {
 
     val id: Int get() = blueprint.id
 
-    val duration: Int by lazy {
-        blueprint.frameDuration?.sum()?.toDouble()?.div(30)?.toInt() ?: throw IllegalStateException(
-            "Sequence $id has no duration."
-        )
-    }
+    val duration: Int = blueprint.frameDuration?.sum()?.toDouble()?.div(30)?.toInt() ?: throw IllegalStateException(
+        "Sequence $id has no duration."
+    )
 }

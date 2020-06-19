@@ -188,8 +188,8 @@ class Player(
         updateFlags.add(PlayerInfoPacket.chat)
         cancelTasks(ChatTask)
         addTask(ChatTask) {
-            wait(ticks = PlayerManager.MESSAGE_DURATION)
-            publicMessage = null
+            wait(ticks = PlayerManager.MESSAGE_DURATION - 1)
+            addPostTask { publicMessage = null }
         }
     }
 
@@ -268,6 +268,8 @@ class Player(
     override fun addTurnToLockFlag(): Boolean = updateFlags.add(PlayerInfoPacket.lockTurnTo)
 
     override fun addSequenceFlag(): Boolean = updateFlags.add(PlayerInfoPacket.sequence)
+
+    override fun checkSequenceFlag(): Boolean = updateFlags.contains(PlayerInfoPacket.sequence)
 
     override fun addSpotAnimationFlag(): Boolean = updateFlags.add(PlayerInfoPacket.spotAnimation)
 
