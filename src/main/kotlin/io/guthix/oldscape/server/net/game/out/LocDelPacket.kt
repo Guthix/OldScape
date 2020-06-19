@@ -31,7 +31,7 @@ class LocDelPacket(
 ) : ZoneOutGameEvent(localX, localY) {
     override val opcode: Int = 85
 
-    override val enclOpcode: Int = 8
+    override val enclOpcode: Int = 0
 
     override val size: FixedSize = FixedSize(STATIC_SIZE)
 

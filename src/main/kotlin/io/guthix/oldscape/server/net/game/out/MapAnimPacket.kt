@@ -34,7 +34,7 @@ class MapAnimPacket(
 ) : ZoneOutGameEvent(localX, localY) {
     override val opcode: Int = 80
 
-    override val enclOpcode: Int = 2
+    override val enclOpcode: Int = 3
 
     override val size: FixedSize = FixedSize(STATIC_SIZE)
 

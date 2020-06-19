@@ -29,9 +29,9 @@ class ObjAddPacket(
     localX: TileUnit,
     localY: TileUnit
 ) : ZoneOutGameEvent(localX, localY) {
-    override val opcode: Int = 66
+    override val opcode: Int = 65
 
-    override val enclOpcode: Int = 1
+    override val enclOpcode: Int = 9
 
     override val size: FixedSize = FixedSize(STATIC_SIZE)
 

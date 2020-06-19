@@ -33,7 +33,7 @@ class LocAnimPacket(
 ) : ZoneOutGameEvent(localX, localY) {
     override val opcode: Int = 14
 
-    override val enclOpcode: Int = 9
+    override val enclOpcode: Int = 5
 
     override val size: FixedSize = FixedSize(STATIC_SIZE)
 
