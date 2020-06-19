@@ -35,7 +35,7 @@ on(PlayerClickEvent::class).where { event.option == "Follow" }.then {
             if (currentTarget != followed.followPosition) {
                 player.path = breadthFirstSearch(player.pos, dest, player.size, true, world.map)
             }
-            wait(1)
+            wait(ticks = 1)
         }
         while (true) {
             wait { currentTarget != followed.followPosition }
