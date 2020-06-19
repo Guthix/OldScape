@@ -38,9 +38,9 @@ class LocPrefetchPacket(
     localX: TileUnit,
     localY: TileUnit
 ) : ZoneOutGameEvent(localX, localY) {
-    override val opcode: Int = 76
+    override val opcode: Int = 33
 
-    override val enclOpcode: Int = 5
+    override val enclOpcode: Int = 0
 
     override val size: FixedSize = FixedSize(STATIC_SIZE)
 

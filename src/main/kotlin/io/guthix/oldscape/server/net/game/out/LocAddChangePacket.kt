@@ -33,7 +33,7 @@ class LocAddChangePacket(
 ) : ZoneOutGameEvent(localX, localY) {
     override val opcode: Int = 32
 
-    override val enclOpcode: Int = 0
+    override val enclOpcode: Int = 7
 
     override val size: FixedSize = FixedSize(STATIC_SIZE)
 

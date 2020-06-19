@@ -28,9 +28,9 @@ class ObjDelPacket(
     localX: TileUnit,
     localY: TileUnit
 ) : ZoneOutGameEvent(localX, localY) {
-    override val opcode: Int = 12
+    override val opcode: Int = 10
 
-    override val enclOpcode: Int = 3
+    override val enclOpcode: Int = 8
 
     override val size: FixedSize = FixedSize(STATIC_SIZE)
 

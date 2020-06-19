@@ -32,7 +32,7 @@ class ObjCountPacket(
 ) : ZoneOutGameEvent(localX, localY) {
     override val opcode: Int = 43
 
-    override val enclOpcode: Int = 7
+    override val enclOpcode: Int = 6
 
     override val size: FixedSize = FixedSize(STATIC_SIZE)
 

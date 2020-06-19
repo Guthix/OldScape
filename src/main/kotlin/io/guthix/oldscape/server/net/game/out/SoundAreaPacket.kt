@@ -35,7 +35,7 @@ class SoundAreaPacket(
 ) : ZoneOutGameEvent(localX, localY) {
     override val opcode: Int = 42
 
-    override val enclOpcode: Int = 4
+    override val enclOpcode: Int = 1
 
     override val size: FixedSize = FixedSize(STATIC_SIZE)
 

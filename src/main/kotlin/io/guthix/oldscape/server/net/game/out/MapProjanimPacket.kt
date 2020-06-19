@@ -28,7 +28,7 @@ class MapProjanimPacket(
 ) : ZoneOutGameEvent(localX, localY) {
     override val opcode: Int = 2
 
-    override val enclOpcode: Int = 6
+    override val enclOpcode: Int = 4
 
     override val size: FixedSize = FixedSize(STATIC_SIZE)
 
