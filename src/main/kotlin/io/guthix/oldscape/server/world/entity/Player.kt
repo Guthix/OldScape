@@ -18,6 +18,7 @@ package io.guthix.oldscape.server.world.entity
 
 import io.guthix.oldscape.server.dimensions.TileUnit
 import io.guthix.oldscape.server.dimensions.tiles
+import io.guthix.oldscape.server.event.EventHolder
 import io.guthix.oldscape.server.event.PublicMessageEvent
 import io.guthix.oldscape.server.plugin.EventHandler
 import io.guthix.oldscape.server.event.GameEvent
@@ -42,10 +43,10 @@ class Player(
     private val varpManager: VarpManager,
     val stats: StatManager,
     private val energyManager: EnergyManager
-) : Character(playerManager.index), Comparable<Player> {
+) : Character(playerManager.index), Comparable<Player>, EventHolder {
     override val updateFlags = sortedSetOf<PlayerUpdateType>()
 
-    internal val inEvents = ConcurrentLinkedQueue<EventHandler<GameEvent>>()
+    override val events: ConcurrentLinkedQueue<EventHandler<GameEvent>> = ConcurrentLinkedQueue()
 
     var isLoggingOut: Boolean = false
 
@@ -116,9 +117,9 @@ class Player(
 
     override fun processTasks() {
         while (true) {
-            while (inEvents.isNotEmpty()) inEvents.poll().handle()
+            while (events.isNotEmpty()) events.poll().handle()
             val resumed = tasks.values.flatMap { routineList -> routineList.toList().map(Task::run) } // TODO optimize
-            if (resumed.all { !it } && inEvents.isEmpty()) break // TODO add live lock detection
+            if (resumed.all { !it } && events.isEmpty()) break // TODO add live lock detection
         }
     }
 
@@ -279,7 +280,7 @@ class Player(
 
     internal fun stageLogout() {
         isLoggingOut = true
-        inEvents.clear()
+        events.clear()
         tasks.clear()
         ctx.writeAndFlush(LogoutFullPacket())
     }

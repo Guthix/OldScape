@@ -297,6 +297,7 @@
     - 6597
     - 6598
   examine: "Dead man walking.<br/>Dead woman walking.<br/>The walking dead."
+  wanderRadius: 5
   combat:
     lvl: 18
     maxHit: 2
