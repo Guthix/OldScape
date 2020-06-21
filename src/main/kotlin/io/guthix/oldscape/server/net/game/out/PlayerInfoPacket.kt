@@ -326,6 +326,7 @@ class PlayerInfoPacket(
         }
 
         val sequence: PlayerUpdateType = PlayerUpdateType(2, 0x80) { player ->
+            println("Encode ${player.sequence?.id}")
             writeShortLE(player.sequence?.id ?: 65535)
             writeByteNEG(player.sequence?.duration ?: 0)
         }

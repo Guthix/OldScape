@@ -121,8 +121,7 @@ abstract class Character(val index: Int) : Entity() {
     object SequenceTask : TaskType
 
     fun animate(animation: Sequence) {
-        val hasSequenceFlag = checkSequenceFlag() // check if sequence is already added this tick
-        if(!hasSequenceFlag && sequence != null) return
+        println("Animate ${animation.id}")
         addSequenceFlag()
         sequence = animation
         cancelTasks(SequenceTask)
@@ -130,37 +129,35 @@ abstract class Character(val index: Int) : Entity() {
             val duration = sequence?.duration ?: throw IllegalStateException(
                 "Can't start routine because sequence does not exist."
             )
-            wait(ticks = duration - 1)
-            addPostTask { sequence = null }
+            wait(ticks = duration)
+            sequence = null
         }
     }
 
     fun stopAnimation() {
         sequence = null
         addSequenceFlag()
-        cancelTasks(NormalTask)
+        cancelTasks(SequenceTask)
     }
 
     object SpotAnimTask : TaskType
 
     fun spotAnimate(spotAnim: SpotAnimation) {
-        val isNewSpotAnimation = addSpotAnimationFlag() // check if an spot animation is already added this tick
-        if(isNewSpotAnimation && spotAnimation != null) return
         spotAnimation = spotAnim
         cancelTasks(SpotAnimTask)
         addTask(SpotAnimTask) {
             val duration = spotAnimation?.sequence?.duration ?: throw IllegalStateException(
                 "Can't start routine because spot animation or sequence does not exist."
             )
-            wait(ticks = duration - 1)
-            addPostTask { spotAnimation = null }
+            wait(ticks = duration)
+            spotAnimation = null
         }
     }
 
     fun stopSpotAnimation() {
         spotAnimation = null
         addSpotAnimationFlag()
-        cancelTasks(NormalTask)
+        cancelTasks(SpotAnimTask)
     }
 
     fun shout(message: String) {
