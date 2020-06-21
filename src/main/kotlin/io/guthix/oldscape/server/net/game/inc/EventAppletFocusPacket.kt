@@ -19,12 +19,20 @@ package io.guthix.oldscape.server.net.game.inc
 import io.guthix.oldscape.server.event.AppletFocusEvent
 import io.guthix.oldscape.server.net.game.FixedSize
 import io.guthix.oldscape.server.net.game.GamePacketDecoder
+import io.guthix.oldscape.server.world.World
+import io.guthix.oldscape.server.world.entity.Player
 import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 
 class EventAppletFocusPacket : GamePacketDecoder(54, FixedSize(1)) {
-    override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): AppletFocusEvent {
-        val isFocus = data.readUnsignedByte().toInt() == 1
-        return AppletFocusEvent(isFocus)
+    override fun decode(
+        buf: ByteBuf,
+        size: Int,
+        ctx: ChannelHandlerContext,
+        player: Player,
+        world: World
+    ): AppletFocusEvent {
+        val isFocus = buf.readUnsignedByte().toInt() == 1
+        return AppletFocusEvent(isFocus, player, world)
     }
 }

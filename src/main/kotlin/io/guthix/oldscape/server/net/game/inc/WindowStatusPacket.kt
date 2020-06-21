@@ -19,14 +19,22 @@ package io.guthix.oldscape.server.net.game.inc
 import io.guthix.oldscape.server.event.WindowStatusEvent
 import io.guthix.oldscape.server.net.game.FixedSize
 import io.guthix.oldscape.server.net.game.GamePacketDecoder
+import io.guthix.oldscape.server.world.World
+import io.guthix.oldscape.server.world.entity.Player
 import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 
 class WindowStatusPacket : GamePacketDecoder(52, FixedSize(5)) {
-    override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): WindowStatusEvent {
-        val isResized = data.readUnsignedByte().toInt() == 2
-        val width = data.readUnsignedShort()
-        val height = data.readUnsignedShort()
-        return WindowStatusEvent(isResized, width, height)
+    override fun decode(
+        buf: ByteBuf,
+        size: Int,
+        ctx: ChannelHandlerContext,
+        player: Player,
+        world: World
+    ): WindowStatusEvent {
+        val isResized = buf.readUnsignedByte().toInt() == 2
+        val width = buf.readUnsignedShort()
+        val height = buf.readUnsignedShort()
+        return WindowStatusEvent(isResized, width, height, player, world)
     }
 }

@@ -18,17 +18,25 @@ package io.guthix.oldscape.server.net.game.inc
 
 import io.guthix.oldscape.server.dimensions.tiles
 import io.guthix.oldscape.server.event.MapClickEvent
-import io.guthix.oldscape.server.net.game.ClientEvent
+import io.guthix.oldscape.server.event.PlayerGameEvent
 import io.guthix.oldscape.server.net.game.GamePacketDecoder
 import io.guthix.oldscape.server.net.game.VarByteSize
+import io.guthix.oldscape.server.world.World
+import io.guthix.oldscape.server.world.entity.Player
 import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 
 class MoveGameclickPacket : GamePacketDecoder(85, VarByteSize) {
-    override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): ClientEvent {
-        val x = data.readUnsignedShort()
-        val type = data.readUnsignedByte().toInt()
-        val y = data.readUnsignedShort()
-        return MapClickEvent(x.tiles, y.tiles, type)
+    override fun decode(
+        buf: ByteBuf,
+        size: Int,
+        ctx: ChannelHandlerContext,
+        player: Player,
+        world: World
+    ): PlayerGameEvent {
+        val x = buf.readUnsignedShort()
+        val type = buf.readUnsignedByte().toInt()
+        val y = buf.readUnsignedShort()
+        return MapClickEvent(x.tiles, y.tiles, type, player, world)
     }
 }

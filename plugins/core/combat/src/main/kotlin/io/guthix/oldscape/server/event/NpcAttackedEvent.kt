@@ -16,6 +16,12 @@
  */
 package io.guthix.oldscape.server.event
 
+import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.Npc
+import io.guthix.oldscape.server.world.entity.Player
 
-class NpcAttackedEvent(val npc: Npc) : InGameEvent
+data class NpcAttackedEvent(
+    val npc: Npc,
+    override val player: Player,
+    override val world: World
+) : PlayerGameEvent(player, world)

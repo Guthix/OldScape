@@ -16,13 +16,11 @@
  */
 package io.guthix.oldscape.server.event
 
-import io.guthix.oldscape.server.api.NpcBlueprints
-import io.guthix.oldscape.server.blueprints.NpcBlueprint
-import io.guthix.oldscape.server.net.game.ClientEvent
 import io.guthix.oldscape.server.world.World
+import io.guthix.oldscape.server.world.entity.Player
 
-internal class NpcExamineClientEvent(private val id: Int) : ClientEvent {
-    override fun toGameEvent(world: World): InGameEvent = NpcExamineEvent(NpcBlueprints[id])
-}
-
-class NpcExamineEvent(val blueprint: NpcBlueprint) : InGameEvent
+data class NpcExamineEvent(
+    val id: Int,
+    override val player: Player,
+    override val world: World
+) : PlayerGameEvent(player, world)

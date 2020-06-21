@@ -121,7 +121,6 @@ abstract class Character(val index: Int) : Entity() {
     object SequenceTask : TaskType
 
     fun animate(animation: Sequence) {
-        println("Animate ${animation.id}")
         addSequenceFlag()
         sequence = animation
         cancelTasks(SequenceTask)

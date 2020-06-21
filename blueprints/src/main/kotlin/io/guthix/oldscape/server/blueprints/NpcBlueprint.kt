@@ -17,6 +17,8 @@
 package io.guthix.oldscape.server.blueprints
 
 import io.guthix.oldscape.cache.config.NpcConfig
+import io.guthix.oldscape.server.dimensions.TileUnit
+import io.guthix.oldscape.server.dimensions.tiles
 
 class NpcAttackStats(
     val typeBonus: CombatBonus,
@@ -45,6 +47,7 @@ open class NpcBlueprint(
     val id: Int get() = cacheConfig.id
     val size: Int get() = cacheConfig.size.toInt()
     val contextMenu: Array<String?> get() = cacheConfig.options
+    val wanderRadius: TileUnit get() = extraConfig.wanderRadius?.tiles ?: 0.tiles
     val level: Int? get() = extraConfig.combat?.lvl
     val maxHit: Int? get() = if (extraConfig.combat == null) null else extraConfig.combat?.maxHit ?: 0
     val attackStyle: AttackStyle? get() = extraConfig.combat?.attackStyle
@@ -62,5 +65,6 @@ open class NpcBlueprint(
 open class ExtraNpcConfig(
     val ids: List<Int>,
     val examine: String,
+    val wanderRadius: Int?,
     val combat: NpcCombat?
 )

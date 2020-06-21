@@ -17,6 +17,12 @@
 
 package io.guthix.oldscape.server.event
 
+import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.Loc
+import io.guthix.oldscape.server.world.entity.Player
 
-class LocationReachedEvent(val loc: Loc) : InGameEvent
+data class LocationReachedEvent(
+    val loc: Loc,
+    override val player: Player,
+    override val world: World
+) : PlayerGameEvent(player, world)

@@ -19,14 +19,22 @@ package io.guthix.oldscape.server.net.game.inc
 import io.guthix.oldscape.server.event.MouseClickEvent
 import io.guthix.oldscape.server.net.game.FixedSize
 import io.guthix.oldscape.server.net.game.GamePacketDecoder
+import io.guthix.oldscape.server.world.World
+import io.guthix.oldscape.server.world.entity.Player
 import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 
 class EventMouseClickPacket : GamePacketDecoder(2, FixedSize(6)) {
-    override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): MouseClickEvent {
-        val bitPack = data.readShort().toInt()
-        val mouseX = data.readShort().toInt()
-        val mouseY = data.readShort().toInt()
-        return MouseClickEvent(bitPack and 0x1 == 1, bitPack shr 1, mouseX, mouseY)
+    override fun decode(
+        buf: ByteBuf,
+        size: Int,
+        ctx: ChannelHandlerContext,
+        player: Player,
+        world: World
+    ): MouseClickEvent {
+        val bitPack = buf.readShort().toInt()
+        val mouseX = buf.readShort().toInt()
+        val mouseY = buf.readShort().toInt()
+        return MouseClickEvent(bitPack and 0x1 == 1, bitPack shr 1, mouseX, mouseY, player, world)
     }
 }

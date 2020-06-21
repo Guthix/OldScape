@@ -16,9 +16,10 @@
  */
 package io.guthix.oldscape.server.event
 
-import io.guthix.oldscape.server.net.game.ClientEvent
 import io.guthix.oldscape.server.world.World
+import io.guthix.oldscape.server.world.entity.Player
 
-class MouseMoveEvent : ClientEvent, InGameEvent {
-    override fun toGameEvent(world: World): MouseMoveEvent = this
-}
+data class MouseMoveEvent(
+    override val player: Player,
+    override val world: World
+) :  PlayerGameEvent(player, world)

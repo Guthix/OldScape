@@ -16,9 +16,13 @@
  */
 package io.guthix.oldscape.server.event
 
-import io.guthix.oldscape.server.net.game.ClientEvent
 import io.guthix.oldscape.server.world.World
+import io.guthix.oldscape.server.world.entity.Player
 
-data class WindowStatusEvent(val isResized: Boolean, val width: Int, val height: Int) : ClientEvent, InGameEvent {
-    override fun toGameEvent(world: World): WindowStatusEvent = this
-}
+data class WindowStatusEvent(
+    val isResized: Boolean,
+    val width: Int,
+    val height: Int,
+    override val player: Player,
+    override val world: World
+) : PlayerGameEvent(player, world)

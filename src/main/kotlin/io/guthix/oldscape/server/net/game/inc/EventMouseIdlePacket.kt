@@ -19,9 +19,17 @@ package io.guthix.oldscape.server.net.game.inc
 import io.guthix.oldscape.server.event.MouseIdleEvent
 import io.guthix.oldscape.server.net.game.FixedSize
 import io.guthix.oldscape.server.net.game.GamePacketDecoder
+import io.guthix.oldscape.server.world.World
+import io.guthix.oldscape.server.world.entity.Player
 import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 
 class EventMouseIdlePacket : GamePacketDecoder(44, FixedSize(0)) {
-    override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): MouseIdleEvent = MouseIdleEvent()
+    override fun decode(
+        buf: ByteBuf,
+        size: Int,
+        ctx: ChannelHandlerContext,
+        player: Player,
+        world: World
+    ): MouseIdleEvent = MouseIdleEvent(player, world)
 }

@@ -19,8 +19,8 @@ package io.guthix.oldscape.server.equipment
 import io.guthix.oldscape.server.event.InventoryObjectClickEvent
 import io.guthix.oldscape.server.world.entity.*
 
-on(InventoryObjectClickEvent::class).where { event.option == "Wear" }.then {
-    val obj = player.topInterface.inventory.removeObject(event.inventorySlot) ?: return@then
+on(InventoryObjectClickEvent::class).where { contextMenuEntry == "Wear" }.then {
+    val obj = player.topInterface.inventory.removeObject(inventorySlot) ?: return@then
     when (obj) {
         is WeaponEquipment -> {
             player.topInterface.equipment.setObject(obj.slot.id, obj)

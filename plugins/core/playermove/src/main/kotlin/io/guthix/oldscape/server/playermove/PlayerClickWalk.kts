@@ -28,11 +28,11 @@ import io.guthix.oldscape.server.world.entity.Player
 import io.guthix.oldscape.server.world.map.Tile
 
 on(MiniMapClickEvent::class).then {
-    player.startWalkingToTile(player.pos.floor, event.x, event.y, world.map)
+    player.startWalkingToTile(player.pos.floor, x, y, world.map)
 }
 
 on(MapClickEvent::class).then {
-    player.startWalkingToTile(player.pos.floor, event.x, event.y, world.map)
+    player.startWalkingToTile(player.pos.floor, x, y, world.map)
 }
 
 fun Player.startWalkingToTile(floor: FloorUnit, x: TileUnit, y: TileUnit, map: WorldMap) {

@@ -17,73 +17,123 @@
 package io.guthix.oldscape.server.net.game.inc
 
 import io.guthix.buffer.*
-import io.guthix.oldscape.server.event.PlayerClickClientEvent
-import io.guthix.oldscape.server.net.game.ClientEvent
+import io.guthix.oldscape.server.event.PlayerClickEvent
+import io.guthix.oldscape.server.event.PlayerGameEvent
 import io.guthix.oldscape.server.net.game.FixedSize
 import io.guthix.oldscape.server.net.game.GamePacketDecoder
+import io.guthix.oldscape.server.world.World
+import io.guthix.oldscape.server.world.entity.Player
 import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 
 class Opplayer1Packet : GamePacketDecoder(60, FixedSize(3)) {
-    override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): ClientEvent {
-        val buttonPressed = data.readUnsignedByte().toInt() == 1
-        val index = data.readUnsignedShortLEADD()
-        return PlayerClickClientEvent(index, buttonPressed, 1)
+    override fun decode(
+        buf: ByteBuf,
+        size: Int,
+        ctx: ChannelHandlerContext,
+        player: Player,
+        world: World
+    ): PlayerGameEvent {
+        val buttonPressed = buf.readUnsignedByte().toInt() == 1
+        val index = buf.readUnsignedShortLEADD()
+        return PlayerClickEvent(index, buttonPressed, 1, player, world)
     }
 }
 
 class Opplayer2Packet : GamePacketDecoder(25, FixedSize(3)) {
-    override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): ClientEvent {
-        val index = data.readUnsignedShortADD()
-        val buttonPressed = data.readUnsignedByteADD().toInt() == 1
-        return PlayerClickClientEvent(index, buttonPressed, 2)
+    override fun decode(
+        buf: ByteBuf,
+        size: Int,
+        ctx: ChannelHandlerContext,
+        player: Player,
+        world: World
+    ): PlayerGameEvent {
+        val index = buf.readUnsignedShortADD()
+        val buttonPressed = buf.readUnsignedByteADD().toInt() == 1
+        return PlayerClickEvent(index, buttonPressed, 2, player, world)
     }
 }
 
 class Opplayer3Packet : GamePacketDecoder(59, FixedSize(3)) {
-    override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): ClientEvent {
-        val buttonPressed = data.readUnsignedByteADD().toInt() == 1
-        val index = data.readUnsignedShort()
-        return PlayerClickClientEvent(index, buttonPressed, 3)
+    override fun decode(
+        buf: ByteBuf,
+        size: Int,
+        ctx: ChannelHandlerContext,
+        player: Player,
+        world: World
+    ): PlayerGameEvent {
+        val buttonPressed = buf.readUnsignedByteADD().toInt() == 1
+        val index = buf.readUnsignedShort()
+        return PlayerClickEvent(index, buttonPressed, 3, player, world)
     }
 }
 
 class Opplayer4Packet : GamePacketDecoder(75, FixedSize(3)) {
-    override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): ClientEvent {
-        val index = data.readUnsignedShort()
-        val buttonPressed = data.readUnsignedByteSUB().toInt() == 1
-        return PlayerClickClientEvent(index, buttonPressed, 4)
+    override fun decode(
+        buf: ByteBuf,
+        size: Int,
+        ctx: ChannelHandlerContext,
+        player: Player,
+        world: World
+    ): PlayerGameEvent {
+        val index = buf.readUnsignedShort()
+        val buttonPressed = buf.readUnsignedByteSUB().toInt() == 1
+        return PlayerClickEvent(index, buttonPressed, 4, player, world)
     }
 }
 
 class Opplayer5Packet : GamePacketDecoder(51, FixedSize(3)) {
-    override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): ClientEvent {
-        val buttonPressed = data.readUnsignedByteADD().toInt() == 1
-        val index = data.readUnsignedShort()
-        return PlayerClickClientEvent(index, buttonPressed, 5)
+    override fun decode(
+        buf: ByteBuf,
+        size: Int,
+        ctx: ChannelHandlerContext,
+        player: Player,
+        world: World
+    ): PlayerGameEvent {
+        val buttonPressed = buf.readUnsignedByteADD().toInt() == 1
+        val index = buf.readUnsignedShort()
+        return PlayerClickEvent(index, buttonPressed, 5, player, world)
     }
 }
 
 class Opplayer6Packet : GamePacketDecoder(43, FixedSize(3)) {
-    override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): ClientEvent {
-        val buttonPressed = data.readUnsignedByteNEG().toInt() == 1
-        val index = data.readUnsignedShortLEADD()
-        return PlayerClickClientEvent(index, buttonPressed, 6)
+    override fun decode(
+        buf: ByteBuf,
+        size: Int,
+        ctx: ChannelHandlerContext,
+        player: Player,
+        world: World
+    ): PlayerGameEvent {
+        val buttonPressed = buf.readUnsignedByteNEG().toInt() == 1
+        val index = buf.readUnsignedShortLEADD()
+        return PlayerClickEvent(index, buttonPressed, 6, player, world)
     }
 }
 
 class Opplayer7Packet : GamePacketDecoder(94, FixedSize(3)) {
-    override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): ClientEvent {
-        val buttonPressed = data.readUnsignedByte().toInt() == 1
-        val index = data.readUnsignedShort()
-        return PlayerClickClientEvent(index, buttonPressed, 7)
+    override fun decode(
+        buf: ByteBuf,
+        size: Int,
+        ctx: ChannelHandlerContext,
+        player: Player,
+        world: World
+    ): PlayerGameEvent {
+        val buttonPressed = buf.readUnsignedByte().toInt() == 1
+        val index = buf.readUnsignedShort()
+        return PlayerClickEvent(index, buttonPressed, 7, player, world)
     }
 }
 
 class Opplayer8Packet : GamePacketDecoder(40, FixedSize(3)) {
-    override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): ClientEvent {
-        val buttonPressed = data.readUnsignedByte().toInt() == 1
-        val index = data.readUnsignedShort()
-        return PlayerClickClientEvent(index, buttonPressed, 8)
+    override fun decode(
+        buf: ByteBuf,
+        size: Int,
+        ctx: ChannelHandlerContext,
+        player: Player,
+        world: World
+    ): PlayerGameEvent {
+        val buttonPressed = buf.readUnsignedByte().toInt() == 1
+        val index = buf.readUnsignedShort()
+        return PlayerClickEvent(index, buttonPressed, 8, player, world)
     }
 }

@@ -19,58 +19,90 @@ package io.guthix.oldscape.server.net.game.inc
 import io.guthix.buffer.*
 import io.guthix.oldscape.server.dimensions.tiles
 import io.guthix.oldscape.server.event.LocationClickEvent
-import io.guthix.oldscape.server.net.game.ClientEvent
+import io.guthix.oldscape.server.event.PlayerGameEvent
 import io.guthix.oldscape.server.net.game.FixedSize
 import io.guthix.oldscape.server.net.game.GamePacketDecoder
+import io.guthix.oldscape.server.world.World
+import io.guthix.oldscape.server.world.entity.Player
 import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 
 class Oploc1Packet : GamePacketDecoder(76, FixedSize(7)) {
-    override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): ClientEvent {
-        val pressed = data.readUnsignedByteSUB().toInt() == 1
-        val x = data.readUnsignedShortLEADD()
-        val id = data.readUnsignedShortLE()
-        val y = data.readUnsignedShortLE()
-        return LocationClickEvent(x.tiles, y.tiles, id, pressed)
+    override fun decode(
+        buf: ByteBuf,
+        size: Int,
+        ctx: ChannelHandlerContext,
+        player: Player,
+        world: World
+    ): PlayerGameEvent {
+        val pressed = buf.readUnsignedByteSUB().toInt() == 1
+        val x = buf.readUnsignedShortLEADD()
+        val id = buf.readUnsignedShortLE()
+        val y = buf.readUnsignedShortLE()
+        return LocationClickEvent(x.tiles, y.tiles, id, pressed, player, world)
     }
 }
 
 class Oploc2Packet : GamePacketDecoder(36, FixedSize(7)) {
-    override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): ClientEvent {
-        val id = data.readUnsignedShort()
-        val x = data.readUnsignedShortLEADD()
-        val y = data.readUnsignedShortLEADD()
-        val pressed = data.readUnsignedByteNEG().toInt() == 1
-        return LocationClickEvent(x.tiles, y.tiles, id, pressed)
+    override fun decode(
+        buf: ByteBuf,
+        size: Int,
+        ctx: ChannelHandlerContext,
+        player: Player,
+        world: World
+    ): PlayerGameEvent {
+        val id = buf.readUnsignedShort()
+        val x = buf.readUnsignedShortLEADD()
+        val y = buf.readUnsignedShortLEADD()
+        val pressed = buf.readUnsignedByteNEG().toInt() == 1
+        return LocationClickEvent(x.tiles, y.tiles, id, pressed, player, world)
     }
 }
 
 class Oploc3Packet : GamePacketDecoder(89, FixedSize(7)) {
-    override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): ClientEvent {
-        val x = data.readUnsignedShortADD()
-        val y = data.readUnsignedShortLEADD()
-        val pressed = data.readUnsignedByteADD().toInt() == 1
-        val id = data.readUnsignedShortADD()
-        return LocationClickEvent(x.tiles, y.tiles, id, pressed)
+    override fun decode(
+        buf: ByteBuf,
+        size: Int,
+        ctx: ChannelHandlerContext,
+        player: Player,
+        world: World
+    ): PlayerGameEvent {
+        val x = buf.readUnsignedShortADD()
+        val y = buf.readUnsignedShortLEADD()
+        val pressed = buf.readUnsignedByteADD().toInt() == 1
+        val id = buf.readUnsignedShortADD()
+        return LocationClickEvent(x.tiles, y.tiles, id, pressed, player, world)
     }
 }
 
 class Oploc4Packet : GamePacketDecoder(81, FixedSize(7)) {
-    override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): ClientEvent {
-        val id = data.readUnsignedShortADD()
-        val pressed = data.readUnsignedByte().toInt() == 1
-        val x = data.readUnsignedShort()
-        val y = data.readUnsignedShortLE()
-        return LocationClickEvent(x.tiles, y.tiles, id, pressed)
+    override fun decode(
+        buf: ByteBuf,
+        size: Int,
+        ctx: ChannelHandlerContext,
+        player: Player,
+        world: World
+    ): PlayerGameEvent {
+        val id = buf.readUnsignedShortADD()
+        val pressed = buf.readUnsignedByte().toInt() == 1
+        val x = buf.readUnsignedShort()
+        val y = buf.readUnsignedShortLE()
+        return LocationClickEvent(x.tiles, y.tiles, id, pressed, player, world)
     }
 }
 
 class Oploc5Packet : GamePacketDecoder(67, FixedSize(7)) {
-    override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): ClientEvent {
-        val id = data.readUnsignedShortLEADD()
-        val x = data.readUnsignedShortLE()
-        val pressed = data.readUnsignedByte().toInt() == 1
-        val y = data.readUnsignedShort()
-        return LocationClickEvent(x.tiles, y.tiles, id, pressed)
+    override fun decode(
+        buf: ByteBuf,
+        size: Int,
+        ctx: ChannelHandlerContext,
+        player: Player,
+        world: World
+    ): PlayerGameEvent {
+        val id = buf.readUnsignedShortLEADD()
+        val x = buf.readUnsignedShortLE()
+        val pressed = buf.readUnsignedByte().toInt() == 1
+        val y = buf.readUnsignedShort()
+        return LocationClickEvent(x.tiles, y.tiles, id, pressed, player, world)
     }
 }

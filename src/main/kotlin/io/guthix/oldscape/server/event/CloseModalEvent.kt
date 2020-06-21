@@ -16,9 +16,10 @@
  */
 package io.guthix.oldscape.server.event
 
-import io.guthix.oldscape.server.net.game.ClientEvent
 import io.guthix.oldscape.server.world.World
+import io.guthix.oldscape.server.world.entity.Player
 
-class CloseModalEvent : ClientEvent, InGameEvent {
-    override fun toGameEvent(world: World): CloseModalEvent = this
-}
+data class CloseModalEvent(
+    override val player: Player,
+    override val world: World
+) :  PlayerGameEvent(player, world)

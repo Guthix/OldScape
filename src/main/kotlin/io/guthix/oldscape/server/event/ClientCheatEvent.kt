@@ -16,9 +16,11 @@
  */
 package io.guthix.oldscape.server.event
 
-import io.guthix.oldscape.server.net.game.ClientEvent
 import io.guthix.oldscape.server.world.World
+import io.guthix.oldscape.server.world.entity.Player
 
-data class ClientCheatEvent(val string: String) : ClientEvent, InGameEvent {
-    override fun toGameEvent(world: World): ClientCheatEvent = this
-}
+data class ClientCheatEvent(
+    val string: String,
+    override val player: Player,
+    override val world: World
+) :  PlayerGameEvent(player, world)

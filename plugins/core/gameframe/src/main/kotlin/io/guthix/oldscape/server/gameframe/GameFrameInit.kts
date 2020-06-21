@@ -20,10 +20,10 @@ import io.guthix.oldscape.server.event.ButtonClickEvent
 import io.guthix.oldscape.server.event.WindowStatusEvent
 
 on(WindowStatusEvent::class).then {
-    player.clientSettings.width = event.width
-    player.clientSettings.height = event.height
-    if (player.clientSettings.resizable != event.isResized) {
-        player.clientSettings.resizable = event.isResized
+    player.clientSettings.width = width
+    player.clientSettings.height = height
+    if (player.clientSettings.resizable != isResized) {
+        player.clientSettings.resizable = isResized
         if (player.clientSettings.resizable) {
             player.changeGameFrame(GameFrame.RESIZABLE_BOX)
         } else {
@@ -32,7 +32,7 @@ on(WindowStatusEvent::class).then {
     }
 }
 
-on(ButtonClickEvent::class).where { event.interfaceId == 378 && event.buttonId == 78 }.then {
+on(ButtonClickEvent::class).where { interfaceId == 378 && buttonId == 78 }.then {
     player.topInterface.closeComponent(28)
     if (player.clientSettings.resizable) {
         player.changeGameFrame(GameFrame.RESIZABLE_BOX)

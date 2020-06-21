@@ -18,13 +18,20 @@ package io.guthix.oldscape.server.net.game.inc
 
 import io.guthix.buffer.readStringCP1252
 import io.guthix.oldscape.server.event.ClientCheatEvent
-import io.guthix.oldscape.server.net.game.ClientEvent
+import io.guthix.oldscape.server.event.PlayerGameEvent
 import io.guthix.oldscape.server.net.game.GamePacketDecoder
 import io.guthix.oldscape.server.net.game.VarByteSize
+import io.guthix.oldscape.server.world.World
+import io.guthix.oldscape.server.world.entity.Player
 import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 
 class ClientCheatPacket : GamePacketDecoder(93, VarByteSize) {
-    override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): ClientEvent =
-        ClientCheatEvent(data.readStringCP1252())
+    override fun decode(
+        buf: ByteBuf,
+        size: Int,
+        ctx: ChannelHandlerContext,
+        player: Player,
+        world: World
+    ): PlayerGameEvent = ClientCheatEvent(buf.readStringCP1252(), player, world)
 }

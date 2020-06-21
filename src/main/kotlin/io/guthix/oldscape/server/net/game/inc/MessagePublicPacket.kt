@@ -18,21 +18,29 @@ package io.guthix.oldscape.server.net.game.inc
 
 import io.guthix.buffer.readUnsignedSmallSmart
 import io.guthix.oldscape.server.api.Huffman
+import io.guthix.oldscape.server.event.PlayerGameEvent
 import io.guthix.oldscape.server.event.PublicMessageEvent
-import io.guthix.oldscape.server.net.game.ClientEvent
 import io.guthix.oldscape.server.net.game.GamePacketDecoder
 import io.guthix.oldscape.server.net.game.VarByteSize
+import io.guthix.oldscape.server.world.World
+import io.guthix.oldscape.server.world.entity.Player
 import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 
 class MessagePublicPacket : GamePacketDecoder(22, VarByteSize) {
-    override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): ClientEvent {
-        data.readUnsignedByte()
-        val color = data.readUnsignedByte().toInt()
-        val effect = data.readUnsignedByte().toInt()
-        val len = data.readUnsignedSmallSmart()
-        val compr = ByteArray(data.readableBytes()).apply { data.readBytes(this) }
+    override fun decode(
+        buf: ByteBuf,
+        size: Int,
+        ctx: ChannelHandlerContext,
+        player: Player,
+        world: World
+    ): PlayerGameEvent {
+        buf.readUnsignedByte()
+        val color = buf.readUnsignedByte().toInt()
+        val effect = buf.readUnsignedByte().toInt()
+        val len = buf.readUnsignedSmallSmart()
+        val compr = ByteArray(buf.readableBytes()).apply { buf.readBytes(this) }
         val msg = String(Huffman.decompress(compr, len))
-        return PublicMessageEvent(color, effect, msg)
+        return PublicMessageEvent(color, effect, msg, player, world)
     }
 }

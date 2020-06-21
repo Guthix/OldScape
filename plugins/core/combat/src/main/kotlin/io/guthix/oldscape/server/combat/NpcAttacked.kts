@@ -17,7 +17,7 @@
 package io.guthix.oldscape.server.combat
 
 import io.guthix.oldscape.server.event.NpcAttackedEvent
-import io.guthix.oldscape.server.pathing.DestinationPlayer
+import io.guthix.oldscape.server.pathing.DestinationRectangleDirect
 import io.guthix.oldscape.server.pathing.simplePathSearch
 import io.guthix.oldscape.server.task.NormalTask
 import io.guthix.oldscape.server.world.entity.HitMark
@@ -26,31 +26,31 @@ import io.guthix.oldscape.server.combat.dmg.calcHit
 import io.guthix.oldscape.server.world.entity.Sequence
 
 on(NpcAttackedEvent::class).then {
-    if(event.npc.inCombatWith == player) return@then
-    var playerDestination = DestinationPlayer(player, world.map)
-    event.npc.inCombatWith = player
-    event.npc.cancelTasks(NormalTask)
-    event.npc.addTask(NormalTask) { // combat fighting task
+    if(npc.inCombatWith == player) return@then
+    var playerDestination = DestinationRectangleDirect(player, world.map)
+    npc.inCombatWith = player
+    npc.cancelTasks(NormalTask)
+    npc.addTask(NormalTask) { // combat fighting task
         while (true) {
-            event.npc.animate(Sequence(id = event.npc.combatSequences?.attack ?: -1))
-            val damage = event.npc.calcHit(player) ?: 0
+            npc.animate(Sequence(id = npc.combatSequences?.attack ?: -1))
+            val damage = npc.calcHit(player) ?: 0
             val hmColor = if (damage == 0) HitMark.Color.BLUE else HitMark.Color.RED
             player.hit(hmColor, damage, 0)
             player.animate(Sequence(id = player.combatSequences.defence))
-            wait(ticks = event.npc.attackDelay)
-            wait { playerDestination.reached(event.npc.pos.x, event.npc.pos.y, event.npc.size) }
+            wait(ticks = npc.attackDelay)
+            wait { playerDestination.reached(npc.pos.x, npc.pos.y, npc.size) }
         }
     }
-    event.npc.addTask(NormalTask) { // following task
-        event.npc.turnToLock(player)
+    npc.addTask(NormalTask) { // following task
+        npc.turnToLock(player)
         while (true) {
             wait { player.movementType != MovementInterestUpdate.STAY }
-            playerDestination = DestinationPlayer(player, world.map)
-            event.npc.path = simplePathSearch(event.npc.pos, playerDestination, event.npc.size, world.map)
+            playerDestination = DestinationRectangleDirect(player, world.map)
+            npc.path = simplePathSearch(npc.pos, playerDestination, npc.size, world.map)
             wait(ticks = 1)
         }
     }.onCancel {
-        event.npc.inCombatWith = null
-        event.npc.turnToLock(null)
+        npc.inCombatWith = null
+        npc.turnToLock(null)
     }
 }

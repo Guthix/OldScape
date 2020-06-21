@@ -16,34 +16,33 @@
  */
 package io.guthix.oldscape.server.combat
 
-import io.guthix.oldscape.server.combat.dmg.calcHit
-import io.guthix.oldscape.server.combat.dmg.maxMeleeHit
 import io.guthix.oldscape.server.event.NpcClickEvent
 import io.guthix.oldscape.server.event.EventBus
 import io.guthix.oldscape.server.event.NpcAttackedEvent
 import io.guthix.oldscape.server.task.NormalTask
-import io.guthix.oldscape.server.pathing.DesinationNpc
+import io.guthix.oldscape.server.pathing.DestinationRectangleDirect
 import io.guthix.oldscape.server.pathing.breadthFirstSearch
 import io.guthix.oldscape.server.world.entity.HitMark
 import io.guthix.oldscape.server.world.entity.Sequence
-import kotlin.math.log
+import io.guthix.oldscape.server.combat.dmg.maxMeleeHit
+import io.guthix.oldscape.server.combat.dmg.calcHit
 
-on(NpcClickEvent::class).where { event.option == "Attack" }.then {
-    if(player.inCombatWith == event.npc) return@then
-    val npcDestination = DesinationNpc(event.npc, world.map)
-    player.turnToLock(event.npc)
+on(NpcClickEvent::class).where { contextMenuEntry == "Attack" }.then {
+    if(player.inCombatWith == npc) return@then
+    val npcDestination = DestinationRectangleDirect(npc, world.map)
+    player.turnToLock(npc)
     player.path = breadthFirstSearch(player.pos, npcDestination, player.size, true, world.map)
-    player.inCombatWith = event.npc
+    player.inCombatWith = npc
     player.cancelTasks(NormalTask)
     player.addTask(NormalTask) {
         wait { npcDestination.reached(player.pos.x, player.pos.y, player.size) }
-        EventBus.schedule(NpcAttackedEvent(event.npc), player, world)
+        EventBus.schedule(NpcAttackedEvent(npc, player, world))
         while (true) { // start player combat
             player.animate(Sequence(id = player.combatSequences.attack))
-            val damage = player.calcHit(event.npc, player.maxMeleeHit()) ?: 0
+            val damage = player.calcHit(npc, player.maxMeleeHit()) ?: 0
             val hmColor = if (damage == 0) HitMark.Color.BLUE else HitMark.Color.RED
-            event.npc.hit(hmColor, damage, 0)
-            event.npc.animate(Sequence(id = event.npc.combatSequences?.defence ?: -1))
+            npc.hit(hmColor, damage, 0)
+            npc.animate(Sequence(id = npc.combatSequences?.defence ?: -1))
             wait(ticks = player.attackDelay)
         }
     }.onCancel {
