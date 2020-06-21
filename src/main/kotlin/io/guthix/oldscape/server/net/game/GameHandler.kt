@@ -17,18 +17,19 @@
 package io.guthix.oldscape.server.net.game
 
 import io.guthix.oldscape.server.event.EventBus
+import io.guthix.oldscape.server.event.PlayerGameEvent
 import io.guthix.oldscape.server.net.PacketInboundHandler
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.Player
 import io.netty.channel.ChannelHandlerContext
 
-class GameHandler(val world: World, val player: Player) : PacketInboundHandler<ClientEvent>() {
+class GameHandler(val player: Player) : PacketInboundHandler<PlayerGameEvent>() {
     override fun channelRegistered(ctx: ChannelHandlerContext) {
         super.channelRegistered(ctx)
         player.ctx = ctx
     }
 
-    override fun channelRead0(ctx: ChannelHandlerContext, msg: ClientEvent) {
-        EventBus.schedule(msg.toGameEvent(world), player, world)
+    override fun channelRead0(ctx: ChannelHandlerContext, msg: PlayerGameEvent) {
+        EventBus.schedule(msg)
     }
 }

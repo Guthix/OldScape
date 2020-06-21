@@ -19,21 +19,29 @@ package io.guthix.oldscape.server.net.game.inc
 import io.guthix.oldscape.server.event.KeyPress
 import io.guthix.oldscape.server.event.KeyboardKey
 import io.guthix.oldscape.server.event.KeyboardPressEvent
-import io.guthix.oldscape.server.net.game.ClientEvent
+import io.guthix.oldscape.server.event.PlayerGameEvent
 import io.guthix.oldscape.server.net.game.GamePacketDecoder
 import io.guthix.oldscape.server.net.game.VarShortSize
+import io.guthix.oldscape.server.world.World
+import io.guthix.oldscape.server.world.entity.Player
 import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 
 class EventKeyboardPacket : GamePacketDecoder(3, VarShortSize) {
-    override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): ClientEvent {
+    override fun decode(
+        buf: ByteBuf,
+        size: Int,
+        ctx: ChannelHandlerContext,
+        player: Player,
+        world: World
+    ): PlayerGameEvent {
         val keyPresses = mutableListOf<KeyPress>()
         for (button in 0 until (size / 4)) {
-            val timeInterval = data.readUnsignedMediumLE()
-            val keyCode = data.readUnsignedByte().toInt()
+            val timeInterval = buf.readUnsignedMediumLE()
+            val keyCode = buf.readUnsignedByte().toInt()
             keyPresses.add(KeyPress(KeyboardKey.get(keyCode), timeInterval))
         }
-        return KeyboardPressEvent(keyPresses.toList())
+        return KeyboardPressEvent(keyPresses.toList(), player, world)
     }
 
 }

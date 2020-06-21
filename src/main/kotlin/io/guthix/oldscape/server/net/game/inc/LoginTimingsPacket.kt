@@ -19,18 +19,26 @@ package io.guthix.oldscape.server.net.game.inc
 import io.guthix.oldscape.server.event.LoginTimingsEvent
 import io.guthix.oldscape.server.net.game.GamePacketDecoder
 import io.guthix.oldscape.server.net.game.VarByteSize
+import io.guthix.oldscape.server.world.World
+import io.guthix.oldscape.server.world.entity.Player
 import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 
 class LoginTimingsPacket : GamePacketDecoder(47, VarByteSize) {
-    override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): LoginTimingsEvent {
-        data.readShort()
-        data.readShort()
-        data.readShort()
-        data.readShort()
-        data.readShort()
-        data.readShort()
-        data.readShort()
-        return LoginTimingsEvent()
+    override fun decode(
+        buf: ByteBuf,
+        size: Int,
+        ctx: ChannelHandlerContext,
+        player: Player,
+        world: World
+    ): LoginTimingsEvent {
+        buf.readShort()
+        buf.readShort()
+        buf.readShort()
+        buf.readShort()
+        buf.readShort()
+        buf.readShort()
+        buf.readShort()
+        return LoginTimingsEvent(player, world)
     }
 }

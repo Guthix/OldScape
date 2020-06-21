@@ -17,13 +17,19 @@
 package io.guthix.oldscape.server.net.game
 
 import io.guthix.oldscape.server.net.IsaacRandom
+import io.guthix.oldscape.server.world.World
+import io.guthix.oldscape.server.world.entity.Player
 import io.netty.buffer.ByteBuf
 import io.netty.buffer.Unpooled
 import io.netty.channel.ChannelHandlerContext
 import io.netty.handler.codec.ByteToMessageDecoder
 import java.io.IOException
 
-class GameDecoder(private val decodeCipher: IsaacRandom) : ByteToMessageDecoder() {
+class GameDecoder(
+    private val decodeCipher: IsaacRandom,
+    private val player: Player,
+    private val world: World
+) : ByteToMessageDecoder() {
     private enum class State { OPCODE, SIZE, PAYLOAD }
 
     private var state = State.OPCODE
@@ -58,7 +64,7 @@ class GameDecoder(private val decodeCipher: IsaacRandom) : ByteToMessageDecoder(
         if (state == State.PAYLOAD) {
             if (!inc.isReadable(size)) return
             val payload = if (size > 0) inc.readBytes(size) else Unpooled.EMPTY_BUFFER
-            out.add(decoder!!.decode(payload, size, ctx))
+            out.add(decoder!!.decode(payload, size, ctx, player, world))
             state = State.OPCODE
         }
     }

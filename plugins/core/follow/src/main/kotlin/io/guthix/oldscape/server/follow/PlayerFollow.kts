@@ -22,8 +22,8 @@ import io.guthix.oldscape.server.pathing.DestinationTile
 import io.guthix.oldscape.server.pathing.breadthFirstSearch
 import io.guthix.oldscape.server.pathing.simplePathSearch
 
-on(PlayerClickEvent::class).where { event.option == "Follow" }.then {
-    val followed = event.player
+on(PlayerClickEvent::class).where { contextMenuEntry == "Follow" }.then {
+    val followed = clickedPlayer
     val dest = DestinationTile(followed.followPosition)
     player.path = breadthFirstSearch(player.pos, dest, player.size, true, world.map)
     player.turnToLock(followed)

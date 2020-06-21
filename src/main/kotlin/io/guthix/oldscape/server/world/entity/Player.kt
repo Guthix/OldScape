@@ -20,7 +20,7 @@ import io.guthix.oldscape.server.dimensions.TileUnit
 import io.guthix.oldscape.server.dimensions.tiles
 import io.guthix.oldscape.server.event.PublicMessageEvent
 import io.guthix.oldscape.server.plugin.EventHandler
-import io.guthix.oldscape.server.event.InGameEvent
+import io.guthix.oldscape.server.event.GameEvent
 import io.guthix.oldscape.server.task.Task
 import io.guthix.oldscape.server.net.game.out.*
 import io.guthix.oldscape.server.world.World
@@ -45,7 +45,7 @@ class Player(
 ) : Character(playerManager.index), Comparable<Player> {
     override val updateFlags = sortedSetOf<PlayerUpdateType>()
 
-    internal val inEvents = ConcurrentLinkedQueue<EventHandler<InGameEvent>>()
+    internal val inEvents = ConcurrentLinkedQueue<EventHandler<GameEvent>>()
 
     var isLoggingOut: Boolean = false
 

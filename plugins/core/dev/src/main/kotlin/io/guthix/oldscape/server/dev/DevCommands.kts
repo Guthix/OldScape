@@ -21,14 +21,14 @@ import io.guthix.oldscape.server.event.ClientCheatEvent
 import io.guthix.oldscape.server.world.entity.*
 import io.guthix.oldscape.server.world.map.Tile
 
-on(ClientCheatEvent::class).where { event.string == "drop" }.then {
+on(ClientCheatEvent::class).where { string == "drop" }.then {
     world.map.addObject(
         Tile(player.pos.floor, player.pos.x + 1.tiles, player.pos.y + 1.tiles),
         Obj(1163, 1)
     )
 }
 
-on(ClientCheatEvent::class).where { event.string == "locadd" }.then {
+on(ClientCheatEvent::class).where { string == "locadd" }.then {
     world.map.addDynamicLoc(
         Loc(
             id = 4,
@@ -39,7 +39,7 @@ on(ClientCheatEvent::class).where { event.string == "locadd" }.then {
     )
 }
 
-on(ClientCheatEvent::class).where { event.string == "locremove" }.then {
+on(ClientCheatEvent::class).where { string == "locremove" }.then {
     world.map.removeDynamicLoc(
         Loc(
             id = 4,
@@ -50,28 +50,28 @@ on(ClientCheatEvent::class).where { event.string == "locremove" }.then {
     )
 }
 
-on(ClientCheatEvent::class).where { event.string == "inv" }.then {
+on(ClientCheatEvent::class).where { string == "inv" }.then {
     val head = HeadEquipment(1163, 1)
     player.topInterface.inventory.addNextSlot(head)
 }
 
-on(ClientCheatEvent::class).where { event.string == "shout" }.then {
+on(ClientCheatEvent::class).where { string == "shout" }.then {
     player.shout("testing!")
 }
 
-on(ClientCheatEvent::class).where { event.string == "animation" }.then {
+on(ClientCheatEvent::class).where { string == "animation" }.then {
     player.animate(Sequence(id = 1162))
     player.spotAnimate(SpotAnimation(id = 99, height = 92))
 }
 
-on(ClientCheatEvent::class).where { event.string == "clear" }.then {
+on(ClientCheatEvent::class).where { string == "clear" }.then {
     player.clearMap()
 }
 
-on(ClientCheatEvent::class).where { event.string == "pos" }.then {
+on(ClientCheatEvent::class).where { string == "pos" }.then {
     println("Position ${player.pos}")
 }
 
-on(ClientCheatEvent::class).where { event.string == "npc" }.then {
+on(ClientCheatEvent::class).where { string == "npc" }.then {
     world.addNpc(42, player.pos.copy(x = player.pos.x + 2.tiles))
 }

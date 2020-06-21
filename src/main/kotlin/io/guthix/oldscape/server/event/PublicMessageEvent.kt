@@ -16,11 +16,15 @@
  */
 package io.guthix.oldscape.server.event
 
-import io.guthix.oldscape.server.net.game.ClientEvent
 import io.guthix.oldscape.server.world.World
+import io.guthix.oldscape.server.world.entity.Player
 
-data class PublicMessageEvent(val color: Int, val effect: Int, val message: String) : ClientEvent, InGameEvent {
+data class PublicMessageEvent(
+    val color: Int,
+    val effect: Int,
+    val message: String,
+    override val player: Player,
+    override val world: World
+) : PlayerGameEvent(player, world) {
     val length: Int get() = message.length
-
-    override fun toGameEvent(world: World): PublicMessageEvent = this
 }

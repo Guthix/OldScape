@@ -17,14 +17,14 @@
 package io.guthix.oldscape.server.event
 
 import io.guthix.oldscape.server.dimensions.TileUnit
-import io.guthix.oldscape.server.net.game.ClientEvent
 import io.guthix.oldscape.server.world.World
+import io.guthix.oldscape.server.world.entity.Player
 
 data class LocationClickEvent(
     val x: TileUnit,
     val y: TileUnit,
-    val id: Int, val
-    pressed: Boolean
-) : ClientEvent, InGameEvent {
-    override fun toGameEvent(world: World): LocationClickEvent = this
-}
+    val id: Int,
+    val pressed: Boolean,
+    override val player: Player,
+    override val world: World
+) :  PlayerGameEvent(player, world)

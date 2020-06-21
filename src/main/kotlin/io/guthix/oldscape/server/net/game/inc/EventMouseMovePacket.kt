@@ -17,16 +17,24 @@
 package io.guthix.oldscape.server.net.game.inc
 
 import io.guthix.oldscape.server.event.MouseMoveEvent
-import io.guthix.oldscape.server.net.game.ClientEvent
+import io.guthix.oldscape.server.event.PlayerGameEvent
 import io.guthix.oldscape.server.net.game.GamePacketDecoder
 import io.guthix.oldscape.server.net.game.VarByteSize
+import io.guthix.oldscape.server.world.World
+import io.guthix.oldscape.server.world.entity.Player
 import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 
 //TODO
 class EventMouseMovePacket : GamePacketDecoder(74, VarByteSize) {
-    override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): ClientEvent {
-        val bytes = data.readBytes(size)
-        return MouseMoveEvent()
+    override fun decode(
+        buf: ByteBuf,
+        size: Int,
+        ctx: ChannelHandlerContext,
+        player: Player,
+        world: World
+    ): PlayerGameEvent {
+        val bytes = buf.readBytes(size)
+        return MouseMoveEvent(player, world)
     }
 }

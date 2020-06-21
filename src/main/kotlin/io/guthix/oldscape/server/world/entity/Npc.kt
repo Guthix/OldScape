@@ -36,6 +36,8 @@ class Npc(index: Int, id: Int, override var pos: Tile) : Character(index) {
 
     val contextMenu: Array<String?> get() = blueprint.contextMenu
 
+    val wanderRadius: TileUnit get() = blueprint.wanderRadius
+
     override fun processTasks() {
         while (true) {
             val resumed = tasks.values.flatMap { routineList -> routineList.toList().map(Task::run) } // TODO optimize

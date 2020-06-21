@@ -16,15 +16,15 @@
  */
 package io.guthix.oldscape.server.event
 
-import io.guthix.oldscape.server.net.game.ClientEvent
 import io.guthix.oldscape.server.world.World
+import io.guthix.oldscape.server.world.entity.Player
 
 data class ButtonClickEvent(
     val interfaceId: Int,
     val buttonId: Int,
     val componentId: Int,
     val slotId: Int,
-    val option: Int
-) : ClientEvent, InGameEvent {
-    override fun toGameEvent(world: World): ButtonClickEvent = this
-}
+    val option: Int,
+    override val player: Player,
+    override val world: World
+) :  PlayerGameEvent(player, world)

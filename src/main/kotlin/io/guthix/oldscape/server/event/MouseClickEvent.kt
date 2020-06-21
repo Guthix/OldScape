@@ -16,14 +16,14 @@
  */
 package io.guthix.oldscape.server.event
 
-import io.guthix.oldscape.server.net.game.ClientEvent
 import io.guthix.oldscape.server.world.World
+import io.guthix.oldscape.server.world.entity.Player
 
 data class MouseClickEvent(
     val isLeftClick: Boolean,
     val presDuration: Int,
     val mouseX: Int,
-    val mouseY: Int
-) : ClientEvent, InGameEvent {
-    override fun toGameEvent(world: World): MouseClickEvent = this
-}
+    val mouseY: Int,
+    override val player: Player,
+    override val world: World
+) :  PlayerGameEvent(player, world)

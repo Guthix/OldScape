@@ -14,17 +14,11 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with Foobar. If not, see <https://www.gnu.org/licenses/>.
  */
-package io.guthix.oldscape.server.interest
+package io.guthix.oldscape.server.event
 
-import io.guthix.oldscape.server.event.LoginEvent
-import io.guthix.oldscape.server.event.PlayerInitialized
-import io.guthix.oldscape.server.event.EventBus
+import io.guthix.oldscape.server.world.World
+import io.guthix.oldscape.server.world.entity.Player
 
-on(LoginEvent::class).then {
-    player.initialize(world)
-    player.updateVarbit(id = 8119, value = 1) // enable chat
-    player.updateVarp(id = 1306, value = 2) // set attack option for npcs (0, 1, 2, 3)
-    player.updateVarp(id = 1107, value = 2) // set attack option for players (0, 1, 2, 3)
-    player.senGameMessage("Welcome to OldScape Emulator!")
-    EventBus.schedule(PlayerInitialized(player, world))
-}
+abstract class GameEvent(open val world: World)
+
+abstract class PlayerGameEvent(open val player: Player, world: World) : GameEvent(world)

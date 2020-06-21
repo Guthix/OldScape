@@ -25,8 +25,8 @@ import io.guthix.oldscape.server.pathing.breadthFirstSearch
 import io.guthix.oldscape.server.world.map.Tile
 
 on(LocationClickEvent::class).then {
-    val loc = world.map.getLoc(event.id, player.pos.floor, event.x, event.y) ?: error(
-        "Could not find location at ${Tile(player.pos.floor, event.x, event.y)}."
+    val loc = world.map.getLoc(id, player.pos.floor, x, y) ?: error(
+        "Could not find location at ${Tile(player.pos.floor, x, y)}."
     )
     val destination = DestinationLocation(loc, world.map)
     player.path = breadthFirstSearch(player.pos, destination, player.size, true, world.map)
@@ -34,6 +34,6 @@ on(LocationClickEvent::class).then {
     player.cancelTasks(NormalTask)
     player.addTask(NormalTask) {
         wait { destination.reached(player.pos.x, player.pos.y, player.size) }
-        EventBus.schedule(LocationReachedEvent(loc), player, world)
+        EventBus.schedule(LocationReachedEvent(loc, player, world))
     }
 }

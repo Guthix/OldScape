@@ -18,8 +18,9 @@ package io.guthix.oldscape.server.net.game
 
 import io.github.classgraph.ClassGraph
 import io.guthix.oldscape.server.dimensions.TileUnit
-import io.guthix.oldscape.server.event.InGameEvent
+import io.guthix.oldscape.server.event.PlayerGameEvent
 import io.guthix.oldscape.server.world.World
+import io.guthix.oldscape.server.world.entity.Player
 import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 import mu.KotlinLogging
@@ -35,10 +36,6 @@ class FixedSize(val size: Int) : PacketSize()
 object VarByteSize : PacketSize()
 
 object VarShortSize : PacketSize()
-
-interface ClientEvent {
-    fun toGameEvent(world: World): InGameEvent
-}
 
 abstract class ZoneOutGameEvent(
     private val localX: TileUnit,
@@ -60,7 +57,13 @@ interface OutGameEvent {
 }
 
 abstract class GamePacketDecoder(val opcode: Int, val packetSize: PacketSize) {
-    abstract fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): ClientEvent
+    abstract fun decode(
+        buf: ByteBuf,
+        size: Int,
+        ctx: ChannelHandlerContext,
+        player: Player,
+        world: World
+    ): PlayerGameEvent
 
     companion object {
         private const val pkg = "io.guthix.oldscape.server.net.game.inc"

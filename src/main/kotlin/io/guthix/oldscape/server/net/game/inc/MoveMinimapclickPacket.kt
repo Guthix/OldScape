@@ -20,21 +20,29 @@ import io.guthix.oldscape.server.dimensions.tiles
 import io.guthix.oldscape.server.event.MiniMapClickEvent
 import io.guthix.oldscape.server.net.game.GamePacketDecoder
 import io.guthix.oldscape.server.net.game.VarByteSize
+import io.guthix.oldscape.server.world.World
+import io.guthix.oldscape.server.world.entity.Player
 import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 
 class MoveMinimapclickPacket : GamePacketDecoder(87, VarByteSize) {
-    override fun decode(data: ByteBuf, size: Int, ctx: ChannelHandlerContext): MiniMapClickEvent {
-        val x = data.readUnsignedShort()
-        val type = data.readByte().toInt()
-        val y = data.readUnsignedShort()
-        val mouseDx = data.readUnsignedByte().toInt()
-        val mouseDy = data.readUnsignedByte().toInt()
-        val angle = data.readShort().toInt()
-        data.skipBytes(4)
-        val playerX = data.readUnsignedShort()
-        val playerY = data.readUnsignedShort()
-        data.skipBytes(1)
-        return MiniMapClickEvent(x.tiles, y.tiles, type, mouseDx, mouseDy, angle, playerX.tiles, playerY.tiles)
+    override fun decode(
+        buf: ByteBuf,
+        size: Int,
+        ctx: ChannelHandlerContext,
+        player: Player,
+        world: World
+    ): MiniMapClickEvent {
+        val x = buf.readUnsignedShort().tiles
+        val type = buf.readByte().toInt()
+        val y = buf.readUnsignedShort().tiles
+        val mouseDx = buf.readUnsignedByte().toInt()
+        val mouseDy = buf.readUnsignedByte().toInt()
+        val angle = buf.readShort().toInt()
+        buf.skipBytes(4)
+        val playerX = buf.readUnsignedShort().tiles
+        val playerY = buf.readUnsignedShort().tiles
+        buf.skipBytes(1)
+        return MiniMapClickEvent(x, y, type, mouseDx, mouseDy, angle, playerX, playerY, player, world)
     }
 }

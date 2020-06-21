@@ -17,7 +17,7 @@
 package io.guthix.oldscape.server.plugin
 
 import io.guthix.oldscape.server.event.EventBus
-import io.guthix.oldscape.server.event.InGameEvent
+import io.guthix.oldscape.server.event.GameEvent
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.Player
 import kotlin.reflect.KClass
@@ -25,45 +25,43 @@ import kotlin.script.experimental.annotations.KotlinScript
 
 @KotlinScript
 abstract class Script {
-    fun <E : InGameEvent> on(type: KClass<E>): ScriptFilter<E> = ScriptFilter(type)
+    fun <E : GameEvent> on(type: KClass<E>): ScriptFilter<E> = ScriptFilter(type)
 }
 
-class ScriptFilter<E : InGameEvent>(private val type: KClass<E>) {
-    private var condition: EventHandler<E>.() -> Boolean = { true }
+class ScriptFilter<E : GameEvent>(private val type: KClass<E>) {
+    private var condition: E.() -> Boolean = { true }
 
-    fun where(condition: EventHandler<E>.() -> Boolean): ScriptFilter<E> {
+    fun where(condition: E.() -> Boolean): ScriptFilter<E> {
         this.condition = condition
         return this
     }
 
-    fun then(handler: EventHandler<E>.() -> Unit): ScriptScheduler<E> = ScriptScheduler(type, condition, handler)
+    fun then(plugin: E.() -> Unit): ScriptScheduler<E> = ScriptScheduler(type, condition, plugin)
 }
 
-class ScriptScheduler<in E : InGameEvent>(
+class ScriptScheduler<in E : GameEvent>(
     type: KClass<E>,
-    private val condition: EventHandler<E>.() -> Boolean,
-    private val script: EventHandler<E>.() -> Unit
+    private val condition: E.() -> Boolean,
+    private val plugin: E.() -> Unit
 ) {
     init {
         EventBus.register(type, this)
     }
 
     fun schedule(event: E, player: Player, world: World) {
-        val handler = EventHandler(event, player, world, script)
-        if (handler.condition()) {
+        val handler = EventHandler(event, player, world, plugin)
+        if (event.condition()) {
             player.inEvents.add(handler)
         }
     }
 }
 
-class EventHandler<out E : InGameEvent>(
+class EventHandler<out E : GameEvent>(
     val event: E,
     val player: Player,
     val world: World,
-    private val script: EventHandler<E>.() -> Unit
+    private val plugin: E.() -> Unit
 ) {
-    fun handle() {
-        script()
-    }
+    fun handle() { event.plugin() }
 }
 
