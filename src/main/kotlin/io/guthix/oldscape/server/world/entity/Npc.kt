@@ -28,6 +28,8 @@ import io.guthix.oldscape.server.world.map.Tile
 class Npc(index: Int, id: Int, override var pos: Tile) : Character(index) {
     val blueprint: NpcBlueprint = NpcBlueprints[id]
 
+    val spawnPos: Tile = pos.copy()
+
     override val updateFlags = sortedSetOf<NpcUpdateType>()
 
     val id: Int get() = blueprint.id

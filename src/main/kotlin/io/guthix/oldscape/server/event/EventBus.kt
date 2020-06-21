@@ -17,10 +17,9 @@
 package io.guthix.oldscape.server.event
 
 import io.github.classgraph.ClassGraph
+import io.guthix.oldscape.server.plugin.EventHandler
 import io.guthix.oldscape.server.plugin.Script
 import io.guthix.oldscape.server.plugin.ScriptScheduler
-import io.guthix.oldscape.server.world.World
-import io.guthix.oldscape.server.world.entity.Player
 import mu.KotlinLogging
 import kotlin.reflect.KClass
 
@@ -43,11 +42,15 @@ object EventBus {
         }
     }
 
+    fun <E : GameEvent> schedule(event: E) {
+        eventListeners[event::class]?.let {
+            for (listener in it) listener.schedule(event, event.world)
+        }
+    }
+
     fun <E : PlayerGameEvent> schedule(event: E) {
         eventListeners[event::class]?.let {
-            for (listener in it) {
-                listener.schedule(event, event.player, event.world)
-            }
+            for (listener in it) listener.schedule(event, event.player)
         }
     }
 
@@ -58,4 +61,8 @@ object EventBus {
         }
         listeners.add(listener as ScriptScheduler<GameEvent>)
     }
+}
+
+internal interface EventHolder {
+    val events: MutableCollection<EventHandler<GameEvent>>
 }

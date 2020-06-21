@@ -17,7 +17,25 @@
 package io.guthix.oldscape.server.npc
 
 import io.guthix.oldscape.server.event.NpcSpawnedEvent
+import io.guthix.oldscape.server.task.NormalTask
+import io.guthix.oldscape.server.pathing.simplePathSearch
+import io.guthix.oldscape.server.pathing.DestinationTile
+import io.guthix.oldscape.server.dimensions.tiles
+import kotlin.random.Random
 
- on(NpcSpawnedEvent::class).then {
-
- }
+on(NpcSpawnedEvent::class).then {
+    if(npc.wanderRadius == 0.tiles) return@then
+    npc.addTask(NormalTask) {
+         while (true) {
+             wait(ticks = Random.nextInt(20))
+             val minX = npc.spawnPos.x - npc.wanderRadius
+             val maxX = npc.spawnPos.x + npc.wanderRadius
+             val minY = npc.spawnPos.y - npc.wanderRadius
+             val maxY = npc.spawnPos.y + npc.wanderRadius
+             val walkX = Random.nextInt(minX.value, maxX.value).tiles
+             val walkY = Random.nextInt(minY.value, maxY.value).tiles
+             val dest = DestinationTile(npc.pos.floor, walkX, walkY)
+             npc.path = simplePathSearch(npc.pos, dest, npc.size, world.map)
+         }
+    }
+}

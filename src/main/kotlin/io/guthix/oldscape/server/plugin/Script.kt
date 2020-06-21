@@ -17,6 +17,7 @@
 package io.guthix.oldscape.server.plugin
 
 import io.guthix.oldscape.server.event.EventBus
+import io.guthix.oldscape.server.event.EventHolder
 import io.guthix.oldscape.server.event.GameEvent
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.Player
@@ -48,18 +49,16 @@ class ScriptScheduler<in E : GameEvent>(
         EventBus.register(type, this)
     }
 
-    fun schedule(event: E, player: Player, world: World) {
-        val handler = EventHandler(event, player, world, plugin)
+    internal fun schedule(event: E, holder: EventHolder) {
+        val handler = EventHandler(event, plugin)
         if (event.condition()) {
-            player.inEvents.add(handler)
+            holder.events.add(handler)
         }
     }
 }
 
 class EventHandler<out E : GameEvent>(
     val event: E,
-    val player: Player,
-    val world: World,
     private val plugin: E.() -> Unit
 ) {
     fun handle() { event.plugin() }

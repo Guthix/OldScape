@@ -16,12 +16,13 @@
  */
 package io.guthix.oldscape.server.world
 
-import io.guthix.oldscape.server.event.EventBus
-import io.guthix.oldscape.server.event.LoginEvent
+import io.guthix.oldscape.server.event.*
+import io.guthix.oldscape.server.event.EventHolder
 import io.guthix.oldscape.server.net.game.GameDecoder
 import io.guthix.oldscape.server.net.game.GameEncoder
 import io.guthix.oldscape.server.net.game.GameHandler
 import io.guthix.oldscape.server.net.login.*
+import io.guthix.oldscape.server.plugin.EventHandler
 import io.guthix.oldscape.server.world.entity.Player
 import io.guthix.oldscape.server.world.map.Tile
 import io.netty.util.concurrent.DefaultPromise
@@ -29,9 +30,12 @@ import io.netty.util.concurrent.ImmediateEventExecutor
 import io.netty.util.concurrent.PromiseCombiner
 import java.util.*
 import java.util.concurrent.ConcurrentLinkedQueue
+import java.util.concurrent.LinkedBlockingDeque
 
-class World : TimerTask() {
+class World : TimerTask(), EventHolder {
     val map: WorldMap = WorldMap(mutableMapOf())
+
+    override val events: LinkedBlockingDeque<EventHandler<GameEvent>> = LinkedBlockingDeque()
 
     internal val loginQueue = ConcurrentLinkedQueue<LoginRequest>()
 
@@ -44,6 +48,7 @@ class World : TimerTask() {
     val isFull: Boolean get() = players.size + loginQueue.size >= MAX_PLAYERS
 
     override fun run() {
+        processInEvents()
         processLogins()
         processNpcTasks()
         proccessNpcMovement()
@@ -51,6 +56,12 @@ class World : TimerTask() {
         proccessPlayerMovement()
         synchronizeInterest()
         processLogouts()
+    }
+
+    private fun processInEvents() {
+        while(events.isNotEmpty()) {
+            events.pop().handle()
+        }
     }
 
     private fun processLogins() {
@@ -72,7 +83,8 @@ class World : TimerTask() {
     }
 
     fun addNpc(id: Int, tile: Tile) {
-        npcs.create(id, tile)
+        val npc = npcs.create(id, tile)
+        EventBus.schedule(NpcSpawnedEvent(npc, this))
     }
 
     fun stagePlayerLogout(player: Player) {
