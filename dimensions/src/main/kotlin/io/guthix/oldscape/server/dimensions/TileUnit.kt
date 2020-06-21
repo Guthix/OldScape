@@ -17,6 +17,9 @@
 package io.guthix.oldscape.server.dimensions
 
 import kotlin.math.abs
+import kotlin.math.max
+
+fun max(a: TileUnit, b: TileUnit): TileUnit = max(a.value, b.value).tiles
 
 fun abs(n: TileUnit): TileUnit = abs(n.value).tiles
 

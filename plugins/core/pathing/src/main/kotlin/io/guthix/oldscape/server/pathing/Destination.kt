@@ -16,9 +16,7 @@
  */
 package io.guthix.oldscape.server.pathing
 
-import io.guthix.oldscape.server.dimensions.FloorUnit
-import io.guthix.oldscape.server.dimensions.TileUnit
-import io.guthix.oldscape.server.dimensions.tiles
+import io.guthix.oldscape.server.dimensions.*
 import io.guthix.oldscape.server.world.WorldMap
 import io.guthix.oldscape.server.world.entity.Character
 import io.guthix.oldscape.server.world.entity.Loc
@@ -96,6 +94,23 @@ class DestinationRectangleDirect(
         }
         return false
     }
+}
+
+class DestinationRange(
+    private val char: Character,
+    private val range: TileUnit,
+    private val map: WorldMap
+) : Destination(char.pos.floor, char.pos.x, char.pos.y) {
+    override fun reached(moverX: TileUnit, moverY: TileUnit, moverSize: TileUnit): Boolean =
+        max(abs(char.pos.x - moverX), abs(char.pos.y - moverY)) <= range && inLineOfSight(
+            Tile(char.pos.floor, moverX, moverY),
+            moverSize,
+            moverSize,
+            char.pos,
+            char.sizeX,
+            char.sizeY,
+            map
+        )
 }
 
 class DestinationLocation(
