@@ -51,8 +51,8 @@ on(ClientCheatEvent::class).where { string == "locremove" }.then {
 }
 
 on(ClientCheatEvent::class).where { string == "inv" }.then {
-    val head = HeadEquipment(1163, 1)
-    player.topInterface.inventory.addNextSlot(head)
+    val bow = TwoHandEquipment(861, 1)
+    player.topInterface.inventory.addNextSlot(bow)
 }
 
 on(ClientCheatEvent::class).where { string == "shout" }.then {

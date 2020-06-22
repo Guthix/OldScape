@@ -46,14 +46,14 @@ open class EquipmentBlueprint(
         HEAD(0),
         CAPE(1),
         NECK(2),
-        AMMUNITION(3),
-        WEAPON(4),
+        WEAPON(3),
+        BODY(4),
         SHIELD(5),
-        BODY(6),
         LEGS(7),
-        HANDS(8),
-        FEET(9),
-        RING(10)
+        HANDS(9),
+        FEET(10),
+        RING(11),
+        AMMUNITION(13),
     }
 
     class Equipment(
