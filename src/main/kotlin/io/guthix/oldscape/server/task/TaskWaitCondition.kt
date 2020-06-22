@@ -21,18 +21,20 @@ import kotlin.coroutines.Continuation
 interface TaskWaitCondition {
     fun canResume(): Boolean
 
-    fun postProcess() { }
+    fun postProcess() {}
 }
 
 class TickCondition(var tickCount: Int) : TaskWaitCondition {
     var ticked: Boolean = false
 
-    override fun canResume(): Boolean = if(!ticked) {
+    override fun canResume(): Boolean = if (!ticked) {
         ticked = true
         tickCount-- <= 0
     } else false
 
-    override fun postProcess() { ticked = false }
+    override fun postProcess() {
+        ticked = false
+    }
 }
 
 class LambdaCondition(private val cond: () -> Boolean) : TaskWaitCondition {

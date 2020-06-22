@@ -23,4 +23,4 @@ data class AppletFocusEvent(
     val inFocus: Boolean,
     override val player: Player,
     override val world: World
-) :  PlayerGameEvent(player, world)
+) : PlayerGameEvent(player, world)

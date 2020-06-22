@@ -17,7 +17,6 @@
 package io.guthix.oldscape.server.world
 
 import io.guthix.oldscape.server.event.*
-import io.guthix.oldscape.server.event.EventHolder
 import io.guthix.oldscape.server.net.game.GameDecoder
 import io.guthix.oldscape.server.net.game.GameEncoder
 import io.guthix.oldscape.server.net.game.GameHandler
@@ -59,7 +58,7 @@ class World : TimerTask(), EventHolder {
     }
 
     private fun processInEvents() {
-        while(events.isNotEmpty()) {
+        while (events.isNotEmpty()) {
             events.pop().handle()
         }
     }

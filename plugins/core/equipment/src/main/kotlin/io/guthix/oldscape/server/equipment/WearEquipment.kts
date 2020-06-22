@@ -17,54 +17,12 @@
 package io.guthix.oldscape.server.equipment
 
 import io.guthix.oldscape.server.event.InventoryObjectClickEvent
-import io.guthix.oldscape.server.world.entity.*
+import io.guthix.oldscape.server.world.entity.Equipment
 
-on(InventoryObjectClickEvent::class).where { contextMenuEntry == "Wear" }.then {
+on(InventoryObjectClickEvent::class).then {
     val obj = player.topInterface.inventory.removeObject(inventorySlot) ?: return@then
-    when (obj) {
-        is WeaponEquipment -> {
-            player.topInterface.equipment.setObject(obj.slot.id, obj)
-            player.equip(obj)
-        }
-        is ShieldEquipment -> {
-            player.topInterface.equipment.setObject(obj.slot.id, obj)
-            player.equip(obj)
-        }
-        is HeadEquipment -> {
-            player.topInterface.equipment.setObject(obj.slot.id, obj)
-            player.equip(obj)
-        }
-        is BodyEquipment -> {
-            player.topInterface.equipment.setObject(obj.slot.id, obj)
-            player.equip(obj)
-        }
-        is LegsEquipment -> {
-            player.topInterface.equipment.setObject(obj.slot.id, obj)
-            player.equip(obj)
-        }
-        is AmmunitionEquipment -> {
-            player.topInterface.equipment.setObject(obj.slot.id, obj)
-            player.equip(obj)
-        }
-        is CapeEquipment -> {
-            player.topInterface.equipment.setObject(obj.slot.id, obj)
-            player.equip(obj)
-        }
-        is RingEquipment -> {
-            player.topInterface.equipment.setObject(obj.slot.id, obj)
-            player.equip(obj)
-        }
-        is NeckEquipment -> {
-            player.topInterface.equipment.setObject(obj.slot.id, obj)
-            player.equip(obj)
-        }
-        is HandEquipment -> {
-            player.topInterface.equipment.setObject(obj.slot.id, obj)
-            player.equip(obj)
-        }
-        is FeetEquipment -> {
-            player.topInterface.equipment.setObject(obj.slot.id, obj)
-            player.equip(obj)
-        }
-    }
+    if (obj is Equipment) {
+        player.topInterface.equipment.setObject(obj.slot.id, obj)
+        player.equip(obj)
+    } else throw IllegalCallerException("Can not wear item ${obj.id} because it is not equipment.")
 }

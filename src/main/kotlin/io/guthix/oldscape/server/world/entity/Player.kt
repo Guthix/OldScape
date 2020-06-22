@@ -19,11 +19,11 @@ package io.guthix.oldscape.server.world.entity
 import io.guthix.oldscape.server.dimensions.TileUnit
 import io.guthix.oldscape.server.dimensions.tiles
 import io.guthix.oldscape.server.event.EventHolder
-import io.guthix.oldscape.server.event.PublicMessageEvent
-import io.guthix.oldscape.server.plugin.EventHandler
 import io.guthix.oldscape.server.event.GameEvent
-import io.guthix.oldscape.server.task.Task
+import io.guthix.oldscape.server.event.PublicMessageEvent
 import io.guthix.oldscape.server.net.game.out.*
+import io.guthix.oldscape.server.plugin.EventHandler
+import io.guthix.oldscape.server.task.Task
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.interest.*
 import io.guthix.oldscape.server.world.entity.intface.IfComponent
@@ -198,58 +198,56 @@ class Player(
         ctx.write(MessageGamePacket(0, false, message))
     }
 
-    fun equip(head: HeadEquipment?) {
-        equipment.head = head
-        updateFlags.add(PlayerInfoPacket.appearance)
-    }
-
-    fun equip(cape: CapeEquipment?) {
-        equipment.cape = cape
-        updateFlags.add(PlayerInfoPacket.appearance)
-    }
-
-    fun equip(neck: NeckEquipment?) {
-        equipment.neck = neck
-        updateFlags.add(PlayerInfoPacket.appearance)
-    }
-
-    fun equip(ammunition: AmmunitionEquipment?) {
-        equipment.ammunition = ammunition
-        updateFlags.add(PlayerInfoPacket.appearance)
-    }
-
-    fun equip(weapon: WeaponEquipment?) {
-        equipment.weapon = weapon
-        updateFlags.add(PlayerInfoPacket.appearance)
-    }
-
-    fun equip(shield: ShieldEquipment?) {
-        equipment.shield = shield
-        updateFlags.add(PlayerInfoPacket.appearance)
-    }
-
-    fun equip(body: BodyEquipment?) {
-        equipment.body = body
-        updateFlags.add(PlayerInfoPacket.appearance)
-    }
-
-    fun equip(legs: LegsEquipment?) {
-        equipment.legs = legs
-        updateFlags.add(PlayerInfoPacket.appearance)
-    }
-
-    fun equip(hands: HandEquipment?) {
-        equipment.hands = hands
-        updateFlags.add(PlayerInfoPacket.appearance)
-    }
-
-    fun equip(feet: FeetEquipment?) {
-        equipment.feet = feet
-        updateFlags.add(PlayerInfoPacket.appearance)
-    }
-
-    fun equip(ring: RingEquipment?) {
-        equipment.ring = ring
+    fun equip(equipment: Equipment?) {
+        when (equipment) {
+            is WeaponEquipment -> {
+                this.equipment.weapon = equipment
+                updateFlags.add(PlayerInfoPacket.appearance)
+            }
+            is ShieldEquipment -> {
+                this.equipment.shield = equipment
+                updateFlags.add(PlayerInfoPacket.appearance)
+            }
+            is TwoHandEquipment -> {
+                this.equipment.shield = null
+                this.equipment.weapon = equipment
+                updateFlags.add(PlayerInfoPacket.appearance)
+            }
+            is HeadEquipment -> {
+                this.equipment.head = equipment
+                updateFlags.add(PlayerInfoPacket.appearance)
+            }
+            is BodyEquipment -> {
+                this.equipment.body = equipment
+                updateFlags.add(PlayerInfoPacket.appearance)
+            }
+            is LegsEquipment -> {
+                this.equipment.legs = equipment
+                updateFlags.add(PlayerInfoPacket.appearance)
+            }
+            is AmmunitionEquipment -> {
+                this.equipment.ammunition = equipment
+            }
+            is CapeEquipment -> {
+                this.equipment.cape = equipment
+                updateFlags.add(PlayerInfoPacket.appearance)
+            }
+            is RingEquipment -> {
+                this.equipment.ring = equipment
+            }
+            is NeckEquipment -> {
+                this.equipment.neck = equipment
+                updateFlags.add(PlayerInfoPacket.appearance)
+            }
+            is HandEquipment -> {
+                this.equipment.hands = equipment
+                updateFlags.add(PlayerInfoPacket.appearance)
+            }
+            is FeetEquipment -> {
+                this.equipment.feet = equipment
+                updateFlags.add(PlayerInfoPacket.appearance)
+            }
+        }
     }
 
     fun updateVarp(id: Int, value: Int): Unit = varpManager.updateVarp(id, value)

@@ -16,7 +16,8 @@
  */
 package io.guthix.oldscape.server.net.game.out
 
-import io.guthix.buffer.writeByteADD
+import io.guthix.buffer.writeByteNEG
+import io.guthix.buffer.writeIntME
 import io.guthix.buffer.writeShortLEADD
 import io.guthix.oldscape.server.net.game.OutGameEvent
 import io.guthix.oldscape.server.net.game.VarShortSize
@@ -26,8 +27,8 @@ import io.netty.channel.ChannelHandlerContext
 
 class UpdateInvFullPacket(
     private val interfaceId: Int,
-    private val interfacePosition: Int,
-    private val containerId: Int,
+    private val slotId: Int,
+    private val inventoryId: Int,
     private val objs: List<Obj?>
 ) : OutGameEvent {
     override val opcode: Int = 71
@@ -36,21 +37,21 @@ class UpdateInvFullPacket(
 
     override fun encode(ctx: ChannelHandlerContext): ByteBuf {
         val buf = ctx.alloc().buffer()
-        buf.writeInt((interfaceId shl 16) or interfacePosition)
-        buf.writeShort(containerId)
+        buf.writeInt((interfaceId shl 16) or slotId)
+        buf.writeShort(inventoryId)
         buf.writeShort(objs.size)
         for (obj in objs) {
             if (obj == null) {
-                buf.writeByteADD(0)
                 buf.writeShortLEADD(0)
+                buf.writeByteNEG(0)
             } else {
-                if (obj.quantity <= 255) {
-                    buf.writeByteADD(obj.quantity)
-                } else {
-                    buf.writeByteADD(255)
-                    buf.writeIntLE(obj.quantity)
-                }
                 buf.writeShortLEADD(obj.id + 1)
+                if (obj.quantity <= 255) {
+                    buf.writeByteNEG(obj.quantity)
+                } else {
+                    buf.writeByteNEG(255)
+                    buf.writeIntME(obj.quantity)
+                }
             }
         }
         return buf

@@ -31,4 +31,4 @@ data class MiniMapClickEvent(
     val playerY: TileUnit,
     override val player: Player,
     override val world: World
-) :  PlayerGameEvent(player, world)
+) : PlayerGameEvent(player, world)

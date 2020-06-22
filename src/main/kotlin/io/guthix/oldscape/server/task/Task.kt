@@ -53,7 +53,9 @@ class Task(val type: TaskType, private val character: Character) : Continuation<
         cancelation = ConditionalContinuation(TrueCondition, action.createCoroutineUnintercepted(this, this))
     }
 
-    fun postProcess() { next?.postProcess() }
+    fun postProcess() {
+        next?.postProcess()
+    }
 
     override fun resumeWith(result: Result<Unit>) {}
 

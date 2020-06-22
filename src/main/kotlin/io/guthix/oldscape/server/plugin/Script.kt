@@ -19,8 +19,6 @@ package io.guthix.oldscape.server.plugin
 import io.guthix.oldscape.server.event.EventBus
 import io.guthix.oldscape.server.event.EventHolder
 import io.guthix.oldscape.server.event.GameEvent
-import io.guthix.oldscape.server.world.World
-import io.guthix.oldscape.server.world.entity.Player
 import kotlin.reflect.KClass
 import kotlin.script.experimental.annotations.KotlinScript
 
@@ -61,6 +59,8 @@ class EventHandler<out E : GameEvent>(
     val event: E,
     private val plugin: E.() -> Unit
 ) {
-    fun handle() { event.plugin() }
+    fun handle() {
+        event.plugin()
+    }
 }
 

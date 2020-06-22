@@ -16,19 +16,19 @@
  */
 package io.guthix.oldscape.server.combat
 
-import io.guthix.oldscape.server.event.NpcClickEvent
+import io.guthix.oldscape.server.combat.dmg.calcHit
+import io.guthix.oldscape.server.combat.dmg.maxMeleeHit
 import io.guthix.oldscape.server.event.EventBus
 import io.guthix.oldscape.server.event.NpcAttackedEvent
-import io.guthix.oldscape.server.task.NormalTask
+import io.guthix.oldscape.server.event.NpcClickEvent
 import io.guthix.oldscape.server.pathing.DestinationRectangleDirect
 import io.guthix.oldscape.server.pathing.breadthFirstSearch
+import io.guthix.oldscape.server.task.NormalTask
 import io.guthix.oldscape.server.world.entity.HitMark
 import io.guthix.oldscape.server.world.entity.Sequence
-import io.guthix.oldscape.server.combat.dmg.maxMeleeHit
-import io.guthix.oldscape.server.combat.dmg.calcHit
 
 on(NpcClickEvent::class).where { contextMenuEntry == "Attack" }.then {
-    if(player.inCombatWith == npc) return@then
+    if (player.inCombatWith == npc) return@then
     val npcDestination = DestinationRectangleDirect(npc, world.map)
     player.turnToLock(npc)
     player.path = breadthFirstSearch(player.pos, npcDestination, player.size, true, world.map)

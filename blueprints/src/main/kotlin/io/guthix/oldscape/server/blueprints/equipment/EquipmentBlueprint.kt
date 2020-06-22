@@ -49,7 +49,6 @@ open class EquipmentBlueprint(
         AMMUNITION(3),
         WEAPON(4),
         SHIELD(5),
-        TWO_HAND(4),
         BODY(6),
         LEGS(7),
         HANDS(8),

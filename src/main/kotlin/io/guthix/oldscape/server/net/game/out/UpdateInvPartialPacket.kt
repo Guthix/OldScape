@@ -26,7 +26,7 @@ import io.netty.channel.ChannelHandlerContext
 class UpdateInvPartialPacket(
     private val interfaceId: Int,
     private val slotId: Int,
-    private val subInterfaceId: Int,
+    private val inventoryId: Int,
     private val objs: Map<Int, Obj?>
 ) : OutGameEvent {
     override val opcode: Int = 35
@@ -36,7 +36,7 @@ class UpdateInvPartialPacket(
     override fun encode(ctx: ChannelHandlerContext): ByteBuf {
         val buf = ctx.alloc().buffer()
         buf.writeInt((interfaceId shl Short.SIZE_BITS) or slotId)
-        buf.writeShort(subInterfaceId)
+        buf.writeShort(inventoryId)
         for ((slot, obj) in objs) {
             buf.writeSmallSmart(slot)
             if (obj == null) {
