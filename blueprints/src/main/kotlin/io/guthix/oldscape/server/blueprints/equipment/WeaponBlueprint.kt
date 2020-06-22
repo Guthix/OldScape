@@ -18,7 +18,7 @@ package io.guthix.oldscape.server.blueprints.equipment
 
 import io.guthix.oldscape.cache.config.ObjectConfig
 
-class WeaponBlueprint(
+open class WeaponBlueprint(
     cacheConfig: ObjectConfig,
     extraConfig: ExtraEquipmentConfig
 ) : EquipmentBlueprint(cacheConfig, EquipmentSlot.WEAPON, extraConfig)

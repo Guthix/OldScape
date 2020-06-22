@@ -20,8 +20,8 @@ import io.guthix.oldscape.server.api.NpcBlueprints
 import io.guthix.oldscape.server.blueprints.NpcBlueprint
 import io.guthix.oldscape.server.dimensions.TileUnit
 import io.guthix.oldscape.server.dimensions.tiles
-import io.guthix.oldscape.server.task.Task
 import io.guthix.oldscape.server.net.game.out.NpcInfoSmallViewportPacket
+import io.guthix.oldscape.server.task.Task
 import io.guthix.oldscape.server.world.entity.interest.NpcUpdateType
 import io.guthix.oldscape.server.world.map.Tile
 

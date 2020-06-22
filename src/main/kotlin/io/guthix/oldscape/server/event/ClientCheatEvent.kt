@@ -23,4 +23,4 @@ data class ClientCheatEvent(
     val string: String,
     override val player: Player,
     override val world: World
-) :  PlayerGameEvent(player, world)
+) : PlayerGameEvent(player, world)

@@ -22,4 +22,4 @@ import io.guthix.oldscape.server.world.entity.Player
 data class MouseMoveEvent(
     override val player: Player,
     override val world: World
-) :  PlayerGameEvent(player, world)
+) : PlayerGameEvent(player, world)

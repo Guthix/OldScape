@@ -26,4 +26,4 @@ data class MapClickEvent(
     val type: Int,
     override val player: Player,
     override val world: World
-) :  PlayerGameEvent(player, world)
+) : PlayerGameEvent(player, world)

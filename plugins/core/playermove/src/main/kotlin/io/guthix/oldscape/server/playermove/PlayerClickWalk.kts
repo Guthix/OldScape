@@ -20,9 +20,9 @@ import io.guthix.oldscape.server.dimensions.FloorUnit
 import io.guthix.oldscape.server.dimensions.TileUnit
 import io.guthix.oldscape.server.event.MapClickEvent
 import io.guthix.oldscape.server.event.MiniMapClickEvent
-import io.guthix.oldscape.server.task.NormalTask
 import io.guthix.oldscape.server.pathing.DestinationTile
 import io.guthix.oldscape.server.pathing.breadthFirstSearch
+import io.guthix.oldscape.server.task.NormalTask
 import io.guthix.oldscape.server.world.WorldMap
 import io.guthix.oldscape.server.world.entity.Player
 import io.guthix.oldscape.server.world.map.Tile

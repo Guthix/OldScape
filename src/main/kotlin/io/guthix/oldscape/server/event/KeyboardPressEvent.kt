@@ -23,7 +23,7 @@ data class KeyboardPressEvent(
     val keyPresses: List<KeyPress>,
     override val player: Player,
     override val world: World
-) :  PlayerGameEvent(player, world)
+) : PlayerGameEvent(player, world)
 
 class KeyPress(val key: KeyboardKey, val interval: Int)
 

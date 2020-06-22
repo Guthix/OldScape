@@ -21,4 +21,4 @@ import io.guthix.oldscape.cache.config.ObjectConfig
 class TwoHandedBlueprint(
     cacheConfig: ObjectConfig,
     extraConfig: ExtraEquipmentConfig
-) : EquipmentBlueprint(cacheConfig, EquipmentSlot.TWO_HAND, extraConfig)
+) : WeaponBlueprint(cacheConfig, extraConfig)

@@ -26,9 +26,10 @@ data class InventoryObjectClickEvent(
     val interfaceSlot: Int,
     val objId: Int,
     val inventorySlot: Int,
-    private val option: Int,
+    val option: Int,
     override val player: Player,
     override val world: World
 ) : PlayerGameEvent(player, world) {
-    val contextMenuEntry: String? = ObjectBlueprints.get<ObjectBlueprint>(objId).interfaceOperations[option - 1]
+    val contextMenuEntry: String = ObjectBlueprints.get<ObjectBlueprint>(objId).interfaceOperations[option - 1]
+        ?: error("Object $objId has no interface operation for option $option.")
 }

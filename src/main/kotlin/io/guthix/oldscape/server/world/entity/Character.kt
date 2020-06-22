@@ -21,7 +21,10 @@ import io.guthix.oldscape.server.dimensions.floors
 import io.guthix.oldscape.server.dimensions.tiles
 import io.guthix.oldscape.server.event.PublicMessageEvent
 import io.guthix.oldscape.server.net.game.out.PlayerInfoPacket
-import io.guthix.oldscape.server.task.*
+import io.guthix.oldscape.server.task.ConditionalContinuation
+import io.guthix.oldscape.server.task.Task
+import io.guthix.oldscape.server.task.TaskType
+import io.guthix.oldscape.server.task.TrueCondition
 import io.guthix.oldscape.server.world.entity.interest.InterestUpdateType
 import io.guthix.oldscape.server.world.entity.interest.MovementInterestUpdate
 import io.guthix.oldscape.server.world.entity.interest.PlayerManager

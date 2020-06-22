@@ -16,17 +16,17 @@
  */
 package io.guthix.oldscape.server.combat
 
+import io.guthix.oldscape.server.combat.dmg.calcHit
 import io.guthix.oldscape.server.event.NpcAttackedEvent
 import io.guthix.oldscape.server.pathing.DestinationRectangleDirect
 import io.guthix.oldscape.server.pathing.simplePathSearch
 import io.guthix.oldscape.server.task.NormalTask
 import io.guthix.oldscape.server.world.entity.HitMark
-import io.guthix.oldscape.server.world.entity.interest.MovementInterestUpdate
-import io.guthix.oldscape.server.combat.dmg.calcHit
 import io.guthix.oldscape.server.world.entity.Sequence
+import io.guthix.oldscape.server.world.entity.interest.MovementInterestUpdate
 
 on(NpcAttackedEvent::class).then {
-    if(npc.inCombatWith == player) return@then
+    if (npc.inCombatWith == player) return@then
     var playerDestination = DestinationRectangleDirect(player, world.map)
     npc.inCombatWith = player
     npc.cancelTasks(NormalTask)
