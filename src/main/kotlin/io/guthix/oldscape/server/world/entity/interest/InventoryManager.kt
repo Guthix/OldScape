@@ -89,9 +89,9 @@ class InventoryManager(
     override fun synchronize(world: World, player: Player): List<ChannelFuture> {
         val futures = mutableListOf<ChannelFuture>()
         if (changes.isNotEmpty()) {
-            if (changes.size == objCount) {
+            if (changes.size == objCount) { // TODO use better heuristic
                 futures.add(player.ctx.write(
-                    UpdateInvFullPacket(interfaceId, interfaceSlotId, inventoryId, changes.values.toList())
+                    UpdateInvFullPacket(interfaceId, interfaceSlotId, inventoryId, objs.toList())
                 ))
             } else {
                 futures.add(player.ctx.write(
