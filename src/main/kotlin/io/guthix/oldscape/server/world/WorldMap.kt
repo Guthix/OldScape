@@ -25,6 +25,7 @@ import io.guthix.oldscape.server.dimensions.ZoneUnit
 import io.guthix.oldscape.server.dimensions.mapsquares
 import io.guthix.oldscape.server.world.entity.Loc
 import io.guthix.oldscape.server.world.entity.Obj
+import io.guthix.oldscape.server.world.entity.Projectile
 import io.guthix.oldscape.server.world.map.Mapsquare
 import io.guthix.oldscape.server.world.map.Tile
 import io.guthix.oldscape.server.world.map.Zone
@@ -79,4 +80,6 @@ class WorldMap(val mapsquares: MutableMap<Int, Mapsquare>) {
     fun addDynamicLoc(loc: Loc): Unit? = mapsquares[id(loc.pos.x, loc.pos.y)]?.addDynamicLoc(loc)
 
     fun removeDynamicLoc(loc: Loc): Unit? = mapsquares[id(loc.pos.x, loc.pos.y)]?.removeDynamicLoc(loc)
+
+    fun addProjectile(proj: Projectile): Unit? = mapsquares[id(proj.start.x, proj.start.y)]?.addProjectile(proj)
 }

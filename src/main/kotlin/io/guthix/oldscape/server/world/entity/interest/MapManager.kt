@@ -24,6 +24,7 @@ import io.guthix.oldscape.server.world.WorldMap
 import io.guthix.oldscape.server.world.entity.Loc
 import io.guthix.oldscape.server.world.entity.Obj
 import io.guthix.oldscape.server.world.entity.Player
+import io.guthix.oldscape.server.world.entity.Projectile
 import io.guthix.oldscape.server.world.map.Tile
 import io.guthix.oldscape.server.world.map.Zone
 import io.netty.channel.ChannelFuture
@@ -134,6 +135,25 @@ class MapManager : InterestManager {
     fun removeDynamicLoc(loc: Loc) {
         changes[(loc.pos.x.inZones - baseX).value][(loc.pos.y.inZones - baseY).value].add(
             LocDelPacket(loc.type, loc.orientation, loc.pos.x.relativeZone, loc.pos.y.relativeZone)
+        )
+    }
+
+    fun addProjectile(projectile: Projectile) {
+        changes[(projectile.start.x.inZones - baseX).value][(projectile.start.y.inZones - baseY).value].add(
+            MapProjanimPacket(
+                projectile.id,
+                projectile.startHeight,
+                projectile.targetHeight,
+                if (projectile.target is Player) projectile.target.index + 32769 else projectile.target.index + 1,
+                projectile.angle,
+                projectile.steepness,
+                projectile.delay,
+                projectile.lifetime,
+                projectile.target.pos.x - projectile.start.x,
+                projectile.target.pos.y - projectile.start.y,
+                projectile.start.x.relativeZone,
+                projectile.start.y.relativeZone
+            )
         )
     }
 

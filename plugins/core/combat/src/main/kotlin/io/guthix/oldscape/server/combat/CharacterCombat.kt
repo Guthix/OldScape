@@ -64,14 +64,7 @@ val Character.attackStance: MeleeCombatStance by CharacterProperty {
 }
 
 val Character.attackStyle: AttackStyle by CharacterProperty {
-    AttackStyle.STAB
-}
-
-internal fun StyleBonus.findMeleeBonus(attackStyle: AttackStyle): Int = when (attackStyle) {
-    AttackStyle.STAB -> stab
-    AttackStyle.SLASH -> slash
-    AttackStyle.CRUSH -> crush
-    else -> throw IllegalCallerException("Attack style must be a melee style.")
+    AttackStyle.RANGED
 }
 
 internal fun StyleBonus.findBonus(attackStyle: AttackStyle): Int = when (attackStyle) {

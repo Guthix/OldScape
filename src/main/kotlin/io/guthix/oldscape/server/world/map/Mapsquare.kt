@@ -23,6 +23,7 @@ import io.guthix.oldscape.server.dimensions.*
 import io.guthix.oldscape.server.world.WorldMap
 import io.guthix.oldscape.server.world.entity.Loc
 import io.guthix.oldscape.server.world.entity.Obj
+import io.guthix.oldscape.server.world.entity.Projectile
 
 class Mapsquare(val x: MapsquareUnit, val y: MapsquareUnit, val xtea: IntArray, val world: WorldMap) {
     val id: Int get() = id(x, y)
@@ -93,6 +94,8 @@ class Mapsquare(val x: MapsquareUnit, val y: MapsquareUnit, val xtea: IntArray, 
     fun addDynamicLoc(loc: Loc): Unit = floors[loc.pos.floor.value].addDynamicLoc(loc)
 
     fun removeDynamicLoc(loc: Loc): Unit = floors[loc.pos.floor.value].removeDynamicLoc(loc)
+
+    fun addProjectile(proj: Projectile): Unit? = floors[proj.start.floor.value].addProjectile(proj)
 
     companion object {
         const val FLOOR_COUNT: Int = 4

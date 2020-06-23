@@ -19,10 +19,7 @@ package io.guthix.oldscape.server.world.map
 import io.guthix.oldscape.server.dimensions.FloorUnit
 import io.guthix.oldscape.server.dimensions.TileUnit
 import io.guthix.oldscape.server.dimensions.ZoneUnit
-import io.guthix.oldscape.server.world.entity.Loc
-import io.guthix.oldscape.server.world.entity.Npc
-import io.guthix.oldscape.server.world.entity.Obj
-import io.guthix.oldscape.server.world.entity.Player
+import io.guthix.oldscape.server.world.entity.*
 
 class Zone(
     val floor: FloorUnit,
@@ -87,6 +84,11 @@ class Zone(
     fun removeDynamicLoc(loc: Loc) {
         staticLocations.remove(loc.mapKey)
         players.forEach { player -> player.mapManager.removeDynamicLoc(loc) }
+    }
+
+    fun addProjectile(proj: Projectile) {
+        players.forEach { player -> player.mapManager.addProjectile(proj) }
+
     }
 
     override fun toString(): String = "Zone(z=${floor.value}, x=${x.value}, y=${y.value})"
