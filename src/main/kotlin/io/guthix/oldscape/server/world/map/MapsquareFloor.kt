@@ -20,6 +20,7 @@ import io.guthix.oldscape.server.dimensions.*
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.Loc
 import io.guthix.oldscape.server.world.entity.Obj
+import io.guthix.oldscape.server.world.entity.Projectile
 
 class MapsquareFloor(
     val floor: FloorUnit,
@@ -78,5 +79,9 @@ class MapsquareFloor(
         zones[zoneX.value][zoneY.value].removeDynamicLoc(loc)
     }
 
-
+    fun addProjectile(proj: Projectile) {
+        val zoneX = proj.start.x.inZones.relativeMapSquare
+        val zoneY = proj.start.y.inZones.relativeMapSquare
+        zones[zoneX.value][zoneY.value].addProjectile(proj)
+    }
 }

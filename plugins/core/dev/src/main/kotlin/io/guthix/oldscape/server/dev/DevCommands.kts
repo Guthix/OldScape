@@ -50,6 +50,10 @@ on(ClientCheatEvent::class).where { string == "locremove" }.then {
     )
 }
 
+on(ClientCheatEvent::class).where { string == "shoot" }.then {
+    player.animate(Sequence(id = 424))
+}
+
 on(ClientCheatEvent::class).where { string == "inv" }.then {
     val bow = TwoHandEquipment(861, 1)
     player.topInterface.inventory.addNextSlot(bow)

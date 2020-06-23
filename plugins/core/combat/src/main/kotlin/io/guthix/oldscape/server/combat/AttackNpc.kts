@@ -16,11 +16,16 @@
  */
 package io.guthix.oldscape.server.combat
 
+import io.guthix.oldscape.server.blueprints.AttackStyle
 import io.guthix.oldscape.server.combat.dmg.calcHit
 import io.guthix.oldscape.server.combat.dmg.maxMeleeHit
+import io.guthix.oldscape.server.combat.dmg.maxRangeHit
+import io.guthix.oldscape.server.dimensions.TileUnit
+import io.guthix.oldscape.server.dimensions.tiles
 import io.guthix.oldscape.server.event.EventBus
 import io.guthix.oldscape.server.event.NpcAttackedEvent
 import io.guthix.oldscape.server.event.NpcClickEvent
+import io.guthix.oldscape.server.pathing.DestinationRange
 import io.guthix.oldscape.server.pathing.DestinationRectangleDirect
 import io.guthix.oldscape.server.pathing.breadthFirstSearch
 import io.guthix.oldscape.server.task.NormalTask
@@ -29,8 +34,15 @@ import io.guthix.oldscape.server.world.entity.Sequence
 
 on(NpcClickEvent::class).where { contextMenuEntry == "Attack" }.then {
     if (player.inCombatWith == npc) return@then
-    val npcDestination = DestinationRectangleDirect(npc, world.map)
     player.turnToLock(npc)
+    when (player.attackStyle) {
+        AttackStyle.RANGED -> rangeAttack(range = 5.tiles)
+        else -> meleeAttack()
+    }
+}
+
+fun NpcClickEvent.meleeAttack() {
+    val npcDestination = DestinationRectangleDirect(npc, world.map)
     player.path = breadthFirstSearch(player.pos, npcDestination, player.size, true, world.map)
     player.inCombatWith = npc
     player.cancelTasks(NormalTask)
@@ -40,6 +52,29 @@ on(NpcClickEvent::class).where { contextMenuEntry == "Attack" }.then {
         while (true) { // start player combat
             player.animate(Sequence(id = player.combatSequences.attack))
             val damage = player.calcHit(npc, player.maxMeleeHit()) ?: 0
+            val hmColor = if (damage == 0) HitMark.Color.BLUE else HitMark.Color.RED
+            npc.hit(hmColor, damage, 0)
+            npc.animate(Sequence(id = npc.combatSequences?.defence ?: -1))
+            wait(ticks = player.attackDelay)
+        }
+    }.onCancel {
+        player.inCombatWith = null
+        player.turnToLock(null)
+    }
+}
+
+fun NpcClickEvent.rangeAttack(range: TileUnit) {
+    val npcDestination = DestinationRange(npc, range, world.map)
+    player.path = breadthFirstSearch(player.pos, npcDestination, player.size, true, world.map)
+    player.inCombatWith = npc
+    player.cancelTasks(NormalTask)
+    player.addTask(NormalTask) {
+        wait { npcDestination.reached(player.pos.x, player.pos.y, player.size) }
+        EventBus.schedule(NpcAttackedEvent(npc, player, world))
+        while (true) { // start player combat
+            player.animate(Sequence(id = 426))
+            world.map.addProjectile(Arrow(10, player.pos, npc))
+            val damage = player.calcHit(npc, player.maxRangeHit()) ?: 0
             val hmColor = if (damage == 0) HitMark.Color.BLUE else HitMark.Color.RED
             npc.hit(hmColor, damage, 0)
             npc.animate(Sequence(id = npc.combatSequences?.defence ?: -1))

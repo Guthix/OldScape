@@ -33,6 +33,9 @@ class DestinationTile(floor: FloorUnit, x: TileUnit, y: TileUnit) : Destination(
     override fun reached(moverX: TileUnit, moverY: TileUnit, moverSize: TileUnit): Boolean = x == moverX && y == moverY
 }
 
+/**
+ * Direct contact with target from either North/East/South/West (non diagonal)
+ */
 class DestinationRectangleDirect(
     floor: FloorUnit,
     x: TileUnit,

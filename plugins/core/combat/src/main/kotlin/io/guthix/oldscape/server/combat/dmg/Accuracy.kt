@@ -17,7 +17,10 @@
 package io.guthix.oldscape.server.combat.dmg
 
 import io.guthix.oldscape.server.blueprints.AttackStyle
-import io.guthix.oldscape.server.combat.*
+import io.guthix.oldscape.server.combat.attackStance
+import io.guthix.oldscape.server.combat.attackStyle
+import io.guthix.oldscape.server.combat.damageMultiplier
+import io.guthix.oldscape.server.combat.findBonus
 import io.guthix.oldscape.server.prayer.prayerMultiplier
 import io.guthix.oldscape.server.world.entity.Npc
 import io.guthix.oldscape.server.world.entity.Player
@@ -48,7 +51,7 @@ private fun Npc.effectiveDefence(): Double =
     ((blueprint.stats?.defence ?: 0) + 8) * damageMultiplier.defence
 
 private fun Player.maxAttackRol(): Double =
-    effectiveAttack() * (equipment.attackBonus.findMeleeBonus(attackStyle) + 64)
+    effectiveAttack() * (equipment.attackBonus.findBonus(attackStyle) + 64)
 
 private fun Npc.maxAttackRol(): Double =
     effectiveAttack() * ((blueprint.attackStats?.typeBonus?.melee ?: 0) + 64)

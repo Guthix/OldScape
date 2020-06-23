@@ -44,10 +44,10 @@ on(NpcAttackedEvent::class).then {
     npc.addTask(NormalTask) { // following task
         npc.turnToLock(player)
         while (true) {
-            wait { player.movementType != MovementInterestUpdate.STAY }
             playerDestination = DestinationRectangleDirect(player, world.map)
             npc.path = simplePathSearch(npc.pos, playerDestination, npc.size, world.map)
             wait(ticks = 1)
+            wait { player.movementType != MovementInterestUpdate.STAY }
         }
     }.onCancel {
         npc.inCombatWith = null

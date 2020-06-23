@@ -19,12 +19,20 @@ package io.guthix.oldscape.server.world.map
 import io.guthix.oldscape.server.dimensions.FloorUnit
 import io.guthix.oldscape.server.dimensions.TileUnit
 import kotlin.math.abs
+import kotlin.math.ceil
+import kotlin.math.sqrt
 
 data class Tile(val floor: FloorUnit, val x: TileUnit, val y: TileUnit) {
     fun withInDistanceOf(other: Tile, distance: TileUnit): Boolean = if (floor == other.floor) {
         abs((other.x - x).value) <= distance.value && abs((other.y - y).value) <= distance.value
     } else {
         false
+    }
+
+    fun distanceTo(other: Tile): Int {
+        val dx = x - other.x
+        val dy = y - other.y
+        return ceil(sqrt((dx * dx + dy * dy).value.toDouble())).toInt()
     }
 
     override fun toString(): String = "Tile(z=${floor.value}, x=${x.value}, y=${y.value})"
