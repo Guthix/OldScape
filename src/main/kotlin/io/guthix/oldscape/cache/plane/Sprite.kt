@@ -17,7 +17,12 @@
 package io.guthix.oldscape.cache.plane
 
 import io.netty.buffer.ByteBuf
+import io.netty.buffer.Unpooled
 import java.awt.image.BufferedImage
+import java.io.ByteArrayOutputStream
+import java.io.DataOutputStream
+import java.io.IOException
+import java.util.*
 
 public class Sprite(
     public val id: Int,
@@ -25,6 +30,80 @@ public class Sprite(
     public val height: Int,
     public val images: Array<BufferedImage>
 ) {
+    public fun encode(): ByteBuf {
+        check(images.all { it.width == width && it.height == height } ) {
+            "All images must have the same height and width."
+        }
+        val bout = ByteArrayOutputStream()
+        val dout = DataOutputStream(bout)
+        return dout.use { os ->
+            val palette: MutableList<Int> = ArrayList()
+            palette.add(0)
+
+            for (image in images) {
+                var flags = FLAG_VERTICAL
+                for (x in 0 until width) {
+                    for (y in 0 until height) {
+                        val argb = image.getRGB(x, y)
+                        val alpha = argb shr 24 and 0xFF
+                        var rgb = argb and 0xFFFFFF
+                        if (rgb == 0) rgb = 1
+                        if (alpha != 0 && alpha != 255) flags = flags or FLAG_ALPHA
+                        if (!palette.contains(rgb)) {
+                            if (palette.size >= 256) throw IOException("Palette size to big.")
+                            palette.add(rgb)
+                        }
+                    }
+                }
+
+                os.write(flags)
+                for (x in 0 until width) {
+                    for (y in 0 until height) {
+                        val argb = image.getRGB(x, y)
+                        val alpha = argb shr 24 and 0xFF
+                        var rgb = argb and 0xFFFFFF
+                        if (rgb == 0) rgb = 1
+                        if (flags and FLAG_ALPHA == 0 && alpha == 0) {
+                            os.write(0)
+                        } else {
+                            os.write(palette.indexOf(rgb))
+                        }
+                    }
+                }
+
+                if (flags and FLAG_ALPHA != 0) {
+                    for (x in 0 until width) {
+                        (0 until height)
+                            .asSequence()
+                            .map { image.getRGB(x, it) }
+                            .map { it shr 24 and 0xFF }
+                            .forEach(os::write)
+                    }
+                }
+            }
+
+            for (i in 1 until palette.size) {
+                val rgb = palette[i]
+                os.write(rgb shr 16)
+                os.write(rgb shr 8)
+                os.write(rgb)
+            }
+
+            os.writeShort(width)
+            os.writeShort(height)
+            os.write(palette.size - 1)
+
+            for (i in images.indices) {
+                os.writeShort(0) // set x offset to 0
+                os.writeShort(0) // set y offset to 0
+                os.writeShort(width)
+                os.writeShort(height)
+            }
+            os.writeShort(images.size)
+            Unpooled.wrappedBuffer(bout.toByteArray())
+        }
+    }
+
     public companion object {
         private const val FLAG_VERTICAL = 0x01
         private const val FLAG_ALPHA = 0x02
