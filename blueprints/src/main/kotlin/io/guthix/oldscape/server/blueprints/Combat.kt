@@ -18,6 +18,35 @@ package io.guthix.oldscape.server.blueprints
 
 enum class AttackStyle { STAB, SLASH, CRUSH, RANGED, MAGIC, NONE }
 
+enum class WeaponType {
+    AXE,
+    BLUNT,
+    BULWARK,
+    CLAW,
+    POLEARM,
+    PICKAXE,
+    SCYTHE,
+    SLASHING_SWORD,
+    SPEAR,
+    SPIKED_WEAPON,
+    STABBING_SWORD,
+    TWOHANDED_SWORD,
+    WHIP,
+    BOW,
+    CHINCHOMPA,
+    CROSSBOW,
+    THROW_WEAPON,
+    STAFF,
+    BLADED_STAFF,
+    POWERED_STAFF,
+    BANNER,
+    BLASTER,
+    GUN,
+    POLE_STAFF,
+    SALAMANDER,
+    UNARMED
+}
+
 class CombatStats(
     val health: Int,
     val attack: Int,
