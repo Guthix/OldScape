@@ -24,7 +24,7 @@ import io.guthix.oldscape.server.blueprints.equipment.*
 abstract class Equipment(id: Int, quantity: Int) : Obj(id, quantity) {
     override val blueprint: EquipmentBlueprint = ObjectBlueprints[id]
 
-    val slot: EquipmentBlueprint.EquipmentSlot get() = blueprint.slot
+    val slot: EquipmentSlot get() = blueprint.slot
 
     val attackBonus: StyleBonus get() = blueprint.attackBonus
 
