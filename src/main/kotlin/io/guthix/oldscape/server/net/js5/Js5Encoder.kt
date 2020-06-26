@@ -20,8 +20,8 @@ import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 import io.netty.handler.codec.MessageToByteEncoder
 
-class Js5Encoder : MessageToByteEncoder<Js5FileResponse>() {
-    override fun encode(ctx: ChannelHandlerContext, msg: Js5FileResponse, out: ByteBuf) {
+class Js5Encoder : MessageToByteEncoder<Js5ContainerResponse>() {
+    override fun encode(ctx: ChannelHandlerContext, msg: Js5ContainerResponse, out: ByteBuf) {
         out.writeByte(msg.indexFileId)
         out.writeShort(msg.containerId)
         out.writeByte(msg.compressionType)

@@ -16,6 +16,9 @@
  */
 package io.guthix.oldscape.server.net.js5
 
+import io.netty.buffer.ByteBuf
+import io.netty.buffer.DefaultByteBufHolder
+
 enum class Js5Type(val opcode: Int) {
     NORMAL_CONTAINER_REQUEST(0),
     URGENT_CONTAINER_REQUEST(1),
@@ -24,4 +27,12 @@ enum class Js5Type(val opcode: Int) {
     ENCRYPTION_KEY_UPDATE(4);
 }
 
-data class Js5FileRequest(val isUrgent: Boolean, val indexFileId: Int, val containerId: Int)
+data class Js5ContainerRequest(val isUrgent: Boolean, val indexFileId: Int, val containerId: Int)
+
+class Js5ContainerResponse(
+    val indexFileId: Int,
+    val containerId: Int,
+    val compressionType: Int,
+    val compressedSize: Int,
+    val data: ByteBuf
+) : DefaultByteBufHolder(data)
