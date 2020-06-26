@@ -20,7 +20,7 @@ import io.guthix.oldscape.cache.config.NpcConfig
 import io.guthix.oldscape.server.dimensions.TileUnit
 import io.guthix.oldscape.server.dimensions.tiles
 
-class NpcAttackStats(
+data class NpcAttackStats(
     val typeBonus: CombatBonus,
     val strengthBonus: CombatBonus
 )

@@ -47,7 +47,7 @@ enum class WeaponType {
     UNARMED
 }
 
-class CombatStats(
+data class CombatStats(
     val health: Int,
     val attack: Int,
     val strength: Int,
@@ -56,14 +56,14 @@ class CombatStats(
     val magic: Int
 )
 
-class CombatSequences(
+data class CombatSequences(
     val spawn: Int? = null,
     val attack: Int,
     val defence: Int,
     val death: Int
 )
 
-class StyleBonus(
+data class StyleBonus(
     var stab: Int,
     var slash: Int,
     var crush: Int,
@@ -91,7 +91,7 @@ class StyleBonus(
     }
 }
 
-class CombatBonus(
+data class CombatBonus(
     var melee: Int,
     var range: Int,
     var magic: Int

@@ -26,7 +26,7 @@ open class ExtraEquipmentConfig(
     ids: List<Int>,
     weight: Float,
     examine: String,
-    val equipment: EquipmentBlueprint.Equipment
+    open val equipment: EquipmentBlueprint.Equipment
 ) : ExtraObjectConfig(ids, weight, examine)
 
 open class EquipmentBlueprint(
@@ -41,7 +41,6 @@ open class EquipmentBlueprint(
     val defenceBonus: StyleBonus get() = extraConfig.equipment.defenceBonus
 
     val prayerBonus: Int get() = extraConfig.equipment.prayerBonus
-
 
     class Equipment(
         val attackBonus: StyleBonus,

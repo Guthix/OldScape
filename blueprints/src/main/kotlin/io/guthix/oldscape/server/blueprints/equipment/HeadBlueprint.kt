@@ -18,13 +18,13 @@ package io.guthix.oldscape.server.blueprints.equipment
 
 import io.guthix.oldscape.cache.config.ObjectConfig
 
-class ExtraHeadConfig(
-    ids: List<Int>,
-    weight: Float,
-    examine: String,
+data class ExtraHeadConfig(
+    override val ids: List<Int>,
+    override val weight: Float,
+    override val examine: String,
     val coversFace: Boolean = false,
     val coversHair: Boolean = false,
-    equipment: EquipmentBlueprint.Equipment
+    override val equipment: EquipmentBlueprint.Equipment
 ) : ExtraEquipmentConfig(ids, weight, examine, equipment)
 
 class HeadBlueprint(
