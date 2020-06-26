@@ -19,9 +19,9 @@ package io.guthix.oldscape.server.blueprints
 import io.guthix.oldscape.cache.config.ObjectConfig
 
 open class ExtraObjectConfig(
-    val ids: List<Int>,
-    val weight: Float,
-    val examine: String
+    open val ids: List<Int>,
+    open val weight: Float,
+    open val examine: String
 )
 
 open class ObjectBlueprint(
