@@ -20,6 +20,7 @@ enum class AttackStyle { STAB, SLASH, CRUSH, RANGED, MAGIC, NONE }
 
 enum class WeaponType {
     AXE,
+    BLUDGEON,
     BLUNT,
     BULWARK,
     CLAW,
