@@ -18,7 +18,7 @@ package io.guthix.oldscape.server.blueprints.equipment
 
 import io.guthix.oldscape.cache.config.ObjectConfig
 
-class TwoHandedBlueprint(
+class TwoHandBlueprint(
     cacheConfig: ObjectConfig,
-    extraConfig: ExtraEquipmentConfig
+    extraConfig: ExtraWeaponConfig
 ) : WeaponBlueprint(cacheConfig, extraConfig)

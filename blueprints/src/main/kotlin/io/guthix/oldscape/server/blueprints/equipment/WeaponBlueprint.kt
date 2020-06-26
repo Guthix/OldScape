@@ -17,8 +17,19 @@
 package io.guthix.oldscape.server.blueprints.equipment
 
 import io.guthix.oldscape.cache.config.ObjectConfig
+import io.guthix.oldscape.server.blueprints.WeaponType
+
+data class ExtraWeaponConfig(
+    override val ids: List<Int>,
+    override val weight: Float,
+    override val examine: String,
+    val type: WeaponType,
+    override val equipment: EquipmentBlueprint.Equipment
+) : ExtraEquipmentConfig(ids, weight, examine, equipment)
 
 open class WeaponBlueprint(
     cacheConfig: ObjectConfig,
-    extraConfig: ExtraEquipmentConfig
-) : EquipmentBlueprint(cacheConfig, EquipmentSlot.WEAPON, extraConfig)
+    override val extraConfig: ExtraWeaponConfig
+) : EquipmentBlueprint(cacheConfig, EquipmentSlot.WEAPON, extraConfig) {
+    val type: WeaponType get() = extraConfig.type
+}

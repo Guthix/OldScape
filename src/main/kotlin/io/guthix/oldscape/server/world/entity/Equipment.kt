@@ -59,7 +59,7 @@ open class WeaponEquipment(id: Int, quantity: Int) : Equipment(id, quantity) {
 }
 
 class TwoHandEquipment(id: Int, quantity: Int) : WeaponEquipment(id, quantity) {
-    override val blueprint: TwoHandedBlueprint = ObjectBlueprints[id]
+    override val blueprint: TwoHandBlueprint = ObjectBlueprints[id]
 }
 
 class ShieldEquipment(id: Int, quantity: Int) : Equipment(id, quantity) {

@@ -43,9 +43,9 @@ object ObjectBlueprints {
         extraCapeConfigs: List<ExtraEquipmentConfig>,
         eNeckConfigs: List<ExtraEquipmentConfig>,
         eAmmunitionConfigs: List<ExtraEquipmentConfig>,
-        eWeaponConfigs: List<ExtraEquipmentConfig>,
+        eWeaponConfigs: List<ExtraWeaponConfig>,
+        eTwoHandConfigs: List<ExtraWeaponConfig>,
         eShieldConfigs: List<ExtraEquipmentConfig>,
-        eTwoHandedConfigs: List<ExtraEquipmentConfig>,
         eBodyConfigs: List<ExtraBodyConfig>,
         eLegConfigs: List<ExtraEquipmentConfig>,
         eHandConfigs: List<ExtraEquipmentConfig>,
@@ -59,8 +59,8 @@ object ObjectBlueprints {
             addBlueprints(cConfigs, eNeckConfigs, ::NeckBlueprint)
             addBlueprints(cConfigs, eAmmunitionConfigs, ::AmmunitionBlueprint)
             addBlueprints(cConfigs, eWeaponConfigs, ::WeaponBlueprint)
+            addBlueprints(cConfigs, eTwoHandConfigs, ::TwoHandBlueprint)
             addBlueprints(cConfigs, eShieldConfigs, ::ShieldBlueprint)
-            addBlueprints(cConfigs, eTwoHandedConfigs, ::TwoHandedBlueprint)
             addBlueprints(cConfigs, eBodyConfigs, ::BodyBlueprint)
             addBlueprints(cConfigs, eLegConfigs, ::LegsBlueprint)
             addBlueprints(cConfigs, eHandConfigs, ::HandsBlueprint)
