@@ -23,6 +23,7 @@ data class ExtraWeaponConfig(
     override val ids: List<Int>,
     override val weight: Float,
     override val examine: String,
+    val attackSpeed: Int,
     val type: WeaponType,
     override val equipment: EquipmentBlueprint.Equipment
 ) : ExtraEquipmentConfig(ids, weight, examine, equipment)
@@ -31,5 +32,7 @@ open class WeaponBlueprint(
     cacheConfig: ObjectConfig,
     override val extraConfig: ExtraWeaponConfig
 ) : EquipmentBlueprint(cacheConfig, EquipmentSlot.WEAPON, extraConfig) {
+    val attackSpeed: Int get() = extraConfig.attackSpeed
+
     val type: WeaponType get() = extraConfig.type
 }
