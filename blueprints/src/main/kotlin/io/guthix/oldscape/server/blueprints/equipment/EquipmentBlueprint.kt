@@ -42,19 +42,6 @@ open class EquipmentBlueprint(
 
     val prayerBonus: Int get() = extraConfig.equipment.prayerBonus
 
-    enum class EquipmentSlot(val id: Int) {
-        HEAD(0),
-        CAPE(1),
-        NECK(2),
-        WEAPON(3),
-        BODY(4),
-        SHIELD(5),
-        LEGS(7),
-        HANDS(9),
-        FEET(10),
-        RING(11),
-        AMMUNITION(13),
-    }
 
     class Equipment(
         val attackBonus: StyleBonus,
@@ -62,4 +49,18 @@ open class EquipmentBlueprint(
         val strengthBonus: CombatBonus,
         val prayerBonus: Int
     )
+}
+
+enum class EquipmentSlot(val id: Int) {
+    HEAD(0),
+    CAPE(1),
+    NECK(2),
+    WEAPON(3),
+    BODY(4),
+    SHIELD(5),
+    LEGS(7),
+    HANDS(9),
+    FEET(10),
+    RING(11),
+    AMMUNITION(13),
 }
