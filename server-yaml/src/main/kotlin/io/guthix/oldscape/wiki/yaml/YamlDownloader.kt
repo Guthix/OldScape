@@ -17,17 +17,19 @@
 package io.guthix.oldscape.wiki.yaml
 
 import com.fasterxml.jackson.annotation.JsonInclude
+import com.fasterxml.jackson.core.JsonGenerator
+import com.fasterxml.jackson.databind.JsonSerializer
 import com.fasterxml.jackson.databind.ObjectMapper
+import com.fasterxml.jackson.databind.SerializerProvider
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory
 import com.fasterxml.jackson.dataformat.yaml.YAMLGenerator
+import com.fasterxml.jackson.module.kotlin.readValue
 import com.fasterxml.jackson.module.kotlin.registerKotlinModule
 import io.guthix.oldscape.server.blueprints.*
-import io.guthix.oldscape.server.blueprints.AttackStyle
-import io.guthix.oldscape.server.blueprints.equipment.EquipmentBlueprint
-import io.guthix.oldscape.server.blueprints.equipment.ExtraEquipmentConfig
+import io.guthix.oldscape.server.blueprints.equipment.ExtraBodyConfig
+import io.guthix.oldscape.server.blueprints.equipment.ExtraHeadConfig
 import io.guthix.oldscape.wiki.npcWikiDownloader
 import io.guthix.oldscape.wiki.objectWikiDownloader
-import io.guthix.oldscape.wiki.wikitext.NpcWikiDefinition
 import io.guthix.oldscape.wiki.wikitext.ObjectWikiDefinition
 import mu.KotlinLogging
 import java.nio.file.Path
@@ -41,132 +43,153 @@ fun main(args: Array<String>) {
 object YamlDownloader {
     @JvmStatic
     fun main(args: Array<String>) {
-        val cacheDir = Path.of("../server-yaml/src/main/resources/cache")
+        val serverDir = Path.of("../../Oldscape-Server/src/main/resources")
+        val cacheDir = serverDir.resolve("cache")
+        val configDir = serverDir.resolve("config")
+        val npcDir = configDir.resolve("npcs")
+        val objDir = configDir.resolve("objects")
+
         val yamlFactory = YAMLFactory()
             .disable(YAMLGenerator.Feature.WRITE_DOC_START_MARKER)
         val objectMapper = ObjectMapper(yamlFactory)
             .setSerializationInclusion(JsonInclude.Include.NON_NULL)
             .registerKotlinModule()
 
-        val extraObjConfigs = objectWikiDownloader(cacheDir).filter { it.ids != null }
-            .groupBy { it.isEquipable == true && it.slot != null }
-        val normalObjectConfigs = extraObjConfigs[false]?.map(ObjectWikiDefinition::toExtraObjectConfig)
-            ?: throw IllegalStateException("No normal objects.")
-        val equipmentConfigs = extraObjConfigs[true]
-            ?: throw IllegalStateException("No equipable objects.")
+        objectMapper.writeObjs(cacheDir, objDir)
+        objectMapper.writeNpcs(cacheDir, npcDir, "Npcs.yaml")
+    }
 
-        val objectFile = Path.of(javaClass.getResource("/").toURI()).resolve("Objects.yaml").toFile()
-        objectMapper.writeValue(objectFile, normalObjectConfigs)
-        logger.info { "Done writing objects to ${objectFile.absoluteFile.absolutePath}" }
-        equipmentConfigs.groupBy(ObjectWikiDefinition::slot).forEach { (slotStr, list) ->
-            val fileName = slotStr?.replaceFirst(slotStr.first(), slotStr.first().toUpperCase())
-            val eqFile = Path.of(javaClass.getResource("/").toURI()).resolve("${fileName}Equipment.yaml").toFile()
-            objectMapper.writeValue(eqFile, list.map(ObjectWikiDefinition::toExtraEquipmentConfig))
-            logger.info { "Done writing fileName equipment to ${eqFile.absoluteFile.absolutePath}" }
+    fun ObjectMapper.writeObjs(cacheDir: Path, objServerDir: Path) {
+        val objWikiData = objectWikiDownloader(cacheDir).filter { it.ids != null }.sortedBy { it.ids!!.first() }
+        val equpimentWikiData = objWikiData.filter { it.slot != null }
+
+        val objFileName = "Objects.yaml"
+        val objData = objWikiData.filter { it.slot == null }
+        val objectFile = Path.of(javaClass.getResource("/").toURI()).resolve(objFileName).toFile()
+        writeValue(objectFile, objData.map(ObjectWikiDefinition::toExtraObjectConfig))
+        logger.info {
+            "Done writing ${objData.size} obj configs to ${objectFile.absoluteFile.absolutePath}"
         }
 
-        val npcWikiData = npcWikiDownloader(cacheDir).filter { it.ids != null }
-        val npcFile = Path.of(javaClass.getResource("/").toURI()).resolve("Npcs.yaml").toFile()
-        objectMapper.writeValue(npcFile, npcWikiData.map(NpcWikiDefinition::toExtraNpcConfig))
-        logger.info { "Done writing npcs to ${npcFile.absoluteFile.absolutePath}" }
+
+        val ammoFileName = "AmmunitionEquipment.yaml"
+        val ammoData = equpimentWikiData.filter { it.slot!!.equals("ammo", true) }
+        val ammunitionFile = Path.of(javaClass.getResource("/").toURI()).resolve(ammoFileName).toFile()
+        writeValue(ammunitionFile, ammoData.map(ObjectWikiDefinition::toExtraEquipmentConfig))
+        logger.info {
+            "Done writing ${ammoData.size} ammunition equipment configs to ${ammunitionFile.absoluteFile.absolutePath}"
+        }
+
+        val bodyFileName = "BodyEquipment.yaml"
+        val bodyData = equpimentWikiData.filter { it.slot!!.equals("body", true) }
+        val bodyFile = Path.of(javaClass.getResource("/").toURI()).resolve(bodyFileName).toFile()
+        val bodyServerConfigs = readValue<List<ExtraBodyConfig>>(objServerDir.resolve(bodyFileName).toFile())
+        writeValue(bodyFile, bodyData.map { new ->
+            val curExtraConfig = bodyServerConfigs.find { cur -> new.ids == cur.ids }
+            new.toExtraBodyConfig(curExtraConfig)
+        })
+        logger.info {
+            "Done writing ${bodyData.size} body equipment configs to ${bodyFile.absoluteFile.absolutePath}"
+        }
+
+        val capeFileName = "CapeEquipment.yaml"
+        val capeData = equpimentWikiData.filter { it.slot!!.equals("cape", true) }
+        val capeFile = Path.of(javaClass.getResource("/").toURI()).resolve(capeFileName).toFile()
+        writeValue(capeFile, capeData.map(ObjectWikiDefinition::toExtraEquipmentConfig))
+        logger.info {
+            "Done writing ${capeData.size} cape equipment configs to ${capeFile.absoluteFile.absolutePath}"
+        }
+
+        val feetFileName = "FeetEquipment.yaml"
+        val feetData = equpimentWikiData.filter { it.slot!!.equals("feet", true) }
+        val feetFile = Path.of(javaClass.getResource("/").toURI()).resolve(feetFileName).toFile()
+        writeValue(feetFile, feetData.map(ObjectWikiDefinition::toExtraEquipmentConfig))
+        logger.info {
+            "Done writing ${feetData.size} feet equipment configs to ${feetFile.absoluteFile.absolutePath}"
+        }
+
+        val handFileName = "HandEquipment.yaml"
+        val handData = equpimentWikiData.filter { it.slot!!.equals("hands", true) }
+        val handFile = Path.of(javaClass.getResource("/").toURI()).resolve(handFileName).toFile()
+        writeValue(handFile, handData.map(ObjectWikiDefinition::toExtraEquipmentConfig))
+        logger.info {
+            "Done writing ${handData.size} hand equipment configs to ${handFile.absoluteFile.absolutePath}"
+        }
+
+
+        val headFileName = "HeadEquipment.yaml"
+        val headData = equpimentWikiData.filter { it.slot!!.equals("head", true) }
+        val headFile = Path.of(javaClass.getResource("/").toURI()).resolve(headFileName).toFile()
+        val headServerConfigs = readValue<List<ExtraHeadConfig>>(objServerDir.resolve(headFileName).toFile())
+        writeValue(headFile, headData.map { new ->
+            val curExtraConfig = headServerConfigs.find { cur -> new.ids == cur.ids }
+            new.toExtraHeadConfig(curExtraConfig)
+        })
+        logger.info {
+            "Done writing ${headData.size} head equipment configs to ${headFile.absoluteFile.absolutePath}"
+        }
+
+        val legFileName = "LegEquipment.yaml"
+        val legData = equpimentWikiData.filter { it.slot!!.equals("legs", true) }
+        val legFile = Path.of(javaClass.getResource("/").toURI()).resolve(legFileName).toFile()
+        writeValue(legFile, legData.map(ObjectWikiDefinition::toExtraEquipmentConfig))
+        logger.info {
+            "Done writing ${legData.size} leg equipment configs to ${legFile.absoluteFile.absolutePath}"
+        }
+
+
+        val neckFileName = "NeckEquipment.yaml"
+        val neckData = equpimentWikiData.filter { it.slot!!.equals("neck", true) }
+        val neckFile = Path.of(javaClass.getResource("/").toURI()).resolve(neckFileName).toFile()
+        writeValue(neckFile, neckData.map(ObjectWikiDefinition::toExtraEquipmentConfig))
+        logger.info {
+            "Done writing ${neckData.size} neck equipment configs to ${neckFile.absoluteFile.absolutePath}"
+        }
+
+        val ringFileName = "RingEquipment.yaml"
+        val ringData = equpimentWikiData.filter { it.slot!!.equals("neck", true) }
+        val ringFile = Path.of(javaClass.getResource("/").toURI()).resolve(ringFileName).toFile()
+        writeValue(ringFile, ringData.map(ObjectWikiDefinition::toExtraEquipmentConfig))
+        logger.info {
+            "Done writing ${ringData.size} ring equipment configs to ${ringFile.absoluteFile.absolutePath}"
+        }
+
+        val shieldFileName = "ShieldEquipment.yaml"
+        val shieldData = equpimentWikiData.filter { it.slot!!.equals("shield", true) }
+        val shieldFile = Path.of(javaClass.getResource("/").toURI()).resolve(shieldFileName).toFile()
+        writeValue(shieldFile, shieldData.map(ObjectWikiDefinition::toExtraEquipmentConfig))
+        logger.info {
+            "Done writing ${shieldData.size} shield equipment configs to ${shieldFile.absoluteFile.absolutePath}"
+        }
+
+        val twoHandFileName = "TwoHandEquipment.yaml"
+        val twoHandData = equpimentWikiData.filter { it.slot!!.equals("2h", true) }
+        val twoHandFile = Path.of(javaClass.getResource("/").toURI()).resolve(twoHandFileName).toFile()
+        writeValue(twoHandFile, twoHandData.map(ObjectWikiDefinition::toExtraEquipmentConfig))
+        logger.info {
+            "Done writing ${twoHandData.size} two hand equipment configs to ${twoHandFile.absoluteFile.absolutePath}"
+        }
+
+        val weaponFileName = "WeaponEquipment.yaml"
+        val weaponData = equpimentWikiData.filter { it.slot!!.equals("weapon", true) }
+        val weaponFile = Path.of(javaClass.getResource("/").toURI()).resolve(weaponFileName).toFile()
+        writeValue(weaponFile, weaponData.map(ObjectWikiDefinition::toExtraEquipmentConfig))
+        logger.info {
+            "Done writing ${weaponData.size} weapon equipment configs to ${weaponFile.absoluteFile.absolutePath}"
+        }
+    }
+
+    fun ObjectMapper.writeNpcs(cacheDir: Path, npcServerDir: Path, fileName: String) {
+        val npcData = npcWikiDownloader(cacheDir).filter { it.ids != null }.sortedBy { it.ids!!.first() }
+        val npcFile = Path.of(javaClass.getResource("/").toURI()).resolve(fileName).toFile()
+        val npcServerConfigs = readValue<List<ExtraNpcConfig>>(npcServerDir.resolve(fileName).toFile())
+        writeValue(npcFile, npcData.map { new ->
+            val curExtraConfig = npcServerConfigs.find { cur -> new.ids == cur.ids }
+            new.toExtraNpcConfig(curExtraConfig)
+        })
+        logger.info {
+            "Done writing ${npcData.size} npcs to ${npcFile.absoluteFile.absolutePath}"
+        }
     }
 }
 
-fun getStyleMapping(str: String?): AttackStyle? = when {
-    str == null -> null
-    str.equals("stab", true) -> AttackStyle.STAB
-    str.equals("slash", true) -> AttackStyle.SLASH
-    str.equals("crush", true) -> AttackStyle.CRUSH
-    str.equals("range", true) -> AttackStyle.RANGED
-    str.equals("ranged", true) -> AttackStyle.RANGED
-    str.equals("magic", true) -> AttackStyle.MAGIC
-    else -> {
-        logger.info { "Couldn't get attackstyle for $str." }
-        null
-    }
-}
-
-fun ObjectWikiDefinition.toExtraObjectConfig(): ExtraObjectConfig = ExtraObjectConfig(
-    ids!!,
-    weight ?: 0f,
-    examine ?: ""
-)
-
-fun ObjectWikiDefinition.toExtraEquipmentConfig(): ExtraObjectConfig {
-    if(slot == null) throw IllegalStateException("Unmapped slot for id $ids found: $slot.")
-    val equipment = EquipmentBlueprint.Equipment(
-        StyleBonus(
-            attBonusStab ?: 0,
-            attBonusSlash ?: 0,
-            attBonusCrush ?: 0,
-            attBonusRange ?: 0,
-            attBonusMagic ?: 0
-        ),
-        StyleBonus(
-            defBonusStab ?: 0,
-            defBonusSlash?: 0,
-            defBonusCrush ?: 0,
-            defBonusRange ?: 0,
-            defBonusMagic ?: 0
-        ),
-        CombatBonus(
-            strengthBonus ?: 0,
-            rangeStrengthBonus ?: 0,
-            magicDamageBonus ?: 0
-        ),
-        prayerBonus ?: 0
-    )
-
-    return ExtraEquipmentConfig(
-        ids!!,
-        weight ?: 0f,
-        examine ?: "",
-        equipment
-    )
-}
-
-fun NpcWikiDefinition.toExtraNpcConfig(): ExtraNpcConfig {
-    val combat = if(combatLvl != null) {
-        NpcCombat(
-            combatLvl ?: throw IllegalStateException("Combat lvl can't be null."),
-            maxHit,
-            getStyleMapping(attackStyles?.first()),
-            isAggressive ?: false,
-            isPoisonous ?: false,
-            isImmuneToPoison ?: false,
-            isImmuneToVenom ?: false,
-            CombatStats(
-                hitPoints ?: 0,
-                attackStat ?: 0,
-                strengthStat ?: 0,
-                defenceStat ?: 0,
-                magicStat ?: 0,
-                rangeStat ?: 0
-            ),
-            NpcAttackStats(
-                CombatBonus(
-                    attackBonusMelee ?: 0,
-                    attackBonusRange ?: 0,
-                    attackBonusMagic ?: 0,
-                ),
-                CombatBonus(
-                    strengthBonus ?: 0,
-                    rangeStrengthBonus ?: 0,
-                    magicStrengthBonus ?: 0
-                )
-            ),
-            StyleBonus(
-                defBonusStab ?: 0,
-                defBonusSlash ?: 0,
-                defBonusCrush ?: 0,
-                defBonusRange ?: 0,
-                defBonusMagic ?: 0
-            )
-        )
-    } else null
-    return ExtraNpcConfig(
-        ids!!,
-        examine ?: "",
-        combat
-    )
-}
