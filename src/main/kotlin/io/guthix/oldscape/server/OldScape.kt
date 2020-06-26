@@ -37,6 +37,7 @@ import io.guthix.oldscape.server.blueprints.ExtraObjectConfig
 import io.guthix.oldscape.server.blueprints.equipment.ExtraBodyConfig
 import io.guthix.oldscape.server.blueprints.equipment.ExtraEquipmentConfig
 import io.guthix.oldscape.server.blueprints.equipment.ExtraHeadConfig
+import io.guthix.oldscape.server.blueprints.equipment.ExtraWeaponConfig
 import io.guthix.oldscape.server.event.EventBus
 import io.guthix.oldscape.server.net.OldScapeServer
 import io.guthix.oldscape.server.net.game.GamePacketDecoder
@@ -76,9 +77,9 @@ object OldScape {
             yamlMapper.readEquipmentConfig("CapeEquipment.yaml"),
             yamlMapper.readEquipmentConfig("NeckEquipment.yaml"),
             yamlMapper.readEquipmentConfig("AmmunitionEquipment.yaml"),
-            yamlMapper.readEquipmentConfig("WeaponEquipment.yaml"),
+            yamlMapper.readWeaponConfig("WeaponEquipment.yaml"),
+            yamlMapper.readWeaponConfig("TwoHandEquipment.yaml"),
             yamlMapper.readEquipmentConfig("ShieldEquipment.yaml"),
-            yamlMapper.readEquipmentConfig("TwoHandedEquipment.yaml"),
             yamlMapper.readBodyConfig("BodyEquipment.yaml"),
             yamlMapper.readEquipmentConfig("LegsEquipment.yaml"),
             yamlMapper.readEquipmentConfig("HandsEquipment.yaml"),
@@ -132,6 +133,11 @@ object OldScape {
     private fun ObjectMapper.readBodyConfig(filePath: String): List<ExtraBodyConfig> = readValue(
         Path.of(getResource("/config/objects/$filePath").toURI()).toFile(),
         object : TypeReference<List<ExtraBodyConfig>>() {}
+    )
+
+    private fun ObjectMapper.readWeaponConfig(filePath: String): List<ExtraWeaponConfig> = readValue(
+        Path.of(getResource("/config/objects/$filePath").toURI()).toFile(),
+        object : TypeReference<List<ExtraWeaponConfig>>() {}
     )
 
     private fun getResource(filePath: String) = javaClass.getResource(filePath) ?: throw FileNotFoundException(
