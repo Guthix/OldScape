@@ -20,12 +20,18 @@ import io.guthix.cache.js5.container.Js5Store
 import io.guthix.oldscape.server.net.PacketInboundHandler
 import io.netty.channel.ChannelHandlerContext
 
-class Js5Handler(private val store: Js5Store) : PacketInboundHandler<Js5FileRequest>() {
-    override fun channelRead0(ctx: ChannelHandlerContext, msg: Js5FileRequest) {
+class Js5Handler(private val store: Js5Store) : PacketInboundHandler<Js5ContainerRequest>() {
+    override fun channelRead0(ctx: ChannelHandlerContext, msg: Js5ContainerRequest) {
         val data = store.read(msg.indexFileId, msg.containerId).retain()
         val compressionType = data.readUnsignedByte().toInt()
         val compressedSize = data.readInt()
-        val response = Js5FileResponse(msg.indexFileId, msg.containerId, compressionType, compressedSize, data.copy())
+        val response = Js5ContainerResponse(
+            msg.indexFileId,
+            msg.containerId,
+            compressionType,
+            compressedSize,
+            data.copy()
+        )
         ctx.writeAndFlush(response)
     }
 }
