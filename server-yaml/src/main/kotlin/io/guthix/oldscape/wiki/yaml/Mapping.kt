@@ -17,10 +17,7 @@
 package io.guthix.oldscape.wiki.yaml
 
 import io.guthix.oldscape.server.blueprints.*
-import io.guthix.oldscape.server.blueprints.equipment.EquipmentBlueprint
-import io.guthix.oldscape.server.blueprints.equipment.ExtraBodyConfig
-import io.guthix.oldscape.server.blueprints.equipment.ExtraEquipmentConfig
-import io.guthix.oldscape.server.blueprints.equipment.ExtraHeadConfig
+import io.guthix.oldscape.server.blueprints.equipment.*
 import io.guthix.oldscape.wiki.wikitext.NpcWikiDefinition
 import io.guthix.oldscape.wiki.wikitext.ObjectWikiDefinition
 import mu.KotlinLogging
@@ -68,6 +65,49 @@ fun ObjectWikiDefinition.toExtraBodyConfig(curExtraConfig: ExtraBodyConfig?): Ex
         curExtraConfig?.isFullBody ?: false,
         equipmentConfig.equipment
     )
+}
+
+fun ObjectWikiDefinition.toExtraWeaponConfig(): ExtraWeaponConfig {
+    val equipmentConfig = toExtraEquipmentConfig()
+    return ExtraWeaponConfig(
+        equipmentConfig.ids,
+        equipmentConfig.weight,
+        equipmentConfig.examine,
+        attackSpeed ?: 0,
+        findWeaponType(combatStyle),
+        equipmentConfig.equipment
+    )
+}
+
+fun findWeaponType(str: String?): WeaponType = when {
+    str.equals("axe", ignoreCase = true) -> WeaponType.AXE
+    str.equals("bludegon", ignoreCase = true) -> WeaponType.BLUDGEON
+    str.equals("blunt", ignoreCase = true) -> WeaponType.BLUNT
+    str.equals("bulwark", ignoreCase = true) -> WeaponType.BULWARK
+    str.equals("claws", ignoreCase = true) -> WeaponType.CLAW
+    str.equals("polearm", ignoreCase = true) -> WeaponType.POLEARM
+    str.equals("pickaxe", ignoreCase = true) -> WeaponType.PICKAXE
+    str.equals("scythe", ignoreCase = true) -> WeaponType.SCYTHE
+    str.equals("hacksword", ignoreCase = true) -> WeaponType.SLASHING_SWORD
+    str.equals("spear", ignoreCase = true) -> WeaponType.SPEAR
+    str.equals("spiked", ignoreCase = true) -> WeaponType.SPIKED_WEAPON
+    str.equals("stabsword", ignoreCase = true) -> WeaponType.STABBING_SWORD
+    str.equals("heavysword", ignoreCase = true) -> WeaponType.TWOHANDED_SWORD
+    str.equals("whip", ignoreCase = true) -> WeaponType.WHIP
+    str.equals("bow", ignoreCase = true) -> WeaponType.BOW
+    str.equals("grenade", ignoreCase = true) -> WeaponType.CHINCHOMPA
+    str.equals("crossbow", ignoreCase = true) -> WeaponType.CROSSBOW
+    str.equals("thrown", ignoreCase = true) -> WeaponType.THROW_WEAPON
+    str.equals("staff", ignoreCase = true) -> WeaponType.STAFF
+    str.equals("staff bladed", ignoreCase = true) -> WeaponType.BLADED_STAFF
+    str.equals("staff selfpowering", ignoreCase = true) -> WeaponType.POWERED_STAFF
+    str.equals("banner", ignoreCase = true) -> WeaponType.BANNER
+    str.equals("blaster", ignoreCase = true) -> WeaponType.BLASTER
+    str.equals("gun", ignoreCase = true) -> WeaponType.GUN
+    str.equals("polestaff", ignoreCase = true) -> WeaponType.POLE_STAFF
+    str.equals("flamer", ignoreCase = true) -> WeaponType.SALAMANDER
+    str.equals("unarmed", ignoreCase = true) -> WeaponType.UNARMED
+    else -> WeaponType.UNARMED
 }
 
 fun ObjectWikiDefinition.toExtraEquipmentConfig(): ExtraEquipmentConfig {

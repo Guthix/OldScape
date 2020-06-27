@@ -58,6 +58,10 @@ public class ObjectWikiDefinition : WikiDefinition<ObjectWikiDefinition>() {
     public var rangeStrengthBonus: Int? = null
     public var magicDamageBonus: Int? = null
     public var prayerBonus: Int? = null
+    public var attackSpeed: Int? = null
+    public var combatStyle: String? = null
+
+
 
     override fun parse(page: String, version: Int?): ObjectWikiDefinition {
         super.parse(page, version)
@@ -119,6 +123,8 @@ public class ObjectWikiDefinition : WikiDefinition<ObjectWikiDefinition>() {
             line.checkWikiKey("rstr", version) -> rangeStrengthBonus = line.getWikiInt()
             line.checkWikiKey("mdmg", version) -> magicDamageBonus = line.getWikiInt()
             line.checkWikiKey("prayer", version) -> prayerBonus = line.getWikiInt()
+            line.checkWikiKey("speed", version) -> attackSpeed = line.getWikiInt()
+            line.checkWikiKey("combatstyle", version) -> combatStyle = line.getWikiString()
             else -> { }
         }
     }

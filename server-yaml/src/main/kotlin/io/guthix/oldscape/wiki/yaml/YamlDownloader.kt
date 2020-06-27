@@ -17,10 +17,7 @@
 package io.guthix.oldscape.wiki.yaml
 
 import com.fasterxml.jackson.annotation.JsonInclude
-import com.fasterxml.jackson.core.JsonGenerator
-import com.fasterxml.jackson.databind.JsonSerializer
 import com.fasterxml.jackson.databind.ObjectMapper
-import com.fasterxml.jackson.databind.SerializerProvider
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory
 import com.fasterxml.jackson.dataformat.yaml.YAMLGenerator
 import com.fasterxml.jackson.module.kotlin.readValue
@@ -85,7 +82,7 @@ object YamlDownloader {
         val bodyFile = Path.of(javaClass.getResource("/").toURI()).resolve(bodyFileName).toFile()
         val bodyServerConfigs = readValue<List<ExtraBodyConfig>>(objServerDir.resolve(bodyFileName).toFile())
         writeValue(bodyFile, bodyData.map { new ->
-            val curExtraConfig = bodyServerConfigs.find { cur -> new.ids == cur.ids }
+            val curExtraConfig = bodyServerConfigs.find { (ids) -> new.ids == ids }
             new.toExtraBodyConfig(curExtraConfig)
         })
         logger.info {
@@ -122,7 +119,7 @@ object YamlDownloader {
         val headFile = Path.of(javaClass.getResource("/").toURI()).resolve(headFileName).toFile()
         val headServerConfigs = readValue<List<ExtraHeadConfig>>(objServerDir.resolve(headFileName).toFile())
         writeValue(headFile, headData.map { new ->
-            val curExtraConfig = headServerConfigs.find { cur -> new.ids == cur.ids }
+            val curExtraConfig = headServerConfigs.find { (ids) -> new.ids == ids }
             new.toExtraHeadConfig(curExtraConfig)
         })
         logger.info {
@@ -165,7 +162,7 @@ object YamlDownloader {
         val twoHandFileName = "TwoHandEquipment.yaml"
         val twoHandData = equpimentWikiData.filter { it.slot!!.equals("2h", true) }
         val twoHandFile = Path.of(javaClass.getResource("/").toURI()).resolve(twoHandFileName).toFile()
-        writeValue(twoHandFile, twoHandData.map(ObjectWikiDefinition::toExtraEquipmentConfig))
+        writeValue(twoHandFile, twoHandData.map(ObjectWikiDefinition::toExtraWeaponConfig))
         logger.info {
             "Done writing ${twoHandData.size} two hand equipment configs to ${twoHandFile.absoluteFile.absolutePath}"
         }
@@ -173,7 +170,7 @@ object YamlDownloader {
         val weaponFileName = "WeaponEquipment.yaml"
         val weaponData = equpimentWikiData.filter { it.slot!!.equals("weapon", true) }
         val weaponFile = Path.of(javaClass.getResource("/").toURI()).resolve(weaponFileName).toFile()
-        writeValue(weaponFile, weaponData.map(ObjectWikiDefinition::toExtraEquipmentConfig))
+        writeValue(weaponFile, weaponData.map(ObjectWikiDefinition::toExtraWeaponConfig))
         logger.info {
             "Done writing ${weaponData.size} weapon equipment configs to ${weaponFile.absoluteFile.absolutePath}"
         }
