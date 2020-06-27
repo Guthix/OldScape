@@ -66,7 +66,7 @@
     prayerBonus: 0
 - ids:
     - 421
-  weight: 0.1
+  weight: 0.01
   examine: "Yup. It's an amulet."
   equipment:
     attackBonus:
@@ -90,28 +90,6 @@
     - 552
   weight: 0.01
   examine: "It lets me talk to ghosts."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-    - 4250
-  weight: 0.01
-  examine: "The amulet of ghostspeak glows green from the crone's enchantment."
   equipment:
     attackBonus:
       stab: 0
@@ -639,50 +617,6 @@
       magic: 0
     prayerBonus: 3
 - ids:
-    - 11976
-  weight: 0.01
-  examine: "A dragonstone amulet with 5 magic charges."
-  equipment:
-    attackBonus:
-      stab: 10
-      slash: 10
-      crush: 10
-      magic: 10
-      range: 10
-    defenceBonus:
-      stab: 3
-      slash: 3
-      crush: 3
-      magic: 3
-      range: 3
-    strengthBonus:
-      melee: 6
-      range: 0
-      magic: 0
-    prayerBonus: 3
-- ids:
-    - 11978
-  weight: 0.01
-  examine: "A dragonstone amulet with 6 magic charges."
-  equipment:
-    attackBonus:
-      stab: 10
-      slash: 10
-      crush: 10
-      magic: 10
-      range: 10
-    defenceBonus:
-      stab: 3
-      slash: 3
-      crush: 3
-      magic: 3
-      range: 3
-    strengthBonus:
-      melee: 6
-      range: 0
-      magic: 0
-    prayerBonus: 3
-- ids:
     - 1716
   weight: 0.0
   examine: "A symbol of Saradomin."
@@ -948,117 +882,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 3867
-  weight: 0.01
-  examine: "An enchanted necklace."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-    - 3865
-  weight: 0.01
-  examine: "An enchanted necklace."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-    - 3863
-  weight: 0.01
-  examine: "An enchanted necklace."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-    - 3861
-  weight: 0.01
-  examine: "An enchanted necklace."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-    - 3859
-  weight: 0.01
-  examine: "An enchanted necklace."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-    - 3857
+    - 3853
   weight: 0.01
   examine: "An enchanted necklace."
   equipment:
@@ -1102,7 +926,117 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 3853
+    - 3857
+  weight: 0.01
+  examine: "An enchanted necklace."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+    - 3859
+  weight: 0.01
+  examine: "An enchanted necklace."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+    - 3861
+  weight: 0.01
+  examine: "An enchanted necklace."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+    - 3863
+  weight: 0.01
+  examine: "An enchanted necklace."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+    - 3865
+  weight: 0.01
+  examine: "An enchanted necklace."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+    - 3867
   weight: 0.01
   examine: "An enchanted necklace."
   equipment:
@@ -1190,6 +1124,28 @@
       range: 0
       magic: 0
     prayerBonus: 3
+- ids:
+    - 4250
+  weight: 0.01
+  examine: "The amulet of ghostspeak glows green from the crone's enchantment."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
 - ids:
     - 4306
   weight: 0.01
@@ -1653,51 +1609,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10362
-  weight: 0.01
-  examine: "A very powerful dragonstone amulet."
-  equipment:
-    attackBonus:
-      stab: 10
-      slash: 10
-      crush: 10
-      magic: 10
-      range: 10
-    defenceBonus:
-      stab: 3
-      slash: 3
-      crush: 3
-      magic: 3
-      range: 3
-    strengthBonus:
-      melee: 6
-      range: 0
-      magic: 0
-    prayerBonus: 3
-- ids:
-    - 10360
-  weight: 0.01
-  examine: "A very powerful dragonstone amulet."
-  equipment:
-    attackBonus:
-      stab: 10
-      slash: 10
-      crush: 10
-      magic: 10
-      range: 10
-    defenceBonus:
-      stab: 3
-      slash: 3
-      crush: 3
-      magic: 3
-      range: 3
-    strengthBonus:
-      melee: 6
-      range: 0
-      magic: 0
-    prayerBonus: 3
-- ids:
-    - 10358
+    - 10354
   weight: 0.01
   examine: "A very powerful dragonstone amulet."
   equipment:
@@ -1741,7 +1653,7 @@
       magic: 0
     prayerBonus: 3
 - ids:
-    - 10354
+    - 10358
   weight: 0.01
   examine: "A very powerful dragonstone amulet."
   equipment:
@@ -1763,8 +1675,8 @@
       magic: 0
     prayerBonus: 3
 - ids:
-    - 11966
-  weight: 0.0
+    - 10360
+  weight: 0.01
   examine: "A very powerful dragonstone amulet."
   equipment:
     attackBonus:
@@ -1785,8 +1697,8 @@
       magic: 0
     prayerBonus: 3
 - ids:
-    - 11964
-  weight: 0.0
+    - 10362
+  weight: 0.01
   examine: "A very powerful dragonstone amulet."
   equipment:
     attackBonus:
@@ -1917,6 +1829,28 @@
       magic: 0
     prayerBonus: 10
 - ids:
+    - 10500
+  weight: 0.01
+  examine: "Allows the ghost farmer to talk to Alice - a breakthrough!"
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
     - 10588
   weight: 0.007
   examine: "Increases the wearer's Strength and accuracy by 20% when fighting the\
@@ -1962,51 +1896,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11113
-  weight: 0.01
-  examine: "You will need to recharge the necklace at the Legends Guild."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-    - 11111
-  weight: 0.01
-  examine: "This will help me travel."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-    - 11109
+    - 11105
   weight: 0.01
   examine: "This will help me travel."
   equipment:
@@ -2050,7 +1940,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11105
+    - 11109
   weight: 0.01
   examine: "This will help me travel."
   equipment:
@@ -2072,7 +1962,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11970
+    - 11111
   weight: 0.01
   examine: "This will help me travel."
   equipment:
@@ -2094,9 +1984,9 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11968
+    - 11113
   weight: 0.01
-  examine: "This will help me travel."
+  examine: "You will need to recharge the necklace at the Legends Guild."
   equipment:
     attackBonus:
       stab: 0
@@ -2270,117 +2160,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11673
-  weight: 0.005
-  examine: "A seal storing the power of the Void Knights."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 1
-      slash: 1
-      crush: 1
-      magic: 1
-      range: 1
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-    - 11672
-  weight: 0.005
-  examine: "A seal storing the power of the Void Knights."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 1
-      slash: 1
-      crush: 1
-      magic: 1
-      range: 1
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-    - 11671
-  weight: 0.005
-  examine: "A seal storing the power of the Void Knights."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 1
-      slash: 1
-      crush: 1
-      magic: 1
-      range: 1
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-    - 11670
-  weight: 0.005
-  examine: "A seal storing the power of the Void Knights."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 1
-      slash: 1
-      crush: 1
-      magic: 1
-      range: 1
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-    - 11669
-  weight: 0.005
-  examine: "A seal storing the power of the Void Knights."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 1
-      slash: 1
-      crush: 1
-      magic: 1
-      range: 1
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-    - 11668
+    - 11666
   weight: 0.005
   examine: "A seal storing the power of the Void Knights."
   equipment:
@@ -2424,7 +2204,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11666
+    - 11668
   weight: 0.005
   examine: "A seal storing the power of the Void Knights."
   equipment:
@@ -2446,8 +2226,250 @@
       magic: 0
     prayerBonus: 0
 - ids:
+    - 11669
+  weight: 0.005
+  examine: "A seal storing the power of the Void Knights."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 1
+      slash: 1
+      crush: 1
+      magic: 1
+      range: 1
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+    - 11670
+  weight: 0.005
+  examine: "A seal storing the power of the Void Knights."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 1
+      slash: 1
+      crush: 1
+      magic: 1
+      range: 1
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+    - 11671
+  weight: 0.005
+  examine: "A seal storing the power of the Void Knights."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 1
+      slash: 1
+      crush: 1
+      magic: 1
+      range: 1
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+    - 11672
+  weight: 0.005
+  examine: "A seal storing the power of the Void Knights."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 1
+      slash: 1
+      crush: 1
+      magic: 1
+      range: 1
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+    - 11673
+  weight: 0.005
+  examine: "A seal storing the power of the Void Knights."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 1
+      slash: 1
+      crush: 1
+      magic: 1
+      range: 1
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+    - 11964
+  weight: 0.0
+  examine: "A very powerful dragonstone amulet."
+  equipment:
+    attackBonus:
+      stab: 10
+      slash: 10
+      crush: 10
+      magic: 10
+      range: 10
+    defenceBonus:
+      stab: 3
+      slash: 3
+      crush: 3
+      magic: 3
+      range: 3
+    strengthBonus:
+      melee: 6
+      range: 0
+      magic: 0
+    prayerBonus: 3
+- ids:
+    - 11966
+  weight: 0.0
+  examine: "A very powerful dragonstone amulet."
+  equipment:
+    attackBonus:
+      stab: 10
+      slash: 10
+      crush: 10
+      magic: 10
+      range: 10
+    defenceBonus:
+      stab: 3
+      slash: 3
+      crush: 3
+      magic: 3
+      range: 3
+    strengthBonus:
+      melee: 6
+      range: 0
+      magic: 0
+    prayerBonus: 3
+- ids:
+    - 11968
+  weight: 0.01
+  examine: "This will help me travel."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+    - 11970
+  weight: 0.01
+  examine: "This will help me travel."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+    - 11976
+  weight: 0.01
+  examine: "A dragonstone amulet with 5 magic charges."
+  equipment:
+    attackBonus:
+      stab: 10
+      slash: 10
+      crush: 10
+      magic: 10
+      range: 10
+    defenceBonus:
+      stab: 3
+      slash: 3
+      crush: 3
+      magic: 3
+      range: 3
+    strengthBonus:
+      melee: 6
+      range: 0
+      magic: 0
+    prayerBonus: 3
+- ids:
+    - 11978
+  weight: 0.01
+  examine: "A dragonstone amulet with 6 magic charges."
+  equipment:
+    attackBonus:
+      stab: 10
+      slash: 10
+      crush: 10
+      magic: 10
+      range: 10
+    defenceBonus:
+      stab: 3
+      slash: 3
+      crush: 3
+      magic: 3
+      range: 3
+    strengthBonus:
+      melee: 6
+      range: 0
+      magic: 0
+    prayerBonus: 3
+- ids:
     - 12002
-  weight: 1.0
+  weight: 0.005
   examine: "A smokey evil embodies this amulet."
   equipment:
     attackBonus:
@@ -2515,7 +2537,7 @@
     prayerBonus: 3
 - ids:
     - 12201
-  weight: 0.0
+  weight: 0.002
   examine: "An Ancient stole."
   equipment:
     attackBonus:
@@ -2537,7 +2559,7 @@
     prayerBonus: 10
 - ids:
     - 12257
-  weight: 0.0
+  weight: 0.01
   examine: "An Armadyl stole."
   equipment:
     attackBonus:
@@ -2669,7 +2691,7 @@
     prayerBonus: 0
 - ids:
     - 13134
-  weight: 0.0
+  weight: 0.01
   examine: "A heart shaped amulet containing sand."
   equipment:
     attackBonus:
@@ -2691,7 +2713,7 @@
     prayerBonus: 0
 - ids:
     - 13135
-  weight: 0.0
+  weight: 0.01
   examine: "A heart shaped amulet containing sand."
   equipment:
     attackBonus:
@@ -3065,7 +3087,7 @@
     prayerBonus: 0
 - ids:
     - 20366
-  weight: 0.0
+  weight: 0.01
   examine: "A deep sense of torture burns within this powerful amulet."
   equipment:
     attackBonus:
@@ -3219,7 +3241,7 @@
     prayerBonus: 0
 - ids:
     - 21143
-  weight: 0.0
+  weight: 0.01
   examine: "Lets you get away with it - sometimes."
   equipment:
     attackBonus:
@@ -3240,51 +3262,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 21155
-  weight: 0.0
-  examine: "This necklace can really take you places."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-    - 21153
-  weight: 0.0
-  examine: "This necklace can really take you places."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-    - 21151
+    - 21146
   weight: 0.0
   examine: "This necklace can really take you places."
   equipment:
@@ -3328,7 +3306,51 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 21146
+    - 21151
+  weight: 0.0
+  examine: "This necklace can really take you places."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+    - 21153
+  weight: 0.0
+  examine: "This necklace can really take you places."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+    - 21155
   weight: 0.0
   examine: "This necklace can really take you places."
   equipment:
@@ -3416,52 +3438,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 21175
-  weight: 0.0
-  examine: "Useful teleports around the wilderness."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-    - 21173
-  weight: 0.0
-  examine: "Useful teleports around the wilderness."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-    - 21171
-  weight: 0.0
+    - 21166
+  weight: 0.007
   examine: "Useful teleports around the wilderness."
   equipment:
     attackBonus:
@@ -3483,7 +3461,7 @@
     prayerBonus: 0
 - ids:
     - 21169
-  weight: 0.0
+  weight: 0.007
   examine: "Useful teleports around the wilderness."
   equipment:
     attackBonus:
@@ -3504,8 +3482,52 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 21166
-  weight: 0.0
+    - 21171
+  weight: 0.007
+  examine: "Useful teleports around the wilderness."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+    - 21173
+  weight: 0.007
+  examine: "Useful teleports around the wilderness."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+    - 21175
+  weight: 0.007
   examine: "Useful teleports around the wilderness."
   equipment:
     attackBonus:
@@ -3527,7 +3549,7 @@
     prayerBonus: 0
 - ids:
     - 21314
-  weight: 0.0
+  weight: 0.01
   examine: "A scarf woven from spare rainbow strands; emblazoned with a heart."
   equipment:
     attackBonus:
@@ -3593,7 +3615,7 @@
     prayerBonus: 2
 - ids:
     - 22400
-  weight: 0.08
+  weight: 0.01
   examine: "An ancient medallion."
   equipment:
     attackBonus:
@@ -3769,7 +3791,7 @@
     prayerBonus: 0
 - ids:
     - 24780
-  weight: 0.0
+  weight: 0.01
   examine: "A very powerful onyx amulet, imbued with blood magic."
   equipment:
     attackBonus:
