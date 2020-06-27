@@ -24,7 +24,7 @@
   examine: "An old note book."
 - ids:
     - 6
-  weight: 7.0
+  weight: 10.0
   examine: "The cannon is built on this."
 - ids:
     - 8
@@ -32,11 +32,11 @@
   examine: "The mounting for the multicannon."
 - ids:
     - 10
-  weight: 7.0
+  weight: 15.0
   examine: "The barrels of the multicannon."
 - ids:
     - 12
-  weight: 7.0
+  weight: 5.0
   examine: "This powers the multicannon."
 - ids:
     - 14
@@ -103,21 +103,21 @@
   weight: 2.5
   examine: "It's a bucket of wax."
 - ids:
-    - 38
-  weight: 0.028
-  examine: "A spooky candle."
-- ids:
     - 32
   weight: 0.028
   examine: "A lit spooky candle."
+- ids:
+    - 33
+  weight: 0.028
+  examine: "A lit candle."
 - ids:
     - 36
   weight: 0.028
   examine: "A candle."
 - ids:
-    - 33
-  weight: 0.0
-  examine: "A lit candle."
+    - 38
+  weight: 0.028
+  examine: "A spooky candle."
 - ids:
     - 39
   weight: 0.0
@@ -279,221 +279,172 @@
   weight: 0.056
   examine: "I need another ingredient to finish this Torstol potion."
 - ids:
-    - 119
-  weight: 0.02
-  examine: "1 dose of Strength potion."
-- ids:
-    - 117
-  weight: 0.025
-  examine: "2 doses of Strength potion."
+    - 113
+  weight: 0.035
+  examine: "4 doses of Strength potion."
 - ids:
     - 115
   weight: 0.03
   examine: "3 doses of Strength potion."
 - ids:
-    - 113
-  weight: 0.035
-  examine: "4 doses of Strength potion."
-- ids:
-    - 125
-  weight: 0.02
-  examine: "1 dose of Attack potion."
-- ids:
-    - 123
+    - 117
   weight: 0.025
-  examine: "2 doses of Attack potion."
+  examine: "2 doses of Strength potion."
+- ids:
+    - 119
+  weight: 0.02
+  examine: "1 dose of Strength potion."
 - ids:
     - 121
   weight: 0.03
   examine: "3 doses of Attack potion."
 - ids:
-    - 2428
-  weight: 0.035
-  examine: "4 doses of Attack potion."
-- ids:
-    - 131
-  weight: 0.02
-  examine: "1 dose of restore potion."
-- ids:
-    - 129
+    - 123
   weight: 0.025
-  examine: "2 doses of restore potion."
+  examine: "2 doses of Attack potion."
+- ids:
+    - 125
+  weight: 0.02
+  examine: "1 dose of Attack potion."
 - ids:
     - 127
   weight: 0.03
   examine: "3 doses of restore potion."
 - ids:
-    - 2430
-  weight: 0.035
-  examine: "4 doses of restore potion."
-- ids:
-    - 137
-  weight: 0.02
-  examine: "1 dose of Defence potion."
-- ids:
-    - 135
+    - 129
   weight: 0.025
-  examine: "2 doses of Defence potion."
+  examine: "2 doses of restore potion."
+- ids:
+    - 131
+  weight: 0.02
+  examine: "1 dose of restore potion."
 - ids:
     - 133
   weight: 0.03
   examine: "3 doses of Defence potion."
 - ids:
-    - 2432
-  weight: 0.035
-  examine: "4 doses of Defence potion."
-- ids:
-    - 143
-    - 20396
-  weight: 0.02
-  examine: "1 dose of Prayer restore potion."
-- ids:
-    - 141
-    - 20395
+    - 135
   weight: 0.025
-  examine: "2 doses of Prayer restore potion."
+  examine: "2 doses of Defence potion."
+- ids:
+    - 137
+  weight: 0.02
+  examine: "1 dose of Defence potion."
 - ids:
     - 139
     - 20394
   weight: 0.03
   examine: "3 doses of Prayer restore potion."
 - ids:
-    - 2434
-    - 20393
-  weight: 0.035
-  examine: "4 doses of Prayer restore potion."
-- ids:
-    - 149
-  weight: 0.02
-  examine: "1 dose of super Attack potion."
-- ids:
-    - 147
+    - 141
+    - 20395
   weight: 0.025
-  examine: "2 doses of super Attack potion."
+  examine: "2 doses of Prayer restore potion."
+- ids:
+    - 143
+    - 20396
+  weight: 0.02
+  examine: "1 dose of Prayer restore potion."
 - ids:
     - 145
   weight: 0.03
   examine: "3 doses of super Attack potion."
 - ids:
-    - 2436
-  weight: 0.035
-  examine: "4 doses of super Attack potion."
-- ids:
-    - 155
-  weight: 0.02
-  examine: "1 dose of Fishing potion."
-- ids:
-    - 153
+    - 147
   weight: 0.025
-  examine: "2 doses of Fishing potion."
+  examine: "2 doses of super Attack potion."
+- ids:
+    - 149
+  weight: 0.02
+  examine: "1 dose of super Attack potion."
 - ids:
     - 151
   weight: 0.03
   examine: "3 doses of Fishing potion."
 - ids:
-    - 2438
-  weight: 0.035
-  examine: "4 doses of Fishing potion."
-- ids:
-    - 161
-  weight: 0.02
-  examine: "1 dose of super Strength potion."
-- ids:
-    - 159
+    - 153
   weight: 0.025
-  examine: "2 doses of super Strength potion."
+  examine: "2 doses of Fishing potion."
+- ids:
+    - 155
+  weight: 0.02
+  examine: "1 dose of Fishing potion."
 - ids:
     - 157
   weight: 0.03
   examine: "3 doses of super Strength potion."
 - ids:
-    - 2440
-  weight: 0.035
-  examine: "4 doses of super Strength potion."
-- ids:
-    - 167
-  weight: 0.02
-  examine: "1 dose of super Defence potion."
-- ids:
-    - 165
+    - 159
   weight: 0.025
-  examine: "2 doses of super Defence potion."
+  examine: "2 doses of super Strength potion."
+- ids:
+    - 161
+  weight: 0.02
+  examine: "1 dose of super Strength potion."
 - ids:
     - 163
   weight: 0.03
   examine: "3 doses of super Defence potion."
 - ids:
-    - 2442
-  weight: 0.035
-  examine: "4 doses of super Defence potion."
-- ids:
-    - 173
-  weight: 0.02
-  examine: "1 dose of ranging potion."
-- ids:
-    - 171
+    - 165
   weight: 0.025
-  examine: "2 doses of ranging potion."
+  examine: "2 doses of super Defence potion."
+- ids:
+    - 167
+  weight: 0.02
+  examine: "1 dose of super Defence potion."
 - ids:
     - 169
   weight: 0.03
   examine: "3 doses of ranging potion."
 - ids:
-    - 2444
-  weight: 0.035
-  examine: "4 doses of ranging potion."
-- ids:
-    - 179
-  weight: 0.02
-  examine: "1 dose of antipoison potion."
-- ids:
-    - 177
+    - 171
   weight: 0.025
-  examine: "2 doses of antipoison potion."
+  examine: "2 doses of ranging potion."
+- ids:
+    - 173
+  weight: 0.02
+  examine: "1 dose of ranging potion."
 - ids:
     - 175
   weight: 0.03
   examine: "3 doses of antipoison potion."
 - ids:
-    - 2446
-  weight: 0.035
-  examine: "4 doses of antipoison potion."
-- ids:
-    - 185
-  weight: 0.02
-  examine: "1 dose of super antipoison potion."
-- ids:
-    - 183
+    - 177
   weight: 0.025
-  examine: "2 doses of super antipoison potion."
+  examine: "2 doses of antipoison potion."
+- ids:
+    - 179
+  weight: 0.02
+  examine: "1 dose of antipoison potion."
 - ids:
     - 181
   weight: 0.03
   examine: "3 doses of super antipoison potion."
 - ids:
-    - 2448
-  weight: 0.035
-  examine: "4 doses of super antipoison potion."
+    - 183
+  weight: 0.025
+  examine: "2 doses of super antipoison potion."
+- ids:
+    - 185
+  weight: 0.02
+  examine: "1 dose of super antipoison potion."
 - ids:
     - 187
   weight: 0.025
   examine: "For use on daggers and projectiles."
 - ids:
-    - 193
-  weight: 0.02
-  examine: "1 dose of Zamorak brew."
+    - 189
+  weight: 0.03
+  examine: "3 doses of Zamorak brew."
 - ids:
     - 191
   weight: 0.025
   examine: "2 doses of Zamorak brew."
 - ids:
-    - 189
-  weight: 0.03
-  examine: "3 doses of Zamorak brew."
-- ids:
-    - 2450
-  weight: 0.035
-  examine: "4 doses of Zamorak brew."
+    - 193
+  weight: 0.02
+  examine: "1 dose of Zamorak brew."
 - ids:
     - 195
   weight: 0.025
@@ -753,10 +704,6 @@
   examine: "Useful for catching lobsters."
 - ids:
     - 303
-  weight: 4.535
-  examine: "Useful for catching small fish."
-- ids:
-    - 6209
   weight: 4.535
   examine: "Useful for catching small fish."
 - ids:
@@ -1126,30 +1073,6 @@
   weight: 0.085
   examine: "I wonder what this tastes like?"
 - ids:
-    - 468
-  weight: 1.814
-  examine: "Nurmof can fix this for me."
-- ids:
-    - 470
-  weight: 1.814
-  examine: "Nurmof can fix this for me."
-- ids:
-    - 472
-  weight: 1.814
-  examine: "Nurmof can fix this for me."
-- ids:
-    - 474
-  weight: 1.814
-  examine: "Nurmof can fix this for me."
-- ids:
-    - 476
-  weight: 1.814
-  examine: "Nurmof can fix this for me."
-- ids:
-    - 478
-  weight: 1.814
-  examine: "Nurmof can fix this for me."
-- ids:
     - 480
   weight: 1.814
   examine: "It's missing a handle."
@@ -1173,34 +1096,6 @@
     - 490
   weight: 1.814
   examine: "It's missing a handle."
-- ids:
-    - 494
-  weight: 0.907
-  examine: "Bob can fix this for me."
-- ids:
-    - 496
-  weight: 0.907
-  examine: "Bob can fix this for me."
-- ids:
-    - 498
-  weight: 0.907
-  examine: "Bob can fix this for me."
-- ids:
-    - 500
-  weight: 0.907
-  examine: "Bob can fix this for me."
-- ids:
-    - 502
-  weight: 0.907
-  examine: "Bob can fix this for me."
-- ids:
-    - 504
-  weight: 0.907
-  examine: "Bob can fix this for me."
-- ids:
-    - 506
-  weight: 0.907
-  examine: "Bob can fix this for me."
 - ids:
     - 508
   weight: 0.1
@@ -1282,33 +1177,17 @@
   weight: 0.0
   examine: "One of the 4 basic elemental Runes."
 - ids:
-    - 11718
-  weight: 0.0
-  examine: "For use in the Nightmare Zone."
-- ids:
     - 555
   weight: 0.0
   examine: "One of the 4 basic elemental Runes."
-- ids:
-    - 11716
-  weight: 0.0
-  examine: "For use in the Nightmare Zone."
 - ids:
     - 556
   weight: 0.0
   examine: "One of the 4 basic elemental Runes."
 - ids:
-    - 11715
-  weight: 0.0
-  examine: "For use in the Nightmare Zone."
-- ids:
     - 557
   weight: 0.0
   examine: "One of the 4 basic elemental Runes."
-- ids:
-    - 11717
-  weight: 0.0
-  examine: "For use in the Nightmare Zone."
 - ids:
     - 558
   weight: 0.0
@@ -1322,10 +1201,6 @@
   weight: 0.0
   examine: "Used for medium level missile spells."
 - ids:
-    - 11713
-  weight: 0.0
-  examine: "For use in the Nightmare Zone."
-- ids:
     - 561
   weight: 0.0
   examine: "Used for alchemy spells."
@@ -1333,10 +1208,6 @@
     - 562
   weight: 0.0
   examine: "Used for low level missile spells."
-- ids:
-    - 11712
-  weight: 0.0
-  examine: "For use in the Nightmare Zone."
 - ids:
     - 563
   weight: 0.0
@@ -1349,10 +1220,6 @@
     - 565
   weight: 0.0
   examine: "Used for high level missile spells."
-- ids:
-    - 11714
-  weight: 0.0
-  examine: "For use in the Nightmare Zone."
 - ids:
     - 566
   weight: 0.0
@@ -1402,13 +1269,13 @@
   weight: 0.056
   examine: "A heap of ashes."
 - ids:
-    - 596
-  weight: 0.5
-  examine: "An unlit home-made torch."
-- ids:
     - 594
   weight: 0.5
   examine: "A lit home-made torch."
+- ids:
+    - 596
+  weight: 0.5
+  examine: "An unlit home-made torch."
 - ids:
     - 600
   weight: 0.003
@@ -1669,10 +1536,6 @@
   weight: 0.51
   examine: "It's about chemicals, judging from its cover."
 - ids:
-    - 1978
-  weight: 0.1
-  examine: "A nice cup of tea."
-- ids:
     - 714
   weight: 0.02
   examine: "Notes given to you by Radimus Erkle, it includes a partially completed\
@@ -1737,7 +1600,7 @@
   examine: "It looks like the Shamans personal notes..."
 - ids:
     - 730
-  weight: 0.5
+  weight: 0.51
   examine: "An ancient tome on Demonology."
 - ids:
     - 731
@@ -1837,22 +1700,6 @@
   weight: 2.721
   examine: "Half of the Shield of Arrav."
 - ids:
-    - 12019
-  weight: 10.0
-  examine: "You can carry coal in here."
-- ids:
-    - 24480
-  weight: 10.0
-  examine: "You can carry coal in here."
-- ids:
-    - 12020
-  weight: 0.0
-  examine: "You can carry uncut gems in here."
-- ids:
-    - 24481
-  weight: 0.0
-  examine: "You can carry uncut gems in here."
-- ids:
     - 769
   weight: 0.02
   examine: "I can use this to claim a reward from the King."
@@ -1861,12 +1708,12 @@
   weight: 2.267
   examine: "A limb of the fabled Dramen tree."
 - ids:
-    - 780
-  weight: 1.36
-  examine: "A fragment of the Fitzharmon family crest."
-- ids:
     - 779
   weight: 1.814
+  examine: "A fragment of the Fitzharmon family crest."
+- ids:
+    - 780
+  weight: 1.36
   examine: "A fragment of the Fitzharmon family crest."
 - ids:
     - 781
@@ -1989,10 +1836,6 @@
   weight: 0.015
   examine: "Get your axes from Bob's Axes."
 - ids:
-    - 23670
-  weight: 0.015
-  examine: "Get your maces from Iwan's Maces."
-- ids:
     - 958
   weight: 3.0
   examine: "This would make warm clothing."
@@ -2063,9 +1906,41 @@
   weight: 0.0
   examine: "Lovely money!"
 - ids:
-    - 1410
-  weight: 2.2
-  examine: "I'll need to get this repaired before I can use it."
+    - 996
+  weight: 0.0
+  examine: "Lovely money!"
+- ids:
+    - 997
+  weight: 0.0
+  examine: "Lovely money!"
+- ids:
+    - 998
+  weight: 0.0
+  examine: "Lovely money!"
+- ids:
+    - 999
+  weight: 0.0
+  examine: "Lovely money!"
+- ids:
+    - 1000
+  weight: 0.0
+  examine: "Lovely money!"
+- ids:
+    - 1001
+  weight: 0.0
+  examine: "Lovely money!"
+- ids:
+    - 1002
+  weight: 0.0
+  examine: "Lovely money!"
+- ids:
+    - 1003
+  weight: 0.0
+  examine: "Lovely money!"
+- ids:
+    - 1004
+  weight: 0.0
+  examine: "Lovely money!"
 - ids:
     - 1411
   weight: 0.0
@@ -2819,25 +2694,25 @@
   weight: 0.01
   examine: "An unidentified fingerprint taken from the murder weapon."
 - ids:
-    - 1831
-  weight: 0.1
-  examine: "A completely empty waterskin - you'll need to fill it up."
-- ids:
-    - 1829
-  weight: 0.35
-  examine: "A nearly empty waterskin with one portion of water."
-- ids:
-    - 1827
-  weight: 0.6
-  examine: "A half empty waterskin with two portions of water."
+    - 1823
+  weight: 1.1
+  examine: "A full waterskin with four portions of water."
 - ids:
     - 1825
   weight: 0.85
   examine: "A nearly full waterskin with three portions of water."
 - ids:
-    - 1823
-  weight: 1.1
-  examine: "A full waterskin with four portions of water."
+    - 1827
+  weight: 0.6
+  examine: "A half empty waterskin with two portions of water."
+- ids:
+    - 1829
+  weight: 0.35
+  examine: "A nearly empty waterskin with one portion of water."
+- ids:
+    - 1831
+  weight: 0.1
+  examine: "A completely empty waterskin - you'll need to fill it up."
 - ids:
     - 1839
   weight: 0.01
@@ -3120,7 +2995,7 @@
   examine: "Happy Halloween."
 - ids:
     - 1961
-  weight: 0.0
+  weight: 0.085
   examine: "Happy Easter."
 - ids:
     - 1963
@@ -3156,6 +3031,10 @@
     - 1977
   weight: 2.0
   examine: "Milk with chocolate in it."
+- ids:
+    - 1978
+  weight: 0.1
+  examine: "A nice cup of tea."
 - ids:
     - 1980
   weight: 0.05
@@ -3610,7 +3489,7 @@
   examine: "This smells really good."
 - ids:
     - 2277
-  weight: 0.0
+  weight: 0.25
   examine: "It actually smells quite good."
 - ids:
     - 2279
@@ -3705,29 +3584,29 @@
   weight: 0.45
   examine: "Mmm Apple pie."
 - ids:
-    - 2335
-  weight: 0.225
-  examine: "Mmm half an apple pie."
-- ids:
     - 2325
   weight: 0.45
   examine: "Looks tasty."
-- ids:
-    - 2333
-  weight: 0.225
-  examine: "So tasty I kept some for later."
 - ids:
     - 2327
   weight: 0.45
   examine: "Not for vegetarians."
 - ids:
+    - 2329
+  weight: 0.0
+  examine: "I think I left it on the stove too long."
+- ids:
     - 2331
   weight: 0.225
   examine: "Half of it is suitable for vegetarians."
 - ids:
-    - 2329
-  weight: 0.0
-  examine: "I think I left it on the stove too long."
+    - 2333
+  weight: 0.225
+  examine: "So tasty I kept some for later."
+- ids:
+    - 2335
+  weight: 0.225
+  examine: "Mmm half an apple pie."
 - ids:
     - 2337
   weight: 0.225
@@ -3953,13 +3832,13 @@
   weight: 0.01
   examine: "A heavy key made of bronze (Used in the Prince Ali Rescue quest)."
 - ids:
-    - 2421
-  weight: 0.01
-  examine: "A grey woollen wig."
-- ids:
     - 2419
   weight: 0.453
   examine: "A wig that has been dyed slightly blonde."
+- ids:
+    - 2421
+  weight: 0.01
+  examine: "A grey woollen wig."
 - ids:
     - 2423
   weight: 0.01
@@ -3969,29 +3848,74 @@
   weight: 0.015
   examine: "A bottle of skin coloured paste."
 - ids:
-    - 21907
-  weight: 10.0
-  examine: "Yuck! I could get it stuffed!"
-- ids:
     - 2426
   weight: 0.0
   examine: "Oh dear, it's totally burnt!"
 - ids:
-    - 2458
-  weight: 0.02
-  examine: "1 dose of anti-firebreath potion."
+    - 2428
+  weight: 0.035
+  examine: "4 doses of Attack potion."
 - ids:
-    - 2456
-  weight: 0.025
-  examine: "2 doses of anti-firebreath potion."
+    - 2430
+  weight: 0.035
+  examine: "4 doses of restore potion."
+- ids:
+    - 2432
+  weight: 0.035
+  examine: "4 doses of Defence potion."
+- ids:
+    - 2434
+    - 20393
+  weight: 0.035
+  examine: "4 doses of Prayer restore potion."
+- ids:
+    - 2436
+  weight: 0.035
+  examine: "4 doses of super Attack potion."
+- ids:
+    - 2438
+  weight: 0.035
+  examine: "4 doses of Fishing potion."
+- ids:
+    - 2440
+  weight: 0.035
+  examine: "4 doses of super Strength potion."
+- ids:
+    - 2442
+  weight: 0.035
+  examine: "4 doses of super Defence potion."
+- ids:
+    - 2444
+  weight: 0.035
+  examine: "4 doses of ranging potion."
+- ids:
+    - 2446
+  weight: 0.035
+  examine: "4 doses of antipoison potion."
+- ids:
+    - 2448
+  weight: 0.035
+  examine: "4 doses of super antipoison potion."
+- ids:
+    - 2450
+  weight: 0.035
+  examine: "4 doses of Zamorak brew."
+- ids:
+    - 2452
+  weight: 0.035
+  examine: "4 doses of anti-firebreath potion."
 - ids:
     - 2454
   weight: 0.03
   examine: "3 doses of anti-firebreath potion."
 - ids:
-    - 2452
-  weight: 0.035
-  examine: "4 doses of anti-firebreath potion."
+    - 2456
+  weight: 0.025
+  examine: "2 doses of anti-firebreath potion."
+- ids:
+    - 2458
+  weight: 0.02
+  examine: "1 dose of anti-firebreath potion."
 - ids:
     - 2481
   weight: 0.0
@@ -4215,7 +4139,7 @@
     - 23164
     - 23165
     - 23166
-  weight: 0.0
+  weight: 0.02
   examine: "* A set of instructions to be followed."
 - ids:
     - 2722
@@ -4406,45 +4330,6 @@
   weight: 0.0
   examine: "I need to solve this!"
 - ids:
-    - 3565
-    - 3567
-    - 3578
-    - 12582
-    - 19887
-    - 23173
-  weight: 0.0
-  examine: "I need to solve this!"
-- ids:
-    - 3569
-    - 3571
-    - 3576
-    - 12585
-    - 19895
-    - 19897
-    - 19903
-  weight: 0.0
-  examine: "I need to solve this!"
-- ids:
-    - 12161
-  weight: 0.0
-  examine: "I need to solve this!"
-- ids:
-    - 20280
-  weight: 0.0
-  examine: "I need to solve this!"
-- ids:
-    - 20281
-  weight: 0.0
-  examine: "I need to solve this!"
-- ids:
-    - 20282
-  weight: 0.0
-  examine: "I need to solve this!"
-- ids:
-    - 23417
-  weight: 0.0
-  examine: "I need to solve this!"
-- ids:
     - 2801
     - 2803
     - 2805
@@ -4619,10 +4504,6 @@
   examine: "A key to unlock a treasure chest.<br/>A key to some drawers.<br/>A key\
     \ to a chest."
 - ids:
-    - 19812
-  weight: 0.0
-  examine: "A key to unlock a treasure chest."
-- ids:
     - 2842
     - 2844
     - 2846
@@ -4665,31 +4546,7 @@
     - 19773
     - 23132
     - 23134
-  weight: 0.0
-  examine: "I need to answer this correctly."
-- ids:
-    - 7269
-    - 7271
-    - 7273
-    - 12567
-    - 12569
-    - 12571
-    - 12573
-    - 12575
-    - 12577
-    - 19847
-    - 19855
-    - 19859
-    - 19885
-    - 19893
-    - 19899
-    - 19907
-  weight: 0.0
-  examine: "I need to answer this correctly."
-- ids:
-    - 12128
-    - 12139
-  weight: 0.0
+  weight: 0.02
   examine: "I need to answer this correctly."
 - ids:
     - 2859
@@ -4716,17 +4573,17 @@
   weight: 0.51
   examine: "A large pair of ogre bellows."
 - ids:
-    - 2874
+    - 2872
   weight: 0.51
-  examine: "A large pair of ogre bellows, it has one load of swamp gas in it."
+  examine: "A large pair of ogre bellows, it has three loads of swamp gas in it."
 - ids:
     - 2873
   weight: 0.51
   examine: "A large pair of ogre bellows, it has two loads of swamp gas in it."
 - ids:
-    - 2872
+    - 2874
   weight: 0.51
-  examine: "A large pair of ogre bellows, it has three loads of swamp gas in it."
+  examine: "A large pair of ogre bellows, it has one load of swamp gas in it."
 - ids:
     - 2875
   weight: 0.75
@@ -4888,89 +4745,89 @@
   weight: 0.0
   examine: "A firework potion; this'll look pretty!"
 - ids:
-    - 3014
-  weight: 0.02
-  examine: "1 dose of energy potion."
-- ids:
-    - 3012
-  weight: 0.025
-  examine: "2 doses of energy potion."
+    - 3008
+  weight: 0.035
+  examine: "4 doses of energy potion."
 - ids:
     - 3010
   weight: 0.03
   examine: "3 doses of energy potion."
 - ids:
-    - 3008
-  weight: 0.035
-  examine: "4 doses of energy potion."
-- ids:
-    - 3022
-    - 20551
-  weight: 0.02
-  examine: "1 dose of super energy potion."
-- ids:
-    - 3020
-    - 20550
+    - 3012
   weight: 0.025
-  examine: "2 doses of super energy potion."
+  examine: "2 doses of energy potion."
 - ids:
-    - 3018
-    - 20549
-  weight: 0.03
-  examine: "3 doses of super energy potion."
+    - 3014
+  weight: 0.02
+  examine: "1 dose of energy potion."
 - ids:
     - 3016
     - 20548
   weight: 0.035
   examine: "4 doses of super energy potion."
 - ids:
-    - 3030
-  weight: 0.02
-  examine: "1 dose of super restore potion."
-- ids:
-    - 3028
-  weight: 0.025
-  examine: "2 doses of super restore potion."
-- ids:
-    - 3026
+    - 3018
+    - 20549
   weight: 0.03
-  examine: "3 doses of super restore potion."
+  examine: "3 doses of super energy potion."
+- ids:
+    - 3020
+    - 20550
+  weight: 0.025
+  examine: "2 doses of super energy potion."
+- ids:
+    - 3022
+    - 20551
+  weight: 0.02
+  examine: "1 dose of super energy potion."
 - ids:
     - 3024
   weight: 0.035
   examine: "4 doses of super restore potion."
 - ids:
-    - 3038
-  weight: 0.02
-  examine: "1 dose of Agility potion."
-- ids:
-    - 3036
-  weight: 0.025
-  examine: "2 doses of Agility potion."
-- ids:
-    - 3034
+    - 3026
   weight: 0.03
-  examine: "3 doses of Agility potion."
+  examine: "3 doses of super restore potion."
+- ids:
+    - 3028
+  weight: 0.025
+  examine: "2 doses of super restore potion."
+- ids:
+    - 3030
+  weight: 0.02
+  examine: "1 dose of super restore potion."
 - ids:
     - 3032
   weight: 0.035
   examine: "4 doses of Agility potion."
 - ids:
-    - 3046
-  weight: 0.02
-  examine: "1 dose of Magic potion."
+    - 3034
+  weight: 0.03
+  examine: "3 doses of Agility potion."
 - ids:
-    - 3044
+    - 3036
   weight: 0.025
-  examine: "2 doses of Magic potion."
+  examine: "2 doses of Agility potion."
+- ids:
+    - 3038
+  weight: 0.02
+  examine: "1 dose of Agility potion."
+- ids:
+    - 3040
+  weight: 0.035
+  examine: "4 doses of Magic potion."
 - ids:
     - 3042
   weight: 0.03
   examine: "3 doses of Magic potion."
 - ids:
-    - 3040
-  weight: 0.035
-  examine: "4 doses of Magic potion."
+    - 3044
+  weight: 0.025
+  examine: "2 doses of Magic potion."
+- ids:
+    - 3046
+  weight: 0.02
+  examine: "1 dose of Magic potion."
 - ids:
     - 3049
   weight: 0.007
@@ -4995,10 +4852,6 @@
     - 3104
   weight: 0.005
   examine: "This map shows the secret way up to Death Plateau."
-- ids:
-    - 3107
-  weight: 0.34
-  examine: "Climbing boots with spikes."
 - ids:
     - 3109
   weight: 3.628
@@ -5044,6 +4897,10 @@
   weight: 0.8
   examine: "Burnt Jogre bones smothered with cooked Karambwanji paste."
 - ids:
+    - 3130
+  weight: 0.8
+  examine: "Burnt Jogre bones marinated in a lovely Karambwanji sauce. Perfect."
+- ids:
     - 3131
   weight: 0.8
   examine: "Jogre bones smothered with raw Karambwanji paste."
@@ -5051,10 +4908,6 @@
     - 3132
   weight: 0.8
   examine: "Jogre bones smothered with cooked Karambwanji paste."
-- ids:
-    - 3130
-  weight: 0.8
-  examine: "Burnt Jogre bones marinated in a lovely Karambwanji sauce. Perfect."
 - ids:
     - 3133
   weight: 0.8
@@ -5091,11 +4944,11 @@
   examine: "Cooked octopus. It looks poorly cooked and quite dangerous."
 - ids:
     - 3148
-  weight: 0.0
+  weight: 0.6
   examine: "Burnt octopus."
 - ids:
     - 3150
-  weight: 0.14
+  weight: 0.0
   examine: "Small brightly coloured tropical fish."
 - ids:
     - 3152
@@ -5435,7 +5288,7 @@
   examine: "The remains of a deadly shade."
 - ids:
     - 3402
-  weight: 0.0
+  weight: 1.36
   examine: "The remains of a deadly shade."
 - ids:
     - 3404
@@ -5446,73 +5299,73 @@
   weight: 0.0
   examine: "I need another ingredient to finish this potion."
 - ids:
-    - 3414
-  weight: 0.02
-  examine: "1 dose serum 207 as described in Herbi Flax's diary."
-- ids:
-    - 3412
-  weight: 0.025
-  examine: "2 doses serum 207 as described in Herbi Flax's diary."
+    - 3408
+  weight: 0.035
+  examine: "4 doses serum 207 as described in Herbi Flax's diary."
 - ids:
     - 3410
   weight: 0.03
   examine: "3 doses serum 207 as described in Herbi Flax's diary."
 - ids:
-    - 3408
-  weight: 0.035
-  examine: "4 doses serum 207 as described in Herbi Flax's diary."
-- ids:
-    - 3419
-  weight: 0.02
-  examine: "1 dose permanent serum 208 as described in Herbi Flax's diary."
-- ids:
-    - 3418
+    - 3412
   weight: 0.025
-  examine: "2 doses permanent serum 208 as described in Herbi Flax's diary."
+  examine: "2 doses serum 207 as described in Herbi Flax's diary."
 - ids:
-    - 3417
-  weight: 0.03
-  examine: "3 doses permanent serum 208 as described in Herbi Flax's diary."
+    - 3414
+  weight: 0.02
+  examine: "1 dose serum 207 as described in Herbi Flax's diary."
 - ids:
     - 3416
   weight: 0.035
   examine: "4 doses permanent serum 208 as described in Herbi Flax's diary."
 - ids:
+    - 3417
+  weight: 0.03
+  examine: "3 doses permanent serum 208 as described in Herbi Flax's diary."
+- ids:
+    - 3418
+  weight: 0.025
+  examine: "2 doses permanent serum 208 as described in Herbi Flax's diary."
+- ids:
+    - 3419
+  weight: 0.02
+  examine: "1 dose permanent serum 208 as described in Herbi Flax's diary."
+- ids:
     - 3420
   weight: 1.36
   examine: "A well carved limestone brick."
-- ids:
-    - 3428
-  weight: 0.02
-  examine: "1 dose of olive oil."
-- ids:
-    - 3426
-  weight: 0.025
-  examine: "2 doses of olive oil."
-- ids:
-    - 3424
-  weight: 0.03
-  examine: "3 doses of olive oil."
 - ids:
     - 3422
   weight: 0.035
   examine: "4 doses of olive oil."
 - ids:
-    - 3436
-  weight: 0.02
-  examine: "1 dose of sacred Oil."
+    - 3424
+  weight: 0.03
+  examine: "3 doses of olive oil."
 - ids:
-    - 3434
+    - 3426
   weight: 0.025
-  examine: "2 doses of sacred Oil."
+  examine: "2 doses of olive oil."
+- ids:
+    - 3428
+  weight: 0.02
+  examine: "1 dose of olive oil."
+- ids:
+    - 3430
+  weight: 0.035
+  examine: "4 doses of sacred Oil."
 - ids:
     - 3432
   weight: 0.03
   examine: "3 doses of sacred Oil."
 - ids:
-    - 3430
-  weight: 0.035
-  examine: "4 doses of sacred Oil."
+    - 3434
+  weight: 0.025
+  examine: "2 doses of sacred Oil."
+- ids:
+    - 3436
+  weight: 0.02
+  examine: "1 dose of sacred Oil."
 - ids:
     - 3438
   weight: 1.36
@@ -5642,23 +5495,42 @@
   weight: 1.0
   examine: "Amazingly untouched by time."
 - ids:
+    - 3565
+    - 3567
+    - 3578
+    - 12582
+    - 19887
+    - 23173
+  weight: 0.0
+  examine: "I need to solve this!"
+- ids:
+    - 3569
+    - 3571
+    - 3576
+    - 12585
+    - 19895
+    - 19897
+    - 19903
+  weight: 0.0
+  examine: "I need to solve this!"
+- ids:
     - 3678
   weight: 1.36
   examine: "An exquisitely shaped tool specially designed for fixing temples."
-- ids:
-    - 3682
-  weight: 0.0
-  examine: "A shoe."
 - ids:
     - 3680
   weight: 0.0
   examine: "A shoe."
 - ids:
-    - 3683
+    - 3681
   weight: 0.0
   examine: "A shoe."
 - ids:
-    - 3681
+    - 3682
+  weight: 0.0
+  examine: "A shoe."
+- ids:
+    - 3683
   weight: 0.0
   examine: "A shoe."
 - ids:
@@ -5759,10 +5631,6 @@
   weight: 0.001
   examine: "It's some kind of weird little parcel thing. On fire."
 - ids:
-    - 3743
-  weight: 0.002
-  examine: "A red coloured disk, apparently made of wood."
-- ids:
     - 3718
   weight: 0.02
   examine: "A very attractive magnet."
@@ -5848,13 +5716,13 @@
   weight: 0.001
   examine: "The lid is screwed on tightly."
 - ids:
-    - 3740
-  weight: 0.001
-  examine: "The lid is screwed on tightly. It is full of water."
-- ids:
     - 3739
   weight: 0.0
   examine: "The lid is screwed on tightly. It is very cold."
+- ids:
+    - 3740
+  weight: 0.001
+  examine: "The lid is screwed on tightly. It is full of water."
 - ids:
     - 3741
   weight: 0.001
@@ -5863,6 +5731,10 @@
     - 3742
   weight: 0.5
   examine: "The colouring on it seems to be some kind of sticky goop..."
+- ids:
+    - 3743
+  weight: 0.002
+  examine: "A red coloured disk, apparently made of wood."
 - ids:
     - 3744
   weight: 0.002
@@ -5957,10 +5829,6 @@
   weight: 5.0
   examine: "Looks old and rusty..."
 - ids:
-    - 5732
-  weight: 0.0
-  examine: "A stool for milking"
-- ids:
     - 3894
   weight: 0.005
   examine: "It's not very good."
@@ -6011,7 +5879,7 @@
 - ids:
     - 4008
     - 4009
-  weight: 1.0
+  weight: 0.007
   examine: "It's... the eye of a gnome! Now what on earth could one do with this?"
 - ids:
     - 4012
@@ -6033,14 +5901,6 @@
     - 4022
   weight: 1.36
   examine: "It's an unstrung Amulet of Monkey Speak. It makes vague chattering noises."
-- ids:
-    - 4029
-  weight: 0.0
-  examine: "A magic talisman in the shape of a small zombie monkey head."
-- ids:
-    - 4030
-  weight: 0.0
-  examine: "A magic talisman in the shape of a big zombie monkey head."
 - ids:
     - 4033
   weight: 15.0
@@ -6107,17 +5967,9 @@
   weight: 0.007
   examine: "An unstrung crystal imbued with the power of Saradomin."
 - ids:
-    - 4083
-  weight: 0.018
-  examine: "It needs waxing before I can use it."
-- ids:
     - 4085
   weight: 0.025
   examine: "I can use this to wax my sled."
-- ids:
-    - 4109
-  weight: 0.4
-  examine: "A bright magical hat."
 - ids:
     - 4155
   weight: 0.002
@@ -6374,54 +6226,6 @@
   weight: 1.5
   examine: "A pot of crushed jogre bones."
 - ids:
-    - 4852
-  weight: 1.5
-  examine: "A pot of crushed zogre bones."
-- ids:
-    - 4853
-  weight: 1.5
-  examine: "A pot of crushed fayrg bones."
-- ids:
-    - 4854
-  weight: 1.5
-  examine: "A pot of crushed raurg bones."
-- ids:
-    - 4855
-  weight: 1.5
-  examine: "A pot of crushed ourg bones."
-- ids:
-    - 5615
-  weight: 1.5
-  examine: "A pot of crushed Shaikahan bones."
-- ids:
-    - 6728
-  weight: 1.5
-  examine: "A pot of crushed Dagannoth-king bones."
-- ids:
-    - 6810
-  weight: 0.5
-  examine: "A pot of crushed wyvern bones."
-- ids:
-    - 11922
-  weight: 1.6
-  examine: "A pot of crushed lava dragon bones."
-- ids:
-    - 22116
-  weight: 1.8
-  examine: "A pot of crushed superior dragon bones."
-- ids:
-    - 22754
-  weight: 1.8
-  examine: "A pot of crushed wyrm bones."
-- ids:
-    - 22756
-  weight: 1.8
-  examine: "A pot of crushed drake bones."
-- ids:
-    - 22758
-  weight: 1.8
-  examine: "A pot of crushed hydra bones."
-- ids:
     - 4272
   weight: 0.01
   examine: "A key dropped by Necrovarus (Used in the Ghosts Ahoy quest)."
@@ -6434,11 +6238,11 @@
   weight: 0.01
   examine: "A section from some kind of map."
 - ids:
-    - 4276
+    - 4275
   weight: 0.01
   examine: "A section from some kind of map."
 - ids:
-    - 4275
+    - 4276
   weight: 0.01
   examine: "A section from some kind of map."
 - ids:
@@ -6486,11 +6290,7 @@
   weight: 0.15
   examine: "A strong medicinal brew for heavy chests."
 - ids:
-    - 4423
-  weight: 0.05
-  examine: "A cup of Guthix Rest."
-- ids:
-    - 4421
+    - 4417
   weight: 0.05
   examine: "A cup of Guthix Rest."
 - ids:
@@ -6498,7 +6298,11 @@
   weight: 0.05
   examine: "A cup of Guthix Rest."
 - ids:
-    - 4417
+    - 4421
+  weight: 0.05
+  examine: "A cup of Guthix Rest."
+- ids:
+    - 4423
   weight: 0.05
   examine: "A cup of Guthix Rest."
 - ids:
@@ -6518,25 +6322,25 @@
   weight: 0.01
   examine: "An animate rock spell is written on this parchment."
 - ids:
-    - 4431
-  weight: 0.001
-  examine: "This weathervane ornament is damaged."
-- ids:
     - 4429
   weight: 0.001
   examine: "These weathervane directionals are broken."
-- ids:
-    - 4433
-  weight: 0.001
-  examine: "A broken Weathervane pillar."
 - ids:
     - 4430
   weight: 0.001
   examine: "The weathervane directionals should work now."
 - ids:
+    - 4431
+  weight: 0.001
+  examine: "This weathervane ornament is damaged."
+- ids:
     - 4432
   weight: 0.001
   examine: "A fixed Weathervane ornament."
+- ids:
+    - 4433
+  weight: 0.001
+  examine: "A broken Weathervane pillar."
 - ids:
     - 4434
   weight: 0.001
@@ -6693,26 +6497,6 @@
     - 4496
   weight: 0.01
   examine: "Splintered into pieces, it has become completely useless to you."
-- ids:
-    - 20483
-  weight: 1.588
-  examine: "A very decorative sword, but it's broken."
-- ids:
-    - 20485
-  weight: 8.6175
-  examine: "Very decorative armour, but it's broken."
-- ids:
-    - 20487
-  weight: 9.05
-  examine: "Very decorative armour, but it's broken."
-- ids:
-    - 20489
-  weight: 1.355
-  examine: "A very decorative helm, but it's broken."
-- ids:
-    - 20491
-  weight: 4.54
-  examine: "A very decorative shield, but it's broken."
 - ids:
     - 4517
   weight: 0.453
@@ -6992,41 +6776,41 @@
   weight: 0.453
   examine: "A silver pot made by Ruantun."
 - ids:
-    - 4660
-  weight: 0.453
-  examine: "A silver pot made by Ruantun filled with your blood."
-- ids:
-    - 4662
-  weight: 0.453
-  examine: "A silver pot made by Ruantun filled with blood and garlic."
-- ids:
-    - 4666
-  weight: 0.453
-  examine: "A silver pot made by Ruantun filled with blood and spices."
-- ids:
-    - 4664
-  weight: 0.453
-  examine: "A silver pot made by Ruantun filled with blood, garlic and spices."
-- ids:
     - 4659
   weight: 0.453
   examine: "A silver pot made by Ruantun and blessed on Entrana."
+- ids:
+    - 4660
+  weight: 0.453
+  examine: "A silver pot made by Ruantun filled with your blood."
 - ids:
     - 4661
   weight: 0.453
   examine: "A blessed silver pot made by Ruantun filled with your blood."
 - ids:
+    - 4662
+  weight: 0.453
+  examine: "A silver pot made by Ruantun filled with blood and garlic."
+- ids:
     - 4663
   weight: 0.453
   examine: "A blessed silver pot filled with blood and garlic."
 - ids:
-    - 4667
+    - 4664
   weight: 0.453
-  examine: "A blessed silver pot filled with blood and spices."
+  examine: "A silver pot made by Ruantun filled with blood, garlic and spices."
 - ids:
     - 4665
   weight: 0.453
   examine: "A blessed silver pot filled with blood, garlic and spices."
+- ids:
+    - 4666
+  weight: 0.453
+  examine: "A silver pot made by Ruantun filled with blood and spices."
+- ids:
+    - 4667
+  weight: 0.453
+  examine: "A blessed silver pot filled with blood and spices."
 - ids:
     - 4668
   weight: 0.007
@@ -7258,25 +7042,41 @@
   weight: 0.0
   examine: "I need another ingredient to finish this rogue's purse potion."
 - ids:
-    - 4848
-  weight: 0.02
-  examine: "1 dose of Relicym's balm, which helps cure disease."
-- ids:
-    - 4846
-  weight: 0.025
-  examine: "2 doses of Relicym's balm, which helps cure disease."
+    - 4842
+  weight: 0.035
+  examine: "4 doses of Relicym's balm, which helps cure disease."
 - ids:
     - 4844
   weight: 0.03
   examine: "3 doses of Relicym's balm, which helps cure disease."
 - ids:
-    - 4842
-  weight: 0.035
-  examine: "4 doses of Relicym's balm, which helps cure disease."
+    - 4846
+  weight: 0.025
+  examine: "2 doses of Relicym's balm, which helps cure disease."
+- ids:
+    - 4848
+  weight: 0.02
+  examine: "1 dose of Relicym's balm, which helps cure disease."
 - ids:
     - 4850
   weight: 0.055
   examine: "A key which opens coffins! (Opens the locked coffins in the cave at Jiggig)."
+- ids:
+    - 4852
+  weight: 1.5
+  examine: "A pot of crushed zogre bones."
+- ids:
+    - 4853
+  weight: 1.5
+  examine: "A pot of crushed fayrg bones."
+- ids:
+    - 4854
+  weight: 1.5
+  examine: "A pot of crushed raurg bones."
+- ids:
+    - 4855
+  weight: 1.5
+  examine: "A pot of crushed ourg bones."
 - ids:
     - 5001
   weight: 0.5
@@ -7374,9 +7174,17 @@
   weight: 0.05
   examine: "Clothes for the sculptor's model."
 - ids:
-    - 5075
+    - 5070
   weight: 0.002
-  examine: "It's an empty bird's nest."
+  examine: "It's a bird's nest with an egg in it."
+- ids:
+    - 5071
+  weight: 0.002
+  examine: "It's a bird's nest with an egg in it."
+- ids:
+    - 5072
+  weight: 0.002
+  examine: "It's a bird's nest with an egg in it."
 - ids:
     - 5073
     - 7413
@@ -7390,17 +7198,9 @@
   weight: 0.002
   examine: "It's a bird's nest with a ring in it."
 - ids:
-    - 5070
+    - 5075
   weight: 0.002
-  examine: "It's a bird's nest with an egg in it."
-- ids:
-    - 5071
-  weight: 0.002
-  examine: "It's a bird's nest with an egg in it."
-- ids:
-    - 5072
-  weight: 0.002
-  examine: "It's a bird's nest with an egg in it."
+  examine: "It's an empty bird's nest."
 - ids:
     - 5076
   weight: 0.002
@@ -7715,52 +7515,52 @@
   examine: "An unfired plant pot."
 - ids:
     - 5354
-  weight: 0.9
+  weight: 0.907
   examine: "A plant pot filled with soil."
 - ids:
     - 5358
   weight: 0.907
   examine: "An acorn has been sown in this plant pot."
 - ids:
-    - 5364
-  weight: 0.907
-  examine: "An acorn has been sown and watered in this plant pot."
-- ids:
     - 5359
   weight: 0.907
   examine: "A willow tree seed has been sown in this plant pot."
-- ids:
-    - 5365
-  weight: 0.907
-  examine: "A willow tree seed has been sown and watered in this plant pot."
 - ids:
     - 5360
   weight: 0.907
   examine: "A maple tree seed has been sown in this plant pot."
 - ids:
-    - 5366
-  weight: 0.907
-  examine: "A maple tree seed has been sown and watered in this plant pot."
-- ids:
     - 5361
   weight: 0.907
   examine: "A yew tree seed has been sown in this plant pot."
-- ids:
-    - 5367
-  weight: 0.907
-  examine: "A yew tree seed has been sown and watered in this plant pot."
 - ids:
     - 5362
   weight: 0.907
   examine: "A magic tree seed has been sown in this plant pot."
 - ids:
-    - 5368
-  weight: 0.907
-  examine: "A magic tree seed has been sown and watered in this plant pot."
-- ids:
     - 5363
   weight: 0.907
   examine: "A spirit tree seed has been sown in this plant pot."
+- ids:
+    - 5364
+  weight: 0.907
+  examine: "An acorn has been sown and watered in this plant pot."
+- ids:
+    - 5365
+  weight: 0.907
+  examine: "A willow tree seed has been sown and watered in this plant pot."
+- ids:
+    - 5366
+  weight: 0.907
+  examine: "A maple tree seed has been sown and watered in this plant pot."
+- ids:
+    - 5367
+  weight: 0.907
+  examine: "A yew tree seed has been sown and watered in this plant pot."
+- ids:
+    - 5368
+  weight: 0.907
+  examine: "A magic tree seed has been sown and watered in this plant pot."
 - ids:
     - 5369
   weight: 0.907
@@ -8002,61 +7802,61 @@
   weight: 0.907
   examine: "An apple tree seed has been sown in this plant pot."
 - ids:
-    - 5488
-  weight: 0.907
-  examine: "An apple tree seed has been sown and watered in this plant pot."
-- ids:
     - 5481
   weight: 0.907
   examine: "A banana tree seed has been sown in this plant pot."
-- ids:
-    - 5489
-  weight: 0.907
-  examine: "A banana tree seed has been sown and watered in this plant pot."
 - ids:
     - 5482
   weight: 0.907
   examine: "An orange tree seed has been sown in this plant pot."
 - ids:
-    - 5490
-  weight: 0.907
-  examine: "An orange tree seed has been sown and watered in this plant pot."
-- ids:
     - 5483
   weight: 0.907
   examine: "A curry tree seed has been sown in this plant pot."
-- ids:
-    - 5491
-  weight: 0.907
-  examine: "A curry tree seed has been sown and watered in this plant pot."
 - ids:
     - 5484
   weight: 0.907
   examine: "A pineapple plant seed has been sown in this plant pot."
 - ids:
-    - 5492
-  weight: 0.907
-  examine: "A pineapple plant seed has been sown and watered in this plant pot."
-- ids:
     - 5485
   weight: 0.907
   examine: "A papaya tree seed has been sown in this plant pot."
-- ids:
-    - 5493
-  weight: 0.907
-  examine: "A papaya tree seed has been sown and watered in this plant pot."
 - ids:
     - 5486
   weight: 0.907
   examine: "A palm tree seed has been sown in this plant pot."
 - ids:
-    - 5494
-  weight: 0.907
-  examine: "A palm tree seed has been sown and watered in this plant pot."
-- ids:
     - 5487
   weight: 0.907
   examine: "A Calquat tree seed has been sown in this plant pot."
+- ids:
+    - 5488
+  weight: 0.907
+  examine: "An apple tree seed has been sown and watered in this plant pot."
+- ids:
+    - 5489
+  weight: 0.907
+  examine: "A banana tree seed has been sown and watered in this plant pot."
+- ids:
+    - 5490
+  weight: 0.907
+  examine: "An orange tree seed has been sown and watered in this plant pot."
+- ids:
+    - 5491
+  weight: 0.907
+  examine: "A curry tree seed has been sown and watered in this plant pot."
+- ids:
+    - 5492
+  weight: 0.907
+  examine: "A pineapple plant seed has been sown and watered in this plant pot."
+- ids:
+    - 5493
+  weight: 0.907
+  examine: "A papaya tree seed has been sown and watered in this plant pot."
+- ids:
+    - 5494
+  weight: 0.907
+  examine: "A palm tree seed has been sown and watered in this plant pot."
 - ids:
     - 5495
   weight: 0.907
@@ -8142,13 +7942,13 @@
   weight: 0.015
   examine: "A mysterious power emanates from the talisman..."
 - ids:
-    - 5519
-  weight: 0.05
-  examine: "This orb apparently contains a cypher spell."
-- ids:
     - 5518
   weight: 1.0
   examine: "This contains mystical teleport information..."
+- ids:
+    - 5519
+  weight: 0.05
+  examine: "This orb apparently contains a cypher spell."
 - ids:
     - 5520
   weight: 0.01
@@ -8255,10 +8055,6 @@
   weight: 0.1
   examine: "I could probably pour something into this."
 - ids:
-    - 5600
-  weight: 0.101
-  examine: "A tin layered with some stuff from a vial."
-- ids:
     - 5593
   weight: 0.101
   examine: "It's full of a white lumpy mixture that seems to be hardening."
@@ -8287,6 +8083,10 @@
   weight: 0.101
   examine: "There is a strange concoction filling this tin."
 - ids:
+    - 5600
+  weight: 0.101
+  examine: "A tin layered with some stuff from a vial."
+- ids:
     - 5601
   weight: 0.453
   examine: "Good for detailed crafting."
@@ -8314,6 +8114,14 @@
     - 5610
   weight: 0.1
   examine: "It's an hourglass."
+- ids:
+    - 5615
+  weight: 1.5
+  examine: "A pot of crushed Shaikahan bones."
+- ids:
+    - 5732
+  weight: 0.0
+  examine: "A stool for milking"
 - ids:
     - 5733
   weight: 1.814
@@ -8735,41 +8543,41 @@
   weight: 0.035
   examine: "A vial of coconut milk and Toadflax."
 - ids:
-    - 5949
-  weight: 0.02
-  examine: "1 dose of extra strong antipoison potion."
-- ids:
-    - 5947
-  weight: 0.025
-  examine: "2 doses of extra strong antipoison potion."
+    - 5943
+  weight: 0.035
+  examine: "4 doses of extra strong antipoison potion."
 - ids:
     - 5945
   weight: 0.03
   examine: "3 doses of extra strong antipoison potion."
 - ids:
-    - 5943
-  weight: 0.035
-  examine: "4 doses of extra strong antipoison potion."
+    - 5947
+  weight: 0.025
+  examine: "2 doses of extra strong antipoison potion."
+- ids:
+    - 5949
+  weight: 0.02
+  examine: "1 dose of extra strong antipoison potion."
 - ids:
     - 5951
   weight: 0.035
   examine: "A vial of coconut milk and Irit Leaf."
 - ids:
-    - 5958
+    - 5952
   weight: 0.035
-  examine: "1 dose of super strong antipoison potion."
-- ids:
-    - 5956
-  weight: 0.035
-  examine: "2 doses of super strong antipoison potion."
+  examine: "4 doses of super strong antipoison potion."
 - ids:
     - 5954
   weight: 0.035
   examine: "3 doses of super strong antipoison potion."
 - ids:
-    - 5952
+    - 5956
   weight: 0.035
-  examine: "4 doses of super strong antipoison potion."
+  examine: "2 doses of super strong antipoison potion."
+- ids:
+    - 5958
+  weight: 0.035
+  examine: "1 dose of super strong antipoison potion."
 - ids:
     - 5960
   weight: 0.056
@@ -8975,10 +8783,6 @@
   weight: 2.721
   examine: "How do I wash blood stains out?"
 - ids:
-    - 6066
-  weight: 2.267
-  examine: "These are in need of a good tailor."
-- ids:
     - 6071
   weight: 0.01
   examine: "A letter of recommendation."
@@ -9067,11 +8871,7 @@
   weight: 0.056
   examine: "A pile of toxic powder."
 - ids:
-    - 6102
-  weight: 0.0
-  examine: "An enchanted teleportation crystal."
-- ids:
-    - 6101
+    - 6099
   weight: 0.001
   examine: "An enchanted teleportation crystal."
 - ids:
@@ -9079,12 +8879,12 @@
   weight: 0.001
   examine: "An enchanted teleportation crystal."
 - ids:
-    - 6099
+    - 6101
   weight: 0.001
   examine: "An enchanted teleportation crystal."
 - ids:
-    - 13102
-  weight: 0.0
+    - 6102
+  weight: 0.001
   examine: "An enchanted teleportation crystal."
 - ids:
     - 6103
@@ -9184,6 +8984,10 @@
   weight: 0.7
   examine: "It's a fishlike thing that appears to already be cooked. It looks disgusting."
 - ids:
+    - 6209
+  weight: 4.535
+  examine: "Useful for catching small fish."
+- ids:
     - 6211
   weight: 1.36
   examine: "Teak logs prepared with sacred oil for a funeral pyre."
@@ -9220,13 +9024,13 @@
   weight: 0.9
   examine: "A raw spider threaded onto a skewer stick."
 - ids:
-    - 6297
-  weight: 0.65
-  examine: "A nicely roasted spider threaded onto a skewer stick."
-- ids:
     - 6295
   weight: 0.9
   examine: "A raw spider threaded onto an arrow shaft."
+- ids:
+    - 6297
+  weight: 0.65
+  examine: "A nicely roasted spider threaded onto a skewer stick."
 - ids:
     - 6299
   weight: 0.9
@@ -9332,20 +9136,20 @@
   weight: 0.028
   examine: "Looks delicious."
 - ids:
-    - 6476
-  weight: 0.02
-  examine: "Pour this on compost to turn it into super-compost."
-- ids:
-    - 6474
-  weight: 0.025
+    - 6470
+  weight: 0.035
   examine: "Pour this on compost to turn it into super-compost."
 - ids:
     - 6472
   weight: 0.03
   examine: "Pour this on compost to turn it into super-compost."
 - ids:
-    - 6470
-  weight: 0.035
+    - 6474
+  weight: 0.025
+  examine: "Pour this on compost to turn it into super-compost."
+- ids:
+    - 6476
+  weight: 0.02
   examine: "Pour this on compost to turn it into super-compost."
 - ids:
     - 6478
@@ -9376,10 +9180,6 @@
   weight: 0.55
   examine: "Looks nice."
 - ids:
-    - 20445
-  weight: 1.814
-  examine: "A broken cape of fire."
-- ids:
     - 6571
   weight: 0.003
   examine: "This would be worth more cut."
@@ -9409,10 +9209,6 @@
   examine: "A key to the nature of light itself."
 - ids:
     - 6639
-  weight: 0.01
-  examine: "A small hand mirror."
-- ids:
-    - 23775
   weight: 0.01
   examine: "A small hand mirror."
 - ids:
@@ -9472,10 +9268,6 @@
   weight: 0.01
   examine: "A small crystal trinket."
 - ids:
-    - 6664
-  weight: 0.0
-  examine: "The jar keeps shaking...I'm scared."
-- ids:
     - 6662
   weight: 0.907
   examine: "This fishing rod seems to have been bitten in half..."
@@ -9483,6 +9275,10 @@
     - 6663
   weight: 0.0
   examine: "It seems someone vacated this boot in a hurry..."
+- ids:
+    - 6664
+  weight: 0.0
+  examine: "The jar keeps shaking...I'm scared."
 - ids:
     - 6667
   weight: 1.3
@@ -9526,21 +9322,21 @@
   weight: 0.056
   examine: "One of the ingredients for making fish food."
 - ids:
-    - 6691
-  weight: 0.02
-  examine: "1 dose of Saradomin brew."
-- ids:
-    - 6689
-  weight: 0.025
-  examine: "2 doses of Saradomin brew."
+    - 6685
+  weight: 0.035
+  examine: "4 doses of Saradomin brew."
 - ids:
     - 6687
   weight: 0.03
   examine: "3 doses of Saradomin brew."
 - ids:
-    - 6685
-  weight: 0.035
-  examine: "4 doses of Saradomin brew."
+    - 6689
+  weight: 0.025
+  examine: "2 doses of Saradomin brew."
+- ids:
+    - 6691
+  weight: 0.02
+  examine: "1 dose of Saradomin brew."
 - ids:
     - 6693
   weight: 0.002
@@ -9587,7 +9383,7 @@
   examine: "A heavy metal wrench."
 - ids:
     - 6714
-  weight: 0.0
+  weight: 0.005
   examine: "A shining paragon of wrenchly virtue."
 - ids:
     - 6715
@@ -9614,13 +9410,13 @@
   weight: 2.721
   examine: "Alas...I hardly knew him."
 - ids:
+    - 6728
+  weight: 1.5
+  examine: "A pot of crushed Dagannoth-king bones."
+- ids:
     - 6729
   weight: 1.5
   examine: "These would feed a dogfish for months!"
-- ids:
-    - 6741
-  weight: 0.907
-  examine: "Bob can fix this for me."
 - ids:
     - 6743
   weight: 0.1
@@ -9766,6 +9562,10 @@
     - 6808
   weight: 0.001
   examine: "It's a challenge from the Human Champion!"
+- ids:
+    - 6810
+  weight: 0.5
+  examine: "A pot of crushed wyvern bones."
 - ids:
     - 6812
   weight: 0.5
@@ -9919,13 +9719,13 @@
   weight: 0.907
   examine: "A box for storing completed puppets."
 - ids:
-    - 6854
-  weight: 6.35
-  examine: "A box full of puppets. Bring to the Taverly{{sic}} members gate."
-- ids:
     - 6853
   weight: 1.0
   examine: "A box for storing painted baubles."
+- ids:
+    - 6854
+  weight: 6.35
+  examine: "A box full of puppets. Bring to the Taverly{{sic}} members gate."
 - ids:
     - 6855
   weight: 2.0
@@ -10320,17 +10120,12 @@
   weight: 2.0
   examine: "For cleaning and packing the cannon."
 - ids:
-    - 7148
-    - 7121
-  weight: 0.0
-  examine: "A plank of wood to repair the hull with."
-- ids:
     - 7143
   weight: 0.005
   examine: "Looks valuable."
 - ids:
     - 7144
-  weight: 0.5
+  weight: 0.001
   examine: "By Cap'n Hook-Hand Morrisane."
 - ids:
     - 7145
@@ -10340,6 +10135,11 @@
     - 7146
   weight: 32.0
   examine: "Not likely to work again."
+- ids:
+    - 7148
+    - 7121
+  weight: 0.0
+  examine: "A plank of wood to repair the hull with."
 - ids:
     - 7150
   weight: 0.0
@@ -10493,6 +10293,25 @@
   weight: 2.5
   examine: "A skewered chompy bird."
 - ids:
+    - 7269
+    - 7271
+    - 7273
+    - 12567
+    - 12569
+    - 12571
+    - 12573
+    - 12575
+    - 12577
+    - 19847
+    - 19855
+    - 19859
+    - 19885
+    - 19893
+    - 19899
+    - 19907
+  weight: 0.02
+  examine: "I need to answer this correctly."
+- ids:
     - 7329
   weight: 0.0
   examine: "Makes firelighting a lot easier."
@@ -10522,10 +10341,6 @@
   examine: "I shouldn't joke, this is a grave matter."
 - ids:
     - 7410
-  weight: 0.453
-  examine: "Contains the Fairy Queen's magic essence."
-- ids:
-    - 9020
   weight: 0.453
   examine: "Contains the Fairy Queen's magic essence."
 - ids:
@@ -10590,12 +10405,8 @@
   examine: "Does exactly what it says on the tin. (Kills Fungi.)"
 - ids:
     - 7463
-  weight: 0.0
+  weight: 0.5
   examine: "A little heap of cornflour."
-- ids:
-    - 7466
-  weight: 0.0
-  examine: "It's cornflour."
 - ids:
     - 7464
   weight: 0.07
@@ -10604,6 +10415,10 @@
     - 7465
   weight: 0.003
   examine: "Surprise, it looks like a vanilla pod."
+- ids:
+    - 7466
+  weight: 0.003
+  examine: "It's cornflour."
 - ids:
     - 7468
   weight: 1.36
@@ -10649,11 +10464,7 @@
   weight: 1.5
   examine: "It's a meat and potato stew with fancy seasoning."
 - ids:
-    - 7483
-  weight: 0.001
-  examine: "Allows for equal distribution of spice."
-- ids:
-    - 7482
+    - 7480
   weight: 0.001
   examine: "Allows for equal distribution of spice."
 - ids:
@@ -10661,19 +10472,11 @@
   weight: 0.001
   examine: "Allows for equal distribution of spice."
 - ids:
-    - 7480
+    - 7482
   weight: 0.001
   examine: "Allows for equal distribution of spice."
 - ids:
-    - 7487
-  weight: 0.001
-  examine: "Allows for equal distribution of spice."
-- ids:
-    - 7486
-  weight: 0.001
-  examine: "Allows for equal distribution of spice."
-- ids:
-    - 7485
+    - 7483
   weight: 0.001
   examine: "Allows for equal distribution of spice."
 - ids:
@@ -10681,15 +10484,15 @@
   weight: 0.001
   examine: "Allows for equal distribution of spice."
 - ids:
-    - 7491
+    - 7485
   weight: 0.001
   examine: "Allows for equal distribution of spice."
 - ids:
-    - 7490
+    - 7486
   weight: 0.001
   examine: "Allows for equal distribution of spice."
 - ids:
-    - 7489
+    - 7487
   weight: 0.001
   examine: "Allows for equal distribution of spice."
 - ids:
@@ -10697,11 +10500,19 @@
   weight: 0.001
   examine: "Allows for equal distribution of spice."
 - ids:
-    - 7495
+    - 7489
   weight: 0.001
   examine: "Allows for equal distribution of spice."
 - ids:
-    - 7494
+    - 7490
+  weight: 0.001
+  examine: "Allows for equal distribution of spice."
+- ids:
+    - 7491
+  weight: 0.001
+  examine: "Allows for equal distribution of spice."
+- ids:
+    - 7492
   weight: 0.001
   examine: "Allows for equal distribution of spice."
 - ids:
@@ -10709,7 +10520,11 @@
   weight: 0.001
   examine: "Allows for equal distribution of spice."
 - ids:
-    - 7492
+    - 7494
+  weight: 0.001
+  examine: "Allows for equal distribution of spice."
+- ids:
+    - 7495
   weight: 0.001
   examine: "Allows for equal distribution of spice."
 - ids:
@@ -10945,6 +10760,10 @@
   weight: 0.0
   examine: "A key for the Temple Library (Used in the In Aid of the Myreque quest)."
 - ids:
+    - 7633
+  weight: 0.01
+  examine: "A book about seven warrior priests, written about 200 years ago."
+- ids:
     - 7634
   weight: 0.51
   examine: "An ancient history book."
@@ -10973,11 +10792,7 @@
   weight: 0.15
   examine: "It's ground up silver."
 - ids:
-    - 7658
-  weight: 0.0
-  examine: "An unfinished potion."
-- ids:
-    - 7656
+    - 7652
   weight: 0.0
   examine: "An unfinished potion."
 - ids:
@@ -10985,24 +10800,28 @@
   weight: 0.0
   examine: "An unfinished potion."
 - ids:
-    - 7652
+    - 7656
   weight: 0.0
   examine: "An unfinished potion."
 - ids:
-    - 7666
-  weight: 0.02
-  examine: "A potion of harralander, red spiders eggs, garlic and silver dust."
+    - 7658
+  weight: 0.0
+  examine: "An unfinished potion."
 - ids:
-    - 7664
-  weight: 0.025
+    - 7660
+  weight: 0.035
   examine: "A potion of harralander, red spiders eggs, garlic and silver dust."
 - ids:
     - 7662
   weight: 0.03
   examine: "A potion of harralander, red spiders eggs, garlic and silver dust."
 - ids:
-    - 7660
-  weight: 0.035
+    - 7664
+  weight: 0.025
+  examine: "A potion of harralander, red spiders eggs, garlic and silver dust."
+- ids:
+    - 7666
+  weight: 0.02
   examine: "A potion of harralander, red spiders eggs, garlic and silver dust."
 - ids:
     - 7677
@@ -11012,10 +10831,6 @@
     - 7678
   weight: 0.01
   examine: "You can use this to open the prize chest!"
-- ids:
-    - 7679
-  weight: 1.36
-  examine: "A good tool for bashing someone."
 - ids:
     - 7681
   weight: 1.0
@@ -11029,10 +10844,6 @@
   weight: 0.0
   examine: "Not much good in combat, but perfect for the dart board!"
 - ids:
-    - 7686
-  weight: 0.0
-  examine: "A safe arrow for indoor ranging games."
-- ids:
     - 7688
   weight: 0.001
   examine: "The kettle is empty"
@@ -11045,11 +10856,7 @@
   weight: 0.001
   examine: "It's full of boiling water."
 - ids:
-    - 7698
-  weight: 1.5
-  examine: "I'd really like a nice cup of tea."
-- ids:
-    - 7696
+    - 7692
   weight: 1.5
   examine: "I'd really like a nice cup of tea."
 - ids:
@@ -11057,7 +10864,11 @@
   weight: 1.5
   examine: "I'd really like a nice cup of tea."
 - ids:
-    - 7692
+    - 7696
+  weight: 1.5
+  examine: "I'd really like a nice cup of tea."
+- ids:
+    - 7698
   weight: 1.5
   examine: "I'd really like a nice cup of tea."
 - ids:
@@ -11065,31 +10876,11 @@
   weight: 1.5
   examine: "Add boiling water to make a tea."
 - ids:
-    - 7712
-  weight: 1.5
-  examine: "Add boiling water to make a tea."
-- ids:
-    - 7724
-  weight: 1.5
-  examine: "Add boiling water to make a tea."
-- ids:
     - 7702
   weight: 0.453
   examine: "This teapot is empty."
 - ids:
-    - 7714
-  weight: 0.453
-  examine: "This teapot is empty."
-- ids:
-    - 7726
-  weight: 0.453
-  examine: "This teapot is empty."
-- ids:
-    - 7710
-  weight: 1.5
-  examine: "I'd really like a nice cup of tea."
-- ids:
-    - 7708
+    - 7704
   weight: 1.5
   examine: "I'd really like a nice cup of tea."
 - ids:
@@ -11097,15 +10888,23 @@
   weight: 1.5
   examine: "I'd really like a nice cup of tea."
 - ids:
-    - 7704
+    - 7708
   weight: 1.5
   examine: "I'd really like a nice cup of tea."
 - ids:
-    - 7722
+    - 7710
   weight: 1.5
   examine: "I'd really like a nice cup of tea."
 - ids:
-    - 7720
+    - 7712
+  weight: 1.5
+  examine: "Add boiling water to make a tea."
+- ids:
+    - 7714
+  weight: 0.453
+  examine: "This teapot is empty."
+- ids:
+    - 7716
   weight: 1.5
   examine: "I'd really like a nice cup of tea."
 - ids:
@@ -11113,9 +10912,21 @@
   weight: 1.5
   examine: "I'd really like a nice cup of tea."
 - ids:
-    - 7716
+    - 7720
   weight: 1.5
   examine: "I'd really like a nice cup of tea."
+- ids:
+    - 7722
+  weight: 1.5
+  examine: "I'd really like a nice cup of tea."
+- ids:
+    - 7724
+  weight: 1.5
+  examine: "Add boiling water to make a tea."
+- ids:
+    - 7726
+  weight: 0.453
+  examine: "This teapot is empty."
 - ids:
     - 7728
   weight: 0.05
@@ -11133,10 +10944,6 @@
   weight: 0.05
   examine: "A porcelain cup."
 - ids:
-    - 7735
-  weight: 0.05
-  examine: "A porcelain cup."
-- ids:
     - 7733
   weight: 0.15
   examine: "Some nettle tea in a porcelain cup."
@@ -11144,6 +10951,10 @@
     - 7734
   weight: 0.1
   examine: "Some milky nettle tea in a porcelain cup."
+- ids:
+    - 7735
+  weight: 0.05
+  examine: "A porcelain cup."
 - ids:
     - 7736
   weight: 0.15
@@ -11156,10 +10967,6 @@
     - 7738
   weight: 0.01
   examine: "Mmm, how about a nice cup of tea?"
-- ids:
-    - 7756
-  weight: 0.0
-  examine: "Try dipping it in paint and applying it."
 - ids:
     - 7759
   weight: 1.0
@@ -11207,18 +11014,6 @@
     - 10936
   weight: 0.0
   examine: "Blue reward token earned from helping people journey to Burgh de Rott."
-- ids:
-    - 10942
-  weight: 0.0
-  examine: "Yellow reward token earned from helping people journey to Paterdomus."
-- ids:
-    - 10943
-  weight: 0.0
-  examine: "Red reward token earned from helping people journey to Paterdomus."
-- ids:
-    - 10944
-  weight: 0.0
-  examine: "Blue reward token earned from helping people journey to Paterdomus."
 - ids:
     - 7777
   weight: 1.36
@@ -11332,153 +11127,21 @@
   weight: 0.003
   examine: "This needs a good polish."
 - ids:
-    - 7814
-  weight: 0.003
-  examine: "This bone belongs in a museum!"
-- ids:
     - 7813
   weight: 1.36
   examine: "There is a goblin bone in here."
 - ids:
-    - 7816
-  weight: 1.36
-  examine: "There is a bear bone in here."
-- ids:
-    - 7819
-  weight: 1.36
-  examine: "There is a ram bone in here."
-- ids:
-    - 7822
-  weight: 1.36
-  examine: "There is a unicorn bone in here."
-- ids:
-    - 7825
-  weight: 1.36
-  examine: "There is a giant rat bone in here."
-- ids:
-    - 7828
-  weight: 1.36
-  examine: "There is a giant bat bone in here."
-- ids:
-    - 7831
-  weight: 1.36
-  examine: "There is a wolf bone in here."
-- ids:
-    - 7834
-  weight: 1.36
-  examine: "There is a bat bone in here."
-- ids:
-    - 7837
-  weight: 1.36
-  examine: "There is a rat bone in here."
-- ids:
-    - 7840
-  weight: 1.36
-  examine: "There is a baby blue dragon bone in here."
-- ids:
-    - 7843
-  weight: 1.36
-  examine: "There is an ogre bone in here."
-- ids:
-    - 7846
-  weight: 1.36
-  examine: "There is a jogre bone in here."
-- ids:
-    - 7849
-  weight: 1.36
-  examine: "There is a zogre bone in here."
-- ids:
-    - 7852
-  weight: 1.36
-  examine: "There is a mogre bone in here."
-- ids:
-    - 7855
-  weight: 1.36
-  examine: "There is a monkey bone in here."
-- ids:
-    - 7858
-  weight: 1.36
-  examine: "There is a Dagannoth bone in here."
-- ids:
-    - 7861
-  weight: 1.36
-  examine: "There is a snake bone in here."
-- ids:
-    - 7864
-  weight: 1.36
-  examine: "There is a zombie bone in here."
-- ids:
-    - 7867
-  weight: 1.36
-  examine: "There is a werewolf bone in here."
-- ids:
-    - 7870
-  weight: 1.36
-  examine: "A Moss Giant's bone"
-- ids:
-    - 7873
-  weight: 1.36
-  examine: "There is a fire giant bone in here."
-- ids:
-    - 7876
-  weight: 1.36
-  examine: "There is an ice giant bone in here."
-- ids:
-    - 7879
-  weight: 1.36
-  examine: "There is a terrorbird bone in here."
-- ids:
-    - 7882
-  weight: 1.36
-  examine: "There is a ghoul bone in here."
-- ids:
-    - 7885
-  weight: 1.36
-  examine: "There is a troll bone in here."
-- ids:
-    - 7888
-  weight: 1.36
-  examine: "There is a seagull bone in here."
-- ids:
-    - 7891
-  weight: 1.36
-  examine: "There is an undead cow bone in here."
-- ids:
-    - 7894
-  weight: 1.36
-  examine: "There is an experiment bone in here."
-- ids:
-    - 7897
-  weight: 1.36
-  examine: "There is a rabbit bone in here."
-- ids:
-    - 7900
-  weight: 1.36
-  examine: "There is a basilisk bone in here."
-- ids:
-    - 7903
-  weight: 1.36
-  examine: "There is a desert lizard bone in here."
-- ids:
-    - 7906
-  weight: 1.36
-  examine: "There is a cave goblin bone in here."
-- ids:
-    - 7909
-  weight: 1.36
-  examine: "There is a big frog bone in here."
-- ids:
-    - 7912
-  weight: 1.36
-  examine: "There is a vulture bone in here."
-- ids:
-    - 7915
-  weight: 1.36
-  examine: "There is a jackal bone in here."
+    - 7814
+  weight: 0.003
+  examine: "This bone belongs in a museum!"
 - ids:
     - 7815
   weight: 0.003
   examine: "This needs a good polish."
+- ids:
+    - 7816
+  weight: 1.36
+  examine: "There is a bear bone in here."
 - ids:
     - 7817
   weight: 0.003
@@ -11488,6 +11151,10 @@
   weight: 0.003
   examine: "This needs a good polish."
 - ids:
+    - 7819
+  weight: 1.36
+  examine: "There is a ram bone in here."
+- ids:
     - 7820
   weight: 0.907
   examine: "This bone belongs in a museum!"
@@ -11495,6 +11162,10 @@
     - 7821
   weight: 0.003
   examine: "This needs a good polish."
+- ids:
+    - 7822
+  weight: 1.36
+  examine: "There is a unicorn bone in here."
 - ids:
     - 7823
   weight: 0.907
@@ -11504,6 +11175,10 @@
   weight: 0.003
   examine: "This needs a good polish."
 - ids:
+    - 7825
+  weight: 1.36
+  examine: "There is a giant rat bone in here."
+- ids:
     - 7826
   weight: 0.003
   examine: "This bone belongs in a museum!"
@@ -11511,6 +11186,10 @@
     - 7827
   weight: 0.907
   examine: "This needs a good polish."
+- ids:
+    - 7828
+  weight: 1.36
+  examine: "There is a giant bat bone in here."
 - ids:
     - 7829
   weight: 0.907
@@ -11520,6 +11199,10 @@
   weight: 0.907
   examine: "This needs a good polish."
 - ids:
+    - 7831
+  weight: 1.36
+  examine: "There is a wolf bone in here."
+- ids:
     - 7832
   weight: 0.907
   examine: "This bone belongs in a museum!"
@@ -11527,6 +11210,10 @@
     - 7833
   weight: 0.907
   examine: "This needs a good polish."
+- ids:
+    - 7834
+  weight: 1.36
+  examine: "There is a bat bone in here."
 - ids:
     - 7835
   weight: 0.907
@@ -11536,6 +11223,10 @@
   weight: 0.4
   examine: "This needs a good polish."
 - ids:
+    - 7837
+  weight: 1.36
+  examine: "There is a rat bone in here."
+- ids:
     - 7838
   weight: 0.003
   examine: "This bone belongs in a museum!"
@@ -11543,6 +11234,10 @@
     - 7839
   weight: 0.907
   examine: "This needs a good polish."
+- ids:
+    - 7840
+  weight: 1.36
+  examine: "There is a baby blue dragon bone in here."
 - ids:
     - 7841
   weight: 0.907
@@ -11552,6 +11247,10 @@
   weight: 0.907
   examine: "This needs a good polish."
 - ids:
+    - 7843
+  weight: 1.36
+  examine: "There is an ogre bone in here."
+- ids:
     - 7844
   weight: 0.907
   examine: "This bone belongs in a museum!"
@@ -11559,6 +11258,10 @@
     - 7845
   weight: 0.907
   examine: "This needs a good polish."
+- ids:
+    - 7846
+  weight: 1.36
+  examine: "There is a jogre bone in here."
 - ids:
     - 7847
   weight: 0.907
@@ -11568,6 +11271,10 @@
   weight: 0.907
   examine: "This needs a good polish."
 - ids:
+    - 7849
+  weight: 1.36
+  examine: "There is a zogre bone in here."
+- ids:
     - 7850
   weight: 0.907
   examine: "This bone belongs in a museum!"
@@ -11575,6 +11282,10 @@
     - 7851
   weight: 0.907
   examine: "This needs a good polish."
+- ids:
+    - 7852
+  weight: 1.36
+  examine: "There is a mogre bone in here."
 - ids:
     - 7853
   weight: 0.4
@@ -11584,6 +11295,10 @@
   weight: 0.003
   examine: "This needs a good polish."
 - ids:
+    - 7855
+  weight: 1.36
+  examine: "There is a monkey bone in here."
+- ids:
     - 7856
   weight: 0.003
   examine: "This bone belongs in a museum!"
@@ -11591,6 +11306,10 @@
     - 7857
   weight: 0.907
   examine: "This needs a good polish."
+- ids:
+    - 7858
+  weight: 1.36
+  examine: "There is a Dagannoth bone in here."
 - ids:
     - 7859
   weight: 0.907
@@ -11600,6 +11319,10 @@
   weight: 0.907
   examine: "This needs a good polish."
 - ids:
+    - 7861
+  weight: 1.36
+  examine: "There is a snake bone in here."
+- ids:
     - 7862
   weight: 0.907
   examine: "This bone belongs in a museum!"
@@ -11607,6 +11330,10 @@
     - 7863
   weight: 0.907
   examine: "This needs a good polish."
+- ids:
+    - 7864
+  weight: 1.36
+  examine: "There is a zombie bone in here."
 - ids:
     - 7865
   weight: 0.907
@@ -11616,6 +11343,10 @@
   weight: 0.907
   examine: "This needs a good polish."
 - ids:
+    - 7867
+  weight: 1.36
+  examine: "There is a werewolf bone in here."
+- ids:
     - 7868
   weight: 0.907
   examine: "This bone belongs in a museum!"
@@ -11623,6 +11354,10 @@
     - 7869
   weight: 0.003
   examine: "This needs a good polish."
+- ids:
+    - 7870
+  weight: 0.907
+  examine: "A Moss Giant's bone"
 - ids:
     - 7871
   weight: 0.003
@@ -11632,6 +11367,10 @@
   weight: 0.907
   examine: "This needs a good polish."
 - ids:
+    - 7873
+  weight: 1.36
+  examine: "There is a fire giant bone in here."
+- ids:
     - 7874
   weight: 0.907
   examine: "This bone belongs in a museum!"
@@ -11639,6 +11378,10 @@
     - 7875
   weight: 0.907
   examine: "This needs a good polish."
+- ids:
+    - 7876
+  weight: 1.36
+  examine: "There is an ice giant bone in here."
 - ids:
     - 7877
   weight: 0.907
@@ -11648,6 +11391,10 @@
   weight: 0.907
   examine: "This needs a good polish."
 - ids:
+    - 7879
+  weight: 1.36
+  examine: "There is a terrorbird bone in here."
+- ids:
     - 7880
   weight: 0.907
   examine: "This bone belongs in a museum!"
@@ -11655,6 +11402,10 @@
     - 7881
   weight: 0.907
   examine: "This needs a good polish."
+- ids:
+    - 7882
+  weight: 1.36
+  examine: "There is a ghoul bone in here."
 - ids:
     - 7883
   weight: 0.907
@@ -11664,6 +11415,10 @@
   weight: 0.907
   examine: "This needs a good polish."
 - ids:
+    - 7885
+  weight: 1.36
+  examine: "There is a troll bone in here."
+- ids:
     - 7886
   weight: 0.907
   examine: "This bone belongs in a museum!"
@@ -11671,6 +11426,10 @@
     - 7887
   weight: 0.9
   examine: "This needs a good polish."
+- ids:
+    - 7888
+  weight: 1.36
+  examine: "There is a seagull bone in here."
 - ids:
     - 7889
   weight: 0.907
@@ -11680,6 +11439,10 @@
   weight: 0.907
   examine: "This needs a good polish."
 - ids:
+    - 7891
+  weight: 1.36
+  examine: "There is an undead cow bone in here."
+- ids:
     - 7892
   weight: 0.907
   examine: "This bone belongs in a museum!"
@@ -11687,6 +11450,10 @@
     - 7893
   weight: 0.907
   examine: "This needs a good polish."
+- ids:
+    - 7894
+  weight: 1.36
+  examine: "There is an experiment bone in here."
 - ids:
     - 7895
   weight: 0.907
@@ -11696,6 +11463,10 @@
   weight: 0.907
   examine: "This needs a good polish."
 - ids:
+    - 7897
+  weight: 1.36
+  examine: "There is a rabbit bone in here."
+- ids:
     - 7898
   weight: 0.907
   examine: "This bone belongs in a museum!"
@@ -11703,6 +11474,10 @@
     - 7899
   weight: 0.907
   examine: "This needs a good polish."
+- ids:
+    - 7900
+  weight: 1.36
+  examine: "There is a basilisk bone in here."
 - ids:
     - 7901
   weight: 0.907
@@ -11712,6 +11487,10 @@
   weight: 0.907
   examine: "This needs a good polish."
 - ids:
+    - 7903
+  weight: 1.36
+  examine: "There is a desert lizard bone in here."
+- ids:
     - 7904
   weight: 0.4
   examine: "This bone belongs in a museum!"
@@ -11719,6 +11498,10 @@
     - 7905
   weight: 0.907
   examine: "This needs a good polish."
+- ids:
+    - 7906
+  weight: 1.36
+  examine: "There is a cave goblin bone in here."
 - ids:
     - 7907
   weight: 0.907
@@ -11728,6 +11511,10 @@
   weight: 0.907
   examine: "This needs a good polish."
 - ids:
+    - 7909
+  weight: 1.36
+  examine: "There is a big frog bone in here."
+- ids:
     - 7910
   weight: 0.907
   examine: "This bone belongs in a museum!"
@@ -11736,6 +11523,10 @@
   weight: 0.907
   examine: "This needs a good polish."
 - ids:
+    - 7912
+  weight: 1.36
+  examine: "There is a vulture bone in here."
+- ids:
     - 7913
   weight: 0.907
   examine: "This bone belongs in a museum!"
@@ -11743,6 +11534,10 @@
     - 7914
   weight: 0.003
   examine: "This needs a good polish."
+- ids:
+    - 7915
+  weight: 1.36
+  examine: "There is a jackal bone in here."
 - ids:
     - 7916
   weight: 0.907
@@ -12545,57 +12340,9 @@
   weight: 0.0
   examine: "A hefty beam of timber, perfect for building temples."
 - ids:
-    - 20465
-  weight: 6.0
-  examine: "Broken torso armour from the order of the Void Knights."
-- ids:
-    - 20469
-  weight: 8.164
-  examine: "Broken leg armour from the order of the Void Knights."
-- ids:
-    - 20473
-  weight: 1.814
-  examine: "A broken mace used by the order of the Void Knights."
-- ids:
-    - 20475
-  weight: 0.453
-  examine: "Broken gloves as used by the order of the Void Knights."
-- ids:
-    - 20449
-  weight: 0.4
-  examine: "A broken defensive weapon."
-- ids:
-    - 20451
-  weight: 0.4
-  examine: "A broken defensive weapon."
-- ids:
-    - 20453
-  weight: 0.4
-  examine: "A broken defensive weapon."
-- ids:
-    - 20455
-  weight: 0.4
-  examine: "A broken defensive weapon."
-- ids:
-    - 20457
-  weight: 0.4
-  examine: "A broken defensive weapon."
-- ids:
-    - 20459
-  weight: 0.4
-  examine: "A broken defensive weapon."
-- ids:
-    - 20461
-  weight: 0.4
-  examine: "A broken defensive weapon."
-- ids:
     - 8851
   weight: 0.0
   examine: "Warrior Guild Token."
-- ids:
-    - 8856
-  weight: 3.6
-  examine: "Large, round, heavy shield."
 - ids:
     - 8858
   weight: 8.164
@@ -12767,21 +12514,25 @@
   weight: 0.001
   examine: "I need another ingredient to finish this magic essence potion."
 - ids:
-    - 9024
-  weight: 0.02
-  examine: "1 dose of magic essence potion."
+    - 9020
+  weight: 0.453
+  examine: "Contains the Fairy Queen's magic essence."
 - ids:
-    - 9023
-  weight: 0.025
-  examine: "2 doses of magic essence potion."
+    - 9021
+  weight: 0.035
+  examine: "4 doses of magic essence potion."
 - ids:
     - 9022
   weight: 0.03
   examine: "3 doses of magic essence potion."
 - ids:
-    - 9021
-  weight: 0.035
-  examine: "4 doses of magic essence potion."
+    - 9023
+  weight: 0.025
+  examine: "2 doses of magic essence potion."
+- ids:
+    - 9024
+  weight: 0.02
+  examine: "1 dose of magic essence potion."
 - ids:
     - 9025
   weight: 0.01
@@ -12850,10 +12601,6 @@
     - 9059
   weight: 3.628
   examine: "Armour designed to fit goblins."
-- ids:
-    - 20722
-  weight: 1.3
-  examine: "You need to add lamp oil before you can use it."
 - ids:
     - 9064
   weight: 1.36
@@ -13462,7 +13209,7 @@
   weight: 0.0
   examine: "The top of a ladder."
 - ids:
-    - 9658
+    - 9656
   weight: 1.0
   examine: "A tome of experience that awards 2000 XP per chapter."
 - ids:
@@ -13470,7 +13217,7 @@
   weight: 1.0
   examine: "A tome of experience that awards 2000 XP per chapter."
 - ids:
-    - 9656
+    - 9658
   weight: 1.0
   examine: "A tome of experience that awards 2000 XP per chapter."
 - ids:
@@ -13638,21 +13385,21 @@
   weight: 0.453
   examine: "Finely ground desert goat horn."
 - ids:
-    - 9745
-  weight: 0.02
-  examine: "1 dose of combat potion."
-- ids:
-    - 9743
-  weight: 0.025
-  examine: "2 doses of combat potion."
+    - 9739
+  weight: 0.035
+  examine: "4 doses of combat potion."
 - ids:
     - 9741
   weight: 0.03
   examine: "3 doses of combat potion."
 - ids:
-    - 9739
-  weight: 0.035
-  examine: "4 doses of combat potion."
+    - 9743
+  weight: 0.025
+  examine: "2 doses of combat potion."
+- ids:
+    - 9745
+  weight: 0.02
+  examine: "1 dose of combat potion."
 - ids:
     - 9843
   weight: 1.0
@@ -13890,21 +13637,21 @@
   weight: 0.5
   examine: "A bowl of fiery minced meat."
 - ids:
-    - 10004
-  weight: 0.02
-  examine: "1 dose of Hunter potion."
-- ids:
-    - 10002
-  weight: 0.025
-  examine: "2 doses of Hunter potion."
+    - 9998
+  weight: 0.035
+  examine: "4 doses of Hunter potion."
 - ids:
     - 10000
   weight: 0.03
   examine: "3 doses of Hunter potion."
 - ids:
-    - 9998
-  weight: 0.035
-  examine: "4 doses of Hunter potion."
+    - 10002
+  weight: 0.025
+  examine: "2 doses of Hunter potion."
+- ids:
+    - 10004
+  weight: 0.02
+  examine: "1 dose of Hunter potion."
 - ids:
     - 10006
   weight: 0.453
@@ -13938,13 +13685,13 @@
   weight: 1.0
   examine: "A magical catching box."
 - ids:
-    - 10028
-  weight: 1.0
-  examine: "A half-full magical catching box."
-- ids:
     - 10027
   weight: 1.0
   examine: "A full magical catching box."
+- ids:
+    - 10028
+  weight: 1.0
+  examine: "A half-full magical catching box."
 - ids:
     - 10029
   weight: 0.453
@@ -14150,10 +13897,6 @@
   weight: 0.001
   examine: "Shiny!"
 - ids:
-    - 10500
-  weight: 0.01
-  examine: "Allows the ghost farmer to talk to Alice - a breakthrough!"
-- ids:
     - 10506
   weight: 9.071
   examine: "A gublinch frozen and crumbled into shards."
@@ -14258,49 +14001,25 @@
   weight: 0.0
   examine: "A poisoned leg of meat."
 - ids:
-    - 10546
+    - 10542
   weight: 0.001
-  examine: "An empty healing vial."
-- ids:
-    - 10545
-  weight: 0.001
-  examine: "A quarter-full healing vial."
-- ids:
-    - 10544
-  weight: 0.001
-  examine: "A half-full healing vial."
+  examine: "A full healing vial."
 - ids:
     - 10543
   weight: 0.001
   examine: "A three-quarter full healing vial."
 - ids:
-    - 10542
+    - 10544
   weight: 0.001
-  examine: "A full healing vial."
+  examine: "A half-full healing vial."
 - ids:
-    - 20511
-  weight: 2.0
-  examine: "A broken Penance Healer hat."
+    - 10545
+  weight: 0.001
+  examine: "A quarter-full healing vial."
 - ids:
-    - 20507
-  weight: 2.0
-  examine: "A broken Penance Fighter hat."
-- ids:
-    - 24531
-  weight: 1.0
-  examine: "A broken Penance Runner hat."
-- ids:
-    - 20509
-  weight: 2.0
-  examine: "A broken Penance Ranger hat."
-- ids:
-    - 20513
-  weight: 4.0
-  examine: "A broken Penance Fighter torso."
-- ids:
-    - 20515
-  weight: 3.0
-  examine: "A broken skirt made from the skin of a Penance Ranger."
+    - 10546
+  weight: 0.001
+  examine: "An empty healing vial."
 - ids:
     - 10556
     - 22346
@@ -14417,11 +14136,6 @@
     - 10594
   weight: 1.0
   examine: "A book about clockwork mechanisms."
-- ids:
-    - 10595
-    - 10596
-  weight: 2.0
-  examine: "A clockwork penguin suit."
 - ids:
     - 10597
   weight: 0.001
@@ -14588,17 +14302,13 @@
   weight: 12.0
   examine: "A small keg of gunpowder."
 - ids:
-    - 10890
-  weight: 0.05
-  examine: "Used to cure poison through prayer."
-- ids:
-    - 10888
-  weight: 30.0
-  examine: "It's broken. I should see if a pirate smith can fix it."
-- ids:
     - 10889
   weight: 0.1
   examine: "This will answer my prayers."
+- ids:
+    - 10890
+  weight: 0.05
+  examine: "Used to cure poison through prayer."
 - ids:
     - 10891
   weight: 0.03
@@ -14632,57 +14342,69 @@
   weight: 0.0
   examine: "One skull staple."
 - ids:
-    - 10915
-  weight: 0.02
-  examine: "This super restore and unicorn dust potion needs more ingredients."
-- ids:
-    - 10913
-  weight: 0.025
+    - 10909
+  weight: 0.035
   examine: "This super restore and unicorn dust potion needs more ingredients."
 - ids:
     - 10911
   weight: 0.03
   examine: "This super restore and unicorn dust potion needs more ingredients."
 - ids:
-    - 10909
-  weight: 0.035
+    - 10913
+  weight: 0.025
   examine: "This super restore and unicorn dust potion needs more ingredients."
 - ids:
-    - 10923
+    - 10915
   weight: 0.02
-  examine: "This super restore, unicorn dust, snake weed potion needs more ingredients."
+  examine: "This super restore and unicorn dust potion needs more ingredients."
 - ids:
-    - 10921
-  weight: 0.025
+    - 10917
+  weight: 0.035
   examine: "This super restore, unicorn dust, snake weed potion needs more ingredients."
 - ids:
     - 10919
   weight: 0.03
   examine: "This super restore, unicorn dust, snake weed potion needs more ingredients."
 - ids:
-    - 10917
-  weight: 0.035
+    - 10921
+  weight: 0.025
   examine: "This super restore, unicorn dust, snake weed potion needs more ingredients."
 - ids:
-    - 10931
+    - 10923
   weight: 0.02
-  examine: "A 1 dose Sanfew Serum."
-- ids:
-    - 10929
-  weight: 0.025
-  examine: "A 2 dose Sanfew Serum."
-- ids:
-    - 10927
-  weight: 0.03
-  examine: "A 3 dose Sanfew Serum."
+  examine: "This super restore, unicorn dust, snake weed potion needs more ingredients."
 - ids:
     - 10925
   weight: 0.035
   examine: "A 4 dose Sanfew Serum."
 - ids:
+    - 10927
+  weight: 0.03
+  examine: "A 3 dose Sanfew Serum."
+- ids:
+    - 10929
+  weight: 0.025
+  examine: "A 2 dose Sanfew Serum."
+- ids:
+    - 10931
+  weight: 0.02
+  examine: "A 1 dose Sanfew Serum."
+- ids:
     - 10937
   weight: 0.02
   examine: "The claws from a nail beast."
+- ids:
+    - 10942
+  weight: 0.0
+  examine: "Yellow reward token earned from helping people journey to Paterdomus."
+- ids:
+    - 10943
+  weight: 0.0
+  examine: "Red reward token earned from helping people journey to Paterdomus."
+- ids:
+    - 10944
+  weight: 0.0
+  examine: "Blue reward token earned from helping people journey to Paterdomus."
 - ids:
     - 10952
   weight: 0.028
@@ -14960,45 +14682,45 @@
   weight: 0.0
   examine: "An ancient goblin object encrusted in dirt."
 - ids:
-    - 11051
-  weight: 0.0
-  examine: "An ancient goblin object encrusted in dirt."
-- ids:
-    - 11053
-  weight: 0.0
-  examine: "An ancient goblin object encrusted in dirt."
-- ids:
-    - 11055
-  weight: 0.0
-  examine: "An ancient goblin object encrusted in dirt."
-- ids:
-    - 11057
-  weight: 0.0
-  examine: "An ancient goblin object encrusted in dirt."
-- ids:
-    - 11059
-  weight: 0.0
-  examine: "An ancient goblin object encrusted in dirt."
-- ids:
     - 11050
   weight: 0.001
   examine: "A piece of ancient goblin axe."
+- ids:
+    - 11051
+  weight: 0.0
+  examine: "An ancient goblin object encrusted in dirt."
 - ids:
     - 11052
   weight: 0.001
   examine: "A piece of ancient goblin helmet."
 - ids:
+    - 11053
+  weight: 0.0
+  examine: "An ancient goblin object encrusted in dirt."
+- ids:
     - 11054
   weight: 0.001
   examine: "A piece of an ancient goblin shield."
+- ids:
+    - 11055
+  weight: 0.0
+  examine: "An ancient goblin object encrusted in dirt."
 - ids:
     - 11056
   weight: 0.001
   examine: "A piece of an ancient goblin sword."
 - ids:
+    - 11057
+  weight: 0.0
+  examine: "An ancient goblin object encrusted in dirt."
+- ids:
     - 11058
   weight: 0.001
   examine: "A powerful looking mace."
+- ids:
+    - 11059
+  weight: 0.0
+  examine: "An ancient goblin object encrusted in dirt."
 - ids:
     - 11060
   weight: 0.0
@@ -15372,29 +15094,29 @@
   weight: 0.0
   examine: "This vial is filled with mashed fish, yuck."
 - ids:
-    - 11431
-  weight: 0.045
-  examine: "One dose of fishy Attack potion."
-- ids:
     - 11429
   weight: 0.075
   examine: "Two doses of fishy Attack potion."
 - ids:
-    - 11435
+    - 11431
   weight: 0.045
-  examine: "One dose of fishy antipoison potion."
+  examine: "One dose of fishy Attack potion."
 - ids:
     - 11433
   weight: 0.075
   examine: "Two doses of fishy antipoison potion."
 - ids:
-    - 11439
+    - 11435
   weight: 0.045
-  examine: "One dose of fishy Relicym's balm."
+  examine: "One dose of fishy antipoison potion."
 - ids:
     - 11437
   weight: 0.075
   examine: "Two doses of fishy Relicym's balm."
+- ids:
+    - 11439
+  weight: 0.045
+  examine: "One dose of fishy Relicym's balm."
 - ids:
     - 11441
   weight: 0.045
@@ -15404,165 +15126,165 @@
   weight: 0.075
   examine: "Two doses of fishy strength potion."
 - ids:
-    - 11447
-  weight: 0.045
-  examine: "One dose of fishy combat potion."
-- ids:
     - 11445
   weight: 0.075
   examine: "Two doses of fishy combat potion."
 - ids:
-    - 11451
+    - 11447
   weight: 0.045
-  examine: "One dose of fishy restore potion."
+  examine: "One dose of fishy combat potion."
 - ids:
     - 11449
   weight: 0.075
   examine: "Two doses of fishy restore potion."
 - ids:
-    - 11455
+    - 11451
   weight: 0.045
-  examine: "One dose of fishy energy potion."
+  examine: "One dose of fishy restore potion."
 - ids:
     - 11453
   weight: 0.075
   examine: "Two doses of fishy energy potion."
 - ids:
-    - 11459
+    - 11455
   weight: 0.045
-  examine: "One dose of fishy Defence potion."
+  examine: "One dose of fishy energy potion."
 - ids:
     - 11457
   weight: 0.0
   examine: "Two doses of fishy Defence potion."
 - ids:
-    - 11463
+    - 11459
   weight: 0.045
-  examine: "One dose of fishy Agility potion."
+  examine: "One dose of fishy Defence potion."
 - ids:
     - 11461
   weight: 0.075
   examine: "Two doses of fishy Agility potion."
 - ids:
-    - 11467
+    - 11463
   weight: 0.045
-  examine: "One dose of fishy Prayer potion."
+  examine: "One dose of fishy Agility potion."
 - ids:
     - 11465
   weight: 0.075
   examine: "Two doses of fishy Prayer potion."
 - ids:
-    - 11471
+    - 11467
   weight: 0.045
-  examine: "One dose of fishy super Attack potion."
+  examine: "One dose of fishy Prayer potion."
 - ids:
     - 11469
   weight: 0.075
   examine: "Two doses of fishy super Attack potion."
 - ids:
-    - 11475
+    - 11471
   weight: 0.045
-  examine: "One dose of fishy super antipoison potion."
+  examine: "One dose of fishy super Attack potion."
 - ids:
     - 11473
   weight: 0.075
   examine: "Two doses of fishy super antipoison potion."
 - ids:
-    - 11479
+    - 11475
   weight: 0.045
-  examine: "One dose of fishy Fishing potion."
+  examine: "One dose of fishy super antipoison potion."
 - ids:
     - 11477
   weight: 0.075
   examine: "Two doses of fishy Fishing potion."
 - ids:
-    - 11483
+    - 11479
   weight: 0.045
-  examine: "One dose of fishy super energy potion."
+  examine: "One dose of fishy Fishing potion."
 - ids:
     - 11481
   weight: 0.075
   examine: "Two doses of fishy super energy potion."
 - ids:
-    - 11487
+    - 11483
   weight: 0.045
-  examine: "One dose of fishy super Strength potion."
+  examine: "One dose of fishy super energy potion."
 - ids:
     - 11485
   weight: 0.075
   examine: "Two doses of fishy super Strength potion."
 - ids:
-    - 11491
-  weight: 0.0
-  examine: "One dose of fishy Magic essence."
+    - 11487
+  weight: 0.045
+  examine: "One dose of fishy super Strength potion."
 - ids:
     - 11489
   weight: 0.075
   examine: "Two doses of fishy Magic essence."
 - ids:
-    - 11495
-  weight: 0.045
-  examine: "One dose of fishy super restore potion."
+    - 11491
+  weight: 0.0
+  examine: "One dose of fishy Magic essence."
 - ids:
     - 11493
   weight: 0.075
   examine: "Two doses of fishy super restore potion."
 - ids:
-    - 11499
+    - 11495
   weight: 0.045
-  examine: "One dose of fishy super Defence potion."
+  examine: "One dose of fishy super restore potion."
 - ids:
     - 11497
   weight: 0.075
   examine: "Two doses of fishy super Defence potion."
 - ids:
-    - 11503
+    - 11499
   weight: 0.045
-  examine: "One dose of fishy extra strength antidote potion."
+  examine: "One dose of fishy super Defence potion."
 - ids:
     - 11501
   weight: 0.075
   examine: "Two doses of fishy extra strength antidote potion."
 - ids:
-    - 11507
+    - 11503
   weight: 0.045
-  examine: "One dose of fishy anti-firebreath potion."
+  examine: "One dose of fishy extra strength antidote potion."
 - ids:
     - 11505
   weight: 0.075
   examine: "Two doses of fishy anti-firebreath potion."
 - ids:
-    - 11511
+    - 11507
   weight: 0.045
-  examine: "One dose of fishy ranging potion."
+  examine: "One dose of fishy anti-firebreath potion."
 - ids:
     - 11509
   weight: 0.075
   examine: "Two doses of fishy ranging potion."
 - ids:
-    - 11515
+    - 11511
   weight: 0.045
-  examine: "One dose of fishy Magic potion."
+  examine: "One dose of fishy ranging potion."
 - ids:
     - 11513
   weight: 0.075
   examine: "Two doses of fishy Magic potion."
 - ids:
-    - 11519
+    - 11515
   weight: 0.045
-  examine: "One dose of fishy Hunter potion."
+  examine: "One dose of fishy Magic potion."
 - ids:
     - 11517
   weight: 0.075
   examine: "Two doses of fishy Hunter potion."
 - ids:
-    - 11523
+    - 11519
   weight: 0.045
-  examine: "One dose of fishy Zamorak brew."
+  examine: "One dose of fishy Hunter potion."
 - ids:
     - 11521
   weight: 0.075
   examine: "Two doses of fishy Zamorak brew."
+- ids:
+    - 11523
+  weight: 0.045
+  examine: "One dose of fishy Zamorak brew."
 - ids:
     - 11640
   weight: 1.0
@@ -15571,18 +15293,6 @@
     - 11656
   weight: 0.003
   examine: "A book that explains the art of crafting items from glass."
-- ids:
-    - 20477
-  weight: 0.453
-  examine: "A broken mage helm from the order of the Void Knights."
-- ids:
-    - 20479
-  weight: 0.453
-  examine: "A broken ranger helm from the order of the Void Knights."
-- ids:
-    - 20481
-  weight: 0.453
-  examine: "A broken melee helm from the order of the Void Knights."
 - ids:
     - 11677
   weight: 0.51
@@ -15604,69 +15314,97 @@
   weight: 0.001
   examine: "I could use this to pick the lock."
 - ids:
-    - 11725
+    - 11712
   weight: 0.0
-  examine: "1 dose of Super ranging potion."
+  examine: "For use in the Nightmare Zone."
 - ids:
-    - 11724
+    - 11713
   weight: 0.0
-  examine: "2 doses of Super ranging potion."
+  examine: "For use in the Nightmare Zone."
 - ids:
-    - 11723
+    - 11714
   weight: 0.0
-  examine: "3 doses of Super ranging potion."
+  examine: "For use in the Nightmare Zone."
+- ids:
+    - 11715
+  weight: 0.0
+  examine: "For use in the Nightmare Zone."
+- ids:
+    - 11716
+  weight: 0.0
+  examine: "For use in the Nightmare Zone."
+- ids:
+    - 11717
+  weight: 0.0
+  examine: "For use in the Nightmare Zone."
+- ids:
+    - 11718
+  weight: 0.0
+  examine: "For use in the Nightmare Zone."
 - ids:
     - 11722
   weight: 0.0
   examine: "4 doses of Super ranging potion."
 - ids:
-    - 11729
+    - 11723
   weight: 0.0
-  examine: "1 dose of super magic potion."
+  examine: "3 doses of Super ranging potion."
 - ids:
-    - 11728
+    - 11724
   weight: 0.0
-  examine: "2 doses of super magic potion."
+  examine: "2 doses of Super ranging potion."
 - ids:
-    - 11727
+    - 11725
   weight: 0.0
-  examine: "3 doses of super magic potion."
+  examine: "1 dose of Super ranging potion."
 - ids:
     - 11726
   weight: 0.0
   examine: "4 doses of super magic potion."
 - ids:
-    - 11733
+    - 11727
   weight: 0.0
-  examine: "1 dose of overload potion."
+  examine: "3 doses of super magic potion."
 - ids:
-    - 11732
+    - 11728
   weight: 0.0
-  examine: "2 doses of overload potion."
+  examine: "2 doses of super magic potion."
 - ids:
-    - 11731
+    - 11729
   weight: 0.0
-  examine: "3 doses of overload potion."
+  examine: "1 dose of super magic potion."
 - ids:
     - 11730
   weight: 0.0
   examine: "4 doses of overload potion."
 - ids:
-    - 11737
-  weight: 0.02
-  examine: "1 dose of absorption potion."
+    - 11731
+  weight: 0.0
+  examine: "3 doses of overload potion."
 - ids:
-    - 11736
-  weight: 0.025
-  examine: "2 doses of absorption potion."
+    - 11732
+  weight: 0.0
+  examine: "2 doses of overload potion."
+- ids:
+    - 11733
+  weight: 0.0
+  examine: "1 dose of overload potion."
+- ids:
+    - 11734
+  weight: 0.035
+  examine: "4 doses of absorption potion."
 - ids:
     - 11735
   weight: 0.03
   examine: "3 doses of absorption potion."
 - ids:
-    - 11734
-  weight: 0.035
-  examine: "4 doses of absorption potion."
+    - 11736
+  weight: 0.025
+  examine: "2 doses of absorption potion."
+- ids:
+    - 11737
+  weight: 0.02
+  examine: "1 dose of absorption potion."
 - ids:
     - 11738
   weight: 0.2
@@ -15800,34 +15538,6 @@
   weight: 1.8
   examine: "A pack containing 100 unfinished broad bolts."
 - ids:
-    - 20493
-  weight: 9.05
-  examine: "Very decorative armour, but it's broken."
-- ids:
-    - 20495
-  weight: 6.8
-  examine: "Very decorative armour, but it's broken."
-- ids:
-    - 20497
-  weight: 8.155
-  examine: "Very decorative armour, but it's broken."
-- ids:
-    - 20499
-  weight: 8.155
-  examine: "Very decorative armour, but it's broken."
-- ids:
-    - 20501
-  weight: 6.8
-  examine: "Very decorative armour, but it's broken."
-- ids:
-    - 20503
-  weight: 8.155
-  examine: "Very decorative armour, but it's broken."
-- ids:
-    - 20505
-  weight: 8.155
-  examine: "Very decorative armour, but it's broken."
-- ids:
     - 11904
   weight: 0.0
   examine: "It's actually in better condition than its former owner."
@@ -15851,9 +15561,9 @@
     \ Jed, John C, Kieren, Mat K, Maz, Roq, Ry, Stone, Sween, TomH, Weath, West &\
     \ Wolf."
 - ids:
-    - 11923
-  weight: 1.814
-  examine: "Nurmof can fix this for me."
+    - 11922
+  weight: 1.6
+  examine: "A pot of crushed lava dragon bones."
 - ids:
     - 11928
   weight: 0.5
@@ -15899,10 +15609,6 @@
   weight: 0.0
   examine: "You can store stuff in the bag when you're in the Wilderness."
 - ids:
-    - 22586
-  weight: 0.0
-  examine: "You can store stuff in the bag when you're in the Wilderness."
-- ids:
     - 11942
   weight: 0.0
   examine: "An icy key that can access the boss rooms of all four gods."
@@ -15911,29 +15617,29 @@
   weight: 1.5
   examine: "Bones of a lava dragon."
 - ids:
-    - 11957
+    - 11951
   weight: 0.0
-  examine: "1 dose of extended anti-firebreath potion."
-- ids:
-    - 11955
-  weight: 0.0
-  examine: "2 doses of extended anti-firebreath potion."
+  examine: "4 doses of extended anti-firebreath potion."
 - ids:
     - 11953
   weight: 0.0
   examine: "3 doses of extended anti-firebreath potion."
 - ids:
-    - 11951
+    - 11955
   weight: 0.0
-  examine: "4 doses of extended anti-firebreath potion."
+  examine: "2 doses of extended anti-firebreath potion."
 - ids:
-    - 11962
+    - 11957
   weight: 0.0
-  examine: "One dose of fishy extended anti-firebreath potion."
+  examine: "1 dose of extended anti-firebreath potion."
 - ids:
     - 11960
   weight: 0.0
   examine: "Two doses of fishy extended anti-firebreath potion."
+- ids:
+    - 11962
+  weight: 0.0
+  examine: "One dose of fishy extended anti-firebreath potion."
 - ids:
     - 11992
   weight: 0.0
@@ -15952,7 +15658,7 @@
   examine: "Ewwww... it's still sucky."
 - ids:
     - 12007
-  weight: 0.0
+  weight: 0.02
   examine: "It's just a jar of dirt."
 - ids:
     - 12009
@@ -15967,6 +15673,14 @@
     - 12012
   weight: 0.0
   examine: "A nugget of gold from the Motherlode Mine."
+- ids:
+    - 12019
+  weight: 10.0
+  examine: "You can carry coal in here."
+- ids:
+    - 12020
+  weight: 0.0
+  examine: "You can carry uncut gems in here."
 - ids:
     - 12073
     - 12074
@@ -16088,8 +15802,17 @@
     - 23146
     - 23147
     - 23148
-  weight: 0.0
+  weight: 0.02
   examine: "A clue!"
+- ids:
+    - 12128
+    - 12139
+  weight: 0.02
+  examine: "I need to answer this correctly."
+- ids:
+    - 12161
+  weight: 0.0
+  examine: "I need to solve this!"
 - ids:
     - 12402
   weight: 0.0
@@ -16163,10 +15886,6 @@
   weight: 0.0
   examine: "It's missing a handle."
 - ids:
-    - 12594
-  weight: 1.814
-  examine: "Nurmof can fix this for me."
-- ids:
     - 12613
   weight: 0.0
   examine: "This seems to have been torn from a book..."
@@ -16215,41 +15934,29 @@
   weight: 0.0
   examine: "This seems to have been torn from a book..."
 - ids:
-    - 12631
-  weight: 0.0
-  examine: "1 dose of stamina potion."
-- ids:
-    - 12629
-  weight: 0.0
-  examine: "2 doses of stamina potion."
-- ids:
-    - 12627
-  weight: 0.0
-  examine: "3 doses of stamina potion."
-- ids:
     - 12625
-  weight: 0.0
+  weight: 0.035
   examine: "4 doses of stamina potion."
 - ids:
-    - 12635
-  weight: 0.0
-  examine: "One dose of fishy stamina potion."
+    - 12627
+  weight: 0.03
+  examine: "3 doses of stamina potion."
+- ids:
+    - 12629
+  weight: 0.025
+  examine: "2 doses of stamina potion."
+- ids:
+    - 12631
+  weight: 0.02
+  examine: "1 dose of stamina potion."
 - ids:
     - 12633
   weight: 0.0
   examine: "Two doses of fishy stamina potion."
 - ids:
-    - 20537
-  weight: 0.3
-  examine: "A broken halo with the protection of Saradomin."
-- ids:
-    - 20539
-  weight: 0.3
-  examine: "A broken halo with the protection of Zamorak."
-- ids:
-    - 20541
-  weight: 0.3
-  examine: "A broken halo with the protection of Guthix."
+    - 12635
+  weight: 0.0
+  examine: "One dose of fishy stamina potion."
 - ids:
     - 12640
   weight: 0.0
@@ -16311,21 +16018,21 @@
   weight: 0.0
   examine: "A boss monster."
 - ids:
-    - 12701
-  weight: 0.0
-  examine: "1 dose of super combat potion."
-- ids:
-    - 12699
-  weight: 0.0
-  examine: "2 doses of super combat potion."
+    - 12695
+  weight: 0.035
+  examine: "4 doses of super combat potion."
 - ids:
     - 12697
-  weight: 0.0
+  weight: 0.03
   examine: "3 doses of super combat potion."
 - ids:
-    - 12695
-  weight: 0.0
-  examine: "4 doses of super combat potion."
+    - 12699
+  weight: 0.03
+  examine: "2 doses of super combat potion."
+- ids:
+    - 12701
+  weight: 0.03
+  examine: "1 dose of super combat potion."
 - ids:
     - 12728
   weight: 4.535
@@ -16468,14 +16175,10 @@
   examine: "Use on a Magic shortbow to imbue the bow."
 - ids:
     - 12789
-  weight: 0.0
+  weight: 0.005
   examine: "Protects your clue scroll if you die."
 - ids:
     - 12791
-  weight: 1.0
-  examine: "You can store runes in here."
-- ids:
-    - 24416
   weight: 1.0
   examine: "You can store runes in here."
 - ids:
@@ -16647,37 +16350,37 @@
   weight: 0.0
   examine: "Full of coal lumps for Anti-Santa."
 - ids:
-    - 12911
+    - 12905
   weight: 0.0
-  examine: "1 dose of antivenom potion."
-- ids:
-    - 12909
-  weight: 0.0
-  examine: "2 doses of antivenom potion."
+  examine: "4 doses of antivenom potion."
 - ids:
     - 12907
   weight: 0.0
   examine: "3 doses of antivenom potion."
 - ids:
-    - 12905
+    - 12909
   weight: 0.0
-  examine: "4 doses of antivenom potion."
+  examine: "2 doses of antivenom potion."
 - ids:
-    - 12919
+    - 12911
   weight: 0.0
-  examine: "1 dose of super antivenom potion."
-- ids:
-    - 12917
-  weight: 0.0
-  examine: "2 doses of super antivenom potion."
-- ids:
-    - 12915
-  weight: 0.0
-  examine: "3 doses of super antivenom potion."
+  examine: "1 dose of antivenom potion."
 - ids:
     - 12913
-  weight: 0.0
+  weight: 0.035
   examine: "4 doses of super antivenom potion."
+- ids:
+    - 12915
+  weight: 0.035
+  examine: "3 doses of super antivenom potion."
+- ids:
+    - 12917
+  weight: 0.035
+  examine: "2 doses of super antivenom potion."
+- ids:
+    - 12919
+  weight: 0.035
+  examine: "1 dose of super antivenom potion."
 - ids:
     - 12922
   weight: 0.0
@@ -16706,10 +16409,6 @@
     - 12938
   weight: 0.0
   examine: "Teleports you to Zul-Andra."
-- ids:
-    - 20463
-  weight: 0.453
-  examine: "A broken defensive weapon."
 - ids:
     - 12955
   weight: 0.0
@@ -16932,16 +16631,12 @@
   examine: "A set containing 4-dose vials of Super Attack, Super Strength and Super\
     \ Defence potions."
 - ids:
-    - 20467
-  weight: 6.0
-  examine: "Broken superior torso armour from the order of the Void Knights."
-- ids:
-    - 20471
-  weight: 6.0
-  examine: "Broken superior leg armour from the order of the Void Knights."
+    - 13102
+  weight: 0.001
+  examine: "An enchanted teleportation crystal."
 - ids:
     - 13116
-  weight: 0.0
+  weight: 0.025
   examine: "Crushes bones."
 - ids:
     - 13145
@@ -17025,7 +16720,7 @@
   examine: "A heavy package I must deliver for Little Mo."
 - ids:
     - 13188
-  weight: 0.0
+  weight: 2.0
   examine: "A pair of familiar looking claws."
 - ids:
     - 13190
@@ -17040,14 +16735,6 @@
     - 13193
   weight: 0.453
   examine: "A pack containing 100 bone crossbow bolts."
-- ids:
-    - 13196
-  weight: 0.0
-  examine: "Needs to be charged with Zulrah's scales."
-- ids:
-    - 13198
-  weight: 0.0
-  examine: "Needs to be charged with Zulrah's scales."
 - ids:
     - 13200
   weight: 0.0
@@ -17066,11 +16753,11 @@
   examine: "A disconcertingly purple egg"
 - ids:
     - 13215
-  weight: 0.0
+  weight: 0.05
   examine: "A tiger toy."
 - ids:
     - 13216
-  weight: 0.0
+  weight: 0.05
   examine: "A lion toy."
 - ids:
     - 13217
@@ -17078,14 +16765,10 @@
   examine: "A snow leopard toy."
 - ids:
     - 13218
-  weight: 0.0
+  weight: 0.05
   examine: "An amur leopard toy."
 - ids:
     - 13226
-  weight: 1.0
-  examine: "A sack for storing grimy herbs."
-- ids:
-    - 24478
   weight: 1.0
   examine: "A sack for storing grimy herbs."
 - ids:
@@ -17174,10 +16857,6 @@
   weight: 0.0
   examine: "Spawns green banners."
 - ids:
-    - 20447
-  weight: 0.453
-  examine: "This cape is broken."
-- ids:
     - 13339
   weight: 0.0
   examine: "An eel that used to live in a toxic swamp containing Zulrah's discarded\
@@ -17216,7 +16895,7 @@
   examine: "A vial of pure sorrow."
 - ids:
     - 13353
-  weight: 1.0
+  weight: 0.98
   examine: "Contains far more water than should fit in such a small can."
 - ids:
     - 13354
@@ -17454,11 +17133,11 @@
   examine: "The creature's soul is still in here."
 - ids:
     - 13453
-  weight: 0.4
+  weight: 0.453
   examine: "The creature's soul is still in here."
 - ids:
     - 13454
-  weight: 0.4
+  weight: 0.453
   examine: "The creature's soul is still in here."
 - ids:
     - 13456
@@ -17469,12 +17148,12 @@
   weight: 0.0
   examine: "The creature's soul is still in here."
 - ids:
-    - 13460
-  weight: 0.0
+    - 13459
+  weight: 0.453
   examine: "The creature's soul is still in here."
 - ids:
-    - 13459
-  weight: 0.0
+    - 13460
+  weight: 0.453
   examine: "The creature's soul is still in here."
 - ids:
     - 13462
@@ -17582,11 +17261,11 @@
   examine: "The creature's soul is still in here."
 - ids:
     - 13501
-  weight: 0.4
+  weight: 0.453
   examine: "The creature's soul is still in here."
 - ids:
     - 13502
-  weight: 0.4
+  weight: 0.453
   examine: "The creature's soul is still in here."
 - ids:
     - 13504
@@ -17865,10 +17544,6 @@
   weight: 1.0
   examine: "A handy box for carrying some seeds."
 - ids:
-    - 24482
-  weight: 1.0
-  examine: "A handy box for carrying some seeds."
-- ids:
     - 13648
   weight: 0.0
   examine: "This bottle seems to have some old paper inside."
@@ -17894,7 +17569,7 @@
   examine: "A grape seed for growing in a vinery."
 - ids:
     - 13658
-  weight: 0.0
+  weight: 0.02
   examine: "A card which has magical properties."
 - ids:
     - 13666
@@ -17990,7 +17665,7 @@
   examine: "The gem has been carefully resculpted to invert the flow of energy."
 - ids:
     - 19564
-  weight: 0.0
+  weight: 0.005
   examine: "King Narnode's personal seed pod, for travelling to the Grand Tree."
 - ids:
     - 19566
@@ -18135,13 +17810,13 @@
   weight: 0.5
   examine: "This would be much tastier cooked."
 - ids:
+    - 19659
+  weight: 0.225
+  examine: "Mmm half a botanical pie."
+- ids:
     - 19662
   weight: 0.4
   examine: "Mmm botanical pie."
-- ids:
-    - 19659
-  weight: 0.2
-  examine: "Mmm half a botanical pie."
 - ids:
     - 19665
   weight: 0.2
@@ -18176,7 +17851,7 @@
   examine: "Looks like part of something."
 - ids:
     - 19685
-  weight: 0.0
+  weight: 0.009
   examine: "A dark power emanates from this totem."
 - ids:
     - 19701
@@ -18207,12 +17882,16 @@
   weight: 2.267
   examine: "Lucky impling in a jar."
 - ids:
-    - 19835
+    - 19812
   weight: 0.0
+  examine: "A key to unlock a treasure chest."
+- ids:
+    - 19835
+  weight: 0.02
   examine: "Hopefully leads to treasure."
 - ids:
     - 19836
-  weight: 5.0
+  weight: 0.0
   examine: "I hope it's bigger on the inside."
 - ids:
     - 19837
@@ -18226,10 +17905,6 @@
     - 19839
   weight: 0.0
   examine: "A clue scroll, at least partially."
-- ids:
-    - 23183
-  weight: 1.0
-  examine: "You can sense strange powers emanating from it."
 - ids:
     - 19939
   weight: 1.0
@@ -18248,7 +17923,7 @@
   examine: "A valuable ring."
 - ids:
     - 20062
-  weight: 0.0
+  weight: 0.5
   examine: "Use on an amulet of torture to make it look fancier!"
 - ids:
     - 20065
@@ -18284,12 +17959,24 @@
   weight: 0.0
   examine: "Fill it with firelighters to make pretty fire."
 - ids:
+    - 20280
+  weight: 0.0
+  examine: "I need to solve this!"
+- ids:
+    - 20281
+  weight: 0.0
+  examine: "I need to solve this!"
+- ids:
+    - 20282
+  weight: 0.0
+  examine: "I need to solve this!"
+- ids:
     - 20355
   weight: 0.1
   examine: "I need to brighten its day."
 - ids:
     - 20358
-  weight: 0.0
+  weight: 1.0
   examine: "This geode seems to have some old paper inside."
 - ids:
     - 20360
@@ -18349,15 +18036,15 @@
   examine: "Cross your fingers and your toes."
 - ids:
     - 20544
-  weight: 5.0
+  weight: 0.0
   examine: "Cross your fingers and your toes."
 - ids:
     - 20545
-  weight: 5.0
+  weight: 0.0
   examine: "Cross your fingers and your toes."
 - ids:
     - 20546
-  weight: 5.0
+  weight: 0.0
   examine: "Cross your fingers and your toes."
 - ids:
     - 20594
@@ -18404,11 +18091,7 @@
   weight: 0.0
   examine: "A herb from a bruma root."
 - ids:
-    - 20702
-  weight: 0.0
-  examine: "A rejuvenation potion."
-- ids:
-    - 20701
+    - 20699
   weight: 0.0
   examine: "A rejuvenation potion."
 - ids:
@@ -18416,7 +18099,11 @@
   weight: 0.0
   examine: "A rejuvenation potion."
 - ids:
-    - 20699
+    - 20701
+  weight: 0.0
+  examine: "A rejuvenation potion."
+- ids:
+    - 20702
   weight: 0.0
   examine: "A rejuvenation potion."
 - ids:
@@ -18427,6 +18114,10 @@
     - 20718
   weight: 0.0
   examine: "It's still warm to the touch."
+- ids:
+    - 20722
+  weight: 1.3
+  examine: "You need to add lamp oil before you can use it."
 - ids:
     - 20724
   weight: 0.3
@@ -18451,23 +18142,6 @@
     - 20754
   weight: 0.0
   examine: "An extraordinarily large brass key (used to access the Hill Titan's lair)."
-- ids:
-    - 21052
-  weight: 0.0
-  examine: "This should open the main doors of the manor house (Used in the Misthalin\
-    \ Mystery quest)."
-- ids:
-    - 21053
-  weight: 0.0
-  examine: "A key crafted from ruby (Used in the Misthalin Mystery quest)."
-- ids:
-    - 21054
-  weight: 0.0
-  examine: "A key crafted from emerald (Used in the Misthalin Mystery quest)."
-- ids:
-    - 21055
-  weight: 0.0
-  examine: "A key crafted from sapphire (Used in the Misthalin Mystery quest)."
 - ids:
     - 20782
     - 21060
@@ -19150,6 +18824,23 @@
   weight: 0.0
   examine: "A set containing an Ancestral hat, robe top and robe bottom."
 - ids:
+    - 21052
+  weight: 0.0
+  examine: "This should open the main doors of the manor house (Used in the Misthalin\
+    \ Mystery quest)."
+- ids:
+    - 21053
+  weight: 0.0
+  examine: "A key crafted from ruby (Used in the Misthalin Mystery quest)."
+- ids:
+    - 21054
+  weight: 0.0
+  examine: "A key crafted from emerald (Used in the Misthalin Mystery quest)."
+- ids:
+    - 21055
+  weight: 0.0
+  examine: "A key crafted from sapphire (Used in the Misthalin Mystery quest)."
+- ids:
     - 21056
   weight: 0.0
   examine: "It seems to be some sort of riddle."
@@ -19364,14 +19055,6 @@
   weight: 0.0
   examine: "A set containing an Obsidian helmet, platebody and platelegs."
 - ids:
-    - 21289
-  weight: 0.453
-  examine: "This cape is broken."
-- ids:
-    - 21287
-  weight: 1.814
-  examine: "A broken Infernal cape."
-- ids:
     - 21293
   weight: 0.0
   examine: "An infernal eel that has now hardened. Perhaps it could be cracked open."
@@ -19450,13 +19133,13 @@
   weight: 0.907
   examine: "A teak tree seed has been sown in this plant pot."
 - ids:
-    - 21473
-  weight: 0.907
-  examine: "A teak tree seed has been sown and watered in this plant pot."
-- ids:
     - 21471
   weight: 0.907
   examine: "A mahogany tree seed has been sown in this plant pot."
+- ids:
+    - 21473
+  weight: 0.907
+  examine: "A teak tree seed has been sown and watered in this plant pot."
 - ids:
     - 21475
   weight: 0.907
@@ -19711,7 +19394,7 @@
   examine: "One of the ingredients for making ultra compost."
 - ids:
     - 21624
-  weight: 0.4
+  weight: 0.453
   examine: "Stunned hoop snake appears to be hanging on to its tail."
 - ids:
     - 21626
@@ -19790,13 +19473,13 @@
   weight: 0.5
   examine: "This would be much tastier cooked."
 - ids:
-    - 21690
-  weight: 0.4
-  examine: "Mmm mushroom pie."
-- ids:
     - 21687
   weight: 0.2
   examine: "Mmm half a mushroom pie."
+- ids:
+    - 21690
+  weight: 0.4
+  examine: "Mmm mushroom pie."
 - ids:
     - 21693
   weight: 0.0
@@ -19909,7 +19592,7 @@
   examine: "A page torn from 'Kharedst's Memoirs'."
 - ids:
     - 21768
-  weight: 0.0
+  weight: 0.01
   examine: "A page torn from 'Kharedst's Memoirs'."
 - ids:
     - 21770
@@ -19928,30 +19611,6 @@
   weight: 0.0
   examine: "I can use this to gain Piscarilius Favour."
 - ids:
-    - 24238
-  weight: 0.453
-  examine: "The cape worn by only the most experienced players. This one is broken."
-- ids:
-    - 24246
-  weight: 0.453
-  examine: "The cape worn by only the most experienced players. This one is broken."
-- ids:
-    - 24242
-  weight: 0.453
-  examine: "The cape worn by only the most experienced players. This one is broken."
-- ids:
-    - 24236
-  weight: 0.453
-  examine: "A broken cape from the almighty god Saradomin, imbued with great power."
-- ids:
-    - 24240
-  weight: 0.453
-  examine: "A broken cape from the almighty god Guthix, imbued with great power."
-- ids:
-    - 24244
-  weight: 0.453
-  examine: "A broken cape from the almighty god Zamorak, imbued with great power."
-- ids:
     - 21797
   weight: 0.3
   examine: "The hand of a Saradominist Justiciar."
@@ -19965,7 +19624,7 @@
   examine: "The heart of a Zamorakian Demon."
 - ids:
     - 21800
-  weight: 0.0
+  weight: 0.004
   examine: "An enchanted symbol used to locate magical beings in the Wilderness."
 - ids:
     - 21802
@@ -19973,7 +19632,7 @@
   examine: "Teleports you to the Revenant cave in the Wilderness."
 - ids:
     - 21804
-  weight: 13.0
+  weight: 13.607
   examine: "An ancient crystal containing magical energy."
 - ids:
     - 21807
@@ -20066,17 +19725,13 @@
   weight: 6.0
   examine: "A set containing a full helm, platebody, skirt and kiteshield."
 - ids:
-    - 21916
-  weight: 0.453
-  examine: "A broken Assembler Max Cape."
+    - 21907
+  weight: 10.0
+  examine: "Yuck! I could get it stuffed!"
 - ids:
     - 21909
   weight: 10.0
   examine: "I could mount this on my wall!"
-- ids:
-    - 21914
-  weight: 5.896
-  examine: "A broken Ava's Assembler."
 - ids:
     - 21918
   weight: 3.0
@@ -20098,29 +19753,29 @@
   weight: 0.0
   examine: "Ground up superior dragon bones."
 - ids:
-    - 21987
+    - 21978
   weight: 0.0
-  examine: "1 dose of super anti-firebreath potion."
-- ids:
-    - 21984
-  weight: 0.0
-  examine: "2 doses of super anti-firebreath potion."
+  examine: "4 doses of super anti-firebreath potion."
 - ids:
     - 21981
   weight: 0.0
   examine: "3 doses of super anti-firebreath potion."
 - ids:
-    - 21978
+    - 21984
   weight: 0.0
-  examine: "4 doses of super anti-firebreath potion."
+  examine: "2 doses of super anti-firebreath potion."
 - ids:
-    - 21997
+    - 21987
   weight: 0.0
-  examine: "One dose of fishy super anti-firebreath potion."
+  examine: "1 dose of super anti-firebreath potion."
 - ids:
     - 21994
   weight: 0.0
   examine: "Two doses of fishy super anti-firebreath potion."
+- ids:
+    - 21997
+  weight: 0.0
+  examine: "One dose of fishy super anti-firebreath potion."
 - ids:
     - 22006
   weight: 1.8
@@ -20343,10 +19998,6 @@
   weight: 0.0
   examine: "An ancient key made of dragon metal."
 - ids:
-    - 22092
-  weight: 0.0
-  examine: "An ancient key."
-- ids:
     - 22088
   weight: 0.0
   examine: "A piece of an ancient key. I found this on an island north of Rellekka."
@@ -20362,6 +20013,10 @@
     - 22091
   weight: 0.0
   examine: "A piece of an ancient key. I found this in an old Karamjan temple."
+- ids:
+    - 22092
+  weight: 0.0
+  examine: "An ancient key."
 - ids:
     - 22093
   weight: 0.0
@@ -20390,6 +20045,10 @@
     - 22106
   weight: 1.0
   examine: "Very healthy."
+- ids:
+    - 22116
+  weight: 1.8
+  examine: "A pot of crushed superior dragon bones."
 - ids:
     - 22118
   weight: 0.015
@@ -20423,29 +20082,29 @@
   weight: 0.0
   examine: "In the darkness of sorrow, even a tear shines with hope."
 - ids:
-    - 22218
-  weight: 0.0
-  examine: "1 dose of extended super anti-firebreath potion."
-- ids:
-    - 22215
-  weight: 0.0
-  examine: "2 doses of extended super anti-firebreath potion."
-- ids:
-    - 22212
-  weight: 0.0
-  examine: "3 doses of extended super anti-firebreath potion."
-- ids:
     - 22209
-  weight: 0.0
+  weight: 0.035
   examine: "4 doses of extended super anti-firebreath potion."
 - ids:
-    - 22224
-  weight: 0.0
-  examine: "One dose of fishy extended super anti-firebreath potion."
+    - 22212
+  weight: 0.03
+  examine: "3 doses of extended super anti-firebreath potion."
+- ids:
+    - 22215
+  weight: 0.025
+  examine: "2 doses of extended super anti-firebreath potion."
+- ids:
+    - 22218
+  weight: 0.02
+  examine: "1 dose of extended super anti-firebreath potion."
 - ids:
     - 22221
   weight: 0.0
   examine: "Two doses of fishy extended super anti-firebreath potion."
+- ids:
+    - 22224
+  weight: 0.0
+  examine: "One dose of fishy extended super anti-firebreath potion."
 - ids:
     - 22231
   weight: 0.5
@@ -20488,10 +20147,6 @@
     - 22321
   weight: 0.0
   examine: "Eww!"
-- ids:
-    - 22441
-  weight: 0.453
-  examine: "A defensive weapon."
 - ids:
     - 22330
   weight: 4.0
@@ -20626,37 +20281,37 @@
   weight: 0.1
   examine: "A glass vial containing blood."
 - ids:
-    - 22458
+    - 22449
   weight: 0.0
-  examine: "1 dose of Battlemage potion."
-- ids:
-    - 22455
-  weight: 0.0
-  examine: "2 doses of Battlemage potion."
+  examine: "4 doses of Battlemage potion."
 - ids:
     - 22452
   weight: 0.0
   examine: "3 doses of Battlemage potion."
 - ids:
-    - 22449
+    - 22455
   weight: 0.0
-  examine: "4 doses of Battlemage potion."
+  examine: "2 doses of Battlemage potion."
 - ids:
-    - 22470
+    - 22458
   weight: 0.0
-  examine: "1 dose of Bastion potion."
+  examine: "1 dose of Battlemage potion."
 - ids:
-    - 22467
+    - 22461
   weight: 0.0
-  examine: "2 doses of Bastion potion."
+  examine: "4 doses of Bastion potion."
 - ids:
     - 22464
   weight: 0.0
   examine: "3 doses of Bastion potion."
 - ids:
-    - 22461
+    - 22467
   weight: 0.0
-  examine: "4 doses of Bastion potion."
+  examine: "2 doses of Bastion potion."
+- ids:
+    - 22470
+  weight: 0.0
+  examine: "1 dose of Bastion potion."
 - ids:
     - 22475
   weight: 0.0
@@ -20772,6 +20427,10 @@
   weight: 0.0
   examine: "Bleh!"
 - ids:
+    - 22586
+  weight: 0.0
+  examine: "You can store stuff in the bag when you're in the Wilderness."
+- ids:
     - 22588
   weight: 32.0
   examine: "Don't alch him."
@@ -20839,8 +20498,25 @@
   examine: "Used to mount a Digsite pendant in your house."
 - ids:
     - 22711
-  weight: 0.5
+  weight: 0.51
   examine: "A record of rewards and loot obtained all throughout Gielinor."
+- ids:
+    - 22744
+  weight: 0.0
+  examine: "A fake karambwan poison-tipped, one-handed dragon hasta. Can be converted\
+    \ into the real item."
+- ids:
+    - 22754
+  weight: 1.8
+  examine: "A pot of crushed wyrm bones."
+- ids:
+    - 22756
+  weight: 1.8
+  examine: "A pot of crushed drake bones."
+- ids:
+    - 22758
+  weight: 1.8
+  examine: "A pot of crushed hydra bones."
 - ids:
     - 22760
   weight: 0.0
@@ -20862,21 +20538,21 @@
   weight: 0.5
   examine: "A 5-gallon jug designed to hold coolant."
 - ids:
-    - 22768
+    - 22765
   weight: 0.0
-  examine: "A level 1 energy disk."
-- ids:
-    - 22767
-  weight: 0.0
-  examine: "A level 2 energy disk."
+  examine: "A level 4 energy disk."
 - ids:
     - 22766
   weight: 0.0
   examine: "A level 3 energy disk."
 - ids:
-    - 22765
+    - 22767
   weight: 0.0
-  examine: "A level 4 energy disk."
+  examine: "A level 2 energy disk."
+- ids:
+    - 22768
+  weight: 0.0
+  examine: "A level 1 energy disk."
 - ids:
     - 22769
   weight: 0.0
@@ -20930,13 +20606,13 @@
   weight: 0.5
   examine: "This would be much tastier cooked."
 - ids:
-    - 22795
-  weight: 0.4
-  examine: "Mmm dragonfruit pie."
-- ids:
     - 22792
   weight: 0.2
   examine: "Mmm half a dragonfruit pie."
+- ids:
+    - 22795
+  weight: 0.4
+  examine: "Mmm dragonfruit pie."
 - ids:
     - 22818
   weight: 0.0
@@ -20966,13 +20642,13 @@
   weight: 0.66
   examine: "A celastrus tree seed has been sown in this plant pot."
 - ids:
-    - 22852
-  weight: 0.907
-  examine: "A celastrus tree seed has been sown and watered in this plant pot."
-- ids:
     - 22850
   weight: 0.66
   examine: "A redwood tree seed has been sown in this plant pot."
+- ids:
+    - 22852
+  weight: 0.907
+  examine: "A celastrus tree seed has been sown and watered in this plant pot."
 - ids:
     - 22854
   weight: 0.907
@@ -21266,7 +20942,7 @@
   examine: "A set containing a gilded dragonhide body, chaps and vambraces."
 - ids:
     - 23127
-  weight: 0.0
+  weight: 1.0
   examine: "This nest seems to have some old paper inside."
 - ids:
     - 23129
@@ -21274,8 +20950,12 @@
   examine: "This bottle seems to have some old paper inside."
 - ids:
     - 23182
-  weight: 0.0
+  weight: 0.02
   examine: "Hopefully leads to treasure."
+- ids:
+    - 23183
+  weight: 1.0
+  examine: "You can sense strange powers emanating from it."
 - ids:
     - 23184
   weight: 5.0
@@ -21321,6 +21001,10 @@
     - 23387
   weight: 0.0
   examine: "Teleports you to Watson's house in Great Kourend."
+- ids:
+    - 23417
+  weight: 0.0
+  examine: "I need to solve this!"
 - ids:
     - 23442
   weight: 0.0
@@ -21442,101 +21126,105 @@
   weight: 0.0
   examine: "A set containing dragonstone helmet, platebody, platelegs, boots and gauntlets."
 - ids:
-    - 23694
-  weight: 0.0
-  examine: "1 dose of divine super combat potion."
-- ids:
-    - 23691
-  weight: 0.0
-  examine: "2 doses of divine super combat potion."
-- ids:
-    - 23688
-  weight: 0.0
-  examine: "3 doses of divine super combat potion."
+    - 23670
+  weight: 0.015
+  examine: "Get your maces from Iwan's Maces."
 - ids:
     - 23685
   weight: 0.0
   examine: "4 doses of divine super combat potion."
 - ids:
-    - 23706
+    - 23688
   weight: 0.0
-  examine: "1 dose of divine super attack potion."
+  examine: "3 doses of divine super combat potion."
 - ids:
-    - 23703
+    - 23691
   weight: 0.0
-  examine: "2 doses of divine super attack potion."
+  examine: "2 doses of divine super combat potion."
 - ids:
-    - 23700
+    - 23694
   weight: 0.0
-  examine: "3 doses of divine super attack potion."
+  examine: "1 dose of divine super combat potion."
 - ids:
     - 23697
-  weight: 0.0
+  weight: 0.035
   examine: "4 doses of divine super attack potion."
 - ids:
-    - 23718
-  weight: 0.0
-  examine: "1 dose of divine super strength potion."
+    - 23700
+  weight: 0.03
+  examine: "3 doses of divine super attack potion."
 - ids:
-    - 23715
-  weight: 0.0
-  examine: "2 doses of divine super strength potion."
+    - 23703
+  weight: 0.03
+  examine: "2 doses of divine super attack potion."
 - ids:
-    - 23712
-  weight: 0.0
-  examine: "3 doses of divine super strength potion."
+    - 23706
+  weight: 0.03
+  examine: "1 dose of divine super attack potion."
 - ids:
     - 23709
-  weight: 0.0
+  weight: 0.035
   examine: "4 doses of divine super strength potion."
 - ids:
-    - 23730
-  weight: 0.0
-  examine: "1 dose of divine super defence potion."
+    - 23712
+  weight: 0.03
+  examine: "3 doses of divine super strength potion."
 - ids:
-    - 23727
-  weight: 0.0
-  examine: "2 doses of divine super defence potion."
+    - 23715
+  weight: 0.03
+  examine: "2 doses of divine super strength potion."
 - ids:
-    - 23724
-  weight: 0.0
-  examine: "3 doses of divine super defence potion."
+    - 23718
+  weight: 0.03
+  examine: "1 dose of divine super strength potion."
 - ids:
     - 23721
-  weight: 0.0
+  weight: 0.035
   examine: "4 doses of divine super defence potion."
 - ids:
-    - 23742
-  weight: 0.0
-  examine: "1 dose of divine ranging potion."
+    - 23724
+  weight: 0.03
+  examine: "3 doses of divine super defence potion."
 - ids:
-    - 23739
-  weight: 0.0
-  examine: "2 doses of divine ranging potion."
+    - 23727
+  weight: 0.03
+  examine: "2 doses of divine super defence potion."
 - ids:
-    - 23736
-  weight: 0.0
-  examine: "3 doses of divine ranging potion."
+    - 23730
+  weight: 0.03
+  examine: "1 dose of divine super defence potion."
 - ids:
     - 23733
   weight: 0.0
   examine: "4 doses of divine ranging potion."
 - ids:
-    - 23754
+    - 23736
   weight: 0.0
-  examine: "1 dose of divine magic potion."
+  examine: "3 doses of divine ranging potion."
 - ids:
-    - 23751
+    - 23739
   weight: 0.0
-  examine: "2 doses of divine magic potion."
+  examine: "2 doses of divine ranging potion."
+- ids:
+    - 23742
+  weight: 0.0
+  examine: "1 dose of divine ranging potion."
+- ids:
+    - 23745
+  weight: 0.0
+  examine: "4 doses of divine magic potion."
 - ids:
     - 23748
   weight: 0.0
   examine: "3 doses of divine magic potion."
 - ids:
-    - 23745
+    - 23751
   weight: 0.0
-  examine: "4 doses of divine magic potion."
+  examine: "2 doses of divine magic potion."
+- ids:
+    - 23754
+  weight: 0.0
+  examine: "1 dose of divine magic potion."
 - ids:
     - 23768
   weight: 2.267
@@ -21549,6 +21237,10 @@
     - 23773
   weight: 0.0
   examine: "Some notes about a temple."
+- ids:
+    - 23775
+  weight: 0.0
+  examine: "A small hand mirror."
 - ids:
     - 23776
   weight: 0.015
@@ -21949,26 +21641,6 @@
   weight: 0.0
   examine: "A voucher, I can use this to claim rewards from shops around Varrock."
 - ids:
-    - 24147
-  weight: 0.3
-  examine: "A broken halo with the protection of Armadyl."
-- ids:
-    - 24149
-  weight: 0.3
-  examine: "A broken halo with the protection of Bandos."
-- ids:
-    - 24151
-  weight: 0.3
-  examine: "A broken halo with the protection of Seren."
-- ids:
-    - 24153
-  weight: 0.3
-  examine: "A broken halo with the protection of an ancient god."
-- ids:
-    - 24155
-  weight: 0.3
-  examine: "A broken halo with the protection of a healthy diet and the smell of flatulence."
-- ids:
     - 24187
   weight: 0.0
   examine: "Take it to Perdu to help you avoid losing certain items."
@@ -22088,6 +21760,10 @@
   weight: 0.0
   examine: "Contains a master clue scroll."
 - ids:
+    - 24416
+  weight: 1.0
+  examine: "You can store runes in here."
+- ids:
     - 24432
   weight: 0.0
   examine: "Used to make Gingerbread Gnomes."
@@ -22146,6 +21822,22 @@
   weight: 0.0
   examine: "A set containing Twisted boots (t3), Twisted trousers (t3), Twisted coat\
     \ (t3) and Twisted hat (t3)."
+- ids:
+    - 24478
+  weight: 1.0
+  examine: "A sack for storing grimy herbs."
+- ids:
+    - 24480
+  weight: 10.0
+  examine: "You can carry coal in here."
+- ids:
+    - 24481
+  weight: 0.0
+  examine: "You can carry uncut gems in here."
+- ids:
+    - 24482
+  weight: 1.0
+  examine: "A handy box for carrying some seeds."
 - ids:
     - 24488
   weight: 2.7
@@ -22277,14 +21969,9 @@
   weight: 0.5
   examine: "A nutritious octopus, now blighted so it can be eaten only in the Wilderness."
 - ids:
-    - 24605
-  weight: 0.02
-  examine: "1 dose of super restore potion, blighted so it can be used only in the\
-    \ Wilderness."
-- ids:
-    - 24603
-  weight: 0.025
-  examine: "2 doses of super restore potion, blighted so it can be used only in the\
+    - 24598
+  weight: 0.035
+  examine: "4 doses of super restore potion, blighted so it can be used only in the\
     \ Wilderness."
 - ids:
     - 24601
@@ -22292,9 +21979,14 @@
   examine: "3 doses of super restore potion, blighted so it can be used only in the\
     \ Wilderness."
 - ids:
-    - 24598
-  weight: 0.035
-  examine: "4 doses of super restore potion, blighted so it can be used only in the\
+    - 24603
+  weight: 0.025
+  examine: "2 doses of super restore potion, blighted so it can be used only in the\
+    \ Wilderness."
+- ids:
+    - 24605
+  weight: 0.02
+  examine: "1 dose of super restore potion, blighted so it can be used only in the\
     \ Wilderness."
 - ids:
     - 24607
@@ -22319,46 +22011,41 @@
   examine: "Enough power for a Teleblock or a Teleport to Target, blighted so it can\
     \ be used only in the Wilderness."
 - ids:
-    - 24619
-  weight: 1.8
-  examine: "Blighted so it can fight only in the Wilderness on Bounty Hunter worlds,\
-    \ once activated."
-- ids:
     - 24621
   weight: 0.0
   examine: "Enough power for a Vengeance, blighted so it can be used only in the Wilderness."
-- ids:
-    - 24632
-  weight: 0.0
-  examine: "1 dose of divine battlemage potion."
-- ids:
-    - 24629
-  weight: 0.0
-  examine: "2 doses of divine battlemage potion."
-- ids:
-    - 24626
-  weight: 0.0
-  examine: "3 doses of divine battlemage potion."
 - ids:
     - 24623
   weight: 0.0
   examine: "4 doses of divine battlemage potion."
 - ids:
-    - 24644
+    - 24626
   weight: 0.0
-  examine: "1 dose of divine bastion potion."
+  examine: "3 doses of divine battlemage potion."
 - ids:
-    - 24641
+    - 24629
   weight: 0.0
-  examine: "2 doses of divine bastion potion."
+  examine: "2 doses of divine battlemage potion."
+- ids:
+    - 24632
+  weight: 0.0
+  examine: "1 dose of divine battlemage potion."
+- ids:
+    - 24635
+  weight: 0.0
+  examine: "4 doses of divine bastion potion."
 - ids:
     - 24638
   weight: 0.0
   examine: "3 doses of divine bastion potion."
 - ids:
-    - 24635
+    - 24641
   weight: 0.0
-  examine: "4 doses of divine bastion potion."
+  examine: "2 doses of divine bastion potion."
+- ids:
+    - 24644
+  weight: 0.0
+  examine: "1 dose of divine bastion potion."
 - ids:
     - 24670
   weight: 0.5
@@ -22398,11 +22085,15 @@
 - ids:
     - 24690
   weight: 1.0
-  examine: "A tome of experience that awards 15,500 XP per chapter."
+  examine: "A tome of experience that awards 15,000 XP per chapter."
 - ids:
     - 24691
   weight: 2.0
   examine: "Logs cut from the Blisterwood tree."
+- ids:
+    - 24703
+  weight: 0.0
+  examine: "A pouch full of coins taken from the pockets of a vyre."
 - ids:
     - 24704
   weight: 0.04
@@ -22421,7 +22112,7 @@
   examine: "Currency from a previous age."
 - ids:
     - 24719
-  weight: 0.0
+  weight: 0.005
   examine: "A token which can grant an extra minute within the Hallowed Sepulchre."
 - ids:
     - 24721
@@ -22429,7 +22120,7 @@
   examine: "Reduces the chance of failing a grapple shortcut within the Hallowed Sepulchre."
 - ids:
     - 24729
-  weight: 0.0
+  weight: 0.02
   examine: "A dye which can be used to recolour a piece of graceful clothing."
 - ids:
     - 24731
@@ -22437,15 +22128,15 @@
   examine: "A ring which prevents damage from traps in the Hallowed Sepulchre."
 - ids:
     - 24733
-  weight: 0.0
+  weight: 0.002
   examine: "A mysterious looking acorn. Perhaps a squirrel would be interested in\
     \ this?"
 - ids:
-    - 24740
+    - 24738
   weight: 0.002
   examine: "A pristine set of lockpicks engraved with six names."
 - ids:
-    - 24738
+    - 24740
   weight: 0.002
   examine: "A pristine set of lockpicks engraved with six names."
 - ids:
@@ -22453,9 +22144,33 @@
   weight: 0.227
   examine: "A tome found in the lobby of the Hallowed Sepulchre."
 - ids:
+    - 24763
+  weight: 0.005
+  examine: "A page found on the first floor of the Hallowed Sepulchre."
+- ids:
+    - 24765
+  weight: 0.005
+  examine: "A page found on the second floor of the Hallowed Sepulchre."
+- ids:
+    - 24767
+  weight: 0.005
+  examine: "A page found on the third floor of the Hallowed Sepulchre."
+- ids:
+    - 24769
+  weight: 0.005
+  examine: "A page found on the fourth floor of the Hallowed Sepulchre."
+- ids:
+    - 24771
+  weight: 0.005
+  examine: "A page found on the fifth floor of the Hallowed Sepulchre."
+- ids:
     - 24774
   weight: 0.55
   examine: "It's literally a pint of blood."
+- ids:
+    - 24777
+  weight: 0.01
+  examine: "A magical shard filled with a dark power."
 - ids:
     - 24782
   weight: 0.34

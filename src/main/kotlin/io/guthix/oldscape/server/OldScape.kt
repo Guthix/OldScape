@@ -81,8 +81,8 @@ object OldScape {
             yamlMapper.readWeaponConfig("TwoHandEquipment.yaml"),
             yamlMapper.readEquipmentConfig("ShieldEquipment.yaml"),
             yamlMapper.readBodyConfig("BodyEquipment.yaml"),
-            yamlMapper.readEquipmentConfig("LegsEquipment.yaml"),
-            yamlMapper.readEquipmentConfig("HandsEquipment.yaml"),
+            yamlMapper.readEquipmentConfig("LegEquipment.yaml"),
+            yamlMapper.readEquipmentConfig("HandEquipment.yaml"),
             yamlMapper.readEquipmentConfig("FeetEquipment.yaml"),
             yamlMapper.readEquipmentConfig("RingEquipment.yaml")
         )

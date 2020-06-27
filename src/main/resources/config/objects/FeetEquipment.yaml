@@ -397,6 +397,28 @@
       magic: 0
     prayerBonus: 0
 - ids:
+    - 3107
+  weight: 0.34
+  examine: "Climbing boots with spikes."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 2
+      crush: 2
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 2
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
     - 3393
   weight: 0.907
   examine: "Wooden foot protection."
@@ -1456,167 +1478,6 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13589
-    - 13590
-  weight: 0.0
-  examine: "For your graceful feet."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-    - 13601
-    - 13602
-  weight: 0.0
-  examine: "For your graceful feet."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-    - 13613
-    - 13614
-  weight: 0.0
-  examine: "For your graceful feet."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-    - 13625
-    - 13626
-  weight: 0.0
-  examine: "For your graceful feet."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-    - 13637
-    - 13638
-  weight: 0.0
-  examine: "For your graceful feet."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-    - 13677
-    - 13678
-  weight: 0.0
-  examine: "For your graceful feet."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-    - 21076
-    - 21078
-  weight: 0.0
-  examine: "For your graceful feet."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
     - 12016
   weight: 0.5
   examine: "Helps you when you're mining."
@@ -1926,7 +1787,7 @@
     prayerBonus: 0
 - ids:
     - 13261
-  weight: 1.0
+  weight: 0.453
   examine: "Where's Welly?"
   equipment:
     attackBonus:
@@ -2079,6 +1940,121 @@
       magic: 0
     prayerBonus: 0
 - ids:
+    - 13589
+    - 13590
+  weight: 0.0
+  examine: "For your graceful feet."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+    - 13601
+    - 13602
+  weight: 0.0
+  examine: "For your graceful feet."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+    - 13613
+    - 13614
+  weight: 0.0
+  examine: "For your graceful feet."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+    - 13625
+    - 13626
+  weight: 0.0
+  examine: "For your graceful feet."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+    - 13637
+    - 13638
+  weight: 0.0
+  examine: "For your graceful feet."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
     - 13644
   weight: 0.9
   examine: "This will help with farming."
@@ -2123,6 +2099,29 @@
       magic: 0
     prayerBonus: 0
 - ids:
+    - 13677
+    - 13678
+  weight: 0.0
+  examine: "For your graceful feet."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
     - 19695
   weight: 0.5
   examine: "Warm leather boots lined with wolf fur."
@@ -2146,7 +2145,7 @@
     prayerBonus: 0
 - ids:
     - 19921
-  weight: 1.0
+  weight: 1.4
   examine: "Ancient blessed dragonhide boots."
   equipment:
     attackBonus:
@@ -2168,7 +2167,7 @@
     prayerBonus: 1
 - ids:
     - 19924
-  weight: 1.0
+  weight: 1.4
   examine: "Bandos blessed dragonhide boots."
   equipment:
     attackBonus:
@@ -2190,7 +2189,7 @@
     prayerBonus: 1
 - ids:
     - 19927
-  weight: 1.0
+  weight: 1.4
   examine: "Guthix blessed dragonhide boots."
   equipment:
     attackBonus:
@@ -2212,7 +2211,7 @@
     prayerBonus: 1
 - ids:
     - 19930
-  weight: 1.0
+  weight: 1.4
   examine: "Armadyl blessed dragonhide boots."
   equipment:
     attackBonus:
@@ -2234,7 +2233,7 @@
     prayerBonus: 1
 - ids:
     - 19933
-  weight: 1.0
+  weight: 1.4
   examine: "Saradomin blessed dragonhide boots."
   equipment:
     attackBonus:
@@ -2256,7 +2255,7 @@
     prayerBonus: 1
 - ids:
     - 19936
-  weight: 1.0
+  weight: 1.4
   examine: "Zamorak blessed dragonhide boots."
   equipment:
     attackBonus:
@@ -2366,7 +2365,7 @@
     prayerBonus: 0
 - ids:
     - 20107
-  weight: 0.0
+  weight: 0.5
   examine: "These socks will make your flesh transparent."
   equipment:
     attackBonus:
@@ -2434,6 +2433,29 @@
     - 20710
   weight: 1.36
   examine: "The boots of the Pyromancers."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+    - 21076
+    - 21078
+  weight: 0.0
+  examine: "For your graceful feet."
   equipment:
     attackBonus:
       stab: 0
@@ -2565,7 +2587,7 @@
     prayerBonus: 0
 - ids:
     - 22951
-  weight: 3.1
+  weight: 3.175
   examine: "A pair of heat resistant boots charged with the claw of the ferocious\
     \ Drake."
   equipment:

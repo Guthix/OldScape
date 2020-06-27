@@ -373,28 +373,6 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11710
-  weight: 5.443
-  examine: "For use in the Nightmare Zone."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 7
-      slash: 9
-      crush: 8
-      magic: 8
-      range: 2
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
     - 2589
   weight: 5.443
   examine: "Black kiteshield with trim."
@@ -901,28 +879,6 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 24161
-  weight: 4.535
-  examine: "A very decorative shield."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: -2
-      range: -8
-    defenceBonus:
-      stab: 27
-      slash: 31
-      crush: 29
-      magic: 29
-      range: -1
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
     - 5609
   weight: 5.0
   examine: "He'd be easier to carry if I cooked and ate him first..."
@@ -967,183 +923,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 6235
-  weight: 5.443
-  examine: "A scary broodoo shield."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: -7
-      range: 3
-    defenceBonus:
-      stab: 10
-      slash: 10
-      crush: 15
-      magic: 0
-      range: 5
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 5
-- ids:
-    - 6233
-  weight: 5.443
-  examine: "A scary broodoo shield."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: -7
-      range: 3
-    defenceBonus:
-      stab: 10
-      slash: 10
-      crush: 15
-      magic: 0
-      range: 5
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 5
-- ids:
-    - 6231
-  weight: 5.443
-  examine: "A scary broodoo shield."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: -7
-      range: 3
-    defenceBonus:
-      stab: 10
-      slash: 10
-      crush: 15
-      magic: 0
-      range: 5
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 5
-- ids:
-    - 6229
-  weight: 5.443
-  examine: "A scary broodoo shield."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: -7
-      range: 3
-    defenceBonus:
-      stab: 10
-      slash: 10
-      crush: 15
-      magic: 0
-      range: 5
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 5
-- ids:
-    - 6227
-  weight: 5.443
-  examine: "A scary broodoo shield."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: -7
-      range: 3
-    defenceBonus:
-      stab: 10
-      slash: 10
-      crush: 15
-      magic: 0
-      range: 5
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 5
-- ids:
-    - 6225
-  weight: 5.443
-  examine: "A scary broodoo shield."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: -7
-      range: 3
-    defenceBonus:
-      stab: 10
-      slash: 10
-      crush: 15
-      magic: 0
-      range: 5
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 5
-- ids:
-    - 6223
-  weight: 5.443
-  examine: "A scary broodoo shield."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: -7
-      range: 3
-    defenceBonus:
-      stab: 10
-      slash: 10
-      crush: 15
-      magic: 0
-      range: 5
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 5
-- ids:
-    - 6221
-  weight: 5.4
-  examine: "A scary broodoo shield."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: -7
-      range: 3
-    defenceBonus:
-      stab: 10
-      slash: 10
-      crush: 15
-      magic: 0
-      range: 5
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 5
-- ids:
-    - 6219
+    - 6215
   weight: 5.443
   examine: "A scary broodoo shield."
   equipment:
@@ -1187,7 +967,7 @@
       magic: 0
     prayerBonus: 5
 - ids:
-    - 6215
+    - 6219
   weight: 5.443
   examine: "A scary broodoo shield."
   equipment:
@@ -1209,29 +989,7 @@
       magic: 0
     prayerBonus: 5
 - ids:
-    - 6257
-  weight: 5.443
-  examine: "A scary broodoo shield."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: -7
-      range: 3
-    defenceBonus:
-      stab: 10
-      slash: 10
-      crush: 15
-      magic: 0
-      range: 5
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 5
-- ids:
-    - 6255
+    - 6221
   weight: 5.4
   examine: "A scary broodoo shield."
   equipment:
@@ -1253,7 +1011,7 @@
       magic: 0
     prayerBonus: 5
 - ids:
-    - 6253
+    - 6223
   weight: 5.443
   examine: "A scary broodoo shield."
   equipment:
@@ -1275,7 +1033,7 @@
       magic: 0
     prayerBonus: 5
 - ids:
-    - 6251
+    - 6225
   weight: 5.443
   examine: "A scary broodoo shield."
   equipment:
@@ -1297,7 +1055,7 @@
       magic: 0
     prayerBonus: 5
 - ids:
-    - 6249
+    - 6227
   weight: 5.443
   examine: "A scary broodoo shield."
   equipment:
@@ -1319,7 +1077,7 @@
       magic: 0
     prayerBonus: 5
 - ids:
-    - 6247
+    - 6229
   weight: 5.443
   examine: "A scary broodoo shield."
   equipment:
@@ -1341,7 +1099,7 @@
       magic: 0
     prayerBonus: 5
 - ids:
-    - 6245
+    - 6231
   weight: 5.443
   examine: "A scary broodoo shield."
   equipment:
@@ -1363,7 +1121,7 @@
       magic: 0
     prayerBonus: 5
 - ids:
-    - 6243
+    - 6233
   weight: 5.443
   examine: "A scary broodoo shield."
   equipment:
@@ -1385,29 +1143,7 @@
       magic: 0
     prayerBonus: 5
 - ids:
-    - 6241
-  weight: 5.443
-  examine: "A scary broodoo shield."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: -7
-      range: 3
-    defenceBonus:
-      stab: 10
-      slash: 10
-      crush: 15
-      magic: 0
-      range: 5
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 5
-- ids:
-    - 6239
+    - 6235
   weight: 5.443
   examine: "A scary broodoo shield."
   equipment:
@@ -1451,7 +1187,7 @@
       magic: 0
     prayerBonus: 5
 - ids:
-    - 6279
+    - 6239
   weight: 5.443
   examine: "A scary broodoo shield."
   equipment:
@@ -1473,7 +1209,7 @@
       magic: 0
     prayerBonus: 5
 - ids:
-    - 6277
+    - 6241
   weight: 5.443
   examine: "A scary broodoo shield."
   equipment:
@@ -1495,7 +1231,7 @@
       magic: 0
     prayerBonus: 5
 - ids:
-    - 6275
+    - 6243
   weight: 5.443
   examine: "A scary broodoo shield."
   equipment:
@@ -1517,7 +1253,7 @@
       magic: 0
     prayerBonus: 5
 - ids:
-    - 6273
+    - 6245
   weight: 5.443
   examine: "A scary broodoo shield."
   equipment:
@@ -1539,7 +1275,7 @@
       magic: 0
     prayerBonus: 5
 - ids:
-    - 6271
+    - 6247
   weight: 5.443
   examine: "A scary broodoo shield."
   equipment:
@@ -1561,7 +1297,7 @@
       magic: 0
     prayerBonus: 5
 - ids:
-    - 6269
+    - 6249
   weight: 5.443
   examine: "A scary broodoo shield."
   equipment:
@@ -1583,7 +1319,7 @@
       magic: 0
     prayerBonus: 5
 - ids:
-    - 6267
+    - 6251
   weight: 5.443
   examine: "A scary broodoo shield."
   equipment:
@@ -1605,7 +1341,7 @@
       magic: 0
     prayerBonus: 5
 - ids:
-    - 6265
+    - 6253
   weight: 5.443
   examine: "A scary broodoo shield."
   equipment:
@@ -1627,7 +1363,51 @@
       magic: 0
     prayerBonus: 5
 - ids:
-    - 6263
+    - 6255
+  weight: 5.4
+  examine: "A scary broodoo shield."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: -7
+      range: 3
+    defenceBonus:
+      stab: 10
+      slash: 10
+      crush: 15
+      magic: 0
+      range: 5
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 5
+- ids:
+    - 6257
+  weight: 5.443
+  examine: "A scary broodoo shield."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: -7
+      range: 3
+    defenceBonus:
+      stab: 10
+      slash: 10
+      crush: 15
+      magic: 0
+      range: 5
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 5
+- ids:
+    - 6259
   weight: 5.443
   examine: "A scary broodoo shield."
   equipment:
@@ -1671,7 +1451,183 @@
       magic: 0
     prayerBonus: 5
 - ids:
-    - 6259
+    - 6263
+  weight: 5.443
+  examine: "A scary broodoo shield."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: -7
+      range: 3
+    defenceBonus:
+      stab: 10
+      slash: 10
+      crush: 15
+      magic: 0
+      range: 5
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 5
+- ids:
+    - 6265
+  weight: 5.443
+  examine: "A scary broodoo shield."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: -7
+      range: 3
+    defenceBonus:
+      stab: 10
+      slash: 10
+      crush: 15
+      magic: 0
+      range: 5
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 5
+- ids:
+    - 6267
+  weight: 5.443
+  examine: "A scary broodoo shield."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: -7
+      range: 3
+    defenceBonus:
+      stab: 10
+      slash: 10
+      crush: 15
+      magic: 0
+      range: 5
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 5
+- ids:
+    - 6269
+  weight: 5.443
+  examine: "A scary broodoo shield."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: -7
+      range: 3
+    defenceBonus:
+      stab: 10
+      slash: 10
+      crush: 15
+      magic: 0
+      range: 5
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 5
+- ids:
+    - 6271
+  weight: 5.443
+  examine: "A scary broodoo shield."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: -7
+      range: 3
+    defenceBonus:
+      stab: 10
+      slash: 10
+      crush: 15
+      magic: 0
+      range: 5
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 5
+- ids:
+    - 6273
+  weight: 5.443
+  examine: "A scary broodoo shield."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: -7
+      range: 3
+    defenceBonus:
+      stab: 10
+      slash: 10
+      crush: 15
+      magic: 0
+      range: 5
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 5
+- ids:
+    - 6275
+  weight: 5.443
+  examine: "A scary broodoo shield."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: -7
+      range: 3
+    defenceBonus:
+      stab: 10
+      slash: 10
+      crush: 15
+      magic: 0
+      range: 5
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 5
+- ids:
+    - 6277
+  weight: 5.443
+  examine: "A scary broodoo shield."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: -7
+      range: 3
+    defenceBonus:
+      stab: 10
+      slash: 10
+      crush: 15
+      magic: 0
+      range: 5
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 5
+- ids:
+    - 6279
   weight: 5.443
   examine: "A scary broodoo shield."
   equipment:
@@ -2903,51 +2859,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 24136
-  weight: 0.453
-  examine: "A defensive weapon."
-  equipment:
-    attackBonus:
-      stab: 3
-      slash: 2
-      crush: 1
-      magic: -2
-      range: -3
-    defenceBonus:
-      stab: 3
-      slash: 2
-      crush: 1
-      magic: -2
-      range: -3
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
     - 8845
-  weight: 0.453
-  examine: "A defensive weapon."
-  equipment:
-    attackBonus:
-      stab: 5
-      slash: 4
-      crush: 3
-      magic: -2
-      range: -3
-    defenceBonus:
-      stab: 5
-      slash: 4
-      crush: 3
-      magic: -2
-      range: -3
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-    - 24137
   weight: 0.453
   examine: "A defensive weapon."
   equipment:
@@ -2991,51 +2903,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 24138
-  weight: 0.453
-  examine: "A defensive weapon."
-  equipment:
-    attackBonus:
-      stab: 7
-      slash: 6
-      crush: 5
-      magic: -2
-      range: -3
-    defenceBonus:
-      stab: 7
-      slash: 6
-      crush: 5
-      magic: -2
-      range: -3
-    strengthBonus:
-      melee: 1
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
     - 8847
-  weight: 0.453
-  examine: "A defensive weapon."
-  equipment:
-    attackBonus:
-      stab: 9
-      slash: 8
-      crush: 7
-      magic: -2
-      range: -3
-    defenceBonus:
-      stab: 9
-      slash: 8
-      crush: 7
-      magic: -2
-      range: -3
-    strengthBonus:
-      melee: 2
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-    - 24139
   weight: 0.453
   examine: "A defensive weapon."
   equipment:
@@ -3079,51 +2947,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 24140
-  weight: 0.453
-  examine: "A defensive weapon."
-  equipment:
-    attackBonus:
-      stab: 10
-      slash: 9
-      crush: 8
-      magic: -2
-      range: -3
-    defenceBonus:
-      stab: 10
-      slash: 9
-      crush: 8
-      magic: -2
-      range: -3
-    strengthBonus:
-      melee: 3
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
     - 8849
-  weight: 0.453
-  examine: "A defensive weapon."
-  equipment:
-    attackBonus:
-      stab: 13
-      slash: 12
-      crush: 11
-      magic: -2
-      range: -3
-    defenceBonus:
-      stab: 13
-      slash: 12
-      crush: 11
-      magic: -2
-      range: -3
-    strengthBonus:
-      melee: 4
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-    - 24141
   weight: 0.453
   examine: "A defensive weapon."
   equipment:
@@ -3167,24 +2991,24 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 24142
-  weight: 0.453
-  examine: "A defensive weapon."
+    - 8856
+  weight: 3.6
+  examine: "Large, round, heavy shield."
   equipment:
     attackBonus:
-      stab: 20
-      slash: 19
-      crush: 18
+      stab: 0
+      slash: 0
+      crush: 0
       magic: -2
-      range: -3
+      range: -6
     defenceBonus:
-      stab: 20
-      slash: 19
-      crush: 18
-      magic: -2
-      range: -3
+      stab: 8
+      slash: 9
+      crush: 7
+      magic: 7
+      range: 0
     strengthBonus:
-      melee: 5
+      melee: 0
       range: 0
       magic: 0
     prayerBonus: 0
@@ -3409,6 +3233,28 @@
       magic: 0
     prayerBonus: 0
 - ids:
+    - 11283
+  weight: 7.257
+  examine: "A heavy shield with a snarling, draconic visage."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: -5
+      range: -10
+    defenceBonus:
+      stab: 70
+      slash: 75
+      crush: 72
+      magic: 72
+      range: 10
+    strengthBonus:
+      melee: 7
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
     - 11284
   weight: 7.257
   examine: "A heavy shield with a snarling, draconic visage."
@@ -3431,24 +3277,24 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11283
-  weight: 7.257
-  examine: "A heavy shield with a snarling, draconic visage."
+    - 11710
+  weight: 5.443
+  examine: "For use in the Nightmare Zone."
   equipment:
     attackBonus:
       stab: 0
       slash: 0
       crush: 0
-      magic: -5
-      range: -10
+      magic: 0
+      range: 0
     defenceBonus:
-      stab: 70
-      slash: 75
-      crush: 72
-      magic: 72
-      range: 10
+      stab: 7
+      slash: 9
+      crush: 8
+      magic: 8
+      range: 2
     strengthBonus:
-      melee: 7
+      melee: 0
       range: 0
       magic: 0
     prayerBonus: 0
@@ -4289,28 +4135,6 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 24143
-  weight: 0.453
-  examine: "A defensive weapon."
-  equipment:
-    attackBonus:
-      stab: 25
-      slash: 24
-      crush: 23
-      magic: -2
-      range: -3
-    defenceBonus:
-      stab: 25
-      slash: 24
-      crush: 23
-      magic: -2
-      range: -3
-    strengthBonus:
-      melee: 6
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
     - 13117
   weight: 5.0
   examine: "A shield from Falador."
@@ -4334,7 +4158,7 @@
     prayerBonus: 1
 - ids:
     - 13118
-  weight: 5.0
+  weight: 5.443
   examine: "A shield from Falador."
   equipment:
     attackBonus:
@@ -4356,7 +4180,7 @@
     prayerBonus: 3
 - ids:
     - 13119
-  weight: 5.0
+  weight: 5.443
   examine: "A shield from Falador."
   equipment:
     attackBonus:
@@ -4575,7 +4399,205 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 20716
+    - 20449
+  weight: 0.4
+  examine: "A broken defensive weapon."
+  equipment:
+    attackBonus:
+      stab: 3
+      slash: 2
+      crush: 1
+      magic: -2
+      range: -3
+    defenceBonus:
+      stab: 3
+      slash: 2
+      crush: 1
+      magic: -2
+      range: -3
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+    - 20451
+  weight: 0.4
+  examine: "A broken defensive weapon."
+  equipment:
+    attackBonus:
+      stab: 5
+      slash: 4
+      crush: 3
+      magic: -2
+      range: -3
+    defenceBonus:
+      stab: 5
+      slash: 4
+      crush: 3
+      magic: -2
+      range: -3
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+    - 20453
+  weight: 0.4
+  examine: "A broken defensive weapon."
+  equipment:
+    attackBonus:
+      stab: 7
+      slash: 6
+      crush: 5
+      magic: -2
+      range: -3
+    defenceBonus:
+      stab: 7
+      slash: 6
+      crush: 5
+      magic: -2
+      range: -3
+    strengthBonus:
+      melee: 1
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+    - 20455
+  weight: 0.4
+  examine: "A broken defensive weapon."
+  equipment:
+    attackBonus:
+      stab: 9
+      slash: 8
+      crush: 7
+      magic: -2
+      range: -3
+    defenceBonus:
+      stab: 9
+      slash: 8
+      crush: 7
+      magic: -2
+      range: -3
+    strengthBonus:
+      melee: 2
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+    - 20457
+  weight: 0.4
+  examine: "A broken defensive weapon."
+  equipment:
+    attackBonus:
+      stab: 10
+      slash: 9
+      crush: 8
+      magic: -2
+      range: -3
+    defenceBonus:
+      stab: 10
+      slash: 9
+      crush: 8
+      magic: -2
+      range: -3
+    strengthBonus:
+      melee: 3
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+    - 20459
+  weight: 0.4
+  examine: "A broken defensive weapon."
+  equipment:
+    attackBonus:
+      stab: 13
+      slash: 12
+      crush: 11
+      magic: -2
+      range: -3
+    defenceBonus:
+      stab: 13
+      slash: 12
+      crush: 11
+      magic: -2
+      range: -3
+    strengthBonus:
+      melee: 4
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+    - 20461
+  weight: 0.4
+  examine: "A broken defensive weapon."
+  equipment:
+    attackBonus:
+      stab: 20
+      slash: 19
+      crush: 18
+      magic: -2
+      range: -3
+    defenceBonus:
+      stab: 20
+      slash: 19
+      crush: 18
+      magic: -2
+      range: -3
+    strengthBonus:
+      melee: 5
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+    - 20463
+  weight: 0.453
+  examine: "A broken defensive weapon."
+  equipment:
+    attackBonus:
+      stab: 25
+      slash: 24
+      crush: 23
+      magic: -2
+      range: -3
+    defenceBonus:
+      stab: 25
+      slash: 24
+      crush: 23
+      magic: -2
+      range: -3
+    strengthBonus:
+      melee: 6
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+    - 20491
+  weight: 4.54
+  examine: "A very decorative shield, but it's broken."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: -2
+      range: -8
+    defenceBonus:
+      stab: 27
+      slash: 31
+      crush: 29
+      magic: 29
+      range: -1
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+    - 20714
   weight: 1.0
   examine: "An ancient tome containing the secrets of fire magic."
   equipment:
@@ -4597,7 +4619,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 20714
+    - 20716
   weight: 1.0
   examine: "An ancient tome containing the secrets of fire magic."
   equipment:
@@ -4663,28 +4685,6 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 21634
-  weight: 4.5
-  examine: "A magical shield with a wyvern visage."
-  equipment:
-    attackBonus:
-      stab: -10
-      slash: -10
-      crush: -10
-      magic: -10
-      range: 15
-    defenceBonus:
-      stab: 22
-      slash: 30
-      crush: 25
-      magic: -55
-      range: 15
-    strengthBonus:
-      melee: -2
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
     - 21633
   weight: 4.5
   examine: "A magical shield with a wyvern visage."
@@ -4700,6 +4700,28 @@
       slash: 80
       crush: 75
       magic: -5
+      range: 15
+    strengthBonus:
+      melee: -2
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+    - 21634
+  weight: 4.5
+  examine: "A magical shield with a wyvern visage."
+  equipment:
+    attackBonus:
+      stab: -10
+      slash: -10
+      crush: -10
+      magic: -10
+      range: 15
+    defenceBonus:
+      stab: 22
+      slash: 30
+      crush: 25
+      magic: -55
       range: 15
     strengthBonus:
       melee: -2
@@ -4773,28 +4795,6 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 22003
-  weight: 4.5
-  examine: "A light shield with a haunting, skeletal visage."
-  equipment:
-    attackBonus:
-      stab: -10
-      slash: -10
-      crush: -10
-      magic: 15
-      range: -10
-    defenceBonus:
-      stab: -25
-      slash: -20
-      crush: -22
-      magic: 18
-      range: 28
-    strengthBonus:
-      melee: -2
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
     - 22002
   weight: 4.5
   examine: "A light shield with a haunting, skeletal visage."
@@ -4810,6 +4810,28 @@
       slash: 30
       crush: 28
       magic: 68
+      range: 28
+    strengthBonus:
+      melee: -2
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+    - 22003
+  weight: 4.5
+  examine: "A light shield with a haunting, skeletal visage."
+  equipment:
+    attackBonus:
+      stab: -10
+      slash: -10
+      crush: -10
+      magic: 15
+      range: -10
+    defenceBonus:
+      stab: -25
+      slash: -20
+      crush: -22
+      magic: 18
       range: 28
     strengthBonus:
       melee: -2
@@ -5477,7 +5499,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 24186
+    - 22441
   weight: 0.453
   examine: "A defensive weapon."
   equipment:
@@ -5675,9 +5697,185 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 24266
-  weight: 2.267
-  examine: "A recreation of V's mighty shield."
+    - 24136
+  weight: 0.453
+  examine: "A defensive weapon."
+  equipment:
+    attackBonus:
+      stab: 3
+      slash: 2
+      crush: 1
+      magic: -2
+      range: -3
+    defenceBonus:
+      stab: 3
+      slash: 2
+      crush: 1
+      magic: -2
+      range: -3
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+    - 24137
+  weight: 0.453
+  examine: "A defensive weapon."
+  equipment:
+    attackBonus:
+      stab: 5
+      slash: 4
+      crush: 3
+      magic: -2
+      range: -3
+    defenceBonus:
+      stab: 5
+      slash: 4
+      crush: 3
+      magic: -2
+      range: -3
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+    - 24138
+  weight: 0.453
+  examine: "A defensive weapon."
+  equipment:
+    attackBonus:
+      stab: 7
+      slash: 6
+      crush: 5
+      magic: -2
+      range: -3
+    defenceBonus:
+      stab: 7
+      slash: 6
+      crush: 5
+      magic: -2
+      range: -3
+    strengthBonus:
+      melee: 1
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+    - 24139
+  weight: 0.453
+  examine: "A defensive weapon."
+  equipment:
+    attackBonus:
+      stab: 9
+      slash: 8
+      crush: 7
+      magic: -2
+      range: -3
+    defenceBonus:
+      stab: 9
+      slash: 8
+      crush: 7
+      magic: -2
+      range: -3
+    strengthBonus:
+      melee: 2
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+    - 24140
+  weight: 0.453
+  examine: "A defensive weapon."
+  equipment:
+    attackBonus:
+      stab: 10
+      slash: 9
+      crush: 8
+      magic: -2
+      range: -3
+    defenceBonus:
+      stab: 10
+      slash: 9
+      crush: 8
+      magic: -2
+      range: -3
+    strengthBonus:
+      melee: 3
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+    - 24141
+  weight: 0.453
+  examine: "A defensive weapon."
+  equipment:
+    attackBonus:
+      stab: 13
+      slash: 12
+      crush: 11
+      magic: -2
+      range: -3
+    defenceBonus:
+      stab: 13
+      slash: 12
+      crush: 11
+      magic: -2
+      range: -3
+    strengthBonus:
+      melee: 4
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+    - 24142
+  weight: 0.453
+  examine: "A defensive weapon."
+  equipment:
+    attackBonus:
+      stab: 20
+      slash: 19
+      crush: 18
+      magic: -2
+      range: -3
+    defenceBonus:
+      stab: 20
+      slash: 19
+      crush: 18
+      magic: -2
+      range: -3
+    strengthBonus:
+      melee: 5
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+    - 24143
+  weight: 0.453
+  examine: "A defensive weapon."
+  equipment:
+    attackBonus:
+      stab: 25
+      slash: 24
+      crush: 23
+      magic: -2
+      range: -3
+    defenceBonus:
+      stab: 25
+      slash: 24
+      crush: 23
+      magic: -2
+      range: -3
+    strengthBonus:
+      melee: 6
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+    - 24161
+  weight: 4.535
+  examine: "A very decorative shield."
   equipment:
     attackBonus:
       stab: 0
@@ -5697,9 +5895,53 @@
       magic: 0
     prayerBonus: 0
 - ids:
+    - 24186
+  weight: 0.453
+  examine: "A defensive weapon."
+  equipment:
+    attackBonus:
+      stab: 30
+      slash: 29
+      crush: 28
+      magic: -4
+      range: -5
+    defenceBonus:
+      stab: 30
+      slash: 29
+      crush: 28
+      magic: -4
+      range: -5
+    strengthBonus:
+      melee: 8
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
     - 24265
   weight: 2.267
   examine: "V's mighty shield. This should earn the trust of the council."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: -2
+      range: -8
+    defenceBonus:
+      stab: 27
+      slash: 31
+      crush: 29
+      magic: 29
+      range: -1
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+    - 24266
+  weight: 2.267
+  examine: "A recreation of V's mighty shield."
   equipment:
     attackBonus:
       stab: 0

@@ -154,7 +154,7 @@
     prayerBonus: 0
 - ids:
     - 1495
-  weight: 0.2
+  weight: 0.226
   examine: "Strong dwarvish gloves."
   equipment:
     attackBonus:
@@ -176,7 +176,7 @@
     prayerBonus: 0
 - ids:
     - 1580
-  weight: 0.2
+  weight: 0.226
   examine: "These will keep my hands cold!"
   equipment:
     attackBonus:
@@ -1059,7 +1059,7 @@
     prayerBonus: 0
 - ids:
     - 7462
-  weight: 0.2
+  weight: 0.226
   examine: "A pair of very nice gloves."
   equipment:
     attackBonus:
@@ -1125,28 +1125,6 @@
     prayerBonus: 0
 - ids:
     - 8842
-  weight: 0.453
-  examine: "Gloves as used by the order of the Void Knights."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 6
-      slash: 6
-      crush: 6
-      magic: 6
-      range: 4
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-    - 24182
   weight: 0.453
   examine: "Gloves as used by the order of the Void Knights."
   equipment:
@@ -1588,7 +1566,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11083
+    - 11079
   weight: 0.25
   examine: "Must be worn as you enter the game to receive the bonus for that game."
   equipment:
@@ -1632,7 +1610,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11079
+    - 11083
   weight: 0.25
   examine: "Must be worn as you enter the game to receive the bonus for that game."
   equipment:
@@ -1720,51 +1698,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11103
-  weight: 0.25
-  examine: "Makes using the Abyss just slightly safer."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-    - 11101
-  weight: 0.25
-  examine: "Makes using the Abyss just slightly safer."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-    - 11099
+    - 11095
   weight: 0.25
   examine: "Makes using the Abyss just slightly safer."
   equipment:
@@ -1808,7 +1742,51 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11095
+    - 11099
+  weight: 0.25
+  examine: "Makes using the Abyss just slightly safer."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+    - 11101
+  weight: 0.25
+  examine: "Makes using the Abyss just slightly safer."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+    - 11103
   weight: 0.25
   examine: "Makes using the Abyss just slightly safer."
   equipment:
@@ -1852,51 +1830,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11126
-  weight: 0.25
-  examine: "You will need to recharge the bracelet at the Legends Guild."
-  equipment:
-    attackBonus:
-      stab: 7
-      slash: 7
-      crush: 7
-      magic: 7
-      range: 3
-    defenceBonus:
-      stab: 5
-      slash: 5
-      crush: 5
-      magic: 5
-      range: 3
-    strengthBonus:
-      melee: 6
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-    - 11124
-  weight: 0.25
-  examine: "A handy way to get around."
-  equipment:
-    attackBonus:
-      stab: 7
-      slash: 7
-      crush: 7
-      magic: 7
-      range: 3
-    defenceBonus:
-      stab: 5
-      slash: 5
-      crush: 5
-      magic: 5
-      range: 3
-    strengthBonus:
-      melee: 6
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-    - 11122
+    - 11118
   weight: 0.25
   examine: "A handy way to get around."
   equipment:
@@ -1940,7 +1874,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11118
+    - 11122
   weight: 0.25
   examine: "A handy way to get around."
   equipment:
@@ -1962,7 +1896,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11974
+    - 11124
   weight: 0.25
   examine: "A handy way to get around."
   equipment:
@@ -1984,9 +1918,9 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11972
+    - 11126
   weight: 0.25
-  examine: "A handy way to get around."
+  examine: "You will need to recharge the bracelet at the Legends Guild."
   equipment:
     attackBonus:
       stab: 7
@@ -2139,169 +2073,52 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13587
-    - 13588
-  weight: 0.0
-  examine: "A sign of your grace and loyalty."
+    - 11972
+  weight: 0.25
+  examine: "A handy way to get around."
   equipment:
     attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
+      stab: 7
+      slash: 7
+      crush: 7
+      magic: 7
+      range: 3
     defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
+      stab: 5
+      slash: 5
+      crush: 5
+      magic: 5
+      range: 3
     strengthBonus:
-      melee: 0
+      melee: 6
       range: 0
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13599
-    - 13600
-  weight: 0.0
-  examine: "A sign of your grace and loyalty."
+    - 11974
+  weight: 0.25
+  examine: "A handy way to get around."
   equipment:
     attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
+      stab: 7
+      slash: 7
+      crush: 7
+      magic: 7
+      range: 3
     defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
+      stab: 5
+      slash: 5
+      crush: 5
+      magic: 5
+      range: 3
     strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-    - 13611
-    - 13612
-  weight: 0.0
-  examine: "A sign of your grace and loyalty."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-    - 13623
-    - 13624
-  weight: 0.0
-  examine: "A sign of your grace and loyalty."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-    - 13635
-    - 13636
-  weight: 0.0
-  examine: "A sign of your grace and loyalty."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-    - 13675
-    - 13676
-  weight: 0.0
-  examine: "A sign of your grace and unity."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-    - 21073
-    - 21075
-  weight: 0.0
-  examine: "A sign of your grace."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
+      melee: 6
       range: 0
       magic: 0
     prayerBonus: 0
 - ids:
     - 12490
-  weight: 0.0
+  weight: 1.0
   examine: "Ancient blessed dragonhide vambraces."
   equipment:
     attackBonus:
@@ -2586,9 +2403,147 @@
       magic: 0
     prayerBonus: 0
 - ids:
+    - 13587
+    - 13588
+  weight: 0.0
+  examine: "A sign of your grace and loyalty."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+    - 13599
+    - 13600
+  weight: 0.0
+  examine: "A sign of your grace and loyalty."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+    - 13611
+    - 13612
+  weight: 0.0
+  examine: "A sign of your grace and loyalty."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+    - 13623
+    - 13624
+  weight: 0.0
+  examine: "A sign of your grace and loyalty."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+    - 13635
+    - 13636
+  weight: 0.0
+  examine: "A sign of your grace and loyalty."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
     - 13665
   weight: 0.1
   examine: "Floofy."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+    - 13675
+    - 13676
+  weight: 0.0
+  examine: "A sign of your grace and unity."
   equipment:
     attackBonus:
       stab: 0
@@ -2741,7 +2696,7 @@
     prayerBonus: 0
 - ids:
     - 19997
-  weight: 0.0
+  weight: 0.5
   examine: "Holy handwear!"
   equipment:
     attackBonus:
@@ -2807,7 +2762,7 @@
     prayerBonus: 0
 - ids:
     - 20101
-  weight: 0.0
+  weight: 0.5
   examine: "These gloves will make your flesh transparent."
   equipment:
     attackBonus:
@@ -2850,9 +2805,54 @@
       magic: 0
     prayerBonus: 0
 - ids:
+    - 20475
+  weight: 0.453
+  examine: "Broken gloves as used by the order of the Void Knights."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 6
+      slash: 6
+      crush: 6
+      magic: 6
+      range: 4
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
     - 20712
-  weight: 0.45
+  weight: 0.453
   examine: "Possibly fireproof. Possibly."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+    - 21073
+    - 21075
+  weight: 0.0
+  examine: "A sign of your grace."
   equipment:
     attackBonus:
       stab: 0
@@ -2939,7 +2939,7 @@
     prayerBonus: 0
 - ids:
     - 21177
-  weight: 0.0
+  weight: 0.25
   examine: "Allows one slayer kill to count as two."
   equipment:
     attackBonus:
@@ -2983,7 +2983,7 @@
     prayerBonus: 0
 - ids:
     - 21183
-  weight: 0.0
+  weight: 0.25
   examine: "Occasionally prevents slayer kill count being decremented."
   equipment:
     attackBonus:
@@ -3093,9 +3093,9 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 21817
-  weight: 0.2
-  examine: "The bracelet is dull and powerless."
+    - 21816
+  weight: 0.25
+  examine: "The bracelet glows with ethereal power."
   equipment:
     attackBonus:
       stab: 0
@@ -3115,9 +3115,9 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 21816
-  weight: 0.2
-  examine: "The bracelet glows with ethereal power."
+    - 21817
+  weight: 0.25
+  examine: "The bracelet is dull and powerless."
   equipment:
     attackBonus:
       stab: 0
@@ -3160,7 +3160,7 @@
     prayerBonus: 0
 - ids:
     - 22981
-  weight: 0.0
+  weight: 0.226
   examine: "A pair of very very nice gloves."
   equipment:
     attackBonus:
@@ -3313,6 +3313,28 @@
       magic: 0
     prayerBonus: 0
 - ids:
+    - 24182
+  weight: 0.453
+  examine: "Gloves as used by the order of the Void Knights."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 6
+      slash: 6
+      crush: 6
+      magic: 6
+      range: 4
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
     - 24311
   weight: 0.1
   examine: "A spooky pair of gloves cut from a bedsheet!"
@@ -3360,7 +3382,7 @@
     - 24755
     - 24757
   weight: 0.0
-  examine: ""
+  examine: "A sign of your grace under fire."
   equipment:
     attackBonus:
       stab: 0

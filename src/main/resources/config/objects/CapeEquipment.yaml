@@ -1803,28 +1803,6 @@
       magic: 0
     prayerBonus: 2
 - ids:
-    - 24223
-  weight: 1.814
-  examine: "A cape of fire."
-  equipment:
-    attackBonus:
-      stab: 1
-      slash: 1
-      crush: 1
-      magic: 1
-      range: 1
-    defenceBonus:
-      stab: 11
-      slash: 11
-      crush: 11
-      magic: 11
-      range: 11
-    strengthBonus:
-      melee: 4
-      range: 0
-      magic: 0
-    prayerBonus: 2
-- ids:
     - 6959
   weight: 0.453
   examine: "It's a bit pink."
@@ -1850,6 +1828,50 @@
     - 7535
   weight: 10.0
   examine: "I'll need a helmet to make this work."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+    - 7686
+  weight: 0.0
+  examine: "A safe arrow for indoor ranging games."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+    - 7756
+  weight: 0.0
+  examine: "Try dipping it in paint and applying it."
   equipment:
     attackBonus:
       stab: 0
@@ -2927,28 +2949,6 @@
       magic: 0
     prayerBonus: 85
 - ids:
-    - 13068
-  weight: 0.0
-  examine: "The cape worn by only the most experienced adventurers."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 9
-      slash: 9
-      crush: 9
-      magic: 9
-      range: 9
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 85
-- ids:
     - 9948
   weight: 0.453
   examine: "The cape worn by master hunters."
@@ -3171,6 +3171,29 @@
       magic: 0
     prayerBonus: 0
 - ids:
+    - 10595
+    - 10596
+  weight: 2.0
+  examine: "A clockwork penguin suit."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
     - 11852
     - 11853
   weight: 0.0
@@ -3188,6 +3211,469 @@
       crush: 0
       magic: 0
       range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+    - 11901
+  weight: 8.155
+  examine: "Very decorative armour."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 4
+      slash: 4
+      crush: 4
+      magic: 4
+      range: 4
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+    - 12197
+  weight: 0.003
+  examine: "An Ancient cloak."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 1
+    defenceBonus:
+      stab: 3
+      slash: 3
+      crush: 3
+      magic: 3
+      range: 3
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 3
+- ids:
+    - 12261
+  weight: 1.0
+  examine: "An Armadyl cloak."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 1
+    defenceBonus:
+      stab: 3
+      slash: 3
+      crush: 3
+      magic: 3
+      range: 3
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 3
+- ids:
+    - 12273
+  weight: 1.0
+  examine: "A Bandos cloak."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 1
+    defenceBonus:
+      stab: 3
+      slash: 3
+      crush: 3
+      magic: 3
+      range: 3
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 3
+- ids:
+    - 12437
+  weight: 3.0
+  examine: "A beautiful cloak woven by ancient tailors."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 9
+      slash: 9
+      crush: 9
+      magic: 9
+      range: 9
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 5
+- ids:
+    - 12514
+  weight: 2.0
+  examine: "I'm the Backpack loaded up with things and knick knacks too."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+    - 13068
+  weight: 0.0
+  examine: "The cape worn by only the most experienced adventurers."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 9
+      slash: 9
+      crush: 9
+      magic: 9
+      range: 9
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 85
+- ids:
+    - 13069
+  weight: 0.4
+  examine: "The cape worn by only the most elite and experienced adventurers."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 9
+      slash: 9
+      crush: 9
+      magic: 9
+      range: 9
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 4
+- ids:
+    - 13121
+  weight: 1.0
+  examine: "A shadowy Ardougne cloak."
+  equipment:
+    attackBonus:
+      stab: 2
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 2
+    defenceBonus:
+      stab: 2
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 2
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 2
+- ids:
+    - 13122
+  weight: 0.453
+  examine: "A shadowy Ardougne cloak."
+  equipment:
+    attackBonus:
+      stab: 4
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 4
+    defenceBonus:
+      stab: 4
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 4
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 4
+- ids:
+    - 13123
+  weight: 0.0
+  examine: "A shadowy Ardougne cloak."
+  equipment:
+    attackBonus:
+      stab: 5
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 5
+    defenceBonus:
+      stab: 5
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 5
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 5
+- ids:
+    - 13124
+  weight: 0.0
+  examine: "A shadowy Ardougne cloak."
+  equipment:
+    attackBonus:
+      stab: 6
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 6
+    defenceBonus:
+      stab: 6
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 6
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 6
+- ids:
+    - 13221
+  weight: 0.4
+  examine: "The cape worn by music aficionados."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 9
+      slash: 9
+      crush: 9
+      magic: 9
+      range: 9
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+    - 13222
+  weight: 0.4
+  examine: "The cape worn by music aficionados."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 9
+      slash: 9
+      crush: 9
+      magic: 9
+      range: 9
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 4
+- ids:
+    - 13280
+    - 13342
+  weight: 0.0
+  examine: "The cape worn by only the most experienced players."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 9
+      slash: 9
+      crush: 9
+      magic: 9
+      range: 9
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 4
+- ids:
+    - 13319
+  weight: 0.0
+  examine: "Dark and sinister, just like a deadman."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 1
+      crush: 1
+      magic: 2
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+    - 13329
+  weight: 0.453
+  examine: "The cape worn by only the most experienced players."
+  equipment:
+    attackBonus:
+      stab: 1
+      slash: 1
+      crush: 1
+      magic: 1
+      range: 1
+    defenceBonus:
+      stab: 11
+      slash: 11
+      crush: 11
+      magic: 11
+      range: 11
+    strengthBonus:
+      melee: 4
+      range: 0
+      magic: 0
+    prayerBonus: 2
+- ids:
+    - 13331
+  weight: 0.453
+  examine: "The cape worn by only the most experienced players."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 10
+    defenceBonus:
+      stab: 1
+      slash: 1
+      crush: 2
+      magic: 0
+      range: 10
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+    - 13333
+  weight: 0.453
+  examine: "The cape worn by only the most experienced players."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 10
+    defenceBonus:
+      stab: 1
+      slash: 1
+      crush: 2
+      magic: 0
+      range: 10
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+    - 13335
+  weight: 0.453
+  examine: "The cape worn by only the most experienced players."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 10
+    defenceBonus:
+      stab: 1
+      slash: 1
+      crush: 2
+      magic: 0
+      range: 10
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+    - 13337
+  weight: 0.453
+  examine: "The cape worn by only the most experienced players."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 4
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 1
+      crush: 0
+      magic: 0
+      range: 4
     strengthBonus:
       melee: 0
       range: 0
@@ -3332,10 +3818,9 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 21064
-    - 21066
-  weight: 0.0
-  examine: "A sign of your grace."
+    - 13679
+  weight: 0.453
+  examine: "The cape worn by master cabbage pickers."
   equipment:
     attackBonus:
       stab: 0
@@ -3345,163 +3830,9 @@
       range: 0
     defenceBonus:
       stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-    - 11901
-  weight: 8.155
-  examine: "Very decorative armour."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 4
-      slash: 4
-      crush: 4
-      magic: 4
-      range: 4
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-    - 24168
-  weight: 8.155
-  examine: "Very decorative armour."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 4
-      slash: 4
-      crush: 4
-      magic: 4
-      range: 4
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-    - 12197
-  weight: 1.0
-  examine: "An Ancient cloak."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 1
-    defenceBonus:
-      stab: 3
-      slash: 3
-      crush: 3
-      magic: 3
-      range: 3
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 3
-- ids:
-    - 12261
-  weight: 1.0
-  examine: "An Armadyl cloak."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 1
-    defenceBonus:
-      stab: 3
-      slash: 3
-      crush: 3
-      magic: 3
-      range: 3
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 3
-- ids:
-    - 12273
-  weight: 1.0
-  examine: "A Bandos cloak."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 1
-    defenceBonus:
-      stab: 3
-      slash: 3
-      crush: 3
-      magic: 3
-      range: 3
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 3
-- ids:
-    - 12437
-  weight: 3.0
-  examine: "A beautiful cloak woven by ancient tailors."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 9
-      slash: 9
-      crush: 9
-      magic: 9
-      range: 9
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 5
-- ids:
-    - 12514
-  weight: 2.0
-  examine: "I'm the Backpack loaded up with things and knick knacks too."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
+      slash: 1
+      crush: 1
+      magic: 2
       range: 0
     strengthBonus:
       melee: 0
@@ -3530,381 +3861,6 @@
       range: 0
       magic: 0
     prayerBonus: 4
-- ids:
-    - 13069
-  weight: 0.4
-  examine: "The cape worn by only the most elite and experienced adventurers."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 9
-      slash: 9
-      crush: 9
-      magic: 9
-      range: 9
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 4
-- ids:
-    - 13121
-  weight: 1.0
-  examine: "A shadowy Ardougne cloak."
-  equipment:
-    attackBonus:
-      stab: 2
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 2
-    defenceBonus:
-      stab: 2
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 2
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 2
-- ids:
-    - 13122
-  weight: 1.0
-  examine: "A shadowy Ardougne cloak."
-  equipment:
-    attackBonus:
-      stab: 4
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 4
-    defenceBonus:
-      stab: 4
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 4
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 4
-- ids:
-    - 13123
-  weight: 0.0
-  examine: "A shadowy Ardougne cloak."
-  equipment:
-    attackBonus:
-      stab: 5
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 5
-    defenceBonus:
-      stab: 5
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 5
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 5
-- ids:
-    - 13124
-  weight: 0.0
-  examine: "A shadowy Ardougne cloak."
-  equipment:
-    attackBonus:
-      stab: 6
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 6
-    defenceBonus:
-      stab: 6
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 6
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 6
-- ids:
-    - 13221
-  weight: 0.4
-  examine: "The cape worn by music aficionados."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 9
-      slash: 9
-      crush: 9
-      magic: 9
-      range: 9
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-    - 13222
-  weight: 0.4
-  examine: "The cape worn by music aficionados."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 9
-      slash: 9
-      crush: 9
-      magic: 9
-      range: 9
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 4
-- ids:
-    - 13280
-    - 13342
-  weight: 0.0
-  examine: "The cape worn by only the most experienced players."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 9
-      slash: 9
-      crush: 9
-      magic: 9
-      range: 9
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 4
-- ids:
-    - 24191
-  weight: 0.0
-  examine: "Dark and sinister, just like a deadman."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-    - 13319
-  weight: 0.0
-  examine: "Dark and sinister, just like a deadman."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 1
-      crush: 1
-      magic: 2
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-    - 13329
-  weight: 0.453
-  examine: "The cape worn by only the most experienced players."
-  equipment:
-    attackBonus:
-      stab: 1
-      slash: 1
-      crush: 1
-      magic: 1
-      range: 1
-    defenceBonus:
-      stab: 11
-      slash: 11
-      crush: 11
-      magic: 11
-      range: 11
-    strengthBonus:
-      melee: 4
-      range: 0
-      magic: 0
-    prayerBonus: 2
-- ids:
-    - 24134
-  weight: 0.453
-  examine: "The cape worn by only the most experienced players."
-  equipment:
-    attackBonus:
-      stab: 1
-      slash: 1
-      crush: 1
-      magic: 1
-      range: 1
-    defenceBonus:
-      stab: 11
-      slash: 11
-      crush: 11
-      magic: 11
-      range: 11
-    strengthBonus:
-      melee: 4
-      range: 0
-      magic: 0
-    prayerBonus: 2
-- ids:
-    - 13331
-  weight: 0.453
-  examine: "The cape worn by only the most experienced players."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 10
-    defenceBonus:
-      stab: 1
-      slash: 1
-      crush: 2
-      magic: 0
-      range: 10
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-    - 13333
-  weight: 0.453
-  examine: "The cape worn by only the most experienced players."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 10
-    defenceBonus:
-      stab: 1
-      slash: 1
-      crush: 2
-      magic: 0
-      range: 10
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-    - 13335
-  weight: 0.453
-  examine: "The cape worn by only the most experienced players."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 10
-    defenceBonus:
-      stab: 1
-      slash: 1
-      crush: 2
-      magic: 0
-      range: 10
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-    - 13337
-  weight: 0.453
-  examine: "The cape worn by only the most experienced players."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 4
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 1
-      crush: 0
-      magic: 0
-      range: 4
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-    - 13679
-  weight: 0.4
-  examine: "The cape worn by master cabbage pickers."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 1
-      crush: 1
-      magic: 2
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
 - ids:
     - 19556
   weight: 0.01
@@ -4038,6 +3994,72 @@
       magic: 0
     prayerBonus: 0
 - ids:
+    - 20445
+  weight: 1.814
+  examine: "A broken cape of fire."
+  equipment:
+    attackBonus:
+      stab: 1
+      slash: 1
+      crush: 1
+      magic: 1
+      range: 1
+    defenceBonus:
+      stab: 11
+      slash: 11
+      crush: 11
+      magic: 11
+      range: 11
+    strengthBonus:
+      melee: 4
+      range: 0
+      magic: 0
+    prayerBonus: 2
+- ids:
+    - 20447
+  weight: 0.453
+  examine: "This cape is broken."
+  equipment:
+    attackBonus:
+      stab: 1
+      slash: 1
+      crush: 1
+      magic: 1
+      range: 1
+    defenceBonus:
+      stab: 11
+      slash: 11
+      crush: 11
+      magic: 11
+      range: 11
+    strengthBonus:
+      melee: 4
+      range: 0
+      magic: 0
+    prayerBonus: 2
+- ids:
+    - 20505
+  weight: 8.155
+  examine: "Very decorative armour, but it's broken."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 4
+      slash: 4
+      crush: 4
+      magic: 4
+      range: 4
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
     - 20760
   weight: 0.453
   examine: "The cape worn by only the most experienced players."
@@ -4082,6 +4104,29 @@
       magic: 0
     prayerBonus: 0
 - ids:
+    - 21064
+    - 21066
+  weight: 0.0
+  examine: "A sign of your grace."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
     - 21285
   weight: 0.453
   examine: "The cape worn by only the most experienced players."
@@ -4104,9 +4149,31 @@
       magic: 0
     prayerBonus: 2
 - ids:
-    - 24133
+    - 21287
+  weight: 1.814
+  examine: "A broken Infernal cape."
+  equipment:
+    attackBonus:
+      stab: 4
+      slash: 4
+      crush: 4
+      magic: 1
+      range: 1
+    defenceBonus:
+      stab: 12
+      slash: 12
+      crush: 12
+      magic: 12
+      range: 12
+    strengthBonus:
+      melee: 8
+      range: 0
+      magic: 0
+    prayerBonus: 2
+- ids:
+    - 21289
   weight: 0.453
-  examine: "The cape worn by only the most experienced players."
+  examine: "This cape is broken."
   equipment:
     attackBonus:
       stab: 4
@@ -4127,28 +4194,6 @@
     prayerBonus: 2
 - ids:
     - 21295
-  weight: 1.814
-  examine: "Whose idea was it to have a cape made of lava anyway?"
-  equipment:
-    attackBonus:
-      stab: 4
-      slash: 4
-      crush: 4
-      magic: 1
-      range: 1
-    defenceBonus:
-      stab: 12
-      slash: 12
-      crush: 12
-      magic: 12
-      range: 12
-    strengthBonus:
-      melee: 8
-      range: 0
-      magic: 0
-    prayerBonus: 2
-- ids:
-    - 24224
   weight: 1.814
   examine: "Whose idea was it to have a cape made of lava anyway?"
   equipment:
@@ -4236,51 +4281,7 @@
       magic: 2
     prayerBonus: 0
 - ids:
-    - 24232
-  weight: 0.453
-  examine: "The cape worn by only the most experienced players."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 15
-    defenceBonus:
-      stab: 3
-      slash: 3
-      crush: 3
-      magic: 0
-      range: 15
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 2
-    prayerBonus: 0
-- ids:
     - 21780
-  weight: 0.453
-  examine: "The cape worn by only the most experienced players."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 15
-    defenceBonus:
-      stab: 3
-      slash: 3
-      crush: 3
-      magic: 0
-      range: 15
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 2
-    prayerBonus: 0
-- ids:
-    - 24233
   weight: 0.453
   examine: "The cape worn by only the most experienced players."
   equipment:
@@ -4324,51 +4325,7 @@
       magic: 2
     prayerBonus: 0
 - ids:
-    - 24234
-  weight: 0.453
-  examine: "The cape worn by only the most experienced players."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 15
-    defenceBonus:
-      stab: 3
-      slash: 3
-      crush: 3
-      magic: 0
-      range: 15
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 2
-    prayerBonus: 0
-- ids:
     - 21791
-  weight: 0.453
-  examine: "A cape from the almighty god Saradomin, imbued with great power."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 15
-    defenceBonus:
-      stab: 3
-      slash: 3
-      crush: 3
-      magic: 0
-      range: 15
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 2
-    prayerBonus: 0
-- ids:
-    - 24248
   weight: 0.453
   examine: "A cape from the almighty god Saradomin, imbued with great power."
   equipment:
@@ -4412,51 +4369,7 @@
       magic: 2
     prayerBonus: 0
 - ids:
-    - 24249
-  weight: 0.453
-  examine: "A cape from the almighty god Guthix, imbued with great power."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 15
-    defenceBonus:
-      stab: 3
-      slash: 3
-      crush: 3
-      magic: 0
-      range: 15
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 2
-    prayerBonus: 0
-- ids:
     - 21795
-  weight: 0.453
-  examine: "A cape from the almighty god Zamorak, imbued with great power."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 15
-    defenceBonus:
-      stab: 3
-      slash: 3
-      crush: 3
-      magic: 0
-      range: 15
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 2
-    prayerBonus: 0
-- ids:
-    - 24250
   weight: 0.453
   examine: "A cape from the almighty god Zamorak, imbued with great power."
   equipment:
@@ -4522,9 +4435,54 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 24135
+    - 21914
+  weight: 5.896
+  examine: "A broken Ava's Assembler."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 8
+      range: 0
+    defenceBonus:
+      stab: 1
+      slash: 1
+      crush: 1
+      magic: 2
+      range: 8
+    strengthBonus:
+      melee: 0
+      range: 2
+      magic: 0
+    prayerBonus: 0
+- ids:
+    - 21916
   weight: 0.453
-  examine: "The cape worn by only the most experienced players."
+  examine: "A broken Assembler Max Cape."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 8
+      range: 0
+    defenceBonus:
+      stab: 1
+      slash: 1
+      crush: 1
+      magic: 2
+      range: 8
+    strengthBonus:
+      melee: 0
+      range: 2
+      magic: 0
+    prayerBonus: 0
+- ids:
+    - 22109
+  weight: 5.896
+  examine: "A superior bagged chicken empowered by Vorkath, ready to serve you, magnet\
+    \ in claw."
   equipment:
     attackBonus:
       stab: 0
@@ -4565,52 +4523,6 @@
       range: 0
       magic: 0
     prayerBonus: 1
-- ids:
-    - 22109
-  weight: 5.896
-  examine: "A superior bagged chicken empowered by Vorkath, ready to serve you, magnet\
-    \ in claw."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 8
-      range: 0
-    defenceBonus:
-      stab: 1
-      slash: 1
-      crush: 1
-      magic: 2
-      range: 8
-    strengthBonus:
-      melee: 0
-      range: 2
-      magic: 0
-    prayerBonus: 0
-- ids:
-    - 24222
-  weight: 5.896
-  examine: "A superior bagged chicken empowered by Vorkath, ready to serve you, magnet\
-    \ in claw."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 8
-      range: 0
-    defenceBonus:
-      stab: 1
-      slash: 1
-      crush: 1
-      magic: 2
-      range: 8
-    strengthBonus:
-      melee: 0
-      range: 2
-      magic: 0
-    prayerBonus: 0
 - ids:
     - 22388
   weight: 0.0
@@ -5052,6 +4964,116 @@
       magic: 0
     prayerBonus: 0
 - ids:
+    - 24133
+  weight: 0.453
+  examine: "The cape worn by only the most experienced players."
+  equipment:
+    attackBonus:
+      stab: 4
+      slash: 4
+      crush: 4
+      magic: 1
+      range: 1
+    defenceBonus:
+      stab: 12
+      slash: 12
+      crush: 12
+      magic: 12
+      range: 12
+    strengthBonus:
+      melee: 8
+      range: 0
+      magic: 0
+    prayerBonus: 2
+- ids:
+    - 24134
+  weight: 0.453
+  examine: "The cape worn by only the most experienced players."
+  equipment:
+    attackBonus:
+      stab: 1
+      slash: 1
+      crush: 1
+      magic: 1
+      range: 1
+    defenceBonus:
+      stab: 11
+      slash: 11
+      crush: 11
+      magic: 11
+      range: 11
+    strengthBonus:
+      melee: 4
+      range: 0
+      magic: 0
+    prayerBonus: 2
+- ids:
+    - 24135
+  weight: 0.453
+  examine: "The cape worn by only the most experienced players."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 8
+      range: 0
+    defenceBonus:
+      stab: 1
+      slash: 1
+      crush: 1
+      magic: 2
+      range: 8
+    strengthBonus:
+      melee: 0
+      range: 2
+      magic: 0
+    prayerBonus: 0
+- ids:
+    - 24168
+  weight: 8.155
+  examine: "Very decorative armour."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 4
+      slash: 4
+      crush: 4
+      magic: 4
+      range: 4
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+    - 24191
+  weight: 0.0
+  examine: "Dark and sinister, just like a deadman."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
     - 24207
   weight: 0.0
   examine: "Shows your prowess in Last Man Standing."
@@ -5160,6 +5182,337 @@
       melee: 0
       range: 0
       magic: 0
+    prayerBonus: 0
+- ids:
+    - 24222
+  weight: 5.896
+  examine: "A superior bagged chicken empowered by Vorkath, ready to serve you, magnet\
+    \ in claw."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 8
+      range: 0
+    defenceBonus:
+      stab: 1
+      slash: 1
+      crush: 1
+      magic: 2
+      range: 8
+    strengthBonus:
+      melee: 0
+      range: 2
+      magic: 0
+    prayerBonus: 0
+- ids:
+    - 24223
+  weight: 1.814
+  examine: "A cape of fire."
+  equipment:
+    attackBonus:
+      stab: 1
+      slash: 1
+      crush: 1
+      magic: 1
+      range: 1
+    defenceBonus:
+      stab: 11
+      slash: 11
+      crush: 11
+      magic: 11
+      range: 11
+    strengthBonus:
+      melee: 4
+      range: 0
+      magic: 0
+    prayerBonus: 2
+- ids:
+    - 24224
+  weight: 1.814
+  examine: "Whose idea was it to have a cape made of lava anyway?"
+  equipment:
+    attackBonus:
+      stab: 4
+      slash: 4
+      crush: 4
+      magic: 1
+      range: 1
+    defenceBonus:
+      stab: 12
+      slash: 12
+      crush: 12
+      magic: 12
+      range: 12
+    strengthBonus:
+      melee: 8
+      range: 0
+      magic: 0
+    prayerBonus: 2
+- ids:
+    - 24232
+  weight: 0.453
+  examine: "The cape worn by only the most experienced players."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 15
+    defenceBonus:
+      stab: 3
+      slash: 3
+      crush: 3
+      magic: 0
+      range: 15
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 2
+    prayerBonus: 0
+- ids:
+    - 24233
+  weight: 0.453
+  examine: "The cape worn by only the most experienced players."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 15
+    defenceBonus:
+      stab: 3
+      slash: 3
+      crush: 3
+      magic: 0
+      range: 15
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 2
+    prayerBonus: 0
+- ids:
+    - 24234
+  weight: 0.453
+  examine: "The cape worn by only the most experienced players."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 15
+    defenceBonus:
+      stab: 3
+      slash: 3
+      crush: 3
+      magic: 0
+      range: 15
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 2
+    prayerBonus: 0
+- ids:
+    - 24236
+  weight: 0.453
+  examine: "A broken cape from the almighty god Saradomin, imbued with great power."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 15
+    defenceBonus:
+      stab: 3
+      slash: 3
+      crush: 3
+      magic: 0
+      range: 15
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 2
+    prayerBonus: 0
+- ids:
+    - 24238
+  weight: 0.453
+  examine: "The cape worn by only the most experienced players. This one is broken."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 15
+    defenceBonus:
+      stab: 3
+      slash: 3
+      crush: 3
+      magic: 0
+      range: 15
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 2
+    prayerBonus: 0
+- ids:
+    - 24240
+  weight: 0.453
+  examine: "A broken cape from the almighty god Guthix, imbued with great power."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 15
+    defenceBonus:
+      stab: 3
+      slash: 3
+      crush: 3
+      magic: 0
+      range: 15
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 2
+    prayerBonus: 0
+- ids:
+    - 24242
+  weight: 0.453
+  examine: "The cape worn by only the most experienced players. This one is broken."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 15
+    defenceBonus:
+      stab: 3
+      slash: 3
+      crush: 3
+      magic: 0
+      range: 15
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 2
+    prayerBonus: 0
+- ids:
+    - 24244
+  weight: 0.453
+  examine: "A broken cape from the almighty god Zamorak, imbued with great power."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 15
+    defenceBonus:
+      stab: 3
+      slash: 3
+      crush: 3
+      magic: 0
+      range: 15
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 2
+    prayerBonus: 0
+- ids:
+    - 24246
+  weight: 0.453
+  examine: "The cape worn by only the most experienced players. This one is broken."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 15
+    defenceBonus:
+      stab: 3
+      slash: 3
+      crush: 3
+      magic: 0
+      range: 15
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 2
+    prayerBonus: 0
+- ids:
+    - 24248
+  weight: 0.453
+  examine: "A cape from the almighty god Saradomin, imbued with great power."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 15
+    defenceBonus:
+      stab: 3
+      slash: 3
+      crush: 3
+      magic: 0
+      range: 15
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 2
+    prayerBonus: 0
+- ids:
+    - 24249
+  weight: 0.453
+  examine: "A cape from the almighty god Guthix, imbued with great power."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 15
+    defenceBonus:
+      stab: 3
+      slash: 3
+      crush: 3
+      magic: 0
+      range: 15
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 2
+    prayerBonus: 0
+- ids:
+    - 24250
+  weight: 0.453
+  examine: "A cape from the almighty god Zamorak, imbued with great power."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 15
+    defenceBonus:
+      stab: 3
+      slash: 3
+      crush: 3
+      magic: 0
+      range: 15
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 2
     prayerBonus: 0
 - ids:
     - 24520
