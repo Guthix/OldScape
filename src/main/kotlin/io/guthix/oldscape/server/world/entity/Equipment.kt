@@ -19,6 +19,7 @@ package io.guthix.oldscape.server.world.entity
 import io.guthix.oldscape.server.api.ObjectBlueprints
 import io.guthix.oldscape.server.blueprints.CombatBonus
 import io.guthix.oldscape.server.blueprints.StyleBonus
+import io.guthix.oldscape.server.blueprints.WeaponType
 import io.guthix.oldscape.server.blueprints.equipment.*
 
 abstract class Equipment(id: Int, quantity: Int) : Obj(id, quantity) {
@@ -56,6 +57,10 @@ class AmmunitionEquipment(id: Int, quantity: Int) : Equipment(id, quantity) {
 
 open class WeaponEquipment(id: Int, quantity: Int) : Equipment(id, quantity) {
     override val blueprint: WeaponBlueprint = ObjectBlueprints[id]
+
+    val attackSpeed: Int get() = blueprint.attackSpeed
+
+    val type: WeaponType get() = blueprint.type
 }
 
 class TwoHandEquipment(id: Int, quantity: Int) : WeaponEquipment(id, quantity) {
@@ -72,7 +77,7 @@ class BodyEquipment(id: Int, quantity: Int) : Equipment(id, quantity) {
     val isFullBody: Boolean get() = blueprint.isFullBody
 }
 
-class LegsEquipment(id: Int, quantity: Int) : Equipment(id, quantity) {
+class LegEquipment(id: Int, quantity: Int) : Equipment(id, quantity) {
     override val blueprint: LegsBlueprint = ObjectBlueprints[id]
 }
 

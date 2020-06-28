@@ -8654,7 +8654,7 @@
   weight: 1.814
   examine: "A fragile magical Sceptre."
   attackSpeed: 5
-  type: "POLE_STAFF"
+  type: "POLESTAFF"
   equipment:
     attackBonus:
       stab: 0
@@ -11126,7 +11126,7 @@
   weight: 1.0
   examine: "An onyx topped cane."
   attackSpeed: 5
-  type: "POLE_STAFF"
+  type: "POLESTAFF"
   equipment:
     attackBonus:
       stab: 42
@@ -11294,7 +11294,7 @@
   weight: 4.0
   examine: "I dub thee..."
   attackSpeed: 4
-  type: "POLE_STAFF"
+  type: "POLESTAFF"
   equipment:
     attackBonus:
       stab: 0
@@ -11703,7 +11703,7 @@
   weight: 2.0
   examine: "A mysterious crystal banner."
   attackSpeed: 5
-  type: "POLE_STAFF"
+  type: "POLESTAFF"
   equipment:
     attackBonus:
       stab: 12
@@ -11727,7 +11727,7 @@
   weight: 2.0
   examine: "A mysterious crystal banner."
   attackSpeed: 5
-  type: "POLE_STAFF"
+  type: "POLESTAFF"
   equipment:
     attackBonus:
       stab: 15
@@ -11751,7 +11751,7 @@
   weight: 2.267
   examine: "A mysterious crystal banner."
   attackSpeed: 5
-  type: "POLE_STAFF"
+  type: "POLESTAFF"
   equipment:
     attackBonus:
       stab: 17
@@ -11775,7 +11775,7 @@
   weight: 2.0
   examine: "A mysterious crystal banner."
   attackSpeed: 5
-  type: "POLE_STAFF"
+  type: "POLESTAFF"
   equipment:
     attackBonus:
       stab: 24
@@ -12355,7 +12355,7 @@
   weight: 2.0
   examine: "An ancient banner bearing the mark of the Arceuus Elders."
   attackSpeed: 5
-  type: "POLE_STAFF"
+  type: "POLESTAFF"
   equipment:
     attackBonus:
       stab: 12
@@ -12379,7 +12379,7 @@
   weight: 2.0
   examine: "A banner made of redwood bearing the Hosidius sigil."
   attackSpeed: 5
-  type: "POLE_STAFF"
+  type: "POLESTAFF"
   equipment:
     attackBonus:
       stab: 12
@@ -12403,7 +12403,7 @@
   weight: 2.0
   examine: "A lovakite banner bearing the Lovakengj sigil."
   attackSpeed: 5
-  type: "POLE_STAFF"
+  type: "POLESTAFF"
   equipment:
     attackBonus:
       stab: 12
@@ -12427,7 +12427,7 @@
   weight: 2.267
   examine: "A stained glass banner displaying the Piscarilius sigil."
   attackSpeed: 5
-  type: "POLE_STAFF"
+  type: "POLESTAFF"
   equipment:
     attackBonus:
       stab: 12
@@ -12451,7 +12451,7 @@
   weight: 2.0
   examine: "A war torn banner bearing the Shayzien sigil."
   attackSpeed: 5
-  type: "POLE_STAFF"
+  type: "POLESTAFF"
   equipment:
     attackBonus:
       stab: 12
@@ -13005,7 +13005,7 @@
   weight: 1.814
   examine: "An imbued magical Sceptre."
   attackSpeed: 5
-  type: "POLE_STAFF"
+  type: "POLESTAFF"
   equipment:
     attackBonus:
       stab: 0

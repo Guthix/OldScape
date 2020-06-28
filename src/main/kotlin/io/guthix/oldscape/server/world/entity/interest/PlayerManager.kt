@@ -68,7 +68,7 @@ class PlayerManager(val index: Int) : InterestManager {
         weapon: WeaponEquipment?,
         body: BodyEquipment?,
         shield: ShieldEquipment?,
-        legs: LegsEquipment?,
+        legs: LegEquipment?,
         hands: HandEquipment?,
         feet: FeetEquipment?,
         ring: RingEquipment?
@@ -114,7 +114,7 @@ class PlayerManager(val index: Int) : InterestManager {
         var shield: ShieldEquipment? by Delegates.observable(shield) { _, old, new -> updateBonuses(old, new) }
             internal set
 
-        var legs: LegsEquipment? by Delegates.observable(legs) { _, old, new -> updateBonuses(old, new) }
+        var legs: LegEquipment? by Delegates.observable(legs) { _, old, new -> updateBonuses(old, new) }
             internal set
 
         var hands: HandEquipment? by Delegates.observable(hands) { _, old, new -> updateBonuses(old, new) }

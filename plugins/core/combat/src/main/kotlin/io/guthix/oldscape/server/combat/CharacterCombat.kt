@@ -16,7 +16,7 @@
  */
 package io.guthix.oldscape.server.combat
 
-import io.guthix.oldscape.server.blueprints.AttackStyle
+import io.guthix.oldscape.server.blueprints.AttackType
 import io.guthix.oldscape.server.blueprints.CombatSequences
 import io.guthix.oldscape.server.blueprints.StyleBonus
 import io.guthix.oldscape.server.stat.StatMultiplier
@@ -47,11 +47,7 @@ val Character.damageMultiplier: StatMultiplier by CharacterProperty {
     )
 }
 
-var Npc.attackDelay: Int by CharacterProperty { blueprint.attackSpeed }
-
 val Npc.combatSequences: CombatSequences? by CharacterProperty { blueprint.combatSequences }
-
-val Player.attackDelay: Int by CharacterProperty { 5 } // TODO
 
 val Player.combatSequences: CombatSequences by CharacterProperty {
     CombatSequences(attack = 422, defence = 424, death = 836)
@@ -63,15 +59,15 @@ val Character.attackStance: MeleeCombatStance by CharacterProperty {
     MeleeCombatStance.ACCURATE
 }
 
-val Character.attackStyle: AttackStyle by CharacterProperty {
-    AttackStyle.RANGED
+val Character.attackType: AttackType by CharacterProperty {
+    AttackType.RANGED
 }
 
-internal fun StyleBonus.findBonus(attackStyle: AttackStyle): Int = when (attackStyle) {
-    AttackStyle.STAB -> stab
-    AttackStyle.SLASH -> slash
-    AttackStyle.CRUSH -> crush
-    AttackStyle.RANGED -> range
-    AttackStyle.MAGIC -> magic
-    AttackStyle.NONE -> throw IllegalCallerException("Can't attack without selecting attack style.")
+internal fun StyleBonus.findBonus(attackType: AttackType): Int = when (attackType) {
+    AttackType.STAB -> stab
+    AttackType.SLASH -> slash
+    AttackType.CRUSH -> crush
+    AttackType.RANGED -> range
+    AttackType.MAGIC -> magic
+    AttackType.NONE -> throw IllegalCallerException("Can't attack without selecting attack style.")
 }

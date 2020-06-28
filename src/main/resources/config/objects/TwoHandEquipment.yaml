@@ -2888,7 +2888,7 @@
   weight: 2.267
   examine: "A Guthix Mjolnir."
   attackSpeed: 6
-  type: "POLE_STAFF"
+  type: "POLESTAFF"
   equipment:
     attackBonus:
       stab: 0
@@ -2912,7 +2912,7 @@
   weight: 2.267
   examine: "A Saradomin Mjolnir."
   attackSpeed: 6
-  type: "POLE_STAFF"
+  type: "POLESTAFF"
   equipment:
     attackBonus:
       stab: 0
@@ -2936,7 +2936,7 @@
   weight: 2.267
   examine: "A Zamorak Mjolnir."
   attackSpeed: 6
-  type: "POLE_STAFF"
+  type: "POLESTAFF"
   equipment:
     attackBonus:
       stab: 0
@@ -3105,7 +3105,7 @@
   weight: 2.0
   examine: "This sceptre is fully charged."
   attackSpeed: 4
-  type: "POLE_STAFF"
+  type: "POLESTAFF"
   equipment:
     attackBonus:
       stab: 7
@@ -3129,7 +3129,7 @@
   weight: 2.0
   examine: "This sceptre has two remaining charges."
   attackSpeed: 4
-  type: "POLE_STAFF"
+  type: "POLESTAFF"
   equipment:
     attackBonus:
       stab: 7
@@ -3153,7 +3153,7 @@
   weight: 2.0
   examine: "This sceptre has one remaining charge."
   attackSpeed: 4
-  type: "POLE_STAFF"
+  type: "POLESTAFF"
   equipment:
     attackBonus:
       stab: 7
@@ -3177,7 +3177,7 @@
   weight: 2.0
   examine: "This sceptre has no remaining charges."
   attackSpeed: 4
-  type: "POLE_STAFF"
+  type: "POLESTAFF"
   equipment:
     attackBonus:
       stab: 7
@@ -4211,7 +4211,7 @@
   weight: 2.0
   examine: "This sceptre is fully charged."
   attackSpeed: 4
-  type: "POLE_STAFF"
+  type: "POLESTAFF"
   equipment:
     attackBonus:
       stab: 7
@@ -4235,7 +4235,7 @@
   weight: 2.0
   examine: "This sceptre is fully charged."
   attackSpeed: 4
-  type: "POLE_STAFF"
+  type: "POLESTAFF"
   equipment:
     attackBonus:
       stab: 7
@@ -4259,7 +4259,7 @@
   weight: 2.0
   examine: "This sceptre is fully charged."
   attackSpeed: 4
-  type: "POLE_STAFF"
+  type: "POLESTAFF"
   equipment:
     attackBonus:
       stab: 7
@@ -4283,7 +4283,7 @@
   weight: 2.0
   examine: "This sceptre is fully charged."
   attackSpeed: 4
-  type: "POLE_STAFF"
+  type: "POLESTAFF"
   equipment:
     attackBonus:
       stab: 7
@@ -4307,7 +4307,7 @@
   weight: 2.0
   examine: "This sceptre is fully charged."
   attackSpeed: 4
-  type: "POLE_STAFF"
+  type: "POLESTAFF"
   equipment:
     attackBonus:
       stab: 7

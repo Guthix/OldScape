@@ -16,9 +16,9 @@
  */
 package io.guthix.oldscape.server.combat.dmg
 
-import io.guthix.oldscape.server.blueprints.AttackStyle
+import io.guthix.oldscape.server.blueprints.AttackType
 import io.guthix.oldscape.server.combat.attackStance
-import io.guthix.oldscape.server.combat.attackStyle
+import io.guthix.oldscape.server.combat.attackType
 import io.guthix.oldscape.server.combat.damageMultiplier
 import io.guthix.oldscape.server.combat.findBonus
 import io.guthix.oldscape.server.prayer.prayerMultiplier
@@ -51,7 +51,7 @@ private fun Npc.effectiveDefence(): Double =
     ((blueprint.stats?.defence ?: 0) + 8) * damageMultiplier.defence
 
 private fun Player.maxAttackRol(): Double =
-    effectiveAttack() * (equipment.attackBonus.findBonus(attackStyle) + 64)
+    effectiveAttack() * (equipment.attackBonus.findBonus(attackType) + 64)
 
 private fun Npc.maxAttackRol(): Double =
     effectiveAttack() * ((blueprint.attackStats?.typeBonus?.melee ?: 0) + 64)
@@ -66,20 +66,20 @@ private fun Player.maxMagicRol(): Double = effectiveMagic() * (equipment.attackB
 private fun Npc.maxMagicRol(): Double =
     effectiveMagic() * ((blueprint.attackStats?.typeBonus?.magic ?: 0) + 64)
 
-private fun Player.maxDefenceRol(attackStyle: AttackStyle): Double =
-    effectiveDefence() * (equipment.defenceBonus.findBonus(attackStyle) + 64)
+private fun Player.maxDefenceRol(attackType: AttackType): Double =
+    effectiveDefence() * (equipment.defenceBonus.findBonus(attackType) + 64)
 
-private fun Npc.maxDefenceRol(attackStyle: AttackStyle): Double =
-    effectiveDefence() * ((blueprint.defensiveStats?.findBonus(attackStyle) ?: 0) + 64)
+private fun Npc.maxDefenceRol(attackType: AttackType): Double =
+    effectiveDefence() * ((blueprint.defensiveStats?.findBonus(attackType) ?: 0) + 64)
 
 private fun calcRoll(attackRoll: Double, defenceRoll: Double) =
     if (attackRoll > defenceRoll) 1 - (defenceRoll + 2) / (2 * (attackRoll + 1))
     else attackRoll / (2 * (defenceRoll + 1))
 
-internal fun Player.accuracy(other: Player): Double = calcRoll(maxAttackRol(), other.maxDefenceRol(attackStyle))
+internal fun Player.accuracy(other: Player): Double = calcRoll(maxAttackRol(), other.maxDefenceRol(attackType))
 
-internal fun Player.accuracy(other: Npc): Double = calcRoll(maxAttackRol(), other.maxDefenceRol(attackStyle))
+internal fun Player.accuracy(other: Npc): Double = calcRoll(maxAttackRol(), other.maxDefenceRol(attackType))
 
-internal fun Npc.accuracy(other: Player): Double = calcRoll(maxAttackRol(), other.maxDefenceRol(attackStyle))
+internal fun Npc.accuracy(other: Player): Double = calcRoll(maxAttackRol(), other.maxDefenceRol(attackType))
 
-internal fun Npc.accuracy(other: Npc): Double = calcRoll(maxAttackRol(), other.maxDefenceRol(attackStyle))
+internal fun Npc.accuracy(other: Npc): Double = calcRoll(maxAttackRol(), other.maxDefenceRol(attackType))
