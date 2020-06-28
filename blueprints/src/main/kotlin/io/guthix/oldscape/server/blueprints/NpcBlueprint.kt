@@ -28,7 +28,7 @@ data class NpcAttackStats(
 class NpcCombat(
     val lvl: Int,
     val maxHit: Int?,
-    val attackStyle: AttackStyle?,
+    val attackType: AttackType?,
     val isAggressive: Boolean,
     val isPoisonous: Boolean,
     val isImmumePoison: Boolean,
@@ -50,7 +50,7 @@ open class NpcBlueprint(
     val wanderRadius: TileUnit get() = extraConfig.wanderRadius?.tiles ?: 0.tiles
     val level: Int? get() = extraConfig.combat?.lvl
     val maxHit: Int? get() = if (extraConfig.combat == null) null else extraConfig.combat?.maxHit ?: 0
-    val attackStyle: AttackStyle? get() = extraConfig.combat?.attackStyle
+    val attackType: AttackType? get() = extraConfig.combat?.attackType
     val isAggressive: Boolean? get() = extraConfig.combat?.isAggressive
     val isPoisonous: Boolean? get() = extraConfig.combat?.isPoisonous
     val isImmumePoison: Boolean? get() = extraConfig.combat?.isImmumePoison

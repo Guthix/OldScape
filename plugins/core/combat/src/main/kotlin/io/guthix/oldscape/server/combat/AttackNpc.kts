@@ -16,7 +16,7 @@
  */
 package io.guthix.oldscape.server.combat
 
-import io.guthix.oldscape.server.blueprints.AttackStyle
+import io.guthix.oldscape.server.blueprints.AttackType
 import io.guthix.oldscape.server.combat.dmg.calcHit
 import io.guthix.oldscape.server.combat.dmg.maxMeleeHit
 import io.guthix.oldscape.server.combat.dmg.maxRangeHit
@@ -35,8 +35,8 @@ import io.guthix.oldscape.server.world.entity.Sequence
 on(NpcClickEvent::class).where { contextMenuEntry == "Attack" }.then {
     if (player.inCombatWith == npc) return@then
     player.turnToLock(npc)
-    when (player.attackStyle) {
-        AttackStyle.RANGED -> rangeAttack(range = 5.tiles)
+    when (player.attackType) {
+        AttackType.RANGED -> rangeAttack(range = 5.tiles)
         else -> meleeAttack()
     }
 }
@@ -55,7 +55,7 @@ fun NpcClickEvent.meleeAttack() {
             val hmColor = if (damage == 0) HitMark.Color.BLUE else HitMark.Color.RED
             npc.hit(hmColor, damage, 0)
             npc.animate(Sequence(id = npc.combatSequences?.defence ?: -1))
-            wait(ticks = player.attackDelay)
+            wait(ticks = player.equipment.weapon?.attackSpeed ?: 5)
         }
     }.onCancel {
         player.inCombatWith = null
@@ -78,7 +78,7 @@ fun NpcClickEvent.rangeAttack(range: TileUnit) {
             val hmColor = if (damage == 0) HitMark.Color.BLUE else HitMark.Color.RED
             npc.hit(hmColor, damage, 0)
             npc.animate(Sequence(id = npc.combatSequences?.defence ?: -1))
-            wait(ticks = player.attackDelay)
+            wait(ticks = player.equipment.weapon?.attackSpeed ?: 5)
         }
     }.onCancel {
         player.inCombatWith = null

@@ -39,10 +39,8 @@ class VarpManager : InterestManager {
         val bitSize = (config.msb.toInt() - config.lsb.toInt()) + 1
         if (value > 2.0.pow(bitSize) - 1) throw IllegalArgumentException("Value $value to big for this varbit.")
         var curVarp = varps[config.varpId] ?: 0
-        println("Start varp: $curVarp")
         curVarp = curVarp.clearBits(config.msb.toInt(), config.lsb.toInt())
         curVarp = curVarp or value shl config.lsb.toInt()
-        println("End varp: $curVarp")
         varps[config.varpId] = curVarp
         changes[config.varpId] = curVarp
     }
