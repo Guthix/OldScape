@@ -18,22 +18,35 @@ package io.guthix.oldscape.server.blueprints
 
 enum class AttackType { STAB, SLASH, CRUSH, RANGED, MAGIC, NONE }
 
-enum class AttackStyle {
-    MELEE_ACCURATE,
-    MELEE_AGGRESSIVE,
-    MELEE_DEFENSIVE,
-    MELEE_CONTROLLED,
-    RANGE_ACCURATE,
-    RANGE_RAPID,
-    RANGE_LONGRANGE,
-    MAGIC_ACCURATE,
-    MAGIC_LONGRANGE,
+enum class AttackStyle(
+    val attackBonus: Int = 0,
+    val strengthBonus: Int = 0,
+    val defenceBonus: Int = 0,
+    val rangeBonus: Int = 0,
+    val magicBonus: Int = 0,
+    val attackSpeedBonus: Int = 0,
+    val attackRangeBonus: Int = 0,
+    val attackXp: Int = 0,
+    val strengthXp: Int = 0,
+    val defenceXp: Int = 0,
+    val rangeXp: Int = 0,
+    val magicXp: Int = 0
+) {
+    MELEE_ACCURATE(attackBonus = 3),
+    MELEE_AGGRESSIVE(strengthBonus = 3),
+    MELEE_DEFENSIVE(defenceBonus = 3),
+    MELEE_CONTROLLED(attackBonus = 1, strengthBonus = 1, defenceBonus = 1),
+    RANGE_ACCURATE(rangeBonus = 3),
+    RANGE_RAPID(attackSpeedBonus = 1),
+    RANGE_LONGRANGE(defenceBonus = 3, attackRangeBonus = 2),
+    MAGIC_ACCURATE(magicBonus = 3),
+    MAGIC_LONGRANGE(defenceBonus = 3, attackRangeBonus = 2),
     MAGIC_AUTOCAST,
     MAGIC_AUTOCAST_DEFENSIVE,
     NONE
 }
 
-class CombatStyle(val type: AttackType, val style: AttackStyle)
+class CombatStyle(val attackType: AttackType, val style: AttackStyle)
 
 enum class WeaponType(val id: Int, val styles: List<CombatStyle>) {
     UNARMED(

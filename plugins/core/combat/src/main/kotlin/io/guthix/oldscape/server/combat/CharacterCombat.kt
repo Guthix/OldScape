@@ -16,14 +16,13 @@
  */
 package io.guthix.oldscape.server.combat
 
-import io.guthix.oldscape.server.blueprints.AttackType
-import io.guthix.oldscape.server.blueprints.CombatSequences
-import io.guthix.oldscape.server.blueprints.StyleBonus
+import io.guthix.oldscape.server.blueprints.*
 import io.guthix.oldscape.server.stat.StatMultiplier
 import io.guthix.oldscape.server.world.entity.Character
 import io.guthix.oldscape.server.world.entity.CharacterProperty
 import io.guthix.oldscape.server.world.entity.Npc
 import io.guthix.oldscape.server.world.entity.Player
+import java.lang.IllegalStateException
 
 enum class MeleeCombatStance(val attack: Int = 0, val strength: Int = 0, val defence: Int = 0, val range: Int = 0) {
     ACCURATE(attack = 3),
@@ -47,6 +46,16 @@ val Character.damageMultiplier: StatMultiplier by CharacterProperty {
     )
 }
 
+val Player.selectedTypes: IntArray by CharacterProperty {
+    IntArray(WeaponType.values().size)
+}
+
+val Player.currentStyle: CombatStyle get() {
+    val weaponType = equipment.weapon?.type ?: WeaponType.UNARMED
+    val index = selectedTypes[weaponType.ordinal]
+    return weaponType.styles[index]
+}
+
 val Npc.combatSequences: CombatSequences? by CharacterProperty { blueprint.combatSequences }
 
 val Player.combatSequences: CombatSequences by CharacterProperty {
@@ -54,14 +63,6 @@ val Player.combatSequences: CombatSequences by CharacterProperty {
 }
 
 var Character.inCombatWith: Character? by CharacterProperty { null }
-
-val Character.attackStance: MeleeCombatStance by CharacterProperty {
-    MeleeCombatStance.ACCURATE
-}
-
-val Character.attackType: AttackType by CharacterProperty {
-    AttackType.RANGED
-}
 
 internal fun StyleBonus.findBonus(attackType: AttackType): Int = when (attackType) {
     AttackType.STAB -> stab

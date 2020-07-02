@@ -35,7 +35,7 @@ import io.guthix.oldscape.server.world.entity.Sequence
 on(NpcClickEvent::class).where { contextMenuEntry == "Attack" }.then {
     if (player.inCombatWith == npc) return@then
     player.turnToLock(npc)
-    when (player.attackType) {
+    when (player.currentStyle.attackType) {
         AttackType.RANGED -> rangeAttack(range = 5.tiles)
         else -> meleeAttack()
     }

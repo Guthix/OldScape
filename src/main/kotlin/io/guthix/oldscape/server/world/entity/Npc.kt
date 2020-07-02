@@ -17,6 +17,7 @@
 package io.guthix.oldscape.server.world.entity
 
 import io.guthix.oldscape.server.api.NpcBlueprints
+import io.guthix.oldscape.server.blueprints.AttackType
 import io.guthix.oldscape.server.blueprints.NpcBlueprint
 import io.guthix.oldscape.server.dimensions.TileUnit
 import io.guthix.oldscape.server.dimensions.tiles
@@ -39,6 +40,8 @@ class Npc(index: Int, id: Int, override var pos: Tile) : Character(index) {
     val contextMenu: Array<String?> get() = blueprint.contextMenu
 
     val wanderRadius: TileUnit get() = blueprint.wanderRadius
+
+    val attackType: AttackType get() = blueprint.attackType
 
     override fun processTasks() {
         while (true) {
