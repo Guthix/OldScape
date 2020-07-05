@@ -16,10 +16,9 @@
  */
 package io.guthix.oldscape.server.net.game.inc
 
-import io.guthix.buffer.readIntME
-import io.guthix.buffer.readUnsignedShortADD
-import io.guthix.buffer.readUnsignedShortLEADD
-import io.guthix.oldscape.server.event.InventoryObjectClickEvent
+import io.guthix.buffer.*
+import io.guthix.oldscape.server.event.InvObjOnObjEvent
+import io.guthix.oldscape.server.event.InvObjClickEvent
 import io.guthix.oldscape.server.event.PlayerGameEvent
 import io.guthix.oldscape.server.net.game.FixedSize
 import io.guthix.oldscape.server.net.game.GamePacketDecoder
@@ -39,7 +38,7 @@ class Opheld1Packet : GamePacketDecoder(97, FixedSize(8)) {
         val itemId = buf.readUnsignedShortLE()
         val bitpack = buf.readIntLE()
         val inventorySlotId = buf.readUnsignedShort()
-        return InventoryObjectClickEvent(
+        return InvObjClickEvent(
             bitpack shr Short.SIZE_BITS, bitpack and 0xFFFF, itemId, inventorySlotId, 1, player, world
         )
     }
@@ -56,7 +55,7 @@ class Opheld2Packet : GamePacketDecoder(58, FixedSize(8)) {
         val bitpack = buf.readInt()
         val itemId = buf.readUnsignedShortADD()
         val inventorySlotId = buf.readUnsignedShortLEADD()
-        return InventoryObjectClickEvent(
+        return InvObjClickEvent(
             bitpack shr Short.SIZE_BITS, bitpack and 0xFFFF, itemId, inventorySlotId, 2, player, world
         )
     }
@@ -73,7 +72,7 @@ class Opheld3Packet : GamePacketDecoder(61, FixedSize(8)) {
         val bitpack = buf.readInt()
         val itemId = buf.readUnsignedShortLE()
         val inventorySlotId = buf.readUnsignedShort()
-        return InventoryObjectClickEvent(
+        return InvObjClickEvent(
             bitpack shr Short.SIZE_BITS, bitpack and 0xFFFF, itemId, inventorySlotId, 3, player, world
         )
     }
@@ -90,7 +89,7 @@ class Opheld4Packet : GamePacketDecoder(13, FixedSize(8)) {
         val inventorySlotId = buf.readUnsignedShortLE()
         val bitpack = buf.readIntLE()
         val itemId = buf.readUnsignedShortLE()
-        return InventoryObjectClickEvent(
+        return InvObjClickEvent(
             bitpack shr Short.SIZE_BITS, bitpack and 0xFFFF, itemId, inventorySlotId, 4, player, world
         )
     }
@@ -107,8 +106,29 @@ class Opheld5Packet : GamePacketDecoder(5, FixedSize(8)) {
         val inventorySlotId = buf.readUnsignedShortLEADD()
         val bitpack = buf.readIntME()
         val itemId = buf.readUnsignedShortADD()
-        return InventoryObjectClickEvent(
+        return InvObjClickEvent(
             bitpack shr Short.SIZE_BITS, bitpack and 0xFFFF, itemId, inventorySlotId, 5, player, world
+        )
+    }
+}
+
+class OpheldUPacket : GamePacketDecoder(98, FixedSize(16)) {
+    override fun decode(
+        buf: ByteBuf,
+        size: Int,
+        ctx: ChannelHandlerContext,
+        player: Player,
+        world: World
+    ): PlayerGameEvent {
+        val toBitpack = buf.readIntIME()
+        val fromSlot = buf.readShortLEADD().toInt()
+        val fromBitpack = buf.readIntME()
+        val toSlot = buf.readShortADD().toInt()
+        val toItem = buf.readShort().toInt()
+        val fromItem = buf.readShortADD().toInt()
+        return InvObjOnObjEvent(
+            fromBitpack shr Short.SIZE_BITS, fromBitpack and 0xFFFF, toBitpack shr Short.SIZE_BITS,
+            toBitpack and 0xFFFF, fromSlot, toSlot, fromItem, toItem, player, world
         )
     }
 }

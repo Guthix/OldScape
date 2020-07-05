@@ -61,6 +61,12 @@ on(ClientCheatEvent::class).where { string == "inv" }.then {
     player.topInterface.inventory.addNextSlot(bow)
 }
 
+on(ClientCheatEvent::class).where { string == "invent" }.then {
+    val bow = TwoHandEquipment(1319, 1)
+    player.topInterface.inventory.addNextSlot(bow)
+}
+
+
 on(ClientCheatEvent::class).where { string == "shout" }.then {
     player.shout("testing!")
 }

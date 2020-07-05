@@ -19,7 +19,7 @@ package io.guthix.oldscape.server.equipment
 import io.guthix.oldscape.server.event.*
 import io.guthix.oldscape.server.world.entity.*
 
-on(InventoryObjectClickEvent::class).then {
+on(InvObjClickEvent::class).then {
     val obj = player.topInterface.inventory.removeObject(inventorySlot) ?: return@then
     when (obj) {
         is TwoHandEquipment -> {
