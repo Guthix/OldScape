@@ -71,12 +71,21 @@ abstract class Character(val index: Int) : Entity() {
 
     open var inRunMode: Boolean = false
 
-    fun move() {
+    fun teleport(to: Tile) {
         lastPos = pos
-        if (path.isEmpty()) {
-            movementType = MovementInterestUpdate.STAY
-        } else {
-            takeStep()
+        movementType = MovementInterestUpdate.TELEPORT
+        pos = to
+        followPosition = to.copy(x = pos.x - 1.tiles)
+    }
+
+    fun move() {
+        if(movementType != MovementInterestUpdate.TELEPORT) {
+            lastPos = pos
+            if (path.isEmpty()) {
+                movementType = MovementInterestUpdate.STAY
+            } else {
+                takeStep()
+            }
         }
     }
 
@@ -194,6 +203,7 @@ abstract class Character(val index: Int) : Entity() {
         tasks.values.forEach { it.forEach(Task::postProcess) }
         postTasks.forEach { it.invoke() }
         postTasks.clear()
+        movementType = MovementInterestUpdate.STAY
     }
 
     protected abstract fun addOrientationFlag(): Boolean

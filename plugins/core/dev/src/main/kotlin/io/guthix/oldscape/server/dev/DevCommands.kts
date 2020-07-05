@@ -17,7 +17,9 @@
 package io.guthix.oldscape.server.dev
 
 import io.guthix.oldscape.server.dimensions.tiles
+import io.guthix.oldscape.server.dimensions.floors
 import io.guthix.oldscape.server.event.ClientCheatEvent
+import io.guthix.oldscape.server.event.PublicMessageEvent
 import io.guthix.oldscape.server.world.entity.*
 import io.guthix.oldscape.server.world.map.Tile
 
@@ -72,8 +74,13 @@ on(ClientCheatEvent::class).where { string == "clear" }.then {
     player.clearMap()
 }
 
+on(ClientCheatEvent::class).where { string.startsWith("tp") }.then {
+    val values = string.split(" ")
+    player.teleport(Tile(values[1].toInt().floors, values[2].toInt().tiles, values[3].toInt().tiles))
+}
+
 on(ClientCheatEvent::class).where { string == "pos" }.then {
-    println("Position ${player.pos}")
+    player.talk(PublicMessageEvent(0, 0, "Position ${player.pos}", player, world))
 }
 
 on(ClientCheatEvent::class).where { string == "npc" }.then {
