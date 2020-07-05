@@ -271,6 +271,7 @@
   examine: "Short and magical, but still effective."
   attackSpeed: 4
   type: "BOW"
+  attackRange: 7
   equipment:
     attackBonus:
       stab: 0

@@ -18,13 +18,16 @@ package io.guthix.oldscape.server.blueprints.equipment
 
 import io.guthix.oldscape.cache.config.ObjectConfig
 import io.guthix.oldscape.server.blueprints.WeaponType
+import io.guthix.oldscape.server.dimensions.TileUnit
+import io.guthix.oldscape.server.dimensions.tiles
 
 data class ExtraWeaponConfig(
     override val ids: List<Int>,
     override val weight: Float,
     override val examine: String,
-    val attackSpeed: Int,
     val type: WeaponType,
+    val attackSpeed: Int,
+    val attackRange: Int = 1,
     override val equipment: EquipmentBlueprint.Equipment
 ) : ExtraEquipmentConfig(ids, weight, examine, equipment)
 
@@ -35,4 +38,6 @@ open class WeaponBlueprint(
     val attackSpeed: Int get() = extraConfig.attackSpeed
 
     val type: WeaponType get() = extraConfig.type
+
+    val attackRange: TileUnit get() = extraConfig.attackRange.tiles
 }

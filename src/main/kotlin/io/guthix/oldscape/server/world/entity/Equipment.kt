@@ -21,6 +21,7 @@ import io.guthix.oldscape.server.blueprints.CombatBonus
 import io.guthix.oldscape.server.blueprints.StyleBonus
 import io.guthix.oldscape.server.blueprints.WeaponType
 import io.guthix.oldscape.server.blueprints.equipment.*
+import io.guthix.oldscape.server.dimensions.TileUnit
 
 abstract class Equipment(id: Int, quantity: Int) : Obj(id, quantity) {
     override val blueprint: EquipmentBlueprint = ObjectBlueprints[id]
@@ -61,6 +62,8 @@ open class WeaponEquipment(id: Int, quantity: Int) : Equipment(id, quantity) {
     val attackSpeed: Int get() = blueprint.attackSpeed
 
     val type: WeaponType get() = blueprint.type
+
+    val attackRange: TileUnit get() = blueprint.attackRange
 }
 
 class TwoHandEquipment(id: Int, quantity: Int) : WeaponEquipment(id, quantity) {
