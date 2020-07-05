@@ -1,9 +1,10 @@
 - ids:
-    - 839
+  - 839
   weight: 1.814
   examine: "A nice sturdy bow."
-  attackSpeed: 6
   type: "BOW"
+  attackSpeed: 6
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -23,11 +24,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 841
+  - 841
   weight: 1.36
   examine: "Short but effective."
-  attackSpeed: 4
   type: "BOW"
+  attackSpeed: 4
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -47,11 +49,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 843
+  - 843
   weight: 1.814
   examine: "A shortbow made out of oak, still effective."
-  attackSpeed: 4
   type: "BOW"
+  attackSpeed: 4
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -71,11 +74,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 845
+  - 845
   weight: 2.267
   examine: "A nice sturdy bow made out of oak."
-  attackSpeed: 6
   type: "BOW"
+  attackSpeed: 6
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -95,11 +99,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 847
+  - 847
   weight: 1.814
   examine: "A nice sturdy bow made out of willow."
+  type: "BOW"
   attackSpeed: 6
-  type: "BOW"
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -119,11 +124,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 849
-  weight: 1.0
+  - 849
+  weight: 1.36
   examine: "A shortbow made out of willow, still effective."
-  attackSpeed: 4
   type: "BOW"
+  attackSpeed: 4
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -143,11 +149,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 851
+  - 851
   weight: 1.814
   examine: "A nice sturdy bow made out of Maple."
-  attackSpeed: 6
   type: "BOW"
+  attackSpeed: 6
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -167,12 +174,13 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 853
-    - 20403
+  - 853
+  - 20403
   weight: 1.36
   examine: "A shortbow made out of Maple, still effective."
-  attackSpeed: 4
   type: "BOW"
+  attackSpeed: 4
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -192,11 +200,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 855
+  - 855
   weight: 1.814
   examine: "A nice sturdy bow made out of yew."
-  attackSpeed: 6
   type: "BOW"
+  attackSpeed: 6
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -216,12 +225,13 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 857
-    - 20401
+  - 857
+  - 20401
   weight: 1.36
   examine: "A shortbow made out of yew, still effective."
-  attackSpeed: 4
   type: "BOW"
+  attackSpeed: 4
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -241,11 +251,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 859
+  - 859
   weight: 1.814
   examine: "A nice sturdy magical bow."
-  attackSpeed: 6
   type: "BOW"
+  attackSpeed: 6
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -265,12 +276,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 861
-    - 20558
+  - 861
+  - 20558
   weight: 1.36
   examine: "Short and magical, but still effective."
-  attackSpeed: 4
   type: "BOW"
+  attackSpeed: 4
   attackRange: 7
   equipment:
     attackBonus:
@@ -291,11 +302,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1237
+  - 1237
   weight: 2.267
   examine: "A bronze tipped spear."
-  attackSpeed: 5
   type: "SPEAR"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 5
@@ -315,11 +327,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1239
+  - 1239
   weight: 2.267
   examine: "An iron tipped spear."
-  attackSpeed: 5
   type: "SPEAR"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 8
@@ -339,11 +352,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1241
+  - 1241
   weight: 2.267
   examine: "A steel tipped spear."
-  attackSpeed: 5
   type: "SPEAR"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 12
@@ -363,11 +377,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1243
+  - 1243
   weight: 1.814
   examine: "A mithril tipped spear."
-  attackSpeed: 5
   type: "SPEAR"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 17
@@ -387,11 +402,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1245
+  - 1245
   weight: 2.721
   examine: "An adamantite tipped spear."
-  attackSpeed: 5
   type: "SPEAR"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 24
@@ -411,11 +427,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1247
+  - 1247
   weight: 2.267
   examine: "A rune tipped spear."
-  attackSpeed: 5
   type: "SPEAR"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 36
@@ -435,11 +452,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1249
+  - 1249
   weight: 2.267
   examine: "A dragon tipped spear."
-  attackSpeed: 5
   type: "SPEAR"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 55
@@ -459,11 +477,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1251
+  - 1251
   weight: 2.267
   examine: "A poisoned bronze tipped spear."
-  attackSpeed: 5
   type: "SPEAR"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 5
@@ -483,11 +502,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1253
+  - 1253
   weight: 2.267
   examine: "A poisoned iron tipped spear."
-  attackSpeed: 5
   type: "SPEAR"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 8
@@ -507,11 +527,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1255
+  - 1255
   weight: 2.267
   examine: "A poisoned steel tipped spear."
-  attackSpeed: 5
   type: "SPEAR"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 12
@@ -531,11 +552,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1257
-  weight: 1.8
+  - 1257
+  weight: 1.814
   examine: "A poisoned mithril tipped spear."
-  attackSpeed: 5
   type: "SPEAR"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 17
@@ -555,11 +577,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1259
+  - 1259
   weight: 2.721
   examine: "A poisoned adamantite tipped spear."
-  attackSpeed: 5
   type: "SPEAR"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 24
@@ -579,11 +602,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1261
+  - 1261
   weight: 2.267
   examine: "A poisoned rune tipped spear."
-  attackSpeed: 5
   type: "SPEAR"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 36
@@ -603,11 +627,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1263
+  - 1263
   weight: 2.267
   examine: "A poisoned dragon tipped spear."
-  attackSpeed: 5
   type: "SPEAR"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 55
@@ -627,11 +652,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1307
+  - 1307
   weight: 3.628
   examine: "A two handed sword."
-  attackSpeed: 7
   type: "TWOHANDED_SWORD"
+  attackSpeed: 7
+  attackRange: 1
   equipment:
     attackBonus:
       stab: -4
@@ -651,11 +677,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1309
+  - 1309
   weight: 3.628
   examine: "A two handed sword."
-  attackSpeed: 7
   type: "TWOHANDED_SWORD"
+  attackSpeed: 7
+  attackRange: 1
   equipment:
     attackBonus:
       stab: -4
@@ -675,11 +702,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1311
+  - 1311
   weight: 3.628
   examine: "A two handed sword."
-  attackSpeed: 7
   type: "TWOHANDED_SWORD"
+  attackSpeed: 7
+  attackRange: 1
   equipment:
     attackBonus:
       stab: -4
@@ -699,11 +727,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1313
+  - 1313
   weight: 3.628
   examine: "A two handed sword."
-  attackSpeed: 7
   type: "TWOHANDED_SWORD"
+  attackSpeed: 7
+  attackRange: 1
   equipment:
     attackBonus:
       stab: -4
@@ -723,11 +752,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1315
+  - 1315
   weight: 3.175
   examine: "A two handed sword."
-  attackSpeed: 7
   type: "TWOHANDED_SWORD"
+  attackSpeed: 7
+  attackRange: 1
   equipment:
     attackBonus:
       stab: -4
@@ -747,11 +777,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1317
+  - 1317
   weight: 4.082
   examine: "A two handed sword."
-  attackSpeed: 7
   type: "TWOHANDED_SWORD"
+  attackSpeed: 7
+  attackRange: 1
   equipment:
     attackBonus:
       stab: -4
@@ -771,12 +802,13 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1319
-    - 20555
+  - 1319
+  - 20555
   weight: 3.628
   examine: "A two handed sword."
-  attackSpeed: 7
   type: "TWOHANDED_SWORD"
+  attackSpeed: 7
+  attackRange: 1
   equipment:
     attackBonus:
       stab: -4
@@ -796,11 +828,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1419
+  - 1419
   weight: 3.175
   examine: "It's a Scythe."
-  attackSpeed: 6
   type: "SCYTHE"
+  attackSpeed: 6
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 3
@@ -820,11 +853,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 2883
+  - 2883
   weight: 1.814
   examine: "More powerful than a normal bow, useful against large game birds."
-  attackSpeed: 8
   type: "BOW"
+  attackSpeed: 8
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -844,11 +878,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 3095
+  - 3095
   weight: 0.907
   examine: "A set of fighting claws."
-  attackSpeed: 4
   type: "CLAW"
+  attackSpeed: 4
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 3
@@ -868,11 +903,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 3096
+  - 3096
   weight: 0.907
   examine: "A set of fighting claws."
-  attackSpeed: 4
   type: "CLAW"
+  attackSpeed: 4
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 4
@@ -892,11 +928,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 3097
+  - 3097
   weight: 0.907
   examine: "A set of fighting claws."
-  attackSpeed: 4
   type: "CLAW"
+  attackSpeed: 4
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 8
@@ -916,11 +953,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 3098
+  - 3098
   weight: 0.907
   examine: "A set of fighting claws."
-  attackSpeed: 4
   type: "CLAW"
+  attackSpeed: 4
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 10
@@ -940,11 +978,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 3099
+  - 3099
   weight: 0.907
   examine: "A set of fighting claws."
-  attackSpeed: 4
   type: "CLAW"
+  attackSpeed: 4
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 11
@@ -964,11 +1003,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 3100
+  - 3100
   weight: 0.907
   examine: "A set of fighting claws."
-  attackSpeed: 4
   type: "CLAW"
+  attackSpeed: 4
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 18
@@ -988,11 +1028,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 3101
+  - 3101
   weight: 0.907
   examine: "A set of fighting claws."
-  attackSpeed: 4
   type: "CLAW"
+  attackSpeed: 4
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 26
@@ -1012,11 +1053,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 3170
+  - 3170
   weight: 2.267
   examine: "A Karambwan poisoned bronze tipped spear."
-  attackSpeed: 5
   type: "SPEAR"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 5
@@ -1036,11 +1078,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 3171
+  - 3171
   weight: 2.267
   examine: "A Karambwan poisoned iron tipped spear."
-  attackSpeed: 5
   type: "SPEAR"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 8
@@ -1060,11 +1103,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 3172
+  - 3172
   weight: 2.267
   examine: "A Karambwan poisoned steel tipped spear."
-  attackSpeed: 5
   type: "SPEAR"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 12
@@ -1084,11 +1128,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 3173
+  - 3173
   weight: 1.814
   examine: "A Karambwan poisoned mithril tipped spear."
-  attackSpeed: 5
   type: "SPEAR"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 17
@@ -1108,11 +1153,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 3174
+  - 3174
   weight: 2.721
   examine: "A Karambwan poisoned adamantite tipped spear."
-  attackSpeed: 5
   type: "SPEAR"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 24
@@ -1132,11 +1178,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 3175
+  - 3175
   weight: 2.267
   examine: "A Karambwan poisoned rune tipped spear."
-  attackSpeed: 5
   type: "SPEAR"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 36
@@ -1156,11 +1203,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 3176
+  - 3176
   weight: 2.267
   examine: "A Karambwan poisoned dragon tipped spear."
-  attackSpeed: 5
   type: "SPEAR"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 55
@@ -1180,11 +1228,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 3190
+  - 3190
   weight: 3.175
   examine: "A bronze halberd."
-  attackSpeed: 7
   type: "POLEARM"
+  attackSpeed: 7
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 7
@@ -1204,11 +1253,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 3192
+  - 3192
   weight: 3.175
   examine: "An iron halberd."
-  attackSpeed: 7
   type: "POLEARM"
+  attackSpeed: 7
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 9
@@ -1228,11 +1278,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 3194
+  - 3194
   weight: 3.175
   examine: "A steel halberd."
-  attackSpeed: 7
   type: "POLEARM"
+  attackSpeed: 7
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 14
@@ -1252,11 +1303,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 3196
+  - 3196
   weight: 3.175
   examine: "A black halberd."
-  attackSpeed: 7
   type: "POLEARM"
+  attackSpeed: 7
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 19
@@ -1276,11 +1328,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 3198
+  - 3198
   weight: 2.721
   examine: "A mithril halberd."
-  attackSpeed: 7
   type: "POLEARM"
+  attackSpeed: 7
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 22
@@ -1300,11 +1353,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 3200
+  - 3200
   weight: 3.628
   examine: "An adamant halberd."
-  attackSpeed: 7
   type: "POLEARM"
+  attackSpeed: 7
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 28
@@ -1324,11 +1378,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 3202
+  - 3202
   weight: 3.175
   examine: "A rune halberd."
-  attackSpeed: 7
   type: "POLEARM"
+  attackSpeed: 7
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 48
@@ -1348,11 +1403,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 3204
+  - 3204
   weight: 3.175
   examine: "A dragon halberd."
-  attackSpeed: 7
   type: "POLEARM"
+  attackSpeed: 7
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 70
@@ -1372,11 +1428,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 3695
+  - 3695
   weight: 1.36
   examine: "The lowest maintenance pet you will ever have."
-  attackSpeed: 4
   type: "UNARMED"
+  attackSpeed: 4
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -1396,11 +1453,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4083
+  - 4083
   weight: 0.018
   examine: "It needs waxing before I can use it."
-  attackSpeed: 4
   type: "UNARMED"
+  attackSpeed: 4
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -1420,11 +1478,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4084
+  - 4084
   weight: 0.018
   examine: "A waxed sled."
-  attackSpeed: 4
   type: "UNARMED"
+  attackSpeed: 4
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -1444,12 +1503,13 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4153
-    - 20557
+  - 4153
+  - 20557
   weight: 4.535
   examine: "Simplicity is the best weapon."
-  attackSpeed: 7
   type: "BLUNT"
+  attackSpeed: 7
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -1469,11 +1529,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4158
+  - 4158
   weight: 2.267
   examine: "A spear with a leaf-shaped point."
-  attackSpeed: 5
   type: "SPEAR"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 47
@@ -1493,11 +1554,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4236
+  - 4236
   weight: 2.267
   examine: "This bow has been signed by Robin, Master Bowman."
-  attackSpeed: 6
   type: "BOW"
+  attackSpeed: 6
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -1517,11 +1579,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4580
+  - 4580
   weight: 2.267
   examine: "A black tipped spear."
-  attackSpeed: 5
   type: "SPEAR"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 15
@@ -1541,11 +1604,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4582
+  - 4582
   weight: 2.267
   examine: "A poisoned black tipped spear."
-  attackSpeed: 5
   type: "SPEAR"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 15
@@ -1565,11 +1629,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4584
+  - 4584
   weight: 2.267
   examine: "A Karambwan poisoned black tipped spear."
-  attackSpeed: 5
   type: "SPEAR"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 15
@@ -1589,11 +1654,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4718
+  - 4718
   weight: 3.175
   examine: "Dharok the Wretched's greataxe."
-  attackSpeed: 7
   type: "AXE"
+  attackSpeed: 7
+  attackRange: 1
   equipment:
     attackBonus:
       stab: -4
@@ -1613,11 +1679,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4726
+  - 4726
   weight: 2.267
   examine: "Guthan the Infested's warspear."
-  attackSpeed: 5
   type: "SPEAR"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 75
@@ -1637,11 +1704,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4734
+  - 4734
   weight: 3.628
   examine: "Karil the Tainted's repeating crossbow."
-  attackSpeed: 4
   type: "CROSSBOW"
+  attackSpeed: 4
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -1661,11 +1729,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4747
+  - 4747
   weight: 3.628
   examine: "Torag the Corrupted's twin hammers."
-  attackSpeed: 5
   type: "BLUNT"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: -4
@@ -1685,11 +1754,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4755
+  - 4755
   weight: 2.267
   examine: "Verac the Defiled's flail."
-  attackSpeed: 5
   type: "SPIKED_WEAPON"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 68
@@ -1709,11 +1779,12 @@
       magic: 0
     prayerBonus: 6
 - ids:
-    - 4827
+  - 4827
   weight: 1.814
   examine: "A composite ogre bow."
-  attackSpeed: 5
   type: "BOW"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -1733,11 +1804,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4886
+  - 4886
   weight: 3.175
   examine: "Dharok the Wretched's greataxe."
-  attackSpeed: 7
   type: "AXE"
+  attackSpeed: 7
+  attackRange: 1
   equipment:
     attackBonus:
       stab: -4
@@ -1757,11 +1829,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4887
+  - 4887
   weight: 3.175
   examine: "Dharok the Wretched's greataxe."
-  attackSpeed: 7
   type: "AXE"
+  attackSpeed: 7
+  attackRange: 1
   equipment:
     attackBonus:
       stab: -4
@@ -1781,11 +1854,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4888
+  - 4888
   weight: 3.175
   examine: "Dharok the Wretched's greataxe."
-  attackSpeed: 7
   type: "AXE"
+  attackSpeed: 7
+  attackRange: 1
   equipment:
     attackBonus:
       stab: -4
@@ -1805,11 +1879,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4889
+  - 4889
   weight: 3.175
   examine: "Dharok the Wretched's greataxe."
-  attackSpeed: 7
   type: "AXE"
+  attackSpeed: 7
+  attackRange: 1
   equipment:
     attackBonus:
       stab: -4
@@ -1829,11 +1904,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4890
+  - 4890
   weight: 3.175
   examine: "Dharok the Wretched's greataxe."
-  attackSpeed: 7
   type: "AXE"
+  attackSpeed: 7
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -1853,11 +1929,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4910
+  - 4910
   weight: 2.267
   examine: "Guthan the Infested's warspear."
-  attackSpeed: 5
   type: "SPEAR"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 75
@@ -1877,11 +1954,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4911
+  - 4911
   weight: 2.267
   examine: "Guthan the Infested's warspear."
-  attackSpeed: 5
   type: "SPEAR"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 75
@@ -1901,11 +1979,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4912
-  weight: 2.2
+  - 4912
+  weight: 2.267
   examine: "Guthan the Infested's warspear."
-  attackSpeed: 5
   type: "SPEAR"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 75
@@ -1925,11 +2004,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4913
+  - 4913
   weight: 2.267
   examine: "Guthan the Infested's warspear."
-  attackSpeed: 5
   type: "SPEAR"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 75
@@ -1949,11 +2029,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4914
+  - 4914
   weight: 2.267
   examine: "Guthan the Infested's warspear."
-  attackSpeed: 5
   type: "SPEAR"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -1973,11 +2054,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4934
+  - 4934
   weight: 3.628
   examine: "Karil the Tainted's repeating crossbow."
-  attackSpeed: 4
   type: "CROSSBOW"
+  attackSpeed: 4
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -1997,11 +2079,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4935
+  - 4935
   weight: 3.628
   examine: "Karil the Tainted's repeating crossbow."
-  attackSpeed: 4
   type: "CROSSBOW"
+  attackSpeed: 4
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -2021,11 +2104,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4936
+  - 4936
   weight: 3.628
   examine: "Karil the Tainted's repeating crossbow."
-  attackSpeed: 4
   type: "CROSSBOW"
+  attackSpeed: 4
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -2045,11 +2129,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4937
+  - 4937
   weight: 3.628
   examine: "Karil the Tainted's repeating crossbow."
-  attackSpeed: 4
   type: "CROSSBOW"
+  attackSpeed: 4
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -2069,11 +2154,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4938
+  - 4938
   weight: 3.628
   examine: "Karil the Tainted's repeating crossbow."
-  attackSpeed: 4
   type: "CROSSBOW"
+  attackSpeed: 4
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -2093,11 +2179,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4958
+  - 4958
   weight: 3.628
   examine: "Torag the Corrupted's twin hammers."
-  attackSpeed: 5
   type: "BLUNT"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: -4
@@ -2117,11 +2204,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4959
+  - 4959
   weight: 3.628
   examine: "Torag the Corrupted's twin hammers."
-  attackSpeed: 5
   type: "BLUNT"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: -4
@@ -2141,11 +2229,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4960
+  - 4960
   weight: 3.628
   examine: "Torag the Corrupted's twin hammers."
-  attackSpeed: 5
   type: "BLUNT"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: -4
@@ -2165,11 +2254,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4961
+  - 4961
   weight: 3.628
   examine: "Torag the Corrupted's twin hammers."
-  attackSpeed: 5
   type: "BLUNT"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: -4
@@ -2189,11 +2279,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4962
+  - 4962
   weight: 3.628
   examine: "Torag the Corrupted's twin hammers."
-  attackSpeed: 5
   type: "BLUNT"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -2213,11 +2304,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4982
+  - 4982
   weight: 2.267
   examine: "Verac the Defiled's flail."
-  attackSpeed: 5
   type: "SPIKED_WEAPON"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 68
@@ -2237,11 +2329,12 @@
       magic: 0
     prayerBonus: 6
 - ids:
-    - 4983
+  - 4983
   weight: 2.267
   examine: "Verac the Defiled's flail."
-  attackSpeed: 5
   type: "SPIKED_WEAPON"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 68
@@ -2261,11 +2354,12 @@
       magic: 0
     prayerBonus: 6
 - ids:
-    - 4984
+  - 4984
   weight: 2.267
   examine: "Verac the Defiled's flail."
-  attackSpeed: 5
   type: "SPIKED_WEAPON"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 68
@@ -2285,11 +2379,12 @@
       magic: 0
     prayerBonus: 6
 - ids:
-    - 4985
+  - 4985
   weight: 2.267
   examine: "Verac the Defiled's flail."
-  attackSpeed: 5
   type: "SPIKED_WEAPON"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 68
@@ -2309,11 +2404,12 @@
       magic: 0
     prayerBonus: 6
 - ids:
-    - 4986
+  - 4986
   weight: 2.267
   examine: "Verac the Defiled's flail."
-  attackSpeed: 5
   type: "SPIKED_WEAPON"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -2333,11 +2429,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 5704
+  - 5704
   weight: 2.267
   examine: "A poisoned bronze tipped spear."
-  attackSpeed: 5
   type: "SPEAR"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 5
@@ -2357,11 +2454,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 5706
+  - 5706
   weight: 2.267
   examine: "A poisoned iron tipped spear."
-  attackSpeed: 5
   type: "SPEAR"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 8
@@ -2381,11 +2479,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 5708
+  - 5708
   weight: 2.267
   examine: "A poisoned steel tipped spear."
-  attackSpeed: 5
   type: "SPEAR"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 12
@@ -2405,11 +2504,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 5710
+  - 5710
   weight: 1.814
   examine: "A poisoned mithril tipped spear."
-  attackSpeed: 5
   type: "SPEAR"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 17
@@ -2429,11 +2529,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 5712
+  - 5712
   weight: 2.721
   examine: "A poisoned adamantite tipped spear."
-  attackSpeed: 5
   type: "SPEAR"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 24
@@ -2453,11 +2554,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 5714
+  - 5714
   weight: 2.267
   examine: "A poisoned rune tipped spear."
-  attackSpeed: 5
   type: "SPEAR"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 36
@@ -2477,11 +2579,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 5716
+  - 5716
   weight: 2.267
   examine: "A poisoned dragon tipped spear."
-  attackSpeed: 5
   type: "SPEAR"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 55
@@ -2501,11 +2604,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 5718
+  - 5718
   weight: 2.267
   examine: "A poisoned bronze tipped spear."
-  attackSpeed: 5
   type: "SPEAR"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 5
@@ -2525,11 +2629,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 5720
+  - 5720
   weight: 2.267
   examine: "A poisoned iron tipped spear."
-  attackSpeed: 5
   type: "SPEAR"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 8
@@ -2549,11 +2654,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 5722
+  - 5722
   weight: 2.267
   examine: "A poisoned steel tipped spear."
-  attackSpeed: 5
   type: "SPEAR"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 12
@@ -2573,11 +2679,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 5724
+  - 5724
   weight: 1.814
   examine: "A poisoned mithril tipped spear."
-  attackSpeed: 5
   type: "SPEAR"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 17
@@ -2597,11 +2704,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 5726
+  - 5726
   weight: 2.721
   examine: "A poisoned adamantite tipped spear."
-  attackSpeed: 5
   type: "SPEAR"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 24
@@ -2621,11 +2729,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 5728
-  weight: 2.2
+  - 5728
+  weight: 2.267
   examine: "A poisoned rune tipped spear."
-  attackSpeed: 5
   type: "SPEAR"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 36
@@ -2645,11 +2754,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 5730
+  - 5730
   weight: 2.267
   examine: "A poisoned dragon tipped spear."
-  attackSpeed: 5
   type: "SPEAR"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 55
@@ -2669,11 +2779,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 5734
+  - 5734
   weight: 2.267
   examine: "A poisoned black tipped spear."
-  attackSpeed: 5
   type: "SPEAR"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 15
@@ -2693,11 +2804,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 5736
+  - 5736
   weight: 2.267
   examine: "A poisoned black tipped spear."
-  attackSpeed: 5
   type: "SPEAR"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 15
@@ -2717,11 +2829,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 6082
+  - 6082
   weight: 4.0
   examine: "A device for firing dye."
-  attackSpeed: 4
   type: "GUN"
+  attackSpeed: 4
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -2741,11 +2854,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 6526
+  - 6526
   weight: 1.814
   examine: "A staff of obsidian."
-  attackSpeed: 6
   type: "STAFF"
+  attackSpeed: 6
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 15
@@ -2765,11 +2879,12 @@
       magic: 0
     prayerBonus: 5
 - ids:
-    - 6528
+  - 6528
   weight: 3.628
   examine: "A maul of obsidian."
-  attackSpeed: 7
   type: "BLUNT"
+  attackSpeed: 7
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -2789,11 +2904,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 6587
+  - 6587
   weight: 0.907
   examine: "A set of fighting claws."
-  attackSpeed: 4
   type: "CLAW"
+  attackSpeed: 4
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 10
@@ -2813,11 +2929,12 @@
       magic: 0
     prayerBonus: 1
 - ids:
-    - 6599
+  - 6599
   weight: 3.175
   examine: "A white halberd."
-  attackSpeed: 7
   type: "POLEARM"
+  attackSpeed: 7
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 19
@@ -2837,11 +2954,12 @@
       magic: 0
     prayerBonus: 1
 - ids:
-    - 6609
+  - 6609
   weight: 3.628
   examine: "A two handed sword."
-  attackSpeed: 7
   type: "TWOHANDED_SWORD"
+  attackSpeed: 7
+  attackRange: 1
   equipment:
     attackBonus:
       stab: -4
@@ -2861,11 +2979,12 @@
       magic: 0
     prayerBonus: 1
 - ids:
-    - 6724
+  - 6724
   weight: 1.36
   examine: "An ancient Fremennik bow that was once used to battle the Moon Clan."
-  attackSpeed: 5
   type: "BOW"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -2885,11 +3004,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 6760
+  - 6760
   weight: 2.267
   examine: "A Guthix Mjolnir."
-  attackSpeed: 6
   type: "POLESTAFF"
+  attackSpeed: 6
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -2909,11 +3029,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 6762
+  - 6762
   weight: 2.267
   examine: "A Saradomin Mjolnir."
-  attackSpeed: 6
   type: "POLESTAFF"
+  attackSpeed: 6
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -2933,11 +3054,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 6764
+  - 6764
   weight: 2.267
   examine: "A Zamorak Mjolnir."
-  attackSpeed: 6
   type: "POLESTAFF"
+  attackSpeed: 6
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -2957,12 +3079,13 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 7158
-    - 20559
+  - 7158
+  - 20559
   weight: 3.628
   examine: "A two-handed Dragon Sword."
-  attackSpeed: 7
   type: "TWOHANDED_SWORD"
+  attackSpeed: 7
+  attackRange: 1
   equipment:
     attackBonus:
       stab: -4
@@ -2982,11 +3105,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 7414
+  - 7414
   weight: 0.02
   examine: "With it, you row."
-  attackSpeed: 0
   type: "UNARMED"
+  attackSpeed: 0
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -3006,11 +3130,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 7439
+  - 7439
   weight: 3.628
   examine: "A large spatula... of doom!"
-  attackSpeed: 7
   type: "TWOHANDED_SWORD"
+  attackSpeed: 7
+  attackRange: 1
   equipment:
     attackBonus:
       stab: -4
@@ -3030,11 +3155,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 7668
+  - 7668
   weight: 1.814
   examine: "A specially crafted hammer with strange markings on it."
-  attackSpeed: 5
   type: "BLUNT"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: -4
@@ -3054,11 +3180,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 7809
+  - 7809
   weight: 0.003
   examine: "A heavy duty spear."
-  attackSpeed: 5
   type: "SPEAR"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 2
@@ -3078,11 +3205,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 8871
+  - 8871
   weight: 32.0
   examine: "It's got Zanik in it."
-  attackSpeed: 0
   type: "UNARMED"
+  attackSpeed: 0
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -3102,11 +3230,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 9044
+  - 9044
   weight: 2.0
   examine: "This sceptre is fully charged."
-  attackSpeed: 4
   type: "POLESTAFF"
+  attackSpeed: 4
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 7
@@ -3126,11 +3255,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 9046
+  - 9046
   weight: 2.0
   examine: "This sceptre has two remaining charges."
-  attackSpeed: 4
   type: "POLESTAFF"
+  attackSpeed: 4
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 7
@@ -3150,11 +3280,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 9048
+  - 9048
   weight: 2.0
   examine: "This sceptre has one remaining charge."
-  attackSpeed: 4
   type: "POLESTAFF"
+  attackSpeed: 4
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 7
@@ -3174,11 +3305,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 9050
+  - 9050
   weight: 2.0
   examine: "This sceptre has no remaining charges."
-  attackSpeed: 4
   type: "POLESTAFF"
+  attackSpeed: 4
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 7
@@ -3198,11 +3330,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 9705
+  - 9705
   weight: 1.36
   examine: "Light and flexible, good for a beginner."
-  attackSpeed: 4
   type: "BOW"
+  attackSpeed: 4
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -3222,11 +3355,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10146
+  - 10146
   weight: 4.0
   examine: "Slightly slimy but kind of cute."
-  attackSpeed: 5
   type: "SALAMANDER"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -3246,11 +3380,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10147
+  - 10147
   weight: 4.0
   examine: "Slightly slimy but certainly striking."
-  attackSpeed: 5
   type: "SALAMANDER"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -3270,11 +3405,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10148
+  - 10148
   weight: 4.0
   examine: "Slightly slimy and somewhat menacing."
-  attackSpeed: 5
   type: "SALAMANDER"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -3294,11 +3430,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10149
+  - 10149
   weight: 4.0
   examine: "A very slimy and generally disgusting green lizard."
-  attackSpeed: 5
   type: "SALAMANDER"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -3318,11 +3455,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10280
+  - 10280
   weight: 1.8
   examine: "A powerful bow made from willow wood."
-  attackSpeed: 5
   type: "BOW"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -3342,11 +3480,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10282
+  - 10282
   weight: 1.8
   examine: "A powerful bow made from yew wood."
-  attackSpeed: 5
   type: "BOW"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -3366,11 +3505,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10284
-  weight: 1.0
+  - 10284
+  weight: 1.8
   examine: "A powerful bow made from magic wood."
-  attackSpeed: 5
   type: "BOW"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -3390,11 +3530,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10858
+  - 10858
   weight: 3.628
   examine: "A shadow sword."
-  attackSpeed: 6
   type: "TWOHANDED_SWORD"
+  attackSpeed: 6
+  attackRange: 1
   equipment:
     attackBonus:
       stab: -4
@@ -3414,11 +3555,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10887
+  - 10887
   weight: 30.0
   examine: "This is likely to put my back out..."
-  attackSpeed: 6
   type: "SPIKED_WEAPON"
+  attackSpeed: 6
+  attackRange: 1
   equipment:
     attackBonus:
       stab: -2
@@ -3438,11 +3580,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10888
+  - 10888
   weight: 30.0
   examine: "It's broken. I should see if a pirate smith can fix it."
-  attackSpeed: 6
   type: "SPIKED_WEAPON"
+  attackSpeed: 6
+  attackRange: 1
   equipment:
     attackBonus:
       stab: -2
@@ -3462,12 +3605,13 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11235
-    - 20408
+  - 11235
+  - 20408
   weight: 1.814
   examine: "A bow from a darker dimension."
-  attackSpeed: 9
   type: "BOW"
+  attackSpeed: 9
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -3487,11 +3631,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11708
+  - 11708
   weight: 1.814
   examine: "A curse has been placed on this bow."
-  attackSpeed: 5
   type: "BOW"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -3511,11 +3656,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11748
+  - 11748
   weight: 2.0
   examine: "A nice sturdy magical bow."
-  attackSpeed: 5
   type: "BOW"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -3535,11 +3681,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11749
+  - 11749
   weight: 2.0
   examine: "A nice sturdy magical bow."
-  attackSpeed: 5
   type: "BOW"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -3559,11 +3706,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11750
+  - 11750
   weight: 2.0
   examine: "A nice sturdy magical bow."
-  attackSpeed: 5
   type: "BOW"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -3583,11 +3731,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11751
+  - 11751
   weight: 2.0
   examine: "A nice sturdy magical bow."
-  attackSpeed: 5
   type: "BOW"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -3607,11 +3756,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11752
+  - 11752
   weight: 2.0
   examine: "A nice sturdy magical bow."
-  attackSpeed: 5
   type: "BOW"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -3631,11 +3781,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11753
+  - 11753
   weight: 2.0
   examine: "A nice sturdy magical bow."
-  attackSpeed: 5
   type: "BOW"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -3655,11 +3806,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11754
+  - 11754
   weight: 2.0
   examine: "A nice sturdy magical bow."
-  attackSpeed: 5
   type: "BOW"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -3679,11 +3831,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11755
+  - 11755
   weight: 2.0
   examine: "A nice sturdy magical bow."
-  attackSpeed: 5
   type: "BOW"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -3703,11 +3856,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11756
+  - 11756
   weight: 2.0
   examine: "A nice sturdy magical bow."
-  attackSpeed: 5
   type: "BOW"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -3727,11 +3881,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11757
+  - 11757
   weight: 2.0
   examine: "A nice sturdy magical bow."
-  attackSpeed: 5
   type: "BOW"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -3751,11 +3906,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11758
+  - 11758
   weight: 2.0
   examine: "A nice sturdy magical bow."
-  attackSpeed: 5
   type: "BOW"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -3775,12 +3931,13 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11802
-    - 20593
-  weight: 11.0
+  - 11802
+  - 20593
+  weight: 10.0
   examine: "A beautiful, heavy sword."
-  attackSpeed: 6
   type: "TWOHANDED_SWORD"
+  attackSpeed: 6
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -3800,11 +3957,12 @@
       magic: 0
     prayerBonus: 8
 - ids:
-    - 11804
+  - 11804
   weight: 10.0
   examine: "A brutally heavy sword."
-  attackSpeed: 6
   type: "TWOHANDED_SWORD"
+  attackSpeed: 6
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -3824,11 +3982,12 @@
       magic: 0
     prayerBonus: 8
 - ids:
-    - 11806
+  - 11806
   weight: 10.0
   examine: "A gracious, heavy sword."
-  attackSpeed: 6
   type: "TWOHANDED_SWORD"
+  attackSpeed: 6
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -3848,11 +4007,12 @@
       magic: 0
     prayerBonus: 8
 - ids:
-    - 11808
+  - 11808
   weight: 10.0
   examine: "A terrifying, heavy sword."
-  attackSpeed: 6
   type: "TWOHANDED_SWORD"
+  attackSpeed: 6
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -3872,11 +4032,12 @@
       magic: 0
     prayerBonus: 8
 - ids:
-    - 11824
+  - 11824
   weight: 3.0
   examine: "An evil spear."
-  attackSpeed: 4
   type: "SPEAR"
+  attackSpeed: 4
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 85
@@ -3896,11 +4057,12 @@
       magic: 0
     prayerBonus: 2
 - ids:
-    - 11838
+  - 11838
   weight: 3.0
   examine: "The incredible blade of an Icyene."
-  attackSpeed: 4
   type: "TWOHANDED_SWORD"
+  attackSpeed: 4
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -3920,11 +4082,12 @@
       magic: 0
     prayerBonus: 2
 - ids:
-    - 12357
-  weight: 0.0
+  - 12357
+  weight: 0.453
   examine: "Created by Hattori Hanzo in the Eastern Lands."
-  attackSpeed: 4
   type: "SLASHING_SWORD"
+  attackSpeed: 4
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 7
@@ -3944,11 +4107,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12424
-  weight: 1.5
+  - 12424
+  weight: 3.175
   examine: "A beautifully crafted bow carved by ancient archers."
-  attackSpeed: 4
   type: "BOW"
+  attackSpeed: 4
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -3968,11 +4132,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12727
+  - 12727
   weight: 1.0
   examine: "A Rocket Paint Gun."
-  attackSpeed: 3
   type: "UNARMED"
+  attackSpeed: 3
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -3992,11 +4157,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12765
-  weight: 1.9
+  - 12765
+  weight: 1.814
   examine: "A bow from a darker dimension, painted green."
-  attackSpeed: 9
   type: "BOW"
+  attackSpeed: 9
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -4016,11 +4182,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12766
-  weight: 1.9
+  - 12766
+  weight: 1.814
   examine: "A bow from a darker dimension, painted blue."
-  attackSpeed: 9
   type: "BOW"
+  attackSpeed: 9
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -4040,11 +4207,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12767
-  weight: 1.9
+  - 12767
+  weight: 1.814
   examine: "A bow from a darker dimension, painted yellow."
-  attackSpeed: 9
   type: "BOW"
+  attackSpeed: 9
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -4064,11 +4232,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12768
-  weight: 1.9
+  - 12768
+  weight: 1.814
   examine: "A bow from a darker dimension, painted white."
-  attackSpeed: 9
   type: "BOW"
+  attackSpeed: 9
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -4088,11 +4257,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12788
+  - 12788
   weight: 1.36
   examine: "Short and magical, but still effective."
-  attackSpeed: 4
   type: "BOW"
+  attackSpeed: 4
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -4112,11 +4282,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12809
+  - 12809
   weight: 3.0
   examine: "The blade of an Icyene, blessed with a tear from Saradomin himself."
-  attackSpeed: 4
   type: "TWOHANDED_SWORD"
+  attackSpeed: 4
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -4136,11 +4307,12 @@
       magic: 0
     prayerBonus: 2
 - ids:
-    - 12848
-  weight: 4.5
+  - 12848
+  weight: 4.535
   examine: "Its power should not be taken for granited."
-  attackSpeed: 7
   type: "BLUNT"
+  attackSpeed: 7
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -4160,11 +4332,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12924
-  weight: 0.0
+  - 12924
+  weight: 0.3
   examine: "Fires darts while coating them with venom."
-  attackSpeed: 3
   type: "THROW_WEAPON"
+  attackSpeed: 3
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -4184,11 +4357,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12926
-  weight: 0.0
+  - 12926
+  weight: 0.5
   examine: "Fires darts while coating them with venom."
-  attackSpeed: 3
   type: "THROW_WEAPON"
+  attackSpeed: 3
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -4208,11 +4382,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13074
+  - 13074
   weight: 2.0
   examine: "This sceptre is fully charged."
-  attackSpeed: 4
   type: "POLESTAFF"
+  attackSpeed: 4
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 7
@@ -4232,11 +4407,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13075
+  - 13075
   weight: 2.0
   examine: "This sceptre is fully charged."
-  attackSpeed: 4
   type: "POLESTAFF"
+  attackSpeed: 4
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 7
@@ -4256,11 +4432,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13076
+  - 13076
   weight: 2.0
   examine: "This sceptre is fully charged."
-  attackSpeed: 4
   type: "POLESTAFF"
+  attackSpeed: 4
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 7
@@ -4280,11 +4457,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13077
+  - 13077
   weight: 2.0
   examine: "This sceptre is fully charged."
-  attackSpeed: 4
   type: "POLESTAFF"
+  attackSpeed: 4
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 7
@@ -4304,11 +4482,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13078
+  - 13078
   weight: 2.0
   examine: "This sceptre is fully charged."
-  attackSpeed: 4
   type: "POLESTAFF"
+  attackSpeed: 4
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 7
@@ -4328,11 +4507,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13080
+  - 13080
   weight: 2.0
   examine: "A nice sturdy pike."
-  attackSpeed: 7
   type: "POLEARM"
+  attackSpeed: 7
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 85
@@ -4352,11 +4532,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13081
+  - 13081
   weight: 2.0
   examine: "A nice sturdy pike."
-  attackSpeed: 7
   type: "POLEARM"
+  attackSpeed: 7
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 85
@@ -4376,11 +4557,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13082
+  - 13082
   weight: 2.0
   examine: "A nice sturdy pike."
-  attackSpeed: 7
   type: "POLEARM"
+  attackSpeed: 7
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 85
@@ -4400,11 +4582,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13083
+  - 13083
   weight: 2.0
   examine: "A nice sturdy pike."
-  attackSpeed: 7
   type: "POLEARM"
+  attackSpeed: 7
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 85
@@ -4424,11 +4607,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13084
+  - 13084
   weight: 2.0
   examine: "A nice sturdy pike."
-  attackSpeed: 7
   type: "POLEARM"
+  attackSpeed: 7
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 85
@@ -4448,11 +4632,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13085
+  - 13085
   weight: 2.0
   examine: "A nice sturdy pike."
-  attackSpeed: 7
   type: "POLEARM"
+  attackSpeed: 7
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 85
@@ -4472,11 +4657,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13086
+  - 13086
   weight: 2.0
   examine: "A nice sturdy pike."
-  attackSpeed: 7
   type: "POLEARM"
+  attackSpeed: 7
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 85
@@ -4496,11 +4682,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13087
+  - 13087
   weight: 2.0
   examine: "A nice sturdy pike."
-  attackSpeed: 7
   type: "POLEARM"
+  attackSpeed: 7
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 85
@@ -4520,11 +4707,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13088
+  - 13088
   weight: 2.0
   examine: "A nice sturdy pike."
-  attackSpeed: 7
   type: "POLEARM"
+  attackSpeed: 7
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 85
@@ -4544,11 +4732,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13089
+  - 13089
   weight: 2.0
   examine: "A nice sturdy pike."
-  attackSpeed: 7
   type: "POLEARM"
+  attackSpeed: 7
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 85
@@ -4568,11 +4757,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13090
+  - 13090
   weight: 2.0
   examine: "A nice sturdy pike."
-  attackSpeed: 7
   type: "POLEARM"
+  attackSpeed: 7
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 85
@@ -4592,11 +4782,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13195
-  weight: 0.0
+  - 13195
+  weight: 0.001
   examine: "Ball taken!"
-  attackSpeed: 0
   type: "UNARMED"
+  attackSpeed: 0
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -4616,11 +4807,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13263
+  - 13263
   weight: 6.0
   examine: "Elements of deceased Abyssal Sires have been fused together."
-  attackSpeed: 4
   type: "UNARMED"
+  attackSpeed: 4
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -4640,12 +4832,13 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13652
-    - 20784
-  weight: 0.0
+  - 13652
+  - 20784
+  weight: 0.907
   examine: "A set of fighting claws."
-  attackSpeed: 4
   type: "CLAW"
+  attackSpeed: 4
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 41
@@ -4665,11 +4858,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 19478
-  weight: 4.0
+  - 19478
+  weight: 3.0
   examine: "A weapon forged from the wreckage of an airship."
-  attackSpeed: 7
   type: "CROSSBOW"
+  attackSpeed: 7
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -4689,11 +4883,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 19481
+  - 19481
   weight: 6.0
   examine: "A powerful weapon forged from the wreckage of an airship."
-  attackSpeed: 7
   type: "CROSSBOW"
+  attackSpeed: 7
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -4713,11 +4908,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 19918
-  weight: 1.0
+  - 19918
+  weight: 1.36
   examine: "A pair of Nunchaku, smells of pizza."
-  attackSpeed: 5
   type: "BLUNT"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: -4
@@ -4737,11 +4933,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 19941
+  - 19941
   weight: 15.0
   examine: "Full to the brim with loot... Where's that key gone?"
-  attackSpeed: 6
   type: "BLUNT"
+  attackSpeed: 6
+  attackRange: 1
   equipment:
     attackBonus:
       stab: -4
@@ -4761,11 +4958,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 20155
-  weight: 3.0
+  - 20155
+  weight: 3.628
   examine: "A two handed sword with gold plate."
-  attackSpeed: 7
   type: "TWOHANDED_SWORD"
+  attackSpeed: 7
+  attackRange: 1
   equipment:
     attackBonus:
       stab: -4
@@ -4785,11 +4983,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 20158
-  weight: 3.0
+  - 20158
+  weight: 2.267
   examine: "A rune tipped spear with gold plate."
-  attackSpeed: 5
   type: "SPEAR"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 36
@@ -4809,11 +5008,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 20164
+  - 20164
   weight: 3.0
   examine: "Can you dig it?"
-  attackSpeed: 4
   type: "BLUNT"
+  attackSpeed: 4
+  attackRange: 1
   equipment:
     attackBonus:
       stab: -100
@@ -4833,11 +5033,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 20368
-  weight: 11.0
+  - 20368
+  weight: 10.0
   examine: "An ornamented, beautiful, heavy sword."
-  attackSpeed: 6
   type: "TWOHANDED_SWORD"
+  attackSpeed: 6
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -4857,11 +5058,12 @@
       magic: 0
     prayerBonus: 8
 - ids:
-    - 20370
+  - 20370
   weight: 10.0
   examine: "An ornamented, brutally heavy sword."
-  attackSpeed: 6
   type: "TWOHANDED_SWORD"
+  attackSpeed: 6
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -4881,11 +5083,12 @@
       magic: 0
     prayerBonus: 8
 - ids:
-    - 20372
+  - 20372
   weight: 10.0
   examine: "An ornamented, gracious, heavy sword."
-  attackSpeed: 6
   type: "TWOHANDED_SWORD"
+  attackSpeed: 6
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -4905,11 +5108,12 @@
       magic: 0
     prayerBonus: 8
 - ids:
-    - 20374
+  - 20374
   weight: 10.0
   examine: "An ornamented, terrifying, heavy sword."
-  attackSpeed: 6
   type: "TWOHANDED_SWORD"
+  attackSpeed: 6
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -4929,11 +5133,12 @@
       magic: 0
     prayerBonus: 8
 - ids:
-    - 20397
-  weight: 3.0
+  - 20397
+  weight: 3.628
   examine: "A large makeshift spear."
-  attackSpeed: 7
   type: "POLEARM"
+  attackSpeed: 7
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 22
@@ -4953,11 +5158,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 20756
-  weight: 3.6
+  - 20756
+  weight: 3.628
   examine: "A brutal weapon popular among giants."
-  attackSpeed: 7
   type: "BLUNT"
+  attackSpeed: 7
+  attackRange: 1
   equipment:
     attackBonus:
       stab: -4
@@ -4977,11 +5183,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 20836
+  - 20836
   weight: 15.0
   examine: "That's one ginormous present."
-  attackSpeed: 4
   type: "BLUNT"
+  attackSpeed: 4
+  attackRange: 1
   equipment:
     attackBonus:
       stab: -100
@@ -5001,11 +5208,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 20997
-  weight: 1.8
+  - 20997
+  weight: 1.814
   examine: "A mystical bow carved from the twisted remains of the Great Olm."
-  attackSpeed: 6
   type: "BOW"
+  attackSpeed: 6
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -5025,12 +5233,13 @@
       magic: 0
     prayerBonus: 4
 - ids:
-    - 21003
-    - 21205
-  weight: 5.4
+  - 21003
+  - 21205
+  weight: 5.443
   examine: "A maul crafted from the component parts of Tekton."
-  attackSpeed: 6
   type: "BLUNT"
+  attackSpeed: 6
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -5050,11 +5259,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 21015
+  - 21015
   weight: 30.0
   examine: "Is it... looking at me?"
-  attackSpeed: 7
   type: "BULWARK"
+  attackSpeed: 7
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -5074,11 +5284,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 21649
-  weight: 0.0
+  - 21649
+  weight: 0.907
   examine: "An iron tipped trident."
-  attackSpeed: 5
   type: "SPEAR"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 8
@@ -5098,11 +5309,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 22325
+  - 22325
   weight: 3.175
   examine: "A powerful scythe."
-  attackSpeed: 5
   type: "SCYTHE"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 70
@@ -5122,11 +5334,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 22333
-  weight: 1.5
+  - 22333
+  weight: 1.36
   examine: "A bow from a starter pack."
-  attackSpeed: 4
   type: "BOW"
+  attackSpeed: 4
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -5146,11 +5359,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 22486
+  - 22486
   weight: 3.175
   examine: "A powerful scythe. It is currently uncharged."
-  attackSpeed: 5
   type: "SCYTHE"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 50
@@ -5170,11 +5384,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 22547
+  - 22547
   weight: 3.175
   examine: "This bow once belonged to a formidable follower of Armadyl."
-  attackSpeed: 4
   type: "BOW"
+  attackSpeed: 4
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -5194,11 +5409,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 22550
+  - 22550
   weight: 3.175
   examine: "This bow once belonged to a formidable follower of Armadyl."
-  attackSpeed: 4
   type: "BOW"
+  attackSpeed: 4
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -5218,11 +5434,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 22610
-  weight: 2.2
+  - 22610
+  weight: 2.267
   examine: "A powerful spear."
-  attackSpeed: 5
   type: "SPEAR"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 133
@@ -5242,11 +5459,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 23108
-  weight: 0.4
+  - 23108
+  weight: 0.48
   examine: "Totally jammin' with jam in."
-  attackSpeed: 4
   type: "BLUNT"
+  attackSpeed: 4
+  attackRange: 1
   equipment:
     attackBonus:
       stab: -100
@@ -5266,11 +5484,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 23206
-  weight: 1.0
+  - 23206
+  weight: 1.36
   examine: "A pair of aggressive Sai."
-  attackSpeed: 4
   type: "STABBING_SWORD"
+  attackSpeed: 4
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 11
@@ -5290,11 +5509,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 23235
+  - 23235
   weight: 3.628
   examine: "A maul of obsidian with trim and spikes."
-  attackSpeed: 7
   type: "BLUNT"
+  attackSpeed: 7
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -5314,11 +5534,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 23282
+  - 23282
   weight: 3.0
   examine: "Oh, I'm a gold digger?"
-  attackSpeed: 4
   type: "BLUNT"
+  attackSpeed: 4
+  attackRange: 1
   equipment:
     attackBonus:
       stab: -100
@@ -5338,11 +5559,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 23357
+  - 23357
   weight: 1.36
   examine: "Short but effective and very colourful."
-  attackSpeed: 4
   type: "BOW"
+  attackSpeed: 4
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -5362,11 +5584,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 23446
+  - 23446
   weight: 15.0
   examine: "That's one ginormous Easter egg."
-  attackSpeed: 4
   type: "BLUNT"
+  attackSpeed: 4
+  attackRange: 1
   equipment:
     attackBonus:
       stab: -100
@@ -5386,11 +5609,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 23849
-  weight: 1.5
+  - 23849
+  weight: 1.814
   examine: "A wooden stick with some corrupted on the end."
-  attackSpeed: 4
   type: "POLEARM"
+  attackSpeed: 4
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 68
@@ -5410,11 +5634,12 @@
       magic: 0
     prayerBonus: 1
 - ids:
-    - 23850
-  weight: 1.5
+  - 23850
+  weight: 1.814
   examine: "A wooden stick with some more corrupted on the end."
-  attackSpeed: 4
   type: "POLEARM"
+  attackSpeed: 4
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 114
@@ -5434,11 +5659,12 @@
       magic: 0
     prayerBonus: 2
 - ids:
-    - 23851
-  weight: 1.5
+  - 23851
+  weight: 1.814
   examine: "A wooden stick with a lot of corrupted on the end."
-  attackSpeed: 4
   type: "POLEARM"
+  attackSpeed: 4
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 166
@@ -5458,11 +5684,12 @@
       magic: 0
     prayerBonus: 3
 - ids:
-    - 23852
-  weight: 1.5
+  - 23852
+  weight: 1.36
   examine: "A basic staff of corrupted crystal."
-  attackSpeed: 4
   type: "POWERED_STAFF"
+  attackSpeed: 4
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -5482,11 +5709,12 @@
       magic: 0
     prayerBonus: 1
 - ids:
-    - 23853
-  weight: 1.5
+  - 23853
+  weight: 1.36
   examine: "A sturdy staff of corrupted crystal."
-  attackSpeed: 4
   type: "POWERED_STAFF"
+  attackSpeed: 4
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -5506,11 +5734,12 @@
       magic: 0
     prayerBonus: 2
 - ids:
-    - 23854
-  weight: 1.5
+  - 23854
+  weight: 1.36
   examine: "A powerful staff of corrupted crystal."
-  attackSpeed: 4
   type: "POWERED_STAFF"
+  attackSpeed: 4
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -5530,11 +5759,12 @@
       magic: 0
     prayerBonus: 3
 - ids:
-    - 23855
-  weight: 1.5
+  - 23855
+  weight: 1.814
   examine: "A basic bow formed from corrupted crystal and wood."
-  attackSpeed: 5
   type: "BOW"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -5554,11 +5784,12 @@
       magic: 0
     prayerBonus: 1
 - ids:
-    - 23856
-  weight: 1.5
+  - 23856
+  weight: 1.814
   examine: "A sturdy bow formed from corrupted crystal and wood."
-  attackSpeed: 5
   type: "BOW"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -5578,11 +5809,12 @@
       magic: 0
     prayerBonus: 1
 - ids:
-    - 23857
-  weight: 1.5
+  - 23857
+  weight: 1.814
   examine: "A powerful bow formed from corrupted crystal and wood."
-  attackSpeed: 5
   type: "BOW"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -5602,11 +5834,12 @@
       magic: 0
     prayerBonus: 3
 - ids:
-    - 23895
-  weight: 1.5
+  - 23895
+  weight: 1.814
   examine: "A wooden stick with some crystal on the end."
-  attackSpeed: 4
   type: "POLEARM"
+  attackSpeed: 4
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 68
@@ -5626,11 +5859,12 @@
       magic: 0
     prayerBonus: 1
 - ids:
-    - 23896
-  weight: 1.5
+  - 23896
+  weight: 1.814
   examine: "A wooden stick with some more crystal on the end."
-  attackSpeed: 4
   type: "POLEARM"
+  attackSpeed: 4
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 114
@@ -5650,11 +5884,12 @@
       magic: 0
     prayerBonus: 2
 - ids:
-    - 23897
-  weight: 1.5
+  - 23897
+  weight: 1.814
   examine: "A wooden stick with a lot of crystal on the end."
-  attackSpeed: 4
   type: "POLEARM"
+  attackSpeed: 4
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 166
@@ -5674,11 +5909,12 @@
       magic: 0
     prayerBonus: 3
 - ids:
-    - 23898
-  weight: 1.5
+  - 23898
+  weight: 1.36
   examine: "A basic staff of crystal."
-  attackSpeed: 4
   type: "POWERED_STAFF"
+  attackSpeed: 4
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -5698,11 +5934,12 @@
       magic: 0
     prayerBonus: 1
 - ids:
-    - 23899
-  weight: 1.5
+  - 23899
+  weight: 1.36
   examine: "A sturdy staff of crystal."
-  attackSpeed: 4
   type: "POWERED_STAFF"
+  attackSpeed: 4
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -5722,11 +5959,12 @@
       magic: 0
     prayerBonus: 2
 - ids:
-    - 23900
-  weight: 1.5
+  - 23900
+  weight: 1.36
   examine: "A powerful staff of crystal."
-  attackSpeed: 4
   type: "POWERED_STAFF"
+  attackSpeed: 4
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -5746,11 +5984,12 @@
       magic: 0
     prayerBonus: 3
 - ids:
-    - 23901
-  weight: 1.5
+  - 23901
+  weight: 1.814
   examine: "A basic bow formed from crystal and wood."
-  attackSpeed: 5
   type: "BOW"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -5770,11 +6009,12 @@
       magic: 0
     prayerBonus: 1
 - ids:
-    - 23902
-  weight: 1.5
+  - 23902
+  weight: 1.814
   examine: "A sturdy bow formed from crystal and wood."
-  attackSpeed: 5
   type: "BOW"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -5794,11 +6034,12 @@
       magic: 0
     prayerBonus: 1
 - ids:
-    - 23903
-  weight: 1.5
+  - 23903
+  weight: 1.814
   examine: "A powerful bow formed from crystal and wood."
-  attackSpeed: 5
   type: "BOW"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -5818,11 +6059,12 @@
       magic: 0
     prayerBonus: 3
 - ids:
-    - 23983
-  weight: 2.0
+  - 23983
+  weight: 1.814
   examine: "A nice sturdy magical bow."
-  attackSpeed: 5
   type: "BOW"
+  attackSpeed: 5
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -5842,11 +6084,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 23987
-  weight: 2.0
+  - 23987
+  weight: 1.814
   examine: "A nice sturdy pike."
-  attackSpeed: 7
   type: "POLEARM"
+  attackSpeed: 7
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 85
@@ -5866,11 +6109,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 24225
+  - 24225
   weight: 4.535
   examine: "Simplicity is the best weapon."
-  attackSpeed: 7
   type: "BLUNT"
+  attackSpeed: 7
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -5890,11 +6134,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 24227
-  weight: 4.5
+  - 24227
+  weight: 4.535
   examine: "Its power should not be taken for granited."
-  attackSpeed: 7
   type: "BLUNT"
+  attackSpeed: 7
+  attackRange: 1
   equipment:
     attackBonus:
       stab: 0
@@ -5914,11 +6159,12 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 24327
-  weight: 0.0
+  - 24327
+  weight: 0.07
   examine: "Alas... I'm sure someone knew him well."
-  attackSpeed: 4
   type: "BLUNT"
+  attackSpeed: 4
+  attackRange: 1
   equipment:
     attackBonus:
       stab: -100
@@ -5938,12 +6184,13 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 24372
+  - 24372
   weight: 15.0
   examine: "A Dragon trophy for competing in the Twisted League. (14th Nov 2019 to\
     \ 16th Jan 2020)"
-  attackSpeed: 4
   type: "BLUNT"
+  attackSpeed: 4
+  attackRange: 1
   equipment:
     attackBonus:
       stab: -100
@@ -5963,12 +6210,13 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 24374
+  - 24374
   weight: 15.0
   examine: "A Rune trophy for competing in the Twisted League. (14th Nov 2019 to 16th\
     \ Jan 2020)"
-  attackSpeed: 4
   type: "BLUNT"
+  attackSpeed: 4
+  attackRange: 1
   equipment:
     attackBonus:
       stab: -100
@@ -5988,12 +6236,13 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 24376
+  - 24376
   weight: 15.0
   examine: "An Adamant trophy for competing in the Twisted League. (14th Nov 2019\
     \ to 16th Jan 2020)"
-  attackSpeed: 4
   type: "BLUNT"
+  attackSpeed: 4
+  attackRange: 1
   equipment:
     attackBonus:
       stab: -100
