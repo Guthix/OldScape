@@ -36,7 +36,7 @@ on(NpcClickEvent::class).where { contextMenuEntry == "Attack" }.then {
     if (player.inCombatWith == npc) return@then
     player.turnToLock(npc)
     when (player.currentStyle.attackType) {
-        AttackType.RANGED -> rangeAttack(range = 5.tiles)
+        AttackType.RANGED -> rangeAttack(range = player.equipment.weapon?.attackRange ?: 1.tiles)
         else -> meleeAttack()
     }
 }
