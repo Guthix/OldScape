@@ -17,19 +17,24 @@
 package io.guthix.oldscape.wiki.yaml
 
 import com.fasterxml.jackson.annotation.JsonInclude
+import com.fasterxml.jackson.core.util.DefaultIndenter
+import com.fasterxml.jackson.core.util.DefaultPrettyPrinter
 import com.fasterxml.jackson.databind.ObjectMapper
+import com.fasterxml.jackson.databind.ObjectWriter
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory
 import com.fasterxml.jackson.dataformat.yaml.YAMLGenerator
 import com.fasterxml.jackson.module.kotlin.readValue
 import com.fasterxml.jackson.module.kotlin.registerKotlinModule
-import io.guthix.oldscape.server.blueprints.*
+import io.guthix.oldscape.server.blueprints.ExtraNpcConfig
 import io.guthix.oldscape.server.blueprints.equipment.ExtraBodyConfig
 import io.guthix.oldscape.server.blueprints.equipment.ExtraHeadConfig
+import io.guthix.oldscape.server.blueprints.equipment.ExtraWeaponConfig
 import io.guthix.oldscape.wiki.npcWikiDownloader
 import io.guthix.oldscape.wiki.objectWikiDownloader
 import io.guthix.oldscape.wiki.wikitext.ObjectWikiDefinition
 import mu.KotlinLogging
 import java.nio.file.Path
+
 
 private val logger = KotlinLogging.logger {  }
 
@@ -52,18 +57,21 @@ object YamlDownloader {
             .setSerializationInclusion(JsonInclude.Include.NON_NULL)
             .registerKotlinModule()
 
-        objectMapper.writeObjs(cacheDir, objDir)
-        objectMapper.writeNpcs(cacheDir, npcDir, "Npcs.yaml")
+        val writer = objectMapper.writer(
+            DefaultPrettyPrinter().withObjectIndenter(DefaultIndenter().withLinefeed("\r\n"))
+        )
+        objectMapper.writeObjs(writer, cacheDir, objDir)
+        objectMapper.writeNpcs(writer, cacheDir, npcDir, "Npcs.yaml")
     }
 
-    fun ObjectMapper.writeObjs(cacheDir: Path, objServerDir: Path) {
+    fun ObjectMapper.writeObjs(writer: ObjectWriter, cacheDir: Path, objServerDir: Path) {
         val objWikiData = objectWikiDownloader(cacheDir).filter { it.ids != null }.sortedBy { it.ids!!.first() }
         val equpimentWikiData = objWikiData.filter { it.slot != null }
 
         val objFileName = "Objects.yaml"
         val objData = objWikiData.filter { it.slot == null }
         val objectFile = Path.of(javaClass.getResource("/").toURI()).resolve(objFileName).toFile()
-        writeValue(objectFile, objData.map(ObjectWikiDefinition::toExtraObjectConfig))
+        writer.writeValue(objectFile, objData.map(ObjectWikiDefinition::toExtraObjectConfig))
         logger.info {
             "Done writing ${objData.size} obj configs to ${objectFile.absoluteFile.absolutePath}"
         }
@@ -72,7 +80,7 @@ object YamlDownloader {
         val ammoFileName = "AmmunitionEquipment.yaml"
         val ammoData = equpimentWikiData.filter { it.slot!!.equals("ammo", true) }
         val ammunitionFile = Path.of(javaClass.getResource("/").toURI()).resolve(ammoFileName).toFile()
-        writeValue(ammunitionFile, ammoData.map(ObjectWikiDefinition::toExtraEquipmentConfig))
+        writer.writeValue(ammunitionFile, ammoData.map(ObjectWikiDefinition::toExtraEquipmentConfig))
         logger.info {
             "Done writing ${ammoData.size} ammunition equipment configs to ${ammunitionFile.absoluteFile.absolutePath}"
         }
@@ -81,7 +89,7 @@ object YamlDownloader {
         val bodyData = equpimentWikiData.filter { it.slot!!.equals("body", true) }
         val bodyFile = Path.of(javaClass.getResource("/").toURI()).resolve(bodyFileName).toFile()
         val bodyServerConfigs = readValue<List<ExtraBodyConfig>>(objServerDir.resolve(bodyFileName).toFile())
-        writeValue(bodyFile, bodyData.map { new ->
+        writer.writeValue(bodyFile, bodyData.map { new ->
             val curExtraConfig = bodyServerConfigs.find { (ids) -> new.ids == ids }
             new.toExtraBodyConfig(curExtraConfig)
         })
@@ -92,7 +100,7 @@ object YamlDownloader {
         val capeFileName = "CapeEquipment.yaml"
         val capeData = equpimentWikiData.filter { it.slot!!.equals("cape", true) }
         val capeFile = Path.of(javaClass.getResource("/").toURI()).resolve(capeFileName).toFile()
-        writeValue(capeFile, capeData.map(ObjectWikiDefinition::toExtraEquipmentConfig))
+        writer.writeValue(capeFile, capeData.map(ObjectWikiDefinition::toExtraEquipmentConfig))
         logger.info {
             "Done writing ${capeData.size} cape equipment configs to ${capeFile.absoluteFile.absolutePath}"
         }
@@ -100,7 +108,7 @@ object YamlDownloader {
         val feetFileName = "FeetEquipment.yaml"
         val feetData = equpimentWikiData.filter { it.slot!!.equals("feet", true) }
         val feetFile = Path.of(javaClass.getResource("/").toURI()).resolve(feetFileName).toFile()
-        writeValue(feetFile, feetData.map(ObjectWikiDefinition::toExtraEquipmentConfig))
+        writer.writeValue(feetFile, feetData.map(ObjectWikiDefinition::toExtraEquipmentConfig))
         logger.info {
             "Done writing ${feetData.size} feet equipment configs to ${feetFile.absoluteFile.absolutePath}"
         }
@@ -108,7 +116,7 @@ object YamlDownloader {
         val handFileName = "HandEquipment.yaml"
         val handData = equpimentWikiData.filter { it.slot!!.equals("hands", true) }
         val handFile = Path.of(javaClass.getResource("/").toURI()).resolve(handFileName).toFile()
-        writeValue(handFile, handData.map(ObjectWikiDefinition::toExtraEquipmentConfig))
+        writer.writeValue(handFile, handData.map(ObjectWikiDefinition::toExtraEquipmentConfig))
         logger.info {
             "Done writing ${handData.size} hand equipment configs to ${handFile.absoluteFile.absolutePath}"
         }
@@ -118,7 +126,7 @@ object YamlDownloader {
         val headData = equpimentWikiData.filter { it.slot!!.equals("head", true) }
         val headFile = Path.of(javaClass.getResource("/").toURI()).resolve(headFileName).toFile()
         val headServerConfigs = readValue<List<ExtraHeadConfig>>(objServerDir.resolve(headFileName).toFile())
-        writeValue(headFile, headData.map { new ->
+        writer.writeValue(headFile, headData.map { new ->
             val curExtraConfig = headServerConfigs.find { (ids) -> new.ids == ids }
             new.toExtraHeadConfig(curExtraConfig)
         })
@@ -129,7 +137,7 @@ object YamlDownloader {
         val legFileName = "LegEquipment.yaml"
         val legData = equpimentWikiData.filter { it.slot!!.equals("legs", true) }
         val legFile = Path.of(javaClass.getResource("/").toURI()).resolve(legFileName).toFile()
-        writeValue(legFile, legData.map(ObjectWikiDefinition::toExtraEquipmentConfig))
+        writer.writeValue(legFile, legData.map(ObjectWikiDefinition::toExtraEquipmentConfig))
         logger.info {
             "Done writing ${legData.size} leg equipment configs to ${legFile.absoluteFile.absolutePath}"
         }
@@ -138,7 +146,7 @@ object YamlDownloader {
         val neckFileName = "NeckEquipment.yaml"
         val neckData = equpimentWikiData.filter { it.slot!!.equals("neck", true) }
         val neckFile = Path.of(javaClass.getResource("/").toURI()).resolve(neckFileName).toFile()
-        writeValue(neckFile, neckData.map(ObjectWikiDefinition::toExtraEquipmentConfig))
+        writer.writeValue(neckFile, neckData.map(ObjectWikiDefinition::toExtraEquipmentConfig))
         logger.info {
             "Done writing ${neckData.size} neck equipment configs to ${neckFile.absoluteFile.absolutePath}"
         }
@@ -146,7 +154,7 @@ object YamlDownloader {
         val ringFileName = "RingEquipment.yaml"
         val ringData = equpimentWikiData.filter { it.slot!!.equals("neck", true) }
         val ringFile = Path.of(javaClass.getResource("/").toURI()).resolve(ringFileName).toFile()
-        writeValue(ringFile, ringData.map(ObjectWikiDefinition::toExtraEquipmentConfig))
+        writer.writeValue(ringFile, ringData.map(ObjectWikiDefinition::toExtraEquipmentConfig))
         logger.info {
             "Done writing ${ringData.size} ring equipment configs to ${ringFile.absoluteFile.absolutePath}"
         }
@@ -154,7 +162,7 @@ object YamlDownloader {
         val shieldFileName = "ShieldEquipment.yaml"
         val shieldData = equpimentWikiData.filter { it.slot!!.equals("shield", true) }
         val shieldFile = Path.of(javaClass.getResource("/").toURI()).resolve(shieldFileName).toFile()
-        writeValue(shieldFile, shieldData.map(ObjectWikiDefinition::toExtraEquipmentConfig))
+        writer.writeValue(shieldFile, shieldData.map(ObjectWikiDefinition::toExtraEquipmentConfig))
         logger.info {
             "Done writing ${shieldData.size} shield equipment configs to ${shieldFile.absoluteFile.absolutePath}"
         }
@@ -162,7 +170,11 @@ object YamlDownloader {
         val twoHandFileName = "TwoHandEquipment.yaml"
         val twoHandData = equpimentWikiData.filter { it.slot!!.equals("2h", true) }
         val twoHandFile = Path.of(javaClass.getResource("/").toURI()).resolve(twoHandFileName).toFile()
-        writeValue(twoHandFile, twoHandData.map(ObjectWikiDefinition::toExtraWeaponConfig))
+        val twoHandServerConfigs = readValue<List<ExtraWeaponConfig>>(objServerDir.resolve(twoHandFileName).toFile())
+        writer.writeValue(twoHandFile, twoHandData.map { new ->
+            val curExtraConfig = twoHandServerConfigs.find { (ids) -> new.ids == ids }
+            new.toExtraWeaponConfig(curExtraConfig)
+        })
         logger.info {
             "Done writing ${twoHandData.size} two hand equipment configs to ${twoHandFile.absoluteFile.absolutePath}"
         }
@@ -170,17 +182,21 @@ object YamlDownloader {
         val weaponFileName = "WeaponEquipment.yaml"
         val weaponData = equpimentWikiData.filter { it.slot!!.equals("weapon", true) }
         val weaponFile = Path.of(javaClass.getResource("/").toURI()).resolve(weaponFileName).toFile()
-        writeValue(weaponFile, weaponData.map(ObjectWikiDefinition::toExtraWeaponConfig))
+        val weaponServerConfigs = readValue<List<ExtraWeaponConfig>>(objServerDir.resolve(weaponFileName).toFile())
+        writer.writeValue(weaponFile, weaponData.map { new ->
+            val curExtraConfig = weaponServerConfigs.find { (ids) -> new.ids == ids }
+            new.toExtraWeaponConfig(curExtraConfig)
+        })
         logger.info {
             "Done writing ${weaponData.size} weapon equipment configs to ${weaponFile.absoluteFile.absolutePath}"
         }
     }
 
-    fun ObjectMapper.writeNpcs(cacheDir: Path, npcServerDir: Path, fileName: String) {
+    fun ObjectMapper.writeNpcs(writer: ObjectWriter, cacheDir: Path, npcServerDir: Path, fileName: String) {
         val npcData = npcWikiDownloader(cacheDir).filter { it.ids != null }.sortedBy { it.ids!!.first() }
         val npcFile = Path.of(javaClass.getResource("/").toURI()).resolve(fileName).toFile()
         val npcServerConfigs = readValue<List<ExtraNpcConfig>>(npcServerDir.resolve(fileName).toFile())
-        writeValue(npcFile, npcData.map { new ->
+        writer.writeValue(npcFile, npcData.map { new ->
             val curExtraConfig = npcServerConfigs.find { cur -> new.ids == cur.ids }
             new.toExtraNpcConfig(curExtraConfig)
         })

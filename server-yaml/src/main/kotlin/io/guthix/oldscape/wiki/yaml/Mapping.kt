@@ -24,14 +24,14 @@ import mu.KotlinLogging
 
 private val logger = KotlinLogging.logger {  }
 
-fun getStyleMapping(str: String?): AttackStyle? = when {
+fun getStyleMapping(str: String?): AttackType? = when {
     str == null -> null
-    str.equals("stab", true) -> AttackStyle.STAB
-    str.equals("slash", true) -> AttackStyle.SLASH
-    str.equals("crush", true) -> AttackStyle.CRUSH
-    str.equals("range", true) -> AttackStyle.RANGED
-    str.equals("ranged", true) -> AttackStyle.RANGED
-    str.equals("magic", true) -> AttackStyle.MAGIC
+    str.equals("stab", true) -> AttackType.STAB
+    str.equals("slash", true) -> AttackType.SLASH
+    str.equals("crush", true) -> AttackType.CRUSH
+    str.equals("range", true) -> AttackType.RANGED
+    str.equals("ranged", true) -> AttackType.RANGED
+    str.equals("magic", true) -> AttackType.MAGIC
     else -> {
         logger.info { "Couldn't get attack style for $str" }
         null
@@ -67,14 +67,15 @@ fun ObjectWikiDefinition.toExtraBodyConfig(curExtraConfig: ExtraBodyConfig?): Ex
     )
 }
 
-fun ObjectWikiDefinition.toExtraWeaponConfig(): ExtraWeaponConfig {
+fun ObjectWikiDefinition.toExtraWeaponConfig(curExtraConfig: ExtraWeaponConfig?): ExtraWeaponConfig {
     val equipmentConfig = toExtraEquipmentConfig()
     return ExtraWeaponConfig(
         equipmentConfig.ids,
         equipmentConfig.weight,
         equipmentConfig.examine,
-        attackSpeed ?: 0,
         findWeaponType(combatStyle),
+        attackSpeed ?: 0,
+        curExtraConfig?.attackRange ?: 1,
         equipmentConfig.equipment
     )
 }
@@ -104,7 +105,7 @@ fun findWeaponType(str: String?): WeaponType = when {
     str.equals("banner", ignoreCase = true) -> WeaponType.BANNER
     str.equals("blaster", ignoreCase = true) -> WeaponType.BLASTER
     str.equals("gun", ignoreCase = true) -> WeaponType.GUN
-    str.equals("polestaff", ignoreCase = true) -> WeaponType.POLE_STAFF
+    str.equals("polestaff", ignoreCase = true) -> WeaponType.POLESTAFF
     str.equals("flamer", ignoreCase = true) -> WeaponType.SALAMANDER
     str.equals("unarmed", ignoreCase = true) -> WeaponType.UNARMED
     else -> WeaponType.UNARMED
