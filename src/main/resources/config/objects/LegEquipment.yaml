@@ -1,5 +1,5 @@
 - ids:
-    - 285
+  - 285
   weight: 2.267
   examine: "These should protect me from the plague, I hope!"
   equipment:
@@ -21,7 +21,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 428
+  - 428
   weight: 1.814
   examine: "Bottom half of a priest suit."
   equipment:
@@ -43,7 +43,7 @@
       magic: 0
     prayerBonus: 3
 - ids:
-    - 538
+  - 538
   weight: 0.907
   examine: "Keeps a druid's knees nice and warm."
   equipment:
@@ -65,7 +65,7 @@
       magic: 0
     prayerBonus: 4
 - ids:
-    - 542
+  - 542
   weight: 0.907
   examine: "Keeps a monk's knees nice and warm."
   equipment:
@@ -87,7 +87,7 @@
       magic: 0
     prayerBonus: 5
 - ids:
-    - 548
+  - 548
   weight: 0.907
   examine: "If a shade had knees, this would keep them nice and warm."
   equipment:
@@ -109,7 +109,7 @@
       magic: 0
     prayerBonus: 4
 - ids:
-    - 646
+  - 646
   weight: 0.907
   examine: "Made by Tree Gnomes with a thing for pink."
   equipment:
@@ -131,7 +131,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 648
+  - 648
   weight: 0.907
   examine: "Made by Tree Gnomes with a thing for green."
   equipment:
@@ -153,7 +153,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 650
+  - 650
   weight: 0.907
   examine: "Made by Tree Gnomes with a thing for blue."
   equipment:
@@ -175,7 +175,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 652
+  - 652
   weight: 0.907
   examine: "Made by Tree Gnomes with a thing for cream."
   equipment:
@@ -197,7 +197,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 654
+  - 654
   weight: 0.907
   examine: "Made by Tree Gnomes with a thing for turquoise."
   equipment:
@@ -219,7 +219,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1011
+  - 1011
   weight: 0.907
   examine: "Leg covering favoured by women and wizards."
   equipment:
@@ -241,7 +241,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1013
+  - 1013
   weight: 0.907
   examine: "A ladies skirt."
   equipment:
@@ -263,7 +263,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1015
+  - 1015
   weight: 0.907
   examine: "Clothing favoured by women and dark wizards."
   equipment:
@@ -285,7 +285,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1033
+  - 1033
   weight: 0.907
   examine: "A robe worn by worshippers of Zamorak."
   equipment:
@@ -307,7 +307,7 @@
       magic: 0
     prayerBonus: 3
 - ids:
-    - 1067
+  - 1067
   weight: 9.071
   examine: "These look pretty heavy."
   equipment:
@@ -329,7 +329,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1069
+  - 1069
   weight: 9.071
   examine: "These look pretty heavy."
   equipment:
@@ -351,7 +351,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1071
+  - 1071
   weight: 7.711
   examine: "These look pretty heavy."
   equipment:
@@ -373,8 +373,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1073
-    - 20416
+  - 1073
+  - 20416
   weight: 10.432
   examine: "These look pretty heavy."
   equipment:
@@ -396,7 +396,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1075
+  - 1075
   weight: 9.071
   examine: "These look pretty heavy."
   equipment:
@@ -418,7 +418,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1077
+  - 1077
   weight: 9.071
   examine: "Big, black and heavy looking."
   equipment:
@@ -440,8 +440,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1079
-    - 20422
+  - 1079
+  - 20422
   weight: 9.071
   examine: "These look pretty heavy."
   equipment:
@@ -463,7 +463,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1081
+  - 1081
   weight: 8.164
   examine: "Designer leg protection."
   equipment:
@@ -485,7 +485,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1083
+  - 1083
   weight: 8.164
   examine: "Designer leg protection."
   equipment:
@@ -507,7 +507,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1085
+  - 1085
   weight: 7.257
   examine: "Designer leg protection."
   equipment:
@@ -529,8 +529,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1087
-  weight: 8.1
+  - 1087
+  weight: 8.164
   examine: "Designer leg protection."
   equipment:
     attackBonus:
@@ -551,7 +551,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1089
+  - 1089
   weight: 8.164
   examine: "Big, black and heavy looking."
   equipment:
@@ -573,8 +573,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1091
-  weight: 10.432
+  - 1091
+  weight: 9.071
   examine: "Designer leg protection."
   equipment:
     attackBonus:
@@ -595,7 +595,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1093
+  - 1093
   weight: 8.164
   examine: "Designer leg protection."
   equipment:
@@ -617,7 +617,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1095
+  - 1095
   weight: 2.721
   examine: "Better than no armour!"
   equipment:
@@ -639,7 +639,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1097
+  - 1097
   weight: 4.535
   examine: "Those studs should provide a bit more protection."
   equipment:
@@ -661,7 +661,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1099
+  - 1099
   weight: 5.443
   examine: "Made from 100% real dragonhide."
   equipment:
@@ -683,8 +683,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1835
-  weight: 0.9
+  - 1835
+  weight: 0.907
   examine: "A cool, light desert robe."
   equipment:
     attackBonus:
@@ -705,7 +705,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1845
+  - 1845
   weight: 0.907
   examine: "A filthy, smelly, flea infested robe."
   equipment:
@@ -727,8 +727,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 2493
-    - 20418
+  - 2493
+  - 20418
   weight: 5.443
   examine: "Made from 100% real dragonhide."
   equipment:
@@ -750,8 +750,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 2495
-    - 20567
+  - 2495
+  - 20567
   weight: 5.443
   examine: "Made from 100% real dragonhide."
   equipment:
@@ -773,8 +773,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 2497
-    - 20424
+  - 2497
+  - 20424
   weight: 5.443
   examine: "Made from 100% real dragonhide."
   equipment:
@@ -796,7 +796,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 2585
+  - 2585
   weight: 9.071
   examine: "Black platelegs with trim."
   equipment:
@@ -818,7 +818,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 2593
+  - 2593
   weight: 9.071
   examine: "Black platelegs with gold trim."
   equipment:
@@ -840,7 +840,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 2601
+  - 2601
   weight: 10.432
   examine: "Adamant platelegs with trim."
   equipment:
@@ -862,7 +862,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 2609
+  - 2609
   weight: 10.432
   examine: "Adamant platelegs with gold trim."
   equipment:
@@ -884,8 +884,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 2617
-  weight: 9.0
+  - 2617
+  weight: 9.071
   examine: "Rune platelegs with gold trim."
   equipment:
     attackBonus:
@@ -906,7 +906,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 2625
+  - 2625
   weight: 9.071
   examine: "Rune platelegs with trim."
   equipment:
@@ -928,7 +928,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 2655
+  - 2655
   weight: 9.071
   examine: "Rune platelegs in the colours of Zamorak."
   equipment:
@@ -950,7 +950,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-    - 2663
+  - 2663
   weight: 9.071
   examine: "Rune platelegs in the colours of Saradomin."
   equipment:
@@ -972,7 +972,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-    - 2671
+  - 2671
   weight: 9.071
   examine: "Rune plate legs in the colours of Guthix."
   equipment:
@@ -994,7 +994,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-    - 2898
+  - 2898
   weight: 0.907
   examine: "Made by werewolves for werewolves."
   equipment:
@@ -1016,7 +1016,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 2908
+  - 2908
   weight: 0.907
   examine: "Made by werewolves for werewolves."
   equipment:
@@ -1038,7 +1038,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 2918
+  - 2918
   weight: 0.907
   examine: "Made by werewolves for werewolves."
   equipment:
@@ -1060,7 +1060,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 2928
+  - 2928
   weight: 0.907
   examine: "Made by werewolves for werewolves."
   equipment:
@@ -1082,7 +1082,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 2938
+  - 2938
   weight: 0.907
   examine: "Made by werewolves for werewolves."
   equipment:
@@ -1104,8 +1104,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 3059
-  weight: 0.0
+  - 3059
+  weight: 0.001
   examine: "A mime would wear these."
   equipment:
     attackBonus:
@@ -1126,7 +1126,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 3389
+  - 3389
   weight: 3.628
   examine: "These should protect my legs."
   equipment:
@@ -1148,7 +1148,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 3472
+  - 3472
   weight: 9.071
   examine: "Black plateskirt with trim."
   equipment:
@@ -1170,7 +1170,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 3473
+  - 3473
   weight: 9.071
   examine: "Black plateskirt with gold trim."
   equipment:
@@ -1192,7 +1192,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 3474
+  - 3474
   weight: 10.432
   examine: "Adamant plateskirt with trim."
   equipment:
@@ -1214,7 +1214,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 3475
+  - 3475
   weight: 10.432
   examine: "Adamant plateskirt with gold trim."
   equipment:
@@ -1236,7 +1236,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 3476
+  - 3476
   weight: 9.071
   examine: "Rune plateskirt with gold trim."
   equipment:
@@ -1258,7 +1258,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 3477
+  - 3477
   weight: 9.071
   examine: "Rune plateskirt with trim."
   equipment:
@@ -1280,7 +1280,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 3478
+  - 3478
   weight: 9.071
   examine: "Rune plateskirt in the colours of Zamorak."
   equipment:
@@ -1302,7 +1302,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-    - 3479
+  - 3479
   weight: 9.071
   examine: "Rune plateskirt in the colours of Saradomin."
   equipment:
@@ -1324,7 +1324,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-    - 3480
+  - 3480
   weight: 9.071
   examine: "Rune plateskirt in the colours of Guthix."
   equipment:
@@ -1346,7 +1346,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-    - 3483
+  - 3483
   weight: 9.071
   examine: "Rune platelegs with gold plate."
   equipment:
@@ -1368,7 +1368,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 3485
+  - 3485
   weight: 9.071
   examine: "Rune plateskirt with gold plate."
   equipment:
@@ -1390,7 +1390,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 3795
+  - 3795
   weight: 0.907
   examine: "The latest fashion in Rellekka."
   equipment:
@@ -1412,7 +1412,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4070
+  - 4070
   weight: 9.071
   examine: "Very decorative armour."
   equipment:
@@ -1434,8 +1434,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4087
-    - 20429
+  - 4087
+  - 20429
   weight: 9.071
   examine: "These look pretty heavy."
   equipment:
@@ -1457,9 +1457,9 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4093
-    - 20426
-  weight: 1.8
+  - 4093
+  - 20426
+  weight: 1.814
   examine: "The lower half of a magical robe."
   equipment:
     attackBonus:
@@ -1480,7 +1480,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4103
+  - 4103
   weight: 1.814
   examine: "The lower half of a dark magical robe."
   equipment:
@@ -1502,8 +1502,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4113
-  weight: 1.8
+  - 4113
+  weight: 1.814
   examine: "The lower half of a bright magical robe."
   equipment:
     attackBonus:
@@ -1524,8 +1524,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4300
-  weight: 0.9
+  - 4300
+  weight: 0.907
   examine: "The label says 'Vivid Crimson', but it looks pink to me!"
   equipment:
     attackBonus:
@@ -1546,7 +1546,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4505
+  - 4505
   weight: 9.071
   examine: "Very decorative armour."
   equipment:
@@ -1568,7 +1568,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4510
+  - 4510
   weight: 9.071
   examine: "Very decorative armour."
   equipment:
@@ -1590,7 +1590,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4585
+  - 4585
   weight: 9.071
   examine: "This looks pretty heavy."
   equipment:
@@ -1612,8 +1612,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4714
-    - 20599
+  - 4714
+  - 20599
   weight: 11.339
   examine: "Ahrim the Blighted's armoured robe skirt."
   equipment:
@@ -1635,7 +1635,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4722
+  - 4722
   weight: 9.071
   examine: "Dharok the Wretched's plate leg armour."
   equipment:
@@ -1657,7 +1657,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4730
+  - 4730
   weight: 8.164
   examine: "Guthan the Infested's chainskirt."
   equipment:
@@ -1679,7 +1679,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4738
+  - 4738
   weight: 5.443
   examine: "Karil the Tainted's leather skirt."
   equipment:
@@ -1701,7 +1701,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4751
+  - 4751
   weight: 9.071
   examine: "Torag the Corrupted's plate leg armour."
   equipment:
@@ -1723,579 +1723,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4759
-  weight: 4.5
-  examine: "Verac the Defiled's plate skirt."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: -7
-      range: -21
-    defenceBonus:
-      stab: 85
-      slash: 82
-      crush: 83
-      magic: 84
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 4
-- ids:
-    - 4874
-  weight: 11.339
-  examine: "Ahrim the Blighted's armoured robe skirt."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: -7
-      range: 22
-    defenceBonus:
-      stab: 33
-      slash: 30
-      crush: 36
-      magic: 0
-      range: 22
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-    - 4875
-  weight: 11.339
-  examine: "Ahrim the Blighted's armoured robe skirt."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: -7
-      range: 22
-    defenceBonus:
-      stab: 33
-      slash: 30
-      crush: 36
-      magic: 0
-      range: 22
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-    - 4876
-  weight: 11.339
-  examine: "Ahrim the Blighted's armoured robe skirt."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: -7
-      range: 22
-    defenceBonus:
-      stab: 33
-      slash: 30
-      crush: 36
-      magic: 0
-      range: 22
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-    - 4877
-  weight: 11.339
-  examine: "Ahrim the Blighted's armoured robe skirt."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: -7
-      range: 22
-    defenceBonus:
-      stab: 33
-      slash: 30
-      crush: 36
-      magic: 0
-      range: 22
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-    - 4878
-  weight: 11.3
-  examine: "Ahrim the Blighted's armoured robe skirt."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-    - 4898
-  weight: 9.071
-  examine: "Dharok the Wretched's plate leg armour."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: -7
-      range: -21
-    defenceBonus:
-      stab: 85
-      slash: 82
-      crush: 83
-      magic: 92
-      range: -4
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-    - 4899
-  weight: 9.071
-  examine: "Dharok the Wretched's plate leg armour."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: -7
-      range: -21
-    defenceBonus:
-      stab: 85
-      slash: 82
-      crush: 83
-      magic: 92
-      range: -4
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-    - 4900
-  weight: 9.071
-  examine: "Dharok the Wretched's plate leg armour."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: -7
-      range: -21
-    defenceBonus:
-      stab: 85
-      slash: 82
-      crush: 83
-      magic: 92
-      range: -4
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-    - 4901
-  weight: 9.071
-  examine: "Dharok the Wretched's plate leg armour."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: -7
-      range: -21
-    defenceBonus:
-      stab: 85
-      slash: 82
-      crush: 83
-      magic: 92
-      range: -4
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-    - 4902
-  weight: 9.071
-  examine: "Dharok the Wretched's plate leg armour."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-    - 4922
-  weight: 8.164
-  examine: "Guthan the Infested's chainskirt."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: -7
-      range: -14
-    defenceBonus:
-      stab: 75
-      slash: 72
-      crush: 73
-      magic: 82
-      range: -4
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-    - 4923
-  weight: 8.164
-  examine: "Guthan the Infested's chainskirt."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: -7
-      range: -14
-    defenceBonus:
-      stab: 75
-      slash: 72
-      crush: 73
-      magic: 82
-      range: -4
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-    - 4924
-  weight: 8.164
-  examine: "Guthan the Infested's chainskirt."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: -7
-      range: -14
-    defenceBonus:
-      stab: 75
-      slash: 72
-      crush: 73
-      magic: 82
-      range: -4
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-    - 4925
-  weight: 8.164
-  examine: "Guthan the Infested's chainskirt."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: -7
-      range: -14
-    defenceBonus:
-      stab: 75
-      slash: 72
-      crush: 73
-      magic: 82
-      range: -4
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-    - 4926
-  weight: 8.164
-  examine: "Guthan the Infested's chainskirt."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-    - 4946
-  weight: 5.443
-  examine: "Karil the Tainted's leather skirt."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 17
-      range: -10
-    defenceBonus:
-      stab: 26
-      slash: 20
-      crush: 28
-      magic: 33
-      range: 35
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-    - 4947
-  weight: 5.443
-  examine: "Karil the Tainted's leather skirt."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 17
-      range: -10
-    defenceBonus:
-      stab: 26
-      slash: 20
-      crush: 28
-      magic: 33
-      range: 35
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-    - 4948
-  weight: 5.443
-  examine: "Karil the Tainted's leather skirt."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 17
-      range: -10
-    defenceBonus:
-      stab: 26
-      slash: 20
-      crush: 28
-      magic: 33
-      range: 35
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-    - 4949
-  weight: 5.443
-  examine: "Karil the Tainted's leather skirt."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 17
-      range: -10
-    defenceBonus:
-      stab: 26
-      slash: 20
-      crush: 28
-      magic: 33
-      range: 35
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-    - 4950
-  weight: 5.443
-  examine: "Karil the Tainted's leather skirt."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-    - 4970
-  weight: 9.071
-  examine: "Torag the Corrupted's plate leg armour."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: -7
-      range: -21
-    defenceBonus:
-      stab: 85
-      slash: 82
-      crush: 83
-      magic: 92
-      range: -4
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-    - 4971
-  weight: 9.071
-  examine: "Torag the Corrupted's plate leg armour."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: -7
-      range: -21
-    defenceBonus:
-      stab: 85
-      slash: 82
-      crush: 83
-      magic: 92
-      range: -4
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-    - 4972
-  weight: 9.071
-  examine: "Torag the Corrupted's plate leg armour."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: -7
-      range: -21
-    defenceBonus:
-      stab: 85
-      slash: 82
-      crush: 83
-      magic: 92
-      range: -4
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-    - 4973
-  weight: 9.071
-  examine: "Torag the Corrupted's plate leg armour."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: -7
-      range: -21
-    defenceBonus:
-      stab: 85
-      slash: 82
-      crush: 83
-      magic: 92
-      range: -4
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-    - 4974
-  weight: 9.071
-  examine: "Torag the Corrupted's plate leg armour."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-    - 4994
+  - 4759
   weight: 4.535
   examine: "Verac the Defiled's plate skirt."
   equipment:
@@ -2317,7 +1745,557 @@
       magic: 0
     prayerBonus: 4
 - ids:
-    - 4995
+  - 4874
+  weight: 11.339
+  examine: "Ahrim the Blighted's armoured robe skirt."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: -7
+      range: 22
+    defenceBonus:
+      stab: 33
+      slash: 30
+      crush: 36
+      magic: 0
+      range: 22
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 4875
+  weight: 11.339
+  examine: "Ahrim the Blighted's armoured robe skirt."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: -7
+      range: 22
+    defenceBonus:
+      stab: 33
+      slash: 30
+      crush: 36
+      magic: 0
+      range: 22
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 4876
+  weight: 11.339
+  examine: "Ahrim the Blighted's armoured robe skirt."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: -7
+      range: 22
+    defenceBonus:
+      stab: 33
+      slash: 30
+      crush: 36
+      magic: 0
+      range: 22
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 4877
+  weight: 11.339
+  examine: "Ahrim the Blighted's armoured robe skirt."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: -7
+      range: 22
+    defenceBonus:
+      stab: 33
+      slash: 30
+      crush: 36
+      magic: 0
+      range: 22
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 4878
+  weight: 11.339
+  examine: "Ahrim the Blighted's armoured robe skirt."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 4898
+  weight: 9.071
+  examine: "Dharok the Wretched's plate leg armour."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: -7
+      range: -21
+    defenceBonus:
+      stab: 85
+      slash: 82
+      crush: 83
+      magic: 92
+      range: -4
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 4899
+  weight: 9.071
+  examine: "Dharok the Wretched's plate leg armour."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: -7
+      range: -21
+    defenceBonus:
+      stab: 85
+      slash: 82
+      crush: 83
+      magic: 92
+      range: -4
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 4900
+  weight: 9.071
+  examine: "Dharok the Wretched's plate leg armour."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: -7
+      range: -21
+    defenceBonus:
+      stab: 85
+      slash: 82
+      crush: 83
+      magic: 92
+      range: -4
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 4901
+  weight: 9.071
+  examine: "Dharok the Wretched's plate leg armour."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: -7
+      range: -21
+    defenceBonus:
+      stab: 85
+      slash: 82
+      crush: 83
+      magic: 92
+      range: -4
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 4902
+  weight: 9.071
+  examine: "Dharok the Wretched's plate leg armour."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 4922
+  weight: 8.164
+  examine: "Guthan the Infested's chainskirt."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: -7
+      range: -14
+    defenceBonus:
+      stab: 75
+      slash: 72
+      crush: 73
+      magic: 82
+      range: -4
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 4923
+  weight: 8.164
+  examine: "Guthan the Infested's chainskirt."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: -7
+      range: -14
+    defenceBonus:
+      stab: 75
+      slash: 72
+      crush: 73
+      magic: 82
+      range: -4
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 4924
+  weight: 8.164
+  examine: "Guthan the Infested's chainskirt."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: -7
+      range: -14
+    defenceBonus:
+      stab: 75
+      slash: 72
+      crush: 73
+      magic: 82
+      range: -4
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 4925
+  weight: 8.164
+  examine: "Guthan the Infested's chainskirt."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: -7
+      range: -14
+    defenceBonus:
+      stab: 75
+      slash: 72
+      crush: 73
+      magic: 82
+      range: -4
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 4926
+  weight: 8.164
+  examine: "Guthan the Infested's chainskirt."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 4946
+  weight: 5.443
+  examine: "Karil the Tainted's leather skirt."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 17
+      range: -10
+    defenceBonus:
+      stab: 26
+      slash: 20
+      crush: 28
+      magic: 33
+      range: 35
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 4947
+  weight: 5.443
+  examine: "Karil the Tainted's leather skirt."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 17
+      range: -10
+    defenceBonus:
+      stab: 26
+      slash: 20
+      crush: 28
+      magic: 33
+      range: 35
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 4948
+  weight: 5.443
+  examine: "Karil the Tainted's leather skirt."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 17
+      range: -10
+    defenceBonus:
+      stab: 26
+      slash: 20
+      crush: 28
+      magic: 33
+      range: 35
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 4949
+  weight: 5.443
+  examine: "Karil the Tainted's leather skirt."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 17
+      range: -10
+    defenceBonus:
+      stab: 26
+      slash: 20
+      crush: 28
+      magic: 33
+      range: 35
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 4950
+  weight: 5.443
+  examine: "Karil the Tainted's leather skirt."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 4970
+  weight: 9.071
+  examine: "Torag the Corrupted's plate leg armour."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: -7
+      range: -21
+    defenceBonus:
+      stab: 85
+      slash: 82
+      crush: 83
+      magic: 92
+      range: -4
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 4971
+  weight: 9.071
+  examine: "Torag the Corrupted's plate leg armour."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: -7
+      range: -21
+    defenceBonus:
+      stab: 85
+      slash: 82
+      crush: 83
+      magic: 92
+      range: -4
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 4972
+  weight: 9.071
+  examine: "Torag the Corrupted's plate leg armour."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: -7
+      range: -21
+    defenceBonus:
+      stab: 85
+      slash: 82
+      crush: 83
+      magic: 92
+      range: -4
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 4973
+  weight: 9.071
+  examine: "Torag the Corrupted's plate leg armour."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: -7
+      range: -21
+    defenceBonus:
+      stab: 85
+      slash: 82
+      crush: 83
+      magic: 92
+      range: -4
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 4974
+  weight: 9.071
+  examine: "Torag the Corrupted's plate leg armour."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 4994
   weight: 4.535
   examine: "Verac the Defiled's plate skirt."
   equipment:
@@ -2339,7 +2317,7 @@
       magic: 0
     prayerBonus: 4
 - ids:
-    - 4996
+  - 4995
   weight: 4.535
   examine: "Verac the Defiled's plate skirt."
   equipment:
@@ -2361,8 +2339,8 @@
       magic: 0
     prayerBonus: 4
 - ids:
-    - 4997
-  weight: 4.5
+  - 4996
+  weight: 4.535
   examine: "Verac the Defiled's plate skirt."
   equipment:
     attackBonus:
@@ -2383,7 +2361,29 @@
       magic: 0
     prayerBonus: 4
 - ids:
-    - 4998
+  - 4997
+  weight: 4.535
+  examine: "Verac the Defiled's plate skirt."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: -7
+      range: -21
+    defenceBonus:
+      stab: 85
+      slash: 82
+      crush: 83
+      magic: 84
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 4
+- ids:
+  - 4998
   weight: 4.535
   examine: "Verac the Defiled's plate skirt."
   equipment:
@@ -2405,7 +2405,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 5036
+  - 5036
   weight: 1.0
   examine: "A pair of long dwarven trousers... long for dwarves, of course."
   equipment:
@@ -2427,7 +2427,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 5038
+  - 5038
   weight: 1.0
   examine: "A pair of long dwarven trousers... long for dwarves, of course."
   equipment:
@@ -2449,7 +2449,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 5040
+  - 5040
   weight: 1.0
   examine: "A pair of long dwarven trousers... long for dwarves, of course."
   equipment:
@@ -2471,7 +2471,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 5042
+  - 5042
   weight: 0.1
   examine: "These look great, on dwarves!"
   equipment:
@@ -2493,7 +2493,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 5044
+  - 5044
   weight: 0.1
   examine: "Yellow shorts. Far too small for you."
   equipment:
@@ -2515,7 +2515,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 5046
+  - 5046
   weight: 0.1
   examine: "Blue shorts, these would look great on dwarves!"
   equipment:
@@ -2537,7 +2537,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 5048
+  - 5048
   weight: 0.08
   examine: "A brown skirt. Size small!"
   equipment:
@@ -2559,7 +2559,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 5050
+  - 5050
   weight: 0.08
   examine: "Lilac skirt."
   equipment:
@@ -2581,7 +2581,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 5052
+  - 5052
   weight: 0.08
   examine: "A blue skirt."
   equipment:
@@ -2603,7 +2603,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 5555
+  - 5555
   weight: 0.453
   examine: "Black banded leather armour, a rogue's dream!"
   equipment:
@@ -2625,7 +2625,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 5576
+  - 5576
   weight: 7.711
   examine: "An initiate Temple Knight's leg armour."
   equipment:
@@ -2647,7 +2647,7 @@
       magic: 0
     prayerBonus: 5
 - ids:
-    - 6066
+  - 6066
   weight: 2.267
   examine: "These are in need of a good tailor."
   equipment:
@@ -2669,7 +2669,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 6067
+  - 6067
   weight: 2.267
   examine: "A pair of mourner trousers."
   equipment:
@@ -2691,7 +2691,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 6108
+  - 6108
   weight: 0.001
   examine: "An unearthly set of robe bottoms."
   equipment:
@@ -2713,7 +2713,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 6130
+  - 6130
   weight: 9.071
   examine: "Some tough leggings made from rock crab parts."
   equipment:
@@ -2735,7 +2735,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 6135
+  - 6135
   weight: 5.443
   examine: "Stylish leg armour for rangers with a lingering smell of raw fish..."
   equipment:
@@ -2757,7 +2757,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 6141
+  - 6141
   weight: 4.082
   examine: "A superior set of strengthened slacks for any self respecting seer."
   equipment:
@@ -2779,7 +2779,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 6181
+  - 6181
   weight: 2.267
   examine: "Brown leather shorts with bright white socks?"
   equipment:
@@ -2801,7 +2801,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 6185
+  - 6185
   weight: 2.267
   examine: "Very posh!"
   equipment:
@@ -2823,8 +2823,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 6187
-  weight: 2.0
+  - 6187
+  weight: 2.267
   examine: "Very posh!"
   equipment:
     attackBonus:
@@ -2845,7 +2845,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 6324
+  - 6324
   weight: 3.628
   examine: "Made from 100% real snake."
   equipment:
@@ -2867,7 +2867,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 6343
+  - 6343
   weight: 2.0
   examine: "A brightly coloured robe prized by the Tai Bwo Wannai peoples."
   equipment:
@@ -2889,7 +2889,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 6353
+  - 6353
   weight: 2.0
   examine: "A brightly coloured robe prized by the Tai Bwo Wannai peoples."
   equipment:
@@ -2911,7 +2911,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 6363
+  - 6363
   weight: 2.0
   examine: "A brightly coloured robe prized by the Tai Bwo Wannai peoples."
   equipment:
@@ -2933,7 +2933,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 6373
+  - 6373
   weight: 2.0
   examine: "A brightly coloured robe prized by the Tai Bwo Wannai peoples."
   equipment:
@@ -2955,7 +2955,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 6386
+  - 6386
   weight: 0.005
   examine: "Has a coarse hard wearing texture."
   equipment:
@@ -2977,7 +2977,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 6390
+  - 6390
   weight: 0.005
   examine: "Better than factor 50 sun cream."
   equipment:
@@ -2999,7 +2999,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 6396
+  - 6396
   weight: 0.005
   examine: "A cool light Menaphite robe."
   equipment:
@@ -3021,7 +3021,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 6398
+  - 6398
   weight: 0.005
   examine: "Look at those nobbily knees."
   equipment:
@@ -3043,7 +3043,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 6404
+  - 6404
   weight: 0.005
   examine: "A cool light Menaphite robe."
   equipment:
@@ -3065,7 +3065,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 6406
+  - 6406
   weight: 0.005
   examine: "Look at those nobbily knees."
   equipment:
@@ -3087,7 +3087,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 6625
+  - 6625
   weight: 9.071
   examine: "Big, White and heavy looking."
   equipment:
@@ -3109,7 +3109,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-    - 6627
+  - 6627
   weight: 8.164
   examine: "Big, White and heavy looking."
   equipment:
@@ -3131,7 +3131,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-    - 6655
+  - 6655
   weight: 2.267
   examine: "Examine what?"
   equipment:
@@ -3153,7 +3153,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 6752
+  - 6752
   weight: 0.907
   examine: "A desert robe stained black with mushroom ink."
   equipment:
@@ -3175,7 +3175,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 6787
+  - 6787
   weight: 0.005
   examine: "A patched up robe."
   equipment:
@@ -3197,7 +3197,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 6809
+  - 6809
   weight: 15.875
   examine: "These look pretty heavy."
   equipment:
@@ -3219,8 +3219,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 6924
-    - 20575
+  - 6924
+  - 20575
   weight: 1.814
   examine: "Mystical robes."
   equipment:
@@ -3242,7 +3242,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 7116
+  - 7116
   weight: 1.0
   examine: "A sea worthy pair of trousers."
   equipment:
@@ -3264,7 +3264,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 7126
+  - 7126
   weight: 1.0
   examine: "A sea worthy pair of trousers."
   equipment:
@@ -3286,7 +3286,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 7132
+  - 7132
   weight: 1.0
   examine: "A sea worthy pair of trousers."
   equipment:
@@ -3308,7 +3308,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 7138
+  - 7138
   weight: 1.0
   examine: "A sea worthy pair of trousers."
   equipment:
@@ -3330,7 +3330,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 7366
+  - 7366
   weight: 4.535
   examine: "Those studs should provide a bit more protection. Nice trim too!"
   equipment:
@@ -3352,7 +3352,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 7368
+  - 7368
   weight: 4.535
   examine: "Those studs should provide a bit more protection. Nice trim too!"
   equipment:
@@ -3374,7 +3374,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 7378
+  - 7378
   weight: 5.443
   examine: "Made from 100% real dragonhide. With colourful trim!"
   equipment:
@@ -3396,7 +3396,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 7380
+  - 7380
   weight: 5.443
   examine: "Made from 100% real dragonhide. With colourful trim!"
   equipment:
@@ -3418,7 +3418,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 7382
+  - 7382
   weight: 5.443
   examine: "Made from 100% real dragonhide. With colourful trim!"
   equipment:
@@ -3440,7 +3440,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 7384
+  - 7384
   weight: 5.443
   examine: "Made from 100% real dragonhide. With colourful trim!"
   equipment:
@@ -3462,7 +3462,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 7386
+  - 7386
   weight: 0.907
   examine: "Leg covering favoured by women and wizards. With a colourful trim!"
   equipment:
@@ -3484,7 +3484,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 7388
+  - 7388
   weight: 0.907
   examine: "Leg covering favoured by women and wizards. With a colourful trim!"
   equipment:
@@ -3506,7 +3506,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 7398
+  - 7398
   weight: 1.814
   examine: "Enchanted Wizards robes."
   equipment:
@@ -3528,7 +3528,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 7593
+  - 7593
   weight: 0.003
   examine: "Good for a shamble about town."
   equipment:
@@ -3550,7 +3550,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 8840
+  - 8840
   weight: 8.164
   examine: "Leg armour from the order of the Void Knights."
   equipment:
@@ -3572,7 +3572,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 8991
+  - 8991
   weight: 0.003
   examine: "Not for slackers."
   equipment:
@@ -3594,29 +3594,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 8992
-  weight: 0.0
-  examine: "Not for slackers."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-    - 8993
+  - 8992
   weight: 0.003
   examine: "Not for slackers."
   equipment:
@@ -3638,7 +3616,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 8994
+  - 8993
   weight: 0.003
   examine: "Not for slackers."
   equipment:
@@ -3660,7 +3638,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 8995
+  - 8994
   weight: 0.003
   examine: "Not for slackers."
   equipment:
@@ -3682,7 +3660,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 8996
+  - 8995
   weight: 0.003
   examine: "Not for slackers."
   equipment:
@@ -3704,7 +3682,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 8997
+  - 8996
   weight: 0.003
   examine: "Not for slackers."
   equipment:
@@ -3726,7 +3704,29 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 9071
+  - 8997
+  weight: 0.003
+  examine: "Not for slackers."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 9071
   weight: 3.628
   examine: "This should protect my legs."
   equipment:
@@ -3748,7 +3748,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 9098
+  - 9098
   weight: 3.628
   examine: "These should protect my legs."
   equipment:
@@ -3770,7 +3770,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 9636
+  - 9636
   weight: 0.907
   examine: "Dress like the powerful vyrewatch!"
   equipment:
@@ -3792,7 +3792,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 9642
+  - 9642
   weight: 0.907
   examine: "Ghetto disguise!"
   equipment:
@@ -3814,8 +3814,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 9676
-    - 20565
+  - 9676
+  - 20565
   weight: 7.711
   examine: "A Proselyte Temple Knight's leg armour."
   equipment:
@@ -3837,7 +3837,7 @@
       magic: 0
     prayerBonus: 6
 - ids:
-    - 9678
+  - 9678
   weight: 8.164
   examine: "A Proselyte Temple Knight's leg armour."
   equipment:
@@ -3859,7 +3859,7 @@
       magic: 0
     prayerBonus: 6
 - ids:
-    - 9923
+  - 9923
   weight: 2.267
   examine: "Does my pelvis look big in this?"
   equipment:
@@ -3881,7 +3881,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10035
+  - 10035
   weight: 0.226
   examine: "These should make me harder to spot in polar areas."
   equipment:
@@ -3903,7 +3903,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10041
+  - 10041
   weight: 0.226
   examine: "These should make me harder to spot in woodland and jungle areas."
   equipment:
@@ -3925,7 +3925,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10047
+  - 10047
   weight: 0.226
   examine: "These should make me harder to spot in desert areas."
   equipment:
@@ -3947,7 +3947,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10055
+  - 10055
   weight: 0.226
   examine: "These should make me harder to spot in wooded areas."
   equipment:
@@ -3969,7 +3969,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10059
+  - 10059
   weight: 0.226
   examine: "These should make me harder to spot in jungle areas."
   equipment:
@@ -3991,8 +3991,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10063
-  weight: 0.2
+  - 10063
+  weight: 0.226
   examine: "These should make me harder to spot in desert areas."
   equipment:
     attackBonus:
@@ -4013,7 +4013,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10067
+  - 10067
   weight: 0.226
   examine: "These should make me harder to spot in polar areas."
   equipment:
@@ -4035,7 +4035,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10332
+  - 10332
   weight: 3.0
   examine: "Fabulously ancient range protection crafted from white dragonhide."
   equipment:
@@ -4057,8 +4057,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10340
-    - 20577
+  - 10340
+  - 20577
   weight: 1.8
   examine: "Fabulously ancient mage protection enchanted in the 3rd Age."
   equipment:
@@ -4080,7 +4080,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10346
+  - 10346
   weight: 2.721
   examine: "Fabulously ancient armour beaten from magical silver."
   equipment:
@@ -4102,7 +4102,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10372
+  - 10372
   weight: 5.0
   examine: "Zamorak blessed dragonhide chaps."
   equipment:
@@ -4124,7 +4124,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-    - 10380
+  - 10380
   weight: 5.0
   examine: "Guthix blessed dragonhide chaps."
   equipment:
@@ -4146,7 +4146,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-    - 10388
+  - 10388
   weight: 5.0
   examine: "Saradomin blessed dragonhide chaps."
   equipment:
@@ -4168,7 +4168,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-    - 10394
+  - 10394
   weight: 1.0
   examine: "These'll help me stay alive."
   equipment:
@@ -4190,7 +4190,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10396
+  - 10396
   weight: 1.0
   examine: "Alas, someone has slashed my pantaloons."
   equipment:
@@ -4212,7 +4212,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10402
+  - 10402
   weight: 1.0
   examine: "A rather elegant pair of men's black pantaloons."
   equipment:
@@ -4234,7 +4234,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10406
+  - 10406
   weight: 1.0
   examine: "A rather elegant pair of men's red pantaloons."
   equipment:
@@ -4256,7 +4256,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10410
+  - 10410
   weight: 1.0
   examine: "A rather elegant pair of men's blue pantaloons."
   equipment:
@@ -4278,7 +4278,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10414
+  - 10414
   weight: 1.0
   examine: "A rather elegant pair of men's green pantaloons."
   equipment:
@@ -4300,7 +4300,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10418
+  - 10418
   weight: 1.0
   examine: "A rather elegant pair of men's purple pantaloons."
   equipment:
@@ -4322,7 +4322,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10422
+  - 10422
   weight: 1.0
   examine: "A rather elegant white skirt."
   equipment:
@@ -4344,7 +4344,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10426
+  - 10426
   weight: 1.0
   examine: "A rather elegant red skirt."
   equipment:
@@ -4366,7 +4366,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10430
+  - 10430
   weight: 1.0
   examine: "A rather elegant blue skirt."
   equipment:
@@ -4388,7 +4388,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10434
+  - 10434
   weight: 1.0
   examine: "A rather elegant green skirt."
   equipment:
@@ -4410,7 +4410,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10438
+  - 10438
   weight: 1.0
   examine: "A rather elegant purple skirt."
   equipment:
@@ -4432,7 +4432,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10464
+  - 10464
   weight: 2.7
   examine: "Leggings from the Saradomin Vestments."
   equipment:
@@ -4454,7 +4454,7 @@
       magic: 0
     prayerBonus: 5
 - ids:
-    - 10466
+  - 10466
   weight: 2.7
   examine: "Leggings from the Guthix Vestments."
   equipment:
@@ -4476,7 +4476,7 @@
       magic: 0
     prayerBonus: 5
 - ids:
-    - 10468
+  - 10468
   weight: 2.7
   examine: "Leggings from the Zamorak Vestments."
   equipment:
@@ -4498,7 +4498,7 @@
       magic: 0
     prayerBonus: 5
 - ids:
-    - 10555
+  - 10555
   weight: 3.0
   examine: "A skirt made from the skin of a Penance Ranger."
   equipment:
@@ -4520,7 +4520,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10824
+  - 10824
   weight: 2.721
   examine: "Leg protection, made from smelly yak-hide."
   equipment:
@@ -4542,7 +4542,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10838
+  - 10838
   weight: 0.907
   examine: "Silly jester tights."
   equipment:
@@ -4564,7 +4564,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10864
+  - 10864
   weight: 1.0
   examine: "Slightly tatty in my opinion."
   equipment:
@@ -4586,7 +4586,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10940
+  - 10940
   weight: 0.907
   examine: "You'll certainly be alright wearing these."
   equipment:
@@ -4608,7 +4608,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10956
+  - 10956
   weight: 3.0
   examine: "Chaps made out of frog hide."
   equipment:
@@ -4630,7 +4630,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11022
+  - 11022
   weight: 0.25
   examine: "What's the matter, are you chicken?"
   equipment:
@@ -4652,7 +4652,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11830
+  - 11830
   weight: 1.0
   examine: "A chainskirt of great craftsmanship."
   equipment:
@@ -4674,7 +4674,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-    - 11834
+  - 11834
   weight: 8.0
   examine: "A sturdy pair of tassets."
   equipment:
@@ -4696,8 +4696,8 @@
       magic: 0
     prayerBonus: 1
 - ids:
-    - 11856
-    - 11857
+  - 11856
+  - 11857
   weight: 0.0
   examine: "You have graceful legs. How nice."
   equipment:
@@ -4719,8 +4719,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11893
-  weight: 9.05
+  - 11893
+  weight: 9.071
   examine: "Very decorative armour."
   equipment:
     attackBonus:
@@ -4741,8 +4741,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11894
-  weight: 9.05
+  - 11894
+  weight: 9.071
   examine: "Very decorative armour."
   equipment:
     attackBonus:
@@ -4763,8 +4763,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11895
-  weight: 9.05
+  - 11895
+  weight: 9.071
   examine: "Very decorative armour."
   equipment:
     attackBonus:
@@ -4785,8 +4785,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11897
-  weight: 8.155
+  - 11897
+  weight: 8.164
   examine: "Very decorative armour."
   equipment:
     attackBonus:
@@ -4807,8 +4807,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11900
-  weight: 8.155
+  - 11900
+  weight: 8.164
   examine: "Very decorative armour."
   equipment:
     attackBonus:
@@ -4829,8 +4829,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12015
-  weight: 0.5
+  - 12015
+  weight: 0.907
   examine: "Helps you when you're mining."
   equipment:
     attackBonus:
@@ -4851,8 +4851,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12195
-  weight: 2.0
+  - 12195
+  weight: 0.005
   examine: "Leggings from the Ancient Vestments."
   equipment:
     attackBonus:
@@ -4873,8 +4873,8 @@
       magic: 0
     prayerBonus: 5
 - ids:
-    - 12207
-  weight: 9.0
+  - 12207
+  weight: 9.071
   examine: "Bronze platelegs with gold trim."
   equipment:
     attackBonus:
@@ -4895,8 +4895,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12209
-  weight: 9.0
+  - 12209
+  weight: 8.164
   examine: "Bronze plateskirt with gold trim."
   equipment:
     attackBonus:
@@ -4917,8 +4917,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12217
-  weight: 9.0
+  - 12217
+  weight: 9.071
   examine: "Bronze platelegs with trim."
   equipment:
     attackBonus:
@@ -4939,8 +4939,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12219
-  weight: 9.0
+  - 12219
+  weight: 8.164
   examine: "Bronze plateskirt with trim."
   equipment:
     attackBonus:
@@ -4961,8 +4961,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12227
-  weight: 9.0
+  - 12227
+  weight: 9.071
   examine: "Iron platelegs with trim."
   equipment:
     attackBonus:
@@ -4983,8 +4983,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12229
-  weight: 8.0
+  - 12229
+  weight: 8.164
   examine: "Iron plateskirt with trim."
   equipment:
     attackBonus:
@@ -5005,8 +5005,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12237
-  weight: 9.0
+  - 12237
+  weight: 9.071
   examine: "Iron platelegs with gold trim."
   equipment:
     attackBonus:
@@ -5027,8 +5027,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12239
-  weight: 8.0
+  - 12239
+  weight: 8.164
   examine: "Iron plateskirt with gold trim."
   equipment:
     attackBonus:
@@ -5049,8 +5049,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12255
-  weight: 2.0
+  - 12255
+  weight: 2.7
   examine: "Leggings from the Armadyl Vestments."
   equipment:
     attackBonus:
@@ -5071,8 +5071,8 @@
       magic: 0
     prayerBonus: 5
 - ids:
-    - 12267
-  weight: 2.0
+  - 12267
+  weight: 2.7
   examine: "Leggings from the Bandos Vestments."
   equipment:
     attackBonus:
@@ -5093,8 +5093,8 @@
       magic: 0
     prayerBonus: 5
 - ids:
-    - 12279
-  weight: 7.7
+  - 12279
+  weight: 7.711
   examine: "Mithril platelegs with gold trim."
   equipment:
     attackBonus:
@@ -5115,8 +5115,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12285
-  weight: 7.0
+  - 12285
+  weight: 7.257
   examine: "Mithril plateskirt with gold trim."
   equipment:
     attackBonus:
@@ -5137,8 +5137,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12289
-  weight: 7.7
+  - 12289
+  weight: 7.711
   examine: "Mithril platelegs with trim."
   equipment:
     attackBonus:
@@ -5159,8 +5159,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12295
-  weight: 7.0
+  - 12295
+  weight: 7.257
   examine: "Mithril plateskirt with trim."
   equipment:
     attackBonus:
@@ -5181,8 +5181,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12317
-  weight: 1.0
+  - 12317
+  weight: 0.1
   examine: "A rather elegant pair of men's pink pantaloons."
   equipment:
     attackBonus:
@@ -5203,8 +5203,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12329
-  weight: 5.0
+  - 12329
+  weight: 5.443
   examine: "Made from 100% real dragonhide. With colourful trim!"
   equipment:
     attackBonus:
@@ -5225,8 +5225,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12333
-  weight: 5.0
+  - 12333
+  weight: 5.443
   examine: "Made from 100% real dragonhide. With colourful trim!"
   equipment:
     attackBonus:
@@ -5247,8 +5247,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12341
-  weight: 1.0
+  - 12341
+  weight: 0.1
   examine: "A rather elegant pink skirt."
   equipment:
     attackBonus:
@@ -5269,8 +5269,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12345
-  weight: 1.0
+  - 12345
+  weight: 0.1
   examine: "A rather elegant gold skirt."
   equipment:
     attackBonus:
@@ -5291,8 +5291,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12349
-  weight: 1.0
+  - 12349
+  weight: 0.1
   examine: "A rather elegant pair of men's gold pantaloons."
   equipment:
     attackBonus:
@@ -5313,8 +5313,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12383
-  weight: 5.4
+  - 12383
+  weight: 5.443
   examine: "Made from 100% real dragonhide. With colourful trim!"
   equipment:
     attackBonus:
@@ -5335,8 +5335,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12387
-  weight: 5.4
+  - 12387
+  weight: 5.443
   examine: "Made from 100% real dragonhide. With colourful trim!"
   equipment:
     attackBonus:
@@ -5357,8 +5357,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12395
-  weight: 1.0
+  - 12395
+  weight: 1.36
   examine: "Feeling distinctly ornate."
   equipment:
     attackBonus:
@@ -5379,8 +5379,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12415
-  weight: 9.0
+  - 12415
+  weight: 9.071
   examine: "Heavy protective legwear with a gold trim."
   equipment:
     attackBonus:
@@ -5401,8 +5401,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12416
-  weight: 9.0
+  - 12416
+  weight: 9.071
   examine: "Heavy protective legwear with a gold trim."
   equipment:
     attackBonus:
@@ -5423,8 +5423,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12421
-  weight: 0.0
+  - 12421
+  weight: 1.814
   examine: "Mystical robes with a light recolour."
   equipment:
     attackBonus:
@@ -5445,8 +5445,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12443
-  weight: 1.0
+  - 12443
+  weight: 1.814
   examine: "One for all!"
   equipment:
     attackBonus:
@@ -5467,8 +5467,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12445
-  weight: 0.9
+  - 12445
+  weight: 0.907
   examine: "Leg covering favoured by women and wizards. With a colourful trim!"
   equipment:
     attackBonus:
@@ -5489,8 +5489,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12447
-  weight: 0.9
+  - 12447
+  weight: 0.907
   examine: "Leg covering favoured by women and wizards. With a colourful trim!"
   equipment:
     attackBonus:
@@ -5511,8 +5511,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12459
-  weight: 0.0
+  - 12459
+  weight: 1.814
   examine: "Mystical robes with a dark recolour."
   equipment:
     attackBonus:
@@ -5533,7 +5533,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12462
+  - 12462
   weight: 9.071
   examine: "Rune platelegs in the colours of a long-forgotten god."
   equipment:
@@ -5555,7 +5555,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-    - 12464
+  - 12464
   weight: 9.071
   examine: "Rune plateskirt in the colours of a long-forgotten god."
   equipment:
@@ -5577,7 +5577,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-    - 12472
+  - 12472
   weight: 9.071
   examine: "Rune platelegs in the colours of Armadyl."
   equipment:
@@ -5599,7 +5599,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-    - 12474
+  - 12474
   weight: 9.071
   examine: "Rune plateskirt in the colours of Armadyl."
   equipment:
@@ -5621,7 +5621,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-    - 12482
+  - 12482
   weight: 9.071
   examine: "Rune platelegs in the colours of Bandos."
   equipment:
@@ -5643,7 +5643,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-    - 12484
+  - 12484
   weight: 9.071
   examine: "Rune plateskirt in the colours of Bandos."
   equipment:
@@ -5665,7 +5665,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-    - 12494
+  - 12494
   weight: 5.0
   examine: "Ancient blessed dragonhide chaps."
   equipment:
@@ -5687,7 +5687,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-    - 12502
+  - 12502
   weight: 5.0
   examine: "Bandos blessed dragonhide chaps."
   equipment:
@@ -5709,7 +5709,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-    - 12510
+  - 12510
   weight: 5.0
   examine: "Armadyl blessed dragonhide chaps."
   equipment:
@@ -5731,8 +5731,8 @@
       magic: 0
     prayerBonus: 1
 - ids:
-    - 12812
-  weight: 9.0
+  - 12812
+  weight: 4.535
   examine: "Take it off and what are you?"
   equipment:
     attackBonus:
@@ -5753,8 +5753,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12815
-  weight: 9.0
+  - 12815
+  weight: 4.535
   examine: "Take it off and what are you?"
   equipment:
     attackBonus:
@@ -5775,7 +5775,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12889
+  - 12889
   weight: 0.25
   examine: "Christmas stockings aren't just for hanging by the fireplace."
   equipment:
@@ -5797,7 +5797,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12894
+  - 12894
   weight: 0.25
   examine: "Keeps your bones warm."
   equipment:
@@ -5819,7 +5819,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 12957
+  - 12957
   weight: 3.0
   examine: "It looks like a cow's legs."
   equipment:
@@ -5841,7 +5841,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13073
+  - 13073
   weight: 8.164
   examine: "Superior leg armour from the order of the Void Knights."
   equipment:
@@ -5863,8 +5863,8 @@
       magic: 0
     prayerBonus: 3
 - ids:
-    - 13112
-  weight: 8.0
+  - 13112
+  weight: 9.071
   examine: "Very sturdy leather greeves."
   equipment:
     attackBonus:
@@ -5885,8 +5885,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13113
-  weight: 9.0
+  - 13113
+  weight: 9.071
   examine: "Armoured greaves adorned with the crest of Morytania."
   equipment:
     attackBonus:
@@ -5907,8 +5907,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13114
-  weight: 9.0
+  - 13114
+  weight: 9.071
   examine: "Platelegs adorned with the crest of Morytania."
   equipment:
     attackBonus:
@@ -5929,8 +5929,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13115
-  weight: 9.0
+  - 13115
+  weight: 9.071
   examine: "Platelegs adorned with the crest of Morytania."
   equipment:
     attackBonus:
@@ -5951,7 +5951,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13260
+  - 13260
   weight: 1.0
   examine: "This will help with fishing."
   equipment:
@@ -5973,8 +5973,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13285
-  weight: 1.0
+  - 13285
+  weight: 0.8
   examine: "Is that someone's missing phalange stuck in the hem?"
   equipment:
     attackBonus:
@@ -5995,8 +5995,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13288
-  weight: 0.0
+  - 13288
+  weight: 0.1
   examine: "Your smelly reward for helping evict Anti-Santa from Death's house."
   equipment:
     attackBonus:
@@ -6017,8 +6017,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13318
-  weight: 9.5
+  - 13318
+  weight: 9.071
   examine: "That numb feeling."
   equipment:
     attackBonus:
@@ -6039,8 +6039,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13360
-  weight: 9.0
+  - 13360
+  weight: 9.071
   examine: "Dress like a tier 1 Shayzien soldier."
   equipment:
     attackBonus:
@@ -6061,8 +6061,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13365
-  weight: 9.0
+  - 13365
+  weight: 9.071
   examine: "Dress like a tier 2 Shayzien soldier."
   equipment:
     attackBonus:
@@ -6083,8 +6083,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13370
-  weight: 9.0
+  - 13370
+  weight: 9.071
   examine: "Dress like a tier 3 Shayzien soldier."
   equipment:
     attackBonus:
@@ -6105,8 +6105,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13375
-  weight: 9.0
+  - 13375
+  weight: 9.071
   examine: "Dress like a tier 4 Shayzien soldier."
   equipment:
     attackBonus:
@@ -6127,8 +6127,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13380
-  weight: 9.0
+  - 13380
+  weight: 9.071
   examine: "Dress like a tier 5 Shayzien soldier."
   equipment:
     attackBonus:
@@ -6149,8 +6149,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13389
-  weight: 0.0
+  - 13389
+  weight: 0.18
   examine: "The forgotten magicks of Xeric imbue this garment with a little power."
   equipment:
     attackBonus:
@@ -6171,8 +6171,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13585
-    - 13586
+  - 13585
+  - 13586
   weight: 0.0
   examine: "You have graceful legs. How nice."
   equipment:
@@ -6194,8 +6194,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13597
-    - 13598
+  - 13597
+  - 13598
   weight: 0.0
   examine: "You have graceful legs. How nice."
   equipment:
@@ -6217,8 +6217,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13609
-    - 13610
+  - 13609
+  - 13610
   weight: 0.0
   examine: "You have graceful legs. How nice."
   equipment:
@@ -6240,8 +6240,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13621
-    - 13622
+  - 13621
+  - 13622
   weight: 0.0
   examine: "You have graceful legs. How nice."
   equipment:
@@ -6263,8 +6263,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13633
-    - 13634
+  - 13633
+  - 13634
   weight: 0.0
   examine: "You have graceful legs. How nice."
   equipment:
@@ -6286,8 +6286,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13640
-  weight: 0.9
+  - 13640
+  weight: 0.907
   examine: "This will help with farming."
   equipment:
     attackBonus:
@@ -6308,8 +6308,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13641
-  weight: 0.9
+  - 13641
+  weight: 0.907
   examine: "This will help with farming."
   equipment:
     attackBonus:
@@ -6330,7 +6330,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13664
+  - 13664
   weight: 0.907
   examine: "These look furry."
   equipment:
@@ -6352,8 +6352,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13673
-    - 13674
+  - 13673
+  - 13674
   weight: 0.0
   examine: "You have graceful legs. How nice."
   equipment:
@@ -6375,7 +6375,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 19693
+  - 19693
   weight: 2.0
   examine: "A promising pair of trousers."
   equipment:
@@ -6397,8 +6397,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 19964
-  weight: 0.0
+  - 19964
+  weight: 1.0
   examine: "Dark tuxedo trousers with white stockings."
   equipment:
     attackBonus:
@@ -6419,8 +6419,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 19979
-  weight: 0.0
+  - 19979
+  weight: 1.0
   examine: "Light tuxedo trousers with matching stockings."
   equipment:
     attackBonus:
@@ -6441,7 +6441,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 20044
+  - 20044
   weight: 1.5
   examine: "Armoured greaves of the Samurai."
   equipment:
@@ -6463,8 +6463,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 20089
-  weight: 0.0
+  - 20089
+  weight: 0.5
   examine: "A mummy's legs."
   equipment:
     attackBonus:
@@ -6485,7 +6485,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 20104
+  - 20104
   weight: 0.5
   examine: "These leggings will make your flesh transparent."
   equipment:
@@ -6507,8 +6507,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 20137
-  weight: 1.8
+  - 20137
+  weight: 1.814
   examine: "A dark power is woven into this robe bottom."
   equipment:
     attackBonus:
@@ -6529,8 +6529,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 20172
-  weight: 9.0
+  - 20172
+  weight: 9.071
   examine: "Steel platelegs with a gold trim."
   equipment:
     attackBonus:
@@ -6551,8 +6551,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 20175
-  weight: 8.0
+  - 20175
+  weight: 8.164
   examine: "Steel plateskirt with gold trim."
   equipment:
     attackBonus:
@@ -6573,8 +6573,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 20187
-  weight: 9.0
+  - 20187
+  weight: 9.071
   examine: "Steel platelegs with a trim."
   equipment:
     attackBonus:
@@ -6595,8 +6595,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 20190
-  weight: 8.0
+  - 20190
+  weight: 8.164
   examine: "Steel plateskirt with trim."
   equipment:
     attackBonus:
@@ -6617,8 +6617,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 20202
-  weight: 1.0
+  - 20202
+  weight: 0.907
   examine: "Keeps a monk's knees nice, warm and stylish."
   equipment:
     attackBonus:
@@ -6639,7 +6639,7 @@
       magic: 0
     prayerBonus: 5
 - ids:
-    - 20442
+  - 20442
   weight: 0.25
   examine: "Evil legs for an evil human wanting to dress like an evil chicken."
   equipment:
@@ -6661,7 +6661,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 20469
+  - 20469
   weight: 8.164
   examine: "Broken leg armour from the order of the Void Knights."
   equipment:
@@ -6683,7 +6683,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 20471
+  - 20471
   weight: 8.164
   examine: "Broken superior leg armour from the order of the Void Knights."
   equipment:
@@ -6705,8 +6705,8 @@
       magic: 0
     prayerBonus: 3
 - ids:
-    - 20487
-  weight: 9.05
+  - 20487
+  weight: 9.071
   examine: "Very decorative armour, but it's broken."
   equipment:
     attackBonus:
@@ -6727,8 +6727,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 20493
-  weight: 9.05
+  - 20493
+  weight: 9.071
   examine: "Very decorative armour, but it's broken."
   equipment:
     attackBonus:
@@ -6749,8 +6749,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 20497
-  weight: 8.155
+  - 20497
+  weight: 8.164
   examine: "Very decorative armour, but it's broken."
   equipment:
     attackBonus:
@@ -6771,8 +6771,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 20503
-  weight: 8.155
+  - 20503
+  weight: 8.164
   examine: "Very decorative armour, but it's broken."
   equipment:
     attackBonus:
@@ -6793,7 +6793,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 20515
+  - 20515
   weight: 3.0
   examine: "A broken skirt made from the skin of a Penance Ranger."
   equipment:
@@ -6815,8 +6815,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 20520
-  weight: 0.1
+  - 20520
+  weight: 0.18
   examine: "The robes worn by the dangerous elder druids."
   equipment:
     attackBonus:
@@ -6837,7 +6837,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 20706
+  - 20706
   weight: 0.18
   examine: "The robes of the Pyromancers."
   equipment:
@@ -6859,8 +6859,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 20777
-  weight: 0.5
+  - 20777
+  weight: 0.8
   examine: "Looks like someone has taken a saw to these!"
   equipment:
     attackBonus:
@@ -6881,8 +6881,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 20796
-  weight: 4.0
+  - 20796
+  weight: 4.535
   examine: "Take it off and what are you?"
   equipment:
     attackBonus:
@@ -6903,8 +6903,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 20842
-  weight: 9.0
+  - 20842
+  weight: 9.071
   examine: "The platelegs of a forgotten warrior, corrupted by the dark altar."
   equipment:
     attackBonus:
@@ -6925,8 +6925,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 20844
-  weight: 8.0
+  - 20844
+  weight: 8.164
   examine: "The plateskirt of a forgotten warrior, corrupted by the dark altar."
   equipment:
     attackBonus:
@@ -6947,7 +6947,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 21024
+  - 21024
   weight: 1.814
   examine: "The robe bottoms of a powerful sorceress from a bygone era."
   equipment:
@@ -6969,8 +6969,8 @@
       magic: 2
     prayerBonus: 0
 - ids:
-    - 21070
-    - 21072
+  - 21070
+  - 21072
   weight: 0.0
   examine: "You have graceful legs. How nice."
   equipment:
@@ -6992,8 +6992,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 21304
-  weight: 9.0
+  - 21304
+  weight: 9.071
   examine: "Provides excellent protection."
   equipment:
     attackBonus:
@@ -7014,8 +7014,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 21851
-  weight: 0.0
+  - 21851
+  weight: 0.907
   examine: "Poorly made fake snow imp legs."
   equipment:
     attackBonus:
@@ -7036,8 +7036,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 22328
-  weight: 9.0
+  - 22328
+  weight: 9.071
   examine: "A Justiciar's platelegs. Their once bright colours have since faded."
   equipment:
     attackBonus:
@@ -7058,8 +7058,8 @@
       magic: 0
     prayerBonus: 4
 - ids:
-    - 22353
-  weight: 0.0
+  - 22353
+  weight: 1.814
   examine: "A chocolate shell reinforced with a thin layer of foil."
   equipment:
     attackBonus:
@@ -7080,8 +7080,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 22619
-  weight: 8.1
+  - 22619
+  weight: 8.164
   examine: "A powerful plateskirt."
   equipment:
     attackBonus:
@@ -7102,8 +7102,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 22631
-  weight: 9.0
+  - 22631
+  weight: 9.071
   examine: "A powerful pair of platelegs."
   equipment:
     attackBonus:
@@ -7124,8 +7124,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 22644
-  weight: 5.4
+  - 22644
+  weight: 5.443
   examine: "A powerful pair of leather chaps."
   equipment:
     attackBonus:
@@ -7146,8 +7146,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 22656
-  weight: 5.4
+  - 22656
+  weight: 5.443
   examine: "A powerful robe bottom."
   equipment:
     attackBonus:
@@ -7168,7 +7168,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 22698
+  - 22698
   weight: 0.8
   examine: "Puffy, stripy and colourful! There's nothing grim about these."
   equipment:
@@ -7190,8 +7190,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 22717
-  weight: 0.2
+  - 22717
+  weight: 0.25
   examine: "The bottom of a tree costume."
   equipment:
     attackBonus:
@@ -7212,8 +7212,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 23053
-  weight: 1.8
+  - 23053
+  weight: 1.814
   examine: "The lower half of a dusky magical robe."
   equipment:
     attackBonus:
@@ -7234,8 +7234,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 23095
-  weight: 9.0
+  - 23095
+  weight: 9.071
   examine: "A pair of ornate armoured legs."
   equipment:
     attackBonus:
@@ -7256,7 +7256,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 23242
+  - 23242
   weight: 2.721
   examine: "Fabulously ancient armour beaten from magical silver."
   equipment:
@@ -7278,7 +7278,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 23246
+  - 23246
   weight: 3.0
   examine: "A kilt worn by the mightiest of Fremennik warriors."
   equipment:
@@ -7300,7 +7300,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 23249
+  - 23249
   weight: 5.443
   examine: "Lightweight legwear ideal for rangers."
   equipment:
@@ -7322,7 +7322,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 23267
+  - 23267
   weight: 5.0
   examine: "Made with 100% golden dragonhide."
   equipment:
@@ -7344,8 +7344,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 23306
-  weight: 0.9
+  - 23306
+  weight: 0.907
   examine: "I feel the gods don't enjoy my materialistic obsessions."
   equipment:
     attackBonus:
@@ -7366,8 +7366,8 @@
       magic: 0
     prayerBonus: 5
 - ids:
-    - 23318
-  weight: 0.9
+  - 23318
+  weight: 0.907
   examine: "Bottoms worn by a sandwich lady."
   equipment:
     attackBonus:
@@ -7388,8 +7388,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 23339
-  weight: 2.7
+  - 23339
+  weight: 1.5
   examine: "A fabulously ancient woven robe as worn by the druids of old."
   equipment:
     attackBonus:
@@ -7410,7 +7410,7 @@
       magic: 0
     prayerBonus: 6
 - ids:
-    - 23384
+  - 23384
   weight: 2.721
   examine: "Better than no armour! Nice trim too!"
   equipment:
@@ -7432,7 +7432,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 23789
+  - 23789
   weight: 9.071
   examine: "Some platelegs worn by the Knights of Ardougne."
   equipment:
@@ -7454,8 +7454,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 23846
-  weight: 9.5
+  - 23846
+  weight: 9.071
   examine: "A resilient set of leg armour with a little protection from corrupted\
     \ creatures."
   equipment:
@@ -7477,8 +7477,8 @@
       magic: 0
     prayerBonus: 2
 - ids:
-    - 23847
-  weight: 9.5
+  - 23847
+  weight: 9.071
   examine: "A more resilient set of leg armour with some protection from corrupted\
     \ creatures."
   equipment:
@@ -7500,8 +7500,8 @@
       magic: 0
     prayerBonus: 3
 - ids:
-    - 23848
-  weight: 9.5
+  - 23848
+  weight: 9.071
   examine: "The most resilient set of leg armour with a lot of protection from corrupted\
     \ creatures."
   equipment:
@@ -7523,8 +7523,8 @@
       magic: 0
     prayerBonus: 4
 - ids:
-    - 23892
-  weight: 9.5
+  - 23892
+  weight: 9.071
   examine: "A resilient set of leg armour with a little protection from crystalline\
     \ creatures."
   equipment:
@@ -7546,8 +7546,8 @@
       magic: 0
     prayerBonus: 2
 - ids:
-    - 23893
-  weight: 9.5
+  - 23893
+  weight: 9.071
   examine: "A more resilient set of leg armour with some protection from crystalline\
     \ creatures."
   equipment:
@@ -7569,8 +7569,8 @@
       magic: 0
     prayerBonus: 3
 - ids:
-    - 23894
-  weight: 9.5
+  - 23894
+  weight: 9.071
   examine: "The most resilient set of leg armour with a lot of protection from crystalline\
     \ creatures."
   equipment:
@@ -7592,8 +7592,8 @@
       magic: 0
     prayerBonus: 4
 - ids:
-    - 23979
-  weight: 9.0
+  - 23979
+  weight: 9.071
   examine: "A bright, shiny set of leg armour."
   equipment:
     attackBonus:
@@ -7614,8 +7614,8 @@
       magic: 0
     prayerBonus: 2
 - ids:
-    - 23981
-  weight: 9.0
+  - 23981
+  weight: 9.071
   examine: "A bright, shiny set of leg armour."
   equipment:
     attackBonus:
@@ -7636,8 +7636,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 24012
-  weight: 0.9
+  - 24012
+  weight: 0.907
   examine: "Clothing from the elven city of Prifddinas."
   equipment:
     attackBonus:
@@ -7658,8 +7658,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 24018
-  weight: 0.9
+  - 24018
+  weight: 0.907
   examine: "Clothing from the elven city of Prifddinas."
   equipment:
     attackBonus:
@@ -7680,8 +7680,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 24024
-  weight: 0.9
+  - 24024
+  weight: 0.907
   examine: "Clothing from the elven city of Prifddinas."
   equipment:
     attackBonus:
@@ -7702,7 +7702,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 24040
+  - 24040
   weight: 9.071
   examine: "A stylish pair of rune platelegs inlaid with dragonstones."
   equipment:
@@ -7724,7 +7724,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 24159
+  - 24159
   weight: 9.071
   examine: "Very decorative armour."
   equipment:
@@ -7746,8 +7746,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 24162
-  weight: 9.05
+  - 24162
+  weight: 9.071
   examine: "Very decorative armour."
   equipment:
     attackBonus:
@@ -7768,8 +7768,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 24164
-  weight: 8.155
+  - 24164
+  weight: 8.164
   examine: "Very decorative armour."
   equipment:
     attackBonus:
@@ -7790,8 +7790,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 24167
-  weight: 8.155
+  - 24167
+  weight: 8.164
   examine: "Very decorative armour."
   equipment:
     attackBonus:
@@ -7812,7 +7812,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 24176
+  - 24176
   weight: 3.0
   examine: "A skirt made from the skin of a Penance Ranger."
   equipment:
@@ -7834,7 +7834,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 24179
+  - 24179
   weight: 8.164
   examine: "Leg armour from the order of the Void Knights."
   equipment:
@@ -7856,7 +7856,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 24180
+  - 24180
   weight: 8.164
   examine: "Superior leg armour from the order of the Void Knights."
   equipment:
@@ -7878,8 +7878,8 @@
       magic: 0
     prayerBonus: 3
 - ids:
-    - 24190
-  weight: 9.5
+  - 24190
+  weight: 0.11
   examine: "That numb feeling."
   equipment:
     attackBonus:
@@ -7900,8 +7900,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 24221
-  weight: 9.0
+  - 24221
+  weight: 9.071
   examine: "The plateskirt of the turncloak Justiciar."
   equipment:
     attackBonus:
@@ -7922,8 +7922,8 @@
       magic: 0
     prayerBonus: 2
 - ids:
-    - 24294
-  weight: 1.8
+  - 24294
+  weight: 1.814
   examine: "A robe worn by members of the Dagon'hai."
   equipment:
     attackBonus:
@@ -7944,7 +7944,7 @@
       magic: 0
     prayerBonus: 2
 - ids:
-    - 24309
+  - 24309
   weight: 0.8
   examine: "A spooky skirt cut from a bedsheet!"
   equipment:
@@ -7966,7 +7966,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 24319
+  - 24319
   weight: 0.8
   examine: "A spooky skirt cut from a bedsheet!"
   equipment:
@@ -7988,8 +7988,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 24391
-  weight: 0.9
+  - 24391
+  weight: 0.907
   examine: "The trousers of a twisted relic hunter."
   equipment:
     attackBonus:
@@ -8010,8 +8010,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 24401
-  weight: 0.9
+  - 24401
+  weight: 0.907
   examine: "The trousers of a twisted relic hunter."
   equipment:
     attackBonus:
@@ -8032,8 +8032,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 24409
-  weight: 0.9
+  - 24409
+  weight: 0.907
   examine: "The trousers of a twisted relic hunter."
   equipment:
     attackBonus:
@@ -8054,8 +8054,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 24668
-  weight: 2.721
+  - 24668
+  weight: 1.814
   examine: "The robe bottoms of a powerful sorceress from a bygone era."
   equipment:
     attackBonus:
@@ -8076,7 +8076,7 @@
       magic: 2
     prayerBonus: 0
 - ids:
-    - 24678
+  - 24678
   weight: 0.907
   examine: "Lets you dress like a vampyre noble."
   equipment:
@@ -8098,8 +8098,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 24752
-    - 24754
+  - 24752
+  - 24754
   weight: 0.0
   examine: "You have graceful legs. How nice."
   equipment:
@@ -8121,7 +8121,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 24796
+  - 24796
   weight: 0.907
   examine: "Lets you dress like a vampyre noble."
   equipment:
@@ -8143,7 +8143,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 24800
+  - 24800
   weight: 0.907
   examine: "Lets you dress like a vampyre noble."
   equipment:
@@ -8165,7 +8165,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 24804
+  - 24804
   weight: 0.907
   examine: "Lets you dress like a vampyre noble."
   equipment:
@@ -8187,7 +8187,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 24808
+  - 24808
   weight: 0.907
   examine: "Lets you dress like a vampyre noble."
   equipment:
@@ -8209,7 +8209,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 24812
+  - 24812
   weight: 0.907
   examine: "Lets you dress like a vampyre noble."
   equipment:
@@ -8231,7 +8231,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 24816
+  - 24816
   weight: 0.907
   examine: "Lets you dress like a vampyre noble."
   equipment:
@@ -8253,7 +8253,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 24820
+  - 24820
   weight: 0.907
   examine: "Lets you dress like a vampyre noble."
   equipment:
@@ -8275,7 +8275,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 24824
+  - 24824
   weight: 0.907
   examine: "Lets you dress like a vampyre noble."
   equipment:
@@ -8297,7 +8297,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 24828
+  - 24828
   weight: 0.907
   examine: "Lets you dress like a vampyre noble."
   equipment:
@@ -8319,7 +8319,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 24832
+  - 24832
   weight: 0.907
   examine: "Lets you dress like a vampyre noble."
   equipment:
@@ -8341,7 +8341,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 24836
+  - 24836
   weight: 0.907
   examine: "Lets you dress like a vampyre noble."
   equipment:
@@ -8363,7 +8363,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 24840
+  - 24840
   weight: 0.907
   examine: "Lets you dress like a vampyre noble."
   equipment:

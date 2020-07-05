@@ -1,5 +1,5 @@
 - ids:
-    - 86
+  - 86
   weight: 0.01
   examine: "An amulet made by Lucien."
   equipment:
@@ -21,7 +21,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 87
+  - 87
   weight: 0.01
   examine: "Worn by followers of Armadyl."
   equipment:
@@ -43,7 +43,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 295
+  - 295
   weight: 0.01
   examine: "A bright green gem set in a necklace."
   equipment:
@@ -65,7 +65,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 421
+  - 421
   weight: 0.01
   examine: "Yup. It's an amulet."
   equipment:
@@ -87,7 +87,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 552
+  - 552
   weight: 0.01
   examine: "It lets me talk to ghosts."
   equipment:
@@ -109,7 +109,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 589
+  - 589
   weight: 0.01
   examine: "It's an amulet of protection given to me by the gnomes."
   equipment:
@@ -131,7 +131,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 616
+  - 616
   weight: 0.01
   examine: "A curious looking neck ornament."
   equipment:
@@ -153,7 +153,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-    - 774
+  - 774
   weight: 0.01
   examine: "A perfect ruby necklace."
   equipment:
@@ -175,7 +175,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1009
+  - 1009
   weight: 0.01
   examine: "I'd prefer a gold one."
   equipment:
@@ -197,8 +197,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1478
-    - 20584
+  - 1478
+  - 20584
   weight: 0.01
   examine: "It increases my aim."
   equipment:
@@ -220,7 +220,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1575
+  - 1575
   weight: 0.01
   examine: "For feline training expertise."
   equipment:
@@ -242,7 +242,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1654
+  - 1654
   weight: 0.007
   examine: "I wonder if this is valuable."
   equipment:
@@ -264,7 +264,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1656
+  - 1656
   weight: 0.01
   examine: "I wonder if this is valuable."
   equipment:
@@ -286,7 +286,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1658
+  - 1658
   weight: 0.01
   examine: "I wonder if this is valuable."
   equipment:
@@ -308,7 +308,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1660
+  - 1660
   weight: 0.01
   examine: "I wonder if this is valuable."
   equipment:
@@ -330,7 +330,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1662
+  - 1662
   weight: 0.01
   examine: "I wonder if this is valuable."
   equipment:
@@ -352,7 +352,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1664
+  - 1664
   weight: 0.01
   examine: "I wonder if this is valuable."
   equipment:
@@ -374,7 +374,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1692
+  - 1692
   weight: 0.007
   examine: "A plain gold amulet."
   equipment:
@@ -396,7 +396,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1694
+  - 1694
   weight: 0.007
   examine: "I wonder if I can get this enchanted."
   equipment:
@@ -418,7 +418,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1696
+  - 1696
   weight: 0.007
   examine: "I wonder if I can get this enchanted."
   equipment:
@@ -440,7 +440,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1698
+  - 1698
   weight: 0.007
   examine: "I wonder if I can get this enchanted."
   equipment:
@@ -462,7 +462,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1700
+  - 1700
   weight: 0.007
   examine: "I wonder if I can get this enchanted."
   equipment:
@@ -484,7 +484,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1702
+  - 1702
   weight: 0.007
   examine: "I wonder if I can get this enchanted."
   equipment:
@@ -506,8 +506,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1704
-    - 20586
+  - 1704
+  - 20586
   weight: 0.01
   examine: "A very powerful dragonstone amulet."
   equipment:
@@ -529,7 +529,7 @@
       magic: 0
     prayerBonus: 3
 - ids:
-    - 1706
+  - 1706
   weight: 0.01
   examine: "A dragonstone amulet with 1 magic charge."
   equipment:
@@ -551,7 +551,7 @@
       magic: 0
     prayerBonus: 3
 - ids:
-    - 1708
+  - 1708
   weight: 0.01
   examine: "A dragonstone amulet with 2 magic charges."
   equipment:
@@ -573,7 +573,7 @@
       magic: 0
     prayerBonus: 3
 - ids:
-    - 1710
+  - 1710
   weight: 0.01
   examine: "A dragonstone amulet with 3 magic charges."
   equipment:
@@ -595,7 +595,7 @@
       magic: 0
     prayerBonus: 3
 - ids:
-    - 1712
+  - 1712
   weight: 0.01
   examine: "A dragonstone amulet with 4 magic charges."
   equipment:
@@ -617,8 +617,8 @@
       magic: 0
     prayerBonus: 3
 - ids:
-    - 1716
-  weight: 0.0
+  - 1716
+  weight: 0.007
   examine: "A symbol of Saradomin."
   equipment:
     attackBonus:
@@ -639,7 +639,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1718
+  - 1718
   weight: 0.007
   examine: "A blessed holy symbol of Saradomin."
   equipment:
@@ -661,7 +661,7 @@
       magic: 0
     prayerBonus: 8
 - ids:
-    - 1722
+  - 1722
   weight: 0.007
   examine: "An unblessed symbol of Zamorak."
   equipment:
@@ -683,7 +683,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1724
+  - 1724
   weight: 0.007
   examine: "An unholy symbol of Zamorak."
   equipment:
@@ -705,7 +705,7 @@
       magic: 0
     prayerBonus: 8
 - ids:
-    - 1725
+  - 1725
   weight: 0.01
   examine: "An enchanted ruby amulet."
   equipment:
@@ -727,7 +727,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1727
+  - 1727
   weight: 0.01
   examine: "An enchanted sapphire amulet of magic."
   equipment:
@@ -749,7 +749,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1729
+  - 1729
   weight: 0.01
   examine: "An enchanted emerald amulet of protection."
   equipment:
@@ -771,8 +771,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1731
-    - 20585
+  - 1731
+  - 20585
   weight: 0.01
   examine: "An enchanted diamond amulet of power."
   equipment:
@@ -794,7 +794,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-    - 1796
+  - 1796
   weight: 0.01
   examine: "Anna's shiny silver coated necklace."
   equipment:
@@ -816,7 +816,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 1797
+  - 1797
   weight: 0.01
   examine: "Anna's shiny silver coated necklace coated with a thin layer of flour."
   equipment:
@@ -838,7 +838,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 2406
+  - 2406
   weight: 0.012
   examine: "A sign of my commitment to Hazeel."
   equipment:
@@ -860,7 +860,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 3208
+  - 3208
   weight: 0.005
   examine: "Lord Iorwerth's crystal pendant."
   equipment:
@@ -882,7 +882,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 3853
+  - 3853
   weight: 0.01
   examine: "An enchanted necklace."
   equipment:
@@ -904,7 +904,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 3855
+  - 3855
   weight: 0.01
   examine: "An enchanted necklace."
   equipment:
@@ -926,7 +926,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 3857
+  - 3857
   weight: 0.01
   examine: "An enchanted necklace."
   equipment:
@@ -948,7 +948,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 3859
+  - 3859
   weight: 0.01
   examine: "An enchanted necklace."
   equipment:
@@ -970,7 +970,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 3861
+  - 3861
   weight: 0.01
   examine: "An enchanted necklace."
   equipment:
@@ -992,7 +992,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 3863
+  - 3863
   weight: 0.01
   examine: "An enchanted necklace."
   equipment:
@@ -1014,7 +1014,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 3865
+  - 3865
   weight: 0.01
   examine: "An enchanted necklace."
   equipment:
@@ -1036,7 +1036,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 3867
+  - 3867
   weight: 0.01
   examine: "An enchanted necklace."
   equipment:
@@ -1058,7 +1058,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4021
+  - 4021
   weight: 1.36
   examine: "It's an Amulet of Monkey Speak. It makes vague chattering noises."
   equipment:
@@ -1080,7 +1080,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4035
+  - 4035
   weight: 0.085
   examine: "It's the official sigil of the 10th squad of the Royal Guard."
   equipment:
@@ -1102,7 +1102,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4081
+  - 4081
   weight: 0.007
   examine: "Increases the wearer's strength and accuracy by 15%{{Sic|actually 1/6th}}\
     \ when fighting the undead."
@@ -1125,7 +1125,7 @@
       magic: 0
     prayerBonus: 3
 - ids:
-    - 4250
+  - 4250
   weight: 0.01
   examine: "The amulet of ghostspeak glows green from the crone's enchantment."
   equipment:
@@ -1147,7 +1147,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4306
+  - 4306
   weight: 0.01
   examine: "A badge for the HAM cult."
   equipment:
@@ -1169,7 +1169,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 4677
+  - 4677
   weight: 1.36
   examine: "It's an amulet of cat speak. It makes vague purring noises."
   equipment:
@@ -1191,7 +1191,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 5521
+  - 5521
   weight: 0.01
   examine: "A necklace embedded with mystical power."
   equipment:
@@ -1213,7 +1213,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 6040
+  - 6040
   weight: 0.007
   examine: "An Amulet of Nature."
   equipment:
@@ -1235,7 +1235,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 6041
+  - 6041
   weight: 0.007
   examine: "Strung with the root of a Magic Tree; needs enchanting."
   equipment:
@@ -1257,7 +1257,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 6544
+  - 6544
   weight: 1.36
   examine: "It's an amulet of cat speak. It makes vague purring noises."
   equipment:
@@ -1279,7 +1279,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 6577
+  - 6577
   weight: 0.01
   examine: "I wonder if this is valuable."
   equipment:
@@ -1301,7 +1301,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 6581
+  - 6581
   weight: 0.007
   examine: "I wonder if I can get this enchanted."
   equipment:
@@ -1323,7 +1323,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 6585
+  - 6585
   weight: 0.01
   examine: "A very powerful onyx amulet."
   equipment:
@@ -1345,7 +1345,7 @@
       magic: 0
     prayerBonus: 5
 - ids:
-    - 6707
+  - 6707
   weight: 0.007
   examine: "An amulet of Camel-speak. It makes vague braying noises."
   equipment:
@@ -1367,7 +1367,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 6857
+  - 6857
   weight: 0.25
   examine: "A woolly scarf."
   equipment:
@@ -1389,7 +1389,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 6859
+  - 6859
   weight: 0.25
   examine: "A woolly jester scarf."
   equipment:
@@ -1411,7 +1411,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 6861
+  - 6861
   weight: 0.25
   examine: "A woolly jester scarf."
   equipment:
@@ -1433,7 +1433,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 6863
+  - 6863
   weight: 0.25
   examine: "A woolly tobogganing scarf."
   equipment:
@@ -1455,7 +1455,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 7803
+  - 7803
   weight: 0.001
   examine: "A non-magical copy of the make-over mage's amulet."
   equipment:
@@ -1477,7 +1477,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 8923
+  - 8923
   weight: 0.007
   examine: "A stick on a string... pure style."
   equipment:
@@ -1499,7 +1499,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-    - 9083
+  - 9083
   weight: 4.535
   examine: "A seal of passage issued by Brundt the Chieftain of the Fremennik."
   equipment:
@@ -1521,7 +1521,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 9102
+  - 9102
   weight: 0.01
   examine: "Awesome."
   equipment:
@@ -1543,7 +1543,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 9470
+  - 9470
   weight: 0.01
   examine: "A scarf. You feel your upper lip stiffening."
   equipment:
@@ -1565,7 +1565,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10132
+  - 10132
   weight: 0.03
   examine: "Not so lucky for the rabbit."
   equipment:
@@ -1587,7 +1587,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10344
+  - 10344
   weight: 0.003
   examine: "Fabulously ancient mage protection enchanted in the 3rd Age."
   equipment:
@@ -1609,7 +1609,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10354
+  - 10354
   weight: 0.01
   examine: "A very powerful dragonstone amulet."
   equipment:
@@ -1631,7 +1631,7 @@
       magic: 0
     prayerBonus: 3
 - ids:
-    - 10356
+  - 10356
   weight: 0.01
   examine: "A very powerful dragonstone amulet."
   equipment:
@@ -1653,7 +1653,7 @@
       magic: 0
     prayerBonus: 3
 - ids:
-    - 10358
+  - 10358
   weight: 0.01
   examine: "A very powerful dragonstone amulet."
   equipment:
@@ -1675,7 +1675,7 @@
       magic: 0
     prayerBonus: 3
 - ids:
-    - 10360
+  - 10360
   weight: 0.01
   examine: "A very powerful dragonstone amulet."
   equipment:
@@ -1697,7 +1697,7 @@
       magic: 0
     prayerBonus: 3
 - ids:
-    - 10362
+  - 10362
   weight: 0.01
   examine: "A very powerful dragonstone amulet."
   equipment:
@@ -1719,7 +1719,7 @@
       magic: 0
     prayerBonus: 3
 - ids:
-    - 10364
+  - 10364
   weight: 0.01
   examine: "An enchanted ruby amulet."
   equipment:
@@ -1741,7 +1741,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10366
+  - 10366
   weight: 0.01
   examine: "An enchanted sapphire amulet of magic."
   equipment:
@@ -1763,7 +1763,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10470
+  - 10470
   weight: 0.01
   examine: "A Saradomin stole."
   equipment:
@@ -1785,7 +1785,7 @@
       magic: 0
     prayerBonus: 10
 - ids:
-    - 10472
+  - 10472
   weight: 0.01
   examine: "A Guthix stole."
   equipment:
@@ -1807,7 +1807,7 @@
       magic: 0
     prayerBonus: 10
 - ids:
-    - 10474
+  - 10474
   weight: 0.01
   examine: "A Zamorak stole."
   equipment:
@@ -1829,7 +1829,7 @@
       magic: 0
     prayerBonus: 10
 - ids:
-    - 10500
+  - 10500
   weight: 0.01
   examine: "Allows the ghost farmer to talk to Alice - a breakthrough!"
   equipment:
@@ -1851,7 +1851,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 10588
+  - 10588
   weight: 0.007
   examine: "Increases the wearer's Strength and accuracy by 20% when fighting the\
     \ undead."
@@ -1874,7 +1874,7 @@
       magic: 0
     prayerBonus: 3
 - ids:
-    - 11090
+  - 11090
   weight: 0.01
   examine: "In case of emergency, wear necklace."
   equipment:
@@ -1896,7 +1896,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11105
+  - 11105
   weight: 0.01
   examine: "This will help me travel."
   equipment:
@@ -1918,7 +1918,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11107
+  - 11107
   weight: 0.01
   examine: "This will help me travel."
   equipment:
@@ -1940,7 +1940,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11109
+  - 11109
   weight: 0.01
   examine: "This will help me travel."
   equipment:
@@ -1962,7 +1962,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11111
+  - 11111
   weight: 0.01
   examine: "This will help me travel."
   equipment:
@@ -1984,7 +1984,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11113
+  - 11113
   weight: 0.01
   examine: "You will need to recharge the necklace at the Legends Guild."
   equipment:
@@ -2006,7 +2006,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11128
+  - 11128
   weight: 0.01
   examine: "Makes obsidian weapons even stronger!"
   equipment:
@@ -2028,7 +2028,7 @@
       magic: 0
     prayerBonus: 3
 - ids:
-    - 11190
+  - 11190
   weight: 0.01
   examine: "An enchanted necklace."
   equipment:
@@ -2050,7 +2050,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11191
+  - 11191
   weight: 0.01
   examine: "An enchanted necklace."
   equipment:
@@ -2072,7 +2072,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11192
+  - 11192
   weight: 0.01
   examine: "An enchanted necklace."
   equipment:
@@ -2094,7 +2094,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11193
+  - 11193
   weight: 0.01
   examine: "An enchanted necklace."
   equipment:
@@ -2116,7 +2116,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11194
+  - 11194
   weight: 0.01
   examine: "An enchanted necklace."
   equipment:
@@ -2138,7 +2138,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11195
+  - 11195
   weight: 0.01
   examine: "A recently-cleaned necklace."
   equipment:
@@ -2160,7 +2160,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11666
+  - 11666
   weight: 0.005
   examine: "A seal storing the power of the Void Knights."
   equipment:
@@ -2182,7 +2182,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11667
+  - 11667
   weight: 0.005
   examine: "A seal storing the power of the Void Knights."
   equipment:
@@ -2204,7 +2204,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11668
+  - 11668
   weight: 0.005
   examine: "A seal storing the power of the Void Knights."
   equipment:
@@ -2226,7 +2226,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11669
+  - 11669
   weight: 0.005
   examine: "A seal storing the power of the Void Knights."
   equipment:
@@ -2248,7 +2248,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11670
+  - 11670
   weight: 0.005
   examine: "A seal storing the power of the Void Knights."
   equipment:
@@ -2270,7 +2270,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11671
+  - 11671
   weight: 0.005
   examine: "A seal storing the power of the Void Knights."
   equipment:
@@ -2292,7 +2292,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11672
+  - 11672
   weight: 0.005
   examine: "A seal storing the power of the Void Knights."
   equipment:
@@ -2314,7 +2314,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11673
+  - 11673
   weight: 0.005
   examine: "A seal storing the power of the Void Knights."
   equipment:
@@ -2336,8 +2336,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11964
-  weight: 0.0
+  - 11964
+  weight: 0.01
   examine: "A very powerful dragonstone amulet."
   equipment:
     attackBonus:
@@ -2358,8 +2358,8 @@
       magic: 0
     prayerBonus: 3
 - ids:
-    - 11966
-  weight: 0.0
+  - 11966
+  weight: 0.01
   examine: "A very powerful dragonstone amulet."
   equipment:
     attackBonus:
@@ -2380,7 +2380,7 @@
       magic: 0
     prayerBonus: 3
 - ids:
-    - 11968
+  - 11968
   weight: 0.01
   examine: "This will help me travel."
   equipment:
@@ -2402,7 +2402,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11970
+  - 11970
   weight: 0.01
   examine: "This will help me travel."
   equipment:
@@ -2424,7 +2424,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 11976
+  - 11976
   weight: 0.01
   examine: "A dragonstone amulet with 5 magic charges."
   equipment:
@@ -2446,7 +2446,7 @@
       magic: 0
     prayerBonus: 3
 - ids:
-    - 11978
+  - 11978
   weight: 0.01
   examine: "A dragonstone amulet with 6 magic charges."
   equipment:
@@ -2468,7 +2468,7 @@
       magic: 0
     prayerBonus: 3
 - ids:
-    - 12002
+  - 12002
   weight: 0.005
   examine: "A smokey evil embodies this amulet."
   equipment:
@@ -2490,8 +2490,8 @@
       magic: 10
     prayerBonus: 2
 - ids:
-    - 12017
-  weight: 0.6
+  - 12017
+  weight: 0.007
   examine: "Increases melee, ranged and magic damage & accuracy by 15%{{Sic|actually\
     \ 1/6th}} against the undead."
   equipment:
@@ -2513,7 +2513,7 @@
       magic: 0
     prayerBonus: 3
 - ids:
-    - 12018
+  - 12018
   weight: 0.007
   examine: "Increases melee, ranged and magic damage & accuracy by 20% against the\
     \ undead."
@@ -2536,7 +2536,7 @@
       magic: 0
     prayerBonus: 3
 - ids:
-    - 12201
+  - 12201
   weight: 0.002
   examine: "An Ancient stole."
   equipment:
@@ -2558,7 +2558,7 @@
       magic: 0
     prayerBonus: 10
 - ids:
-    - 12257
+  - 12257
   weight: 0.01
   examine: "An Armadyl stole."
   equipment:
@@ -2580,8 +2580,8 @@
       magic: 0
     prayerBonus: 10
 - ids:
-    - 12269
-  weight: 0.0
+  - 12269
+  weight: 0.01
   examine: "A Bandos stole."
   equipment:
     attackBonus:
@@ -2602,7 +2602,7 @@
       magic: 0
     prayerBonus: 10
 - ids:
-    - 12436
+  - 12436
   weight: 0.01
   examine: "A very powerful and stylish onyx amulet."
   equipment:
@@ -2624,7 +2624,7 @@
       magic: 0
     prayerBonus: 5
 - ids:
-    - 12851
+  - 12851
   weight: 0.1
   examine: "Heirloom of an ancient family of Morytania."
   equipment:
@@ -2646,7 +2646,7 @@
       magic: 0
     prayerBonus: 3
 - ids:
-    - 12853
+  - 12853
   weight: 0.1
   examine: "Heirloom of an ancient and extinct family of Morytania."
   equipment:
@@ -2668,29 +2668,7 @@
       magic: 0
     prayerBonus: 3
 - ids:
-    - 13133
-  weight: 0.0
-  examine: "A heart shaped amulet containing sand."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-    - 13134
+  - 13133
   weight: 0.01
   examine: "A heart shaped amulet containing sand."
   equipment:
@@ -2712,7 +2690,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13135
+  - 13134
   weight: 0.01
   examine: "A heart shaped amulet containing sand."
   equipment:
@@ -2734,8 +2712,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13136
-  weight: 0.0
+  - 13135
+  weight: 0.01
   examine: "A heart shaped amulet containing sand."
   equipment:
     attackBonus:
@@ -2756,7 +2734,29 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13392
+  - 13136
+  weight: 0.01
+  examine: "A heart shaped amulet containing sand."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 13392
   weight: 0.06
   examine: "A dormant relic of the ancient times of Kourend."
   equipment:
@@ -2778,7 +2778,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 13393
+  - 13393
   weight: 0.06
   examine: "An enervated relic of the ancient times of Kourend."
   equipment:
@@ -2800,8 +2800,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 19535
-  weight: 0.0
+  - 19535
+  weight: 0.01
   examine: "A fiery glow emanates from this necklace."
   equipment:
     attackBonus:
@@ -2822,8 +2822,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 19541
-  weight: 0.0
+  - 19541
+  weight: 0.01
   examine: "A fiery glow emanates from this amulet."
   equipment:
     attackBonus:
@@ -2844,7 +2844,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 19547
+  - 19547
   weight: 0.01
   examine: "A deep sense of anguish burns within this powerful necklace."
   equipment:
@@ -2866,7 +2866,7 @@
       magic: 0
     prayerBonus: 2
 - ids:
-    - 19553
+  - 19553
   weight: 0.01
   examine: "A deep sense of torture burns within this powerful amulet."
   equipment:
@@ -2888,7 +2888,7 @@
       magic: 0
     prayerBonus: 2
 - ids:
-    - 19707
+  - 19707
   weight: 0.01
   examine: "A dragonstone amulet with an unlimited supply of magic charges."
   equipment:
@@ -2910,8 +2910,8 @@
       magic: 0
     prayerBonus: 3
 - ids:
-    - 19720
-  weight: 1.0
+  - 19720
+  weight: 0.005
   examine: "A smokey evil embodies this beautiful amulet."
   equipment:
     attackBonus:
@@ -2932,8 +2932,8 @@
       magic: 10
     prayerBonus: 2
 - ids:
-    - 19943
-  weight: 0.0
+  - 19943
+  weight: 0.5
   examine: "A blue scarf adorned with a dark crystal."
   equipment:
     attackBonus:
@@ -2954,8 +2954,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 19946
-  weight: 0.0
+  - 19946
+  weight: 0.5
   examine: "A green scarf adorned with an ornamental leaf."
   equipment:
     attackBonus:
@@ -2976,8 +2976,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 19949
-  weight: 0.0
+  - 19949
+  weight: 0.5
   examine: "A yellow scarf adorned with an ornamental anvil."
   equipment:
     attackBonus:
@@ -2998,8 +2998,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 19952
-  weight: 0.0
+  - 19952
+  weight: 0.5
   examine: "A blue scarf adorned with a sea shell."
   equipment:
     attackBonus:
@@ -3020,8 +3020,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 19955
-  weight: 0.0
+  - 19955
+  weight: 0.5
   examine: "A red scarf adorned with a skull."
   equipment:
     attackBonus:
@@ -3042,29 +3042,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 19970
-  weight: 0.0
-  examine: "Bow ties are cool."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-    - 19985
+  - 19970
   weight: 0.1
   examine: "Bow ties are cool."
   equipment:
@@ -3086,7 +3064,29 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 20366
+  - 19985
+  weight: 0.1
+  examine: "Bow ties are cool."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 20366
   weight: 0.01
   examine: "A deep sense of torture burns within this powerful amulet."
   equipment:
@@ -3108,51 +3108,7 @@
       magic: 0
     prayerBonus: 2
 - ids:
-    - 21090
-  weight: 0.0
-  examine: "I wonder if this is valuable."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-    - 21093
-  weight: 0.0
-  examine: "I wonder if this is valuable."
-  equipment:
-    attackBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    defenceBonus:
-      stab: 0
-      slash: 0
-      crush: 0
-      magic: 0
-      range: 0
-    strengthBonus:
-      melee: 0
-      range: 0
-      magic: 0
-    prayerBonus: 0
-- ids:
-    - 21096
+  - 21090
   weight: 0.01
   examine: "I wonder if this is valuable."
   equipment:
@@ -3174,9 +3130,9 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 21108
-  weight: 0.0
-  examine: "I wonder if I can get this enchanted."
+  - 21093
+  weight: 0.01
+  examine: "I wonder if this is valuable."
   equipment:
     attackBonus:
       stab: 0
@@ -3196,9 +3152,9 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 21111
-  weight: 0.0
-  examine: "I wonder if I can get this enchanted."
+  - 21096
+  weight: 0.01
+  examine: "I wonder if this is valuable."
   equipment:
     attackBonus:
       stab: 0
@@ -3218,7 +3174,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 21114
+  - 21108
   weight: 0.007
   examine: "I wonder if I can get this enchanted."
   equipment:
@@ -3240,7 +3196,51 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 21143
+  - 21111
+  weight: 0.007
+  examine: "I wonder if I can get this enchanted."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 21114
+  weight: 0.007
+  examine: "I wonder if I can get this enchanted."
+  equipment:
+    attackBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    defenceBonus:
+      stab: 0
+      slash: 0
+      crush: 0
+      magic: 0
+      range: 0
+    strengthBonus:
+      melee: 0
+      range: 0
+      magic: 0
+    prayerBonus: 0
+- ids:
+  - 21143
   weight: 0.01
   examine: "Lets you get away with it - sometimes."
   equipment:
@@ -3262,8 +3262,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 21146
-  weight: 0.0
+  - 21146
+  weight: 0.01
   examine: "This necklace can really take you places."
   equipment:
     attackBonus:
@@ -3284,8 +3284,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 21149
-  weight: 0.0
+  - 21149
+  weight: 0.01
   examine: "This necklace can really take you places."
   equipment:
     attackBonus:
@@ -3306,8 +3306,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 21151
-  weight: 0.0
+  - 21151
+  weight: 0.01
   examine: "This necklace can really take you places."
   equipment:
     attackBonus:
@@ -3328,8 +3328,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 21153
-  weight: 0.0
+  - 21153
+  weight: 0.01
   examine: "This necklace can really take you places."
   equipment:
     attackBonus:
@@ -3350,8 +3350,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 21155
-  weight: 0.0
+  - 21155
+  weight: 0.01
   examine: "This necklace can really take you places."
   equipment:
     attackBonus:
@@ -3372,8 +3372,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 21157
-  weight: 0.0
+  - 21157
+  weight: 0.01
   examine: "Can grant me prayer in an emergency."
   equipment:
     attackBonus:
@@ -3394,7 +3394,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 21160
+  - 21160
   weight: 0.007
   examine: "Saves seeds when planting in allotments."
   equipment:
@@ -3416,7 +3416,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 21163
+  - 21163
   weight: 0.007
   examine: "Useful when making potions - has the chance of giving an extra dose."
   equipment:
@@ -3438,7 +3438,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 21166
+  - 21166
   weight: 0.007
   examine: "Useful teleports around the wilderness."
   equipment:
@@ -3460,7 +3460,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 21169
+  - 21169
   weight: 0.007
   examine: "Useful teleports around the wilderness."
   equipment:
@@ -3482,7 +3482,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 21171
+  - 21171
   weight: 0.007
   examine: "Useful teleports around the wilderness."
   equipment:
@@ -3504,7 +3504,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 21173
+  - 21173
   weight: 0.007
   examine: "Useful teleports around the wilderness."
   equipment:
@@ -3526,7 +3526,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 21175
+  - 21175
   weight: 0.007
   examine: "Useful teleports around the wilderness."
   equipment:
@@ -3548,7 +3548,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 21314
+  - 21314
   weight: 0.01
   examine: "A scarf woven from spare rainbow strands; emblazoned with a heart."
   equipment:
@@ -3570,8 +3570,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 22111
-  weight: 0.0
+  - 22111
+  weight: 0.005
   examine: "A necklace made out of dragon bones."
   equipment:
     attackBonus:
@@ -3592,8 +3592,8 @@
       magic: 0
     prayerBonus: 12
 - ids:
-    - 22249
-  weight: 0.0
+  - 22249
+  weight: 0.01
   examine: "A deep sense of anguish burns within this powerful necklace."
   equipment:
     attackBonus:
@@ -3614,7 +3614,7 @@
       magic: 0
     prayerBonus: 2
 - ids:
-    - 22400
+  - 22400
   weight: 0.01
   examine: "An ancient medallion."
   equipment:
@@ -3636,7 +3636,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 22557
+  - 22557
   weight: 0.01
   examine: "A hauntingly beautiful amulet bearing the shape of a skull."
   equipment:
@@ -3658,7 +3658,7 @@
       magic: 0
     prayerBonus: 3
 - ids:
-    - 22692
+  - 22692
   weight: 0.1
   examine: "Hey, hey kids!"
   equipment:
@@ -3680,8 +3680,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 22986
-  weight: 0.0
+  - 22986
+  weight: 0.025
   examine: "A necklace made out of dragon bones, hydra tail and a bonecrusher."
   equipment:
     attackBonus:
@@ -3702,7 +3702,7 @@
       magic: 0
     prayerBonus: 12
 - ids:
-    - 23240
+  - 23240
   weight: 0.01
   examine: "Makes obsidian weapons even stronger and has a nice glow to boot!"
   equipment:
@@ -3724,7 +3724,7 @@
       magic: 0
     prayerBonus: 3
 - ids:
-    - 23309
+  - 23309
   weight: 0.01
   examine: "An enchanted emerald amulet of protection that looks good."
   equipment:
@@ -3746,7 +3746,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 23354
+  - 23354
   weight: 0.01
   examine: "An enchanted diamond amulet that looks good."
   equipment:
@@ -3768,7 +3768,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-    - 24725
+  - 24725
   weight: 0.007
   examine: "Reduces the amount of vampyre dust to sacrifice within the Hallowed Sepulchre."
   equipment:
@@ -3790,8 +3790,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-    - 24780
-  weight: 0.01
+  - 24780
+  weight: 0.02
   examine: "A very powerful onyx amulet, imbued with blood magic."
   equipment:
     attackBonus:
