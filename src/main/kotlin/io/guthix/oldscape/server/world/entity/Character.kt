@@ -71,21 +71,20 @@ abstract class Character(val index: Int) : Entity() {
 
     open var inRunMode: Boolean = false
 
-    fun teleport(to: Tile) {
-        lastPos = pos
-        movementType = MovementInterestUpdate.TELEPORT
-        pos = to
-        followPosition = to.copy(x = pos.x - 1.tiles)
-    }
+    var teleportLocation: Tile? = null
+
+    fun teleport(to: Tile) { teleportLocation = to }
 
     fun move() {
-        if(movementType != MovementInterestUpdate.TELEPORT) {
-            lastPos = pos
-            if (path.isEmpty()) {
-                movementType = MovementInterestUpdate.STAY
-            } else {
-                takeStep()
+        lastPos = pos
+        when {
+            teleportLocation != null -> {
+                movementType = MovementInterestUpdate.TELEPORT
+                pos = teleportLocation ?: throw IllegalStateException("Teleport location can't be null.")
+                followPosition = pos.copy(x = pos.x - 1.tiles) // TODO make follow location based on collision masks
             }
+            path.isNotEmpty() -> takeStep()
+            else -> MovementInterestUpdate.STAY
         }
     }
 

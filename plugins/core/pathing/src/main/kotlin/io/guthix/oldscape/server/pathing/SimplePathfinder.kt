@@ -107,9 +107,11 @@ private fun getDirection(startX: Int, startY: Int, destX: Int, destY: Int): Arra
             return arrayOf(Direction.NORTH)
         }
     } else if (startY == destY) {
-        return if (startX > destX) {
-            arrayOf(Direction.WEST)
-        } else arrayOf(Direction.EAST)
+        if (startX > destX) {
+            return arrayOf(Direction.WEST)
+        } else if (startX < destX) {
+            return arrayOf(Direction.EAST)
+        }
     } else {
         if (startX < destX && startY < destY) {
             return arrayOf(Direction.NORTH_EAST, Direction.EAST, Direction.NORTH)
@@ -121,5 +123,5 @@ private fun getDirection(startX: Int, startY: Int, destX: Int, destY: Int): Arra
             return arrayOf(Direction.SOUTH_WEST, Direction.WEST, Direction.SOUTH)
         }
     }
-    return arrayOf()
+    return listOf(Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST).shuffled().toTypedArray()
 }
