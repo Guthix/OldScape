@@ -50,7 +50,7 @@ fun NpcClickEvent.meleeAttack() {
         wait { npcDestination.reached(player.pos.x, player.pos.y, player.size) }
         EventBus.schedule(NpcAttackedEvent(npc, player, world))
         while (true) { // start player combat
-            player.animate(Sequence(id = player.combatSequences.attack))
+            player.animate(Sequence(id = player.attackSequence))
             val damage = player.calcHit(npc, player.maxMeleeHit()) ?: 0
             val hmColor = if (damage == 0) HitMark.Color.BLUE else HitMark.Color.RED
             npc.hit(hmColor, damage, 0)
@@ -72,7 +72,7 @@ fun NpcClickEvent.rangeAttack(range: TileUnit) {
         wait { npcDestination.reached(player.pos.x, player.pos.y, player.size) }
         EventBus.schedule(NpcAttackedEvent(npc, player, world))
         while (true) { // start player combat
-            player.animate(Sequence(id = 426))
+            player.animate(Sequence(id = player.attackSequence))
             world.map.addProjectile(Arrow(10, player.pos, npc))
             val damage = player.calcHit(npc, player.maxRangeHit()) ?: 0
             val hmColor = if (damage == 0) HitMark.Color.BLUE else HitMark.Color.RED

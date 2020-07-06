@@ -58,9 +58,16 @@ val Player.currentStyle: CombatStyle
 
 val Npc.combatSequences: CombatSequences? by CharacterProperty { blueprint.combatSequences }
 
-val Player.combatSequences: CombatSequences by CharacterProperty {
-    CombatSequences(attack = 422, defence = 424, death = 836)
+val Player.attackSequence: Int by CharacterProperty {
+    equipment.weapon?.weaponSequences?.attack ?: 422
 }
+
+
+val Player.defenceSequence: Int by CharacterProperty {
+    equipment.weapon?.weaponSequences?.attack ?: 424
+}
+
+val Player.deathSequence: Int by CharacterProperty { 836 }
 
 var Character.inCombatWith: Character? by CharacterProperty { null }
 
