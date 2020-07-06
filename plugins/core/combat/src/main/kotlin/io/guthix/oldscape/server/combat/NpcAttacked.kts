@@ -23,7 +23,6 @@ import io.guthix.oldscape.server.pathing.simplePathSearch
 import io.guthix.oldscape.server.task.NormalTask
 import io.guthix.oldscape.server.world.entity.HitMark
 import io.guthix.oldscape.server.world.entity.Sequence
-import io.guthix.oldscape.server.world.entity.interest.MovementInterestUpdate
 
 on(NpcAttackedEvent::class).then {
     if (npc.inCombatWith == player) return@then
@@ -47,7 +46,7 @@ on(NpcAttackedEvent::class).then {
             playerDestination = DestinationRectangleDirect(player, world.map)
             npc.path = simplePathSearch(npc.pos, playerDestination, npc.size, world.map)
             wait(ticks = 1)
-            wait { player.movementType != MovementInterestUpdate.STAY }
+            wait { player.lastPos != player.pos }
         }
     }.onCancel {
         npc.inCombatWith = null
