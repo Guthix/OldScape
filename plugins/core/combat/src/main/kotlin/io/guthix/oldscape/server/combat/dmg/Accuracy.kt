@@ -17,7 +17,8 @@
 package io.guthix.oldscape.server.combat.dmg
 
 import io.guthix.oldscape.server.blueprints.AttackType
-import io.guthix.oldscape.server.combat.*
+import io.guthix.oldscape.server.combat.currentStyle
+import io.guthix.oldscape.server.combat.damageMultiplier
 import io.guthix.oldscape.server.combat.findBonus
 import io.guthix.oldscape.server.prayer.prayerMultiplier
 import io.guthix.oldscape.server.world.entity.Npc

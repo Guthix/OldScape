@@ -22,7 +22,6 @@ import io.guthix.oldscape.server.world.entity.Character
 import io.guthix.oldscape.server.world.entity.CharacterProperty
 import io.guthix.oldscape.server.world.entity.Npc
 import io.guthix.oldscape.server.world.entity.Player
-import java.lang.IllegalStateException
 
 enum class MeleeCombatStance(val attack: Int = 0, val strength: Int = 0, val defence: Int = 0, val range: Int = 0) {
     ACCURATE(attack = 3),
@@ -50,11 +49,12 @@ val Player.selectedTypes: IntArray by CharacterProperty {
     IntArray(WeaponType.values().size)
 }
 
-val Player.currentStyle: CombatStyle get() {
-    val weaponType = equipment.weapon?.type ?: WeaponType.UNARMED
-    val index = selectedTypes[weaponType.ordinal]
-    return weaponType.styles[index]
-}
+val Player.currentStyle: CombatStyle
+    get() {
+        val weaponType = equipment.weapon?.type ?: WeaponType.UNARMED
+        val index = selectedTypes[weaponType.ordinal]
+        return weaponType.styles[index]
+    }
 
 val Npc.combatSequences: CombatSequences? by CharacterProperty { blueprint.combatSequences }
 

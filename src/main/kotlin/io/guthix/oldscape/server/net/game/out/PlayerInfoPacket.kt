@@ -72,7 +72,6 @@ class PlayerInfoPacket(
 
 
     private fun processLocalPlayers(buf: BitBuf, maskBuf: ByteBuf, nsn: Boolean) {
-        //TODO teleport
         fun localUpdateRequired(thisPlayer: Player, localPlayer: Player) = (localPlayer.updateFlags.isNotEmpty()
             || !thisPlayer.pos.isInterestedIn(localPlayer.pos)
             || localPlayer.movementType != MovementInterestUpdate.STAY

@@ -54,20 +54,20 @@ class DestinationRectangleDirect(
     override fun reached(moverX: TileUnit, moverY: TileUnit, moverSize: TileUnit): Boolean {
         val moverMaxX = moverX + moverSize
         val moverMaxY = moverY + moverSize
-        for(curX in x until x + sizeX) {
-            for(curY in y until y + sizeY) {
+        for (curX in x until x + sizeX) {
+            for (curY in y until y + sizeY) {
                 val moverXRange = moverX until moverMaxX
                 val moverYRange = moverY until moverMaxY
-                if(curX == moverX - 1.tiles && curY in moverYRange // west side of target
+                if (curX == moverX - 1.tiles && curY in moverYRange // west side of target
                     && moverYRange.all { map.getCollisionMask(floor, curX, it) and ZoneCollision.MASK_WALL_E == 0 }
                 ) return true
-                if(curX == moverMaxX && curY in moverYRange // east side of target
+                if (curX == moverMaxX && curY in moverYRange // east side of target
                     && moverYRange.all { map.getCollisionMask(floor, curX, it) and ZoneCollision.MASK_WALL_W == 0 }
                 ) return true
-                if(curY == moverY - 1.tiles && curX in moverXRange // south side of target
+                if (curY == moverY - 1.tiles && curX in moverXRange // south side of target
                     && moverXRange.all { map.getCollisionMask(floor, it, curY) and ZoneCollision.MASK_WALL_N == 0 }
                 ) return true
-                if(curY == moverMaxY && curX in moverXRange // north side of target
+                if (curY == moverMaxY && curX in moverXRange // north side of target
                     && moverXRange.all { map.getCollisionMask(floor, it, curY) and ZoneCollision.MASK_WALL_S == 0 }
                 ) return true
             }

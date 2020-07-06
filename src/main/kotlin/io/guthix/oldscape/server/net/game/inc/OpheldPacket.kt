@@ -17,8 +17,8 @@
 package io.guthix.oldscape.server.net.game.inc
 
 import io.guthix.buffer.*
-import io.guthix.oldscape.server.event.InvObjOnObjEvent
 import io.guthix.oldscape.server.event.InvObjClickEvent
+import io.guthix.oldscape.server.event.InvObjOnObjEvent
 import io.guthix.oldscape.server.event.PlayerGameEvent
 import io.guthix.oldscape.server.net.game.FixedSize
 import io.guthix.oldscape.server.net.game.GamePacketDecoder
