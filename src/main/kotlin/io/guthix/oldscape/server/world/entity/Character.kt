@@ -73,7 +73,9 @@ abstract class Character(val index: Int) : Entity() {
 
     var teleportLocation: Tile? = null
 
-    fun teleport(to: Tile) { teleportLocation = to }
+    fun teleport(to: Tile) {
+        teleportLocation = to
+    }
 
     fun move() {
         lastPos = pos

@@ -1,5 +1,5 @@
 - ids:
-  - 75
+    - 75
   weight: 0.566
   examine: "Armour, as worn by the minions of General Khazard."
   isFullBody: false
@@ -22,7 +22,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 284
+    - 284
   weight: 2.721
   examine: "This should protect me from the plague, I hope!"
   isFullBody: false
@@ -45,7 +45,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 426
+    - 426
   weight: 1.814
   examine: "Top half of a priest suit."
   isFullBody: false
@@ -68,7 +68,7 @@
       magic: 0
     prayerBonus: 3
 - ids:
-  - 430
+    - 430
   weight: 1.814
   examine: "Medical looking."
   isFullBody: false
@@ -91,7 +91,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 540
+    - 540
   weight: 0.907
   examine: "I feel closer to the gods when I am wearing this."
   isFullBody: false
@@ -114,7 +114,7 @@
       magic: 0
     prayerBonus: 4
 - ids:
-  - 544
+    - 544
   weight: 0.907
   examine: "I feel closer to the gods when I am wearing this."
   isFullBody: false
@@ -137,7 +137,7 @@
       magic: 0
     prayerBonus: 6
 - ids:
-  - 546
+    - 546
   weight: 0.907
   examine: "I feel closer to the gods when I am wearing this."
   isFullBody: false
@@ -160,7 +160,7 @@
       magic: 0
     prayerBonus: 5
 - ids:
-  - 577
+    - 577
   weight: 0.907
   examine: "I can do magic better in this."
   isFullBody: false
@@ -183,7 +183,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 581
+    - 581
   weight: 0.907
   examine: "I can do magic better in this."
   isFullBody: false
@@ -206,7 +206,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 636
+    - 636
   weight: 0.907
   examine: "The ultimate in gnome design, now in pink!"
   isFullBody: false
@@ -229,7 +229,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 638
+    - 638
   weight: 0.907
   examine: "The ultimate in gnome design, now in green!"
   isFullBody: false
@@ -252,7 +252,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 640
+    - 640
   weight: 0.907
   examine: "The ultimate in gnome design, now in blue!"
   isFullBody: false
@@ -275,7 +275,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 642
+    - 642
   weight: 0.907
   examine: "The ultimate in gnome design, now in cream!"
   isFullBody: false
@@ -298,7 +298,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 644
+    - 644
   weight: 0.907
   examine: "The ultimate in gnome design, now in turquoise!"
   isFullBody: false
@@ -321,8 +321,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 1005
-  - 7957
+    - 1005
+    - 7957
   weight: 0.453
   examine: "A mostly clean apron."
   isFullBody: false
@@ -345,7 +345,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 1035
+    - 1035
   weight: 0.907
   examine: "A robe worn by worshippers of Zamorak."
   isFullBody: false
@@ -368,7 +368,7 @@
       magic: 0
     prayerBonus: 3
 - ids:
-  - 1101
+    - 1101
   weight: 6.803
   examine: "A series of connected metal rings."
   isFullBody: false
@@ -391,7 +391,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 1103
+    - 1103
   weight: 6.803
   examine: "A series of connected metal rings."
   isFullBody: false
@@ -414,7 +414,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 1105
+    - 1105
   weight: 6.803
   examine: "A series of connected metal rings."
   isFullBody: false
@@ -437,7 +437,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 1107
+    - 1107
   weight: 6.803
   examine: "A series of connected metal rings."
   isFullBody: false
@@ -460,7 +460,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 1109
+    - 1109
   weight: 5.896
   examine: "A series of connected metal rings."
   isFullBody: false
@@ -483,7 +483,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 1111
+    - 1111
   weight: 7.711
   examine: "A series of connected metal rings."
   isFullBody: false
@@ -506,7 +506,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 1113
+    - 1113
   weight: 6.803
   examine: "A series of connected metal rings."
   isFullBody: false
@@ -529,7 +529,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 1115
+    - 1115
   weight: 9.979
   examine: "Provides excellent protection."
   isFullBody: false
@@ -552,7 +552,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 1117
+    - 1117
   weight: 9.979
   examine: "Provides excellent protection."
   isFullBody: false
@@ -575,7 +575,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 1119
+    - 1119
   weight: 9.979
   examine: "Provides excellent protection."
   isFullBody: false
@@ -598,7 +598,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 1121
+    - 1121
   weight: 8.618
   examine: "Provides excellent protection."
   isFullBody: false
@@ -621,8 +621,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 1123
-  - 20415
+    - 1123
+    - 20415
   weight: 11.339
   examine: "Provides excellent protection."
   isFullBody: false
@@ -645,7 +645,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 1125
+    - 1125
   weight: 9.979
   examine: "Provides excellent protection."
   isFullBody: false
@@ -668,8 +668,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 1127
-  - 20421
+    - 1127
+    - 20421
   weight: 9.979
   examine: "Provides excellent protection."
   isFullBody: false
@@ -692,7 +692,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 1129
+    - 1129
   weight: 2.721
   examine: "Better than no armour!"
   isFullBody: false
@@ -715,7 +715,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 1131
+    - 1131
   weight: 3.628
   examine: "Harder than normal leather."
   isFullBody: false
@@ -738,7 +738,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 1133
+    - 1133
   weight: 5.443
   examine: "Those studs should provide a bit more protection."
   isFullBody: false
@@ -761,7 +761,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 1135
+    - 1135
   weight: 6.803
   examine: "Made from 100% real dragonhide."
   isFullBody: false
@@ -784,7 +784,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 1757
+    - 1757
   weight: 0.453
   examine: "A mostly clean apron."
   isFullBody: false
@@ -807,7 +807,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 1833
+    - 1833
   weight: 0.907
   examine: "A cool, light desert shirt."
   isFullBody: false
@@ -830,7 +830,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 1844
+    - 1844
   weight: 0.907
   examine: "A filthy, smelly, flea infested shirt."
   isFullBody: false
@@ -853,7 +853,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 2405
+    - 2405
   weight: 9.071
   examine: "Decorative armour; an heirloom of the Carnillean family."
   isFullBody: false
@@ -876,8 +876,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 2499
-  - 20417
+    - 2499
+    - 20417
   weight: 6.803
   examine: "Made from 100% real dragonhide."
   isFullBody: false
@@ -900,8 +900,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 2501
-  - 20566
+    - 2501
+    - 20566
   weight: 6.803
   examine: "Made from 100% real dragonhide."
   isFullBody: false
@@ -924,8 +924,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 2503
-  - 20423
+    - 2503
+    - 20423
   weight: 6.803
   examine: "Made from 100% real dragonhide."
   isFullBody: false
@@ -948,9 +948,9 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 2513
-  - 3140
-  - 20428
+    - 2513
+    - 3140
+    - 20428
   weight: 6.803
   examine: "A series of connected metal rings."
   isFullBody: false
@@ -973,7 +973,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 2583
+    - 2583
   weight: 9.979
   examine: "Black platebody with trim."
   isFullBody: false
@@ -996,7 +996,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 2591
+    - 2591
   weight: 9.979
   examine: "Black platebody with gold trim."
   isFullBody: false
@@ -1019,7 +1019,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 2599
+    - 2599
   weight: 11.339
   examine: "Adamant platebody with trim."
   isFullBody: false
@@ -1042,7 +1042,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 2607
+    - 2607
   weight: 11.339
   examine: "Adamant platebody with gold trim."
   isFullBody: false
@@ -1065,7 +1065,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 2615
+    - 2615
   weight: 9.979
   examine: "Rune platebody with gold trim."
   isFullBody: false
@@ -1088,7 +1088,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 2623
+    - 2623
   weight: 9.979
   examine: "Rune platebody with trim."
   isFullBody: false
@@ -1111,7 +1111,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 2653
+    - 2653
   weight: 9.979
   examine: "Rune platebody in the colours of Zamorak."
   isFullBody: false
@@ -1134,7 +1134,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-  - 2661
+    - 2661
   weight: 9.979
   examine: "Rune platebody in the colours of Saradomin."
   isFullBody: false
@@ -1157,7 +1157,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-  - 2669
+    - 2669
   weight: 9.979
   examine: "Rune platebody in the colours of Guthix."
   isFullBody: false
@@ -1180,7 +1180,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-  - 2896
+    - 2896
   weight: 0.907
   examine: "Some fine werewolf clothing."
   isFullBody: false
@@ -1203,7 +1203,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 2906
+    - 2906
   weight: 0.907
   examine: "Some fine werewolf clothing."
   isFullBody: false
@@ -1226,7 +1226,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 2916
+    - 2916
   weight: 0.907
   examine: "Some fine werewolf clothing."
   isFullBody: false
@@ -1249,7 +1249,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 2926
+    - 2926
   weight: 0.907
   examine: "Some fine werewolf clothing."
   isFullBody: false
@@ -1272,7 +1272,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 2936
+    - 2936
   weight: 0.907
   examine: "Some fine werewolf clothing."
   isFullBody: false
@@ -1295,7 +1295,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 3058
+    - 3058
   weight: 0.001
   examine: "A mime would wear this."
   isFullBody: false
@@ -1318,7 +1318,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 3387
+    - 3387
   weight: 4.535
   examine: "Provides good protection."
   isFullBody: false
@@ -1341,7 +1341,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 3481
+    - 3481
   weight: 9.979
   examine: "Rune platebody with gold plate."
   isFullBody: false
@@ -1364,7 +1364,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 3767
+    - 3767
   weight: 0.907
   examine: "The latest in Fremennik fashion."
   isFullBody: false
@@ -1387,7 +1387,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 3769
+    - 3769
   weight: 0.907
   examine: "The latest in Fremennik fashion."
   isFullBody: false
@@ -1410,7 +1410,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 3771
+    - 3771
   weight: 0.907
   examine: "The latest in Fremennik fashion."
   isFullBody: false
@@ -1433,7 +1433,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 3773
+    - 3773
   weight: 0.907
   examine: "The latest in Fremennik fashion."
   isFullBody: false
@@ -1456,7 +1456,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 3775
+    - 3775
   weight: 0.907
   examine: "The latest in Fremennik fashion."
   isFullBody: false
@@ -1479,7 +1479,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 3793
+    - 3793
   weight: 0.907
   examine: "The latest fashion in Rellekka."
   isFullBody: false
@@ -1502,7 +1502,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4069
+    - 4069
   weight: 8.618
   examine: "Very decorative armour."
   isFullBody: false
@@ -1525,8 +1525,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4091
-  - 20425
+    - 4091
+    - 20425
   weight: 2.721
   examine: "The upper half of a magical robe."
   isFullBody: false
@@ -1549,7 +1549,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4101
+    - 4101
   weight: 2.721
   examine: "The upper half of a dark magical robe."
   isFullBody: false
@@ -1572,7 +1572,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4111
+    - 4111
   weight: 2.721
   examine: "The upper half of a bright magical robe."
   isFullBody: false
@@ -1595,7 +1595,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4298
+    - 4298
   weight: 0.907
   examine: "The label says 'Vivid Crimson', but it looks pink to me!"
   isFullBody: false
@@ -1618,7 +1618,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4504
+    - 4504
   weight: 8.618
   examine: "Very decorative armour."
   isFullBody: false
@@ -1641,7 +1641,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4509
+    - 4509
   weight: 8.618
   examine: "Very decorative armour."
   isFullBody: false
@@ -1664,8 +1664,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4712
-  - 20598
+    - 4712
+    - 20598
   weight: 4.535
   examine: "Ahrim the Blighted's armoured robe top."
   isFullBody: false
@@ -1688,7 +1688,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4720
+    - 4720
   weight: 9.979
   examine: "Dharok the Wretched's platebody armour."
   isFullBody: false
@@ -1711,7 +1711,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4728
+    - 4728
   weight: 9.979
   examine: "Guthan the Infested's platebody armour."
   isFullBody: false
@@ -1734,7 +1734,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4736
+    - 4736
   weight: 6.803
   examine: "Karil the Tainted's leather body armour."
   isFullBody: false
@@ -1757,7 +1757,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4749
+    - 4749
   weight: 9.979
   examine: "Torag the Corrupted's platebody armour."
   isFullBody: false
@@ -1780,7 +1780,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4757
+    - 4757
   weight: 4.989
   examine: "Verac the Defiled's brassard."
   isFullBody: false
@@ -1803,7 +1803,7 @@
       magic: 0
     prayerBonus: 5
 - ids:
-  - 4868
+    - 4868
   weight: 4.535
   examine: "Ahrim the Blighted's armoured robe top."
   isFullBody: false
@@ -1826,7 +1826,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4869
+    - 4869
   weight: 4.535
   examine: "Ahrim the Blighted's armoured robe top."
   isFullBody: false
@@ -1849,7 +1849,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4870
+    - 4870
   weight: 4.535
   examine: "Ahrim the Blighted's armoured robe top."
   isFullBody: false
@@ -1872,7 +1872,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4871
+    - 4871
   weight: 4.535
   examine: "Ahrim the Blighted's armoured robe top."
   isFullBody: false
@@ -1895,7 +1895,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4872
+    - 4872
   weight: 4.535
   examine: "Ahrim the Blighted's armoured robe top."
   isFullBody: false
@@ -1918,7 +1918,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4892
+    - 4892
   weight: 9.979
   examine: "Dharok the Wretched's platebody armour."
   isFullBody: false
@@ -1941,7 +1941,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4893
+    - 4893
   weight: 9.979
   examine: "Dharok the Wretched's platebody armour."
   isFullBody: false
@@ -1964,7 +1964,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4894
+    - 4894
   weight: 9.979
   examine: "Dharok the Wretched's platebody armour."
   isFullBody: false
@@ -1987,7 +1987,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4895
+    - 4895
   weight: 9.979
   examine: "Dharok the Wretched's platebody armour."
   isFullBody: false
@@ -2010,7 +2010,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4896
+    - 4896
   weight: 9.979
   examine: "Dharok the Wretched's platebody armour."
   isFullBody: false
@@ -2033,7 +2033,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4916
+    - 4916
   weight: 9.979
   examine: "Guthan the Infested's platebody armour."
   isFullBody: false
@@ -2056,7 +2056,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4917
+    - 4917
   weight: 9.979
   examine: "Guthan the Infested's platebody armour."
   isFullBody: false
@@ -2079,7 +2079,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4918
+    - 4918
   weight: 9.979
   examine: "Guthan the Infested's platebody armour."
   isFullBody: false
@@ -2102,7 +2102,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4919
+    - 4919
   weight: 9.979
   examine: "Guthan the Infested's platebody armour."
   isFullBody: false
@@ -2125,7 +2125,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4920
+    - 4920
   weight: 9.979
   examine: "Guthan the Infested's platebody armour."
   isFullBody: false
@@ -2148,7 +2148,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4940
+    - 4940
   weight: 6.803
   examine: "Karil the Tainted's leather body armour."
   isFullBody: false
@@ -2171,7 +2171,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4941
+    - 4941
   weight: 6.803
   examine: "Karil the Tainted's leather body armour."
   isFullBody: false
@@ -2194,7 +2194,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4942
+    - 4942
   weight: 6.803
   examine: "Karil the Tainted's leather body armour."
   isFullBody: false
@@ -2217,7 +2217,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4943
+    - 4943
   weight: 6.803
   examine: "Karil the Tainted's leather body armour."
   isFullBody: false
@@ -2240,7 +2240,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4944
+    - 4944
   weight: 6.803
   examine: "Karil the Tainted's leather body armour."
   isFullBody: false
@@ -2263,7 +2263,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4964
+    - 4964
   weight: 9.979
   examine: "Torag the Corrupted's platebody armour."
   isFullBody: false
@@ -2286,7 +2286,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4965
+    - 4965
   weight: 9.979
   examine: "Torag the Corrupted's platebody armour."
   isFullBody: false
@@ -2309,7 +2309,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4966
+    - 4966
   weight: 9.979
   examine: "Torag the Corrupted's platebody armour."
   isFullBody: false
@@ -2332,7 +2332,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4967
+    - 4967
   weight: 9.979
   examine: "Torag the Corrupted's platebody armour."
   isFullBody: false
@@ -2355,7 +2355,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4968
+    - 4968
   weight: 9.979
   examine: "Torag the Corrupted's platebody armour."
   isFullBody: false
@@ -2378,7 +2378,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 4988
+    - 4988
   weight: 4.989
   examine: "Verac the Defiled's brassard."
   isFullBody: false
@@ -2401,7 +2401,7 @@
       magic: 0
     prayerBonus: 5
 - ids:
-  - 4989
+    - 4989
   weight: 4.989
   examine: "Verac the Defiled's brassard."
   isFullBody: false
@@ -2424,7 +2424,7 @@
       magic: 0
     prayerBonus: 5
 - ids:
-  - 4990
+    - 4990
   weight: 4.989
   examine: "Verac the Defiled's brassard."
   isFullBody: false
@@ -2447,7 +2447,7 @@
       magic: 0
     prayerBonus: 5
 - ids:
-  - 4991
+    - 4991
   weight: 4.989
   examine: "Verac the Defiled's brassard."
   isFullBody: false
@@ -2470,7 +2470,7 @@
       magic: 0
     prayerBonus: 5
 - ids:
-  - 4992
+    - 4992
   weight: 4.989
   examine: "Verac the Defiled's brassard."
   isFullBody: false
@@ -2493,7 +2493,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 5024
+    - 5024
   weight: 0.07
   examine: "Far too small to wear."
   isFullBody: false
@@ -2516,7 +2516,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 5026
+    - 5026
   weight: 0.07
   examine: "Yellow top, too small for me."
   isFullBody: false
@@ -2539,7 +2539,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 5028
+    - 5028
   weight: 0.07
   examine: "Blue top, very tiny."
   isFullBody: false
@@ -2562,7 +2562,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 5030
+    - 5030
   weight: 0.07
   examine: "Tiny!"
   isFullBody: false
@@ -2585,7 +2585,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 5032
+    - 5032
   weight: 0.07
   examine: "Tiny!"
   isFullBody: false
@@ -2608,7 +2608,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 5034
+    - 5034
   weight: 0.07
   examine: "Tiny!"
   isFullBody: false
@@ -2631,7 +2631,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 5553
+    - 5553
   weight: 0.453
   examine: "Black banded leather armour, a rogue's dream!"
   isFullBody: false
@@ -2654,7 +2654,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 5575
+    - 5575
   weight: 8.618
   examine: "An initiate Temple Knight's Armour."
   isFullBody: false
@@ -2677,7 +2677,7 @@
       magic: 0
     prayerBonus: 6
 - ids:
-  - 6065
+    - 6065
   weight: 2.721
   examine: "A thick heavy leather top."
   isFullBody: false
@@ -2700,7 +2700,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 6107
+    - 6107
   weight: 0.001
   examine: "A particularly spooky robe top."
   isFullBody: false
@@ -2723,7 +2723,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 6129
+    - 6129
   weight: 9.979
   examine: "A sturdy body armour made from rock crab pieces."
   isFullBody: false
@@ -2746,7 +2746,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 6133
+    - 6133
   weight: 6.803
   examine: "A constant reminder that I'm above a Dagannoth in the food chain."
   isFullBody: false
@@ -2769,7 +2769,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 6139
+    - 6139
   weight: 4.989
   examine: "The bones in this armour seem to vibrate with a magical quality..."
   isFullBody: false
@@ -2792,7 +2792,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 6180
+    - 6180
   weight: 2.267
   examine: "A leather strapped top."
   isFullBody: false
@@ -2815,7 +2815,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 6184
+    - 6184
   weight: 2.721
   examine: "Very posh!"
   isFullBody: false
@@ -2838,7 +2838,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 6186
+    - 6186
   weight: 2.721
   examine: "Very posh!"
   isFullBody: false
@@ -2861,7 +2861,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 6322
+    - 6322
   weight: 6.803
   examine: "Made from 100% real snakeskin."
   isFullBody: false
@@ -2884,7 +2884,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 6341
+    - 6341
   weight: 1.0
   examine: "Local dress."
   isFullBody: false
@@ -2907,7 +2907,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 6351
+    - 6351
   weight: 1.0
   examine: "Local dress."
   isFullBody: false
@@ -2930,7 +2930,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 6361
+    - 6361
   weight: 1.0
   examine: "Local dress."
   isFullBody: false
@@ -2953,7 +2953,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 6371
+    - 6371
   weight: 1.0
   examine: "Local dress."
   isFullBody: false
@@ -2976,7 +2976,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 6384
+    - 6384
   weight: 0.005
   examine: "A bit itchy."
   isFullBody: false
@@ -2999,7 +2999,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 6388
+    - 6388
   weight: 0.005
   examine: "Good for those cold desert nights."
   isFullBody: false
@@ -3022,7 +3022,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 6394
+    - 6394
   weight: 0.005
   examine: "Colourful."
   isFullBody: false
@@ -3045,7 +3045,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 6402
+    - 6402
   weight: 0.005
   examine: "Colourful."
   isFullBody: false
@@ -3068,7 +3068,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 6615
+    - 6615
   weight: 6.803
   examine: "A series of connected metal rings."
   isFullBody: false
@@ -3091,7 +3091,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-  - 6617
+    - 6617
   weight: 9.979
   examine: "Provides excellent protection."
   isFullBody: false
@@ -3114,7 +3114,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-  - 6654
+    - 6654
   weight: 2.721
   examine: "Examine what?"
   isFullBody: false
@@ -3137,7 +3137,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 6750
+    - 6750
   weight: 0.907
   examine: "A desert shirt stained black with mushroom ink."
   isFullBody: false
@@ -3160,7 +3160,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 6786
+    - 6786
   weight: 0.005
   examine: "This looks quite old."
   isFullBody: false
@@ -3183,8 +3183,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 6916
-  - 20574
+    - 6916
+    - 20574
   weight: 2.267
   examine: "Mystical robes."
   isFullBody: false
@@ -3207,7 +3207,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 7110
+    - 7110
   weight: 1.0
   examine: "A sea worthy shirt."
   isFullBody: false
@@ -3230,7 +3230,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 7122
+    - 7122
   weight: 1.0
   examine: "A sea worthy shirt."
   isFullBody: false
@@ -3253,7 +3253,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 7128
+    - 7128
   weight: 1.0
   examine: "A sea worthy shirt."
   isFullBody: false
@@ -3276,7 +3276,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 7134
+    - 7134
   weight: 1.0
   examine: "A sea worthy shirt."
   isFullBody: false
@@ -3299,7 +3299,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 7362
+    - 7362
   weight: 5.443
   examine: "Those studs should provide a bit more protection. Nice trim too!"
   isFullBody: false
@@ -3322,7 +3322,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 7364
+    - 7364
   weight: 5.443
   examine: "Those studs should provide a bit more protection. Nice trim too!"
   isFullBody: false
@@ -3345,7 +3345,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 7370
+    - 7370
   weight: 6.803
   examine: "Made from 100% real dragonhide. With colourful trim!"
   isFullBody: false
@@ -3368,7 +3368,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 7372
+    - 7372
   weight: 6.803
   examine: "Made from 100% real dragonhide. With colourful trim!"
   isFullBody: false
@@ -3391,7 +3391,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 7374
+    - 7374
   weight: 6.803
   examine: "Made from 100% real dragonhide. With colourful trim!"
   isFullBody: false
@@ -3414,7 +3414,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 7376
+    - 7376
   weight: 6.803
   examine: "Made from 100% real dragonhide. With colourful trim!"
   isFullBody: false
@@ -3437,7 +3437,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 7390
+    - 7390
   weight: 0.907
   examine: "I can do magic better in this."
   isFullBody: false
@@ -3460,7 +3460,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 7392
+    - 7392
   weight: 0.907
   examine: "I can do magic better in this."
   isFullBody: false
@@ -3483,7 +3483,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 7399
+    - 7399
   weight: 2.721
   examine: "Enchanted Wizards robes."
   isFullBody: false
@@ -3506,7 +3506,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 7592
+    - 7592
   weight: 0.003
   examine: "Aside from the braaaains on the lapel, it's still quite good."
   isFullBody: false
@@ -3529,7 +3529,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 8839
+    - 8839
   weight: 6.803
   examine: "Torso armour from the order of the Void Knights."
   isFullBody: false
@@ -3552,7 +3552,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 8952
+    - 8952
   weight: 0.003
   examine: "...You can sail the seven seas..."
   isFullBody: false
@@ -3575,7 +3575,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 8953
+    - 8953
   weight: 0.003
   examine: "...You can sail the seven seas..."
   isFullBody: false
@@ -3598,7 +3598,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 8954
+    - 8954
   weight: 0.003
   examine: "...You can sail the seven seas..."
   isFullBody: false
@@ -3621,7 +3621,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 8955
+    - 8955
   weight: 0.003
   examine: "...You can sail the seven seas..."
   isFullBody: false
@@ -3644,7 +3644,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 8956
+    - 8956
   weight: 0.003
   examine: "...You can sail the seven seas..."
   isFullBody: false
@@ -3667,7 +3667,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 8957
+    - 8957
   weight: 0.003
   examine: "...You can sail the seven seas..."
   isFullBody: false
@@ -3690,7 +3690,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 8958
+    - 8958
   weight: 0.003
   examine: "...You can sail the seven seas..."
   isFullBody: false
@@ -3713,7 +3713,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 9070
+    - 9070
   weight: 4.535
   examine: "Provides good protection."
   isFullBody: false
@@ -3736,7 +3736,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 9097
+    - 9097
   weight: 4.535
   examine: "Provides good protection."
   isFullBody: false
@@ -3759,7 +3759,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 9634
+    - 9634
   weight: 0.907
   examine: "Dress like the powerful vyrewatch!"
   isFullBody: false
@@ -3782,7 +3782,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 9640
+    - 9640
   weight: 0.907
   examine: "Ghetto disguise!"
   isFullBody: false
@@ -3805,8 +3805,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 9674
-  - 20564
+    - 9674
+    - 20564
   weight: 8.618
   examine: "A Proselyte Temple Knight's armour."
   isFullBody: false
@@ -3829,7 +3829,7 @@
       magic: 0
     prayerBonus: 8
 - ids:
-  - 9924
+    - 9924
   weight: 2.267
   examine: "The shirt of a full body skeleton costume."
   isFullBody: false
@@ -3852,7 +3852,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 9944
+    - 9944
   weight: 0.001
   examine: "For all your flying needs."
   isFullBody: false
@@ -3875,7 +3875,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 10037
+    - 10037
   weight: 0.226
   examine: "This should make me harder to spot in polar areas."
   isFullBody: false
@@ -3898,7 +3898,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 10043
+    - 10043
   weight: 0.226
   examine: "This should make me harder to spot in woodland and jungle areas."
   isFullBody: false
@@ -3921,7 +3921,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 10049
+    - 10049
   weight: 0.226
   examine: "This should make me harder to spot in desert areas."
   isFullBody: false
@@ -3944,7 +3944,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 10053
+    - 10053
   weight: 0.226
   examine: "This should make me harder to spot in wooded areas."
   isFullBody: false
@@ -3967,7 +3967,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 10057
+    - 10057
   weight: 0.226
   examine: "This should make me harder to spot in jungle areas."
   isFullBody: false
@@ -3990,7 +3990,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 10061
+    - 10061
   weight: 0.226
   examine: "This should make me harder to spot in desert areas."
   isFullBody: false
@@ -4013,7 +4013,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 10065
+    - 10065
   weight: 0.226
   examine: "This should make me harder to spot in polar areas."
   isFullBody: false
@@ -4036,7 +4036,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 10316
+    - 10316
   weight: 1.0
   examine: "'Bob says: Never give your password out to anyone.'"
   isFullBody: false
@@ -4059,7 +4059,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 10318
+    - 10318
   weight: 1.0
   examine: "'Bob says: Always check the second trade screen.'"
   isFullBody: false
@@ -4082,7 +4082,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 10320
+    - 10320
   weight: 1.0
   examine: "'Bob says: Never trade in the wilderness!'"
   isFullBody: false
@@ -4105,7 +4105,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 10322
+    - 10322
   weight: 1.0
   examine: "'Bob says: A bank pin will keep your items secure.'"
   isFullBody: false
@@ -4128,7 +4128,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 10324
+    - 10324
   weight: 1.0
   examine: "'Bob says: Keep your computer keylogger free and virus scanned.'"
   isFullBody: false
@@ -4151,7 +4151,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 10330
+    - 10330
   weight: 4.0
   examine: "Fabulously ancient range protection crafted from white dragonhide."
   isFullBody: false
@@ -4174,8 +4174,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 10338
-  - 20576
+    - 10338
+    - 20576
   weight: 2.7
   examine: "Fabulously ancient mage protection enchanted in the 3rd Age."
   isFullBody: false
@@ -4198,7 +4198,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 10348
+    - 10348
   weight: 9.979
   examine: "Fabulously ancient armour beaten from magical silver."
   isFullBody: false
@@ -4221,7 +4221,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 10370
+    - 10370
   weight: 6.0
   examine: "Zamorak blessed dragonhide body armour."
   isFullBody: false
@@ -4244,7 +4244,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-  - 10378
+    - 10378
   weight: 6.0
   examine: "Guthix blessed dragonhide body armour."
   isFullBody: false
@@ -4267,7 +4267,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-  - 10386
+    - 10386
   weight: 6.0
   examine: "Saradomin blessed dragonhide body armour."
   isFullBody: false
@@ -4290,7 +4290,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-  - 10400
+    - 10400
   weight: 1.0
   examine: "A well made elegant men's black shirt."
   isFullBody: false
@@ -4313,7 +4313,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 10404
+    - 10404
   weight: 1.0
   examine: "A well made elegant men's red shirt."
   isFullBody: false
@@ -4336,7 +4336,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 10408
+    - 10408
   weight: 1.0
   examine: "A well made elegant men's blue shirt."
   isFullBody: false
@@ -4359,7 +4359,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 10412
+    - 10412
   weight: 1.0
   examine: "A well made elegant men's green shirt."
   isFullBody: false
@@ -4382,7 +4382,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 10416
+    - 10416
   weight: 1.0
   examine: "A well made elegant men's purple shirt."
   isFullBody: false
@@ -4405,7 +4405,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 10420
+    - 10420
   weight: 1.0
   examine: "A well made elegant ladies' white blouse."
   isFullBody: false
@@ -4428,7 +4428,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 10424
+    - 10424
   weight: 1.0
   examine: "A well made elegant ladies' red blouse."
   isFullBody: false
@@ -4451,7 +4451,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 10428
+    - 10428
   weight: 1.0
   examine: "A well made elegant ladies' blue blouse."
   isFullBody: false
@@ -4474,7 +4474,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 10432
+    - 10432
   weight: 1.0
   examine: "A well made elegant ladies' green blouse."
   isFullBody: false
@@ -4497,7 +4497,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 10436
+    - 10436
   weight: 1.0
   examine: "A well made elegant ladies' purple blouse."
   isFullBody: false
@@ -4520,7 +4520,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 10458
+    - 10458
   weight: 1.8
   examine: "Saradomin Vestments."
   isFullBody: false
@@ -4543,7 +4543,7 @@
       magic: 0
     prayerBonus: 6
 - ids:
-  - 10460
+    - 10460
   weight: 1.8
   examine: "Zamorak Vestments."
   isFullBody: false
@@ -4566,7 +4566,7 @@
       magic: 0
     prayerBonus: 6
 - ids:
-  - 10462
+    - 10462
   weight: 1.8
   examine: "Guthix Vestments."
   isFullBody: false
@@ -4589,7 +4589,7 @@
       magic: 0
     prayerBonus: 6
 - ids:
-  - 10551
+    - 10551
   weight: 4.0
   examine: "A Penance Fighter torso armour."
   isFullBody: false
@@ -4612,7 +4612,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 10564
+    - 10564
   weight: 22.679
   examine: "Provides excellent protection."
   isFullBody: false
@@ -4635,7 +4635,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 10822
+    - 10822
   weight: 2.721
   examine: "Smelly yak body armour."
   isFullBody: false
@@ -4658,7 +4658,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 10837
+    - 10837
   weight: 6.803
   examine: "A jester's jangly top."
   isFullBody: false
@@ -4681,7 +4681,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 10863
+    - 10863
   weight: 0.9
   examine: "Very fetching."
   isFullBody: false
@@ -4704,7 +4704,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 10939
+    - 10939
   weight: 1.36
   examine: "You'll certainly be alright wearing this."
   isFullBody: false
@@ -4727,7 +4727,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 10954
+    - 10954
   weight: 5.0
   examine: "Armour made out of frog hide."
   isFullBody: false
@@ -4750,7 +4750,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 11020
+    - 11020
   weight: 0.25
   examine: "I look fowl in this."
   isFullBody: false
@@ -4773,7 +4773,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 11828
+    - 11828
   weight: 4.0
   examine: "Armour of great craftsmanship."
   isFullBody: false
@@ -4796,7 +4796,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-  - 11832
+    - 11832
   weight: 12.0
   examine: "A sturdy chestplate."
   isFullBody: false
@@ -4819,8 +4819,8 @@
       magic: 0
     prayerBonus: 1
 - ids:
-  - 11854
-  - 11855
+    - 11854
+    - 11855
   weight: 0.0
   examine: "A sign of your grace."
   isFullBody: false
@@ -4843,7 +4843,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 11896
+    - 11896
   weight: 6.803
   examine: "Very decorative armour."
   isFullBody: false
@@ -4866,7 +4866,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 11899
+    - 11899
   weight: 6.803
   examine: "Very decorative armour."
   isFullBody: false
@@ -4889,7 +4889,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 12014
+    - 12014
   weight: 1.36
   examine: "Helps you when you're mining."
   isFullBody: false
@@ -4912,7 +4912,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 12193
+    - 12193
   weight: 0.005
   examine: "Ancient Vestments."
   isFullBody: false
@@ -4935,7 +4935,7 @@
       magic: 0
     prayerBonus: 6
 - ids:
-  - 12205
+    - 12205
   weight: 9.979
   examine: "Bronze platebody with gold trim."
   isFullBody: false
@@ -4958,7 +4958,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 12215
+    - 12215
   weight: 9.979
   examine: "Bronze platebody with trim."
   isFullBody: false
@@ -4981,7 +4981,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 12225
+    - 12225
   weight: 9.979
   examine: "Iron platebody with trim."
   isFullBody: false
@@ -5004,7 +5004,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 12235
+    - 12235
   weight: 9.979
   examine: "Iron platebody with gold trim."
   isFullBody: false
@@ -5027,7 +5027,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 12253
+    - 12253
   weight: 1.8
   examine: "Armadyl Vestments."
   isFullBody: false
@@ -5050,7 +5050,7 @@
       magic: 0
     prayerBonus: 6
 - ids:
-  - 12265
+    - 12265
   weight: 1.8
   examine: "Bandos Vestments."
   isFullBody: false
@@ -5073,7 +5073,7 @@
       magic: 0
     prayerBonus: 6
 - ids:
-  - 12277
+    - 12277
   weight: 9.979
   examine: "Mithril platebody with gold trim."
   isFullBody: false
@@ -5096,7 +5096,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 12287
+    - 12287
   weight: 8.618
   examine: "Mithril platebody with trim."
   isFullBody: false
@@ -5119,7 +5119,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 12315
+    - 12315
   weight: 0.1
   examine: "A well made elegant men's pink shirt."
   isFullBody: false
@@ -5142,7 +5142,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 12327
+    - 12327
   weight: 6.803
   examine: "Made from 100% real dragonhide. With colourful trim!"
   isFullBody: false
@@ -5165,7 +5165,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 12331
+    - 12331
   weight: 6.803
   examine: "Made from 100% real dragonhide. With colourful trim!"
   isFullBody: false
@@ -5188,7 +5188,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 12339
+    - 12339
   weight: 0.1
   examine: "A well made elegant ladies' pink blouse."
   isFullBody: false
@@ -5211,7 +5211,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 12343
+    - 12343
   weight: 0.1
   examine: "A well made elegant ladies' gold blouse."
   isFullBody: false
@@ -5234,7 +5234,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 12347
+    - 12347
   weight: 0.1
   examine: "A well made elegant men's gold shirt."
   isFullBody: false
@@ -5257,7 +5257,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 12381
+    - 12381
   weight: 6.803
   examine: "Made from 100% real dragonhide. With colourful trim!"
   isFullBody: false
@@ -5280,7 +5280,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 12385
+    - 12385
   weight: 6.803
   examine: "Made from 100% real dragonhide. With colourful trim!"
   isFullBody: false
@@ -5303,7 +5303,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 12393
+    - 12393
   weight: 1.36
   examine: "Feeling distinctly ornate."
   isFullBody: false
@@ -5326,7 +5326,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 12414
+    - 12414
   weight: 6.803
   examine: "A series of connected metal rings with gold trim."
   isFullBody: false
@@ -5349,7 +5349,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 12420
+    - 12420
   weight: 2.267
   examine: "Mystical robes with a light recolour."
   isFullBody: false
@@ -5372,7 +5372,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 12441
+    - 12441
   weight: 1.814
   examine: "All for one!"
   isFullBody: false
@@ -5395,7 +5395,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 12449
+    - 12449
   weight: 0.907
   examine: "I can do magic better in this."
   isFullBody: false
@@ -5418,7 +5418,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 12451
+    - 12451
   weight: 0.907
   examine: "I can do magic better in this."
   isFullBody: false
@@ -5441,7 +5441,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 12458
+    - 12458
   weight: 2.267
   examine: "Mystical robes with a dark recolour."
   isFullBody: false
@@ -5464,7 +5464,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 12460
+    - 12460
   weight: 9.979
   examine: "Rune platebody in the colours of a long-forgotten god."
   isFullBody: false
@@ -5487,7 +5487,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-  - 12470
+    - 12470
   weight: 9.979
   examine: "Rune platebody in the colours of Armadyl."
   isFullBody: false
@@ -5510,7 +5510,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-  - 12480
+    - 12480
   weight: 9.979
   examine: "Rune platebody in the colours of Bandos."
   isFullBody: false
@@ -5533,7 +5533,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-  - 12492
+    - 12492
   weight: 6.0
   examine: "Ancient blessed dragonhide body armour."
   isFullBody: false
@@ -5556,7 +5556,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-  - 12500
+    - 12500
   weight: 6.0
   examine: "Bandos blessed dragonhide body armour."
   isFullBody: false
@@ -5579,7 +5579,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-  - 12508
+    - 12508
   weight: 6.0
   examine: "Armadyl blessed dragonhide body armour."
   isFullBody: false
@@ -5602,7 +5602,7 @@
       magic: 0
     prayerBonus: 1
 - ids:
-  - 12596
+    - 12596
   weight: 3.0
   examine: "Lightweight body armour ideal for rangers."
   isFullBody: false
@@ -5625,7 +5625,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 12811
+    - 12811
   weight: 4.535
   examine: "Take it off and what are you?"
   isFullBody: false
@@ -5648,7 +5648,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 12814
+    - 12814
   weight: 4.535
   examine: "Take it off and what are you?"
   isFullBody: false
@@ -5671,7 +5671,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 12888
+    - 12888
   weight: 0.3
   examine: "Apparently you can still fit down the chimney in this."
   isFullBody: false
@@ -5694,7 +5694,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 12893
+    - 12893
   weight: 0.3
   examine: "Keeps your bones warm."
   isFullBody: false
@@ -5717,7 +5717,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 12956
+    - 12956
   weight: 3.0
   examine: "It looks like a cow's body."
   isFullBody: false
@@ -5740,7 +5740,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13072
+    - 13072
   weight: 6.803
   examine: "Superior torso armour from the order of the Void Knights."
   isFullBody: false
@@ -5763,7 +5763,7 @@
       magic: 0
     prayerBonus: 3
 - ids:
-  - 13104
+    - 13104
   weight: 1.0
   examine: "Varrock smithing armour."
   isFullBody: false
@@ -5786,7 +5786,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13105
+    - 13105
   weight: 1.0
   examine: "Varrock smithing armour."
   isFullBody: false
@@ -5809,7 +5809,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13106
+    - 13106
   weight: 1.0
   examine: "Varrock smithing armour."
   isFullBody: false
@@ -5832,7 +5832,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13107
+    - 13107
   weight: 1.0
   examine: "Varrock smithing armour."
   isFullBody: false
@@ -5855,7 +5855,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13259
+    - 13259
   weight: 1.0
   examine: "This will help with fishing."
   isFullBody: false
@@ -5878,7 +5878,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13284
+    - 13284
   weight: 0.9
   examine: "Featuring a selection of mud stains from across Gielinor."
   isFullBody: false
@@ -5901,7 +5901,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13317
+    - 13317
   weight: 9.979
   examine: "15 men may jump on you, but only to steal the contents of your bank."
   isFullBody: false
@@ -5924,7 +5924,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13361
+    - 13361
   weight: 9.979
   examine: "Dress like a tier 1 Shayzien soldier."
   isFullBody: false
@@ -5947,7 +5947,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13366
+    - 13366
   weight: 9.979
   examine: "Dress like a tier 2 Shayzien soldier."
   isFullBody: false
@@ -5970,7 +5970,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13371
+    - 13371
   weight: 9.979
   examine: "Dress like a tier 3 Shayzien soldier."
   isFullBody: false
@@ -5993,7 +5993,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13376
+    - 13376
   weight: 9.979
   examine: "Dress like a tier 4 Shayzien soldier."
   isFullBody: false
@@ -6016,7 +6016,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13381
+    - 13381
   weight: 9.979
   examine: "Dress like a tier 5 Shayzien soldier."
   isFullBody: false
@@ -6039,7 +6039,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13387
+    - 13387
   weight: 0.2
   examine: "The forgotten magicks of Xeric imbue this garment with a little power."
   isFullBody: false
@@ -6062,8 +6062,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13583
-  - 13584
+    - 13583
+    - 13584
   weight: 0.0
   examine: "A sign of your grace and loyalty."
   isFullBody: false
@@ -6086,8 +6086,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13595
-  - 13596
+    - 13595
+    - 13596
   weight: 0.0
   examine: "A sign of your grace and loyalty."
   isFullBody: false
@@ -6110,8 +6110,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13607
-  - 13608
+    - 13607
+    - 13608
   weight: 0.0
   examine: "A sign of your grace and loyalty."
   isFullBody: false
@@ -6134,8 +6134,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13619
-  - 13620
+    - 13619
+    - 13620
   weight: 0.0
   examine: "A sign of your grace and loyalty."
   isFullBody: false
@@ -6158,8 +6158,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13631
-  - 13632
+    - 13631
+    - 13632
   weight: 0.0
   examine: "A sign of your grace and loyalty."
   isFullBody: false
@@ -6182,7 +6182,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13642
+    - 13642
   weight: 0.907
   examine: "This will help with farming."
   isFullBody: false
@@ -6205,7 +6205,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13643
+    - 13643
   weight: 0.907
   examine: "This will help with farming."
   isFullBody: false
@@ -6228,7 +6228,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13663
+    - 13663
   weight: 0.907
   examine: "Carrot stain resistant."
   isFullBody: false
@@ -6251,8 +6251,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 13671
-  - 13672
+    - 13671
+    - 13672
   weight: 0.0
   examine: "A sign of your grace and unity."
   isFullBody: false
@@ -6275,7 +6275,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 19689
+    - 19689
   weight: 2.0
   examine: "Stark and full of vigour."
   isFullBody: false
@@ -6298,7 +6298,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 19958
+    - 19958
   weight: 2.0
   examine: "A dark tuxedo jacket with a white shirt."
   isFullBody: false
@@ -6321,7 +6321,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 19973
+    - 19973
   weight: 2.0
   examine: "A light tuxedo jacket with a matching shirt."
   isFullBody: false
@@ -6344,7 +6344,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 20038
+    - 20038
   weight: 2.0
   examine: "A type of shirt worn by the Samurai."
   isFullBody: false
@@ -6367,7 +6367,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 20083
+    - 20083
   weight: 0.5
   examine: "A mummy's body."
   isFullBody: false
@@ -6390,7 +6390,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 20098
+    - 20098
   weight: 0.5
   examine: "This top will make your flesh transparent."
   isFullBody: false
@@ -6413,7 +6413,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 20131
+    - 20131
   weight: 2.721
   examine: "A dark power is woven into this robe top."
   isFullBody: false
@@ -6436,7 +6436,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 20149
+    - 20149
   weight: 6.803
   examine: "A series of connected metal rings plated in gold."
   isFullBody: false
@@ -6459,7 +6459,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 20169
+    - 20169
   weight: 9.979
   examine: "Steel platebody with a gold trim."
   isFullBody: false
@@ -6482,7 +6482,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 20184
+    - 20184
   weight: 9.979
   examine: "Steel platebody with a trim."
   isFullBody: false
@@ -6505,7 +6505,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 20199
+    - 20199
   weight: 0.907
   examine: "I feel the gods don't enjoy my materialistic obsessions."
   isFullBody: false
@@ -6528,7 +6528,7 @@
       magic: 0
     prayerBonus: 6
 - ids:
-  - 20208
+    - 20208
   weight: 0.453
   examine: "An astonishingly gold apron."
   isFullBody: false
@@ -6551,7 +6551,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 20240
+    - 20240
   weight: 0.001
   examine: "Don't shoot the messenger!"
   isFullBody: false
@@ -6574,7 +6574,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 20436
+    - 20436
   weight: 0.25
   examine: "I look evil and fowl in this."
   isFullBody: false
@@ -6597,7 +6597,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 20465
+    - 20465
   weight: 6.803
   examine: "Broken torso armour from the order of the Void Knights."
   isFullBody: false
@@ -6620,7 +6620,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 20467
+    - 20467
   weight: 6.803
   examine: "Broken superior torso armour from the order of the Void Knights."
   isFullBody: false
@@ -6643,7 +6643,7 @@
       magic: 0
     prayerBonus: 3
 - ids:
-  - 20485
+    - 20485
   weight: 8.618
   examine: "Very decorative armour, but it's broken."
   isFullBody: false
@@ -6666,7 +6666,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 20495
+    - 20495
   weight: 6.803
   examine: "Very decorative armour, but it's broken."
   isFullBody: false
@@ -6689,7 +6689,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 20501
+    - 20501
   weight: 6.803
   examine: "Very decorative armour, but it's broken."
   isFullBody: false
@@ -6712,7 +6712,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 20513
+    - 20513
   weight: 4.0
   examine: "A broken Penance Fighter torso."
   isFullBody: false
@@ -6735,7 +6735,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 20517
+    - 20517
   weight: 0.2
   examine: "The robes worn by the dangerous elder druids."
   isFullBody: false
@@ -6758,7 +6758,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 20704
+    - 20704
   weight: 0.2
   examine: "The garb of the Pyromancers."
   isFullBody: false
@@ -6781,7 +6781,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 20775
+    - 20775
   weight: 0.9
   examine: "Looks like it's been slashed by a claw."
   isFullBody: false
@@ -6804,7 +6804,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 20794
+    - 20794
   weight: 4.535
   examine: "Take it off and what are you?"
   isFullBody: false
@@ -6827,7 +6827,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 20840
+    - 20840
   weight: 9.979
   examine: "The platebody of a forgotten warrior, corrupted by the dark altar."
   isFullBody: false
@@ -6850,7 +6850,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 21021
+    - 21021
   weight: 2.721
   examine: "The robe top of a powerful sorceress from a bygone era."
   isFullBody: false
@@ -6873,8 +6873,8 @@
       magic: 2
     prayerBonus: 0
 - ids:
-  - 21067
-  - 21069
+    - 21067
+    - 21069
   weight: 0.0
   examine: "A sign of your grace."
   isFullBody: false
@@ -6897,7 +6897,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 21301
+    - 21301
   weight: 9.979
   examine: "Provides excellent protection."
   isFullBody: false
@@ -6920,7 +6920,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 21849
+    - 21849
   weight: 0.907
   examine: "A poorly made fake snow imp body."
   isFullBody: false
@@ -6943,7 +6943,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 21892
+    - 21892
   weight: 11.339
   examine: "Provides excellent protection."
   isFullBody: false
@@ -6966,7 +6966,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 22242
+    - 22242
   weight: 11.339
   examine: "A Dragon platebody with a gold trim."
   isFullBody: false
@@ -6989,7 +6989,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 22327
+    - 22327
   weight: 9.979
   examine: "A Justiciar's chestguard. They once roamed the land casting judgements\
     \ on wrongdoers, their decisions were never questioned."
@@ -7013,7 +7013,7 @@
       magic: 0
     prayerBonus: 4
 - ids:
-  - 22351
+    - 22351
   weight: 2.267
   examine: "A chocolate shell reinforced with a thin layer of foil."
   isFullBody: false
@@ -7036,7 +7036,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 22616
+    - 22616
   weight: 6.803
   examine: "A powerful chainbody."
   isFullBody: false
@@ -7059,7 +7059,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 22628
+    - 22628
   weight: 9.979
   examine: "A powerful platebody."
   isFullBody: false
@@ -7082,7 +7082,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 22641
+    - 22641
   weight: 6.803
   examine: "A powerful leather body."
   isFullBody: false
@@ -7105,7 +7105,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 22653
+    - 22653
   weight: 4.535
   examine: "A powerful robe top."
   isFullBody: false
@@ -7128,7 +7128,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 22695
+    - 22695
   weight: 0.9
   examine: "Why so serious?"
   isFullBody: false
@@ -7151,7 +7151,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 22715
+    - 22715
   weight: 0.3
   examine: "Part of a tree costume."
   isFullBody: false
@@ -7174,7 +7174,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 23050
+    - 23050
   weight: 2.721
   examine: "The upper half of a dusky magical robe."
   isFullBody: false
@@ -7197,7 +7197,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 23097
+    - 23097
   weight: 11.339
   examine: "An ornate armoured top."
   isFullBody: false
@@ -7220,7 +7220,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 23209
+    - 23209
   weight: 9.979
   examine: "Provides excellent protection with a heraldic design."
   isFullBody: false
@@ -7243,7 +7243,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 23212
+    - 23212
   weight: 9.979
   examine: "Provides excellent protection with a heraldic design."
   isFullBody: false
@@ -7266,7 +7266,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 23215
+    - 23215
   weight: 9.979
   examine: "Provides excellent protection with a heraldic design."
   isFullBody: false
@@ -7289,7 +7289,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 23218
+    - 23218
   weight: 9.979
   examine: "Provides excellent protection with a heraldic design."
   isFullBody: false
@@ -7312,7 +7312,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 23221
+    - 23221
   weight: 9.979
   examine: "Provides excellent protection with a heraldic design."
   isFullBody: false
@@ -7335,7 +7335,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 23264
+    - 23264
   weight: 6.0
   examine: "Made with 100% golden dragonhide."
   isFullBody: false
@@ -7358,7 +7358,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 23303
+    - 23303
   weight: 0.907
   examine: "I feel the gods don't enjoy my materialistic obsessions."
   isFullBody: false
@@ -7381,7 +7381,7 @@
       magic: 0
     prayerBonus: 6
 - ids:
-  - 23315
+    - 23315
   weight: 0.907
   examine: "A top worn by a sandwich lady."
   isFullBody: false
@@ -7404,7 +7404,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 23336
+    - 23336
   weight: 1.5
   examine: "A fabulously ancient woven robe top as worn by the druids of old."
   isFullBody: false
@@ -7427,7 +7427,7 @@
       magic: 0
     prayerBonus: 8
 - ids:
-  - 23366
+    - 23366
   weight: 9.979
   examine: "Black plate body with a heraldic design."
   isFullBody: false
@@ -7450,7 +7450,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 23369
+    - 23369
   weight: 9.979
   examine: "Black plate body with a heraldic design."
   isFullBody: false
@@ -7473,7 +7473,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 23372
+    - 23372
   weight: 9.979
   examine: "Black plate body with a heraldic design."
   isFullBody: false
@@ -7496,7 +7496,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 23375
+    - 23375
   weight: 9.979
   examine: "Black plate body with a heraldic design."
   isFullBody: false
@@ -7519,7 +7519,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 23378
+    - 23378
   weight: 9.979
   examine: "Black plate body with a heraldic design."
   isFullBody: false
@@ -7542,7 +7542,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 23381
+    - 23381
   weight: 5.443
   examine: "Better than no armour! Nice trim too!"
   isFullBody: false
@@ -7565,7 +7565,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 23392
+    - 23392
   weight: 11.339
   examine: "Adamant platebody with a heraldic design."
   isFullBody: false
@@ -7588,7 +7588,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 23395
+    - 23395
   weight: 11.339
   examine: "Adamant platebody with a heraldic design."
   isFullBody: false
@@ -7611,7 +7611,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 23398
+    - 23398
   weight: 11.339
   examine: "Adamant platebody with a heraldic design."
   isFullBody: false
@@ -7634,7 +7634,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 23401
+    - 23401
   weight: 11.339
   examine: "Adamant platebody with a heraldic design."
   isFullBody: false
@@ -7657,7 +7657,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 23404
+    - 23404
   weight: 11.339
   examine: "Adamant platebody with a heraldic design."
   isFullBody: false
@@ -7680,7 +7680,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 23787
+    - 23787
   weight: 9.979
   examine: "A platebody worn by the Knights of Ardougne."
   isFullBody: false
@@ -7703,7 +7703,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 23843
+    - 23843
   weight: 9.979
   examine: "A not so sturdy piece of armour with a little protection from corrupted\
     \ creatures."
@@ -7727,7 +7727,7 @@
       magic: 0
     prayerBonus: 3
 - ids:
-  - 23844
+    - 23844
   weight: 9.979
   examine: "A sturdier piece of armour with some protection from corrupted creatures."
   isFullBody: false
@@ -7750,7 +7750,7 @@
       magic: 0
     prayerBonus: 4
 - ids:
-  - 23845
+    - 23845
   weight: 9.979
   examine: "A very sturdy piece of armour with a lot of protection from corrupted\
     \ creatures."
@@ -7774,7 +7774,7 @@
       magic: 0
     prayerBonus: 5
 - ids:
-  - 23889
+    - 23889
   weight: 9.979
   examine: "A not so sturdy piece of armour with a little protection from crystalline\
     \ creatures."
@@ -7798,7 +7798,7 @@
       magic: 0
     prayerBonus: 3
 - ids:
-  - 23890
+    - 23890
   weight: 9.979
   examine: "A sturdier piece of armour with some protection from crystalline creatures."
   isFullBody: false
@@ -7821,7 +7821,7 @@
       magic: 0
     prayerBonus: 4
 - ids:
-  - 23891
+    - 23891
   weight: 9.979
   examine: "A very sturdy piece of armour with a lot of protection from crystalline\
     \ creatures."
@@ -7845,7 +7845,7 @@
       magic: 0
     prayerBonus: 5
 - ids:
-  - 23975
+    - 23975
   weight: 9.979
   examine: "Sturdier than it looks."
   isFullBody: false
@@ -7868,7 +7868,7 @@
       magic: 0
     prayerBonus: 3
 - ids:
-  - 23977
+    - 23977
   weight: 9.979
   examine: "Sturdier than it looks."
   isFullBody: false
@@ -7891,7 +7891,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 24009
+    - 24009
   weight: 0.907
   examine: "Clothing from the elven city of Prifddinas."
   isFullBody: false
@@ -7914,7 +7914,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 24015
+    - 24015
   weight: 0.907
   examine: "Clothing from the elven city of Prifddinas."
   isFullBody: false
@@ -7937,7 +7937,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 24021
+    - 24021
   weight: 0.907
   examine: "Clothing from the elven city of Prifddinas."
   isFullBody: false
@@ -7960,7 +7960,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 24027
+    - 24027
   weight: 0.907
   examine: "Clothing from the elven city of Prifddinas."
   isFullBody: false
@@ -7983,7 +7983,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 24037
+    - 24037
   weight: 9.979
   examine: "A stylish rune platebody inlaid with dragonstones."
   isFullBody: false
@@ -8006,7 +8006,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 24158
+    - 24158
   weight: 8.618
   examine: "Very decorative armour."
   isFullBody: false
@@ -8029,7 +8029,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 24163
+    - 24163
   weight: 6.803
   examine: "Very decorative armour."
   isFullBody: false
@@ -8052,7 +8052,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 24166
+    - 24166
   weight: 6.803
   examine: "Very decorative armour."
   isFullBody: false
@@ -8075,7 +8075,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 24175
+    - 24175
   weight: 4.0
   examine: "A Penance Fighter torso armour."
   isFullBody: false
@@ -8098,7 +8098,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 24177
+    - 24177
   weight: 6.803
   examine: "Torso armour from the order of the Void Knights."
   isFullBody: false
@@ -8121,7 +8121,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 24178
+    - 24178
   weight: 6.803
   examine: "Superior torso armour from the order of the Void Knights."
   isFullBody: false
@@ -8144,7 +8144,7 @@
       magic: 0
     prayerBonus: 3
 - ids:
-  - 24189
+    - 24189
   weight: 0.12
   examine: "15 men may jump on you, but only to steal the contents of your bank."
   isFullBody: false
@@ -8167,7 +8167,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 24291
+    - 24291
   weight: 2.267
   examine: "A robe worn by members of the Dagon'hai."
   isFullBody: false
@@ -8190,7 +8190,7 @@
       magic: 0
     prayerBonus: 2
 - ids:
-  - 24307
+    - 24307
   weight: 0.9
   examine: "A spooky robe cut from a bedsheet!"
   isFullBody: false
@@ -8213,7 +8213,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 24317
+    - 24317
   weight: 0.9
   examine: "A spooky robe cut from a bedsheet!"
   isFullBody: false
@@ -8236,7 +8236,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 24389
+    - 24389
   weight: 0.907
   examine: "The coat of a twisted relic hunter."
   isFullBody: false
@@ -8259,7 +8259,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 24399
+    - 24399
   weight: 0.907
   examine: "The coat of a twisted relic hunter."
   isFullBody: false
@@ -8282,7 +8282,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 24407
+    - 24407
   weight: 0.907
   examine: "The coat of a twisted relic hunter."
   isFullBody: false
@@ -8305,7 +8305,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 24420
+    - 24420
   weight: 9.979
   examine: "The hauberk of the turncloak Justiciar."
   isFullBody: false
@@ -8328,7 +8328,7 @@
       magic: 0
     prayerBonus: 2
 - ids:
-  - 24666
+    - 24666
   weight: 2.721
   examine: "The robe top of a powerful sorceress from a bygone era."
   isFullBody: false
@@ -8351,7 +8351,7 @@
       magic: 2
     prayerBonus: 0
 - ids:
-  - 24676
+    - 24676
   weight: 0.907
   examine: "Lets you dress like a vampyre noble."
   isFullBody: false
@@ -8374,8 +8374,8 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 24749
-  - 24751
+    - 24749
+    - 24751
   weight: 0.0
   examine: "A sign of your grace under fire."
   isFullBody: false
@@ -8398,7 +8398,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 24794
+    - 24794
   weight: 0.907
   examine: "Lets you dress like a vampyre noble."
   isFullBody: false
@@ -8421,7 +8421,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 24798
+    - 24798
   weight: 0.907
   examine: "Lets you dress like a vampyre noble."
   isFullBody: false
@@ -8444,7 +8444,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 24802
+    - 24802
   weight: 0.907
   examine: "Lets you dress like a vampyre noble."
   isFullBody: false
@@ -8467,7 +8467,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 24806
+    - 24806
   weight: 0.907
   examine: "Lets you dress like a vampyre noble."
   isFullBody: false
@@ -8490,7 +8490,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 24810
+    - 24810
   weight: 0.907
   examine: "Lets you dress like a vampyre noble."
   isFullBody: false
@@ -8513,7 +8513,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 24814
+    - 24814
   weight: 0.907
   examine: "Lets you dress like a vampyre noble."
   isFullBody: false
@@ -8536,7 +8536,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 24818
+    - 24818
   weight: 0.907
   examine: "Lets you dress like a vampyre noble."
   isFullBody: false
@@ -8559,7 +8559,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 24822
+    - 24822
   weight: 0.907
   examine: "Lets you dress like a vampyre noble."
   isFullBody: false
@@ -8582,7 +8582,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 24826
+    - 24826
   weight: 0.907
   examine: "Lets you dress like a vampyre noble."
   isFullBody: false
@@ -8605,7 +8605,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 24830
+    - 24830
   weight: 0.907
   examine: "Lets you dress like a vampyre noble."
   isFullBody: false
@@ -8628,7 +8628,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 24834
+    - 24834
   weight: 0.907
   examine: "Lets you dress like a vampyre noble."
   isFullBody: false
@@ -8651,7 +8651,7 @@
       magic: 0
     prayerBonus: 0
 - ids:
-  - 24838
+    - 24838
   weight: 0.907
   examine: "Lets you dress like a vampyre noble."
   isFullBody: false

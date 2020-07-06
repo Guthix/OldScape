@@ -99,29 +99,31 @@ fun simplePathSearch(start: Tile, dest: Destination, moverSize: TileUnit, map: W
     return path
 }
 
-private fun getDirection(startX: Int, startY: Int, destX: Int, destY: Int): Array<Direction> {
+private val directDirections = listOf(Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST)
+
+private fun getDirection(startX: Int, startY: Int, destX: Int, destY: Int): List<Direction> {
     if (startX == destX) {
         if (startY > destY) {
-            return arrayOf(Direction.SOUTH)
+            return listOf(Direction.SOUTH)
         } else if (startY < destY) {
-            return arrayOf(Direction.NORTH)
+            return listOf(Direction.NORTH)
         }
     } else if (startY == destY) {
         if (startX > destX) {
-            return arrayOf(Direction.WEST)
+            return listOf(Direction.WEST)
         } else if (startX < destX) {
-            return arrayOf(Direction.EAST)
+            return listOf(Direction.EAST)
         }
     } else {
         if (startX < destX && startY < destY) {
-            return arrayOf(Direction.NORTH_EAST, Direction.EAST, Direction.NORTH)
+            return listOf(Direction.NORTH_EAST, Direction.EAST, Direction.NORTH)
         } else if (startX < destX && startY > destY) {
-            return arrayOf(Direction.SOUTH_EAST, Direction.EAST, Direction.SOUTH)
+            return listOf(Direction.SOUTH_EAST, Direction.EAST, Direction.SOUTH)
         } else if (startX > destX && startY < destY) {
-            return arrayOf(Direction.NORTH_WEST, Direction.WEST, Direction.NORTH)
+            return listOf(Direction.NORTH_WEST, Direction.WEST, Direction.NORTH)
         } else if (startX > destX && startY > destY) {
-            return arrayOf(Direction.SOUTH_WEST, Direction.WEST, Direction.SOUTH)
+            return listOf(Direction.SOUTH_WEST, Direction.WEST, Direction.SOUTH)
         }
     }
-    return listOf(Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST).shuffled().toTypedArray()
+    return directDirections.shuffled()
 }
