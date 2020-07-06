@@ -287,6 +287,21 @@ data class CombatStats(
     val magic: Int
 )
 
+data class StanceSequences(
+    val stand: Int?,
+    val turn: Int?,
+    val walk: Int?,
+    val turn180: Int?,
+    val turn90CW: Int?,
+    val turn90CCW: Int?,
+    var run: Int?
+)
+
+data class WeaponSequences(
+    val attack: Int,
+    val defence: Int
+)
+
 data class CombatSequences(
     val spawn: Int? = null,
     val attack: Int,

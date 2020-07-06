@@ -156,16 +156,6 @@ class PlayerManager(val index: Int) : InterestManager {
         var skin: Int
     )
 
-    data class Animations(
-        var stand: Int,
-        var turn: Int,
-        var walk: Int,
-        var turn180: Int,
-        var turn90CW: Int,
-        var turn90CCW: Int,
-        var run: Int
-    )
-
     enum class Gender(val opcode: Int) { MALE(0), FEMALE(1) }
 
     companion object {

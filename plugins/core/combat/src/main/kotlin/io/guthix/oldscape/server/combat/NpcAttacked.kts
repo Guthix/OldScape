@@ -35,7 +35,7 @@ on(NpcAttackedEvent::class).then {
             val damage = npc.calcHit(player) ?: 0
             val hmColor = if (damage == 0) HitMark.Color.BLUE else HitMark.Color.RED
             player.hit(hmColor, damage, 0)
-            player.animate(Sequence(id = player.combatSequences.defence))
+            player.animate(Sequence(id = player.defenceSequence))
             wait(ticks = npc.blueprint.attackSpeed)
             wait { playerDestination.reached(npc.pos.x, npc.pos.y, npc.size) }
         }

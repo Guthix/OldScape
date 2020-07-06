@@ -16,6 +16,7 @@
  */
 package io.guthix.oldscape.server.world.entity
 
+import io.guthix.oldscape.server.blueprints.StanceSequences
 import io.guthix.oldscape.server.dimensions.TileUnit
 import io.guthix.oldscape.server.dimensions.tiles
 import io.guthix.oldscape.server.event.EventHolder
@@ -85,7 +86,7 @@ class Player(
         null, null, null, null, null, null, null, null, null, null, null
     )
 
-    val animations: PlayerManager.Animations = PlayerManager.Animations(
+    val animations: StanceSequences = StanceSequences(
         stand = 808,
         turn = 823,
         walk = 819,

@@ -17,9 +17,7 @@
 package io.guthix.oldscape.server.world.entity
 
 import io.guthix.oldscape.server.api.ObjectBlueprints
-import io.guthix.oldscape.server.blueprints.CombatBonus
-import io.guthix.oldscape.server.blueprints.StyleBonus
-import io.guthix.oldscape.server.blueprints.WeaponType
+import io.guthix.oldscape.server.blueprints.*
 import io.guthix.oldscape.server.blueprints.equipment.*
 import io.guthix.oldscape.server.dimensions.TileUnit
 
@@ -64,6 +62,10 @@ open class WeaponEquipment(id: Int, quantity: Int) : Equipment(id, quantity) {
     val type: WeaponType get() = blueprint.type
 
     val attackRange: TileUnit get() = blueprint.attackRange
+
+    val weaponSequences: WeaponSequences? get() = blueprint.weaponSequences
+
+    val stanceSequences: StanceSequences? get() = blueprint.stanceSequences
 }
 
 class TwoHandEquipment(id: Int, quantity: Int) : WeaponEquipment(id, quantity) {
