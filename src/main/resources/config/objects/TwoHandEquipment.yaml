@@ -283,6 +283,9 @@
   type: "BOW"
   attackSpeed: 4
   attackRange: 7
+  weaponSequences:
+    attack: 426
+    defence: 424
   equipment:
     attackBonus:
       stab: 0

@@ -380,13 +380,13 @@ class PlayerInfoPacket(
             tempBuf.writeByte(player.colours.feet)
             tempBuf.writeByte(player.colours.skin)
 
-            tempBuf.writeShort(player.equipment.weapon?.stanceSequences?.stand ?: player.animations.stand!!)
-            tempBuf.writeShort(player.equipment.weapon?.stanceSequences?.turn ?: player.animations.turn!!)
-            tempBuf.writeShort(player.equipment.weapon?.stanceSequences?.walk ?: player.animations.walk!!)
-            tempBuf.writeShort(player.equipment.weapon?.stanceSequences?.turn180 ?: player.animations.turn180!!)
-            tempBuf.writeShort(player.equipment.weapon?.stanceSequences?.turn90CW ?: player.animations.turn90CW!!)
-            tempBuf.writeShort(player.equipment.weapon?.stanceSequences?.turn90CCW ?: player.animations.turn90CCW!!)
-            tempBuf.writeShort(player.equipment.weapon?.stanceSequences?.run ?: player.animations.run!!)
+            tempBuf.writeShort(player.equipment.weapon?.stanceSequences?.stand ?: player.animations.stand)
+            tempBuf.writeShort(player.equipment.weapon?.stanceSequences?.turn ?: player.animations.turn)
+            tempBuf.writeShort(player.equipment.weapon?.stanceSequences?.walk ?: player.animations.walk)
+            tempBuf.writeShort(player.equipment.weapon?.stanceSequences?.turn180 ?: player.animations.turn180)
+            tempBuf.writeShort(player.equipment.weapon?.stanceSequences?.turn90CW ?: player.animations.turn90CW)
+            tempBuf.writeShort(player.equipment.weapon?.stanceSequences?.turn90CCW ?: player.animations.turn90CCW)
+            tempBuf.writeShort(player.equipment.weapon?.stanceSequences?.run ?: player.animations.run)
             tempBuf.writeStringCP1252(player.username) // username
             tempBuf.writeByte(player.combatLevel) // combat level
             tempBuf.writeShort(0) // skillId level

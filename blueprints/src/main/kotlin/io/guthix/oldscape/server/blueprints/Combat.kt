@@ -288,13 +288,13 @@ data class CombatStats(
 )
 
 data class StanceSequences(
-    val stand: Int?,
-    val turn: Int?,
-    val walk: Int?,
-    val turn180: Int?,
-    val turn90CW: Int?,
-    val turn90CCW: Int?,
-    var run: Int?
+    val stand: Int,
+    val turn: Int,
+    val walk: Int,
+    val turn180: Int,
+    val turn90CW: Int,
+    val turn90CCW: Int,
+    var run: Int
 )
 
 data class WeaponSequences(
