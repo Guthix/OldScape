@@ -22,6 +22,7 @@ import io.guthix.oldscape.server.net.game.GameEncoder
 import io.guthix.oldscape.server.net.game.GameHandler
 import io.guthix.oldscape.server.net.login.*
 import io.guthix.oldscape.server.plugin.EventHandler
+import io.guthix.oldscape.server.task.*
 import io.guthix.oldscape.server.world.entity.Player
 import io.guthix.oldscape.server.world.map.Tile
 import io.netty.util.concurrent.DefaultPromise
@@ -30,11 +31,14 @@ import io.netty.util.concurrent.PromiseCombiner
 import java.util.*
 import java.util.concurrent.ConcurrentLinkedQueue
 import java.util.concurrent.LinkedBlockingDeque
+import kotlin.coroutines.intrinsics.createCoroutineUnintercepted
 
-class World : TimerTask(), EventHolder {
+class World : TimerTask(), TaskHolder, EventHolder {
     val map: WorldMap = WorldMap(mutableMapOf())
 
     override val events: LinkedBlockingDeque<EventHandler<GameEvent>> = LinkedBlockingDeque()
+
+    override val tasks: MutableMap<TaskType, MutableList<Task>> = mutableMapOf()
 
     internal val loginQueue = ConcurrentLinkedQueue<LoginRequest>()
 
@@ -55,11 +59,14 @@ class World : TimerTask(), EventHolder {
         proccessPlayerMovement()
         synchronizeInterest()
         processLogouts()
+        postProcess()
     }
 
     private fun processInEvents() {
-        while (events.isNotEmpty()) {
-            events.pop().handle()
+        while (true) {
+            while (events.isNotEmpty()) events.poll().handle()
+            val resumed = tasks.values.flatMap { routineList -> routineList.toList().map(Task::run) } // TODO optimize
+            if (resumed.all { !it } && events.isEmpty()) break // TODO add live lock detection
         }
     }
 

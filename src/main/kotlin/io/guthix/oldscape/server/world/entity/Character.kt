@@ -35,8 +35,6 @@ import kotlin.math.atan2
 import kotlin.reflect.KProperty
 
 abstract class Character(val index: Int) : Entity() {
-    internal val tasks = mutableMapOf<TaskType, MutableList<Task>>()
-
     internal val postTasks = mutableListOf<() -> Unit>()
 
     val properties: MutableMap<KProperty<*>, Any?> = mutableMapOf()
@@ -197,11 +195,11 @@ abstract class Character(val index: Int) : Entity() {
         healthBarQueue.add(HealthBar(2, 0, 0, 100)) // TODO do something better here
     }
 
-    open fun postProcess() {
+    override fun postProcess() {
+        super.postProcess()
         updateFlags.clear()
         hitMarkQueue.clear()
         healthBarQueue.clear()
-        tasks.values.forEach { it.forEach(Task::postProcess) }
         postTasks.forEach { it.invoke() }
         postTasks.clear()
         movementType = MovementInterestUpdate.STAY
@@ -222,17 +220,6 @@ abstract class Character(val index: Int) : Entity() {
     protected abstract fun addShoutFlag(): Boolean
 
     abstract fun processTasks()
-
-    fun addTask(type: TaskType, routine: suspend Task.() -> Unit): Task {
-        val task = Task(type, this)
-        task.next = ConditionalContinuation(TrueCondition, routine.createCoroutineUnintercepted(task, task))
-        tasks.getOrPut(type) { mutableListOf() }.add(task)
-        return task
-    }
-
-    fun cancelTasks(type: TaskType) {
-        tasks[type]?.forEach(Task::cancel)
-    }
 
     fun addPostTask(task: () -> Unit) {
         postTasks.add(task)

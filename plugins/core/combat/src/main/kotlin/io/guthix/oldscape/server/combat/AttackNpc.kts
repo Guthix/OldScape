@@ -31,6 +31,7 @@ import io.guthix.oldscape.server.pathing.breadthFirstSearch
 import io.guthix.oldscape.server.task.NormalTask
 import io.guthix.oldscape.server.world.entity.HitMark
 import io.guthix.oldscape.server.world.entity.Sequence
+import kotlin.math.floor
 
 on(NpcClickEvent::class).where { contextMenuEntry == "Attack" }.then {
     if (player.inCombatWith == npc) return@then
@@ -70,13 +71,19 @@ fun NpcClickEvent.rangeAttack(range: TileUnit) {
     player.cancelTasks(NormalTask)
     player.addTask(NormalTask) {
         wait { npcDestination.reached(player.pos.x, player.pos.y, player.size) }
-        EventBus.schedule(NpcAttackedEvent(npc, player, world))
         while (true) { // start player combat
             player.animate(Sequence(id = player.attackSequence))
             world.map.addProjectile(Arrow(10, player.pos, npc))
-            val damage = player.calcHit(npc, player.maxRangeHit()) ?: 0
-            val hmColor = if (damage == 0) HitMark.Color.BLUE else HitMark.Color.RED
-            npc.hit(hmColor, damage, 0)
+            world.addTask(NormalTask) { // projectile task
+                val npcPos = npc.pos
+                wait(ticks = 1 + floor((3.0 + player.pos.distanceTo(npcPos)) / 6.0).toInt())
+                val damage = player.calcHit(npc, player.maxRangeHit()) ?: 0
+                val hmColor = if (damage == 0) HitMark.Color.BLUE else HitMark.Color.RED
+                npc.hit(hmColor, damage, 0)
+                EventBus.schedule(NpcAttackedEvent(npc, player, world))
+                // TODO drop ammunition
+            }
+
             npc.animate(Sequence(id = npc.combatSequences?.defence ?: -1))
             wait(ticks = player.equipment.weapon?.attackSpeed ?: 5)
         }

@@ -31,13 +31,13 @@ on(NpcAttackedEvent::class).then {
     npc.cancelTasks(NormalTask)
     npc.addTask(NormalTask) { // combat fighting task
         while (true) {
+            wait { playerDestination.reached(npc.pos.x, npc.pos.y, npc.size) }
             npc.animate(Sequence(id = npc.combatSequences?.attack ?: -1))
             val damage = npc.calcHit(player) ?: 0
             val hmColor = if (damage == 0) HitMark.Color.BLUE else HitMark.Color.RED
             player.hit(hmColor, damage, 0)
             player.animate(Sequence(id = player.defenceSequence))
             wait(ticks = npc.blueprint.attackSpeed)
-            wait { playerDestination.reached(npc.pos.x, npc.pos.y, npc.size) }
         }
     }
     npc.addTask(NormalTask) { // following task

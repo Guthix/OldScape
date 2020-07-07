@@ -63,7 +63,7 @@ val Player.attackSequence: Int by CharacterProperty {
 }
 
 val Player.defenceSequence: Int by CharacterProperty {
-    equipment.weapon?.weaponSequences?.attack ?: 424
+    equipment.weapon?.weaponSequences?.defence ?: 424
 }
 
 val Player.deathSequence: Int by CharacterProperty { 836 }

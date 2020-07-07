@@ -16,7 +16,6 @@
  */
 package io.guthix.oldscape.server.task
 
-import io.guthix.oldscape.server.world.entity.Character
 import kotlin.coroutines.Continuation
 import kotlin.coroutines.CoroutineContext
 import kotlin.coroutines.EmptyCoroutineContext
@@ -25,7 +24,7 @@ import kotlin.coroutines.intrinsics.createCoroutineUnintercepted
 import kotlin.coroutines.intrinsics.suspendCoroutineUninterceptedOrReturn
 import kotlin.coroutines.resume
 
-class Task(val type: TaskType, private val character: Character) : Continuation<Unit> {
+class Task(val type: TaskType, private val holder: TaskHolder) : Continuation<Unit> {
     internal var next: ConditionalContinuation? = null
 
     private var cancelation: ConditionalContinuation? = null
@@ -35,12 +34,12 @@ class Task(val type: TaskType, private val character: Character) : Continuation<
     fun run(): Boolean {
         return next?.let {
             if (it.canResume()) {
-                character.tasks[type]?.remove(this)
+                holder.tasks[type]?.remove(this)
                 it.continuation.resume(Unit)
                 true
             } else false
         } ?: run {
-            character.tasks[type]?.remove(this)
+            holder.tasks[type]?.remove(this)
             false
         }
     }
@@ -68,7 +67,7 @@ class Task(val type: TaskType, private val character: Character) : Continuation<
     }
 
     private suspend fun suspend(condition: TaskWaitCondition) {
-        character.tasks.getOrPut(type) { mutableListOf() }.add(this)
+        holder.tasks.getOrPut(type) { mutableListOf() }.add(this)
         return suspendCoroutineUninterceptedOrReturn { cont ->
             next = ConditionalContinuation(condition, cont)
             COROUTINE_SUSPENDED
