@@ -31,7 +31,7 @@ data class ExtraWeaponConfig(
     val attackSpeed: Int,
     val attackRange: Int = 1,
     val weaponSequences: WeaponSequences?,
-    val stanceSequences: StanceSequences?,
+    val overrideSequences: StanceSequences?,
     override val equipment: EquipmentBlueprint.Equipment
 ) : ExtraEquipmentConfig(ids, weight, examine, equipment)
 
@@ -47,5 +47,5 @@ open class WeaponBlueprint(
 
     val weaponSequences: WeaponSequences? get() = extraConfig.weaponSequences
 
-    val stanceSequences: StanceSequences? get() = extraConfig.stanceSequences
+    val stanceSequences: StanceSequences? get() = extraConfig.overrideSequences
 }
