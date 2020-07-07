@@ -17,9 +17,12 @@
 package io.guthix.oldscape.server.world.entity
 
 import io.guthix.oldscape.server.dimensions.TileUnit
+import io.guthix.oldscape.server.task.Task
+import io.guthix.oldscape.server.task.TaskHolder
+import io.guthix.oldscape.server.task.TaskType
 import io.guthix.oldscape.server.world.map.Tile
 
-abstract class Entity {
+abstract class Entity : TaskHolder {
     abstract val pos: Tile
 
     abstract val sizeX: TileUnit
@@ -27,4 +30,6 @@ abstract class Entity {
     abstract val sizeY: TileUnit
 
     open var orientation: Int = 0
+
+    override val tasks: MutableMap<TaskType, MutableList<Task>> = mutableMapOf()
 }
