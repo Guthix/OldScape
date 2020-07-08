@@ -18,4 +18,6 @@ package io.guthix.oldscape.server.publicchat
 
 import io.guthix.oldscape.server.event.PublicMessageEvent
 
-on(PublicMessageEvent::class).then { player.talk(this) }
+on(PublicMessageEvent::class).then {
+    player.talk(this)
+}

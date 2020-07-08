@@ -1,6 +1,7 @@
 @file:Suppress("ConvertLambdaToReference")
 
 import org.jetbrains.kotlin.gradle.plugin.getKotlinPluginVersion
+import io.guthix.oldscape.server.cache.IdentifierGenerator
 
 plugins {
     idea
@@ -10,6 +11,8 @@ plugins {
     id("org.jetbrains.dokka")
     id("com.github.hierynomus.license")
 }
+
+apply<IdentifierGenerator>()
 
 group = "io.guthix"
 version = "0.1-SNAPSHOT"
@@ -105,4 +108,10 @@ dependencies {
         group = "com.fasterxml.jackson.dataformat", name = "jackson-dataformat-yaml", version = jacksonVersion
     )
     implementation(group = "com.fasterxml.jackson.module", name = "jackson-module-kotlin", version = jacksonVersion)
+}
+
+license {
+    exclude("**/LocId.kt")
+    exclude("**/NpcId.kt")
+    exclude("**/ObjId.kt")
 }
