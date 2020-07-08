@@ -420,6 +420,7 @@
     - 882
   weight: 0.0
   examine: "Arrows with bronze heads."
+  type: "ARROW"
   equipment:
     attackBonus:
       stab: 0
@@ -442,6 +443,7 @@
     - 883
   weight: 0.0
   examine: "Venomous-looking arrows."
+  type: "ARROW"
   equipment:
     attackBonus:
       stab: 0
@@ -464,6 +466,7 @@
     - 884
   weight: 0.0
   examine: "Arrows with iron heads."
+  type: "ARROW"
   equipment:
     attackBonus:
       stab: 0
@@ -486,6 +489,7 @@
     - 885
   weight: 0.0
   examine: "Venomous-looking arrows."
+  type: "ARROW"
   equipment:
     attackBonus:
       stab: 0
@@ -508,6 +512,7 @@
     - 886
   weight: 0.0
   examine: "Arrows with steel heads."
+  type: "ARROW"
   equipment:
     attackBonus:
       stab: 0
@@ -530,6 +535,7 @@
     - 887
   weight: 0.0
   examine: "Venomous-looking arrows."
+  type: "ARROW"
   equipment:
     attackBonus:
       stab: 0
@@ -552,6 +558,7 @@
     - 888
   weight: 0.0
   examine: "Arrows with mithril heads."
+  type: "ARROW"
   equipment:
     attackBonus:
       stab: 0
@@ -574,6 +581,7 @@
     - 889
   weight: 0.0
   examine: "Venomous-looking arrows."
+  type: "ARROW"
   equipment:
     attackBonus:
       stab: 0
@@ -597,6 +605,7 @@
     - 20388
   weight: 0.0
   examine: "Arrows with adamant heads."
+  type: "ARROW"
   equipment:
     attackBonus:
       stab: 0
@@ -619,6 +628,7 @@
     - 891
   weight: 0.0
   examine: "Venomous-looking arrows."
+  type: "ARROW"
   equipment:
     attackBonus:
       stab: 0
@@ -642,6 +652,7 @@
     - 20600
   weight: 0.0
   examine: "Arrows with rune heads."
+  type: "ARROW"
   equipment:
     attackBonus:
       stab: 0
@@ -664,6 +675,7 @@
     - 893
   weight: 0.0
   examine: "Venomous-looking arrows."
+  type: "ARROW"
   equipment:
     attackBonus:
       stab: 0
