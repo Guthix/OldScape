@@ -42,7 +42,7 @@ object ObjectBlueprints {
         eHeadConfigs: List<ExtraHeadConfig>,
         extraCapeConfigs: List<ExtraEquipmentConfig>,
         eNeckConfigs: List<ExtraEquipmentConfig>,
-        eAmmunitionConfigs: List<ExtraEquipmentConfig>,
+        eAmmunitionConfigs: List<ExtraAmmunitionConfig>,
         eWeaponConfigs: List<ExtraWeaponConfig>,
         eTwoHandConfigs: List<ExtraWeaponConfig>,
         eShieldConfigs: List<ExtraEquipmentConfig>,
