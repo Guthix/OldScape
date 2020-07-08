@@ -78,3 +78,5 @@ gradle-app.setting
 
 .DS_Store
 .idea/discord.xml
+
+src/main/generated
