@@ -16,6 +16,7 @@
  */
 package io.guthix.oldscape.server.dev
 
+import io.guthix.oldscape.server.blueprints.SpotAnimation
 import io.guthix.oldscape.server.dimensions.floors
 import io.guthix.oldscape.server.dimensions.tiles
 import io.guthix.oldscape.server.event.ClientCheatEvent
@@ -56,9 +57,11 @@ on(ClientCheatEvent::class).where { string == "shoot" }.then {
     player.animate(Sequence(id = 424))
 }
 
-on(ClientCheatEvent::class).where { string == "inv" }.then {
+on(ClientCheatEvent::class).where { string == "rangeeq" }.then {
     val bow = TwoHandEquipment(861, 1)
+    val arrows = AmmunitionEquipment(882, 20)
     player.topInterface.inventory.addNextSlot(bow)
+    player.topInterface.inventory.addNextSlot(arrows)
 }
 
 on(ClientCheatEvent::class).where { string == "invent" }.then {

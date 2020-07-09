@@ -18,12 +18,15 @@ package io.guthix.oldscape.server.blueprints.equipment
 
 import io.guthix.oldscape.cache.config.ObjectConfig
 import io.guthix.oldscape.server.blueprints.AmmunitionProjectile
+import io.guthix.oldscape.server.blueprints.SpotAnimation
 
 class ExtraAmmunitionConfig(
     override val ids: List<Int>,
     override val weight: Float,
     override val examine: String,
     val type: AmmunitionProjectile?,
+    val projectileId: Int?,
+    val drawBackSpotAnim: SpotAnimation?,
     override val equipment: EquipmentBlueprint.Equipment
 ) : ExtraEquipmentConfig(ids, weight, examine, equipment)
 
@@ -32,4 +35,8 @@ class AmmunitionBlueprint(
     override val extraConfig: ExtraAmmunitionConfig
 ) : EquipmentBlueprint(cacheConfig, EquipmentSlot.AMMUNITION, extraConfig) {
     val type: AmmunitionProjectile? get() = extraConfig.type
+
+    val projectileId: Int? get() = extraConfig.projectileId
+
+    val drawBackSpotAnim: SpotAnimation? get() = extraConfig.drawBackSpotAnim
 }

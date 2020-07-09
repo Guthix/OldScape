@@ -73,6 +73,7 @@ fun NpcClickEvent.rangeAttack(range: TileUnit) {
         wait { npcDestination.reached(player.pos.x, player.pos.y, player.size) }
         while (true) { // start player combat
             player.animate(Sequence(id = player.attackSequence))
+            player.equipment.ammunition?.drawBackSpotAnim?.let(player::spotAnimate)
             world.map.addProjectile(Arrow(10, player.pos, npc))
             world.addTask(NormalTask) { // projectile task
                 val npcPos = npc.pos

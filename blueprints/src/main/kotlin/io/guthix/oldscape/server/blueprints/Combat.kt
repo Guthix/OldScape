@@ -46,7 +46,9 @@ enum class AttackStyle(
     NONE
 }
 
-class CombatStyle(val attackType: AttackType, val style: AttackStyle)
+data class CombatStyle(val attackType: AttackType, val style: AttackStyle)
+
+data class SpotAnimation(val id: Int, val height: Int, val delay: Int = 0)
 
 enum class AmmunitionProjectile(
     val startHeight: Int,
