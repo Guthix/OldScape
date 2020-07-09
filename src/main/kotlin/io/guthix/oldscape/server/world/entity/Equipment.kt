@@ -52,6 +52,12 @@ class NeckEquipment(id: Int, quantity: Int) : Equipment(id, quantity) {
 
 class AmmunitionEquipment(id: Int, quantity: Int) : Equipment(id, quantity) {
     override val blueprint: AmmunitionBlueprint = ObjectBlueprints[id]
+
+    val type: AmmunitionProjectile? get() = blueprint.type
+
+    val projectileId: Int? get() = blueprint.projectileId
+
+    val drawBackSpotAnim: SpotAnimation? get() = blueprint.drawBackSpotAnim
 }
 
 open class WeaponEquipment(id: Int, quantity: Int) : Equipment(id, quantity) {

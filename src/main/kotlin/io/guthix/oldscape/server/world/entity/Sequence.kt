@@ -17,6 +17,10 @@
 package io.guthix.oldscape.server.world.entity
 
 import io.guthix.oldscape.server.api.SequenceBlueprints
+import io.guthix.oldscape.server.api.SpotAnimBlueprints
+import io.guthix.oldscape.server.blueprints.SpotAnimation
+
+val SpotAnimation.sequence: Sequence? get() = SpotAnimBlueprints[id].sequenceId?.let(::Sequence)
 
 class Sequence(id: Int) {
     private val blueprint = SequenceBlueprints[id]

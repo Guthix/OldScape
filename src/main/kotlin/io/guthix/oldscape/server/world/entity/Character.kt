@@ -16,21 +16,18 @@
  */
 package io.guthix.oldscape.server.world.entity
 
+import io.guthix.oldscape.server.blueprints.SpotAnimation
 import io.guthix.oldscape.server.dimensions.TileUnit
 import io.guthix.oldscape.server.dimensions.floors
 import io.guthix.oldscape.server.dimensions.tiles
 import io.guthix.oldscape.server.event.PublicMessageEvent
 import io.guthix.oldscape.server.net.game.out.PlayerInfoPacket
-import io.guthix.oldscape.server.task.ConditionalContinuation
-import io.guthix.oldscape.server.task.Task
 import io.guthix.oldscape.server.task.TaskType
-import io.guthix.oldscape.server.task.TrueCondition
 import io.guthix.oldscape.server.world.entity.interest.InterestUpdateType
 import io.guthix.oldscape.server.world.entity.interest.MovementInterestUpdate
 import io.guthix.oldscape.server.world.entity.interest.PlayerManager
 import io.guthix.oldscape.server.world.map.Tile
 import java.util.*
-import kotlin.coroutines.intrinsics.createCoroutineUnintercepted
 import kotlin.math.atan2
 import kotlin.reflect.KProperty
 
@@ -153,6 +150,7 @@ abstract class Character(val index: Int) : Entity() {
     object SpotAnimTask : TaskType
 
     fun spotAnimate(spotAnim: SpotAnimation) {
+        addSpotAnimationFlag()
         spotAnimation = spotAnim
         cancelTasks(SpotAnimTask)
         addTask(SpotAnimTask) {

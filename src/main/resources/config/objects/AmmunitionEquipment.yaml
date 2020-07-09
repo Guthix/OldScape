@@ -421,6 +421,10 @@
   weight: 0.0
   examine: "Arrows with bronze heads."
   type: "ARROW"
+  projectileId: 10
+  drawBackSpotAnim:
+    id: 19
+    height: 96
   equipment:
     attackBonus:
       stab: 0
