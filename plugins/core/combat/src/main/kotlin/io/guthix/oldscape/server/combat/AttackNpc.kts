@@ -16,11 +16,12 @@
  */
 package io.guthix.oldscape.server.combat
 
+import io.guthix.oldscape.server.blueprints.AttackStyle
 import io.guthix.oldscape.server.blueprints.AttackType
 import io.guthix.oldscape.server.combat.dmg.calcHit
 import io.guthix.oldscape.server.combat.dmg.maxMeleeHit
 import io.guthix.oldscape.server.combat.dmg.maxRangeHit
-import io.guthix.oldscape.server.dimensions.TileUnit
+import io.guthix.oldscape.server.dimensions.max
 import io.guthix.oldscape.server.dimensions.tiles
 import io.guthix.oldscape.server.event.EventBus
 import io.guthix.oldscape.server.event.NpcAttackedEvent
@@ -37,7 +38,7 @@ on(NpcClickEvent::class).where { contextMenuEntry == "Attack" }.then {
     if (player.inCombatWith == npc) return@then
     player.turnToLock(npc)
     when (player.currentStyle.attackType) {
-        AttackType.RANGED -> rangeAttack(range = player.equipment.weapon?.attackRange ?: 1.tiles)
+        AttackType.RANGED -> rangeAttack()
         else -> meleeAttack()
     }
 }
@@ -56,7 +57,7 @@ fun NpcClickEvent.meleeAttack() {
             val hmColor = if (damage == 0) HitMark.Color.BLUE else HitMark.Color.RED
             npc.hit(hmColor, damage, 0)
             npc.animate(Sequence(id = npc.combatSequences?.defence ?: -1))
-            wait(ticks = player.equipment.weapon?.attackSpeed ?: 5)
+            wait(ticks = player.attackSpeed)
         }
     }.onCancel {
         player.inCombatWith = null
@@ -64,8 +65,8 @@ fun NpcClickEvent.meleeAttack() {
     }
 }
 
-fun NpcClickEvent.rangeAttack(range: TileUnit) {
-    val npcDestination = DestinationRange(npc, range, world.map)
+fun NpcClickEvent.rangeAttack() {
+    val npcDestination = DestinationRange(npc, player.attackRange, world.map)
     player.path = breadthFirstSearch(player.pos, npcDestination, player.size, true, world.map)
     player.inCombatWith = npc
     player.cancelTasks(NormalTask)
@@ -86,7 +87,7 @@ fun NpcClickEvent.rangeAttack(range: TileUnit) {
             }
 
             npc.animate(Sequence(id = npc.combatSequences?.defence ?: -1))
-            wait(ticks = player.equipment.weapon?.attackSpeed ?: 5)
+            wait(ticks = player.attackSpeed)
         }
     }.onCancel {
         player.inCombatWith = null

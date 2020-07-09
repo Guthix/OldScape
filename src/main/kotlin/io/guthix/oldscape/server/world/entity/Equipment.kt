@@ -63,11 +63,11 @@ class AmmunitionEquipment(id: Int, quantity: Int) : Equipment(id, quantity) {
 open class WeaponEquipment(id: Int, quantity: Int) : Equipment(id, quantity) {
     override val blueprint: WeaponBlueprint = ObjectBlueprints[id]
 
-    val attackSpeed: Int get() = blueprint.attackSpeed
+    val baseAttackSpeed: Int get() = blueprint.attackSpeed
 
     val type: WeaponType get() = blueprint.type
 
-    val attackRange: TileUnit get() = blueprint.attackRange
+    val baseAttackRange: TileUnit get() = blueprint.attackRange
 
     val weaponSequences: WeaponSequences? get() = blueprint.weaponSequences
 
