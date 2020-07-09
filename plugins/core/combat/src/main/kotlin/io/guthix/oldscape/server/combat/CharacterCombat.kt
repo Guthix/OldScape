@@ -17,6 +17,9 @@
 package io.guthix.oldscape.server.combat
 
 import io.guthix.oldscape.server.blueprints.*
+import io.guthix.oldscape.server.dimensions.TileUnit
+import io.guthix.oldscape.server.dimensions.max
+import io.guthix.oldscape.server.dimensions.tiles
 import io.guthix.oldscape.server.stat.StatMultiplier
 import io.guthix.oldscape.server.world.entity.Character
 import io.guthix.oldscape.server.world.entity.CharacterProperty
@@ -57,6 +60,12 @@ val Player.currentStyle: CombatStyle
     }
 
 val Npc.combatSequences: CombatSequences? by CharacterProperty { blueprint.combatSequences }
+
+val Player.attackSpeed: Int get() = equipment.weapon?.baseAttackSpeed?.plus(currentStyle.style.attackSpeedBonus) ?: 1
+
+val Player.attackRange: TileUnit get() = max(
+    10.tiles, equipment.weapon?.baseAttackRange?.plus(currentStyle.style.attackRangeBonus.tiles) ?: 1.tiles
+)
 
 val Player.attackSequence: Int by CharacterProperty {
     equipment.weapon?.weaponSequences?.attack ?: 422
