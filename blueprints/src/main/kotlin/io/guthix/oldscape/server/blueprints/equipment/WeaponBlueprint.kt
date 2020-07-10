@@ -38,7 +38,7 @@ data class ExtraWeaponConfig(
 open class WeaponBlueprint(
     cacheConfig: ObjectConfig,
     override val extraConfig: ExtraWeaponConfig
-) : EquipmentBlueprint(cacheConfig, EquipmentSlot.WEAPON, extraConfig) {
+) : EquipmentBlueprint(cacheConfig, extraConfig) {
     val attackSpeed: Int get() = extraConfig.attackSpeed
 
     val type: WeaponType get() = extraConfig.type

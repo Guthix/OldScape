@@ -21,4 +21,4 @@ import io.guthix.oldscape.cache.config.ObjectConfig
 class CapeBlueprint(
     cacheConfig: ObjectConfig,
     extraConfig: ExtraEquipmentConfig
-) : EquipmentBlueprint(cacheConfig, EquipmentSlot.CAPE, extraConfig)
+) : EquipmentBlueprint(cacheConfig, extraConfig)

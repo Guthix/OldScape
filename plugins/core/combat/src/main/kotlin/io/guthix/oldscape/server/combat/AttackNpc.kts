@@ -30,6 +30,7 @@ import io.guthix.oldscape.server.pathing.DestinationRange
 import io.guthix.oldscape.server.pathing.DestinationRectangleDirect
 import io.guthix.oldscape.server.pathing.breadthFirstSearch
 import io.guthix.oldscape.server.task.NormalTask
+import io.guthix.oldscape.server.world.entity.AmmunitionEquipment
 import io.guthix.oldscape.server.world.entity.HitMark
 import io.guthix.oldscape.server.world.entity.Sequence
 import kotlin.math.floor
@@ -76,6 +77,9 @@ fun NpcClickEvent.rangeAttack() {
             player.animate(Sequence(id = player.attackSequence))
             player.equipment.ammunition?.drawBackSpotAnim?.let(player::spotAnimate)
             world.map.addProjectile(Arrow(10, player.pos, npc))
+            val ammunition = player.topInterface.equipment.getObject(AmmunitionEquipment.slot) ?: break// TODO deal with this
+            player.topInterface.equipment.setObject(AmmunitionEquipment.slot, ammunition.apply { quantity-- })
+            val shootPos = npc.pos
             world.addTask(NormalTask) { // projectile task
                 val npcPos = npc.pos
                 wait(ticks = 1 + floor((3.0 + player.pos.distanceTo(npcPos)) / 6.0).toInt())

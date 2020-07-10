@@ -21,4 +21,4 @@ import io.guthix.oldscape.cache.config.ObjectConfig
 class NeckBlueprint(
     cacheConfig: ObjectConfig,
     extraConfig: ExtraEquipmentConfig
-) : EquipmentBlueprint(cacheConfig, EquipmentSlot.NECK, extraConfig)
+) : EquipmentBlueprint(cacheConfig, extraConfig)

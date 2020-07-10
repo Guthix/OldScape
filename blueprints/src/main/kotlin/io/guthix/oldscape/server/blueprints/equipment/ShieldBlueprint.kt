@@ -21,4 +21,4 @@ import io.guthix.oldscape.cache.config.ObjectConfig
 class ShieldBlueprint(
     cacheConfig: ObjectConfig,
     extraConfig: ExtraEquipmentConfig
-) : EquipmentBlueprint(cacheConfig, EquipmentSlot.SHIELD, extraConfig)
+) : EquipmentBlueprint(cacheConfig, extraConfig)

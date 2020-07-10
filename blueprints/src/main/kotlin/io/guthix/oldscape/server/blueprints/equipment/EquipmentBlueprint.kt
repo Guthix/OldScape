@@ -31,7 +31,6 @@ open class ExtraEquipmentConfig(
 
 open class EquipmentBlueprint(
     cacheConfig: ObjectConfig,
-    val slot: EquipmentSlot,
     override val extraConfig: ExtraEquipmentConfig
 ) : ObjectBlueprint(cacheConfig, extraConfig) {
     val attackBonus: StyleBonus get() = extraConfig.equipment.attackBonus
@@ -48,18 +47,4 @@ open class EquipmentBlueprint(
         val strengthBonus: CombatBonus,
         val prayerBonus: Int
     )
-}
-
-enum class EquipmentSlot(val id: Int) {
-    HEAD(0),
-    CAPE(1),
-    NECK(2),
-    WEAPON(3),
-    BODY(4),
-    SHIELD(5),
-    LEGS(7),
-    HANDS(9),
-    FEET(10),
-    RING(11),
-    AMMUNITION(13),
 }

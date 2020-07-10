@@ -21,4 +21,4 @@ import io.guthix.oldscape.cache.config.ObjectConfig
 class RingBlueprint(
     cacheConfig: ObjectConfig,
     extraConfig: ExtraEquipmentConfig
-) : EquipmentBlueprint(cacheConfig, EquipmentSlot.RING, extraConfig)
+) : EquipmentBlueprint(cacheConfig, extraConfig)
