@@ -21,4 +21,4 @@ import io.guthix.oldscape.cache.config.ObjectConfig
 class HandsBlueprint(
     cacheConfig: ObjectConfig,
     extraConfig: ExtraEquipmentConfig
-) : EquipmentBlueprint(cacheConfig, EquipmentSlot.HANDS, extraConfig)
+) : EquipmentBlueprint(cacheConfig, extraConfig)

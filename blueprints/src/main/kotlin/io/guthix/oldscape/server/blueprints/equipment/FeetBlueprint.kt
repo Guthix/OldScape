@@ -21,4 +21,4 @@ import io.guthix.oldscape.cache.config.ObjectConfig
 class FeetBlueprint(
     cacheConfig: ObjectConfig,
     extraConfig: ExtraEquipmentConfig
-) : EquipmentBlueprint(cacheConfig, EquipmentSlot.FEET, extraConfig)
+) : EquipmentBlueprint(cacheConfig, extraConfig)

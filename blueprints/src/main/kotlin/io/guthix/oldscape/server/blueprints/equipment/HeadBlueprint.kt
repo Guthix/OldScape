@@ -30,7 +30,7 @@ data class ExtraHeadConfig(
 class HeadBlueprint(
     cacheConfig: ObjectConfig,
     override val extraConfig: ExtraHeadConfig
-) : EquipmentBlueprint(cacheConfig, EquipmentSlot.HEAD, extraConfig) {
+) : EquipmentBlueprint(cacheConfig, extraConfig) {
     val coversHair: Boolean get() = extraConfig.coversHair
     val coversFace: Boolean get() = extraConfig.coversFace
 }

@@ -33,7 +33,7 @@ class ExtraAmmunitionConfig(
 class AmmunitionBlueprint(
     cacheConfig: ObjectConfig,
     override val extraConfig: ExtraAmmunitionConfig
-) : EquipmentBlueprint(cacheConfig, EquipmentSlot.AMMUNITION, extraConfig) {
+) : EquipmentBlueprint(cacheConfig, extraConfig) {
     val type: AmmunitionProjectile? get() = extraConfig.type
 
     val projectileId: Int? get() = extraConfig.projectileId

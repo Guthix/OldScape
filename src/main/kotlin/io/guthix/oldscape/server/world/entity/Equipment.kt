@@ -24,8 +24,6 @@ import io.guthix.oldscape.server.dimensions.TileUnit
 abstract class Equipment(id: Int, quantity: Int) : Obj(id, quantity) {
     override val blueprint: EquipmentBlueprint = ObjectBlueprints[id]
 
-    val slot: EquipmentSlot get() = blueprint.slot
-
     val attackBonus: StyleBonus get() = blueprint.attackBonus
 
     val defenceBonus: StyleBonus get() = blueprint.defenceBonus
@@ -40,24 +38,26 @@ class HeadEquipment(id: Int, quantity: Int) : Equipment(id, quantity) {
 
     val coversFace: Boolean get() = blueprint.coversFace
     val coversHair: Boolean get() = blueprint.coversHair
+
+    companion object {
+        const val slot: Int = 0
+    }
 }
 
 class CapeEquipment(id: Int, quantity: Int) : Equipment(id, quantity) {
     override val blueprint: CapeBlueprint = ObjectBlueprints[id]
+
+    companion object {
+        const val slot: Int = 1
+    }
 }
 
 class NeckEquipment(id: Int, quantity: Int) : Equipment(id, quantity) {
     override val blueprint: NeckBlueprint = ObjectBlueprints[id]
-}
 
-class AmmunitionEquipment(id: Int, quantity: Int) : Equipment(id, quantity) {
-    override val blueprint: AmmunitionBlueprint = ObjectBlueprints[id]
-
-    val type: AmmunitionProjectile? get() = blueprint.type
-
-    val projectileId: Int? get() = blueprint.projectileId
-
-    val drawBackSpotAnim: SpotAnimation? get() = blueprint.drawBackSpotAnim
+    companion object {
+        const val slot: Int = 2
+    }
 }
 
 open class WeaponEquipment(id: Int, quantity: Int) : Equipment(id, quantity) {
@@ -72,34 +72,77 @@ open class WeaponEquipment(id: Int, quantity: Int) : Equipment(id, quantity) {
     val weaponSequences: WeaponSequences? get() = blueprint.weaponSequences
 
     val stanceSequences: StanceSequences? get() = blueprint.stanceSequences
+
+    companion object {
+        const val slot: Int = 3
+    }
 }
 
 class TwoHandEquipment(id: Int, quantity: Int) : WeaponEquipment(id, quantity) {
     override val blueprint: TwoHandBlueprint = ObjectBlueprints[id]
 }
 
-class ShieldEquipment(id: Int, quantity: Int) : Equipment(id, quantity) {
-    override val blueprint: ShieldBlueprint = ObjectBlueprints[id]
-}
 
 class BodyEquipment(id: Int, quantity: Int) : Equipment(id, quantity) {
     override val blueprint: BodyBlueprint = ObjectBlueprints[id]
 
     val isFullBody: Boolean get() = blueprint.isFullBody
+
+    companion object {
+        const val slot: Int = 4
+    }
+}
+
+class ShieldEquipment(id: Int, quantity: Int) : Equipment(id, quantity) {
+    override val blueprint: ShieldBlueprint = ObjectBlueprints[id]
+
+    companion object {
+        const val slot: Int = 5
+    }
 }
 
 class LegEquipment(id: Int, quantity: Int) : Equipment(id, quantity) {
     override val blueprint: LegsBlueprint = ObjectBlueprints[id]
+
+    companion object {
+        const val slot: Int = 7
+    }
 }
 
 class HandEquipment(id: Int, quantity: Int) : Equipment(id, quantity) {
     override val blueprint: HandsBlueprint = ObjectBlueprints[id]
+
+    companion object {
+        const val slot: Int = 9
+    }
 }
 
 class FeetEquipment(id: Int, quantity: Int) : Equipment(id, quantity) {
     override val blueprint: FeetBlueprint = ObjectBlueprints[id]
+
+    companion object {
+        const val slot: Int = 10
+    }
 }
 
 class RingEquipment(id: Int, quantity: Int) : Equipment(id, quantity) {
     override val blueprint: RingBlueprint = ObjectBlueprints[id]
+
+    companion object {
+        const val slot: Int = 11
+    }
+}
+
+class AmmunitionEquipment(id: Int, quantity: Int) : Equipment(id, quantity) {
+    override val blueprint: AmmunitionBlueprint = ObjectBlueprints[id]
+
+    val type: AmmunitionProjectile? get() = blueprint.type
+
+    val projectileId: Int? get() = blueprint.projectileId
+
+    val drawBackSpotAnim: SpotAnimation? get() = blueprint.drawBackSpotAnim
+
+    companion object {
+        const val slot: Int = 13
+    }
 }

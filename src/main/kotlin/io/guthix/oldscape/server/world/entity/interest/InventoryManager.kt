@@ -68,6 +68,8 @@ class InventoryManager(
         objCount++
     }
 
+    fun getObject(slot: Int): Obj? = objs[slot]
+
     fun removeObject(slot: Int): Obj? {
         val obj = objs[slot]
         objs[slot] = null
