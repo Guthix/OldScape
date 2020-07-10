@@ -9,7 +9,6 @@ plugins {
     `maven-publish`
     kotlin("jvm")
     id("org.jetbrains.dokka")
-    id("com.github.hierynomus.license")
 }
 
 apply<IdentifierGenerator>()
@@ -17,8 +16,6 @@ apply<IdentifierGenerator>()
 group = "io.guthix"
 version = "0.1-SNAPSHOT"
 description = "An Oldschool Runescape Server Emulator"
-
-val licenseHeader: File by extra(file("gradle/LICENSE_HEADER"))
 
 application { mainClass.set("io.guthix.oldscape.server.OldScape") }
 
@@ -34,7 +31,6 @@ val kotlinVersion: String by extra(project.getKotlinPluginVersion()!!)
 
 allprojects {
     apply(plugin = "kotlin")
-    apply(plugin = "com.github.hierynomus.license")
     apply(plugin = "maven-publish")
     apply(plugin = "org.jetbrains.dokka")
 
@@ -52,19 +48,6 @@ allprojects {
 
     dependencies {
         implementation(kotlin("stdlib-jdk8"))
-    }
-
-    license {
-        header = licenseHeader
-        strictCheck = true
-        exclude("*\\main_file_cache.*")
-        exclude("**/*.json")
-        exclude("**/*.xml")
-        exclude("**/*.yaml")
-        include("**/*.kt")
-        include("**/*.kts")
-        mapping("kt", "JAVADOC_STYLE")
-        mapping("kts", "JAVADOC_STYLE")
     }
 
     tasks {
@@ -108,10 +91,4 @@ dependencies {
         group = "com.fasterxml.jackson.dataformat", name = "jackson-dataformat-yaml", version = jacksonVersion
     )
     implementation(group = "com.fasterxml.jackson.module", name = "jackson-module-kotlin", version = jacksonVersion)
-}
-
-license {
-    exclude("**/LocId.kt")
-    exclude("**/NpcId.kt")
-    exclude("**/ObjId.kt")
 }
