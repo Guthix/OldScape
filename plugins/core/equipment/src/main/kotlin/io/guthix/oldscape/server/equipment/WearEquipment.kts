@@ -20,67 +20,67 @@ import io.guthix.oldscape.server.event.*
 import io.guthix.oldscape.server.world.entity.*
 
 on(InvObjClickEvent::class).then {
-    val obj = player.topInterface.inventory.removeObject(inventorySlot) ?: return@then
+    val obj = player.topInterface.inventory.remove(inventorySlot) ?: return@then
     when (obj) {
         is TwoHandEquipment -> {
-            player.topInterface.equipment.setObject(WeaponEquipment.slot, obj)
+            player.topInterface.equipment[WeaponEquipment.slot] = obj
             player.equip(obj)
             player.equip(shield = null)
             EventBus.schedule(WeaponEquipedEvent(obj, player, world))
             EventBus.schedule(TwoHandEquipedEvent(obj, player, world))
         }
         is WeaponEquipment -> {
-            player.topInterface.equipment.setObject(WeaponEquipment.slot, obj)
+            player.topInterface.equipment[WeaponEquipment.slot] = obj
             player.equip(obj)
             EventBus.schedule(WeaponEquipedEvent(obj, player, world))
         }
         is ShieldEquipment -> {
-            player.topInterface.equipment.setObject(ShieldEquipment.slot, obj)
+            player.topInterface.equipment[ShieldEquipment.slot] = obj
             player.equip(obj)
             EventBus.schedule(ShieldEquipedEvent(obj, player, world))
         }
         is HeadEquipment -> {
-            player.topInterface.equipment.setObject(HeadEquipment.slot, obj)
+            player.topInterface.equipment[HeadEquipment.slot] = obj
             player.equip(obj)
             EventBus.schedule(HeadEquipedEvent(obj, player, world))
         }
         is BodyEquipment -> {
-            player.topInterface.equipment.setObject(BodyEquipment.slot, obj)
+            player.topInterface.equipment[BodyEquipment.slot] = obj
             player.equip(obj)
             EventBus.schedule(BodyEquipedEvent(obj, player, world))
         }
         is LegEquipment -> {
-            player.topInterface.equipment.setObject(LegEquipment.slot, obj)
+            player.topInterface.equipment[LegEquipment.slot] = obj
             player.equip(obj)
             EventBus.schedule(LegEquipedEvent(obj, player, world))
         }
         is AmmunitionEquipment -> {
-            player.topInterface.equipment.setObject(AmmunitionEquipment.slot, obj)
+            player.topInterface.equipment[AmmunitionEquipment.slot] = obj
             player.equip(obj)
             EventBus.schedule(AmmunitionEquipedEvent(obj, player, world))
         }
         is CapeEquipment -> {
-            player.topInterface.equipment.setObject(CapeEquipment.slot, obj)
+            player.topInterface.equipment[CapeEquipment.slot] = obj
             player.equip(obj)
             EventBus.schedule(CapeEquipedEvent(obj, player, world))
         }
         is RingEquipment -> {
-            player.topInterface.equipment.setObject(RingEquipment.slot, obj)
+            player.topInterface.equipment[RingEquipment.slot] = obj
             player.equip(obj)
             EventBus.schedule(RingEquipedEvent(obj, player, world))
         }
         is NeckEquipment -> {
-            player.topInterface.equipment.setObject(NeckEquipment.slot, obj)
+            player.topInterface.equipment[NeckEquipment.slot] = obj
             player.equip(obj)
             EventBus.schedule(NeckEquipedEvent(obj, player, world))
         }
         is HandEquipment -> {
-            player.topInterface.equipment.setObject(HandEquipment.slot, obj)
+            player.topInterface.equipment[HandEquipment.slot] = obj
             player.equip(obj)
             EventBus.schedule(HandEquipedEvent(obj, player, world))
         }
         is FeetEquipment -> {
-            player.topInterface.equipment.setObject(FeetEquipment.slot, obj)
+            player.topInterface.equipment[FeetEquipment.slot] = obj
             player.equip(obj)
             EventBus.schedule(FeetEquipedEvent(obj, player, world))
         }

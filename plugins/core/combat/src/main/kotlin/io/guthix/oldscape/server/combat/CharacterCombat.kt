@@ -63,9 +63,10 @@ val Npc.combatSequences: CombatSequences? by CharacterProperty { blueprint.comba
 
 val Player.attackSpeed: Int get() = equipment.weapon?.baseAttackSpeed?.plus(currentStyle.style.attackSpeedBonus) ?: 1
 
-val Player.attackRange: TileUnit get() = max(
-    10.tiles, equipment.weapon?.baseAttackRange?.plus(currentStyle.style.attackRangeBonus.tiles) ?: 1.tiles
-)
+val Player.attackRange: TileUnit
+    get() = max(
+        10.tiles, equipment.weapon?.baseAttackRange?.plus(currentStyle.style.attackRangeBonus.tiles) ?: 1.tiles
+    )
 
 val Player.attackSequence: Int by CharacterProperty {
     equipment.weapon?.weaponSequences?.attack ?: 422

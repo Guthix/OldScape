@@ -60,13 +60,13 @@ on(ClientCheatEvent::class).where { string == "shoot" }.then {
 on(ClientCheatEvent::class).where { string == "rangeeq" }.then {
     val bow = TwoHandEquipment(861, 1)
     val arrows = AmmunitionEquipment(882, 20)
-    player.topInterface.inventory.addNextSlot(bow)
-    player.topInterface.inventory.addNextSlot(arrows)
+    player.topInterface.inventory.add(bow)
+    player.topInterface.inventory.add(arrows)
 }
 
 on(ClientCheatEvent::class).where { string == "invent" }.then {
     val bow = TwoHandEquipment(1319, 1)
-    player.topInterface.inventory.addNextSlot(bow)
+    player.topInterface.inventory.add(bow)
 }
 
 
