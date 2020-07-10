@@ -1,4 +1,4 @@
-/**
+/*
  * This file is part of Guthix OldScape-Server.
  *
  * Guthix OldScape-Server is free software: you can redistribute it and/or modify
