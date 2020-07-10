@@ -70,9 +70,9 @@ class IdentifierGenerator : Plugin<Project> {
             println()
             println("@Suppress(\"ObjectPropertyName\")")
             println("object $name {")
-            for((id, config) in configs) {
+            for ((id, config) in configs) {
                 val identifier = configNameToIdentifier(id, config.name)
-                if(identifier.contains("null", ignoreCase = true)) continue
+                if (identifier.contains("null", ignoreCase = true)) continue
                 println("    const val $identifier: Int = $id")
             }
             println("}")
@@ -81,8 +81,8 @@ class IdentifierGenerator : Plugin<Project> {
 
     private fun configNameToIdentifier(id: Int, name: String): String {
         val normalizedName = name.toUpperCase().replace(' ', '_').replace(Regex("[^a-zA-Z\\d:]"), "").removeTags()
-        val propName = if(normalizedName.isNotEmpty()) normalizedName + "_$id" else "$id"
-        return if(propName.first().isDigit()) "`$propName`" else propName
+        val propName = if (normalizedName.isNotEmpty()) normalizedName + "_$id" else "$id"
+        return if (propName.first().isDigit()) "`$propName`" else propName
     }
 
     fun String.removeTags(): String {

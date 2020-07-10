@@ -16,13 +16,10 @@
  */
 package io.guthix.oldscape.server.combat
 
-import io.guthix.oldscape.server.blueprints.AttackStyle
 import io.guthix.oldscape.server.blueprints.AttackType
 import io.guthix.oldscape.server.combat.dmg.calcHit
 import io.guthix.oldscape.server.combat.dmg.maxMeleeHit
 import io.guthix.oldscape.server.combat.dmg.maxRangeHit
-import io.guthix.oldscape.server.dimensions.max
-import io.guthix.oldscape.server.dimensions.tiles
 import io.guthix.oldscape.server.event.EventBus
 import io.guthix.oldscape.server.event.NpcAttackedEvent
 import io.guthix.oldscape.server.event.NpcClickEvent
@@ -77,8 +74,8 @@ fun NpcClickEvent.rangeAttack() {
             player.animate(Sequence(id = player.attackSequence))
             player.equipment.ammunition?.drawBackSpotAnim?.let(player::spotAnimate)
             world.map.addProjectile(Arrow(10, player.pos, npc))
-            val ammunition = player.topInterface.equipment.getObject(AmmunitionEquipment.slot) ?: break// TODO deal with this
-            player.topInterface.equipment.setObject(AmmunitionEquipment.slot, ammunition.apply { quantity-- })
+            val ammunition = player.topInterface.equipment[AmmunitionEquipment.slot] ?: break// TODO deal with this
+            player.topInterface.equipment[AmmunitionEquipment.slot] = ammunition.apply { quantity-- }
             val shootPos = npc.pos
             world.addTask(NormalTask) { // projectile task
                 val npcPos = npc.pos

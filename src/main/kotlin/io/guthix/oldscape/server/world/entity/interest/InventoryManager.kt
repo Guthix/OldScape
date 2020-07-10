@@ -44,7 +44,7 @@ class InventoryManager(
 
     private val changes = mutableMapOf<Int, Obj?>()
 
-    fun setObject(obj: Obj) {
+    fun add(obj: Obj) {
         if (obj.isStackable) {
             val slot = objs.indexOfFirst { it?.id == obj.id }
             if (slot == -1) { // obj not already in inventory
@@ -59,23 +59,23 @@ class InventoryManager(
         }
     }
 
-    fun addNextSlot(obj: Obj): Unit = setObject(objs.indexOfFirst { it == null }, obj)
+    private fun addNextSlot(obj: Obj): Unit = set(objs.indexOfFirst { it == null }, obj)
 
-    fun setObject(slot: Int, obj: Obj) {
-        require(slot in 0 until maxSize && objCount != maxSize)
-        objs[slot] = obj
-        changes[slot] = obj
-        objCount++
-    }
-
-    fun getObject(slot: Int): Obj? = objs[slot]
-
-    fun removeObject(slot: Int): Obj? {
+    fun remove(slot: Int): Obj? {
         val obj = objs[slot]
         objs[slot] = null
         changes[slot] = null
         objCount--
         return obj
+    }
+
+    operator fun get(slot: Int): Obj? = objs[slot]
+
+    operator fun set(slot: Int, obj: Obj) {
+        require(slot in 0 until maxSize && objCount != maxSize)
+        objs[slot] = obj
+        changes[slot] = obj
+        objCount++
     }
 
     fun release(player: Player) {

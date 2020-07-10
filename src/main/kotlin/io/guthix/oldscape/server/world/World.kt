@@ -22,7 +22,9 @@ import io.guthix.oldscape.server.net.game.GameEncoder
 import io.guthix.oldscape.server.net.game.GameHandler
 import io.guthix.oldscape.server.net.login.*
 import io.guthix.oldscape.server.plugin.EventHandler
-import io.guthix.oldscape.server.task.*
+import io.guthix.oldscape.server.task.Task
+import io.guthix.oldscape.server.task.TaskHolder
+import io.guthix.oldscape.server.task.TaskType
 import io.guthix.oldscape.server.world.entity.Player
 import io.guthix.oldscape.server.world.map.Tile
 import io.netty.util.concurrent.DefaultPromise
@@ -31,7 +33,6 @@ import io.netty.util.concurrent.PromiseCombiner
 import java.util.*
 import java.util.concurrent.ConcurrentLinkedQueue
 import java.util.concurrent.LinkedBlockingDeque
-import kotlin.coroutines.intrinsics.createCoroutineUnintercepted
 
 class World : TimerTask(), TaskHolder, EventHolder {
     val map: WorldMap = WorldMap(mutableMapOf())
