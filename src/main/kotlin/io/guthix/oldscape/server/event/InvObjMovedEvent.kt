@@ -14,15 +14,17 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with Foobar. If not, see <https://www.gnu.org/licenses/>.
  */
-package io.guthix.oldscape.server.world
+package io.guthix.oldscape.server.event
 
-import io.guthix.oldscape.server.event.ObjectReachedEvent
-import io.guthix.oldscape.server.world.map.Tile
+import io.guthix.oldscape.server.world.World
+import io.guthix.oldscape.server.world.entity.Player
 
-on(ObjectReachedEvent::class).then {
-    val tile = Tile(player.pos.floor, x, y)
-    val obj = world.map.removeObject(tile, id) ?: error(
-        "Can not pick up object for id $id at position $tile."
-    )
-    player.topInterface.inventory.add(obj)
-}
+data class InvObjMovedEvent(
+    val fromSlot: Int,
+    val toSlot: Int,
+    val interfaceId: Int,
+    val interfaceSlotId: Int,
+    val someByte: Int,
+    override val player: Player,
+    override val world: World
+) : PlayerGameEvent(player, world)

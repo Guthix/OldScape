@@ -68,4 +68,10 @@ class TopInterfaceManager(
         modalOpen = false
         modalSlot?.let { ctx.write(IfClosesubPacket(id, it)) }
     }
+
+    companion object {
+        const val INVENTORY_ID: Int = 93
+        const val EQUIPMENT_ID: Int = 94
+        const val INVENTORY_IFID: Int = 149
+    }
 }
