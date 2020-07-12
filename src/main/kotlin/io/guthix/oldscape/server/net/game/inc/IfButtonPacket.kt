@@ -16,7 +16,12 @@
  */
 package io.guthix.oldscape.server.net.game.inc
 
+import io.guthix.buffer.readUnsignedIntIME
+import io.guthix.buffer.readUnsignedShortADD
+import io.guthix.buffer.readUnsignedShortLEADD
 import io.guthix.oldscape.server.event.ButtonClickEvent
+import io.guthix.oldscape.server.event.InvObjMovedEvent
+import io.guthix.oldscape.server.event.MouseIdleEvent
 import io.guthix.oldscape.server.net.game.FixedSize
 import io.guthix.oldscape.server.net.game.GamePacketDecoder
 import io.guthix.oldscape.server.world.World
@@ -171,5 +176,24 @@ class IfButton10Packet : GamePacketDecoder(48, FixedSize(8)) {
         val componentId = buf.readUnsignedShort()
         val slotId = buf.readUnsignedShort()
         return ButtonClickEvent(bitpack shr Short.SIZE_BITS, bitpack and 0xFFFF, componentId, slotId, 10, player, world)
+    }
+}
+
+class IfButtonDPacket : GamePacketDecoder(88, FixedSize(9)) {
+    override fun decode(
+        buf: ByteBuf,
+        size: Int,
+        ctx: ChannelHandlerContext,
+        player: Player,
+        world: World
+    ): InvObjMovedEvent {
+        val toSlot = buf.readUnsignedShortLEADD()
+        val fromSlot = buf.readUnsignedShortADD()
+        val someByte = buf.readUnsignedByte().toInt()
+        val bitpack = buf.readUnsignedIntIME()
+        val interfaceId = (bitpack shr 16).toInt()
+        val interfaceSlotId = (bitpack and 0xFFFF).toInt()
+        println("Move $interfaceId")
+        return InvObjMovedEvent(fromSlot, toSlot, interfaceId, interfaceSlotId, someByte, player, world)
     }
 }

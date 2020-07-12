@@ -84,6 +84,17 @@ class InventoryManager(
         changes[slot] = obj
     }
 
+    /**
+     * Moves an [Obj].
+     * Doesn't write the result to the client.
+     */
+    fun move(fromSlot: Int, toSlot: Int) {
+        println("From $fromSlot to $toSlot")
+        val toObj = objs[toSlot]
+        objs[toSlot] = objs[fromSlot]
+        objs[fromSlot] = toObj
+    }
+
     fun release(player: Player) {
         player.ctx.write(UpdateInvStopTransmitPacket(inventoryId))
     }
