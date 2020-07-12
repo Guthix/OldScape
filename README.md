@@ -15,4 +15,4 @@ developers.
 3. Modify the RSA keys in the client to match the ones under `src/main/resources/Config.yaml`
 4. Execute `gradlew run`
 
-If you run into any issues you can get help from our [dicord](https://discord.gg/AFyGxNp) channel.
+If you run into any issues you can get help from our [discord](https://discord.gg/AFyGxNp) channel.
