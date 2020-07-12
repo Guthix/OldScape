@@ -57,9 +57,9 @@ on(ClientCheatEvent::class).where { string == "shoot" }.then {
     player.animate(Sequence(id = 424))
 }
 
-on(ClientCheatEvent::class).where { string == "rangeeq" }.then {
+on(ClientCheatEvent::class).where { string == "rangeq" }.then {
     val bow = TwoHandEquipment(861, 1)
-    val arrows = AmmunitionEquipment(882, 20)
+    val arrows = AmmunitionEquipment(882, 5)
     player.topInterface.inventory.add(bow)
     player.topInterface.inventory.add(arrows)
 }

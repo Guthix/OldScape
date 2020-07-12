@@ -20,7 +20,7 @@ import io.guthix.oldscape.server.world.entity.Npc
 import io.guthix.oldscape.server.world.entity.Player
 import kotlin.random.Random
 
-private fun calcDamage(accuracy: Double, maxHit: Int): Int? = if (Random.nextInt(1) < accuracy) {
+private fun calcDamage(accuracy: Double, maxHit: Int): Int? = if (Random.nextDouble(1.0) < accuracy) {
     Random.nextInt(maxHit + 1)
 } else null
 

@@ -26,11 +26,13 @@ import io.guthix.oldscape.server.event.NpcClickEvent
 import io.guthix.oldscape.server.pathing.DestinationRange
 import io.guthix.oldscape.server.pathing.DestinationRectangleDirect
 import io.guthix.oldscape.server.pathing.breadthFirstSearch
+import io.guthix.oldscape.server.plugin.ConfigDataMissingException
 import io.guthix.oldscape.server.task.NormalTask
 import io.guthix.oldscape.server.world.entity.AmmunitionEquipment
 import io.guthix.oldscape.server.world.entity.HitMark
 import io.guthix.oldscape.server.world.entity.Sequence
 import kotlin.math.floor
+import kotlin.random.Random
 
 on(NpcClickEvent::class).where { contextMenuEntry == "Attack" }.then {
     if (player.inCombatWith == npc) return@then
@@ -69,12 +71,17 @@ fun NpcClickEvent.rangeAttack() {
     player.inCombatWith = npc
     player.cancelTasks(NormalTask)
     player.addTask(NormalTask) {
-        wait { npcDestination.reached(player.pos.x, player.pos.y, player.size) }
-        while (true) { // start player combat
+        main@ while (true) { // start player combat
+            wait { npcDestination.reached(player.pos.x, player.pos.y, player.size) }
+            val ammunition = player.equipment.ammunition
+            if(ammunition == null || ammunition.quantity <= 0) {
+                player.senGameMessage("There is no ammo left in your quiver.")
+                cancel()
+                break@main
+            }
             player.animate(Sequence(id = player.attackSequence))
-            player.equipment.ammunition?.drawBackSpotAnim?.let(player::spotAnimate)
-            world.map.addProjectile(Arrow(10, player.pos, npc))
-            val ammunition = player.topInterface.equipment[AmmunitionEquipment.slot] ?: break// TODO deal with this
+            ammunition.drawBackSpotAnim?.let(player::spotAnimate)
+            world.map.addProjectile(ammunition.createProjectile(player.pos, npc))
             player.topInterface.equipment[AmmunitionEquipment.slot] = ammunition.apply { quantity-- }
             val shootPos = npc.pos
             world.addTask(NormalTask) { // projectile task
@@ -83,10 +90,9 @@ fun NpcClickEvent.rangeAttack() {
                 val damage = player.calcHit(npc, player.maxRangeHit()) ?: 0
                 val hmColor = if (damage == 0) HitMark.Color.BLUE else HitMark.Color.RED
                 npc.hit(hmColor, damage, 0)
+                if(Random.nextDouble(1.0) < 0.8) world.map.addObject(shootPos, AmmunitionEquipment(ammunition.id, 1))
                 EventBus.schedule(NpcAttackedEvent(npc, player, world))
-                // TODO drop ammunition
             }
-
             npc.animate(Sequence(id = npc.combatSequences?.defence ?: -1))
             wait(ticks = player.attackSpeed)
         }

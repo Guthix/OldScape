@@ -19,12 +19,12 @@ package io.guthix.oldscape.server.task
 import kotlin.coroutines.intrinsics.createCoroutineUnintercepted
 
 interface TaskHolder {
-    val tasks: MutableMap<TaskType, MutableList<Task>>
+    val tasks: MutableMap<TaskType, MutableSet<Task>>
 
     fun addTask(type: TaskType, routine: suspend Task.() -> Unit): Task {
         val task = Task(type, this)
         task.next = ConditionalContinuation(TrueCondition, routine.createCoroutineUnintercepted(task, task))
-        tasks.getOrPut(type) { mutableListOf() }.add(task)
+        tasks.getOrPut(type) { mutableSetOf() }.add(task)
         return task
     }
 

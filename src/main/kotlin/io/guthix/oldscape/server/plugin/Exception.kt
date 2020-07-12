@@ -14,25 +14,8 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with Foobar. If not, see <https://www.gnu.org/licenses/>.
  */
-package io.guthix.oldscape.server.combat
+package io.guthix.oldscape.server.plugin
 
-import io.guthix.oldscape.server.world.entity.Character
-import io.guthix.oldscape.server.world.entity.Projectile
-import io.guthix.oldscape.server.world.map.Tile
+class ConfigDataMissingException(message:String): Exception(message)
 
-class Arrow(
-    id: Int,
-    start: Tile,
-    target: Character
-) : Projectile(
-    id,
-    start,
-    startHeight = 40,
-    target,
-    targetHeight = 36,
-    speed = 5,
-    speedDelay = 5,
-    delay = 41,
-    angle = 15,
-    steepness = 11
-)
+class InvalidClientMessageException(message: String) : Exception(message)

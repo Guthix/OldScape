@@ -59,7 +59,10 @@ class InventoryManager(
         }
     }
 
-    private fun addNextSlot(obj: Obj): Unit = set(objs.indexOfFirst { it == null }, obj)
+    private fun addNextSlot(obj: Obj) {
+        set(objs.indexOfFirst { it == null }, obj)
+        objCount++
+    }
 
     fun remove(slot: Int): Obj? {
         val obj = objs[slot]
@@ -75,7 +78,6 @@ class InventoryManager(
         require(slot in 0 until maxSize && objCount != maxSize)
         objs[slot] = obj
         changes[slot] = obj
-        objCount++
     }
 
     fun release(player: Player) {
