@@ -39,7 +39,7 @@ class World : TimerTask(), TaskHolder, EventHolder {
 
     override val events: LinkedBlockingDeque<EventHandler<GameEvent>> = LinkedBlockingDeque()
 
-    override val tasks: MutableMap<TaskType, MutableList<Task>> = mutableMapOf()
+    override val tasks: MutableMap<TaskType, MutableSet<Task>> = mutableMapOf()
 
     internal val loginQueue = ConcurrentLinkedQueue<LoginRequest>()
 

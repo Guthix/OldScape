@@ -45,6 +45,7 @@ class Task(val type: TaskType, private val holder: TaskHolder) : Continuation<Un
     }
 
     fun cancel() {
+        holder.tasks.getOrPut(type) { mutableSetOf() }.add(this)
         next = cancelation
     }
 
@@ -67,7 +68,7 @@ class Task(val type: TaskType, private val holder: TaskHolder) : Continuation<Un
     }
 
     private suspend fun suspend(condition: TaskWaitCondition) {
-        holder.tasks.getOrPut(type) { mutableListOf() }.add(this)
+        holder.tasks.getOrPut(type) { mutableSetOf() }.add(this)
         return suspendCoroutineUninterceptedOrReturn { cont ->
             next = ConditionalContinuation(condition, cont)
             COROUTINE_SUSPENDED

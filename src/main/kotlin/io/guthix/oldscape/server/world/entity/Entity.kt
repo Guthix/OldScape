@@ -31,5 +31,5 @@ abstract class Entity : TaskHolder {
 
     open var orientation: Int = 0
 
-    override val tasks: MutableMap<TaskType, MutableList<Task>> = mutableMapOf()
+    override val tasks: MutableMap<TaskType, MutableSet<Task>> = mutableMapOf()
 }

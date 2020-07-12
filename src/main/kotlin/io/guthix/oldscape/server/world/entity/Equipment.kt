@@ -20,6 +20,8 @@ import io.guthix.oldscape.server.api.ObjectBlueprints
 import io.guthix.oldscape.server.blueprints.*
 import io.guthix.oldscape.server.blueprints.equipment.*
 import io.guthix.oldscape.server.dimensions.TileUnit
+import io.guthix.oldscape.server.plugin.ConfigDataMissingException
+import io.guthix.oldscape.server.world.map.Tile
 
 abstract class Equipment(id: Int, quantity: Int) : Obj(id, quantity) {
     override val blueprint: EquipmentBlueprint = ObjectBlueprints[id]
@@ -141,6 +143,27 @@ class AmmunitionEquipment(id: Int, quantity: Int) : Equipment(id, quantity) {
     val projectileId: Int? get() = blueprint.projectileId
 
     val drawBackSpotAnim: SpotAnimation? get() = blueprint.drawBackSpotAnim
+
+    fun createProjectile(from: Tile, to: Character): Projectile {
+        val projId = projectileId ?: throw ConfigDataMissingException(
+            "No projectileId provided for ammunition equipment ${blueprint.name} id: $id"
+        )
+        val projType = type ?: throw ConfigDataMissingException(
+            "No type id provided for ammunition equipment ${blueprint.name} id: $id"
+        )
+        return Projectile(
+            projId,
+            from,
+            projType.startHeight,
+            to,
+            projType.targetHeight,
+            projType.speed,
+            projType.speedDelay,
+            projType.delay,
+            projType.angle,
+            projType.steepness
+        )
+    }
 
     companion object {
         const val slot: Int = 13
