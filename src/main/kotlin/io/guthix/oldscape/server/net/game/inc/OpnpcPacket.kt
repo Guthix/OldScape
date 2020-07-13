@@ -14,16 +14,26 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with Foobar. If not, see <https://www.gnu.org/licenses/>.
  */
+/*
+ * This file is part of Guthix OldScape-Server.
+ *
+ * Guthix OldScape-Server is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Guthix OldScape-Server is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with Foobar. If not, see <https://www.gnu.org/licenses/>.
+ */
 package io.guthix.oldscape.server.net.game.inc
 
-import io.guthix.buffer.readUnsignedByteNEG
-import io.guthix.buffer.readUnsignedByteSUB
-import io.guthix.buffer.readUnsignedShortADD
-import io.guthix.buffer.readUnsignedShortLEADD
-import io.guthix.oldscape.server.event.IfOnNpcEvent
-import io.guthix.oldscape.server.event.NpcClickEvent
-import io.guthix.oldscape.server.event.NpcExamineEvent
-import io.guthix.oldscape.server.event.PlayerGameEvent
+import io.guthix.buffer.*
+import io.guthix.oldscape.server.event.*
 import io.guthix.oldscape.server.net.game.FixedSize
 import io.guthix.oldscape.server.net.game.GamePacketDecoder
 import io.guthix.oldscape.server.world.World
@@ -114,7 +124,7 @@ class Opnpc6Packet : GamePacketDecoder(91, FixedSize(2)) {
     }
 }
 
-class OpnpcTPacket : GamePacketDecoder(50, FixedSize(9)) {
+class OpnpctPacket : GamePacketDecoder(50, FixedSize(9)) {
     override fun decode(
         buf: ByteBuf,
         size: Int,
@@ -129,6 +139,25 @@ class OpnpcTPacket : GamePacketDecoder(50, FixedSize(9)) {
         val something = buf.readUnsignedShort()
         val npcId = buf.readUnsignedShort()
         return IfOnNpcEvent(npcId, interfaceId, interfaceSlotId, ctrlPressed, something, player, world)
+    }
+}
+
+class OpnpcuPacket : GamePacketDecoder(39, FixedSize(11)) {
+    override fun decode(
+        buf: ByteBuf,
+        size: Int,
+        ctx: ChannelHandlerContext,
+        player: Player,
+        world: World
+    ): PlayerGameEvent {
+        val invSlot = buf.readUnsignedShort()
+        val objId = buf.readUnsignedShort()
+        val bitpack = buf.readInt()
+        val interfaceId = bitpack shr Short.SIZE_BITS
+        val interfaceSlotId = bitpack and 0xFFFF
+        val ctrlPressed = buf.readUnsignedByteADD().toInt() == 1
+        val npcId = buf.readUnsignedShort()
+        return ObjOnNpcEvent(npcId, objId, interfaceId, interfaceSlotId, invSlot, ctrlPressed, player, world)
     }
 }
 
