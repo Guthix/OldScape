@@ -14,20 +14,5 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with Guthix OldScape-Server. If not, see <https://www.gnu.org/licenses/>.
  */
-package io.guthix.oldscape.server.event
+package io.guthix.server.skills.magic
 
-import io.guthix.oldscape.server.world.World
-import io.guthix.oldscape.server.world.entity.Npc
-import io.guthix.oldscape.server.world.entity.Player
-
-data class IfOnNpcEvent(
-    val npcId: Int,
-    val interfaceId: Int,
-    val interfaceSlotId: Int,
-    val ctrlPressed: Boolean,
-    val someInt: Int,
-    override val player: Player,
-    override val world: World
-) : PlayerGameEvent(player, world) {
-    val npc: Npc = world.npcs[npcId] ?: error("Could not find npc with id $npcId.")
-}
