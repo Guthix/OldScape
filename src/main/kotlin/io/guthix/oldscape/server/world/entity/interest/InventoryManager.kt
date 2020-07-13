@@ -76,7 +76,7 @@ class InventoryManager(
 
     operator fun set(slot: Int, obj: Obj) {
         require(slot in 0 until maxSize && objCount != maxSize)
-        if(obj.quantity <= 0) {
+        if (obj.quantity <= 0) {
             remove(slot)
             return
         }
