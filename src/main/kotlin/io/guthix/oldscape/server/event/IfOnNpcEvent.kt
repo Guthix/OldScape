@@ -14,8 +14,17 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with Foobar. If not, see <https://www.gnu.org/licenses/>.
  */
-package io.guthix.oldscape.server.plugin
+package io.guthix.oldscape.server.event
 
-class ConfigDataMissingException(message: String) : Exception(message)
+import io.guthix.oldscape.server.world.World
+import io.guthix.oldscape.server.world.entity.Player
 
-class InvalidClientMessageException(message: String) : Exception(message)
+data class IfOnNpcEvent(
+    val npcId: Int,
+    val interfaceId: Int,
+    val interfaceSlotId: Int,
+    val ctrlPressed: Boolean,
+    val someInt: Int,
+    override val player: Player,
+    override val world: World
+) : PlayerGameEvent(player, world)

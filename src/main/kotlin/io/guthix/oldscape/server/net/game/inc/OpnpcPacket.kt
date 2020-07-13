@@ -20,6 +20,7 @@ import io.guthix.buffer.readUnsignedByteNEG
 import io.guthix.buffer.readUnsignedByteSUB
 import io.guthix.buffer.readUnsignedShortADD
 import io.guthix.buffer.readUnsignedShortLEADD
+import io.guthix.oldscape.server.event.IfOnNpcEvent
 import io.guthix.oldscape.server.event.NpcClickEvent
 import io.guthix.oldscape.server.event.NpcExamineEvent
 import io.guthix.oldscape.server.event.PlayerGameEvent
@@ -110,6 +111,24 @@ class Opnpc6Packet : GamePacketDecoder(91, FixedSize(2)) {
     ): PlayerGameEvent {
         val id = buf.readUnsignedShortLEADD()
         return NpcExamineEvent(id, player, world)
+    }
+}
+
+class OpnpcTPacket : GamePacketDecoder(50, FixedSize(9)) {
+    override fun decode(
+        buf: ByteBuf,
+        size: Int,
+        ctx: ChannelHandlerContext,
+        player: Player,
+        world: World
+    ): PlayerGameEvent {
+        val ctrlPressed = buf.readUnsignedByteSUB().toInt() == 1
+        val bitpack = buf.readInt()
+        val interfaceId = bitpack shr Short.SIZE_BITS
+        val interfaceSlotId = bitpack and 0xFFFF
+        val something = buf.readUnsignedShort()
+        val npcId = buf.readUnsignedShort()
+        return IfOnNpcEvent(npcId, interfaceId, interfaceSlotId, ctrlPressed, something, player, world)
     }
 }
 

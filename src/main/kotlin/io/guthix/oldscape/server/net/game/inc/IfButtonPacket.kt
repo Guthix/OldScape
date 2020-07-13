@@ -21,7 +21,6 @@ import io.guthix.buffer.readUnsignedShortADD
 import io.guthix.buffer.readUnsignedShortLEADD
 import io.guthix.oldscape.server.event.ButtonClickEvent
 import io.guthix.oldscape.server.event.InvObjMovedEvent
-import io.guthix.oldscape.server.event.MouseIdleEvent
 import io.guthix.oldscape.server.net.game.FixedSize
 import io.guthix.oldscape.server.net.game.GamePacketDecoder
 import io.guthix.oldscape.server.world.World

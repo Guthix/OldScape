@@ -26,7 +26,6 @@ import io.guthix.oldscape.server.event.NpcClickEvent
 import io.guthix.oldscape.server.pathing.DestinationRange
 import io.guthix.oldscape.server.pathing.DestinationRectangleDirect
 import io.guthix.oldscape.server.pathing.breadthFirstSearch
-import io.guthix.oldscape.server.plugin.ConfigDataMissingException
 import io.guthix.oldscape.server.task.NormalTask
 import io.guthix.oldscape.server.world.entity.AmmunitionEquipment
 import io.guthix.oldscape.server.world.entity.HitMark
@@ -74,7 +73,7 @@ fun NpcClickEvent.rangeAttack() {
         main@ while (true) { // start player combat
             wait { npcDestination.reached(player.pos.x, player.pos.y, player.size) }
             val ammunition = player.equipment.ammunition
-            if(ammunition == null || ammunition.quantity <= 0) {
+            if (ammunition == null || ammunition.quantity <= 0) {
                 player.senGameMessage("There is no ammo left in your quiver.")
                 cancel()
                 break@main
@@ -90,7 +89,7 @@ fun NpcClickEvent.rangeAttack() {
                 val damage = player.calcHit(npc, player.maxRangeHit()) ?: 0
                 val hmColor = if (damage == 0) HitMark.Color.BLUE else HitMark.Color.RED
                 npc.hit(hmColor, damage, 0)
-                if(Random.nextDouble(1.0) < 0.8) world.map.addObject(shootPos, AmmunitionEquipment(ammunition.id, 1))
+                if (Random.nextDouble(1.0) < 0.8) world.map.addObject(shootPos, AmmunitionEquipment(ammunition.id, 1))
                 EventBus.schedule(NpcAttackedEvent(npc, player, world))
             }
             npc.animate(Sequence(id = npc.combatSequences?.defence ?: -1))
