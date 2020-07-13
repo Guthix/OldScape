@@ -101,3 +101,20 @@ fun NpcClickEvent.rangeAttack() {
         player.turnToLock(null)
     }
 }
+
+fun NpcClickEvent.magicAttack() {
+    val npcDestination = DestinationRange(npc, player.attackRange, world.map)
+    player.path = breadthFirstSearch(player.pos, npcDestination, player.size, true, world.map)
+    player.inCombatWith = npc
+    player.cancelTasks(NormalTask)
+    player.addTask(NormalTask) {
+        main@ while (true) { // start player combat
+            wait { npcDestination.reached(player.pos.x, player.pos.y, player.size) }
+            //TODO
+            wait(ticks = player.attackSpeed)
+        }
+    }.onCancel {
+        player.inCombatWith = null
+        player.turnToLock(null)
+    }
+}
