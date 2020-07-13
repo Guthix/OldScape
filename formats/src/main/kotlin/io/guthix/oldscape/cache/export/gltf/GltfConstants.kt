@@ -1,4 +1,4 @@
-/**
+/*
  * This file is part of Guthix OldScape-Cache.
  *
  * Guthix OldScape-Cache is free software: you can redistribute it and/or modify
@@ -12,11 +12,13 @@
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
- * along with Foobar. If not, see <https://www.gnu.org/licenses/>.
+ * along with Guthix OldScape-Cache. If not, see <https://www.gnu.org/licenses/>.
  */
 package io.guthix.oldscape.cache.export.gltf
 
-import de.javagl.jgltf.impl.v2.*
+import de.javagl.jgltf.impl.v2.Asset
+import de.javagl.jgltf.impl.v2.Node
+import de.javagl.jgltf.impl.v2.Scene
 
 val jagexAsset: Asset by lazy {
     Asset().apply {

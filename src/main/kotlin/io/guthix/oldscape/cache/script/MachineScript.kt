@@ -1,4 +1,4 @@
-/**
+/*
  * This file is part of Guthix OldScape-Cache.
  *
  * Guthix OldScape-Cache is free software: you can redistribute it and/or modify
@@ -12,7 +12,7 @@
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
- * along with Foobar. If not, see <https://www.gnu.org/licenses/>.
+ * along with Guthix OldScape-Cache. If not, see <https://www.gnu.org/licenses/>.
  */
 package io.guthix.oldscape.cache.script
 
@@ -21,7 +21,6 @@ import io.guthix.buffer.readStringCP1252Nullable
 import io.netty.buffer.ByteBuf
 import mu.KotlinLogging
 import java.io.IOException
-import kotlin.text.StringBuilder
 
 private val logger = KotlinLogging.logger {}
 

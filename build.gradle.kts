@@ -7,25 +7,20 @@ plugins {
     `maven-publish`
     kotlin("jvm")
     id("org.jetbrains.dokka")
-    id("com.github.hierynomus.license")
 }
 
 group = "io.guthix"
 version = "0.1-SNAPSHOT"
 description = "A library for modifying OldScape caches"
 
-val licenseHeader: File by extra(file("gradle/LICENSE_HEADER"))
-
 val jagexByteBufVersion: String by extra("555807fda4")
 val jagexCacheVersion: String by extra("b95030a6f6")
 val kotlinLoggingVersion: String by extra("1.7.6")
-val licensePluginVersion: String by extra("0.15.0")
 val logbackVersion: String by extra("1.2.3")
 val kotlinVersion: String by extra(project.getKotlinPluginVersion()!!)
 
 allprojects {
     apply(plugin = "kotlin")
-    apply(plugin = "com.github.hierynomus.license")
 
     repositories {
         mavenCentral()
@@ -46,10 +41,6 @@ allprojects {
         compileTestKotlin {
             kotlinOptions.jvmTarget = "11"
         }
-    }
-
-    license {
-        header = licenseHeader
     }
 }
 
