@@ -18,19 +18,26 @@ package io.guthix.oldscape.server.api
 
 import io.guthix.cache.js5.Js5Archive
 import io.guthix.oldscape.cache.config.SequenceConfig
+import io.guthix.oldscape.server.blueprints.SequenceBlueprint
 import mu.KotlinLogging
 import java.io.IOException
 
 private val logger = KotlinLogging.logger { }
 
 object SequenceBlueprints {
-    private lateinit var configs: Map<Int, SequenceConfig>
+    private lateinit var blueprints: Map<Int, SequenceBlueprint>
 
-    operator fun get(index: Int): SequenceConfig = configs[index]
+    operator fun get(index: Int): SequenceBlueprint = blueprints[index]
         ?: throw IOException("Could not find sequence $index.")
 
-    fun load(archive: Js5Archive) {
-        configs = SequenceConfig.load(archive.readGroup(SequenceConfig.id))
-        logger.info { "Loaded ${configs.size} sequences" }
+    fun load(archive: Js5Archive): Map<Int, SequenceBlueprint> {
+        val configs: Map<Int, SequenceConfig> = SequenceConfig.load(archive.readGroup(SequenceConfig.id))
+        blueprints = mutableMapOf<Int, SequenceBlueprint>().apply {
+            configs.forEach { (id, config) ->
+                put(id, SequenceBlueprint(id, config.frameDuration?.sum()?.toDouble()?.div(30)?.toInt()))
+            }
+        }
+        logger.info { "Loaded ${blueprints.size} sequences" }
+        return blueprints
     }
 }

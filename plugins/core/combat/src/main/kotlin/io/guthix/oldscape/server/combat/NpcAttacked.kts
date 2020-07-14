@@ -20,9 +20,9 @@ import io.guthix.oldscape.server.combat.dmg.calcHit
 import io.guthix.oldscape.server.event.NpcAttackedEvent
 import io.guthix.oldscape.server.pathing.DestinationRectangleDirect
 import io.guthix.oldscape.server.pathing.simplePathSearch
+import io.guthix.oldscape.server.plugin.ConfigDataMissingException
 import io.guthix.oldscape.server.task.NormalTask
 import io.guthix.oldscape.server.world.entity.HitMark
-import io.guthix.oldscape.server.world.entity.Sequence
 
 on(NpcAttackedEvent::class).then {
     if (npc.inCombatWith == player) return@then
@@ -32,11 +32,13 @@ on(NpcAttackedEvent::class).then {
     npc.addTask(NormalTask) { // combat fighting task
         while (true) {
             wait { playerDestination.reached(npc.pos.x, npc.pos.y, npc.size) }
-            npc.animate(Sequence(id = npc.combatSequences?.attack ?: -1))
+            npc.animate(npc.combatSequences?.attack ?: throw ConfigDataMissingException(
+                "NPC $npc has no attack sequence."
+            ))
             val damage = npc.calcHit(player) ?: 0
             val hmColor = if (damage == 0) HitMark.Color.BLUE else HitMark.Color.RED
             player.hit(hmColor, damage, 0)
-            player.animate(Sequence(id = player.defenceSequence))
+            player.animate(player.defenceSequence)
             wait(ticks = npc.blueprint.attackSpeed)
         }
     }

@@ -16,21 +16,11 @@
  */
 package io.guthix.oldscape.server.world.entity
 
-import io.guthix.oldscape.server.world.map.Tile
+import io.guthix.oldscape.server.api.SequenceBlueprints
+import io.guthix.oldscape.server.api.SpotAnimBlueprints
+import io.guthix.oldscape.server.blueprints.SpotAnimBlueprint
 
-data class Projectile(
-    val id: Int,
-    val start: Tile,
-    val startHeight: Int,
-    val target: Character,
-    val targetHeight: Int,
-    val speed: Int,
-    val speedDelay: Int,
-    val delay: Int,
-    val angle: Int,
-    val steepness: Int
-) {
-    val distance: Int = start.distanceTo(target.pos)
-
-    val lifetime: Int = delay + speedDelay + speed * distance
-}
+val SpotAnimBlueprint.duration: Int?
+    get() = SequenceBlueprints[
+        SpotAnimBlueprints[id].sequenceId ?: throw IllegalStateException("TODO")
+    ].duration

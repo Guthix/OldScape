@@ -140,9 +140,9 @@ class AmmunitionEquipment(id: Int, quantity: Int) : Equipment(id, quantity) {
 
     val type: AmmunitionProjectile? get() = blueprint.type
 
-    val projectileId: Int? get() = blueprint.projectileId
+    val projectileId: Int? get() = blueprint.projectile
 
-    val drawBackSpotAnim: SpotAnimation? get() = blueprint.drawBackSpotAnim
+    val drawBackSpotAnim: SpotAnimBlueprint? get() = blueprint.drawBack
 
     fun createProjectile(from: Tile, to: Character): Projectile {
         val projId = projectileId ?: throw ConfigDataMissingException(

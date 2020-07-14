@@ -16,7 +16,9 @@
  */
 package io.guthix.oldscape.server.world.entity
 
-import io.guthix.oldscape.server.blueprints.SpotAnimation
+import io.guthix.oldscape.server.api.SequenceBlueprints
+import io.guthix.oldscape.server.blueprints.SequenceBlueprint
+import io.guthix.oldscape.server.blueprints.SpotAnimBlueprint
 import io.guthix.oldscape.server.dimensions.TileUnit
 import io.guthix.oldscape.server.dimensions.floors
 import io.guthix.oldscape.server.dimensions.tiles
@@ -56,9 +58,9 @@ abstract class Character(val index: Int) : Entity() {
 
     var interacting: Character? = null
 
-    var sequence: Sequence? = null
+    var sequence: SequenceBlueprint? = null
 
-    var spotAnimation: SpotAnimation? = null
+    var spotAnimation: SpotAnimBlueprint? = null
 
     var shoutMessage: String? = null
 
@@ -128,7 +130,9 @@ abstract class Character(val index: Int) : Entity() {
 
     object SequenceTask : TaskType
 
-    fun animate(animation: Sequence) {
+    fun animate(animation: Int): Unit = animate(SequenceBlueprints[animation])
+
+    fun animate(animation: SequenceBlueprint) {
         addSequenceFlag()
         sequence = animation
         cancelTasks(SequenceTask)
@@ -149,12 +153,13 @@ abstract class Character(val index: Int) : Entity() {
 
     object SpotAnimTask : TaskType
 
-    fun spotAnimate(spotAnim: SpotAnimation) {
+    fun spotAnimate(spotAnim: SpotAnimBlueprint, delay: Int = 0) {
         addSpotAnimationFlag()
         spotAnimation = spotAnim
         cancelTasks(SpotAnimTask)
         addTask(SpotAnimTask) {
-            val duration = spotAnimation?.sequence?.duration ?: throw IllegalStateException(
+            wait(ticks = delay)
+            val duration = spotAnimation?.duration ?: throw IllegalStateException(
                 "Can't start routine because spot animation or sequence does not exist."
             )
             wait(ticks = duration)

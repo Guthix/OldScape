@@ -16,12 +16,15 @@
  */
 package io.guthix.oldscape.server.dev
 
-import io.guthix.oldscape.server.blueprints.SpotAnimation
+import io.guthix.oldscape.server.blueprints.SpotAnimBlueprint
 import io.guthix.oldscape.server.dimensions.floors
 import io.guthix.oldscape.server.dimensions.tiles
 import io.guthix.oldscape.server.event.ClientCheatEvent
 import io.guthix.oldscape.server.event.PublicMessageEvent
-import io.guthix.oldscape.server.world.entity.*
+import io.guthix.oldscape.server.world.entity.AmmunitionEquipment
+import io.guthix.oldscape.server.world.entity.Loc
+import io.guthix.oldscape.server.world.entity.Obj
+import io.guthix.oldscape.server.world.entity.TwoHandEquipment
 import io.guthix.oldscape.server.world.map.Tile
 
 on(ClientCheatEvent::class).where { string == "drop" }.then {
@@ -54,7 +57,7 @@ on(ClientCheatEvent::class).where { string == "locremove" }.then {
 }
 
 on(ClientCheatEvent::class).where { string == "shoot" }.then {
-    player.animate(Sequence(id = 424))
+    player.animate(424)
 }
 
 on(ClientCheatEvent::class).where { string == "rangeq" }.then {
@@ -75,8 +78,8 @@ on(ClientCheatEvent::class).where { string == "shout" }.then {
 }
 
 on(ClientCheatEvent::class).where { string == "animation" }.then {
-    player.animate(Sequence(id = 1162))
-    player.spotAnimate(SpotAnimation(id = 99, height = 92))
+    player.animate(1162)
+    player.spotAnimate(SpotAnimBlueprint(id = 99, height = 92))
 }
 
 on(ClientCheatEvent::class).where { string == "clear" }.then {

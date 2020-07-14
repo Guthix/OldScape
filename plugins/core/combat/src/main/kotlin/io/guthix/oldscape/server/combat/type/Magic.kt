@@ -16,9 +16,13 @@
  */
 package io.guthix.oldscape.server.combat.type
 
-import io.guthix.oldscape.server.blueprints.SpotAnimation
-import io.guthix.oldscape.server.combat.*
+import io.guthix.oldscape.server.blueprints.SequenceBlueprint
+import io.guthix.oldscape.server.blueprints.SpotAnimBlueprint
+import io.guthix.oldscape.server.combat.attackRange
+import io.guthix.oldscape.server.combat.attackSpeed
+import io.guthix.oldscape.server.combat.combatSequences
 import io.guthix.oldscape.server.combat.dmg.calcHit
+import io.guthix.oldscape.server.combat.inCombatWith
 import io.guthix.oldscape.server.event.EventBus
 import io.guthix.oldscape.server.event.NpcAttackedEvent
 import io.guthix.oldscape.server.pathing.DestinationRange
@@ -29,9 +33,18 @@ import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.HitMark
 import io.guthix.oldscape.server.world.entity.Npc
 import io.guthix.oldscape.server.world.entity.Player
-import io.guthix.oldscape.server.world.entity.Sequence
+import io.guthix.oldscape.server.world.entity.Projectile
 
-fun Player.magicAttack(npc: Npc, world: World, spell: CombatSpell) {
+val SPLASH_ANIMATION_BLUEPRINT: SpotAnimBlueprint = SpotAnimBlueprint(id = 85, height = 124) // sound 227
+
+fun Player.magicAttack(
+    npc: Npc,
+    world: World,
+    castAnim: SequenceBlueprint,
+    spellAnim: SpotAnimBlueprint,
+    projectile: Projectile,
+    maxHit: (Player, Npc) -> Int
+) {
     val npcDestination = DestinationRange(npc, attackRange, world.map)
     path = breadthFirstSearch(pos, npcDestination, size, true, world.map)
     inCombatWith = npc
@@ -40,22 +53,22 @@ fun Player.magicAttack(npc: Npc, world: World, spell: CombatSpell) {
     addTask(NormalTask) {
         main@ while (true) { // start player combat
             wait { npcDestination.reached(pos.x, pos.y, size) }
-            animate(Sequence(id = attackSequence))
-            spotAnimate(SpotAnimation(spell.spotAnimationId, spell.spotAnimationHeight))
-            val projectile = spell.createProjectile(pos, npc)
+            animate(castAnim)
+            spotAnimate(spellAnim)
+            val projectileTimeInTicks = projectile.lifetime / 30 - 1
             world.map.addProjectile(projectile)
             EventBus.schedule(NpcAttackedEvent(npc, player, world))
             world.addTask(NormalTask) {
-                wait(ticks = projectile.lifetime / 30 - 1)
-                val damage = calcHit(npc, spell.maxHit(player))
+                val damage = calcHit(npc, maxHit(player, npc))
+                wait(ticks = projectileTimeInTicks)
                 if (damage != null) {
                     val hmColor = if (damage == 0) HitMark.Color.BLUE else HitMark.Color.RED
                     npc.hit(hmColor, damage, 0)
-                    npc.animate(Sequence(id = npc.combatSequences?.defence
-                        ?: throw ConfigDataMissingException("No block animation for npc $npc.")
+                    npc.animate(npc.combatSequences?.defence ?: throw ConfigDataMissingException(
+                        "No block animation for npc $npc."
                     ))
                 } else {
-                    npc.spotAnimate(splashAnimation) // TODO splash animation delay in client
+                    npc.spotAnimate(SPLASH_ANIMATION_BLUEPRINT) // TODO splash animation delay in client
                 }
             }
             wait(ticks = attackSpeed)
@@ -65,5 +78,3 @@ fun Player.magicAttack(npc: Npc, world: World, spell: CombatSpell) {
         turnToLock(null)
     }
 }
-
-val splashAnimation: SpotAnimation = SpotAnimation(id = 85, height = 124)
