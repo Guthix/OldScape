@@ -16,33 +16,24 @@
  */
 package io.guthix.oldscape.server.combat
 
+import io.guthix.oldscape.server.blueprints.SequenceBlueprint
+import io.guthix.oldscape.server.blueprints.SpotAnimBlueprint
 import io.guthix.oldscape.server.combat.type.magicAttack
 import io.guthix.oldscape.server.event.IfOnNpcEvent
 import io.guthix.oldscape.server.plugin.Script
-import io.guthix.oldscape.server.world.entity.Character
+import io.guthix.oldscape.server.world.entity.Npc
 import io.guthix.oldscape.server.world.entity.Player
 import io.guthix.oldscape.server.world.entity.Projectile
-import io.guthix.oldscape.server.world.map.Tile
 
-data class CombatSpell(
-    val spotAnimationId: Int,
-    val spotAnimationHeight: Int,
-    val projectileId: Int,
-    val startHeight: Int,
-    val targetHeight: Int,
-    val speed: Int,
-    val speedDelay: Int,
-    val delay: Int,
-    val angle: Int,
-    val steepness: Int,
-    val maxHit: Player.() -> Int
+fun Script.registerCombatSpell(
+    interfaceId: Int,
+    interfaceSlotId: Int,
+    castAnim: SequenceBlueprint,
+    spellAnim: SpotAnimBlueprint,
+    projectile: Projectile,
+    onHit: (Player, Npc) -> Int // TODO
 ) {
-    fun createProjectile(from: Tile, to: Character): Projectile =
-        Projectile(projectileId, from, startHeight, to, targetHeight, speed, speedDelay, delay, angle, steepness)
-}
-
-fun Script.registerCombatSpell(interfaceId: Int, interfaceSlotId: Int, spell: CombatSpell) {
     on(IfOnNpcEvent::class).where { this.interfaceId == interfaceId && this.interfaceSlotId == interfaceSlotId }.then {
-        player.magicAttack(npc, world, spell)
+        player.magicAttack(npc, world, castAnim, spellAnim, projectile, onHit)
     }
 }

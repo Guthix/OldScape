@@ -65,7 +65,7 @@ object OldScape {
         InventoryBlueprints.load(configArchive)
         Varbits.load(configArchive)
         LocationBlueprints.load(configArchive)
-        SequenceBlueprints.load(configArchive)
+        val sequenceBlueprints = SequenceBlueprints.load(configArchive)
         SpotAnimBlueprints.load(configArchive)
         ObjectBlueprints.load(
             ObjectConfig.load(configArchive.readGroup(ObjectConfig.id)),

@@ -32,7 +32,6 @@ import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.HitMark
 import io.guthix.oldscape.server.world.entity.Npc
 import io.guthix.oldscape.server.world.entity.Player
-import io.guthix.oldscape.server.world.entity.Sequence
 
 fun Player.meleeAttack(npc: Npc, world: World) {
     val npcDestination = DestinationRectangleDirect(npc, world.map)
@@ -44,12 +43,12 @@ fun Player.meleeAttack(npc: Npc, world: World) {
         wait { npcDestination.reached(pos.x, pos.y, size) }
         EventBus.schedule(NpcAttackedEvent(npc, player, world))
         while (true) { // start player combat
-            animate(Sequence(id = attackSequence))
+            animate(attackSequence)
             val damage = calcHit(npc, maxMeleeHit()) ?: 0
             val hmColor = if (damage == 0) HitMark.Color.BLUE else HitMark.Color.RED
             npc.hit(hmColor, damage, 0)
-            npc.animate(Sequence(id = npc.combatSequences?.defence
-                ?: throw ConfigDataMissingException("No block animation for npc $npc.")
+            npc.animate(npc.combatSequences?.defence ?: throw ConfigDataMissingException(
+                "No block animation for npc $npc."
             ))
             wait(ticks = attackSpeed)
         }

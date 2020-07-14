@@ -14,23 +14,6 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with Guthix OldScape-Server. If not, see <https://www.gnu.org/licenses/>.
  */
-package io.guthix.oldscape.server.world.entity
+package io.guthix.oldscape.server.blueprints
 
-import io.guthix.oldscape.server.world.map.Tile
-
-data class Projectile(
-    val id: Int,
-    val start: Tile,
-    val startHeight: Int,
-    val target: Character,
-    val targetHeight: Int,
-    val speed: Int,
-    val speedDelay: Int,
-    val delay: Int,
-    val angle: Int,
-    val steepness: Int
-) {
-    val distance: Int = start.distanceTo(target.pos)
-
-    val lifetime: Int = delay + speedDelay + speed * distance
-}
+data class SequenceBlueprint(val id: Int, val duration: Int?)
