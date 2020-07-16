@@ -56,7 +56,7 @@ fun Player.rangeAttack(npc: Npc, world: World) {
             world.addTask(NormalTask) { // projectile task
                 val damage = calcHit(npc, maxRangeHit()) ?: 0
                 val oldNpcPos = npc.pos
-                wait(ticks = projectile.lifetime / 30 - 1)
+                wait(ticks = projectile.lifetimeClientTicks - 1)
                 npc.animate(npc.combatSequences?.defence ?: throw ConfigDataMissingException(
                     "No block animation for npc $npc."
                 ))

@@ -55,20 +55,19 @@ fun Player.magicAttack(
             wait { npcDestination.reached(pos.x, pos.y, size) }
             animate(castAnim)
             spotAnimate(spellAnim)
-            val projectileTimeInTicks = projectile.lifetime / 30 - 1
             world.map.addProjectile(projectile)
             EventBus.schedule(NpcAttackedEvent(npc, player, world))
             world.addTask(NormalTask) {
                 val damage = calcHit(npc, maxHit(player, npc))
-                wait(ticks = projectileTimeInTicks)
-                if (damage != null) {
+                if (damage == null) {
+                    npc.spotAnimate(SPLASH_ANIMATION_BLUEPRINT, projectile.lifetimeClientTicks)
+                } else {
+                    wait(ticks = projectile.lifeTimeServerTicks - 1)
                     val hmColor = if (damage == 0) HitMark.Color.BLUE else HitMark.Color.RED
                     npc.hit(hmColor, damage, 0)
                     npc.animate(npc.combatSequences?.defence ?: throw ConfigDataMissingException(
                         "No block animation for npc $npc."
                     ))
-                } else {
-                    npc.spotAnimate(SPLASH_ANIMATION_BLUEPRINT) // TODO splash animation delay in client
                 }
             }
             wait(ticks = attackSpeed)

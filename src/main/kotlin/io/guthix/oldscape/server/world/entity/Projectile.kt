@@ -16,21 +16,29 @@
  */
 package io.guthix.oldscape.server.world.entity
 
+import io.guthix.oldscape.server.blueprints.ProjectileBlueprint
 import io.guthix.oldscape.server.world.map.Tile
 
-data class Projectile(
-    val id: Int,
-    val start: Tile,
-    val startHeight: Int,
-    val target: Character,
-    val targetHeight: Int,
-    val speed: Int,
-    val speedDelay: Int,
-    val delay: Int,
-    val angle: Int,
-    val steepness: Int
-) {
+class Projectile(private val bp: ProjectileBlueprint, val start: Tile, val target: Character) {
+    val id: Int get() = bp.id
+
+    val startHeight: Int get() = bp.startHeight
+
+    val endHeight: Int get() = bp.endHeight
+
+    val speed: Int get() = bp.speed
+
+    val speedDelay: Int get() = bp.speedDelay
+
+    val delay: Int get() = bp.delay
+
+    val angle: Int get() = bp.angle
+
+    val steepness: Int get() = bp.steepness
+
     val distance: Int = start.distanceTo(target.pos)
 
-    val lifetime: Int = delay + speedDelay + speed * distance
+    val lifetimeClientTicks: Int = bp.delay + bp.speedDelay + bp.speed * distance
+
+    val lifeTimeServerTicks: Int = lifetimeClientTicks / 30
 }

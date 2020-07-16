@@ -50,19 +50,19 @@ data class CombatStyle(val attackType: AttackType, val style: AttackStyle)
 
 enum class AmmunitionProjectile(
     val startHeight: Int,
-    val targetHeight: Int,
+    val endHeight: Int,
     val speed: Int,
     val speedDelay: Int,
     val delay: Int,
     val angle: Int,
     val steepness: Int
 ) {
-    ARROW(startHeight = 40, targetHeight = 36, speed = 5, speedDelay = 5, delay = 41, angle = 15, steepness = 11),
-    BOLT(startHeight = 38, targetHeight = 36, speed = 5, speedDelay = 5, delay = 41, angle = 5, steepness = 11),
-    JAVELIN(startHeight = 38, targetHeight = 36, speed = 3, speedDelay = 2, delay = 42, angle = 1, steepness = 120),
-    THROWN(startHeight = 40, targetHeight = 36, speed = 5, speedDelay = 5, delay = 32, angle = 15, steepness = 11),
-    CHINCHOMPA(startHeight = 40, targetHeight = 36, speed = 5, speedDelay = 5, delay = 21, angle = 15, steepness = 11),
-    MAGIC(startHeight = 43, targetHeight = 31, speed = 10, speedDelay = 5, delay = 51, angle = 16, steepness = 64)
+    ARROW(startHeight = 40, endHeight = 36, speed = 5, speedDelay = 5, delay = 41, angle = 15, steepness = 11),
+    BOLT(startHeight = 38, endHeight = 36, speed = 5, speedDelay = 5, delay = 41, angle = 5, steepness = 11),
+    JAVELIN(startHeight = 38, endHeight = 36, speed = 3, speedDelay = 2, delay = 42, angle = 1, steepness = 120),
+    THROWN(startHeight = 40, endHeight = 36, speed = 5, speedDelay = 5, delay = 32, angle = 15, steepness = 11),
+    CHINCHOMPA(startHeight = 40, endHeight = 36, speed = 5, speedDelay = 5, delay = 21, angle = 15, steepness = 11),
+    MAGIC(startHeight = 43, endHeight = 31, speed = 10, speedDelay = 5, delay = 51, angle = 16, steepness = 64)
 }
 
 enum class WeaponType(val id: Int, val styles: List<CombatStyle>) {
