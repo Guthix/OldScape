@@ -138,25 +138,17 @@ class RingEquipment(id: Int, quantity: Int) : Equipment(id, quantity) {
 class AmmunitionEquipment(id: Int, quantity: Int) : Equipment(id, quantity) {
     override val blueprint: AmmunitionBlueprint = ObjectBlueprints[id]
 
-    val type: AmmunitionProjectile? get() = blueprint.type
-
-    val projectileId: Int? get() = blueprint.projectile
-
-    val drawBackSpotAnim: SpotAnimBlueprint? get() = blueprint.drawBack
-
-    fun createProjectile(from: Tile, to: Character): Projectile {
+    val projectileBlueprint: ProjectileBlueprint = let {
         val projId = projectileId ?: throw ConfigDataMissingException(
             "No projectileId provided for ammunition equipment ${blueprint.name} id: $id"
         )
         val projType = type ?: throw ConfigDataMissingException(
             "No type id provided for ammunition equipment ${blueprint.name} id: $id"
         )
-        return Projectile(
+        ProjectileBlueprint(
             projId,
-            from,
             projType.startHeight,
-            to,
-            projType.targetHeight,
+            projType.endHeight,
             projType.speed,
             projType.speedDelay,
             projType.delay,
@@ -164,6 +156,14 @@ class AmmunitionEquipment(id: Int, quantity: Int) : Equipment(id, quantity) {
             projType.steepness
         )
     }
+
+    val type: AmmunitionProjectile? get() = blueprint.type
+
+    val projectileId: Int? get() = blueprint.projectile
+
+    val drawBackSpotAnim: SpotAnimBlueprint? get() = blueprint.drawBack
+
+    fun createProjectile(from: Tile, to: Character): Projectile = Projectile(projectileBlueprint, from, to)
 
     companion object {
         const val slot: Int = 13

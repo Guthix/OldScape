@@ -14,5 +14,15 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with Guthix OldScape-Server. If not, see <https://www.gnu.org/licenses/>.
  */
-package io.guthix.server.skills.magic
+package io.guthix.oldscape.server.blueprints
 
+data class ProjectileBlueprint(
+    val id: Int,
+    val startHeight: Int,
+    val endHeight: Int,
+    val speed: Int,
+    val speedDelay: Int,
+    val delay: Int,
+    val angle: Int,
+    val steepness: Int
+)
