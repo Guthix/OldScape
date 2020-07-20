@@ -76,6 +76,16 @@ public data class EnumConfig(override val id: Int) : Config(id) {
         else -> value as Int
     }
 
+    public enum class EnumType(public val letter: Char) {
+        BOOLEAN('1'), INTEGER('i'), COMPONENT('I'), OBJ('o'), NAMED_OBJ('O'), STRING('s'), STAT('S'), INV('v'),
+        GRAPHIC('d'), ENUM('g'), LOC('l'), STRUCT('J'), MAP_AREA('`'), CATEGORY('y'), AREA('R'), COORDINATE('c'),
+        COLOUR('C'), MODEL('m');
+
+        public companion object {
+            public operator fun invoke(char: Char?): EnumType? = values().find { it.letter == char }
+        }
+    }
+
     public data class Component(public val interfaceId: Int, public val slot: Int) {
         public fun encode(): Int = (interfaceId shl Short.SIZE_BITS) or slot
 
@@ -131,16 +141,6 @@ public data class EnumConfig(override val id: Int) : Config(id) {
 
     public companion object : ConfigCompanion<EnumConfig>() {
         override val id: Int = 8
-
-        public enum class EnumType(public val letter: Char) {
-            BOOLEAN('1'), INTEGER('i'), COMPONENT('I'), OBJ('o'), NAMED_OBJ('O'), STRING('s'), STAT('S'), INV('v'),
-            GRAPHIC('d'), ENUM('g'), LOC('l'), STRUCT('J'), MAP_AREA('`'), CATEGORY('y'), AREA('R'), COORDINATE('c'),
-            COLOUR('C'), MODEL('m');
-
-            public companion object {
-                public operator fun invoke(char: Char?): EnumType? = values().find { it.letter == char }
-            }
-        }
 
         public fun decodeEnumType(type: EnumType?, value: Int): Any = when (type) {
             EnumType.BOOLEAN -> value == 1
