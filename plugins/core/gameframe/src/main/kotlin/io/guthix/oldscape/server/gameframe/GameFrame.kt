@@ -16,34 +16,32 @@
  */
 package io.guthix.oldscape.server.gameframe
 
-import io.guthix.oldscape.server.api.Enums
-import io.guthix.oldscape.server.api.readComponent
+import io.guthix.oldscape.cache.config.EnumConfig
+import io.guthix.oldscape.server.id.Enums
 import io.guthix.oldscape.server.world.entity.Player
 
-enum class GameFrame(val interfaceId: Int, val enumId: Int) {
-    FIXED(interfaceId = 548, enumId = 1129),
-    RESIZABLE_BOX(interfaceId = 161, enumId = 1130),
-    RESIZABLE_LINE(interfaceId = 164, enumId = 1131),
-    BLACK_SCREEN(interfaceId = 165, enumId = 1132);
+enum class GameFrame(val interfaceId: Int, val enum: Map<EnumConfig.Component, EnumConfig.Component>) {
+    FIXED(interfaceId = 548, enum = Enums.GAMEFRAME_FIXED),
+    RESIZABLE_BOX(interfaceId = 161, enum = Enums.GAMEFRAME_RESIZABLE_BOX),
+    RESIZABLE_LINE(interfaceId = 164, enum = Enums.GAMEFRAME_RESIZABLE_LINE),
+    BLACK_SCREEN(interfaceId = 165, enum = Enums.GAMEFRAME_BLACK_SCREEN);
 
     companion object {
         fun findByInterfaceId(id: Int): GameFrame = values().first { it.interfaceId == id }
     }
 }
 
-private const val modalKey: Int = (161 shl Short.SIZE_BITS) or 15
+private val modalKey: EnumConfig.Component = EnumConfig.Component(161, 15)
 
 fun Player.changeGameFrame(gameFrame: GameFrame) {
-    val fromEnum = Enums[GameFrame.findByInterfaceId(topInterface.id).enumId]
-    val toEnum = Enums[gameFrame.enumId]
+    val fromEnum = GameFrame.findByInterfaceId(topInterface.id).enum
+    val toEnum = gameFrame.enum
     val moves = mutableMapOf<Int, Int>()
-    for ((key, value) in fromEnum.keyValuePairs) {
-        val from = readComponent(value as Int)
-        val to = readComponent(toEnum.keyValuePairs[key] as Int)
-        if (from != null && to != null) {
-            moves[from.slot] = to.slot
+    for ((fromKey, fromValue) in fromEnum) {
+        val toValue = toEnum[fromKey]
+        if (toValue != null) {
+            moves[fromValue.slot] = toValue.slot
         }
     }
-    val modalSlot = readComponent(toEnum.keyValuePairs[modalKey] as Int)?.slot
-    openTopInterface(gameFrame.interfaceId, modalSlot, moves)
+    openTopInterface(gameFrame.interfaceId, toEnum[modalKey]?.slot, moves)
 }

@@ -23,14 +23,7 @@ import java.io.IOException
 
 private val logger = KotlinLogging.logger { }
 
-data class Component(val interfaceId: Int, val slot: Int)
-
-fun readComponent(value: Int): Component? {
-    if (value == -1) return null
-    return Component(value shr Short.SIZE_BITS, value and 0xFFFF)
-}
-
-object Enums {
+internal object EnumBlueprints {
     private lateinit var configs: Map<Int, EnumConfig>
 
     operator fun get(index: Int): EnumConfig = configs[index] ?: throw IOException("Could not find enum $index.")
