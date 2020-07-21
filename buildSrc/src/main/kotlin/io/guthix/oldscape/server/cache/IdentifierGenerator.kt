@@ -16,18 +16,21 @@
  */
 package io.guthix.oldscape.server.cache
 
+import com.fasterxml.jackson.core.type.TypeReference
+import com.fasterxml.jackson.databind.ObjectMapper
+import com.fasterxml.jackson.dataformat.yaml.YAMLFactory
+import com.fasterxml.jackson.module.kotlin.registerKotlinModule
+import io.guthix.cache.js5.Js5Archive
 import io.guthix.cache.js5.Js5Cache
 import io.guthix.cache.js5.container.disk.Js5DiskStore
 import io.guthix.oldscape.cache.ConfigArchive
-import io.guthix.oldscape.cache.config.LocationConfig
-import io.guthix.oldscape.cache.config.NamedConfig
-import io.guthix.oldscape.cache.config.NpcConfig
-import io.guthix.oldscape.cache.config.ObjectConfig
+import io.guthix.oldscape.cache.config.*
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.plugins.JavaPlugin
 import org.gradle.api.tasks.SourceSetContainer
 import java.io.File
+import java.io.IOException
 import java.io.PrintWriter
 import java.nio.file.Path
 
@@ -40,16 +43,20 @@ class IdentifierGenerator : Plugin<Project> {
         val task = target.task("sourceGen") { task ->
             task.doFirst {
                 val sourceRoot = createSourceTree(target)
-                val ds = Js5DiskStore.open(File("${target.projectDir}/src/main/resources/cache").toPath())
+                val resourceDir = "${target.projectDir}/src/main/resources"
+
+                val ds = Js5DiskStore.open(File("$resourceDir/cache").toPath())
                 val cache = Js5Cache(ds)
                 val configArchive = cache.readArchive(ConfigArchive.id)
+
                 val objs = ObjectConfig.load(configArchive.readGroup(ObjectConfig.id))
                 val npcs = NpcConfig.load(configArchive.readGroup(NpcConfig.id))
                 val locs = LocationConfig.load(configArchive.readGroup(LocationConfig.id))
                 sourceRoot.toFile().mkdirs()
-                generateSource(sourceRoot, "LocId", locs)
-                generateSource(sourceRoot, "NpcId", npcs)
-                generateSource(sourceRoot, "ObjId", objs)
+                sourceRoot.generateSourceIds("LocId", locs)
+                sourceRoot.generateSourceIds("NpcId", npcs)
+                sourceRoot.generateSourceIds("ObjId", objs)
+                sourceRoot.generateEnums("Enums", File(resourceDir).toPath(), configArchive, objs, locs)
             }
         }
         val compileKotlinTask = target.tasks.getByName("compileKotlin")
@@ -61,8 +68,108 @@ class IdentifierGenerator : Plugin<Project> {
         return srcDir.resolve(packageDir)
     }
 
-    private fun generateSource(root: Path, name: String, configs: Map<Int, NamedConfig>) {
-        val codeFile = root.resolve("$name.kt").toFile()
+    data class ExtraEnumConfig(val id: Int, val name: String)
+
+    private fun Path.generateEnums(
+        name: String,
+        resourceDir: Path,
+        configArchive: Js5Archive,
+        objConfigs: Map<Int, ObjectConfig>,
+        locConfigs: Map<Int, LocationConfig>,
+    ) {
+        val enums = EnumConfig.load(configArchive.readGroup(EnumConfig.id))
+        val mapper = ObjectMapper(YAMLFactory()).registerKotlinModule()
+        val extraEnumConfigs = mapper.readValue(
+            resourceDir.resolve("config/enums/Enums.yaml").toFile(), object : TypeReference<List<ExtraEnumConfig>>() {}
+        )
+        val codeFile = resolve("$name.kt").toFile()
+
+        fun getGeneratedName(enumId: Int, type: EnumConfig.EnumType?, value: Any): String = when (type) {
+            EnumConfig.EnumType.OBJ, EnumConfig.EnumType.NAMED_OBJ -> {
+                val id = value as Int
+                val configName = objConfigs[id]?.name ?: throw IllegalStateException(
+                    "Could not find obj for id $id in enum $enumId."
+                )
+                val configId = configNameToIdentifier(id, configName)
+                if (configId.contains("null", ignoreCase = true)) "$id" else "ObjId.$configId"
+            }
+            EnumConfig.EnumType.LOC -> {
+                val id = value as Int
+                val configName = locConfigs[id]?.name ?: throw IllegalStateException(
+                    "Could not find loc for id $id in enum $enumId."
+                )
+                val configId = configNameToIdentifier(id, configName)
+                if (configId.contains("null", ignoreCase = true)) "$id" else "LocId.$configId"
+            }
+            EnumConfig.EnumType.ENUM -> {
+                val id = value as Int
+                extraEnumConfigs.find { it.id == id }?.name ?: throw IllegalStateException(
+                    "Could not find enum for id $id in enum $enumId."
+                )
+            }
+            else -> "$value"
+        }
+
+        fun getEnumType(enumId: Int, type: EnumConfig.EnumType?, firstValue: Any): String = when (type) {
+            EnumConfig.EnumType.COMPONENT -> EnumConfig.Component::class.simpleName ?: ""
+            EnumConfig.EnumType.STAT -> EnumConfig.Stat::class.simpleName ?: ""
+            EnumConfig.EnumType.COORDINATE -> EnumConfig.Coord::class.simpleName ?: ""
+            EnumConfig.EnumType.ENUM -> {
+                val firstId = firstValue as Int
+                val firstEnum = enums[firstId] ?: throw IllegalStateException(
+                    "Could not find enum for $firstId in enum $enumId."
+                )
+                "Map<${getEnumType(firstId, firstEnum.keyType, firstEnum.keyValuePairs.keys.first())}, " +
+                    "${getEnumType(firstId, firstEnum.valType, firstEnum.keyValuePairs.values.first())}>"
+            }
+            else -> Int::class.simpleName ?: ""
+        }
+
+        PrintWriter(codeFile).apply {
+            println("/* This file is automatically generated by ${IdentifierGenerator::class.qualifiedName}. */")
+            println("package $packageName")
+            println()
+            println("import io.guthix.oldscape.server.api.EnumBlueprints")
+            println("import ${EnumConfig::class.qualifiedName}.*")
+            println()
+            println("@Suppress(\"UNCHECKED_CAST\")")
+            println("object $name {")
+            val enumsToWrite = extraEnumConfigs.toMutableList()
+            while (enumsToWrite.isNotEmpty()) {
+                fun writeEnum(extraConfig: ExtraEnumConfig) {
+                    fun writeDependentEnums(type: EnumConfig.EnumType?, values: Collection<Any>) {
+                        if (type == EnumConfig.EnumType.ENUM) {
+                            val keyEnumsToWrite = enumsToWrite.filter { (id) ->
+                                values.any { it == id }
+                            }
+                            keyEnumsToWrite.forEach { config ->
+                                writeEnum(config)
+                                enumsToWrite.remove(config)
+                            }
+                        }
+                    }
+
+                    val enum = enums[extraConfig.id] ?: throw IOException(
+                        "Could not find enum $name ${extraConfig.id}."
+                    )
+                    writeDependentEnums(enum.keyType, enum.keyValuePairs.keys)
+                    writeDependentEnums(enum.valType, enum.keyValuePairs.values)
+                    val keyType = getEnumType(extraConfig.id, enum.keyType, enum.keyValuePairs.keys.first())
+                    val valueType = getEnumType(extraConfig.id, enum.valType, enum.keyValuePairs.values.first())
+
+                    println("    val ${extraConfig.name}: Map<$keyType, $valueType> = " +
+                        "EnumBlueprints[${extraConfig.id}].keyValuePairs \n        as Map<$keyType, $valueType>"
+                    )
+                }
+
+                writeEnum(enumsToWrite.removeAt(0))
+            }
+            println("}")
+        }.flush()
+    }
+
+    private fun Path.generateSourceIds(name: String, configs: Map<Int, NamedConfig>) {
+        val codeFile = resolve("$name.kt").toFile()
         codeFile.createNewFile()
         PrintWriter(codeFile).apply {
             println("/* This file is automatically generated by ${IdentifierGenerator::class.qualifiedName}. */")

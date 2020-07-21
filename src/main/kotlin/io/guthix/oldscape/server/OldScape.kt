@@ -61,11 +61,10 @@ object OldScape {
         )
         val configArchive = cache.readArchive(ConfigArchive.id)
 
-        Enums.load(configArchive)
+        EnumBlueprints.load(configArchive)
         InventoryBlueprints.load(configArchive)
         Varbits.load(configArchive)
         LocationBlueprints.load(configArchive)
-        val sequenceBlueprints = SequenceBlueprints.load(configArchive)
         SpotAnimBlueprints.load(configArchive)
         ObjectBlueprints.load(
             ObjectConfig.load(configArchive.readGroup(ObjectConfig.id)),
