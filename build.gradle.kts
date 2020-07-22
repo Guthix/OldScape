@@ -74,8 +74,8 @@ publishing {
                 url.set("https://github.com/guthix/OldScape-Cache")
                 licenses {
                     license {
-                        name.set("GNU Lesser General Public License v3.0")
-                        url.set("https://www.gnu.org/licenses/lgpl-3.0.txt")
+                        name.set("APACHE LICENSE, VERSION 2.0")
+                        url.set("https://www.apache.org/licenses/LICENSE-2.0.txt")
                     }
                 }
                 scm {
