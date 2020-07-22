@@ -22,12 +22,19 @@ import io.netty.buffer.ByteBuf
 import io.netty.buffer.Unpooled
 import java.io.IOException
 
-public data class EnumConfig(override val id: Int) : Config(id) {
-    var keyType: EnumType? = null
-    var valType: EnumType? = null
-    var defaultString: String = "null"
-    var defaultInt: Int? = null
-    val keyValuePairs: MutableMap<Any, Any> = mutableMapOf()
+public data class EnumConfig<K, V>(
+    override val id: Int,
+    val keyValuePairs: MutableMap<K, V> = mutableMapOf()
+) : Config(id), MutableMap<K, V> by keyValuePairs {
+    var keyType: Type? = null
+    var valType: Type? = null
+    var defaultValue: Any? = null
+
+    @Suppress("UNCHECKED_CAST")
+    override fun get(key: K): V? {
+        val value = keyValuePairs[key]
+        return value ?: return defaultValue as V
+    }
 
     override fun encode(): ByteBuf {
         val data = Unpooled.buffer()
@@ -39,27 +46,26 @@ public data class EnumConfig(override val id: Int) : Config(id) {
             data.writeOpcode(2)
             data.writeByte(it.letter.toInt())
         }
-        if(defaultString != "null") {
+        if (defaultValue is String) {
             data.writeOpcode(3)
-            data.writeStringCP1252(defaultString)
-        }
-        defaultInt?.let {
+            data.writeStringCP1252(defaultValue as String)
+        } else {
             data.writeOpcode(4)
-            data.writeInt(defaultInt!!)
+            data.writeInt(encodeEnumType(defaultValue as Any))
         }
         when {
             keyValuePairs.all { it.value is String } -> {
                 data.writeOpcode(5)
                 keyValuePairs.forEach { (key, value) ->
-                    data.writeInt(encodeEnumType(key))
+                    data.writeInt(encodeEnumType(key as Any))
                     data.writeStringCP1252(value as String)
                 }
             }
             keyValuePairs.all { it.value is Int } -> {
                 data.writeOpcode(6)
                 keyValuePairs.forEach { (key, value) ->
-                    data.writeInt(encodeEnumType(key))
-                    data.writeInt(encodeEnumType(value))
+                    data.writeInt(encodeEnumType(key as Any))
+                    data.writeInt(encodeEnumType(value as Any))
                 }
             }
             else -> throw IOException("Enum can only contain ints or strings.")
@@ -76,13 +82,13 @@ public data class EnumConfig(override val id: Int) : Config(id) {
         else -> value as Int
     }
 
-    public enum class EnumType(public val letter: Char) {
-        BOOLEAN('1'), INTEGER('i'), COMPONENT('I'), OBJ('o'), NAMED_OBJ('O'), STRING('s'), STAT('S'), INV('v'),
-        GRAPHIC('d'), ENUM('g'), LOC('l'), STRUCT('J'), MAP_AREA('`'), CATEGORY('y'), AREA('R'), COORDINATE('c'),
-        COLOUR('C'), MODEL('m');
+    public enum class Type(public val letter: Char) {
+        BOOLEAN('1'), SEQUENCE('A'), INTEGER('i'), COMPONENT('I'), OBJ('o'), NAMED_OBJ('O'), STRING('s'), STAT('S'),
+        INV('v'), NPC('n'), MIDI('m'), GRAPHIC('d'), ENUM('g'), LOC('l'), STRUCT('J'), MAP_AREA('`'), CATEGORY('y'),
+        AREA('R'), COORDINATE('c'), COLOUR('C'), MODEL('m'), IDKIT('K'), FONT_METRICS('f'), CHAT_CHAR('k'), CHAR('z');
 
         public companion object {
-            public operator fun invoke(char: Char?): EnumType? = values().find { it.letter == char }
+            public operator fun invoke(char: Char?): Type? = values().find { it.letter == char }
         }
     }
 
@@ -139,29 +145,29 @@ public data class EnumConfig(override val id: Int) : Config(id) {
         }
     }
 
-    public companion object : ConfigCompanion<EnumConfig>() {
+    public companion object : ConfigCompanion<EnumConfig<Any, Any>>() {
         override val id: Int = 8
 
-        public fun decodeEnumType(type: EnumType?, value: Int): Any = when (type) {
-            EnumType.BOOLEAN -> value == 1
-            EnumType.COMPONENT -> Component.decode(value)
-            EnumType.STAT -> Stat.decode(value)
-            EnumType.COORDINATE -> Coord.decode(value)
-            EnumType.INTEGER, EnumType.OBJ, EnumType.NAMED_OBJ, EnumType.INV, EnumType.GRAPHIC, EnumType.ENUM,
-            EnumType.LOC, EnumType.STRUCT, EnumType.MAP_AREA, EnumType.CATEGORY, EnumType.AREA, EnumType.COLOUR,
-            EnumType.MODEL -> value
+        public fun decodeEnumType(type: Type?, value: Int): Any = when (type) {
+            Type.BOOLEAN -> value == 1
+            Type.COMPONENT -> Component.decode(value)
+            Type.STAT -> Stat.decode(value)
+            Type.COORDINATE -> Coord.decode(value)
+            Type.INTEGER, Type.OBJ, Type.NAMED_OBJ, Type.INV, Type.GRAPHIC, Type.ENUM,
+            Type.LOC, Type.STRUCT, Type.MAP_AREA, Type.CATEGORY, Type.AREA, Type.COLOUR,
+            Type.MODEL -> value
             else -> throw IOException("Could not decode type $type as int.")
         }
 
-        override fun decode(id: Int, data: ByteBuf): EnumConfig {
-            val enumConfig = EnumConfig(id)
+        override fun decode(id: Int, data: ByteBuf): EnumConfig<Any, Any> {
+            val enumConfig = EnumConfig<Any, Any>(id)
             decoder@ while (true) {
                 when (val opcode = data.readUnsignedByte().toInt()) {
                     0 -> break@decoder
-                    1 -> enumConfig.keyType = EnumType(data.readUnsignedByte().toChar())
-                    2 -> enumConfig.valType = EnumType(data.readUnsignedByte().toChar())
-                    3 -> enumConfig.defaultString = data.readStringCP1252()
-                    4 -> enumConfig.defaultInt = data.readInt()
+                    1 -> enumConfig.keyType = Type(data.readUnsignedByte().toChar())
+                    2 -> enumConfig.valType = Type(data.readUnsignedByte().toChar())
+                    3 -> enumConfig.defaultValue = data.readStringCP1252()
+                    4 -> enumConfig.defaultValue = decodeEnumType(enumConfig.valType, data.readInt())
                     5 -> {
                         val length = data.readUnsignedShort()
                         for (i in 0 until length) {

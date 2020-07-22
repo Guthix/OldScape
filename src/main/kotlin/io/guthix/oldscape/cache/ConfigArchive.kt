@@ -21,7 +21,7 @@ import io.guthix.oldscape.cache.config.*
 
 public class ConfigArchive(
     public val areaConfigs: Map<Int, AreaConfig>,
-    public val enumConfigs: Map<Int, EnumConfig>,
+    public val enumConfigs: Map<Int, EnumConfig<Any, Any>>,
     public val hitBarConfig: Map<Int, HitBarConfig>,
     public val hitMarkConfigss: Map<Int, HitMarkConfig>,
     public val identKitConfigs: Map<Int, IdentKitConfig>,
