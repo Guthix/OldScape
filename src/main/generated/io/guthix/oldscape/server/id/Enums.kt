@@ -6,22 +6,18 @@ import io.guthix.oldscape.server.api.EnumBlueprints
 
 @Suppress("UNCHECKED_CAST")
 object Enums {
-    val GAMEFRAME_FIXED: Map<Component, Component> = EnumBlueprints[1129].keyValuePairs
-        as Map<Component, Component>
-    val GAMEFRAME_RESIZABLE_BOX: Map<Component, Component> = EnumBlueprints[1130].keyValuePairs
-        as Map<Component, Component>
-    val GAMEFRAME_RESIZABLE_LINE: Map<Component, Component> = EnumBlueprints[1131].keyValuePairs
-        as Map<Component, Component>
-    val GAMEFRAME_BLACK_SCREEN: Map<Component, Component> = EnumBlueprints[1132].keyValuePairs
-        as Map<Component, Component>
-    val NORMAL_SPELLBOOK: Map<Int, Int> = EnumBlueprints[1982].keyValuePairs
-        as Map<Int, Int>
-    val ANCIENT_SPELLBOOK: Map<Int, Int> = EnumBlueprints[1983].keyValuePairs
-        as Map<Int, Int>
-    val LUNAR_SPELLBOOK: Map<Int, Int> = EnumBlueprints[1984].keyValuePairs
-        as Map<Int, Int>
-    val OTHER_SPELLBOOK: Map<Int, Int> = EnumBlueprints[1985].keyValuePairs
-        as Map<Int, Int>
-    val SPELLBOOK: Map<Int, Map<Int, Int>> = EnumBlueprints[1981].keyValuePairs
-        as Map<Int, Map<Int, Int>>
+    val GAMEFRAME_FIXED: Map<Component, Component> = EnumBlueprints[1129] as Map<Component, Component>
+    val GAMEFRAME_RESIZABLE_BOX: Map<Component, Component> = EnumBlueprints[1130] as Map<Component, Component>
+    val GAMEFRAME_RESIZABLE_LINE: Map<Component, Component> = EnumBlueprints[1131] as Map<Component, Component>
+    val GAMEFRAME_BLACK_SCREEN: Map<Component, Component> = EnumBlueprints[1132] as Map<Component, Component>
+    val NORMAL_SPELLBOOK: Map<Int, Int> = EnumBlueprints[1982] as Map<Int, Int>
+    val ANCIENT_SPELLBOOK: Map<Int, Int> = EnumBlueprints[1983] as Map<Int, Int>
+    val LUNAR_SPELLBOOK: Map<Int, Int> = EnumBlueprints[1984] as Map<Int, Int>
+    val OTHER_SPELLBOOK: Map<Int, Int> = EnumBlueprints[1985] as Map<Int, Int>
+    val SPELLBOOK: Map<Int, Map<Int, Int>> = mapOf(
+        0 to NORMAL_SPELLBOOK,
+        1 to ANCIENT_SPELLBOOK,
+        2 to LUNAR_SPELLBOOK,
+        3 to OTHER_SPELLBOOK,
+    )
 }

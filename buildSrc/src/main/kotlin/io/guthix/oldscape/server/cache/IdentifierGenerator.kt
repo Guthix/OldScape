@@ -84,8 +84,8 @@ class IdentifierGenerator : Plugin<Project> {
         )
         val codeFile = resolve("$name.kt").toFile()
 
-        fun getGeneratedName(enumId: Int, type: EnumConfig.EnumType?, value: Any): String = when (type) {
-            EnumConfig.EnumType.OBJ, EnumConfig.EnumType.NAMED_OBJ -> {
+        fun getGeneratedName(enumId: Int, type: EnumConfig.Type?, value: Any): String = when (type) {
+            EnumConfig.Type.OBJ, EnumConfig.Type.NAMED_OBJ -> {
                 val id = value as Int
                 val configName = objConfigs[id]?.name ?: throw IllegalStateException(
                     "Could not find obj for id $id in enum $enumId."
@@ -93,7 +93,7 @@ class IdentifierGenerator : Plugin<Project> {
                 val configId = configNameToIdentifier(id, configName)
                 if (configId.contains("null", ignoreCase = true)) "$id" else "ObjId.$configId"
             }
-            EnumConfig.EnumType.LOC -> {
+            EnumConfig.Type.LOC -> {
                 val id = value as Int
                 val configName = locConfigs[id]?.name ?: throw IllegalStateException(
                     "Could not find loc for id $id in enum $enumId."
@@ -101,7 +101,7 @@ class IdentifierGenerator : Plugin<Project> {
                 val configId = configNameToIdentifier(id, configName)
                 if (configId.contains("null", ignoreCase = true)) "$id" else "LocId.$configId"
             }
-            EnumConfig.EnumType.ENUM -> {
+            EnumConfig.Type.ENUM -> {
                 val id = value as Int
                 extraEnumConfigs.find { it.id == id }?.name ?: throw IllegalStateException(
                     "Could not find enum for id $id in enum $enumId."
@@ -110,11 +110,11 @@ class IdentifierGenerator : Plugin<Project> {
             else -> "$value"
         }
 
-        fun getEnumType(enumId: Int, type: EnumConfig.EnumType?, firstValue: Any): String = when (type) {
-            EnumConfig.EnumType.COMPONENT -> EnumConfig.Component::class.simpleName ?: ""
-            EnumConfig.EnumType.STAT -> EnumConfig.Stat::class.simpleName ?: ""
-            EnumConfig.EnumType.COORDINATE -> EnumConfig.Coord::class.simpleName ?: ""
-            EnumConfig.EnumType.ENUM -> {
+        fun getEnumType(enumId: Int, type: EnumConfig.Type?, firstValue: Any): String = when (type) {
+            EnumConfig.Type.COMPONENT -> EnumConfig.Component::class.simpleName ?: ""
+            EnumConfig.Type.STAT -> EnumConfig.Stat::class.simpleName ?: ""
+            EnumConfig.Type.COORDINATE -> EnumConfig.Coord::class.simpleName ?: ""
+            EnumConfig.Type.ENUM -> {
                 val firstId = firstValue as Int
                 val firstEnum = enums[firstId] ?: throw IllegalStateException(
                     "Could not find enum for $firstId in enum $enumId."
@@ -137,8 +137,8 @@ class IdentifierGenerator : Plugin<Project> {
             val enumsToWrite = extraEnumConfigs.toMutableList()
             while (enumsToWrite.isNotEmpty()) {
                 fun writeEnum(extraConfig: ExtraEnumConfig) {
-                    fun writeDependentEnums(type: EnumConfig.EnumType?, values: Collection<Any>) {
-                        if (type == EnumConfig.EnumType.ENUM) {
+                    fun writeDependentEnums(type: EnumConfig.Type?, values: Collection<Any>) {
+                        if (type == EnumConfig.Type.ENUM) {
                             val keyEnumsToWrite = enumsToWrite.filter { (id) ->
                                 values.any { it == id }
                             }
@@ -157,11 +157,20 @@ class IdentifierGenerator : Plugin<Project> {
                     val keyType = getEnumType(extraConfig.id, enum.keyType, enum.keyValuePairs.keys.first())
                     val valueType = getEnumType(extraConfig.id, enum.valType, enum.keyValuePairs.values.first())
 
-                    println("    val ${extraConfig.name}: Map<$keyType, $valueType> = " +
-                        "EnumBlueprints[${extraConfig.id}].keyValuePairs \n        as Map<$keyType, $valueType>"
-                    )
+                    if (enum.keyType == EnumConfig.Type.ENUM || enum.valType == EnumConfig.Type.ENUM) {
+                        println("    val ${extraConfig.name}: Map<$keyType, $valueType> = mapOf(")
+                        enum.keyValuePairs.forEach { (key, value) ->
+                            val curKeyName = getGeneratedName(extraConfig.id, enum.keyType, key)
+                            val curValueName = getGeneratedName(extraConfig.id, enum.valType, value)
+                            println("        $curKeyName to $curValueName,")
+                        }
+                        println("    )")
+                    } else {
+                        println("    val ${extraConfig.name}: Map<$keyType, $valueType> = " +
+                            "EnumBlueprints[${extraConfig.id}] as Map<$keyType, $valueType>"
+                        )
+                    }
                 }
-
                 writeEnum(enumsToWrite.removeAt(0))
             }
             println("}")
