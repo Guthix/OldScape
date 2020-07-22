@@ -24,9 +24,11 @@ import java.io.IOException
 private val logger = KotlinLogging.logger { }
 
 internal object EnumBlueprints {
-    private lateinit var configs: Map<Int, EnumConfig>
+    private lateinit var configs: Map<Int, EnumConfig<Any, Any>>
 
-    operator fun get(index: Int): EnumConfig = configs[index] ?: throw IOException("Could not find enum $index.")
+    operator fun get(index: Int): EnumConfig<Any, Any> = configs[index] ?: throw IOException(
+        "Could not find enum $index."
+    )
 
     fun load(archive: Js5Archive) {
         configs = EnumConfig.load(archive.readGroup(EnumConfig.id))
