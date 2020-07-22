@@ -84,7 +84,7 @@ public data class EnumConfig<K, V>(
 
     public enum class Type(public val letter: Char) {
         BOOLEAN('1'), SEQUENCE('A'), INTEGER('i'), COMPONENT('I'), OBJ('o'), NAMED_OBJ('O'), STRING('s'), STAT('S'),
-        INV('v'), NPC('n'), MIDI('m'), GRAPHIC('d'), ENUM('g'), LOC('l'), STRUCT('J'), MAP_AREA('`'), CATEGORY('y'),
+        INV('v'), NPC('n'), GRAPHIC('d'), ENUM('g'), LOC('l'), STRUCT('J'), MAP_AREA('`'), CATEGORY('y'),
         AREA('R'), COORDINATE('c'), COLOUR('C'), MODEL('m'), IDKIT('K'), FONT_METRICS('f'), CHAT_CHAR('k'), CHAR('z');
 
         public companion object {
@@ -167,7 +167,10 @@ public data class EnumConfig<K, V>(
                     1 -> enumConfig.keyType = Type(data.readUnsignedByte().toChar())
                     2 -> enumConfig.valType = Type(data.readUnsignedByte().toChar())
                     3 -> enumConfig.defaultValue = data.readStringCP1252()
-                    4 -> enumConfig.defaultValue = decodeEnumType(enumConfig.valType, data.readInt())
+                    4 -> {
+                        val value = data.readInt()
+                        enumConfig.defaultValue = if (value == -1) null else decodeEnumType(enumConfig.valType, value)
+                    }
                     5 -> {
                         val length = data.readUnsignedShort()
                         for (i in 0 until length) {
