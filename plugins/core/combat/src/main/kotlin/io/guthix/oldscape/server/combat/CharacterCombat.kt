@@ -15,14 +15,16 @@
  */
 package io.guthix.oldscape.server.combat
 
-import io.guthix.oldscape.server.blueprints.*
+import io.guthix.oldscape.server.blueprints.AttackType
+import io.guthix.oldscape.server.blueprints.CombatStyle
+import io.guthix.oldscape.server.blueprints.StyleBonus
+import io.guthix.oldscape.server.blueprints.WeaponType
 import io.guthix.oldscape.server.dimensions.TileUnit
 import io.guthix.oldscape.server.dimensions.max
 import io.guthix.oldscape.server.dimensions.tiles
 import io.guthix.oldscape.server.stat.StatMultiplier
 import io.guthix.oldscape.server.world.entity.Character
 import io.guthix.oldscape.server.world.entity.CharacterProperty
-import io.guthix.oldscape.server.world.entity.Npc
 import io.guthix.oldscape.server.world.entity.Player
 
 enum class MeleeCombatStance(val attack: Int = 0, val strength: Int = 0, val defence: Int = 0, val range: Int = 0) {
@@ -57,8 +59,6 @@ val Player.currentStyle: CombatStyle
         val index = selectedTypes[weaponType.ordinal]
         return weaponType.styles[index]
     }
-
-val Npc.combatSequences: CombatSequences? by CharacterProperty { blueprint.combatSequences }
 
 val Player.attackSpeed: Int get() = equipment.weapon?.baseAttackSpeed?.plus(currentStyle.style.attackSpeedBonus) ?: 1
 

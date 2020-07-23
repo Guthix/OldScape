@@ -18,7 +18,6 @@ package io.guthix.oldscape.server.combat.dmg
 import io.guthix.oldscape.server.combat.currentStyle
 import io.guthix.oldscape.server.combat.damageMultiplier
 import io.guthix.oldscape.server.prayer.prayerMultiplier
-import io.guthix.oldscape.server.world.entity.Npc
 import io.guthix.oldscape.server.world.entity.Player
 import kotlin.math.floor
 
@@ -37,5 +36,3 @@ internal fun Player.maxRangeHit(): Int =
     floor(0.5 + effectiveRangeStrength() * (equipment.strengtBonus.range + 64.0) / 640.0).toInt()
 
 internal fun Player.maxMagicHit(spellMaxHit: Int): Int = spellMaxHit * equipment.attackBonus.magic
-
-internal fun Npc.maxHit(): Int = blueprint.maxHit ?: 0

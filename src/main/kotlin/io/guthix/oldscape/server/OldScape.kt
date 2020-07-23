@@ -38,6 +38,9 @@ import io.guthix.oldscape.server.event.EventBus
 import io.guthix.oldscape.server.net.OldScapeServer
 import io.guthix.oldscape.server.net.game.GamePacketDecoder
 import io.guthix.oldscape.server.world.World
+import io.guthix.oldscape.server.world.entity.Loc
+import io.guthix.oldscape.server.world.entity.Npc
+import io.guthix.oldscape.server.world.entity.Obj
 import java.io.FileNotFoundException
 import java.nio.file.Path
 import java.util.*
@@ -63,9 +66,9 @@ object OldScape {
         EnumBlueprints.load(configArchive)
         InventoryBlueprints.load(configArchive)
         Varbits.load(configArchive)
-        LocationBlueprints.load(configArchive)
+        Loc.loadBlueprints(configArchive)
         SpotAnimBlueprints.load(configArchive)
-        ObjectBlueprints.load(
+        Obj.loadBlueprints(
             ObjectConfig.load(configArchive.readGroup(ObjectConfig.id)),
             yamlMapper.readObjectConfig("Objects.yaml"),
             yamlMapper.readHeadConfig("HeadEquipment.yaml"),
@@ -81,7 +84,7 @@ object OldScape {
             yamlMapper.readEquipmentConfig("FeetEquipment.yaml"),
             yamlMapper.readEquipmentConfig("RingEquipment.yaml")
         )
-        NpcBlueprints.load(
+        Npc.loadBlueprints(
             NpcConfig.load(configArchive.readGroup(NpcConfig.id)),
             yamlMapper.readNpcConfig("Npcs.yaml")
         )

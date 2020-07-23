@@ -15,19 +15,21 @@
  */
 package io.guthix.oldscape.server.world.entity
 
-import io.guthix.oldscape.server.api.NpcBlueprints
-import io.guthix.oldscape.server.blueprints.AttackType
-import io.guthix.oldscape.server.blueprints.NpcBlueprint
+import io.guthix.oldscape.cache.config.NpcConfig
+import io.guthix.oldscape.server.blueprints.*
 import io.guthix.oldscape.server.dimensions.TileUnit
 import io.guthix.oldscape.server.dimensions.tiles
 import io.guthix.oldscape.server.net.game.out.NpcInfoSmallViewportPacket
+import io.guthix.oldscape.server.plugin.ConfigDataMissingException
 import io.guthix.oldscape.server.task.Task
 import io.guthix.oldscape.server.world.entity.interest.NpcUpdateType
 import io.guthix.oldscape.server.world.map.Tile
+import mu.KotlinLogging
+import java.io.IOException
 
-class Npc(index: Int, id: Int, override var pos: Tile) : Character(index) {
-    val blueprint: NpcBlueprint = NpcBlueprints[id]
+private val logger = KotlinLogging.logger { }
 
+class Npc(private val blueprint: NpcBlueprint, index: Int, override var pos: Tile) : Character(index) {
     val spawnPos: Tile = pos.copy()
 
     override val updateFlags = sortedSetOf<NpcUpdateType>()
@@ -41,6 +43,18 @@ class Npc(index: Int, id: Int, override var pos: Tile) : Character(index) {
     val wanderRadius: TileUnit get() = blueprint.wanderRadius
 
     val attackType: AttackType get() = blueprint.attackType
+
+    val combatSequences: CombatSequences? get() = blueprint.combatSequences
+
+    val maxHit: Int get() = blueprint.maxHit ?: throw ConfigDataMissingException("No maxhit specified for npc $id.")
+
+    val attackSpeed: Int get() = blueprint.attackSpeed
+
+    val stats: CombatStats? get() = blueprint.stats
+
+    val attackStats: NpcAttackStats? get() = blueprint.attackStats
+
+    val defensiveStats: StyleBonus? get() = blueprint.defensiveStats
 
     override fun processTasks() {
         while (true) {
@@ -62,4 +76,42 @@ class Npc(index: Int, id: Int, override var pos: Tile) : Character(index) {
     override fun addHitUpdateFlag(): Boolean = updateFlags.add(NpcInfoSmallViewportPacket.hit)
 
     override fun addShoutFlag(): Boolean = updateFlags.add(NpcInfoSmallViewportPacket.shout)
+
+    companion object {
+        internal lateinit var blueprints: Map<Int, NpcBlueprint>
+
+        internal inline operator fun <reified T : NpcBlueprint> get(index: Int): T {
+            val bp = blueprints[index] ?: throw IOException("Could not find blueprint $index.")
+            if (bp !is T) {
+                throw TypeCastException("")
+            }
+            return bp
+        }
+
+        internal fun loadBlueprints(
+            cConfigs: Map<Int, NpcConfig>,
+            extraNpcConfigs: List<ExtraNpcConfig>
+        ) {
+            blueprints = mutableMapOf<Int, NpcBlueprint>().apply {
+                addBlueprints(cConfigs, extraNpcConfigs, ::NpcBlueprint)
+            }
+            logger.info { "Loaded ${blueprints.size} npc blueprints" }
+        }
+
+        private fun <E : ExtraNpcConfig, B : NpcBlueprint> MutableMap<Int, NpcBlueprint>.addBlueprints(
+            cacheConfigs: Map<Int, NpcConfig>,
+            extraObjectConfigs: List<E>,
+            construct: (NpcConfig, E) -> B
+        ) {
+            extraObjectConfigs.forEach { extraConfig ->
+                extraConfig.ids.forEach inner@{ id ->
+                    val cacheConfig = cacheConfigs[id] ?: kotlin.run {
+                        logger.warn { "Could not find npc for id $id" }
+                        return@inner
+                    }
+                    put(id, construct.invoke(cacheConfig, extraConfig))
+                }
+            }
+        }
+    }
 }
