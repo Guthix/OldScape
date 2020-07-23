@@ -1,3 +1,8 @@
+plugins {
+    `maven-publish`
+    id("org.jetbrains.dokka")
+}
+
 version = rootProject.version
 description = "Server Dimensions"
 
@@ -6,6 +11,13 @@ val dokkaJar: Jar by tasks.creating(Jar::class) {
     description = "Assembles Kotlin docs with Dokka"
     archiveClassifier.set("javadoc")
     from(tasks.dokka)
+}
+
+tasks {
+    dokka {
+        outputFormat = "html"
+        outputDirectory = "$buildDir/javadoc"
+    }
 }
 
 publishing {

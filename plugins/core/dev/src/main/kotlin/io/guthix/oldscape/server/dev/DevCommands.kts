@@ -20,9 +20,14 @@ import io.guthix.oldscape.server.dimensions.floors
 import io.guthix.oldscape.server.dimensions.tiles
 import io.guthix.oldscape.server.event.ClientCheatEvent
 import io.guthix.oldscape.server.event.PublicMessageEvent
-import io.guthix.oldscape.server.id.*
+import io.guthix.oldscape.server.loc.DOOR_4
+import io.guthix.oldscape.server.obj.BRONZEARROW_882
+import io.guthix.oldscape.server.obj.MAGICSHORTBOW_861
+import io.guthix.oldscape.server.obj.RUNE2HSWORD_1319
+import io.guthix.oldscape.server.obj.RUNEFULLHELM_1163
 import io.guthix.oldscape.server.world.entity.Loc
 import io.guthix.oldscape.server.world.entity.Obj
+import io.guthix.oldscape.server.world.entity.create
 import io.guthix.oldscape.server.world.map.Tile
 
 on(ClientCheatEvent::class).where { string == "drop" }.then {
