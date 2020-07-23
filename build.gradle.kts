@@ -1,18 +1,16 @@
 @file:Suppress("ConvertLambdaToReference")
 
-import io.guthix.oldscape.server.cache.IdentifierGenerator
+import io.guthix.oldscape.server.cache.CodeGenerator
 import org.jetbrains.kotlin.gradle.plugin.getKotlinPluginVersion
 
 plugins {
     idea
     application
-    `maven-publish`
     kotlin("jvm")
-    id("org.jetbrains.dokka")
 }
 
 
-apply<IdentifierGenerator>()
+apply<CodeGenerator>()
 
 group = "io.guthix"
 version = "0.1-SNAPSHOT"
@@ -32,8 +30,6 @@ val kotlinVersion: String by extra(project.getKotlinPluginVersion()!!)
 
 allprojects {
     apply(plugin = "kotlin")
-    apply(plugin = "maven-publish")
-    apply(plugin = "org.jetbrains.dokka")
 
     repositories {
         mavenCentral()
@@ -52,11 +48,6 @@ allprojects {
     }
 
     tasks {
-        dokka {
-            outputFormat = "html"
-            outputDirectory = "$buildDir/javadoc"
-        }
-
         compileKotlin {
             kotlinOptions.jvmTarget = "11"
             kotlinOptions.freeCompilerArgs = listOf(

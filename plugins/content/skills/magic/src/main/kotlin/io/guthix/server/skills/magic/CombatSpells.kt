@@ -16,7 +16,6 @@
 package io.guthix.server.skills.magic
 
 import io.guthix.oldscape.server.blueprints.SpotAnimBlueprint
-import io.guthix.oldscape.server.id.Enums
 
 enum class CombatSpell(
     interfaceId: Int,
