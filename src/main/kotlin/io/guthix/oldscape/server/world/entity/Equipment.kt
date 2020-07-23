@@ -15,28 +15,28 @@
  */
 package io.guthix.oldscape.server.world.entity
 
-import io.guthix.oldscape.server.api.ObjectBlueprints
 import io.guthix.oldscape.server.blueprints.*
 import io.guthix.oldscape.server.blueprints.equipment.*
 import io.guthix.oldscape.server.dimensions.TileUnit
 import io.guthix.oldscape.server.plugin.ConfigDataMissingException
 import io.guthix.oldscape.server.world.map.Tile
 
-abstract class Equipment(id: Int, quantity: Int) : Obj(id, quantity) {
-    override val blueprint: EquipmentBlueprint = ObjectBlueprints[id]
-
+abstract class Equipment(
+    private val blueprint: EquipmentBlueprint,
+    override var quantity: Int
+) : Obj(blueprint, quantity) {
     val attackBonus: StyleBonus get() = blueprint.attackBonus
-
     val defenceBonus: StyleBonus get() = blueprint.defenceBonus
-
     val strengthBonus: CombatBonus get() = blueprint.strengthBonus
-
     val prayerBonus: Int get() = blueprint.prayerBonus
 }
 
-class HeadEquipment(id: Int, quantity: Int) : Equipment(id, quantity) {
-    override val blueprint: HeadBlueprint = ObjectBlueprints[id]
+fun HeadBlueprint.create(amount: Int): HeadEquipment = HeadEquipment(this, amount)
 
+data class HeadEquipment(
+    private val blueprint: HeadBlueprint,
+    override var quantity: Int
+) : Equipment(blueprint, quantity) {
     val coversFace: Boolean get() = blueprint.coversFace
     val coversHair: Boolean get() = blueprint.coversHair
 
@@ -45,33 +45,36 @@ class HeadEquipment(id: Int, quantity: Int) : Equipment(id, quantity) {
     }
 }
 
-class CapeEquipment(id: Int, quantity: Int) : Equipment(id, quantity) {
-    override val blueprint: CapeBlueprint = ObjectBlueprints[id]
+fun CapeBlueprint.create(amount: Int): CapeEquipment = CapeEquipment(this, amount)
 
+data class CapeEquipment(
+    private val blueprint: CapeBlueprint,
+    override var quantity: Int
+) : Equipment(blueprint, quantity) {
     companion object {
         const val slot: Int = 1
     }
 }
 
-class NeckEquipment(id: Int, quantity: Int) : Equipment(id, quantity) {
-    override val blueprint: NeckBlueprint = ObjectBlueprints[id]
+fun NeckBlueprint.create(amount: Int): NeckEquipment = NeckEquipment(this, amount)
 
+data class NeckEquipment(
+    private val blueprint: NeckBlueprint,
+    override var quantity: Int
+) : Equipment(blueprint, quantity) {
     companion object {
         const val slot: Int = 2
     }
 }
 
-open class WeaponEquipment(id: Int, quantity: Int) : Equipment(id, quantity) {
-    override val blueprint: WeaponBlueprint = ObjectBlueprints[id]
-
+abstract class WeaponEquipment(
+    private val blueprint: WeaponBlueprint,
+    override var quantity: Int
+) : Equipment(blueprint, quantity) {
     val baseAttackSpeed: Int get() = blueprint.attackSpeed
-
     val type: WeaponType get() = blueprint.type
-
     val baseAttackRange: TileUnit get() = blueprint.attackRange
-
     val weaponSequences: WeaponSequences? get() = blueprint.weaponSequences
-
     val stanceSequences: StanceSequences? get() = blueprint.stanceSequences
 
     companion object {
@@ -79,14 +82,26 @@ open class WeaponEquipment(id: Int, quantity: Int) : Equipment(id, quantity) {
     }
 }
 
-class TwoHandEquipment(id: Int, quantity: Int) : WeaponEquipment(id, quantity) {
-    override val blueprint: TwoHandBlueprint = ObjectBlueprints[id]
-}
+fun WeaponBlueprint.create(amount: Int): SingleHandEquipment = SingleHandEquipment(this, amount)
 
+data class SingleHandEquipment(
+    private val blueprint: WeaponBlueprint,
+    override var quantity: Int
+) : Equipment(blueprint, quantity)
 
-class BodyEquipment(id: Int, quantity: Int) : Equipment(id, quantity) {
-    override val blueprint: BodyBlueprint = ObjectBlueprints[id]
+fun TwoHandBlueprint.create(amount: Int): TwoHandEquipment = TwoHandEquipment(this, amount)
 
+data class TwoHandEquipment(
+    private val blueprint: TwoHandBlueprint,
+    override var quantity: Int
+) : WeaponEquipment(blueprint, quantity)
+
+fun BodyBlueprint.create(amount: Int): BodyEquipment = BodyEquipment(this, amount)
+
+data class BodyEquipment(
+    private val blueprint: BodyBlueprint,
+    override var quantity: Int
+) : Equipment(blueprint, quantity) {
     val isFullBody: Boolean get() = blueprint.isFullBody
 
     companion object {
@@ -94,49 +109,67 @@ class BodyEquipment(id: Int, quantity: Int) : Equipment(id, quantity) {
     }
 }
 
-class ShieldEquipment(id: Int, quantity: Int) : Equipment(id, quantity) {
-    override val blueprint: ShieldBlueprint = ObjectBlueprints[id]
+fun ShieldBlueprint.create(amount: Int): ShieldEquipment = ShieldEquipment(this, amount)
 
+data class ShieldEquipment(
+    private val blueprint: ShieldBlueprint,
+    override var quantity: Int
+) : Equipment(blueprint, quantity) {
     companion object {
         const val slot: Int = 5
     }
 }
 
-class LegEquipment(id: Int, quantity: Int) : Equipment(id, quantity) {
-    override val blueprint: LegsBlueprint = ObjectBlueprints[id]
+fun LegBlueprint.create(amount: Int): LegEquipment = LegEquipment(this, amount)
 
+data class LegEquipment(
+    private val blueprint: LegBlueprint,
+    override var quantity: Int
+) : Equipment(blueprint, quantity) {
     companion object {
         const val slot: Int = 7
     }
 }
 
-class HandEquipment(id: Int, quantity: Int) : Equipment(id, quantity) {
-    override val blueprint: HandsBlueprint = ObjectBlueprints[id]
+fun HandBlueprint.create(amount: Int): HandEquipment = HandEquipment(this, amount)
 
+data class HandEquipment(
+    private val blueprint: HandBlueprint,
+    override var quantity: Int
+) : Equipment(blueprint, quantity) {
     companion object {
         const val slot: Int = 9
     }
 }
 
-class FeetEquipment(id: Int, quantity: Int) : Equipment(id, quantity) {
-    override val blueprint: FeetBlueprint = ObjectBlueprints[id]
+fun FeetBlueprint.create(amount: Int): FeetEquipment = FeetEquipment(this, amount)
 
+data class FeetEquipment(
+    private val blueprint: FeetBlueprint,
+    override var quantity: Int
+) : Equipment(blueprint, quantity) {
     companion object {
         const val slot: Int = 10
     }
 }
 
-class RingEquipment(id: Int, quantity: Int) : Equipment(id, quantity) {
-    override val blueprint: RingBlueprint = ObjectBlueprints[id]
+fun RingBlueprint.create(amount: Int): RingEquipment = RingEquipment(this, amount)
 
+data class RingEquipment(
+    private val blueprint: RingBlueprint,
+    override var quantity: Int
+) : Equipment(blueprint, quantity) {
     companion object {
         const val slot: Int = 11
     }
 }
 
-class AmmunitionEquipment(id: Int, quantity: Int) : Equipment(id, quantity) {
-    override val blueprint: AmmunitionBlueprint = ObjectBlueprints[id]
+fun AmmunitionBlueprint.create(amount: Int): AmmunitionEquipment = AmmunitionEquipment(this, amount)
 
+data class AmmunitionEquipment(
+    private val blueprint: AmmunitionBlueprint,
+    override var quantity: Int
+) : Equipment(blueprint, quantity) {
     val projectileBlueprint: ProjectileBlueprint = let {
         val projId = projectileId ?: throw ConfigDataMissingException(
             "No projectileId provided for ammunition equipment ${blueprint.name} id: $id"

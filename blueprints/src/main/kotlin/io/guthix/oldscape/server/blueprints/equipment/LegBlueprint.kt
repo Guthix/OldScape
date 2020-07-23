@@ -17,7 +17,7 @@ package io.guthix.oldscape.server.blueprints.equipment
 
 import io.guthix.oldscape.cache.config.ObjectConfig
 
-class LegsBlueprint(
+class LegBlueprint(
     cacheConfig: ObjectConfig,
     extraConfig: ExtraEquipmentConfig
 ) : EquipmentBlueprint(cacheConfig, extraConfig)

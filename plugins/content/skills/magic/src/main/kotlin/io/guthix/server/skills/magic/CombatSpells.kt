@@ -16,6 +16,7 @@
 package io.guthix.server.skills.magic
 
 import io.guthix.oldscape.server.blueprints.SpotAnimBlueprint
+import io.guthix.oldscape.server.id.Enums
 
 enum class CombatSpell(
     interfaceId: Int,
@@ -34,3 +35,12 @@ enum class CombatSpell(
         impactSpotAnim = SpotAnimBlueprint(id = 90, height = 92),
     )
 }
+
+//fun genSpellBook() {
+//    Enums.SPELLBOOK.forEach { index, spellBookEnum ->
+//        spellBookEnum.forEach { index, objId ->
+//            val objBlueprint: ObjectBlueprint = ObjectBlueprints[objId]
+//
+//        }
+//    }
+//}

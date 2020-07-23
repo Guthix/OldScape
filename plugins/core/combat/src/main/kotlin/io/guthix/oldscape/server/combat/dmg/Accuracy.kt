@@ -28,47 +28,47 @@ private fun Player.effectiveAttack(): Double =
     (floor(stats.attack.status * prayerMultiplier.attack) + currentStyle.style.attackBonus + 8) *
         damageMultiplier.attack
 
-private fun Npc.effectiveAttack(): Double = ((blueprint.stats?.attack ?: 0) + 8) * damageMultiplier.attack
+private fun Npc.effectiveAttack(): Double = ((stats?.attack ?: 0) + 8) * damageMultiplier.attack
 
 private fun Player.effectiveRange(): Double =
     (floor(stats.ranged.status * prayerMultiplier.range) + currentStyle.style.rangeBonus + 8) *
         damageMultiplier.strength
 
-private fun Npc.effectiveRange(): Double = ((blueprint.stats?.range ?: 0) + 8) * damageMultiplier.range
+private fun Npc.effectiveRange(): Double = ((stats?.range ?: 0) + 8) * damageMultiplier.range
 
 private fun Player.effectiveMagic(): Double =
     (floor(stats.ranged.status * prayerMultiplier.magic) + 8) * damageMultiplier.magic
 
-private fun Npc.effectiveMagic(): Double = ((blueprint.stats?.magic ?: 0) + 8) * damageMultiplier.magic
+private fun Npc.effectiveMagic(): Double = ((stats?.magic ?: 0) + 8) * damageMultiplier.magic
 
 private fun Player.effectiveDefence(): Double =
     (floor(stats.defence.status * prayerMultiplier.defence) + currentStyle.style.defenceBonus + 8) *
         damageMultiplier.defence
 
 private fun Npc.effectiveDefence(): Double =
-    ((blueprint.stats?.defence ?: 0) + 8) * damageMultiplier.defence
+    ((stats?.defence ?: 0) + 8) * damageMultiplier.defence
 
 private fun Player.maxAttackRol(): Double =
     effectiveAttack() * (equipment.attackBonus.findBonus(currentStyle.attackType) + 64)
 
 private fun Npc.maxAttackRol(): Double =
-    effectiveAttack() * ((blueprint.attackStats?.typeBonus?.melee ?: 0) + 64)
+    effectiveAttack() * ((attackStats?.typeBonus?.melee ?: 0) + 64)
 
 private fun Player.maxRangeRol(): Double = effectiveRange() * (equipment.attackBonus.range + 64)
 
 private fun Npc.maxRangeRol(): Double =
-    effectiveRange() * ((blueprint.attackStats?.typeBonus?.range ?: 0) + 64)
+    effectiveRange() * ((attackStats?.typeBonus?.range ?: 0) + 64)
 
 private fun Player.maxMagicRol(): Double = effectiveMagic() * (equipment.attackBonus.magic + 64)
 
 private fun Npc.maxMagicRol(): Double =
-    effectiveMagic() * ((blueprint.attackStats?.typeBonus?.magic ?: 0) + 64)
+    effectiveMagic() * ((attackStats?.typeBonus?.magic ?: 0) + 64)
 
 private fun Player.maxDefenceRol(attackType: AttackType): Double =
     effectiveDefence() * (equipment.defenceBonus.findBonus(attackType) + 64)
 
 private fun Npc.maxDefenceRol(attackType: AttackType): Double =
-    effectiveDefence() * ((blueprint.defensiveStats?.findBonus(attackType) ?: 0) + 64)
+    effectiveDefence() * ((defensiveStats?.findBonus(attackType) ?: 0) + 64)
 
 private fun calcRoll(attackRoll: Double, defenceRoll: Double) =
     if (attackRoll > defenceRoll) 1 - (defenceRoll + 2) / (2 * (attackRoll + 1))
@@ -80,6 +80,6 @@ internal fun Player.accuracy(other: Player): Double =
 internal fun Player.accuracy(other: Npc): Double =
     calcRoll(maxAttackRol(), other.maxDefenceRol(currentStyle.attackType))
 
-internal fun Npc.accuracy(other: Player): Double = calcRoll(maxAttackRol(), other.maxDefenceRol(blueprint.attackType))
+internal fun Npc.accuracy(other: Player): Double = calcRoll(maxAttackRol(), other.maxDefenceRol(attackType))
 
-internal fun Npc.accuracy(other: Npc): Double = calcRoll(maxAttackRol(), other.maxDefenceRol(blueprint.attackType))
+internal fun Npc.accuracy(other: Npc): Double = calcRoll(maxAttackRol(), other.maxDefenceRol(attackType))

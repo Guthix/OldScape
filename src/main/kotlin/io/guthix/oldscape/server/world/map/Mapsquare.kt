@@ -54,7 +54,7 @@ class Mapsquare(val x: MapsquareUnit, val y: MapsquareUnit, val xtea: IntArray, 
             locations.forEach { (id1, floor, localX, localY, type, orientation) ->
                 get(floor).addStaticLocation(
                     Loc(
-                        id1,
+                        Loc[id],
                         type,
                         Tile(floor.floors,
                             def.x.mapsquares.inTiles + localX.tiles,

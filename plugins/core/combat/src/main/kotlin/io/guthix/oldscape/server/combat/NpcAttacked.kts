@@ -38,7 +38,7 @@ on(NpcAttackedEvent::class).then {
             val hmColor = if (damage == 0) HitMark.Color.BLUE else HitMark.Color.RED
             player.hit(hmColor, damage, 0)
             player.animate(player.defenceSequence)
-            wait(ticks = npc.blueprint.attackSpeed)
+            wait(ticks = npc.attackSpeed)
         }
     }
     npc.addTask(NormalTask) { // following task

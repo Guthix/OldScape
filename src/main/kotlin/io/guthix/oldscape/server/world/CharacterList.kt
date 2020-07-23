@@ -38,7 +38,7 @@ class NpcList(capacity: Int) : Iterable<Npc> {
 
     fun create(id: Int, pos: Tile): Npc {
         val index = freeIndexes.pop()
-        val npc = Npc(index, id, pos)
+        val npc = Npc(Npc[id], index, pos)
         npcs[npc.index] = npc
         occupiedIndexes.add(npc.index)
         return npc

@@ -15,30 +15,34 @@
  */
 package io.guthix.oldscape.server.world.entity
 
-import io.guthix.oldscape.server.api.LocationBlueprints
+import io.guthix.cache.js5.Js5Archive
+import io.guthix.oldscape.cache.config.LocationConfig
+import io.guthix.oldscape.server.blueprints.LocationBlueprint
 import io.guthix.oldscape.server.dimensions.TileUnit
 import io.guthix.oldscape.server.world.map.Tile
+import mu.KotlinLogging
+import java.io.IOException
+
+private val logger = KotlinLogging.logger { }
+
+fun LocationBlueprint.create(
+    type: Int,
+    pos: Tile,
+    orientation: Int
+): Loc = Loc(this, type, pos, orientation)
 
 class Loc(
-    id: Int,
+    private val blueprint: LocationBlueprint,
     val type: Int,
     override val pos: Tile,
     override var orientation: Int
 ) : Entity() {
-    private val blueprint = LocationBlueprints[id]
-
     val id: Int get() = blueprint.id
-
     val impenetrable: Boolean get() = blueprint.impenetrable
-
     val clipType: Int get() = blueprint.clipType
-
     val width: TileUnit get() = blueprint.width
-
     val length: TileUnit get() = blueprint.length
-
     override val sizeX: TileUnit get() = if (orientation == 0 || orientation == 2) width else length
-
     override val sizeY: TileUnit get() = if (orientation == 0 || orientation == 2) length else width
 
     val accessBlockFlags: Int
@@ -53,11 +57,28 @@ class Loc(
     internal val mapKey get() = (pos.x.relativeZone.value shl 5) or (pos.y.relativeZone.value shl 2) or slot
 
     companion object {
-        const val UNIQUE_SLOTS: Int = 4
+        internal const val UNIQUE_SLOTS: Int = 4
 
-        val MAP_SLOTS: IntArray = intArrayOf(0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3)
+        internal val MAP_SLOTS: IntArray = intArrayOf(
+            0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3
+        )
 
-        fun generateMapKey(localX: TileUnit, localY: TileUnit, slot: Int): Int = (localX.value shl 5) or
+        internal fun generateMapKey(localX: TileUnit, localY: TileUnit, slot: Int): Int = (localX.value shl 5) or
             (localY.value shl 2) or slot
+
+        internal lateinit var blueprints: Map<Int, LocationBlueprint>
+
+        internal operator fun get(index: Int): LocationBlueprint = blueprints[index]
+            ?: throw IOException("Could not find blueprint $index.")
+
+        internal fun loadBlueprints(archive: Js5Archive) {
+            val locConfigs = LocationConfig.load(archive.readGroup(LocationConfig.id))
+            val tempLocs = mutableMapOf<Int, LocationBlueprint>()
+            locConfigs.forEach { (id, config) ->
+                tempLocs[id] = LocationBlueprint.create(config)
+            }
+            blueprints = tempLocs.toMap()
+            logger.info { "Loaded ${blueprints.size} location blueprints" }
+        }
     }
 }

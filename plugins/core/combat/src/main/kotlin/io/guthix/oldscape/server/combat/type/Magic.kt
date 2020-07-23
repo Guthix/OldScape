@@ -19,7 +19,6 @@ import io.guthix.oldscape.server.blueprints.SequenceBlueprint
 import io.guthix.oldscape.server.blueprints.SpotAnimBlueprint
 import io.guthix.oldscape.server.combat.attackRange
 import io.guthix.oldscape.server.combat.attackSpeed
-import io.guthix.oldscape.server.combat.combatSequences
 import io.guthix.oldscape.server.combat.dmg.calcHit
 import io.guthix.oldscape.server.combat.inCombatWith
 import io.guthix.oldscape.server.event.EventBus

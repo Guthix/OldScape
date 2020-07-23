@@ -15,9 +15,9 @@
  */
 package io.guthix.oldscape.server.event
 
-import io.guthix.oldscape.server.api.ObjectBlueprints
 import io.guthix.oldscape.server.blueprints.ObjectBlueprint
 import io.guthix.oldscape.server.world.World
+import io.guthix.oldscape.server.world.entity.Obj
 import io.guthix.oldscape.server.world.entity.Player
 
 data class InvObjClickEvent(
@@ -29,6 +29,6 @@ data class InvObjClickEvent(
     override val player: Player,
     override val world: World
 ) : PlayerGameEvent(player, world) {
-    val contextMenuEntry: String = ObjectBlueprints.get<ObjectBlueprint>(objId).interfaceOperations[option - 1]
+    val contextMenuEntry: String = Obj.get<ObjectBlueprint>(objId).interfaceOperations.get(option - 1)
         ?: error("Object $objId has no interface operation for option $option.")
 }

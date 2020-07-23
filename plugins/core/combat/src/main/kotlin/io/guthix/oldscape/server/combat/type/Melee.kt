@@ -17,7 +17,6 @@ package io.guthix.oldscape.server.combat.type
 
 import io.guthix.oldscape.server.combat.attackSequence
 import io.guthix.oldscape.server.combat.attackSpeed
-import io.guthix.oldscape.server.combat.combatSequences
 import io.guthix.oldscape.server.combat.dmg.calcHit
 import io.guthix.oldscape.server.combat.dmg.maxMeleeHit
 import io.guthix.oldscape.server.combat.inCombatWith
