@@ -14,7 +14,7 @@ version = "0.1-SNAPSHOT"
 description = "A library for modifying OldScape caches"
 
 val jagexByteBufVersion: String by extra("027bcbbc2d")
-val jagexCacheVersion: String by extra("05598c8a2a")
+val jagexCacheVersion: String by extra("cac3c77ad0")
 val kotlinLoggingVersion: String by extra("1.8.3")
 val logbackVersion: String by extra("1.2.3")
 val kotlinVersion: String by extra(project.getKotlinPluginVersion()!!)
@@ -47,7 +47,7 @@ allprojects {
 // kotlin { explicitApi() }
 
 dependencies {
-    api(group = "com.github.guthix", name = "Jagex-Store-5", version = jagexCacheVersion)
+    api(group = "com.github.guthix", name = "jagex-store-5", version = jagexCacheVersion)
     implementation(group = "com.github.guthix", name = "Jagex-ByteBuf", version = jagexByteBufVersion)
     implementation(group = "io.github.microutils", name = "kotlin-logging", version = kotlinLoggingVersion)
     implementation(group = "ch.qos.logback", name = "logback-classic", version = logbackVersion)
