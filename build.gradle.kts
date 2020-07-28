@@ -13,9 +13,9 @@ group = "io.guthix"
 version = "0.1-SNAPSHOT"
 description = "A library for modifying OldScape caches"
 
-val jagexByteBufVersion: String by extra("555807fda4")
-val jagexCacheVersion: String by extra("b95030a6f6")
-val kotlinLoggingVersion: String by extra("1.7.6")
+val jagexByteBufVersion: String by extra("027bcbbc2d")
+val jagexCacheVersion: String by extra("05598c8a2a")
+val kotlinLoggingVersion: String by extra("1.8.3")
 val logbackVersion: String by extra("1.2.3")
 val kotlinVersion: String by extra(project.getKotlinPluginVersion()!!)
 
@@ -44,7 +44,7 @@ allprojects {
     }
 }
 
-kotlin { explicitApi() }
+// kotlin { explicitApi() }
 
 dependencies {
     api(group = "com.github.guthix", name = "Jagex-Store-5", version = jagexCacheVersion)
