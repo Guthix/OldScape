@@ -15,7 +15,7 @@
  */
 package io.guthix.oldscape.server.net.game.out
 
-import io.guthix.buffer.writeByteSUB
+import io.guthix.buffer.writeByteSub
 import io.guthix.oldscape.server.dimensions.TileUnit
 import io.guthix.oldscape.server.net.game.OutGameEvent
 import io.guthix.oldscape.server.net.game.VarShortSize
@@ -36,7 +36,7 @@ class UpdateZonePartialEnclosedPacket(
     override fun encode(ctx: ChannelHandlerContext): ByteBuf {
         val buf = Unpooled.compositeBuffer(1 + packets.size * 2)
         val header = ctx.alloc().buffer(STATIC_SIZE)
-        header.writeByteSUB(localY.value)
+        header.writeByteSub(localY.value)
         header.writeByte(localX.value)
         buf.addComponent(true, header)
         packets.forEach { packet ->

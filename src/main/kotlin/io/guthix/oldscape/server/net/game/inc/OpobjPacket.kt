@@ -15,10 +15,9 @@
  */
 package io.guthix.oldscape.server.net.game.inc
 
-import io.guthix.buffer.readUnsignedByteADD
-import io.guthix.buffer.readUnsignedByteNEG
-import io.guthix.buffer.readUnsignedShortADD
-import io.guthix.buffer.readUnsignedShortLEADD
+import io.guthix.buffer.readUnsignedByteAdd
+import io.guthix.buffer.readUnsignedByteNeg
+import io.guthix.buffer.readUnsignedShortAdd
 import io.guthix.oldscape.server.dimensions.tiles
 import io.guthix.oldscape.server.event.ObjectClickEvent
 import io.guthix.oldscape.server.event.PlayerGameEvent
@@ -37,10 +36,10 @@ class Opobj1Packet : GamePacketDecoder(32, FixedSize(7)) {
         player: Player,
         world: World
     ): PlayerGameEvent {
-        val id = buf.readUnsignedShortLEADD()
-        val x = buf.readUnsignedShortLEADD()
+        val id = buf.readUnsignedShortLE()
+        val x = buf.readUnsignedShortLE()
         val y = buf.readUnsignedShortLE()
-        val buttonPressed = buf.readUnsignedByteNEG().toInt() == 1
+        val buttonPressed = buf.readUnsignedByteNeg().toInt() == 1
         return ObjectClickEvent(id, x.tiles, y.tiles, buttonPressed, 1, player, world)
     }
 }
@@ -54,8 +53,8 @@ class Opobj2Packet : GamePacketDecoder(80, FixedSize(7)) {
         world: World
     ): PlayerGameEvent {
         val y = buf.readUnsignedShort()
-        val x = buf.readUnsignedShortADD()
-        val buttonPressed = buf.readUnsignedByteADD().toInt() == 1
+        val x = buf.readUnsignedShortAdd()
+        val buttonPressed = buf.readUnsignedByteAdd().toInt() == 1
         val id = buf.readUnsignedShort()
         return ObjectClickEvent(id, x.tiles, y.tiles, buttonPressed, 2, player, world)
     }
@@ -71,8 +70,8 @@ class Opobj3Packet : GamePacketDecoder(68, FixedSize(7)) {
     ): PlayerGameEvent {
         val buttonPressed = buf.readUnsignedByte().toInt() == 1
         val x = buf.readUnsignedShortLE()
-        val y = buf.readUnsignedShortADD()
-        val id = buf.readUnsignedShortLEADD()
+        val y = buf.readUnsignedShortAdd()
+        val id = buf.readUnsignedShortLE()
         return ObjectClickEvent(id, x.tiles, y.tiles, buttonPressed, 3, player, world)
     }
 }
@@ -88,7 +87,7 @@ class Opobj4Packet : GamePacketDecoder(20, FixedSize(7)) {
         val buttonPressed = buf.readUnsignedByte().toInt() == 1
         val id = buf.readUnsignedShortLE()
         val x = buf.readUnsignedShortLE()
-        val y = buf.readUnsignedShortADD()
+        val y = buf.readUnsignedShortAdd()
         return ObjectClickEvent(id, x.tiles, y.tiles, buttonPressed, 4, player, world)
     }
 }
@@ -102,9 +101,9 @@ class Opobj5Packet : GamePacketDecoder(28, FixedSize(7)) {
         world: World
     ): PlayerGameEvent {
         val id = buf.readUnsignedShort()
-        val y = buf.readUnsignedShortADD()
-        val buttonPressed = buf.readUnsignedByteADD().toInt() == 1
-        val x = buf.readUnsignedShortADD()
+        val y = buf.readUnsignedShortAdd()
+        val buttonPressed = buf.readUnsignedByteAdd().toInt() == 1
+        val x = buf.readUnsignedShortAdd()
         return ObjectClickEvent(id, x.tiles, y.tiles, buttonPressed, 5, player, world)
     }
 }

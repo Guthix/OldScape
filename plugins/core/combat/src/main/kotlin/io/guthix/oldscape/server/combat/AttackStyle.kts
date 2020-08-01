@@ -18,5 +18,5 @@ package io.guthix.oldscape.server.combat
 import io.guthix.oldscape.server.event.ObjEquipedEvent
 
 on(ObjEquipedEvent::class).then {
-    player.updateVarbit(357, player.equipment.weapon?.type?.id ?: 0)
+    player.updateVarbit(357, player.equipment.weapon?.equipmentType?.slot ?: 0)
 }

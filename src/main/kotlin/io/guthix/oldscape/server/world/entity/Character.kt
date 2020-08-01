@@ -30,12 +30,9 @@ import io.guthix.oldscape.server.world.entity.interest.PlayerManager
 import io.guthix.oldscape.server.world.map.Tile
 import java.util.*
 import kotlin.math.atan2
-import kotlin.reflect.KProperty
 
 abstract class Character(val index: Int) : Entity() {
     internal val postTasks = mutableListOf<() -> Unit>()
-
-    val properties: MutableMap<KProperty<*>, Any?> = mutableMapOf()
 
     internal abstract val updateFlags: SortedSet<out InterestUpdateType>
 

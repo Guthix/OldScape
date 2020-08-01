@@ -16,8 +16,7 @@
 package io.guthix.oldscape.server.net.game.inc
 
 import io.guthix.buffer.readUnsignedIntIME
-import io.guthix.buffer.readUnsignedShortADD
-import io.guthix.buffer.readUnsignedShortLEADD
+import io.guthix.buffer.readUnsignedShortAdd
 import io.guthix.oldscape.server.event.ButtonClickEvent
 import io.guthix.oldscape.server.event.InvObjMovedEvent
 import io.guthix.oldscape.server.net.game.FixedSize
@@ -185,11 +184,11 @@ class IfButtonDPacket : GamePacketDecoder(88, FixedSize(9)) {
         player: Player,
         world: World
     ): InvObjMovedEvent {
-        val toSlot = buf.readUnsignedShortLEADD()
-        val fromSlot = buf.readUnsignedShortADD()
+        val toSlot = buf.readUnsignedShortLE()
+        val fromSlot = buf.readUnsignedShortAdd()
         val someByte = buf.readUnsignedByte().toInt()
         val bitpack = buf.readUnsignedIntIME()
-        val interfaceId = (bitpack shr 16).toInt()
+        val interfaceId = (bitpack shr Short.SIZE_BITS).toInt()
         val interfaceSlotId = (bitpack and 0xFFFF).toInt()
         return InvObjMovedEvent(fromSlot, toSlot, interfaceId, interfaceSlotId, someByte, player, world)
     }

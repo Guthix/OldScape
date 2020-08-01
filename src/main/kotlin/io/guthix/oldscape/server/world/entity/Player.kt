@@ -15,6 +15,7 @@
  */
 package io.guthix.oldscape.server.world.entity
 
+import io.guthix.oldscape.server.blueprints.EquipmentType
 import io.guthix.oldscape.server.blueprints.StanceSequences
 import io.guthix.oldscape.server.dimensions.TileUnit
 import io.guthix.oldscape.server.dimensions.tiles
@@ -81,9 +82,7 @@ class Player(
 
     val colours: PlayerManager.Colours = PlayerManager.Colours(0, 0, 0, 0, 0)
 
-    val equipment: PlayerManager.EquipmentSet = PlayerManager.EquipmentSet(
-        null, null, null, null, null, null, null, null, null, null, null
-    )
+    val equipment: PlayerManager.EquipmentSet = PlayerManager.EquipmentSet(mutableMapOf())
 
     val animations: StanceSequences = StanceSequences(
         stand = 808,
@@ -198,59 +197,13 @@ class Player(
         ctx.write(MessageGamePacket(0, false, message))
     }
 
-    fun equip(head: HeadEquipment?) {
-        equipment.head = head
+    fun equip(obj: Obj) {
+        equipment.equip(obj)
         updateFlags.add(PlayerInfoPacket.appearance)
     }
 
-    fun equip(cape: CapeEquipment?) {
-        equipment.cape = cape
-        updateFlags.add(PlayerInfoPacket.appearance)
-    }
-
-    fun equip(neck: NeckEquipment?) {
-        equipment.neck = neck
-        updateFlags.add(PlayerInfoPacket.appearance)
-    }
-
-    fun equip(ammunition: AmmunitionEquipment?) {
-        equipment.ammunition = ammunition
-        updateFlags.add(PlayerInfoPacket.appearance)
-    }
-
-    fun equip(weapon: WeaponEquipment?) {
-        equipment.weapon = weapon
-        updateFlags.add(PlayerInfoPacket.appearance)
-    }
-
-    fun equip(shield: ShieldEquipment?) {
-        equipment.shield = shield
-        updateFlags.add(PlayerInfoPacket.appearance)
-    }
-
-    fun equip(body: BodyEquipment?) {
-        equipment.body = body
-        updateFlags.add(PlayerInfoPacket.appearance)
-    }
-
-    fun equip(legs: LegEquipment?) {
-        equipment.legs = legs
-        updateFlags.add(PlayerInfoPacket.appearance)
-    }
-
-    fun equip(hands: HandEquipment?) {
-        equipment.hands = hands
-        updateFlags.add(PlayerInfoPacket.appearance)
-    }
-
-    fun equip(feet: FeetEquipment?) {
-        equipment.feet = feet
-        updateFlags.add(PlayerInfoPacket.appearance)
-    }
-
-    fun equip(ring: RingEquipment?) {
-        equipment.ring = ring
-        updateFlags.add(PlayerInfoPacket.appearance)
+    fun unequip(type: EquipmentType) {
+        equipment.unequip(type)
     }
 
     fun updateVarp(id: Int, value: Int): Unit = varpManager.updateVarp(id, value)

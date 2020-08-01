@@ -15,7 +15,7 @@
  */
 package io.guthix.oldscape.server.net.game.out
 
-import io.guthix.buffer.writeByteSUB
+import io.guthix.buffer.writeByteSub
 import io.guthix.oldscape.server.dimensions.TileUnit
 import io.guthix.oldscape.server.net.game.FixedSize
 import io.guthix.oldscape.server.net.game.ZoneOutGameEvent
@@ -35,7 +35,7 @@ class ObjDelPacket(
 
     override fun encode(ctx: ChannelHandlerContext): ByteBuf {
         val buf = ctx.alloc().buffer(STATIC_SIZE)
-        buf.writeByteSUB(posBitPack)
+        buf.writeByteSub(posBitPack)
         buf.writeShort(id)
         return buf
     }

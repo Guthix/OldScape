@@ -75,7 +75,7 @@ class Loc(
             val locConfigs = LocationConfig.load(archive.readGroup(LocationConfig.id))
             val tempLocs = mutableMapOf<Int, LocationBlueprint>()
             locConfigs.forEach { (id, config) ->
-                tempLocs[id] = LocationBlueprint.create(config)
+                tempLocs[id] = LocationBlueprint(config)
             }
             blueprints = tempLocs.toMap()
             logger.info { "Loaded ${blueprints.size} location blueprints" }

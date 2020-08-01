@@ -52,8 +52,8 @@ class Opheld2Packet : GamePacketDecoder(58, FixedSize(8)) {
         world: World
     ): PlayerGameEvent {
         val bitpack = buf.readInt()
-        val itemId = buf.readUnsignedShortADD()
-        val inventorySlotId = buf.readUnsignedShortLEADD()
+        val itemId = buf.readUnsignedShortAdd()
+        val inventorySlotId = buf.readUnsignedShortLE()
         return InvObjClickEvent(
             bitpack shr Short.SIZE_BITS, bitpack and 0xFFFF, itemId, inventorySlotId, 2, player, world
         )
@@ -102,9 +102,9 @@ class Opheld5Packet : GamePacketDecoder(5, FixedSize(8)) {
         player: Player,
         world: World
     ): PlayerGameEvent {
-        val inventorySlotId = buf.readUnsignedShortLEADD()
+        val inventorySlotId = buf.readUnsignedShortLE()
         val bitpack = buf.readIntME()
-        val itemId = buf.readUnsignedShortADD()
+        val itemId = buf.readUnsignedShortAdd()
         return InvObjClickEvent(
             bitpack shr Short.SIZE_BITS, bitpack and 0xFFFF, itemId, inventorySlotId, 5, player, world
         )
@@ -120,11 +120,11 @@ class OpheldUPacket : GamePacketDecoder(98, FixedSize(16)) {
         world: World
     ): PlayerGameEvent {
         val toBitpack = buf.readIntIME()
-        val fromSlot = buf.readShortLEADD().toInt()
+        val fromSlot = buf.readShortAddLE().toInt()
         val fromBitpack = buf.readIntME()
-        val toSlot = buf.readShortADD().toInt()
+        val toSlot = buf.readShortAdd().toInt()
         val toItem = buf.readShort().toInt()
-        val fromItem = buf.readShortADD().toInt()
+        val fromItem = buf.readShortAdd().toInt()
         return InvObjOnObjEvent(
             fromBitpack shr Short.SIZE_BITS, fromBitpack and 0xFFFF, toBitpack shr Short.SIZE_BITS,
             toBitpack and 0xFFFF, fromSlot, toSlot, fromItem, toItem, player, world

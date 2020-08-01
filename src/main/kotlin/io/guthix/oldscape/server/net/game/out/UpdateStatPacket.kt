@@ -15,8 +15,8 @@
  */
 package io.guthix.oldscape.server.net.game.out
 
-import io.guthix.buffer.writeByteADD
-import io.guthix.buffer.writeByteNEG
+import io.guthix.buffer.writeByteAdd
+import io.guthix.buffer.writeByteNeg
 import io.guthix.oldscape.server.net.game.FixedSize
 import io.guthix.oldscape.server.net.game.OutGameEvent
 import io.netty.buffer.ByteBuf
@@ -29,8 +29,8 @@ class UpdateStatPacket(private val skillId: Int, private val xp: Int, private va
 
     override fun encode(ctx: ChannelHandlerContext): ByteBuf {
         val buf = ctx.alloc().buffer(STATIC_SIZE)
-        buf.writeByteNEG(skillStatus)
-        buf.writeByteADD(skillId)
+        buf.writeByteNeg(skillStatus)
+        buf.writeByteAdd(skillId)
         buf.writeIntLE(xp)
         return buf
     }

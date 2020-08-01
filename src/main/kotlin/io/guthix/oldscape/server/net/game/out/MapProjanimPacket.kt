@@ -15,10 +15,10 @@
  */
 package io.guthix.oldscape.server.net.game.out
 
-import io.guthix.buffer.writeByteNEG
-import io.guthix.buffer.writeByteSUB
-import io.guthix.buffer.writeShortADD
-import io.guthix.buffer.writeShortLEADD
+import io.guthix.buffer.writeByteNeg
+import io.guthix.buffer.writeByteSub
+import io.guthix.buffer.writeShortAdd
+import io.guthix.buffer.writeShortAddLE
 import io.guthix.oldscape.server.dimensions.TileUnit
 import io.guthix.oldscape.server.net.game.FixedSize
 import io.guthix.oldscape.server.net.game.ZoneOutGameEvent
@@ -47,17 +47,17 @@ class MapProjanimPacket(
 
     override fun encode(ctx: ChannelHandlerContext): ByteBuf {
         val buf = ctx.alloc().buffer(STATIC_SIZE)
-        buf.writeShortADD(lifespan)
-        buf.writeByteSUB(endHeight)
-        buf.writeByteNEG(startHeight)
-        buf.writeByteNEG(angle)
-        buf.writeByteNEG(deltaX.value)
-        buf.writeShortLEADD(id)
+        buf.writeShortAdd(lifespan)
+        buf.writeByteSub(endHeight)
+        buf.writeByteNeg(startHeight)
+        buf.writeByteNeg(angle)
+        buf.writeByteNeg(deltaX.value)
+        buf.writeShortAddLE(id)
         buf.writeShortLE(delay)
         buf.writeByte(posBitPack)
         buf.writeByte(steepness)
         buf.writeShort(target)
-        buf.writeByteNEG(deltaY.value)
+        buf.writeByteNeg(deltaY.value)
         return buf
     }
 

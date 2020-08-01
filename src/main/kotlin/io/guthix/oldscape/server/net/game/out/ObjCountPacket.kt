@@ -15,7 +15,7 @@
  */
 package io.guthix.oldscape.server.net.game.out
 
-import io.guthix.buffer.writeShortLEADD
+import io.guthix.buffer.writeShortAddLE
 import io.guthix.oldscape.server.dimensions.TileUnit
 import io.guthix.oldscape.server.net.game.FixedSize
 import io.guthix.oldscape.server.net.game.ZoneOutGameEvent
@@ -38,7 +38,7 @@ class ObjCountPacket(
     override fun encode(ctx: ChannelHandlerContext): ByteBuf {
         val buf = ctx.alloc().buffer(STATIC_SIZE)
         buf.writeShort(oldCount)
-        buf.writeShortLEADD(id)
+        buf.writeShortAddLE(id)
         buf.writeShortLE(newCount)
         buf.writeByte(posBitPack)
         return buf

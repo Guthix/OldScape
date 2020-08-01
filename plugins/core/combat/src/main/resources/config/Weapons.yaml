@@ -1,0 +1,8 @@
+- ids:
+    - 1
+  type: "BOW"
+  attackSpeed: 4
+  attackRange: 7
+  weaponSequences:
+    attack: 426
+    defence: 424

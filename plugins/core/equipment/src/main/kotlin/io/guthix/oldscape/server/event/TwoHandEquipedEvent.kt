@@ -16,11 +16,11 @@
 package io.guthix.oldscape.server.event
 
 import io.guthix.oldscape.server.world.World
+import io.guthix.oldscape.server.world.entity.Obj
 import io.guthix.oldscape.server.world.entity.Player
-import io.guthix.oldscape.server.world.entity.TwoHandEquipment
 
 class TwoHandEquipedEvent(
-    val twoHandEquipment: TwoHandEquipment,
+    val twoHandEquipment: Obj,
     override val player: Player,
     override val world: World
 ) : PlayerGameEvent(player, world)

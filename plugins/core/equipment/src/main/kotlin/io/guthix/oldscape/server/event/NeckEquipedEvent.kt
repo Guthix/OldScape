@@ -16,11 +16,11 @@
 package io.guthix.oldscape.server.event
 
 import io.guthix.oldscape.server.world.World
-import io.guthix.oldscape.server.world.entity.NeckEquipment
+import io.guthix.oldscape.server.world.entity.Obj
 import io.guthix.oldscape.server.world.entity.Player
 
 class NeckEquipedEvent(
-    val neckEquipment: NeckEquipment,
+    val neckEquipment: Obj,
     override val player: Player,
     override val world: World
 ) : PlayerGameEvent(player, world)

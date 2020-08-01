@@ -15,7 +15,7 @@
  */
 package io.guthix.oldscape.server.net.game.out
 
-import io.guthix.buffer.writeByteSUB
+import io.guthix.buffer.writeByteSub
 import io.guthix.oldscape.server.dimensions.TileUnit
 import io.guthix.oldscape.server.net.game.FixedSize
 import io.guthix.oldscape.server.net.game.OutGameEvent
@@ -32,8 +32,8 @@ class UpdateZoneFullFollowsPacket(
 
     override fun encode(ctx: ChannelHandlerContext): ByteBuf {
         val buf = ctx.alloc().buffer(STATIC_SIZE)
-        buf.writeByteSUB(localY.value)
-        buf.writeByteSUB(localX.value)
+        buf.writeByteSub(localY.value)
+        buf.writeByteSub(localX.value)
         return buf
     }
 

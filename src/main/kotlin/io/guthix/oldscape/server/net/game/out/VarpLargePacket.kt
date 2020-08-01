@@ -16,7 +16,7 @@
 package io.guthix.oldscape.server.net.game.out
 
 import io.guthix.buffer.writeIntIME
-import io.guthix.buffer.writeShortLEADD
+import io.guthix.buffer.writeShortAddLE
 import io.guthix.oldscape.server.net.game.FixedSize
 import io.guthix.oldscape.server.net.game.OutGameEvent
 import io.netty.buffer.ByteBuf
@@ -29,7 +29,7 @@ class VarpLargePacket(private val id: Int, private val state: Int) : OutGameEven
 
     override fun encode(ctx: ChannelHandlerContext): ByteBuf {
         val buf = ctx.alloc().buffer(STATIC_SIZE)
-        buf.writeShortLEADD(id)
+        buf.writeShortAddLE(id)
         buf.writeIntIME(state)
         return buf
     }

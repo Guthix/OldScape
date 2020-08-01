@@ -42,20 +42,6 @@ class Npc(private val blueprint: NpcBlueprint, index: Int, override var pos: Til
 
     val wanderRadius: TileUnit get() = blueprint.wanderRadius
 
-    val attackType: AttackType get() = blueprint.attackType
-
-    val combatSequences: CombatSequences? get() = blueprint.combatSequences
-
-    val maxHit: Int get() = blueprint.maxHit ?: throw ConfigDataMissingException("No maxhit specified for npc $id.")
-
-    val attackSpeed: Int get() = blueprint.attackSpeed
-
-    val stats: CombatStats? get() = blueprint.stats
-
-    val attackStats: NpcAttackStats? get() = blueprint.attackStats
-
-    val defensiveStats: StyleBonus? get() = blueprint.defensiveStats
-
     override fun processTasks() {
         while (true) {
             val resumed = tasks.values.flatMap { routineList -> routineList.toList().map(Task::run) } // TODO optimize

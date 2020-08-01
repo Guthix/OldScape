@@ -15,10 +15,10 @@
  */
 package io.guthix.oldscape.server.net.game.out
 
-import io.guthix.buffer.writeByteADD
-import io.guthix.buffer.writeByteNEG
-import io.guthix.buffer.writeByteSUB
-import io.guthix.buffer.writeShortLEADD
+import io.guthix.buffer.writeByteAdd
+import io.guthix.buffer.writeByteNeg
+import io.guthix.buffer.writeByteSub
+import io.guthix.buffer.writeShortAddLE
 import io.guthix.oldscape.server.dimensions.TileUnit
 import io.guthix.oldscape.server.dimensions.TileUnitRange
 import io.guthix.oldscape.server.net.game.FixedSize
@@ -45,16 +45,16 @@ class LocPrefetchPacket(
 
     override fun encode(ctx: ChannelHandlerContext): ByteBuf {
         val buf = ctx.alloc().buffer(STATIC_SIZE)
-        buf.writeByteSUB(yRange.first.value)
-        buf.writeShortLEADD(cycleRange.last)
+        buf.writeByteSub(yRange.first.value)
+        buf.writeShortAddLE(cycleRange.last)
         buf.writeShort(playerId)
-        buf.writeShortLEADD(locId)
-        buf.writeByteNEG((locType shl 2) or (locRotation and 0x3))
+        buf.writeShortAddLE(locId)
+        buf.writeByteNeg((locType shl 2) or (locRotation and 0x3))
         buf.writeByte(xRange.first.value)
-        buf.writeByteADD(posBitPack)
-        buf.writeByteADD(xRange.last.value)
-        buf.writeShortLEADD(cycleRange.first)
-        buf.writeByteADD(yRange.last.value)
+        buf.writeByteAdd(posBitPack)
+        buf.writeByteAdd(xRange.last.value)
+        buf.writeShortAddLE(cycleRange.first)
+        buf.writeByteAdd(yRange.last.value)
         return buf
     }
 

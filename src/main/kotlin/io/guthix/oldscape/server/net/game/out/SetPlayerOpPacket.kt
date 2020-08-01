@@ -15,8 +15,8 @@
  */
 package io.guthix.oldscape.server.net.game.out
 
-import io.guthix.buffer.writeByteADD
-import io.guthix.buffer.writeByteNEG
+import io.guthix.buffer.writeByteAdd
+import io.guthix.buffer.writeByteNeg
 import io.guthix.buffer.writeStringCP1252
 import io.guthix.oldscape.server.net.game.OutGameEvent
 import io.guthix.oldscape.server.net.game.VarByteSize
@@ -31,8 +31,8 @@ class SetPlayerOpPacket(val prioritized: Boolean, val slot: Int, val text: Strin
     override fun encode(ctx: ChannelHandlerContext): ByteBuf {
         val buf = ctx.alloc().buffer(STATIC_SIZE + text.length)
         buf.writeStringCP1252(text)
-        buf.writeByteNEG(if (prioritized) 1 else 0)
-        buf.writeByteADD(slot)
+        buf.writeByteNeg(if (prioritized) 1 else 0)
+        buf.writeByteAdd(slot)
         return buf
     }
 

@@ -15,8 +15,9 @@
  */
 package io.guthix.oldscape.server.net.game.out
 
-import io.guthix.buffer.writeByteADD
-import io.guthix.buffer.writeShortADD
+import io.guthix.buffer.writeByteAdd
+import io.guthix.buffer.writeByteAdd
+import io.guthix.buffer.writeShortAdd
 import io.guthix.oldscape.server.dimensions.FloorUnit
 import io.guthix.oldscape.server.dimensions.TileUnit
 import io.guthix.oldscape.server.net.game.FixedSize
@@ -39,10 +40,10 @@ class MapAnimPacket(
 
     override fun encode(ctx: ChannelHandlerContext): ByteBuf {
         val buf = ctx.alloc().buffer(STATIC_SIZE)
-        buf.writeByteADD(floor.value)
+        buf.writeByteAdd(floor.value)
         buf.writeShort(id)
-        buf.writeByteADD(posBitPack)
-        buf.writeShortADD(delay)
+        buf.writeByteAdd(posBitPack)
+        buf.writeShortAdd(delay)
         return buf
     }
 

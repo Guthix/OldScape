@@ -34,7 +34,7 @@ class Opnpc1Packet : GamePacketDecoder(56, FixedSize(3)) {
         world: World
     ): PlayerGameEvent {
         val index = buf.readUnsignedShortLE()
-        val pressed = buf.readUnsignedByteNEG().toInt() == 1
+        val pressed = buf.readUnsignedByteNeg().toInt() == 1
         return NpcClickEvent(index, pressed, 1, player, world)
     }
 }
@@ -48,7 +48,7 @@ class Opnpc2Packet : GamePacketDecoder(4, FixedSize(3)) {
         world: World
     ): PlayerGameEvent {
         val index = buf.readUnsignedShort()
-        val pressed = buf.readUnsignedByteNEG().toInt() == 1
+        val pressed = buf.readUnsignedByteNeg().toInt() == 1
         return NpcClickEvent(index, pressed, 2, player, world)
     }
 }
@@ -61,8 +61,8 @@ class Opnpc3Packet : GamePacketDecoder(46, FixedSize(3)) {
         player: Player,
         world: World
     ): PlayerGameEvent {
-        val index = buf.readUnsignedShortADD()
-        val pressed = buf.readUnsignedByteNEG().toInt() == 1
+        val index = buf.readUnsignedShortAdd()
+        val pressed = buf.readUnsignedByteNeg().toInt() == 1
         return NpcClickEvent(index, pressed, 3, player, world)
     }
 }
@@ -75,7 +75,7 @@ class Opnpc4Packet : GamePacketDecoder(12, FixedSize(3)) {
         player: Player,
         world: World
     ): PlayerGameEvent {
-        val pressed = buf.readUnsignedByteSUB().toInt() == 1
+        val pressed = buf.readUnsignedByteSub().toInt() == 1
         val index = buf.readUnsignedShortLE()
         return NpcClickEvent(index, pressed, 4, player, world)
     }
@@ -103,7 +103,7 @@ class Opnpc6Packet : GamePacketDecoder(91, FixedSize(2)) {
         player: Player,
         world: World
     ): PlayerGameEvent {
-        val id = buf.readUnsignedShortLEADD()
+        val id = buf.readUnsignedShortLE()
         return NpcExamineEvent(id, player, world)
     }
 }
@@ -116,7 +116,7 @@ class OpnpctPacket : GamePacketDecoder(50, FixedSize(9)) {
         player: Player,
         world: World
     ): PlayerGameEvent {
-        val ctrlPressed = buf.readUnsignedByteSUB().toInt() == 1
+        val ctrlPressed = buf.readUnsignedByteSub().toInt() == 1
         val bitpack = buf.readInt()
         val interfaceId = bitpack shr Short.SIZE_BITS
         val interfaceSlotId = bitpack and 0xFFFF
@@ -139,7 +139,7 @@ class OpnpcuPacket : GamePacketDecoder(39, FixedSize(11)) {
         val bitpack = buf.readInt()
         val interfaceId = bitpack shr Short.SIZE_BITS
         val interfaceSlotId = bitpack and 0xFFFF
-        val ctrlPressed = buf.readUnsignedByteADD().toInt() == 1
+        val ctrlPressed = buf.readUnsignedByteAdd().toInt() == 1
         val npcId = buf.readUnsignedShort()
         return ObjOnNpcEvent(npcId, objId, interfaceId, interfaceSlotId, invSlot, ctrlPressed, player, world)
     }
