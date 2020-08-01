@@ -31,17 +31,14 @@ import io.guthix.oldscape.cache.config.NpcConfig
 import io.guthix.oldscape.cache.config.ObjectConfig
 import io.guthix.oldscape.cache.xtea.MapXtea
 import io.guthix.oldscape.server.api.*
-import io.guthix.oldscape.server.blueprints.ExtraNpcConfig
-import io.guthix.oldscape.server.blueprints.ExtraObjectConfig
-import io.guthix.oldscape.server.blueprints.equipment.*
 import io.guthix.oldscape.server.event.EventBus
+import io.guthix.oldscape.server.event.WorldInitializedEvent
 import io.guthix.oldscape.server.net.OldScapeServer
 import io.guthix.oldscape.server.net.game.GamePacketDecoder
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.Loc
 import io.guthix.oldscape.server.world.entity.Npc
 import io.guthix.oldscape.server.world.entity.Obj
-import java.io.FileNotFoundException
 import java.nio.file.Path
 import java.util.*
 
@@ -52,8 +49,7 @@ fun main(args: Array<String>) {
 object OldScape {
     @JvmStatic
     fun main(args: Array<String>) {
-        val yamlMapper = ObjectMapper(YAMLFactory()).registerKotlinModule()
-        val config = yamlMapper.loadConfig(Path.of(javaClass.getResource("/Config.yaml").toURI()))
+        val config: ServerConfig = readConfig("/Config.yaml")
 
         val cacheDir = Path.of(javaClass.getResource("/cache").toURI())
         val store = Js5HeapStore.open(Js5DiskStore.open(cacheDir), appendVersions = false)
@@ -70,23 +66,11 @@ object OldScape {
         SpotAnimBlueprints.load(configArchive)
         Obj.loadBlueprints(
             ObjectConfig.load(configArchive.readGroup(ObjectConfig.id)),
-            yamlMapper.readObjectConfig("Objects.yaml"),
-            yamlMapper.readHeadConfig("HeadEquipment.yaml"),
-            yamlMapper.readEquipmentConfig("CapeEquipment.yaml"),
-            yamlMapper.readEquipmentConfig("NeckEquipment.yaml"),
-            yamlMapper.readAmmunitionConfig("AmmunitionEquipment.yaml"),
-            yamlMapper.readWeaponConfig("WeaponEquipment.yaml"),
-            yamlMapper.readWeaponConfig("TwoHandEquipment.yaml"),
-            yamlMapper.readEquipmentConfig("ShieldEquipment.yaml"),
-            yamlMapper.readBodyConfig("BodyEquipment.yaml"),
-            yamlMapper.readEquipmentConfig("LegEquipment.yaml"),
-            yamlMapper.readEquipmentConfig("HandEquipment.yaml"),
-            yamlMapper.readEquipmentConfig("FeetEquipment.yaml"),
-            yamlMapper.readEquipmentConfig("RingEquipment.yaml")
+            readConfig("config/Objects.yaml")
         )
         Npc.loadBlueprints(
             NpcConfig.load(configArchive.readGroup(NpcConfig.id)),
-            yamlMapper.readNpcConfig("Npcs.yaml")
+            readConfig("config/Npcs.yaml")
         )
         val binariesArchive = cache.readArchive(BinariesArchive.id)
         Huffman.load(binariesArchive)
@@ -97,6 +81,7 @@ object OldScape {
         val mapSquareXteas = loadMapSquareXteaKeys(cacheDir.resolve("xteas.json"))
         val world = World()
         world.map.init(cache.readArchive(MapArchive.id), mapSquareXteas)
+        EventBus.schedule(WorldInitializedEvent(world))
         Timer().scheduleAtFixedRate(world, 0, 600)
         OldScapeServer(config.revision, config.port, config.rsa.privateKey, config.rsa.modulus, world, store).run()
     }
@@ -107,43 +92,4 @@ object OldScape {
         val mapper = ObjectMapper().registerKotlinModule()
         return mapper.readValue(path.toFile(), object : TypeReference<List<MapXtea>>() {})
     }
-
-    private fun ObjectMapper.readNpcConfig(filePath: String): List<ExtraNpcConfig> = readValue(
-        Path.of(getResource("/config/npcs/$filePath").toURI()).toFile(),
-        object : TypeReference<List<ExtraNpcConfig>>() {}
-    )
-
-    private fun ObjectMapper.readObjectConfig(filePath: String): List<ExtraObjectConfig> = readValue(
-        Path.of(getResource("/config/objects/$filePath").toURI()).toFile(),
-        object : TypeReference<List<ExtraObjectConfig>>() {}
-    )
-
-    private fun ObjectMapper.readEquipmentConfig(filePath: String): List<ExtraEquipmentConfig> = readValue(
-        Path.of(getResource("/config/objects/$filePath").toURI()).toFile(),
-        object : TypeReference<List<ExtraEquipmentConfig>>() {}
-    )
-
-    private fun ObjectMapper.readHeadConfig(filePath: String): List<ExtraHeadConfig> = readValue(
-        Path.of(getResource("/config/objects/$filePath").toURI()).toFile(),
-        object : TypeReference<List<ExtraHeadConfig>>() {}
-    )
-
-    private fun ObjectMapper.readBodyConfig(filePath: String): List<ExtraBodyConfig> = readValue(
-        Path.of(getResource("/config/objects/$filePath").toURI()).toFile(),
-        object : TypeReference<List<ExtraBodyConfig>>() {}
-    )
-
-    private fun ObjectMapper.readWeaponConfig(filePath: String): List<ExtraWeaponConfig> = readValue(
-        Path.of(getResource("/config/objects/$filePath").toURI()).toFile(),
-        object : TypeReference<List<ExtraWeaponConfig>>() {}
-    )
-
-    private fun ObjectMapper.readAmmunitionConfig(filePath: String): List<ExtraAmmunitionConfig> = readValue(
-        Path.of(getResource("/config/objects/$filePath").toURI()).toFile(),
-        object : TypeReference<List<ExtraAmmunitionConfig>>() {}
-    )
-
-    private fun getResource(filePath: String) = javaClass.getResource(filePath) ?: throw FileNotFoundException(
-        "Could not find resource file $filePath."
-    )
 }

@@ -15,6 +15,7 @@
  */
 package io.guthix.oldscape.server.world
 
+import io.guthix.oldscape.server.blueprints.PropertyHolder
 import io.guthix.oldscape.server.event.*
 import io.guthix.oldscape.server.net.game.GameDecoder
 import io.guthix.oldscape.server.net.game.GameEncoder
@@ -32,9 +33,12 @@ import io.netty.util.concurrent.PromiseCombiner
 import java.util.*
 import java.util.concurrent.ConcurrentLinkedQueue
 import java.util.concurrent.LinkedBlockingDeque
+import kotlin.reflect.KProperty
 
-class World : TimerTask(), TaskHolder, EventHolder {
+class World : TimerTask(), TaskHolder, EventHolder, PropertyHolder {
     val map: WorldMap = WorldMap(mutableMapOf())
+
+    override val properties: MutableMap<KProperty<*>, Any?> = mutableMapOf()
 
     override val events: LinkedBlockingDeque<EventHandler<GameEvent>> = LinkedBlockingDeque()
 

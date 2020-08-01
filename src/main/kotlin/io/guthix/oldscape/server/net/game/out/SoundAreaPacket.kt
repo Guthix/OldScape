@@ -15,8 +15,8 @@
  */
 package io.guthix.oldscape.server.net.game.out
 
-import io.guthix.buffer.writeByteSUB
-import io.guthix.buffer.writeShortADD
+import io.guthix.buffer.writeByteSub
+import io.guthix.buffer.writeShortAdd
 import io.guthix.oldscape.server.dimensions.FloorUnit
 import io.guthix.oldscape.server.dimensions.TileUnit
 import io.guthix.oldscape.server.net.game.FixedSize
@@ -41,9 +41,9 @@ class SoundAreaPacket(
     override fun encode(ctx: ChannelHandlerContext): ByteBuf {
         val buf = ctx.alloc().buffer(STATIC_SIZE)
         buf.writeByte(delay)
-        buf.writeByteSUB(posBitPack)
-        buf.writeShortADD(id)
-        buf.writeByteSUB((floor.value shr 4) or loopCount)
+        buf.writeByteSub(posBitPack)
+        buf.writeShortAdd(id)
+        buf.writeByteSub((floor.value shr 4) or loopCount)
         return buf
     }
 

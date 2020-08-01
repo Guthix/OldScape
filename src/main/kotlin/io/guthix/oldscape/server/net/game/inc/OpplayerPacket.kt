@@ -34,7 +34,7 @@ class Opplayer1Packet : GamePacketDecoder(60, FixedSize(3)) {
         world: World
     ): PlayerGameEvent {
         val buttonPressed = buf.readUnsignedByte().toInt() == 1
-        val index = buf.readUnsignedShortLEADD()
+        val index = buf.readUnsignedShortLE()
         return PlayerClickEvent(index, buttonPressed, 1, player, world)
     }
 }
@@ -47,8 +47,8 @@ class Opplayer2Packet : GamePacketDecoder(25, FixedSize(3)) {
         player: Player,
         world: World
     ): PlayerGameEvent {
-        val index = buf.readUnsignedShortADD()
-        val buttonPressed = buf.readUnsignedByteADD().toInt() == 1
+        val index = buf.readUnsignedShortAdd()
+        val buttonPressed = buf.readUnsignedByteAdd().toInt() == 1
         return PlayerClickEvent(index, buttonPressed, 2, player, world)
     }
 }
@@ -61,7 +61,7 @@ class Opplayer3Packet : GamePacketDecoder(59, FixedSize(3)) {
         player: Player,
         world: World
     ): PlayerGameEvent {
-        val buttonPressed = buf.readUnsignedByteADD().toInt() == 1
+        val buttonPressed = buf.readUnsignedByteAdd().toInt() == 1
         val index = buf.readUnsignedShort()
         return PlayerClickEvent(index, buttonPressed, 3, player, world)
     }
@@ -76,7 +76,7 @@ class Opplayer4Packet : GamePacketDecoder(75, FixedSize(3)) {
         world: World
     ): PlayerGameEvent {
         val index = buf.readUnsignedShort()
-        val buttonPressed = buf.readUnsignedByteSUB().toInt() == 1
+        val buttonPressed = buf.readUnsignedByteSub().toInt() == 1
         return PlayerClickEvent(index, buttonPressed, 4, player, world)
     }
 }
@@ -89,7 +89,7 @@ class Opplayer5Packet : GamePacketDecoder(51, FixedSize(3)) {
         player: Player,
         world: World
     ): PlayerGameEvent {
-        val buttonPressed = buf.readUnsignedByteADD().toInt() == 1
+        val buttonPressed = buf.readUnsignedByteAdd().toInt() == 1
         val index = buf.readUnsignedShort()
         return PlayerClickEvent(index, buttonPressed, 5, player, world)
     }
@@ -103,8 +103,8 @@ class Opplayer6Packet : GamePacketDecoder(43, FixedSize(3)) {
         player: Player,
         world: World
     ): PlayerGameEvent {
-        val buttonPressed = buf.readUnsignedByteNEG().toInt() == 1
-        val index = buf.readUnsignedShortLEADD()
+        val buttonPressed = buf.readUnsignedByteNeg().toInt() == 1
+        val index = buf.readUnsignedShortLE()
         return PlayerClickEvent(index, buttonPressed, 6, player, world)
     }
 }

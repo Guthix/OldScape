@@ -141,7 +141,7 @@ class NpcInfoSmallViewportPacket(
         )
 
         val sequence: NpcUpdateType = NpcUpdateType(0, 0x80) { npc ->
-            writeShortLEADD(npc.sequence?.id ?: 65535)
+            writeShortAddLE(npc.sequence?.id ?: 65535)
             writeByte(npc.sequence?.duration ?: 0)
         }
 
@@ -171,13 +171,13 @@ class NpcInfoSmallViewportPacket(
         }
 
         val hit: NpcUpdateType = NpcUpdateType(5, 0x1) { npc ->
-            writeByteSUB(npc.hitMarkQueue.size)
+            writeByteSub(npc.hitMarkQueue.size)
             npc.hitMarkQueue.forEach { hitMark ->
                 writeSmallSmart(hitMark.color.id)
                 writeSmallSmart(hitMark.damage)
                 writeSmallSmart(hitMark.delay)
             }
-            writeByteNEG(npc.healthBarQueue.size)
+            writeByteNeg(npc.healthBarQueue.size)
             npc.healthBarQueue.forEach { healthBar ->
                 writeSmallSmart(healthBar.id)
                 writeSmallSmart(healthBar.decreaseSpeed)

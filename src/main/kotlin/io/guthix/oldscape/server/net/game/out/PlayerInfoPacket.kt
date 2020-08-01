@@ -319,7 +319,7 @@ class PlayerInfoPacket(
         }
 
         val spotAnimation: PlayerUpdateType = PlayerUpdateType(1, 0x800) { player ->
-            writeShortADD(player.spotAnimation?.id ?: 65535)
+            writeShortAdd(player.spotAnimation?.id ?: 65535)
             writeIntLE((
                 (player.spotAnimation?.height ?: 0) shl 16) or (player.spotAnimation?.delay ?: 0)
             )
@@ -327,7 +327,7 @@ class PlayerInfoPacket(
 
         val sequence: PlayerUpdateType = PlayerUpdateType(2, 0x80) { player ->
             writeShortLE(player.sequence?.id ?: 65535)
-            writeByteNEG(player.sequence?.duration ?: 0)
+            writeByteNeg(player.sequence?.duration ?: 0)
         }
 
         val appearance: PlayerUpdateType = PlayerUpdateType(3, 0x2) { player ->
@@ -393,7 +393,7 @@ class PlayerInfoPacket(
             tempBuf.writeShort(0) // skillId level
             tempBuf.writeByte(0) // hidden
             writeByte(tempBuf.writerIndex())
-            writeBytesReversedADD(tempBuf)
+            writeBytesReversedAdd(tempBuf)
         }
 
         val shout: PlayerUpdateType = PlayerUpdateType(4, 0x20) { player ->
@@ -406,24 +406,24 @@ class PlayerInfoPacket(
                 is Player -> interacting.index + 32768
                 else -> 65535
             }
-            writeShortLEADD(index)
+            writeShortAddLE(index)
         }
 
         val movementCached: PlayerUpdateType = PlayerUpdateType(6, 0x1000) { player ->
-            writeByteNEG(if (player.inRunMode) 2 else 1)
+            writeByteNeg(if (player.inRunMode) 2 else 1)
         }
 
         val chat: PlayerUpdateType = PlayerUpdateType(7, 0x1) { player ->
-            writeShortADD((player.publicMessage!!.color shl 8) or player.publicMessage!!.effect)
-            writeByteNEG(player.rights)
-            writeByteNEG(0) // some boolean
+            writeShortAdd((player.publicMessage!!.color shl 8) or player.publicMessage!!.effect)
+            writeByteNeg(player.rights)
+            writeByteNeg(0) // some boolean
             val compressed = Unpooled.compositeBuffer(2).apply {
                 addComponents(true,
                     Unpooled.buffer(2).apply { writeSmallSmart(player.publicMessage!!.length) },
                     Unpooled.wrappedBuffer(Huffman.compress(player.publicMessage!!.message))
                 )
             }
-            writeByteADD(compressed.readableBytes())
+            writeByteAdd(compressed.readableBytes())
             writeBytes(compressed)
         }
 
@@ -451,11 +451,11 @@ class PlayerInfoPacket(
         }
 
         val movementTemporary: PlayerUpdateType = PlayerUpdateType(10, 0x400) { player ->
-            writeByteNEG(if (player.movementType == MovementInterestUpdate.TELEPORT) 127 else 0)
+            writeByteNeg(if (player.movementType == MovementInterestUpdate.TELEPORT) 127 else 0)
         }
 
         val orientation: PlayerUpdateType = PlayerUpdateType(11, 0x8) { player ->
-            writeShortADD(player.orientation)
+            writeShortAdd(player.orientation)
         }
     }
 }

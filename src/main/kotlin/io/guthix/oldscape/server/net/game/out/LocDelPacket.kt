@@ -15,7 +15,7 @@
  */
 package io.guthix.oldscape.server.net.game.out
 
-import io.guthix.buffer.writeByteNEG
+import io.guthix.buffer.writeByteNeg
 import io.guthix.oldscape.server.dimensions.TileUnit
 import io.guthix.oldscape.server.net.game.FixedSize
 import io.guthix.oldscape.server.net.game.ZoneOutGameEvent
@@ -36,7 +36,7 @@ class LocDelPacket(
 
     override fun encode(ctx: ChannelHandlerContext): ByteBuf {
         val buf = ctx.alloc().buffer(STATIC_SIZE)
-        buf.writeByteNEG((type shl 2) or (orientation and 0x3))
+        buf.writeByteNeg((type shl 2) or (orientation and 0x3))
         buf.writeByte(posBitPack)
         return buf
     }

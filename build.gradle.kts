@@ -24,8 +24,8 @@ val classGraphVersion: String by extra("4.8.53")
 val logbackVersion: String by extra("1.2.3")
 val nettyVersion: String by extra("4.1.42.Final")
 val jacksonVersion: String by extra("2.10.2")
-val oldscapeCacheVersion: String by extra("ab26665f63")
-val jagexByteBufVersion: String by extra("555807fda4")
+val oldscapeCacheVersion: String by extra("de43248ebc")
+val jagexByteBufVersion: String by extra("027bcbbc2d")
 val kotlinVersion: String by extra(project.getKotlinPluginVersion()!!)
 
 allprojects {

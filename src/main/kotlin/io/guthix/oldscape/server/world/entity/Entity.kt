@@ -15,14 +15,18 @@
  */
 package io.guthix.oldscape.server.world.entity
 
+import io.guthix.oldscape.server.blueprints.PropertyHolder
 import io.guthix.oldscape.server.dimensions.TileUnit
 import io.guthix.oldscape.server.task.Task
 import io.guthix.oldscape.server.task.TaskHolder
 import io.guthix.oldscape.server.task.TaskType
 import io.guthix.oldscape.server.world.map.Tile
+import kotlin.reflect.KProperty
 
-abstract class Entity : TaskHolder {
+abstract class Entity : TaskHolder, PropertyHolder {
     abstract val pos: Tile
+
+    override val properties: MutableMap<KProperty<*>, Any?> = mutableMapOf()
 
     abstract val sizeX: TileUnit
 

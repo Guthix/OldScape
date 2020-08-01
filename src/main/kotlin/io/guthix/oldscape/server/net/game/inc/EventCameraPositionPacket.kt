@@ -15,7 +15,6 @@
  */
 package io.guthix.oldscape.server.net.game.inc
 
-import io.guthix.buffer.readUnsignedShortLEADD
 import io.guthix.oldscape.server.event.CameraPositionChangeEvent
 import io.guthix.oldscape.server.event.PlayerGameEvent
 import io.guthix.oldscape.server.net.game.FixedSize
@@ -33,8 +32,8 @@ class EventCameraPositionPacket : GamePacketDecoder(66, FixedSize(4)) {
         player: Player,
         world: World
     ): PlayerGameEvent {
-        val angle = buf.readUnsignedShortLEADD()
-        val pitch = buf.readUnsignedShortLEADD()
+        val angle = buf.readUnsignedShortLE()
+        val pitch = buf.readUnsignedShortLE()
         return CameraPositionChangeEvent(angle, pitch, player, world)
     }
 }

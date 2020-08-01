@@ -15,7 +15,7 @@
  */
 package io.guthix.oldscape.server.net.game.out
 
-import io.guthix.buffer.writeShortADD
+import io.guthix.buffer.writeShortAdd
 import io.guthix.oldscape.server.net.game.FixedSize
 import io.guthix.oldscape.server.net.game.OutGameEvent
 import io.netty.buffer.ByteBuf
@@ -33,7 +33,7 @@ class IfSetmodelPacket(
     override fun encode(ctx: ChannelHandlerContext): ByteBuf {
         val buf = ctx.alloc().buffer(STATIC_SIZE)
         buf.writeInt((rootInterfaceId shl 16) or slotId)
-        buf.writeShortADD(modelId)
+        buf.writeShortAdd(modelId)
         return buf
     }
 

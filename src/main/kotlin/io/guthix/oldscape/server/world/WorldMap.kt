@@ -22,6 +22,8 @@ import io.guthix.oldscape.server.dimensions.FloorUnit
 import io.guthix.oldscape.server.dimensions.TileUnit
 import io.guthix.oldscape.server.dimensions.ZoneUnit
 import io.guthix.oldscape.server.dimensions.mapsquares
+import io.guthix.oldscape.server.event.EventBus
+import io.guthix.oldscape.server.event.WorldInitializedEvent
 import io.guthix.oldscape.server.world.entity.Loc
 import io.guthix.oldscape.server.world.entity.Obj
 import io.guthix.oldscape.server.world.entity.Projectile

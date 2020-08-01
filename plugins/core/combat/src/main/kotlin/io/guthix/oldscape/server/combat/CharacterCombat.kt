@@ -24,7 +24,7 @@ import io.guthix.oldscape.server.dimensions.max
 import io.guthix.oldscape.server.dimensions.tiles
 import io.guthix.oldscape.server.stat.StatMultiplier
 import io.guthix.oldscape.server.world.entity.Character
-import io.guthix.oldscape.server.world.entity.CharacterProperty
+import io.guthix.oldscape.server.world.entity.Property
 import io.guthix.oldscape.server.world.entity.Player
 
 enum class MeleeCombatStance(val attack: Int = 0, val strength: Int = 0, val defence: Int = 0, val range: Int = 0) {
@@ -37,7 +37,7 @@ enum class MeleeCombatStance(val attack: Int = 0, val strength: Int = 0, val def
     LONGRANGE(defence = 3)
 }
 
-val Character.damageMultiplier: StatMultiplier by CharacterProperty {
+val Character.damageMultiplier: StatMultiplier by Property {
     StatMultiplier(
         attack = 1.0,
         range = 1.0,
@@ -49,7 +49,7 @@ val Character.damageMultiplier: StatMultiplier by CharacterProperty {
     )
 }
 
-val Player.selectedTypes: IntArray by CharacterProperty {
+val Player.selectedTypes: IntArray by Property {
     IntArray(WeaponType.values().size)
 }
 
@@ -67,17 +67,17 @@ val Player.attackRange: TileUnit
         10.tiles, equipment.weapon?.baseAttackRange?.plus(currentStyle.style.attackRangeBonus.tiles) ?: 1.tiles
     )
 
-val Player.attackSequence: Int by CharacterProperty {
+val Player.attackSequence: Int by Property {
     equipment.weapon?.weaponSequences?.attack ?: 422
 }
 
-val Player.defenceSequence: Int by CharacterProperty {
+val Player.defenceSequence: Int by Property {
     equipment.weapon?.weaponSequences?.defence ?: 424
 }
 
-val Player.deathSequence: Int by CharacterProperty { 836 }
+val Player.deathSequence: Int by Property { 836 }
 
-var Character.inCombatWith: Character? by CharacterProperty { null }
+var Character.inCombatWith: Character? by Property { null }
 
 internal fun StyleBonus.findBonus(attackType: AttackType): Int = when (attackType) {
     AttackType.STAB -> stab

@@ -15,9 +15,9 @@
  */
 package io.guthix.oldscape.server.combat
 
-import io.guthix.oldscape.server.blueprints.AttackType
 import io.guthix.oldscape.server.combat.type.meleeAttack
 import io.guthix.oldscape.server.combat.type.rangeAttack
+import io.guthix.oldscape.server.config.AttackType
 import io.guthix.oldscape.server.event.NpcClickEvent
 
 on(NpcClickEvent::class).where { contextMenuEntry == "Attack" }.then {

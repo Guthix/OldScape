@@ -3,7 +3,7 @@ import java.nio.file.Path
 import java.nio.file.Paths
 
 pluginManagement {
-    val kotlinVersion by extra("1.4-M3")
+    val kotlinVersion by extra("1.4.0-rc")
     val dokkaVersion by extra("0.10.0")
 
     plugins {
@@ -12,16 +12,15 @@ pluginManagement {
     }
 
     repositories {
-        maven("https://dl.bintray.com/kotlin/kotlin-eap")
         mavenCentral()
-        maven("https://plugins.gradle.org/m2/")
+        gradlePluginPortal()
+        maven("https://dl.bintray.com/kotlin/kotlin-eap")
     }
 }
 
 rootProject.name = "oldscape-server"
 
 include("dimensions")
-include("blueprints")
 includeModules("plugins")
 
 fun includeModules(module: String) {

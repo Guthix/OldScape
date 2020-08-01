@@ -15,11 +15,11 @@
  */
 package io.guthix.oldscape.server.prayer
 
+import io.guthix.oldscape.server.blueprints.Property
 import io.guthix.oldscape.server.stat.StatMultiplier
-import io.guthix.oldscape.server.world.entity.CharacterProperty
 import io.guthix.oldscape.server.world.entity.Player
 
-val Player.prayerMultiplier: StatMultiplier by CharacterProperty {
+val Player.prayerMultiplier: StatMultiplier by Property {
     StatMultiplier(
         attack = 1.0,
         range = 1.0,

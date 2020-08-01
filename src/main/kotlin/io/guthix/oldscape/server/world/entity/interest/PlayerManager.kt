@@ -16,6 +16,7 @@
 package io.guthix.oldscape.server.world.entity.interest
 
 import io.guthix.oldscape.server.blueprints.CombatBonus
+import io.guthix.oldscape.server.blueprints.EquipmentType
 import io.guthix.oldscape.server.blueprints.StyleBonus
 import io.guthix.oldscape.server.dimensions.TileUnit
 import io.guthix.oldscape.server.dimensions.tiles
@@ -24,7 +25,7 @@ import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.*
 import io.guthix.oldscape.server.world.map.Tile
 import io.netty.channel.ChannelFuture
-import kotlin.properties.Delegates
+import kotlin.reflect.KProperty
 
 class PlayerManager(val index: Int) : InterestManager {
     var localPlayerCount: Int = 0
@@ -59,81 +60,81 @@ class PlayerManager(val index: Int) : InterestManager {
 
     override fun postProcess() {}
 
-    class EquipmentSet(
-        head: HeadEquipment?,
-        cape: CapeEquipment?,
-        neck: NeckEquipment?,
-        ammunition: AmmunitionEquipment?,
-        weapon: WeaponEquipment?,
-        body: BodyEquipment?,
-        shield: ShieldEquipment?,
-        legs: LegEquipment?,
-        hands: HandEquipment?,
-        feet: FeetEquipment?,
-        ring: RingEquipment?
-    ) {
-        var attackBonus: StyleBonus = StyleBonus(0, 0, 0, 0, 0) + head?.attackBonus +
-            cape?.attackBonus + neck?.attackBonus + ammunition?.attackBonus + weapon?.attackBonus + body?.attackBonus +
-            shield?.attackBonus + legs?.attackBonus + hands?.attackBonus + feet?.attackBonus + ring?.attackBonus
 
-        var defenceBonus: StyleBonus = StyleBonus(0, 0, 0, 0, 0) + head?.defenceBonus +
-            cape?.defenceBonus + neck?.defenceBonus + ammunition?.defenceBonus + weapon?.defenceBonus +
-            body?.defenceBonus + shield?.defenceBonus + legs?.defenceBonus + hands?.defenceBonus + feet?.defenceBonus +
-            ring?.defenceBonus
 
-        var strengtBonus: CombatBonus = CombatBonus(0, 0, 0) + head?.strengthBonus +
-            cape?.strengthBonus + neck?.strengthBonus + ammunition?.strengthBonus + weapon?.strengthBonus +
-            body?.strengthBonus + shield?.strengthBonus + legs?.strengthBonus + hands?.strengthBonus +
-            feet?.strengthBonus + ring?.strengthBonus
+    class EquipmentSet(internal val equipment: MutableMap<Int, Obj>) {
+        var attackBonus: StyleBonus = StyleBonus(
+            equipment.values.sumBy { it.attackBonus?.stab ?: 0 },
+            equipment.values.sumBy { it.attackBonus?.slash ?: 0 },
+            equipment.values.sumBy { it.attackBonus?.crush ?: 0 },
+            equipment.values.sumBy { it.attackBonus?.range ?: 0 },
+            equipment.values.sumBy { it.attackBonus?.magic ?: 0 }
+        )
 
-        var prayerBonus: Int = (head?.prayerBonus ?: 0) + (cape?.prayerBonus ?: 0) + (neck?.prayerBonus ?: 0) +
-            (ammunition?.prayerBonus ?: 0) + (weapon?.prayerBonus ?: 0) + (body?.prayerBonus ?: 0) +
-            (shield?.prayerBonus ?: 0) + (legs?.prayerBonus ?: 0) + (hands?.prayerBonus ?: 0) +
-            (feet?.prayerBonus ?: 0) + (ring?.prayerBonus ?: 0)
+        var defenceBonus: StyleBonus = StyleBonus(
+            equipment.values.sumBy { it.defenceBonus?.stab ?: 0 },
+            equipment.values.sumBy { it.defenceBonus?.slash ?: 0 },
+            equipment.values.sumBy { it.defenceBonus?.crush ?: 0 },
+            equipment.values.sumBy { it.defenceBonus?.range ?: 0 },
+            equipment.values.sumBy { it.defenceBonus?.magic ?: 0 }
+        )
 
-        var head: HeadEquipment? by Delegates.observable(head) { _, old, new -> updateBonuses(old, new) }
+        var strengtBonus: CombatBonus = CombatBonus(
+            equipment.values.sumBy { it.strengthBonus?.melee ?: 0 },
+            equipment.values.sumBy { it.strengthBonus?.range ?: 0 },
+            equipment.values.sumBy { it.strengthBonus?.magic ?: 0 }
+        )
 
-        var cape: CapeEquipment? by Delegates.observable(cape) { _, old, new -> updateBonuses(old, new) }
-            internal set
+        var prayerBonus: Int = equipment.values.sumBy { it.prayerBonus ?: 0 }
 
-        var neck: NeckEquipment? by Delegates.observable(neck) { _, old, new -> updateBonuses(old, new) }
-            internal set
+        var head: Obj? by EquipmentProperty(EquipmentType.HEAD)
+        var cape: Obj? by EquipmentProperty(EquipmentType.CAPE)
+        var neck: Obj? by EquipmentProperty(EquipmentType.NECK)
+        var weapon: Obj? by EquipmentProperty(EquipmentType.ONE_HAND_WEAPON)
+        var body: Obj? by EquipmentProperty(EquipmentType.BODY)
+        var shield: Obj? by EquipmentProperty(EquipmentType.SHIELD)
+        var legs: Obj? by EquipmentProperty(EquipmentType.LEGS)
+        var hands: Obj? by EquipmentProperty(EquipmentType.HANDS)
+        var feet: Obj? by EquipmentProperty(EquipmentType.FEET)
+        var ring: Obj? by EquipmentProperty(EquipmentType.RING)
+        var ammunition: Obj? by EquipmentProperty(EquipmentType.AMMUNITION)
 
-        var ammunition: AmmunitionEquipment? by Delegates.observable(ammunition) { _, old, new ->
-            updateBonuses(old, new)
+        fun equip(obj: Obj) {
+            requireNotNull(obj.equipmentType) { "Obj ${obj.id} has no equipment type." }
+            val old = equipment[obj.equipmentType!!.slot]
+            equipment[obj.equipmentType!!.slot] = obj
+            updateBonuses(old, obj)
         }
-            internal set
 
-        var weapon: WeaponEquipment? by Delegates.observable(weapon) { _, old, new -> updateBonuses(old, new) }
-            internal set
+        fun unequip(equipmentType: EquipmentType) {
+            val old = equipment.remove(equipmentType.slot)
+            removeBonuses(old)
+        }
 
-        var body: BodyEquipment? by Delegates.observable(body) { _, old, new -> updateBonuses(old, new) }
-            internal set
+        fun updateBonuses(old: Obj?, new: Obj?) {
+            removeBonuses(old)
+            addBonuses(new)
+        }
 
-        var shield: ShieldEquipment? by Delegates.observable(shield) { _, old, new -> updateBonuses(old, new) }
-            internal set
+        private fun addBonuses(obj: Obj?) {
+            attackBonus += obj?.attackBonus
+            defenceBonus += obj?.defenceBonus
+            strengtBonus += obj?.strengthBonus
+            prayerBonus += obj?.prayerBonus ?: 0
+        }
 
-        var legs: LegEquipment? by Delegates.observable(legs) { _, old, new -> updateBonuses(old, new) }
-            internal set
+        private fun removeBonuses(obj: Obj?) {
+            attackBonus -= obj?.attackBonus
+            defenceBonus -= obj?.defenceBonus
+            strengtBonus -= obj?.strengthBonus
+            prayerBonus -= obj?.prayerBonus ?: 0
+        }
 
-        var hands: HandEquipment? by Delegates.observable(hands) { _, old, new -> updateBonuses(old, new) }
-            internal set
+        class EquipmentProperty(private val type: EquipmentType) {
+            operator fun getValue(thisRef: EquipmentSet, property: KProperty<*>): Obj? = thisRef.equipment[type.slot]
 
-        var feet: FeetEquipment? by Delegates.observable(feet) { _, old, new -> updateBonuses(old, new) }
-            internal set
-
-        var ring: RingEquipment? by Delegates.observable(ring) { _, old, new -> updateBonuses(old, new) }
-            internal set
-
-        fun updateBonuses(old: Equipment?, new: Equipment?) {
-            attackBonus -= old?.attackBonus
-            defenceBonus -= old?.defenceBonus
-            strengtBonus -= old?.strengthBonus
-            prayerBonus -= old?.prayerBonus ?: 0
-            attackBonus += new?.attackBonus
-            defenceBonus += new?.defenceBonus
-            strengtBonus += new?.strengthBonus
-            prayerBonus += new?.prayerBonus ?: 0
+            operator fun setValue(thisRef: EquipmentSet, property: KProperty<*>, value: Obj?) = if(value == null)
+                thisRef.unequip(type) else thisRef.equip(value)
         }
     }
 

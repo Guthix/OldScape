@@ -15,9 +15,9 @@
  */
 package io.guthix.oldscape.server.net.game.out
 
-import io.guthix.buffer.writeByteNEG
+import io.guthix.buffer.writeByteNeg
 import io.guthix.buffer.writeIntME
-import io.guthix.buffer.writeShortLEADD
+import io.guthix.buffer.writeShortAddLE
 import io.guthix.oldscape.server.net.game.OutGameEvent
 import io.guthix.oldscape.server.net.game.VarShortSize
 import io.guthix.oldscape.server.world.entity.Obj
@@ -41,14 +41,14 @@ class UpdateInvFullPacket(
         buf.writeShort(objs.size)
         for (obj in objs) {
             if (obj == null) {
-                buf.writeShortLEADD(0)
-                buf.writeByteNEG(0)
+                buf.writeShortAddLE(0)
+                buf.writeByteNeg(0)
             } else {
-                buf.writeShortLEADD(obj.id + 1)
+                buf.writeShortAddLE(obj.id + 1)
                 if (obj.quantity <= 255) {
-                    buf.writeByteNEG(obj.quantity)
+                    buf.writeByteNeg(obj.quantity)
                 } else {
-                    buf.writeByteNEG(255)
+                    buf.writeByteNeg(255)
                     buf.writeIntME(obj.quantity)
                 }
             }
