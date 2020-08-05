@@ -23,27 +23,31 @@ import java.io.DataOutputStream
 import java.io.IOException
 import java.util.*
 
-public class Sprite(
+public data class Sprite(val offsetX: Int, val offsetY: Int, val image: BufferedImage) {
+    public val width: Int get() = image.width
+    public val height: Int get() = image.height
+    public fun getRGB(x: Int, y: Int): Int = image.getRGB(x, y)
+    public fun setRGB(x: Int, y: Int, rgb: Int) { image.setRGB(x, y, rgb) }
+}
+
+public data class SpriteSet(
     public val id: Int,
     public val width: Int,
     public val height: Int,
-    public val images: Array<BufferedImage>
+    public val sprites: List<Sprite>
 ) {
     public fun encode(): ByteBuf {
-        check(images.all { it.width == width && it.height == height } ) {
-            "All images must have the same height and width."
-        }
         val bout = ByteArrayOutputStream()
         val dout = DataOutputStream(bout)
         return dout.use { os ->
             val palette: MutableList<Int> = ArrayList()
             palette.add(0)
 
-            for (image in images) {
+            for (sprite in sprites) {
                 var flags = FLAG_VERTICAL
-                for (x in 0 until width) {
-                    for (y in 0 until height) {
-                        val argb = image.getRGB(x, y)
+                for (x in 0 until sprite.width) {
+                    for (y in 0 until sprite.height) {
+                        val argb = sprite.getRGB(x, y)
                         val alpha = argb shr 24 and 0xFF
                         var rgb = argb and 0xFFFFFF
                         if (rgb == 0) rgb = 1
@@ -56,9 +60,9 @@ public class Sprite(
                 }
 
                 os.write(flags)
-                for (x in 0 until width) {
-                    for (y in 0 until height) {
-                        val argb = image.getRGB(x, y)
+                for (x in 0 until sprite.width) {
+                    for (y in 0 until sprite.height) {
+                        val argb = sprite.getRGB(x, y)
                         val alpha = argb shr 24 and 0xFF
                         var rgb = argb and 0xFFFFFF
                         if (rgb == 0) rgb = 1
@@ -74,7 +78,7 @@ public class Sprite(
                     for (x in 0 until width) {
                         (0 until height)
                             .asSequence()
-                            .map { image.getRGB(x, it) }
+                            .map { sprite.getRGB(x, it) }
                             .map { it shr 24 and 0xFF }
                             .forEach(os::write)
                     }
@@ -92,13 +96,11 @@ public class Sprite(
             os.writeShort(height)
             os.write(palette.size - 1)
 
-            for (i in images.indices) {
-                os.writeShort(0) // set x offset to 0
-                os.writeShort(0) // set y offset to 0
-                os.writeShort(width)
-                os.writeShort(height)
-            }
-            os.writeShort(images.size)
+            for ((offsetX) in sprites) os.writeShort(offsetX) // set x offset to 0
+            for (sprite in sprites) os.writeShort(sprite.offsetY)
+            for (sprite in sprites) os.writeShort(sprite.width)
+            for (sprite in sprites) os.writeShort(sprite.height)
+            os.writeShort(sprites.size)
             Unpooled.wrappedBuffer(bout.toByteArray())
         }
     }
@@ -107,7 +109,7 @@ public class Sprite(
         private const val FLAG_VERTICAL = 0x01
         private const val FLAG_ALPHA = 0x02
 
-        public fun decode(id: Int, data: ByteBuf): Sprite {
+        public fun decode(id: Int, data: ByteBuf): SpriteSet {
             data.readerIndex(data.writerIndex() - 2)
             val spriteCount = data.readUnsignedShort()
             val offsetsX = IntArray(spriteCount)
@@ -118,18 +120,10 @@ public class Sprite(
             val width = data.readUnsignedShort()
             val height = data.readUnsignedShort()
             val palette = IntArray(data.readUnsignedByte().toInt() + 1)
-            for (i in 0 until spriteCount) {
-                offsetsX[i] = data.readUnsignedShort()
-            }
-            for (i in 0 until spriteCount) {
-                offsetsY[i] = data.readUnsignedShort()
-            }
-            for (i in 0 until spriteCount) {
-                subWidths[i] = data.readUnsignedShort()
-            }
-            for (i in 0 until spriteCount) {
-                subHeights[i] = data.readUnsignedShort()
-            }
+            for (i in 0 until spriteCount) offsetsX[i] = data.readUnsignedShort()
+            for (i in 0 until spriteCount) offsetsY[i] = data.readUnsignedShort()
+            for (i in 0 until spriteCount) subWidths[i] = data.readUnsignedShort()
+            for (i in 0 until spriteCount) subHeights[i] = data.readUnsignedShort()
 
             // read palette
             data.readerIndex(data.writerIndex() - 7 - spriteCount * 8 - (palette.size - 1) * 3)
@@ -140,12 +134,12 @@ public class Sprite(
 
             // read pixels
             data.readerIndex(0)
-            val images = Array(spriteCount) {
+            val images = List(spriteCount) {
                 val subWidth = subWidths[it]
                 val subHeight = subHeights[it]
                 val offsetX = offsetsX[it]
                 val offsetY = offsetsY[it]
-                val image = BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB)
+                val image = Sprite(offsetX, offsetY, BufferedImage(subWidth, subHeight, BufferedImage.TYPE_INT_ARGB))
                 val indices = Array(subWidth) { IntArray(subHeight) }
                 val flags = data.readUnsignedByte().toInt()
                 if (flags and FLAG_VERTICAL != 0) { // read rgb vertical first
@@ -166,14 +160,14 @@ public class Sprite(
                         for (x in 0 until subWidth) {
                             for (y in 0 until subHeight) {
                                 val alpha = data.readUnsignedByte().toInt()
-                                image.setRGB(x + offsetX, y + offsetY, alpha shl 24 or palette[indices[x][y]])
+                                image.setRGB(x, y, alpha shl 24 or palette[indices[x][y]])
                             }
                         }
                     } else { // read alpha horizontal first
                         for (y in 0 until subHeight) {
                             for (x in 0 until subWidth) {
                                 val alpha = data.readUnsignedByte().toInt()
-                                image.setRGB(x + offsetX, y + offsetY, alpha shl 24 or palette[indices[x][y]])
+                                image.setRGB(x, y, alpha shl 24 or palette[indices[x][y]])
                             }
                         }
                     }
@@ -182,16 +176,16 @@ public class Sprite(
                         for (y in 0 until subHeight) {
                             val index = indices[x][y]
                             if (index == 0) {
-                                image.setRGB(x + offsetX, y + offsetY, 0)
+                                image.setRGB(x, y, 0)
                             } else {
-                                image.setRGB(x + offsetX, y + offsetY, -0x1000000 or palette[index])
+                                image.setRGB(x, y, -0x1000000 or palette[index])
                             }
                         }
                     }
                 }
                 image
             }
-            return Sprite(id, width, height, images)
+            return SpriteSet(id, width, height, images)
         }
     }
 }
