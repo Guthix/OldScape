@@ -17,22 +17,22 @@ package io.guthix.oldscape.server.world.entity
 
 import io.guthix.cache.js5.Js5Archive
 import io.guthix.oldscape.cache.config.LocationConfig
-import io.guthix.oldscape.server.blueprints.LocationBlueprint
-import io.guthix.oldscape.server.dimensions.TileUnit
+import io.guthix.oldscape.server.template.LocationTemplate
+import io.guthix.oldscape.server.world.map.dim.TileUnit
 import io.guthix.oldscape.server.world.map.Tile
 import mu.KotlinLogging
 import java.io.IOException
 
 private val logger = KotlinLogging.logger { }
 
-fun LocationBlueprint.create(
+fun LocationTemplate.create(
     type: Int,
     pos: Tile,
     orientation: Int
 ): Loc = Loc(this, type, pos, orientation)
 
 class Loc(
-    private val blueprint: LocationBlueprint,
+    private val blueprint: LocationTemplate,
     val type: Int,
     override val pos: Tile,
     override var orientation: Int
@@ -66,16 +66,16 @@ class Loc(
         internal fun generateMapKey(localX: TileUnit, localY: TileUnit, slot: Int): Int = (localX.value shl 5) or
             (localY.value shl 2) or slot
 
-        internal lateinit var blueprints: Map<Int, LocationBlueprint>
+        internal lateinit var blueprints: Map<Int, LocationTemplate>
 
-        internal operator fun get(index: Int): LocationBlueprint = blueprints[index]
+        internal operator fun get(index: Int): LocationTemplate = blueprints[index]
             ?: throw IOException("Could not find blueprint $index.")
 
-        internal fun loadBlueprints(archive: Js5Archive) {
+        internal fun loadTemplates(archive: Js5Archive) {
             val locConfigs = LocationConfig.load(archive.readGroup(LocationConfig.id))
-            val tempLocs = mutableMapOf<Int, LocationBlueprint>()
+            val tempLocs = mutableMapOf<Int, LocationTemplate>()
             locConfigs.forEach { (id, config) ->
-                tempLocs[id] = LocationBlueprint(config)
+                tempLocs[id] = LocationTemplate(config)
             }
             blueprints = tempLocs.toMap()
             logger.info { "Loaded ${blueprints.size} location blueprints" }

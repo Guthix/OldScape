@@ -15,8 +15,8 @@
  */
 package io.guthix.oldscape.server.world.entity
 
-import io.guthix.oldscape.server.blueprints.PropertyHolder
-import io.guthix.oldscape.server.dimensions.TileUnit
+import io.guthix.oldscape.server.PropertyHolder
+import io.guthix.oldscape.server.world.map.dim.TileUnit
 import io.guthix.oldscape.server.task.Task
 import io.guthix.oldscape.server.task.TaskHolder
 import io.guthix.oldscape.server.task.TaskType

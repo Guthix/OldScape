@@ -15,8 +15,8 @@
  */
 package io.guthix.oldscape.server.playermove
 
-import io.guthix.oldscape.server.dimensions.FloorUnit
-import io.guthix.oldscape.server.dimensions.TileUnit
+import io.guthix.oldscape.server.world.map.dim.FloorUnit
+import io.guthix.oldscape.server.world.map.dim.TileUnit
 import io.guthix.oldscape.server.event.MapClickEvent
 import io.guthix.oldscape.server.event.MiniMapClickEvent
 import io.guthix.oldscape.server.pathing.DestinationTile

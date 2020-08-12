@@ -18,7 +18,7 @@ package io.guthix.oldscape.server.world.map
 import io.guthix.oldscape.cache.map.MapDefinition
 import io.guthix.oldscape.cache.map.MapLocDefinition
 import io.guthix.oldscape.cache.map.MapSquareDefinition
-import io.guthix.oldscape.server.dimensions.*
+import io.guthix.oldscape.server.world.map.dim.*
 import io.guthix.oldscape.server.world.WorldMap
 import io.guthix.oldscape.server.world.entity.Loc
 import io.guthix.oldscape.server.world.entity.Obj

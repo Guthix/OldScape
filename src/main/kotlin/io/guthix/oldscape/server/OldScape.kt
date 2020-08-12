@@ -17,7 +17,6 @@ package io.guthix.oldscape.server
 
 import com.fasterxml.jackson.core.type.TypeReference
 import com.fasterxml.jackson.databind.ObjectMapper
-import com.fasterxml.jackson.dataformat.yaml.YAMLFactory
 import com.fasterxml.jackson.module.kotlin.registerKotlinModule
 import io.guthix.cache.js5.Js5Cache
 import io.guthix.cache.js5.container.Js5Container
@@ -39,6 +38,7 @@ import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.Loc
 import io.guthix.oldscape.server.world.entity.Npc
 import io.guthix.oldscape.server.world.entity.Obj
+import io.guthix.oldscape.server.world.entity.SpotAnimation
 import java.nio.file.Path
 import java.util.*
 
@@ -49,7 +49,7 @@ fun main(args: Array<String>) {
 object OldScape {
     @JvmStatic
     fun main(args: Array<String>) {
-        val config: ServerConfig = readConfig("/Config.yaml")
+        val config: ServerConfig = readTemplate("/Config.yaml")
 
         val cacheDir = Path.of(javaClass.getResource("/cache").toURI())
         val store = Js5HeapStore.open(Js5DiskStore.open(cacheDir), appendVersions = false)
@@ -61,20 +61,18 @@ object OldScape {
 
         EnumBlueprints.load(configArchive)
         InventoryBlueprints.load(configArchive)
-        Varbits.load(configArchive)
-        Loc.loadBlueprints(configArchive)
-        SpotAnimBlueprints.load(configArchive)
-        Obj.loadBlueprints(
+        Varbits.loadTemplates(configArchive)
+        Loc.loadTemplates(configArchive)
+        SpotAnimation.loadTemplates(configArchive)
+        Obj.loadTemplates(
             ObjectConfig.load(configArchive.readGroup(ObjectConfig.id)),
-            readConfig("config/Objects.yaml")
+            readTemplate("config/Objects.yaml")
         )
-        Npc.loadBlueprints(
+        Npc.loadTemplates(
             NpcConfig.load(configArchive.readGroup(NpcConfig.id)),
-            readConfig("config/Npcs.yaml")
+            readTemplate("config/Npcs.yaml")
         )
-        val binariesArchive = cache.readArchive(BinariesArchive.id)
-        Huffman.load(binariesArchive)
-
+        Huffman.load(cache.readArchive(BinariesArchive.id))
 
         EventBus.loadScripts()
         GamePacketDecoder.loadIncPackets()

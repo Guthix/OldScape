@@ -16,7 +16,7 @@
 package io.guthix.oldscape.server.net.game.inc
 
 import io.guthix.buffer.*
-import io.guthix.oldscape.server.dimensions.tiles
+import io.guthix.oldscape.server.world.map.dim.tiles
 import io.guthix.oldscape.server.event.LocationClickEvent
 import io.guthix.oldscape.server.event.PlayerGameEvent
 import io.guthix.oldscape.server.net.game.FixedSize

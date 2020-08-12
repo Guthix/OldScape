@@ -15,7 +15,7 @@
  */
 package io.guthix.oldscape.server.prayer
 
-import io.guthix.oldscape.server.blueprints.Property
+import io.guthix.oldscape.server.Property
 import io.guthix.oldscape.server.stat.StatMultiplier
 import io.guthix.oldscape.server.world.entity.Player
 

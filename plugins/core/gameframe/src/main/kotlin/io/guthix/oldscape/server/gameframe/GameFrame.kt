@@ -16,7 +16,6 @@
 package io.guthix.oldscape.server.gameframe
 
 import io.guthix.oldscape.cache.config.EnumConfig
-import io.guthix.oldscape.server.Enums
 import io.guthix.oldscape.server.world.entity.Player
 
 enum class GameFrame(val interfaceId: Int, val enum: Map<EnumConfig.Component, EnumConfig.Component>) {

@@ -17,8 +17,8 @@ package io.guthix.oldscape.server.template
 
 import io.guthix.oldscape.cache.config.LocationConfig
 import io.guthix.oldscape.server.PropertyHolder
-import io.guthix.oldscape.server.dimensions.TileUnit
-import io.guthix.oldscape.server.dimensions.tiles
+import io.guthix.oldscape.server.world.map.dim.TileUnit
+import io.guthix.oldscape.server.world.map.dim.tiles
 import kotlin.reflect.KProperty
 
 data class LocationTemplate(private val config: LocationConfig) : PropertyHolder {

@@ -15,10 +15,10 @@
  */
 package io.guthix.oldscape.server.world.entity
 
-import io.guthix.oldscape.server.blueprints.ProjectileBlueprint
+import io.guthix.oldscape.server.template.ProjectileTemplate
 import io.guthix.oldscape.server.world.map.Tile
 
-class Projectile(private val bp: ProjectileBlueprint, val start: Tile, val target: Character) {
+data class Projectile(private val bp: ProjectileTemplate, val start: Tile, val target: Character) {
     val id: Int get() = bp.id
 
     val startHeight: Int get() = bp.startHeight

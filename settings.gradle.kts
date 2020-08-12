@@ -20,7 +20,6 @@ pluginManagement {
 
 rootProject.name = "oldscape-server"
 
-include("dimensions")
 includeModules("plugins")
 
 fun includeModules(module: String) {

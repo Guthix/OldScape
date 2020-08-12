@@ -17,6 +17,8 @@ package io.guthix.oldscape.server.combat.dmg
 
 import io.guthix.oldscape.server.combat.currentStyle
 import io.guthix.oldscape.server.combat.damageMultiplier
+import io.guthix.oldscape.server.equipment.attackBonus
+import io.guthix.oldscape.server.equipment.strengtBonus
 import io.guthix.oldscape.server.prayer.prayerMultiplier
 import io.guthix.oldscape.server.world.entity.Player
 import kotlin.math.floor

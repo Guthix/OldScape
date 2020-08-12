@@ -15,12 +15,11 @@
  */
 package io.guthix.oldscape.server.world.entity.interest
 
-import io.guthix.oldscape.server.blueprints.CombatBonus
-import io.guthix.oldscape.server.blueprints.EquipmentType
-import io.guthix.oldscape.server.blueprints.StyleBonus
-import io.guthix.oldscape.server.dimensions.TileUnit
-import io.guthix.oldscape.server.dimensions.tiles
+import io.guthix.oldscape.server.PropertyHolder
+import io.guthix.oldscape.server.world.map.dim.TileUnit
+import io.guthix.oldscape.server.world.map.dim.tiles
 import io.guthix.oldscape.server.net.game.out.PlayerInfoPacket
+import io.guthix.oldscape.server.template.EquipmentType
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.*
 import io.guthix.oldscape.server.world.map.Tile
@@ -60,82 +59,27 @@ class PlayerManager(val index: Int) : InterestManager {
 
     override fun postProcess() {}
 
-
-
-    class EquipmentSet(internal val equipment: MutableMap<Int, Obj>) {
-        var attackBonus: StyleBonus = StyleBonus(
-            equipment.values.sumBy { it.attackBonus?.stab ?: 0 },
-            equipment.values.sumBy { it.attackBonus?.slash ?: 0 },
-            equipment.values.sumBy { it.attackBonus?.crush ?: 0 },
-            equipment.values.sumBy { it.attackBonus?.range ?: 0 },
-            equipment.values.sumBy { it.attackBonus?.magic ?: 0 }
-        )
-
-        var defenceBonus: StyleBonus = StyleBonus(
-            equipment.values.sumBy { it.defenceBonus?.stab ?: 0 },
-            equipment.values.sumBy { it.defenceBonus?.slash ?: 0 },
-            equipment.values.sumBy { it.defenceBonus?.crush ?: 0 },
-            equipment.values.sumBy { it.defenceBonus?.range ?: 0 },
-            equipment.values.sumBy { it.defenceBonus?.magic ?: 0 }
-        )
-
-        var strengtBonus: CombatBonus = CombatBonus(
-            equipment.values.sumBy { it.strengthBonus?.melee ?: 0 },
-            equipment.values.sumBy { it.strengthBonus?.range ?: 0 },
-            equipment.values.sumBy { it.strengthBonus?.magic ?: 0 }
-        )
-
-        var prayerBonus: Int = equipment.values.sumBy { it.prayerBonus ?: 0 }
-
-        var head: Obj? by EquipmentProperty(EquipmentType.HEAD)
-        var cape: Obj? by EquipmentProperty(EquipmentType.CAPE)
-        var neck: Obj? by EquipmentProperty(EquipmentType.NECK)
-        var weapon: Obj? by EquipmentProperty(EquipmentType.ONE_HAND_WEAPON)
-        var body: Obj? by EquipmentProperty(EquipmentType.BODY)
-        var shield: Obj? by EquipmentProperty(EquipmentType.SHIELD)
-        var legs: Obj? by EquipmentProperty(EquipmentType.LEGS)
-        var hands: Obj? by EquipmentProperty(EquipmentType.HANDS)
-        var feet: Obj? by EquipmentProperty(EquipmentType.FEET)
-        var ring: Obj? by EquipmentProperty(EquipmentType.RING)
-        var ammunition: Obj? by EquipmentProperty(EquipmentType.AMMUNITION)
+    class EquipmentSet(val equipment: MutableMap<Int, Obj>) : PropertyHolder {
+        var head: Obj? = equipment[EquipmentType.HEAD.slot]
+        var cape: Obj? = equipment[EquipmentType.CAPE.slot]
+        var neck: Obj? = equipment[EquipmentType.NECK.slot]
+        var weapon: Obj? = equipment[EquipmentType.ONE_HAND_WEAPON.slot]
+        var body: Obj? = equipment[EquipmentType.BODY.slot]
+        var shield: Obj? = equipment[EquipmentType.SHIELD.slot]
+        var legs: Obj? = equipment[EquipmentType.LEGS.slot]
+        var hands: Obj? = equipment[EquipmentType.HANDS.slot]
+        var feet: Obj? = equipment[EquipmentType.FEET.slot]
+        var ring: Obj? = equipment[EquipmentType.RING.slot]
+        var ammunition: Obj? = equipment[EquipmentType.AMMUNITION.slot]
 
         fun equip(obj: Obj) {
             requireNotNull(obj.equipmentType) { "Obj ${obj.id} has no equipment type." }
-            val old = equipment[obj.equipmentType!!.slot]
             equipment[obj.equipmentType!!.slot] = obj
-            updateBonuses(old, obj)
         }
 
-        fun unequip(equipmentType: EquipmentType) {
-            val old = equipment.remove(equipmentType.slot)
-            removeBonuses(old)
-        }
+        fun unequip(equipmentType: EquipmentType): Obj? = equipment.remove(equipmentType.slot)
 
-        fun updateBonuses(old: Obj?, new: Obj?) {
-            removeBonuses(old)
-            addBonuses(new)
-        }
-
-        private fun addBonuses(obj: Obj?) {
-            attackBonus += obj?.attackBonus
-            defenceBonus += obj?.defenceBonus
-            strengtBonus += obj?.strengthBonus
-            prayerBonus += obj?.prayerBonus ?: 0
-        }
-
-        private fun removeBonuses(obj: Obj?) {
-            attackBonus -= obj?.attackBonus
-            defenceBonus -= obj?.defenceBonus
-            strengtBonus -= obj?.strengthBonus
-            prayerBonus -= obj?.prayerBonus ?: 0
-        }
-
-        class EquipmentProperty(private val type: EquipmentType) {
-            operator fun getValue(thisRef: EquipmentSet, property: KProperty<*>): Obj? = thisRef.equipment[type.slot]
-
-            operator fun setValue(thisRef: EquipmentSet, property: KProperty<*>, value: Obj?) = if(value == null)
-                thisRef.unequip(type) else thisRef.equip(value)
-        }
+        override val properties: MutableMap<KProperty<*>, Any?> = mutableMapOf()
     }
 
     data class Style(

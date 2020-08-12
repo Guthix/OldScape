@@ -15,24 +15,4 @@
  */
 package io.guthix.oldscape.server.template
 
-import io.guthix.cache.js5.Js5Archive
-import io.guthix.oldscape.cache.config.SpotAnimConfig
-import mu.KotlinLogging
-import java.io.IOException
-
-private val logger = KotlinLogging.logger { }
-
-data class SpotAnimTemplate(val id: Int, val height: Int, val delay: Int = 0, val sequenceTemplate: SequenceTemplate) {
-    companion object {
-        private lateinit var configs: Map<Int, SpotAnimConfig>
-
-        operator fun get(index: Int): SpotAnimConfig = configs[index] ?: throw IOException(
-            "Could not find spot animation $index."
-        )
-
-        fun load(archive: Js5Archive) {
-            configs = SpotAnimConfig.load(archive.readGroup(SpotAnimConfig.id))
-            logger.info { "Loaded ${configs.size} spot animations" }
-        }
-    }
-}
+data class SpotAnimTemplate(val id: Int, val duration: Int?)

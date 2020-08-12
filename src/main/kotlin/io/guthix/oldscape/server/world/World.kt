@@ -15,7 +15,7 @@
  */
 package io.guthix.oldscape.server.world
 
-import io.guthix.oldscape.server.blueprints.PropertyHolder
+import io.guthix.oldscape.server.PropertyHolder
 import io.guthix.oldscape.server.event.*
 import io.guthix.oldscape.server.net.game.GameDecoder
 import io.guthix.oldscape.server.net.game.GameEncoder

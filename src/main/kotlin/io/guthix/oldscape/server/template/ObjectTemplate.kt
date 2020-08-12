@@ -24,52 +24,14 @@ enum class EquipmentType(val slot: Int) {
     SHIELD(5), LEGS(7), HANDS(9), FEET(10), RING(11), AMMUNITION(13)
 }
 
-data class ExtraBonusConfig(
-    val attackBonus: StyleBonus,
-    val defenceBonus: StyleBonus,
-    val strengthBonus: CombatBonus,
-    val prayerBonus: Int
-)
-
-data class ExtraEquipmentConfig(
-    val type: EquipmentType,
-    val isFullBody: Boolean?,
-    val coversFace: Boolean?,
-    val coversHair: Boolean?,
-    val stanceSequences: StanceSequences?,
-    val bonuses: ExtraBonusConfig?
-) {
-    val attackBonus: StyleBonus? get() = bonuses?.attackBonus
-    val strengthBonus: CombatBonus? get() = bonuses?.strengthBonus
-    val defenceBonus: StyleBonus? get() = bonuses?.defenceBonus
-    val prayerBonus: Int? get() = bonuses?.prayerBonus
-}
-
-data class ExtraObjectConfig(
-    val ids: List<Int>,
-    val weight: Float,
-    val examine: String,
-    val equipment: ExtraEquipmentConfig?
-) {
-    val equipmentType: EquipmentType? get() = equipment?.type
-    val isFullBody: Boolean? get() = equipment?.isFullBody
-    val coversFace: Boolean? get() = equipment?.coversFace
-    val coversHair: Boolean? get() = equipment?.coversHair
-    val stanceSequences: StanceSequences? = equipment?.stanceSequences
-    val attackBonus: StyleBonus? get() = equipment?.attackBonus
-    val strengthBonus: CombatBonus? get() = equipment?.strengthBonus
-    val defenceBonus: StyleBonus? get() = equipment?.defenceBonus
-    val prayerBonus: Int? get() = equipment?.prayerBonus
-}
-
-data class ObjectBlueprint(
+data class ObjectTemplate(
     private val cacheConfig: ObjectConfig,
-    private val extraConfig: ExtraObjectConfig
+    private val engineTemplate: ObjectEngineTemplate
 ) : PropertyHolder {
     val id: Int get() = cacheConfig.id
     val name: String get() = cacheConfig.name
-    val weight: Float get() = extraConfig.weight
-    val examines: String get() = extraConfig.examine
+    val weight: Float get() = engineTemplate.weight
+    val examines: String get() = engineTemplate.examine
     val isStackable: Boolean get() = cacheConfig.stackable
     val isTradable: Boolean get() = cacheConfig.tradable
     val notedId: Int? get() = cacheConfig.notedId
@@ -78,14 +40,41 @@ data class ObjectBlueprint(
     val isPlaceHolder: Boolean get() = cacheConfig.isPlaceHolder
     val interfaceOperations: Array<String?> get() = cacheConfig.iop
     val groundOperations: Array<String?> get() = cacheConfig.groundActions
-    val equipmentType: EquipmentType? get() = extraConfig.equipmentType
-    val isFullBody: Boolean? get() = extraConfig.isFullBody
-    val coversFace: Boolean? get() = extraConfig.coversFace
-    val coversHair: Boolean? get() = extraConfig.coversHair
-    val stanceSequences: StanceSequences? get() = extraConfig.stanceSequences
-    val attackBonus: StyleBonus? get() = extraConfig.attackBonus
-    val strengthBonus: CombatBonus? get() = extraConfig.strengthBonus
-    val defenceBonus: StyleBonus? get() = extraConfig.defenceBonus
-    val prayerBonus: Int? get() = extraConfig.prayerBonus
+    val equipmentType: EquipmentType? get() = engineTemplate.equipmentType
+    val isFullBody: Boolean? get() = engineTemplate.isFullBody
+    val coversFace: Boolean? get() = engineTemplate.coversFace
+    val coversHair: Boolean? get() = engineTemplate.coversHair
+    val stanceSequences: StanceSequences? get() = engineTemplate.stanceSequences
     override val properties: MutableMap<KProperty<*>, Any?> = mutableMapOf()
 }
+
+data class ObjectEngineTemplate(
+    val ids: List<Int>,
+    val weight: Float,
+    val examine: String,
+    val equipment: EquipmentEngineTemplate?
+) {
+    val equipmentType: EquipmentType? get() = equipment?.type
+    val isFullBody: Boolean? get() = equipment?.isFullBody
+    val coversFace: Boolean? get() = equipment?.coversFace
+    val coversHair: Boolean? get() = equipment?.coversHair
+    val stanceSequences: StanceSequences? = equipment?.stanceSequences
+}
+
+data class EquipmentEngineTemplate(
+    val type: EquipmentType,
+    val isFullBody: Boolean?,
+    val coversFace: Boolean?,
+    val coversHair: Boolean?,
+    val stanceSequences: StanceSequences?,
+)
+
+data class StanceSequences(
+    val stand: Int,
+    val turn: Int,
+    val walk: Int,
+    val turn180: Int,
+    val turn90CW: Int,
+    val turn90CCW: Int,
+    var run: Int
+)

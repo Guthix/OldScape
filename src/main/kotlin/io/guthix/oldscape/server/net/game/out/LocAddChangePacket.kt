@@ -17,7 +17,7 @@ package io.guthix.oldscape.server.net.game.out
 
 import io.guthix.buffer.writeByteSub
 import io.guthix.buffer.writeShortAddLE
-import io.guthix.oldscape.server.dimensions.TileUnit
+import io.guthix.oldscape.server.world.map.dim.TileUnit
 import io.guthix.oldscape.server.net.game.FixedSize
 import io.guthix.oldscape.server.net.game.ZoneOutGameEvent
 import io.netty.buffer.ByteBuf

@@ -15,7 +15,7 @@
  */
 package io.guthix.oldscape.server.event
 
-import io.guthix.oldscape.server.dimensions.TileUnit
+import io.guthix.oldscape.server.world.map.dim.TileUnit
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.Player
 

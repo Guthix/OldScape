@@ -17,8 +17,8 @@ package io.guthix.oldscape.server.net.game.out
 
 import io.guthix.buffer.*
 import io.guthix.oldscape.server.api.Huffman
-import io.guthix.oldscape.server.dimensions.floors
-import io.guthix.oldscape.server.dimensions.tiles
+import io.guthix.oldscape.server.world.map.dim.floors
+import io.guthix.oldscape.server.world.map.dim.tiles
 import io.guthix.oldscape.server.net.game.OutGameEvent
 import io.guthix.oldscape.server.net.game.VarShortSize
 import io.guthix.oldscape.server.world.PlayerList

@@ -16,12 +16,12 @@
 package io.guthix.oldscape.server.world.entity
 
 import io.guthix.oldscape.cache.config.NpcConfig
-import io.guthix.oldscape.server.blueprints.*
-import io.guthix.oldscape.server.dimensions.TileUnit
-import io.guthix.oldscape.server.dimensions.tiles
+import io.guthix.oldscape.server.world.map.dim.TileUnit
+import io.guthix.oldscape.server.world.map.dim.tiles
 import io.guthix.oldscape.server.net.game.out.NpcInfoSmallViewportPacket
-import io.guthix.oldscape.server.plugin.ConfigDataMissingException
 import io.guthix.oldscape.server.task.Task
+import io.guthix.oldscape.server.template.NpcEngineTemplate
+import io.guthix.oldscape.server.template.NpcTemplate
 import io.guthix.oldscape.server.world.entity.interest.NpcUpdateType
 import io.guthix.oldscape.server.world.map.Tile
 import mu.KotlinLogging
@@ -29,18 +29,18 @@ import java.io.IOException
 
 private val logger = KotlinLogging.logger { }
 
-class Npc(private val blueprint: NpcBlueprint, index: Int, override var pos: Tile) : Character(index) {
+class Npc(val template: NpcTemplate, index: Int, override var pos: Tile) : Character(index) {
     val spawnPos: Tile = pos.copy()
 
     override val updateFlags = sortedSetOf<NpcUpdateType>()
 
-    val id: Int get() = blueprint.id
+    val id: Int get() = template.id
 
-    override val size: TileUnit get() = blueprint.size.tiles
+    override val size: TileUnit get() = template.size.tiles
 
-    val contextMenu: Array<String?> get() = blueprint.contextMenu
+    val contextMenu: Array<String?> get() = template.contextMenu
 
-    val wanderRadius: TileUnit get() = blueprint.wanderRadius
+    val wanderRadius: TileUnit get() = template.wanderRadius
 
     override fun processTasks() {
         while (true) {
@@ -64,30 +64,25 @@ class Npc(private val blueprint: NpcBlueprint, index: Int, override var pos: Til
     override fun addShoutFlag(): Boolean = updateFlags.add(NpcInfoSmallViewportPacket.shout)
 
     companion object {
-        internal lateinit var blueprints: Map<Int, NpcBlueprint>
+        internal lateinit var blueprints: Map<Int, NpcTemplate>
 
-        internal inline operator fun <reified T : NpcBlueprint> get(index: Int): T {
-            val bp = blueprints[index] ?: throw IOException("Could not find blueprint $index.")
-            if (bp !is T) {
-                throw TypeCastException("")
-            }
-            return bp
-        }
+        internal operator fun get(index: Int): NpcTemplate = blueprints[index] ?:
+            throw IOException("Could not find blueprint $index.")
 
-        internal fun loadBlueprints(
+        internal fun loadTemplates(
             cConfigs: Map<Int, NpcConfig>,
-            extraNpcConfigs: List<ExtraNpcConfig>
+            extraNpcConfigs: List<NpcEngineTemplate>
         ) {
-            blueprints = mutableMapOf<Int, NpcBlueprint>().apply {
-                addBlueprints(cConfigs, extraNpcConfigs, ::NpcBlueprint)
+            blueprints = mutableMapOf<Int, NpcTemplate>().apply {
+                addBlueprints(cConfigs, extraNpcConfigs, ::NpcTemplate)
             }
             logger.info { "Loaded ${blueprints.size} npc blueprints" }
         }
 
-        private fun <E : ExtraNpcConfig, B : NpcBlueprint> MutableMap<Int, NpcBlueprint>.addBlueprints(
+        private fun <E : NpcEngineTemplate> MutableMap<Int, NpcTemplate>.addBlueprints(
             cacheConfigs: Map<Int, NpcConfig>,
             extraObjectConfigs: List<E>,
-            construct: (NpcConfig, E) -> B
+            construct: (NpcConfig, E) -> NpcTemplate
         ) {
             extraObjectConfigs.forEach { extraConfig ->
                 extraConfig.ids.forEach inner@{ id ->

@@ -15,24 +15,24 @@
  */
 package io.guthix.server.skills.magic
 
-import io.guthix.oldscape.server.blueprints.SpotAnimBlueprint
+import io.guthix.oldscape.server.template.SpotAnimTemplate
 
 enum class CombatSpell(
     interfaceId: Int,
     interfaceSlotId: Int,
     castSound: Int,
     castAnim: Int,
-    castSpotAnim: SpotAnimBlueprint,
-    impactSpotAnim: SpotAnimBlueprint
+    castSpotAnim: SpotAnimTemplate,
+    impactSpotAnim: SpotAnimTemplate
 ) {
-    WIND_STRIKE(
-        interfaceId = 198,
-        interfaceSlotId = 10,
-        castSound = 220,
-        castAnim = 711,
-        castSpotAnim = SpotAnimBlueprint(id = 92, height = 124),
-        impactSpotAnim = SpotAnimBlueprint(id = 90, height = 92),
-    )
+//    WIND_STRIKE(
+//        interfaceId = 198,
+//        interfaceSlotId = 10,
+//        castSound = 220,
+//        castAnim = 711,
+//        castSpotAnim = SpotAnimTemplate(id = 92, height = 124),
+//        impactSpotAnim = SpotAnimTemplate(id = 90, height = 92),
+//    )
 }
 
 //fun genSpellBook() {
