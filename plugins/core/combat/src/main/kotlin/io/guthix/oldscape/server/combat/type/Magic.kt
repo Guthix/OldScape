@@ -15,8 +15,6 @@
  */
 package io.guthix.oldscape.server.combat.type
 
-import io.guthix.oldscape.server.blueprints.SequenceBlueprint
-import io.guthix.oldscape.server.blueprints.SpotAnimBlueprint
 import io.guthix.oldscape.server.combat.attackRange
 import io.guthix.oldscape.server.combat.attackSpeed
 import io.guthix.oldscape.server.combat.dmg.calcHit
@@ -27,19 +25,22 @@ import io.guthix.oldscape.server.pathing.DestinationRange
 import io.guthix.oldscape.server.pathing.breadthFirstSearch
 import io.guthix.oldscape.server.plugin.ConfigDataMissingException
 import io.guthix.oldscape.server.task.NormalTask
+import io.guthix.oldscape.server.template.SequenceTemplate
+import io.guthix.oldscape.server.template.SpotAnimTemplate
+import io.guthix.oldscape.server.template.sequences
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.HitMark
 import io.guthix.oldscape.server.world.entity.Npc
 import io.guthix.oldscape.server.world.entity.Player
 import io.guthix.oldscape.server.world.entity.Projectile
 
-val SPLASH_ANIMATION_BLUEPRINT: SpotAnimBlueprint = SpotAnimBlueprint(id = 85, height = 124) // sound 227
+val SPLASH_ANIMATION_BLUEPRINT: SpotAnimTemplate = SpotAnimTemplate(id = 85, height = 124) // sound 227
 
 fun Player.magicAttack(
     npc: Npc,
     world: World,
-    castAnim: SequenceBlueprint,
-    spellAnim: SpotAnimBlueprint,
+    castAnim: SequenceTemplate,
+    spellAnim: SpotAnimTemplate,
     projectile: Projectile,
     maxHit: (Player, Npc) -> Int
 ) {
@@ -63,7 +64,7 @@ fun Player.magicAttack(
                     wait(ticks = projectile.lifeTimeServerTicks - 1)
                     val hmColor = if (damage == 0) HitMark.Color.BLUE else HitMark.Color.RED
                     npc.hit(hmColor, damage, 0)
-                    npc.animate(npc.combatSequences?.defence ?: throw ConfigDataMissingException(
+                    npc.animate(npc.sequences?.defence ?: throw ConfigDataMissingException(
                         "No block animation for npc $npc."
                     ))
                 }

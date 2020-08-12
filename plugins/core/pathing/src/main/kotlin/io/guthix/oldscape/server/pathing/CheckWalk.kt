@@ -15,10 +15,10 @@
  */
 package io.guthix.oldscape.server.pathing
 
-import io.guthix.oldscape.server.dimensions.FloorUnit
-import io.guthix.oldscape.server.dimensions.TileUnit
-import io.guthix.oldscape.server.dimensions.tiles
-import io.guthix.oldscape.server.dimensions.until
+import io.guthix.oldscape.server.world.map.dim.FloorUnit
+import io.guthix.oldscape.server.world.map.dim.TileUnit
+import io.guthix.oldscape.server.world.map.dim.tiles
+import io.guthix.oldscape.server.world.map.dim.until
 import io.guthix.oldscape.server.world.WorldMap
 import io.guthix.oldscape.server.world.map.ZoneCollision
 

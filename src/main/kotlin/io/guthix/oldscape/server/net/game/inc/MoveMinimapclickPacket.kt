@@ -15,7 +15,7 @@
  */
 package io.guthix.oldscape.server.net.game.inc
 
-import io.guthix.oldscape.server.dimensions.tiles
+import io.guthix.oldscape.server.world.map.dim.tiles
 import io.guthix.oldscape.server.event.MiniMapClickEvent
 import io.guthix.oldscape.server.net.game.GamePacketDecoder
 import io.guthix.oldscape.server.net.game.VarByteSize

@@ -16,61 +16,58 @@
 package io.guthix.oldscape.server.world.entity
 
 import io.guthix.oldscape.cache.config.ObjectConfig
-import io.guthix.oldscape.server.blueprints.*
+import io.guthix.oldscape.server.PropertyHolder
+import io.guthix.oldscape.server.template.*
 import mu.KotlinLogging
 import java.io.IOException
 import kotlin.reflect.KProperty
 
 private val logger = KotlinLogging.logger { }
 
-fun ObjectBlueprint.create(amount: Int): Obj = Obj(this, amount)
+fun ObjectTemplate.create(amount: Int): Obj = Obj(this, amount)
 
-data class Obj(private val blueprint: ObjectBlueprint, var quantity: Int) : PropertyHolder {
-    val id: Int get() = blueprint.id
-    val name: String get() = blueprint.name
-    val weight: Float get() = blueprint.weight
-    val examines: String get() = blueprint.examines
-    val isStackable: Boolean get() = blueprint.isStackable
-    val isTradable: Boolean get() = blueprint.isTradable
-    val notedId: Int? get() = blueprint.notedId
-    val isNoted: Boolean get() = blueprint.isNoted
-    val placeHolderId: Int? get() = blueprint.placeHolderId
-    val isPlaceHolder: Boolean get() = blueprint.isPlaceHolder
-    val interfaceOperations: Array<String?> get() = blueprint.interfaceOperations
-    val groundOperations: Array<String?> get() = blueprint.groundOperations
-    val equipmentType: EquipmentType? get() = blueprint.equipmentType
-    val isFullBody: Boolean get() = blueprint.isFullBody ?: false
-    val coversFace: Boolean get() = blueprint.coversFace ?: false
-    val coversHair: Boolean get() = blueprint.coversHair ?: false
-    val stanceSequences: StanceSequences? get() = blueprint.stanceSequences
-    val attackBonus: StyleBonus? get() = blueprint.attackBonus
-    val strengthBonus: CombatBonus? get() = blueprint.strengthBonus
-    val defenceBonus: StyleBonus? get() = blueprint.defenceBonus
-    val prayerBonus: Int? get() = blueprint.prayerBonus
+data class Obj(val template: ObjectTemplate, var quantity: Int) : PropertyHolder {
+    val id: Int get() = template.id
+    val name: String get() = template.name
+    val weight: Float get() = template.weight
+    val examines: String get() = template.examines
+    val isStackable: Boolean get() = template.isStackable
+    val isTradable: Boolean get() = template.isTradable
+    val notedId: Int? get() = template.notedId
+    val isNoted: Boolean get() = template.isNoted
+    val placeHolderId: Int? get() = template.placeHolderId
+    val isPlaceHolder: Boolean get() = template.isPlaceHolder
+    val interfaceOperations: Array<String?> get() = template.interfaceOperations
+    val groundOperations: Array<String?> get() = template.groundOperations
+    val equipmentType: EquipmentType? get() = template.equipmentType
+    val isFullBody: Boolean get() = template.isFullBody ?: false
+    val coversFace: Boolean get() = template.coversFace ?: false
+    val coversHair: Boolean get() = template.coversHair ?: false
+    val stanceSequences: StanceSequences? get() = template.stanceSequences
 
     override val properties: MutableMap<KProperty<*>, Any?> = mutableMapOf()
 
     companion object {
-        internal lateinit var blueprints: Map<Int, ObjectBlueprint>
+        lateinit var templates: Map<Int, ObjectTemplate>
 
-        internal operator fun get(index: Int): ObjectBlueprint = blueprints[index] ?: throw IOException(
+        operator fun get(index: Int): ObjectTemplate = templates[index] ?: throw IOException(
             "Could not find blueprint $index."
         )
 
-        internal fun loadBlueprints(
+        internal fun loadTemplates(
             cConfigs: Map<Int, ObjectConfig>,
-            eObjectConfigs: List<ExtraObjectConfig>,
+            eObjectConfigs: List<ObjectEngineTemplate>,
         ) {
-            blueprints = mutableMapOf<Int, ObjectBlueprint>().apply {
-                addBlueprints(cConfigs, eObjectConfigs, ::ObjectBlueprint)
+            templates = mutableMapOf<Int, ObjectTemplate>().apply {
+                addBlueprints(cConfigs, eObjectConfigs, ::ObjectTemplate)
             }
-            logger.info { "Loaded ${blueprints.size} object blueprints" }
+            logger.info { "Loaded ${templates.size} object blueprints" }
         }
 
-        private fun MutableMap<Int, ObjectBlueprint>.addBlueprints(
+        private fun MutableMap<Int, ObjectTemplate>.addBlueprints(
             cacheConfigs: Map<Int, ObjectConfig>,
-            extraObjectConfigs: List<ExtraObjectConfig>,
-            construct: (ObjectConfig, ExtraObjectConfig) -> ObjectBlueprint
+            extraObjectConfigs: List<ObjectEngineTemplate>,
+            construct: (ObjectConfig, ObjectEngineTemplate) -> ObjectTemplate
         ) {
             extraObjectConfigs.forEach { extraConfig ->
                 extraConfig.ids.forEach inner@{ id ->

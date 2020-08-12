@@ -16,7 +16,9 @@
 package io.guthix.oldscape.server.equipment
 
 import io.guthix.oldscape.server.event.*
+import io.guthix.oldscape.server.net.game.out.PlayerInfoPacket
 import io.guthix.oldscape.server.plugin.InvalidClientMessageException
+import io.guthix.oldscape.server.template.EquipmentType
 import io.guthix.oldscape.server.world.entity.*
 
 on(InvObjClickEvent::class).then {

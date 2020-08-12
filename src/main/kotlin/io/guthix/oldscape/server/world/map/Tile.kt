@@ -15,8 +15,8 @@
  */
 package io.guthix.oldscape.server.world.map
 
-import io.guthix.oldscape.server.dimensions.FloorUnit
-import io.guthix.oldscape.server.dimensions.TileUnit
+import io.guthix.oldscape.server.world.map.dim.FloorUnit
+import io.guthix.oldscape.server.world.map.dim.TileUnit
 import kotlin.math.abs
 import kotlin.math.ceil
 import kotlin.math.sqrt

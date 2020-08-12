@@ -17,13 +17,13 @@ package io.guthix.oldscape.server.template
 
 import io.guthix.oldscape.cache.config.NpcConfig
 import io.guthix.oldscape.server.PropertyHolder
-import io.guthix.oldscape.server.dimensions.TileUnit
-import io.guthix.oldscape.server.dimensions.tiles
+import io.guthix.oldscape.server.world.map.dim.TileUnit
+import io.guthix.oldscape.server.world.map.dim.tiles
 import kotlin.reflect.KProperty
 
-open class NpcBlueprint(
+data class NpcTemplate(
     private val cacheConfig: NpcConfig,
-    protected open val extraConfig: ExtraNpcConfig
+    private val extraConfig: NpcEngineTemplate
 ) : PropertyHolder {
     val id: Int get() = cacheConfig.id
     val size: Int get() = cacheConfig.size.toInt()
@@ -32,7 +32,7 @@ open class NpcBlueprint(
     override val properties: MutableMap<KProperty<*>, Any?> = mutableMapOf()
 }
 
-open class ExtraNpcConfig(
+open class NpcEngineTemplate(
     val ids: List<Int>,
     val examine: String,
     val wanderRadius: Int?

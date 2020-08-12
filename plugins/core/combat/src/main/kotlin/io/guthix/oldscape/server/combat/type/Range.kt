@@ -27,8 +27,9 @@ import io.guthix.oldscape.server.pathing.DestinationRange
 import io.guthix.oldscape.server.pathing.breadthFirstSearch
 import io.guthix.oldscape.server.plugin.ConfigDataMissingException
 import io.guthix.oldscape.server.task.NormalTask
+import io.guthix.oldscape.server.template.EquipmentType
+import io.guthix.oldscape.server.template.sequences
 import io.guthix.oldscape.server.world.World
-import io.guthix.oldscape.server.world.entity.AmmunitionEquipment
 import io.guthix.oldscape.server.world.entity.HitMark
 import io.guthix.oldscape.server.world.entity.Npc
 import io.guthix.oldscape.server.world.entity.Player
@@ -49,7 +50,7 @@ fun Player.rangeAttack(npc: Npc, world: World) {
                 cancel()
                 break@main
             }
-            topInterface.equipment[AmmunitionEquipment.slot] = ammunition.apply { quantity-- }
+            topInterface.equipment[EquipmentType.AMMUNITION.slot] = ammunition.apply { quantity-- }
             animate(attackSequence)
             ammunition.drawBackSpotAnim?.let(::spotAnimate)
             val projectile = ammunition.createProjectile(pos, npc)
@@ -59,7 +60,7 @@ fun Player.rangeAttack(npc: Npc, world: World) {
                 val damage = calcHit(npc, maxRangeHit()) ?: 0
                 val oldNpcPos = npc.pos
                 wait(ticks = projectile.lifetimeClientTicks - 1)
-                npc.animate(npc.combatSequences?.defence ?: throw ConfigDataMissingException(
+                npc.animate(npc.sequences?.defence ?: throw ConfigDataMissingException(
                     "No block animation for npc $npc."
                 ))
                 val hmColor = if (damage == 0) HitMark.Color.BLUE else HitMark.Color.RED

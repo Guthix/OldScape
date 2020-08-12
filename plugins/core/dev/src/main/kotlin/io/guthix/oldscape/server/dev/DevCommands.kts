@@ -16,8 +16,8 @@
 package io.guthix.oldscape.server.dev
 
 import io.guthix.oldscape.server.blueprints.SpotAnimBlueprint
-import io.guthix.oldscape.server.dimensions.floors
-import io.guthix.oldscape.server.dimensions.tiles
+import io.guthix.oldscape.server.world.map.dim.floors
+import io.guthix.oldscape.server.world.map.dim.tiles
 import io.guthix.oldscape.server.event.ClientCheatEvent
 import io.guthix.oldscape.server.event.PublicMessageEvent
 import io.guthix.oldscape.server.loc.DOOR_4

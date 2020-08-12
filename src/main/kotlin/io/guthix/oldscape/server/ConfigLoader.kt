@@ -25,7 +25,7 @@ import java.nio.file.Path
 
 private val yamlMapper = ObjectMapper(YAMLFactory()).registerKotlinModule()
 
-fun <C> Any.readConfig(filePath: String): C = yamlMapper.readValue(
+fun <C> Any.readTemplate(filePath: String): C = yamlMapper.readValue(
     Path.of(getResource(filePath).toURI()).toFile(),
     object : TypeReference<C>() {}
 )

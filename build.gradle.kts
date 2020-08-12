@@ -67,9 +67,7 @@ dependencies {
             runtimeOnly(pluginProject)
         }
     }
-    api(project(":dimensions"))
-    api(project(":blueprints"))
-    api(group = "com.github.guthix", name = "oldscape-cache", version = oldscapeCacheVersion)
+    implementation(group = "com.github.guthix", name = "oldscape-cache", version = oldscapeCacheVersion)
     implementation(group = "com.github.guthix", name = "jagex-byteBuf", version = jagexByteBufVersion)
     implementation(group = "org.jetbrains.kotlin", name = "kotlin-reflect", version = kotlinVersion)
     implementation(group = "org.jetbrains.kotlin", name = "kotlin-scripting-common", version = kotlinVersion)

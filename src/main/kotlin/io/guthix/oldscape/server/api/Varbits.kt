@@ -28,8 +28,9 @@ object Varbits {
     operator fun get(index: Int): VarbitConfig = configs[index]
         ?: throw IOException("Could not find varbit $index.")
 
-    fun load(archive: Js5Archive) {
+    fun loadTemplates(archive: Js5Archive): Map<Int, VarbitConfig> {
         configs = VarbitConfig.load(archive.readGroup(VarbitConfig.id))
         logger.info { "Loaded ${configs.size} varbits" }
+        return configs
     }
 }

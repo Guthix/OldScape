@@ -15,7 +15,7 @@
  */
 package io.guthix.oldscape.server.world.map
 
-import io.guthix.oldscape.server.dimensions.*
+import io.guthix.oldscape.server.world.map.dim.*
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.Loc
 import io.guthix.oldscape.server.world.entity.Obj

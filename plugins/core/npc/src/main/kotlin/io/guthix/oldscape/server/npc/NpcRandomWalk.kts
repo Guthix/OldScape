@@ -15,7 +15,7 @@
  */
 package io.guthix.oldscape.server.npc
 
-import io.guthix.oldscape.server.dimensions.tiles
+import io.guthix.oldscape.server.world.map.dim.tiles
 import io.guthix.oldscape.server.event.NpcSpawnedEvent
 import io.guthix.oldscape.server.pathing.DestinationTile
 import io.guthix.oldscape.server.pathing.simplePathSearch
