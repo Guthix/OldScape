@@ -16,6 +16,7 @@
 package io.guthix.oldscape.server.template
 
 import io.guthix.oldscape.server.Property
+import io.guthix.oldscape.server.template.type.ObjTemplate
 import io.guthix.oldscape.server.world.entity.Obj
 
 public val Obj.attackBonus: StyleBonus? get() = bonusTemplate?.attackBonus
@@ -28,7 +29,7 @@ public val Obj.prayerBonus: Int? get() = bonusTemplate?.prayerBonus
 
 internal val Obj.bonusTemplate: BonusTemplate? get() = template.bonus
 
-internal val ObjectTemplate.bonus: BonusTemplate? by Property { null }
+internal val ObjTemplate.bonus: BonusTemplate? by Property { null }
 
 data class BonusTemplate(
     val ids: List<Int>,

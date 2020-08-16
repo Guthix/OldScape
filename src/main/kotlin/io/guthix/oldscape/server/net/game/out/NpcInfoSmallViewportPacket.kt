@@ -16,8 +16,6 @@
 package io.guthix.oldscape.server.net.game.out
 
 import io.guthix.buffer.*
-import io.guthix.oldscape.server.world.map.dim.TileUnit
-import io.guthix.oldscape.server.world.map.dim.tiles
 import io.guthix.oldscape.server.net.game.OutGameEvent
 import io.guthix.oldscape.server.net.game.VarShortSize
 import io.guthix.oldscape.server.world.NpcList
@@ -25,6 +23,8 @@ import io.guthix.oldscape.server.world.entity.Npc
 import io.guthix.oldscape.server.world.entity.Player
 import io.guthix.oldscape.server.world.entity.interest.MovementInterestUpdate
 import io.guthix.oldscape.server.world.entity.interest.NpcUpdateType
+import io.guthix.oldscape.server.world.map.dim.TileUnit
+import io.guthix.oldscape.server.world.map.dim.tiles
 import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.guthix.oldscape.server
+package io.guthix.oldscape.server.template
 
 import com.fasterxml.jackson.core.type.TypeReference
 import com.fasterxml.jackson.databind.ObjectMapper
@@ -25,11 +25,11 @@ import java.nio.file.Path
 
 private val yamlMapper = ObjectMapper(YAMLFactory()).registerKotlinModule()
 
-fun <C> Any.readTemplate(filePath: String): C = yamlMapper.readValue(
+fun <C> Any.readYaml(filePath: String): C = yamlMapper.readValue(
     Path.of(getResource(filePath).toURI()).toFile(),
     object : TypeReference<C>() {}
 )
 
-fun Any.getResource(filePath: String): URL = javaClass.getResource(filePath) ?: throw FileNotFoundException(
+private fun Any.getResource(filePath: String): URL = javaClass.getResource(filePath) ?: throw FileNotFoundException(
     "Could not find resource file $filePath."
 )

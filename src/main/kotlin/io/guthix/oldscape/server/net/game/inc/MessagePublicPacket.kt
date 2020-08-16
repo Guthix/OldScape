@@ -16,9 +16,9 @@
 package io.guthix.oldscape.server.net.game.inc
 
 import io.guthix.buffer.readUnsignedSmallSmart
-import io.guthix.oldscape.server.api.Huffman
 import io.guthix.oldscape.server.event.PlayerGameEvent
 import io.guthix.oldscape.server.event.PublicMessageEvent
+import io.guthix.oldscape.server.net.Huffman
 import io.guthix.oldscape.server.net.game.GamePacketDecoder
 import io.guthix.oldscape.server.net.game.VarByteSize
 import io.guthix.oldscape.server.world.World

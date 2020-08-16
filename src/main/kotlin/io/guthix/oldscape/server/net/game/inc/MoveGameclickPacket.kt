@@ -15,13 +15,13 @@
  */
 package io.guthix.oldscape.server.net.game.inc
 
-import io.guthix.oldscape.server.world.map.dim.tiles
 import io.guthix.oldscape.server.event.MapClickEvent
 import io.guthix.oldscape.server.event.PlayerGameEvent
 import io.guthix.oldscape.server.net.game.GamePacketDecoder
 import io.guthix.oldscape.server.net.game.VarByteSize
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.Player
+import io.guthix.oldscape.server.world.map.dim.tiles
 import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 

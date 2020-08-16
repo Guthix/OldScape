@@ -16,11 +16,11 @@
 package io.guthix.oldscape.server.world.entity
 
 import io.guthix.oldscape.server.PropertyHolder
-import io.guthix.oldscape.server.world.map.dim.TileUnit
 import io.guthix.oldscape.server.task.Task
 import io.guthix.oldscape.server.task.TaskHolder
 import io.guthix.oldscape.server.task.TaskType
 import io.guthix.oldscape.server.world.map.Tile
+import io.guthix.oldscape.server.world.map.dim.TileUnit
 import kotlin.reflect.KProperty
 
 abstract class Entity : TaskHolder, PropertyHolder {

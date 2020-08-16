@@ -15,18 +15,16 @@
  */
 package io.guthix.oldscape.server.world.entity
 
-import io.guthix.oldscape.cache.config.ObjectConfig
 import io.guthix.oldscape.server.PropertyHolder
-import io.guthix.oldscape.server.template.*
-import mu.KotlinLogging
-import java.io.IOException
+import io.guthix.oldscape.server.template.type.EquipmentType
+import io.guthix.oldscape.server.template.type.ObjTemplate
+import io.guthix.oldscape.server.template.type.StanceSequences
 import kotlin.reflect.KProperty
 
-private val logger = KotlinLogging.logger { }
 
-fun ObjectTemplate.create(amount: Int): Obj = Obj(this, amount)
+fun ObjTemplate.new(amount: Int): Obj = Obj(this, amount)
 
-data class Obj(val template: ObjectTemplate, var quantity: Int) : PropertyHolder {
+data class Obj(val template: ObjTemplate, var quantity: Int) : PropertyHolder {
     val id: Int get() = template.id
     val name: String get() = template.name
     val weight: Float get() = template.weight
@@ -46,38 +44,4 @@ data class Obj(val template: ObjectTemplate, var quantity: Int) : PropertyHolder
     val stanceSequences: StanceSequences? get() = template.stanceSequences
 
     override val properties: MutableMap<KProperty<*>, Any?> = mutableMapOf()
-
-    companion object {
-        lateinit var templates: Map<Int, ObjectTemplate>
-
-        operator fun get(index: Int): ObjectTemplate = templates[index] ?: throw IOException(
-            "Could not find blueprint $index."
-        )
-
-        internal fun loadTemplates(
-            cConfigs: Map<Int, ObjectConfig>,
-            eObjectConfigs: List<ObjectEngineTemplate>,
-        ) {
-            templates = mutableMapOf<Int, ObjectTemplate>().apply {
-                addBlueprints(cConfigs, eObjectConfigs, ::ObjectTemplate)
-            }
-            logger.info { "Loaded ${templates.size} object blueprints" }
-        }
-
-        private fun MutableMap<Int, ObjectTemplate>.addBlueprints(
-            cacheConfigs: Map<Int, ObjectConfig>,
-            extraObjectConfigs: List<ObjectEngineTemplate>,
-            construct: (ObjectConfig, ObjectEngineTemplate) -> ObjectTemplate
-        ) {
-            extraObjectConfigs.forEach { extraConfig ->
-                extraConfig.ids.forEach inner@{ id ->
-                    val cacheConfig = cacheConfigs[id] ?: kotlin.run {
-                        logger.warn { "Could not find object config for id $id" }
-                        return@inner
-                    }
-                    put(id, construct.invoke(cacheConfig, extraConfig))
-                }
-            }
-        }
-    }
 }

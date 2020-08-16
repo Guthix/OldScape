@@ -26,19 +26,19 @@ import io.guthix.cache.js5.container.heap.Js5HeapStore
 import io.guthix.oldscape.cache.BinariesArchive
 import io.guthix.oldscape.cache.ConfigArchive
 import io.guthix.oldscape.cache.MapArchive
-import io.guthix.oldscape.cache.config.NpcConfig
-import io.guthix.oldscape.cache.config.ObjectConfig
+import io.guthix.oldscape.cache.config.*
 import io.guthix.oldscape.cache.xtea.MapXtea
-import io.guthix.oldscape.server.api.*
 import io.guthix.oldscape.server.event.EventBus
 import io.guthix.oldscape.server.event.WorldInitializedEvent
+import io.guthix.oldscape.server.net.Huffman
 import io.guthix.oldscape.server.net.OldScapeServer
 import io.guthix.oldscape.server.net.game.GamePacketDecoder
+import io.guthix.oldscape.server.template.api.*
+import io.guthix.oldscape.server.template.readYaml
+import io.guthix.oldscape.server.template.type.LocTemplate
+import io.guthix.oldscape.server.template.type.NpcTemplate
+import io.guthix.oldscape.server.template.type.ObjTemplate
 import io.guthix.oldscape.server.world.World
-import io.guthix.oldscape.server.world.entity.Loc
-import io.guthix.oldscape.server.world.entity.Npc
-import io.guthix.oldscape.server.world.entity.Obj
-import io.guthix.oldscape.server.world.entity.SpotAnimation
 import java.nio.file.Path
 import java.util.*
 
@@ -49,7 +49,7 @@ fun main(args: Array<String>) {
 object OldScape {
     @JvmStatic
     fun main(args: Array<String>) {
-        val config: ServerConfig = readTemplate("/Config.yaml")
+        val config: ServerConfig = readYaml("/Config.yaml")
 
         val cacheDir = Path.of(javaClass.getResource("/cache").toURI())
         val store = Js5HeapStore.open(Js5DiskStore.open(cacheDir), appendVersions = false)
@@ -58,21 +58,31 @@ object OldScape {
             cache.generateValidator(includeWhirlpool = false, includeSizes = false).encode()).encode()
         )
         val configArchive = cache.readArchive(ConfigArchive.id)
+        val binaryArchive = cache.readArchive(BinariesArchive.id)
 
-        EnumBlueprints.load(configArchive)
-        InventoryBlueprints.load(configArchive)
-        Varbits.loadTemplates(configArchive)
-        Loc.loadTemplates(configArchive)
-        SpotAnimation.loadTemplates(configArchive)
-        Obj.loadTemplates(
-            ObjectConfig.load(configArchive.readGroup(ObjectConfig.id)),
-            readTemplate("config/Objects.yaml")
+        Huffman.load(BinariesArchive.load(binaryArchive).huffman)
+
+
+        VarbitTemplates.load(VarbitConfig.load(configArchive.readGroup(VarbitConfig.id)))
+        InventoryTemplates.load(InventoryConfig.load(configArchive.readGroup(InventoryConfig.id)))
+        SequenceTemplates.load(SequenceConfig.load(configArchive.readGroup(SequenceConfig.id)))
+        SpotAnimTemplates.load(SpotAnimConfig.load(configArchive.readGroup(SpotAnimConfig.id)))
+        EnumTemplates.load(EnumConfig.load(configArchive.readGroup(EnumConfig.id)))
+        LocTemplates.load(
+            LocationConfig.load(configArchive.readGroup(LocationConfig.id)),
+            readYaml("config/Locs.yaml"),
+            ::LocTemplate
         )
-        Npc.loadTemplates(
+        NpcTemplates.load(
             NpcConfig.load(configArchive.readGroup(NpcConfig.id)),
-            readTemplate("config/Npcs.yaml")
+            readYaml("config/Npcs.yaml"),
+            ::NpcTemplate
         )
-        Huffman.load(cache.readArchive(BinariesArchive.id))
+        ObjTemplates.load(
+            ObjectConfig.load(configArchive.readGroup(ObjectConfig.id)),
+            readYaml("config/Objects.yaml"),
+            ::ObjTemplate
+        )
 
         EventBus.loadScripts()
         GamePacketDecoder.loadIncPackets()
@@ -83,8 +93,6 @@ object OldScape {
         Timer().scheduleAtFixedRate(world, 0, 600)
         OldScapeServer(config.revision, config.port, config.rsa.privateKey, config.rsa.modulus, world, store).run()
     }
-
-    private fun ObjectMapper.loadConfig(path: Path) = readValue(path.toFile(), ServerConfig::class.java)
 
     private fun loadMapSquareXteaKeys(path: Path): List<MapXtea> {
         val mapper = ObjectMapper().registerKotlinModule()

@@ -33,7 +33,7 @@ class EventMouseMovePacket : GamePacketDecoder(74, VarByteSize) {
         player: Player,
         world: World
     ): PlayerGameEvent {
-        val bytes = buf.readBytes(size)
+        buf.readBytes(size)
         return MouseMoveEvent(player, world)
     }
 }

@@ -21,6 +21,8 @@ import io.guthix.oldscape.server.world.map.dim.max
 import io.guthix.oldscape.server.world.map.dim.tiles
 import io.guthix.oldscape.server.stat.StatMultiplier
 import io.guthix.oldscape.server.template.*
+import io.guthix.oldscape.server.template.api.SequenceTemplates
+import io.guthix.oldscape.server.template.type.SequenceTemplate
 import io.guthix.oldscape.server.world.entity.Character
 import io.guthix.oldscape.server.world.entity.Player
 
@@ -59,17 +61,16 @@ val Player.currentStyle: CombatStyle
 
 val Player.attackSpeed: Int get() = equipment.weapon?.baseAttackSpeed?.plus(currentStyle.style.attackSpeedBonus) ?: 1
 
-val Player.attackRange: TileUnit
-    get() = max(
-        10.tiles, equipment.weapon?.baseAttackRange?.plus(currentStyle.style.attackRangeBonus.tiles) ?: 1.tiles
-    )
+val Player.attackRange: TileUnit get() = max(
+    10.tiles, equipment.weapon?.baseAttackRange?.plus(currentStyle.style.attackRangeBonus.tiles) ?: 1.tiles
+)
 
-val Player.attackSequence: Int by Property {
-    equipment.weapon?.weaponSequences?.attack ?: 422
+val Player.attackSequence: SequenceTemplate by Property {
+    equipment.weapon?.attackAnim ?: SequenceTemplates[422]
 }
 
-val Player.defenceSequence: Int by Property {
-    equipment.weapon?.weaponSequences?.defence ?: 424
+val Player.defenceSequence: SequenceTemplate by Property {
+    equipment.weapon?.blockAnim ?: SequenceTemplates[424]
 }
 
 val Player.deathSequence: Int by Property { 836 }

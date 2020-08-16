@@ -19,8 +19,9 @@ import io.guthix.oldscape.server.combat.dmg.calcHit
 import io.guthix.oldscape.server.event.NpcAttackedEvent
 import io.guthix.oldscape.server.pathing.DestinationRectangleDirect
 import io.guthix.oldscape.server.pathing.simplePathSearch
-import io.guthix.oldscape.server.plugin.ConfigDataMissingException
 import io.guthix.oldscape.server.task.NormalTask
+import io.guthix.oldscape.server.template.TemplateNotFoundException
+import io.guthix.oldscape.server.template.api.SequenceTemplates
 import io.guthix.oldscape.server.template.attackSpeed
 import io.guthix.oldscape.server.template.sequences
 import io.guthix.oldscape.server.world.entity.HitMark
@@ -33,13 +34,11 @@ on(NpcAttackedEvent::class).then {
     npc.addTask(NormalTask) { // combat fighting task
         while (true) {
             wait { playerDestination.reached(npc.pos.x, npc.pos.y, npc.size) }
-            npc.animate(npc.sequences?.attack ?: throw ConfigDataMissingException(
-                "NPC $npc has no attack sequence."
-            ))
+            npc.animate(SequenceTemplates[npc.sequences?.attack ?: throw TemplateNotFoundException(npc.id)])
             val damage = npc.calcHit(player) ?: 0
             val hmColor = if (damage == 0) HitMark.Color.BLUE else HitMark.Color.RED
             player.hit(hmColor, damage, 0)
-            player.animate(player.defenceSequence!!)
+            player.animate(player.defenceSequence)
             wait(ticks = npc.attackSpeed!!)
         }
     }

@@ -13,6 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.guthix.oldscape.server.template
+package io.guthix.oldscape.server.template.type
 
-data class SequenceTemplate(val id: Int, val duration: Int?)
+data class ProjectileTemplate(
+    val id: Int,
+    val startHeight: Int,
+    val endHeight: Int,
+    val speed: Int,
+    val speedDelay: Int,
+    val delay: Int,
+    val angle: Int,
+    val steepness: Int
+)

@@ -15,6 +15,8 @@
  */
 package io.guthix.oldscape.server.combat.dmg
 
+import io.guthix.oldscape.server.template.TemplateNotFoundException
+import io.guthix.oldscape.server.template.maxHit
 import io.guthix.oldscape.server.world.entity.Npc
 import io.guthix.oldscape.server.world.entity.Player
 import kotlin.random.Random
@@ -27,6 +29,6 @@ fun Player.calcHit(other: Player, maxHit: Int): Int? = calcDamage(accuracy(other
 
 fun Player.calcHit(other: Npc, maxHit: Int): Int? = calcDamage(accuracy(other), maxHit)
 
-fun Npc.calcHit(other: Player): Int? = calcDamage(accuracy(other), maxHit)
+fun Npc.calcHit(other: Player): Int? = calcDamage(accuracy(other), maxHit ?: throw TemplateNotFoundException(id))
 
-fun Npc.calcHit(other: Npc): Int? = calcDamage(accuracy(other), maxHit)
+fun Npc.calcHit(other: Npc): Int? = calcDamage(accuracy(other), maxHit ?: throw TemplateNotFoundException(id))

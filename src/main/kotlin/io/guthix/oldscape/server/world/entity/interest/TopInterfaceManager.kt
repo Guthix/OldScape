@@ -17,6 +17,7 @@ package io.guthix.oldscape.server.world.entity.interest
 
 import io.guthix.oldscape.server.net.game.out.IfClosesubPacket
 import io.guthix.oldscape.server.net.game.out.IfOpensubPacket
+import io.guthix.oldscape.server.template.api.InventoryTemplates
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.Player
 import io.guthix.oldscape.server.world.entity.intface.IfComponent
@@ -32,24 +33,24 @@ class TopInterfaceManager(
     var modalSlot: Int? = null,
     children: MutableMap<Int, IfComponent> = mutableMapOf()
 ) : Interface(ctx, id, Type.TOPLEVELINTERFACE, children), InterestManager {
-    val inventory: InventoryManager = InventoryManager(93, 149, 0)
+    val itemBag: InventoryManager = InventoryManager(InventoryTemplates.ITEM_BAG_93, INVENTORY_IFID, 0)
 
-    val equipment: InventoryManager = InventoryManager(94)
+    val equipment: InventoryManager = InventoryManager(InventoryTemplates.EQUIPMENT_94)
 
     override fun initialize(world: World, player: Player) {
-        inventory.initialize(world, player)
+        itemBag.initialize(world, player)
         equipment.initialize(world, player)
     }
 
     override fun synchronize(world: World, player: Player): List<ChannelFuture> {
         val futures = mutableListOf<ChannelFuture>()
-        futures.addAll(inventory.synchronize(world, player))
+        futures.addAll(itemBag.synchronize(world, player))
         futures.addAll(equipment.synchronize(world, player))
         return futures
     }
 
     override fun postProcess() {
-        inventory.postProcess()
+        itemBag.postProcess()
         equipment.postProcess()
     }
 
@@ -69,8 +70,6 @@ class TopInterfaceManager(
     }
 
     companion object {
-        const val INVENTORY_ID: Int = 93
-        const val EQUIPMENT_ID: Int = 94
         const val INVENTORY_IFID: Int = 149
     }
 }

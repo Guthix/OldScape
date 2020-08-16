@@ -19,9 +19,9 @@ import io.guthix.buffer.writeByteNeg
 import io.guthix.buffer.writeByteSub
 import io.guthix.buffer.writeShortAdd
 import io.guthix.buffer.writeShortAddLE
-import io.guthix.oldscape.server.world.map.dim.TileUnit
 import io.guthix.oldscape.server.net.game.FixedSize
 import io.guthix.oldscape.server.net.game.ZoneOutGameEvent
+import io.guthix.oldscape.server.world.map.dim.TileUnit
 import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 
@@ -33,7 +33,7 @@ class MapProjanimPacket(
     private val angle: Int,
     private val steepness: Int,
     private val delay: Int,
-    private val lifespan: Int,
+    private val lifespan: Int, // in client ticks
     private val deltaX: TileUnit,
     private val deltaY: TileUnit,
     startLocalX: TileUnit,

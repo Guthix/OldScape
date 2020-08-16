@@ -18,12 +18,10 @@ package io.guthix.oldscape.server.world
 import io.guthix.cache.js5.Js5Archive
 import io.guthix.oldscape.cache.MapArchive
 import io.guthix.oldscape.cache.xtea.MapXtea
-import io.guthix.oldscape.server.world.map.dim.FloorUnit
-import io.guthix.oldscape.server.world.map.dim.TileUnit
-import io.guthix.oldscape.server.world.map.dim.ZoneUnit
-import io.guthix.oldscape.server.world.map.dim.mapsquares
-import io.guthix.oldscape.server.event.EventBus
-import io.guthix.oldscape.server.event.WorldInitializedEvent
+import io.guthix.oldscape.server.template.type.LocTemplate
+import io.guthix.oldscape.server.template.type.ObjTemplate
+import io.guthix.oldscape.server.template.type.ProjectileTemplate
+import io.guthix.oldscape.server.world.entity.Character
 import io.guthix.oldscape.server.world.entity.Loc
 import io.guthix.oldscape.server.world.entity.Obj
 import io.guthix.oldscape.server.world.entity.Projectile
@@ -31,6 +29,10 @@ import io.guthix.oldscape.server.world.map.Mapsquare
 import io.guthix.oldscape.server.world.map.Tile
 import io.guthix.oldscape.server.world.map.Zone
 import io.guthix.oldscape.server.world.map.ZoneCollision
+import io.guthix.oldscape.server.world.map.dim.FloorUnit
+import io.guthix.oldscape.server.world.map.dim.TileUnit
+import io.guthix.oldscape.server.world.map.dim.ZoneUnit
+import io.guthix.oldscape.server.world.map.dim.mapsquares
 
 class WorldMap(val mapsquares: MutableMap<Int, Mapsquare>) {
     private fun id(x: TileUnit, y: TileUnit) = Mapsquare.id(x.inMapsquares, y.inMapsquares)
@@ -78,13 +80,27 @@ class WorldMap(val mapsquares: MutableMap<Int, Mapsquare>) {
         floor, x.relativeMapSquare, y.relativeMapSquare
     )
 
-    fun addObject(tile: Tile, obj: Obj): Unit? = mapsquares[id(tile.x, tile.y)]?.addObject(tile, obj)
+    fun addObject(template: ObjTemplate, amount: Int, tile: Tile): Obj {
+        val obj = Obj(template, amount)
+        mapsquares[id(tile.x, tile.y)]?.addObject(tile, obj)
+        return obj
+    }
 
-    fun removeObject(tile: Tile, id: Int): Obj? = mapsquares[id(tile.x, tile.y)]?.removeObject(tile, id)
+    fun addObject(obj: Obj, tile: Tile): Unit? = mapsquares[id(tile.x, tile.y)]?.addObject(tile, obj)
 
-    fun addDynamicLoc(loc: Loc): Unit? = mapsquares[id(loc.pos.x, loc.pos.y)]?.addDynamicLoc(loc)
+    fun removeObject(id: Int, tile: Tile): Obj? = mapsquares[id(tile.x, tile.y)]?.removeObject(tile, id)
+
+    fun addDynamicLoc(template: LocTemplate, type: Int, orientation: Int, tile: Tile): Loc {
+        val loc = Loc(template, type, tile, orientation)
+        mapsquares[id(loc.pos.x, loc.pos.y)]?.addDynamicLoc(loc)
+        return loc
+    }
 
     fun removeDynamicLoc(loc: Loc): Unit? = mapsquares[id(loc.pos.x, loc.pos.y)]?.removeDynamicLoc(loc)
 
-    fun addProjectile(proj: Projectile): Unit? = mapsquares[id(proj.start.x, proj.start.y)]?.addProjectile(proj)
+    fun addProjectile(template: ProjectileTemplate, start: Tile, target: Character): Projectile {
+        val projectile = Projectile(template, start, target)
+        mapsquares[id(start.x, start.y)]?.addProjectile(projectile)
+        return projectile
+    }
 }

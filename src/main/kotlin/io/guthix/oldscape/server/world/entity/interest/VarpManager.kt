@@ -15,9 +15,9 @@
  */
 package io.guthix.oldscape.server.world.entity.interest
 
-import io.guthix.oldscape.server.api.Varbits
 import io.guthix.oldscape.server.net.game.out.VarpLargePacket
 import io.guthix.oldscape.server.net.game.out.VarpSmallPacket
+import io.guthix.oldscape.server.template.api.VarbitTemplates
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.Player
 import io.netty.channel.ChannelFuture
@@ -34,7 +34,7 @@ class VarpManager : InterestManager {
     }
 
     fun updateVarbit(id: Int, value: Int) {
-        val config = Varbits[id]
+        val config = VarbitTemplates[id]
         val bitSize = (config.msb.toInt() - config.lsb.toInt()) + 1
         if (value > 2.0.pow(bitSize) - 1) throw IllegalArgumentException("Value $value to big for this varbit.")
         var curVarp = varps[config.varpId] ?: 0

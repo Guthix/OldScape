@@ -15,19 +15,13 @@
  */
 package io.guthix.oldscape.server.world.entity
 
-import io.guthix.oldscape.cache.config.NpcConfig
-import io.guthix.oldscape.server.world.map.dim.TileUnit
-import io.guthix.oldscape.server.world.map.dim.tiles
 import io.guthix.oldscape.server.net.game.out.NpcInfoSmallViewportPacket
 import io.guthix.oldscape.server.task.Task
-import io.guthix.oldscape.server.template.NpcEngineTemplate
-import io.guthix.oldscape.server.template.NpcTemplate
+import io.guthix.oldscape.server.template.type.NpcTemplate
 import io.guthix.oldscape.server.world.entity.interest.NpcUpdateType
 import io.guthix.oldscape.server.world.map.Tile
-import mu.KotlinLogging
-import java.io.IOException
-
-private val logger = KotlinLogging.logger { }
+import io.guthix.oldscape.server.world.map.dim.TileUnit
+import io.guthix.oldscape.server.world.map.dim.tiles
 
 class Npc(val template: NpcTemplate, index: Int, override var pos: Tile) : Character(index) {
     val spawnPos: Tile = pos.copy()
@@ -62,37 +56,4 @@ class Npc(val template: NpcTemplate, index: Int, override var pos: Tile) : Chara
     override fun addHitUpdateFlag(): Boolean = updateFlags.add(NpcInfoSmallViewportPacket.hit)
 
     override fun addShoutFlag(): Boolean = updateFlags.add(NpcInfoSmallViewportPacket.shout)
-
-    companion object {
-        internal lateinit var blueprints: Map<Int, NpcTemplate>
-
-        internal operator fun get(index: Int): NpcTemplate = blueprints[index] ?:
-            throw IOException("Could not find blueprint $index.")
-
-        internal fun loadTemplates(
-            cConfigs: Map<Int, NpcConfig>,
-            extraNpcConfigs: List<NpcEngineTemplate>
-        ) {
-            blueprints = mutableMapOf<Int, NpcTemplate>().apply {
-                addBlueprints(cConfigs, extraNpcConfigs, ::NpcTemplate)
-            }
-            logger.info { "Loaded ${blueprints.size} npc blueprints" }
-        }
-
-        private fun <E : NpcEngineTemplate> MutableMap<Int, NpcTemplate>.addBlueprints(
-            cacheConfigs: Map<Int, NpcConfig>,
-            extraObjectConfigs: List<E>,
-            construct: (NpcConfig, E) -> NpcTemplate
-        ) {
-            extraObjectConfigs.forEach { extraConfig ->
-                extraConfig.ids.forEach inner@{ id ->
-                    val cacheConfig = cacheConfigs[id] ?: kotlin.run {
-                        logger.warn { "Could not find npc for id $id" }
-                        return@inner
-                    }
-                    put(id, construct.invoke(cacheConfig, extraConfig))
-                }
-            }
-        }
-    }
 }

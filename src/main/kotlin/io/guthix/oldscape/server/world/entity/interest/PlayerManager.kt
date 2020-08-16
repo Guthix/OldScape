@@ -16,13 +16,14 @@
 package io.guthix.oldscape.server.world.entity.interest
 
 import io.guthix.oldscape.server.PropertyHolder
+import io.guthix.oldscape.server.net.game.out.PlayerInfoPacket
+import io.guthix.oldscape.server.template.type.EquipmentType
+import io.guthix.oldscape.server.world.World
+import io.guthix.oldscape.server.world.entity.Obj
+import io.guthix.oldscape.server.world.entity.Player
+import io.guthix.oldscape.server.world.map.Tile
 import io.guthix.oldscape.server.world.map.dim.TileUnit
 import io.guthix.oldscape.server.world.map.dim.tiles
-import io.guthix.oldscape.server.net.game.out.PlayerInfoPacket
-import io.guthix.oldscape.server.template.EquipmentType
-import io.guthix.oldscape.server.world.World
-import io.guthix.oldscape.server.world.entity.*
-import io.guthix.oldscape.server.world.map.Tile
 import io.netty.channel.ChannelFuture
 import kotlin.reflect.KProperty
 

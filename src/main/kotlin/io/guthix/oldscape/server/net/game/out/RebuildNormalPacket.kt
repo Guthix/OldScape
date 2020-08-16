@@ -16,9 +16,9 @@
 package io.guthix.oldscape.server.net.game.out
 
 import io.guthix.cache.js5.util.XTEA_KEY_SIZE
-import io.guthix.oldscape.server.world.map.dim.ZoneUnit
 import io.guthix.oldscape.server.net.game.OutGameEvent
 import io.guthix.oldscape.server.net.game.VarShortSize
+import io.guthix.oldscape.server.world.map.dim.ZoneUnit
 import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 

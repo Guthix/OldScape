@@ -15,62 +15,48 @@
  */
 package io.guthix.oldscape.server.dev
 
-import io.guthix.oldscape.server.blueprints.SpotAnimBlueprint
-import io.guthix.oldscape.server.world.map.dim.floors
 import io.guthix.oldscape.server.world.map.dim.tiles
 import io.guthix.oldscape.server.event.ClientCheatEvent
 import io.guthix.oldscape.server.event.PublicMessageEvent
-import io.guthix.oldscape.server.loc.DOOR_4
-import io.guthix.oldscape.server.obj.BRONZEARROW_882
-import io.guthix.oldscape.server.obj.MAGICSHORTBOW_861
-import io.guthix.oldscape.server.obj.RUNE2HSWORD_1319
-import io.guthix.oldscape.server.obj.RUNEFULLHELM_1163
+import io.guthix.oldscape.server.template.api.*
 import io.guthix.oldscape.server.world.entity.Loc
 import io.guthix.oldscape.server.world.entity.Obj
-import io.guthix.oldscape.server.world.entity.create
 import io.guthix.oldscape.server.world.map.Tile
+import io.guthix.oldscape.server.world.map.dim.floors
 
 on(ClientCheatEvent::class).where { string == "drop" }.then {
     world.map.addObject(
-        Tile(player.pos.floor, player.pos.x + 1.tiles, player.pos.y + 1.tiles),
-        Obj.RUNEFULLHELM_1163.create(amount = 1)
+        ObjTemplates.RUNEFULLHELM_1163,
+        amount = 1,
+        Tile(player.pos.floor, player.pos.x + 1.tiles, player.pos.y + 1.tiles)
     )
 }
 
 on(ClientCheatEvent::class).where { string == "locadd" }.then {
     world.map.addDynamicLoc(
-        Loc.DOOR_4.create(0, Tile(player.pos.floor, player.pos.x + 2.tiles, player.pos.y + 2.tiles), 0)
-    )
-}
-
-on(ClientCheatEvent::class).where { string == "locremove" }.then {
-    world.map.removeDynamicLoc(
-        Loc.DOOR_4.create(0, Tile(player.pos.floor, player.pos.x + 2.tiles, player.pos.y + 2.tiles), 0)
+        LocTemplates.DOOR_4,
+        type = 0,
+        orientation = 0,
+        Tile(player.pos.floor, player.pos.x + 2.tiles, player.pos.y + 2.tiles)
     )
 }
 
 on(ClientCheatEvent::class).where { string == "shoot" }.then {
-    player.animate(424)
+    player.animate(SequenceTemplates[424])
 }
 
 on(ClientCheatEvent::class).where { string == "rangeq" }.then {
-    player.topInterface.inventory.add(Obj.MAGICSHORTBOW_861.create(1))
-    player.topInterface.inventory.add(Obj.BRONZEARROW_882.create(5))
+    player.topInterface.itemBag.add(ObjTemplates.MAGICSHORTBOW_861, amount = 1)
+    player.topInterface.itemBag.add(ObjTemplates.BRONZEARROW_882, amount = 5)
 }
-
-on(ClientCheatEvent::class).where { string == "invent" }.then {
-    val bow = Obj.RUNE2HSWORD_1319.create(1)
-    player.topInterface.inventory.add(bow)
-}
-
 
 on(ClientCheatEvent::class).where { string == "shout" }.then {
     player.shout("testing!")
 }
 
 on(ClientCheatEvent::class).where { string == "animation" }.then {
-    player.animate(1162)
-    player.spotAnimate(SpotAnimBlueprint(id = 99, height = 92))
+    player.animate(SequenceTemplates[1162])
+    player.spotAnimate(SpotAnimTemplates[99], height = 92)
 }
 
 on(ClientCheatEvent::class).where { string == "clear" }.then {
@@ -87,5 +73,5 @@ on(ClientCheatEvent::class).where { string == "pos" }.then {
 }
 
 on(ClientCheatEvent::class).where { string == "npc" }.then {
-    world.addNpc(42, player.pos.copy(x = player.pos.x + 2.tiles))
+    world.addNpc(NpcTemplates[42], player.pos.copy(x = player.pos.x + 2.tiles))
 }

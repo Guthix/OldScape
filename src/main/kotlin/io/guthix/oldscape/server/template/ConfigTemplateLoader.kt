@@ -13,24 +13,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.guthix.oldscape.server.api
+package io.guthix.oldscape.server.template
 
-import io.guthix.cache.js5.Js5Archive
-import io.guthix.oldscape.cache.config.VarbitConfig
+import io.guthix.oldscape.cache.config.Config
 import mu.KotlinLogging
-import java.io.IOException
 
 private val logger = KotlinLogging.logger { }
 
-object Varbits {
-    private lateinit var configs: Map<Int, VarbitConfig>
+abstract class ConfigTemplate(private val cacheConfig: Config)
 
-    operator fun get(index: Int): VarbitConfig = configs[index]
-        ?: throw IOException("Could not find varbit $index.")
+open class ConfigTemplateLoader<C : Config> {
+    protected lateinit var templates: Map<Int, C>
 
-    fun loadTemplates(archive: Js5Archive): Map<Int, VarbitConfig> {
-        configs = VarbitConfig.load(archive.readGroup(VarbitConfig.id))
-        logger.info { "Loaded ${configs.size} varbits" }
-        return configs
+    operator fun get(index: Int): C = templates[index]  ?: throw TemplateNotFoundException(index)
+
+    internal fun load(configs: Map<Int, C>) {
+        templates = configs
+        logger.info { "Loaded ${templates.size} npc templates" }
     }
 }

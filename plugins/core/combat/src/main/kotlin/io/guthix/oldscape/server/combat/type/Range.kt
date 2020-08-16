@@ -25,10 +25,10 @@ import io.guthix.oldscape.server.event.EventBus
 import io.guthix.oldscape.server.event.NpcAttackedEvent
 import io.guthix.oldscape.server.pathing.DestinationRange
 import io.guthix.oldscape.server.pathing.breadthFirstSearch
-import io.guthix.oldscape.server.plugin.ConfigDataMissingException
 import io.guthix.oldscape.server.task.NormalTask
-import io.guthix.oldscape.server.template.EquipmentType
-import io.guthix.oldscape.server.template.sequences
+import io.guthix.oldscape.server.template.*
+import io.guthix.oldscape.server.template.api.SequenceTemplates
+import io.guthix.oldscape.server.template.type.EquipmentType
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.HitMark
 import io.guthix.oldscape.server.world.entity.Npc
@@ -52,20 +52,17 @@ fun Player.rangeAttack(npc: Npc, world: World) {
             }
             topInterface.equipment[EquipmentType.AMMUNITION.slot] = ammunition.apply { quantity-- }
             animate(attackSequence)
-            ammunition.drawBackSpotAnim?.let(::spotAnimate)
-            val projectile = ammunition.createProjectile(pos, npc)
-            world.map.addProjectile(ammunition.createProjectile(pos, npc))
+            spotAnimate(ammunition.drawBackAnim, ammunition.drawBackAnimHeight)
+            val projectile = world.map.addProjectile(ammunition.ammunitionProjectile, pos, npc)
             EventBus.schedule(NpcAttackedEvent(npc, player, world))
             world.addTask(NormalTask) { // projectile task
                 val damage = calcHit(npc, maxRangeHit()) ?: 0
                 val oldNpcPos = npc.pos
                 wait(ticks = projectile.lifetimeClientTicks - 1)
-                npc.animate(npc.sequences?.defence ?: throw ConfigDataMissingException(
-                    "No block animation for npc $npc."
-                ))
+                npc.animate(SequenceTemplates[npc.sequences?.defence ?: throw TemplateNotFoundException(npc.id)])
                 val hmColor = if (damage == 0) HitMark.Color.BLUE else HitMark.Color.RED
                 npc.hit(hmColor, damage, 0)
-                if (Random.nextDouble(1.0) < 0.8) world.map.addObject(oldNpcPos, ammunition.copy(quantity = 1))
+                if (Random.nextDouble(1.0) < 0.8) world.map.addObject(ammunition.copy(quantity = 1), oldNpcPos)
             }
             wait(ticks = attackSpeed)
         }

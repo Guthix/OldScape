@@ -13,24 +13,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.guthix.oldscape.server.api
+package io.guthix.oldscape.server.net
 
-import io.guthix.cache.js5.Js5Archive
-import io.guthix.oldscape.cache.BinariesArchive
 import io.guthix.oldscape.cache.binary.Huffman
 import mu.KotlinLogging
 
 private val logger = KotlinLogging.logger { }
 
 object Huffman {
-    private lateinit var huffman: Huffman
+    private lateinit var table: Huffman
 
-    fun compress(text: String): ByteArray = huffman.compress(text)
+    fun compress(text: String): ByteArray = table.compress(text)
 
-    fun decompress(comp: ByteArray, length: Int): ByteArray = huffman.decompress(comp, length)
+    fun decompress(comp: ByteArray, length: Int): ByteArray = table.decompress(comp, length)
 
-    fun load(archive: Js5Archive) {
-        huffman = BinariesArchive.load(archive).huffman
+    fun load(huffman: Huffman) {
+        table = huffman
         logger.info { "Loaded huffman" }
     }
 }

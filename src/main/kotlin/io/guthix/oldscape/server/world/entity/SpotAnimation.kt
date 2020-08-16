@@ -15,11 +15,10 @@
  */
 package io.guthix.oldscape.server.world.entity
 
-import io.guthix.cache.js5.Js5Archive
-import io.guthix.oldscape.cache.config.SpotAnimConfig
-import io.guthix.oldscape.server.template.SpotAnimTemplate
+import io.guthix.oldscape.server.template.api.SequenceTemplates
+import io.guthix.oldscape.server.template.type.SpotAnimTemplate
+import io.guthix.oldscape.server.template.type.tickDuration
 import mu.KotlinLogging
-import java.io.IOException
 
 private val logger = KotlinLogging.logger { }
 
@@ -30,26 +29,7 @@ data class SpotAnimation(
 ) {
     val id: Int get() = template.id
 
-    val duration: Int? get() = template.duration
-
-    companion object {
-        private lateinit var templates: Map<Int, SpotAnimTemplate>
-
-        operator fun get(index: Int): SpotAnimTemplate = templates[index] ?: throw IOException(
-                "Could not find spot animation $index."
-        )
-
-        fun loadTemplates(archive: Js5Archive): Map<Int, SpotAnimTemplate> {
-            val configs = SpotAnimConfig.load(archive.readGroup(SpotAnimConfig.id))
-            val loadedTemplates = mutableMapOf<Int, SpotAnimTemplate>()
-            configs.forEach { (id, config) ->
-                val sequence = Sequence[config.sequenceId ?: throw IOException(
-                    "Could not find sequence ${config.sequenceId}"
-                )]
-                loadedTemplates[id] = SpotAnimTemplate(id, sequence.duration)
-            }
-            logger.info { "Loaded ${configs.size} spot animations" }
-            return loadedTemplates
-        }
-    }
+    val duration: Int? = SequenceTemplates[
+        template.sequenceId ?: error("No sequence found with id ${template.sequenceId}")
+    ].tickDuration
 }

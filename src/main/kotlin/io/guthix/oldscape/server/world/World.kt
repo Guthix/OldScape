@@ -25,6 +25,8 @@ import io.guthix.oldscape.server.plugin.EventHandler
 import io.guthix.oldscape.server.task.Task
 import io.guthix.oldscape.server.task.TaskHolder
 import io.guthix.oldscape.server.task.TaskType
+import io.guthix.oldscape.server.template.type.NpcTemplate
+import io.guthix.oldscape.server.world.entity.Npc
 import io.guthix.oldscape.server.world.entity.Player
 import io.guthix.oldscape.server.world.map.Tile
 import io.netty.util.concurrent.DefaultPromise
@@ -92,9 +94,10 @@ class World : TimerTask(), TaskHolder, EventHolder, PropertyHolder {
         }
     }
 
-    fun addNpc(id: Int, tile: Tile) {
-        val npc = npcs.create(id, tile)
+    fun addNpc(template: NpcTemplate, tile: Tile): Npc {
+        val npc = npcs.create(template, tile)
         EventBus.schedule(NpcSpawnedEvent(npc, this))
+        return npc
     }
 
     fun stagePlayerLogout(player: Player) {

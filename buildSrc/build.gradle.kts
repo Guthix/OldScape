@@ -8,7 +8,7 @@ plugins {
 group = "io.guthix"
 version = "0.1-SNAPSHOT"
 
-val oldscapeCacheVersion: String by extra("ab26665f63")
+val oldscapeCacheVersion: String by extra("de43248ebc")
 val kotlinpoetVersion: String by extra("1.6.0")
 val jacksonVersion: String by extra("2.10.2")
 

@@ -13,15 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.guthix.oldscape.server.template
+package io.guthix.oldscape.server.template.type
 
 import io.guthix.oldscape.cache.config.LocationConfig
 import io.guthix.oldscape.server.PropertyHolder
+import io.guthix.oldscape.server.template.EngineTemplate
+import io.guthix.oldscape.server.template.EngineConfigTemplate
 import io.guthix.oldscape.server.world.map.dim.TileUnit
 import io.guthix.oldscape.server.world.map.dim.tiles
+import mu.KotlinLogging
 import kotlin.reflect.KProperty
 
-data class LocationTemplate(private val config: LocationConfig) : PropertyHolder {
+private val logger = KotlinLogging.logger { }
+
+data class LocTemplate(
+    private val config: LocationConfig,
+    private val engineTemplate: EngineTemplate
+) : PropertyHolder, EngineConfigTemplate(config, engineTemplate) {
     val id: Int get() = config.id
     val name: String get() = config.name
     val width: TileUnit get() = config.width.toInt().tiles
@@ -36,3 +44,8 @@ data class LocationTemplate(private val config: LocationConfig) : PropertyHolder
     val options: Array<String?> get() = config.options
     override val properties: MutableMap<KProperty<*>, Any?> = mutableMapOf()
 }
+
+data class LocEngineTemplate(
+    override val ids: List<Int>,
+    val examine: String
+) : EngineTemplate(ids)

@@ -15,41 +15,29 @@
  */
 package io.guthix.oldscape.server.world.entity
 
-import io.guthix.cache.js5.Js5Archive
-import io.guthix.oldscape.cache.config.LocationConfig
-import io.guthix.oldscape.server.template.LocationTemplate
-import io.guthix.oldscape.server.world.map.dim.TileUnit
+import io.guthix.oldscape.server.template.type.LocTemplate
 import io.guthix.oldscape.server.world.map.Tile
-import mu.KotlinLogging
-import java.io.IOException
-
-private val logger = KotlinLogging.logger { }
-
-fun LocationTemplate.create(
-    type: Int,
-    pos: Tile,
-    orientation: Int
-): Loc = Loc(this, type, pos, orientation)
+import io.guthix.oldscape.server.world.map.dim.TileUnit
 
 class Loc(
-    private val blueprint: LocationTemplate,
+    private val template: LocTemplate,
     val type: Int,
     override val pos: Tile,
     override var orientation: Int
 ) : Entity() {
-    val id: Int get() = blueprint.id
-    val impenetrable: Boolean get() = blueprint.impenetrable
-    val clipType: Int get() = blueprint.clipType
-    val width: TileUnit get() = blueprint.width
-    val length: TileUnit get() = blueprint.length
+    val id: Int get() = template.id
+    val impenetrable: Boolean get() = template.impenetrable
+    val clipType: Int get() = template.clipType
+    val width: TileUnit get() = template.width
+    val length: TileUnit get() = template.length
     override val sizeX: TileUnit get() = if (orientation == 0 || orientation == 2) width else length
     override val sizeY: TileUnit get() = if (orientation == 0 || orientation == 2) length else width
 
     val accessBlockFlags: Int
         get() = if (orientation != 0) {
-            (blueprint.accessBlockFlags shl orientation and 0xF) + (blueprint.accessBlockFlags shr 4 - orientation)
+            (template.accessBlockFlags shl orientation and 0xF) + (template.accessBlockFlags shr 4 - orientation)
         } else {
-            blueprint.accessBlockFlags
+            template.accessBlockFlags
         }
 
     val slot: Int get() = MAP_SLOTS[type]
@@ -65,20 +53,5 @@ class Loc(
 
         internal fun generateMapKey(localX: TileUnit, localY: TileUnit, slot: Int): Int = (localX.value shl 5) or
             (localY.value shl 2) or slot
-
-        internal lateinit var blueprints: Map<Int, LocationTemplate>
-
-        internal operator fun get(index: Int): LocationTemplate = blueprints[index]
-            ?: throw IOException("Could not find blueprint $index.")
-
-        internal fun loadTemplates(archive: Js5Archive) {
-            val locConfigs = LocationConfig.load(archive.readGroup(LocationConfig.id))
-            val tempLocs = mutableMapOf<Int, LocationTemplate>()
-            locConfigs.forEach { (id, config) ->
-                tempLocs[id] = LocationTemplate(config)
-            }
-            blueprints = tempLocs.toMap()
-            logger.info { "Loaded ${blueprints.size} location blueprints" }
-        }
     }
 }

@@ -16,8 +16,8 @@
 package io.guthix.oldscape.server.template
 
 import io.guthix.oldscape.server.event.WorldInitializedEvent
-import io.guthix.oldscape.server.readTemplate
 
 on(WorldInitializedEvent::class).then {
-    val weaponTemplates: List<WeaponTemplate> = readTemplate("/config/Weapons.yaml")
+    val weaponTemplates: List<WeaponTemplate> = readYaml("/config/Weapons.yaml")
+    val ammunitionTemplates: List<AmmunitionTemplate> = readYaml("/config/Ammunition.yaml")
 }

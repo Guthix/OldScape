@@ -15,16 +15,18 @@
  */
 package io.guthix.oldscape.server.world.entity
 
-import io.guthix.oldscape.server.world.map.dim.TileUnit
-import io.guthix.oldscape.server.world.map.dim.floors
-import io.guthix.oldscape.server.world.map.dim.tiles
 import io.guthix.oldscape.server.event.PublicMessageEvent
 import io.guthix.oldscape.server.net.game.out.PlayerInfoPacket
 import io.guthix.oldscape.server.task.TaskType
+import io.guthix.oldscape.server.template.type.SequenceTemplate
+import io.guthix.oldscape.server.template.type.SpotAnimTemplate
 import io.guthix.oldscape.server.world.entity.interest.InterestUpdateType
 import io.guthix.oldscape.server.world.entity.interest.MovementInterestUpdate
 import io.guthix.oldscape.server.world.entity.interest.PlayerManager
 import io.guthix.oldscape.server.world.map.Tile
+import io.guthix.oldscape.server.world.map.dim.TileUnit
+import io.guthix.oldscape.server.world.map.dim.floors
+import io.guthix.oldscape.server.world.map.dim.tiles
 import java.util.*
 import kotlin.math.atan2
 
@@ -123,12 +125,13 @@ abstract class Character(val index: Int) : Entity() {
 
     object SequenceTask : TaskType
 
-    fun animate(animation: Sequence) {
+    fun animate(animation: SequenceTemplate) {
+        val anim = Sequence(animation)
         addSequenceFlag()
-        sequence = animation
+        sequence = anim
         cancelTasks(SequenceTask)
         addTask(SequenceTask) {
-            val duration = sequence?.duration ?: throw IllegalStateException(
+            val duration = anim.duration ?: throw IllegalStateException(
                 "Can't start routine because sequence does not exist."
             )
             wait(ticks = duration)
@@ -144,13 +147,14 @@ abstract class Character(val index: Int) : Entity() {
 
     object SpotAnimTask : TaskType
 
-    fun spotAnimate(spotAnim: SpotAnimation) {
+    fun spotAnimate(template: SpotAnimTemplate, height: Int, delay: Int = 0) {
+        val anim = SpotAnimation(template, height, delay)
         addSpotAnimationFlag()
-        spotAnimation = spotAnim
+        spotAnimation = anim
         cancelTasks(SpotAnimTask)
         addTask(SpotAnimTask) {
-            wait(ticks = spotAnim.delay)
-            val duration = spotAnimation?.duration ?: throw IllegalStateException(
+            wait(ticks = anim.delay)
+            val duration = anim.duration ?: throw IllegalStateException(
                 "Can't start routine because spot animation or sequence does not exist."
             )
             wait(ticks = duration)

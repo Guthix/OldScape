@@ -13,15 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.guthix.oldscape.server.template
+package io.guthix.oldscape.server.template.api
 
-data class ProjectileTemplate(
-    val id: Int,
-    val startHeight: Int,
-    val endHeight: Int,
-    val speed: Int,
-    val speedDelay: Int,
-    val delay: Int,
-    val angle: Int,
-    val steepness: Int
-)
+import io.guthix.oldscape.server.template.ConfigTemplateLoader
+import io.guthix.oldscape.server.template.type.VarbitTemplate
+
+object VarbitTemplates : ConfigTemplateLoader<VarbitTemplate>() {
+
+}

@@ -15,7 +15,48 @@
  */
 package io.guthix.oldscape.server.template
 
-enum class AmmunitionProjectile(
+import io.guthix.oldscape.server.Property
+import io.guthix.oldscape.server.template.api.SpotAnimTemplates
+import io.guthix.oldscape.server.template.type.ObjTemplate
+import io.guthix.oldscape.server.template.type.ProjectileTemplate
+import io.guthix.oldscape.server.template.type.SpotAnimTemplate
+import io.guthix.oldscape.server.world.entity.Obj
+
+val Obj.ammunitionType: AmmunitionType get() = ammunitionTemplate?.type ?: throw TemplateNotFoundException(id)
+
+val Obj.drawBackAnim: SpotAnimTemplate get() = SpotAnimTemplates[
+    ammunitionTemplate?.drawBackSpotAnim ?: throw TemplateNotFoundException(id)
+]
+
+val Obj.drawBackAnimHeight: Int get() = ammunitionTemplate?.drawBackSpotAnimHeight
+    ?: throw TemplateNotFoundException(id)
+
+val Obj.ammunitionProjectile: ProjectileTemplate get() = ammunitionTemplate?.projectile
+    ?: throw TemplateNotFoundException(id)
+
+private val Obj.ammunitionTemplate: AmmunitionTemplate? get() = template.ammunition
+
+private val ObjTemplate.ammunition: AmmunitionTemplate? by Property { null }
+
+data class AmmunitionTemplate(
+    val type: AmmunitionType,
+    val projectileId: Int,
+    val drawBackSpotAnim: Int,
+    val drawBackSpotAnimHeight: Int
+) {
+    val projectile: ProjectileTemplate get() = ProjectileTemplate(
+        projectileId,
+        type.startHeight,
+        type.endHeight,
+        type.speed,
+        type.speedDelay,
+        type.delay,
+        type.angle,
+        type.steepness
+    )
+}
+
+enum class AmmunitionType(
     val startHeight: Int,
     val endHeight: Int,
     val speed: Int,
