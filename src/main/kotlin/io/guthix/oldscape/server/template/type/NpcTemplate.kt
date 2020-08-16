@@ -13,27 +13,32 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.guthix.oldscape.server.template
+package io.guthix.oldscape.server.template.type
 
 import io.guthix.oldscape.cache.config.NpcConfig
 import io.guthix.oldscape.server.PropertyHolder
+import io.guthix.oldscape.server.template.EngineTemplate
+import io.guthix.oldscape.server.template.EngineConfigTemplate
 import io.guthix.oldscape.server.world.map.dim.TileUnit
 import io.guthix.oldscape.server.world.map.dim.tiles
+import mu.KotlinLogging
 import kotlin.reflect.KProperty
 
+private val logger = KotlinLogging.logger { }
+
 data class NpcTemplate(
-    private val cacheConfig: NpcConfig,
-    private val extraConfig: NpcEngineTemplate
-) : PropertyHolder {
-    val id: Int get() = cacheConfig.id
-    val size: Int get() = cacheConfig.size.toInt()
-    val contextMenu: Array<String?> get() = cacheConfig.options
-    val wanderRadius: TileUnit get() = extraConfig.wanderRadius?.tiles ?: 0.tiles
+    private val config: NpcConfig,
+    private val engineTemplate: NpcEngineTemplate
+) : PropertyHolder, EngineConfigTemplate(config, engineTemplate) {
+    val id: Int get() = config.id
+    val size: Int get() = config.size.toInt()
+    val contextMenu: Array<String?> get() = config.options
+    val wanderRadius: TileUnit get() = engineTemplate.wanderRadius?.tiles ?: 0.tiles
     override val properties: MutableMap<KProperty<*>, Any?> = mutableMapOf()
 }
 
-open class NpcEngineTemplate(
-    val ids: List<Int>,
+data class NpcEngineTemplate(
+    override val ids: List<Int>,
     val examine: String,
     val wanderRadius: Int?
-)
+) : EngineTemplate(ids)

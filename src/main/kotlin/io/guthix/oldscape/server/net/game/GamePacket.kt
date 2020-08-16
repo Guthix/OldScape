@@ -16,10 +16,10 @@
 package io.guthix.oldscape.server.net.game
 
 import io.github.classgraph.ClassGraph
-import io.guthix.oldscape.server.world.map.dim.TileUnit
 import io.guthix.oldscape.server.event.PlayerGameEvent
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.Player
+import io.guthix.oldscape.server.world.map.dim.TileUnit
 import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 import mu.KotlinLogging

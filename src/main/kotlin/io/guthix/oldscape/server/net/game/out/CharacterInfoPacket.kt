@@ -15,9 +15,9 @@
  */
 package io.guthix.oldscape.server.net.game.out
 
+import io.guthix.oldscape.server.world.map.Tile
 import io.guthix.oldscape.server.world.map.dim.TileUnit
 import io.guthix.oldscape.server.world.map.dim.tiles
-import io.guthix.oldscape.server.world.map.Tile
 
 abstract class CharacterInfoPacket {
     companion object {

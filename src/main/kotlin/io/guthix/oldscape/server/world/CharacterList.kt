@@ -16,6 +16,7 @@
 package io.guthix.oldscape.server.world
 
 import io.guthix.oldscape.server.net.login.LoginRequest
+import io.guthix.oldscape.server.template.type.NpcTemplate
 import io.guthix.oldscape.server.world.entity.Npc
 import io.guthix.oldscape.server.world.entity.Player
 import io.guthix.oldscape.server.world.entity.interest.*
@@ -36,9 +37,9 @@ class NpcList(capacity: Int) : Iterable<Npc> {
         for (index in capacity downTo 1) freeIndexes.push(index)
     }
 
-    fun create(id: Int, pos: Tile): Npc {
+    fun create(template: NpcTemplate, pos: Tile): Npc {
         val index = freeIndexes.pop()
-        val npc = Npc(Npc[id], index, pos)
+        val npc = Npc(template, index, pos)
         npcs[npc.index] = npc
         occupiedIndexes.add(npc.index)
         return npc

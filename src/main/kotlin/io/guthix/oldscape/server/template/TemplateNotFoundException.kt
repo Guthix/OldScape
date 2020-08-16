@@ -15,4 +15,4 @@
  */
 package io.guthix.oldscape.server.template
 
-data class SpotAnimTemplate(val id: Int, val duration: Int?)
+class TemplateNotFoundException(id: Int) : Exception("Template with index $id not found.")

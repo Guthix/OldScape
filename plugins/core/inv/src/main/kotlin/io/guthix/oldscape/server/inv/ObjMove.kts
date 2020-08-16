@@ -19,5 +19,5 @@ import io.guthix.oldscape.server.event.InvObjMovedEvent
 import io.guthix.oldscape.server.world.entity.interest.TopInterfaceManager
 
 on(InvObjMovedEvent::class).where { interfaceId == TopInterfaceManager.INVENTORY_IFID }.then {
-    player.topInterface.inventory.move(fromSlot, toSlot)
+    player.topInterface.itemBag.move(fromSlot, toSlot)
 }

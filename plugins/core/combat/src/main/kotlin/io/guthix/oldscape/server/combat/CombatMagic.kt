@@ -18,21 +18,21 @@ package io.guthix.oldscape.server.combat
 import io.guthix.oldscape.server.combat.type.magicAttack
 import io.guthix.oldscape.server.event.IfOnNpcEvent
 import io.guthix.oldscape.server.plugin.Script
-import io.guthix.oldscape.server.template.SequenceTemplate
-import io.guthix.oldscape.server.template.SpotAnimTemplate
+import io.guthix.oldscape.server.template.type.ProjectileTemplate
+import io.guthix.oldscape.server.template.type.SequenceTemplate
+import io.guthix.oldscape.server.template.type.SpotAnimTemplate
 import io.guthix.oldscape.server.world.entity.Npc
 import io.guthix.oldscape.server.world.entity.Player
-import io.guthix.oldscape.server.world.entity.Projectile
 
 fun Script.registerCombatSpell(
     interfaceId: Int,
     interfaceSlotId: Int,
     castAnim: SequenceTemplate,
     spellAnim: SpotAnimTemplate,
-    projectile: Projectile,
+    projectile: ProjectileTemplate,
     onHit: (Player, Npc) -> Int // TODO
 ) {
     on(IfOnNpcEvent::class).where { this.interfaceId == interfaceId && this.interfaceSlotId == interfaceSlotId }.then {
-        player.magicAttack(npc, world, castAnim, spellAnim, projectile, onHit)
+        player.magicAttack(npc, world, castAnim, 0, 0, spellAnim, projectile, onHit)
     }
 }

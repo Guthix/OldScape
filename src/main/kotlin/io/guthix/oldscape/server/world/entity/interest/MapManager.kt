@@ -15,7 +15,6 @@
  */
 package io.guthix.oldscape.server.world.entity.interest
 
-import io.guthix.oldscape.server.world.map.dim.*
 import io.guthix.oldscape.server.net.game.ZoneOutGameEvent
 import io.guthix.oldscape.server.net.game.out.*
 import io.guthix.oldscape.server.world.World
@@ -26,6 +25,7 @@ import io.guthix.oldscape.server.world.entity.Player
 import io.guthix.oldscape.server.world.entity.Projectile
 import io.guthix.oldscape.server.world.map.Tile
 import io.guthix.oldscape.server.world.map.Zone
+import io.guthix.oldscape.server.world.map.dim.*
 import io.netty.channel.ChannelFuture
 
 class MapManager : InterestManager {
@@ -73,8 +73,8 @@ class MapManager : InterestManager {
     }
 
     fun unsubscribeZones(player: Player) {
-        zones.forEachIndexed { x, arrayOfZones ->
-            arrayOfZones.forEachIndexed { y, zone ->
+        zones.forEachIndexed { _, arrayOfZones ->
+            arrayOfZones.forEachIndexed { _, zone ->
                 zone?.players?.remove(player)
             }
         }

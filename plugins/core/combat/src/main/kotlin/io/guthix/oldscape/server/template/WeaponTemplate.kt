@@ -16,6 +16,9 @@
 package io.guthix.oldscape.server.template
 
 import io.guthix.oldscape.server.Property
+import io.guthix.oldscape.server.template.api.SequenceTemplates
+import io.guthix.oldscape.server.template.type.ObjTemplate
+import io.guthix.oldscape.server.template.type.SequenceTemplate
 import io.guthix.oldscape.server.world.entity.Obj
 import io.guthix.oldscape.server.world.map.dim.TileUnit
 import io.guthix.oldscape.server.world.map.dim.tiles
@@ -26,11 +29,19 @@ public val Obj.baseAttackSpeed: Int? get() = weaponTemplate?.attackSpeed
 
 public val Obj.baseAttackRange: TileUnit? get() = weaponTemplate?.attackRange?.tiles
 
-public val Obj.weaponSequences: WeaponSequences? get() = weaponTemplate?.weaponSequences
+val Obj.attackAnim: SequenceTemplate? get() = SequenceTemplates[
+    weaponSequences?.attack ?: throw TemplateNotFoundException(id)
+]
 
-private val Obj.weaponTemplate: WeaponTemplate? get() = template.weaponTemplate
+val Obj.blockAnim: SequenceTemplate? get() = SequenceTemplates[
+    weaponSequences?.defence ?: throw TemplateNotFoundException(id)
+]
 
-private val ObjectTemplate.weaponTemplate: WeaponTemplate? by Property { null }
+private val Obj.weaponSequences: WeaponSequences? get() = weaponTemplate?.weaponSequences
+
+private val Obj.weaponTemplate: WeaponTemplate? get() = template.weapon
+
+private val ObjTemplate.weapon: WeaponTemplate? by Property { null }
 
 data class WeaponTemplate(
     val type: WeaponType,

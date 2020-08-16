@@ -16,13 +16,10 @@
 package io.guthix.oldscape.server.equipment
 
 import io.guthix.oldscape.server.event.*
-import io.guthix.oldscape.server.net.game.out.PlayerInfoPacket
 import io.guthix.oldscape.server.plugin.InvalidClientMessageException
-import io.guthix.oldscape.server.template.EquipmentType
-import io.guthix.oldscape.server.world.entity.*
 
 on(InvObjClickEvent::class).then {
-    val obj = player.topInterface.inventory.remove(inventorySlot) ?: return@then
+    val obj = player.topInterface.itemBag.remove(inventorySlot) ?: return@then
     val slot = obj.equipmentType?.slot ?: throw InvalidClientMessageException(
         "Obj $obj has no equipment type."
     )

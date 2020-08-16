@@ -15,37 +15,14 @@
  */
 package io.guthix.oldscape.server.world.entity
 
-import io.guthix.cache.js5.Js5Archive
-import io.guthix.oldscape.cache.config.SequenceConfig
-import io.guthix.oldscape.server.template.SequenceTemplate
+import io.guthix.oldscape.server.template.type.SequenceTemplate
+import io.guthix.oldscape.server.template.type.tickDuration
 import mu.KotlinLogging
-import java.io.IOException
 
 private val logger = KotlinLogging.logger { }
 
 data class Sequence(private val template: SequenceTemplate) {
     val id: Int get() = template.id
 
-    val duration: Int? get() = template.duration
-
-    companion object {
-        private lateinit var templates: Map<Int, SequenceTemplate>
-
-        private val SequenceConfig.tickDuration get() = frameDuration?.sum()?.toDouble()?.div(30)?.toInt()
-
-        operator fun get(index: Int): SequenceTemplate = templates[index] ?: throw IOException(
-                "Could not find spot animation $index."
-        )
-
-        fun loadTemplates(archive: Js5Archive): Map<Int, SequenceTemplate> {
-            val config = SequenceConfig.load(archive.readGroup(SequenceConfig.id))
-            val loadedTemplates = mutableMapOf<Int, SequenceTemplate>()
-            config.forEach { (id, config) ->
-                loadedTemplates[id] = SequenceTemplate(id, config.tickDuration)
-            }
-            templates = loadedTemplates
-            logger.info { "Loaded ${templates.size} spot animations" }
-            return loadedTemplates
-        }
-    }
+    val duration: Int? = template.tickDuration
 }

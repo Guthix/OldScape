@@ -24,8 +24,9 @@ import io.guthix.oldscape.server.event.EventBus
 import io.guthix.oldscape.server.event.NpcAttackedEvent
 import io.guthix.oldscape.server.pathing.DestinationRectangleDirect
 import io.guthix.oldscape.server.pathing.breadthFirstSearch
-import io.guthix.oldscape.server.plugin.ConfigDataMissingException
 import io.guthix.oldscape.server.task.NormalTask
+import io.guthix.oldscape.server.template.TemplateNotFoundException
+import io.guthix.oldscape.server.template.api.SequenceTemplates
 import io.guthix.oldscape.server.template.sequences
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.HitMark
@@ -46,9 +47,7 @@ fun Player.meleeAttack(npc: Npc, world: World) {
             val damage = calcHit(npc, maxMeleeHit()) ?: 0
             val hmColor = if (damage == 0) HitMark.Color.BLUE else HitMark.Color.RED
             npc.hit(hmColor, damage, 0)
-            npc.animate(npc.sequences?.defence ?: throw ConfigDataMissingException(
-                "No block animation for npc $npc."
-            ))
+            npc.animate(SequenceTemplates[npc.sequences?.defence ?: throw TemplateNotFoundException(npc.id)])
             wait(ticks = attackSpeed)
         }
     }.onCancel {

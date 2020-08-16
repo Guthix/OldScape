@@ -15,10 +15,10 @@
  */
 package io.guthix.oldscape.server.world.map
 
+import io.guthix.oldscape.server.world.entity.*
 import io.guthix.oldscape.server.world.map.dim.FloorUnit
 import io.guthix.oldscape.server.world.map.dim.TileUnit
 import io.guthix.oldscape.server.world.map.dim.ZoneUnit
-import io.guthix.oldscape.server.world.entity.*
 
 class Zone(
     val floor: FloorUnit,

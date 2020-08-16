@@ -23,25 +23,27 @@ import io.guthix.oldscape.server.event.EventBus
 import io.guthix.oldscape.server.event.NpcAttackedEvent
 import io.guthix.oldscape.server.pathing.DestinationRange
 import io.guthix.oldscape.server.pathing.breadthFirstSearch
-import io.guthix.oldscape.server.plugin.ConfigDataMissingException
 import io.guthix.oldscape.server.task.NormalTask
-import io.guthix.oldscape.server.template.SequenceTemplate
-import io.guthix.oldscape.server.template.SpotAnimTemplate
+import io.guthix.oldscape.server.template.TemplateNotFoundException
+import io.guthix.oldscape.server.template.api.SequenceTemplates
+import io.guthix.oldscape.server.template.api.SpotAnimTemplates
+import io.guthix.oldscape.server.template.type.SequenceTemplate
+import io.guthix.oldscape.server.template.type.SpotAnimTemplate
 import io.guthix.oldscape.server.template.sequences
+import io.guthix.oldscape.server.template.type.ProjectileTemplate
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.HitMark
 import io.guthix.oldscape.server.world.entity.Npc
 import io.guthix.oldscape.server.world.entity.Player
-import io.guthix.oldscape.server.world.entity.Projectile
-
-val SPLASH_ANIMATION_BLUEPRINT: SpotAnimTemplate = SpotAnimTemplate(id = 85, height = 124) // sound 227
 
 fun Player.magicAttack(
     npc: Npc,
     world: World,
     castAnim: SequenceTemplate,
+    animHeight: Int,
+    animSound: Int,
     spellAnim: SpotAnimTemplate,
-    projectile: Projectile,
+    projTemplate: ProjectileTemplate,
     maxHit: (Player, Npc) -> Int
 ) {
     val npcDestination = DestinationRange(npc, attackRange, world.map)
@@ -53,20 +55,22 @@ fun Player.magicAttack(
         main@ while (true) { // start player combat
             wait { npcDestination.reached(pos.x, pos.y, size) }
             animate(castAnim)
-            spotAnimate(spellAnim)
-            world.map.addProjectile(projectile)
+            spotAnimate(spellAnim, animHeight)
+            // TODO sound
+            val projectile = world.map.addProjectile(projTemplate, player.pos, npc)
             EventBus.schedule(NpcAttackedEvent(npc, player, world))
             world.addTask(NormalTask) {
                 val damage = calcHit(npc, maxHit(player, npc))
                 if (damage == null) {
-                    npc.spotAnimate(SPLASH_ANIMATION_BLUEPRINT, projectile.lifetimeClientTicks)
+                    npc.spotAnimate(SpotAnimTemplates.SPLASH, 124, projectile.lifetimeClientTicks) // sound 227
+                    // TODO sound
                 } else {
                     wait(ticks = projectile.lifeTimeServerTicks - 1)
                     val hmColor = if (damage == 0) HitMark.Color.BLUE else HitMark.Color.RED
                     npc.hit(hmColor, damage, 0)
-                    npc.animate(npc.sequences?.defence ?: throw ConfigDataMissingException(
-                        "No block animation for npc $npc."
-                    ))
+                    npc.animate(SequenceTemplates[npc.sequences?.defence ?: throw TemplateNotFoundException(npc.id)])
+                    // TODO spot animation
+                    // TODO sound
                 }
             }
             wait(ticks = attackSpeed)

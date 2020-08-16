@@ -13,33 +13,33 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.guthix.oldscape.server.template
+package io.guthix.oldscape.server.template.type
 
 import io.guthix.oldscape.cache.config.ObjectConfig
 import io.guthix.oldscape.server.PropertyHolder
+import io.guthix.oldscape.server.template.EngineTemplate
+import io.guthix.oldscape.server.template.EngineConfigTemplate
+import mu.KotlinLogging
 import kotlin.reflect.KProperty
 
-enum class EquipmentType(val slot: Int) {
-    HEAD(0), CAPE(1), NECK(2), ONE_HAND_WEAPON(3), TWO_HAND_WEAPON(3), BODY(4),
-    SHIELD(5), LEGS(7), HANDS(9), FEET(10), RING(11), AMMUNITION(13)
-}
+private val logger = KotlinLogging.logger { }
 
-data class ObjectTemplate(
-    private val cacheConfig: ObjectConfig,
-    private val engineTemplate: ObjectEngineTemplate
-) : PropertyHolder {
-    val id: Int get() = cacheConfig.id
-    val name: String get() = cacheConfig.name
+data class ObjTemplate(
+    private val config: ObjectConfig,
+    private val engineTemplate: ObjEngineTemplate
+) : PropertyHolder, EngineConfigTemplate(config, engineTemplate) {
+    val id: Int get() = config.id
+    val name: String get() = config.name
     val weight: Float get() = engineTemplate.weight
     val examines: String get() = engineTemplate.examine
-    val isStackable: Boolean get() = cacheConfig.stackable
-    val isTradable: Boolean get() = cacheConfig.tradable
-    val notedId: Int? get() = cacheConfig.notedId
-    val isNoted: Boolean get() = cacheConfig.isNoted
-    val placeHolderId: Int? get() = cacheConfig.placeholderId
-    val isPlaceHolder: Boolean get() = cacheConfig.isPlaceHolder
-    val interfaceOperations: Array<String?> get() = cacheConfig.iop
-    val groundOperations: Array<String?> get() = cacheConfig.groundActions
+    val isStackable: Boolean get() = config.stackable
+    val isTradable: Boolean get() = config.tradable
+    val notedId: Int? get() = config.notedId
+    val isNoted: Boolean get() = config.isNoted
+    val placeHolderId: Int? get() = config.placeholderId
+    val isPlaceHolder: Boolean get() = config.isPlaceHolder
+    val interfaceOperations: Array<String?> get() = config.iop
+    val groundOperations: Array<String?> get() = config.groundActions
     val equipmentType: EquipmentType? get() = engineTemplate.equipmentType
     val isFullBody: Boolean? get() = engineTemplate.isFullBody
     val coversFace: Boolean? get() = engineTemplate.coversFace
@@ -48,17 +48,22 @@ data class ObjectTemplate(
     override val properties: MutableMap<KProperty<*>, Any?> = mutableMapOf()
 }
 
-data class ObjectEngineTemplate(
-    val ids: List<Int>,
+data class ObjEngineTemplate(
+    override val ids: List<Int>,
     val weight: Float,
     val examine: String,
     val equipment: EquipmentEngineTemplate?
-) {
+) : EngineTemplate(ids) {
     val equipmentType: EquipmentType? get() = equipment?.type
     val isFullBody: Boolean? get() = equipment?.isFullBody
     val coversFace: Boolean? get() = equipment?.coversFace
     val coversHair: Boolean? get() = equipment?.coversHair
     val stanceSequences: StanceSequences? = equipment?.stanceSequences
+}
+
+enum class EquipmentType(val slot: Int) {
+    HEAD(0), CAPE(1), NECK(2), ONE_HAND_WEAPON(3), TWO_HAND_WEAPON(3), BODY(4),
+    SHIELD(5), LEGS(7), HANDS(9), FEET(10), RING(11), AMMUNITION(13)
 }
 
 data class EquipmentEngineTemplate(

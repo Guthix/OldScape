@@ -16,14 +16,13 @@
 package io.guthix.oldscape.server.template
 
 import io.guthix.oldscape.server.event.WorldInitializedEvent
-import io.guthix.oldscape.server.readTemplate
-import io.guthix.oldscape.server.world.entity.Obj
+import io.guthix.oldscape.server.template.api.ObjTemplates
 
 on(WorldInitializedEvent::class).then {
-    val bonusTemplates: List<BonusTemplate> = readTemplate("/template/Bonuses.yaml")
+    val bonusTemplates: List<BonusTemplate> = readYaml("/template/Bonuses.yaml")
     bonusTemplates.forEach { bonusTemplate ->
         bonusTemplate.ids.forEach {  id ->
-            val objTemplate = Obj[id]
+            val objTemplate = ObjTemplates[id]
             objTemplate.properties[objTemplate::bonus] = bonusTemplate
         }
     }

@@ -15,19 +15,19 @@
  */
 package io.guthix.oldscape.server.world.entity
 
-import io.guthix.oldscape.server.world.map.dim.TileUnit
-import io.guthix.oldscape.server.world.map.dim.tiles
 import io.guthix.oldscape.server.event.EventHolder
 import io.guthix.oldscape.server.event.GameEvent
 import io.guthix.oldscape.server.event.PublicMessageEvent
 import io.guthix.oldscape.server.net.game.out.*
 import io.guthix.oldscape.server.plugin.EventHandler
 import io.guthix.oldscape.server.task.Task
-import io.guthix.oldscape.server.template.EquipmentType
-import io.guthix.oldscape.server.template.StanceSequences
+import io.guthix.oldscape.server.template.type.EquipmentType
+import io.guthix.oldscape.server.template.type.StanceSequences
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.interest.*
 import io.guthix.oldscape.server.world.entity.intface.IfComponent
+import io.guthix.oldscape.server.world.map.dim.TileUnit
+import io.guthix.oldscape.server.world.map.dim.tiles
 import io.netty.channel.ChannelFuture
 import io.netty.channel.ChannelHandlerContext
 import java.util.concurrent.ConcurrentLinkedQueue

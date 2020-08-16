@@ -15,11 +15,12 @@
  */
 package io.guthix.oldscape.server.world.entity.interest
 
-import io.guthix.oldscape.server.api.InventoryBlueprints
 import io.guthix.oldscape.server.net.game.out.UpdateInvClearPacket
 import io.guthix.oldscape.server.net.game.out.UpdateInvFullPacket
 import io.guthix.oldscape.server.net.game.out.UpdateInvPartialPacket
 import io.guthix.oldscape.server.net.game.out.UpdateInvStopTransmitPacket
+import io.guthix.oldscape.server.template.type.InventoryTemplate
+import io.guthix.oldscape.server.template.type.ObjTemplate
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.Obj
 import io.guthix.oldscape.server.world.entity.Player
@@ -32,16 +33,22 @@ import io.netty.channel.ChannelFuture
  * which doesn't need this.
  */
 class InventoryManager(
-    private val inventoryId: Int,
+    private val inventory: InventoryTemplate,
     private val interfaceId: Int = -1,
     private val interfaceSlotId: Int = 0,
-    private val objs: Array<Obj?> = arrayOfNulls(InventoryBlueprints[inventoryId].capacity)
+    private val objs: Array<Obj?> = arrayOfNulls(inventory.capacity)
 ) : InterestManager {
     private val maxSize get() = objs.size
 
     private var objCount = objs.count { it != null }
 
     private val changes = mutableMapOf<Int, Obj?>()
+
+    fun add(template: ObjTemplate, amount: Int): Obj {
+        val obj = Obj(template, amount)
+        add(obj)
+        return obj
+    }
 
     fun add(obj: Obj) {
         if (obj.isStackable) {
@@ -95,7 +102,7 @@ class InventoryManager(
     }
 
     fun release(player: Player) {
-        player.ctx.write(UpdateInvStopTransmitPacket(inventoryId))
+        player.ctx.write(UpdateInvStopTransmitPacket(inventory.id))
     }
 
     fun clear(player: Player) {
@@ -109,11 +116,11 @@ class InventoryManager(
         if (changes.isNotEmpty()) {
             if (changes.size == objCount) { // TODO use better heuristic
                 futures.add(player.ctx.write(
-                    UpdateInvFullPacket(interfaceId, interfaceSlotId, inventoryId, objs.toList())
+                    UpdateInvFullPacket(interfaceId, interfaceSlotId, inventory.id, objs.toList())
                 ))
             } else {
                 futures.add(player.ctx.write(
-                    UpdateInvPartialPacket(interfaceId, interfaceSlotId, inventoryId, changes.toMap())
+                    UpdateInvPartialPacket(interfaceId, interfaceSlotId, inventory.id, changes.toMap())
                 ))
             }
             changes.clear()

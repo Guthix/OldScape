@@ -15,6 +15,4 @@
  */
 package io.guthix.oldscape.server.plugin
 
-class ConfigDataMissingException(message: String) : Exception(message)
-
 class InvalidClientMessageException(message: String) : Exception(message)
