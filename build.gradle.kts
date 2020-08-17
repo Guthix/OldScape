@@ -32,6 +32,8 @@ val kotlinVersion: String by extra(project.getKotlinPluginVersion()!!)
 
 allprojects {
     apply(plugin = "kotlin")
+    apply(plugin = "maven-publish")
+    apply(plugin = "org.jetbrains.dokka")
 
     repositories {
         mavenCentral()
@@ -61,6 +63,42 @@ allprojects {
             kotlinOptions.jvmTarget = "11"
         }
     }
+
+    val dokkaJar: Jar by tasks.creating(Jar::class) {
+        group = JavaBasePlugin.DOCUMENTATION_GROUP
+        description = "Assembles Kotlin docs with Dokka"
+        archiveClassifier.set("javadoc")
+        from(tasks.dokka)
+    }
+
+    tasks {
+        dokka {
+            outputFormat = "html"
+            outputDirectory = "$buildDir/javadoc"
+        }
+    }
+
+    publishing {
+        publications {
+            create<MavenPublication>("default") {
+                from(components["java"])
+                artifact(dokkaJar)
+                pom {
+                    url.set("https://github.com/guthix/OldScape-Server")
+                    licenses {
+                        license {
+                            name.set("APACHE LICENSE, VERSION 2.0")
+                            url.set("https://www.apache.org/licenses/LICENSE-2.0.txt")
+                        }
+                    }
+                    scm {
+                        connection.set("scm:git:git://github.com/guthix/OldScape-Server.git")
+                        developerConnection.set("scm:git:ssh://github.com/guthix/OldScape-Server.git")
+                    }
+                }
+            }
+        }
+    }
 }
 
 dependencies {
@@ -83,41 +121,4 @@ dependencies {
         group = "com.fasterxml.jackson.dataformat", name = "jackson-dataformat-yaml", version = jacksonVersion
     )
     implementation(group = "com.fasterxml.jackson.module", name = "jackson-module-kotlin", version = jacksonVersion)
-}
-
-
-val dokkaJar: Jar by tasks.creating(Jar::class) {
-    group = JavaBasePlugin.DOCUMENTATION_GROUP
-    description = "Assembles Kotlin docs with Dokka"
-    archiveClassifier.set("javadoc")
-    from(tasks.dokka)
-}
-
-tasks {
-    dokka {
-        outputFormat = "html"
-        outputDirectory = "$buildDir/javadoc"
-    }
-}
-
-publishing {
-    publications {
-        create<MavenPublication>("default") {
-            from(components["java"])
-            artifact(dokkaJar)
-            pom {
-                url.set("https://github.com/guthix/OldScape-Server")
-                licenses {
-                    license {
-                        name.set("APACHE LICENSE, VERSION 2.0")
-                        url.set("https://www.apache.org/licenses/LICENSE-2.0.txt")
-                    }
-                }
-                scm {
-                    connection.set("scm:git:git://github.com/guthix/OldScape-Server.git")
-                    developerConnection.set("scm:git:ssh://github.com/guthix/OldScape-Server.git")
-                }
-            }
-        }
-    }
 }
