@@ -6,8 +6,8 @@ import org.jetbrains.kotlin.gradle.plugin.getKotlinPluginVersion
 plugins {
     idea
     application
-    kotlin("jvm")
     `maven-publish`
+    kotlin("jvm")
     id("org.jetbrains.dokka")
 }
 
@@ -38,7 +38,6 @@ allprojects {
     repositories {
         mavenCentral()
         jcenter()
-        maven("https://dl.bintray.com/kotlin/kotlin-eap")
         maven("https://jitpack.io")
     }
 
@@ -58,23 +57,11 @@ allprojects {
                 "-Xopt-in=kotlin.ExperimentalStdlibApi", "-XXLanguage:+InlineClasses"
             )
         }
-
         compileTestKotlin {
             kotlinOptions.jvmTarget = "11"
         }
-    }
-
-    val dokkaJar: Jar by tasks.creating(Jar::class) {
-        group = JavaBasePlugin.DOCUMENTATION_GROUP
-        description = "Assembles Kotlin docs with Dokka"
-        archiveClassifier.set("javadoc")
-        from(tasks.dokka)
-    }
-
-    tasks {
-        dokka {
-            outputFormat = "html"
-            outputDirectory = "$buildDir/javadoc"
+        dokkaHtml {
+            outputDirectory = "$buildDir/dokka"
         }
     }
 
@@ -82,7 +69,6 @@ allprojects {
         publications {
             create<MavenPublication>("default") {
                 from(components["java"])
-                artifact(dokkaJar)
                 pom {
                     url.set("https://github.com/guthix/OldScape-Server")
                     licenses {

@@ -3,8 +3,8 @@ import java.nio.file.Path
 import java.nio.file.Paths
 
 pluginManagement {
-    val kotlinVersion by extra("1.4.0-rc")
-    val dokkaVersion by extra("0.10.0")
+    val kotlinVersion by extra("1.4.0")
+    val dokkaVersion by extra("1.4.0-rc")
 
     plugins {
         id("org.jetbrains.kotlin.jvm") version kotlinVersion
@@ -14,7 +14,7 @@ pluginManagement {
     repositories {
         mavenCentral()
         gradlePluginPortal()
-        maven("https://dl.bintray.com/kotlin/kotlin-eap")
+        jcenter()
     }
 }
 

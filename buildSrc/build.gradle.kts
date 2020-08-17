@@ -15,7 +15,6 @@ val jacksonVersion: String by extra("2.10.2")
 repositories {
     mavenCentral()
     jcenter()
-    maven("https://dl.bintray.com/kotlin/kotlin-eap")
     maven("https://jitpack.io")
 }
 
