@@ -1,6 +1,7 @@
 @file:Suppress("ConvertLambdaToReference")
 
 import io.guthix.oldscape.server.cache.CodeGenerator
+import org.jetbrains.dokka.utilities.cast
 import org.jetbrains.kotlin.gradle.plugin.getKotlinPluginVersion
 
 plugins {
@@ -11,10 +12,9 @@ plugins {
     id("org.jetbrains.dokka")
 }
 
-
 apply<CodeGenerator>()
 
-group = "io.guthix"
+group = "io.guthix.oldscape"
 version = "0.1-SNAPSHOT"
 description = "An Oldschool Runescape Server Emulator"
 
@@ -32,8 +32,10 @@ val kotlinVersion: String by extra(project.getKotlinPluginVersion()!!)
 
 allprojects {
     apply(plugin = "kotlin")
-    apply(plugin = "maven-publish")
     apply(plugin = "org.jetbrains.dokka")
+
+    group = rootProject.group
+    version = rootProject.version
 
     repositories {
         mavenCentral()
@@ -64,10 +66,19 @@ allprojects {
             outputDirectory = "$buildDir/dokka"
         }
     }
+}
 
+configure(allprojects.filter {
+    it.name == rootProject.name || it.name == "equipment" || it.name == "combat"
+}) {
+    val project = this
+    apply(plugin = "maven-publish")
     publishing {
         publications {
             create<MavenPublication>("default") {
+                artifactId = if(project.name == rootProject.name ) {
+                    rootProject.name
+                } else "${rootProject.name}-${project.name}"
                 from(components["java"])
                 pom {
                     url.set("https://github.com/guthix/OldScape-Server")
