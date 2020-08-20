@@ -17,7 +17,7 @@ package io.guthix.oldscape.server.template.type
 
 import io.guthix.oldscape.cache.config.ObjectConfig
 import io.guthix.oldscape.server.PropertyHolder
-import io.guthix.oldscape.server.template.EngineTemplate
+import io.guthix.oldscape.server.template.Template
 import io.guthix.oldscape.server.template.EngineConfigTemplate
 import mu.KotlinLogging
 import kotlin.reflect.KProperty
@@ -53,7 +53,7 @@ data class ObjEngineTemplate(
     val weight: Float,
     val examine: String,
     val equipment: EquipmentEngineTemplate?
-) : EngineTemplate(ids) {
+) : Template(ids) {
     val equipmentType: EquipmentType? get() = equipment?.type
     val isFullBody: Boolean? get() = equipment?.isFullBody
     val coversFace: Boolean? get() = equipment?.coversFace
@@ -68,9 +68,9 @@ enum class EquipmentType(val slot: Int) {
 
 data class EquipmentEngineTemplate(
     val type: EquipmentType,
-    val isFullBody: Boolean?,
     val coversFace: Boolean?,
     val coversHair: Boolean?,
+    val isFullBody: Boolean?,
     val stanceSequences: StanceSequences?,
 )
 

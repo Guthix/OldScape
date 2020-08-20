@@ -17,7 +17,7 @@ package io.guthix.oldscape.server.template.type
 
 import io.guthix.oldscape.cache.config.LocationConfig
 import io.guthix.oldscape.server.PropertyHolder
-import io.guthix.oldscape.server.template.EngineTemplate
+import io.guthix.oldscape.server.template.Template
 import io.guthix.oldscape.server.template.EngineConfigTemplate
 import io.guthix.oldscape.server.world.map.dim.TileUnit
 import io.guthix.oldscape.server.world.map.dim.tiles
@@ -28,7 +28,7 @@ private val logger = KotlinLogging.logger { }
 
 data class LocTemplate(
     private val config: LocationConfig,
-    private val engineTemplate: EngineTemplate
+    private val engineTemplate: Template
 ) : PropertyHolder, EngineConfigTemplate(config, engineTemplate) {
     val id: Int get() = config.id
     val name: String get() = config.name
@@ -48,4 +48,4 @@ data class LocTemplate(
 data class LocEngineTemplate(
     override val ids: List<Int>,
     val examine: String
-) : EngineTemplate(ids)
+) : Template(ids)

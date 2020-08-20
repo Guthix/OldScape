@@ -32,12 +32,12 @@ internal val Obj.bonusTemplate: BonusTemplate? get() = template.bonus
 internal val ObjTemplate.bonus: BonusTemplate? by Property { null }
 
 data class BonusTemplate(
-    val ids: List<Int>,
+    override val ids: List<Int>,
     val attackBonus: StyleBonus?,
     val strengthBonus: CombatBonus?,
     val defenceBonus: StyleBonus?,
     val prayerBonus: Int?
-)
+) : Template(ids)
 
 data class StyleBonus(
     var stab: Int,

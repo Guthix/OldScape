@@ -17,7 +17,7 @@ package io.guthix.oldscape.server.template.type
 
 import io.guthix.oldscape.cache.config.NpcConfig
 import io.guthix.oldscape.server.PropertyHolder
-import io.guthix.oldscape.server.template.EngineTemplate
+import io.guthix.oldscape.server.template.Template
 import io.guthix.oldscape.server.template.EngineConfigTemplate
 import io.guthix.oldscape.server.world.map.dim.TileUnit
 import io.guthix.oldscape.server.world.map.dim.tiles
@@ -41,4 +41,4 @@ data class NpcEngineTemplate(
     override val ids: List<Int>,
     val examine: String,
     val wanderRadius: Int?
-) : EngineTemplate(ids)
+) : Template(ids)

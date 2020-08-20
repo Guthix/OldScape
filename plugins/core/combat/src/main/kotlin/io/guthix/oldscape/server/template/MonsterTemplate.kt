@@ -50,6 +50,7 @@ internal val Npc.monsterTemplate: MonsterTemplate? get() = template.monster
 internal val NpcTemplate.monster: MonsterTemplate? by Property { null }
 
 data class MonsterTemplate(
+    override val ids: List<Int>,
     val lvl: Int,
     val maxHit: Int?,
     val attackType: AttackType?,
@@ -63,7 +64,7 @@ data class MonsterTemplate(
     val attackBonus: CombatBonus,
     val strengthBonus: CombatBonus,
     val defensiveStats: StyleBonus
-)
+) : Template(ids)
 
 data class CombatStats(
     val health: Int,
