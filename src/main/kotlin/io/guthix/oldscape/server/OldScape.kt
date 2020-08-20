@@ -70,17 +70,17 @@ object OldScape {
         EnumTemplates.load(EnumConfig.load(configArchive.readGroup(EnumConfig.id)))
         LocTemplates.load(
             LocationConfig.load(configArchive.readGroup(LocationConfig.id)),
-            readYaml("config/Locs.yaml"),
+            readYaml("template/Locs.yaml"),
             ::LocTemplate
         )
         NpcTemplates.load(
             NpcConfig.load(configArchive.readGroup(NpcConfig.id)),
-            readYaml("config/Npcs.yaml"),
+            readYaml("template/Npcs.yaml"),
             ::NpcTemplate
         )
         ObjTemplates.load(
             ObjectConfig.load(configArchive.readGroup(ObjectConfig.id)),
-            readYaml("config/Objects.yaml"),
+            readYaml("template/Objects.yaml"),
             ::ObjTemplate
         )
 

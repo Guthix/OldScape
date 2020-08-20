@@ -21,14 +21,14 @@ import mu.KotlinLogging
 
 private val logger = KotlinLogging.logger { }
 
-abstract class EngineTemplate(open val ids: List<Int>)
+abstract class Template(open val ids: List<Int>)
 
 abstract class EngineConfigTemplate(
     cacheConfig: Config,
-    private val engineTemplate: EngineTemplate
+    private val engineTemplate: Template
 ) : ConfigTemplate(cacheConfig)
 
-open class EngineTemplateLoader<T : EngineConfigTemplate, C : NamedConfig, E : EngineTemplate> {
+open class EngineTemplateLoader<T : EngineConfigTemplate, C : NamedConfig, E : Template> {
     protected lateinit var templates: Map<Int, T>
 
     operator fun get(index: Int): T = templates[index] ?: throw TemplateNotFoundException(index)

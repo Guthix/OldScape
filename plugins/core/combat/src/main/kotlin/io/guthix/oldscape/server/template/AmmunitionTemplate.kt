@@ -39,11 +39,12 @@ private val Obj.ammunitionTemplate: AmmunitionTemplate? get() = template.ammunit
 private val ObjTemplate.ammunition: AmmunitionTemplate? by Property { null }
 
 data class AmmunitionTemplate(
+    override val ids: List<Int>,
     val type: AmmunitionType,
     val projectileId: Int,
     val drawBackSpotAnim: Int,
     val drawBackSpotAnimHeight: Int
-) {
+) : Template(ids) {
     val projectile: ProjectileTemplate get() = ProjectileTemplate(
         projectileId,
         type.startHeight,

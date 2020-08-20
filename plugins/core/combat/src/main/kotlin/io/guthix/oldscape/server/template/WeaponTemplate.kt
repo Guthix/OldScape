@@ -44,11 +44,12 @@ private val Obj.weaponTemplate: WeaponTemplate? get() = template.weapon
 private val ObjTemplate.weapon: WeaponTemplate? by Property { null }
 
 data class WeaponTemplate(
+    override val ids: List<Int>,
     val type: WeaponType,
     val attackSpeed: Int,
     val attackRange: Int,
     val weaponSequences: WeaponSequences?,
-)
+) : Template(ids)
 
 data class WeaponSequences(
     val attack: Int,
