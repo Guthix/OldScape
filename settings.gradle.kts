@@ -1,6 +1,6 @@
 pluginManagement {
-    val kotlinVersion by extra("1.3.71")
-    val dokkaVersion by extra("0.10.0")
+    val kotlinVersion by extra("1.4.0")
+    val dokkaVersion by extra("1.4.0-rc")
 
     plugins {
         id("org.jetbrains.kotlin.jvm") version kotlinVersion

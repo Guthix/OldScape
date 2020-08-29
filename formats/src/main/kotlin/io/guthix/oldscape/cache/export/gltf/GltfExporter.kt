@@ -174,8 +174,8 @@ private fun createVertexAccessor(gltf: GlTF, model: Model) {
             count = vertexInTriangle
             type = "VEC3"
             componentType = GltfDataType.FLOAT.opcode
-            max = arrayOf(xVert.max(), yVert.max(), zVert.max())
-            min = arrayOf(xVert.min(), yVert.min(), zVert.min())
+            max = arrayOf(xVert.maxOrNull(), yVert.maxOrNull(), zVert.maxOrNull())
+            min = arrayOf(xVert.minOrNull(), yVert.minOrNull(), zVert.minOrNull())
         }
         gltf.addAccessors(vertexAccessor)
 
@@ -187,8 +187,14 @@ private fun createVertexAccessor(gltf: GlTF, model: Model) {
                 count = vertexInTriangle
                 type = "VEC2"
                 componentType = GltfDataType.FLOAT.opcode
-                max = arrayOf(model.triangleTextUCo!![triangleId]!!.max(), model.triangleTextVCo!![triangleId]!!.max())
-                min = arrayOf(model.triangleTextUCo!![triangleId]!!.min(), model.triangleTextVCo!![triangleId]!!.min())
+                max = arrayOf(
+                    model.triangleTextUCo!![triangleId]!!.maxOrNull(),
+                    model.triangleTextVCo!![triangleId]!!.maxOrNull()
+                )
+                min = arrayOf(
+                    model.triangleTextUCo!![triangleId]!!.minOrNull(),
+                    model.triangleTextVCo!![triangleId]!!.minOrNull()
+                )
             }
             gltf.addAccessors(uvAccessor)
             textureBufferViews++
