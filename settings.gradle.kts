@@ -1,6 +1,6 @@
 pluginManagement {
     val kotlinVersion by extra("1.4.0")
-    val dokkaVersion by extra("1.4.0-rc")
+    val dokkaVersion by extra(kotlinVersion)
 
     plugins {
         id("org.jetbrains.kotlin.jvm") version kotlinVersion
@@ -8,9 +8,8 @@ pluginManagement {
     }
 
     repositories {
-        maven("https://dl.bintray.com/kotlin/kotlin-eap")
-        mavenCentral()
-        maven("https://plugins.gradle.org/m2/")
+        gradlePluginPortal()
+        jcenter()
     }
 }
 
