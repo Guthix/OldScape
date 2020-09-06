@@ -17,4 +17,4 @@ jobs:
           java-version: ${{ matrix.java }}
           architecture: x64
       - name: Building
-        run: ./gradlew -x sourceGen build --stacktrace
+        run: ./gradlew -x templateGeneration build --stacktrace
