@@ -17,7 +17,7 @@ package io.guthix.oldscape.server.event
 
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.Player
-import io.guthix.oldscape.server.content.ObjTemplates
+import io.guthix.oldscape.server.template.ObjTemplates
 
 data class InvObjClickEvent(
     val interfaceId: Int,

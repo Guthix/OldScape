@@ -1,6 +1,5 @@
 @file:Suppress("ConvertLambdaToReference")
 
-import io.guthix.oldscape.server.cache.CodeGenerator
 import org.jetbrains.kotlin.gradle.plugin.getKotlinPluginVersion
 
 plugins {
@@ -11,7 +10,7 @@ plugins {
     id("org.jetbrains.dokka")
 }
 
-apply<CodeGenerator>()
+apply<io.guthix.oldscape.server.template.TemplateGenerator>()
 
 group = "io.guthix.oldscape"
 version = "0.1-SNAPSHOT"

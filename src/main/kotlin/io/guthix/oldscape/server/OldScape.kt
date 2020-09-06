@@ -29,7 +29,6 @@ import io.guthix.oldscape.cache.ConfigArchive
 import io.guthix.oldscape.cache.MapArchive
 import io.guthix.oldscape.cache.config.*
 import io.guthix.oldscape.cache.xtea.MapXtea
-import io.guthix.oldscape.server.content.*
 import io.guthix.oldscape.server.event.EventBus
 import io.guthix.oldscape.server.event.InitializeTemplateEvent
 import io.guthix.oldscape.server.event.WorldInitializedEvent

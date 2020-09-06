@@ -20,7 +20,7 @@ import io.guthix.oldscape.server.combat.attackSpeed
 import io.guthix.oldscape.server.combat.dmg.calcHit
 import io.guthix.oldscape.server.combat.dmg.maxMeleeHit
 import io.guthix.oldscape.server.combat.inCombatWith
-import io.guthix.oldscape.server.content.SequenceTemplates
+import io.guthix.oldscape.server.template.SequenceTemplates
 import io.guthix.oldscape.server.event.EventBus
 import io.guthix.oldscape.server.event.NpcAttackedEvent
 import io.guthix.oldscape.server.pathing.DestinationRectangleDirect

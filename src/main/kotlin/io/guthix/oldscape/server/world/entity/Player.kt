@@ -22,6 +22,7 @@ import io.guthix.oldscape.server.event.PublicMessageEvent
 import io.guthix.oldscape.server.net.game.out.*
 import io.guthix.oldscape.server.plugin.EventHandler
 import io.guthix.oldscape.server.task.Task
+import io.guthix.oldscape.server.template.VarbitTemplate
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.interest.*
 import io.guthix.oldscape.server.world.entity.intface.IfComponent
@@ -212,7 +213,7 @@ class Player(
 
     fun updateVarp(id: Int, value: Int): Unit = varpManager.updateVarp(id, value)
 
-    fun updateVarbit(id: Int, value: Int): Unit = varpManager.updateVarbit(id, value)
+    fun updateVarbit(template: VarbitTemplate, value: Int): Unit = varpManager.updateVarbit(template, value)
 
     fun runClientScript(id: Int, vararg args: Any) {
         ctx.write(RunclientscriptPacket(id, *args))

@@ -18,6 +18,7 @@ package io.guthix.oldscape.server.world.entity
 import io.guthix.oldscape.server.event.PublicMessageEvent
 import io.guthix.oldscape.server.net.game.out.PlayerInfoPacket
 import io.guthix.oldscape.server.task.TaskType
+import io.guthix.oldscape.server.template.PhysicalSpotAnimTemplate
 import io.guthix.oldscape.server.template.SequenceTemplate
 import io.guthix.oldscape.server.template.SpotAnimTemplate
 import io.guthix.oldscape.server.world.entity.interest.InterestUpdateType
@@ -148,7 +149,12 @@ abstract class Character(val index: Int) : Entity() {
     object SpotAnimTask : TaskType
 
     fun spotAnimate(template: SpotAnimTemplate, height: Int, delay: Int = 0) {
-        val anim = SpotAnimation(template, height, delay)
+        val physTemplate = PhysicalSpotAnimTemplate(template, height)
+        spotAnimate(physTemplate, delay)
+    }
+
+    fun spotAnimate(template: PhysicalSpotAnimTemplate, delay: Int = 0) {
+        val anim = SpotAnimation(template, delay)
         addSpotAnimationFlag()
         spotAnimation = anim
         cancelTasks(SpotAnimTask)

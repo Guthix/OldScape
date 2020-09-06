@@ -15,7 +15,6 @@
  */
 package io.guthix.oldscape.server.dev
 
-import io.guthix.oldscape.server.content.*
 import io.guthix.oldscape.server.world.map.dim.tiles
 import io.guthix.oldscape.server.event.ClientCheatEvent
 import io.guthix.oldscape.server.event.PublicMessageEvent
@@ -25,7 +24,7 @@ import io.guthix.oldscape.server.world.map.dim.floors
 
 on(ClientCheatEvent::class).where { string == "drop" }.then {
     world.map.addObject(
-        ObjTemplates.RUNEFULLHELM_1163,
+        ObjTemplates.RUNE_FULL_HELM_1163,
         amount = 1,
         Tile(player.pos.floor, player.pos.x + 1.tiles, player.pos.y + 1.tiles)
     )
@@ -45,8 +44,8 @@ on(ClientCheatEvent::class).where { string == "shoot" }.then {
 }
 
 on(ClientCheatEvent::class).where { string == "rangeq" }.then {
-    player.topInterface.itemBag.add(ObjTemplates.MAGICSHORTBOW_861, amount = 1)
-    player.topInterface.itemBag.add(ObjTemplates.BRONZEARROW_882, amount = 5)
+    player.topInterface.itemBag.add(ObjTemplates.MAGIC_SHORTBOW_861, amount = 1)
+    player.topInterface.itemBag.add(ObjTemplates.BRONZE_ARROW_882, amount = 5)
 }
 
 on(ClientCheatEvent::class).where { string == "shout" }.then {

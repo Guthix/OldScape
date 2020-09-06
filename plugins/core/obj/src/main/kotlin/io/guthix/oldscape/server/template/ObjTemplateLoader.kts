@@ -15,6 +15,4 @@
  */
 package io.guthix.oldscape.server.template
 
-import io.guthix.oldscape.server.content.ObjTemplates
-
 loadTemplates("/template/ObjExamines.yaml", ObjTemplates, ObjTemplate::examine)

@@ -18,6 +18,7 @@ package io.guthix.oldscape.server.combat
 import io.guthix.oldscape.server.combat.type.magicAttack
 import io.guthix.oldscape.server.event.IfOnNpcEvent
 import io.guthix.oldscape.server.plugin.Script
+import io.guthix.oldscape.server.template.PhysicalSpotAnimTemplate
 import io.guthix.oldscape.server.template.ProjectileTemplate
 import io.guthix.oldscape.server.template.SequenceTemplate
 import io.guthix.oldscape.server.template.SpotAnimTemplate
@@ -28,7 +29,7 @@ fun Script.registerCombatSpell(
     interfaceId: Int,
     interfaceSlotId: Int,
     castAnim: SequenceTemplate,
-    spellAnim: SpotAnimTemplate,
+    spellAnim: PhysicalSpotAnimTemplate,
     projectile: ProjectileTemplate,
     onHit: (Player, Npc) -> Int // TODO
 ) {
