@@ -17,7 +17,6 @@
 @file:Suppress("PropertyName")
 package io.guthix.oldscape.server.template
 
-
 object NpcTemplates : TemplateLoader<NpcTemplate>() {
     val TOOL_LEPRECHAUN_0: NpcTemplate get() = get(0)
     val MOLANISK_1: NpcTemplate get() = get(1)

@@ -17,7 +17,6 @@
 @file:Suppress("PropertyName")
 package io.guthix.oldscape.server.template
 
-
 object ObjTemplates : TemplateLoader<ObjTemplate>() {
     val DWARF_REMAINS_0: ObjTemplate get() = get(0)
     val TOOLKIT_1: ObjTemplate get() = get(1)

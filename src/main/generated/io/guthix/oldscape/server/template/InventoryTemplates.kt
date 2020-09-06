@@ -17,7 +17,6 @@
 @file:Suppress("PropertyName")
 package io.guthix.oldscape.server.template
 
-
 object InventoryTemplates : TemplateLoader<InventoryTemplate>() {
     val ITEM_BAG_93: InventoryTemplate get() = get(93)
     val EQUIPMENT_94: InventoryTemplate get() = get(94)

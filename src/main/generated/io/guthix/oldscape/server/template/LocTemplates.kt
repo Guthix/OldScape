@@ -17,7 +17,6 @@
 @file:Suppress("PropertyName")
 package io.guthix.oldscape.server.template
 
-
 object LocTemplates : TemplateLoader<LocTemplate>() {
     val CRATE_1: LocTemplate get() = get(1)
     val CAVE_ENTRANCE_2: LocTemplate get() = get(2)

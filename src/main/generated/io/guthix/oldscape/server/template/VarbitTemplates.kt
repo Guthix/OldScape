@@ -17,7 +17,6 @@
 @file:Suppress("PropertyName")
 package io.guthix.oldscape.server.template
 
-
 object VarbitTemplates : TemplateLoader<VarbitTemplate>() {
     val RUN_MODE_173: VarbitTemplate get() = get(173)
     val ATTACK_STYLE_357: VarbitTemplate get() = get(357)
