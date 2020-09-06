@@ -18,6 +18,8 @@ package io.guthix.oldscape.server.event
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.Player
 
-abstract class GameEvent(open val world: World)
+interface Event
+
+abstract class GameEvent(open val world: World) : Event
 
 abstract class PlayerGameEvent(open val player: Player, world: World) : GameEvent(world)

@@ -16,7 +16,7 @@
 package io.guthix.oldscape.server.world
 
 import io.guthix.oldscape.server.net.login.LoginRequest
-import io.guthix.oldscape.server.template.type.NpcTemplate
+import io.guthix.oldscape.server.template.NpcTemplate
 import io.guthix.oldscape.server.world.entity.Npc
 import io.guthix.oldscape.server.world.entity.Player
 import io.guthix.oldscape.server.world.entity.interest.*

@@ -19,8 +19,8 @@ import io.guthix.oldscape.server.net.game.out.UpdateInvClearPacket
 import io.guthix.oldscape.server.net.game.out.UpdateInvFullPacket
 import io.guthix.oldscape.server.net.game.out.UpdateInvPartialPacket
 import io.guthix.oldscape.server.net.game.out.UpdateInvStopTransmitPacket
-import io.guthix.oldscape.server.template.type.InventoryTemplate
-import io.guthix.oldscape.server.template.type.ObjTemplate
+import io.guthix.oldscape.server.template.InventoryTemplate
+import io.guthix.oldscape.server.template.ObjTemplate
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.Obj
 import io.guthix.oldscape.server.world.entity.Player
@@ -95,7 +95,6 @@ class InventoryManager(
      * Doesn't write the result to the client.
      */
     fun move(fromSlot: Int, toSlot: Int) {
-        println("From $fromSlot to $toSlot")
         val toObj = objs[toSlot]
         objs[toSlot] = objs[fromSlot]
         objs[fromSlot] = toObj

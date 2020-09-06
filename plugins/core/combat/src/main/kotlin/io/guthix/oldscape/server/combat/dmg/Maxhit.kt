@@ -32,9 +32,9 @@ private fun Player.effectiveRangeStrength(): Double =
         damageMultiplier.range
 
 internal fun Player.maxMeleeHit(): Int =
-    floor(0.5 + effectiveMeleeStrength() * (equipment.strengtBonus.melee + 64.0) / 640.0).toInt()
+    floor(0.5 + effectiveMeleeStrength() * (equipmentSet.strengtBonus.melee + 64.0) / 640.0).toInt()
 
 internal fun Player.maxRangeHit(): Int =
-    floor(0.5 + effectiveRangeStrength() * (equipment.strengtBonus.range + 64.0) / 640.0).toInt()
+    floor(0.5 + effectiveRangeStrength() * (equipmentSet.strengtBonus.range + 64.0) / 640.0).toInt()
 
-internal fun Player.maxMagicHit(spellMaxHit: Int): Int = spellMaxHit * equipment.attackBonus.magic
+internal fun Player.maxMagicHit(spellMaxHit: Int): Int = spellMaxHit * equipmentSet.attackBonus.magic

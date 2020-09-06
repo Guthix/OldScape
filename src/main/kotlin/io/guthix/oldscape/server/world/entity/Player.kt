@@ -15,14 +15,13 @@
  */
 package io.guthix.oldscape.server.world.entity
 
+import io.guthix.oldscape.server.event.Event
 import io.guthix.oldscape.server.event.EventHolder
 import io.guthix.oldscape.server.event.GameEvent
 import io.guthix.oldscape.server.event.PublicMessageEvent
 import io.guthix.oldscape.server.net.game.out.*
 import io.guthix.oldscape.server.plugin.EventHandler
 import io.guthix.oldscape.server.task.Task
-import io.guthix.oldscape.server.template.type.EquipmentType
-import io.guthix.oldscape.server.template.type.StanceSequences
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.interest.*
 import io.guthix.oldscape.server.world.entity.intface.IfComponent
@@ -47,7 +46,7 @@ class Player(
 ) : Character(playerManager.index), Comparable<Player>, EventHolder {
     override val updateFlags = sortedSetOf<PlayerUpdateType>()
 
-    override val events: ConcurrentLinkedQueue<EventHandler<GameEvent>> = ConcurrentLinkedQueue()
+    override val events: ConcurrentLinkedQueue<EventHandler<Event>> = ConcurrentLinkedQueue()
 
     var isLoggingOut: Boolean = false
 
@@ -82,7 +81,17 @@ class Player(
 
     val colours: PlayerManager.Colours = PlayerManager.Colours(0, 0, 0, 0, 0)
 
-    val equipment: PlayerManager.EquipmentSet = PlayerManager.EquipmentSet(mutableMapOf())
+    val equipmentSet: PlayerManager.EquipmentSet = PlayerManager.EquipmentSet(mutableMapOf())
+
+    data class StanceSequences(
+        var stand: Int,
+        var turn: Int,
+        var walk: Int,
+        var turn180: Int,
+        var turn90CW: Int,
+        var turn90CCW: Int,
+        var run: Int
+    )
 
     val animations: StanceSequences = StanceSequences(
         stand = 808,
@@ -197,13 +206,8 @@ class Player(
         ctx.write(MessageGamePacket(0, false, message))
     }
 
-    fun equip(obj: Obj) {
-        equipment.equip(obj)
+    fun updateAppearance() {
         updateFlags.add(PlayerInfoPacket.appearance)
-    }
-
-    fun unequip(type: EquipmentType) {
-        equipment.unequip(type)
     }
 
     fun updateVarp(id: Int, value: Int): Unit = varpManager.updateVarp(id, value)

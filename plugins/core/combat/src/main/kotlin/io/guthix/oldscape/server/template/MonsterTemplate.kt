@@ -16,7 +16,7 @@
 package io.guthix.oldscape.server.template
 
 import io.guthix.oldscape.server.Property
-import io.guthix.oldscape.server.template.type.NpcTemplate
+import io.guthix.oldscape.server.template.NpcTemplate
 import io.guthix.oldscape.server.world.entity.Npc
 
 public val Npc.lvl: Int? get() = monsterTemplate?.lvl

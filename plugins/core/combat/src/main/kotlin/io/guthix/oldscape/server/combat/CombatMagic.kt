@@ -18,9 +18,9 @@ package io.guthix.oldscape.server.combat
 import io.guthix.oldscape.server.combat.type.magicAttack
 import io.guthix.oldscape.server.event.IfOnNpcEvent
 import io.guthix.oldscape.server.plugin.Script
-import io.guthix.oldscape.server.template.type.ProjectileTemplate
-import io.guthix.oldscape.server.template.type.SequenceTemplate
-import io.guthix.oldscape.server.template.type.SpotAnimTemplate
+import io.guthix.oldscape.server.template.ProjectileTemplate
+import io.guthix.oldscape.server.template.SequenceTemplate
+import io.guthix.oldscape.server.template.SpotAnimTemplate
 import io.guthix.oldscape.server.world.entity.Npc
 import io.guthix.oldscape.server.world.entity.Player
 

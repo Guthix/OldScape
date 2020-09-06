@@ -1,7 +1,6 @@
 @file:Suppress("ConvertLambdaToReference")
 
 import io.guthix.oldscape.server.cache.CodeGenerator
-import org.jetbrains.dokka.utilities.cast
 import org.jetbrains.kotlin.gradle.plugin.getKotlinPluginVersion
 
 plugins {
@@ -26,8 +25,7 @@ val classGraphVersion: String by extra("4.8.53")
 val logbackVersion: String by extra("1.2.3")
 val nettyVersion: String by extra("4.1.42.Final")
 val jacksonVersion: String by extra("2.10.2")
-val oldscapeCacheVersion: String by extra("de43248ebc")
-val jagexByteBufVersion: String by extra("027bcbbc2d")
+val oldscapeCacheVersion: String by extra("b032d9a103")
 val kotlinVersion: String by extra(project.getKotlinPluginVersion()!!)
 
 allprojects {
@@ -39,7 +37,6 @@ allprojects {
 
     repositories {
         mavenCentral()
-        jcenter()
         maven("https://jitpack.io")
     }
 
@@ -62,14 +59,12 @@ allprojects {
         compileTestKotlin {
             kotlinOptions.jvmTarget = "11"
         }
-        dokkaHtml {
-            outputDirectory = "$buildDir/dokka"
-        }
     }
 }
 
 configure(allprojects.filter {
-    it.name == rootProject.name || it.name == "equipment" || it.name == "combat"
+    it.name == rootProject.name || it.name == "equipment" || it.name == "combat" || it.name == "npc"
+        || it.name == "obj" || it.name == "loc"
 }) {
     val project = this
     apply(plugin = "maven-publish")
@@ -105,7 +100,6 @@ dependencies {
         }
     }
     api(group = "com.github.guthix", name = "oldscape-cache", version = oldscapeCacheVersion)
-    implementation(group = "com.github.guthix", name = "jagex-byteBuf", version = jagexByteBufVersion)
     implementation(group = "org.jetbrains.kotlin", name = "kotlin-reflect", version = kotlinVersion)
     implementation(group = "org.jetbrains.kotlin", name = "kotlin-scripting-common", version = kotlinVersion)
     implementation(group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version = kotlinCoroutinesVersion)

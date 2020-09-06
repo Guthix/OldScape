@@ -335,42 +335,48 @@ class PlayerInfoPacket(
             tempBuf.writeByte(player.gender.opcode)
             tempBuf.writeByte(if (player.isSkulled) 1 else -1)
             tempBuf.writeByte(player.prayerIcon)
-            player.equipment.head?.let { // write head gear
+            player.equipmentSet.head?.let { // write head gear
                 tempBuf.writeShort(512 + it.id)
             } ?: run { tempBuf.writeByte(0) }
-            player.equipment.cape?.let {  // write cape
+            player.equipmentSet.cape?.let {  // write cape
                 tempBuf.writeShort(512 + it.id)
             } ?: run { tempBuf.writeByte(0) }
-            player.equipment.neck?.let {  // write neck gear
+            player.equipmentSet.neck?.let {  // write neck gear
                 tempBuf.writeShort(512 + it.id)
             } ?: run { tempBuf.writeByte(0) }
-            player.equipment.weapon?.let { // write weapon
+            player.equipmentSet.weapon?.let { // write weapon
                 tempBuf.writeShort(512 + it.id)
             } ?: run { tempBuf.writeByte(0) }
-            player.equipment.body?.let { // write body
+            player.equipmentSet.body?.let { // write body
                 tempBuf.writeShort(512 + it.id)
             } ?: run { tempBuf.writeShort(256 + player.style.torso) }
-            player.equipment.shield?.let {  // write shield gear
+            player.equipmentSet.shield?.let {  // write shield gear
                 tempBuf.writeShort(512 + it.id)
             } ?: run { tempBuf.writeByte(0) }
-            player.equipment.body?.let { // write arms
-                if (it.isFullBody) tempBuf.writeByte(0) else tempBuf.writeShort(256 + player.style.arms)
+            player.equipmentSet.body?.let { // write arms
+                if (player.equipmentSet.isFullBody) {
+                    tempBuf.writeByte(0)
+                } else tempBuf.writeShort(256 + player.style.arms)
             } ?: run { tempBuf.writeShort(256 + player.style.arms) }
-            player.equipment.legs?.let { // write legs
+            player.equipmentSet.legs?.let { // write legs
                 tempBuf.writeShort(512 + it.id)
             } ?: run { tempBuf.writeShort(256 + player.style.legs) }
-            player.equipment.head?.let { // write hair
-                if (it.coversHair) tempBuf.writeByte(0) else tempBuf.writeShort(256 + player.style.hair)
+            player.equipmentSet.head?.let { // write hair
+                if (player.equipmentSet.coversHair) {
+                    tempBuf.writeByte(0)
+                } else tempBuf.writeShort(256 + player.style.hair)
             } ?: run { tempBuf.writeShort(256 + player.style.hair) }
-            player.equipment.hands?.let {  // write hands
+            player.equipmentSet.hands?.let {  // write hands
                 tempBuf.writeShort(512 + it.id)
             } ?: run { tempBuf.writeShort(256 + player.style.hands) }
-            player.equipment.feet?.let { // write feet
+            player.equipmentSet.feet?.let { // write feet
                 tempBuf.writeShort(512 + it.id)
             } ?: run { tempBuf.writeShort(256 + player.style.feet) }
             if (player.gender == PlayerManager.Gender.MALE) { //tBuf.write beard
-                player.equipment.head?.let {
-                    if (it.coversFace) tempBuf.writeByte(0) else tempBuf.writeShort(256 + player.style.beard)
+                player.equipmentSet.head?.let {
+                    if (player.equipmentSet.coversFace) {
+                        tempBuf.writeByte(0)
+                    } else tempBuf.writeShort(256 + player.style.beard)
                 } ?: run { tempBuf.writeShort(256 + player.style.beard) }
             } else {
                 tempBuf.writeByte(0)
@@ -381,13 +387,13 @@ class PlayerInfoPacket(
             tempBuf.writeByte(player.colours.feet)
             tempBuf.writeByte(player.colours.skin)
 
-            tempBuf.writeShort(player.equipment.weapon?.stanceSequences?.stand ?: player.animations.stand)
-            tempBuf.writeShort(player.equipment.weapon?.stanceSequences?.turn ?: player.animations.turn)
-            tempBuf.writeShort(player.equipment.weapon?.stanceSequences?.walk ?: player.animations.walk)
-            tempBuf.writeShort(player.equipment.weapon?.stanceSequences?.turn180 ?: player.animations.turn180)
-            tempBuf.writeShort(player.equipment.weapon?.stanceSequences?.turn90CW ?: player.animations.turn90CW)
-            tempBuf.writeShort(player.equipment.weapon?.stanceSequences?.turn90CCW ?: player.animations.turn90CCW)
-            tempBuf.writeShort(player.equipment.weapon?.stanceSequences?.run ?: player.animations.run)
+            tempBuf.writeShort(player.animations.stand)
+            tempBuf.writeShort(player.animations.turn)
+            tempBuf.writeShort(player.animations.walk)
+            tempBuf.writeShort(player.animations.turn180)
+            tempBuf.writeShort(player.animations.turn90CW)
+            tempBuf.writeShort(player.animations.turn90CCW)
+            tempBuf.writeShort(player.animations.run)
             tempBuf.writeStringCP1252(player.username) // username
             tempBuf.writeByte(player.combatLevel) // combat level
             tempBuf.writeShort(0) // skillId level

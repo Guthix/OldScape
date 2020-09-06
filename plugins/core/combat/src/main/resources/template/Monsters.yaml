@@ -1473,7 +1473,7 @@
   - 5877
   - 6357
   lvl: 172
-  maxHit: 18
+  maxHit: 16
   attackType: "SLASH"
   isAggressive: true
   isPoisonous: false
@@ -1482,8 +1482,8 @@
   stats:
     health: 157
     attack: 145
-    strength: 152
-    defence: 148
+    strength: 148
+    defence: 152
     range: 1
     magic: 1
   attackBonus:
@@ -5815,6 +5815,7 @@
   - 6392
   lvl: 113
   maxHit: 38
+  attackType: "SLASH"
   isAggressive: true
   isPoisonous: false
   isImmumePoison: false
@@ -6158,6 +6159,7 @@
   - 6347
   lvl: 174
   maxHit: 28
+  attackType: "CRUSH"
   isAggressive: true
   isPoisonous: false
   isImmumePoison: false
@@ -6553,6 +6555,7 @@
   - 763
   - 6384
   lvl: 172
+  attackType: "CRUSH"
   isAggressive: true
   isPoisonous: false
   isImmumePoison: false
@@ -6830,7 +6833,7 @@
   - 6343
   lvl: 191
   maxHit: 20
-  attackType: "CRUSH"
+  attackType: "STAB"
   isAggressive: true
   isPoisonous: false
   isImmumePoison: true
@@ -7236,14 +7239,14 @@
   - 911
   - 6388
   lvl: 100
-  maxHit: 11
+  maxHit: 10
   attackType: "CRUSH"
   isAggressive: true
   isPoisonous: false
   isImmumePoison: false
   isImmuneVenom: false
   stats:
-    health: 100
+    health: 95
     attack: 83
     strength: 90
     defence: 82
@@ -8521,7 +8524,7 @@
   - 1127
   lvl: 316
   maxHit: 35
-  attackType: "CRUSH"
+  attackType: "STAB"
   isAggressive: true
   isPoisonous: false
   isImmumePoison: true
@@ -8670,6 +8673,7 @@
   - 1135
   lvl: 272
   maxHit: 54
+  attackType: "CRUSH"
   isAggressive: true
   isPoisonous: false
   isImmumePoison: false
@@ -21777,34 +21781,6 @@
     range: 20
     magic: -4
 - ids:
-  - 3256
-  lvl: 7
-  isAggressive: false
-  isPoisonous: false
-  isImmumePoison: false
-  isImmuneVenom: false
-  stats:
-    health: 0
-    attack: 0
-    strength: 0
-    defence: 0
-    range: 0
-    magic: 0
-  attackBonus:
-    melee: 0
-    range: 0
-    magic: 0
-  strengthBonus:
-    melee: 0
-    range: 0
-    magic: 0
-  defensiveStats:
-    stab: 0
-    slash: 0
-    crush: 0
-    range: 0
-    magic: 0
-- ids:
   - 3257
   lvl: 9
   maxHit: 6
@@ -22956,7 +22932,6 @@
   - 4879
   - 6368
   lvl: 75
-  maxHit: 25
   isAggressive: true
   isPoisonous: false
   isImmumePoison: false
@@ -23590,6 +23565,7 @@
   - 6393
   lvl: 34
   maxHit: 3
+  attackType: "CRUSH"
   isAggressive: true
   isPoisonous: false
   isImmumePoison: false
@@ -24194,7 +24170,6 @@
   - 3616
   - 6359
   lvl: 95
-  maxHit: 15
   attackType: "RANGED"
   isAggressive: true
   isPoisonous: false
@@ -26344,7 +26319,7 @@
   attackType: "CRUSH"
   isAggressive: false
   isPoisonous: false
-  isImmumePoison: true
+  isImmumePoison: false
   isImmuneVenom: false
   stats:
     health: 142
@@ -30188,6 +30163,7 @@
   - 6370
   lvl: 149
   maxHit: 22
+  attackType: "CRUSH"
   isAggressive: true
   isPoisonous: false
   isImmumePoison: false
@@ -30654,6 +30630,7 @@
   - 6387
   lvl: 97
   maxHit: 12
+  attackType: "CRUSH"
   isAggressive: true
   isPoisonous: false
   isImmumePoison: true
@@ -30801,7 +30778,7 @@
   - 5129
   - 6358
   lvl: 138
-  maxHit: 24
+  maxHit: 13
   attackType: "CRUSH"
   isAggressive: true
   isPoisonous: false
@@ -33085,16 +33062,17 @@
   - 5654
   - 5655
   lvl: 30
+  maxHit: 2
   attackType: "CRUSH"
   isAggressive: true
   isPoisonous: false
   isImmumePoison: false
   isImmuneVenom: false
   stats:
-    health: 12
-    attack: 0
-    strength: 0
-    defence: 0
+    health: 10
+    attack: 73
+    strength: 6
+    defence: 10
     range: 1
     magic: 1
   attackBonus:
@@ -34006,6 +33984,7 @@
   - 6356
   lvl: 122
   maxHit: 25
+  attackType: "CRUSH"
   isAggressive: true
   isPoisonous: false
   isImmumePoison: false
@@ -34036,6 +34015,7 @@
   - 6353
   lvl: 111
   maxHit: 11
+  attackType: "SLASH"
   isAggressive: false
   isPoisonous: false
   isImmumePoison: true
@@ -35129,7 +35109,7 @@
 - ids:
   - 6086
   lvl: 1
-  maxHit: 0
+  maxHit: 1
   attackType: "CRUSH"
   isAggressive: false
   isPoisonous: false
@@ -35159,7 +35139,7 @@
 - ids:
   - 6087
   lvl: 1
-  maxHit: 0
+  maxHit: 1
   attackType: "CRUSH"
   isAggressive: false
   isPoisonous: false
@@ -35489,6 +35469,7 @@
   - 6291
   lvl: 199
   maxHit: 20
+  attackType: "SLASH"
   isAggressive: false
   isPoisonous: false
   isImmumePoison: true
@@ -35578,6 +35559,7 @@
   - 6294
   lvl: 213
   maxHit: 40
+  attackType: "CRUSH"
   isAggressive: true
   isPoisonous: false
   isImmumePoison: false
@@ -35613,7 +35595,7 @@
   isImmumePoison: false
   isImmuneVenom: false
   stats:
-    health: 157
+    health: 255
     attack: 290
     strength: 296
     defence: 152
@@ -35700,7 +35682,7 @@
   attackType: "CRUSH"
   isAggressive: true
   isPoisonous: false
-  isImmumePoison: true
+  isImmumePoison: false
   isImmuneVenom: false
   stats:
     health: 255
@@ -35790,14 +35772,13 @@
 - ids:
   - 6307
   lvl: 209
-  maxHit: 11
   isAggressive: true
   isPoisonous: false
   isImmumePoison: false
   isImmuneVenom: false
   stats:
     health: 255
-    attack: 10
+    attack: 40
     strength: 400
     defence: 10
     range: 1
@@ -35850,6 +35831,7 @@
   - 6309
   lvl: 238
   maxHit: 25
+  attackType: "CRUSH"
   isAggressive: true
   isPoisonous: false
   isImmumePoison: false
@@ -35879,7 +35861,7 @@
   - 6310
   lvl: 186
   maxHit: 57
-  attackType: "RANGED"
+  attackType: "MAGIC"
   isAggressive: true
   isPoisonous: false
   isImmumePoison: true
@@ -35918,7 +35900,7 @@
     health: 255
     attack: 198
     strength: 198
-    defence: 198
+    defence: 99
     range: 1
     magic: 1
   attackBonus:
@@ -36092,7 +36074,7 @@
 - ids:
   - 6323
   lvl: 257
-  maxHit: 27
+  attackType: "CRUSH"
   isAggressive: true
   isPoisonous: false
   isImmumePoison: false
@@ -36103,7 +36085,7 @@
     strength: 260
     defence: 100
     range: 1
-    magic: 130
+    magic: 260
   attackBonus:
     melee: 0
     range: 0
@@ -36182,6 +36164,7 @@
   - 6326
   lvl: 198
   maxHit: 27
+  attackType: "CRUSH"
   isAggressive: true
   isPoisonous: false
   isImmumePoison: true
@@ -36210,7 +36193,7 @@
 - ids:
   - 6327
   lvl: 196
-  maxHit: 23
+  maxHit: 21
   attackType: "CRUSH"
   isAggressive: true
   isPoisonous: false
@@ -36241,6 +36224,7 @@
   - 6328
   lvl: 188
   maxHit: 9
+  attackType: "CRUSH"
   isAggressive: true
   isPoisonous: false
   isImmumePoison: true
@@ -36257,7 +36241,7 @@
     range: 0
     magic: 0
   strengthBonus:
-    melee: 0
+    melee: -21
     range: 0
     magic: 0
   defensiveStats:
@@ -36330,6 +36314,7 @@
   - 6331
   lvl: 210
   maxHit: 74
+  attackType: "SLASH"
   isAggressive: true
   isPoisonous: false
   isImmumePoison: false
@@ -36359,6 +36344,7 @@
   - 6332
   lvl: 177
   maxHit: 17
+  attackType: "CRUSH"
   isAggressive: true
   isPoisonous: false
   isImmumePoison: false
@@ -38249,7 +38235,7 @@
   attackType: "CRUSH"
   isAggressive: true
   isPoisonous: false
-  isImmumePoison: false
+  isImmumePoison: true
   isImmuneVenom: true
   stats:
     health: 105
@@ -43971,7 +43957,7 @@
     magic: 38
   attackBonus:
     melee: 22
-    range: 20
+    range: 22
     magic: 0
   strengthBonus:
     melee: 20
@@ -47416,7 +47402,7 @@
     attack: 0
     strength: 0
     defence: 102
-    range: 153
+    range: 102
     magic: 552
   attackBonus:
     melee: 0
@@ -48255,6 +48241,7 @@
   - 9774
   lvl: 204
   maxHit: 20
+  attackType: "RANGED"
   isAggressive: true
   isPoisonous: true
   isImmumePoison: true
@@ -48280,32 +48267,3 @@
     crush: 30
     range: 30
     magic: 30
-- ids:
-  - 32154
-  lvl: 608
-  attackType: "SLASH"
-  isAggressive: true
-  isPoisonous: false
-  isImmumePoison: true
-  isImmuneVenom: true
-  stats:
-    health: 1200
-    attack: 632
-    strength: 268
-    defence: 188
-    range: 160
-    magic: 246
-  attackBonus:
-    melee: 34
-    range: 180
-    magic: 160
-  strengthBonus:
-    melee: 0
-    range: 6
-    magic: 42
-  defensiveStats:
-    stab: 80
-    slash: 140
-    crush: 140
-    range: 86
-    magic: 280

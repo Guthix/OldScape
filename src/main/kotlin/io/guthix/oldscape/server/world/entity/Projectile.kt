@@ -15,7 +15,7 @@
  */
 package io.guthix.oldscape.server.world.entity
 
-import io.guthix.oldscape.server.template.type.ProjectileTemplate
+import io.guthix.oldscape.server.template.ProjectileTemplate
 import io.guthix.oldscape.server.world.map.Tile
 
 data class Projectile(private val bp: ProjectileTemplate, val start: Tile, val target: Character) {

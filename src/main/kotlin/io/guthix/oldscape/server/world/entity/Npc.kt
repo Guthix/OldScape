@@ -17,7 +17,7 @@ package io.guthix.oldscape.server.world.entity
 
 import io.guthix.oldscape.server.net.game.out.NpcInfoSmallViewportPacket
 import io.guthix.oldscape.server.task.Task
-import io.guthix.oldscape.server.template.type.NpcTemplate
+import io.guthix.oldscape.server.template.NpcTemplate
 import io.guthix.oldscape.server.world.entity.interest.NpcUpdateType
 import io.guthix.oldscape.server.world.map.Tile
 import io.guthix.oldscape.server.world.map.dim.TileUnit
@@ -33,8 +33,6 @@ class Npc(val template: NpcTemplate, index: Int, override var pos: Tile) : Chara
     override val size: TileUnit get() = template.size.tiles
 
     val contextMenu: Array<String?> get() = template.contextMenu
-
-    val wanderRadius: TileUnit get() = template.wanderRadius
 
     override fun processTasks() {
         while (true) {

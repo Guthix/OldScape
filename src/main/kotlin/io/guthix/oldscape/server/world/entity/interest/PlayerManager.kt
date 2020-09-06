@@ -17,7 +17,6 @@ package io.guthix.oldscape.server.world.entity.interest
 
 import io.guthix.oldscape.server.PropertyHolder
 import io.guthix.oldscape.server.net.game.out.PlayerInfoPacket
-import io.guthix.oldscape.server.template.type.EquipmentType
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.Obj
 import io.guthix.oldscape.server.world.entity.Player
@@ -60,6 +59,12 @@ class PlayerManager(val index: Int) : InterestManager {
 
     override fun postProcess() {}
 
+    enum class EquipmentType(val slot: Int) {
+        HEAD(0), CAPE(1), NECK(2), ONE_HAND_WEAPON(3), TWO_HAND_WEAPON(3), BODY(4),
+        SHIELD(5), LEGS(7), HANDS(9), FEET(10), RING(11), AMMUNITION(13)
+    }
+
+
     class EquipmentSet(val equipment: MutableMap<Int, Obj>) : PropertyHolder {
         var head: Obj? = equipment[EquipmentType.HEAD.slot]
         var cape: Obj? = equipment[EquipmentType.CAPE.slot]
@@ -73,12 +78,9 @@ class PlayerManager(val index: Int) : InterestManager {
         var ring: Obj? = equipment[EquipmentType.RING.slot]
         var ammunition: Obj? = equipment[EquipmentType.AMMUNITION.slot]
 
-        fun equip(obj: Obj) {
-            requireNotNull(obj.equipmentType) { "Obj ${obj.id} has no equipment type." }
-            equipment[obj.equipmentType!!.slot] = obj
-        }
-
-        fun unequip(equipmentType: EquipmentType): Obj? = equipment.remove(equipmentType.slot)
+        var coversHair: Boolean = false
+        var isFullBody: Boolean = false
+        var coversFace: Boolean = false
 
         override val properties: MutableMap<KProperty<*>, Any?> = mutableMapOf()
     }

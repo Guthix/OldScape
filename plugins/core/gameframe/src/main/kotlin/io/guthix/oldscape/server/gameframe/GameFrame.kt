@@ -16,7 +16,8 @@
 package io.guthix.oldscape.server.gameframe
 
 import io.guthix.oldscape.cache.config.EnumConfig
-import io.guthix.oldscape.server.template.api.EnumTemplates
+import io.guthix.oldscape.server.content.EnumTemplates
+import io.guthix.oldscape.server.template.*
 import io.guthix.oldscape.server.world.entity.Player
 
 enum class GameFrame(val interfaceId: Int, val enum: Map<EnumConfig.Component, EnumConfig.Component>) {
@@ -30,7 +31,7 @@ enum class GameFrame(val interfaceId: Int, val enum: Map<EnumConfig.Component, E
     }
 }
 
-private val modalKey: EnumConfig.Component = EnumConfig.Component(161, 15)
+private val modalKey: EnumConfig.Component = EnumConfig.Component(interfaceId = 161, slot = 15)
 
 fun Player.changeGameFrame(gameFrame: GameFrame) {
     val fromEnum = GameFrame.findByInterfaceId(topInterface.id).enum

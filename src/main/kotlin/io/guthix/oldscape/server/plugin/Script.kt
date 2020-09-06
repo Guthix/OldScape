@@ -15,6 +15,7 @@
  */
 package io.guthix.oldscape.server.plugin
 
+import io.guthix.oldscape.server.event.Event
 import io.guthix.oldscape.server.event.EventBus
 import io.guthix.oldscape.server.event.EventHolder
 import io.guthix.oldscape.server.event.GameEvent
@@ -23,10 +24,10 @@ import kotlin.script.experimental.annotations.KotlinScript
 
 @KotlinScript
 abstract class Script {
-    fun <E : GameEvent> on(type: KClass<E>): ScriptFilter<E> = ScriptFilter(type)
+    fun <E : Event> on(type: KClass<E>): ScriptFilter<E> = ScriptFilter(type)
 }
 
-class ScriptFilter<E : GameEvent>(private val type: KClass<E>) {
+class ScriptFilter<E : Event>(private val type: KClass<E>) {
     private var condition: E.() -> Boolean = { true }
 
     fun where(condition: E.() -> Boolean): ScriptFilter<E> {
@@ -37,7 +38,7 @@ class ScriptFilter<E : GameEvent>(private val type: KClass<E>) {
     fun then(plugin: E.() -> Unit): ScriptScheduler<E> = ScriptScheduler(type, condition, plugin)
 }
 
-class ScriptScheduler<in E : GameEvent>(
+class ScriptScheduler<in E : Event>(
     type: KClass<E>,
     private val condition: E.() -> Boolean,
     private val plugin: E.() -> Unit
@@ -52,9 +53,14 @@ class ScriptScheduler<in E : GameEvent>(
             holder.events.add(handler)
         }
     }
+
+    internal fun execute(event: E) {
+        val handler = EventHandler(event, plugin)
+        handler.handle()
+    }
 }
 
-class EventHandler<out E : GameEvent>(
+class EventHandler<out E : Event>(
     val event: E,
     private val plugin: E.() -> Unit
 ) {

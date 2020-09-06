@@ -29,6 +29,6 @@ object Huffman {
 
     fun load(huffman: Huffman) {
         table = huffman
-        logger.info { "Loaded huffman" }
+        logger.info { "Loaded huffman table" }
     }
 }

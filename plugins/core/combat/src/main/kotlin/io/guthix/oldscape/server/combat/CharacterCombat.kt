@@ -16,13 +16,13 @@
 package io.guthix.oldscape.server.combat
 
 import io.guthix.oldscape.server.Property
+import io.guthix.oldscape.server.content.SequenceTemplates
 import io.guthix.oldscape.server.world.map.dim.TileUnit
 import io.guthix.oldscape.server.world.map.dim.max
 import io.guthix.oldscape.server.world.map.dim.tiles
 import io.guthix.oldscape.server.stat.StatMultiplier
 import io.guthix.oldscape.server.template.*
-import io.guthix.oldscape.server.template.api.SequenceTemplates
-import io.guthix.oldscape.server.template.type.SequenceTemplate
+import io.guthix.oldscape.server.template.SequenceTemplate
 import io.guthix.oldscape.server.world.entity.Character
 import io.guthix.oldscape.server.world.entity.Player
 
@@ -54,23 +54,23 @@ val Player.selectedTypes: IntArray by Property {
 
 val Player.currentStyle: CombatStyle
     get() {
-        val weaponType = equipment.weapon?.weaponType ?: WeaponType.UNARMED
+        val weaponType = equipmentSet.weapon?.weaponType ?: WeaponType.UNARMED
         val index = selectedTypes[weaponType.ordinal]
         return weaponType.styles[index]
     }
 
-val Player.attackSpeed: Int get() = equipment.weapon?.baseAttackSpeed?.plus(currentStyle.style.attackSpeedBonus) ?: 1
+val Player.attackSpeed: Int get() = equipmentSet.weapon?.baseAttackSpeed?.plus(currentStyle.style.attackSpeedBonus) ?: 1
 
 val Player.attackRange: TileUnit get() = max(
-    10.tiles, equipment.weapon?.baseAttackRange?.plus(currentStyle.style.attackRangeBonus.tiles) ?: 1.tiles
+    10.tiles, equipmentSet.weapon?.baseAttackRange?.plus(currentStyle.style.attackRangeBonus.tiles) ?: 1.tiles
 )
 
 val Player.attackSequence: SequenceTemplate by Property {
-    equipment.weapon?.attackAnim ?: SequenceTemplates[422]
+    equipmentSet.weapon?.attackAnim ?: SequenceTemplates[422]
 }
 
 val Player.defenceSequence: SequenceTemplate by Property {
-    equipment.weapon?.blockAnim ?: SequenceTemplates[424]
+    equipmentSet.weapon?.blockAnim ?: SequenceTemplates[424]
 }
 
 val Player.deathSequence: Int by Property { 836 }

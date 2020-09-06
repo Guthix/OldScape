@@ -18,8 +18,8 @@ package io.guthix.oldscape.server.world.entity
 import io.guthix.oldscape.server.event.PublicMessageEvent
 import io.guthix.oldscape.server.net.game.out.PlayerInfoPacket
 import io.guthix.oldscape.server.task.TaskType
-import io.guthix.oldscape.server.template.type.SequenceTemplate
-import io.guthix.oldscape.server.template.type.SpotAnimTemplate
+import io.guthix.oldscape.server.template.SequenceTemplate
+import io.guthix.oldscape.server.template.SpotAnimTemplate
 import io.guthix.oldscape.server.world.entity.interest.InterestUpdateType
 import io.guthix.oldscape.server.world.entity.interest.MovementInterestUpdate
 import io.guthix.oldscape.server.world.entity.interest.PlayerManager
