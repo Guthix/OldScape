@@ -61,7 +61,7 @@ fun PlayerManager.EquipmentSet.updateBonuses(old: Obj?, new: Obj?) {
 }
 
 private fun PlayerManager.EquipmentSet.addBonuses(obj: Obj?) {
-    val bonusTemplates = obj?.bonusTemplate
+    val bonusTemplates = obj?.equipmentTemplate
     attackBonus += bonusTemplates?.attackBonus
     defenceBonus += bonusTemplates?.defenceBonus
     strengtBonus += bonusTemplates?.strengthBonus
@@ -69,7 +69,7 @@ private fun PlayerManager.EquipmentSet.addBonuses(obj: Obj?) {
 }
 
 private fun PlayerManager.EquipmentSet.removeBonuses(obj: Obj?) {
-    val bonusTemplates = obj?.bonusTemplate
+    val bonusTemplates = obj?.equipmentTemplate
     attackBonus -= bonusTemplates?.attackBonus
     defenceBonus -= bonusTemplates?.defenceBonus
     strengtBonus -= bonusTemplates?.strengthBonus

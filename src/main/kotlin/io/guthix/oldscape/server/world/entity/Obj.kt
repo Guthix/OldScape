@@ -16,19 +16,14 @@
 package io.guthix.oldscape.server.world.entity
 
 import io.guthix.oldscape.server.PropertyHolder
-import io.guthix.oldscape.server.template.type.EquipmentType
-import io.guthix.oldscape.server.template.type.ObjTemplate
-import io.guthix.oldscape.server.template.type.StanceSequences
+import io.guthix.oldscape.server.template.ObjTemplate
 import kotlin.reflect.KProperty
-
 
 fun ObjTemplate.new(amount: Int): Obj = Obj(this, amount)
 
 data class Obj(val template: ObjTemplate, var quantity: Int) : PropertyHolder {
     val id: Int get() = template.id
     val name: String get() = template.name
-    val weight: Float get() = template.weight
-    val examines: String get() = template.examines
     val isStackable: Boolean get() = template.isStackable
     val isTradable: Boolean get() = template.isTradable
     val notedId: Int? get() = template.notedId
@@ -37,11 +32,6 @@ data class Obj(val template: ObjTemplate, var quantity: Int) : PropertyHolder {
     val isPlaceHolder: Boolean get() = template.isPlaceHolder
     val interfaceOperations: Array<String?> get() = template.interfaceOperations
     val groundOperations: Array<String?> get() = template.groundOperations
-    val equipmentType: EquipmentType? get() = template.equipmentType
-    val isFullBody: Boolean get() = template.isFullBody ?: false
-    val coversFace: Boolean get() = template.coversFace ?: false
-    val coversHair: Boolean get() = template.coversHair ?: false
-    val stanceSequences: StanceSequences? get() = template.stanceSequences
 
     override val properties: MutableMap<KProperty<*>, Any?> = mutableMapOf()
 }

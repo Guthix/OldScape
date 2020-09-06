@@ -15,8 +15,7 @@
  */
 package io.guthix.oldscape.server.world.entity
 
-import io.guthix.oldscape.server.template.type.SequenceTemplate
-import io.guthix.oldscape.server.template.type.tickDuration
+import io.guthix.oldscape.server.template.SequenceTemplate
 import mu.KotlinLogging
 
 private val logger = KotlinLogging.logger { }

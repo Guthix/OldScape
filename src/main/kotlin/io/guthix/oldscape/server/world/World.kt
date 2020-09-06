@@ -25,7 +25,7 @@ import io.guthix.oldscape.server.plugin.EventHandler
 import io.guthix.oldscape.server.task.Task
 import io.guthix.oldscape.server.task.TaskHolder
 import io.guthix.oldscape.server.task.TaskType
-import io.guthix.oldscape.server.template.type.NpcTemplate
+import io.guthix.oldscape.server.template.NpcTemplate
 import io.guthix.oldscape.server.world.entity.Npc
 import io.guthix.oldscape.server.world.entity.Player
 import io.guthix.oldscape.server.world.map.Tile
@@ -42,7 +42,7 @@ class World : TimerTask(), TaskHolder, EventHolder, PropertyHolder {
 
     override val properties: MutableMap<KProperty<*>, Any?> = mutableMapOf()
 
-    override val events: LinkedBlockingDeque<EventHandler<GameEvent>> = LinkedBlockingDeque()
+    override val events: LinkedBlockingDeque<EventHandler<Event>> = LinkedBlockingDeque()
 
     override val tasks: MutableMap<TaskType, MutableSet<Task>> = mutableMapOf()
 

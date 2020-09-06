@@ -51,23 +51,23 @@ private fun Npc.effectiveDefence(): Double =
     ((stats?.defence ?: 0) + 8) * damageMultiplier.defence
 
 private fun Player.maxAttackRol(): Double =
-    effectiveAttack() * (equipment.attackBonus.findBonus(currentStyle.attackType) + 64)
+    effectiveAttack() * (equipmentSet.attackBonus.findBonus(currentStyle.attackType) + 64)
 
 private fun Npc.maxAttackRol(): Double =
     effectiveAttack() * ((attackBonus?.melee ?: 0) + 64)
 
-private fun Player.maxRangeRol(): Double = effectiveRange() * (equipment.attackBonus.range + 64)
+private fun Player.maxRangeRol(): Double = effectiveRange() * (equipmentSet.attackBonus.range + 64)
 
 private fun Npc.maxRangeRol(): Double =
     effectiveRange() * ((attackBonus?.range ?: 0) + 64)
 
-private fun Player.maxMagicRol(): Double = effectiveMagic() * (equipment.attackBonus.magic + 64)
+private fun Player.maxMagicRol(): Double = effectiveMagic() * (equipmentSet.attackBonus.magic + 64)
 
 private fun Npc.maxMagicRol(): Double =
     effectiveMagic() * ((attackBonus?.magic ?: 0) + 64)
 
 private fun Player.maxDefenceRol(attackType: AttackType): Double =
-    effectiveDefence() * (equipment.defenceBonus.findBonus(attackType) + 64)
+    effectiveDefence() * (equipmentSet.defenceBonus.findBonus(attackType) + 64)
 
 private fun Npc.maxDefenceRol(attackType: AttackType): Double =
     effectiveDefence() * ((defensiveStats?.findBonus(attackType) ?: 0) + 64)

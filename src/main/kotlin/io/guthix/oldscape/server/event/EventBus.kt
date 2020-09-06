@@ -27,7 +27,7 @@ private val logger = KotlinLogging.logger { }
 object EventBus {
     const val pkg: String = "io.guthix.oldscape.server"
 
-    private val eventListeners = mutableMapOf<KClass<out GameEvent>, MutableList<ScriptScheduler<GameEvent>>>()
+    private val eventListeners = mutableMapOf<KClass<out Event>, MutableList<ScriptScheduler<Event>>>()
 
     fun loadScripts() {
         ClassGraph().whitelistPackages(pkg).scan().use { scanResult ->
@@ -38,6 +38,12 @@ object EventBus {
                 it.loadClass(Script::class.java).getDeclaredConstructor().newInstance()
             }
             logger.info { "Loaded ${pluginClassList.size} scripts" }
+        }
+    }
+
+    fun<E : Event> execute(event: E) {
+        eventListeners[event::class]?.let {
+            for(listener in it) listener.execute(event)
         }
     }
 
@@ -54,14 +60,14 @@ object EventBus {
     }
 
     @Suppress("UNCHECKED_CAST")
-    fun <E : GameEvent> register(type: KClass<E>, listener: ScriptScheduler<E>) {
+    fun <E : Event> register(type: KClass<E>, listener: ScriptScheduler<E>) {
         val listeners = eventListeners.getOrPut(type) {
             mutableListOf()
         }
-        listeners.add(listener as ScriptScheduler<GameEvent>)
+        listeners.add(listener as ScriptScheduler<Event>)
     }
 }
 
 internal interface EventHolder {
-    val events: MutableCollection<EventHandler<GameEvent>>
+    val events: MutableCollection<EventHandler<Event>>
 }

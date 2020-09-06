@@ -26,7 +26,6 @@ import io.guthix.oldscape.cache.config.*
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import java.io.File
-import java.io.FileNotFoundException
 import java.io.IOException
 import java.io.PrintWriter
 import java.nio.file.Path
@@ -38,18 +37,18 @@ class CodeGenerator : Plugin<Project> {
                 val resourceDir = "${target.projectDir}/src/main/resources"
                 Js5Cache(Js5DiskStore.open(File("$resourceDir/cache").toPath())).use { cache ->
                     val configArchive = cache.readArchive(ConfigArchive.id)
+
                     val locs = LocationConfig.load(configArchive.readGroup(LocationConfig.id))
-                    target.writeNamedConfigTemplates("Loc", "Location", locs)
+                    target.writeNamedConfigTemplates("Loc", locs)
+
                     val objs = ObjectConfig.load(configArchive.readGroup(ObjectConfig.id))
-                    target.writeNamedConfigTemplates("Obj", "Object", objs)
+                    target.writeNamedConfigTemplates("Obj", objs)
+
                     val npcs = NpcConfig.load(configArchive.readGroup(NpcConfig.id))
-                    target.writeNamedConfigTemplates("Npc", "Npc", npcs)
+                    target.writeNamedConfigTemplates("Npc", npcs)
+
                     val enums = EnumConfig.load(configArchive.readGroup(EnumConfig.id))
-                    val enumEngineTemplates = ObjectMapper(YAMLFactory()).registerKotlinModule()
-                        .readValue(File(resourceDir).toPath().resolve("config/Enums.yaml").toFile(),
-                            object : TypeReference<List<EnumEngineTemplate>>() {}
-                        )
-                    target.writeEnumTemplates(enums, enumEngineTemplates, objs, locs)
+                    target.writeEnumTemplates(enums, objs, locs)
                 }
             }
         }
@@ -66,10 +65,14 @@ class CodeGenerator : Plugin<Project> {
 
     private fun Project.writeEnumTemplates(
         enumConfigs: Map<Int, EnumConfig<Any, Any>>,
-        enumEngineTemplates: List<EnumEngineTemplate>,
         objConfigs: Map<Int, ObjectConfig>,
         locConfigs: Map<Int, LocationConfig>
     ) {
+        val resourceDir = "${projectDir}/src/main/resources"
+        val enumEngineTemplates = ObjectMapper(YAMLFactory()).registerKotlinModule()
+            .readValue(File(resourceDir).toPath().resolve("template/Enums.yaml").toFile(),
+                object : TypeReference<List<EnumEngineTemplate>>() {}
+            )
         val sourceRoot = createSourceTree(this)
         sourceRoot.toFile().mkdirs()
         sourceRoot.printEnumTemplates("EnumTemplate", enumConfigs, enumEngineTemplates, objConfigs, locConfigs)
@@ -109,9 +112,9 @@ class CodeGenerator : Plugin<Project> {
         }
 
         fun getEnumType(enumId: Int, type: EnumConfig.Type?, firstValue: Any): String = when (type) {
-            EnumConfig.Type.COMPONENT -> EnumConfig.Component::class.simpleName ?: ""
-            EnumConfig.Type.STAT -> EnumConfig.Stat::class.simpleName ?: ""
-            EnumConfig.Type.COORDINATE -> EnumConfig.Coord::class.simpleName ?: ""
+            EnumConfig.Type.COMPONENT -> "EnumConfig.Component"
+            EnumConfig.Type.STAT -> "EnumConfig.Stat"
+            EnumConfig.Type.COORDINATE -> "EnumConfig.Coord"
             EnumConfig.Type.ENUM -> {
                 val firstId = firstValue as Int
                 val firstEnum = enumConfigs[firstId] ?: throw IllegalStateException(
@@ -120,20 +123,19 @@ class CodeGenerator : Plugin<Project> {
                 "Map<${getEnumType(firstId, firstEnum.keyType, firstEnum.keyValuePairs.keys.first())}, " +
                     "${getEnumType(firstId, firstEnum.valType, firstEnum.keyValuePairs.values.first())}>"
             }
-            else -> Int::class.simpleName ?: ""
+            else -> "Int"
         }
 
         val sourceFile = resolve("${name}s.kt").toFile()
         PrintWriter(sourceFile).use { pw ->
             pw.println(warningHeader)
+            pw.println("@file:Suppress(\"UNCHECKED_CAST\")")
             pw.println("package $packageName")
             pw.println()
-            pw.println("import ${EnumConfig::class.qualifiedName}")
-            pw.println("import ${EnumConfig::class.qualifiedName}.*")
-            pw.println("import io.guthix.oldscape.server.template.ConfigTemplateLoader")
+            pw.println("import io.guthix.oldscape.cache.config.EnumConfig")
+            pw.println("import io.guthix.oldscape.server.template.*")
             pw.println()
-            pw.println("@Suppress(\"UNCHECKED_CAST\")")
-            pw.println("object ${name}s : ConfigTemplateLoader<EnumConfig<Any, Any>>() {")
+            pw.println("object ${name}s : TemplateLoader<$name<Any, Any>>() {")
             val enumsToWrite = enumEngineTemplates.toMutableList()
             while (enumsToWrite.isNotEmpty()) {
                 fun writeEnum(extraConfig: EnumEngineTemplate) {
@@ -158,7 +160,7 @@ class CodeGenerator : Plugin<Project> {
                     val valueType = getEnumType(extraConfig.id, enum.valType, enum.keyValuePairs.values.first())
 
                     if (enum.keyType == EnumConfig.Type.ENUM || enum.valType == EnumConfig.Type.ENUM) {
-                        pw.println("    val ${extraConfig.name}: Map<$keyType, $valueType> = mapOf(")
+                        pw.println("    val ${extraConfig.name}: Map<$keyType, $valueType> get() = mapOf(")
                         enum.keyValuePairs.forEach { (key, value) ->
                             val curKeyName = getGeneratedName(extraConfig.id, enum.keyType, key)
                             val curValueName = getGeneratedName(extraConfig.id, enum.valType, value)
@@ -166,7 +168,7 @@ class CodeGenerator : Plugin<Project> {
                         }
                         pw.println("    )")
                     } else {
-                        pw.println("    val ${extraConfig.name}: Map<$keyType, $valueType> = " +
+                        pw.println("    val ${extraConfig.name}: Map<$keyType, $valueType> get() = " +
                             "get(${extraConfig.id}) as Map<$keyType, $valueType>"
                         )
                     }
@@ -178,20 +180,13 @@ class CodeGenerator : Plugin<Project> {
         }
     }
 
-    private fun Project.writeNamedConfigTemplates(name: String, fullName: String, configs: Map<Int, NamedConfig>) {
+    private fun Project.writeNamedConfigTemplates(name: String, configs: Map<Int, NamedConfig>) {
         val sourceRoot = createSourceTree(this)
         sourceRoot.toFile().mkdirs()
-        sourceRoot.printNamedConfigTemplates(
-            "${name}Template", "${fullName}Config", "${name}EngineTemplate", configs
-        )
+        sourceRoot.printNamedConfigTemplates("${name}Template", configs)
     }
 
-    private fun Path.printNamedConfigTemplates(
-        name: String,
-        configName: String,
-        engineName: String,
-        configs: Map<Int, NamedConfig>
-    ) {
+    private fun Path.printNamedConfigTemplates(name: String, configs: Map<Int, NamedConfig>) {
         val sourceFile = resolve("${name}s.kt").toFile()
         sourceFile.createNewFile()
         PrintWriter(sourceFile).use { pw ->
@@ -199,16 +194,13 @@ class CodeGenerator : Plugin<Project> {
             pw.println("@file:Suppress(\"PropertyName\")")
             pw.println("package $packageName")
             pw.println()
-            pw.println("import io.guthix.oldscape.cache.config.$configName")
-            pw.println("import io.guthix.oldscape.server.template.type.$name")
-            pw.println("import io.guthix.oldscape.server.template.type.$engineName")
-            pw.println("import io.guthix.oldscape.server.template.EngineTemplateLoader")
+            pw.println("import io.guthix.oldscape.server.template.*")
             pw.println()
-            pw.println("object ${name}s : EngineTemplateLoader<$name, $configName, $engineName>() {")
+            pw.println("object ${name}s : TemplateLoader<$name>() {")
             for ((id, config) in configs) {
                 val identifier = configNameToIdentifier(id, config.name)
                 if (identifier.contains("null", ignoreCase = true)) continue
-                pw.println("    val $identifier: ${name} get() = get($id)")
+                pw.println("    val $identifier: $name get() = get(${config.id})")
             }
             pw.println("}")
             pw.flush()
@@ -237,7 +229,7 @@ class CodeGenerator : Plugin<Project> {
     }
 
     companion object {
-        private const val packageName: String = "io.guthix.oldscape.server.template.api"
+        private const val packageName: String = "io.guthix.oldscape.server.content"
 
         private val warningHeader: String =
             "/* Dont EDIT! This file is automatically generated by ${CodeGenerator::class.qualifiedName}. */"

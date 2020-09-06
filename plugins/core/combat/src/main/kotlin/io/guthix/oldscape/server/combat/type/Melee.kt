@@ -20,13 +20,13 @@ import io.guthix.oldscape.server.combat.attackSpeed
 import io.guthix.oldscape.server.combat.dmg.calcHit
 import io.guthix.oldscape.server.combat.dmg.maxMeleeHit
 import io.guthix.oldscape.server.combat.inCombatWith
+import io.guthix.oldscape.server.content.SequenceTemplates
 import io.guthix.oldscape.server.event.EventBus
 import io.guthix.oldscape.server.event.NpcAttackedEvent
 import io.guthix.oldscape.server.pathing.DestinationRectangleDirect
 import io.guthix.oldscape.server.pathing.breadthFirstSearch
 import io.guthix.oldscape.server.task.NormalTask
 import io.guthix.oldscape.server.template.TemplateNotFoundException
-import io.guthix.oldscape.server.template.api.SequenceTemplates
 import io.guthix.oldscape.server.template.sequences
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.HitMark

@@ -17,6 +17,7 @@ package io.guthix.oldscape.server
 
 import com.fasterxml.jackson.core.type.TypeReference
 import com.fasterxml.jackson.databind.ObjectMapper
+import com.fasterxml.jackson.dataformat.yaml.YAMLFactory
 import com.fasterxml.jackson.module.kotlin.registerKotlinModule
 import io.guthix.cache.js5.Js5Cache
 import io.guthix.cache.js5.container.Js5Container
@@ -28,16 +29,14 @@ import io.guthix.oldscape.cache.ConfigArchive
 import io.guthix.oldscape.cache.MapArchive
 import io.guthix.oldscape.cache.config.*
 import io.guthix.oldscape.cache.xtea.MapXtea
+import io.guthix.oldscape.server.content.*
 import io.guthix.oldscape.server.event.EventBus
+import io.guthix.oldscape.server.event.InitializeTemplateEvent
 import io.guthix.oldscape.server.event.WorldInitializedEvent
 import io.guthix.oldscape.server.net.Huffman
 import io.guthix.oldscape.server.net.OldScapeServer
 import io.guthix.oldscape.server.net.game.GamePacketDecoder
-import io.guthix.oldscape.server.template.api.*
-import io.guthix.oldscape.server.template.readYaml
-import io.guthix.oldscape.server.template.type.LocTemplate
-import io.guthix.oldscape.server.template.type.NpcTemplate
-import io.guthix.oldscape.server.template.type.ObjTemplate
+import io.guthix.oldscape.server.template.*
 import io.guthix.oldscape.server.world.World
 import java.nio.file.Path
 import java.util.*
@@ -49,43 +48,35 @@ fun main(args: Array<String>) {
 object OldScape {
     @JvmStatic
     fun main(args: Array<String>) {
-        val config: ServerConfig = readYaml("/Config.yaml")
+        val mapper = ObjectMapper(YAMLFactory()).registerKotlinModule()
+        val config = mapper.readValue(javaClass.getResource("/Config.yaml"), ServerConfig::class.java)
+
+        EventBus.loadScripts()
+        GamePacketDecoder.loadIncPackets()
 
         val cacheDir = Path.of(javaClass.getResource("/cache").toURI())
-        val store = Js5HeapStore.open(Js5DiskStore.open(cacheDir), appendVersions = false)
+        val store = Js5DiskStore.open(cacheDir).use {
+            Js5HeapStore.open(it, appendVersions = false)
+        }
         val cache = Js5Cache(store)
         store.write(Js5Store.MASTER_INDEX, Js5Store.MASTER_INDEX, Js5Container(
             cache.generateValidator(includeWhirlpool = false, includeSizes = false).encode()).encode()
         )
+
         val configArchive = cache.readArchive(ConfigArchive.id)
         val binaryArchive = cache.readArchive(BinariesArchive.id)
 
+        VarbitTemplates.load(VarbitConfig.load(configArchive.readGroup(VarbitConfig.id)), ::VarbitTemplate)
+        InventoryTemplates.load(InventoryConfig.load(configArchive.readGroup(InventoryConfig.id)), ::InventoryTemplate)
+        SequenceTemplates.load(SequenceConfig.load(configArchive.readGroup(SequenceConfig.id)), ::SequenceTemplate)
+        SpotAnimTemplates.load(SpotAnimConfig.load(configArchive.readGroup(SpotAnimConfig.id)), ::SpotAnimTemplate)
+        EnumTemplates.load(EnumConfig.load(configArchive.readGroup(EnumConfig.id)), ::EnumTemplate)
+        LocTemplates.load(LocationConfig.load(configArchive.readGroup(LocationConfig.id)), ::LocTemplate)
+        NpcTemplates.load(NpcConfig.load(configArchive.readGroup(NpcConfig.id)), ::NpcTemplate)
+        ObjTemplates.load(ObjectConfig.load(configArchive.readGroup(ObjectConfig.id)), ::ObjTemplate)
+        EventBus.execute(InitializeTemplateEvent)
         Huffman.load(BinariesArchive.load(binaryArchive).huffman)
 
-
-        VarbitTemplates.load(VarbitConfig.load(configArchive.readGroup(VarbitConfig.id)))
-        InventoryTemplates.load(InventoryConfig.load(configArchive.readGroup(InventoryConfig.id)))
-        SequenceTemplates.load(SequenceConfig.load(configArchive.readGroup(SequenceConfig.id)))
-        SpotAnimTemplates.load(SpotAnimConfig.load(configArchive.readGroup(SpotAnimConfig.id)))
-        EnumTemplates.load(EnumConfig.load(configArchive.readGroup(EnumConfig.id)))
-        LocTemplates.load(
-            LocationConfig.load(configArchive.readGroup(LocationConfig.id)),
-            readYaml("template/Locs.yaml"),
-            ::LocTemplate
-        )
-        NpcTemplates.load(
-            NpcConfig.load(configArchive.readGroup(NpcConfig.id)),
-            readYaml("template/Npcs.yaml"),
-            ::NpcTemplate
-        )
-        ObjTemplates.load(
-            ObjectConfig.load(configArchive.readGroup(ObjectConfig.id)),
-            readYaml("template/Objects.yaml"),
-            ::ObjTemplate
-        )
-
-        EventBus.loadScripts()
-        GamePacketDecoder.loadIncPackets()
         val mapSquareXteas = loadMapSquareXteaKeys(cacheDir.resolve("xteas.json"))
         val world = World()
         world.map.init(cache.readArchive(MapArchive.id), mapSquareXteas)
@@ -98,4 +89,6 @@ object OldScape {
         val mapper = ObjectMapper().registerKotlinModule()
         return mapper.readValue(path.toFile(), object : TypeReference<List<MapXtea>>() {})
     }
+
+    private fun ObjectMapper.loadConfig(path: Path) = readValue(path.toFile(), ServerConfig::class.java)
 }

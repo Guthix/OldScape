@@ -16,9 +16,7 @@
 package io.guthix.oldscape.server.template
 
 import io.guthix.oldscape.server.Property
-import io.guthix.oldscape.server.template.api.SequenceTemplates
-import io.guthix.oldscape.server.template.type.ObjTemplate
-import io.guthix.oldscape.server.template.type.SequenceTemplate
+import io.guthix.oldscape.server.content.SequenceTemplates
 import io.guthix.oldscape.server.world.entity.Obj
 import io.guthix.oldscape.server.world.map.dim.TileUnit
 import io.guthix.oldscape.server.world.map.dim.tiles
@@ -41,13 +39,13 @@ private val Obj.weaponSequences: WeaponSequences? get() = weaponTemplate?.weapon
 
 private val Obj.weaponTemplate: WeaponTemplate? get() = template.weapon
 
-private val ObjTemplate.weapon: WeaponTemplate? by Property { null }
+internal val ObjTemplate.weapon: WeaponTemplate? by Property { null }
 
 data class WeaponTemplate(
     override val ids: List<Int>,
     val type: WeaponType,
     val attackSpeed: Int,
-    val attackRange: Int,
+    val attackRange: Int?,
     val weaponSequences: WeaponSequences?,
 ) : Template(ids)
 

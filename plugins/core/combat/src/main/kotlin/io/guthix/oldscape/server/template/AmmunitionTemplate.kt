@@ -16,13 +16,10 @@
 package io.guthix.oldscape.server.template
 
 import io.guthix.oldscape.server.Property
-import io.guthix.oldscape.server.template.api.SpotAnimTemplates
-import io.guthix.oldscape.server.template.type.ObjTemplate
-import io.guthix.oldscape.server.template.type.ProjectileTemplate
-import io.guthix.oldscape.server.template.type.SpotAnimTemplate
+import io.guthix.oldscape.server.content.SpotAnimTemplates
 import io.guthix.oldscape.server.world.entity.Obj
 
-val Obj.ammunitionType: AmmunitionType get() = ammunitionTemplate?.type ?: throw TemplateNotFoundException(id)
+val Obj.ammunitionType: AmmunitionTypeProjectile get() = ammunitionTemplate?.type ?: throw TemplateNotFoundException(id)
 
 val Obj.drawBackAnim: SpotAnimTemplate get() = SpotAnimTemplates[
     ammunitionTemplate?.drawBackSpotAnim ?: throw TemplateNotFoundException(id)
@@ -40,7 +37,7 @@ private val ObjTemplate.ammunition: AmmunitionTemplate? by Property { null }
 
 data class AmmunitionTemplate(
     override val ids: List<Int>,
-    val type: AmmunitionType,
+    val type: AmmunitionTypeProjectile,
     val projectileId: Int,
     val drawBackSpotAnim: Int,
     val drawBackSpotAnimHeight: Int
@@ -57,7 +54,7 @@ data class AmmunitionTemplate(
     )
 }
 
-enum class AmmunitionType(
+enum class AmmunitionTypeProjectile(
     val startHeight: Int,
     val endHeight: Int,
     val speed: Int,

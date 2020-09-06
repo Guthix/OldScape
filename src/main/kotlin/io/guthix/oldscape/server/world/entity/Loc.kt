@@ -15,12 +15,12 @@
  */
 package io.guthix.oldscape.server.world.entity
 
-import io.guthix.oldscape.server.template.type.LocTemplate
+import io.guthix.oldscape.server.template.LocTemplate
 import io.guthix.oldscape.server.world.map.Tile
 import io.guthix.oldscape.server.world.map.dim.TileUnit
 
 class Loc(
-    private val template: LocTemplate,
+    val template: LocTemplate,
     val type: Int,
     override val pos: Tile,
     override var orientation: Int
