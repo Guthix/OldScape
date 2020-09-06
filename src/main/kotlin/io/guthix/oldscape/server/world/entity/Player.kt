@@ -23,6 +23,7 @@ import io.guthix.oldscape.server.net.game.out.*
 import io.guthix.oldscape.server.plugin.EventHandler
 import io.guthix.oldscape.server.task.Task
 import io.guthix.oldscape.server.template.VarbitTemplate
+import io.guthix.oldscape.server.template.VarpTemplate
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.interest.*
 import io.guthix.oldscape.server.world.entity.intface.IfComponent
@@ -211,7 +212,7 @@ class Player(
         updateFlags.add(PlayerInfoPacket.appearance)
     }
 
-    fun updateVarp(id: Int, value: Int): Unit = varpManager.updateVarp(id, value)
+    fun updateVarp(template: VarpTemplate, value: Int): Unit = varpManager.updateVarp(template, value)
 
     fun updateVarbit(template: VarbitTemplate, value: Int): Unit = varpManager.updateVarbit(template, value)
 

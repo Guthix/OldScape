@@ -27,6 +27,7 @@ import io.guthix.oldscape.server.template.imp.writeEnumTemplates
 import io.guthix.oldscape.server.template.imp.writeNamedConfigTemplates
 import io.guthix.oldscape.server.template.imp.writeConfigTemplates
 import io.guthix.oldscape.server.template.imp.writeSpotAnimTemplates
+import io.guthix.oldscape.server.template.imp.writeVarpTemplates
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.plugins.JavaPlugin
@@ -63,6 +64,7 @@ class TemplateGenerator : Plugin<Project> {
                     target.writeConfigTemplates("Sequences", "SequenceTemplate")
                     target.writeConfigTemplates("Varbits", "VarbitTemplate")
                     target.writeSpotAnimTemplates("SpotAnims", "SpotAnimTemplate", "PhysicalSpotAnimTemplate")
+                    target.writeVarpTemplates("Varps", "VarpTemplate")
                 }
             }
         }
@@ -122,9 +124,25 @@ fun Project.readNamedIds(name: String): List<NamedId> {
 }
 
 fun PrintWriter.printFileHeader() {
+    println("""
+/*
+ * Copyright 2018-2020 Guthix
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+    """.trimIndent())
     println(TemplateGenerator.warningHeader)
     println("@file:Suppress(\"PropertyName\")")
     println("package ${TemplateGenerator.packageName}")
-    println()
 }
 

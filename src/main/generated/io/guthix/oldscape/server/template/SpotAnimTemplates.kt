@@ -17,7 +17,6 @@
 @file:Suppress("PropertyName")
 package io.guthix.oldscape.server.template
 
-
 object SpotAnimTemplates : TemplateLoader<SpotAnimTemplate>() {
     val SPLASH_85: SpotAnimTemplate get() = get(85)
     val SPLASH_H123_85: PhysicalSpotAnimTemplate get() = PhysicalSpotAnimTemplate(get(85), 123)
