@@ -17,12 +17,10 @@ val kotlinVersion: String by extra(project.getKotlinPluginVersion()!!)
 
 repositories {
     mavenCentral()
-    jcenter()
     maven("https://jitpack.io")
 }
 
 dependencies {
-    implementation(kotlin("stdlib-jdk8"))
     implementation(group = "org.jetbrains.kotlin", name = "kotlin-reflect", version = kotlinVersion)
     implementation(group = "com.github.guthix", name = "oldscape-cache", version = oldscapeCacheVersion)
     implementation(group = "com.fasterxml.jackson.core", name = "jackson-databind", version = jacksonVersion)

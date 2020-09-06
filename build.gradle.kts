@@ -44,10 +44,6 @@ allprojects {
         targetCompatibility = JavaVersion.VERSION_11
     }
 
-    dependencies {
-        implementation(kotlin("stdlib-jdk8"))
-    }
-
     tasks {
         compileKotlin {
             kotlinOptions.jvmTarget = "11"
@@ -62,8 +58,7 @@ allprojects {
 }
 
 configure(allprojects.filter {
-    it.name == rootProject.name || it.name == "equipment" || it.name == "combat" || it.name == "npc"
-        || it.name == "obj" || it.name == "loc"
+    it.name == rootProject.name || it.name == "equipment" || it.name == "combat" || it.name == "obj"
 }) {
     val project = this
     apply(plugin = "maven-publish")

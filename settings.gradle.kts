@@ -4,7 +4,7 @@ import java.nio.file.Paths
 
 pluginManagement {
     val kotlinVersion by extra("1.4.0")
-    val dokkaVersion by extra("1.4.0-rc")
+    val dokkaVersion by extra(kotlinVersion)
 
     plugins {
         id("org.jetbrains.kotlin.jvm") version kotlinVersion
