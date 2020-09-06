@@ -28,7 +28,6 @@ import java.io.IOException
 import java.io.PrintWriter
 import java.nio.file.Path
 
-
 fun Project.writeEnumTemplates(
     enumConfigs: Map<Int, EnumConfig<Any, Any>>,
     objConfigs: Map<Int, ObjectConfig>,
@@ -89,7 +88,7 @@ private fun Path.printCodeFile(
 
     val sourceFile = resolve("${templateName}s.kt").toFile()
     PrintWriter(sourceFile).use { pw ->
-        pw.printFileHeader()
+        pw.printFileHeader("UNCHECKED_CAST", "LongLine")
         pw.println("import io.guthix.oldscape.cache.config.EnumConfig")
         pw.println()
         pw.println("object ${templateName}s : TemplateLoader<$templateName<Any, Any>>() {")

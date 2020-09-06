@@ -123,7 +123,7 @@ fun Project.readNamedIds(name: String): List<NamedId> {
         )
 }
 
-fun PrintWriter.printFileHeader() {
+fun PrintWriter.printFileHeader(vararg supressions: String) {
     println("""
 /*
  * Copyright 2018-2020 Guthix
@@ -142,7 +142,9 @@ fun PrintWriter.printFileHeader() {
  */
     """.trimIndent())
     println(TemplateGenerator.warningHeader)
-    println("@file:Suppress(\"PropertyName\")")
+    print("@file:Suppress(\"PropertyName\"")
+    supressions.forEach { print(", \"$it\"") }
+    println(")")
     println("package ${TemplateGenerator.packageName}")
 }
 
