@@ -17,7 +17,7 @@ package io.guthix.oldscape.server.world.entity.interest
 
 import io.guthix.oldscape.server.net.game.out.VarpLargePacket
 import io.guthix.oldscape.server.net.game.out.VarpSmallPacket
-import io.guthix.oldscape.server.content.VarbitTemplates
+import io.guthix.oldscape.server.template.VarbitTemplate
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.Player
 import io.netty.channel.ChannelFuture
@@ -33,15 +33,14 @@ class VarpManager : InterestManager {
         changes[id] = value
     }
 
-    fun updateVarbit(id: Int, value: Int) {
-        val config = VarbitTemplates[id]
-        val bitSize = (config.msb- config.lsb) + 1
+    fun updateVarbit(template: VarbitTemplate, value: Int) {
+        val bitSize = (template.msb- template.lsb) + 1
         if (value > 2.0.pow(bitSize) - 1) throw IllegalArgumentException("Value $value to big for this varbit.")
-        var curVarp = varps[config.varpId] ?: 0
-        curVarp = curVarp.clearBits(config.msb, config.lsb)
-        curVarp = curVarp or value shl config.lsb
-        varps[config.varpId] = curVarp
-        changes[config.varpId] = curVarp
+        var curVarp = varps[template.varpId] ?: 0
+        curVarp = curVarp.clearBits(template.msb, template.lsb)
+        curVarp = curVarp or value shl template.lsb
+        varps[template.varpId] = curVarp
+        changes[template.varpId] = curVarp
     }
 
     private fun Int.setBits(msb: Int, lsb: Int): Int = this xor ((1 shl (msb + 1)) - 1) xor ((1 shl lsb) - 1)

@@ -16,7 +16,6 @@
 package io.guthix.oldscape.server.template
 
 import io.guthix.oldscape.server.Property
-import io.guthix.oldscape.server.content.SpotAnimTemplates
 import io.guthix.oldscape.server.world.entity.Obj
 
 val Obj.ammunitionType: AmmunitionTypeProjectile get() = ammunitionTemplate?.type ?: throw TemplateNotFoundException(id)

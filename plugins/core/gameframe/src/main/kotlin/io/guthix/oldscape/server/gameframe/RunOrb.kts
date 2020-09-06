@@ -16,8 +16,9 @@
 package io.guthix.oldscape.server.gameframe
 
 import io.guthix.oldscape.server.event.ButtonClickEvent
+import io.guthix.oldscape.server.template.VarbitTemplates
 
 on(ButtonClickEvent::class).where { interfaceId == 160 && buttonId == 22 }.then {
     player.inRunMode = !player.inRunMode
-    player.updateVarbit(173, if (player.inRunMode) 1 else 0)
+    player.updateVarbit(VarbitTemplates.RUN_MODE_173, if (player.inRunMode) 1 else 0)
 }

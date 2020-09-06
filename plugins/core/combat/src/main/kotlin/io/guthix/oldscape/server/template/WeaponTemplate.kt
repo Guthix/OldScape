@@ -16,7 +16,7 @@
 package io.guthix.oldscape.server.template
 
 import io.guthix.oldscape.server.Property
-import io.guthix.oldscape.server.content.SequenceTemplates
+import io.guthix.oldscape.server.template.SequenceTemplates
 import io.guthix.oldscape.server.world.entity.Obj
 import io.guthix.oldscape.server.world.map.dim.TileUnit
 import io.guthix.oldscape.server.world.map.dim.tiles

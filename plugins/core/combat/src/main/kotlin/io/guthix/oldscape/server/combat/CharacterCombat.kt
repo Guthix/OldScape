@@ -16,7 +16,7 @@
 package io.guthix.oldscape.server.combat
 
 import io.guthix.oldscape.server.Property
-import io.guthix.oldscape.server.content.SequenceTemplates
+import io.guthix.oldscape.server.template.SequenceTemplates
 import io.guthix.oldscape.server.world.map.dim.TileUnit
 import io.guthix.oldscape.server.world.map.dim.max
 import io.guthix.oldscape.server.world.map.dim.tiles

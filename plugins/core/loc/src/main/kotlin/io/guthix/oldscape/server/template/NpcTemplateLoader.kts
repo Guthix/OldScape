@@ -15,6 +15,4 @@
  */
 package io.guthix.oldscape.server.template
 
-import io.guthix.oldscape.server.content.LocTemplates
-
 loadTemplates("/template/NpcExamines.yaml", LocTemplates, LocTemplate::examine)

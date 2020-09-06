@@ -22,3 +22,8 @@ data class SpotAnimTemplate(private val config: SpotAnimConfig) : BaseTemplate(c
     val id: Int get() = config.id
     val sequenceId: Int? get() = config.sequenceId
 }
+
+data class PhysicalSpotAnimTemplate(val template: SpotAnimTemplate, val height: Int) {
+    val id: Int get () = template.id
+    val sequenceId: Int? get() = template.sequenceId
+}

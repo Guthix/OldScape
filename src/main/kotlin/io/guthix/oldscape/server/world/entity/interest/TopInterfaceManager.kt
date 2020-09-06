@@ -17,7 +17,7 @@ package io.guthix.oldscape.server.world.entity.interest
 
 import io.guthix.oldscape.server.net.game.out.IfClosesubPacket
 import io.guthix.oldscape.server.net.game.out.IfOpensubPacket
-import io.guthix.oldscape.server.content.InventoryTemplates
+import io.guthix.oldscape.server.template.InventoryTemplates
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.Player
 import io.guthix.oldscape.server.world.entity.intface.IfComponent

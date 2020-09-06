@@ -19,8 +19,8 @@ import io.guthix.oldscape.server.combat.attackRange
 import io.guthix.oldscape.server.combat.attackSpeed
 import io.guthix.oldscape.server.combat.dmg.calcHit
 import io.guthix.oldscape.server.combat.inCombatWith
-import io.guthix.oldscape.server.content.SequenceTemplates
-import io.guthix.oldscape.server.content.SpotAnimTemplates
+import io.guthix.oldscape.server.template.SequenceTemplates
+import io.guthix.oldscape.server.template.SpotAnimTemplates
 import io.guthix.oldscape.server.event.EventBus
 import io.guthix.oldscape.server.event.NpcAttackedEvent
 import io.guthix.oldscape.server.pathing.DestinationRange
@@ -38,7 +38,7 @@ fun Player.magicAttack(
     castAnim: SequenceTemplate,
     animHeight: Int,
     animSound: Int,
-    spellAnim: SpotAnimTemplate,
+    spellAnim: PhysicalSpotAnimTemplate,
     projTemplate: ProjectileTemplate,
     maxHit: (Player, Npc) -> Int
 ) {
@@ -58,7 +58,7 @@ fun Player.magicAttack(
             world.addTask(NormalTask) {
                 val damage = calcHit(npc, maxHit(player, npc))
                 if (damage == null) {
-                    npc.spotAnimate(SpotAnimTemplates.SPLASH, 124, projectile.lifetimeClientTicks) // sound 227
+                    npc.spotAnimate(SpotAnimTemplates.SPLASH_H123_85, projectile.lifetimeClientTicks) // sound 227
                     // TODO sound
                 } else {
                     wait(ticks = projectile.lifeTimeServerTicks - 1)
