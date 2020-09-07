@@ -18,7 +18,6 @@ package io.guthix.oldscape.server.equipment
 import io.guthix.oldscape.server.event.*
 import io.guthix.oldscape.server.plugin.InvalidMessageException
 import io.guthix.oldscape.server.template.equipment
-import io.guthix.oldscape.server.template.equipmentType
 import io.guthix.oldscape.server.world.entity.Obj
 import io.guthix.oldscape.server.world.entity.interest.PlayerManager
 
@@ -27,14 +26,16 @@ fun PlayerManager.EquipmentSet.unequip(equipmentType: PlayerManager.EquipmentTyp
 
 on(InvObjClickEvent::class).then {
     val obj = player.topInterface.itemBag.remove(inventorySlot) ?: return@then
-    obj.template.equipment?.let { (_, type,  coversHair, isFullBody, coversFace) ->
-        type?.let {
-            player.topInterface.equipment[it.slot] = obj
-            player.equipmentSet.equipment[it.slot] = obj
+    obj.template.equipment?.let { equipment ->
+        equipment.type?.let { type ->
+            player.topInterface.equipment[type.slot] = obj
+            player.equipmentSet.equipment[type.slot] = obj
+            equipment.coversFace?.let { player.equipmentSet.coversFace = it }
+            equipment.coversHair?.let { player.equipmentSet.coversFace = it }
+            equipment.isFullBody?.let { player.equipmentSet.coversFace = it }
+            player.updateAppearance()
+            type
         }
-        coversFace?.let { player.equipmentSet.coversFace = it }
-        coversHair?.let { player.equipmentSet.coversFace = it }
-        isFullBody?.let { player.equipmentSet.coversFace = it }
     } ?: throw InvalidMessageException("No equipment defined for $obj.")
     EventBus.schedule(ObjEquipedEvent(obj, player, world))
 }

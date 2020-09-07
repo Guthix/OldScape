@@ -53,7 +53,7 @@ class Opheld2Packet : GamePacketDecoder(58, FixedSize(8)) {
     ): PlayerGameEvent {
         val bitpack = buf.readInt()
         val itemId = buf.readUnsignedShortAdd()
-        val inventorySlotId = buf.readUnsignedShortLE()
+        val inventorySlotId = buf.readUnsignedShortAddLE()
         return InvObjClickEvent(
             bitpack shr Short.SIZE_BITS, bitpack and 0xFFFF, itemId, inventorySlotId, 2, player, world
         )

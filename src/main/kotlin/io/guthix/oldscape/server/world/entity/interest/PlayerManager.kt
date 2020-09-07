@@ -66,17 +66,17 @@ class PlayerManager(val index: Int) : InterestManager {
 
 
     class EquipmentSet(val equipment: MutableMap<Int, Obj>) : PropertyHolder {
-        var head: Obj? = equipment[EquipmentType.HEAD.slot]
-        var cape: Obj? = equipment[EquipmentType.CAPE.slot]
-        var neck: Obj? = equipment[EquipmentType.NECK.slot]
-        var weapon: Obj? = equipment[EquipmentType.ONE_HAND_WEAPON.slot]
-        var body: Obj? = equipment[EquipmentType.BODY.slot]
-        var shield: Obj? = equipment[EquipmentType.SHIELD.slot]
-        var legs: Obj? = equipment[EquipmentType.LEGS.slot]
-        var hands: Obj? = equipment[EquipmentType.HANDS.slot]
-        var feet: Obj? = equipment[EquipmentType.FEET.slot]
-        var ring: Obj? = equipment[EquipmentType.RING.slot]
-        var ammunition: Obj? = equipment[EquipmentType.AMMUNITION.slot]
+        val head: Obj? get() = equipment[EquipmentType.HEAD.slot]
+        val cape: Obj? get() = equipment[EquipmentType.CAPE.slot]
+        val neck: Obj? get() = equipment[EquipmentType.NECK.slot]
+        val weapon: Obj? get() = equipment[EquipmentType.ONE_HAND_WEAPON.slot]
+        val body: Obj? get() = equipment[EquipmentType.BODY.slot]
+        val shield: Obj? get() = equipment[EquipmentType.SHIELD.slot]
+        val legs: Obj? get() = equipment[EquipmentType.LEGS.slot]
+        val hands: Obj? get() = equipment[EquipmentType.HANDS.slot]
+        val feet: Obj? get() = equipment[EquipmentType.FEET.slot]
+        val ring: Obj? get() = equipment[EquipmentType.RING.slot]
+        val ammunition: Obj? get() = equipment[EquipmentType.AMMUNITION.slot]
 
         var coversHair: Boolean = false
         var isFullBody: Boolean = false
