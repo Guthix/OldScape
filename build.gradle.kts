@@ -12,7 +12,7 @@ plugins {
 }
 
 group = "io.guthix.oldscape"
-version = "0.1"
+version = "0.1.0"
 description = "A library for modifying OldScape caches"
 
 val repoUrl: String = "https://github.com/guthix/OldScape-Cache"
