@@ -6,15 +6,19 @@ plugins {
     idea
     application
     `maven-publish`
-    kotlin("jvm")
+    signing
     id("org.jetbrains.dokka")
+    kotlin("jvm")
 }
 
 apply<io.guthix.oldscape.server.template.TemplateGenerator>()
 
 group = "io.guthix.oldscape"
-version = "0.1-SNAPSHOT"
+version = "0.1"
 description = "An Oldschool Runescape Server Emulator"
+
+val repoUrl: String = "https://github.com/guthix/Jagex-Store-5"
+val gitSuffix: String = "github.com/guthix/Jagex-Store-5.git"
 
 application { mainClass.set("io.guthix.oldscape.server.OldScape") }
 
@@ -24,7 +28,7 @@ val classGraphVersion: String by extra("4.8.53")
 val logbackVersion: String by extra("1.2.3")
 val nettyVersion: String by extra("4.1.42.Final")
 val jacksonVersion: String by extra("2.10.2")
-val oldscapeCacheVersion: String by extra("b032d9a103")
+val oldscapeCacheVersion: String by extra("0.1.0")
 val kotlinVersion: String by extra(project.getKotlinPluginVersion()!!)
 
 allprojects {
@@ -93,7 +97,7 @@ dependencies {
             runtimeOnly(pluginProject)
         }
     }
-    api(group = "com.github.guthix", name = "oldscape-cache", version = oldscapeCacheVersion)
+    api(group = "io.guthix.oldscape", name = "oldscape-cache", version = oldscapeCacheVersion)
     implementation(group = "org.jetbrains.kotlin", name = "kotlin-reflect", version = kotlinVersion)
     implementation(group = "org.jetbrains.kotlin", name = "kotlin-scripting-common", version = kotlinVersion)
     implementation(group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version = kotlinCoroutinesVersion)

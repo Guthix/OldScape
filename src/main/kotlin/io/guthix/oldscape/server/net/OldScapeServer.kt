@@ -15,7 +15,7 @@
  */
 package io.guthix.oldscape.server.net
 
-import io.guthix.cache.js5.container.Js5Store
+import io.guthix.js5.container.Js5Store
 import io.guthix.oldscape.server.net.service.ServiceDecoder
 import io.guthix.oldscape.server.net.service.ServiceHandler
 import io.guthix.oldscape.server.world.World

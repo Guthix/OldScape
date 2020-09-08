@@ -17,8 +17,8 @@ package io.guthix.oldscape.server.net.login
 
 import io.guthix.buffer.readString0CP1252
 import io.guthix.buffer.readStringCP1252
-import io.guthix.cache.js5.util.XTEA_KEY_SIZE
-import io.guthix.cache.js5.util.xteaDecrypt
+import io.guthix.js5.util.XTEA_KEY_SIZE
+import io.guthix.js5.util.xteaDecrypt
 import io.guthix.oldscape.server.net.IsaacRandom
 import io.guthix.oldscape.server.net.IsaacRandomPair
 import io.guthix.oldscape.server.world.entity.ClientSettings

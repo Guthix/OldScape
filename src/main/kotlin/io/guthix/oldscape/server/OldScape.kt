@@ -19,11 +19,11 @@ import com.fasterxml.jackson.core.type.TypeReference
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory
 import com.fasterxml.jackson.module.kotlin.registerKotlinModule
-import io.guthix.cache.js5.Js5Cache
-import io.guthix.cache.js5.container.Js5Container
-import io.guthix.cache.js5.container.Js5Store
-import io.guthix.cache.js5.container.disk.Js5DiskStore
-import io.guthix.cache.js5.container.heap.Js5HeapStore
+import io.guthix.js5.Js5Cache
+import io.guthix.js5.container.Js5Container
+import io.guthix.js5.container.Js5Store
+import io.guthix.js5.container.disk.Js5DiskStore
+import io.guthix.js5.container.heap.Js5HeapStore
 import io.guthix.oldscape.cache.BinariesArchive
 import io.guthix.oldscape.cache.ConfigArchive
 import io.guthix.oldscape.cache.MapArchive

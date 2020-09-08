@@ -15,7 +15,7 @@
  */
 package io.guthix.oldscape.server.world
 
-import io.guthix.cache.js5.Js5Archive
+import io.guthix.js5.Js5Archive
 import io.guthix.oldscape.cache.MapArchive
 import io.guthix.oldscape.cache.xtea.MapXtea
 import io.guthix.oldscape.server.template.LocTemplate

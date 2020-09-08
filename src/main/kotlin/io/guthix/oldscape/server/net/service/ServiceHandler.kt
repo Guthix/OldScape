@@ -15,7 +15,7 @@
  */
 package io.guthix.oldscape.server.net.service
 
-import io.guthix.cache.js5.container.Js5Store
+import io.guthix.js5.container.Js5Store
 import io.guthix.oldscape.server.net.PacketInboundHandler
 import io.guthix.oldscape.server.net.StatusEncoder
 import io.guthix.oldscape.server.net.StatusResponse

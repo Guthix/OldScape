@@ -19,8 +19,8 @@ import com.fasterxml.jackson.core.type.TypeReference
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory
 import com.fasterxml.jackson.module.kotlin.registerKotlinModule
-import io.guthix.cache.js5.Js5Cache
-import io.guthix.cache.js5.container.disk.Js5DiskStore
+import io.guthix.js5.Js5Cache
+import io.guthix.js5.container.disk.Js5DiskStore
 import io.guthix.oldscape.cache.ConfigArchive
 import io.guthix.oldscape.cache.config.*
 import io.guthix.oldscape.server.template.imp.writeEnumTemplates

@@ -8,9 +8,9 @@ plugins {
 }
 
 group = "io.guthix"
-version = "0.1-SNAPSHOT"
+version = "0.1"
 
-val oldscapeCacheVersion: String by extra("de43248ebc")
+val oldscapeCacheVersion: String by extra("0.1.0")
 val kotlinpoetVersion: String by extra("1.6.0")
 val jacksonVersion: String by extra("2.10.2")
 val kotlinVersion: String by extra(project.getKotlinPluginVersion()!!)
@@ -22,7 +22,7 @@ repositories {
 
 dependencies {
     implementation(group = "org.jetbrains.kotlin", name = "kotlin-reflect", version = kotlinVersion)
-    implementation(group = "com.github.guthix", name = "oldscape-cache", version = oldscapeCacheVersion)
+    implementation(group = "io.guthix.oldscape", name = "oldscape-cache", version = oldscapeCacheVersion)
     implementation(group = "com.fasterxml.jackson.core", name = "jackson-databind", version = jacksonVersion)
     implementation(
         group = "com.fasterxml.jackson.dataformat", name = "jackson-dataformat-yaml", version = jacksonVersion
