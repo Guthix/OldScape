@@ -1,17 +1,22 @@
 @file:Suppress("ConvertLambdaToReference")
 
 import org.jetbrains.kotlin.gradle.plugin.getKotlinPluginVersion
+import java.net.URI
 
 plugins {
     idea
     `maven-publish`
-    kotlin("jvm")
+    signing
     id("org.jetbrains.dokka")
+    kotlin("jvm")
 }
 
-group = "io.guthix"
-version = "0.1-SNAPSHOT"
+group = "io.guthix.oldscape"
+version = "0.1"
 description = "A library for modifying OldScape caches"
+
+val repoUrl: String = "https://github.com/guthix/OldScape-Cache"
+val gitSuffix: String = "github.com/guthix/OldScape-Cache.git"
 
 val jagexStore5Version: String by extra("0.4.0")
 val kotlinLoggingVersion: String by extra("1.8.3")
@@ -46,12 +51,37 @@ dependencies {
     dokkaHtmlPlugin(group = "org.jetbrains.dokka", name = "kotlin-as-java-plugin", version = kotlinVersion)
 }
 
+java {
+    withJavadocJar()
+    withSourcesJar()
+}
+
 publishing {
+    repositories {
+        maven {
+            name = "MavenCentral"
+            url = URI("https://oss.sonatype.org/service/local/staging/deploy/maven2/")
+            credentials {
+                username = System.getenv("OSSRH_USERNAME")
+                password = System.getenv("OSSRH_PASSWORD")
+            }
+        }
+        maven {
+            name = "GitHubPackages"
+            url = URI("https://maven.pkg.github.com/guthix/OldScape-Cache")
+            credentials {
+                username = System.getenv("GITHUB_ACTOR")
+                password = System.getenv("GITHUB_TOKEN")
+            }
+        }
+    }
     publications {
         create<MavenPublication>("default") {
             from(components["java"])
             pom {
-                url.set("https://github.com/guthix/OldScape-Cache")
+                name.set("OldScape Cache")
+                description.set(rootProject.description)
+                url.set(repoUrl)
                 licenses {
                     license {
                         name.set("APACHE LICENSE, VERSION 2.0")
@@ -59,10 +89,24 @@ publishing {
                     }
                 }
                 scm {
-                    connection.set("scm:git:git://github.com/guthix/OldScape-Cache.git")
-                    developerConnection.set("scm:git:ssh://github.com/guthix/OldScape-Cache.git")
+                    connection.set("scm:git:git://$gitSuffix")
+                    developerConnection.set("scm:git:ssh://$gitSuffix")
+                    url.set(
+                        repoUrl
+                    )
+                }
+                developers {
+                    developer {
+                        id.set("bart")
+                        name.set("Bart van Helvert")
+                    }
                 }
             }
         }
     }
+}
+
+signing {
+    useInMemoryPgpKeys(System.getenv("SIGNING_KEY"), System.getenv("SIGNING_PASSWORD"))
+    sign(publishing.publications["default"])
 }
