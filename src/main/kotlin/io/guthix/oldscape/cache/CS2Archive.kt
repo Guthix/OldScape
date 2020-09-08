@@ -15,7 +15,7 @@
  */
 package io.guthix.oldscape.cache
 
-import io.guthix.cache.js5.Js5Archive
+import io.guthix.js5.Js5Archive
 import io.guthix.oldscape.cache.script.MachineScript
 
 public class CS2Archive(public val scripts: Map<Int, MachineScript>) {

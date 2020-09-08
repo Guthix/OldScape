@@ -15,8 +15,25 @@
  */
 package io.guthix.oldscape.cache
 
-import io.guthix.cache.js5.Js5Archive
-import io.guthix.oldscape.cache.config.*
+import io.guthix.js5.Js5Archive
+import io.guthix.oldscape.cache.config.AreaConfig
+import io.guthix.oldscape.cache.config.EnumConfig
+import io.guthix.oldscape.cache.config.HitBarConfig
+import io.guthix.oldscape.cache.config.HitMarkConfig
+import io.guthix.oldscape.cache.config.IdentKitConfig
+import io.guthix.oldscape.cache.config.InventoryConfig
+import io.guthix.oldscape.cache.config.LocationConfig
+import io.guthix.oldscape.cache.config.NpcConfig
+import io.guthix.oldscape.cache.config.ObjectConfig
+import io.guthix.oldscape.cache.config.OverlayConfig
+import io.guthix.oldscape.cache.config.ParamConfig
+import io.guthix.oldscape.cache.config.SequenceConfig
+import io.guthix.oldscape.cache.config.SpotAnimConfig
+import io.guthix.oldscape.cache.config.StructConfig
+import io.guthix.oldscape.cache.config.UnderlayConfig
+import io.guthix.oldscape.cache.config.VarClientConfig
+import io.guthix.oldscape.cache.config.VarPlayerConfig
+import io.guthix.oldscape.cache.config.VarbitConfig
 
 public class ConfigArchive(
     public val areaConfigs: Map<Int, AreaConfig>,

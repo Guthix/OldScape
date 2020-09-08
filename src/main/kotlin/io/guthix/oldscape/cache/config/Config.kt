@@ -17,7 +17,7 @@ package io.guthix.oldscape.cache.config
 
 import io.guthix.buffer.readStringCP1252
 import io.guthix.buffer.writeStringCP1252
-import io.guthix.cache.js5.Js5Group
+import io.guthix.js5.Js5Group
 import io.netty.buffer.ByteBuf
 
 public abstract class NamedConfig(id: Int) : Config(id) {
