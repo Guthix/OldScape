@@ -12,6 +12,10 @@ an encoder or decoder you can open a pull request in Github.
 ![JS5 cache content](docs/images/Architecture.svg)
 
 ## Usage
+### Gradle
+```Kotlin
+implementation(group = "io.guthix.oldscape", name = "oldscape-cache", version = "0.1.0")
+```
 ##### Reading the config archive:
 ```kotlin
 Js5DiskStore.open(Path.of("ROOT_CACHE_PATH")).use { ds ->
