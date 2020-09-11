@@ -84,10 +84,25 @@ object OldScape {
         OldScapeServer(config.revision, config.port, config.rsa.privateKey, config.rsa.modulus, world, store).run()
     }
 
-    private fun loadMapSquareXteaKeys(path: Path): List<MapXtea> {
-        val mapper = ObjectMapper().registerKotlinModule()
-        return mapper.readValue(path.toFile(), object : TypeReference<List<MapXtea>>() {})
+    data class XteaConfig(val mapsquare: Int, val key: IntArray) {
+        override fun equals(other: Any?): Boolean {
+            if (this === other) return true
+            if (javaClass != other?.javaClass) return false
+            other as XteaConfig
+            if (mapsquare != other.mapsquare) return false
+            if (!key.contentEquals(other.key)) return false
+            return true
+        }
+
+        override fun hashCode(): Int {
+            var result = mapsquare
+            result = 31 * result + key.contentHashCode()
+            return result
+        }
     }
+
+    private fun loadMapSquareXteaKeys(path: Path): List<MapXtea> = ObjectMapper().registerKotlinModule()
+        .readValue(path.toFile(), object : TypeReference<List<XteaConfig>>() {}).map { MapXtea(it.mapsquare, it.key) }
 
     private fun ObjectMapper.loadConfig(path: Path) = readValue(path.toFile(), ServerConfig::class.java)
 }
