@@ -21,6 +21,8 @@ rootProject.name = "oldscape-server"
 
 includeModules("plugins")
 
+include("dumper")
+
 fun includeModules(module: String) {
     val pluginRootDir: Path = rootProject.projectDir.toPath().resolve(module)
     if (pluginRootDir.toFile().exists()) {

@@ -1,6 +1,7 @@
 @file:Suppress("ConvertLambdaToReference")
 
 import org.jetbrains.kotlin.gradle.plugin.getKotlinPluginVersion
+import io.guthix.oldscape.server.template.TemplateGenerator
 
 plugins {
     idea
@@ -11,14 +12,11 @@ plugins {
     kotlin("jvm")
 }
 
-apply<io.guthix.oldscape.server.template.TemplateGenerator>()
+apply<TemplateGenerator>()
 
 group = "io.guthix.oldscape"
-version = "0.1"
+version = "0.1.0-SNAPSHOT"
 description = "An Oldschool Runescape Server Emulator"
-
-val repoUrl: String = "https://github.com/guthix/Jagex-Store-5"
-val gitSuffix: String = "github.com/guthix/Jagex-Store-5.git"
 
 application { mainClass.set("io.guthix.oldscape.server.OldScape") }
 
@@ -40,7 +38,10 @@ allprojects {
 
     repositories {
         mavenCentral()
-        maven("https://jitpack.io")
+    }
+
+    dependencies {
+        implementation(group = "io.github.microutils", name = "kotlin-logging", version = kotlinLoggingVersion)
     }
 
     java {
@@ -61,36 +62,6 @@ allprojects {
     }
 }
 
-configure(allprojects.filter {
-    it.name == rootProject.name || it.name == "equipment" || it.name == "combat" || it.name == "obj"
-}) {
-    val project = this
-    apply(plugin = "maven-publish")
-    publishing {
-        publications {
-            create<MavenPublication>("default") {
-                artifactId = if(project.name == rootProject.name ) {
-                    rootProject.name
-                } else "${rootProject.name}-${project.name}"
-                from(components["java"])
-                pom {
-                    url.set("https://github.com/guthix/OldScape-Server")
-                    licenses {
-                        license {
-                            name.set("APACHE LICENSE, VERSION 2.0")
-                            url.set("https://www.apache.org/licenses/LICENSE-2.0.txt")
-                        }
-                    }
-                    scm {
-                        connection.set("scm:git:git://github.com/guthix/OldScape-Server.git")
-                        developerConnection.set("scm:git:ssh://github.com/guthix/OldScape-Server.git")
-                    }
-                }
-            }
-        }
-    }
-}
-
 dependencies {
     project(":plugins").dependencyProject.subprojects.forEach { pluginProject ->
         if (pluginProject.buildFile.exists()) {
@@ -103,7 +74,6 @@ dependencies {
     implementation(group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version = kotlinCoroutinesVersion)
     implementation(group = "io.netty", name = "netty-all", version = nettyVersion)
     implementation(group = "io.github.classgraph", name = "classgraph", version = classGraphVersion)
-    implementation(group = "io.github.microutils", name = "kotlin-logging", version = kotlinLoggingVersion)
     implementation(group = "ch.qos.logback", name = "logback-classic", version = logbackVersion)
     implementation(group = "com.fasterxml.jackson.core", name = "jackson-databind", version = jacksonVersion)
     implementation(
