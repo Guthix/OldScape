@@ -19,7 +19,7 @@ import io.guthix.oldscape.wiki.WikiConfigCompanion
 import io.guthix.oldscape.wiki.WikiDefinition
 import java.time.LocalDate
 
-public class ObjectWikiDefinition : WikiDefinition<ObjectWikiDefinition>() {
+public class ObjWikiDefinition : WikiDefinition() {
     override var ids: List<Int>? = null
     override var name: String? = null
     public var versionType: String? = null
@@ -59,13 +59,6 @@ public class ObjectWikiDefinition : WikiDefinition<ObjectWikiDefinition>() {
     public var prayerBonus: Int? = null
     public var attackSpeed: Int? = null
     public var combatStyle: String? = null
-
-
-
-    override fun parse(page: String, version: Int?): ObjectWikiDefinition {
-        super.parse(page, version)
-        return this
-    }
 
     override fun parseKeyValueLine(line: String, version: Int?) {
         when {

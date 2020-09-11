@@ -15,13 +15,10 @@
  */
 package io.guthix.oldscape.wiki
 
-import io.guthix.cache.js5.Js5Cache
-import io.guthix.cache.js5.container.disk.Js5DiskStore
-import io.guthix.oldscape.cache.ConfigArchive
 import io.guthix.oldscape.cache.config.NpcConfig
 import io.guthix.oldscape.cache.config.ObjectConfig
 import io.guthix.oldscape.wiki.wikitext.NpcWikiDefinition
-import io.guthix.oldscape.wiki.wikitext.ObjectWikiDefinition
+import io.guthix.oldscape.wiki.wikitext.ObjWikiDefinition
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.apache.Apache
 import io.ktor.client.request.get
@@ -29,27 +26,12 @@ import io.ktor.client.request.request
 import io.ktor.client.statement.HttpResponse
 import kotlinx.coroutines.runBlocking
 import mu.KotlinLogging
-import java.nio.file.Path
 
 private const val wikiUrl = "https://oldschool.runescape.wiki"
 
 private val logger = KotlinLogging.logger { }
 
-public fun npcWikiDownloader(cachePath: Path): List<NpcWikiDefinition> {
-    val cache = Js5Cache(Js5DiskStore.open(cachePath))
-    val configArchive = cache.readArchive(ConfigArchive.id)
-    val cacheConfigs = NpcConfig.load(configArchive.readGroup(NpcConfig.id))
-    return scrapeNpcWikiConfigs(cacheConfigs)
-}
-
-public fun objectWikiDownloader(cachePath: Path): List<ObjectWikiDefinition> {
-    val cache = Js5Cache(Js5DiskStore.open(cachePath))
-    val configArchive = cache.readArchive(ConfigArchive.id)
-    val cacheConfigs = ObjectConfig.load(configArchive.readGroup(ObjectConfig.id))
-    return scrapeObjectWikiConfigs(cacheConfigs)
-}
-
-public fun scrapeObjectWikiConfigs(cacheConfigs: Map<Int, ObjectConfig>): List<ObjectWikiDefinition> = runBlocking {
+public fun scrapeObjectWikiConfigs(cacheConfigs: Map<Int, ObjectConfig>): List<ObjWikiDefinition> = runBlocking {
     val wikiConfigs = HttpClient(Apache) {
         followRedirects = false
         engine {
@@ -58,7 +40,7 @@ public fun scrapeObjectWikiConfigs(cacheConfigs: Map<Int, ObjectConfig>): List<O
             connectionRequestTimeout = 400_000
         }
     }.use { client ->
-        val wikiConfigs = mutableMapOf<Int, ObjectWikiDefinition>()
+        val wikiConfigs = mutableMapOf<Int, ObjWikiDefinition>()
         for ((id, cacheConfig) in cacheConfigs) {
             logger.info { "--------------Handle $id ${cacheConfig.name}----------------" }
             if (cacheConfig.isNoted) {
@@ -72,7 +54,7 @@ public fun scrapeObjectWikiConfigs(cacheConfigs: Map<Int, ObjectConfig>): List<O
             if (!wikiConfigs.containsKey(id)) {
                 logger.info { "Downloading $id ${cacheConfig.name}" }
                 val wikiText = try {
-                    client.scrapeWikiText(ObjectWikiDefinition.queryString, id, cacheConfig.name)
+                    client.scrapeWikiText(ObjWikiDefinition.queryString, id, cacheConfig.name)
                 } catch (e: PageNotFoundException) {
                     logger.warn(e::message)
                     continue
@@ -83,7 +65,7 @@ public fun scrapeObjectWikiConfigs(cacheConfigs: Map<Int, ObjectConfig>): List<O
                         logger.info { "Scraped page for object $id is not an object" }
                         continue@inner
                     }
-                    parseWikiString<ObjectWikiDefinition>(entry).forEach { wikiConfig ->
+                    parseWikiString<ObjWikiDefinition>(entry).forEach { wikiConfig ->
                         wikiConfig.name = cacheConfig.name
                         val ids = wikiConfig.ids?.toList() ?: listOf(id)
                         ids.forEach { wikiId ->

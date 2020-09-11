@@ -22,12 +22,12 @@ import kotlin.reflect.full.createInstance
 
 private val logger = KotlinLogging.logger {}
 
-public abstract class WikiDefinition<P : WikiDefinition<P>> {
+public abstract class WikiDefinition {
     public open var ids: List<Int>? = null
     public open var name: String? = null
 
     @Suppress("UNCHECKED_CAST")
-    public open fun parse(page: String, version: Int? = null): P {
+    public open fun <D : WikiDefinition> parse(page: String, version: Int? = null): D {
         page.reader().readLines().forEach { pageLine ->
             try {
                 if (pageLine.startsWith("|")) {
@@ -37,7 +37,7 @@ public abstract class WikiDefinition<P : WikiDefinition<P>> {
                 logger.warn("Could not parse line: $pageLine")
             }
         }
-        return this as P
+        return this as D
     }
 
     public abstract fun parseKeyValueLine(line: String, version: Int?)
@@ -100,17 +100,17 @@ public abstract class WikiDefinition<P : WikiDefinition<P>> {
     }
 }
 
-public inline fun <reified P : WikiDefinition<P>> parseWikiString(wikiString: String): List<P> {
-    val definitions = mutableListOf<P>()
+public inline fun <reified D : WikiDefinition> parseWikiString(wikiString: String): List<D> {
+    val definitions = mutableListOf<D>()
     if (wikiString.contains("|id1 = ")) {
         var version = 1
         do {
-            val def = P::class.createInstance().parse(wikiString, version)
+            val def = D::class.createInstance().parse<D>(wikiString, version)
             definitions.add(def)
             version++
         } while (wikiString.contains("|id$version = "))
     } else {
-        val def = P::class.createInstance().parse(wikiString, null)
+        val def = D::class.createInstance().parse<D>(wikiString, null)
         definitions.add(def)
     }
     return definitions

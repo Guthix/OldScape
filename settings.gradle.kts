@@ -1,6 +1,6 @@
 pluginManagement {
-    val kotlinVersion by extra("1.4-M2")
-    val dokkaVersion by extra("0.10.0")
+    val kotlinVersion by extra("1.4.0")
+    val dokkaVersion by extra(kotlinVersion)
 
     plugins {
         id("org.jetbrains.kotlin.jvm") version kotlinVersion
@@ -8,9 +8,8 @@ pluginManagement {
     }
 
     repositories {
-        maven("https://dl.bintray.com/kotlin/kotlin-eap")
-        mavenCentral()
-        maven("https://plugins.gradle.org/m2/")
+        gradlePluginPortal()
+        jcenter()
     }
 }
 
@@ -18,4 +17,3 @@ rootProject.name = "oldscape-wiki"
 
 include("parser")
 include("downloader")
-include("server-yaml")

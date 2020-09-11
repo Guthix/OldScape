@@ -9,5 +9,4 @@ A library for retrieving data from the [Oldschool Runescape Wiki](https://oldsch
 This repository contains 3 different projects.
 * [Parser](https://github.com/guthix/OldScape-Wiki/tree/master/parser) a library for parsing wikitext.
 * [Downloader](https://github.com/guthix/OldScape-Wiki/tree/master/downloader) a library for downloading wiki pages.
-* [Server-Yaml](https://github.com/guthix/OldScape-Wiki/tree/master/server-yaml) A yaml dumper for 
 [OldScape-Server](https://github.com/guthix/OldScape-Server).

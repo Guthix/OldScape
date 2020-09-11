@@ -19,7 +19,7 @@ import io.guthix.oldscape.wiki.WikiConfigCompanion
 import io.guthix.oldscape.wiki.WikiDefinition
 import java.time.LocalDate
 
-public class NpcWikiDefinition : WikiDefinition<NpcWikiDefinition>() {
+public class NpcWikiDefinition : WikiDefinition() {
     override var ids: List<Int>? = null
     override var name: String? = null
     public var type: String? = null
