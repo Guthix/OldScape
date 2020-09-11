@@ -24,7 +24,7 @@
         </encoder>
     </appender>
     <logger name="io.guthix" level="INFO"/>
-    <logger name="io.guthix.cache.js5" level="WARN"/>
+    <logger name="io.guthix.js5" level="WARN"/>
     <logger name="io.netty" level="WARN"/>
     <root level="debug">
         <appender-ref ref="STDOUT"/>
