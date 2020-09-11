@@ -56,7 +56,12 @@ class Task(val type: TaskType, private val holder: TaskHolder) : Continuation<Un
         next?.postProcess()
     }
 
-    override fun resumeWith(result: Result<Unit>) {}
+    override fun resumeWith(result: Result<Unit>) {
+        result.exceptionOrNull()?.let {
+            it.printStackTrace()
+            cancel()
+        }
+    }
 
     suspend fun wait(ticks: Int) {
         suspend(TickCondition(ticks))
