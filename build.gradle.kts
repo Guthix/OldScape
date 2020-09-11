@@ -30,6 +30,9 @@ allprojects {
     apply(plugin = "org.jetbrains.dokka")
     apply(plugin = "kotlin")
 
+    group = rootProject.group
+    version = rootProject.version
+
     repositories {
         mavenCentral()
     }
@@ -77,6 +80,9 @@ allprojects {
         publications {
             create<MavenPublication>("default") {
                 from(components["java"])
+                artifactId = if(project.name == rootProject.name ) {
+                    rootProject.name
+                } else "${rootProject.name}-${project.name}"
                 pom {
                     name.set("OldScape Wiki")
                     description.set(rootProject.description)
