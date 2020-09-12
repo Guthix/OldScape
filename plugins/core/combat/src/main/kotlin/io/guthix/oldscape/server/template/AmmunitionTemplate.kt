@@ -18,21 +18,22 @@ package io.guthix.oldscape.server.template
 import io.guthix.oldscape.server.Property
 import io.guthix.oldscape.server.world.entity.Obj
 
-val Obj.ammunitionType: AmmunitionTypeProjectile get() = ammunitionTemplate?.type ?: throw TemplateNotFoundException(id)
+val Obj.ammunitionType: AmmunitionTypeProjectile get() = ammunitionTemplate.type
 
-val Obj.drawBackAnim: SpotAnimTemplate get() = SpotAnimTemplates[
-    ammunitionTemplate?.drawBackSpotAnim ?: throw TemplateNotFoundException(id)
-]
+val Obj.ammunitionProjectile: ProjectileTemplate get() = ammunitionTemplate.projectile
 
-val Obj.drawBackAnimHeight: Int get() = ammunitionTemplate?.drawBackSpotAnimHeight
-    ?: throw TemplateNotFoundException(id)
+val Obj.drawback: PhysicalSpotAnimTemplate get() = PhysicalSpotAnimTemplate(
+    SpotAnimTemplates[ammunitionTemplate.drawBackSpotAnim],
+    ammunitionTemplate.drawBackSpotAnimHeight
+)
 
-val Obj.ammunitionProjectile: ProjectileTemplate get() = ammunitionTemplate?.projectile
-    ?: throw TemplateNotFoundException(id)
+private val Obj.ammunitionTemplate: AmmunitionTemplate get() = template.ammunition ?: throw TemplateNotFoundException(
+    id, AmmunitionTemplate::class, javaClass.getResource(ammunitionTemplatePath)
+)
 
-private val Obj.ammunitionTemplate: AmmunitionTemplate? get() = template.ammunition
+internal val ObjTemplate.ammunition: AmmunitionTemplate? by Property { null }
 
-private val ObjTemplate.ammunition: AmmunitionTemplate? by Property { null }
+internal const val ammunitionTemplatePath = "/template/Ammunition.yaml"
 
 data class AmmunitionTemplate(
     override val ids: List<Int>,

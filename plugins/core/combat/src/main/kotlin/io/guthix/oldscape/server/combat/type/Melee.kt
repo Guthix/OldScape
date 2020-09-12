@@ -47,7 +47,7 @@ fun Player.meleeAttack(npc: Npc, world: World) {
             val damage = calcHit(npc, maxMeleeHit()) ?: 0
             val hmColor = if (damage == 0) HitMark.Color.BLUE else HitMark.Color.RED
             npc.hit(hmColor, damage, 0)
-            npc.animate(SequenceTemplates[npc.sequences?.defence ?: throw TemplateNotFoundException(npc.id)])
+            npc.animate(SequenceTemplates[npc.sequences.defence])
             wait(ticks = attackSpeed)
         }
     }.onCancel {

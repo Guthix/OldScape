@@ -15,5 +15,6 @@
  */
 package io.guthix.oldscape.server.template
 
-loadTemplates("/template/Weapons.yaml", ObjTemplates, ObjTemplate::weapon)
-loadTemplates("/template/Monsters.yaml", NpcTemplates, NpcTemplate::monster)
+loadTemplates(ammunitionTemplatePath, ObjTemplates, ObjTemplate::ammunition)
+loadTemplates(weaponTemplatePath, ObjTemplates, ObjTemplate::weapon)
+loadTemplates(monsterTemplatePath, NpcTemplates, NpcTemplate::monster)

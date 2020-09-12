@@ -52,14 +52,14 @@ fun Player.rangeAttack(npc: Npc, world: World) {
             }
             topInterface.equipment[PlayerManager.EquipmentType.AMMUNITION.slot] = ammunition.apply { quantity-- }
             animate(attackSequence)
-            spotAnimate(ammunition.drawBackAnim, ammunition.drawBackAnimHeight)
+            spotAnimate(ammunition.drawback, ammunition.drawback.height)
             val projectile = world.map.addProjectile(ammunition.ammunitionProjectile, pos, npc)
             EventBus.schedule(NpcAttackedEvent(npc, player, world))
             world.addTask(NormalTask) { // projectile task
                 val damage = calcHit(npc, maxRangeHit()) ?: 0
                 val oldNpcPos = npc.pos
                 wait(ticks = projectile.lifetimeClientTicks - 1)
-                npc.animate(SequenceTemplates[npc.sequences?.defence ?: throw TemplateNotFoundException(npc.id)])
+                npc.animate(SequenceTemplates[npc.sequences.defence])
                 val hmColor = if (damage == 0) HitMark.Color.BLUE else HitMark.Color.RED
                 npc.hit(hmColor, damage, 0)
                 if (Random.nextDouble(1.0) < 0.8) world.map.addObject(ammunition.copy(quantity = 1), oldNpcPos)

@@ -64,7 +64,7 @@ fun Player.magicAttack(
                     wait(ticks = projectile.lifeTimeServerTicks - 1)
                     val hmColor = if (damage == 0) HitMark.Color.BLUE else HitMark.Color.RED
                     npc.hit(hmColor, damage, 0)
-                    npc.animate(SequenceTemplates[npc.sequences?.defence ?: throw TemplateNotFoundException(npc.id)])
+                    npc.animate(SequenceTemplates[npc.sequences.defence])
                     // TODO spot animation
                     // TODO sound
                 }

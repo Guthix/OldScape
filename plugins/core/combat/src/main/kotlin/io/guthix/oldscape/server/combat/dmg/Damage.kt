@@ -29,6 +29,6 @@ fun Player.calcHit(other: Player, maxHit: Int): Int? = calcDamage(accuracy(other
 
 fun Player.calcHit(other: Npc, maxHit: Int): Int? = calcDamage(accuracy(other), maxHit)
 
-fun Npc.calcHit(other: Player): Int? = calcDamage(accuracy(other), maxHit ?: throw TemplateNotFoundException(id))
+fun Npc.calcHit(other: Player): Int? = calcDamage(accuracy(other), maxHit)
 
-fun Npc.calcHit(other: Npc): Int? = calcDamage(accuracy(other), maxHit ?: throw TemplateNotFoundException(id))
+fun Npc.calcHit(other: Npc): Int? = calcDamage(accuracy(other), maxHit)

@@ -34,12 +34,12 @@ on(NpcAttackedEvent::class).then {
     npc.addTask(NormalTask) { // combat fighting task
         while (true) {
             wait { playerDestination.reached(npc.pos.x, npc.pos.y, npc.size) }
-            npc.animate(SequenceTemplates[npc.sequences?.attack ?: throw TemplateNotFoundException(npc.id)])
+            npc.animate(SequenceTemplates[npc.sequences.attack])
             val damage = npc.calcHit(player) ?: 0
             val hmColor = if (damage == 0) HitMark.Color.BLUE else HitMark.Color.RED
             player.hit(hmColor, damage, 0)
             player.animate(player.defenceSequence)
-            wait(ticks = npc.attackSpeed!!)
+            wait(ticks = npc.attackSpeed)
         }
     }
     npc.addTask(NormalTask) { // following task

@@ -1,0 +1,7 @@
+- ids:
+  - 882
+  type: ARROW
+  projectileId: 10
+  drawBackSpotAnim: 19
+  drawBackSpotAnimHeight: 96
+

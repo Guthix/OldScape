@@ -22,6 +22,9 @@ import io.guthix.oldscape.server.event.WorldInitializedEvent
 import io.guthix.oldscape.server.plugin.Script
 import io.guthix.oldscape.server.readYaml
 import mu.KotlinLogging
+import java.net.URL
+import java.nio.file.Path
+import kotlin.reflect.KClass
 import kotlin.reflect.KProperty
 
 private val logger = KotlinLogging.logger { }
@@ -32,12 +35,19 @@ abstract class BaseTemplate(config: Config) : PropertyHolder {
     override val properties: MutableMap<KProperty<*>, Any?> = mutableMapOf()
 }
 
-class TemplateNotFoundException(id: Int) : Exception("Template with index $id not found.")
+class BaseTemplateNotFoundException(id: Int) : Exception("Base template with id $id does not exist in the cache.")
+
+class TemplateNotFoundException(id: Int, element: String, file: URL) : Exception(
+    "$element not found for id $id, add the template to ${file.path}."
+) {
+    constructor(id: Int, property: KProperty<*>, file: URL) : this(id, "$property", file)
+    constructor(id: Int, clazz: KClass<*>, file: URL) : this(id, "$clazz", file)
+}
 
 abstract class TemplateLoader<B : BaseTemplate> {
     private lateinit var baseTemplates: Map<Int, B>
 
-    operator fun get(index: Int): B = baseTemplates[index] ?: throw TemplateNotFoundException(index)
+    operator fun get(index: Int): B = baseTemplates[index] ?: throw BaseTemplateNotFoundException(index)
 
     internal fun <C: Config> load(configs: Map<Int, C>, factory: (C) -> B) {
         val temp = mutableMapOf<Int, B>()
