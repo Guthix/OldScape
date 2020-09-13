@@ -18,13 +18,11 @@ package io.guthix.oldscape.server.template
 import io.guthix.oldscape.server.Property
 import io.guthix.oldscape.server.world.entity.Npc
 
-val Npc.examine: String? get() = examineTemplate?.examine
+val Npc.examine: String get() = examineTemplate.examine
 
-private val Npc.examineTemplate: NpcExamineTemplate? get() = template.examine
+private val Npc.examineTemplate: NpcExamineTemplate
+    get() = template.examine ?: throw TemplateNotFoundException(id, NpcExamineTemplate::class)
 
 internal val NpcTemplate.examine: NpcExamineTemplate? by Property { null }
 
-data class NpcExamineTemplate(
-    override val ids: List<Int>,
-    val examine: String,
-) : Template(ids)
+data class NpcExamineTemplate(override val ids: List<Int>, val examine: String) : Template(ids)

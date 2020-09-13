@@ -18,13 +18,11 @@ package io.guthix.oldscape.server.template
 import io.guthix.oldscape.server.Property
 import io.guthix.oldscape.server.world.entity.Obj
 
-val Obj.weight: Float? get() = weightTemplate?.weight
+val Obj.weight: Float get() = weightTemplate.weight
 
-private val Obj.weightTemplate: ObjWeightTemplate? get() = template.weight
+private val Obj.weightTemplate: ObjWeightTemplate
+    get() = template.weight ?: throw TemplateNotFoundException(id, ObjWeightTemplate::class)
 
 internal val ObjTemplate.weight: ObjWeightTemplate? by Property { null }
 
-data class ObjWeightTemplate(
-    override val ids: List<Int>,
-    val weight: Float,
-) : Template(ids)
+data class ObjWeightTemplate(override val ids: List<Int>, val weight: Float) : Template(ids)

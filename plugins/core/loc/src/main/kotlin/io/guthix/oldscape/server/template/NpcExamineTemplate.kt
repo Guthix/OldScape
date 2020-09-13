@@ -18,13 +18,11 @@ package io.guthix.oldscape.server.template
 import io.guthix.oldscape.server.Property
 import io.guthix.oldscape.server.world.entity.Loc
 
-val Loc.examine: String? get() = examineTemplate?.examine
+val Loc.examine: String get() = examineTemplate.examine
 
-private val Loc.examineTemplate: LocExamineTemplate? get() = template.examine
+private val Loc.examineTemplate: LocExamineTemplate
+    get() = template.examine ?: throw TemplateNotFoundException(id, LocExamineTemplate::class)
 
 internal val LocTemplate.examine: LocExamineTemplate? by Property { null }
 
-data class LocExamineTemplate(
-    override val ids: List<Int>,
-    val examine: String,
-) : Template(ids)
+data class LocExamineTemplate(override val ids: List<Int>, val examine: String) : Template(ids)

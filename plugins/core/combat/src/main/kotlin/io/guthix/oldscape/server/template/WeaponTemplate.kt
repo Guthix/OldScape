@@ -25,22 +25,17 @@ val Obj.weaponType: WeaponType get() = weaponTemplate.type
 val Obj.baseAttackSpeed: Int get() = weaponTemplate.attackSpeed
 
 val Obj.baseAttackRange: TileUnit
-    get() = weaponTemplate.attackRange?.tiles ?: throw TemplateNotFoundException(
-        id, Obj::baseAttackRange
-    )
+    get() = weaponTemplate.attackRange?.tiles ?: throw TemplateNotFoundException(id, Obj::baseAttackRange)
 
 val Obj.attackAnim: SequenceTemplate get() = SequenceTemplates[weaponSequences.attack]
 
 val Obj.blockAnim: SequenceTemplate get() = SequenceTemplates[weaponSequences.defence]
 
 private val Obj.weaponSequences: WeaponSequences
-    get() = weaponTemplate.weaponSequences
-        ?: throw TemplateNotFoundException(id, Obj::weaponSequences)
+    get() = weaponTemplate.weaponSequences ?: throw TemplateNotFoundException(id, Obj::weaponSequences)
 
 private val Obj.weaponTemplate: WeaponTemplate
-    get() = template.weapon ?: throw TemplateNotFoundException(
-        id, WeaponTemplate::class
-    )
+    get() = template.weapon ?: throw TemplateNotFoundException(id, WeaponTemplate::class)
 
 internal val ObjTemplate.weapon: WeaponTemplate? by Property { null }
 

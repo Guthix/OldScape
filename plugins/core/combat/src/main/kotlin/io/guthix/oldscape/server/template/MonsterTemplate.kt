@@ -23,9 +23,7 @@ val Npc.lvl: Int get() = monsterTemplate.lvl
 val Npc.maxHit: Int get() = monsterTemplate.maxHit ?: throw TemplateNotFoundException(id, Npc::maxHit)
 
 val Npc.attackType: AttackType
-    get() = monsterTemplate.attackType ?: throw TemplateNotFoundException(
-        id, Npc::attackType
-    )
+    get() = monsterTemplate.attackType ?: throw TemplateNotFoundException(id, Npc::attackType)
 
 val Npc.isAggressive: Boolean get() = monsterTemplate.isAggressive
 
@@ -36,14 +34,10 @@ val Npc.isImmumePoison: Boolean get() = monsterTemplate.isImmumePoison
 val Npc.isImmuneVenom: Boolean get() = monsterTemplate.isImmuneVenom
 
 val Npc.attackSpeed: Int
-    get() = monsterTemplate.attackSpeed ?: throw TemplateNotFoundException(
-        id, Npc::attackSpeed
-    )
+    get() = monsterTemplate.attackSpeed ?: throw TemplateNotFoundException(id, Npc::attackSpeed)
 
 val Npc.sequences: CombatSequences
-    get() = monsterTemplate.sequences ?: throw TemplateNotFoundException(
-        id, Npc::sequences
-    )
+    get() = monsterTemplate.sequences ?: throw TemplateNotFoundException(id, Npc::sequences)
 
 val Npc.stats: CombatStats get() = monsterTemplate.stats
 
@@ -54,9 +48,7 @@ val Npc.strengthBonus: CombatBonus get() = monsterTemplate.strengthBonus
 val Npc.defensiveStats: StyleBonus get() = monsterTemplate.defensiveStats
 
 internal val Npc.monsterTemplate: MonsterTemplate
-    get() = template.monster ?: throw TemplateNotFoundException(
-        id, MonsterTemplate::class
-    )
+    get() = template.monster ?: throw TemplateNotFoundException(id, MonsterTemplate::class)
 
 internal val NpcTemplate.monster: MonsterTemplate? by Property { null }
 

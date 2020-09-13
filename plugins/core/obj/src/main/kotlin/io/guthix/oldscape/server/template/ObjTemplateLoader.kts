@@ -16,3 +16,4 @@
 package io.guthix.oldscape.server.template
 
 loadTemplates("/template/ObjExamines.yaml", ObjTemplates, ObjTemplate::examine)
+loadTemplates("/template/ObjWeights.yaml", ObjTemplates, ObjTemplate::weight)

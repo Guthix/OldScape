@@ -19,17 +19,23 @@ import io.guthix.oldscape.server.Property
 import io.guthix.oldscape.server.world.entity.Obj
 import io.guthix.oldscape.server.world.entity.interest.PlayerManager
 
-public val Obj.equipmentType: PlayerManager.EquipmentType? get() = equipmentTemplate?.type
+val Obj.equipmentType: PlayerManager.EquipmentType
+    get() = equipmentTemplate.type ?: throw TemplateNotFoundException(id, Obj::equipmentType)
 
-public val Obj.attackBonus: StyleBonus? get() = equipmentTemplate?.attackBonus
+val Obj.attackBonus: StyleBonus
+    get() = equipmentTemplate.attackBonus ?: throw TemplateNotFoundException(id, Obj::attackBonus)
 
-public val Obj.strengthBonus: CombatBonus? get() = equipmentTemplate?.strengthBonus
+val Obj.strengthBonus: CombatBonus
+    get() = equipmentTemplate.strengthBonus ?: throw TemplateNotFoundException(id, Obj::strengthBonus)
 
-public val Obj.defenceBonus: StyleBonus? get() = equipmentTemplate?.defenceBonus
+val Obj.defenceBonus: StyleBonus
+    get() = equipmentTemplate.defenceBonus ?: throw TemplateNotFoundException(id, Obj::defenceBonus)
 
-public val Obj.prayerBonus: Int? get() = equipmentTemplate?.prayerBonus
+val Obj.prayerBonus: Int
+    get() = equipmentTemplate.prayerBonus ?: throw TemplateNotFoundException(id, Obj::prayerBonus)
 
-internal val Obj.equipmentTemplate: EquipmentTemplate? get() = template.equipment
+internal val Obj.equipmentTemplate: EquipmentTemplate
+    get() = template.equipment ?: throw TemplateNotFoundException(id, EquipmentTemplate::class)
 
 internal val ObjTemplate.equipment: EquipmentTemplate? by Property { null }
 

@@ -20,13 +20,11 @@ import io.guthix.oldscape.server.world.entity.Npc
 import io.guthix.oldscape.server.world.map.dim.TileUnit
 import io.guthix.oldscape.server.world.map.dim.tiles
 
-val Npc.wanderRadius: TileUnit? get() = walkTemplate?.wanderRadius?.tiles
+val Npc.wanderRadius: TileUnit get() = walkTemplate.wanderRadius.tiles
 
-private val Npc.walkTemplate: NpcWalkTemplate? get() = template.walk
+private val Npc.walkTemplate: NpcWalkTemplate
+    get() = template.walk ?: throw TemplateNotFoundException(id, NpcWalkTemplate::class)
 
 internal val NpcTemplate.walk: NpcWalkTemplate? by Property { null }
 
-data class NpcWalkTemplate(
-    override val ids: List<Int>,
-    val wanderRadius: Int,
-) : Template(ids)
+data class NpcWalkTemplate(override val ids: List<Int>, val wanderRadius: Int) : Template(ids)

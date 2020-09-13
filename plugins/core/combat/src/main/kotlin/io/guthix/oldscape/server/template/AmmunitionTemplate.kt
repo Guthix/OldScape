@@ -24,14 +24,11 @@ val Obj.ammunitionProjectile: ProjectileTemplate get() = ammunitionTemplate.proj
 
 val Obj.drawback: PhysicalSpotAnimTemplate
     get() = PhysicalSpotAnimTemplate(
-        SpotAnimTemplates[ammunitionTemplate.drawBackSpotAnim],
-        ammunitionTemplate.drawBackSpotAnimHeight
+        SpotAnimTemplates[ammunitionTemplate.drawBackSpotAnim], ammunitionTemplate.drawBackSpotAnimHeight
     )
 
 private val Obj.ammunitionTemplate: AmmunitionTemplate
-    get() = template.ammunition ?: throw TemplateNotFoundException(
-        id, AmmunitionTemplate::class
-    )
+    get() = template.ammunition ?: throw TemplateNotFoundException(id, AmmunitionTemplate::class)
 
 internal val ObjTemplate.ammunition: AmmunitionTemplate? by Property { null }
 
