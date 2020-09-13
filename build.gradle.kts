@@ -1,7 +1,7 @@
 @file:Suppress("ConvertLambdaToReference")
 
-import org.jetbrains.kotlin.gradle.plugin.getKotlinPluginVersion
 import io.guthix.oldscape.server.template.TemplateGenerator
+import org.jetbrains.kotlin.gradle.plugin.getKotlinPluginVersion
 
 plugins {
     idea

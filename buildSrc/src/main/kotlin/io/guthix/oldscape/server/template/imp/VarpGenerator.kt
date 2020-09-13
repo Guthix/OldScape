@@ -15,11 +15,7 @@
  */
 package io.guthix.oldscape.server.template.imp
 
-import io.guthix.oldscape.server.template.configNameToIdentifier
-import io.guthix.oldscape.server.template.createSourceTree
-import io.guthix.oldscape.server.template.readNamedIds
-import io.guthix.oldscape.server.template.NamedId
-import io.guthix.oldscape.server.template.printFileHeader
+import io.guthix.oldscape.server.template.*
 import org.gradle.api.Project
 import java.io.PrintWriter
 import java.nio.file.Path
@@ -40,7 +36,7 @@ private fun Path.printCodeFile(templateName: String, namedIds: List<NamedId>) {
         pw.printFileHeader()
         pw.println()
         pw.println("object ${templateName}s {")
-        for((id, configName) in namedIds) {
+        for ((id, configName) in namedIds) {
             val identifier = configNameToIdentifier(id, configName)
             pw.println("    const val $identifier: $templateName = $id")
         }

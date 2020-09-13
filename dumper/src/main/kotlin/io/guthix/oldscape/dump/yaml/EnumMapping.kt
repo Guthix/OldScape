@@ -20,7 +20,7 @@ import io.guthix.oldscape.server.template.WeaponType
 import io.guthix.oldscape.server.world.entity.interest.PlayerManager
 import mu.KotlinLogging
 
-private val logger = KotlinLogging.logger {  }
+private val logger = KotlinLogging.logger { }
 
 fun String?.toEquipmentType(): PlayerManager.EquipmentType? = when {
     equals("ammo", true) -> PlayerManager.EquipmentType.AMMUNITION
@@ -36,7 +36,9 @@ fun String?.toEquipmentType(): PlayerManager.EquipmentType? = when {
     equals("2h", true) -> PlayerManager.EquipmentType.TWO_HAND_WEAPON
     equals("weapon", true) -> PlayerManager.EquipmentType.ONE_HAND_WEAPON
     this == null -> null
-    else -> { logger.info { "Couldn't get equipment type for $this" }; null }
+    else -> {
+        logger.info { "Couldn't get equipment type for $this" }; null
+    }
 }
 
 fun String?.toAttackType(): AttackType? = when {
@@ -47,7 +49,9 @@ fun String?.toAttackType(): AttackType? = when {
     equals("ranged", true) -> AttackType.RANGED
     equals("magic", true) -> AttackType.MAGIC
     this == null -> null
-    else -> { logger.info { "Couldn't get attack style for $this" }; null }
+    else -> {
+        logger.info { "Couldn't get attack style for $this" }; null
+    }
 }
 
 fun String?.toWeaponType(): WeaponType? = when {
@@ -79,5 +83,7 @@ fun String?.toWeaponType(): WeaponType? = when {
     equals("flamer", ignoreCase = true) -> WeaponType.SALAMANDER
     equals("unarmed", ignoreCase = true) -> WeaponType.UNARMED
     this == null -> null
-    else -> { logger.info { "Couldn't get attack style for $this" }; null }
+    else -> {
+        logger.info { "Couldn't get attack style for $this" }; null
+    }
 }

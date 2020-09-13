@@ -39,7 +39,7 @@ import mu.KotlinLogging
 import java.io.File
 import java.nio.file.Path
 
-private val logger = KotlinLogging.logger {  }
+private val logger = KotlinLogging.logger { }
 
 fun main(args: Array<String>) {
     YamlDownloader.main(args)
@@ -99,7 +99,9 @@ object YamlDownloader {
     ) {
         val serverTemplates = try {
             readValue<List<T>>(serverPath.resolve(fileName).toFile())
-        } catch (e: Exception) { emptyList() }
+        } catch (e: Exception) {
+            emptyList()
+        }
         val dumpFile = dumpPath.resolve(fileName).toFile()
         writer.writeValue(dumpFile, defs.map { dump ->
             val serverTemplate = serverTemplates.find { dump.ids == it.ids }

@@ -15,14 +15,7 @@
  */
 package io.guthix.oldscape.dump.yaml
 
-import io.guthix.oldscape.server.template.CombatBonus
-import io.guthix.oldscape.server.template.CombatStats
-import io.guthix.oldscape.server.template.EquipmentTemplate
-import io.guthix.oldscape.server.template.MonsterTemplate
-import io.guthix.oldscape.server.template.ObjWeightTemplate
-import io.guthix.oldscape.server.template.StyleBonus
-import io.guthix.oldscape.server.template.WeaponTemplate
-import io.guthix.oldscape.server.template.WeaponType
+import io.guthix.oldscape.server.template.*
 import io.guthix.oldscape.wiki.wikitext.NpcWikiDefinition
 import io.guthix.oldscape.wiki.wikitext.ObjWikiDefinition
 
@@ -34,18 +27,14 @@ fun ObjWikiDefinition.toWeightTemplate(servert: ObjWeightTemplate?): ObjWeightTe
 fun ObjWikiDefinition.toEquipmentTemplate(serverT: EquipmentTemplate?): EquipmentTemplate = EquipmentTemplate(
     ids!!,
     slot.toEquipmentType(),
-    false, false, false,
+    coversHair = false, isFullBody = false, coversFace = false,
     StyleBonus(
         attBonusStab ?: 0,
         attBonusSlash ?: 0,
         attBonusCrush ?: 0,
         attBonusRange ?: 0,
         attBonusMagic ?: 0
-    ), CombatBonus(
-        strengthBonus ?: 0,
-        rangeStrengthBonus ?: 0,
-        magicDamageBonus ?: 0
-    ),
+    ), CombatBonus(strengthBonus ?: 0, rangeStrengthBonus ?: 0, magicDamageBonus ?: 0),
     StyleBonus(
         defBonusStab ?: 0,
         defBonusSlash ?: 0,

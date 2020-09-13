@@ -56,8 +56,8 @@ private fun Path.printCodeFile(templateName: String, physTemplateName: String, n
         pw.printFileHeader()
         pw.println()
         pw.println("object ${templateName}s : TemplateLoader<$templateName>() {")
-        for((id, configName, height) in namedIds) {
-            if(height == null) {
+        for ((id, configName, height) in namedIds) {
+            if (height == null) {
                 val identifier = configNameToIdentifier(id, configName)
                 pw.println("    val $identifier: $templateName get() = get(${id})")
             } else {

@@ -22,12 +22,11 @@ import com.fasterxml.jackson.module.kotlin.registerKotlinModule
 import io.guthix.js5.Js5Cache
 import io.guthix.js5.container.disk.Js5DiskStore
 import io.guthix.oldscape.cache.ConfigArchive
-import io.guthix.oldscape.cache.config.*
-import io.guthix.oldscape.server.template.imp.writeEnumTemplates
-import io.guthix.oldscape.server.template.imp.writeNamedConfigTemplates
-import io.guthix.oldscape.server.template.imp.writeConfigTemplates
-import io.guthix.oldscape.server.template.imp.writeSpotAnimTemplates
-import io.guthix.oldscape.server.template.imp.writeVarpTemplates
+import io.guthix.oldscape.cache.config.EnumConfig
+import io.guthix.oldscape.cache.config.LocationConfig
+import io.guthix.oldscape.cache.config.NpcConfig
+import io.guthix.oldscape.cache.config.ObjectConfig
+import io.guthix.oldscape.server.template.imp.*
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.plugins.JavaPlugin

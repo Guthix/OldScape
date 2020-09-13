@@ -18,11 +18,7 @@ package io.guthix.oldscape.server.template.imp
 import io.guthix.oldscape.cache.config.EnumConfig
 import io.guthix.oldscape.cache.config.LocationConfig
 import io.guthix.oldscape.cache.config.ObjectConfig
-import io.guthix.oldscape.server.template.NamedId
-import io.guthix.oldscape.server.template.printFileHeader
-import io.guthix.oldscape.server.template.configNameToIdentifier
-import io.guthix.oldscape.server.template.createSourceTree
-import io.guthix.oldscape.server.template.readNamedIds
+import io.guthix.oldscape.server.template.*
 import org.gradle.api.Project
 import java.io.IOException
 import java.io.PrintWriter

@@ -9,6 +9,6 @@
     <logger name="ch.qos" level="WARN"/>
     <logger name="io.netty" level="WARN"/>
     <root level="debug">
-        <appender-ref ref="STDOUT" />
+        <appender-ref ref="STDOUT"/>
     </root>
 </configuration>

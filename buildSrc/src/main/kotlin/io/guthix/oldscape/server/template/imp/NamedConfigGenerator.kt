@@ -16,9 +16,9 @@
 package io.guthix.oldscape.server.template.imp
 
 import io.guthix.oldscape.cache.config.NamedConfig
-import io.guthix.oldscape.server.template.printFileHeader
 import io.guthix.oldscape.server.template.configNameToIdentifier
 import io.guthix.oldscape.server.template.createSourceTree
+import io.guthix.oldscape.server.template.printFileHeader
 import org.gradle.api.Project
 import java.io.PrintWriter
 import java.nio.file.Path
