@@ -33,12 +33,14 @@ val Obj.attackAnim: SequenceTemplate get() = SequenceTemplates[weaponSequences.a
 
 val Obj.blockAnim: SequenceTemplate get() = SequenceTemplates[weaponSequences.defence]
 
-private val Obj.weaponSequences: WeaponSequences get() = weaponTemplate.weaponSequences
-    ?: throw TemplateNotFoundException(id, Obj::weaponSequences)
+private val Obj.weaponSequences: WeaponSequences
+    get() = weaponTemplate.weaponSequences
+        ?: throw TemplateNotFoundException(id, Obj::weaponSequences)
 
-private val Obj.weaponTemplate: WeaponTemplate get() = template.weapon ?: throw TemplateNotFoundException(
-    id, WeaponTemplate::class
-)
+private val Obj.weaponTemplate: WeaponTemplate
+    get() = template.weapon ?: throw TemplateNotFoundException(
+        id, WeaponTemplate::class
+    )
 
 internal val ObjTemplate.weapon: WeaponTemplate? by Property { null }
 

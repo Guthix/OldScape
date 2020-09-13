@@ -19,8 +19,8 @@ import io.guthix.js5.Js5Archive
 import io.guthix.oldscape.cache.MapArchive
 import io.guthix.oldscape.cache.xtea.MapXtea
 import io.guthix.oldscape.server.template.LocTemplate
-import io.guthix.oldscape.server.template.ProjectileTemplate
 import io.guthix.oldscape.server.template.ObjTemplate
+import io.guthix.oldscape.server.template.ProjectileTemplate
 import io.guthix.oldscape.server.world.entity.Character
 import io.guthix.oldscape.server.world.entity.Loc
 import io.guthix.oldscape.server.world.entity.Obj

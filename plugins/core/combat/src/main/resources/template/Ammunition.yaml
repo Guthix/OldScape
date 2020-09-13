@@ -1,5 +1,5 @@
 - ids:
-  - 882
+    - 882
   type: ARROW
   projectileId: 10
   drawBackSpotAnim: 19

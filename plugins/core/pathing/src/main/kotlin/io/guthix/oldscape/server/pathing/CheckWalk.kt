@@ -15,12 +15,12 @@
  */
 package io.guthix.oldscape.server.pathing
 
+import io.guthix.oldscape.server.world.WorldMap
+import io.guthix.oldscape.server.world.map.ZoneCollision
 import io.guthix.oldscape.server.world.map.dim.FloorUnit
 import io.guthix.oldscape.server.world.map.dim.TileUnit
 import io.guthix.oldscape.server.world.map.dim.tiles
 import io.guthix.oldscape.server.world.map.dim.until
-import io.guthix.oldscape.server.world.WorldMap
-import io.guthix.oldscape.server.world.map.ZoneCollision
 
 internal fun WorldMap.canWalkWest(floor: FloorUnit, x: TileUnit, y: TileUnit, moverSize: TileUnit) =
     (0.tiles until moverSize).none { getCollisionMask(floor, x - 1.tiles, y + it) and ZoneCollision.BLOCK_E != 0 }

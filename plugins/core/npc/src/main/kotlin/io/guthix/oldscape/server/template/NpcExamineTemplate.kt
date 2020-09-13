@@ -16,7 +16,6 @@
 package io.guthix.oldscape.server.template
 
 import io.guthix.oldscape.server.Property
-import io.guthix.oldscape.server.template.NpcTemplate
 import io.guthix.oldscape.server.world.entity.Npc
 
 val Npc.examine: String? get() = examineTemplate?.examine

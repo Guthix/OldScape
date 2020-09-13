@@ -41,9 +41,9 @@ object EventBus {
         }
     }
 
-    fun<E : Event> execute(event: E) {
+    fun <E : Event> execute(event: E) {
         eventListeners[event::class]?.let {
-            for(listener in it) listener.execute(event)
+            for (listener in it) listener.execute(event)
         }
     }
 

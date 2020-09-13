@@ -15,7 +15,6 @@
  */
 package io.guthix.oldscape.server.combat.dmg
 
-import io.guthix.oldscape.server.template.TemplateNotFoundException
 import io.guthix.oldscape.server.template.maxHit
 import io.guthix.oldscape.server.world.entity.Npc
 import io.guthix.oldscape.server.world.entity.Player

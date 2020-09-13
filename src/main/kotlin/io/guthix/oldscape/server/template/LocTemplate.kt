@@ -16,15 +16,13 @@
 package io.guthix.oldscape.server.template
 
 import io.guthix.oldscape.cache.config.LocationConfig
-import io.guthix.oldscape.server.template.BaseTemplate
-import io.guthix.oldscape.server.template.Template
 import io.guthix.oldscape.server.world.map.dim.TileUnit
 import io.guthix.oldscape.server.world.map.dim.tiles
 import mu.KotlinLogging
 
 private val logger = KotlinLogging.logger { }
 
-data class LocTemplate(private val config: LocationConfig, ) : BaseTemplate(config) {
+data class LocTemplate(private val config: LocationConfig) : BaseTemplate(config) {
     val id: Int get() = config.id
     val name: String get() = config.name
     val width: TileUnit get() = config.width.toInt().tiles

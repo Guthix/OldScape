@@ -21,7 +21,6 @@ import io.guthix.oldscape.server.plugin.Script
 import io.guthix.oldscape.server.template.PhysicalSpotAnimTemplate
 import io.guthix.oldscape.server.template.ProjectileTemplate
 import io.guthix.oldscape.server.template.SequenceTemplate
-import io.guthix.oldscape.server.template.SpotAnimTemplate
 import io.guthix.oldscape.server.world.entity.Npc
 import io.guthix.oldscape.server.world.entity.Player
 

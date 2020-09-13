@@ -16,7 +16,6 @@
 package io.guthix.oldscape.server.template
 
 import io.guthix.oldscape.cache.config.SpotAnimConfig
-import io.guthix.oldscape.server.template.BaseTemplate
 
 data class SpotAnimTemplate(private val config: SpotAnimConfig) : BaseTemplate(config) {
     val id: Int get() = config.id
@@ -24,6 +23,6 @@ data class SpotAnimTemplate(private val config: SpotAnimConfig) : BaseTemplate(c
 }
 
 data class PhysicalSpotAnimTemplate(val template: SpotAnimTemplate, val height: Int) {
-    val id: Int get () = template.id
+    val id: Int get() = template.id
     val sequenceId: Int? get() = template.sequenceId
 }

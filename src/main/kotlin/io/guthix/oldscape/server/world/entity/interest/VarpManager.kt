@@ -34,7 +34,7 @@ class VarpManager : InterestManager {
     }
 
     fun updateVarbit(template: VarbitTemplate, value: Int) {
-        val bitSize = (template.msb- template.lsb) + 1
+        val bitSize = (template.msb - template.lsb) + 1
         if (value > 2.0.pow(bitSize) - 1) throw IllegalArgumentException("Value $value to big for this varbit.")
         var curVarp = varps[template.varpId] ?: 0
         curVarp = curVarp.clearBits(template.msb, template.lsb)

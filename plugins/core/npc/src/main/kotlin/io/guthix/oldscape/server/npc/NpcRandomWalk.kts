@@ -15,12 +15,12 @@
  */
 package io.guthix.oldscape.server.npc
 
-import io.guthix.oldscape.server.world.map.dim.tiles
 import io.guthix.oldscape.server.event.NpcSpawnedEvent
 import io.guthix.oldscape.server.pathing.DestinationTile
 import io.guthix.oldscape.server.pathing.simplePathSearch
 import io.guthix.oldscape.server.task.NormalTask
 import io.guthix.oldscape.server.template.wanderRadius
+import io.guthix.oldscape.server.world.map.dim.tiles
 import kotlin.random.Random
 
 on(NpcSpawnedEvent::class).then {

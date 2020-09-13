@@ -22,14 +22,16 @@ val Obj.ammunitionType: AmmunitionTypeProjectile get() = ammunitionTemplate.type
 
 val Obj.ammunitionProjectile: ProjectileTemplate get() = ammunitionTemplate.projectile
 
-val Obj.drawback: PhysicalSpotAnimTemplate get() = PhysicalSpotAnimTemplate(
-    SpotAnimTemplates[ammunitionTemplate.drawBackSpotAnim],
-    ammunitionTemplate.drawBackSpotAnimHeight
-)
+val Obj.drawback: PhysicalSpotAnimTemplate
+    get() = PhysicalSpotAnimTemplate(
+        SpotAnimTemplates[ammunitionTemplate.drawBackSpotAnim],
+        ammunitionTemplate.drawBackSpotAnimHeight
+    )
 
-private val Obj.ammunitionTemplate: AmmunitionTemplate get() = template.ammunition ?: throw TemplateNotFoundException(
-    id, AmmunitionTemplate::class
-)
+private val Obj.ammunitionTemplate: AmmunitionTemplate
+    get() = template.ammunition ?: throw TemplateNotFoundException(
+        id, AmmunitionTemplate::class
+    )
 
 internal val ObjTemplate.ammunition: AmmunitionTemplate? by Property { null }
 
@@ -40,16 +42,17 @@ data class AmmunitionTemplate(
     val drawBackSpotAnim: Int,
     val drawBackSpotAnimHeight: Int
 ) : Template(ids) {
-    val projectile: ProjectileTemplate get() = ProjectileTemplate(
-        projectileId,
-        type.startHeight,
-        type.endHeight,
-        type.speed,
-        type.speedDelay,
-        type.delay,
-        type.angle,
-        type.steepness
-    )
+    val projectile: ProjectileTemplate
+        get() = ProjectileTemplate(
+            projectileId,
+            type.startHeight,
+            type.endHeight,
+            type.speed,
+            type.speedDelay,
+            type.delay,
+            type.angle,
+            type.steepness
+        )
 }
 
 enum class AmmunitionTypeProjectile(

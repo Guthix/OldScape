@@ -16,7 +16,6 @@
 package io.guthix.oldscape.server.template
 
 import io.guthix.oldscape.cache.config.NpcConfig
-import io.guthix.oldscape.server.template.BaseTemplate
 import mu.KotlinLogging
 
 private val logger = KotlinLogging.logger { }

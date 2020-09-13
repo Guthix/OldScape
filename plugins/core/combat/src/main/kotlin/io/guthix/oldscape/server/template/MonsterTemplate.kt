@@ -53,9 +53,10 @@ val Npc.strengthBonus: CombatBonus get() = monsterTemplate.strengthBonus
 
 val Npc.defensiveStats: StyleBonus get() = monsterTemplate.defensiveStats
 
-internal val Npc.monsterTemplate: MonsterTemplate get() = template.monster ?: throw TemplateNotFoundException(
-    id, MonsterTemplate::class
-)
+internal val Npc.monsterTemplate: MonsterTemplate
+    get() = template.monster ?: throw TemplateNotFoundException(
+        id, MonsterTemplate::class
+    )
 
 internal val NpcTemplate.monster: MonsterTemplate? by Property { null }
 

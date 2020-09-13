@@ -16,7 +16,6 @@
 package io.guthix.oldscape.server.template
 
 import io.guthix.oldscape.cache.config.SequenceConfig
-import io.guthix.oldscape.server.template.BaseTemplate
 
 data class SequenceTemplate(private val config: SequenceConfig) : BaseTemplate(config) {
     val id: Int get() = config.id

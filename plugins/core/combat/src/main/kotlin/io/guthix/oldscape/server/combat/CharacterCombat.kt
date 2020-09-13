@@ -59,9 +59,10 @@ val Player.currentStyle: CombatStyle
 
 val Player.attackSpeed: Int get() = equipmentSet.weapon?.baseAttackSpeed?.plus(currentStyle.style.attackSpeedBonus) ?: 4
 
-val Player.attackRange: TileUnit get() = max(
-    10.tiles, equipmentSet.weapon?.baseAttackRange?.plus(currentStyle.style.attackRangeBonus.tiles) ?: 1.tiles
-)
+val Player.attackRange: TileUnit
+    get() = max(
+        10.tiles, equipmentSet.weapon?.baseAttackRange?.plus(currentStyle.style.attackRangeBonus.tiles) ?: 1.tiles
+    )
 
 val Player.attackSequence: SequenceTemplate by Property {
     equipmentSet.weapon?.attackAnim ?: SequenceTemplates[422]

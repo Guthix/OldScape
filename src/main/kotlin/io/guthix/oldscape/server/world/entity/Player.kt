@@ -17,7 +17,6 @@ package io.guthix.oldscape.server.world.entity
 
 import io.guthix.oldscape.server.event.Event
 import io.guthix.oldscape.server.event.EventHolder
-import io.guthix.oldscape.server.event.GameEvent
 import io.guthix.oldscape.server.event.PublicMessageEvent
 import io.guthix.oldscape.server.net.game.out.*
 import io.guthix.oldscape.server.plugin.EventHandler

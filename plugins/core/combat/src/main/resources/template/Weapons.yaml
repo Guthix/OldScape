@@ -1,3540 +1,3540 @@
 - ids:
-  - 35
+    - 35
   type: "SLASHING_SWORD"
   attackSpeed: 5
 - ids:
-  - 278
+    - 278
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 492
+    - 492
   type: "UNARMED"
   attackSpeed: 5
 - ids:
-  - 667
+    - 667
   type: "SLASHING_SWORD"
   attackSpeed: 5
 - ids:
-  - 732
+    - 732
   type: "THROW_WEAPON"
   attackSpeed: 3
 - ids:
-  - 746
+    - 746
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 747
+    - 747
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 751
+    - 751
   type: "UNARMED"
   attackSpeed: 0
 - ids:
-  - 767
+    - 767
   type: "CROSSBOW"
   attackSpeed: 6
 - ids:
-  - 772
+    - 772
   type: "BLUNT"
   attackSpeed: 4
 - ids:
-  - 800
+    - 800
   type: "THROW_WEAPON"
   attackSpeed: 5
 - ids:
-  - 801
+    - 801
   type: "THROW_WEAPON"
   attackSpeed: 5
 - ids:
-  - 802
+    - 802
   type: "THROW_WEAPON"
   attackSpeed: 5
 - ids:
-  - 803
+    - 803
   type: "THROW_WEAPON"
   attackSpeed: 5
 - ids:
-  - 804
+    - 804
   type: "THROW_WEAPON"
   attackSpeed: 5
 - ids:
-  - 805
+    - 805
   type: "THROW_WEAPON"
   attackSpeed: 5
 - ids:
-  - 806
+    - 806
   type: "THROW_WEAPON"
   attackSpeed: 3
 - ids:
-  - 807
+    - 807
   type: "THROW_WEAPON"
   attackSpeed: 3
 - ids:
-  - 808
+    - 808
   type: "THROW_WEAPON"
   attackSpeed: 3
 - ids:
-  - 809
+    - 809
   type: "THROW_WEAPON"
   attackSpeed: 3
 - ids:
-  - 810
+    - 810
   type: "THROW_WEAPON"
   attackSpeed: 3
 - ids:
-  - 811
+    - 811
   type: "THROW_WEAPON"
   attackSpeed: 3
 - ids:
-  - 812
+    - 812
   type: "THROW_WEAPON"
   attackSpeed: 3
 - ids:
-  - 813
+    - 813
   type: "THROW_WEAPON"
   attackSpeed: 3
 - ids:
-  - 814
+    - 814
   type: "THROW_WEAPON"
   attackSpeed: 3
 - ids:
-  - 815
+    - 815
   type: "THROW_WEAPON"
   attackSpeed: 3
 - ids:
-  - 816
+    - 816
   type: "THROW_WEAPON"
   attackSpeed: 3
 - ids:
-  - 817
+    - 817
   type: "THROW_WEAPON"
   attackSpeed: 3
 - ids:
-  - 818
+    - 818
   type: "THROW_WEAPON"
   attackSpeed: 3
 - ids:
-  - 837
+    - 837
   type: "CROSSBOW"
   attackSpeed: 6
 - ids:
-  - 839
+    - 839
   type: "BOW"
   attackSpeed: 6
 - ids:
-  - 841
+    - 841
   type: "BOW"
   attackSpeed: 4
 - ids:
-  - 843
+    - 843
   type: "BOW"
   attackSpeed: 4
 - ids:
-  - 845
+    - 845
   type: "BOW"
   attackSpeed: 6
 - ids:
-  - 847
+    - 847
   type: "BOW"
   attackSpeed: 6
 - ids:
-  - 849
+    - 849
   type: "BOW"
   attackSpeed: 4
 - ids:
-  - 851
+    - 851
   type: "BOW"
   attackSpeed: 6
 - ids:
-  - 853
-  - 20403
+    - 853
+    - 20403
   type: "BOW"
   attackSpeed: 4
 - ids:
-  - 855
+    - 855
   type: "BOW"
   attackSpeed: 6
 - ids:
-  - 857
-  - 20401
+    - 857
+    - 20401
   type: "BOW"
   attackSpeed: 4
 - ids:
-  - 859
+    - 859
   type: "BOW"
   attackSpeed: 6
 - ids:
-  - 861
-  - 20558
+    - 861
+    - 20558
   type: "BOW"
   attackSpeed: 4
 - ids:
-  - 863
+    - 863
   type: "THROW_WEAPON"
   attackSpeed: 3
 - ids:
-  - 864
+    - 864
   type: "THROW_WEAPON"
   attackSpeed: 3
 - ids:
-  - 865
+    - 865
   type: "THROW_WEAPON"
   attackSpeed: 3
 - ids:
-  - 866
+    - 866
   type: "THROW_WEAPON"
   attackSpeed: 3
 - ids:
-  - 867
+    - 867
   type: "THROW_WEAPON"
   attackSpeed: 3
 - ids:
-  - 868
+    - 868
   type: "THROW_WEAPON"
   attackSpeed: 3
 - ids:
-  - 869
+    - 869
   type: "THROW_WEAPON"
   attackSpeed: 3
 - ids:
-  - 870
+    - 870
   type: "THROW_WEAPON"
   attackSpeed: 3
 - ids:
-  - 871
+    - 871
   type: "THROW_WEAPON"
   attackSpeed: 3
 - ids:
-  - 872
+    - 872
   type: "THROW_WEAPON"
   attackSpeed: 3
 - ids:
-  - 873
+    - 873
   type: "THROW_WEAPON"
   attackSpeed: 3
 - ids:
-  - 874
+    - 874
   type: "THROW_WEAPON"
   attackSpeed: 3
 - ids:
-  - 875
+    - 875
   type: "THROW_WEAPON"
   attackSpeed: 3
 - ids:
-  - 876
+    - 876
   type: "THROW_WEAPON"
   attackSpeed: 3
 - ids:
-  - 975
+    - 975
   type: "SLASHING_SWORD"
   attackSpeed: 5
 - ids:
-  - 1203
+    - 1203
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 1205
+    - 1205
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 1207
+    - 1207
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 1209
+    - 1209
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 1211
+    - 1211
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 1213
+    - 1213
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 1215
-  - 20407
+    - 1215
+    - 20407
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 1217
+    - 1217
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 1219
+    - 1219
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 1221
+    - 1221
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 1223
+    - 1223
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 1225
+    - 1225
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 1227
+    - 1227
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 1229
+    - 1229
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 1231
+    - 1231
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 1233
+    - 1233
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 1235
+    - 1235
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 1237
+    - 1237
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 1239
+    - 1239
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 1241
+    - 1241
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 1243
+    - 1243
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 1245
+    - 1245
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 1247
+    - 1247
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 1249
+    - 1249
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 1251
+    - 1251
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 1253
+    - 1253
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 1255
+    - 1255
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 1257
+    - 1257
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 1259
+    - 1259
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 1261
+    - 1261
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 1263
+    - 1263
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 1265
+    - 1265
   type: "PICKAXE"
   attackSpeed: 5
 - ids:
-  - 1267
+    - 1267
   type: "PICKAXE"
   attackSpeed: 5
 - ids:
-  - 1269
+    - 1269
   type: "PICKAXE"
   attackSpeed: 5
 - ids:
-  - 1271
+    - 1271
   type: "PICKAXE"
   attackSpeed: 5
 - ids:
-  - 1273
+    - 1273
   type: "PICKAXE"
   attackSpeed: 5
 - ids:
-  - 1275
+    - 1275
   type: "PICKAXE"
   attackSpeed: 5
 - ids:
-  - 1277
+    - 1277
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 1279
+    - 1279
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 1281
+    - 1281
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 1283
+    - 1283
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 1285
+    - 1285
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 1287
+    - 1287
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 1289
+    - 1289
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 1291
+    - 1291
   type: "SLASHING_SWORD"
   attackSpeed: 5
 - ids:
-  - 1293
+    - 1293
   type: "SLASHING_SWORD"
   attackSpeed: 5
 - ids:
-  - 1295
+    - 1295
   type: "SLASHING_SWORD"
   attackSpeed: 5
 - ids:
-  - 1297
+    - 1297
   type: "SLASHING_SWORD"
   attackSpeed: 5
 - ids:
-  - 1299
+    - 1299
   type: "SLASHING_SWORD"
   attackSpeed: 5
 - ids:
-  - 1301
+    - 1301
   type: "SLASHING_SWORD"
   attackSpeed: 5
 - ids:
-  - 1303
+    - 1303
   type: "SLASHING_SWORD"
   attackSpeed: 5
 - ids:
-  - 1305
+    - 1305
   type: "SLASHING_SWORD"
   attackSpeed: 5
 - ids:
-  - 1307
+    - 1307
   type: "TWOHANDED_SWORD"
   attackSpeed: 7
 - ids:
-  - 1309
+    - 1309
   type: "TWOHANDED_SWORD"
   attackSpeed: 7
 - ids:
-  - 1311
+    - 1311
   type: "TWOHANDED_SWORD"
   attackSpeed: 7
 - ids:
-  - 1313
+    - 1313
   type: "TWOHANDED_SWORD"
   attackSpeed: 7
 - ids:
-  - 1315
+    - 1315
   type: "TWOHANDED_SWORD"
   attackSpeed: 7
 - ids:
-  - 1317
+    - 1317
   type: "TWOHANDED_SWORD"
   attackSpeed: 7
 - ids:
-  - 1319
-  - 20555
+    - 1319
+    - 20555
   type: "TWOHANDED_SWORD"
   attackSpeed: 7
 - ids:
-  - 1321
+    - 1321
   type: "SLASHING_SWORD"
   attackSpeed: 4
 - ids:
-  - 1323
+    - 1323
   type: "SLASHING_SWORD"
   attackSpeed: 4
 - ids:
-  - 1325
+    - 1325
   type: "SLASHING_SWORD"
   attackSpeed: 4
 - ids:
-  - 1327
+    - 1327
   type: "SLASHING_SWORD"
   attackSpeed: 4
 - ids:
-  - 1329
+    - 1329
   type: "SLASHING_SWORD"
   attackSpeed: 4
 - ids:
-  - 1331
+    - 1331
   type: "SLASHING_SWORD"
   attackSpeed: 4
 - ids:
-  - 1333
-  - 20402
+    - 1333
+    - 20402
   type: "SLASHING_SWORD"
   attackSpeed: 4
 - ids:
-  - 1335
+    - 1335
   type: "BLUNT"
   attackSpeed: 6
 - ids:
-  - 1337
+    - 1337
   type: "BLUNT"
   attackSpeed: 6
 - ids:
-  - 1339
+    - 1339
   type: "BLUNT"
   attackSpeed: 6
 - ids:
-  - 1341
+    - 1341
   type: "BLUNT"
   attackSpeed: 6
 - ids:
-  - 1343
+    - 1343
   type: "BLUNT"
   attackSpeed: 6
 - ids:
-  - 1345
+    - 1345
   type: "BLUNT"
   attackSpeed: 6
 - ids:
-  - 1347
+    - 1347
   type: "BLUNT"
   attackSpeed: 6
 - ids:
-  - 1349
+    - 1349
   type: "AXE"
   attackSpeed: 5
 - ids:
-  - 1351
+    - 1351
   type: "AXE"
   attackSpeed: 5
 - ids:
-  - 1353
+    - 1353
   type: "AXE"
   attackSpeed: 5
 - ids:
-  - 1355
+    - 1355
   type: "AXE"
   attackSpeed: 5
 - ids:
-  - 1357
+    - 1357
   type: "AXE"
   attackSpeed: 5
 - ids:
-  - 1359
+    - 1359
   type: "AXE"
   attackSpeed: 5
 - ids:
-  - 1361
+    - 1361
   type: "AXE"
   attackSpeed: 5
 - ids:
-  - 1363
-  type: "AXE"
-  attackSpeed: 6
-- ids:
-  - 1365
+    - 1363
   type: "AXE"
   attackSpeed: 6
 - ids:
-  - 1367
+    - 1365
   type: "AXE"
   attackSpeed: 6
 - ids:
-  - 1369
+    - 1367
   type: "AXE"
   attackSpeed: 6
 - ids:
-  - 1371
+    - 1369
   type: "AXE"
   attackSpeed: 6
 - ids:
-  - 1373
-  - 20552
+    - 1371
   type: "AXE"
   attackSpeed: 6
 - ids:
-  - 1375
+    - 1373
+    - 20552
   type: "AXE"
   attackSpeed: 6
 - ids:
-  - 1377
+    - 1375
   type: "AXE"
   attackSpeed: 6
 - ids:
-  - 1379
+    - 1377
+  type: "AXE"
+  attackSpeed: 6
+- ids:
+    - 1379
   type: "STAFF"
   attackSpeed: 5
 - ids:
-  - 1381
+    - 1381
   type: "STAFF"
   attackSpeed: 5
 - ids:
-  - 1383
+    - 1383
   type: "STAFF"
   attackSpeed: 5
 - ids:
-  - 1385
+    - 1385
   type: "STAFF"
   attackSpeed: 5
 - ids:
-  - 1387
+    - 1387
   type: "STAFF"
   attackSpeed: 5
 - ids:
-  - 1389
+    - 1389
   type: "STAFF"
   attackSpeed: 5
 - ids:
-  - 1391
+    - 1391
   type: "STAFF"
   attackSpeed: 5
 - ids:
-  - 1393
+    - 1393
   type: "STAFF"
   attackSpeed: 5
 - ids:
-  - 1395
+    - 1395
   type: "STAFF"
   attackSpeed: 5
 - ids:
-  - 1397
+    - 1397
   type: "STAFF"
   attackSpeed: 5
 - ids:
-  - 1399
+    - 1399
   type: "STAFF"
   attackSpeed: 5
 - ids:
-  - 1401
+    - 1401
   type: "STAFF"
   attackSpeed: 5
 - ids:
-  - 1403
+    - 1403
   type: "STAFF"
   attackSpeed: 5
 - ids:
-  - 1405
+    - 1405
   type: "STAFF"
   attackSpeed: 5
 - ids:
-  - 1407
+    - 1407
   type: "STAFF"
   attackSpeed: 5
 - ids:
-  - 1409
+    - 1409
   type: "STAFF"
   attackSpeed: 5
 - ids:
-  - 1410
+    - 1410
   type: "STAFF"
   attackSpeed: 5
 - ids:
-  - 1419
+    - 1419
   type: "SCYTHE"
   attackSpeed: 6
 - ids:
-  - 1420
+    - 1420
   type: "SPIKED_WEAPON"
   attackSpeed: 5
 - ids:
-  - 1422
+    - 1422
   type: "SPIKED_WEAPON"
   attackSpeed: 5
 - ids:
-  - 1424
+    - 1424
   type: "SPIKED_WEAPON"
   attackSpeed: 5
 - ids:
-  - 1426
+    - 1426
   type: "SPIKED_WEAPON"
   attackSpeed: 5
 - ids:
-  - 1428
+    - 1428
   type: "SPIKED_WEAPON"
   attackSpeed: 5
 - ids:
-  - 1430
+    - 1430
   type: "SPIKED_WEAPON"
   attackSpeed: 5
 - ids:
-  - 1432
+    - 1432
   type: "SPIKED_WEAPON"
   attackSpeed: 5
 - ids:
-  - 1434
+    - 1434
   type: "SPIKED_WEAPON"
   attackSpeed: 5
 - ids:
-  - 2402
+    - 2402
   type: "SLASHING_SWORD"
   attackSpeed: 5
 - ids:
-  - 2415
+    - 2415
   type: "STAFF"
   attackSpeed: 5
 - ids:
-  - 2416
+    - 2416
   type: "STAFF"
   attackSpeed: 5
 - ids:
-  - 2417
+    - 2417
   type: "STAFF"
   attackSpeed: 5
 - ids:
-  - 2460
+    - 2460
   type: "BLUNT"
   attackSpeed: 4
 - ids:
-  - 2462
+    - 2462
   type: "BLUNT"
   attackSpeed: 4
 - ids:
-  - 2464
+    - 2464
   type: "BLUNT"
   attackSpeed: 4
 - ids:
-  - 2466
+    - 2466
   type: "BLUNT"
   attackSpeed: 4
 - ids:
-  - 2468
+    - 2468
   type: "BLUNT"
   attackSpeed: 4
 - ids:
-  - 2470
+    - 2470
   type: "BLUNT"
   attackSpeed: 4
 - ids:
-  - 2472
+    - 2472
   type: "BLUNT"
   attackSpeed: 4
 - ids:
-  - 2474
+    - 2474
   type: "BLUNT"
   attackSpeed: 4
 - ids:
-  - 2476
+    - 2476
   type: "BLUNT"
   attackSpeed: 4
 - ids:
-  - 2883
+    - 2883
   type: "BOW"
   attackSpeed: 8
 - ids:
-  - 2952
+    - 2952
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 2961
+    - 2961
   type: "SLASHING_SWORD"
   attackSpeed: 5
 - ids:
-  - 2963
+    - 2963
   type: "SLASHING_SWORD"
   attackSpeed: 5
 - ids:
-  - 3053
+    - 3053
   type: "STAFF"
   attackSpeed: 5
 - ids:
-  - 3054
+    - 3054
   type: "STAFF"
   attackSpeed: 5
 - ids:
-  - 3093
+    - 3093
   type: "THROW_WEAPON"
   attackSpeed: 3
 - ids:
-  - 3094
+    - 3094
   type: "THROW_WEAPON"
   attackSpeed: 3
 - ids:
-  - 3095
+    - 3095
   type: "CLAW"
   attackSpeed: 4
 - ids:
-  - 3096
+    - 3096
   type: "CLAW"
   attackSpeed: 4
 - ids:
-  - 3097
+    - 3097
   type: "CLAW"
   attackSpeed: 4
 - ids:
-  - 3098
+    - 3098
   type: "CLAW"
   attackSpeed: 4
 - ids:
-  - 3099
+    - 3099
   type: "CLAW"
   attackSpeed: 4
 - ids:
-  - 3100
+    - 3100
   type: "CLAW"
   attackSpeed: 4
 - ids:
-  - 3101
+    - 3101
   type: "CLAW"
   attackSpeed: 4
 - ids:
-  - 3170
+    - 3170
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 3171
+    - 3171
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 3172
+    - 3172
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 3173
+    - 3173
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 3174
+    - 3174
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 3175
+    - 3175
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 3176
+    - 3176
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 3190
+    - 3190
   type: "POLEARM"
   attackSpeed: 7
 - ids:
-  - 3192
+    - 3192
   type: "POLEARM"
   attackSpeed: 7
 - ids:
-  - 3194
+    - 3194
   type: "POLEARM"
   attackSpeed: 7
 - ids:
-  - 3196
+    - 3196
   type: "POLEARM"
   attackSpeed: 7
 - ids:
-  - 3198
+    - 3198
   type: "POLEARM"
   attackSpeed: 7
 - ids:
-  - 3200
+    - 3200
   type: "POLEARM"
   attackSpeed: 7
 - ids:
-  - 3202
+    - 3202
   type: "POLEARM"
   attackSpeed: 7
 - ids:
-  - 3204
+    - 3204
   type: "POLEARM"
   attackSpeed: 7
 - ids:
-  - 3689
+    - 3689
   type: "UNARMED"
   attackSpeed: 4
 - ids:
-  - 3690
+    - 3690
   type: "UNARMED"
   attackSpeed: 4
 - ids:
-  - 3691
+    - 3691
   type: "UNARMED"
   attackSpeed: 4
 - ids:
-  - 3695
+    - 3695
   type: "UNARMED"
   attackSpeed: 4
 - ids:
-  - 3757
+    - 3757
   type: "SLASHING_SWORD"
   attackSpeed: 4
 - ids:
-  - 3899
+    - 3899
   type: "SLASHING_SWORD"
   attackSpeed: 5
 - ids:
-  - 4023
+    - 4023
   type: "UNARMED"
   attackSpeed: 4
 - ids:
-  - 4024
+    - 4024
   type: "UNARMED"
   attackSpeed: 0
 - ids:
-  - 4025
+    - 4025
   type: "UNARMED"
   attackSpeed: 0
 - ids:
-  - 4026
+    - 4026
   type: "UNARMED"
   attackSpeed: 0
 - ids:
-  - 4027
+    - 4027
   type: "UNARMED"
   attackSpeed: 0
 - ids:
-  - 4028
+    - 4028
   type: "UNARMED"
   attackSpeed: 0
 - ids:
-  - 4029
+    - 4029
   type: "UNARMED"
   attackSpeed: 0
 - ids:
-  - 4030
+    - 4030
   type: "UNARMED"
   attackSpeed: 0
 - ids:
-  - 4031
+    - 4031
   type: "UNARMED"
   attackSpeed: 0
 - ids:
-  - 4037
+    - 4037
   type: "BANNER"
   attackSpeed: 4
 - ids:
-  - 4039
+    - 4039
   type: "BANNER"
   attackSpeed: 4
 - ids:
-  - 4068
+    - 4068
   type: "SLASHING_SWORD"
   attackSpeed: 5
 - ids:
-  - 4083
+    - 4083
   type: "UNARMED"
   attackSpeed: 4
 - ids:
-  - 4084
+    - 4084
   type: "UNARMED"
   attackSpeed: 4
 - ids:
-  - 4086
+    - 4086
   type: "BLUNT"
   attackSpeed: 5
 - ids:
-  - 4151
-  - 20405
+    - 4151
+    - 20405
   type: "WHIP"
   attackSpeed: 4
 - ids:
-  - 4153
-  - 20557
+    - 4153
+    - 20557
   type: "BLUNT"
   attackSpeed: 7
 - ids:
-  - 4158
+    - 4158
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 4170
+    - 4170
   type: "STAFF"
   attackSpeed: 4
 - ids:
-  - 4236
+    - 4236
   type: "BOW"
   attackSpeed: 6
 - ids:
-  - 4503
+    - 4503
   type: "SLASHING_SWORD"
   attackSpeed: 5
 - ids:
-  - 4508
+    - 4508
   type: "SLASHING_SWORD"
   attackSpeed: 5
 - ids:
-  - 4565
+    - 4565
   type: "BLUNT"
   attackSpeed: 4
 - ids:
-  - 4566
+    - 4566
   type: "BLUNT"
   attackSpeed: 4
 - ids:
-  - 4580
+    - 4580
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 4582
+    - 4582
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 4584
+    - 4584
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 4587
-  - 20406
+    - 4587
+    - 20406
   type: "SLASHING_SWORD"
   attackSpeed: 4
 - ids:
-  - 4599
+    - 4599
   type: "BLUNT"
   attackSpeed: 4
 - ids:
-  - 4600
+    - 4600
   type: "BLUNT"
   attackSpeed: 4
 - ids:
-  - 4675
-  - 20431
+    - 4675
+    - 20431
   type: "STAFF"
   attackSpeed: 4
 - ids:
-  - 4710
+    - 4710
   type: "STAFF"
   attackSpeed: 6
 - ids:
-  - 4718
+    - 4718
   type: "AXE"
   attackSpeed: 7
 - ids:
-  - 4726
+    - 4726
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 4734
+    - 4734
   type: "CROSSBOW"
   attackSpeed: 4
 - ids:
-  - 4747
+    - 4747
   type: "BLUNT"
   attackSpeed: 5
 - ids:
-  - 4755
+    - 4755
   type: "SPIKED_WEAPON"
   attackSpeed: 5
 - ids:
-  - 4827
+    - 4827
   type: "BOW"
   attackSpeed: 5
 - ids:
-  - 4862
+    - 4862
   type: "STAFF"
   attackSpeed: 6
 - ids:
-  - 4863
+    - 4863
   type: "STAFF"
   attackSpeed: 6
 - ids:
-  - 4864
+    - 4864
   type: "STAFF"
   attackSpeed: 6
 - ids:
-  - 4865
+    - 4865
   type: "STAFF"
   attackSpeed: 6
 - ids:
-  - 4866
+    - 4866
   type: "STAFF"
   attackSpeed: 6
 - ids:
-  - 4886
+    - 4886
   type: "AXE"
   attackSpeed: 7
 - ids:
-  - 4887
+    - 4887
   type: "AXE"
   attackSpeed: 7
 - ids:
-  - 4888
+    - 4888
   type: "AXE"
   attackSpeed: 7
 - ids:
-  - 4889
+    - 4889
   type: "AXE"
   attackSpeed: 7
 - ids:
-  - 4890
+    - 4890
   type: "AXE"
   attackSpeed: 7
 - ids:
-  - 4910
+    - 4910
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 4911
+    - 4911
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 4912
+    - 4912
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 4913
+    - 4913
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 4914
+    - 4914
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 4934
+    - 4934
   type: "CROSSBOW"
   attackSpeed: 4
 - ids:
-  - 4935
+    - 4935
   type: "CROSSBOW"
   attackSpeed: 4
 - ids:
-  - 4936
+    - 4936
   type: "CROSSBOW"
   attackSpeed: 4
 - ids:
-  - 4937
+    - 4937
   type: "CROSSBOW"
   attackSpeed: 4
 - ids:
-  - 4938
+    - 4938
   type: "CROSSBOW"
   attackSpeed: 4
 - ids:
-  - 4958
+    - 4958
   type: "BLUNT"
   attackSpeed: 5
 - ids:
-  - 4959
+    - 4959
   type: "BLUNT"
   attackSpeed: 5
 - ids:
-  - 4960
+    - 4960
   type: "BLUNT"
   attackSpeed: 5
 - ids:
-  - 4961
+    - 4961
   type: "BLUNT"
   attackSpeed: 5
 - ids:
-  - 4962
+    - 4962
   type: "BLUNT"
   attackSpeed: 5
 - ids:
-  - 4982
+    - 4982
   type: "SPIKED_WEAPON"
   attackSpeed: 5
 - ids:
-  - 4983
+    - 4983
   type: "SPIKED_WEAPON"
   attackSpeed: 5
 - ids:
-  - 4984
+    - 4984
   type: "SPIKED_WEAPON"
   attackSpeed: 5
 - ids:
-  - 4985
+    - 4985
   type: "SPIKED_WEAPON"
   attackSpeed: 5
 - ids:
-  - 4986
+    - 4986
   type: "SPIKED_WEAPON"
   attackSpeed: 5
 - ids:
-  - 5016
+    - 5016
   type: "SPEAR"
   attackSpeed: 6
 - ids:
-  - 5018
+    - 5018
   type: "BLUNT"
   attackSpeed: 6
 - ids:
-  - 5608
+    - 5608
   type: "UNARMED"
   attackSpeed: 4
 - ids:
-  - 5628
+    - 5628
   type: "THROW_WEAPON"
   attackSpeed: 3
 - ids:
-  - 5629
+    - 5629
   type: "THROW_WEAPON"
   attackSpeed: 3
 - ids:
-  - 5630
+    - 5630
   type: "THROW_WEAPON"
   attackSpeed: 3
 - ids:
-  - 5631
+    - 5631
   type: "THROW_WEAPON"
   attackSpeed: 3
 - ids:
-  - 5632
+    - 5632
   type: "THROW_WEAPON"
   attackSpeed: 3
 - ids:
-  - 5633
+    - 5633
   type: "THROW_WEAPON"
   attackSpeed: 3
 - ids:
-  - 5634
+    - 5634
   type: "THROW_WEAPON"
   attackSpeed: 3
 - ids:
-  - 5635
+    - 5635
   type: "THROW_WEAPON"
   attackSpeed: 3
 - ids:
-  - 5636
+    - 5636
   type: "THROW_WEAPON"
   attackSpeed: 3
 - ids:
-  - 5637
+    - 5637
   type: "THROW_WEAPON"
   attackSpeed: 3
 - ids:
-  - 5638
+    - 5638
   type: "THROW_WEAPON"
   attackSpeed: 3
 - ids:
-  - 5639
+    - 5639
   type: "THROW_WEAPON"
   attackSpeed: 3
 - ids:
-  - 5640
+    - 5640
   type: "THROW_WEAPON"
   attackSpeed: 3
 - ids:
-  - 5641
+    - 5641
   type: "THROW_WEAPON"
   attackSpeed: 3
 - ids:
-  - 5654
+    - 5654
   type: "THROW_WEAPON"
   attackSpeed: 3
 - ids:
-  - 5655
+    - 5655
   type: "THROW_WEAPON"
   attackSpeed: 3
 - ids:
-  - 5656
+    - 5656
   type: "THROW_WEAPON"
   attackSpeed: 3
 - ids:
-  - 5657
+    - 5657
   type: "THROW_WEAPON"
   attackSpeed: 3
 - ids:
-  - 5658
+    - 5658
   type: "THROW_WEAPON"
   attackSpeed: 3
 - ids:
-  - 5659
+    - 5659
   type: "THROW_WEAPON"
   attackSpeed: 3
 - ids:
-  - 5660
+    - 5660
   type: "THROW_WEAPON"
   attackSpeed: 3
 - ids:
-  - 5661
+    - 5661
   type: "THROW_WEAPON"
   attackSpeed: 3
 - ids:
-  - 5662
+    - 5662
   type: "THROW_WEAPON"
   attackSpeed: 3
 - ids:
-  - 5663
+    - 5663
   type: "THROW_WEAPON"
   attackSpeed: 3
 - ids:
-  - 5664
+    - 5664
   type: "THROW_WEAPON"
   attackSpeed: 3
 - ids:
-  - 5665
+    - 5665
   type: "THROW_WEAPON"
   attackSpeed: 3
 - ids:
-  - 5666
+    - 5666
   type: "THROW_WEAPON"
   attackSpeed: 3
 - ids:
-  - 5667
+    - 5667
   type: "THROW_WEAPON"
   attackSpeed: 3
 - ids:
-  - 5668
+    - 5668
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 5670
+    - 5670
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 5672
+    - 5672
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 5674
+    - 5674
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 5676
+    - 5676
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 5678
+    - 5678
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 5680
+    - 5680
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 5682
+    - 5682
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 5686
+    - 5686
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 5688
+    - 5688
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 5690
+    - 5690
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 5692
+    - 5692
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 5694
+    - 5694
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 5696
+    - 5696
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 5698
+    - 5698
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 5700
+    - 5700
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 5704
+    - 5704
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 5706
+    - 5706
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 5708
+    - 5708
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 5710
+    - 5710
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 5712
+    - 5712
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 5714
+    - 5714
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 5716
+    - 5716
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 5718
+    - 5718
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 5720
+    - 5720
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 5722
+    - 5722
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 5724
+    - 5724
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 5726
+    - 5726
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 5728
+    - 5728
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 5730
+    - 5730
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 5734
+    - 5734
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 5736
+    - 5736
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 6082
+    - 6082
   type: "GUN"
   attackSpeed: 4
 - ids:
-  - 6123
+    - 6123
   type: "UNARMED"
   attackSpeed: 4
 - ids:
-  - 6125
+    - 6125
   type: "UNARMED"
   attackSpeed: 4
 - ids:
-  - 6126
+    - 6126
   type: "UNARMED"
   attackSpeed: 4
 - ids:
-  - 6127
+    - 6127
   type: "UNARMED"
   attackSpeed: 4
 - ids:
-  - 6313
+    - 6313
   type: "SLASHING_SWORD"
   attackSpeed: 5
 - ids:
-  - 6315
+    - 6315
   type: "SLASHING_SWORD"
   attackSpeed: 4
 - ids:
-  - 6317
+    - 6317
   type: "SLASHING_SWORD"
   attackSpeed: 4
 - ids:
-  - 6408
+    - 6408
   type: "BLUNT"
   attackSpeed: 4
 - ids:
-  - 6410
+    - 6410
   type: "BLUNT"
   attackSpeed: 4
 - ids:
-  - 6412
+    - 6412
   type: "BLUNT"
   attackSpeed: 4
 - ids:
-  - 6414
+    - 6414
   type: "BLUNT"
   attackSpeed: 4
 - ids:
-  - 6416
+    - 6416
   type: "BLUNT"
   attackSpeed: 4
 - ids:
-  - 6418
+    - 6418
   type: "BLUNT"
   attackSpeed: 4
 - ids:
-  - 6420
+    - 6420
   type: "BLUNT"
   attackSpeed: 4
 - ids:
-  - 6522
+    - 6522
   type: "THROW_WEAPON"
   attackSpeed: 4
 - ids:
-  - 6523
-  - 20554
+    - 6523
+    - 20554
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 6525
+    - 6525
   type: "SLASHING_SWORD"
   attackSpeed: 4
 - ids:
-  - 6526
+    - 6526
   type: "STAFF"
   attackSpeed: 6
 - ids:
-  - 6527
+    - 6527
   type: "BLUNT"
   attackSpeed: 5
 - ids:
-  - 6528
+    - 6528
   type: "BLUNT"
   attackSpeed: 7
 - ids:
-  - 6541
+    - 6541
   type: "BLUNT"
   attackSpeed: 4
 - ids:
-  - 6562
+    - 6562
   type: "STAFF"
   attackSpeed: 5
 - ids:
-  - 6563
+    - 6563
   type: "STAFF"
   attackSpeed: 5
 - ids:
-  - 6587
+    - 6587
   type: "CLAW"
   attackSpeed: 4
 - ids:
-  - 6589
+    - 6589
   type: "AXE"
   attackSpeed: 6
 - ids:
-  - 6591
+    - 6591
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 6593
+    - 6593
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 6595
+    - 6595
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 6597
+    - 6597
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 6599
+    - 6599
   type: "POLEARM"
   attackSpeed: 7
 - ids:
-  - 6601
+    - 6601
   type: "SPIKED_WEAPON"
   attackSpeed: 5
 - ids:
-  - 6603
+    - 6603
   type: "STAFF"
   attackSpeed: 5
 - ids:
-  - 6605
+    - 6605
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 6607
+    - 6607
   type: "SLASHING_SWORD"
   attackSpeed: 5
 - ids:
-  - 6609
+    - 6609
   type: "TWOHANDED_SWORD"
   attackSpeed: 7
 - ids:
-  - 6611
+    - 6611
   type: "SLASHING_SWORD"
   attackSpeed: 4
 - ids:
-  - 6613
+    - 6613
   type: "BLUNT"
   attackSpeed: 6
 - ids:
-  - 6724
+    - 6724
   type: "BOW"
   attackSpeed: 5
 - ids:
-  - 6739
+    - 6739
   type: "AXE"
   attackSpeed: 5
 - ids:
-  - 6745
+    - 6745
   type: "SLASHING_SWORD"
   attackSpeed: 5
 - ids:
-  - 6746
+    - 6746
   type: "SLASHING_SWORD"
   attackSpeed: 5
 - ids:
-  - 6760
+    - 6760
   type: "POLESTAFF"
   attackSpeed: 6
 - ids:
-  - 6762
+    - 6762
   type: "POLESTAFF"
   attackSpeed: 6
 - ids:
-  - 6764
+    - 6764
   type: "POLESTAFF"
   attackSpeed: 6
 - ids:
-  - 6773
+    - 6773
   type: "BLUNT"
   attackSpeed: 5
 - ids:
-  - 6774
+    - 6774
   type: "BLUNT"
   attackSpeed: 5
 - ids:
-  - 6775
+    - 6775
   type: "BLUNT"
   attackSpeed: 5
 - ids:
-  - 6776
+    - 6776
   type: "BLUNT"
   attackSpeed: 5
 - ids:
-  - 6777
+    - 6777
   type: "BLUNT"
   attackSpeed: 5
 - ids:
-  - 6778
+    - 6778
   type: "BLUNT"
   attackSpeed: 5
 - ids:
-  - 6779
+    - 6779
   type: "BLUNT"
   attackSpeed: 5
 - ids:
-  - 6908
-  - 20553
+    - 6908
+    - 20553
   type: "STAFF"
   attackSpeed: 4
 - ids:
-  - 6910
-  - 20556
+    - 6910
+    - 20556
   type: "STAFF"
   attackSpeed: 4
 - ids:
-  - 6912
+    - 6912
   type: "STAFF"
   attackSpeed: 4
 - ids:
-  - 6914
-  - 20560
+    - 6914
+    - 20560
   type: "STAFF"
   attackSpeed: 4
 - ids:
-  - 7140
+    - 7140
   type: "SLASHING_SWORD"
   attackSpeed: 4
 - ids:
-  - 7141
+    - 7141
   type: "SLASHING_SWORD"
   attackSpeed: 4
 - ids:
-  - 7142
+    - 7142
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 7158
-  - 20559
+    - 7158
+    - 20559
   type: "TWOHANDED_SWORD"
   attackSpeed: 7
 - ids:
-  - 7170
+    - 7170
   type: "THROW_WEAPON"
   attackSpeed: 4
 - ids:
-  - 7409
+    - 7409
   type: "STABBING_SWORD"
   attackSpeed: 5
 - ids:
-  - 7433
+    - 7433
   type: "SLASHING_SWORD"
   attackSpeed: 5
 - ids:
-  - 7435
+    - 7435
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 7437
+    - 7437
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 7439
+    - 7439
   type: "TWOHANDED_SWORD"
   attackSpeed: 7
 - ids:
-  - 7441
+    - 7441
   type: "BLUNT"
   attackSpeed: 6
 - ids:
-  - 7443
+    - 7443
   type: "SLASHING_SWORD"
   attackSpeed: 5
 - ids:
-  - 7445
+    - 7445
   type: "BLUNT"
   attackSpeed: 5
 - ids:
-  - 7447
+    - 7447
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 7449
+    - 7449
   type: "BLUNT"
   attackSpeed: 6
 - ids:
-  - 7451
+    - 7451
   type: "SLASHING_SWORD"
   attackSpeed: 4
 - ids:
-  - 7639
+    - 7639
   type: "STAFF"
   attackSpeed: 5
 - ids:
-  - 7640
+    - 7640
   type: "STAFF"
   attackSpeed: 5
 - ids:
-  - 7641
+    - 7641
   type: "STAFF"
   attackSpeed: 5
 - ids:
-  - 7642
+    - 7642
   type: "STAFF"
   attackSpeed: 5
 - ids:
-  - 7643
+    - 7643
   type: "STAFF"
   attackSpeed: 5
 - ids:
-  - 7644
+    - 7644
   type: "STAFF"
   attackSpeed: 5
 - ids:
-  - 7645
+    - 7645
   type: "STAFF"
   attackSpeed: 5
 - ids:
-  - 7646
+    - 7646
   type: "STAFF"
   attackSpeed: 5
 - ids:
-  - 7647
+    - 7647
   type: "STAFF"
   attackSpeed: 5
 - ids:
-  - 7648
+    - 7648
   type: "STAFF"
   attackSpeed: 5
 - ids:
-  - 7668
+    - 7668
   type: "BLUNT"
   attackSpeed: 5
 - ids:
-  - 7671
+    - 7671
   type: "CLAW"
   attackSpeed: 4
 - ids:
-  - 7673
+    - 7673
   type: "CLAW"
   attackSpeed: 4
 - ids:
-  - 7675
+    - 7675
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 7679
+    - 7679
   type: "SPEAR"
   attackSpeed: 4
 - ids:
-  - 7686
+    - 7686
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 7756
+    - 7756
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 7804
+    - 7804
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 7806
+    - 7806
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 7807
+    - 7807
   type: "AXE"
   attackSpeed: 6
 - ids:
-  - 7808
+    - 7808
   type: "SPIKED_WEAPON"
   attackSpeed: 5
 - ids:
-  - 7809
+    - 7809
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 7952
+    - 7952
   type: "UNARMED"
   attackSpeed: 5
 - ids:
-  - 8650
+    - 8650
   type: "BANNER"
   attackSpeed: 4
 - ids:
-  - 8652
+    - 8652
   type: "BANNER"
   attackSpeed: 4
 - ids:
-  - 8654
+    - 8654
   type: "BANNER"
   attackSpeed: 4
 - ids:
-  - 8656
+    - 8656
   type: "BANNER"
   attackSpeed: 4
 - ids:
-  - 8658
+    - 8658
   type: "BANNER"
   attackSpeed: 4
 - ids:
-  - 8660
+    - 8660
   type: "BANNER"
   attackSpeed: 4
 - ids:
-  - 8662
+    - 8662
   type: "BANNER"
   attackSpeed: 4
 - ids:
-  - 8664
+    - 8664
   type: "BANNER"
   attackSpeed: 4
 - ids:
-  - 8666
+    - 8666
   type: "BANNER"
   attackSpeed: 4
 - ids:
-  - 8668
+    - 8668
   type: "BANNER"
   attackSpeed: 4
 - ids:
-  - 8670
+    - 8670
   type: "BANNER"
   attackSpeed: 4
 - ids:
-  - 8672
+    - 8672
   type: "BANNER"
   attackSpeed: 4
 - ids:
-  - 8674
+    - 8674
   type: "BANNER"
   attackSpeed: 4
 - ids:
-  - 8676
+    - 8676
   type: "BANNER"
   attackSpeed: 4
 - ids:
-  - 8678
+    - 8678
   type: "BANNER"
   attackSpeed: 4
 - ids:
-  - 8680
+    - 8680
   type: "BANNER"
   attackSpeed: 4
 - ids:
-  - 8841
+    - 8841
   type: "STAFF"
   attackSpeed: 5
 - ids:
-  - 8871
+    - 8871
   type: "UNARMED"
   attackSpeed: 0
 - ids:
-  - 8872
+    - 8872
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 8874
+    - 8874
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 8876
+    - 8876
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 8878
+    - 8878
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 8880
+    - 8880
   type: "CROSSBOW"
   attackSpeed: 5
 - ids:
-  - 8966
+    - 8966
   type: "BANNER"
   attackSpeed: 4
 - ids:
-  - 8967
+    - 8967
   type: "BANNER"
   attackSpeed: 4
 - ids:
-  - 8968
+    - 8968
   type: "BANNER"
   attackSpeed: 4
 - ids:
-  - 8969
+    - 8969
   type: "BANNER"
   attackSpeed: 4
 - ids:
-  - 8970
+    - 8970
   type: "BANNER"
   attackSpeed: 4
 - ids:
-  - 8971
+    - 8971
   type: "BANNER"
   attackSpeed: 4
 - ids:
-  - 9013
+    - 9013
   type: "POLESTAFF"
   attackSpeed: 5
 - ids:
-  - 9044
+    - 9044
   type: "POLESTAFF"
   attackSpeed: 4
 - ids:
-  - 9046
+    - 9046
   type: "POLESTAFF"
   attackSpeed: 4
 - ids:
-  - 9048
+    - 9048
   type: "POLESTAFF"
   attackSpeed: 4
 - ids:
-  - 9050
+    - 9050
   type: "POLESTAFF"
   attackSpeed: 4
 - ids:
-  - 9084
+    - 9084
   type: "STAFF"
   attackSpeed: 5
 - ids:
-  - 9091
+    - 9091
   type: "STAFF"
   attackSpeed: 4
 - ids:
-  - 9092
+    - 9092
   type: "STAFF"
   attackSpeed: 4
 - ids:
-  - 9093
+    - 9093
   type: "STAFF"
   attackSpeed: 4
 - ids:
-  - 9174
+    - 9174
   type: "CROSSBOW"
   attackSpeed: 6
 - ids:
-  - 9176
+    - 9176
   type: "CROSSBOW"
   attackSpeed: 6
 - ids:
-  - 9177
+    - 9177
   type: "CROSSBOW"
   attackSpeed: 6
 - ids:
-  - 9179
+    - 9179
   type: "CROSSBOW"
   attackSpeed: 6
 - ids:
-  - 9181
+    - 9181
   type: "CROSSBOW"
   attackSpeed: 6
 - ids:
-  - 9183
+    - 9183
   type: "CROSSBOW"
   attackSpeed: 6
 - ids:
-  - 9185
+    - 9185
   type: "CROSSBOW"
   attackSpeed: 6
 - ids:
-  - 9702
+    - 9702
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 9703
+    - 9703
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 9705
+    - 9705
   type: "BOW"
   attackSpeed: 4
 - ids:
-  - 10010
+    - 10010
   type: "SPEAR"
   attackSpeed: 4
 - ids:
-  - 10023
+    - 10023
   type: "UNARMED"
   attackSpeed: 4
 - ids:
-  - 10024
+    - 10024
   type: "UNARMED"
   attackSpeed: 4
 - ids:
-  - 10033
+    - 10033
   type: "CHINCHOMPA"
   attackSpeed: 4
 - ids:
-  - 10034
+    - 10034
   type: "CHINCHOMPA"
   attackSpeed: 4
 - ids:
-  - 10129
+    - 10129
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 10146
+    - 10146
   type: "SALAMANDER"
   attackSpeed: 5
 - ids:
-  - 10147
+    - 10147
   type: "SALAMANDER"
   attackSpeed: 5
 - ids:
-  - 10148
+    - 10148
   type: "SALAMANDER"
   attackSpeed: 5
 - ids:
-  - 10149
+    - 10149
   type: "SALAMANDER"
   attackSpeed: 5
 - ids:
-  - 10150
+    - 10150
   type: "SPEAR"
   attackSpeed: 4
 - ids:
-  - 10156
+    - 10156
   type: "CROSSBOW"
   attackSpeed: 4
 - ids:
-  - 10280
+    - 10280
   type: "BOW"
   attackSpeed: 5
 - ids:
-  - 10282
+    - 10282
   type: "BOW"
   attackSpeed: 5
 - ids:
-  - 10284
+    - 10284
   type: "BOW"
   attackSpeed: 5
 - ids:
-  - 10440
+    - 10440
   type: "STAFF"
   attackSpeed: 5
 - ids:
-  - 10442
+    - 10442
   type: "STAFF"
   attackSpeed: 5
 - ids:
-  - 10444
+    - 10444
   type: "STAFF"
   attackSpeed: 5
 - ids:
-  - 10487
+    - 10487
   type: "BLUNT"
   attackSpeed: 4
 - ids:
-  - 10491
+    - 10491
   type: "AXE"
   attackSpeed: 5
 - ids:
-  - 10501
+    - 10501
   type: "UNARMED"
   attackSpeed: 4
 - ids:
-  - 10581
+    - 10581
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 10582
+    - 10582
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 10583
+    - 10583
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 10584
+    - 10584
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 10840
+    - 10840
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 10858
+    - 10858
   type: "TWOHANDED_SWORD"
   attackSpeed: 6
 - ids:
-  - 10887
+    - 10887
   type: "SPIKED_WEAPON"
   attackSpeed: 6
 - ids:
-  - 10888
+    - 10888
   type: "SPIKED_WEAPON"
   attackSpeed: 6
 - ids:
-  - 11037
+    - 11037
   type: "SLASHING_SWORD"
   attackSpeed: 4
 - ids:
-  - 11061
+    - 11061
   type: "SPIKED_WEAPON"
   attackSpeed: 5
 - ids:
-  - 11230
+    - 11230
   type: "THROW_WEAPON"
   attackSpeed: 3
 - ids:
-  - 11231
+    - 11231
   type: "THROW_WEAPON"
   attackSpeed: 3
 - ids:
-  - 11233
+    - 11233
   type: "THROW_WEAPON"
   attackSpeed: 3
 - ids:
-  - 11234
+    - 11234
   type: "THROW_WEAPON"
   attackSpeed: 3
 - ids:
-  - 11235
-  - 20408
+    - 11235
+    - 20408
   type: "BOW"
   attackSpeed: 9
 - ids:
-  - 11259
+    - 11259
   type: "SPEAR"
   attackSpeed: 6
 - ids:
-  - 11367
+    - 11367
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 11369
+    - 11369
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 11371
+    - 11371
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 11373
+    - 11373
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 11375
+    - 11375
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 11377
+    - 11377
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 11379
+    - 11379
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 11381
+    - 11381
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 11382
+    - 11382
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 11384
+    - 11384
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 11386
+    - 11386
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 11388
+    - 11388
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 11389
+    - 11389
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 11391
+    - 11391
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 11393
+    - 11393
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 11395
+    - 11395
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 11396
+    - 11396
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 11398
+    - 11398
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 11400
+    - 11400
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 11402
+    - 11402
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 11403
+    - 11403
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 11405
+    - 11405
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 11407
+    - 11407
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 11409
+    - 11409
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 11410
+    - 11410
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 11412
+    - 11412
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 11414
+    - 11414
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 11416
+    - 11416
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 11417
+    - 11417
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 11419
+    - 11419
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 11705
+    - 11705
   type: "CLAW"
   attackSpeed: 4
 - ids:
-  - 11706
+    - 11706
   type: "CLAW"
   attackSpeed: 4
 - ids:
-  - 11707
+    - 11707
   type: "BLUNT"
   attackSpeed: 4
 - ids:
-  - 11708
+    - 11708
   type: "BOW"
   attackSpeed: 5
 - ids:
-  - 11709
+    - 11709
   type: "STAFF"
   attackSpeed: 5
 - ids:
-  - 11711
+    - 11711
   type: "STABBING_SWORD"
   attackSpeed: 5
 - ids:
-  - 11719
+    - 11719
   type: "PICKAXE"
   attackSpeed: 5
 - ids:
-  - 11720
+    - 11720
   type: "PICKAXE"
   attackSpeed: 5
 - ids:
-  - 11721
+    - 11721
   type: "PICKAXE"
   attackSpeed: 5
 - ids:
-  - 11748
+    - 11748
   type: "BOW"
   attackSpeed: 5
 - ids:
-  - 11749
+    - 11749
   type: "BOW"
   attackSpeed: 5
 - ids:
-  - 11750
+    - 11750
   type: "BOW"
   attackSpeed: 5
 - ids:
-  - 11751
+    - 11751
   type: "BOW"
   attackSpeed: 5
 - ids:
-  - 11752
+    - 11752
   type: "BOW"
   attackSpeed: 5
 - ids:
-  - 11753
+    - 11753
   type: "BOW"
   attackSpeed: 5
 - ids:
-  - 11754
+    - 11754
   type: "BOW"
   attackSpeed: 5
 - ids:
-  - 11755
+    - 11755
   type: "BOW"
   attackSpeed: 5
 - ids:
-  - 11756
+    - 11756
   type: "BOW"
   attackSpeed: 5
 - ids:
-  - 11757
+    - 11757
   type: "BOW"
   attackSpeed: 5
 - ids:
-  - 11758
+    - 11758
   type: "BOW"
   attackSpeed: 5
 - ids:
-  - 11785
-  - 23611
+    - 11785
+    - 23611
   type: "CROSSBOW"
   attackSpeed: 6
 - ids:
-  - 11787
+    - 11787
   type: "STAFF"
   attackSpeed: 5
 - ids:
-  - 11789
+    - 11789
   type: "STAFF"
   attackSpeed: 5
 - ids:
-  - 11791
+    - 11791
   type: "BLADED_STAFF"
   attackSpeed: 4
 - ids:
-  - 11802
-  - 20593
+    - 11802
+    - 20593
   type: "TWOHANDED_SWORD"
   attackSpeed: 6
 - ids:
-  - 11804
+    - 11804
   type: "TWOHANDED_SWORD"
   attackSpeed: 6
 - ids:
-  - 11806
+    - 11806
   type: "TWOHANDED_SWORD"
   attackSpeed: 6
 - ids:
-  - 11808
+    - 11808
   type: "TWOHANDED_SWORD"
   attackSpeed: 6
 - ids:
-  - 11824
+    - 11824
   type: "SPEAR"
   attackSpeed: 4
 - ids:
-  - 11838
+    - 11838
   type: "TWOHANDED_SWORD"
   attackSpeed: 4
 - ids:
-  - 11889
+    - 11889
   type: "SPEAR"
   attackSpeed: 4
 - ids:
-  - 11902
+    - 11902
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 11905
+    - 11905
   type: "POWERED_STAFF"
   attackSpeed: 4
 - ids:
-  - 11907
+    - 11907
   type: "POWERED_STAFF"
   attackSpeed: 4
 - ids:
-  - 11908
+    - 11908
   type: "POWERED_STAFF"
   attackSpeed: 4
 - ids:
-  - 11920
+    - 11920
   type: "PICKAXE"
   attackSpeed: 5
 - ids:
-  - 11959
+    - 11959
   type: "CHINCHOMPA"
   attackSpeed: 4
 - ids:
-  - 11998
+    - 11998
   type: "STAFF"
   attackSpeed: 5
 - ids:
-  - 12000
+    - 12000
   type: "STAFF"
   attackSpeed: 5
 - ids:
-  - 12006
+    - 12006
   type: "WHIP"
   attackSpeed: 4
 - ids:
-  - 12199
+    - 12199
   type: "STAFF"
   attackSpeed: 5
 - ids:
-  - 12263
+    - 12263
   type: "STAFF"
   attackSpeed: 5
 - ids:
-  - 12275
+    - 12275
   type: "STAFF"
   attackSpeed: 5
 - ids:
-  - 12297
+    - 12297
   type: "PICKAXE"
   attackSpeed: 5
 - ids:
-  - 12357
+    - 12357
   type: "SLASHING_SWORD"
   attackSpeed: 4
 - ids:
-  - 12373
+    - 12373
   type: "POLESTAFF"
   attackSpeed: 5
 - ids:
-  - 12375
+    - 12375
   type: "SPIKED_WEAPON"
   attackSpeed: 5
 - ids:
-  - 12377
+    - 12377
   type: "SPIKED_WEAPON"
   attackSpeed: 5
 - ids:
-  - 12379
+    - 12379
   type: "SPIKED_WEAPON"
   attackSpeed: 5
 - ids:
-  - 12389
+    - 12389
   type: "SLASHING_SWORD"
   attackSpeed: 4
 - ids:
-  - 12422
+    - 12422
   type: "STAFF"
   attackSpeed: 4
 - ids:
-  - 12424
+    - 12424
   type: "BOW"
   attackSpeed: 4
 - ids:
-  - 12426
+    - 12426
   type: "TWOHANDED_SWORD"
   attackSpeed: 5
 - ids:
-  - 12439
+    - 12439
   type: "POLESTAFF"
   attackSpeed: 4
 - ids:
-  - 12658
+    - 12658
   type: "STAFF"
   attackSpeed: 5
 - ids:
-  - 12727
+    - 12727
   type: "UNARMED"
   attackSpeed: 3
 - ids:
-  - 12765
+    - 12765
   type: "BOW"
   attackSpeed: 9
 - ids:
-  - 12766
+    - 12766
   type: "BOW"
   attackSpeed: 9
 - ids:
-  - 12767
+    - 12767
   type: "BOW"
   attackSpeed: 9
 - ids:
-  - 12768
+    - 12768
   type: "BOW"
   attackSpeed: 9
 - ids:
-  - 12773
+    - 12773
   type: "WHIP"
   attackSpeed: 4
 - ids:
-  - 12774
+    - 12774
   type: "WHIP"
   attackSpeed: 4
 - ids:
-  - 12788
+    - 12788
   type: "BOW"
   attackSpeed: 4
 - ids:
-  - 12795
+    - 12795
   type: "STAFF"
   attackSpeed: 5
 - ids:
-  - 12796
+    - 12796
   type: "STAFF"
   attackSpeed: 5
 - ids:
-  - 12797
+    - 12797
   type: "PICKAXE"
   attackSpeed: 5
 - ids:
-  - 12809
+    - 12809
   type: "TWOHANDED_SWORD"
   attackSpeed: 4
 - ids:
-  - 12848
+    - 12848
   type: "BLUNT"
   attackSpeed: 7
 - ids:
-  - 12899
+    - 12899
   type: "POWERED_STAFF"
   attackSpeed: 4
 - ids:
-  - 12900
+    - 12900
   type: "POWERED_STAFF"
   attackSpeed: 4
 - ids:
-  - 12902
+    - 12902
   type: "BLADED_STAFF"
   attackSpeed: 4
 - ids:
-  - 12904
+    - 12904
   type: "BLADED_STAFF"
   attackSpeed: 4
 - ids:
-  - 12924
+    - 12924
   type: "THROW_WEAPON"
   attackSpeed: 3
 - ids:
-  - 12926
+    - 12926
   type: "THROW_WEAPON"
   attackSpeed: 3
 - ids:
-  - 13074
+    - 13074
   type: "POLESTAFF"
   attackSpeed: 4
 - ids:
-  - 13075
+    - 13075
   type: "POLESTAFF"
   attackSpeed: 4
 - ids:
-  - 13076
+    - 13076
   type: "POLESTAFF"
   attackSpeed: 4
 - ids:
-  - 13077
+    - 13077
   type: "POLESTAFF"
   attackSpeed: 4
 - ids:
-  - 13078
+    - 13078
   type: "POLESTAFF"
   attackSpeed: 4
 - ids:
-  - 13079
+    - 13079
   type: "UNARMED"
   attackSpeed: 4
 - ids:
-  - 13080
+    - 13080
   type: "POLEARM"
   attackSpeed: 7
 - ids:
-  - 13081
+    - 13081
   type: "POLEARM"
   attackSpeed: 7
 - ids:
-  - 13082
+    - 13082
   type: "POLEARM"
   attackSpeed: 7
 - ids:
-  - 13083
+    - 13083
   type: "POLEARM"
   attackSpeed: 7
 - ids:
-  - 13084
+    - 13084
   type: "POLEARM"
   attackSpeed: 7
 - ids:
-  - 13085
+    - 13085
   type: "POLEARM"
   attackSpeed: 7
 - ids:
-  - 13086
+    - 13086
   type: "POLEARM"
   attackSpeed: 7
 - ids:
-  - 13087
+    - 13087
   type: "POLEARM"
   attackSpeed: 7
 - ids:
-  - 13088
+    - 13088
   type: "POLEARM"
   attackSpeed: 7
 - ids:
-  - 13089
+    - 13089
   type: "POLEARM"
   attackSpeed: 7
 - ids:
-  - 13090
+    - 13090
   type: "POLEARM"
   attackSpeed: 7
 - ids:
-  - 13108
+    - 13108
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 13109
+    - 13109
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 13110
+    - 13110
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 13111
+    - 13111
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 13141
+    - 13141
   type: "POLESTAFF"
   attackSpeed: 5
 - ids:
-  - 13142
+    - 13142
   type: "POLESTAFF"
   attackSpeed: 5
 - ids:
-  - 13143
+    - 13143
   type: "POLESTAFF"
   attackSpeed: 5
 - ids:
-  - 13144
+    - 13144
   type: "POLESTAFF"
   attackSpeed: 5
 - ids:
-  - 13183
+    - 13183
   type: "BLASTER"
   attackSpeed: 0
 - ids:
-  - 13184
+    - 13184
   type: "BLASTER"
   attackSpeed: 0
 - ids:
-  - 13185
+    - 13185
   type: "BLASTER"
   attackSpeed: 5
 - ids:
-  - 13195
+    - 13195
   type: "UNARMED"
   attackSpeed: 0
 - ids:
-  - 13241
+    - 13241
   type: "AXE"
   attackSpeed: 5
 - ids:
-  - 13242
+    - 13242
   type: "AXE"
   attackSpeed: 5
 - ids:
-  - 13243
+    - 13243
   type: "PICKAXE"
   attackSpeed: 5
 - ids:
-  - 13244
+    - 13244
   type: "PICKAXE"
   attackSpeed: 5
 - ids:
-  - 13263
+    - 13263
   type: "UNARMED"
   attackSpeed: 4
 - ids:
-  - 13265
+    - 13265
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 13267
+    - 13267
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 13269
+    - 13269
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 13271
+    - 13271
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 13328
+    - 13328
   type: "BANNER"
   attackSpeed: 4
 - ids:
-  - 13576
-  - 20785
+    - 13576
+    - 20785
   type: "BLUNT"
   attackSpeed: 6
 - ids:
-  - 13652
-  - 20784
+    - 13652
+    - 20784
   type: "CLAW"
   attackSpeed: 4
 - ids:
-  - 19478
+    - 19478
   type: "CROSSBOW"
   attackSpeed: 7
 - ids:
-  - 19481
+    - 19481
   type: "CROSSBOW"
   attackSpeed: 7
 - ids:
-  - 19525
+    - 19525
   type: "UNARMED"
   attackSpeed: 0
 - ids:
-  - 19675
+    - 19675
   type: "SLASHING_SWORD"
   attackSpeed: 4
 - ids:
-  - 19912
+    - 19912
   type: "BLUNT"
   attackSpeed: 6
 - ids:
-  - 19918
+    - 19918
   type: "BLUNT"
   attackSpeed: 5
 - ids:
-  - 19941
+    - 19941
   type: "BLUNT"
   attackSpeed: 6
 - ids:
-  - 20000
+    - 20000
   type: "SLASHING_SWORD"
   attackSpeed: 4
 - ids:
-  - 20011
+    - 20011
   type: "AXE"
   attackSpeed: 5
 - ids:
-  - 20014
+    - 20014
   type: "PICKAXE"
   attackSpeed: 5
 - ids:
-  - 20056
+    - 20056
   type: "UNARMED"
   attackSpeed: 4
 - ids:
-  - 20155
+    - 20155
   type: "TWOHANDED_SWORD"
   attackSpeed: 7
 - ids:
-  - 20158
+    - 20158
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 20161
+    - 20161
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 20164
+    - 20164
   type: "BLUNT"
   attackSpeed: 4
 - ids:
-  - 20243
+    - 20243
   type: "BLUNT"
   attackSpeed: 4
 - ids:
-  - 20249
+    - 20249
   type: "BLUNT"
   attackSpeed: 4
 - ids:
-  - 20251
+    - 20251
   type: "POLESTAFF"
   attackSpeed: 5
 - ids:
-  - 20254
+    - 20254
   type: "POLESTAFF"
   attackSpeed: 5
 - ids:
-  - 20257
+    - 20257
   type: "POLESTAFF"
   attackSpeed: 5
 - ids:
-  - 20260
+    - 20260
   type: "POLESTAFF"
   attackSpeed: 5
 - ids:
-  - 20263
+    - 20263
   type: "POLESTAFF"
   attackSpeed: 5
 - ids:
-  - 20368
+    - 20368
   type: "TWOHANDED_SWORD"
   attackSpeed: 6
 - ids:
-  - 20370
+    - 20370
   type: "TWOHANDED_SWORD"
   attackSpeed: 6
 - ids:
-  - 20372
+    - 20372
   type: "TWOHANDED_SWORD"
   attackSpeed: 6
 - ids:
-  - 20374
+    - 20374
   type: "TWOHANDED_SWORD"
   attackSpeed: 6
 - ids:
-  - 20397
+    - 20397
   type: "POLEARM"
   attackSpeed: 7
 - ids:
-  - 20473
+    - 20473
   type: "STAFF"
   attackSpeed: 5
 - ids:
-  - 20483
+    - 20483
   type: "SLASHING_SWORD"
   attackSpeed: 5
 - ids:
-  - 20590
+    - 20590
   type: "BLUNT"
   attackSpeed: 4
 - ids:
-  - 20720
+    - 20720
   type: "UNARMED"
   attackSpeed: 4
 - ids:
-  - 20727
+    - 20727
   type: "AXE"
   attackSpeed: 5
 - ids:
-  - 20730
+    - 20730
   type: "STAFF"
   attackSpeed: 5
 - ids:
-  - 20733
+    - 20733
   type: "STAFF"
   attackSpeed: 5
 - ids:
-  - 20736
+    - 20736
   type: "STAFF"
   attackSpeed: 5
 - ids:
-  - 20739
+    - 20739
   type: "STAFF"
   attackSpeed: 5
 - ids:
-  - 20756
+    - 20756
   type: "BLUNT"
   attackSpeed: 7
 - ids:
-  - 20779
+    - 20779
   type: "BLUNT"
   attackSpeed: 4
 - ids:
-  - 20836
+    - 20836
   type: "BLUNT"
   attackSpeed: 4
 - ids:
-  - 20849
-  - 21207
+    - 20849
+    - 21207
   type: "THROW_WEAPON"
   attackSpeed: 5
 - ids:
-  - 20997
+    - 20997
   type: "BOW"
   attackSpeed: 6
 - ids:
-  - 21003
-  - 21205
+    - 21003
+    - 21205
   type: "BLUNT"
   attackSpeed: 6
 - ids:
-  - 21006
+    - 21006
   type: "STAFF"
   attackSpeed: 4
 - ids:
-  - 21009
-  - 21206
+    - 21009
+    - 21206
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 21012
+    - 21012
   type: "CROSSBOW"
   attackSpeed: 6
 - ids:
-  - 21015
+    - 21015
   type: "BULWARK"
   attackSpeed: 7
 - ids:
-  - 21028
+    - 21028
   type: "STABBING_SWORD"
   attackSpeed: 5
 - ids:
-  - 21031
+    - 21031
   type: "STABBING_SWORD"
   attackSpeed: 5
 - ids:
-  - 21033
+    - 21033
   type: "STABBING_SWORD"
   attackSpeed: 5
 - ids:
-  - 21059
+    - 21059
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 21198
+    - 21198
   type: "STAFF"
   attackSpeed: 5
 - ids:
-  - 21200
+    - 21200
   type: "STAFF"
   attackSpeed: 5
 - ids:
-  - 21209
+    - 21209
   type: "BLUNT"
   attackSpeed: 4
 - ids:
-  - 21255
+    - 21255
   type: "STAFF"
   attackSpeed: 4
 - ids:
-  - 21276
+    - 21276
   type: "POLESTAFF"
   attackSpeed: 5
 - ids:
-  - 21354
+    - 21354
   type: "BLUNT"
   attackSpeed: 4
 - ids:
-  - 21539
+    - 21539
   type: "UNARMED"
   attackSpeed: 4
 - ids:
-  - 21646
+    - 21646
   type: "SLASHING_SWORD"
   attackSpeed: 5
 - ids:
-  - 21649
+    - 21649
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 21742
+    - 21742
   type: "BLUNT"
   attackSpeed: 4
 - ids:
-  - 21865
+    - 21865
   type: "BLUNT"
   attackSpeed: 4
 - ids:
-  - 21902
+    - 21902
   type: "CROSSBOW"
   attackSpeed: 6
 - ids:
-  - 22288
+    - 22288
   type: "POWERED_STAFF"
   attackSpeed: 4
 - ids:
-  - 22290
+    - 22290
   type: "POWERED_STAFF"
   attackSpeed: 4
 - ids:
-  - 22292
+    - 22292
   type: "POWERED_STAFF"
   attackSpeed: 4
 - ids:
-  - 22294
+    - 22294
   type: "POWERED_STAFF"
   attackSpeed: 4
 - ids:
-  - 22296
+    - 22296
   type: "BLADED_STAFF"
   attackSpeed: 4
 - ids:
-  - 22316
+    - 22316
   type: "BLUNT"
   attackSpeed: 4
 - ids:
-  - 22323
+    - 22323
   type: "POWERED_STAFF"
   attackSpeed: 4
 - ids:
-  - 22324
+    - 22324
   type: "STABBING_SWORD"
   attackSpeed: 4
 - ids:
-  - 22325
+    - 22325
   type: "SCYTHE"
   attackSpeed: 5
 - ids:
-  - 22331
+    - 22331
   type: "SLASHING_SWORD"
   attackSpeed: 4
 - ids:
-  - 22333
+    - 22333
   type: "BOW"
   attackSpeed: 4
 - ids:
-  - 22335
+    - 22335
   type: "POWERED_STAFF"
   attackSpeed: 4
 - ids:
-  - 22355
+    - 22355
   type: "UNARMED"
   attackSpeed: 4
 - ids:
-  - 22358
+    - 22358
   type: "UNARMED"
   attackSpeed: 4
 - ids:
-  - 22361
+    - 22361
   type: "UNARMED"
   attackSpeed: 4
 - ids:
-  - 22368
+    - 22368
   type: "STAFF"
   attackSpeed: 5
 - ids:
-  - 22370
+    - 22370
   type: "STAFF"
   attackSpeed: 5
 - ids:
-  - 22398
+    - 22398
   type: "STAFF"
   attackSpeed: 5
 - ids:
-  - 22433
+    - 22433
   type: "SLASHING_SWORD"
   attackSpeed: 5
 - ids:
-  - 22435
+    - 22435
   type: "SLASHING_SWORD"
   attackSpeed: 5
 - ids:
-  - 22481
+    - 22481
   type: "POWERED_STAFF"
   attackSpeed: 4
 - ids:
-  - 22486
+    - 22486
   type: "SCYTHE"
   attackSpeed: 5
 - ids:
-  - 22516
+    - 22516
   type: "POWERED_STAFF"
   attackSpeed: 4
 - ids:
-  - 22542
+    - 22542
   type: "SPIKED_WEAPON"
   attackSpeed: 4
 - ids:
-  - 22545
+    - 22545
   type: "SPIKED_WEAPON"
   attackSpeed: 4
 - ids:
-  - 22547
+    - 22547
   type: "BOW"
   attackSpeed: 4
 - ids:
-  - 22550
+    - 22550
   type: "BOW"
   attackSpeed: 4
 - ids:
-  - 22552
+    - 22552
   type: "STAFF"
   attackSpeed: 4
 - ids:
-  - 22555
+    - 22555
   type: "STAFF"
   attackSpeed: 4
 - ids:
-  - 22610
+    - 22610
   type: "SPEAR"
   attackSpeed: 5
 - ids:
-  - 22613
+    - 22613
   type: "SLASHING_SWORD"
   attackSpeed: 5
 - ids:
-  - 22622
+    - 22622
   type: "BLUNT"
   attackSpeed: 5
 - ids:
-  - 22634
+    - 22634
   type: "THROW_WEAPON"
   attackSpeed: 5
 - ids:
-  - 22636
+    - 22636
   type: "THROW_WEAPON"
   attackSpeed: 6
 - ids:
-  - 22647
+    - 22647
   type: "STAFF"
   attackSpeed: 5
 - ids:
-  - 22684
+    - 22684
   type: "BLUNT"
   attackSpeed: 4
 - ids:
-  - 22719
+    - 22719
   type: "BLUNT"
   attackSpeed: 4
 - ids:
-  - 22731
+    - 22731
   type: "SPEAR"
   attackSpeed: 4
 - ids:
-  - 22734
+    - 22734
   type: "SPEAR"
   attackSpeed: 4
 - ids:
-  - 22737
+    - 22737
   type: "SPEAR"
   attackSpeed: 4
 - ids:
-  - 22740
+    - 22740
   type: "SPEAR"
   attackSpeed: 4
 - ids:
-  - 22743
+    - 22743
   type: "SPEAR"
   attackSpeed: 4
 - ids:
-  - 22804
+    - 22804
   type: "THROW_WEAPON"
   attackSpeed: 3
 - ids:
-  - 22806
+    - 22806
   type: "THROW_WEAPON"
   attackSpeed: 3
 - ids:
-  - 22808
+    - 22808
   type: "THROW_WEAPON"
   attackSpeed: 3
 - ids:
-  - 22810
+    - 22810
   type: "THROW_WEAPON"
   attackSpeed: 3
 - ids:
-  - 22816
+    - 22816
   type: "UNARMED"
   attackSpeed: 4
 - ids:
-  - 22817
+    - 22817
   type: "UNARMED"
   attackSpeed: 4
 - ids:
-  - 22840
+    - 22840
   type: "BLUNT"
   attackSpeed: 4
 - ids:
-  - 22842
+    - 22842
   type: "UNARMED"
   attackSpeed: 5
 - ids:
-  - 22844
+    - 22844
   type: "UNARMED"
   attackSpeed: 5
 - ids:
-  - 22846
+    - 22846
   type: "UNARMED"
   attackSpeed: 5
 - ids:
-  - 22978
+    - 22978
   type: "SPEAR"
   attackSpeed: 4
 - ids:
-  - 23108
+    - 23108
   type: "BLUNT"
   attackSpeed: 4
 - ids:
-  - 23122
+    - 23122
   type: "UNARMED"
   attackSpeed: 5
 - ids:
-  - 23206
+    - 23206
   type: "STABBING_SWORD"
   attackSpeed: 5
 - ids:
-  - 23235
+    - 23235
   type: "BLUNT"
   attackSpeed: 7
 - ids:
-  - 23276
+    - 23276
   type: "PICKAXE"
   attackSpeed: 5
 - ids:
-  - 23279
+    - 23279
   type: "AXE"
   attackSpeed: 5
 - ids:
-  - 23282
+    - 23282
   type: "BLUNT"
   attackSpeed: 4
 - ids:
-  - 23330
+    - 23330
   type: "SLASHING_SWORD"
   attackSpeed: 4
 - ids:
-  - 23332
+    - 23332
   type: "SLASHING_SWORD"
   attackSpeed: 4
 - ids:
-  - 23334
+    - 23334
   type: "SLASHING_SWORD"
   attackSpeed: 4
 - ids:
-  - 23342
+    - 23342
   type: "STAFF"
   attackSpeed: 5
 - ids:
-  - 23357
+    - 23357
   type: "BOW"
   attackSpeed: 4
 - ids:
-  - 23360
+    - 23360
   type: "BLUNT"
   attackSpeed: 3
 - ids:
-  - 23363
+    - 23363
   type: "STAFF"
   attackSpeed: 5
 - ids:
-  - 23446
+    - 23446
   type: "BLUNT"
   attackSpeed: 4
 - ids:
-  - 23458
+    - 23458
   type: "UNARMED"
   attackSpeed: 4
 - ids:
-  - 23528
+    - 23528
   type: "SPIKED_WEAPON"
   attackSpeed: 4
 - ids:
-  - 23673
+    - 23673
   type: "AXE"
   attackSpeed: 5
 - ids:
-  - 23675
+    - 23675
   type: "AXE"
   attackSpeed: 5
 - ids:
-  - 23677
+    - 23677
   type: "PICKAXE"
   attackSpeed: 5
 - ids:
-  - 23680
+    - 23680
   type: "PICKAXE"
   attackSpeed: 5
 - ids:
-  - 23682
+    - 23682
   type: "PICKAXE"
   attackSpeed: 5
 - ids:
-  - 23762
+    - 23762
   type: "STABBING_SWORD"
   attackSpeed: 5
 - ids:
-  - 23764
+    - 23764
   type: "STABBING_SWORD"
   attackSpeed: 5
 - ids:
-  - 23820
+    - 23820
   type: "BLUNT"
   attackSpeed: 5
 - ids:
-  - 23821
+    - 23821
   type: "AXE"
   attackSpeed: 5
 - ids:
-  - 23822
+    - 23822
   type: "PICKAXE"
   attackSpeed: 5
 - ids:
-  - 23823
+    - 23823
   type: "STABBING_SWORD"
   attackSpeed: 5
 - ids:
-  - 23849
+    - 23849
   type: "POLEARM"
   attackSpeed: 4
 - ids:
-  - 23850
+    - 23850
   type: "POLEARM"
   attackSpeed: 4
 - ids:
-  - 23851
+    - 23851
   type: "POLEARM"
   attackSpeed: 4
 - ids:
-  - 23852
+    - 23852
   type: "POWERED_STAFF"
   attackSpeed: 4
 - ids:
-  - 23853
+    - 23853
   type: "POWERED_STAFF"
   attackSpeed: 4
 - ids:
-  - 23854
+    - 23854
   type: "POWERED_STAFF"
   attackSpeed: 4
 - ids:
-  - 23855
+    - 23855
   type: "BOW"
   attackSpeed: 5
 - ids:
-  - 23856
+    - 23856
   type: "BOW"
   attackSpeed: 5
 - ids:
-  - 23857
+    - 23857
   type: "BOW"
   attackSpeed: 5
 - ids:
-  - 23861
+    - 23861
   type: "BLUNT"
   attackSpeed: 5
 - ids:
-  - 23862
+    - 23862
   type: "AXE"
   attackSpeed: 5
 - ids:
-  - 23863
+    - 23863
   type: "PICKAXE"
   attackSpeed: 5
 - ids:
-  - 23864
+    - 23864
   type: "STABBING_SWORD"
   attackSpeed: 5
 - ids:
-  - 23895
+    - 23895
   type: "POLEARM"
   attackSpeed: 4
 - ids:
-  - 23896
+    - 23896
   type: "POLEARM"
   attackSpeed: 4
 - ids:
-  - 23897
+    - 23897
   type: "POLEARM"
   attackSpeed: 4
 - ids:
-  - 23898
+    - 23898
   type: "POWERED_STAFF"
   attackSpeed: 4
 - ids:
-  - 23899
+    - 23899
   type: "POWERED_STAFF"
   attackSpeed: 4
 - ids:
-  - 23900
+    - 23900
   type: "POWERED_STAFF"
   attackSpeed: 4
 - ids:
-  - 23901
+    - 23901
   type: "BOW"
   attackSpeed: 5
 - ids:
-  - 23902
+    - 23902
   type: "BOW"
   attackSpeed: 5
 - ids:
-  - 23903
+    - 23903
   type: "BOW"
   attackSpeed: 5
 - ids:
-  - 23907
+    - 23907
   type: "UNARMED"
   attackSpeed: 3
 - ids:
-  - 23983
+    - 23983
   type: "BOW"
   attackSpeed: 5
 - ids:
-  - 23987
+    - 23987
   type: "POLEARM"
   attackSpeed: 7
 - ids:
-  - 23995
+    - 23995
   type: "SLASHING_SWORD"
   attackSpeed: 4
 - ids:
-  - 23997
+    - 23997
   type: "SLASHING_SWORD"
   attackSpeed: 4
 - ids:
-  - 24000
+    - 24000
   type: "UNARMED"
   attackSpeed: 4
 - ids:
-  - 24144
+    - 24144
   type: "BLADED_STAFF"
   attackSpeed: 4
 - ids:
-  - 24157
+    - 24157
   type: "SLASHING_SWORD"
   attackSpeed: 5
 - ids:
-  - 24181
+    - 24181
   type: "STAFF"
   attackSpeed: 5
 - ids:
-  - 24219
+    - 24219
   type: "STABBING_SWORD"
   attackSpeed: 3
 - ids:
-  - 24225
+    - 24225
   type: "BLUNT"
   attackSpeed: 7
 - ids:
-  - 24227
+    - 24227
   type: "BLUNT"
   attackSpeed: 7
 - ids:
-  - 24327
+    - 24327
   type: "BLUNT"
   attackSpeed: 4
 - ids:
-  - 24372
+    - 24372
   type: "BLUNT"
   attackSpeed: 4
 - ids:
-  - 24374
+    - 24374
   type: "BLUNT"
   attackSpeed: 4
 - ids:
-  - 24376
+    - 24376
   type: "BLUNT"
   attackSpeed: 4
 - ids:
-  - 24378
+    - 24378
   type: "BLUNT"
   attackSpeed: 4
 - ids:
-  - 24380
+    - 24380
   type: "BLUNT"
   attackSpeed: 4
 - ids:
-  - 24382
+    - 24382
   type: "BLUNT"
   attackSpeed: 4
 - ids:
-  - 24384
+    - 24384
   type: "BLUNT"
   attackSpeed: 4
 - ids:
-  - 24395
+    - 24395
   type: "SPIKED_WEAPON"
   attackSpeed: 5
 - ids:
-  - 24413
+    - 24413
   type: "BANNER"
   attackSpeed: 4
 - ids:
-  - 24417
+    - 24417
   type: "SPIKED_WEAPON"
   attackSpeed: 4
 - ids:
-  - 24422
+    - 24422
   type: "STAFF"
   attackSpeed: 5
 - ids:
-  - 24423
+    - 24423
   type: "STAFF"
   attackSpeed: 5
 - ids:
-  - 24424
+    - 24424
   type: "STAFF"
   attackSpeed: 5
 - ids:
-  - 24425
+    - 24425
   type: "STAFF"
   attackSpeed: 5
 - ids:
-  - 24537
+    - 24537
   type: "BLUNT"
   attackSpeed: 4
 - ids:
-  - 24539
+    - 24539
   type: "BLUNT"
   attackSpeed: 4
 - ids:
-  - 24551
+    - 24551
   type: "SLASHING_SWORD"
   attackSpeed: 4
 - ids:
-  - 24617
+    - 24617
   type: "SLASHING_SWORD"
   attackSpeed: 5
 - ids:
-  - 24619
+    - 24619
   type: "SLASHING_SWORD"
   attackSpeed: 5
 - ids:
-  - 24693
+    - 24693
   type: "SLASHING_SWORD"
   attackSpeed: 5
 - ids:
-  - 24695
+    - 24695
   type: "SLASHING_SWORD"
   attackSpeed: 5
 - ids:
-  - 24697
+    - 24697
   type: "SLASHING_SWORD"
   attackSpeed: 5
 - ids:
-  - 24699
+    - 24699
   type: "STAFF"
   attackSpeed: 5
 - ids:
-  - 24727
+    - 24727
   type: "BLUNT"
   attackSpeed: 4
 - ids:
-  - 24792
+    - 24792
   type: "BLUNT"
   attackSpeed: 4

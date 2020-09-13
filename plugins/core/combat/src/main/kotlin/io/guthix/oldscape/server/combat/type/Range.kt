@@ -21,13 +21,15 @@ import io.guthix.oldscape.server.combat.attackSpeed
 import io.guthix.oldscape.server.combat.dmg.calcHit
 import io.guthix.oldscape.server.combat.dmg.maxRangeHit
 import io.guthix.oldscape.server.combat.inCombatWith
-import io.guthix.oldscape.server.template.SequenceTemplates
 import io.guthix.oldscape.server.event.EventBus
 import io.guthix.oldscape.server.event.NpcAttackedEvent
 import io.guthix.oldscape.server.pathing.DestinationRange
 import io.guthix.oldscape.server.pathing.breadthFirstSearch
 import io.guthix.oldscape.server.task.NormalTask
-import io.guthix.oldscape.server.template.*
+import io.guthix.oldscape.server.template.SequenceTemplates
+import io.guthix.oldscape.server.template.ammunitionProjectile
+import io.guthix.oldscape.server.template.drawback
+import io.guthix.oldscape.server.template.sequences
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.HitMark
 import io.guthix.oldscape.server.world.entity.Npc

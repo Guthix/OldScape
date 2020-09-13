@@ -16,12 +16,11 @@
 package io.guthix.oldscape.server.combat
 
 import io.guthix.oldscape.server.combat.dmg.calcHit
-import io.guthix.oldscape.server.template.SequenceTemplates
 import io.guthix.oldscape.server.event.NpcAttackedEvent
 import io.guthix.oldscape.server.pathing.DestinationRectangleDirect
 import io.guthix.oldscape.server.pathing.simplePathSearch
 import io.guthix.oldscape.server.task.NormalTask
-import io.guthix.oldscape.server.template.TemplateNotFoundException
+import io.guthix.oldscape.server.template.SequenceTemplates
 import io.guthix.oldscape.server.template.attackSpeed
 import io.guthix.oldscape.server.template.sequences
 import io.guthix.oldscape.server.world.entity.HitMark

@@ -44,7 +44,7 @@ abstract class TemplateLoader<B : BaseTemplate> {
 
     operator fun get(index: Int): B = baseTemplates[index] ?: throw BaseTemplateNotFoundException(index)
 
-    internal fun <C: Config> load(configs: Map<Int, C>, factory: (C) -> B) {
+    internal fun <C : Config> load(configs: Map<Int, C>, factory: (C) -> B) {
         val temp = mutableMapOf<Int, B>()
         configs.forEach { (id, config) ->
             temp[id] = factory(config)
@@ -54,7 +54,7 @@ abstract class TemplateLoader<B : BaseTemplate> {
     }
 }
 
-inline fun <reified T: Template, B : BaseTemplate> Script.loadTemplates(
+inline fun <reified T : Template, B : BaseTemplate> Script.loadTemplates(
     relativePath: String,
     loader: TemplateLoader<B>,
     property: KProperty<T?>
@@ -62,7 +62,7 @@ inline fun <reified T: Template, B : BaseTemplate> Script.loadTemplates(
     val logger = KotlinLogging.logger { }
     on(InitializeTemplateEvent::class).then {
         val templates: List<T> = readYaml(relativePath)
-        templates.forEach {  template ->
+        templates.forEach { template ->
             template.ids.forEach { id ->
                 val baseTemplate = loader[id]
                 baseTemplate.properties[property] = template

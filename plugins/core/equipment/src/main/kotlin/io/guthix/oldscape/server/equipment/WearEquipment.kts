@@ -15,7 +15,9 @@
  */
 package io.guthix.oldscape.server.equipment
 
-import io.guthix.oldscape.server.event.*
+import io.guthix.oldscape.server.event.EventBus
+import io.guthix.oldscape.server.event.InvObjClickEvent
+import io.guthix.oldscape.server.event.ObjEquipedEvent
 import io.guthix.oldscape.server.plugin.InvalidMessageException
 import io.guthix.oldscape.server.template.equipment
 import io.guthix.oldscape.server.world.entity.Obj
