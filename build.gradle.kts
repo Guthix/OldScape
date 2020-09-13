@@ -6,8 +6,6 @@ import org.jetbrains.kotlin.gradle.plugin.getKotlinPluginVersion
 plugins {
     idea
     application
-    `maven-publish`
-    signing
     id("org.jetbrains.dokka")
     kotlin("jvm")
 }
