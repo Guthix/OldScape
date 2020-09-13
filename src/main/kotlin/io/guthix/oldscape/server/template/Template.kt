@@ -18,12 +18,9 @@ package io.guthix.oldscape.server.template
 import io.guthix.oldscape.cache.config.Config
 import io.guthix.oldscape.server.PropertyHolder
 import io.guthix.oldscape.server.event.InitializeTemplateEvent
-import io.guthix.oldscape.server.event.WorldInitializedEvent
 import io.guthix.oldscape.server.plugin.Script
 import io.guthix.oldscape.server.readYaml
 import mu.KotlinLogging
-import java.net.URL
-import java.nio.file.Path
 import kotlin.reflect.KClass
 import kotlin.reflect.KProperty
 
@@ -37,11 +34,9 @@ abstract class BaseTemplate(config: Config) : PropertyHolder {
 
 class BaseTemplateNotFoundException(id: Int) : Exception("Base template with id $id does not exist in the cache.")
 
-class TemplateNotFoundException(id: Int, element: String, file: URL) : Exception(
-    "$element not found for id $id, add the template to ${file.path}."
-) {
-    constructor(id: Int, property: KProperty<*>, file: URL) : this(id, "$property", file)
-    constructor(id: Int, clazz: KClass<*>, file: URL) : this(id, "$clazz", file)
+class TemplateNotFoundException(id: Int, element: String) : Exception("$element not found for id $id.") {
+    constructor(id: Int, property: KProperty<*>) : this(id, "$property")
+    constructor(id: Int, clazz: KClass<*>) : this(id, "$clazz")
 }
 
 abstract class TemplateLoader<B : BaseTemplate> {

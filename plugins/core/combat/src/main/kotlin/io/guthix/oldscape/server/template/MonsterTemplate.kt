@@ -16,51 +16,48 @@
 package io.guthix.oldscape.server.template
 
 import io.guthix.oldscape.server.Property
-import io.guthix.oldscape.server.template.NpcTemplate
 import io.guthix.oldscape.server.world.entity.Npc
-import java.nio.file.Path
 
-public val Npc.lvl: Int get() = monsterTemplate.lvl
+val Npc.lvl: Int get() = monsterTemplate.lvl
 
-public val Npc.maxHit: Int get() = monsterTemplate?.maxHit ?: throw TemplateNotFoundException(
-    id, Npc::maxHit, javaClass.getResource(monsterTemplatePath)
-)
+val Npc.maxHit: Int get() = monsterTemplate.maxHit ?: throw TemplateNotFoundException(id, Npc::maxHit)
 
-public val Npc.attackType: AttackType get() = monsterTemplate.attackType ?: throw TemplateNotFoundException(
-    id, Npc::attackType, javaClass.getResource(monsterTemplatePath)
-)
+val Npc.attackType: AttackType
+    get() = monsterTemplate.attackType ?: throw TemplateNotFoundException(
+        id, Npc::attackType
+    )
 
-public val Npc.isAggressive: Boolean get() = monsterTemplate.isAggressive
+val Npc.isAggressive: Boolean get() = monsterTemplate.isAggressive
 
-public val Npc.isPoisonous: Boolean get() = monsterTemplate.isPoisonous
+val Npc.isPoisonous: Boolean get() = monsterTemplate.isPoisonous
 
-public val Npc.isImmumePoison: Boolean get() = monsterTemplate.isImmumePoison
+val Npc.isImmumePoison: Boolean get() = monsterTemplate.isImmumePoison
 
-public val Npc.isImmuneVenom: Boolean get() = monsterTemplate.isImmuneVenom
+val Npc.isImmuneVenom: Boolean get() = monsterTemplate.isImmuneVenom
 
-public val Npc.attackSpeed: Int get() = monsterTemplate.attackSpeed ?: throw TemplateNotFoundException(
-    id, Npc::attackSpeed, javaClass.getResource(monsterTemplatePath)
-)
+val Npc.attackSpeed: Int
+    get() = monsterTemplate.attackSpeed ?: throw TemplateNotFoundException(
+        id, Npc::attackSpeed
+    )
 
-public val Npc.sequences: CombatSequences get() = monsterTemplate.sequences ?: throw TemplateNotFoundException(
-    id, Npc::sequences, javaClass.getResource(monsterTemplatePath)
-)
+val Npc.sequences: CombatSequences
+    get() = monsterTemplate.sequences ?: throw TemplateNotFoundException(
+        id, Npc::sequences
+    )
 
-public val Npc.stats: CombatStats get() = monsterTemplate.stats
+val Npc.stats: CombatStats get() = monsterTemplate.stats
 
-public val Npc.attackBonus: CombatBonus? get() = monsterTemplate.attackBonus
+val Npc.attackBonus: CombatBonus? get() = monsterTemplate.attackBonus
 
-public val Npc.strengthBonus: CombatBonus get() = monsterTemplate.strengthBonus
+val Npc.strengthBonus: CombatBonus get() = monsterTemplate.strengthBonus
 
-public val Npc.defensiveStats: StyleBonus get() = monsterTemplate.defensiveStats
+val Npc.defensiveStats: StyleBonus get() = monsterTemplate.defensiveStats
 
 internal val Npc.monsterTemplate: MonsterTemplate get() = template.monster ?: throw TemplateNotFoundException(
-    id, MonsterTemplate::class, javaClass.getResource(monsterTemplatePath)
+    id, MonsterTemplate::class
 )
 
 internal val NpcTemplate.monster: MonsterTemplate? by Property { null }
-
-internal const val monsterTemplatePath = "/template/Monsters.yaml"
 
 data class MonsterTemplate(
     override val ids: List<Int>,

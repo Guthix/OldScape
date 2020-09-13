@@ -167,16 +167,16 @@
     range: 0
     magic: 0
 - ids:
-  - 42
+    - 42
   - 43
   - 44
   - 45
   - 46
   - 47
   - 48
-  - 6596
-  - 6597
-  - 6598
+    - 6596
+    - 6597
+    - 6598
   lvl: 18
   maxHit: 2
   attackType: "CRUSH"
@@ -184,6 +184,11 @@
   isPoisonous: false
   isImmumePoison: false
   isImmuneVenom: false
+  attackSpeed: 6
+  sequences:
+    attack: 5578
+    defence: 5579
+    death: 5580
   stats:
     health: 24
     attack: 13

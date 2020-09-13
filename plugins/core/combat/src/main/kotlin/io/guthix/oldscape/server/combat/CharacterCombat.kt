@@ -16,15 +16,13 @@
 package io.guthix.oldscape.server.combat
 
 import io.guthix.oldscape.server.Property
-import io.guthix.oldscape.server.template.SequenceTemplates
+import io.guthix.oldscape.server.stat.StatMultiplier
+import io.guthix.oldscape.server.template.*
+import io.guthix.oldscape.server.world.entity.Character
+import io.guthix.oldscape.server.world.entity.Player
 import io.guthix.oldscape.server.world.map.dim.TileUnit
 import io.guthix.oldscape.server.world.map.dim.max
 import io.guthix.oldscape.server.world.map.dim.tiles
-import io.guthix.oldscape.server.stat.StatMultiplier
-import io.guthix.oldscape.server.template.*
-import io.guthix.oldscape.server.template.SequenceTemplate
-import io.guthix.oldscape.server.world.entity.Character
-import io.guthix.oldscape.server.world.entity.Player
 
 enum class MeleeCombatStance(val attack: Int = 0, val strength: Int = 0, val defence: Int = 0, val range: Int = 0) {
     ACCURATE(attack = 3),
@@ -59,7 +57,7 @@ val Player.currentStyle: CombatStyle
         return weaponType.styles[index]
     }
 
-val Player.attackSpeed: Int get() = equipmentSet.weapon?.baseAttackSpeed?.plus(currentStyle.style.attackSpeedBonus) ?: 1
+val Player.attackSpeed: Int get() = equipmentSet.weapon?.baseAttackSpeed?.plus(currentStyle.style.attackSpeedBonus) ?: 4
 
 val Player.attackRange: TileUnit get() = max(
     10.tiles, equipmentSet.weapon?.baseAttackRange?.plus(currentStyle.style.attackRangeBonus.tiles) ?: 1.tiles

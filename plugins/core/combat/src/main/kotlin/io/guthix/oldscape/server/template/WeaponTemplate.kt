@@ -16,33 +16,31 @@
 package io.guthix.oldscape.server.template
 
 import io.guthix.oldscape.server.Property
-import io.guthix.oldscape.server.template.SequenceTemplates
 import io.guthix.oldscape.server.world.entity.Obj
 import io.guthix.oldscape.server.world.map.dim.TileUnit
 import io.guthix.oldscape.server.world.map.dim.tiles
 
-public val Obj.weaponType: WeaponType get() = weaponTemplate.type
+val Obj.weaponType: WeaponType get() = weaponTemplate.type
 
-public val Obj.baseAttackSpeed: Int get() = weaponTemplate.attackSpeed
+val Obj.baseAttackSpeed: Int get() = weaponTemplate.attackSpeed
 
-public val Obj.baseAttackRange: TileUnit get() = weaponTemplate.attackRange?.tiles ?: throw TemplateNotFoundException(
-    id, Obj::baseAttackRange, javaClass.getResource(weaponTemplatePath)
-)
+val Obj.baseAttackRange: TileUnit
+    get() = weaponTemplate.attackRange?.tiles ?: throw TemplateNotFoundException(
+        id, Obj::baseAttackRange
+    )
 
-public val Obj.attackAnim: SequenceTemplate get() = SequenceTemplates[weaponSequences.attack]
+val Obj.attackAnim: SequenceTemplate get() = SequenceTemplates[weaponSequences.attack]
 
-public val Obj.blockAnim: SequenceTemplate get() = SequenceTemplates[weaponSequences.defence]
+val Obj.blockAnim: SequenceTemplate get() = SequenceTemplates[weaponSequences.defence]
 
 private val Obj.weaponSequences: WeaponSequences get() = weaponTemplate.weaponSequences
-    ?: throw TemplateNotFoundException(id, Obj::weaponSequences, javaClass.getResource(weaponTemplatePath))
+    ?: throw TemplateNotFoundException(id, Obj::weaponSequences)
 
 private val Obj.weaponTemplate: WeaponTemplate get() = template.weapon ?: throw TemplateNotFoundException(
-    id, WeaponTemplate::class, javaClass.getResource(weaponTemplatePath)
+    id, WeaponTemplate::class
 )
 
 internal val ObjTemplate.weapon: WeaponTemplate? by Property { null }
-
-internal const val weaponTemplatePath = "/template/Weapons.yaml"
 
 data class WeaponTemplate(
     override val ids: List<Int>,

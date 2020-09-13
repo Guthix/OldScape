@@ -28,12 +28,10 @@ val Obj.drawback: PhysicalSpotAnimTemplate get() = PhysicalSpotAnimTemplate(
 )
 
 private val Obj.ammunitionTemplate: AmmunitionTemplate get() = template.ammunition ?: throw TemplateNotFoundException(
-    id, AmmunitionTemplate::class, javaClass.getResource(ammunitionTemplatePath)
+    id, AmmunitionTemplate::class
 )
 
 internal val ObjTemplate.ammunition: AmmunitionTemplate? by Property { null }
-
-internal const val ammunitionTemplatePath = "/template/Ammunition.yaml"
 
 data class AmmunitionTemplate(
     override val ids: List<Int>,
