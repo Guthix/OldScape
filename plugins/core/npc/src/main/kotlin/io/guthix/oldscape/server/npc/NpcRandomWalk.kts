@@ -24,7 +24,7 @@ import io.guthix.oldscape.server.world.map.dim.tiles
 import kotlin.random.Random
 
 on(NpcSpawnedEvent::class).then {
-    npc.wanderRadius?.let { wanderRadius ->
+    npc.wanderRadius.let { wanderRadius ->
         if (npc.wanderRadius == 0.tiles) return@then
         npc.addTask(NormalTask) {
             while (true) {
