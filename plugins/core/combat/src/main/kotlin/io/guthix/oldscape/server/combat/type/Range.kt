@@ -26,10 +26,7 @@ import io.guthix.oldscape.server.event.NpcAttackedEvent
 import io.guthix.oldscape.server.pathing.DestinationRange
 import io.guthix.oldscape.server.pathing.breadthFirstSearch
 import io.guthix.oldscape.server.task.NormalTask
-import io.guthix.oldscape.server.template.SequenceTemplates
-import io.guthix.oldscape.server.template.ammunitionProjectile
-import io.guthix.oldscape.server.template.drawback
-import io.guthix.oldscape.server.template.sequences
+import io.guthix.oldscape.server.template.*
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.HitMark
 import io.guthix.oldscape.server.world.entity.Npc
@@ -54,14 +51,14 @@ fun Player.rangeAttack(npc: Npc, world: World) {
             }
             topInterface.equipment[PlayerManager.EquipmentType.AMMUNITION.slot] = ammunition.apply { quantity-- }
             animate(attackSequence)
-            spotAnimate(ammunition.drawback, ammunition.drawback.height)
+            spotAnimate(ammunition.drawback)
             val projectile = world.map.addProjectile(ammunition.ammunitionProjectile, pos, npc)
             EventBus.schedule(NpcAttackedEvent(npc, player, world))
             world.addTask(NormalTask) { // projectile task
                 val damage = calcHit(npc, maxRangeHit()) ?: 0
                 val oldNpcPos = npc.pos
-                wait(ticks = projectile.lifetimeClientTicks - 1)
-                npc.animate(SequenceTemplates[npc.sequences.defence])
+                wait(ticks = projectile.lifeTimeServerTicks - 1)
+                npc.animate(npc.defenceSequence)
                 val hmColor = if (damage == 0) HitMark.Color.BLUE else HitMark.Color.RED
                 npc.hit(hmColor, damage, 0)
                 if (Random.nextDouble(1.0) < 0.8) world.map.addObject(ammunition.copy(quantity = 1), oldNpcPos)

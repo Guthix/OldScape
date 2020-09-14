@@ -21,8 +21,8 @@ import io.guthix.oldscape.server.pathing.DestinationRectangleDirect
 import io.guthix.oldscape.server.pathing.simplePathSearch
 import io.guthix.oldscape.server.task.NormalTask
 import io.guthix.oldscape.server.template.SequenceTemplates
+import io.guthix.oldscape.server.template.attackSequence
 import io.guthix.oldscape.server.template.attackSpeed
-import io.guthix.oldscape.server.template.sequences
 import io.guthix.oldscape.server.world.entity.HitMark
 
 on(NpcAttackedEvent::class).then {
@@ -33,7 +33,7 @@ on(NpcAttackedEvent::class).then {
     npc.addTask(NormalTask) { // combat fighting task
         while (true) {
             wait { playerDestination.reached(npc.pos.x, npc.pos.y, npc.size) }
-            npc.animate(SequenceTemplates[npc.sequences.attack])
+            npc.animate(npc.attackSequence)
             val damage = npc.calcHit(player) ?: 0
             val hmColor = if (damage == 0) HitMark.Color.BLUE else HitMark.Color.RED
             player.hit(hmColor, damage, 0)

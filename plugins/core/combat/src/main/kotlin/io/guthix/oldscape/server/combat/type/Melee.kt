@@ -25,8 +25,7 @@ import io.guthix.oldscape.server.event.NpcAttackedEvent
 import io.guthix.oldscape.server.pathing.DestinationRectangleDirect
 import io.guthix.oldscape.server.pathing.breadthFirstSearch
 import io.guthix.oldscape.server.task.NormalTask
-import io.guthix.oldscape.server.template.SequenceTemplates
-import io.guthix.oldscape.server.template.sequences
+import io.guthix.oldscape.server.template.defenceSequence
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.HitMark
 import io.guthix.oldscape.server.world.entity.Npc
@@ -46,7 +45,7 @@ fun Player.meleeAttack(npc: Npc, world: World) {
             val damage = calcHit(npc, maxMeleeHit()) ?: 0
             val hmColor = if (damage == 0) HitMark.Color.BLUE else HitMark.Color.RED
             npc.hit(hmColor, damage, 0)
-            npc.animate(SequenceTemplates[npc.sequences.defence])
+            npc.animate(npc.defenceSequence)
             wait(ticks = attackSpeed)
         }
     }.onCancel {

@@ -169,6 +169,10 @@
     - 20558
   type: "BOW"
   attackSpeed: 4
+  attackRange: 7
+  weaponSequences:
+    attack: 426
+    defence: 424
 - ids:
     - 863
   type: "THROW_WEAPON"
