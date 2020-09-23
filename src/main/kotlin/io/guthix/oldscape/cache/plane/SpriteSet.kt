@@ -134,11 +134,16 @@ public data class SpriteSet(
 
             // read pixels
             data.readerIndex(0)
-            val images = List(spriteCount) {
-                val subWidth = subWidths[it]
-                val subHeight = subHeights[it]
-                val offsetX = offsetsX[it]
-                val offsetY = offsetsY[it]
+            val images = mutableListOf<Sprite>()
+            for (i in 0 until spriteCount) {
+                val subWidth = subWidths[i]
+                val subHeight = subHeights[i]
+                val offsetX = offsetsX[i]
+                val offsetY = offsetsY[i]
+                if (subWidth == 0 || subHeight == 0) {
+                    data.skipBytes(1 + subHeight * subWidth * 2)
+                    continue
+                }
                 val image = Sprite(offsetX, offsetY, BufferedImage(subWidth, subHeight, BufferedImage.TYPE_INT_ARGB))
                 val indices = Array(subWidth) { IntArray(subHeight) }
                 val flags = data.readUnsignedByte().toInt()
@@ -160,14 +165,16 @@ public data class SpriteSet(
                         for (x in 0 until subWidth) {
                             for (y in 0 until subHeight) {
                                 val alpha = data.readUnsignedByte().toInt()
-                                image.setRGB(x, y, alpha shl 24 or palette[indices[x][y]])
+                                val color = palette[indices[x][y]]
+                                image.setRGB(x, y, alpha shl 24 or color)
                             }
                         }
                     } else { // read alpha horizontal first
                         for (y in 0 until subHeight) {
                             for (x in 0 until subWidth) {
                                 val alpha = data.readUnsignedByte().toInt()
-                                image.setRGB(x, y, alpha shl 24 or palette[indices[x][y]])
+                                val color = palette[indices[x][y]]
+                                image.setRGB(x, y, alpha shl 24 or color)
                             }
                         }
                     }
@@ -183,7 +190,7 @@ public data class SpriteSet(
                         }
                     }
                 }
-                image
+                images.add(image)
             }
             return SpriteSet(id, width, height, images)
         }
