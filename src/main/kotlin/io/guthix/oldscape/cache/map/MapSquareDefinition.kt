@@ -103,7 +103,7 @@ public class MapDefinition(
                                     break@loop
                                 }
                                 opcode <= 49 -> {
-                                    overlayIds[z][x][y] = data.readByte()
+                                    overlayIds[z][x][y] = (data.readByte() - 1).toByte()
                                     overlayPaths[z][x][y] = ((opcode - 2) shr 2).toShort()
                                     overlayRotations[z][x][y] = ((opcode - 2) and 0x3).toShort()
                                 }
@@ -120,9 +120,9 @@ public class MapDefinition(
         private fun calcZ0Height(baseX: Int, baseY: Int, x: Int, y: Int): Int {
             val xc = x + baseX + 932731
             val yc = y + baseY + 556238
-            var height = interpolateNoise(45365 + xc, yc + 91923, 4) - 128
-                    + (interpolateNoise(10294 + xc, 37821 + yc, 2) - 128 shr 1)
-                    + (interpolateNoise(xc, yc, 1) - 128 shr 2)
+            var height = interpolateNoise(45365 + xc, yc + 91923, 4) - 128 +
+                (interpolateNoise(10294 + xc, 37821 + yc, 2) - 128 shr 1) +
+                (interpolateNoise(xc, yc, 1) - 128 shr 2)
             height = (height * 0.3).toInt() + 35
             if (height < 10)  height = 10 else if (height > 60) height = 60
             return -height * 8
@@ -143,8 +143,8 @@ public class MapDefinition(
         }
 
         private fun smoothNoise2d(x: Int, y: Int): Int {
-            val corners = noise(x - 1, y - 1) + noise(x + 1, y - 1) + noise(x - 1, 1 + y)
-            + noise(x + 1, y + 1)
+            val corners = noise(x - 1, y - 1) + noise(x + 1, y - 1) + noise(x - 1, 1 + y) +
+                noise(x + 1, y + 1)
             val sides = noise(x - 1, y) + noise(1 + x, y) + noise(x, y - 1) + noise(x, 1 + y)
             val center = noise(x, y)
             return corners / 16 + sides / 8 + center / 4
