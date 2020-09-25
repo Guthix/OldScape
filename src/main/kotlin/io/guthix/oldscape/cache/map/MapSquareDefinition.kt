@@ -19,6 +19,7 @@ package io.guthix.oldscape.cache.map
 import io.guthix.buffer.readIncrSmallSmart
 import io.guthix.buffer.readUnsignedSmallSmart
 import io.netty.buffer.ByteBuf
+import kotlin.experimental.and
 import kotlin.math.cos
 
 public class MapSquareDefinition(
@@ -185,7 +186,9 @@ public data class MapLocDefinition(
                     val localY = positionHash and 0x3F
                     val localX = (positionHash shr 6) and 0x3F
                     var z = (positionHash shr 12) and 0x3
-                    if(renderRules[1][localX][localY] == MapDefinition.BRIDGE_TILE_MASK) z--
+                    if((renderRules[1][localX][localY] and MapDefinition.BRIDGE_TILE_MASK) ==
+                        MapDefinition.BRIDGE_TILE_MASK
+                    ) z--
                     if(z < 0) {
                         data.readByte()
                     } else {
