@@ -18,6 +18,7 @@
 package io.guthix.oldscape.server.template
 
 object SpotAnimTemplates : TemplateLoader<SpotAnimTemplate>() {
-    val SPLASH_85: SpotAnimTemplate get() = get(85)
     val SPLASH_H123_85: PhysicalSpotAnimTemplate get() = PhysicalSpotAnimTemplate(get(85), 123)
+    val WIND_STRIKE_CAST_H124_90: PhysicalSpotAnimTemplate get() = PhysicalSpotAnimTemplate(get(90), 124)
+    val WIND_STRIKE_HIT_H92_92: PhysicalSpotAnimTemplate get() = PhysicalSpotAnimTemplate(get(92), 92)
 }

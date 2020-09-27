@@ -15,8 +15,11 @@
  */
 package io.guthix.oldscape.server.combat
 
+import io.guthix.oldscape.server.combat.type.CombatSpell
+import io.guthix.oldscape.server.combat.type.magicAttack
 import io.guthix.oldscape.server.combat.type.meleeAttack
 import io.guthix.oldscape.server.combat.type.rangeAttack
+import io.guthix.oldscape.server.event.IfOnNpcEvent
 import io.guthix.oldscape.server.event.NpcClickEvent
 import io.guthix.oldscape.server.template.AttackType
 
@@ -28,3 +31,10 @@ on(NpcClickEvent::class).where { contextMenuEntry == "Attack" }.then {
         else -> player.meleeAttack(npc, world)
     }
 }
+
+CombatSpell.values().forEach { spell ->
+    on(IfOnNpcEvent::class)
+        .where { interfaceId == spell.interfaceId && interfaceSlotId == spell.interfaceSlotId }
+        .then { player.magicAttack(npc, world, spell) }
+}
+

@@ -20,4 +20,5 @@ package io.guthix.oldscape.server.template
 object SequenceTemplates : TemplateLoader<SequenceTemplate>() {
     val PUNCH_422: SequenceTemplate get() = get(422)
     val BLOCK_424: SequenceTemplate get() = get(424)
+    val SPELL_CAST_711: SequenceTemplate get() = get(711)
 }

@@ -50,9 +50,6 @@ object OldScape {
         val mapper = ObjectMapper(YAMLFactory()).registerKotlinModule()
         val config = mapper.readValue(javaClass.getResource("/Config.yaml"), ServerConfig::class.java)
 
-        EventBus.loadScripts()
-        GamePacketDecoder.loadIncPackets()
-
         val cacheDir = Path.of(javaClass.getResource("/cache").toURI())
         val store = Js5DiskStore.open(cacheDir).use {
             Js5HeapStore.open(it, appendVersions = false)
@@ -73,8 +70,11 @@ object OldScape {
         LocTemplates.load(LocationConfig.load(configArchive.readGroup(LocationConfig.id)), ::LocTemplate)
         NpcTemplates.load(NpcConfig.load(configArchive.readGroup(NpcConfig.id)), ::NpcTemplate)
         ObjTemplates.load(ObjectConfig.load(configArchive.readGroup(ObjectConfig.id)), ::ObjTemplate)
-        EventBus.execute(InitializeTemplateEvent)
         Huffman.load(BinariesArchive.load(binaryArchive).huffman)
+
+        EventBus.loadScripts()
+        EventBus.execute(InitializeTemplateEvent)
+        GamePacketDecoder.loadIncPackets()
 
         val mapSquareXteas = loadMapSquareXteaKeys(cacheDir.resolve("xteas.json"))
         val world = World()

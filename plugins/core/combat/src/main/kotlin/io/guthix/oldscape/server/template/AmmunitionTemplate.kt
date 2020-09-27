@@ -16,9 +16,10 @@
 package io.guthix.oldscape.server.template
 
 import io.guthix.oldscape.server.Property
+import io.guthix.oldscape.server.combat.ProjectileType
 import io.guthix.oldscape.server.world.entity.Obj
 
-val Obj.ammunitionType: AmmunitionTypeProjectile get() = ammunitionTemplate.type
+val Obj.ammunitionType: ProjectileType get() = ammunitionTemplate.type
 
 val Obj.ammunitionProjectile: ProjectileTemplate get() = ammunitionTemplate.projectile
 
@@ -34,7 +35,7 @@ internal val ObjTemplate.ammunition: AmmunitionTemplate? by Property { null }
 
 data class AmmunitionTemplate(
     override val ids: List<Int>,
-    val type: AmmunitionTypeProjectile,
+    val type: ProjectileType,
     val projectileId: Int,
     val drawBackSpotAnim: Int,
     val drawBackSpotAnimHeight: Int
@@ -50,21 +51,4 @@ data class AmmunitionTemplate(
             type.angle,
             type.steepness
         )
-}
-
-enum class AmmunitionTypeProjectile(
-    val startHeight: Int,
-    val endHeight: Int,
-    val speed: Int,
-    val speedDelay: Int,
-    val delay: Int,
-    val angle: Int,
-    val steepness: Int
-) {
-    ARROW(startHeight = 40, endHeight = 36, speed = 5, speedDelay = 5, delay = 41, angle = 15, steepness = 11),
-    BOLT(startHeight = 38, endHeight = 36, speed = 5, speedDelay = 5, delay = 41, angle = 5, steepness = 11),
-    JAVELIN(startHeight = 38, endHeight = 36, speed = 3, speedDelay = 2, delay = 42, angle = 1, steepness = 120),
-    THROWN(startHeight = 40, endHeight = 36, speed = 5, speedDelay = 5, delay = 32, angle = 15, steepness = 11),
-    CHINCHOMPA(startHeight = 40, endHeight = 36, speed = 5, speedDelay = 5, delay = 21, angle = 15, steepness = 11),
-    MAGIC(startHeight = 43, endHeight = 31, speed = 10, speedDelay = 5, delay = 51, angle = 16, steepness = 64)
 }

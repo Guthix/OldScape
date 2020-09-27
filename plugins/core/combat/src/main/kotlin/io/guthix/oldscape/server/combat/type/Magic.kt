@@ -33,12 +33,7 @@ import io.guthix.oldscape.server.world.entity.Player
 fun Player.magicAttack(
     npc: Npc,
     world: World,
-    castAnim: SequenceTemplate,
-    animHeight: Int,
-    animSound: Int,
-    spellAnim: PhysicalSpotAnimTemplate,
-    projTemplate: ProjectileTemplate,
-    maxHit: (Player, Npc) -> Int
+    spellTemplate: CombatSpell
 ) {
     val npcDestination = DestinationRange(npc, attackRange, world.map)
     path = breadthFirstSearch(pos, npcDestination, size, true, world.map)
@@ -48,13 +43,13 @@ fun Player.magicAttack(
     addTask(NormalTask) {
         main@ while (true) { // start player combat
             wait { npcDestination.reached(pos.x, pos.y, size) }
-            animate(castAnim)
-            spotAnimate(spellAnim, animHeight)
+            animate(spellTemplate.castAnim)
+            spotAnimate(spellTemplate.castSpotAnim)
             // TODO sound
-            val projectile = world.map.addProjectile(projTemplate, player.pos, npc)
+            val projectile = world.map.addProjectile(spellTemplate.projectile, player.pos, npc)
             EventBus.schedule(NpcAttackedEvent(npc, player, world))
             world.addTask(NormalTask) {
-                val damage = calcHit(npc, maxHit(player, npc))
+                val damage = calcHit(npc, spellTemplate.hit(world, player, npc))
                 if (damage == null) {
                     npc.spotAnimate(SpotAnimTemplates.SPLASH_H123_85, projectile.lifetimeClientTicks) // sound 227
                     // TODO sound
@@ -63,7 +58,7 @@ fun Player.magicAttack(
                     val hmColor = if (damage == 0) HitMark.Color.BLUE else HitMark.Color.RED
                     npc.hit(hmColor, damage, 0)
                     npc.animate(npc.defenceSequence)
-                    // TODO spot animation
+                    npc.spotAnimate(spellTemplate.impactSpotAnim)
                     // TODO sound
                 }
             }

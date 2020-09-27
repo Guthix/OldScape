@@ -1,5 +1,9 @@
 - id: 85
   name: "SPLASH"
-- id: 85
-  name: "SPLASH"
   height: 123
+- id: 90
+  name: "WIND STRIKE CAST"
+  height: 124
+- id: 92
+  name: "WIND STRIKE HIT"
+  height: 92

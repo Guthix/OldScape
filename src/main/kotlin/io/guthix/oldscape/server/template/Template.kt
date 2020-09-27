@@ -59,7 +59,6 @@ inline fun <reified T : Template, B : BaseTemplate> Script.loadTemplates(
     loader: TemplateLoader<B>,
     property: KProperty<T?>
 ) {
-    val logger = KotlinLogging.logger { }
     on(InitializeTemplateEvent::class).then {
         val templates: List<T> = readYaml(relativePath)
         templates.forEach { template ->
@@ -68,6 +67,7 @@ inline fun <reified T : Template, B : BaseTemplate> Script.loadTemplates(
                 baseTemplate.properties[property] = template
             }
         }
+
         logger.info { "Loaded ${templates.size} ${T::class.simpleName}s" }
     }
 }
