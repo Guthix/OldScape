@@ -20,11 +20,10 @@ import io.guthix.oldscape.server.PropertyHolder
 import io.guthix.oldscape.server.event.InitializeTemplateEvent
 import io.guthix.oldscape.server.plugin.Script
 import io.guthix.oldscape.server.readYaml
+import mu.KLogging
 import mu.KotlinLogging
 import kotlin.reflect.KClass
 import kotlin.reflect.KProperty
-
-private val logger = KotlinLogging.logger { }
 
 abstract class Template(open val ids: List<Int>)
 
@@ -39,7 +38,7 @@ class TemplateNotFoundException(id: Int, element: String) : Exception("$element 
     constructor(id: Int, clazz: KClass<*>) : this(id, "$clazz")
 }
 
-abstract class TemplateLoader<B : BaseTemplate> {
+abstract class TemplateLoader<B : BaseTemplate> : KLogging() {
     private lateinit var baseTemplates: Map<Int, B>
 
     operator fun get(index: Int): B = baseTemplates[index] ?: throw BaseTemplateNotFoundException(index)

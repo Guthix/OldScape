@@ -18,15 +18,15 @@ package io.guthix.oldscape.server.plugin
 import io.guthix.oldscape.server.event.Event
 import io.guthix.oldscape.server.event.EventBus
 import io.guthix.oldscape.server.event.EventHolder
+import mu.KLoggable
 import mu.KLogger
+import mu.KLogging
 import mu.KotlinLogging
 import kotlin.reflect.KClass
 import kotlin.script.experimental.annotations.KotlinScript
 
 @KotlinScript
-abstract class Script {
-    val logger: KLogger = KotlinLogging.logger { }
-
+abstract class Script : KLogging() {
     fun <E : Event> on(type: KClass<E>): ScriptFilter<E> = ScriptFilter(type)
 }
 
