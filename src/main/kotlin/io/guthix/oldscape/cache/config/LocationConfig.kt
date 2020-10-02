@@ -105,6 +105,7 @@ public data class LocationConfig(override val id: Int): NamedConfig(id) {
             }
         }
         anInt2088?.let {
+            data.writeOpcode(19)
             data.writeByte(it.toInt())
         }
         contouredGround?.let {
