@@ -23,6 +23,8 @@ import org.gradle.api.Project
 import java.io.PrintWriter
 import java.nio.file.Path
 
+private const val maxTemplatePerFile = 10000
+
 fun Project.writeNamedConfigTemplates(name: String, configs: Map<Int, NamedConfig>) {
     val sourceRoot = createSourceTree(this)
     sourceRoot.toFile().mkdirs()
@@ -30,18 +32,25 @@ fun Project.writeNamedConfigTemplates(name: String, configs: Map<Int, NamedConfi
 }
 
 private fun Path.printCodeFile(templateName: String, configs: Map<Int, NamedConfig>) {
-    val sourceFile = resolve("${templateName}s.kt").toFile()
-    sourceFile.createNewFile()
-    PrintWriter(sourceFile).use { pw ->
+    val baseFile = resolve("${templateName}s.kt").toFile()
+    baseFile.createNewFile()
+    PrintWriter(baseFile).use { pw ->
         pw.printFileHeader()
         pw.println()
-        pw.println("object ${templateName}s : TemplateLoader<$templateName>() {")
-        for ((id, config) in configs) {
-            val identifier = configNameToIdentifier(id, config.name)
-            if (identifier.contains("null", ignoreCase = true)) continue
-            pw.println("    val $identifier: $templateName get() = get(${config.id})")
-        }
-        pw.println("}")
-        pw.flush()
+        pw.println("object ${templateName}s : TemplateLoader<$templateName>() ")
     }
+    configs.values.chunked(maxTemplatePerFile).forEachIndexed { index, chunkedConfigs ->
+        val sourceFile = resolve("${templateName}${index}s.kt").toFile()
+        sourceFile.createNewFile()
+        PrintWriter(sourceFile).use { pw ->
+            pw.printFileHeader()
+            pw.println()
+            for (config in chunkedConfigs) {
+                val identifier = configNameToIdentifier(config.id, config.name)
+                pw.println("val ${templateName}s.$identifier: $templateName get() = get(${config.id})")
+            }
+            pw.flush()
+        }
+    }
+
 }

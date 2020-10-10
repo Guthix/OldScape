@@ -31,4 +31,5 @@ data class ObjTemplate(private val config: ObjectConfig) : BaseTemplate(config) 
     val isPlaceHolder: Boolean get() = config.isPlaceHolder
     val interfaceOperations: Array<String?> get() = config.iop
     val groundOperations: Array<String?> get() = config.groundActions
+    val param: MutableMap<Int, Any> get() = config.params ?: throw TemplateNotFoundException(id, ::param)
 }
