@@ -67,7 +67,7 @@ class TemplateGenerator : Plugin<Project> {
                 }
             }
         }
-        val classesTask = target.tasks.getByName("classes")
+        val classesTask = target.tasks.getByName("compileKotlin")
         classesTask.dependsOn(templateGenTask)
     }
 
