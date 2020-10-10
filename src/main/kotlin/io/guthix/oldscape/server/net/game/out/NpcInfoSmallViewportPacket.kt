@@ -163,7 +163,8 @@ class NpcInfoSmallViewportPacket(
         }
 
         val spotAnimation: NpcUpdateType = NpcUpdateType(4, 0x2) { npc ->
-            //TODO
+            writeShortAddLE(npc.spotAnimation?.id ?: 65535)
+            writeIntME(((npc.spotAnimation?.height ?: 0) shl 16) or (npc.spotAnimation?.delay ?: 0))
         }
 
         val shout: NpcUpdateType = NpcUpdateType(4, 0x40) { npc ->

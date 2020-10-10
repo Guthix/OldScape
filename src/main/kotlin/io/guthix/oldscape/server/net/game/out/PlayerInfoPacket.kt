@@ -320,9 +320,7 @@ class PlayerInfoPacket(
 
         val spotAnimation: PlayerUpdateType = PlayerUpdateType(1, 0x800) { player ->
             writeShortAdd(player.spotAnimation?.id ?: 65535)
-            writeIntLE((
-                (player.spotAnimation?.height ?: 0) shl 16) or (player.spotAnimation?.delay ?: 0)
-            )
+            writeIntLE(((player.spotAnimation?.height ?: 0) shl 16) or (player.spotAnimation?.delay ?: 0))
         }
 
         val sequence: PlayerUpdateType = PlayerUpdateType(2, 0x80) { player ->
