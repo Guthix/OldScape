@@ -15,15 +15,31 @@
  */
 package io.guthix.oldscape.server.combat.type
 
+import io.guthix.oldscape.cache.config.EnumConfig
 import io.guthix.oldscape.server.combat.ProjectileType
 import io.guthix.oldscape.server.template.*
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.Character
 import io.guthix.oldscape.server.world.entity.Player
 
+val ObjTemplate.spellBookKey: Int get() = param[336] as Int
+
+val ObjTemplate.spellRune1: ObjTemplate get() = ObjTemplates[param[365] as Int]
+
+val ObjTemplate.spellRune1Amount: Int get() = param[366] as Int
+
+val ObjTemplate.spellRune2: ObjTemplate get() = ObjTemplates[param[367] as Int]
+
+val ObjTemplate.spellRune2Amount: Int get() = param[368] as Int
+
+val ObjTemplate.spellRune3: ObjTemplate get() = ObjTemplates[param[369] as Int]
+
+val ObjTemplate.spellRune3Amount: Int get() = param[370] as Int
+
+val ObjTemplate.component: EnumConfig.Component get() = EnumConfig.Component.decode(param[596] as Int)
+
 enum class CombatSpell(
-    val interfaceId: Int,
-    val interfaceSlotId: Int,
+    private val obj: ObjTemplate,
     val castAnim: SequenceTemplate,
     val castSound: Int,
     val castSpotAnim: PhysicalSpotAnimTemplate,
@@ -32,13 +48,26 @@ enum class CombatSpell(
     val hit: (World, Player, Character) -> Int
 ) {
     WIND_STRIKE(
-        interfaceId = 198,
-        interfaceSlotId = 10,
+        obj = ObjTemplates.NULL_3273,
         castAnim = SequenceTemplates.SPELL_CAST_711,
         castSound = 220,
         castSpotAnim = SpotAnimTemplates.WIND_STRIKE_CAST_H124_90,
         impactSpotAnim = SpotAnimTemplates.WIND_STRIKE_HIT_H92_92,
         projectile = ProjectileType.MAGIC.createTemplate(91),
         hit = { world, player, target -> 2 }
-    )
+    );
+
+    val component: EnumConfig.Component get() = obj.component
+
+    val spellRune1: ObjTemplate get() = obj.spellRune1
+
+    val spellRune1Amount: Int get() = obj.spellRune1Amount
+
+    val spellRune2: ObjTemplate get() = obj.spellRune2
+
+    val spellRune2Amount: Int get() = obj.spellRune2Amount
+
+    val spellRune3: ObjTemplate get() = obj.spellRune3
+
+    val spellRune3Amount: Int get() = obj.spellRune3Amount
 }

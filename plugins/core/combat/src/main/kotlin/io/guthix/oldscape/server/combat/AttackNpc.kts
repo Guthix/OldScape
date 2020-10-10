@@ -34,7 +34,20 @@ on(NpcClickEvent::class).where { contextMenuEntry == "Attack" }.then {
 
 CombatSpell.values().forEach { spell ->
     on(IfOnNpcEvent::class)
-        .where { interfaceId == spell.interfaceId && interfaceSlotId == spell.interfaceSlotId }
-        .then { player.magicAttack(npc, world, spell) }
+        .where { interfaceId == spell.component.interfaceId && interfaceSlotId == spell.component.slot }.then {
+            if(player.topInterface.itemBag.remove(spell.spellRune1, spell.spellRune1Amount) == null) {
+                player.senGameMessage("You do not have enough ${spell.spellRune1.name}s to cast this spell.")
+                return@then
+            }
+            if(player.topInterface.itemBag.remove(spell.spellRune2, spell.spellRune2Amount) == null) {
+                player.senGameMessage("You do not have enough ${spell.spellRune1.name}s to cast this spell.")
+                return@then
+            }
+            if(player.topInterface.itemBag.remove(spell.spellRune3, spell.spellRune3Amount) == null) {
+                player.senGameMessage("You do not have enough ${spell.spellRune1.name}s to cast this spell.")
+                return@then
+            }
+            player.magicAttack(npc, world, spell)
+        }
 }
 
