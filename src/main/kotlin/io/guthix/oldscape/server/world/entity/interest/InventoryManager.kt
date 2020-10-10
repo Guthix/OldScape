@@ -65,17 +65,53 @@ class InventoryManager(
         }
     }
 
-    private fun addNextSlot(obj: Obj) {
-        set(objs.indexOfFirst { it == null }, obj)
-        objCount++
+    private fun addNextSlot(obj: Obj): Boolean {
+        val slot = objs.indexOfFirst { it == null }
+        return if(slot == -1) {
+            false
+        } else {
+            set(slot, obj)
+            objCount++
+            true
+        }
     }
 
     fun remove(slot: Int): Obj? {
-        val obj = objs[slot]
+        val obj = objs[slot] ?: return null
+        resetSlot(slot)
+        return obj
+    }
+
+    fun remove(objTemplate: ObjTemplate): Obj? {
+        val slot = objs.indexOfFirst { it?.template == objTemplate }
+        return if(slot == -1) null else remove(slot)
+    }
+
+    fun remove(slot: Int, amount: Int): Obj? {
+        val obj = objs[slot] ?: return null
+        return when {
+            obj.quantity < amount -> null
+            obj.quantity == amount -> {
+                resetSlot(slot)
+                obj
+            }
+            else -> {
+                obj.quantity -= amount
+                changes[slot] = obj
+                obj
+            }
+        }
+    }
+
+    fun remove(objTemplate: ObjTemplate, amount: Int): Obj? {
+        val slot = objs.indexOfFirst { it?.template == objTemplate }
+        return if(slot == -1) null else remove(slot, amount)
+    }
+
+    private fun resetSlot(slot: Int) {
         objs[slot] = null
         changes[slot] = null
         objCount--
-        return obj
     }
 
     operator fun get(slot: Int): Obj? = objs[slot]
@@ -83,7 +119,7 @@ class InventoryManager(
     operator fun set(slot: Int, obj: Obj) {
         require(slot in 0 until maxSize && objCount != maxSize)
         if (obj.quantity <= 0) {
-            remove(slot)
+            resetSlot(slot)
             return
         }
         objs[slot] = obj
