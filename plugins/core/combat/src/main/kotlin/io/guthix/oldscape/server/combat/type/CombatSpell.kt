@@ -51,8 +51,8 @@ enum class CombatSpell(
         obj = ObjTemplates.NULL_3273,
         castAnim = SequenceTemplates.SPELL_CAST_711,
         castSound = 220,
-        castSpotAnim = SpotAnimTemplates.WIND_STRIKE_CAST_H124_90,
-        impactSpotAnim = SpotAnimTemplates.WIND_STRIKE_HIT_H92_92,
+        castSpotAnim = SpotAnimTemplates.WIND_STRIKE_CAST_H92_90,
+        impactSpotAnim = SpotAnimTemplates.WIND_STRIKE_HIT_H124_92,
         projectile = ProjectileType.MAGIC.createTemplate(91),
         hit = { world, player, target -> 2 }
     );
