@@ -60,9 +60,10 @@ private fun Path.printCodeFile(
         }
         EnumConfig.Type.ENUM -> {
             val id = value as Int
-            enumEngineTemplates.find { it.id == id }?.name ?: throw IllegalStateException(
+            val configName = enumEngineTemplates.find { it.id == id }?.name ?: throw IllegalStateException(
                 "Could not find enum for id $id in enum $enumId."
             )
+            configNameToIdentifier(id, configName)
         }
         else -> "$value"
     }
@@ -110,9 +111,9 @@ private fun Path.printCodeFile(
                 writeDependentEnums(enum.valType, enum.keyValuePairs.values)
                 val keyType = getEnumType(extraConfig.id, enum.keyType, enum.keyValuePairs.keys.first())
                 val valueType = getEnumType(extraConfig.id, enum.valType, enum.keyValuePairs.values.first())
-
+                val identifier = configNameToIdentifier(extraConfig.id, extraConfig.name)
                 if (enum.keyType == EnumConfig.Type.ENUM || enum.valType == EnumConfig.Type.ENUM) {
-                    pw.println("    val ${extraConfig.name}: Map<$keyType, $valueType> get() = mapOf(")
+                    pw.println("    val $identifier: Map<$keyType, $valueType> get() = mapOf(")
                     enum.keyValuePairs.forEach { (key, value) ->
                         val curKeyName = getGeneratedName(extraConfig.id, enum.keyType, key)
                         val curValueName = getGeneratedName(extraConfig.id, enum.valType, value)
@@ -120,7 +121,7 @@ private fun Path.printCodeFile(
                     }
                     pw.println("    )")
                 } else {
-                    pw.println("    val ${extraConfig.name}: Map<$keyType, $valueType> get() = " +
+                    pw.println("    val $identifier: Map<$keyType, $valueType> get() = " +
                         "get(${extraConfig.id}) as Map<$keyType, $valueType>"
                     )
                 }
