@@ -1,6 +1,6 @@
 - id: 422
-  name: "PUNCH"
+  name: "Punch"
 - id: 424
-  name: "BLOCK"
+  name: "Block"
 - id: 711
-  name: "SPELL CAST"
+  name: "Spell Cast"

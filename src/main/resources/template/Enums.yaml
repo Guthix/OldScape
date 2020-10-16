@@ -1,18 +1,18 @@
 - id: 1129
-  name: "GAMEFRAME_FIXED"
+  name: "Gameframe Fixed"
 - id: 1130
-  name: "GAMEFRAME_RESIZABLE_BOX"
+  name: "Gameframe Resizable Box"
 - id: 1131
-  name: "GAMEFRAME_RESIZABLE_LINE"
+  name: "Gameframe Resizable Line"
 - id: 1132
-  name: "GAMEFRAME_BLACK_SCREEN"
+  name: "Gameframe Resizable Blackscreen"
 - id: 1981
-  name: "SPELLBOOK"
+  name: "Spellbook"
 - id: 1982
-  name: "NORMAL_SPELLBOOK"
+  name: "Normal Spellbook"
 - id: 1983
-  name: "ANCIENT_SPELLBOOK"
+  name: "Ancient Spellbook"
 - id: 1984
-  name: "LUNAR_SPELLBOOK"
+  name: "Lunar Spellbook"
 - id: 1985
-  name: "ARCEUUS_SPELLBOOK"
+  name: "Archeuus Spellbook"

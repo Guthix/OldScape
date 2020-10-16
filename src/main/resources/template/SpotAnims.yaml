@@ -1,9 +1,9 @@
 - id: 85
-  name: "SPLASH"
+  name: "Splash"
   height: 123
 - id: 90
-  name: "WIND STRIKE CAST"
+  name: "Wind Strike Cast"
   height: 92
 - id: 92
-  name: "WIND STRIKE HIT"
+  name: "Wind Strike Hit"
   height: 124

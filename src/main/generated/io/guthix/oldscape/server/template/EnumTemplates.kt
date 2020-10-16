@@ -19,18 +19,18 @@ package io.guthix.oldscape.server.template
 import io.guthix.oldscape.cache.config.EnumConfig
 
 object EnumTemplates : TemplateLoader<EnumTemplate<Any, Any>>() {
-    val GAMEFRAME_FIXED: Map<EnumConfig.Component, EnumConfig.Component> get() = get(1129) as Map<EnumConfig.Component, EnumConfig.Component>
-    val GAMEFRAME_RESIZABLE_BOX: Map<EnumConfig.Component, EnumConfig.Component> get() = get(1130) as Map<EnumConfig.Component, EnumConfig.Component>
-    val GAMEFRAME_RESIZABLE_LINE: Map<EnumConfig.Component, EnumConfig.Component> get() = get(1131) as Map<EnumConfig.Component, EnumConfig.Component>
-    val GAMEFRAME_BLACK_SCREEN: Map<EnumConfig.Component, EnumConfig.Component> get() = get(1132) as Map<EnumConfig.Component, EnumConfig.Component>
-    val NORMAL_SPELLBOOK: Map<Int, Int> get() = get(1982) as Map<Int, Int>
-    val ANCIENT_SPELLBOOK: Map<Int, Int> get() = get(1983) as Map<Int, Int>
-    val LUNAR_SPELLBOOK: Map<Int, Int> get() = get(1984) as Map<Int, Int>
-    val ARCEUUS_SPELLBOOK: Map<Int, Int> get() = get(1985) as Map<Int, Int>
-    val SPELLBOOK: Map<Int, Map<Int, Int>> get() = mapOf(
-        0 to NORMAL_SPELLBOOK,
-        1 to ANCIENT_SPELLBOOK,
-        2 to LUNAR_SPELLBOOK,
-        3 to ARCEUUS_SPELLBOOK,
+    val GAMEFRAME_FIXED_1129: Map<EnumConfig.Component, EnumConfig.Component> get() = get(1129) as Map<EnumConfig.Component, EnumConfig.Component>
+    val GAMEFRAME_RESIZABLE_BOX_1130: Map<EnumConfig.Component, EnumConfig.Component> get() = get(1130) as Map<EnumConfig.Component, EnumConfig.Component>
+    val GAMEFRAME_RESIZABLE_LINE_1131: Map<EnumConfig.Component, EnumConfig.Component> get() = get(1131) as Map<EnumConfig.Component, EnumConfig.Component>
+    val GAMEFRAME_RESIZABLE_BLACKSCREEN_1132: Map<EnumConfig.Component, EnumConfig.Component> get() = get(1132) as Map<EnumConfig.Component, EnumConfig.Component>
+    val NORMAL_SPELLBOOK_1982: Map<Int, Int> get() = get(1982) as Map<Int, Int>
+    val ANCIENT_SPELLBOOK_1983: Map<Int, Int> get() = get(1983) as Map<Int, Int>
+    val LUNAR_SPELLBOOK_1984: Map<Int, Int> get() = get(1984) as Map<Int, Int>
+    val ARCHEUUS_SPELLBOOK_1985: Map<Int, Int> get() = get(1985) as Map<Int, Int>
+    val SPELLBOOK_1981: Map<Int, Map<Int, Int>> get() = mapOf(
+        0 to NORMAL_SPELLBOOK_1982,
+        1 to ANCIENT_SPELLBOOK_1983,
+        2 to LUNAR_SPELLBOOK_1984,
+        3 to ARCHEUUS_SPELLBOOK_1985,
     )
 }
