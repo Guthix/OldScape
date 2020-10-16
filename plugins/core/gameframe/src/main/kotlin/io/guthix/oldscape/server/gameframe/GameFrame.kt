@@ -20,10 +20,10 @@ import io.guthix.oldscape.server.template.EnumTemplates
 import io.guthix.oldscape.server.world.entity.Player
 
 enum class GameFrame(val interfaceId: Int, val enum: Map<EnumConfig.Component, EnumConfig.Component>) {
-    FIXED(interfaceId = 548, enum = EnumTemplates.GAMEFRAME_FIXED),
-    RESIZABLE_BOX(interfaceId = 161, enum = EnumTemplates.GAMEFRAME_RESIZABLE_BOX),
-    RESIZABLE_LINE(interfaceId = 164, enum = EnumTemplates.GAMEFRAME_RESIZABLE_LINE),
-    BLACK_SCREEN(interfaceId = 165, enum = EnumTemplates.GAMEFRAME_BLACK_SCREEN);
+    FIXED(interfaceId = 548, enum = EnumTemplates.GAMEFRAME_FIXED_1129),
+    RESIZABLE_BOX(interfaceId = 161, enum = EnumTemplates.GAMEFRAME_RESIZABLE_BOX_1130),
+    RESIZABLE_LINE(interfaceId = 164, enum = EnumTemplates.GAMEFRAME_RESIZABLE_LINE_1131),
+    BLACK_SCREEN(interfaceId = 165, enum = EnumTemplates.GAMEFRAME_RESIZABLE_BLACKSCREEN_1132);
 
     companion object {
         fun findByInterfaceId(id: Int): GameFrame = values().first { it.interfaceId == id }

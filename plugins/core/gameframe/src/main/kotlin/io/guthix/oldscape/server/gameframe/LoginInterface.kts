@@ -16,6 +16,7 @@
 package io.guthix.oldscape.server.gameframe
 
 import io.guthix.oldscape.server.event.PlayerInitialized
+import io.guthix.oldscape.server.template.CS2Templates
 import io.guthix.oldscape.server.world.entity.intface.Interface
 
 on(PlayerInitialized::class).then {
@@ -42,6 +43,12 @@ on(PlayerInitialized::class).then {
     topInterface.openSubInterface(slot = 23, subId = 239, type = Interface.Type.CLIENTINTERFACE)
     topInterface.openSubInterface(slot = 17, subId = 7, type = Interface.Type.CLIENTINTERFACE)
     topInterface.openSubInterface(slot = 10, subId = 593, type = Interface.Type.CLIENTINTERFACE)
-    player.runClientScript(233, -1, 2100, 0, 1897, 330, -200, 5, 28238, 24772664) // cake
-    player.runClientScript(233, 8446, 1200, 0, 177, 1999, 0, 0, 38593, 24772665) // npc head
+    player.runClientScript(
+        CS2Templates.LOGIN_SCREEN_ANIMATION_INIT_233,
+        -1, 2100, 0, 1897, 330, -200, 5, 28238, 24772664
+    ) // cake
+    player.runClientScript(
+        CS2Templates.LOGIN_SCREEN_ANIMATION_INIT_233,
+        8446, 1200, 0, 177, 1999, 0, 0, 38593, 24772665
+    ) // npc head
 }

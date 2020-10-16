@@ -64,7 +64,8 @@ class TemplateGenerator : Plugin<Project> {
                     target.writeConfigTemplates("Sequences", "SequenceTemplate")
                     target.writeConfigTemplates("Varbits", "VarbitTemplate")
                     target.writeSpotAnimTemplates("SpotAnims", "SpotAnimTemplate", "PhysicalSpotAnimTemplate")
-                    target.writeVarpTemplates("Varps", "VarpTemplate")
+                    target.writeIntTemplates("CS2s", "CS2Template")
+                    target.writeIntTemplates("Varps", "VarpTemplate")
                 }
             }
         }
@@ -143,7 +144,7 @@ fun PrintWriter.printFileHeader(vararg supressions: String) {
  */
     """.trimIndent())
     println(TemplateGenerator.warningHeader)
-    print("@file:Suppress(\"PropertyName\"")
+    print("@file:Suppress(\"PropertyName\", \"ObjectPropertyName\"")
     supressions.forEach { print(", \"$it\"") }
     println(")")
     println("package ${TemplateGenerator.packageName}")

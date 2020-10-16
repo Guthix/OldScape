@@ -20,7 +20,7 @@ import org.gradle.api.Project
 import java.io.PrintWriter
 import java.nio.file.Path
 
-fun Project.writeVarpTemplates(
+fun Project.writeIntTemplates(
     fileName: String,
     templateName: String,
 ) {
