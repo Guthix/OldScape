@@ -83,7 +83,7 @@ class PlayerList(capacity: Int) : Iterable<Player> {
         val index = freeIndexes.pop()
         val priority = Random.nextInt(occupiedIndexes.size + 1)
         val player = Player(priority, req.ctx, req.username, req.clientSettings, PlayerManager(index),
-            NpcManager(), MapManager(), ContextMenuManager(), VarpManager(), StatManager(), EnergyManager()
+            NpcManager(), SceneManager(), ContextMenuManager(), VarpManager(), StatManager(), EnergyManager()
         )
         players[player.index] = player
         player.priority = priority

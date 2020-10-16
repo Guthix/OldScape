@@ -28,7 +28,7 @@ import io.guthix.oldscape.server.world.map.Zone
 import io.guthix.oldscape.server.world.map.dim.*
 import io.netty.channel.ChannelFuture
 
-class MapManager : InterestManager {
+class SceneManager : InterestManager {
     lateinit var middleZone: Zone
 
     val baseX: ZoneUnit get() = middleZone.x - RANGE

@@ -39,7 +39,7 @@ class Player(
     val clientSettings: ClientSettings,
     private val playerManager: PlayerManager,
     internal val npcManager: NpcManager, //TODO stop exposing
-    internal val mapManager: MapManager,
+    internal val sceneManager: SceneManager,
     private val contextMenuManager: ContextMenuManager,
     private val varpManager: VarpManager,
     val stats: StatManager,
@@ -134,8 +134,8 @@ class Player(
 
     fun initialize(world: World) {
         playerManager.initialize(world, this)
-        mapManager.initialize(world, this)
-        val xteas = mapManager.getInterestedXteas(world.map)
+        sceneManager.initialize(world, this)
+        val xteas = sceneManager.getInterestedXteas(world.map)
         ctx.write(InterestInitPacket(world.players, this, xteas, pos.x.inZones, pos.y.inZones))
         updateFlags.add(PlayerInfoPacket.appearance)
         updateFlags.add(PlayerInfoPacket.orientation)
@@ -155,7 +155,7 @@ class Player(
         futures.addAll(varpManager.synchronize(world, this))
         futures.addAll(stats.synchronize(world, this))
         futures.addAll(energyManager.synchronize(world, this))
-        futures.addAll(mapManager.synchronize(world, this))
+        futures.addAll(sceneManager.synchronize(world, this))
         futures.addAll(npcManager.synchronize(world, this))
         futures.addAll(playerManager.synchronize(world, this))
         ctx.flush()
@@ -169,7 +169,7 @@ class Player(
         varpManager.postProcess()
         stats.postProcess()
         energyManager.postProcess()
-        mapManager.postProcess()
+        sceneManager.postProcess()
         npcManager.postProcess()
         playerManager.postProcess()
     }
@@ -220,7 +220,7 @@ class Player(
     }
 
     fun setMapFlag(x: TileUnit, y: TileUnit) {
-        ctx.write(SetMapFlagPacket(x - mapManager.baseX.inTiles, y - mapManager.baseY.inTiles))
+        ctx.write(SetMapFlagPacket(x - sceneManager.baseX.inTiles, y - sceneManager.baseY.inTiles))
     }
 
     override fun addOrientationFlag(): Boolean = updateFlags.add(PlayerInfoPacket.orientation)
@@ -250,5 +250,5 @@ class Player(
         else -> 0
     }
 
-    fun clearMap(): Unit = mapManager.clear(this)
+    fun clearMap(): Unit = sceneManager.clear(this)
 }
