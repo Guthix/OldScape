@@ -29,6 +29,7 @@ import io.guthix.oldscape.cache.config.ObjectConfig
 import io.guthix.oldscape.server.template.imp.*
 import org.gradle.api.Plugin
 import org.gradle.api.Project
+import org.gradle.api.plugins.BasePlugin
 import org.gradle.api.plugins.JavaPlugin
 import org.gradle.api.tasks.SourceSetContainer
 import java.io.File
@@ -68,6 +69,7 @@ class TemplateGenerator : Plugin<Project> {
             }
         }
         val classesTask = target.tasks.getByName("compileKotlin")
+        templateGenTask.group = BasePlugin.BUILD_GROUP
         classesTask.dependsOn(templateGenTask)
     }
 
