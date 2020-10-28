@@ -15,10 +15,7 @@
  */
 package io.guthix.oldscape.server.net.game.inc
 
-import io.guthix.buffer.readUnsignedByteAdd
-import io.guthix.buffer.readUnsignedByteNeg
-import io.guthix.buffer.readUnsignedByteSub
-import io.guthix.buffer.readUnsignedShortAdd
+import io.guthix.buffer.*
 import io.guthix.oldscape.server.event.LocExamineEvent
 import io.guthix.oldscape.server.event.LocationClickEvent
 import io.guthix.oldscape.server.event.PlayerGameEvent
@@ -39,7 +36,7 @@ class Oploc1Packet : GamePacketDecoder(76, FixedSize(7)) {
         world: World
     ): PlayerGameEvent {
         val pressed = buf.readUnsignedByteSub().toInt() == 1
-        val x = buf.readUnsignedShortLE()
+        val x = buf.readUnsignedShortAddLE()
         val id = buf.readUnsignedShortLE()
         val y = buf.readUnsignedShortLE()
         return LocationClickEvent(x.tiles, y.tiles, id, pressed, player, world)
