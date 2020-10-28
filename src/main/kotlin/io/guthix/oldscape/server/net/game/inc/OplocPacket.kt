@@ -19,6 +19,7 @@ import io.guthix.buffer.readUnsignedByteAdd
 import io.guthix.buffer.readUnsignedByteNeg
 import io.guthix.buffer.readUnsignedByteSub
 import io.guthix.buffer.readUnsignedShortAdd
+import io.guthix.oldscape.server.event.LocExamineEvent
 import io.guthix.oldscape.server.event.LocationClickEvent
 import io.guthix.oldscape.server.event.PlayerGameEvent
 import io.guthix.oldscape.server.net.game.FixedSize
@@ -106,5 +107,18 @@ class Oploc5Packet : GamePacketDecoder(67, FixedSize(7)) {
         val pressed = buf.readUnsignedByte().toInt() == 1
         val y = buf.readUnsignedShort()
         return LocationClickEvent(x.tiles, y.tiles, id, pressed, player, world)
+    }
+}
+
+class Oploc6Packet : GamePacketDecoder(77, FixedSize(2)) {
+    override fun decode(
+        buf: ByteBuf,
+        size: Int,
+        ctx: ChannelHandlerContext,
+        player: Player,
+        world: World
+    ): PlayerGameEvent {
+        val id = buf.readUnsignedShortAdd()
+        return LocExamineEvent(id, player, world)
     }
 }
