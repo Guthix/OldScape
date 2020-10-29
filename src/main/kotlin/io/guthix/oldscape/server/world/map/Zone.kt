@@ -58,7 +58,7 @@ class Zone(
 
     fun addObject(tile: Tile, obj: Obj) {
         groundObjects.getOrPut(tile, { mutableMapOf() }).getOrPut(obj.id, { mutableListOf() }).add(obj)
-        players.forEach { player -> player.sceneManager.addObject(tile, obj) }
+        players.forEach { player -> player.scene.addObject(tile, obj) }
     }
 
     fun removeObject(tile: Tile, id: Int): Obj {
@@ -71,22 +71,22 @@ class Zone(
         val obj = objList.removeFirst()
         if (objIdMap.isEmpty()) groundObjects.remove(tile)
         if (objList.isEmpty()) groundObjects[tile]?.remove(id)
-        players.forEach { player -> player.sceneManager.removeObject(tile, obj) }
+        players.forEach { player -> player.scene.removeObject(tile, obj) }
         return obj
     }
 
     fun addDynamicLoc(loc: Loc) {
         staticLocations[loc.mapKey] = loc
-        players.forEach { player -> player.sceneManager.addDynamicLoc(loc) }
+        players.forEach { player -> player.scene.addDynamicLoc(loc) }
     }
 
     fun removeDynamicLoc(loc: Loc) {
         staticLocations.remove(loc.mapKey)
-        players.forEach { player -> player.sceneManager.removeDynamicLoc(loc) }
+        players.forEach { player -> player.scene.removeDynamicLoc(loc) }
     }
 
     fun addProjectile(proj: Projectile) {
-        players.forEach { player -> player.sceneManager.addProjectile(proj) }
+        players.forEach { player -> player.scene.addProjectile(proj) }
 
     }
 

@@ -30,6 +30,7 @@ import io.netty.channel.ChannelHandlerContext
 
 class NpcInfoSmallViewportPacket(
     private val player: Player,
+    private val localNpcs: MutableList<Npc>,
     private val npcs: NpcList
 ) : OutGameEvent, CharacterInfoPacket() {
     override val opcode: Int = 62
@@ -42,14 +43,14 @@ class NpcInfoSmallViewportPacket(
         localNpcUpdate(bitBuf)
         externalNpcUpdate(bitBuf)
         val byteBuf = bitBuf.toByteMode()
-        player.npcManager.localNpcs.filter { it.updateFlags.isNotEmpty() }.forEach { updateLocalNpcVisual(it, byteBuf) }
+        localNpcs.filter { it.updateFlags.isNotEmpty() }.forEach { updateLocalNpcVisual(it, byteBuf) }
         return buf
     }
 
     fun localNpcUpdate(buf: BitBuf): BitBuf {
-        buf.writeBits(value = player.npcManager.localNpcs.size, amount = 8)
+        buf.writeBits(value = localNpcs.size, amount = 8)
         val removals = mutableListOf<Npc>()
-        for (npc in player.npcManager.localNpcs) {
+        for (npc in localNpcs) {
             when {
                 npc.movementType == MovementInterestUpdate.WALK -> {
                     buf.writeBoolean(true)
@@ -77,11 +78,11 @@ class NpcInfoSmallViewportPacket(
                 else -> buf.writeBoolean(false)
             }
         }
-        player.npcManager.localNpcs.removeAll(removals) //TODO make this more efficient
+        localNpcs.removeAll(removals) //TODO make this more efficient
         return buf
     }
 
-    private fun needsAdd(npc: Npc) = player.pos.isInterestedIn(npc.pos) && !player.npcManager.localNpcs.contains(npc)
+    private fun needsAdd(npc: Npc) = player.pos.isInterestedIn(npc.pos) && !localNpcs.contains(npc)
 
     fun getRespectiveLocation(npcTile: TileUnit, playerTile: TileUnit): TileUnit {
         var loc = npcTile - playerTile
@@ -104,11 +105,11 @@ class NpcInfoSmallViewportPacket(
                 buf.writeBits(value = getRespectiveLocation(npc.pos.x, player.pos.x).value, amount = 5)
                 buf.writeBits(value = npc.id, amount = 14)
 
-                player.npcManager.localNpcs.add(npc)
+                localNpcs.add(npc)
                 npcsAdded++
             }
         }
-        if (player.npcManager.localNpcs.any { it.updateFlags.isNotEmpty() }) {
+        if (localNpcs.any { it.updateFlags.isNotEmpty() }) {
             buf.writeBits(value = 32767, amount = 15)
         }
         return buf

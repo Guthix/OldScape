@@ -26,7 +26,7 @@ import io.guthix.oldscape.server.world.map.dim.tiles
 import io.netty.channel.ChannelFuture
 import kotlin.reflect.KProperty
 
-class PlayerManager(val index: Int) : InterestManager {
+class PlayerManager(val index: Int) {
     var localPlayerCount: Int = 0
 
     val localPlayers: Array<Player?> = arrayOfNulls(World.MAX_PLAYERS)
@@ -41,7 +41,7 @@ class PlayerManager(val index: Int) : InterestManager {
 
     val skipFlags: ByteArray = ByteArray(World.MAX_PLAYERS)
 
-    override fun initialize(world: World, player: Player) {
+    internal fun initialize(world: World, player: Player) {
         localPlayers[index] = player
         localPlayerIndexes[localPlayerCount++] = index
         for (playerIndex in 1 until World.MAX_PLAYERS) {
@@ -53,11 +53,9 @@ class PlayerManager(val index: Int) : InterestManager {
         }
     }
 
-    override fun synchronize(world: World, player: Player): List<ChannelFuture> = listOf(
+    internal fun synchronize(world: World, player: Player): List<ChannelFuture> = listOf(
         player.ctx.write(PlayerInfoPacket(world.players, this, player))
     )
-
-    override fun postProcess() {}
 
     enum class EquipmentType(val slot: Int) {
         HEAD(0), CAPE(1), NECK(2), ONE_HAND_WEAPON(3), TWO_HAND_WEAPON(3), BODY(4),

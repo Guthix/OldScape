@@ -21,7 +21,7 @@ import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.Player
 import io.netty.channel.ChannelFuture
 
-class EnergyManager : InterestManager {
+class EnergyManager {
     private var weightChanged = false
 
     var weight: Int = 50
@@ -38,19 +38,19 @@ class EnergyManager : InterestManager {
             field = value
         }
 
-    override fun initialize(world: World, player: Player) {
+    internal fun initialize(player: Player) {
         player.ctx.write(UpdateRunweightPacket(weight))
         player.ctx.write(UpdateRunenergyPacket(energy))
     }
 
-    override fun synchronize(world: World, player: Player): List<ChannelFuture> {
+    internal fun synchronize(player: Player): List<ChannelFuture> {
         val futures = mutableListOf<ChannelFuture>()
         if (weightChanged) futures.add(player.ctx.write(UpdateRunweightPacket(weight)))
         if (energyChanged) futures.add(player.ctx.write(UpdateRunenergyPacket(energy)))
         return futures
     }
 
-    override fun postProcess() {
+    internal fun postProcess() {
         weightChanged = false
         energyChanged = false
     }

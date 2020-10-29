@@ -75,7 +75,7 @@ class Stat(val id: Int, status: Int, xp: Int, private val changes: MutableList<S
     }
 }
 
-class StatManager : InterestManager {
+class StatManager {
     internal val changes: MutableList<Stat> = mutableListOf()
 
     val attack: Stat = Stat(id = 0, status = 99, xp = 13_034_431, changes)
@@ -102,11 +102,11 @@ class StatManager : InterestManager {
     val hunter: Stat = Stat(id = 21, status = 99, xp = 13_034_431, changes)
     val construction: Stat = Stat(id = 22, status = 99, xp = 13_034_431, changes)
 
-    override fun initialize(world: World, player: Player) {}
+    internal fun initialize(world: World, player: Player) {}
 
-    override fun synchronize(world: World, player: Player): List<ChannelFuture> = changes.map { stat ->
+    internal fun synchronize(world: World, player: Player): List<ChannelFuture> = changes.map { stat ->
         player.ctx.write(UpdateStatPacket(stat.id, stat.xp, stat.status))
     }
 
-    override fun postProcess(): Unit = changes.clear()
+    internal fun postProcess(): Unit = changes.clear()
 }

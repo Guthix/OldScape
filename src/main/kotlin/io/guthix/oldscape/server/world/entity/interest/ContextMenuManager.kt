@@ -20,20 +20,20 @@ import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.Player
 import io.netty.channel.ChannelFuture
 
-class ContextMenuManager : InterestManager {
+class ContextMenuManager {
     var contextMenu: Array<String> = arrayOf("Follow", "Trade with", "Report")
 
     var changes: MutableMap<Int, String> = mutableMapOf()
 
-    override fun initialize(world: World, player: Player) {
+    internal fun initialize(player: Player) {
         contextMenu.forEachIndexed { i, text ->
             player.ctx.write(SetPlayerOpPacket(false, i + 1, text))
         }
     }
 
-    override fun synchronize(world: World, player: Player): List<ChannelFuture> = changes.map { (slot, text) ->
+    internal fun synchronize(player: Player): List<ChannelFuture> = changes.map { (slot, text) ->
         player.ctx.write(SetPlayerOpPacket(false, slot + 1, text))
     }
 
-    override fun postProcess(): Unit = changes.clear()
+    internal fun postProcess(): Unit = changes.clear()
 }

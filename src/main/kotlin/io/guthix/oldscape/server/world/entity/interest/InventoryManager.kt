@@ -37,7 +37,7 @@ class InventoryManager(
     private val interfaceId: Int = -1,
     private val interfaceSlotId: Int = 0,
     private val objs: Array<Obj?> = arrayOfNulls(inventory.capacity)
-) : InterestManager {
+) {
     private val maxSize get() = objs.size
 
     private var objCount = objs.count { it != null }
@@ -144,9 +144,9 @@ class InventoryManager(
         player.ctx.write(UpdateInvClearPacket(interfaceId, interfaceSlotId))
     }
 
-    override fun initialize(world: World, player: Player): Unit = objs.forEachIndexed { i, obj -> changes[i] = obj }
+    internal fun initialize(): Unit = objs.forEachIndexed { i, obj -> changes[i] = obj }
 
-    override fun synchronize(world: World, player: Player): List<ChannelFuture> {
+    internal fun synchronize(player: Player): List<ChannelFuture> {
         val futures = mutableListOf<ChannelFuture>()
         if (changes.isNotEmpty()) {
             if (changes.size == objCount) { // TODO use better heuristic
@@ -158,10 +158,9 @@ class InventoryManager(
                     UpdateInvPartialPacket(interfaceId, interfaceSlotId, inventory.id, changes.toMap())
                 ))
             }
-            changes.clear()
         }
         return futures
     }
 
-    override fun postProcess() {}
+    internal fun postProcess() = changes.clear()
 }

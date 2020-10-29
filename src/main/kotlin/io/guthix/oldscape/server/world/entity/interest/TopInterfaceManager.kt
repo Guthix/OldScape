@@ -32,24 +32,24 @@ class TopInterfaceManager(
     var modalOpen: Boolean = false,
     var modalSlot: Int? = null,
     children: MutableMap<Int, IfComponent> = mutableMapOf()
-) : Interface(ctx, id, Type.TOPLEVELINTERFACE, children), InterestManager {
+) : Interface(ctx, id, Type.TOPLEVELINTERFACE, children) {
     val itemBag: InventoryManager = InventoryManager(InventoryTemplates.ITEM_BAG_93, INVENTORY_IFID, 0)
 
     val equipment: InventoryManager = InventoryManager(InventoryTemplates.EQUIPMENT_94)
 
-    override fun initialize(world: World, player: Player) {
-        itemBag.initialize(world, player)
-        equipment.initialize(world, player)
+    internal fun initialize() {
+        itemBag.initialize()
+        equipment.initialize()
     }
 
-    override fun synchronize(world: World, player: Player): List<ChannelFuture> {
+    internal fun synchronize(player: Player): List<ChannelFuture> {
         val futures = mutableListOf<ChannelFuture>()
-        futures.addAll(itemBag.synchronize(world, player))
-        futures.addAll(equipment.synchronize(world, player))
+        futures.addAll(itemBag.synchronize(player))
+        futures.addAll(equipment.synchronize(player))
         return futures
     }
 
-    override fun postProcess() {
+    internal fun postProcess() {
         itemBag.postProcess()
         equipment.postProcess()
     }

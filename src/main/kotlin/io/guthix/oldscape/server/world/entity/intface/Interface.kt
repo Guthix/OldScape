@@ -22,9 +22,9 @@ import io.netty.channel.ChannelHandlerContext
 
 abstract class Interface(
     protected val ctx: ChannelHandlerContext,
-    val id: Int,
+    var id: Int,
     val type: Type,
-    val children: MutableMap<Int, IfComponent> = mutableMapOf()
+    var children: MutableMap<Int, IfComponent> = mutableMapOf()
 ) {
     fun openSubInterface(slot: Int, subId: Int, type: Type): SubInterface {
         val subInterface = SubInterface(ctx, subId, type)

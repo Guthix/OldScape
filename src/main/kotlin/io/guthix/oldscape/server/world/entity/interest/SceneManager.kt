@@ -28,7 +28,7 @@ import io.guthix.oldscape.server.world.map.Zone
 import io.guthix.oldscape.server.world.map.dim.*
 import io.netty.channel.ChannelFuture
 
-class SceneManager : InterestManager {
+class SceneManager {
     lateinit var middleZone: Zone
 
     val baseX: ZoneUnit get() = middleZone.x - RANGE
@@ -164,7 +164,7 @@ class SceneManager : InterestManager {
         }
     }
 
-    override fun initialize(world: World, player: Player) {
+    internal fun initialize(world: World, player: Player) {
         middleZone = world.map.getZone(player.pos) ?: error("Could not find $player on the map.")
         ((middleZone.x - RANGE)..(middleZone.x + RANGE)).forEachIndexed { i, zoneX ->
             ((middleZone.y - RANGE)..(middleZone.y + RANGE)).forEachIndexed { j, zoneY ->
@@ -178,7 +178,7 @@ class SceneManager : InterestManager {
         }
     }
 
-    override fun synchronize(world: World, player: Player): List<ChannelFuture> {
+    internal fun synchronize(world: World, player: Player): List<ChannelFuture> {
         val futures = mutableListOf<ChannelFuture>()
         val pZone = world.map.getZone(player.pos) ?: error("Could not find $player on the map.")
         checkReload(pZone, world.map, player)
@@ -197,7 +197,7 @@ class SceneManager : InterestManager {
         return futures
     }
 
-    override fun postProcess(): Unit = changes.forEach { it.forEach(MutableList<ZoneOutGameEvent>::clear) }
+    internal fun postProcess(): Unit = changes.forEach { it.forEach(MutableList<ZoneOutGameEvent>::clear) }
 
     companion object {
         val SIZE: ZoneUnit = 13.zones

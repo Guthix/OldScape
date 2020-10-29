@@ -39,12 +39,13 @@ class Player(
     val username: String,
     val clientSettings: ClientSettings,
     private val playerManager: PlayerManager,
-    internal val npcManager: NpcManager, //TODO stop exposing
-    internal val sceneManager: SceneManager,
+    private val npcManager: NpcManager,
+    private val sceneManager: SceneManager,
+    private val energyManager: EnergyManager,
     private val contextMenuManager: ContextMenuManager,
     private val varpManager: VarpManager,
-    val stats: StatManager,
-    private val energyManager: EnergyManager
+    private val statManager: StatManager,
+    private val interfaceManager: TopInterfaceManager,
 ) : Character(playerManager.index), Comparable<Player>, EventHolder {
     override val updateFlags = sortedSetOf<PlayerUpdateType>()
 
@@ -54,8 +55,11 @@ class Player(
 
     val contextMenu: Array<String> get() = contextMenuManager.contextMenu
 
-    var topInterface: TopInterfaceManager = TopInterfaceManager(ctx, id = 165)
-        private set
+    val topInterface: TopInterfaceManager get() = interfaceManager
+
+    internal val scene: SceneManager get() = sceneManager
+
+    val stats: StatManager get() = statManager
 
     var nameModifiers: Array<String> = arrayOf("", "", "")
 
@@ -141,21 +145,19 @@ class Player(
         updateFlags.add(PlayerInfoPacket.appearance)
         updateFlags.add(PlayerInfoPacket.orientation)
         updateFlags.add(PlayerInfoPacket.nameModifiers)
-        npcManager.initialize(world, this)
-        topInterface.initialize(world, this)
-        contextMenuManager.initialize(world, this)
-        varpManager.initialize(world, this)
-        stats.initialize(world, this)
-        energyManager.initialize(world, this)
+        topInterface.initialize()
+        contextMenuManager.initialize(this)
+        statManager.initialize(world, this)
+        energyManager.initialize(this)
     }
 
     fun synchronize(world: World): List<ChannelFuture> {
         val futures = mutableListOf<ChannelFuture>()
-        futures.addAll(topInterface.synchronize(world, this))
-        futures.addAll(contextMenuManager.synchronize(world, this))
-        futures.addAll(varpManager.synchronize(world, this))
-        futures.addAll(stats.synchronize(world, this))
-        futures.addAll(energyManager.synchronize(world, this))
+        futures.addAll(topInterface.synchronize(this))
+        futures.addAll(contextMenuManager.synchronize(this))
+        futures.addAll(varpManager.synchronize(this))
+        futures.addAll(statManager.synchronize(world, this))
+        futures.addAll(energyManager.synchronize(this))
         futures.addAll(sceneManager.synchronize(world, this))
         futures.addAll(npcManager.synchronize(world, this))
         futures.addAll(playerManager.synchronize(world, this))
@@ -168,11 +170,9 @@ class Player(
         topInterface.postProcess()
         contextMenuManager.postProcess()
         varpManager.postProcess()
-        stats.postProcess()
+        statManager.postProcess()
         energyManager.postProcess()
         sceneManager.postProcess()
-        npcManager.postProcess()
-        playerManager.postProcess()
     }
 
     fun openTopInterface(id: Int, modalSlot: Int? = null, moves: Map<Int, Int> = mutableMapOf()): TopInterfaceManager {
@@ -189,7 +189,9 @@ class Player(
                 }
             }
         }
-        topInterface = TopInterfaceManager(ctx, id, topInterface.modalOpen, modalSlot, movedChildren)
+        topInterface.id = id
+        topInterface.modalSlot = modalSlot
+        topInterface.children = movedChildren
         return topInterface
     }
 

@@ -23,7 +23,7 @@ import io.guthix.oldscape.server.world.entity.Player
 import io.netty.channel.ChannelFuture
 import kotlin.math.pow
 
-class VarpManager : InterestManager {
+class VarpManager {
     val varps: MutableMap<Int, Int> = mutableMapOf()
 
     private val changes = mutableMapOf<Int, Int>()
@@ -48,9 +48,7 @@ class VarpManager : InterestManager {
     @Suppress("INTEGER_OVERFLOW")
     private fun Int.clearBits(msb: Int, lsb: Int) = ((1 shl 4 * 8 - 1) - 1).setBits(msb, lsb) and this
 
-    override fun initialize(world: World, player: Player) {}
-
-    override fun synchronize(world: World, player: Player): List<ChannelFuture> = changes.map { (id, value) ->
+    internal fun synchronize(player: Player): List<ChannelFuture> = changes.map { (id, value) ->
         if (value <= Byte.MIN_VALUE || value >= Byte.MAX_VALUE) {
             player.ctx.write(VarpLargePacket(id, value))
         } else {
@@ -58,5 +56,5 @@ class VarpManager : InterestManager {
         }
     }
 
-    override fun postProcess(): Unit = changes.clear()
+    internal fun postProcess(): Unit = changes.clear()
 }
