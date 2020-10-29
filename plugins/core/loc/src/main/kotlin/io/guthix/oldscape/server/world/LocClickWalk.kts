@@ -17,7 +17,7 @@ package io.guthix.oldscape.server.world
 
 import io.guthix.oldscape.server.event.EventBus
 import io.guthix.oldscape.server.event.LocClickEvent
-import io.guthix.oldscape.server.event.LocationReachedEvent
+import io.guthix.oldscape.server.event.LocReachedEvent
 import io.guthix.oldscape.server.pathing.DestinationLocation
 import io.guthix.oldscape.server.pathing.breadthFirstSearch
 import io.guthix.oldscape.server.task.NormalTask
@@ -33,6 +33,6 @@ on(LocClickEvent::class).then {
     player.cancelTasks(NormalTask)
     player.addTask(NormalTask) {
         wait { destination.reached(player.pos.x, player.pos.y, player.size) }
-        EventBus.schedule(LocationReachedEvent(loc, player, world))
+        EventBus.schedule(LocReachedEvent(loc, player, world))
     }
 }

@@ -15,8 +15,8 @@
  */
 package io.guthix.oldscape.server.world
 
-import io.guthix.oldscape.server.event.LocationReachedEvent
+import io.guthix.oldscape.server.event.LocReachedEvent
 
-on(LocationReachedEvent::class).then {
+on(LocReachedEvent::class).then {
     player.turnTo(loc)
 }

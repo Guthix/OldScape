@@ -20,7 +20,7 @@ import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.Loc
 import io.guthix.oldscape.server.world.entity.Player
 
-data class LocationReachedEvent(
+data class LocReachedEvent(
     val loc: Loc,
     override val player: Player,
     override val world: World
