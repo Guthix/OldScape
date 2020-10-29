@@ -19,7 +19,7 @@ import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.Player
 import io.guthix.oldscape.server.world.map.dim.TileUnit
 
-data class LocationClickEvent(
+data class LocClickEvent(
     val x: TileUnit,
     val y: TileUnit,
     val id: Int,

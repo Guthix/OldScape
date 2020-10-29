@@ -16,14 +16,14 @@
 package io.guthix.oldscape.server.world
 
 import io.guthix.oldscape.server.event.EventBus
-import io.guthix.oldscape.server.event.LocationClickEvent
+import io.guthix.oldscape.server.event.LocClickEvent
 import io.guthix.oldscape.server.event.LocationReachedEvent
 import io.guthix.oldscape.server.pathing.DestinationLocation
 import io.guthix.oldscape.server.pathing.breadthFirstSearch
 import io.guthix.oldscape.server.task.NormalTask
 import io.guthix.oldscape.server.world.map.Tile
 
-on(LocationClickEvent::class).then {
+on(LocClickEvent::class).then {
     val loc = world.map.getLoc(id, player.pos.floor, x, y) ?: error(
         "Could not find location at ${Tile(player.pos.floor, x, y)}."
     )

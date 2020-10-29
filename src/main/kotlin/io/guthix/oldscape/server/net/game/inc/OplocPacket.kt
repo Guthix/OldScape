@@ -37,7 +37,7 @@ class Oploc1Packet : GamePacketDecoder(76, FixedSize(7)) {
         val x = buf.readUnsignedShortAddLE().tiles
         val id = buf.readUnsignedShortLE()
         val y = buf.readUnsignedShortLE().tiles
-        return LocationClickEvent(x, y, id, pressed, player, world)
+        return LocClickEvent(x, y, id, pressed, player, world)
     }
 }
 
@@ -54,7 +54,7 @@ class Oploc2Packet : GamePacketDecoder(36, FixedSize(7)) {
         val y = buf.readUnsignedShortLE().tiles
 
         val pressed = buf.readUnsignedByteNeg().toInt() == 1
-        return LocationClickEvent(x, y, id, pressed, player, world)
+        return LocClickEvent(x, y, id, pressed, player, world)
     }
 }
 
@@ -70,7 +70,7 @@ class Oploc3Packet : GamePacketDecoder(89, FixedSize(7)) {
         val y = buf.readUnsignedShortLE().tiles
         val pressed = buf.readUnsignedByteAdd().toInt() == 1
         val id = buf.readUnsignedShortAdd()
-        return LocationClickEvent(x, y, id, pressed, player, world)
+        return LocClickEvent(x, y, id, pressed, player, world)
     }
 }
 
@@ -86,7 +86,7 @@ class Oploc4Packet : GamePacketDecoder(81, FixedSize(7)) {
         val pressed = buf.readUnsignedByte().toInt() == 1
         val x = buf.readUnsignedShort().tiles
         val y = buf.readUnsignedShortLE().tiles
-        return LocationClickEvent(x, y, id, pressed, player, world)
+        return LocClickEvent(x, y, id, pressed, player, world)
     }
 }
 
@@ -102,7 +102,7 @@ class Oploc5Packet : GamePacketDecoder(67, FixedSize(7)) {
         val x = buf.readUnsignedShortLE().tiles
         val pressed = buf.readUnsignedByte().toInt() == 1
         val y = buf.readUnsignedShort().tiles
-        return LocationClickEvent(x, y, id, pressed, player, world)
+        return LocClickEvent(x, y, id, pressed, player, world)
     }
 }
 
