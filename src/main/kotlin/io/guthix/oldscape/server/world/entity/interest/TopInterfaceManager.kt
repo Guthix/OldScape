@@ -54,12 +54,12 @@ class TopInterfaceManager(
         equipment.postProcess()
     }
 
-    fun openModal(subId: Int, type: Type): SubInterface {
-        check(modalSlot != null) { "Can't open modal interface on top interface $id." }
+    fun openModal(id: Int, type: Type): SubInterface {
+        check(modalSlot != null) { "Can't open modal interface on top interface ${this.id}." }
         return modalSlot?.let {
-            val subInterface = SubInterface(ctx, subId, type)
+            val subInterface = SubInterface(ctx, id, type)
             modalOpen = true
-            ctx.write(IfOpensubPacket(id, it, subId, type.opcode))
+            ctx.write(IfOpensubPacket(this.id, it, id, type.opcode))
             subInterface
         }!!
     }
