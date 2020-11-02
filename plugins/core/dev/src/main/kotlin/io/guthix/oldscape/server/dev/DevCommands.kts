@@ -31,7 +31,7 @@ on(ClientCheatEvent::class).where { string == "drop" }.then {
 }
 
 on(ClientCheatEvent::class).where { string == "locadd" }.then {
-    world.map.addDynamicLoc(
+    world.map.addLoc(
         LocTemplates.DOOR_4,
         type = 0,
         orientation = 0,

@@ -75,14 +75,15 @@ class Zone(
         return obj
     }
 
-    fun addDynamicLoc(loc: Loc) {
-        staticLocations[loc.mapKey] = loc
-        players.forEach { player -> player.scene.addDynamicLoc(loc) }
+    fun addLoc(loc: Loc) {
+        dynamicLocations[loc.mapKey] = loc
+        players.forEach { player -> player.scene.addChangeLoc(loc) }
     }
 
-    fun removeDynamicLoc(loc: Loc) {
+    fun removeLoc(loc: Loc) {
         staticLocations.remove(loc.mapKey)
-        players.forEach { player -> player.scene.removeDynamicLoc(loc) }
+        collisions.deleteLoc(loc)
+        players.forEach { player -> player.scene.removeLoc(loc) }
     }
 
     fun addProjectile(proj: Projectile) {

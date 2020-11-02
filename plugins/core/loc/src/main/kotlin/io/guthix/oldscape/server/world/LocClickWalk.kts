@@ -36,3 +36,15 @@ on(LocClickEvent::class).then {
         EventBus.schedule(LocReachedEvent(loc, player, world))
     }
 }
+
+val trees = listOf(1278, 1276)
+
+trees.forEach {
+    on(LocClickEvent::class).where { id == it }.then {
+        println("we clicked")
+    }
+}
+
+on(LocReachedEvent::class).then {
+    world.map.removeLoc(loc)
+}

@@ -90,13 +90,13 @@ class WorldMap(val mapsquares: MutableMap<Int, Mapsquare>) {
 
     fun removeObject(id: Int, tile: Tile): Obj? = mapsquares[id(tile.x, tile.y)]?.removeObject(tile, id)
 
-    fun addDynamicLoc(template: LocTemplate, type: Int, orientation: Int, tile: Tile): Loc {
+    fun addLoc(template: LocTemplate, type: Int, orientation: Int, tile: Tile): Loc {
         val loc = Loc(template, type, tile, orientation)
-        mapsquares[id(loc.pos.x, loc.pos.y)]?.addDynamicLoc(loc)
+        mapsquares[id(loc.pos.x, loc.pos.y)]?.addLoc(loc)
         return loc
     }
 
-    fun removeDynamicLoc(loc: Loc): Unit? = mapsquares[id(loc.pos.x, loc.pos.y)]?.removeDynamicLoc(loc)
+    fun removeLoc(loc: Loc): Unit? = mapsquares[id(loc.pos.x, loc.pos.y)]?.removeLoc(loc)
 
     fun addProjectile(template: ProjectileTemplate, start: Tile, target: Character): Projectile {
         val projectile = Projectile(template, start, target)

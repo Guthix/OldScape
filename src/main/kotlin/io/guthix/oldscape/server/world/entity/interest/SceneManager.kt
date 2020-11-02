@@ -123,7 +123,7 @@ class SceneManager {
         )
     }
 
-    fun addDynamicLoc(loc: Loc) {
+    fun addChangeLoc(loc: Loc) {
         changes[(loc.pos.x.inZones - baseX).value][(loc.pos.y.inZones - baseY).value].add(
             LocAddChangePacket(
                 loc.id, loc.type, loc.orientation, loc.pos.x.relativeZone, loc.pos.y.relativeZone
@@ -131,7 +131,7 @@ class SceneManager {
         )
     }
 
-    fun removeDynamicLoc(loc: Loc) {
+    fun removeLoc(loc: Loc) {
         changes[(loc.pos.x.inZones - baseX).value][(loc.pos.y.inZones - baseY).value].add(
             LocDelPacket(loc.type, loc.orientation, loc.pos.x.relativeZone, loc.pos.y.relativeZone)
         )
