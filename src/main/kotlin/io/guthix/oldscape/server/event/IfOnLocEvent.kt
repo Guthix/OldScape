@@ -31,5 +31,5 @@ data class IfOnLocEvent(
     override val player: Player,
     override val world: World
 ) : PlayerGameEvent(player, world) {
-    val npc: Loc = world.map.getLoc(locId, player.pos.floor, x, y) ?: error("Could not find npc with id $locId.")
+    val npc: Loc = world.getLoc(locId, player.pos.floor, x, y) ?: error("Could not find npc with id $locId.")
 }

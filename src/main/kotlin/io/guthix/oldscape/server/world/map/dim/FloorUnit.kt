@@ -17,6 +17,8 @@ package io.guthix.oldscape.server.world.map.dim
 
 val Int.floors: FloorUnit get() = FloorUnit(this)
 
+infix fun FloorUnit.until(to: FloorUnit): FloorUnitRange = this..(to - 1.floors)
+
 inline class FloorUnit(val value: Int) : Comparable<FloorUnit> {
     operator fun plus(other: FloorUnit): FloorUnit = FloorUnit(value + other.value)
     operator fun minus(other: FloorUnit): FloorUnit = FloorUnit(value - other.value)

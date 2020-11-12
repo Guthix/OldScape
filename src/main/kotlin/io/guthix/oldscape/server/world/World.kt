@@ -15,6 +15,9 @@
  */
 package io.guthix.oldscape.server.world
 
+import io.guthix.oldscape.cache.map.MapDefinition
+import io.guthix.oldscape.cache.map.MapLocDefinition
+import io.guthix.oldscape.cache.map.MapSquareDefinition
 import io.guthix.oldscape.server.PropertyHolder
 import io.guthix.oldscape.server.event.*
 import io.guthix.oldscape.server.net.game.GameDecoder
@@ -25,21 +28,24 @@ import io.guthix.oldscape.server.plugin.EventHandler
 import io.guthix.oldscape.server.task.Task
 import io.guthix.oldscape.server.task.TaskHolder
 import io.guthix.oldscape.server.task.TaskType
-import io.guthix.oldscape.server.template.NpcTemplate
-import io.guthix.oldscape.server.world.entity.Npc
-import io.guthix.oldscape.server.world.entity.Player
-import io.guthix.oldscape.server.world.map.Tile
+import io.guthix.oldscape.server.template.*
+import io.guthix.oldscape.server.world.entity.*
+import io.guthix.oldscape.server.world.map.*
+import io.guthix.oldscape.server.world.map.dim.*
 import io.netty.util.concurrent.DefaultPromise
 import io.netty.util.concurrent.ImmediateEventExecutor
 import io.netty.util.concurrent.PromiseCombiner
+import mu.KLogging
+import java.lang.IllegalStateException
 import java.util.*
 import java.util.concurrent.ConcurrentLinkedQueue
 import java.util.concurrent.LinkedBlockingDeque
 import kotlin.reflect.KProperty
 
-class World : TimerTask(), TaskHolder, EventHolder, PropertyHolder {
-    val map: WorldMap = WorldMap(mutableMapOf())
-
+class World(
+    val map: Array<Array<Array<Zone?>>>,
+    val xteas: Map<Int, IntArray>
+) : TimerTask(), TaskHolder, EventHolder, PropertyHolder {
     override val properties: MutableMap<KProperty<*>, Any?> = mutableMapOf()
 
     override val events: LinkedBlockingDeque<EventHandler<Event>> = LinkedBlockingDeque()
@@ -137,9 +143,106 @@ class World : TimerTask(), TaskHolder, EventHolder, PropertyHolder {
         })
     }
 
-    companion object {
+    fun getCollision(tile: Tile): Int = getCollision(tile.floor, tile.x, tile.y)
+
+    fun getCollision(floor: FloorUnit, x: TileUnit, y: TileUnit): Int = getZone(floor, x, y)?.masks
+        ?.get(x.relativeZone.value)?.get(y.relativeZone.value) ?: Zone.MASK_TERRAIN_BLOCK
+
+    internal fun getZone(tile: Tile): Zone? = map[tile.floor.value][tile.x.inZones.value][tile.y.inZones.value]
+
+    internal fun getZone(floor: FloorUnit, x: TileUnit, y: TileUnit): Zone? =
+        map[floor.value][x.inZones.value][y.inZones.value]
+
+    internal fun getZone(floor: FloorUnit, x: ZoneUnit, y: ZoneUnit): Zone? = map[floor.value][x.value][y.value]
+
+    fun getLoc(id: Int, floor: FloorUnit, x: TileUnit, y: TileUnit): Loc? = getZone(floor, x, y)?.getLoc(
+        id, x.relativeZone, y.relativeZone
+    )
+    
+    fun addObject(template: ObjTemplate, amount: Int, tile: Tile): Obj {
+        val obj = Obj(template, amount)
+        getZone(tile)?.addObject(tile, obj)
+        return obj
+    }
+
+    fun addObject(obj: Obj, tile: Tile): Unit? = getZone(tile)?.addObject(tile, obj)
+
+    fun removeObject(id: Int, tile: Tile): Obj? = getZone(tile)?.removeObject(tile, id)
+
+    fun addStaticLoc(loc: Loc): Loc {
+        getZone(loc.pos)?.addStaticLoc(loc)
+        addLocCollision(loc)
+        return loc
+    }
+
+    fun addDynamicLoc(template: LocTemplate, type: Int, orientation: Int, tile: Tile): Loc {
+        val loc = Loc(template, type, tile, orientation)
+        getZone(loc.pos)?.addLoc(loc)
+        addLocCollision(loc)
+        return loc
+    }
+
+    fun removeLoc(loc: Loc): Unit? = getZone(loc.pos)?.removeLoc(loc)
+
+    fun addProjectile(template: ProjectileTemplate, start: Tile, target: Character): Projectile {
+        val projectile = Projectile(template, start, target)
+        getZone(start)?.addProjectile(projectile)
+        return projectile
+    }
+
+    companion object : KLogging() {
         const val MAX_PLAYERS: Int = 2048
 
         const val MAX_NPCS: Int = 32768
+
+        fun fromMap(mapsquares: Map<Int, MapSquareDefinition>, xteas: Map<Int, IntArray>): World {
+            val map = Array(4) { Array(2048) { arrayOfNulls<Zone?>(2048) } }
+            mapsquares.forEach { (_, def) ->
+                (0.floors until MapsquareUnit.FLOOR_COUNT).forEach { floor ->
+                    (0.zones until MapsquareUnit.SIZE_ZONE).map { def.x.mapsquares.inZones + it }.forEach { x ->
+                        (0.zones until MapsquareUnit.SIZE_ZONE).map { def.y.mapsquares.inZones + it }.forEach {
+                            map[floor.value][x.value][it.value] = Zone(floor, x, it)
+                        }
+                    }
+                }
+            }
+            val world = World(map, xteas)
+            mapsquares.forEach { (_, def) ->
+                world.addTerrain(def.x.mapsquares, def.y.mapsquares, def.mapDefinition)
+                def.locationDefinitions.forEach { world.addLocByDef(def.x.mapsquares, def.y.mapsquares, it) }
+            }
+            val zoneCount = map.sumBy { floor -> floor.sumBy { yZones -> yZones.count { it != null } } }
+            logger.info { "Loaded $zoneCount zones" }
+            return world
+        }
+
+        private fun World.addTerrain(msX: MapsquareUnit, msY: MapsquareUnit, def: MapDefinition) {
+            def.renderRules.forEachIndexed { floor, floorRenderRules ->
+                floorRenderRules.forEachIndexed { x, verticalRenderRules ->
+                    verticalRenderRules.forEachIndexed { y, currentRule ->
+                        var z = floor
+                        if (currentRule.toInt() and MapDefinition.BLOCKED_TILE_MASK.toInt() == 1) {
+                            if (def.renderRules[1][x][y].toInt() and MapDefinition.BRIDGE_TILE_MASK.toInt() == 2) {
+                                z--
+                            }
+                            if (z >= 0) {
+                                getZone(z.floors, msX.inTiles + x.tiles, msY.inTiles + y.tiles)?.addCollision(
+                                    x.tiles.relativeZone, y.tiles.relativeZone, Zone.MASK_TERRAIN_BLOCK
+                                )
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        private fun World.addLocByDef(msX: MapsquareUnit, msY: MapsquareUnit, locDef: MapLocDefinition)
+            = addStaticLoc(
+                Loc(LocTemplates[locDef.id],
+                    locDef.type,
+                    Tile(locDef.floor.floors, msX.inTiles + locDef.localX.tiles, msY.inTiles + locDef.localY.tiles),
+                    locDef.orientation
+                )
+            )
     }
 }

@@ -32,8 +32,8 @@ import io.guthix.oldscape.server.world.entity.Npc
 import io.guthix.oldscape.server.world.entity.Player
 
 fun Player.meleeAttack(npc: Npc, world: World) {
-    val npcDestination = DestinationRectangleDirect(npc, world.map)
-    path = breadthFirstSearch(pos, npcDestination, size, true, world.map)
+    val npcDestination = DestinationRectangleDirect(npc, world)
+    path = breadthFirstSearch(pos, npcDestination, size, true, world)
     inCombatWith = npc
     cancelTasks(NormalTask)
     val player = this

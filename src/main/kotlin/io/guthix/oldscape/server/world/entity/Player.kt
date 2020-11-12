@@ -140,7 +140,7 @@ class Player(
     fun initialize(world: World) {
         playerManager.initialize(world, this)
         sceneManager.initialize(world, this)
-        val xteas = sceneManager.getInterestedXteas(world.map)
+        val xteas = sceneManager.getInterestedXteas(world.xteas)
         ctx.write(InterestInitPacket(world.players, this, xteas, pos.x.inZones, pos.y.inZones))
         updateFlags.add(PlayerInfoPacket.appearance)
         updateFlags.add(PlayerInfoPacket.orientation)
@@ -158,7 +158,7 @@ class Player(
         futures.addAll(varpManager.synchronize(this))
         futures.addAll(statManager.synchronize(world, this))
         futures.addAll(energyManager.synchronize(this))
-        futures.addAll(sceneManager.synchronize(world, this))
+        futures.addAll(sceneManager.synchronize(world, world.xteas, this))
         futures.addAll(npcManager.synchronize(world, this))
         futures.addAll(playerManager.synchronize(world, this))
         ctx.flush()

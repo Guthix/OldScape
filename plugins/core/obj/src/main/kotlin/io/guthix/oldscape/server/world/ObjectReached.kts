@@ -20,7 +20,7 @@ import io.guthix.oldscape.server.world.map.Tile
 
 on(ObjectReachedEvent::class).then {
     val tile = Tile(player.pos.floor, x, y)
-    val obj = world.map.removeObject(id, tile) ?: error(
+    val obj = world.removeObject(id, tile) ?: error(
         "Can not pick up object for id $id at position $tile."
     )
     player.topInterface.itemBag.add(obj)

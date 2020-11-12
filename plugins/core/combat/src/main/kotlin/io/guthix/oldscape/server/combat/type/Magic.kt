@@ -35,8 +35,8 @@ fun Player.magicAttack(
     world: World,
     spellTemplate: CombatSpell
 ) {
-    val npcDestination = DestinationRange(npc, attackRange, world.map)
-    path = breadthFirstSearch(pos, npcDestination, size, true, world.map)
+    val npcDestination = DestinationRange(npc, attackRange, world)
+    path = breadthFirstSearch(pos, npcDestination, size, true, world)
     inCombatWith = npc
     cancelTasks(NormalTask)
     val player = this
@@ -46,7 +46,7 @@ fun Player.magicAttack(
             animate(spellTemplate.castAnim)
             spotAnimate(spellTemplate.castSpotAnim)
             // TODO sound
-            val projectile = world.map.addProjectile(spellTemplate.projectile, player.pos, npc)
+            val projectile = world.addProjectile(spellTemplate.projectile, player.pos, npc)
             EventBus.schedule(NpcAttackedEvent(npc, player, world))
             world.addTask(NormalTask) {
                 val damage = calcHit(npc, spellTemplate.hit(world, player, npc))

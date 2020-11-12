@@ -20,22 +20,22 @@ import io.guthix.oldscape.server.event.MiniMapClickEvent
 import io.guthix.oldscape.server.pathing.DestinationTile
 import io.guthix.oldscape.server.pathing.breadthFirstSearch
 import io.guthix.oldscape.server.task.NormalTask
-import io.guthix.oldscape.server.world.WorldMap
+import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.Player
 import io.guthix.oldscape.server.world.map.Tile
 import io.guthix.oldscape.server.world.map.dim.FloorUnit
 import io.guthix.oldscape.server.world.map.dim.TileUnit
 
 on(MiniMapClickEvent::class).then {
-    player.startWalkingToTile(player.pos.floor, x, y, world.map)
+    player.startWalkingToTile(player.pos.floor, x, y, world)
 }
 
 on(MapClickEvent::class).then {
-    player.startWalkingToTile(player.pos.floor, x, y, world.map)
+    player.startWalkingToTile(player.pos.floor, x, y, world)
 }
 
-fun Player.startWalkingToTile(floor: FloorUnit, x: TileUnit, y: TileUnit, map: WorldMap) {
-    path = breadthFirstSearch(pos, DestinationTile(floor, x, y), size, true, map)
+fun Player.startWalkingToTile(floor: FloorUnit, x: TileUnit, y: TileUnit, world: World) {
+    path = breadthFirstSearch(pos, DestinationTile(floor, x, y), size, true, world)
     path.lastOrNull()?.let { dest -> if (dest != Tile(floor, x, y)) setMapFlag(dest.x, dest.y) }
     cancelTasks(NormalTask)
 }

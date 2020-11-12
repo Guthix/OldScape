@@ -15,9 +15,9 @@
  */
 package io.guthix.oldscape.server.pathing
 
-import io.guthix.oldscape.server.world.WorldMap
+import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.map.Tile
-import io.guthix.oldscape.server.world.map.ZoneCollision
+import io.guthix.oldscape.server.world.map.Zone
 import io.guthix.oldscape.server.world.map.dim.TileUnit
 import io.guthix.oldscape.server.world.map.dim.abs
 import io.guthix.oldscape.server.world.map.dim.tiles
@@ -37,7 +37,7 @@ fun inLineOfSight(
     end: Tile,
     destWidth: TileUnit,
     destHeight: TileUnit,
-    map: WorldMap
+    world: World
 ): Boolean {
     val startX = coordinate(start.x, end.x, width)
     val startY = coordinate(start.y, end.y, height)
@@ -47,8 +47,8 @@ fun inLineOfSight(
     val deltaY = endY - startY
     val travelEast = deltaX >= 0.tiles
     val travelNorth = deltaY >= 0.tiles
-    val xFlags = if (travelEast) ZoneCollision.BLOCK_HIGH_W else ZoneCollision.BLOCK_HIGH_E
-    val yFlags = if (travelNorth) ZoneCollision.BLOCK_HIGH_S else ZoneCollision.BLOCK_HIGH_N
+    val xFlags = if (travelEast) Zone.BLOCK_HIGH_W else Zone.BLOCK_HIGH_E
+    val yFlags = if (travelNorth) Zone.BLOCK_HIGH_S else Zone.BLOCK_HIGH_N
     if (abs(deltaX) > abs(deltaY)) {
         val offsetX = if (travelEast) 1.tiles else (-1).tiles
         val offsetY = if (travelNorth) 0.tiles else (-1).tiles
@@ -58,12 +58,12 @@ fun inLineOfSight(
         while (currX != endX) {
             currX += offsetX
             val currY = scaleDown(scaledY)
-            if (map.getCollisionMask(start.floor, currX, currY) and xFlags != 0) {
+            if (world.getCollision(start.floor, currX, currY) and xFlags != 0) {
                 return false
             }
             scaledY += tangent
             val nextY = scaleDown(scaledY)
-            if (nextY != currY && map.getCollisionMask(start.floor, currX, currY) and yFlags != 0) {
+            if (nextY != currY && world.getCollision(start.floor, currX, currY) and yFlags != 0) {
                 return false
             }
         }
@@ -76,12 +76,12 @@ fun inLineOfSight(
         while (currY != endY) {
             currY += offsetY
             val currX = scaleDown(scaledX)
-            if (map.getCollisionMask(start.floor, currX, currY) and yFlags != 0) {
+            if (world.getCollision(start.floor, currX, currY) and yFlags != 0) {
                 return false
             }
             scaledX += tangent
             val nextX = scaleDown(scaledX)
-            if (nextX != currX && map.getCollisionMask(start.floor, currX, currY) and xFlags != 0) {
+            if (nextX != currX && world.getCollision(start.floor, currX, currY) and xFlags != 0) {
                 return false
             }
         }

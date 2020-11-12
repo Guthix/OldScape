@@ -35,8 +35,8 @@ import io.guthix.oldscape.server.world.entity.interest.PlayerManager
 import kotlin.random.Random
 
 fun Player.rangeAttack(npc: Npc, world: World) {
-    val npcDestination = DestinationRange(npc, attackRange, world.map)
-    path = breadthFirstSearch(pos, npcDestination, size, true, world.map)
+    val npcDestination = DestinationRange(npc, attackRange, world)
+    path = breadthFirstSearch(pos, npcDestination, size, true, world)
     inCombatWith = npc
     cancelTasks(NormalTask)
     val player = this
@@ -52,7 +52,7 @@ fun Player.rangeAttack(npc: Npc, world: World) {
             topInterface.equipment[PlayerManager.EquipmentType.AMMUNITION.slot] = ammunition.apply { quantity-- }
             animate(attackSequence)
             spotAnimate(ammunition.drawback)
-            val projectile = world.map.addProjectile(ammunition.ammunitionProjectile, pos, npc)
+            val projectile = world.addProjectile(ammunition.ammunitionProjectile, pos, npc)
             EventBus.schedule(NpcAttackedEvent(npc, player, world))
             world.addTask(NormalTask) { // projectile task
                 val damage = calcHit(npc, maxRangeHit()) ?: 0
@@ -61,7 +61,7 @@ fun Player.rangeAttack(npc: Npc, world: World) {
                 npc.animate(npc.defenceSequence)
                 val hmColor = if (damage == 0) HitMark.Color.BLUE else HitMark.Color.RED
                 npc.hit(hmColor, damage, 0)
-                if (Random.nextDouble(1.0) < 0.8) world.map.addObject(ammunition.copy(quantity = 1), oldNpcPos)
+                if (Random.nextDouble(1.0) < 0.8) world.addObject(ammunition.copy(quantity = 1), oldNpcPos)
             }
             wait(ticks = attackSpeed)
         }

@@ -24,7 +24,7 @@ import io.guthix.oldscape.server.task.NormalTask
 on(PlayerClickEvent::class).where { contextMenuEntry == "Follow" }.then {
     val followed = clickedPlayer
     val dest = DestinationTile(followed.followPosition)
-    player.path = breadthFirstSearch(player.pos, dest, player.size, true, world.map)
+    player.path = breadthFirstSearch(player.pos, dest, player.size, true, world)
     player.turnToLock(followed)
     val currentTarget = player.followPosition
     player.cancelTasks(NormalTask)
@@ -32,13 +32,13 @@ on(PlayerClickEvent::class).where { contextMenuEntry == "Follow" }.then {
         while (true) {
             if (dest.reached(player.pos.x, player.pos.y, player.size)) break
             if (currentTarget != followed.followPosition) {
-                player.path = breadthFirstSearch(player.pos, dest, player.size, true, world.map)
+                player.path = breadthFirstSearch(player.pos, dest, player.size, true, world)
             }
             wait(ticks = 1)
         }
         while (true) {
             wait { currentTarget != followed.followPosition }
-            player.path = simplePathSearch(player.pos, DestinationTile(followed.followPosition), player.size, world.map)
+            player.path = simplePathSearch(player.pos, DestinationTile(followed.followPosition), player.size, world)
         }
     }.onCancel {
         player.turnToLock(null)

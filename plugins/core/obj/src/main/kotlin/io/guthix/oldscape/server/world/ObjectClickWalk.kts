@@ -24,7 +24,7 @@ import io.guthix.oldscape.server.task.NormalTask
 
 on(ObjectClickEvent::class).then {
     val destination = DestinationTile(player.pos.floor, x, y)
-    player.path = breadthFirstSearch(player.pos, destination, player.size, true, world.map)
+    player.path = breadthFirstSearch(player.pos, destination, player.size, true, world)
     player.cancelTasks(NormalTask)
     player.addTask(NormalTask) {
         wait { destination.reached(player.pos.x, player.pos.y, player.size) }

@@ -24,27 +24,15 @@ import io.guthix.oldscape.server.task.NormalTask
 import io.guthix.oldscape.server.world.map.Tile
 
 on(LocClickEvent::class).then {
-    val loc = world.map.getLoc(id, player.pos.floor, x, y) ?: error(
+    val loc = world.getLoc(id, player.pos.floor, x, y) ?: error(
         "Could not find location at ${Tile(player.pos.floor, x, y)}."
     )
-    val destination = DestinationLocation(loc, world.map)
-    player.path = breadthFirstSearch(player.pos, destination, player.size, true, world.map)
+    val destination = DestinationLocation(loc, world)
+    player.path = breadthFirstSearch(player.pos, destination, player.size, true, world)
     player.path.lastOrNull()?.let { (_, x, y) -> player.setMapFlag(x, y) }
     player.cancelTasks(NormalTask)
     player.addTask(NormalTask) {
         wait { destination.reached(player.pos.x, player.pos.y, player.size) }
         EventBus.schedule(LocReachedEvent(loc, player, world))
     }
-}
-
-val trees = listOf(1278, 1276)
-
-trees.forEach {
-    on(LocClickEvent::class).where { id == it }.then {
-        println("we clicked")
-    }
-}
-
-on(LocReachedEvent::class).then {
-    world.map.removeLoc(loc)
 }

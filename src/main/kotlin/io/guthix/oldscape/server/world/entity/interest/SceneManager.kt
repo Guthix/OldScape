@@ -18,7 +18,6 @@ package io.guthix.oldscape.server.world.entity.interest
 import io.guthix.oldscape.server.net.game.ZoneOutGameEvent
 import io.guthix.oldscape.server.net.game.out.*
 import io.guthix.oldscape.server.world.World
-import io.guthix.oldscape.server.world.WorldMap
 import io.guthix.oldscape.server.world.entity.Loc
 import io.guthix.oldscape.server.world.entity.Obj
 import io.guthix.oldscape.server.world.entity.Player
@@ -48,24 +47,24 @@ class SceneManager {
     fun reloadRequired(curZone: Zone): Boolean = abs(middleZone.x - curZone.x) > UPDATE_RANGE ||
         abs(middleZone.y - curZone.y) > UPDATE_RANGE
 
-    fun checkReload(curZone: Zone, map: WorldMap, player: Player) {
+    fun checkReload(curZone: Zone, map: World, xteas: Map<Int, IntArray>, player: Player) {
         if (reloadRequired(curZone)) {
             val oldZone = middleZone
             middleZone = curZone
-            val xteas = getInterestedXteas(map)
-            player.ctx.write(RebuildNormalPacket(xteas, curZone.x, curZone.y))
+            val iXteas = getInterestedXteas(xteas)
+            player.ctx.write(RebuildNormalPacket(iXteas, curZone.x, curZone.y))
             unsubscribeZones(player)
             subscribeToZones(oldZone, player, map)
         }
     }
 
-    fun getInterestedXteas(map: WorldMap): List<IntArray> {
+    fun getInterestedXteas(xteas: Map<Int, IntArray>): List<IntArray> {
         val interestedXteas = mutableListOf<IntArray>()
         for (mSquareX in middleZone.x.startMapInterest..middleZone.x.endMapInterest) {
             for (mSquareY in middleZone.y.startMapInterest..middleZone.y.endMapInterest) {
                 if (onTutorialIsland(mSquareX, mSquareY)) continue
                 val id = (mSquareX.value shl 8) or mSquareY.value
-                val xtea = map.mapsquares[id]?.xtea ?: error("Could not find XTEA for id $id.")
+                val xtea = xteas[id] ?: error("Could not find XTEA for id $id.")
                 interestedXteas.add(xtea)
             }
         }
@@ -80,12 +79,12 @@ class SceneManager {
         }
     }
 
-    fun subscribeToZones(oldZone: Zone, player: Player, map: WorldMap) {
+    fun subscribeToZones(oldZone: Zone, player: Player, world: World) {
         val prevPacketCache = changes.copyOf()
         changes.forEach { it.forEach(MutableList<ZoneOutGameEvent>::clear) }
         ((middleZone.x - RANGE)..(middleZone.x + RANGE)).forEachIndexed { i, zoneX ->
             ((middleZone.y - RANGE)..(middleZone.y + RANGE)).forEachIndexed { j, zoneY ->
-                val zone = map.getZone(middleZone.floor, zoneX, zoneY)
+                val zone = world.getZone(middleZone.floor, zoneX, zoneY)
                 zones[i][j] = zone
                 zone?.let {
                     zone.players.add(player)
@@ -165,10 +164,10 @@ class SceneManager {
     }
 
     internal fun initialize(world: World, player: Player) {
-        middleZone = world.map.getZone(player.pos) ?: error("Could not find $player on the map.")
+        middleZone = world.getZone(player.pos) ?: error("Could not find $player on the map.")
         ((middleZone.x - RANGE)..(middleZone.x + RANGE)).forEachIndexed { i, zoneX ->
             ((middleZone.y - RANGE)..(middleZone.y + RANGE)).forEachIndexed { j, zoneY ->
-                val zone = world.map.getZone(middleZone.floor, zoneX, zoneY)
+                val zone = world.getZone(middleZone.floor, zoneX, zoneY)
                 zones[i][j] = zone
                 zone?.let {
                     zone.players.add(player)
@@ -178,10 +177,10 @@ class SceneManager {
         }
     }
 
-    internal fun synchronize(world: World, player: Player): List<ChannelFuture> {
+    internal fun synchronize(world: World, xteas: Map<Int, IntArray>, player: Player): List<ChannelFuture> {
         val futures = mutableListOf<ChannelFuture>()
-        val pZone = world.map.getZone(player.pos) ?: error("Could not find $player on the map.")
-        checkReload(pZone, world.map, player)
+        val pZone = world.getZone(player.pos) ?: error("Could not find $player on the map.")
+        checkReload(pZone, world, xteas, player)
         changes.forEachIndexed { x, yPacketList ->
             yPacketList.forEachIndexed { y, packetList ->
                 if (packetList.size == 1) {

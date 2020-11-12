@@ -77,8 +77,10 @@ object OldScape {
         GamePacketDecoder.loadIncPackets()
 
         val mapSquareXteas = loadMapSquareXteaKeys(cacheDir.resolve("xteas.json"))
-        val world = World()
-        world.map.init(cache.readArchive(MapArchive.id), mapSquareXteas)
+        val world = World.fromMap(
+            MapArchive.load(cache.readArchive(MapArchive.id), mapSquareXteas).mapsquares,
+            mapSquareXteas.map { it.id to it.key }.toMap()
+        )
         EventBus.schedule(WorldInitializedEvent(world))
         Timer().scheduleAtFixedRate(world, 0, 600)
         OldScapeServer(config.revision, config.port, config.rsa.privateKey, config.rsa.modulus, world, store).run()

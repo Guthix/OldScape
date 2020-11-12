@@ -23,7 +23,7 @@ import io.guthix.oldscape.server.world.map.dim.floors
 import io.guthix.oldscape.server.world.map.dim.tiles
 
 on(ClientCheatEvent::class).where { string == "drop" }.then {
-    world.map.addObject(
+    world.addObject(
         ObjTemplates.RUNE_FULL_HELM_1163,
         amount = 1,
         Tile(player.pos.floor, player.pos.x + 1.tiles, player.pos.y + 1.tiles)
@@ -31,7 +31,7 @@ on(ClientCheatEvent::class).where { string == "drop" }.then {
 }
 
 on(ClientCheatEvent::class).where { string == "locadd" }.then {
-    world.map.addLoc(
+    world.addDynamicLoc(
         LocTemplates.DOOR_4,
         type = 0,
         orientation = 0,

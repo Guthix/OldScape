@@ -42,6 +42,7 @@ inline class MapsquareUnit(val value: Int) : Comparable<MapsquareUnit> {
     }
 
     companion object {
+        val FLOOR_COUNT: FloorUnit = FloorUnit(4)
         val SIZE_ZONE: ZoneUnit = ZoneUnit(8)
         val SIZE_TILE: TileUnit = TileUnit(ZoneUnit.SIZE_TILE.value * SIZE_ZONE.value)
     }

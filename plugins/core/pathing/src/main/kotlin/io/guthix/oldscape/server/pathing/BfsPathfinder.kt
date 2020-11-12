@@ -15,7 +15,7 @@
  */
 package io.guthix.oldscape.server.pathing
 
-import io.guthix.oldscape.server.world.WorldMap
+import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.map.Tile
 import io.guthix.oldscape.server.world.map.dim.TileUnit
 import io.guthix.oldscape.server.world.map.dim.tiles
@@ -31,7 +31,7 @@ fun breadthFirstSearch(
     dest: Destination,
     moverSize: TileUnit,
     findAlternative: Boolean,
-    map: WorldMap
+    map: World
 ): MutableList<Tile> {
     val pathBaseX = start.x - (SEARCH_SIZE / 2.tiles)
     val pathBaseY = start.y - (SEARCH_SIZE / 2.tiles)

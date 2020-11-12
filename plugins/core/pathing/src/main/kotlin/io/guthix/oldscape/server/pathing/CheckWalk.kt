@@ -15,62 +15,62 @@
  */
 package io.guthix.oldscape.server.pathing
 
-import io.guthix.oldscape.server.world.WorldMap
-import io.guthix.oldscape.server.world.map.ZoneCollision
+import io.guthix.oldscape.server.world.World
+import io.guthix.oldscape.server.world.map.Zone
 import io.guthix.oldscape.server.world.map.dim.FloorUnit
 import io.guthix.oldscape.server.world.map.dim.TileUnit
 import io.guthix.oldscape.server.world.map.dim.tiles
 import io.guthix.oldscape.server.world.map.dim.until
 
-internal fun WorldMap.canWalkWest(floor: FloorUnit, x: TileUnit, y: TileUnit, moverSize: TileUnit) =
-    (0.tiles until moverSize).none { getCollisionMask(floor, x - 1.tiles, y + it) and ZoneCollision.BLOCK_E != 0 }
+internal fun World.canWalkWest(floor: FloorUnit, x: TileUnit, y: TileUnit, moverSize: TileUnit) =
+    (0.tiles until moverSize).none { getCollision(floor, x - 1.tiles, y + it) and Zone.BLOCK_E != 0 }
 
-internal fun WorldMap.canWalkEast(floor: FloorUnit, x: TileUnit, y: TileUnit, moverSize: TileUnit) =
-    (0.tiles until moverSize).none { getCollisionMask(floor, x + moverSize, y + it) and ZoneCollision.BLOCK_W != 0 }
+internal fun World.canWalkEast(floor: FloorUnit, x: TileUnit, y: TileUnit, moverSize: TileUnit) =
+    (0.tiles until moverSize).none { getCollision(floor, x + moverSize, y + it) and Zone.BLOCK_W != 0 }
 
-internal fun WorldMap.canWalkSouth(floor: FloorUnit, x: TileUnit, y: TileUnit, moverSize: TileUnit) =
-    (0.tiles until moverSize).none { getCollisionMask(floor, x + it, y - 1.tiles) and ZoneCollision.BLOCK_N != 0 }
+internal fun World.canWalkSouth(floor: FloorUnit, x: TileUnit, y: TileUnit, moverSize: TileUnit) =
+    (0.tiles until moverSize).none { getCollision(floor, x + it, y - 1.tiles) and Zone.BLOCK_N != 0 }
 
-internal fun WorldMap.canWalkNorth(floor: FloorUnit, x: TileUnit, y: TileUnit, moverSize: TileUnit) =
-    (0.tiles until moverSize).none { getCollisionMask(floor, x + it, y + moverSize) and ZoneCollision.BLOCK_S != 0 }
+internal fun World.canWalkNorth(floor: FloorUnit, x: TileUnit, y: TileUnit, moverSize: TileUnit) =
+    (0.tiles until moverSize).none { getCollision(floor, x + it, y + moverSize) and Zone.BLOCK_S != 0 }
 
 
-internal fun WorldMap.canWalkSouthWest(floor: FloorUnit, x: TileUnit, y: TileUnit, moverSize: TileUnit): Boolean {
-    if (getCollisionMask(floor, x + moverSize - 1.tiles, y - 1.tiles) and ZoneCollision.BLOCK_N != 0) return false
-    if (getCollisionMask(floor, x - 1.tiles, y + moverSize - 1.tiles) and ZoneCollision.BLOCK_E != 0) return false
+internal fun World.canWalkSouthWest(floor: FloorUnit, x: TileUnit, y: TileUnit, moverSize: TileUnit): Boolean {
+    if (getCollision(floor, x + moverSize - 1.tiles, y - 1.tiles) and Zone.BLOCK_N != 0) return false
+    if (getCollision(floor, x - 1.tiles, y + moverSize - 1.tiles) and Zone.BLOCK_E != 0) return false
     for (i in 0.tiles until moverSize) {
-        if (getCollisionMask(floor, x + i - 1.tiles, y - 1.tiles) and ZoneCollision.BLOCK_NE != 0) return false
-        if (getCollisionMask(floor, x - 1.tiles, y + i - 1.tiles) and ZoneCollision.BLOCK_NE != 0) return false
+        if (getCollision(floor, x + i - 1.tiles, y - 1.tiles) and Zone.BLOCK_NE != 0) return false
+        if (getCollision(floor, x - 1.tiles, y + i - 1.tiles) and Zone.BLOCK_NE != 0) return false
     }
     return true
 }
 
-internal fun WorldMap.canWalkSouthEast(floor: FloorUnit, x: TileUnit, y: TileUnit, moverSize: TileUnit): Boolean {
-    if (getCollisionMask(floor, x, y - 1.tiles) and ZoneCollision.BLOCK_N != 0) return false
-    if (getCollisionMask(floor, x + moverSize, y + moverSize - 1.tiles) and ZoneCollision.BLOCK_W != 0) return false
+internal fun World.canWalkSouthEast(floor: FloorUnit, x: TileUnit, y: TileUnit, moverSize: TileUnit): Boolean {
+    if (getCollision(floor, x, y - 1.tiles) and Zone.BLOCK_N != 0) return false
+    if (getCollision(floor, x + moverSize, y + moverSize - 1.tiles) and Zone.BLOCK_W != 0) return false
     for (i in 0.tiles until moverSize) {
-        if (getCollisionMask(floor, x + moverSize - i, y - 1.tiles) and ZoneCollision.BLOCK_NW != 0) return false
-        if (getCollisionMask(floor, x + moverSize, y + i - 1.tiles) and ZoneCollision.BLOCK_NW != 0) return false
+        if (getCollision(floor, x + moverSize - i, y - 1.tiles) and Zone.BLOCK_NW != 0) return false
+        if (getCollision(floor, x + moverSize, y + i - 1.tiles) and Zone.BLOCK_NW != 0) return false
     }
     return true
 }
 
-internal fun WorldMap.canWalkNorthWest(floor: FloorUnit, x: TileUnit, y: TileUnit, moverSize: TileUnit): Boolean {
-    if (getCollisionMask(floor, x + moverSize - 1.tiles, y + moverSize) and ZoneCollision.BLOCK_S != 0) return false
-    if (getCollisionMask(floor, x - 1.tiles, y) and ZoneCollision.BLOCK_E != 0) return false
+internal fun World.canWalkNorthWest(floor: FloorUnit, x: TileUnit, y: TileUnit, moverSize: TileUnit): Boolean {
+    if (getCollision(floor, x + moverSize - 1.tiles, y + moverSize) and Zone.BLOCK_S != 0) return false
+    if (getCollision(floor, x - 1.tiles, y) and Zone.BLOCK_E != 0) return false
     for (i in 0.tiles until moverSize) {
-        if (getCollisionMask(floor, x - 1.tiles, y + moverSize - i) and ZoneCollision.BLOCK_SE != 0) return false
-        if (getCollisionMask(floor, x + i - 1.tiles, y + moverSize) and ZoneCollision.BLOCK_SE != 0) return false
+        if (getCollision(floor, x - 1.tiles, y + moverSize - i) and Zone.BLOCK_SE != 0) return false
+        if (getCollision(floor, x + i - 1.tiles, y + moverSize) and Zone.BLOCK_SE != 0) return false
     }
     return true
 }
 
-internal fun WorldMap.canWalkNorthEast(floor: FloorUnit, x: TileUnit, y: TileUnit, moverSize: TileUnit): Boolean {
-    if (getCollisionMask(floor, x, y + moverSize) and ZoneCollision.BLOCK_S != 0) return false
-    if (getCollisionMask(floor, x + moverSize, y) and ZoneCollision.BLOCK_W != 0) return false
+internal fun World.canWalkNorthEast(floor: FloorUnit, x: TileUnit, y: TileUnit, moverSize: TileUnit): Boolean {
+    if (getCollision(floor, x, y + moverSize) and Zone.BLOCK_S != 0) return false
+    if (getCollision(floor, x + moverSize, y) and Zone.BLOCK_W != 0) return false
     for (i in 0.tiles until moverSize) {
-        if (getCollisionMask(floor, x + moverSize, y + moverSize - i) and ZoneCollision.BLOCK_SW != 0) return false
-        if (getCollisionMask(floor, x + moverSize - i, y + moverSize - i) and ZoneCollision.BLOCK_SW != 0) return false
+        if (getCollision(floor, x + moverSize, y + moverSize - i) and Zone.BLOCK_SW != 0) return false
+        if (getCollision(floor, x + moverSize - i, y + moverSize - i) and Zone.BLOCK_SW != 0) return false
     }
     return true
 }

@@ -36,7 +36,7 @@ on(NpcSpawnedEvent::class).then {
                 val walkX = Random.nextInt(minX.value, maxX.value).tiles
                 val walkY = Random.nextInt(minY.value, maxY.value).tiles
                 val dest = DestinationTile(npc.pos.floor, walkX, walkY)
-                npc.path = simplePathSearch(npc.pos, dest, npc.size, world.map)
+                npc.path = simplePathSearch(npc.pos, dest, npc.size, world)
             }
         }
     }

@@ -20,14 +20,13 @@ import io.guthix.oldscape.server.event.NpcAttackedEvent
 import io.guthix.oldscape.server.pathing.DestinationRectangleDirect
 import io.guthix.oldscape.server.pathing.simplePathSearch
 import io.guthix.oldscape.server.task.NormalTask
-import io.guthix.oldscape.server.template.SequenceTemplates
 import io.guthix.oldscape.server.template.attackSequence
 import io.guthix.oldscape.server.template.attackSpeed
 import io.guthix.oldscape.server.world.entity.HitMark
 
 on(NpcAttackedEvent::class).then {
     if (npc.inCombatWith == player) return@then
-    var playerDestination = DestinationRectangleDirect(player, world.map)
+    var playerDestination = DestinationRectangleDirect(player, world)
     npc.inCombatWith = player
     npc.cancelTasks(NormalTask)
     npc.addTask(NormalTask) { // combat fighting task
@@ -44,8 +43,8 @@ on(NpcAttackedEvent::class).then {
     npc.addTask(NormalTask) { // following task
         npc.turnToLock(player)
         while (true) {
-            playerDestination = DestinationRectangleDirect(player, world.map)
-            npc.path = simplePathSearch(npc.pos, playerDestination, npc.size, world.map)
+            playerDestination = DestinationRectangleDirect(player, world)
+            npc.path = simplePathSearch(npc.pos, playerDestination, npc.size, world)
             wait(ticks = 1)
             wait { player.lastPos != player.pos }
         }
