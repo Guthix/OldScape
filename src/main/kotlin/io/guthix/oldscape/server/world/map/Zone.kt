@@ -49,7 +49,7 @@ internal class Zone(val floor: FloorUnit, val x: ZoneUnit, val y: ZoneUnit) {
         for (slot in 0 until Loc.UNIQUE_SLOTS) {
             val key = Loc.generateMapKey(localX, localY, slot)
             val mapObject = staticLocs[key] ?: addedLocs[key]
-            mapObject?.let { if (id == it.id) return@getLoc it }
+            mapObject?.let { if (id == it.id) return@getLoc if(deletedLocs[key] != null) null else it }
         }
         return null
     }
