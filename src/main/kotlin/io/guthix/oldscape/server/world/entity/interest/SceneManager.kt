@@ -27,7 +27,7 @@ import io.guthix.oldscape.server.world.map.Zone
 import io.guthix.oldscape.server.world.map.dim.*
 import io.netty.channel.ChannelFuture
 
-class SceneManager {
+internal class SceneManager {
     lateinit var middleZone: Zone
 
     val baseX: ZoneUnit get() = middleZone.x - RANGE
@@ -108,6 +108,12 @@ class SceneManager {
                 }
             }
         }
+        zone.addedLocs.forEach { (_, loc) ->
+            addChangeLoc(loc)
+        }
+        zone.deletedLocs.forEach { (_, loc) ->
+            delLoc(loc)
+        }
     }
 
     fun addObject(tile: Tile, obj: Obj) {
@@ -130,7 +136,7 @@ class SceneManager {
         )
     }
 
-    fun removeLoc(loc: Loc) {
+    fun delLoc(loc: Loc) {
         changes[(loc.pos.x.inZones - baseX).value][(loc.pos.y.inZones - baseY).value].add(
             LocDelPacket(loc.type, loc.orientation, loc.pos.x.relativeZone, loc.pos.y.relativeZone)
         )

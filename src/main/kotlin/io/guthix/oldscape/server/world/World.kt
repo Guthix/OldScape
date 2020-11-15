@@ -36,14 +36,13 @@ import io.netty.util.concurrent.DefaultPromise
 import io.netty.util.concurrent.ImmediateEventExecutor
 import io.netty.util.concurrent.PromiseCombiner
 import mu.KLogging
-import java.lang.IllegalStateException
 import java.util.*
 import java.util.concurrent.ConcurrentLinkedQueue
 import java.util.concurrent.LinkedBlockingDeque
 import kotlin.reflect.KProperty
 
-class World(
-    val map: Array<Array<Array<Zone?>>>,
+class World internal constructor(
+    internal val map: Array<Array<Array<Zone?>>>,
     val xteas: Map<Int, IntArray>
 ) : TimerTask(), TaskHolder, EventHolder, PropertyHolder {
     override val properties: MutableMap<KProperty<*>, Any?> = mutableMapOf()
@@ -146,7 +145,7 @@ class World(
     fun getCollision(tile: Tile): Int = getCollision(tile.floor, tile.x, tile.y)
 
     fun getCollision(floor: FloorUnit, x: TileUnit, y: TileUnit): Int = getZone(floor, x, y)?.masks
-        ?.get(x.relativeZone.value)?.get(y.relativeZone.value) ?: Zone.MASK_TERRAIN_BLOCK
+        ?.get(x.relativeZone.value)?.get(y.relativeZone.value) ?: Collision.MASK_TERRAIN_BLOCK
 
     internal fun getZone(tile: Tile): Zone? = map[tile.floor.value][tile.x.inZones.value][tile.y.inZones.value]
 
@@ -158,7 +157,7 @@ class World(
     fun getLoc(id: Int, floor: FloorUnit, x: TileUnit, y: TileUnit): Loc? = getZone(floor, x, y)?.getLoc(
         id, x.relativeZone, y.relativeZone
     )
-    
+
     fun addObject(template: ObjTemplate, amount: Int, tile: Tile): Obj {
         val obj = Obj(template, amount)
         getZone(tile)?.addObject(tile, obj)
@@ -169,20 +168,16 @@ class World(
 
     fun removeObject(id: Int, tile: Tile): Obj? = getZone(tile)?.removeObject(tile, id)
 
-    fun addStaticLoc(loc: Loc): Loc {
-        getZone(loc.pos)?.addStaticLoc(loc)
-        addLocCollision(loc)
-        return loc
-    }
-
-    fun addDynamicLoc(template: LocTemplate, type: Int, orientation: Int, tile: Tile): Loc {
-        val loc = Loc(template, type, tile, orientation)
+    fun addLoc(loc: Loc): Loc {
         getZone(loc.pos)?.addLoc(loc)
         addLocCollision(loc)
         return loc
     }
 
-    fun removeLoc(loc: Loc): Unit? = getZone(loc.pos)?.removeLoc(loc)
+    fun delLoc(loc: Loc) {
+        getZone(loc.pos)?.delLoc(loc)
+        delLocCollision(loc)
+    }
 
     fun addProjectile(template: ProjectileTemplate, start: Tile, target: Character): Projectile {
         val projectile = Projectile(template, start, target)
@@ -227,7 +222,7 @@ class World(
                             }
                             if (z >= 0) {
                                 getZone(z.floors, msX.inTiles + x.tiles, msY.inTiles + y.tiles)?.addCollision(
-                                    x.tiles.relativeZone, y.tiles.relativeZone, Zone.MASK_TERRAIN_BLOCK
+                                    x.tiles.relativeZone, y.tiles.relativeZone, Collision.MASK_TERRAIN_BLOCK
                                 )
                             }
                         }
@@ -244,5 +239,14 @@ class World(
                     locDef.orientation
                 )
             )
+
+        private fun World.addStaticLoc(loc: Loc) {
+            getZone(loc.pos)?.addStaticLoc(loc)
+            addLocCollision(loc)
+        }
+
+        private fun Zone.addStaticLoc(loc: Loc) {
+            staticLocs[loc.mapKey] = loc
+        }
     }
 }

@@ -16,8 +16,10 @@
 package io.guthix.oldscape.server.dev
 
 import io.guthix.oldscape.server.event.ClientCheatEvent
+import io.guthix.oldscape.server.event.LocReachedEvent
 import io.guthix.oldscape.server.event.PublicMessageEvent
 import io.guthix.oldscape.server.template.*
+import io.guthix.oldscape.server.world.entity.Loc
 import io.guthix.oldscape.server.world.map.Tile
 import io.guthix.oldscape.server.world.map.dim.floors
 import io.guthix.oldscape.server.world.map.dim.tiles
@@ -31,11 +33,24 @@ on(ClientCheatEvent::class).where { string == "drop" }.then {
 }
 
 on(ClientCheatEvent::class).where { string == "locadd" }.then {
-    world.addDynamicLoc(
-        LocTemplates.DOOR_4,
-        type = 0,
-        orientation = 0,
-        Tile(player.pos.floor, player.pos.x + 2.tiles, player.pos.y + 2.tiles)
+    world.addLoc(
+        Loc(
+            LocTemplates.TREE_STUMP_1342,
+            type = 10,
+            Tile(player.pos.floor, player.pos.x + 2.tiles, player.pos.y + 2.tiles),
+            orientation = 0
+        )
+    )
+}
+
+on(ClientCheatEvent::class).where { string == "locdel" }.then {
+    world.delLoc(
+        Loc(
+            LocTemplates.TREE_STUMP_1342,
+            type = 10,
+            Tile(player.pos.floor, player.pos.x + 2.tiles, player.pos.y + 2.tiles),
+            orientation = 0
+        )
     )
 }
 

@@ -15,9 +15,9 @@
  */
 package io.guthix.oldscape.server.pathing
 
+import io.guthix.oldscape.server.world.Collision
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.map.Tile
-import io.guthix.oldscape.server.world.map.Zone
 import io.guthix.oldscape.server.world.map.dim.TileUnit
 import io.guthix.oldscape.server.world.map.dim.abs
 import io.guthix.oldscape.server.world.map.dim.tiles
@@ -47,8 +47,8 @@ fun inLineOfSight(
     val deltaY = endY - startY
     val travelEast = deltaX >= 0.tiles
     val travelNorth = deltaY >= 0.tiles
-    val xFlags = if (travelEast) Zone.BLOCK_HIGH_W else Zone.BLOCK_HIGH_E
-    val yFlags = if (travelNorth) Zone.BLOCK_HIGH_S else Zone.BLOCK_HIGH_N
+    val xFlags = if (travelEast) Collision.BLOCK_HIGH_W else Collision.BLOCK_HIGH_E
+    val yFlags = if (travelNorth) Collision.BLOCK_HIGH_S else Collision.BLOCK_HIGH_N
     if (abs(deltaX) > abs(deltaY)) {
         val offsetX = if (travelEast) 1.tiles else (-1).tiles
         val offsetY = if (travelNorth) 0.tiles else (-1).tiles

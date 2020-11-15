@@ -33,7 +33,7 @@ import io.netty.channel.ChannelFuture
 import io.netty.channel.ChannelHandlerContext
 import java.util.concurrent.ConcurrentLinkedQueue
 
-class Player(
+class Player internal constructor(
     var priority: Int,
     var ctx: ChannelHandlerContext,
     val username: String,
@@ -151,7 +151,7 @@ class Player(
         energyManager.initialize(this)
     }
 
-    fun synchronize(world: World): List<ChannelFuture> {
+    internal fun synchronize(world: World): List<ChannelFuture> {
         val futures = mutableListOf<ChannelFuture>()
         futures.addAll(topInterface.synchronize(this))
         futures.addAll(contextMenuManager.synchronize(this))
