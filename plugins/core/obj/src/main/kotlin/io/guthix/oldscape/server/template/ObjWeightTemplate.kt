@@ -17,6 +17,7 @@ package io.guthix.oldscape.server.template
 
 import io.guthix.oldscape.server.Property
 import io.guthix.oldscape.server.world.entity.Obj
+import kotlinx.serialization.Serializable
 
 val Obj.weight: Float get() = weightTemplate.weight
 
@@ -25,4 +26,5 @@ private val Obj.weightTemplate: ObjWeightTemplate
 
 internal val ObjTemplate.weight: ObjWeightTemplate? by Property { null }
 
-data class ObjWeightTemplate(override val ids: List<Int>, val weight: Float) : Template(ids)
+@Serializable
+data class ObjWeightTemplate(override val ids: List<Int>, val weight: Float) : Template

@@ -17,6 +17,7 @@ package io.guthix.oldscape.server.template
 
 import io.guthix.oldscape.server.Property
 import io.guthix.oldscape.server.world.entity.Loc
+import kotlinx.serialization.Serializable
 
 val Loc.examine: String get() = examineTemplate.examine
 
@@ -25,4 +26,5 @@ private val Loc.examineTemplate: LocExamineTemplate
 
 internal val LocTemplate.examine: LocExamineTemplate? by Property { null }
 
-data class LocExamineTemplate(override val ids: List<Int>, val examine: String) : Template(ids)
+@Serializable
+data class LocExamineTemplate(override val ids: List<Int>, val examine: String) : Template

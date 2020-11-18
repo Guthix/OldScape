@@ -19,6 +19,7 @@ import io.guthix.oldscape.server.Property
 import io.guthix.oldscape.server.world.entity.Obj
 import io.guthix.oldscape.server.world.map.dim.TileUnit
 import io.guthix.oldscape.server.world.map.dim.tiles
+import kotlinx.serialization.Serializable
 
 val Obj.weaponType: WeaponType get() = weaponTemplate.type
 
@@ -39,14 +40,16 @@ private val Obj.weaponTemplate: WeaponTemplate
 
 internal val ObjTemplate.weapon: WeaponTemplate? by Property { null }
 
+@Serializable
 data class WeaponTemplate(
     override val ids: List<Int>,
     val type: WeaponType,
     val attackSpeed: Int,
-    val attackRange: Int?,
-    val weaponSequences: WeaponSequences?,
-) : Template(ids)
+    val attackRange: Int? = null,
+    val weaponSequences: WeaponSequences? = null,
+) : Template
 
+@Serializable
 data class WeaponSequences(
     val attack: Int,
     val defence: Int

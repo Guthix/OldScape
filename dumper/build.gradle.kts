@@ -2,9 +2,10 @@ plugins {
     application
 }
 
-val oldscapeServerVersion: String by rootProject.extra
 val logbackVersion: String by rootProject.extra
-val jacksonVersion: String by rootProject.extra
+val ktSerVersion: String by rootProject.extra
+val kamlVersion: String by rootProject.extra
+val wikiDownloaderVersion: String by extra("0.1.0")
 
 application { mainClass.set("io.guthix.oldscape.wiki.yaml.YamlDownloader") }
 
@@ -13,11 +14,8 @@ dependencies {
     implementation(project(":plugins:core:combat"))
     implementation(project(":plugins:core:equipment"))
     implementation(project(":plugins:core:obj"))
-    implementation(group = "io.guthix.oldscape", name = "oldscape-wiki-downloader", version = "0.1.0")
+    implementation(group = "io.guthix.oldscape", name = "oldscape-wiki-downloader", version = wikiDownloaderVersion)
     implementation(group = "ch.qos.logback", name = "logback-classic", version = logbackVersion)
-    implementation(group = "com.fasterxml.jackson.core", name = "jackson-databind", version = jacksonVersion)
-    implementation(
-        group = "com.fasterxml.jackson.dataformat", name = "jackson-dataformat-yaml", version = jacksonVersion
-    )
-    implementation(group = "com.fasterxml.jackson.module", name = "jackson-module-kotlin", version = jacksonVersion)
+    implementation(group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version = ktSerVersion)
+    implementation(group = "com.charleskorn.kaml", name = "kaml", version = kamlVersion)
 }

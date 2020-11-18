@@ -18,6 +18,7 @@ package io.guthix.oldscape.server.template
 import io.guthix.oldscape.server.Property
 import io.guthix.oldscape.server.world.entity.Obj
 import io.guthix.oldscape.server.world.entity.interest.PlayerManager
+import kotlinx.serialization.Serializable
 
 val Obj.equipmentType: PlayerManager.EquipmentType
     get() = equipmentTemplate.type ?: throw TemplateNotFoundException(id, Obj::equipmentType)
@@ -39,18 +40,20 @@ internal val Obj.equipmentTemplate: EquipmentTemplate
 
 internal val ObjTemplate.equipment: EquipmentTemplate? by Property { null }
 
+@Serializable
 data class EquipmentTemplate(
     override val ids: List<Int>,
-    val type: PlayerManager.EquipmentType?,
-    val coversHair: Boolean?,
-    val isFullBody: Boolean?,
-    val coversFace: Boolean?,
-    val attackBonus: StyleBonus?,
-    val strengthBonus: CombatBonus?,
-    val defenceBonus: StyleBonus?,
-    val prayerBonus: Int?
-) : Template(ids)
+    val type: PlayerManager.EquipmentType? = null,
+    val coversHair: Boolean? = null,
+    val isFullBody: Boolean? = null ,
+    val coversFace: Boolean? = null,
+    val attackBonus: StyleBonus? = null,
+    val strengthBonus: CombatBonus? = null,
+    val defenceBonus: StyleBonus? = null,
+    val prayerBonus: Int? = null
+) : Template
 
+@Serializable
 data class StyleBonus(
     var stab: Int,
     var slash: Int,
@@ -80,6 +83,7 @@ data class StyleBonus(
     }
 }
 
+@Serializable
 data class CombatBonus(
     var melee: Int,
     var range: Int,

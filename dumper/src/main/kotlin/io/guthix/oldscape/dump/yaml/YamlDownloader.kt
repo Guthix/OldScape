@@ -15,15 +15,6 @@
  */
 package io.guthix.oldscape.dump.yaml
 
-import com.fasterxml.jackson.annotation.JsonInclude
-import com.fasterxml.jackson.core.util.DefaultIndenter
-import com.fasterxml.jackson.core.util.DefaultPrettyPrinter
-import com.fasterxml.jackson.databind.ObjectMapper
-import com.fasterxml.jackson.databind.ObjectWriter
-import com.fasterxml.jackson.dataformat.yaml.YAMLFactory
-import com.fasterxml.jackson.dataformat.yaml.YAMLGenerator
-import com.fasterxml.jackson.module.kotlin.readValue
-import com.fasterxml.jackson.module.kotlin.registerKotlinModule
 import io.guthix.js5.Js5Cache
 import io.guthix.js5.container.disk.Js5DiskStore
 import io.guthix.oldscape.cache.ConfigArchive
@@ -38,6 +29,10 @@ import io.guthix.oldscape.wiki.wikitext.ObjWikiDefinition
 import mu.KotlinLogging
 import java.io.File
 import java.nio.file.Path
+import com.charleskorn.kaml.Yaml
+import io.guthix.oldscape.server.readYaml
+import kotlinx.serialization.encodeToString
+import java.nio.file.Files
 
 private val logger = KotlinLogging.logger { }
 
@@ -54,12 +49,6 @@ object YamlDownloader {
 
     @JvmStatic
     fun main(args: Array<String>) {
-        val yamlFactory = YAMLFactory()
-            .disable(YAMLGenerator.Feature.WRITE_DOC_START_MARKER)
-        val objectMapper = ObjectMapper(yamlFactory)
-            .setSerializationInclusion(JsonInclude.Include.NON_NULL)
-            .registerKotlinModule()
-
         val cache = Js5Cache(Js5DiskStore.open(cachePath))
         val configArchive = cache.readArchive(ConfigArchive.id)
 
@@ -74,39 +63,35 @@ object YamlDownloader {
         }
 
         // TODO remove ids that are not in the cache
-
-        val writer = objectMapper.writer(
-            DefaultPrettyPrinter().withObjectIndenter(DefaultIndenter().withLinefeed("\r\n"))
-        )
         val equipmentDefs = objWikiConfigs.filter { it.isEquipable == true }
-        objectMapper.writeTemplate(writer, equipmentDefs, "Equipment.yaml", ObjWikiDefinition::toEquipmentTemplate)
+        writeTemplate(equipmentDefs, "Equipment.yaml", ObjWikiDefinition::toEquipmentTemplate)
 
         val weaponDefs = objWikiConfigs.filter { it.combatStyle != null }
-        objectMapper.writeTemplate(writer, weaponDefs, "Weapons.yaml", ObjWikiDefinition::toWeaponTemplate)
+        writeTemplate(weaponDefs, "Weapons.yaml", ObjWikiDefinition::toWeaponTemplate)
 
         val weightDefs = objWikiConfigs.filter { it.weight != null }
-        objectMapper.writeTemplate(writer, weightDefs, "ObjWeights.yaml", ObjWikiDefinition::toWeightTemplate)
+        writeTemplate(weightDefs, "ObjWeights.yaml", ObjWikiDefinition::toWeightTemplate)
 
         val monsterDefs = npcWikiConfigs.filter { it.combatLvl != null }
-        objectMapper.writeTemplate(writer, monsterDefs, "Monsters.yaml", NpcWikiDefinition::toMonsterTemplate)
+        writeTemplate(monsterDefs, "Monsters.yaml", NpcWikiDefinition::toMonsterTemplate)
     }
 
-    fun <D : WikiDefinition, T : Template> ObjectMapper.writeTemplate(
-        writer: ObjectWriter,
+    fun <D : WikiDefinition, T : Template> writeTemplate(
         defs: List<D>,
         fileName: String,
         templateBuilder: D.(T?) -> T
     ) {
         val serverTemplates = try {
-            readValue<List<T>>(serverPath.resolve(fileName).toFile())
+            Yaml.default.readYaml<List<T>>(Files.readString(serverPath.resolve(fileName)))
         } catch (e: Exception) {
             emptyList()
         }
-        val dumpFile = dumpPath.resolve(fileName).toFile()
-        writer.writeValue(dumpFile, defs.map { dump ->
+        val dumpFile = dumpPath.resolve(fileName)
+        val yamlString = Yaml.default.encodeToString(defs.map { dump ->
             val serverTemplate = serverTemplates.find { dump.ids == it.ids }
             dump.templateBuilder(serverTemplate)
         })
-        logger.info { "Written ${defs.size} templates to ${dumpFile.absoluteFile.absolutePath}" }
+        Files.writeString(dumpFile, yamlString)
+        logger.info { "Written ${defs.size} templates to ${dumpFile.toFile().absolutePath}" }
     }
 }

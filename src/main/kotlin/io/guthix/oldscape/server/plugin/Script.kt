@@ -68,7 +68,12 @@ class EventHandler<out E : Event>(
     private val plugin: E.() -> Unit
 ) {
     fun handle() {
-        event.plugin()
+        try {
+            event.plugin()
+        } catch (e: Exception) {
+            logger.error(e) { "Could not execute event $event." }
+        }
     }
+    companion object : KLogging()
 }
 

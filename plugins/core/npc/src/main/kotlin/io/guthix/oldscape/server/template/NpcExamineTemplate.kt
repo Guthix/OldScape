@@ -17,6 +17,7 @@ package io.guthix.oldscape.server.template
 
 import io.guthix.oldscape.server.Property
 import io.guthix.oldscape.server.world.entity.Npc
+import kotlinx.serialization.Serializable
 
 val Npc.examine: String get() = examineTemplate.examine
 
@@ -25,4 +26,5 @@ private val Npc.examineTemplate: NpcExamineTemplate
 
 internal val NpcTemplate.examine: NpcExamineTemplate? by Property { null }
 
-data class NpcExamineTemplate(override val ids: List<Int>, val examine: String) : Template(ids)
+@Serializable
+data class NpcExamineTemplate(override val ids: List<Int>, val examine: String) : Template

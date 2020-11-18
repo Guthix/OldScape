@@ -15,10 +15,30 @@
  */
 package io.guthix.oldscape.server
 
+import kotlinx.serialization.KSerializer
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.descriptors.PrimitiveKind
+import kotlinx.serialization.descriptors.PrimitiveSerialDescriptor
+import kotlinx.serialization.descriptors.SerialDescriptor
+import kotlinx.serialization.encoding.Decoder
+import kotlinx.serialization.encoding.Encoder
 import java.math.BigInteger
 
+@Serializable
 data class ServerConfig(val revision: Int, val port: Int, val rsa: RSA) {
-    data class RSA(val publicKey: BigInteger, val privateKey: BigInteger, val modulus: BigInteger)
+    @Serializable
+    data class RSA(
+        @Serializable(with = BigIntegerSerializer::class) val publicKey: BigInteger,
+        @Serializable(with = BigIntegerSerializer::class) val privateKey: BigInteger,
+        @Serializable(with = BigIntegerSerializer::class) val modulus: BigInteger
+    )
 }
 
 
+object BigIntegerSerializer : KSerializer<BigInteger> {
+    override val descriptor: SerialDescriptor = PrimitiveSerialDescriptor("BigInteger", PrimitiveKind.STRING)
+
+    override fun serialize(encoder: Encoder, value: BigInteger): Unit = encoder.encodeString(value.toString(10))
+
+    override fun deserialize(decoder: Decoder): BigInteger = BigInteger(decoder.decodeString())
+}

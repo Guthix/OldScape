@@ -17,6 +17,7 @@ package io.guthix.oldscape.server.template
 
 import io.guthix.oldscape.server.Property
 import io.guthix.oldscape.server.world.entity.Npc
+import kotlinx.serialization.Serializable
 
 val Npc.lvl: Int get() = monsterTemplate.lvl
 
@@ -62,23 +63,25 @@ internal val Npc.monsterTemplate: MonsterTemplate
 
 internal val NpcTemplate.monster: MonsterTemplate? by Property { null }
 
+@Serializable
 data class MonsterTemplate(
     override val ids: List<Int>,
     val lvl: Int,
-    val maxHit: Int?,
-    val attackType: AttackType?,
+    val maxHit: Int? = null,
+    val attackType: AttackType? = null,
     val isAggressive: Boolean,
     val isPoisonous: Boolean,
     val isImmumePoison: Boolean,
     val isImmuneVenom: Boolean,
-    val attackSpeed: Int?,
-    val sequences: CombatSequences?,
+    val attackSpeed: Int? = null,
+    val sequences: CombatSequences? = null,
     val stats: CombatStats,
     val attackBonus: CombatBonus,
     val strengthBonus: CombatBonus,
     val defensiveStats: StyleBonus
-) : Template(ids)
+) : Template
 
+@Serializable
 data class CombatStats(
     val health: Int,
     val attack: Int,
@@ -88,6 +91,7 @@ data class CombatStats(
     val magic: Int
 )
 
+@Serializable
 data class CombatSequences(
     val spawn: Int? = null,
     val attack: Int,

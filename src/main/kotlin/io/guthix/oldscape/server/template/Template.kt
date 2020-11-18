@@ -21,11 +21,12 @@ import io.guthix.oldscape.server.event.InitializeTemplateEvent
 import io.guthix.oldscape.server.plugin.Script
 import io.guthix.oldscape.server.readYaml
 import mu.KLogging
-import mu.KotlinLogging
 import kotlin.reflect.KClass
 import kotlin.reflect.KProperty
 
-abstract class Template(open val ids: List<Int>)
+interface Template {
+    val ids: List<Int>
+}
 
 abstract class BaseTemplate(config: Config) : PropertyHolder {
     override val properties: MutableMap<KProperty<*>, Any?> = mutableMapOf()

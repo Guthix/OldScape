@@ -19,6 +19,7 @@ import io.guthix.oldscape.server.Property
 import io.guthix.oldscape.server.world.entity.Npc
 import io.guthix.oldscape.server.world.map.dim.TileUnit
 import io.guthix.oldscape.server.world.map.dim.tiles
+import kotlinx.serialization.Serializable
 
 val Npc.wanderRadius: TileUnit get() = walkTemplate.wanderRadius.tiles
 
@@ -27,4 +28,5 @@ private val Npc.walkTemplate: NpcWalkTemplate
 
 internal val NpcTemplate.walk: NpcWalkTemplate? by Property { null }
 
-data class NpcWalkTemplate(override val ids: List<Int>, val wanderRadius: Int) : Template(ids)
+@Serializable
+data class NpcWalkTemplate(override val ids: List<Int>, val wanderRadius: Int) : Template

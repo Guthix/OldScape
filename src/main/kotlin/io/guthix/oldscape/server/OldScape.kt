@@ -15,10 +15,6 @@
  */
 package io.guthix.oldscape.server
 
-import com.fasterxml.jackson.core.type.TypeReference
-import com.fasterxml.jackson.databind.ObjectMapper
-import com.fasterxml.jackson.dataformat.yaml.YAMLFactory
-import com.fasterxml.jackson.module.kotlin.registerKotlinModule
 import io.guthix.js5.Js5Cache
 import io.guthix.js5.container.Js5Container
 import io.guthix.js5.container.Js5Store
@@ -37,6 +33,10 @@ import io.guthix.oldscape.server.net.OldScapeServer
 import io.guthix.oldscape.server.net.game.GamePacketDecoder
 import io.guthix.oldscape.server.template.*
 import io.guthix.oldscape.server.world.World
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.json.Json
+import java.nio.file.Files
 import java.nio.file.Path
 import java.util.*
 
@@ -47,9 +47,7 @@ fun main(args: Array<String>) {
 object OldScape {
     @JvmStatic
     fun main(args: Array<String>) {
-        val mapper = ObjectMapper(YAMLFactory()).registerKotlinModule()
-        val config = mapper.readValue(javaClass.getResource("/Config.yaml"), ServerConfig::class.java)
-
+        val config = readYaml<ServerConfig>("/Config.yaml")
         val cacheDir = Path.of(javaClass.getResource("/cache").toURI())
         val store = Js5DiskStore.open(cacheDir).use {
             Js5HeapStore.open(it, appendVersions = false)
@@ -78,14 +76,17 @@ object OldScape {
 
         val mapSquareXteas = loadMapSquareXteaKeys(cacheDir.resolve("xteas.json"))
         val world = World.fromMap(
-            MapArchive.load(cache.readArchive(MapArchive.id), mapSquareXteas).mapsquares,
-            mapSquareXteas.map { it.id to it.key }.toMap()
+            MapArchive.load(
+                cache.readArchive(MapArchive.id), mapSquareXteas.map {MapXtea(it.mapsquare, it.key)}
+            ).mapsquares,
+            mapSquareXteas.map { it.mapsquare to it.key }.toMap()
         )
         EventBus.schedule(WorldInitializedEvent(world))
         Timer().scheduleAtFixedRate(world, 0, 600)
         OldScapeServer(config.revision, config.port, config.rsa.privateKey, config.rsa.modulus, world, store).run()
     }
 
+    @Serializable // workaround for https://github.com/Kotlin/kotlinx.serialization/issues/532
     data class XteaConfig(val mapsquare: Int, val key: IntArray) {
         override fun equals(other: Any?): Boolean {
             if (this === other) return true
@@ -103,8 +104,5 @@ object OldScape {
         }
     }
 
-    private fun loadMapSquareXteaKeys(path: Path): List<MapXtea> = ObjectMapper().registerKotlinModule()
-        .readValue(path.toFile(), object : TypeReference<List<XteaConfig>>() {}).map { MapXtea(it.mapsquare, it.key) }
-
-    private fun ObjectMapper.loadConfig(path: Path) = readValue(path.toFile(), ServerConfig::class.java)
+    private fun loadMapSquareXteaKeys(path: Path): List<XteaConfig> = Json.decodeFromString(Files.readString(path))
 }

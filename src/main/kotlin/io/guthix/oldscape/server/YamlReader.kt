@@ -15,26 +15,21 @@
  */
 package io.guthix.oldscape.server
 
-import com.fasterxml.jackson.core.type.TypeReference
-import com.fasterxml.jackson.databind.ObjectMapper
-import com.fasterxml.jackson.dataformat.yaml.YAMLFactory
-import com.fasterxml.jackson.module.kotlin.registerKotlinModule
+import com.charleskorn.kaml.Yaml
+import kotlinx.serialization.decodeFromString
 import java.io.BufferedReader
 import java.io.FileNotFoundException
 import java.io.InputStreamReader
 import java.net.URL
 import java.util.stream.Collectors
 
-
-val yamlMapper: ObjectMapper = ObjectMapper(YAMLFactory()).registerKotlinModule()
-
 inline fun <reified C> Any.readYaml(filePath: String): C {
     val inStream = javaClass.getResourceAsStream(filePath).use {
         BufferedReader(InputStreamReader(it)).lines().parallel().collect(Collectors.joining("\n"))
     }
-    return yamlMapper.readValue(inStream, object : TypeReference<C>() {})
-
+    return Yaml.default.decodeFromString(inStream)
 }
+
 
 private fun Any.getResource(filePath: String): URL = javaClass.getResource(filePath) ?: throw FileNotFoundException(
     "Could not find resource file $filePath."
