@@ -21,6 +21,9 @@ pluginManagement {
 
 rootProject.name = "oldscape"
 
+include("cache")
+include("cache:formats")
+
 include("server")
 include("server:dumper")
 includeModules("server:plugins")

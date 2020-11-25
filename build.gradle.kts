@@ -8,21 +8,12 @@ plugins {
     application
     id("org.jetbrains.dokka")
     kotlin("jvm")
-    kotlin("plugin.serialization")
 }
 
 group = "io.guthix.oldscape"
-version = "0.1.0-SNAPSHOT"
 description = "An Oldschool Runescape Emulation"
 
 val kotlinLoggingVersion: String by extra("2.0.2")
-val kCoroutinesVersion: String by extra("1.3.2")
-val classGraphVersion: String by extra("4.8.53")
-val logbackVersion: String by extra("1.2.3")
-val nettyVersion: String by extra("4.1.42.Final")
-val ktSerVersion: String by extra("1.0.1")
-val kamlVersion: String by extra("0.26.0")
-val oldscapeCacheVersion: String by extra("0.1.0")
 val kotlinVersion: String by extra("1.4.10")
 
 allprojects {
@@ -30,6 +21,7 @@ allprojects {
     apply(plugin = "org.jetbrains.dokka")
 
     repositories {
+        jcenter()
         mavenCentral()
     }
 

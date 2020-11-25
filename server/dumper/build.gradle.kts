@@ -2,9 +2,9 @@ plugins {
     application
 }
 
-val logbackVersion: String by rootProject.extra
-val ktSerVersion: String by rootProject.extra
-val kamlVersion: String by rootProject.extra
+val logbackVersion: String by project(":server").extra
+val ktSerVersion: String by project(":server").extra
+val kamlVersion: String by project(":server").extra
 val wikiDownloaderVersion: String by extra("0.1.0")
 
 application { mainClass.set("io.guthix.oldscape.wiki.yaml.YamlDownloader") }

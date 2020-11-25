@@ -19,34 +19,13 @@ val repoUrl: String = "https://github.com/guthix/OldScape-Cache"
 val gitSuffix: String = "github.com/guthix/OldScape-Cache.git"
 
 val jagexStore5Version: String by extra("0.4.0")
-val kotlinLoggingVersion: String by extra("1.8.3")
 val logbackVersion: String by extra("1.2.3")
-val kotlinVersion: String by extra(project.getKotlinPluginVersion()!!)
-
-allprojects {
-    apply(plugin = "kotlin")
-
-    repositories {
-        mavenCentral()
-        jcenter()
-    }
-
-    tasks {
-        compileKotlin {
-            kotlinOptions.jvmTarget = "11"
-        }
-
-        compileTestKotlin {
-            kotlinOptions.jvmTarget = "11"
-        }
-    }
-}
+val kotlinVersion: String by rootProject.extra
 
 kotlin { explicitApi() }
 
 dependencies {
     api(group = "io.guthix", name = "jagex-store-5", version = jagexStore5Version)
-    implementation(group = "io.github.microutils", name = "kotlin-logging", version = kotlinLoggingVersion)
     implementation(group = "ch.qos.logback", name = "logback-classic", version = logbackVersion)
     dokkaHtmlPlugin(group = "org.jetbrains.dokka", name = "kotlin-as-java-plugin", version = kotlinVersion)
 }
