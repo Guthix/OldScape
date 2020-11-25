@@ -1,0 +1,11 @@
+<component name="CopyrightManager">
+  <settings>
+    <module2copyright>
+      <element module="SourceCode" copyright="Oldscape-Cache" />
+    </module2copyright>
+    <LanguageOptions name="Kotlin">
+      <option name="fileTypeOverride" value="3" />
+      <option name="addBlankAfter" value="false" />
+    </LanguageOptions>
+  </settings>
+</component>

@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="SourceCode" pattern="src[oldscape-cache.formats*]:*..*||src[oldscape-cache.main]:*..*" />
+</component>
