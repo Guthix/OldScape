@@ -28,6 +28,9 @@ include("server")
 include("server:dumper")
 includeModules("server:plugins")
 
+include("wiki:parser")
+include("wiki:downloader")
+
 
 fun includeModules(module: String) {
     val pluginRelativePath = module.replace(":", "/")

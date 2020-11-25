@@ -18,7 +18,7 @@ description = "An Oldschool Runescape Server Emulator"
 
 application { mainClass.set("io.guthix.oldscape.server.OldScape") }
 
-val kCoroutinesVersion: String by extra("1.3.2")
+val kCoroutinesVersion: String by rootProject.extra
 val classGraphVersion: String by extra("4.8.53")
 val logbackVersion: String by extra("1.2.3")
 val nettyVersion: String by extra("4.1.42.Final")

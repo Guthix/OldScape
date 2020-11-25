@@ -14,6 +14,7 @@ group = "io.guthix.oldscape"
 description = "An Oldschool Runescape Emulation"
 
 val kotlinLoggingVersion: String by extra("2.0.2")
+val kCoroutinesVersion: String by extra("1.3.2")
 val kotlinVersion: String by extra("1.4.10")
 
 allprojects {

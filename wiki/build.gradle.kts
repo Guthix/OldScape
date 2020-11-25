@@ -18,40 +18,17 @@ description = "A library for dumping the Oldschool Runescape Wiki"
 val repoUrl: String = "https://github.com/guthix/OldScape-Wiki"
 val gitSuffix: String = "github.com/guthix/OldScape-Wiki.git"
 
-val oldscapeCacheVersion: String by extra("0.1.0")
-val kotlinCoroutinesVersion: String by extra("1.3.9")
-val kotlinLoggingVersion: String by extra("1.7.6")
-val ktorVersion: String by extra("1.4.0")
-val kotlinVersion: String by extra(project.getKotlinPluginVersion()!!)
+val kotlinVersion: String by rootProject.extra
 
 allprojects {
     apply(plugin = "maven-publish")
     apply(plugin = "signing")
     apply(plugin = "org.jetbrains.dokka")
-    apply(plugin = "kotlin")
 
-    group = rootProject.group
-    version = rootProject.version
-
-    repositories {
-        mavenCentral()
-    }
-
-    dependencies {
-        implementation(group = "io.github.microutils", name = "kotlin-logging", version = kotlinLoggingVersion)
-    }
+    group = "io.guthix.oldscape"
+    version = "0.1.0"
 
     kotlin { explicitApi() }
-
-    tasks {
-        compileKotlin {
-            kotlinOptions.jvmTarget = "11"
-        }
-
-        compileTestKotlin {
-            kotlinOptions.jvmTarget = "11"
-        }
-    }
 
     java {
         withJavadocJar()
