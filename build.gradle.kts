@@ -11,13 +11,9 @@ plugins {
     kotlin("plugin.serialization")
 }
 
-apply<TemplateGenerator>()
-
 group = "io.guthix.oldscape"
 version = "0.1.0-SNAPSHOT"
-description = "An Oldschool Runescape Server Emulator"
-
-application { mainClass.set("io.guthix.oldscape.server.OldScape") }
+description = "An Oldschool Runescape Emulation"
 
 val kotlinLoggingVersion: String by extra("2.0.2")
 val kCoroutinesVersion: String by extra("1.3.2")
@@ -31,11 +27,7 @@ val kotlinVersion: String by extra("1.4.10")
 
 allprojects {
     apply(plugin = "kotlin")
-    apply(plugin = "kotlinx-serialization")
     apply(plugin = "org.jetbrains.dokka")
-
-    group = rootProject.group
-    version = rootProject.version
 
     repositories {
         mavenCentral()
@@ -61,21 +53,4 @@ allprojects {
             kotlinOptions.jvmTarget = "11"
         }
     }
-}
-
-dependencies {
-    project(":plugins").dependencyProject.subprojects.forEach { pluginProject ->
-        if (pluginProject.buildFile.exists()) {
-            runtimeOnly(pluginProject)
-        }
-    }
-    api(group = "io.guthix.oldscape", name = "oldscape-cache", version = oldscapeCacheVersion)
-    api(group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version = ktSerVersion)
-    implementation(group = "org.jetbrains.kotlin", name = "kotlin-reflect", version = kotlinVersion)
-    implementation(group = "org.jetbrains.kotlin", name = "kotlin-scripting-common", version = kotlinVersion)
-    implementation(group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version = kCoroutinesVersion)
-    implementation(group = "io.netty", name = "netty-all", version = nettyVersion)
-    implementation(group = "io.github.classgraph", name = "classgraph", version = classGraphVersion)
-    implementation(group = "ch.qos.logback", name = "logback-classic", version = logbackVersion)
-    implementation(group = "com.charleskorn.kaml", name = "kaml", version = kamlVersion)
 }

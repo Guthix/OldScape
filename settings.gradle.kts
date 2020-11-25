@@ -19,14 +19,16 @@ pluginManagement {
     }
 }
 
-rootProject.name = "oldscape-server"
+rootProject.name = "oldscape"
 
-includeModules("plugins")
+include("server")
+include("server:dumper")
+includeModules("server:plugins")
 
-include("dumper")
 
 fun includeModules(module: String) {
-    val pluginRootDir: Path = rootProject.projectDir.toPath().resolve(module)
+    val pluginRelativePath = module.replace(":", "/")
+    val pluginRootDir: Path = rootProject.projectDir.toPath().resolve(pluginRelativePath)
     if (pluginRootDir.toFile().exists()) {
         val gradleBuildFiles = FileNameFinder().getFileNames("$pluginRootDir", "**/*.gradle.kts")
         gradleBuildFiles.forEach { filename ->
