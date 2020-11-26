@@ -15,6 +15,7 @@
  */
 package io.guthix.oldscape.server.world.entity
 
+import io.guthix.oldscape.server.PersistentProperty
 import io.guthix.oldscape.server.PersistentPropertyHolder
 import io.guthix.oldscape.server.event.Event
 import io.guthix.oldscape.server.event.EventHolder
@@ -28,6 +29,7 @@ import io.guthix.oldscape.server.template.VarpTemplate
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.interest.*
 import io.guthix.oldscape.server.world.entity.intface.IfComponent
+import io.guthix.oldscape.server.world.map.Tile
 import io.guthix.oldscape.server.world.map.dim.TileUnit
 import io.guthix.oldscape.server.world.map.dim.tiles
 import io.netty.channel.ChannelFuture
@@ -53,6 +55,8 @@ class Player internal constructor(
     override val updateFlags = sortedSetOf<PlayerUpdateType>()
 
     override val events: ConcurrentLinkedQueue<EventHandler<Event>> = ConcurrentLinkedQueue()
+
+    override var pos: Tile by PersistentProperty { super.pos }
 
     var isLoggingOut: Boolean = false
 

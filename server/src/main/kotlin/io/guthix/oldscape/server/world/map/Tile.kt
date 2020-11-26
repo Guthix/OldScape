@@ -17,10 +17,19 @@ package io.guthix.oldscape.server.world.map
 
 import io.guthix.oldscape.server.world.map.dim.FloorUnit
 import io.guthix.oldscape.server.world.map.dim.TileUnit
+import io.guthix.oldscape.server.world.map.dim.floors
+import io.guthix.oldscape.server.world.map.dim.tiles
+import kotlinx.serialization.KSerializer
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.descriptors.SerialDescriptor
+import kotlinx.serialization.encoding.Decoder
+import kotlinx.serialization.encoding.Encoder
 import kotlin.math.abs
 import kotlin.math.ceil
 import kotlin.math.sqrt
 
+@Serializable(with = TileSerializer::class)
 data class Tile(val floor: FloorUnit, val x: TileUnit, val y: TileUnit) {
     fun withInDistanceOf(other: Tile, distance: TileUnit): Boolean = if (floor == other.floor) {
         abs((other.x - x).value) <= distance.value && abs((other.y - y).value) <= distance.value
@@ -37,4 +46,20 @@ data class Tile(val floor: FloorUnit, val x: TileUnit, val y: TileUnit) {
     override fun toString(): String = "Tile(z=${floor.value}, x=${x.value}, y=${y.value})"
 }
 
+@SerialName("Color")
+@Serializable
+private data class TileSurrogate(val floor: Int, val x: Int, val y: Int)
 
+object TileSerializer : KSerializer<Tile> {
+    override val descriptor: SerialDescriptor = TileSurrogate.serializer().descriptor
+
+    override fun serialize(encoder: Encoder, value: Tile) {
+        val surrogate = TileSurrogate(value.floor.value, value.x.value, value.y.value)
+        encoder.encodeSerializableValue(TileSurrogate.serializer(), surrogate)
+    }
+
+    override fun deserialize(decoder: Decoder): Tile {
+        val surrogate = decoder.decodeSerializableValue(TileSurrogate.serializer())
+        return Tile(surrogate.floor.floors, surrogate.x.tiles, surrogate.y.tiles)
+    }
+}
