@@ -23,10 +23,7 @@ import io.guthix.oldscape.server.world.PlayerList
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.Npc
 import io.guthix.oldscape.server.world.entity.Player
-import io.guthix.oldscape.server.world.entity.interest.MovementInterestUpdate
-import io.guthix.oldscape.server.world.entity.interest.PlayerManager
-import io.guthix.oldscape.server.world.entity.interest.PlayerUpdateType
-import io.guthix.oldscape.server.world.entity.interest.regionId
+import io.guthix.oldscape.server.world.entity.interest.*
 import io.guthix.oldscape.server.world.map.Tile
 import io.guthix.oldscape.server.world.map.dim.floors
 import io.guthix.oldscape.server.world.map.dim.tiles
@@ -370,7 +367,7 @@ class PlayerInfoPacket(
             player.equipmentSet.feet?.let { // write feet
                 tempBuf.writeShort(512 + it.id)
             } ?: run { tempBuf.writeShort(256 + player.style.feet) }
-            if (player.gender == PlayerManager.Gender.MALE) { //tBuf.write beard
+            if (player.gender == Gender.MALE) { //tBuf.write beard
                 player.equipmentSet.head?.let {
                     if (player.equipmentSet.coversFace) {
                         tempBuf.writeByte(0)

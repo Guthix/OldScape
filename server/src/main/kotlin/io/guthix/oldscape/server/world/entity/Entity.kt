@@ -23,16 +23,16 @@ import io.guthix.oldscape.server.world.map.Tile
 import io.guthix.oldscape.server.world.map.dim.TileUnit
 import kotlin.reflect.KProperty
 
-abstract class Entity : TaskHolder, PropertyHolder {
-    abstract val pos: Tile
+interface Entity : TaskHolder, PropertyHolder {
+    val pos: Tile
 
-    override val properties: MutableMap<KProperty<*>, Any?> = mutableMapOf()
+    val sizeX: TileUnit
 
-    abstract val sizeX: TileUnit
+    val sizeY: TileUnit
 
-    abstract val sizeY: TileUnit
+    var orientation: Int
 
-    open var orientation: Int = 0
+    override val tasks: MutableMap<TaskType, MutableSet<Task>>
 
-    override val tasks: MutableMap<TaskType, MutableSet<Task>> = mutableMapOf()
+    override val properties: MutableMap<KProperty<*>, Any?>
 }

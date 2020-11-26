@@ -31,6 +31,7 @@ import io.guthix.oldscape.server.world.entity.interest.*
 import io.guthix.oldscape.server.world.entity.intface.IfComponent
 import io.guthix.oldscape.server.world.map.Tile
 import io.guthix.oldscape.server.world.map.dim.TileUnit
+import io.guthix.oldscape.server.world.map.dim.floors
 import io.guthix.oldscape.server.world.map.dim.tiles
 import io.netty.channel.ChannelFuture
 import io.netty.channel.ChannelHandlerContext
@@ -52,11 +53,39 @@ class Player internal constructor(
     private val statManager: StatManager,
     private val interfaceManager: TopInterfaceManager,
 ) : Character(playerManager.index), Comparable<Player>, EventHolder, PersistentPropertyHolder {
-    override val updateFlags = sortedSetOf<PlayerUpdateType>()
+    override var pos: Tile by PersistentProperty { Tile(0.floors, 3235.tiles, 3222.tiles) }
 
-    override val events: ConcurrentLinkedQueue<EventHandler<Event>> = ConcurrentLinkedQueue()
+    override var orientation: Int by PersistentProperty { 0 }
 
-    override var pos: Tile by PersistentProperty { super.pos }
+    val gender: Gender by PersistentProperty { Gender.MALE }
+
+    val colours: Colours by PersistentProperty { Colours(0, 0, 0, 0, 0) }
+
+    val style: Style by PersistentProperty {
+        Style(
+            hair = 0,
+            beard = 10,
+            torso = 18,
+            arms = 26,
+            legs = 36,
+            hands = 33,
+            feet = 42
+        )
+    }
+
+    val animations: StanceSequences by PersistentProperty {
+        StanceSequences(
+            stand = 808,
+            turn = 823,
+            walk = 819,
+            turn180 = 820,
+            turn90CW = 821,
+            turn90CCW = 822,
+            run = 824
+        )
+    }
+
+    var rights: Int by PersistentProperty { 2 }
 
     var isLoggingOut: Boolean = false
 
@@ -70,51 +99,13 @@ class Player internal constructor(
 
     var nameModifiers: Array<String> = arrayOf("", "", "")
 
-    override var orientation: Int = 0
-
-    val gender: PlayerManager.Gender = PlayerManager.Gender.MALE
-
     var isSkulled: Boolean = false
 
     val prayerIcon: Int = -1
 
-    var rights: Int = 2
-
     val combatLevel: Int = 126
 
-    val style: PlayerManager.Style = PlayerManager.Style(
-        hair = 0,
-        beard = 10,
-        torso = 18,
-        arms = 26,
-        legs = 36,
-        hands = 33,
-        feet = 42
-    )
-
-    val colours: PlayerManager.Colours = PlayerManager.Colours(0, 0, 0, 0, 0)
-
     val equipmentSet: PlayerManager.EquipmentSet = PlayerManager.EquipmentSet(mutableMapOf())
-
-    data class StanceSequences(
-        var stand: Int,
-        var turn: Int,
-        var walk: Int,
-        var turn180: Int,
-        var turn90CW: Int,
-        var turn90CCW: Int,
-        var run: Int
-    )
-
-    val animations: StanceSequences = StanceSequences(
-        stand = 808,
-        turn = 823,
-        walk = 819,
-        turn180 = 820,
-        turn90CW = 821,
-        turn90CCW = 822,
-        run = 824
-    )
 
     override var inRunMode: Boolean = super.inRunMode
         set(value) {
@@ -135,6 +126,10 @@ class Player internal constructor(
         set(value) {
             energyManager.energy = value
         }
+
+    override val updateFlags = sortedSetOf<PlayerUpdateType>()
+
+    override val events: ConcurrentLinkedQueue<EventHandler<Event>> = ConcurrentLinkedQueue()
 
     override fun processTasks() {
         while (true) {

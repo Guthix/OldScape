@@ -15,16 +15,19 @@
  */
 package io.guthix.oldscape.server.world.entity
 
+import io.guthix.oldscape.server.task.Task
+import io.guthix.oldscape.server.task.TaskType
 import io.guthix.oldscape.server.template.LocTemplate
 import io.guthix.oldscape.server.world.map.Tile
 import io.guthix.oldscape.server.world.map.dim.TileUnit
+import kotlin.reflect.KProperty
 
 class Loc(
     val template: LocTemplate,
     val type: Int,
     override val pos: Tile,
     override var orientation: Int
-) : Entity() {
+) : Entity {
     val id: Int get() = template.id
     val impenetrable: Boolean get() = template.impenetrable
     val clipType: Int get() = template.clipType
@@ -43,6 +46,10 @@ class Loc(
     val slot: Int get() = MAP_SLOTS[type]
 
     internal val mapKey get() = (pos.x.relativeZone.value shl 5) or (pos.y.relativeZone.value shl 2) or slot
+
+    override val tasks: MutableMap<TaskType, MutableSet<Task>> = mutableMapOf()
+
+    override val properties: MutableMap<KProperty<*>, Any?> = mutableMapOf()
 
     companion object {
         internal const val UNIQUE_SLOTS: Int = 4

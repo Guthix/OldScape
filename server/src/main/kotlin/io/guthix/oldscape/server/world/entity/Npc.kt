@@ -34,6 +34,8 @@ class Npc(val template: NpcTemplate, index: Int, override var pos: Tile) : Chara
 
     val contextMenu: Array<String?> get() = template.contextMenu
 
+    override var orientation: Int = 0
+
     override fun processTasks() {
         while (true) {
             val resumed = tasks.values.flatMap { routineList -> routineList.toList().map(Task::run) } // TODO optimize

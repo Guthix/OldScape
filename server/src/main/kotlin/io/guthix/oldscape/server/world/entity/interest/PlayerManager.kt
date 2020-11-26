@@ -24,6 +24,7 @@ import io.guthix.oldscape.server.world.map.Tile
 import io.guthix.oldscape.server.world.map.dim.TileUnit
 import io.guthix.oldscape.server.world.map.dim.tiles
 import io.netty.channel.ChannelFuture
+import kotlinx.serialization.Serializable
 import kotlin.reflect.KProperty
 
 class PlayerManager(val index: Int) {
@@ -62,7 +63,6 @@ class PlayerManager(val index: Int) {
         SHIELD(5), LEGS(7), HANDS(9), FEET(10), RING(11), AMMUNITION(13)
     }
 
-
     class EquipmentSet(val equipment: MutableMap<Int, Obj>) : PropertyHolder {
         val head: Obj? get() = equipment[EquipmentType.HEAD.slot]
         val cape: Obj? get() = equipment[EquipmentType.CAPE.slot]
@@ -83,26 +83,6 @@ class PlayerManager(val index: Int) {
         override val properties: MutableMap<KProperty<*>, Any?> = mutableMapOf()
     }
 
-    data class Style(
-        val hair: Int,
-        val beard: Int,
-        val torso: Int,
-        val arms: Int,
-        val legs: Int,
-        val hands: Int,
-        val feet: Int
-    )
-
-    data class Colours(
-        var hair: Int,
-        var torso: Int,
-        var legs: Int,
-        var feet: Int,
-        var skin: Int
-    )
-
-    enum class Gender(val opcode: Int) { MALE(0), FEMALE(1) }
-
     companion object {
         val SIZE: TileUnit = 32.tiles
 
@@ -113,6 +93,41 @@ class PlayerManager(val index: Int) {
         const val MESSAGE_DURATION: Int = 4
     }
 }
+
+@Serializable
+data class Style(
+    val hair: Int,
+    val beard: Int,
+    val torso: Int,
+    val arms: Int,
+    val legs: Int,
+    val hands: Int,
+    val feet: Int
+)
+
+@Serializable
+data class Colours(
+    var hair: Int,
+    var torso: Int,
+    var legs: Int,
+    var feet: Int,
+    var skin: Int
+)
+
+
+@Serializable
+data class StanceSequences(
+    var stand: Int,
+    var turn: Int,
+    var walk: Int,
+    var turn180: Int,
+    var turn90CW: Int,
+    var turn90CCW: Int,
+    var run: Int
+)
+
+@Serializable
+enum class Gender(val opcode: Int) { MALE(0), FEMALE(1) }
 
 val Tile.regionId: Int
     get() = (floor.value shl 16) or ((x / PlayerManager.REGION_SIZE).value shl 8) or

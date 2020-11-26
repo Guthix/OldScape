@@ -17,6 +17,7 @@ package io.guthix.oldscape.server.world.entity
 
 import io.guthix.oldscape.server.event.PublicMessageEvent
 import io.guthix.oldscape.server.net.game.out.PlayerInfoPacket
+import io.guthix.oldscape.server.task.Task
 import io.guthix.oldscape.server.task.TaskType
 import io.guthix.oldscape.server.template.PhysicalSpotAnimTemplate
 import io.guthix.oldscape.server.template.SequenceTemplate
@@ -30,23 +31,18 @@ import io.guthix.oldscape.server.world.map.dim.floors
 import io.guthix.oldscape.server.world.map.dim.tiles
 import java.util.*
 import kotlin.math.atan2
+import kotlin.reflect.KProperty
 
-abstract class Character(val index: Int) : Entity() {
-    internal val postTasks = mutableListOf<() -> Unit>()
-
-    internal abstract val updateFlags: SortedSet<out InterestUpdateType>
-
-    var movementType: MovementInterestUpdate = MovementInterestUpdate.STAY
-
+abstract class Character(val index: Int) : Entity {
     abstract val size: TileUnit
 
     override val sizeX: TileUnit get() = size
 
     override val sizeY: TileUnit get() = size
 
-    override var pos: Tile = Tile(0.floors, 3231.tiles, 3222.tiles)
+    abstract override var pos: Tile
 
-    var lastPos: Tile = Tile(0.floors, 3231.tiles, 3222.tiles)
+    var lastPos: Tile = Tile(0.floors, 3234.tiles, 3222.tiles)
 
     var publicMessage: PublicMessageEvent? = null
 
@@ -60,11 +56,21 @@ abstract class Character(val index: Int) : Entity() {
 
     var shoutMessage: String? = null
 
+    var movementType: MovementInterestUpdate = MovementInterestUpdate.STAY
+
     var path: MutableList<Tile> = mutableListOf()
 
     open var inRunMode: Boolean = false
 
     var teleportLocation: Tile? = null
+
+    internal abstract val updateFlags: SortedSet<out InterestUpdateType>
+
+    internal val postTasks = mutableListOf<() -> Unit>()
+
+    override val tasks: MutableMap<TaskType, MutableSet<Task>> = mutableMapOf()
+
+    override val properties: MutableMap<KProperty<*>, Any?> = mutableMapOf()
 
     fun teleport(to: Tile) {
         teleportLocation = to
