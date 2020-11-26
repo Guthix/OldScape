@@ -16,7 +16,6 @@
 package io.guthix.oldscape.server.net.login
 
 import io.guthix.oldscape.server.net.PacketInboundHandler
-import io.guthix.oldscape.server.net.StatusEncoder
 import io.guthix.oldscape.server.net.StatusResponse
 import io.guthix.oldscape.server.world.World
 import io.netty.channel.ChannelHandlerContext
@@ -29,9 +28,8 @@ class LoginHandler(val world: World, val sessionId: Long) : PacketInboundHandler
         }
         if (world.isFull) {
             ctx.writeAndFlush(StatusResponse.SERVER_FULL)
+            return
         }
-        ctx.write(StatusResponse.NORMAL)
-        ctx.pipeline().replace(StatusEncoder::class.qualifiedName, LoginEncoder::class.qualifiedName, LoginEncoder())
         msg.ctx = ctx
         world.loginQueue.add(msg)
     }

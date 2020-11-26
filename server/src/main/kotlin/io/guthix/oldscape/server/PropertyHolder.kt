@@ -16,9 +16,14 @@
 package io.guthix.oldscape.server
 
 import kotlin.reflect.KProperty
+import kotlin.reflect.jvm.javaField
 
 interface PropertyHolder {
     val properties: MutableMap<KProperty<*>, Any?>
+}
+
+interface PersistentPropertyHolder {
+    val persistentProperties: MutableMap<String, Any>
 }
 
 class Property<in C : PropertyHolder, T : Any?>(
@@ -35,3 +40,20 @@ class Property<in C : PropertyHolder, T : Any?>(
     }
 }
 
+class PersistentProperty<in C : PersistentPropertyHolder, T : Any>(
+    val initializer: C.() -> T = { throw IllegalStateException("Not initialized.") }
+) {
+    @Suppress("UNCHECKED_CAST")
+    operator fun getValue(thisRef: C, property: KProperty<*>): T {
+        val key = "${property.javaField?.declaringClass?.name}.${property.name}"
+        return thisRef.persistentProperties.getOrPut(key) {
+            initializer(thisRef)
+        } as T
+    }
+
+    operator fun setValue(thisRef: C, property: KProperty<*>, value: T): T {
+        val key = "${property.javaField?.declaringClass?.name}.${property.name}"
+        thisRef.persistentProperties[key] = value
+        return value
+    }
+}

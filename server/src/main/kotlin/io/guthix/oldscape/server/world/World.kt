@@ -19,7 +19,13 @@ import io.guthix.oldscape.cache.map.MapDefinition
 import io.guthix.oldscape.cache.map.MapLocDefinition
 import io.guthix.oldscape.cache.map.MapSquareDefinition
 import io.guthix.oldscape.server.PropertyHolder
+import io.guthix.oldscape.server.db.KotlinClass
+import io.guthix.oldscape.server.db.PlayerPropertiesTable
+import io.guthix.oldscape.server.db.PlayerTable
+import io.guthix.oldscape.server.db.upsert
 import io.guthix.oldscape.server.event.*
+import io.guthix.oldscape.server.net.StatusEncoder
+import io.guthix.oldscape.server.net.StatusResponse
 import io.guthix.oldscape.server.net.game.GameDecoder
 import io.guthix.oldscape.server.net.game.GameEncoder
 import io.guthix.oldscape.server.net.game.GameHandler
@@ -28,18 +34,27 @@ import io.guthix.oldscape.server.plugin.EventHandler
 import io.guthix.oldscape.server.task.Task
 import io.guthix.oldscape.server.task.TaskHolder
 import io.guthix.oldscape.server.task.TaskType
-import io.guthix.oldscape.server.template.*
+import io.guthix.oldscape.server.template.LocTemplates
+import io.guthix.oldscape.server.template.NpcTemplate
+import io.guthix.oldscape.server.template.ObjTemplate
+import io.guthix.oldscape.server.template.ProjectileTemplate
 import io.guthix.oldscape.server.world.entity.*
-import io.guthix.oldscape.server.world.map.*
+import io.guthix.oldscape.server.world.map.Tile
+import io.guthix.oldscape.server.world.map.Zone
 import io.guthix.oldscape.server.world.map.dim.*
 import io.netty.util.concurrent.DefaultPromise
 import io.netty.util.concurrent.ImmediateEventExecutor
 import io.netty.util.concurrent.PromiseCombiner
+import kotlinx.serialization.json.Json
+import kotlinx.serialization.serializer
 import mu.KLogging
+import org.jetbrains.exposed.sql.select
+import org.jetbrains.exposed.sql.transactions.transaction
 import java.util.*
 import java.util.concurrent.ConcurrentLinkedQueue
 import java.util.concurrent.LinkedBlockingDeque
 import kotlin.reflect.KProperty
+import kotlin.reflect.full.starProjectedType
 
 class World internal constructor(
     internal val map: Array<Array<Array<Zone?>>>,
@@ -82,9 +97,32 @@ class World internal constructor(
     }
 
     private fun processLogins() {
-        while (loginQueue.isNotEmpty()) {
+        main@ while (loginQueue.isNotEmpty()) {
             val request = loginQueue.poll()
-            val player = players.create(request)
+            val playerDbData = try {
+                transaction {
+                    val playerTableRow = PlayerTable.select {
+                        PlayerTable.username eq request.username
+                    }.single()
+                    val playerUid = playerTableRow[PlayerTable.id]
+                    val properties = PlayerPropertiesTable.select {
+                        PlayerPropertiesTable.playerId eq playerUid
+                    }
+                    playerUid to properties.map {
+                        val jsonData = it[PlayerPropertiesTable.property]
+                        val type = KotlinClass.fromName(it[PlayerPropertiesTable.type]).starProjectedType
+                        it[PlayerPropertiesTable.name] to Json.decodeFromString(serializer(type), jsonData)!!
+                    }.toMap().toMutableMap()
+                }
+            } catch (e: NoSuchElementException) {
+                request.ctx.writeAndFlush(StatusResponse.INVALID_CREDENTIALS)
+                break@main
+            }
+            request.ctx.write(StatusResponse.NORMAL)
+            request.ctx.pipeline().replace(
+                StatusEncoder::class.qualifiedName, LoginEncoder::class.qualifiedName, LoginEncoder()
+            )
+            val player = players.create(playerDbData.first, playerDbData.second, request)
             request.ctx.writeAndFlush(LoginResponse(player.index, player.rights))
             request.ctx.pipeline().replace(LoginDecoder::class.qualifiedName, GameDecoder::class.qualifiedName,
                 GameDecoder(request.isaacPair.decodeGen, player, this)
@@ -113,6 +151,17 @@ class World internal constructor(
     private fun processLogouts() {
         while (logoutQueue.isNotEmpty()) {
             val player = logoutQueue.poll()
+            transaction {
+                player.persistentProperties.forEach { (key, value) ->
+                    val projType = value::class.starProjectedType
+                    PlayerPropertiesTable.upsert(PlayerPropertiesTable.name) {
+                        it[playerId] = player.uid
+                        it[name] = key
+                        it[type] = "$projType"
+                        it[property] = Json.encodeToString(serializer(projType), value)
+                    }
+                }
+            }
             players.remove(player)
         }
     }

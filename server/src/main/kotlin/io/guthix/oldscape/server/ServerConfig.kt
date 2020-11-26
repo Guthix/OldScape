@@ -25,12 +25,19 @@ import kotlinx.serialization.encoding.Encoder
 import java.math.BigInteger
 
 @Serializable
-data class ServerConfig(val revision: Int, val port: Int, val rsa: RSA) {
+data class ServerConfig(val revision: Int, val port: Int, val rsa: RSA, val db: DB) {
     @Serializable
     data class RSA(
         @Serializable(with = BigIntegerSerializer::class) val publicKey: BigInteger,
         @Serializable(with = BigIntegerSerializer::class) val privateKey: BigInteger,
         @Serializable(with = BigIntegerSerializer::class) val modulus: BigInteger
+    )
+
+    @Serializable
+    data class DB(
+        val username: String,
+        val password: String,
+        val url: String
     )
 }
 

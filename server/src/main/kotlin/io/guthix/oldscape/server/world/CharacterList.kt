@@ -79,10 +79,10 @@ class PlayerList(capacity: Int) : Iterable<Player> {
         for (index in capacity downTo 1) freeIndexes.push(index)
     }
 
-    fun create(req: LoginRequest): Player {
+    fun create(uid: Int, properties: MutableMap<String, Any>, req: LoginRequest): Player {
         val index = freeIndexes.pop()
         val priority = Random.nextInt(occupiedIndexes.size + 1)
-        val player = Player(priority, req.ctx, req.username, req.clientSettings, PlayerManager(index),
+        val player = Player(uid, priority, req.ctx, req.username, req.clientSettings, properties, PlayerManager(index),
             NpcManager(), SceneManager(), EnergyManager(), ContextMenuManager(), VarpManager(), StatManager(),
             TopInterfaceManager(req.ctx, id = 165)
         )

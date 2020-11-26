@@ -25,6 +25,7 @@ import io.guthix.oldscape.cache.ConfigArchive
 import io.guthix.oldscape.cache.MapArchive
 import io.guthix.oldscape.cache.config.*
 import io.guthix.oldscape.cache.xtea.MapXtea
+import io.guthix.oldscape.server.db.PostgresDb
 import io.guthix.oldscape.server.event.EventBus
 import io.guthix.oldscape.server.event.InitializeTemplateEvent
 import io.guthix.oldscape.server.event.WorldInitializedEvent
@@ -73,6 +74,7 @@ object OldScape {
         EventBus.loadScripts()
         EventBus.execute(InitializeTemplateEvent)
         GamePacketDecoder.loadIncPackets()
+        PostgresDb.initialize(config.db)
 
         val mapSquareXteas = loadMapSquareXteaKeys(cacheDir.resolve("xteas.json"))
         val world = World.fromMap(

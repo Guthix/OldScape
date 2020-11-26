@@ -15,6 +15,7 @@
  */
 package io.guthix.oldscape.server.world.entity
 
+import io.guthix.oldscape.server.PersistentPropertyHolder
 import io.guthix.oldscape.server.event.Event
 import io.guthix.oldscape.server.event.EventHolder
 import io.guthix.oldscape.server.event.PublicMessageEvent
@@ -34,10 +35,12 @@ import io.netty.channel.ChannelHandlerContext
 import java.util.concurrent.ConcurrentLinkedQueue
 
 class Player internal constructor(
+    val uid: Int,
     var priority: Int,
     var ctx: ChannelHandlerContext,
     val username: String,
     val clientSettings: ClientSettings,
+    override val persistentProperties: MutableMap<String, Any>,
     private val playerManager: PlayerManager,
     private val npcManager: NpcManager,
     private val sceneManager: SceneManager,
@@ -46,7 +49,7 @@ class Player internal constructor(
     private val varpManager: VarpManager,
     private val statManager: StatManager,
     private val interfaceManager: TopInterfaceManager,
-) : Character(playerManager.index), Comparable<Player>, EventHolder {
+) : Character(playerManager.index), Comparable<Player>, EventHolder, PersistentPropertyHolder {
     override val updateFlags = sortedSetOf<PlayerUpdateType>()
 
     override val events: ConcurrentLinkedQueue<EventHandler<Event>> = ConcurrentLinkedQueue()

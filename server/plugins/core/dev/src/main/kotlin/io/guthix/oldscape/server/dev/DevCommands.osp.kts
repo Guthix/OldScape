@@ -16,7 +16,6 @@
 package io.guthix.oldscape.server.dev
 
 import io.guthix.oldscape.server.event.ClientCheatEvent
-import io.guthix.oldscape.server.event.LocReachedEvent
 import io.guthix.oldscape.server.event.PublicMessageEvent
 import io.guthix.oldscape.server.template.*
 import io.guthix.oldscape.server.world.entity.Loc
@@ -63,8 +62,10 @@ on(ClientCheatEvent::class).where { string == "rangeq" }.then {
     player.topInterface.itemBag.add(ObjTemplates.BRONZE_ARROW_882, amount = 5)
 }
 
-on(ClientCheatEvent::class).where { string == "shout" }.then {
-    player.shout("testing!")
+on(ClientCheatEvent::class).where { string == "test" }.then {
+    println("testing1 ${player.persValue1}")
+    println("testing1 ${player.persValue2}")
+    println("testing1 ${player.persValue3}")
 }
 
 on(ClientCheatEvent::class).where { string == "animation" }.then {
