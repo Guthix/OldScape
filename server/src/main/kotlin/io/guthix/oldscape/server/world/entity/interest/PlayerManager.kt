@@ -15,17 +15,14 @@
  */
 package io.guthix.oldscape.server.world.entity.interest
 
-import io.guthix.oldscape.server.PropertyHolder
 import io.guthix.oldscape.server.net.game.out.PlayerInfoPacket
 import io.guthix.oldscape.server.world.World
-import io.guthix.oldscape.server.world.entity.Obj
 import io.guthix.oldscape.server.world.entity.Player
 import io.guthix.oldscape.server.world.map.Tile
 import io.guthix.oldscape.server.world.map.dim.TileUnit
 import io.guthix.oldscape.server.world.map.dim.tiles
 import io.netty.channel.ChannelFuture
 import kotlinx.serialization.Serializable
-import kotlin.reflect.KProperty
 
 class PlayerManager(val index: Int) {
     var localPlayerCount: Int = 0
@@ -57,31 +54,6 @@ class PlayerManager(val index: Int) {
     internal fun synchronize(world: World, player: Player): List<ChannelFuture> = listOf(
         player.ctx.write(PlayerInfoPacket(world.players, this, player))
     )
-
-    enum class EquipmentType(val slot: Int) {
-        HEAD(0), CAPE(1), NECK(2), ONE_HAND_WEAPON(3), TWO_HAND_WEAPON(3), BODY(4),
-        SHIELD(5), LEGS(7), HANDS(9), FEET(10), RING(11), AMMUNITION(13)
-    }
-
-    class EquipmentSet(val equipment: MutableMap<Int, Obj>) : PropertyHolder {
-        val head: Obj? get() = equipment[EquipmentType.HEAD.slot]
-        val cape: Obj? get() = equipment[EquipmentType.CAPE.slot]
-        val neck: Obj? get() = equipment[EquipmentType.NECK.slot]
-        val weapon: Obj? get() = equipment[EquipmentType.ONE_HAND_WEAPON.slot]
-        val body: Obj? get() = equipment[EquipmentType.BODY.slot]
-        val shield: Obj? get() = equipment[EquipmentType.SHIELD.slot]
-        val legs: Obj? get() = equipment[EquipmentType.LEGS.slot]
-        val hands: Obj? get() = equipment[EquipmentType.HANDS.slot]
-        val feet: Obj? get() = equipment[EquipmentType.FEET.slot]
-        val ring: Obj? get() = equipment[EquipmentType.RING.slot]
-        val ammunition: Obj? get() = equipment[EquipmentType.AMMUNITION.slot]
-
-        var coversHair: Boolean = false
-        var isFullBody: Boolean = false
-        var coversFace: Boolean = false
-
-        override val properties: MutableMap<KProperty<*>, Any?> = mutableMapOf()
-    }
 
     companion object {
         val SIZE: TileUnit = 32.tiles

@@ -17,12 +17,9 @@ package io.guthix.oldscape.server.world.entity.interest
 
 import io.guthix.oldscape.server.net.game.out.IfClosesubPacket
 import io.guthix.oldscape.server.net.game.out.IfOpensubPacket
-import io.guthix.oldscape.server.template.InventoryIds
-import io.guthix.oldscape.server.world.entity.Player
 import io.guthix.oldscape.server.world.entity.intface.IfComponent
 import io.guthix.oldscape.server.world.entity.intface.Interface
 import io.guthix.oldscape.server.world.entity.intface.SubInterface
-import io.netty.channel.ChannelFuture
 import io.netty.channel.ChannelHandlerContext
 
 class TopInterfaceManager(
@@ -32,27 +29,6 @@ class TopInterfaceManager(
     var modalSlot: Int? = null,
     children: MutableMap<Int, IfComponent> = mutableMapOf()
 ) : Interface(ctx, id, Type.TOPLEVELINTERFACE, children) {
-    val itemBag: InventoryManager = InventoryManager(InventoryIds.ITEM_BAG_93, INVENTORY_IFID, 0)
-
-    val equipment: InventoryManager = InventoryManager(InventoryIds.EQUIPMENT_94)
-
-    internal fun initialize() {
-        itemBag.initialize()
-        equipment.initialize()
-    }
-
-    internal fun synchronize(player: Player): List<ChannelFuture> {
-        val futures = mutableListOf<ChannelFuture>()
-        futures.addAll(itemBag.synchronize(player))
-        futures.addAll(equipment.synchronize(player))
-        return futures
-    }
-
-    internal fun postProcess() {
-        itemBag.postProcess()
-        equipment.postProcess()
-    }
-
     fun openModal(id: Int, type: Type): SubInterface {
         check(modalSlot != null) { "Can't open modal interface on top interface ${this.id}." }
         return modalSlot?.let {

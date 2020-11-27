@@ -18,8 +18,11 @@ package io.guthix.oldscape.server.world.entity
 import io.guthix.oldscape.server.PropertyHolder
 import io.guthix.oldscape.server.ServerContext
 import io.guthix.oldscape.server.template.ObjTemplate
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.Transient
 import kotlin.reflect.KProperty
 
+@Serializable
 data class Obj(val id: Int, var quantity: Int) : PropertyHolder {
     val template: ObjTemplate by lazy { ServerContext.objTemplates[id] }
     val name: String get() = template.name
@@ -31,5 +34,7 @@ data class Obj(val id: Int, var quantity: Int) : PropertyHolder {
     val isPlaceHolder: Boolean get() = template.isPlaceHolder
     val interfaceOperations: Array<String?> get() = template.interfaceOperations
     val groundOperations: Array<String?> get() = template.groundOperations
+
+    @Transient
     override val properties: MutableMap<KProperty<*>, Any?> = mutableMapOf()
 }

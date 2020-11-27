@@ -17,24 +17,24 @@ package io.guthix.oldscape.dump.yaml
 
 import io.guthix.oldscape.server.template.AttackType
 import io.guthix.oldscape.server.template.WeaponType
-import io.guthix.oldscape.server.world.entity.interest.PlayerManager
+import io.guthix.oldscape.server.world.entity.interest.EquipmentType
 import mu.KotlinLogging
 
 private val logger = KotlinLogging.logger { }
 
-fun String?.toEquipmentType(): PlayerManager.EquipmentType? = when {
-    equals("ammo", true) -> PlayerManager.EquipmentType.AMMUNITION
-    equals("body", true) -> PlayerManager.EquipmentType.BODY
-    equals("cape", true) -> PlayerManager.EquipmentType.CAPE
-    equals("feet", true) -> PlayerManager.EquipmentType.FEET
-    equals("hands", true) -> PlayerManager.EquipmentType.HANDS
-    equals("head", true) -> PlayerManager.EquipmentType.HEAD
-    equals("legs", true) -> PlayerManager.EquipmentType.LEGS
-    equals("neck", true) -> PlayerManager.EquipmentType.NECK
-    equals("ring", true) -> PlayerManager.EquipmentType.RING
-    equals("shield", true) -> PlayerManager.EquipmentType.SHIELD
-    equals("2h", true) -> PlayerManager.EquipmentType.TWO_HAND_WEAPON
-    equals("weapon", true) -> PlayerManager.EquipmentType.ONE_HAND_WEAPON
+fun String?.toEquipmentType(): EquipmentType? = when {
+    equals("ammo", true) -> EquipmentType.AMMUNITION
+    equals("body", true) -> EquipmentType.BODY
+    equals("cape", true) -> EquipmentType.CAPE
+    equals("feet", true) -> EquipmentType.FEET
+    equals("hands", true) -> EquipmentType.HANDS
+    equals("head", true) -> EquipmentType.HEAD
+    equals("legs", true) -> EquipmentType.LEGS
+    equals("neck", true) -> EquipmentType.NECK
+    equals("ring", true) -> EquipmentType.RING
+    equals("shield", true) -> EquipmentType.SHIELD
+    equals("2h", true) -> EquipmentType.TWO_HAND_WEAPON
+    equals("weapon", true) -> EquipmentType.ONE_HAND_WEAPON
     this == null -> null
     else -> {
         logger.info { "Couldn't get equipment type for $this" }; null

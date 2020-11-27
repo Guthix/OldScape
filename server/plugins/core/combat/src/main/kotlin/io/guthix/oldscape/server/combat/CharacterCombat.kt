@@ -52,24 +52,24 @@ val Player.selectedTypes: IntArray by Property {
 
 val Player.currentStyle: CombatStyle
     get() {
-        val weaponType = equipmentSet.weapon?.weaponType ?: WeaponType.UNARMED
+        val weaponType = equipment.weapon?.weaponType ?: WeaponType.UNARMED
         val index = selectedTypes[weaponType.ordinal]
         return weaponType.styles[index]
     }
 
-val Player.attackSpeed: Int get() = equipmentSet.weapon?.baseAttackSpeed?.plus(currentStyle.style.attackSpeedBonus) ?: 4
+val Player.attackSpeed: Int get() = equipment.weapon?.baseAttackSpeed?.plus(currentStyle.style.attackSpeedBonus) ?: 4
 
 val Player.attackRange: TileUnit
     get() = max(
-        10.tiles, equipmentSet.weapon?.baseAttackRange?.plus(currentStyle.style.attackRangeBonus.tiles) ?: 1.tiles
+        10.tiles, equipment.weapon?.baseAttackRange?.plus(currentStyle.style.attackRangeBonus.tiles) ?: 1.tiles
     )
 
 val Player.attackSequence: Int by Property {
-    equipmentSet.weapon?.attackAnim ?: SequenceIds.PUNCH_422
+    equipment.weapon?.attackAnim ?: SequenceIds.PUNCH_422
 }
 
 val Player.defenceSequence: Int by Property {
-    equipmentSet.weapon?.blockAnim ?: SequenceIds.BLOCK_424
+    equipment.weapon?.blockAnim ?: SequenceIds.BLOCK_424
 }
 
 val Player.deathSequence: Int by Property { 836 }

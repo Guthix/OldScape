@@ -71,13 +71,4 @@ class UpsertStatement<Key : Any>(
 
         }
     }
-
 }
-//fun Table.indexR(customIndexName: String? = null, isUnique: Boolean = false, vararg columns: Column<*>): Index {
-//    val index = Index(columns.toList(), isUnique, customIndexName)
-//    indices.add(index)
-//    return index
-//}
-//
-//fun Table.uniqueIndexR(customIndexName: String? = null, vararg columns: Column<*>): Index =
-//    indexR(customIndexName, true, *columns)

@@ -23,5 +23,5 @@ on(ObjectReachedEvent::class).then {
     val obj = world.removeObject(id, tile) ?: error(
         "Can not pick up object for id $id at position $tile."
     )
-    player.topInterface.itemBag.add(obj)
+    player.itemBag.add(obj)
 }

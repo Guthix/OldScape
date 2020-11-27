@@ -24,6 +24,7 @@ import io.guthix.oldscape.server.event.PublicMessageEvent
 import io.guthix.oldscape.server.net.game.out.*
 import io.guthix.oldscape.server.plugin.EventHandler
 import io.guthix.oldscape.server.task.Task
+import io.guthix.oldscape.server.template.InventoryIds
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.interest.*
 import io.guthix.oldscape.server.world.entity.intface.IfComponent
@@ -83,6 +84,14 @@ class Player internal constructor(
         )
     }
 
+    val itemBag: InventoryManager by PersistentProperty {
+        InventoryManager(InventoryIds.ITEM_BAG_93, TopInterfaceManager.INVENTORY_IFID, 0)
+    }
+
+    val equipment: EquipmentManager by PersistentProperty {
+        EquipmentManager()
+    }
+
     var rights: Int by PersistentProperty { 2 }
 
     var isLoggingOut: Boolean = false
@@ -102,8 +111,6 @@ class Player internal constructor(
     val prayerIcon: Int = -1
 
     val combatLevel: Int = 126
-
-    val equipmentSet: PlayerManager.EquipmentSet = PlayerManager.EquipmentSet(mutableMapOf())
 
     override var inRunMode: Boolean = super.inRunMode
         set(value) {
@@ -145,7 +152,8 @@ class Player internal constructor(
         updateFlags.add(PlayerInfoPacket.appearance)
         updateFlags.add(PlayerInfoPacket.orientation)
         updateFlags.add(PlayerInfoPacket.nameModifiers)
-        topInterface.initialize()
+        itemBag.initialize()
+        equipment.initialize()
         contextMenuManager.initialize(this)
         statManager.initialize(world, this)
         energyManager.initialize(this)
@@ -153,7 +161,8 @@ class Player internal constructor(
 
     internal fun synchronize(world: World): List<ChannelFuture> {
         val futures = mutableListOf<ChannelFuture>()
-        futures.addAll(topInterface.synchronize(this))
+        futures.addAll(itemBag.synchronize(this))
+        futures.addAll(equipment.synchronize(this))
         futures.addAll(contextMenuManager.synchronize(this))
         futures.addAll(varpManager.synchronize(this))
         futures.addAll(statManager.synchronize(world, this))
@@ -167,7 +176,8 @@ class Player internal constructor(
 
     override fun postProcess() {
         super.postProcess()
-        topInterface.postProcess()
+        itemBag.postProcess()
+        equipment.postProcess()
         contextMenuManager.postProcess()
         varpManager.postProcess()
         statManager.postProcess()

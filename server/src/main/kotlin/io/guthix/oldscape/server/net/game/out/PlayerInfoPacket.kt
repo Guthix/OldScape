@@ -330,46 +330,46 @@ class PlayerInfoPacket(
             tempBuf.writeByte(player.gender.opcode)
             tempBuf.writeByte(if (player.isSkulled) 1 else -1)
             tempBuf.writeByte(player.prayerIcon)
-            player.equipmentSet.head?.let { // write head gear
+            player.equipment.head?.let { // write head gear
                 tempBuf.writeShort(512 + it.id)
             } ?: run { tempBuf.writeByte(0) }
-            player.equipmentSet.cape?.let {  // write cape
+            player.equipment.cape?.let {  // write cape
                 tempBuf.writeShort(512 + it.id)
             } ?: run { tempBuf.writeByte(0) }
-            player.equipmentSet.neck?.let {  // write neck gear
+            player.equipment.neck?.let {  // write neck gear
                 tempBuf.writeShort(512 + it.id)
             } ?: run { tempBuf.writeByte(0) }
-            player.equipmentSet.weapon?.let { // write weapon
+            player.equipment.weapon?.let { // write weapon
                 tempBuf.writeShort(512 + it.id)
             } ?: run { tempBuf.writeByte(0) }
-            player.equipmentSet.body?.let { // write body
+            player.equipment.body?.let { // write body
                 tempBuf.writeShort(512 + it.id)
             } ?: run { tempBuf.writeShort(256 + player.style.torso) }
-            player.equipmentSet.shield?.let {  // write shield gear
+            player.equipment.shield?.let {  // write shield gear
                 tempBuf.writeShort(512 + it.id)
             } ?: run { tempBuf.writeByte(0) }
-            player.equipmentSet.body?.let { // write arms
-                if (player.equipmentSet.isFullBody) {
+            player.equipment.body?.let { // write arms
+                if (player.equipment.isFullBody) {
                     tempBuf.writeByte(0)
                 } else tempBuf.writeShort(256 + player.style.arms)
             } ?: run { tempBuf.writeShort(256 + player.style.arms) }
-            player.equipmentSet.legs?.let { // write legs
+            player.equipment.legs?.let { // write legs
                 tempBuf.writeShort(512 + it.id)
             } ?: run { tempBuf.writeShort(256 + player.style.legs) }
-            player.equipmentSet.head?.let { // write hair
-                if (player.equipmentSet.coversHair) {
+            player.equipment.head?.let { // write hair
+                if (player.equipment.coversHair) {
                     tempBuf.writeByte(0)
                 } else tempBuf.writeShort(256 + player.style.hair)
             } ?: run { tempBuf.writeShort(256 + player.style.hair) }
-            player.equipmentSet.hands?.let {  // write hands
+            player.equipment.hands?.let {  // write hands
                 tempBuf.writeShort(512 + it.id)
             } ?: run { tempBuf.writeShort(256 + player.style.hands) }
-            player.equipmentSet.feet?.let { // write feet
+            player.equipment.feet?.let { // write feet
                 tempBuf.writeShort(512 + it.id)
             } ?: run { tempBuf.writeShort(256 + player.style.feet) }
             if (player.gender == Gender.MALE) { //tBuf.write beard
-                player.equipmentSet.head?.let {
-                    if (player.equipmentSet.coversFace) {
+                player.equipment.head?.let {
+                    if (player.equipment.coversFace) {
                         tempBuf.writeByte(0)
                     } else tempBuf.writeShort(256 + player.style.beard)
                 } ?: run { tempBuf.writeShort(256 + player.style.beard) }

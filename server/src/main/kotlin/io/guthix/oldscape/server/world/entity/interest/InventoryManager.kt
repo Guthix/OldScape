@@ -25,20 +25,22 @@ import io.guthix.oldscape.server.world.entity.Obj
 import io.guthix.oldscape.server.world.entity.Player
 import io.guthix.oldscape.server.world.entity.intface.Interface
 import io.netty.channel.ChannelFuture
+import kotlinx.serialization.Serializable
 
 /**
  * Manages [Player] inventories. An inventory is an [Interface] that holds [Obj]s. Two types of interfaces exists,
  * the old format (if1) which require an [interfaceId] and [interfaceSlotId] to be passed and the newer version (if3)
  * which doesn't need this.
  */
-class InventoryManager(
+@Serializable
+open class InventoryManager(
     private val invId: Int,
     private val interfaceId: Int = -1,
     private val interfaceSlotId: Int = 0
 ) {
     private val template by lazy { ServerContext.inventoryTemplates[invId] }
 
-    private val objs: Array<Obj?> = arrayOfNulls(template.capacity)
+    val objs: Array<Obj?> = arrayOfNulls(template.capacity)
 
     private val maxSize get() = objs.size
 

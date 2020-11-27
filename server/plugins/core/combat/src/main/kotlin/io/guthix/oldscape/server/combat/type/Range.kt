@@ -34,7 +34,7 @@ import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.HitMark
 import io.guthix.oldscape.server.world.entity.Npc
 import io.guthix.oldscape.server.world.entity.Player
-import io.guthix.oldscape.server.world.entity.interest.PlayerManager
+import io.guthix.oldscape.server.world.entity.interest.EquipmentType
 import kotlin.random.Random
 
 fun Player.rangeAttack(npc: Npc, world: World) {
@@ -46,13 +46,13 @@ fun Player.rangeAttack(npc: Npc, world: World) {
     addTask(NormalTask) {
         main@ while (true) { // start player combat
             wait { npcDestination.reached(pos.x, pos.y, size) }
-            val ammunition = equipmentSet.ammunition
+            val ammunition = equipment.ammunition
             if (ammunition == null || ammunition.quantity <= 0) {
                 senGameMessage("There is no ammo left in your quiver.")
                 cancel()
                 break@main
             }
-            topInterface.equipment[PlayerManager.EquipmentType.AMMUNITION.slot] = ammunition.apply { quantity-- }
+            equipment[EquipmentType.AMMUNITION.slot] = ammunition.apply { quantity-- }
             animate(attackSequence)
             spotAnimate(ammunition.drawBackSpotAnim, ammunition.drawBackSpotAnimHeight)
             val projectile = world.addProjectile(ammunition.ammunitionProjectile, pos, npc)

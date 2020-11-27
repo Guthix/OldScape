@@ -56,8 +56,8 @@ on(ClientCheatEvent::class).where { string == "locdel" }.then {
 }
 
 on(ClientCheatEvent::class).where { string == "rangeq" }.then {
-    player.topInterface.itemBag.add(ObjIds.MAGIC_SHORTBOW_861, amount = 1)
-    player.topInterface.itemBag.add(ObjIds.BRONZE_ARROW_882, amount = 5)
+    player.itemBag.add(ObjIds.MAGIC_SHORTBOW_861, amount = 1)
+    player.itemBag.add(ObjIds.BRONZE_ARROW_882, amount = 5)
 }
 
 on(ClientCheatEvent::class).where { string == "test" }.then {

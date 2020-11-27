@@ -16,12 +16,33 @@
 package io.guthix.oldscape.server.equipment
 
 import io.guthix.oldscape.server.Property
+import io.guthix.oldscape.server.event.EventBus
+import io.guthix.oldscape.server.event.ObjEquipedEvent
+import io.guthix.oldscape.server.plugin.InvalidMessageException
 import io.guthix.oldscape.server.template.*
+import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.Obj
-import io.guthix.oldscape.server.world.entity.interest.PlayerManager
+import io.guthix.oldscape.server.world.entity.Player
+import io.guthix.oldscape.server.world.entity.interest.EquipmentManager
 
-var PlayerManager.EquipmentSet.attackBonus: StyleBonus by Property {
-    val bonusTemplates: List<StyleBonus?> = equipment.values.map(Obj::attackBonus)
+fun Player.equip(world: World, obj: Obj) {
+    obj.template.equipment?.let { objEquipment ->
+        objEquipment.type?.let { type ->
+            val old = equipment[type.slot]
+            equipment[type.slot] = obj
+            objEquipment.coversFace?.let { equipment.coversFace = it }
+            objEquipment.coversHair?.let { equipment.coversFace = it }
+            objEquipment.isFullBody?.let { equipment.coversFace = it }
+            equipment.updateBonuses(old, obj)
+            old?.let { itemBag.add(old) }
+            updateAppearance()
+            EventBus.schedule(ObjEquipedEvent(obj, this, world))
+        }
+    } ?: throw InvalidMessageException("No equipment defined for $obj.")
+}
+
+var EquipmentManager.attackBonus: StyleBonus by Property {
+    val bonusTemplates = objs.map { it?.attackBonus }
     StyleBonus(
         bonusTemplates.sumBy { it?.stab ?: 0 },
         bonusTemplates.sumBy { it?.slash ?: 0 },
@@ -31,8 +52,8 @@ var PlayerManager.EquipmentSet.attackBonus: StyleBonus by Property {
     )
 }
 
-var PlayerManager.EquipmentSet.defenceBonus: StyleBonus by Property {
-    val bonusTemplates = equipment.values.map(Obj::defenceBonus)
+var EquipmentManager.defenceBonus: StyleBonus by Property {
+    val bonusTemplates = objs.map { it?.defenceBonus }
     StyleBonus(
         bonusTemplates.sumBy { it?.stab ?: 0 },
         bonusTemplates.sumBy { it?.slash ?: 0 },
@@ -42,8 +63,8 @@ var PlayerManager.EquipmentSet.defenceBonus: StyleBonus by Property {
     )
 }
 
-var PlayerManager.EquipmentSet.strengtBonus: CombatBonus by Property {
-    val bonusTemplates = equipment.values.map(Obj::strengthBonus)
+var EquipmentManager.strengtBonus: CombatBonus by Property {
+    val bonusTemplates = objs.map { it?.strengthBonus }
     CombatBonus(
         bonusTemplates.sumBy { it?.melee ?: 0 },
         bonusTemplates.sumBy { it?.range ?: 0 },
@@ -51,16 +72,14 @@ var PlayerManager.EquipmentSet.strengtBonus: CombatBonus by Property {
     )
 }
 
-var PlayerManager.EquipmentSet.prayerBonus: Int by Property {
-    equipment.values.sumBy { it.prayerBonus ?: 0 }
-}
+var EquipmentManager.prayerBonus: Int by Property { objs.sumBy { it?.prayerBonus ?: 0 } }
 
-fun PlayerManager.EquipmentSet.updateBonuses(old: Obj?, new: Obj?) {
+fun EquipmentManager.updateBonuses(old: Obj?, new: Obj?) {
     removeBonuses(old)
     addBonuses(new)
 }
 
-private fun PlayerManager.EquipmentSet.addBonuses(obj: Obj?) {
+private fun EquipmentManager.addBonuses(obj: Obj?) {
     val bonusTemplates = obj?.equipmentTemplate
     attackBonus += bonusTemplates?.attackBonus
     defenceBonus += bonusTemplates?.defenceBonus
@@ -68,7 +87,7 @@ private fun PlayerManager.EquipmentSet.addBonuses(obj: Obj?) {
     prayerBonus += bonusTemplates?.prayerBonus ?: 0
 }
 
-private fun PlayerManager.EquipmentSet.removeBonuses(obj: Obj?) {
+private fun EquipmentManager.removeBonuses(obj: Obj?) {
     val bonusTemplates = obj?.equipmentTemplate
     attackBonus -= bonusTemplates?.attackBonus
     defenceBonus -= bonusTemplates?.defenceBonus

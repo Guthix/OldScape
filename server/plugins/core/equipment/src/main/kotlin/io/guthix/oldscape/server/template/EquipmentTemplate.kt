@@ -17,10 +17,10 @@ package io.guthix.oldscape.server.template
 
 import io.guthix.oldscape.server.Property
 import io.guthix.oldscape.server.world.entity.Obj
-import io.guthix.oldscape.server.world.entity.interest.PlayerManager
+import io.guthix.oldscape.server.world.entity.interest.EquipmentType
 import kotlinx.serialization.Serializable
 
-val Obj.equipmentType: PlayerManager.EquipmentType
+val Obj.equipmentType: EquipmentType
     get() = equipmentTemplate.type ?: throw TemplateNotFoundException(id, Obj::equipmentType)
 
 val Obj.attackBonus: StyleBonus
@@ -43,9 +43,9 @@ internal val ObjTemplate.equipment: EquipmentTemplate? by Property { null }
 @Serializable
 data class EquipmentTemplate(
     override val ids: List<Int>,
-    val type: PlayerManager.EquipmentType? = null,
+    val type: EquipmentType? = null,
     val coversHair: Boolean? = null,
-    val isFullBody: Boolean? = null ,
+    val isFullBody: Boolean? = null,
     val coversFace: Boolean? = null,
     val attackBonus: StyleBonus? = null,
     val strengthBonus: CombatBonus? = null,
