@@ -34,11 +34,11 @@ class Opheld1Packet : GamePacketDecoder(97, FixedSize(8)) {
         player: Player,
         world: World
     ): PlayerGameEvent {
-        val itemId = buf.readUnsignedShortLE()
+        val objId = buf.readUnsignedShortLE()
         val bitpack = buf.readIntLE()
         val inventorySlotId = buf.readUnsignedShort()
         return InvObjClickEvent(
-            bitpack shr Short.SIZE_BITS, bitpack and 0xFFFF, itemId, inventorySlotId, 1, player, world
+            bitpack shr Short.SIZE_BITS, bitpack and 0xFFFF, objId, inventorySlotId, 1, player, world
         )
     }
 }
@@ -52,10 +52,10 @@ class Opheld2Packet : GamePacketDecoder(58, FixedSize(8)) {
         world: World
     ): PlayerGameEvent {
         val bitpack = buf.readInt()
-        val itemId = buf.readUnsignedShortAdd()
+        val objId = buf.readUnsignedShortAdd()
         val inventorySlotId = buf.readUnsignedShortAddLE()
         return InvObjClickEvent(
-            bitpack shr Short.SIZE_BITS, bitpack and 0xFFFF, itemId, inventorySlotId, 2, player, world
+            bitpack shr Short.SIZE_BITS, bitpack and 0xFFFF, objId, inventorySlotId, 2, player, world
         )
     }
 }
@@ -69,10 +69,10 @@ class Opheld3Packet : GamePacketDecoder(61, FixedSize(8)) {
         world: World
     ): PlayerGameEvent {
         val bitpack = buf.readInt()
-        val itemId = buf.readUnsignedShortLE()
+        val objId = buf.readUnsignedShortLE()
         val inventorySlotId = buf.readUnsignedShort()
         return InvObjClickEvent(
-            bitpack shr Short.SIZE_BITS, bitpack and 0xFFFF, itemId, inventorySlotId, 3, player, world
+            bitpack shr Short.SIZE_BITS, bitpack and 0xFFFF, objId, inventorySlotId, 3, player, world
         )
     }
 }
@@ -87,9 +87,9 @@ class Opheld4Packet : GamePacketDecoder(13, FixedSize(8)) {
     ): PlayerGameEvent {
         val inventorySlotId = buf.readUnsignedShortLE()
         val bitpack = buf.readIntLE()
-        val itemId = buf.readUnsignedShortLE()
+        val objId = buf.readUnsignedShortLE()
         return InvObjClickEvent(
-            bitpack shr Short.SIZE_BITS, bitpack and 0xFFFF, itemId, inventorySlotId, 4, player, world
+            bitpack shr Short.SIZE_BITS, bitpack and 0xFFFF, objId, inventorySlotId, 4, player, world
         )
     }
 }
@@ -102,11 +102,11 @@ class Opheld5Packet : GamePacketDecoder(5, FixedSize(8)) {
         player: Player,
         world: World
     ): PlayerGameEvent {
-        val inventorySlotId = buf.readUnsignedShortLE()
+        val inventorySlotId = buf.readUnsignedShortAddLE()
         val bitpack = buf.readIntME()
-        val itemId = buf.readUnsignedShortAdd()
+        val objId = buf.readUnsignedShortAdd()
         return InvObjClickEvent(
-            bitpack shr Short.SIZE_BITS, bitpack and 0xFFFF, itemId, inventorySlotId, 5, player, world
+            bitpack shr Short.SIZE_BITS, bitpack and 0xFFFF, objId, inventorySlotId, 5, player, world
         )
     }
 }
