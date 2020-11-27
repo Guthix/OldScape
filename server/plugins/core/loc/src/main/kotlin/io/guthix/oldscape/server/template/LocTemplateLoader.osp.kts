@@ -15,4 +15,6 @@
  */
 package io.guthix.oldscape.server.template
 
-loadTemplates("/template/LocExamines.yaml", LocTemplates, LocTemplate::examine)
+import io.guthix.oldscape.server.ServerContext
+
+loadTemplates("/template/LocExamines.yaml", ServerContext.locTemplates, LocTemplate::examine)

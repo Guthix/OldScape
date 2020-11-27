@@ -15,5 +15,7 @@
  */
 package io.guthix.oldscape.server.template
 
-loadTemplates("/template/NpcExamines.yaml", NpcTemplates, NpcTemplate::examine)
-loadTemplates("/template/NpcWanderRadius.yaml", NpcTemplates, NpcTemplate::walk)
+import io.guthix.oldscape.server.ServerContext
+
+loadTemplates("/template/NpcExamines.yaml", ServerContext.npcTemplates, NpcTemplate::examine)
+loadTemplates("/template/NpcWanderRadius.yaml", ServerContext.npcTemplates, NpcTemplate::walk)

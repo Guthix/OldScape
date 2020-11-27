@@ -17,7 +17,9 @@ package io.guthix.oldscape.server.dev
 
 import io.guthix.oldscape.server.event.ClientCheatEvent
 import io.guthix.oldscape.server.event.PublicMessageEvent
-import io.guthix.oldscape.server.template.*
+import io.guthix.oldscape.server.template.LocIds
+import io.guthix.oldscape.server.template.NpcIds
+import io.guthix.oldscape.server.template.ObjIds
 import io.guthix.oldscape.server.world.entity.Loc
 import io.guthix.oldscape.server.world.map.Tile
 import io.guthix.oldscape.server.world.map.dim.floors
@@ -25,7 +27,7 @@ import io.guthix.oldscape.server.world.map.dim.tiles
 
 on(ClientCheatEvent::class).where { string == "drop" }.then {
     world.addObject(
-        ObjTemplates.RUNE_FULL_HELM_1163,
+        ObjIds.RUNE_FULL_HELM_1163,
         amount = 1,
         Tile(player.pos.floor, player.pos.x + 1.tiles, player.pos.y + 1.tiles)
     )
@@ -34,7 +36,7 @@ on(ClientCheatEvent::class).where { string == "drop" }.then {
 on(ClientCheatEvent::class).where { string == "locadd" }.then {
     world.addLoc(
         Loc(
-            LocTemplates.TREE_STUMP_1342,
+            LocIds.TREE_STUMP_1342,
             type = 10,
             Tile(player.pos.floor, player.pos.x + 2.tiles, player.pos.y + 2.tiles),
             orientation = 0
@@ -45,7 +47,7 @@ on(ClientCheatEvent::class).where { string == "locadd" }.then {
 on(ClientCheatEvent::class).where { string == "locdel" }.then {
     world.delLoc(
         Loc(
-            LocTemplates.TREE_STUMP_1342,
+            LocIds.TREE_STUMP_1342,
             type = 10,
             Tile(player.pos.floor, player.pos.x + 2.tiles, player.pos.y + 2.tiles),
             orientation = 0
@@ -53,24 +55,15 @@ on(ClientCheatEvent::class).where { string == "locdel" }.then {
     )
 }
 
-on(ClientCheatEvent::class).where { string == "shoot" }.then {
-    player.animate(SequenceTemplates[424])
-}
-
 on(ClientCheatEvent::class).where { string == "rangeq" }.then {
-    player.topInterface.itemBag.add(ObjTemplates.MAGIC_SHORTBOW_861, amount = 1)
-    player.topInterface.itemBag.add(ObjTemplates.BRONZE_ARROW_882, amount = 5)
+    player.topInterface.itemBag.add(ObjIds.MAGIC_SHORTBOW_861, amount = 1)
+    player.topInterface.itemBag.add(ObjIds.BRONZE_ARROW_882, amount = 5)
 }
 
 on(ClientCheatEvent::class).where { string == "test" }.then {
     println("testing1 ${player.persValue1}")
     println("testing1 ${player.persValue2}")
     println("testing1 ${player.persValue3}")
-}
-
-on(ClientCheatEvent::class).where { string == "animation" }.then {
-    player.animate(SequenceTemplates[1162])
-    player.spotAnimate(SpotAnimTemplates[99], height = 92)
 }
 
 on(ClientCheatEvent::class).where { string == "clear" }.then {
@@ -87,5 +80,5 @@ on(ClientCheatEvent::class).where { string == "pos" }.then {
 }
 
 on(ClientCheatEvent::class).where { string == "npc" }.then {
-    world.addNpc(NpcTemplates[42], player.pos.copy(x = player.pos.x + 2.tiles))
+    world.addNpc(NpcIds.ZOMBIE_42, player.pos.copy(x = player.pos.x + 2.tiles))
 }

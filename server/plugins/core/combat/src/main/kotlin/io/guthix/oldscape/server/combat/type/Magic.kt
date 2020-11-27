@@ -24,7 +24,8 @@ import io.guthix.oldscape.server.event.NpcAttackedEvent
 import io.guthix.oldscape.server.pathing.DestinationRange
 import io.guthix.oldscape.server.pathing.breadthFirstSearch
 import io.guthix.oldscape.server.task.NormalTask
-import io.guthix.oldscape.server.template.*
+import io.guthix.oldscape.server.template.SpotAnimIds
+import io.guthix.oldscape.server.template.defenceSequence
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.HitMark
 import io.guthix.oldscape.server.world.entity.Npc
@@ -44,21 +45,21 @@ fun Player.magicAttack(
         main@ while (true) { // start player combat
             wait { npcDestination.reached(pos.x, pos.y, size) }
             animate(spellTemplate.castAnim)
-            spotAnimate(spellTemplate.castSpotAnim)
+            spotAnimate(spellTemplate.castSpotAnim, spellTemplate.castSpotAnimHeight)
             // TODO sound
             val projectile = world.addProjectile(spellTemplate.projectile, player.pos, npc)
             EventBus.schedule(NpcAttackedEvent(npc, player, world))
             world.addTask(NormalTask) {
                 val damage = calcHit(npc, spellTemplate.hit(world, player, npc))
                 if (damage == null) {
-                    npc.spotAnimate(SpotAnimTemplates.SPLASH_H123_85, projectile.lifetimeClientTicks) // sound 227
+                    npc.spotAnimate(SpotAnimIds.SPLASH_85, height = 123, projectile.lifetimeClientTicks) // sound 227
                     // TODO sound
                 } else {
                     wait(ticks = projectile.lifeTimeServerTicks - 1)
                     val hmColor = if (damage == 0) HitMark.Color.BLUE else HitMark.Color.RED
                     npc.hit(hmColor, damage, 0)
                     npc.animate(npc.defenceSequence)
-                    npc.spotAnimate(spellTemplate.impactSpotAnim)
+                    npc.spotAnimate(spellTemplate.impactSpotAnim, spellTemplate.impactSpotAnimHeight)
                     // TODO sound
                 }
             }

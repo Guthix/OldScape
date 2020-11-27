@@ -15,4 +15,6 @@
  */
 package io.guthix.oldscape.server.template
 
-loadTemplates("/template/Equipment.yaml", ObjTemplates, ObjTemplate::equipment)
+import io.guthix.oldscape.server.ServerContext
+
+loadTemplates("/template/Equipment.yaml", ServerContext.objTemplates, ObjTemplate::equipment)

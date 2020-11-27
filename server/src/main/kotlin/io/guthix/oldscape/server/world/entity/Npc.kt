@@ -15,6 +15,7 @@
  */
 package io.guthix.oldscape.server.world.entity
 
+import io.guthix.oldscape.server.ServerContext
 import io.guthix.oldscape.server.net.game.out.NpcInfoSmallViewportPacket
 import io.guthix.oldscape.server.task.Task
 import io.guthix.oldscape.server.template.NpcTemplate
@@ -23,12 +24,12 @@ import io.guthix.oldscape.server.world.map.Tile
 import io.guthix.oldscape.server.world.map.dim.TileUnit
 import io.guthix.oldscape.server.world.map.dim.tiles
 
-class Npc(val template: NpcTemplate, index: Int, override var pos: Tile) : Character(index) {
+class Npc(val id: Int, index: Int, override var pos: Tile) : Character(index) {
+    val template: NpcTemplate by lazy { ServerContext.npcTemplates[id] }
+
     val spawnPos: Tile = pos.copy()
 
     override val updateFlags = sortedSetOf<NpcUpdateType>()
-
-    val id: Int get() = template.id
 
     override val size: TileUnit get() = template.size.tiles
 

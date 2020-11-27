@@ -17,8 +17,8 @@
 @file:Suppress("PropertyName", "ObjectPropertyName")
 package io.guthix.oldscape.server.template
 
-object SequenceTemplates : TemplateLoader<SequenceTemplate>() {
-    val PUNCH_422: SequenceTemplate get() = get(422)
-    val BLOCK_424: SequenceTemplate get() = get(424)
-    val SPELL_CAST_711: SequenceTemplate get() = get(711)
+object SpotAnimIds {
+    const val SPLASH_85: Int = 85
+    const val WIND_STRIKE_CAST_90: Int = 90
+    const val WIND_STRIKE_HIT_92: Int = 92
 }

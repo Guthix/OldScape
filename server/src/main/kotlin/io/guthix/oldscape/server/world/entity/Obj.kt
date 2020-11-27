@@ -16,13 +16,12 @@
 package io.guthix.oldscape.server.world.entity
 
 import io.guthix.oldscape.server.PropertyHolder
+import io.guthix.oldscape.server.ServerContext
 import io.guthix.oldscape.server.template.ObjTemplate
 import kotlin.reflect.KProperty
 
-fun ObjTemplate.new(amount: Int): Obj = Obj(this, amount)
-
-data class Obj(val template: ObjTemplate, var quantity: Int) : PropertyHolder {
-    val id: Int get() = template.id
+data class Obj(val id: Int, var quantity: Int) : PropertyHolder {
+    val template: ObjTemplate by lazy { ServerContext.objTemplates[id] }
     val name: String get() = template.name
     val isStackable: Boolean get() = template.isStackable
     val isTradable: Boolean get() = template.isTradable
@@ -32,6 +31,5 @@ data class Obj(val template: ObjTemplate, var quantity: Int) : PropertyHolder {
     val isPlaceHolder: Boolean get() = template.isPlaceHolder
     val interfaceOperations: Array<String?> get() = template.interfaceOperations
     val groundOperations: Array<String?> get() = template.groundOperations
-
     override val properties: MutableMap<KProperty<*>, Any?> = mutableMapOf()
 }

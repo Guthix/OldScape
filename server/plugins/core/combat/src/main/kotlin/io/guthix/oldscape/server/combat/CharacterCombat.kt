@@ -64,12 +64,12 @@ val Player.attackRange: TileUnit
         10.tiles, equipmentSet.weapon?.baseAttackRange?.plus(currentStyle.style.attackRangeBonus.tiles) ?: 1.tiles
     )
 
-val Player.attackSequence: SequenceTemplate by Property {
-    equipmentSet.weapon?.attackAnim ?: SequenceTemplates[422]
+val Player.attackSequence: Int by Property {
+    equipmentSet.weapon?.attackAnim ?: SequenceIds.PUNCH_422
 }
 
-val Player.defenceSequence: SequenceTemplate by Property {
-    equipmentSet.weapon?.blockAnim ?: SequenceTemplates[424]
+val Player.defenceSequence: Int by Property {
+    equipmentSet.weapon?.blockAnim ?: SequenceIds.BLOCK_424
 }
 
 val Player.deathSequence: Int by Property { 836 }

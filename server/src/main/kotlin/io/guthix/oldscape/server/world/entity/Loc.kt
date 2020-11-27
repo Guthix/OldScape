@@ -15,6 +15,7 @@
  */
 package io.guthix.oldscape.server.world.entity
 
+import io.guthix.oldscape.server.ServerContext
 import io.guthix.oldscape.server.task.Task
 import io.guthix.oldscape.server.task.TaskType
 import io.guthix.oldscape.server.template.LocTemplate
@@ -23,12 +24,12 @@ import io.guthix.oldscape.server.world.map.dim.TileUnit
 import kotlin.reflect.KProperty
 
 class Loc(
-    val template: LocTemplate,
+    val id: Int,
     val type: Int,
     override val pos: Tile,
     override var orientation: Int
 ) : Entity {
-    val id: Int get() = template.id
+    val template: LocTemplate by lazy { ServerContext.locTemplates[id] }
     val impenetrable: Boolean get() = template.impenetrable
     val clipType: Int get() = template.clipType
     val width: TileUnit get() = template.width

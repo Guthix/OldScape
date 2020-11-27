@@ -39,24 +39,27 @@ class TemplateNotFoundException(id: Int, element: String) : Exception("$element 
     constructor(id: Int, clazz: KClass<*>) : this(id, "$clazz")
 }
 
-abstract class TemplateLoader<B : BaseTemplate> : KLogging() {
-    private lateinit var baseTemplates: Map<Int, B>
-
+class TemplateRepository<out B : BaseTemplate>(val baseTemplates: Map<Int, B>) {
     operator fun get(index: Int): B = baseTemplates[index] ?: throw BaseTemplateNotFoundException(index)
 
-    internal fun <C : Config> load(configs: Map<Int, C>, factory: (C) -> B) {
-        val temp = mutableMapOf<Int, B>()
-        configs.forEach { (id, config) ->
-            temp[id] = factory(config)
+    companion object : KLogging() {
+        internal fun <C : Config, B : BaseTemplate> of(
+            configs: Map<Int, C>,
+            factory: (C) -> B
+        ): TemplateRepository<B> {
+            val baseTemplates = mutableMapOf<Int, B>()
+            configs.forEach { (id, config) ->
+                baseTemplates[id] = factory(config)
+            }
+            logger.info { "Loaded ${baseTemplates.size} ${baseTemplates.values.first()::class.simpleName}s" }
+            return TemplateRepository(baseTemplates)
         }
-        baseTemplates = temp
-        logger.info { "Loaded ${baseTemplates.size} ${temp.values.first()::class.simpleName}s" }
     }
 }
 
 inline fun <reified T : Template, B : BaseTemplate> Script.loadTemplates(
     relativePath: String,
-    loader: TemplateLoader<B>,
+    loader: TemplateRepository<B>,
     property: KProperty<T?>
 ) {
     on(InitializeTemplateEvent::class).then {

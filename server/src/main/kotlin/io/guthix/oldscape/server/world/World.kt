@@ -34,9 +34,6 @@ import io.guthix.oldscape.server.plugin.EventHandler
 import io.guthix.oldscape.server.task.Task
 import io.guthix.oldscape.server.task.TaskHolder
 import io.guthix.oldscape.server.task.TaskType
-import io.guthix.oldscape.server.template.LocTemplates
-import io.guthix.oldscape.server.template.NpcTemplate
-import io.guthix.oldscape.server.template.ObjTemplate
 import io.guthix.oldscape.server.template.ProjectileTemplate
 import io.guthix.oldscape.server.world.entity.*
 import io.guthix.oldscape.server.world.map.Tile
@@ -137,8 +134,8 @@ class World internal constructor(
         }
     }
 
-    fun addNpc(template: NpcTemplate, tile: Tile): Npc {
-        val npc = npcs.create(template, tile)
+    fun addNpc(id: Int, tile: Tile): Npc {
+        val npc = npcs.create(id, tile)
         EventBus.schedule(NpcSpawnedEvent(npc, this))
         return npc
     }
@@ -207,8 +204,8 @@ class World internal constructor(
         id, x.relativeZone, y.relativeZone
     )
 
-    fun addObject(template: ObjTemplate, amount: Int, tile: Tile): Obj {
-        val obj = Obj(template, amount)
+    fun addObject(id: Int, amount: Int, tile: Tile): Obj {
+        val obj = Obj(id, amount)
         getZone(tile)?.addObject(tile, obj)
         return obj
     }
@@ -282,12 +279,12 @@ class World internal constructor(
 
         private fun World.addLocByDef(msX: MapsquareUnit, msY: MapsquareUnit, locDef: MapLocDefinition)
             = addStaticLoc(
-                Loc(LocTemplates[locDef.id],
-                    locDef.type,
-                    Tile(locDef.floor.floors, msX.inTiles + locDef.localX.tiles, msY.inTiles + locDef.localY.tiles),
-                    locDef.orientation
-                )
+            Loc(locDef.id,
+                locDef.type,
+                Tile(locDef.floor.floors, msX.inTiles + locDef.localX.tiles, msY.inTiles + locDef.localY.tiles),
+                locDef.orientation
             )
+        )
 
         private fun World.addStaticLoc(loc: Loc) {
             getZone(loc.pos)?.addStaticLoc(loc)

@@ -15,21 +15,17 @@
  */
 package io.guthix.oldscape.server.world.entity
 
-import io.guthix.oldscape.server.template.PhysicalSpotAnimTemplate
-import io.guthix.oldscape.server.template.SequenceTemplates
-import mu.KotlinLogging
-
-private val logger = KotlinLogging.logger { }
+import io.guthix.oldscape.server.ServerContext
+import io.guthix.oldscape.server.template.SpotAnimTemplate
 
 data class SpotAnimation(
-    private val template: PhysicalSpotAnimTemplate,
+    val id: Int,
+    val height: Int,
     val delay: Int = 0,
 ) {
-    val id: Int get() = template.id
+    val template: SpotAnimTemplate by lazy { ServerContext.spotAnimTemplates[id] }
 
-    val height: Int get() = template.height
-
-    val duration: Int? = SequenceTemplates[
+    val duration: Int? = ServerContext.sequenceTemplates[
         template.sequenceId ?: error("No sequence found with id ${template.sequenceId}")
     ].tickDuration
 }

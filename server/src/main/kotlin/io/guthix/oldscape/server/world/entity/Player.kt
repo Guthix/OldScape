@@ -17,15 +17,13 @@ package io.guthix.oldscape.server.world.entity
 
 import io.guthix.oldscape.server.PersistentProperty
 import io.guthix.oldscape.server.PersistentPropertyHolder
+import io.guthix.oldscape.server.ServerContext
 import io.guthix.oldscape.server.event.Event
 import io.guthix.oldscape.server.event.EventHolder
 import io.guthix.oldscape.server.event.PublicMessageEvent
 import io.guthix.oldscape.server.net.game.out.*
 import io.guthix.oldscape.server.plugin.EventHandler
 import io.guthix.oldscape.server.task.Task
-import io.guthix.oldscape.server.template.CS2Template
-import io.guthix.oldscape.server.template.VarbitTemplate
-import io.guthix.oldscape.server.template.VarpTemplate
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.interest.*
 import io.guthix.oldscape.server.world.entity.intface.IfComponent
@@ -216,11 +214,11 @@ class Player internal constructor(
         updateFlags.add(PlayerInfoPacket.appearance)
     }
 
-    fun updateVarp(template: VarpTemplate, value: Int): Unit = varpManager.updateVarp(template, value)
+    fun updateVarp(id: Int, value: Int): Unit = varpManager.updateVarp(id, value)
 
-    fun updateVarbit(template: VarbitTemplate, value: Int): Unit = varpManager.updateVarbit(template, value)
+    fun updateVarbit(id: Int, value: Int): Unit = varpManager.updateVarbit(ServerContext.varbitTemplates[id], value)
 
-    fun runClientScript(id: CS2Template, vararg args: Any) {
+    fun runClientScript(id: Int, vararg args: Any) {
         ctx.write(RunclientscriptPacket(id, *args))
     }
 

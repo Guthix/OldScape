@@ -25,32 +25,24 @@ import java.nio.file.Path
 
 private const val maxTemplatePerFile = 10000
 
-fun Project.writeNamedConfigTemplates(name: String, configs: Map<Int, NamedConfig>) {
+fun Project.writeNamedConfigTemplates(name: String, configs: Map<Int, NamedConfig>, ignoreNulls: Boolean) {
     val sourceRoot = createSourceTree(this)
     sourceRoot.toFile().mkdirs()
-    sourceRoot.printCodeFile("${name}Template", configs)
+    sourceRoot.printCodeFile("${name}Ids", configs, ignoreNulls)
 }
 
-private fun Path.printCodeFile(templateName: String, configs: Map<Int, NamedConfig>) {
-    val baseFile = resolve("${templateName}s.kt").toFile()
-    baseFile.createNewFile()
-    PrintWriter(baseFile).use { pw ->
+private fun Path.printCodeFile(fileName: String, configs: Map<Int, NamedConfig>, ignoreNulls: Boolean) {
+    val sourceFile = resolve("$fileName.kt").toFile()
+    sourceFile.createNewFile()
+    PrintWriter(sourceFile).use { pw ->
         pw.printFileHeader()
         pw.println()
-        pw.println("object ${templateName}s : TemplateLoader<$templateName>() ")
-    }
-    configs.values.chunked(maxTemplatePerFile).forEachIndexed { index, chunkedConfigs ->
-        val sourceFile = resolve("${templateName}${index}s.kt").toFile()
-        sourceFile.createNewFile()
-        PrintWriter(sourceFile).use { pw ->
-            pw.printFileHeader()
-            pw.println()
-            for (config in chunkedConfigs) {
-                val identifier = configNameToIdentifier(config.id, config.name)
-                pw.println("val ${templateName}s.$identifier: $templateName get() = get(${config.id})")
-            }
-            pw.flush()
+        pw.println("object $fileName {")
+        for (namedConfig in configs.values) {
+            val identifier = configNameToIdentifier(namedConfig.id, namedConfig.name)
+            if (namedConfig.name.equals("null", ignoreCase = true) && ignoreNulls) continue
+            pw.println("    const val $identifier: Int = ${namedConfig.id}")
         }
+        pw.println("}")
     }
-
 }

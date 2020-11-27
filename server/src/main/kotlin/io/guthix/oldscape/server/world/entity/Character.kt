@@ -19,9 +19,6 @@ import io.guthix.oldscape.server.event.PublicMessageEvent
 import io.guthix.oldscape.server.net.game.out.PlayerInfoPacket
 import io.guthix.oldscape.server.task.Task
 import io.guthix.oldscape.server.task.TaskType
-import io.guthix.oldscape.server.template.PhysicalSpotAnimTemplate
-import io.guthix.oldscape.server.template.SequenceTemplate
-import io.guthix.oldscape.server.template.SpotAnimTemplate
 import io.guthix.oldscape.server.world.entity.interest.InterestUpdateType
 import io.guthix.oldscape.server.world.entity.interest.MovementInterestUpdate
 import io.guthix.oldscape.server.world.entity.interest.PlayerManager
@@ -132,8 +129,8 @@ abstract class Character(val index: Int) : Entity {
 
     object SequenceTask : TaskType
 
-    fun animate(animation: SequenceTemplate) {
-        val anim = Sequence(animation)
+    fun animate(animationId: Int) {
+        val anim = Sequence(animationId)
         addSequenceFlag()
         sequence = anim
         cancelTasks(SequenceTask)
@@ -154,13 +151,8 @@ abstract class Character(val index: Int) : Entity {
 
     object SpotAnimTask : TaskType
 
-    fun spotAnimate(template: SpotAnimTemplate, height: Int, delay: Int = 0) {
-        val physTemplate = PhysicalSpotAnimTemplate(template, height)
-        spotAnimate(physTemplate, delay)
-    }
-
-    fun spotAnimate(template: PhysicalSpotAnimTemplate, delay: Int = 0) {
-        val anim = SpotAnimation(template, delay)
+    fun spotAnimate(spotAnimId: Int, height: Int, delay: Int = 0) {
+        val anim = SpotAnimation(spotAnimId, height, delay)
         addSpotAnimationFlag()
         spotAnimation = anim
         cancelTasks(SpotAnimTask)

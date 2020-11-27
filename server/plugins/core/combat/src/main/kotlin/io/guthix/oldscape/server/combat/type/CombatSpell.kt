@@ -16,6 +16,7 @@
 package io.guthix.oldscape.server.combat.type
 
 import io.guthix.oldscape.cache.config.EnumConfig
+import io.guthix.oldscape.server.ServerContext
 import io.guthix.oldscape.server.combat.ProjectileType
 import io.guthix.oldscape.server.template.*
 import io.guthix.oldscape.server.world.World
@@ -24,50 +25,54 @@ import io.guthix.oldscape.server.world.entity.Player
 
 val ObjTemplate.spellBookKey: Int get() = param[336] as Int
 
-val ObjTemplate.spellRune1: ObjTemplate get() = ObjTemplates[param[365] as Int]
+val ObjTemplate.spellRune1: Int get() = param[365] as Int
 
 val ObjTemplate.spellRune1Amount: Int get() = param[366] as Int
 
-val ObjTemplate.spellRune2: ObjTemplate get() = ObjTemplates[param[367] as Int]
+val ObjTemplate.spellRune2: Int get() = param[367] as Int
 
 val ObjTemplate.spellRune2Amount: Int get() = param[368] as Int
 
-val ObjTemplate.spellRune3: ObjTemplate get() = ObjTemplates[param[369] as Int]
+val ObjTemplate.spellRune3: Int get() = param[369] as Int
 
 val ObjTemplate.spellRune3Amount: Int get() = param[370] as Int
 
 val ObjTemplate.component: EnumConfig.Component get() = EnumConfig.Component.decode(param[596] as Int)
 
 enum class CombatSpell(
-    private val obj: ObjTemplate,
-    val castAnim: SequenceTemplate,
+    private val obj: Int,
+    val castAnim: Int,
     val castSound: Int,
-    val castSpotAnim: PhysicalSpotAnimTemplate,
-    val impactSpotAnim: PhysicalSpotAnimTemplate,
+    val castSpotAnim: Int,
+    val castSpotAnimHeight: Int,
+    val impactSpotAnim: Int,
+    val impactSpotAnimHeight: Int,
     val projectile: ProjectileTemplate,
     val hit: (World, Player, Character) -> Int
 ) {
     WIND_STRIKE(
-        obj = ObjTemplates.NULL_3273,
-        castAnim = SequenceTemplates.SPELL_CAST_711,
+        obj = ObjIds.NULL_3273,
+        castAnim = SequenceIds.SPELL_CAST_711,
         castSound = 220,
-        castSpotAnim = SpotAnimTemplates.WIND_STRIKE_CAST_H92_90,
-        impactSpotAnim = SpotAnimTemplates.WIND_STRIKE_HIT_H124_92,
+        castSpotAnim = SpotAnimIds.WIND_STRIKE_CAST_90,
+        castSpotAnimHeight = 92,
+        impactSpotAnim = SpotAnimIds.WIND_STRIKE_HIT_92,
+        impactSpotAnimHeight = 124,
         projectile = ProjectileType.MAGIC.createTemplate(91),
         hit = { world, player, target -> 2 }
     );
 
-    val component: EnumConfig.Component get() = obj.component
+    val component: EnumConfig.Component get() = ServerContext.objTemplates[obj].component
 
-    val spellRune1: ObjTemplate get() = obj.spellRune1
+    val spellRune1: Int get() = ServerContext.objTemplates[obj].spellRune1
 
-    val spellRune1Amount: Int get() = obj.spellRune1Amount
+    val spellRune1Amount: Int get() = ServerContext.objTemplates[obj].spellRune1Amount
 
-    val spellRune2: ObjTemplate get() = obj.spellRune2
+    val spellRune2: Int get() = ServerContext.objTemplates[obj].spellRune2
 
-    val spellRune2Amount: Int get() = obj.spellRune2Amount
+    val spellRune2Amount: Int get() = ServerContext.objTemplates[obj].spellRune2Amount
 
-    val spellRune3: ObjTemplate get() = obj.spellRune3
+    val spellRune3: Int get() = ServerContext.objTemplates[obj].spellRune3
 
-    val spellRune3Amount: Int get() = obj.spellRune3Amount
+    val spellRune3Amount: Int get() = ServerContext.objTemplates[obj].spellRune3Amount
 }

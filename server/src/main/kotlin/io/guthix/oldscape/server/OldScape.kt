@@ -23,7 +23,6 @@ import io.guthix.js5.container.heap.Js5HeapStore
 import io.guthix.oldscape.cache.BinariesArchive
 import io.guthix.oldscape.cache.ConfigArchive
 import io.guthix.oldscape.cache.MapArchive
-import io.guthix.oldscape.cache.config.*
 import io.guthix.oldscape.cache.xtea.MapXtea
 import io.guthix.oldscape.server.db.PostgresDb
 import io.guthix.oldscape.server.event.EventBus
@@ -32,7 +31,6 @@ import io.guthix.oldscape.server.event.WorldInitializedEvent
 import io.guthix.oldscape.server.net.Huffman
 import io.guthix.oldscape.server.net.OldScapeServer
 import io.guthix.oldscape.server.net.game.GamePacketDecoder
-import io.guthix.oldscape.server.template.*
 import io.guthix.oldscape.server.world.World
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.decodeFromString
@@ -60,15 +58,7 @@ object OldScape {
 
         val configArchive = cache.readArchive(ConfigArchive.id)
         val binaryArchive = cache.readArchive(BinariesArchive.id)
-
-        VarbitTemplates.load(VarbitConfig.load(configArchive.readGroup(VarbitConfig.id)), ::VarbitTemplate)
-        InventoryTemplates.load(InventoryConfig.load(configArchive.readGroup(InventoryConfig.id)), ::InventoryTemplate)
-        SequenceTemplates.load(SequenceConfig.load(configArchive.readGroup(SequenceConfig.id)), ::SequenceTemplate)
-        SpotAnimTemplates.load(SpotAnimConfig.load(configArchive.readGroup(SpotAnimConfig.id)), ::SpotAnimTemplate)
-        EnumTemplates.load(EnumConfig.load(configArchive.readGroup(EnumConfig.id)), ::EnumTemplate)
-        LocTemplates.load(LocationConfig.load(configArchive.readGroup(LocationConfig.id)), ::LocTemplate)
-        NpcTemplates.load(NpcConfig.load(configArchive.readGroup(NpcConfig.id)), ::NpcTemplate)
-        ObjTemplates.load(ObjectConfig.load(configArchive.readGroup(ObjectConfig.id)), ::ObjTemplate)
+        ServerContext.load(configArchive)
         Huffman.load(BinariesArchive.load(binaryArchive).huffman)
 
         EventBus.loadScripts()

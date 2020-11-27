@@ -31,7 +31,7 @@ fun Project.writeEnumTemplates(
 ) {
     val enumIds = readNamedIds("Enums")
     val sourceRoot = createSourceTree(this)
-    sourceRoot.printCodeFile("EnumTemplate", enumConfigs, enumIds, objConfigs, locConfigs)
+    sourceRoot.printCodeFile("Enums", enumConfigs, enumIds, objConfigs, locConfigs)
 }
 
 private fun Path.printCodeFile(
@@ -83,12 +83,13 @@ private fun Path.printCodeFile(
         else -> "Int"
     }
 
-    val sourceFile = resolve("${templateName}s.kt").toFile()
+    val sourceFile = resolve("${templateName}.kt").toFile()
     PrintWriter(sourceFile).use { pw ->
         pw.printFileHeader("UNCHECKED_CAST", "LongLine")
         pw.println("import io.guthix.oldscape.cache.config.EnumConfig")
+        pw.println("import io.guthix.oldscape.server.ServerContext")
         pw.println()
-        pw.println("object ${templateName}s : TemplateLoader<$templateName<Any, Any>>() {")
+        pw.println("object $templateName {")
         val enumsToWrite = enumEngineTemplates.toMutableList()
         while (enumsToWrite.isNotEmpty()) {
             fun writeEnum(extraConfig: NamedId) {
@@ -122,7 +123,7 @@ private fun Path.printCodeFile(
                     pw.println("    )")
                 } else {
                     pw.println("    val $identifier: Map<$keyType, $valueType> get() = " +
-                        "get(${extraConfig.id}) as Map<$keyType, $valueType>"
+                        "ServerContext.enumTemplates[${extraConfig.id}] as Map<$keyType, $valueType>"
                     )
                 }
             }

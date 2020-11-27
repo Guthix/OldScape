@@ -37,15 +37,13 @@ val Npc.isImmuneVenom: Boolean get() = monsterTemplate.isImmuneVenom
 val Npc.attackSpeed: Int
     get() = monsterTemplate.attackSpeed ?: throw TemplateNotFoundException(id, Npc::attackSpeed)
 
-val Npc.spawnSequence: SequenceTemplate get() = SequenceTemplates[
-    sequences.spawn ?: throw TemplateNotFoundException(id, Npc::spawnSequence)
-]
+val Npc.spawnSequence: Int get() = sequences.spawn ?: throw TemplateNotFoundException(id, Npc::spawnSequence)
 
-val Npc.attackSequence: SequenceTemplate get() = SequenceTemplates[sequences.attack]
+val Npc.attackSequence: Int get() = sequences.attack
 
-val Npc.defenceSequence: SequenceTemplate get() = SequenceTemplates[sequences.defence]
+val Npc.defenceSequence: Int get() = sequences.defence
 
-val Npc.deathSequence: SequenceTemplate get() = SequenceTemplates[sequences.death]
+val Npc.deathSequence: Int get() = sequences.death
 
 private val Npc.sequences: CombatSequences
     get() = monsterTemplate.sequences ?: throw TemplateNotFoundException(id, Npc::sequences)

@@ -18,14 +18,14 @@ package io.guthix.oldscape.server.interest
 import io.guthix.oldscape.server.event.EventBus
 import io.guthix.oldscape.server.event.LoginEvent
 import io.guthix.oldscape.server.event.PlayerInitialized
-import io.guthix.oldscape.server.template.VarbitTemplates
-import io.guthix.oldscape.server.template.VarpTemplates
+import io.guthix.oldscape.server.template.VarbitIds
+import io.guthix.oldscape.server.template.VarpIds
 
 on(LoginEvent::class).then {
     player.initialize(world)
-    player.updateVarbit(VarbitTemplates.CHAT_ENABLE_8119, value = 1) // enable chat
-    player.updateVarp(template = VarpTemplates.NPC_ATTACK_OPTION_SETTING_1306, value = 2) // (0, 1, 2, 3)
-    player.updateVarp(template = VarpTemplates.PLAYER_ATTACK_OPTION_SETTING_1107, value = 2) // (0, 1, 2, 3)
+    player.updateVarbit(VarbitIds.CHAT_ENABLE_8119, value = 1) // enable chat
+    player.updateVarp(VarpIds.NPC_ATTACK_OPTION_SETTING_1306, value = 2) // (0, 1, 2, 3)
+    player.updateVarp(VarpIds.PLAYER_ATTACK_OPTION_SETTING_1107, value = 2) // (0, 1, 2, 3)
     player.senGameMessage("Welcome to OldScape Emulator!")
     EventBus.schedule(PlayerInitialized(player, world))
 }

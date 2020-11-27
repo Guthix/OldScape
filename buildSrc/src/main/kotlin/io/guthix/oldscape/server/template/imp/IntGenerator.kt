@@ -38,7 +38,7 @@ private fun Path.printCodeFile(templateName: String, namedIds: List<NamedId>) {
         pw.println("object ${templateName}s {")
         for ((id, configName) in namedIds) {
             val identifier = configNameToIdentifier(id, configName)
-            pw.println("    const val $identifier: $templateName = $id")
+            pw.println("    const val $identifier: Int = $id")
         }
         pw.println("}")
         pw.flush()

@@ -15,13 +15,14 @@
  */
 package io.guthix.oldscape.server.world.entity
 
+import io.guthix.oldscape.server.ServerContext
 import io.guthix.oldscape.server.template.SequenceTemplate
 import mu.KotlinLogging
 
 private val logger = KotlinLogging.logger { }
 
-data class Sequence(private val template: SequenceTemplate) {
-    val id: Int get() = template.id
+data class Sequence(val id: Int) {
+    val template: SequenceTemplate by lazy { ServerContext.sequenceTemplates[id] }
 
     val duration: Int? = template.tickDuration
 }

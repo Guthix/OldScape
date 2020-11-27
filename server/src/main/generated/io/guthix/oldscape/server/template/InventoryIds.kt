@@ -17,7 +17,7 @@
 @file:Suppress("PropertyName", "ObjectPropertyName")
 package io.guthix.oldscape.server.template
 
-object VarpTemplates {
-    const val PLAYER_ATTACK_OPTION_SETTING_1107: VarpTemplate = 1107
-    const val NPC_ATTACK_OPTION_SETTING_1306: VarpTemplate = 1306
+object InventoryIds {
+    const val ITEM_BAG_93: Int = 93
+    const val EQUIPMENT_94: Int = 94
 }

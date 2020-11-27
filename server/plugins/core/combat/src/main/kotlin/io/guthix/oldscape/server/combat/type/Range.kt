@@ -26,7 +26,10 @@ import io.guthix.oldscape.server.event.NpcAttackedEvent
 import io.guthix.oldscape.server.pathing.DestinationRange
 import io.guthix.oldscape.server.pathing.breadthFirstSearch
 import io.guthix.oldscape.server.task.NormalTask
-import io.guthix.oldscape.server.template.*
+import io.guthix.oldscape.server.template.ammunitionProjectile
+import io.guthix.oldscape.server.template.defenceSequence
+import io.guthix.oldscape.server.template.drawBackSpotAnim
+import io.guthix.oldscape.server.template.drawBackSpotAnimHeight
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.HitMark
 import io.guthix.oldscape.server.world.entity.Npc
@@ -51,7 +54,7 @@ fun Player.rangeAttack(npc: Npc, world: World) {
             }
             topInterface.equipment[PlayerManager.EquipmentType.AMMUNITION.slot] = ammunition.apply { quantity-- }
             animate(attackSequence)
-            spotAnimate(ammunition.drawback)
+            spotAnimate(ammunition.drawBackSpotAnim, ammunition.drawBackSpotAnimHeight)
             val projectile = world.addProjectile(ammunition.ammunitionProjectile, pos, npc)
             EventBus.schedule(NpcAttackedEvent(npc, player, world))
             world.addTask(NormalTask) { // projectile task

@@ -26,7 +26,9 @@ import io.guthix.oldscape.cache.config.EnumConfig
 import io.guthix.oldscape.cache.config.LocationConfig
 import io.guthix.oldscape.cache.config.NpcConfig
 import io.guthix.oldscape.cache.config.ObjectConfig
-import io.guthix.oldscape.server.template.imp.*
+import io.guthix.oldscape.server.template.imp.writeEnumTemplates
+import io.guthix.oldscape.server.template.imp.writeIntTemplates
+import io.guthix.oldscape.server.template.imp.writeNamedConfigTemplates
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.plugins.BasePlugin
@@ -49,23 +51,23 @@ class TemplateGenerator : Plugin<Project> {
                     val configArchive = cache.readArchive(ConfigArchive.id)
 
                     val locs = LocationConfig.load(configArchive.readGroup(LocationConfig.id))
-                    target.writeNamedConfigTemplates("Loc", locs)
+                    target.writeNamedConfigTemplates("Loc", locs, true)
 
                     val objs = ObjectConfig.load(configArchive.readGroup(ObjectConfig.id))
-                    target.writeNamedConfigTemplates("Obj", objs)
+                    target.writeNamedConfigTemplates("Obj", objs, false)
 
                     val npcs = NpcConfig.load(configArchive.readGroup(NpcConfig.id))
-                    target.writeNamedConfigTemplates("Npc", npcs)
+                    target.writeNamedConfigTemplates("Npc", npcs, false)
 
                     val enums = EnumConfig.load(configArchive.readGroup(EnumConfig.id))
                     target.writeEnumTemplates(enums, objs, locs)
 
-                    target.writeConfigTemplates("Inventories", "InventoryTemplate")
-                    target.writeConfigTemplates("Sequences", "SequenceTemplate")
-                    target.writeConfigTemplates("Varbits", "VarbitTemplate")
-                    target.writeSpotAnimTemplates("SpotAnims", "SpotAnimTemplate", "PhysicalSpotAnimTemplate")
-                    target.writeIntTemplates("CS2s", "CS2Template")
-                    target.writeIntTemplates("Varps", "VarpTemplate")
+                    target.writeIntTemplates("SpotAnims", "SpotAnimId")
+                    target.writeIntTemplates("Inventories", "InventoryId")
+                    target.writeIntTemplates("Sequences", "SequenceId")
+                    target.writeIntTemplates("Varbits", "VarbitId")
+                    target.writeIntTemplates("CS2s", "CS2Id")
+                    target.writeIntTemplates("Varps", "VarpId")
                 }
             }
         }
