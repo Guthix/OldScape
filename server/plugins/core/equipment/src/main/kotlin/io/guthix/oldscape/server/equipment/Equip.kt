@@ -18,27 +18,56 @@ package io.guthix.oldscape.server.equipment
 import io.guthix.oldscape.server.Property
 import io.guthix.oldscape.server.event.EventBus
 import io.guthix.oldscape.server.event.ObjEquipedEvent
+import io.guthix.oldscape.server.event.ObjUnEquipedEvent
 import io.guthix.oldscape.server.plugin.InvalidMessageException
 import io.guthix.oldscape.server.template.*
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.Obj
 import io.guthix.oldscape.server.world.entity.Player
 import io.guthix.oldscape.server.world.entity.interest.EquipmentManager
+import io.guthix.oldscape.server.world.entity.interest.EquipmentType
 
 fun Player.equip(world: World, obj: Obj) {
-    obj.template.equipment?.let { objEquipment ->
-        objEquipment.type?.let { type ->
+    obj.template.equipment?.let { (_, nType, coversHair, isFullBody, coversFace) ->
+        nType?.let { type ->
             val old = equipment[type.slot]
             equipment[type.slot] = obj
-            objEquipment.coversFace?.let { equipment.coversFace = it }
-            objEquipment.coversHair?.let { equipment.coversFace = it }
-            objEquipment.isFullBody?.let { equipment.coversFace = it }
+            coversFace?.let { equipment.coversFace = it }
+            coversHair?.let { equipment.coversFace = it }
+            isFullBody?.let { equipment.coversFace = it }
             equipment.updateBonuses(old, obj)
             old?.let { itemBag.add(old) }
             updateAppearance()
             EventBus.schedule(ObjEquipedEvent(obj, this, world))
         }
     } ?: throw InvalidMessageException("No equipment defined for $obj.")
+}
+
+internal val buttonToSlots = mapOf(
+    14 to EquipmentType.HEAD,
+    15 to EquipmentType.CAPE,
+    16 to EquipmentType.NECK,
+    17 to EquipmentType.ONE_HAND_WEAPON,
+    18 to EquipmentType.BODY,
+    19 to EquipmentType.SHIELD,
+    20 to EquipmentType.LEGS,
+    21 to EquipmentType.HANDS,
+    22 to EquipmentType.FEET,
+    23 to EquipmentType.RING,
+    24 to EquipmentType.AMMUNITION,
+)
+
+fun Player.unequip(equipmentType: EquipmentType, world: World): Obj? {
+    val obj = equipment.remove(equipmentType.slot) ?: return null
+    equipment.removeBonuses(obj)
+    obj.template.equipment?.let { (_, _, coversHair, isFullBody, coversFace) ->
+        if (coversFace == true) equipment.coversFace = false
+        if (coversHair == true) equipment.coversHair = false
+        if (isFullBody == true) equipment.isFullBody = false
+    }
+    updateAppearance()
+    EventBus.schedule(ObjUnEquipedEvent(obj, this, world))
+    return obj
 }
 
 var EquipmentManager.attackBonus: StyleBonus by Property {

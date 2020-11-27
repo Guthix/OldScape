@@ -24,7 +24,7 @@ import kotlin.reflect.KProperty
 
 enum class EquipmentType(val slot: Int) {
     HEAD(0), CAPE(1), NECK(2), ONE_HAND_WEAPON(3), TWO_HAND_WEAPON(3), BODY(4),
-    SHIELD(5), LEGS(7), HANDS(9), FEET(10), RING(11), AMMUNITION(13)
+    SHIELD(5), ARMS(6), LEGS(7), HAIR(8), HANDS(9), FEET(10), BEARD(11), RING(12), AMMUNITION(13)
 }
 
 @Serializable

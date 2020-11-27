@@ -15,9 +15,21 @@
  */
 package io.guthix.oldscape.server.equipment
 
+import io.guthix.oldscape.server.event.ButtonClickEvent
 import io.guthix.oldscape.server.event.InvObjClickEvent
+import io.guthix.oldscape.server.plugin.InvalidMessageException
 
-on(InvObjClickEvent::class).then {
+on(InvObjClickEvent::class).where {
+    interfaceId == player.itemBag.interfaceId && (contextMenuEntry == "Wield" || contextMenuEntry == "Wear")
+}.then {
     val obj = player.itemBag.remove(inventorySlot) ?: return@then
     player.equip(world, obj)
+}
+
+on(ButtonClickEvent::class).where { interfaceId == 387 }.then {
+    val slot = buttonToSlots[buttonId] ?: throw InvalidMessageException(
+        "Button $buttonId does not exists on interface $interfaceId"
+    )
+    val obj = player.unequip(slot, world)
+    obj?.let { player.itemBag.add(obj) }
 }

@@ -34,9 +34,9 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 open class InventoryManager(
-    private val invId: Int,
-    private val interfaceId: Int = -1,
-    private val interfaceSlotId: Int = 0
+    val invId: Int,
+    val interfaceId: Int = -1,
+    val interfaceSlotId: Int = 0
 ) {
     private val template by lazy { ServerContext.inventoryTemplates[invId] }
 
