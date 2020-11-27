@@ -21,7 +21,7 @@ import io.netty.buffer.ByteBuf
 import io.netty.buffer.Unpooled
 import java.io.IOException
 
-public data class ObjectConfig(override val id: Int) : NamedConfig(id) {
+data class ObjConfig(override val id: Int) : NamedConfig(id) {
     override var name: String = "null"
     var model: Int = 0
     var zoom2d: Int = 2000
@@ -244,44 +244,44 @@ public data class ObjectConfig(override val id: Int) : NamedConfig(id) {
         return data
     }
 
-    public companion object : NamedConfigCompanion<ObjectConfig>() {
+    companion object : NamedConfigCompanion<ObjConfig>() {
         override val id: Int = 10
 
-        override fun decode(id: Int, data: ByteBuf): ObjectConfig {
-            val itemConfig = ObjectConfig(id)
+        override fun decode(id: Int, data: ByteBuf): ObjConfig {
+            val objConfig = ObjConfig(id)
             decoder@ while (true) {
                 when (val opcode = data.readUnsignedByte().toInt()) {
                     0 -> break@decoder
-                    1 -> itemConfig.model = data.readUnsignedShort()
-                    2 -> itemConfig.name = data.readStringCP1252()
-                    4 -> itemConfig.zoom2d = data.readUnsignedShort()
-                    5 -> itemConfig.xan2d = data.readUnsignedShort()
-                    6 -> itemConfig.yan2d = data.readUnsignedShort()
+                    1 -> objConfig.model = data.readUnsignedShort()
+                    2 -> objConfig.name = data.readStringCP1252()
+                    4 -> objConfig.zoom2d = data.readUnsignedShort()
+                    5 -> objConfig.xan2d = data.readUnsignedShort()
+                    6 -> objConfig.yan2d = data.readUnsignedShort()
                     7 -> {
-                        val temp= data.readUnsignedShort()
-                        itemConfig.xoff2d = if (temp > 32767) temp - 65536 else temp
+                        val temp = data.readUnsignedShort()
+                        objConfig.xoff2d = if (temp > 32767) temp - 65536 else temp
                     }
                     8 -> {
-                        val temp= data.readUnsignedShort()
-                        itemConfig.yoff2d = if (temp > 32767) temp - 65536 else temp
+                        val temp = data.readUnsignedShort()
+                        objConfig.yoff2d = if (temp > 32767) temp - 65536 else temp
                     }
-                    11 -> itemConfig.stackable = true
-                    12 -> itemConfig.cost = data.readInt()
-                    16 -> itemConfig.members = true
+                    11 -> objConfig.stackable = true
+                    12 -> objConfig.cost = data.readInt()
+                    16 -> objConfig.members = true
                     23 -> {
-                        itemConfig.maleModel0 = data.readUnsignedShort()
-                        itemConfig.maleOffset = data.readUnsignedByte()
+                        objConfig.maleModel0 = data.readUnsignedShort()
+                        objConfig.maleOffset = data.readUnsignedByte()
                     }
-                    24 -> itemConfig.maleModel1 = data.readUnsignedShort()
+                    24 -> objConfig.maleModel1 = data.readUnsignedShort()
                     25 -> {
-                        itemConfig.femaleModel0 = data.readUnsignedShort()
-                        itemConfig.femaleOffset = data.readUnsignedByte()
+                        objConfig.femaleModel0 = data.readUnsignedShort()
+                        objConfig.femaleOffset = data.readUnsignedByte()
                     }
-                    26 -> itemConfig.femaleModel1 = data.readUnsignedShort()
-                    in 30..34 -> itemConfig.groundActions[opcode - 30] = data.readStringCP1252().takeIf {
+                    26 -> objConfig.femaleModel1 = data.readUnsignedShort()
+                    in 30..34 -> objConfig.groundActions[opcode - 30] = data.readStringCP1252().takeIf {
                         it != "Hidden"
                     }
-                    in 35..39 -> itemConfig.iop[opcode - 35] = data.readStringCP1252()
+                    in 35..39 -> objConfig.iop[opcode - 35] = data.readStringCP1252()
                     40 -> {
                         val colorsSize = data.readUnsignedByte().toInt()
                         val colorFind = IntArray(colorsSize)
@@ -290,8 +290,8 @@ public data class ObjectConfig(override val id: Int) : NamedConfig(id) {
                             colorFind[i] = data.readUnsignedShort()
                             colorReplace[i] = data.readUnsignedShort()
                         }
-                        itemConfig.colorFind = colorFind
-                        itemConfig.colorReplace = colorReplace
+                        objConfig.colorFind = colorFind
+                        objConfig.colorReplace = colorReplace
                     }
                     41 -> {
                         val texturesSize = data.readUnsignedByte().toInt()
@@ -301,43 +301,43 @@ public data class ObjectConfig(override val id: Int) : NamedConfig(id) {
                             textureFind[i] = data.readUnsignedShort()
                             textureReplace[i] = data.readUnsignedShort()
                         }
-                        itemConfig.textureFind = textureFind
-                        itemConfig.textureReplace = textureReplace
+                        objConfig.textureFind = textureFind
+                        objConfig.textureReplace = textureReplace
                     }
-                    42 -> itemConfig.shiftClickDropIndex = data.readByte()
-                    65 -> itemConfig.tradable = true
-                    78 -> itemConfig.maleModel2 = data.readUnsignedShort()
-                    79 -> itemConfig.femaleModel2 = data.readUnsignedShort()
-                    90 -> itemConfig.maleHeadModel = data.readUnsignedShort()
-                    91 -> itemConfig.femaleHeadModel = data.readUnsignedShort()
-                    92 -> itemConfig.maleHeadModel2 = data.readUnsignedShort()
-                    93 -> itemConfig.femaleHeadModel2 = data.readUnsignedShort()
-                    95 -> itemConfig.zan2d = data.readUnsignedShort()
-                    97 -> itemConfig.notedId = data.readUnsignedShort()
-                    98 -> itemConfig.notedTemplateId = data.readUnsignedShort()
+                    42 -> objConfig.shiftClickDropIndex = data.readByte()
+                    65 -> objConfig.tradable = true
+                    78 -> objConfig.maleModel2 = data.readUnsignedShort()
+                    79 -> objConfig.femaleModel2 = data.readUnsignedShort()
+                    90 -> objConfig.maleHeadModel = data.readUnsignedShort()
+                    91 -> objConfig.femaleHeadModel = data.readUnsignedShort()
+                    92 -> objConfig.maleHeadModel2 = data.readUnsignedShort()
+                    93 -> objConfig.femaleHeadModel2 = data.readUnsignedShort()
+                    95 -> objConfig.zan2d = data.readUnsignedShort()
+                    97 -> objConfig.notedId = data.readUnsignedShort()
+                    98 -> objConfig.notedTemplateId = data.readUnsignedShort()
                     in 100..109 -> {
-                        if (itemConfig.countObj == null) {
-                            itemConfig.countObj = IntArray(10)
-                            itemConfig.countCo = IntArray(10)
+                        if (objConfig.countObj == null) {
+                            objConfig.countObj = IntArray(10)
+                            objConfig.countCo = IntArray(10)
                         }
-                        itemConfig.countObj!![opcode - 100] = data.readUnsignedShort()
-                        itemConfig.countCo!![opcode - 100] = data.readUnsignedShort()
+                        objConfig.countObj!![opcode - 100] = data.readUnsignedShort()
+                        objConfig.countCo!![opcode - 100] = data.readUnsignedShort()
                     }
-                    110 -> itemConfig.resizeX = data.readUnsignedShort()
-                    111 -> itemConfig.resizeY = data.readUnsignedShort()
-                    112 -> itemConfig.resizeZ = data.readUnsignedShort()
-                    113 -> itemConfig.ambient = data.readByte()
-                    114 -> itemConfig.contrast = data.readByte()
-                    115 -> itemConfig.team = data.readUnsignedByte()
-                    139 -> itemConfig.boughtId = data.readUnsignedShort()
-                    140 -> itemConfig.boughtTemplate = data.readUnsignedShort()
-                    148 -> itemConfig.placeholderId = data.readUnsignedShort()
-                    149 -> itemConfig.placeholderTemplateId = data.readUnsignedShort()
-                    249 -> itemConfig.params = data.readParams()
+                    110 -> objConfig.resizeX = data.readUnsignedShort()
+                    111 -> objConfig.resizeY = data.readUnsignedShort()
+                    112 -> objConfig.resizeZ = data.readUnsignedShort()
+                    113 -> objConfig.ambient = data.readByte()
+                    114 -> objConfig.contrast = data.readByte()
+                    115 -> objConfig.team = data.readUnsignedByte()
+                    139 -> objConfig.boughtId = data.readUnsignedShort()
+                    140 -> objConfig.boughtTemplate = data.readUnsignedShort()
+                    148 -> objConfig.placeholderId = data.readUnsignedShort()
+                    149 -> objConfig.placeholderTemplateId = data.readUnsignedShort()
+                    249 -> objConfig.params = data.readParams()
                     else -> throw IOException("Did not recognise opcode $opcode.")
                 }
             }
-            return itemConfig
+            return objConfig
         }
     }
 }

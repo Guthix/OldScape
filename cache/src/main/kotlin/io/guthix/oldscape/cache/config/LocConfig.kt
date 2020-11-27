@@ -21,7 +21,7 @@ import io.netty.buffer.ByteBuf
 import io.netty.buffer.Unpooled
 import java.io.IOException
 
-public data class LocationConfig(override val id: Int): NamedConfig(id) {
+data class LocConfig(override val id: Int) : NamedConfig(id) {
     override var name: String = "null"
     var width: Short = 1
     var length: Short = 1
@@ -235,55 +235,55 @@ public data class LocationConfig(override val id: Int): NamedConfig(id) {
         return data
     }
 
-    public companion object : NamedConfigCompanion<LocationConfig>() {
+    companion object : NamedConfigCompanion<LocConfig>() {
         override val id: Int = 6
 
-        override fun decode(id: Int, data: ByteBuf): LocationConfig {
-            val objectConfig = LocationConfig(id)
+        override fun decode(id: Int, data: ByteBuf): LocConfig {
+            val locConfig = LocConfig(id)
             decoder@ while (true) {
                 when (val opcode = data.readUnsignedByte().toInt()) {
                     0 -> break@decoder
                     1 -> {
                         val size = data.readUnsignedByte().toInt()
                         if (size > 0) {
-                            objectConfig.objectModels = IntArray(size)
-                            objectConfig.objectTypes = ShortArray(size)
+                            locConfig.objectModels = IntArray(size)
+                            locConfig.objectTypes = ShortArray(size)
                             for (i in 0 until size) {
-                                objectConfig.objectModels!![i] = data.readUnsignedShort()
-                                objectConfig.objectTypes!![i] = data.readUnsignedByte()
+                                locConfig.objectModels!![i] = data.readUnsignedShort()
+                                locConfig.objectTypes!![i] = data.readUnsignedByte()
                             }
                         }
                     }
-                    2 -> objectConfig.name = data.readStringCP1252()
+                    2 -> locConfig.name = data.readStringCP1252()
                     5 -> {
                         val size = data.readUnsignedByte().toInt()
                         if (size > 0) {
-                            objectConfig.objectTypes = null
-                            objectConfig.objectModels = IntArray(size) { data.readUnsignedShort() }
+                            locConfig.objectTypes = null
+                            locConfig.objectModels = IntArray(size) { data.readUnsignedShort() }
                         }
                     }
-                    14 -> objectConfig.width = data.readUnsignedByte()
-                    15 -> objectConfig.length = data.readUnsignedByte()
+                    14 -> locConfig.width = data.readUnsignedByte()
+                    15 -> locConfig.length = data.readUnsignedByte()
                     17 -> {
-                        objectConfig.clipType = 0
-                        objectConfig.impenetrable = false
+                        locConfig.clipType = 0
+                        locConfig.impenetrable = false
                     }
-                    18 -> objectConfig.impenetrable = false
-                    19 -> objectConfig.anInt2088 = data.readUnsignedByte()
-                    21 -> objectConfig.contouredGround = 0
-                    22 -> objectConfig.nonFlatShading = true
-                    23 -> objectConfig.modelClipped = true
+                    18 -> locConfig.impenetrable = false
+                    19 -> locConfig.anInt2088 = data.readUnsignedByte()
+                    21 -> locConfig.contouredGround = 0
+                    22 -> locConfig.nonFlatShading = true
+                    23 -> locConfig.modelClipped = true
                     24 -> {
-                        objectConfig.animationId = data.readUnsignedShort()
-                        if(objectConfig.animationId!!.toInt() == 65535) {
-                            objectConfig.animationId = null
+                        locConfig.animationId = data.readUnsignedShort()
+                        if (locConfig.animationId!!.toInt() == 65535) {
+                            locConfig.animationId = null
                         }
                     }
-                    27 -> objectConfig.clipType = 1
-                    28 -> objectConfig.decorDisplacement = data.readUnsignedByte()
-                    29 -> objectConfig.ambient = data.readByte()
-                    39 -> objectConfig.contrast = data.readByte().toInt() * 25
-                    in 30..34 -> objectConfig.options[opcode - 30] = data.readStringCP1252().takeIf { it != "Hidden" }
+                    27 -> locConfig.clipType = 1
+                    28 -> locConfig.decorDisplacement = data.readUnsignedByte()
+                    29 -> locConfig.ambient = data.readByte()
+                    39 -> locConfig.contrast = data.readByte().toInt() * 25
+                    in 30..34 -> locConfig.options[opcode - 30] = data.readStringCP1252().takeIf { it != "Hidden" }
                     40 -> {
                         val colorsSize = data.readUnsignedByte().toInt()
                         val colorFind = IntArray(colorsSize)
@@ -292,8 +292,8 @@ public data class LocationConfig(override val id: Int): NamedConfig(id) {
                             colorFind[i] = data.readUnsignedShort()
                             colorReplace[i] = data.readUnsignedShort()
                         }
-                        objectConfig.colorFind = colorFind
-                        objectConfig.colorReplace = colorReplace
+                        locConfig.colorFind = colorFind
+                        locConfig.colorReplace = colorReplace
                     }
                     41 -> {
                         val texturesSize = data.readUnsignedByte().toInt()
@@ -303,78 +303,78 @@ public data class LocationConfig(override val id: Int): NamedConfig(id) {
                             textureFind[i] = data.readUnsignedShort()
                             textureReplace[i] = data.readUnsignedShort()
                         }
-                        objectConfig.textureFind = textureFind
-                        objectConfig.textureReplace = textureReplace
+                        locConfig.textureFind = textureFind
+                        locConfig.textureReplace = textureReplace
                     }
-                    62 -> objectConfig.isMirrored = true
-                    64 -> objectConfig.isClipped = false
-                    65 -> objectConfig.modelSizeX = data.readUnsignedShort()
-                    66 -> objectConfig.modelSizeHeight = data.readUnsignedShort()
-                    67 -> objectConfig.modelSizeY = data.readUnsignedShort()
-                    68 -> objectConfig.mapSceneId = data.readUnsignedShort()
-                    69 -> objectConfig.accessBlock = data.readUnsignedByte()
-                    70 -> objectConfig.offsetX = data.readShort()
-                    71 -> objectConfig.offsetHeight = data.readShort()
-                    72 -> objectConfig.offsetY = data.readShort()
-                    73 -> objectConfig.obstructsGround = true
-                    74 -> objectConfig.isHollow = true
-                    75 -> objectConfig.supportItems = data.readUnsignedByte()
+                    62 -> locConfig.isMirrored = true
+                    64 -> locConfig.isClipped = false
+                    65 -> locConfig.modelSizeX = data.readUnsignedShort()
+                    66 -> locConfig.modelSizeHeight = data.readUnsignedShort()
+                    67 -> locConfig.modelSizeY = data.readUnsignedShort()
+                    68 -> locConfig.mapSceneId = data.readUnsignedShort()
+                    69 -> locConfig.accessBlock = data.readUnsignedByte()
+                    70 -> locConfig.offsetX = data.readShort()
+                    71 -> locConfig.offsetHeight = data.readShort()
+                    72 -> locConfig.offsetY = data.readShort()
+                    73 -> locConfig.obstructsGround = true
+                    74 -> locConfig.isHollow = true
+                    75 -> locConfig.supportItems = data.readUnsignedByte()
                     77, 92 -> {
                         val transformVarbit = data.readUnsignedShort()
-                        objectConfig.transformVarbit = if(transformVarbit == 65535) null else transformVarbit
+                        locConfig.transformVarbit = if (transformVarbit == 65535) null else transformVarbit
                         val transformVarp = data.readUnsignedShort()
-                        objectConfig.transformVarp = if(transformVarbit == 65535) null else transformVarp
-                        val lastEntry = if(opcode == 92) {
+                        locConfig.transformVarp = if (transformVarbit == 65535) null else transformVarp
+                        val lastEntry = if (opcode == 92) {
                             val entry = data.readUnsignedShort()
-                            if(entry == 65535) null else entry
+                            if (entry == 65535) null else entry
                         } else null
                         val size = data.readUnsignedByte().toInt()
                         val transforms = arrayOfNulls<Int?>(size + 2)
-                        for(i in 0..size) {
+                        for (i in 0..size) {
                             val transform = data.readUnsignedShort()
-                            transforms[i] = if(transform == 65535) null else transform
+                            transforms[i] = if (transform == 65535) null else transform
                         }
-                        if(opcode == 92) {
+                        if (opcode == 92) {
                             transforms[size + 1] = lastEntry
                         }
-                        objectConfig.transforms = transforms
+                        locConfig.transforms = transforms
                     }
                     78 -> {
-                        objectConfig.ambientSoundId = data.readUnsignedShort()
-                        objectConfig.anInt2083 = data.readUnsignedByte()
+                        locConfig.ambientSoundId = data.readUnsignedShort()
+                        locConfig.anInt2083 = data.readUnsignedByte()
                     }
                     79 -> {
-                        objectConfig.anInt2112 = data.readUnsignedShort()
-                        objectConfig.anInt2113 = data.readUnsignedShort()
-                        objectConfig.anInt2083 = data.readUnsignedByte()
+                        locConfig.anInt2112 = data.readUnsignedShort()
+                        locConfig.anInt2113 = data.readUnsignedShort()
+                        locConfig.anInt2083 = data.readUnsignedByte()
                         val size = data.readUnsignedByte().toInt()
-                        objectConfig.anIntArray2084 = IntArray(size) { data.readUnsignedShort() }
+                        locConfig.anIntArray2084 = IntArray(size) { data.readUnsignedShort() }
                     }
-                    81 -> objectConfig.contouredGround = data.readUnsignedByte() * 256
-                    82 -> objectConfig.mapIconId = data.readUnsignedShort()
-                    249 -> objectConfig.params = data.readParams()
+                    81 -> locConfig.contouredGround = data.readUnsignedByte() * 256
+                    82 -> locConfig.mapIconId = data.readUnsignedShort()
+                    249 -> locConfig.params = data.readParams()
                     else -> throw IOException("Did not recognise opcode $opcode.")
                 }
             }
-            if (objectConfig.anInt2088 == null) {
-                objectConfig.anInt2088 = 0
-                if ((objectConfig.objectModels != null && (objectConfig.objectTypes == null)
-                            || objectConfig.objectTypes?.get(0)?.toInt() == 10)
+            if (locConfig.anInt2088 == null) {
+                locConfig.anInt2088 = 0
+                if ((locConfig.objectModels != null && (locConfig.objectTypes == null)
+                        || locConfig.objectTypes?.get(0)?.toInt() == 10)
                 ) {
-                    objectConfig.anInt2088 = 1
+                    locConfig.anInt2088 = 1
                 }
-                for (it in (0 until 5).filter { objectConfig.options[it] != null }) {
-                    objectConfig.anInt2088 = 1
+                for (it in (0 until 5).filter { locConfig.options[it] != null }) {
+                    locConfig.anInt2088 = 1
                 }
             }
-            if (objectConfig.supportItems == null) {
-                objectConfig.supportItems = if(objectConfig.clipType != 0) 1 else 0
+            if (locConfig.supportItems == null) {
+                locConfig.supportItems = if (locConfig.clipType != 0) 1 else 0
             }
-            if (objectConfig.isHollow) {
-                objectConfig.clipType = 0
-                objectConfig.impenetrable = false
+            if (locConfig.isHollow) {
+                locConfig.clipType = 0
+                locConfig.impenetrable = false
             }
-            return objectConfig
+            return locConfig
         }
     }
 }

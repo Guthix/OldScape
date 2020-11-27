@@ -14,7 +14,7 @@ dependencies {
     implementation(project(":server:plugins:core:combat"))
     implementation(project(":server:plugins:core:equipment"))
     implementation(project(":server:plugins:core:obj"))
-    implementation(group = "io.guthix.oldscape", name = "oldscape-wiki-downloader", version = wikiDownloaderVersion)
+    implementation(project(":wiki:downloader"))
     implementation(group = "ch.qos.logback", name = "logback-classic", version = logbackVersion)
     implementation(group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version = ktSerVersion)
     implementation(group = "com.charleskorn.kaml", name = "kaml", version = kamlVersion)

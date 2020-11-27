@@ -15,12 +15,12 @@
  */
 package io.guthix.oldscape.server.template
 
-import io.guthix.oldscape.cache.config.ObjectConfig
+import io.guthix.oldscape.cache.config.ObjConfig
 import mu.KotlinLogging
 
 private val logger = KotlinLogging.logger { }
 
-data class ObjTemplate(private val config: ObjectConfig) : BaseTemplate(config) {
+data class ObjTemplate(private val config: ObjConfig) : BaseTemplate(config) {
     val id: Int get() = config.id
     val name: String get() = config.name
     val isStackable: Boolean get() = config.stackable

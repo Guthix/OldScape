@@ -15,24 +15,24 @@
  */
 package io.guthix.oldscape.dump.yaml
 
+import com.charleskorn.kaml.Yaml
 import io.guthix.js5.Js5Cache
 import io.guthix.js5.container.disk.Js5DiskStore
 import io.guthix.oldscape.cache.ConfigArchive
 import io.guthix.oldscape.cache.config.NpcConfig
-import io.guthix.oldscape.cache.config.ObjectConfig
+import io.guthix.oldscape.cache.config.ObjConfig
+import io.guthix.oldscape.server.readYaml
 import io.guthix.oldscape.server.template.Template
 import io.guthix.oldscape.wiki.WikiDefinition
 import io.guthix.oldscape.wiki.scrapeNpcWikiConfigs
 import io.guthix.oldscape.wiki.scrapeObjectWikiConfigs
 import io.guthix.oldscape.wiki.wikitext.NpcWikiDefinition
 import io.guthix.oldscape.wiki.wikitext.ObjWikiDefinition
+import kotlinx.serialization.encodeToString
 import mu.KotlinLogging
 import java.io.File
-import java.nio.file.Path
-import com.charleskorn.kaml.Yaml
-import io.guthix.oldscape.server.readYaml
-import kotlinx.serialization.encodeToString
 import java.nio.file.Files
+import java.nio.file.Path
 
 private val logger = KotlinLogging.logger { }
 
@@ -53,7 +53,7 @@ object YamlDownloader {
         val configArchive = cache.readArchive(ConfigArchive.id)
 
         val npcCacheConfigs = NpcConfig.load(configArchive.readGroup(NpcConfig.id))
-        val objCacheConfigs = ObjectConfig.load(configArchive.readGroup(ObjectConfig.id))
+        val objCacheConfigs = ObjConfig.load(configArchive.readGroup(ObjConfig.id))
 
         val objWikiConfigs = scrapeObjectWikiConfigs(objCacheConfigs).filter { it.ids != null }.sortedBy {
             it.ids!!.first()

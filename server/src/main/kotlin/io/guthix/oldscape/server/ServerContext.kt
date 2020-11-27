@@ -40,7 +40,7 @@ object ServerContext : KLogging() {
             ::InventoryTemplate
         )
         locTemplates = TemplateRepository.of(
-            LocationConfig.load(archive.readGroup(LocationConfig.id)),
+            LocConfig.load(archive.readGroup(LocConfig.id)),
             ::LocTemplate
         )
         npcTemplates = TemplateRepository.of(
@@ -48,7 +48,7 @@ object ServerContext : KLogging() {
             ::NpcTemplate
         )
         objTemplates = TemplateRepository.of(
-            ObjectConfig.load(archive.readGroup(ObjectConfig.id)),
+            ObjConfig.load(archive.readGroup(ObjConfig.id)),
             ::ObjTemplate
         )
         sequenceTemplates = TemplateRepository.of(

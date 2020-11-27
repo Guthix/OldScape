@@ -16,14 +16,13 @@
 package io.guthix.oldscape.wiki
 
 import io.guthix.oldscape.cache.config.NpcConfig
-import io.guthix.oldscape.cache.config.ObjectConfig
+import io.guthix.oldscape.cache.config.ObjConfig
 import io.guthix.oldscape.wiki.wikitext.NpcWikiDefinition
 import io.guthix.oldscape.wiki.wikitext.ObjWikiDefinition
-import io.ktor.client.HttpClient
-import io.ktor.client.engine.apache.Apache
-import io.ktor.client.request.get
-import io.ktor.client.request.request
-import io.ktor.client.statement.HttpResponse
+import io.ktor.client.*
+import io.ktor.client.engine.apache.*
+import io.ktor.client.request.*
+import io.ktor.client.statement.*
 import kotlinx.coroutines.runBlocking
 import mu.KotlinLogging
 
@@ -31,7 +30,7 @@ private const val wikiUrl = "https://oldschool.runescape.wiki"
 
 private val logger = KotlinLogging.logger { }
 
-public fun scrapeObjectWikiConfigs(cacheConfigs: Map<Int, ObjectConfig>): List<ObjWikiDefinition> = runBlocking {
+fun scrapeObjectWikiConfigs(cacheConfigs: Map<Int, ObjConfig>): List<ObjWikiDefinition> = runBlocking {
     val wikiConfigs = HttpClient(Apache) {
         followRedirects = false
         engine {
@@ -83,7 +82,7 @@ public fun scrapeObjectWikiConfigs(cacheConfigs: Map<Int, ObjectConfig>): List<O
     wikiConfigs.values.distinct()
 }
 
-public fun scrapeNpcWikiConfigs(cacheConfigs: Map<Int, NpcConfig>): List<NpcWikiDefinition> = runBlocking {
+fun scrapeNpcWikiConfigs(cacheConfigs: Map<Int, NpcConfig>): List<NpcWikiDefinition> = runBlocking {
     val wikiConfigs = HttpClient(Apache) {
         followRedirects = false
     }.use { client ->
@@ -126,7 +125,7 @@ public fun scrapeNpcWikiConfigs(cacheConfigs: Map<Int, NpcConfig>): List<NpcWiki
 }
 
 /** Scrapes the wiki and retrieves the wiki text.*/
-public suspend fun HttpClient.scrapeWikiText(wikiType: String, id: Int, name: String): String {
+suspend fun HttpClient.scrapeWikiText(wikiType: String, id: Int, name: String): String {
     val urlName = name.replace(' ', '_').replace("<.*?>".toRegex(), "")
     val queryUrl = if (urlName.contains("%")) {
         "$wikiUrl/w/Special:Lookup?type=$wikiType&id=$id"
@@ -143,4 +142,4 @@ public suspend fun HttpClient.scrapeWikiText(wikiType: String, id: Int, name: St
     return get(rawUrl)
 }
 
-public class PageNotFoundException(message: String) : Exception(message)
+class PageNotFoundException(message: String) : Exception(message)
