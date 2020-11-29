@@ -92,19 +92,26 @@ class NpcInfoSmallViewportPacket(
         return loc
     }
 
+    val Npc.encodedOrientation: Int
+        get() = when (orientation) {
+            in 0 until 512 -> 0
+            in 512 until 1024 -> 1
+            in 1024 until 1536 -> 2
+            else -> 3
+        }
+
     fun externalNpcUpdate(buf: BitBuf): BitBuf {
         var npcsAdded = 0
-        for (npc in npcs) { // TODO optimize and use surrounding npcs
+        for (npc in npcs) { // TODO can optimize this
             if (npcsAdded > 16) break
             if (needsAdd(npc)) {
                 buf.writeBits(value = npc.index, amount = 15)
                 buf.writeBits(value = getRespectiveLocation(npc.pos.y, player.pos.y).value, amount = 5)
-                buf.writeBits(value = npc.orientation, amount = 3) //TODO fix rotation
+                buf.writeBits(value = npc.encodedOrientation, amount = 3)
                 buf.writeBoolean(false) // Is teleport
                 buf.writeBoolean(npc.updateFlags.isNotEmpty())
                 buf.writeBits(value = getRespectiveLocation(npc.pos.x, player.pos.x).value, amount = 5)
                 buf.writeBits(value = npc.id, amount = 14)
-
                 localNpcs.add(npc)
                 npcsAdded++
             }

@@ -16,7 +16,10 @@
 package io.guthix.oldscape.server.db
 
 import io.guthix.oldscape.server.ServerConfig
-import org.jetbrains.exposed.sql.*
+import org.jetbrains.exposed.sql.Column
+import org.jetbrains.exposed.sql.Database
+import org.jetbrains.exposed.sql.SchemaUtils
+import org.jetbrains.exposed.sql.Table
 import org.jetbrains.exposed.sql.transactions.transaction
 import kotlin.reflect.KClass
 
@@ -30,7 +33,6 @@ object PostgresDb {
         )
 
         transaction {
-            addLogger(StdOutSqlLogger)
             SchemaUtils.create(PlayerTable, PlayerPropertiesTable)
         }
     }
