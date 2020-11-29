@@ -1,6 +1,5 @@
 @file:Suppress("ConvertLambdaToReference")
 
-import org.jetbrains.kotlin.gradle.plugin.getKotlinPluginVersion
 import java.net.URI
 
 plugins {
@@ -43,14 +42,6 @@ allprojects {
                 credentials {
                     username = System.getenv("OSSRH_USERNAME")
                     password = System.getenv("OSSRH_PASSWORD")
-                }
-            }
-            maven {
-                name = "GitHubPackages"
-                url = URI("https://maven.pkg.github.com/guthix/OldScape-Wiki")
-                credentials {
-                    username = System.getenv("GITHUB_ACTOR")
-                    password = System.getenv("GITHUB_TOKEN")
                 }
             }
         }
