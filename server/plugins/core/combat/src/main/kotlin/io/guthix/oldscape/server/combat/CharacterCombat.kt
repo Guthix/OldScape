@@ -16,7 +16,9 @@
 package io.guthix.oldscape.server.combat
 
 import io.guthix.oldscape.server.Property
+import io.guthix.oldscape.server.stat.AttackType
 import io.guthix.oldscape.server.stat.StatMultiplier
+import io.guthix.oldscape.server.stat.StyleBonus
 import io.guthix.oldscape.server.template.*
 import io.guthix.oldscape.server.world.entity.Character
 import io.guthix.oldscape.server.world.entity.Player

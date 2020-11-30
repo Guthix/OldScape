@@ -20,6 +20,8 @@ import io.guthix.oldscape.server.event.EventBus
 import io.guthix.oldscape.server.event.ObjEquipedEvent
 import io.guthix.oldscape.server.event.ObjUnEquipedEvent
 import io.guthix.oldscape.server.plugin.InvalidMessageException
+import io.guthix.oldscape.server.stat.CombatBonus
+import io.guthix.oldscape.server.stat.StyleBonus
 import io.guthix.oldscape.server.template.*
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.Obj

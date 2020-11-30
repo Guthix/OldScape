@@ -21,6 +21,7 @@ import io.guthix.oldscape.server.combat.attackSpeed
 import io.guthix.oldscape.server.combat.dmg.calcHit
 import io.guthix.oldscape.server.combat.dmg.maxRangeHit
 import io.guthix.oldscape.server.combat.inCombatWith
+import io.guthix.oldscape.server.damage.hit
 import io.guthix.oldscape.server.event.EventBus
 import io.guthix.oldscape.server.event.NpcAttackedEvent
 import io.guthix.oldscape.server.pathing.DestinationRange
@@ -63,7 +64,7 @@ fun Player.rangeAttack(npc: Npc, world: World) {
                 wait(ticks = projectile.lifeTimeServerTicks - 1)
                 npc.animate(npc.defenceSequence)
                 val hmColor = if (damage == 0) HitMark.Color.BLUE else HitMark.Color.RED
-                npc.hit(hmColor, damage, 0)
+                npc.hit(hmColor, damage)
                 if (Random.nextDouble(1.0) < 0.8) world.addObject(ammunition.copy(quantity = 1), oldNpcPos)
             }
             wait(ticks = attackSpeed)

@@ -13,14 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.guthix.oldscape.server.stat
+package io.guthix.oldscape.server.template
 
-data class StatMultiplier(
-    val attack: Double,
-    val range: Double,
-    val magic: Double,
-    val strength: Double,
-    val rangeStrength: Double,
-    val magicStrength: Double,
-    val defence: Double
-)
+import io.guthix.oldscape.server.ServerContext
+
+loadTemplates("/template/Monsters.yaml", ServerContext.npcTemplates, NpcTemplate::monster)

@@ -16,6 +16,7 @@
 package io.guthix.oldscape.server.combat
 
 import io.guthix.oldscape.server.combat.dmg.calcHit
+import io.guthix.oldscape.server.damage.hit
 import io.guthix.oldscape.server.event.NpcAttackedEvent
 import io.guthix.oldscape.server.pathing.DestinationRectangleDirect
 import io.guthix.oldscape.server.pathing.simplePathSearch
@@ -35,7 +36,7 @@ on(NpcAttackedEvent::class).then {
             npc.animate(npc.attackSequence)
             val damage = npc.calcHit(player) ?: 0
             val hmColor = if (damage == 0) HitMark.Color.BLUE else HitMark.Color.RED
-            player.hit(hmColor, damage, 0)
+            player.hit(hmColor, damage)
             player.animate(player.defenceSequence)
             wait(ticks = npc.attackSpeed)
         }

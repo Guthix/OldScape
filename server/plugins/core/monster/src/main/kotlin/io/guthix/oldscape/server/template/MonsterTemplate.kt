@@ -16,6 +16,9 @@
 package io.guthix.oldscape.server.template
 
 import io.guthix.oldscape.server.Property
+import io.guthix.oldscape.server.stat.AttackType
+import io.guthix.oldscape.server.stat.CombatBonus
+import io.guthix.oldscape.server.stat.StyleBonus
 import io.guthix.oldscape.server.world.entity.Npc
 import kotlinx.serialization.Serializable
 
@@ -96,5 +99,3 @@ data class CombatSequences(
     val defence: Int,
     val death: Int
 )
-
-enum class AttackType { STAB, SLASH, CRUSH, RANGED, MAGIC, NONE }

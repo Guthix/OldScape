@@ -185,16 +185,20 @@ abstract class Character(val index: Int) : Entity {
 
     protected object ChatTask : TaskType
 
-    var health: Int = 100
+    internal val hitMarkQueue: MutableList<HitMark> = mutableListOf()
 
-    val hitMarkQueue: MutableList<HitMark> = mutableListOf()
+    internal val healthBarQueue: MutableList<HealthBarUpdate> = mutableListOf()
 
-    val healthBarQueue: MutableList<HealthBar> = mutableListOf()
+    object HitTask : TaskType
 
-    fun hit(color: HitMark.Color, damage: Int, delay: Int) {
+    fun addHitMark(hitMark: HitMark) {
         addHitUpdateFlag()
-        hitMarkQueue.add(HitMark(color, damage, delay))
-        healthBarQueue.add(HealthBar(2, 0, 0, 100)) // TODO do something better here
+        hitMarkQueue.add(hitMark)
+    }
+
+    fun updateHealthBar(update: HealthBarUpdate) {
+        addHitUpdateFlag()
+        healthBarQueue.add(update)
     }
 
     override fun postProcess() {

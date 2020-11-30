@@ -21,7 +21,11 @@ import io.guthix.oldscape.server.combat.findBonus
 import io.guthix.oldscape.server.equipment.attackBonus
 import io.guthix.oldscape.server.equipment.defenceBonus
 import io.guthix.oldscape.server.prayer.prayerMultiplier
-import io.guthix.oldscape.server.template.*
+import io.guthix.oldscape.server.stat.AttackType
+import io.guthix.oldscape.server.template.attackBonus
+import io.guthix.oldscape.server.template.attackType
+import io.guthix.oldscape.server.template.defensiveStats
+import io.guthix.oldscape.server.template.stats
 import io.guthix.oldscape.server.world.entity.Npc
 import io.guthix.oldscape.server.world.entity.Player
 import kotlin.math.floor

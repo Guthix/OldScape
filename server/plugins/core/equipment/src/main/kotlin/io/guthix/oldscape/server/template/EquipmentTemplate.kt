@@ -16,6 +16,8 @@
 package io.guthix.oldscape.server.template
 
 import io.guthix.oldscape.server.Property
+import io.guthix.oldscape.server.stat.CombatBonus
+import io.guthix.oldscape.server.stat.StyleBonus
 import io.guthix.oldscape.server.world.entity.Obj
 import io.guthix.oldscape.server.world.entity.interest.EquipmentType
 import kotlinx.serialization.Serializable
@@ -52,56 +54,3 @@ data class EquipmentTemplate(
     val defenceBonus: StyleBonus? = null,
     val prayerBonus: Int? = null
 ) : Template
-
-@Serializable
-data class StyleBonus(
-    var stab: Int,
-    var slash: Int,
-    var crush: Int,
-    var range: Int,
-    var magic: Int
-) {
-    operator fun plus(value: StyleBonus?): StyleBonus {
-        if (value == null) return this
-        stab += value.stab
-        slash += value.slash
-        crush += value.crush
-        range += value.range
-        magic += value.magic
-
-        return this
-    }
-
-    operator fun minus(value: StyleBonus?): StyleBonus {
-        if (value == null) return this
-        stab -= value.stab
-        slash -= value.slash
-        crush -= value.crush
-        range -= value.range
-        magic -= value.magic
-        return this
-    }
-}
-
-@Serializable
-data class CombatBonus(
-    var melee: Int,
-    var range: Int,
-    var magic: Int
-) {
-    operator fun plus(value: CombatBonus?): CombatBonus {
-        if (value == null) return this
-        melee += value.melee
-        range += value.range
-        magic += value.magic
-        return this
-    }
-
-    operator fun minus(value: CombatBonus?): CombatBonus {
-        if (value == null) return this
-        melee -= value.melee
-        range -= value.range
-        magic -= value.magic
-        return this
-    }
-}

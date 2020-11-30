@@ -15,4 +15,4 @@
  */
 package io.guthix.oldscape.server.world.entity
 
-class HealthBar(val id: Int, val decreaseSpeed: Int, val delay: Int, val amount: Int)
+class HealthBarUpdate(val id: Int, val decreaseSpeed: Int, val delay: Int, val amount: Int)

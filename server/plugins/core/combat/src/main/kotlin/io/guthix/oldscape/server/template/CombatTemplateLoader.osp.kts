@@ -19,4 +19,3 @@ import io.guthix.oldscape.server.ServerContext
 
 loadTemplates("/template/Ammunition.yaml", ServerContext.objTemplates, ObjTemplate::ammunition)
 loadTemplates("/template/Weapons.yaml", ServerContext.objTemplates, ObjTemplate::weapon)
-loadTemplates("/template/Monsters.yaml", ServerContext.npcTemplates, NpcTemplate::monster)
