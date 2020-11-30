@@ -125,7 +125,7 @@ class World internal constructor(
                 GameDecoder(request.isaacPair.decodeGen, player, this)
             )
             request.ctx.pipeline().replace(LoginHandler::class.qualifiedName, GameHandler::class.qualifiedName,
-                GameHandler(player)
+                GameHandler(player, this)
             )
             request.ctx.pipeline().replace(LoginEncoder::class.qualifiedName, GameEncoder::class.qualifiedName,
                 GameEncoder(request.isaacPair.encodeGen)
@@ -140,8 +140,8 @@ class World internal constructor(
         return npc
     }
 
-    fun stagePlayerLogout(player: Player) {
-        player.stageLogout()
+    fun stagePlayerLogout(player: Player, force: Boolean) {
+        player.stageLogout(force)
         logoutQueue.add(player)
     }
 
@@ -176,12 +176,12 @@ class World internal constructor(
     }
 
     private fun proccessPlayerMovement() {
-        for (player in players) player.move()
+        players.filterNot(Player::isLoggingOut).forEach(Player::move)
     }
 
     private fun synchronizeInterest() {
         val futures = PromiseCombiner(ImmediateEventExecutor.INSTANCE)
-        players.forEach { it.synchronize(this).forEach(futures::add) }
+        players.forEach { if (!it.isLoggingOut) it.synchronize(this).forEach(futures::add) }
         futures.finish(DefaultPromise<Void>(ImmediateEventExecutor.INSTANCE).addListener {
             if (it.isSuccess) {
                 for (player in players) player.postProcess()

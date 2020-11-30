@@ -15,13 +15,15 @@
  */
 package io.guthix.oldscape.server.net.game
 
+import io.guthix.oldscape.server.event.ClientDisconnectEvent
 import io.guthix.oldscape.server.event.EventBus
 import io.guthix.oldscape.server.event.PlayerGameEvent
 import io.guthix.oldscape.server.net.PacketInboundHandler
+import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.Player
 import io.netty.channel.ChannelHandlerContext
 
-class GameHandler(val player: Player) : PacketInboundHandler<PlayerGameEvent>() {
+class GameHandler(val player: Player, val world: World) : PacketInboundHandler<PlayerGameEvent>() {
     override fun channelRegistered(ctx: ChannelHandlerContext) {
         super.channelRegistered(ctx)
         player.ctx = ctx
@@ -29,5 +31,10 @@ class GameHandler(val player: Player) : PacketInboundHandler<PlayerGameEvent>() 
 
     override fun channelRead0(ctx: ChannelHandlerContext, msg: PlayerGameEvent) {
         EventBus.schedule(msg)
+    }
+
+    override fun channelInactive(ctx: ChannelHandlerContext?) {
+        super.channelInactive(ctx)
+        EventBus.schedule(ClientDisconnectEvent(player, world))
     }
 }

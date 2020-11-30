@@ -250,11 +250,12 @@ class Player internal constructor(
 
     override fun addShoutFlag(): Boolean = updateFlags.add(PlayerInfoPacket.shout)
 
-    internal fun stageLogout() {
+    internal fun stageLogout(forced: Boolean) {
         isLoggingOut = true
         events.clear()
         tasks.clear()
-        ctx.writeAndFlush(LogoutFullPacket())
+        postTasks.clear()
+        if (!forced) ctx.writeAndFlush(LogoutFullPacket())
     }
 
     override fun compareTo(other: Player): Int = when {

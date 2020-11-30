@@ -13,15 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.guthix.oldscape.server.logout
+package io.guthix.oldscape.server.event
 
-import io.guthix.oldscape.server.event.ButtonClickEvent
-import io.guthix.oldscape.server.event.ClientDisconnectEvent
+import io.guthix.oldscape.server.world.World
+import io.guthix.oldscape.server.world.entity.Player
 
-on(ButtonClickEvent::class).where { interfaceId == 182 && buttonId == 8 }.then {
-    world.stagePlayerLogout(player, false)
-}
-
-on(ClientDisconnectEvent::class).then {
-    world.stagePlayerLogout(player, true)
-}
+class ClientDisconnectEvent(player: Player, world: World) : PlayerGameEvent(player, world)
