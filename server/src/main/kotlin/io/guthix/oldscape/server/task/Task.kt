@@ -26,7 +26,7 @@ import kotlin.coroutines.resume
 class Task(val type: TaskType, private val holder: TaskHolder) : Continuation<Unit> {
     internal var next: ConditionalContinuation? = null
 
-    private var cancelation: ConditionalContinuation? = null
+    private var finalization: ConditionalContinuation? = null
 
     override val context: CoroutineContext = EmptyCoroutineContext
 
@@ -38,18 +38,25 @@ class Task(val type: TaskType, private val holder: TaskHolder) : Continuation<Un
                 true
             } else false
         } ?: run {
+            finalization?.continuation?.resume(Unit)
             holder.tasks[type]?.remove(this)
             false
         }
     }
 
-    fun cancel() {
-        holder.tasks.getOrPut(type) { mutableSetOf() }.add(this)
-        next = cancelation
+    /** Similar to [TaskHolder.cancelTasks] but also cancels the currently executed task. */
+    fun cancelTasks(type: TaskType) {
+        holder.tasks[type]?.forEach(Task::cancel)
+        cancel()
     }
 
-    fun onCancel(action: suspend Task.() -> Unit) {
-        cancelation = ConditionalContinuation(TrueCondition, action.createCoroutineUnintercepted(this, this))
+    fun cancel() {
+        holder.tasks.getOrPut(type) { mutableSetOf() }.add(this)
+        next = null
+    }
+
+    fun finalize(action: suspend Task.() -> Unit) {
+        finalization = ConditionalContinuation(TrueCondition, action.createCoroutineUnintercepted(this, this))
     }
 
     fun postProcess() {

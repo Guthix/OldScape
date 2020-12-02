@@ -19,7 +19,6 @@ import io.guthix.oldscape.server.combat.attackRange
 import io.guthix.oldscape.server.combat.attackSpeed
 import io.guthix.oldscape.server.combat.dmg.calcHit
 import io.guthix.oldscape.server.combat.inCombatWith
-import io.guthix.oldscape.server.damage.health
 import io.guthix.oldscape.server.damage.hit
 import io.guthix.oldscape.server.event.EventBus
 import io.guthix.oldscape.server.event.NpcAttackedEvent
@@ -43,10 +42,9 @@ fun Player.magicAttack(
     inCombatWith = npc
     cancelTasks(NormalTask)
     val player = this
-    addTask(NormalTask) {
+    addTask(NormalTask) combatTask@{
         main@ while (true) { // start player combat
             wait { npcDestination.reached(pos.x, pos.y, size) }
-            if (npc.health == 0) break
             animate(spellTemplate.castAnim)
             spotAnimate(spellTemplate.castSpotAnim, spellTemplate.castSpotAnimHeight)
             // TODO sound
@@ -59,16 +57,16 @@ fun Player.magicAttack(
                     // TODO sound
                 } else {
                     wait(ticks = projectile.lifeTimeServerTicks - 1)
-                    val hmColor = if (damage == 0) HitMark.Color.BLUE else HitMark.Color.RED
-                    npc.hit(hmColor, damage)
                     npc.animate(npc.defenceSequence)
                     npc.spotAnimate(spellTemplate.impactSpotAnim, spellTemplate.impactSpotAnimHeight)
+                    val hmColor = if (damage == 0) HitMark.Color.BLUE else HitMark.Color.RED
                     // TODO sound
+                    if (npc.hit(hmColor, damage)) cancelTasks(NormalTask)
                 }
             }
             wait(ticks = attackSpeed)
         }
-    }.onCancel {
+    }.finalize {
         inCombatWith = null
         turnToLock(null)
     }

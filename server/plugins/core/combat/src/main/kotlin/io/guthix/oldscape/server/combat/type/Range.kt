@@ -21,7 +21,6 @@ import io.guthix.oldscape.server.combat.attackSpeed
 import io.guthix.oldscape.server.combat.dmg.calcHit
 import io.guthix.oldscape.server.combat.dmg.maxRangeHit
 import io.guthix.oldscape.server.combat.inCombatWith
-import io.guthix.oldscape.server.damage.health
 import io.guthix.oldscape.server.damage.hit
 import io.guthix.oldscape.server.event.EventBus
 import io.guthix.oldscape.server.event.NpcAttackedEvent
@@ -48,7 +47,7 @@ fun Player.rangeAttack(npc: Npc, world: World) {
     addTask(NormalTask) {
         main@ while (true) { // start player combat
             wait { npcDestination.reached(pos.x, pos.y, size) }
-            if (npc.health == 0) break
+
             val ammunition = equipment.ammunition
             if (ammunition == null || ammunition.quantity <= 0) {
                 senGameMessage("There is no ammo left in your quiver.")
@@ -64,14 +63,14 @@ fun Player.rangeAttack(npc: Npc, world: World) {
                 val damage = calcHit(npc, maxRangeHit()) ?: 0
                 val oldNpcPos = npc.pos
                 wait(ticks = projectile.lifeTimeServerTicks - 1)
+                if (Random.nextDouble(1.0) < 0.8) world.addObject(ammunition.copy(quantity = 1), oldNpcPos)
                 npc.animate(npc.defenceSequence)
                 val hmColor = if (damage == 0) HitMark.Color.BLUE else HitMark.Color.RED
-                npc.hit(hmColor, damage)
-                if (Random.nextDouble(1.0) < 0.8) world.addObject(ammunition.copy(quantity = 1), oldNpcPos)
+                if (npc.hit(hmColor, damage)) cancelTasks(NormalTask)
             }
             wait(ticks = attackSpeed)
         }
-    }.onCancel {
+    }.finalize {
         inCombatWith = null
         turnToLock(null)
     }

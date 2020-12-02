@@ -16,7 +16,6 @@
 package io.guthix.oldscape.server.combat
 
 import io.guthix.oldscape.server.combat.dmg.calcHit
-import io.guthix.oldscape.server.damage.health
 import io.guthix.oldscape.server.damage.hit
 import io.guthix.oldscape.server.event.NpcAttackedEvent
 import io.guthix.oldscape.server.pathing.DestinationRectangleDirect
@@ -27,14 +26,13 @@ import io.guthix.oldscape.server.template.attackSpeed
 import io.guthix.oldscape.server.world.entity.HitMark
 
 on(NpcAttackedEvent::class).then {
-    if (npc.inCombatWith == player) return@then
+    if (npc.inCombatWith != null) return@then
     var playerDestination = DestinationRectangleDirect(player, world)
     npc.inCombatWith = player
     npc.cancelTasks(NormalTask)
     npc.addTask(NormalTask) { // combat fighting task
         while (true) {
             wait { playerDestination.reached(npc.pos.x, npc.pos.y, npc.size) }
-            if (npc.health == 0) break
             npc.animate(npc.attackSequence)
             val damage = npc.calcHit(player) ?: 0
             val hmColor = if (damage == 0) HitMark.Color.BLUE else HitMark.Color.RED
@@ -46,13 +44,13 @@ on(NpcAttackedEvent::class).then {
     npc.addTask(NormalTask) { // following task
         npc.turnToLock(player)
         while (true) {
-            if (npc.health == 0) break
             playerDestination = DestinationRectangleDirect(player, world)
             npc.path = simplePathSearch(npc.pos, playerDestination, npc.size, world)
             wait(ticks = 1)
             wait { player.lastPos != player.pos }
         }
-    }.onCancel {
+    }.finalize {
+        println("Run post task npc!")
         npc.inCombatWith = null
         npc.turnToLock(null)
     }

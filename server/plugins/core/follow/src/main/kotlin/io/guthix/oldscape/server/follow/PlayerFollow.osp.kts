@@ -40,7 +40,7 @@ on(PlayerClickEvent::class).where { contextMenuEntry == "Follow" }.then {
             wait { currentTarget != followed.followPosition }
             player.path = simplePathSearch(player.pos, DestinationTile(followed.followPosition), player.size, world)
         }
-    }.onCancel {
+    }.finalize {
         player.turnToLock(null)
     }
 }

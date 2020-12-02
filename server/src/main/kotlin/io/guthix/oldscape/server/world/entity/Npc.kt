@@ -24,8 +24,10 @@ import io.guthix.oldscape.server.world.map.Tile
 import io.guthix.oldscape.server.world.map.dim.TileUnit
 import io.guthix.oldscape.server.world.map.dim.tiles
 
-class Npc(val id: Int, index: Int, override var pos: Tile) : Character(index) {
+data class Npc(val id: Int, override val index: Int, override var pos: Tile) : Character(index) {
     val template: NpcTemplate by lazy { ServerContext.npcTemplates[id] }
+
+    val name: String get() = template.name
 
     override var spawnPos: Tile = pos.copy()
 
@@ -43,6 +45,9 @@ class Npc(val id: Int, index: Int, override var pos: Tile) : Character(index) {
             if (resumed.all { !it }) break // TODO add live lock detection
         }
     }
+
+
+    override fun toString(): String = "Npc(index=$index, id=$id, name=$name, pos=$pos)"
 
     override fun addOrientationFlag(): Boolean = updateFlags.add(NpcInfoSmallViewportPacket.orientation)
 

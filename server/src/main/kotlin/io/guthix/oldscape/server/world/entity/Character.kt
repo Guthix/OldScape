@@ -30,7 +30,7 @@ import java.util.*
 import kotlin.math.atan2
 import kotlin.reflect.KProperty
 
-abstract class Character(val index: Int) : Entity {
+abstract class Character(open val index: Int) : Entity {
     abstract val size: TileUnit
 
     override val sizeX: TileUnit get() = size

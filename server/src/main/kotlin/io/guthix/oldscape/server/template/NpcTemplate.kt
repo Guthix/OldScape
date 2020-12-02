@@ -22,6 +22,7 @@ private val logger = KotlinLogging.logger { }
 
 data class NpcTemplate(private val config: NpcConfig) : BaseTemplate(config) {
     val id: Int get() = config.id
+    val name: String get() = config.name
     val size: Int get() = config.size.toInt()
     val contextMenu: Array<String?> get() = config.options
 }

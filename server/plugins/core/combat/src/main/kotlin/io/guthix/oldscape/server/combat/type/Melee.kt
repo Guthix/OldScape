@@ -20,7 +20,6 @@ import io.guthix.oldscape.server.combat.attackSpeed
 import io.guthix.oldscape.server.combat.dmg.calcHit
 import io.guthix.oldscape.server.combat.dmg.maxMeleeHit
 import io.guthix.oldscape.server.combat.inCombatWith
-import io.guthix.oldscape.server.damage.health
 import io.guthix.oldscape.server.damage.hit
 import io.guthix.oldscape.server.event.EventBus
 import io.guthix.oldscape.server.event.NpcAttackedEvent
@@ -43,15 +42,18 @@ fun Player.meleeAttack(npc: Npc, world: World) {
         wait { npcDestination.reached(pos.x, pos.y, size) }
         EventBus.schedule(NpcAttackedEvent(npc, player, world))
         while (true) { // start player combat
-            if (npc.health == 0) break
             animate(attackSequence)
             val damage = calcHit(npc, maxMeleeHit()) ?: 0
-            val hmColor = if (damage == 0) HitMark.Color.BLUE else HitMark.Color.RED
             npc.animate(npc.defenceSequence)
-            npc.hit(hmColor, damage)
+            val hmColor = if (damage == 0) HitMark.Color.BLUE else HitMark.Color.RED
+            if (npc.hit(hmColor, damage)) {
+                println("Killed enemy: cancel tasks")
+                cancelTasks(NormalTask)
+                return@addTask
+            }
             wait(ticks = attackSpeed)
         }
-    }.onCancel {
+    }.finalize {
         inCombatWith = null
         turnToLock(null)
     }

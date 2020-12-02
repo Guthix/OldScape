@@ -36,35 +36,38 @@ var Npc.health: Int by Property {
     stats.health
 }
 
-fun Player.hit(hmColor: HitMark.Color, amount: Int) {
+fun Player.hit(hmColor: HitMark.Color, amount: Int): Boolean {
     addHitMark(HitMark(hmColor, amount, 0))
     if (amount > health) {
         health = 0
         updateHealthBar(StaticHealthBarUpdate(id = 0, amount = health))
+        cancelTasks(NormalTask)
         animate(deathSequence)
         addTask(NormalTask) {
             wait(sequence?.duration ?: 0)
             teleport(spawnPos)
         }
-    } else {
-        health -= amount
-        updateHealthBar(StaticHealthBarUpdate(id = 0, amount = health))
+        return true
     }
+    health -= amount
+    updateHealthBar(StaticHealthBarUpdate(id = 0, amount = health))
+    return false
 }
 
-fun Npc.hit(hmColor: HitMark.Color, amount: Int) {
+fun Npc.hit(hmColor: HitMark.Color, amount: Int): Boolean {
     addHitMark(HitMark(hmColor, amount, 0))
     if (amount > health) {
-        println("npc dying $this")
         health = 0
         updateHealthBar(StaticHealthBarUpdate(id = 0, amount = health))
+        cancelTasks(NormalTask)
         animate(deathSequence)
         addTask(NormalTask) {
             wait(sequence?.duration ?: 0)
             teleport(spawnPos)
         }
-    } else {
-        health -= amount
-        updateHealthBar(StaticHealthBarUpdate(id = 0, amount = health))
+        return true
     }
+    health -= amount
+    updateHealthBar(StaticHealthBarUpdate(id = 0, amount = health))
+    return false
 }
