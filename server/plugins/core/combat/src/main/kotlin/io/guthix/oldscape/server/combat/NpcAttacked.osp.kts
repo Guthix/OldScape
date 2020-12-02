@@ -50,7 +50,6 @@ on(NpcAttackedEvent::class).then {
             wait { player.lastPos != player.pos }
         }
     }.finalize {
-        println("Run post task npc!")
         npc.inCombatWith = null
         npc.turnToLock(null)
     }

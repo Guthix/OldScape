@@ -40,7 +40,7 @@ fun Player.hit(hmColor: HitMark.Color, amount: Int): Boolean {
     addHitMark(HitMark(hmColor, amount, 0))
     if (amount > health) {
         health = 0
-        updateHealthBar(StaticHealthBarUpdate(id = 0, amount = health))
+        updateHealthBar(StaticHealthBarUpdate(id = 0, curHealth = health, maxHealth = stats.hitpoints.level))
         cancelTasks(NormalTask)
         animate(deathSequence)
         addTask(NormalTask) {
@@ -50,7 +50,7 @@ fun Player.hit(hmColor: HitMark.Color, amount: Int): Boolean {
         return true
     }
     health -= amount
-    updateHealthBar(StaticHealthBarUpdate(id = 0, amount = health))
+    updateHealthBar(StaticHealthBarUpdate(id = 0, curHealth = health, maxHealth = stats.hitpoints.level))
     return false
 }
 
@@ -58,7 +58,7 @@ fun Npc.hit(hmColor: HitMark.Color, amount: Int): Boolean {
     addHitMark(HitMark(hmColor, amount, 0))
     if (amount > health) {
         health = 0
-        updateHealthBar(StaticHealthBarUpdate(id = 0, amount = health))
+        updateHealthBar(StaticHealthBarUpdate(id = 0, curHealth = health, maxHealth = stats.health))
         cancelTasks(NormalTask)
         animate(deathSequence)
         addTask(NormalTask) {
@@ -68,6 +68,6 @@ fun Npc.hit(hmColor: HitMark.Color, amount: Int): Boolean {
         return true
     }
     health -= amount
-    updateHealthBar(StaticHealthBarUpdate(id = 0, amount = health))
+    updateHealthBar(StaticHealthBarUpdate(id = 0, curHealth = health, maxHealth = stats.health))
     return false
 }

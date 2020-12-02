@@ -192,13 +192,13 @@ class NpcInfoSmallViewportPacket(
                     is StaticHealthBarUpdate -> {
                         writeSmallSmart(0)
                         writeSmallSmart(healthBar.delay)
-                        writeByteNeg(healthBar.amount)
+                        writeByteNeg(healthBar.barWidth)
                     }
                     is DynamicHealthBarUpdate -> {
                         writeSmallSmart(healthBar.decreaseSpeed)
                         writeSmallSmart(healthBar.delay)
-                        writeByteNeg(healthBar.startAmount)
-                        writeByteSub(healthBar.endAmount)
+                        writeByteNeg(healthBar.startBarWidth)
+                        writeByteSub(healthBar.endBarWidth)
                     }
                     is RemoveHealthBarUpdate -> {
                     }

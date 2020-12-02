@@ -15,16 +15,27 @@
  */
 package io.guthix.oldscape.server.world.entity
 
-sealed class HealthBarUpdate(val id: Int)
+import io.guthix.oldscape.server.ServerContext
+import io.guthix.oldscape.server.template.HitBarTemplate
 
-class StaticHealthBarUpdate(id: Int, val amount: Int, val delay: Int = 0) : HealthBarUpdate(id)
+sealed class HealthBarUpdate(val id: Int) {
+    val template: HitBarTemplate by lazy { ServerContext.hitbarTemplates[id] }
+}
+
+class StaticHealthBarUpdate(id: Int, val curHealth: Int, val maxHealth: Int, val delay: Int = 0) : HealthBarUpdate(id) {
+    val barWidth: Int = ((curHealth.toDouble() / maxHealth) * template.width).toInt()
+}
 
 class DynamicHealthBarUpdate(
     id: Int,
-    val startAmount: Int,
-    val endAmount: Int,
+    val startHealth: Int,
+    val endHealth: Int,
+    val maxHealth: Int,
     val decreaseSpeed: Int,
     val delay: Int = 0
-) : HealthBarUpdate(id)
+) : HealthBarUpdate(id) {
+    val startBarWidth: Int = ((startHealth.toDouble() / maxHealth) * template.width).toInt()
+    val endBarWidth: Int = ((endHealth.toDouble() / maxHealth) * template.width).toInt()
+}
 
 class RemoveHealthBarUpdate(id: Int) : HealthBarUpdate(id)

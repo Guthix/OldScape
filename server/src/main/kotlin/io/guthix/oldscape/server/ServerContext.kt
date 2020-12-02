@@ -29,6 +29,7 @@ object ServerContext : KLogging() {
     lateinit var sequenceTemplates: TemplateRepository<SequenceTemplate>
     lateinit var spotAnimTemplates: TemplateRepository<SpotAnimTemplate>
     lateinit var varbitTemplates: TemplateRepository<VarbitTemplate>
+    lateinit var hitbarTemplates: TemplateRepository<HitBarTemplate>
 
     internal fun load(archive: Js5Archive) {
         enumTemplates = TemplateRepository.of(
@@ -62,6 +63,10 @@ object ServerContext : KLogging() {
         varbitTemplates = TemplateRepository.of(
             VarbitConfig.load(archive.readGroup(VarbitConfig.id)),
             ::VarbitTemplate
+        )
+        hitbarTemplates = TemplateRepository.of(
+            HitBarConfig.load(archive.readGroup(HitBarConfig.id)),
+            ::HitBarTemplate
         )
     }
 }

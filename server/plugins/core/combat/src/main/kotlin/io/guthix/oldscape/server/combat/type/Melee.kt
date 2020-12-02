@@ -47,7 +47,6 @@ fun Player.meleeAttack(npc: Npc, world: World) {
             npc.animate(npc.defenceSequence)
             val hmColor = if (damage == 0) HitMark.Color.BLUE else HitMark.Color.RED
             if (npc.hit(hmColor, damage)) {
-                println("Killed enemy: cancel tasks")
                 cancelTasks(NormalTask)
                 return@addTask
             }

@@ -448,13 +448,13 @@ class PlayerInfoPacket(
                     is StaticHealthBarUpdate -> {
                         writeSmallSmart(0)
                         writeSmallSmart(healthBar.delay)
-                        writeByte(healthBar.amount)
+                        writeByte(healthBar.barWidth)
                     }
                     is DynamicHealthBarUpdate -> {
                         writeSmallSmart(healthBar.decreaseSpeed)
                         writeSmallSmart(healthBar.delay)
-                        writeByte(healthBar.startAmount)
-                        writeByteNeg(healthBar.endAmount)
+                        writeByte(healthBar.startBarWidth)
+                        writeByteNeg(healthBar.endBarWidth)
                     }
                     is RemoveHealthBarUpdate -> {
                     }
