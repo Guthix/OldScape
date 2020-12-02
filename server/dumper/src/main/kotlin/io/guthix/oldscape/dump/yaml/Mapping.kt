@@ -15,6 +15,8 @@
  */
 package io.guthix.oldscape.dump.yaml
 
+import io.guthix.oldscape.server.stat.CombatBonus
+import io.guthix.oldscape.server.stat.StyleBonus
 import io.guthix.oldscape.server.template.*
 import io.guthix.oldscape.wiki.wikitext.NpcWikiDefinition
 import io.guthix.oldscape.wiki.wikitext.ObjWikiDefinition

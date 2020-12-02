@@ -15,7 +15,7 @@
  */
 package io.guthix.oldscape.dump.yaml
 
-import io.guthix.oldscape.server.template.AttackType
+import io.guthix.oldscape.server.stat.AttackType
 import io.guthix.oldscape.server.template.WeaponType
 import io.guthix.oldscape.server.world.entity.interest.EquipmentType
 import mu.KotlinLogging
