@@ -25,7 +25,7 @@ include("cache")
 include("cache:formats")
 
 include("server")
-include("server:dumper")
+include("server:toolbox")
 includeModules("server:plugins")
 
 include("wiki:parser")
