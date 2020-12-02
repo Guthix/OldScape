@@ -19,6 +19,7 @@ import io.guthix.oldscape.server.combat.attackRange
 import io.guthix.oldscape.server.combat.attackSpeed
 import io.guthix.oldscape.server.combat.dmg.calcHit
 import io.guthix.oldscape.server.combat.inCombatWith
+import io.guthix.oldscape.server.damage.health
 import io.guthix.oldscape.server.damage.hit
 import io.guthix.oldscape.server.event.EventBus
 import io.guthix.oldscape.server.event.NpcAttackedEvent
@@ -45,6 +46,7 @@ fun Player.magicAttack(
     addTask(NormalTask) {
         main@ while (true) { // start player combat
             wait { npcDestination.reached(pos.x, pos.y, size) }
+            if (npc.health == 0) break
             animate(spellTemplate.castAnim)
             spotAnimate(spellTemplate.castSpotAnim, spellTemplate.castSpotAnimHeight)
             // TODO sound

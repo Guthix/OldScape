@@ -27,7 +27,7 @@ import io.guthix.oldscape.server.world.map.dim.tiles
 class Npc(val id: Int, index: Int, override var pos: Tile) : Character(index) {
     val template: NpcTemplate by lazy { ServerContext.npcTemplates[id] }
 
-    val spawnPos: Tile = pos.copy()
+    override var spawnPos: Tile = pos.copy()
 
     override val updateFlags = sortedSetOf<NpcUpdateType>()
 

@@ -39,6 +39,8 @@ abstract class Character(val index: Int) : Entity {
 
     abstract override var pos: Tile
 
+    abstract var spawnPos: Tile
+
     var lastPos: Tile = Tile(0.floors, 3234.tiles, 3222.tiles)
 
     var publicMessage: PublicMessageEvent? = null

@@ -21,6 +21,7 @@ import io.guthix.oldscape.server.combat.attackSpeed
 import io.guthix.oldscape.server.combat.dmg.calcHit
 import io.guthix.oldscape.server.combat.dmg.maxRangeHit
 import io.guthix.oldscape.server.combat.inCombatWith
+import io.guthix.oldscape.server.damage.health
 import io.guthix.oldscape.server.damage.hit
 import io.guthix.oldscape.server.event.EventBus
 import io.guthix.oldscape.server.event.NpcAttackedEvent
@@ -47,6 +48,7 @@ fun Player.rangeAttack(npc: Npc, world: World) {
     addTask(NormalTask) {
         main@ while (true) { // start player combat
             wait { npcDestination.reached(pos.x, pos.y, size) }
+            if (npc.health == 0) break
             val ammunition = equipment.ammunition
             if (ammunition == null || ammunition.quantity <= 0) {
                 senGameMessage("There is no ammo left in your quiver.")

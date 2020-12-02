@@ -16,11 +16,15 @@
 package io.guthix.oldscape.server.damage
 
 import io.guthix.oldscape.server.Property
+import io.guthix.oldscape.server.task.NormalTask
+import io.guthix.oldscape.server.template.deathSequence
 import io.guthix.oldscape.server.template.stats
-import io.guthix.oldscape.server.world.entity.HealthBarUpdate
 import io.guthix.oldscape.server.world.entity.HitMark
 import io.guthix.oldscape.server.world.entity.Npc
 import io.guthix.oldscape.server.world.entity.Player
+import io.guthix.oldscape.server.world.entity.StaticHealthBarUpdate
+
+val Player.deathSequence: Int by Property { 836 }
 
 var Player.health: Int
     get() = stats.hitpoints.status
@@ -34,10 +38,33 @@ var Npc.health: Int by Property {
 
 fun Player.hit(hmColor: HitMark.Color, amount: Int) {
     addHitMark(HitMark(hmColor, amount, 0))
-    updateHealthBar(HealthBarUpdate(2, 0, 0, health))
+    if (amount > health) {
+        health = 0
+        updateHealthBar(StaticHealthBarUpdate(id = 0, amount = health))
+        animate(deathSequence)
+        addTask(NormalTask) {
+            wait(sequence?.duration ?: 0)
+            teleport(spawnPos)
+        }
+    } else {
+        health -= amount
+        updateHealthBar(StaticHealthBarUpdate(id = 0, amount = health))
+    }
 }
 
 fun Npc.hit(hmColor: HitMark.Color, amount: Int) {
     addHitMark(HitMark(hmColor, amount, 0))
-    updateHealthBar(HealthBarUpdate(2, 0, 0, health))
+    if (amount > health) {
+        println("npc dying $this")
+        health = 0
+        updateHealthBar(StaticHealthBarUpdate(id = 0, amount = health))
+        animate(deathSequence)
+        addTask(NormalTask) {
+            wait(sequence?.duration ?: 0)
+            teleport(spawnPos)
+        }
+    } else {
+        health -= amount
+        updateHealthBar(StaticHealthBarUpdate(id = 0, amount = health))
+    }
 }

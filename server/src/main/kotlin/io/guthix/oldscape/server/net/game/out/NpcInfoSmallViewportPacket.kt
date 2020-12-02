@@ -19,8 +19,7 @@ import io.guthix.buffer.*
 import io.guthix.oldscape.server.net.game.OutGameEvent
 import io.guthix.oldscape.server.net.game.VarShortSize
 import io.guthix.oldscape.server.world.NpcList
-import io.guthix.oldscape.server.world.entity.Npc
-import io.guthix.oldscape.server.world.entity.Player
+import io.guthix.oldscape.server.world.entity.*
 import io.guthix.oldscape.server.world.entity.interest.MovementInterestUpdate
 import io.guthix.oldscape.server.world.entity.interest.NpcUpdateType
 import io.guthix.oldscape.server.world.map.dim.TileUnit
@@ -189,9 +188,21 @@ class NpcInfoSmallViewportPacket(
             writeByteNeg(npc.healthBarQueue.size)
             npc.healthBarQueue.forEach { healthBar ->
                 writeSmallSmart(healthBar.id)
-                writeSmallSmart(healthBar.decreaseSpeed)
-                writeSmallSmart(healthBar.delay)
-                writeByte(healthBar.amount)
+                when (healthBar) {
+                    is StaticHealthBarUpdate -> {
+                        writeSmallSmart(0)
+                        writeSmallSmart(healthBar.delay)
+                        writeByteNeg(healthBar.amount)
+                    }
+                    is DynamicHealthBarUpdate -> {
+                        writeSmallSmart(healthBar.decreaseSpeed)
+                        writeSmallSmart(healthBar.delay)
+                        writeByteNeg(healthBar.startAmount)
+                        writeByteSub(healthBar.endAmount)
+                    }
+                    is RemoveHealthBarUpdate -> {
+                    }
+                }
             }
         }
 

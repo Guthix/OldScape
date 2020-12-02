@@ -54,6 +54,8 @@ class Player internal constructor(
 ) : Character(playerManager.index), Comparable<Player>, EventHolder, PersistentPropertyHolder {
     override var pos: Tile by PersistentProperty { Tile(0.floors, 3235.tiles, 3222.tiles) }
 
+    override var spawnPos: Tile = pos.copy()
+
     override var orientation: Int by PersistentProperty { 0 }
 
     val gender: Gender by PersistentProperty { Gender.MALE }

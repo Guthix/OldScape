@@ -74,8 +74,6 @@ val Player.defenceSequence: Int by Property {
     equipment.weapon?.blockAnim ?: SequenceIds.BLOCK_424
 }
 
-val Player.deathSequence: Int by Property { 836 }
-
 var Character.inCombatWith: Character? by Property { null }
 
 internal fun StyleBonus.findBonus(attackType: AttackType): Int = when (attackType) {

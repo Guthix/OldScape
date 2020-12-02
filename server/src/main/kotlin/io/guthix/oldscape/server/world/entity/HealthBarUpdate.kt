@@ -15,4 +15,16 @@
  */
 package io.guthix.oldscape.server.world.entity
 
-class HealthBarUpdate(val id: Int, val decreaseSpeed: Int, val delay: Int, val amount: Int)
+sealed class HealthBarUpdate(val id: Int)
+
+class StaticHealthBarUpdate(id: Int, val amount: Int, val delay: Int = 0) : HealthBarUpdate(id)
+
+class DynamicHealthBarUpdate(
+    id: Int,
+    val startAmount: Int,
+    val endAmount: Int,
+    val decreaseSpeed: Int,
+    val delay: Int = 0
+) : HealthBarUpdate(id)
+
+class RemoveHealthBarUpdate(id: Int) : HealthBarUpdate(id)

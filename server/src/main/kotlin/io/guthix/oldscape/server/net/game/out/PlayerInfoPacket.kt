@@ -21,8 +21,7 @@ import io.guthix.oldscape.server.net.game.OutGameEvent
 import io.guthix.oldscape.server.net.game.VarShortSize
 import io.guthix.oldscape.server.world.PlayerList
 import io.guthix.oldscape.server.world.World
-import io.guthix.oldscape.server.world.entity.Npc
-import io.guthix.oldscape.server.world.entity.Player
+import io.guthix.oldscape.server.world.entity.*
 import io.guthix.oldscape.server.world.entity.interest.*
 import io.guthix.oldscape.server.world.map.Tile
 import io.guthix.oldscape.server.world.map.dim.floors
@@ -445,9 +444,21 @@ class PlayerInfoPacket(
             writeByte(player.healthBarQueue.size)
             player.healthBarQueue.forEach { healthBar ->
                 writeSmallSmart(healthBar.id)
-                writeSmallSmart(healthBar.decreaseSpeed)
-                writeSmallSmart(healthBar.delay)
-                writeByte(healthBar.amount)
+                when (healthBar) {
+                    is StaticHealthBarUpdate -> {
+                        writeSmallSmart(0)
+                        writeSmallSmart(healthBar.delay)
+                        writeByte(healthBar.amount)
+                    }
+                    is DynamicHealthBarUpdate -> {
+                        writeSmallSmart(healthBar.decreaseSpeed)
+                        writeSmallSmart(healthBar.delay)
+                        writeByte(healthBar.startAmount)
+                        writeByteNeg(healthBar.endAmount)
+                    }
+                    is RemoveHealthBarUpdate -> {
+                    }
+                }
             }
         }
 

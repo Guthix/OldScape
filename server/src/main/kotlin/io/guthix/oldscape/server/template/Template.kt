@@ -70,7 +70,6 @@ inline fun <reified T : Template, B : BaseTemplate> Script.loadTemplates(
                 baseTemplate.properties[property] = template
             }
         }
-
         logger.info { "Loaded ${templates.size} ${T::class.simpleName}s" }
     }
 }
