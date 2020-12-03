@@ -59,7 +59,7 @@ fun Player.magicAttack(
                     npc.animate(npc.defenceSequence)
                     npc.spotAnimate(spellTemplate.impactSpotAnim, spellTemplate.impactSpotAnimHeight)
                     // TODO sound
-                    if (npc.hit(damage)) cancelTasks(NormalTask)
+                    if (npc.hit(world, damage)) cancelTasks(NormalTask)
                 }
             }
             wait(ticks = attackSpeed)

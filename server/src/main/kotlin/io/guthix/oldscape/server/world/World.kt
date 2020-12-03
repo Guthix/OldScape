@@ -134,11 +134,23 @@ class World internal constructor(
         }
     }
 
-    fun addNpc(id: Int, tile: Tile): Npc {
+    fun createNpc(id: Int, tile: Tile): Npc {
         val npc = npcs.create(id, tile)
         EventBus.schedule(NpcSpawnedEvent(npc, this))
         return npc
     }
+
+    fun addNpc(npc: Npc): Npc {
+        npcs.add(npc)
+        return npc
+    }
+
+    fun removeNpc(npc: Npc): Npc {
+        npcs.remove(npc)
+        return npc
+    }
+
+    fun freeNpc(npc: Npc): Unit = npcs.free(npc)
 
     fun stagePlayerLogout(player: Player, force: Boolean) {
         player.stageLogout(force)

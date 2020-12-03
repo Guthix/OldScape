@@ -44,7 +44,7 @@ fun Player.meleeAttack(npc: Npc, world: World) {
             animate(attackSequence)
             val damage = calcHit(npc, maxMeleeHit()) ?: 0
             npc.animate(npc.defenceSequence)
-            if (npc.hit(damage)) {
+            if (npc.hit(world, damage)) {
                 cancelTasks(NormalTask)
                 return@addTask
             }

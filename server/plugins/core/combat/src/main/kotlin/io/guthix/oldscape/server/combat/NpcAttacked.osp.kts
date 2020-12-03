@@ -35,7 +35,7 @@ on(NpcAttackedEvent::class).then {
             npc.animate(npc.attackSequence)
             val damage = npc.calcHit(player) ?: 0
             player.animate(player.defenceSequence)
-            player.hit(damage)
+            player.hit(world, damage)
             wait(ticks = npc.attackSpeed)
         }
     }

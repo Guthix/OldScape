@@ -16,9 +16,13 @@
 package io.guthix.oldscape.server.damage
 
 import io.guthix.oldscape.server.Property
+import io.guthix.oldscape.server.event.EventBus
+import io.guthix.oldscape.server.event.NpcDiedEvent
+import io.guthix.oldscape.server.event.PlayerDiedEvent
 import io.guthix.oldscape.server.task.NormalTask
 import io.guthix.oldscape.server.template.deathSequence
 import io.guthix.oldscape.server.template.stats
+import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.HitMark
 import io.guthix.oldscape.server.world.entity.Npc
 import io.guthix.oldscape.server.world.entity.Player
@@ -36,7 +40,7 @@ var Npc.health: Int by Property {
     stats.health
 }
 
-fun Player.hit(hitDamage: Int): Boolean {
+fun Player.hit(world: World, hitDamage: Int): Boolean {
     if (hitDamage >= health) {
         addHitMark(HitMark(HitMark.Color.RED, health, 0))
         health = 0
@@ -45,7 +49,7 @@ fun Player.hit(hitDamage: Int): Boolean {
         animate(deathSequence)
         addTask(NormalTask) {
             wait(sequence?.duration ?: 0)
-            teleport(spawnPos)
+            EventBus.schedule(PlayerDiedEvent(this@hit, world))
         }
         return true
     }
@@ -56,7 +60,7 @@ fun Player.hit(hitDamage: Int): Boolean {
     return false
 }
 
-fun Npc.hit(hitDamage: Int): Boolean {
+fun Npc.hit(world: World, hitDamage: Int): Boolean {
     if (hitDamage >= health) {
         addHitMark(HitMark(HitMark.Color.RED, health, 0))
         health = 0
@@ -65,7 +69,7 @@ fun Npc.hit(hitDamage: Int): Boolean {
         animate(deathSequence)
         addTask(NormalTask) {
             wait(sequence?.duration ?: 0)
-            teleport(spawnPos)
+            EventBus.schedule(NpcDiedEvent(this@hit, world))
         }
         return true
     }

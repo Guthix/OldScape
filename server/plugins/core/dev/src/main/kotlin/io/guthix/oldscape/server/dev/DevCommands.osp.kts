@@ -80,5 +80,5 @@ on(ClientCheatEvent::class).where { string == "pos" }.then {
 }
 
 on(ClientCheatEvent::class).where { string == "npc" }.then {
-    world.addNpc(NpcIds.ZOMBIE_42, player.pos.copy(x = player.pos.x + 2.tiles))
+    world.createNpc(NpcIds.ZOMBIE_42, player.pos.copy(x = player.pos.x + 2.tiles))
 }

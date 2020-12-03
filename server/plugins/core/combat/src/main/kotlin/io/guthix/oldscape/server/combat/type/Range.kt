@@ -64,7 +64,7 @@ fun Player.rangeAttack(npc: Npc, world: World) {
                 wait(ticks = projectile.lifeTimeServerTicks - 1)
                 if (Random.nextDouble(1.0) < 0.8) world.addObject(ammunition.copy(quantity = 1), oldNpcPos)
                 npc.animate(npc.defenceSequence)
-                if (npc.hit(damage)) cancelTasks(NormalTask)
+                if (npc.hit(world, damage)) cancelTasks(NormalTask)
             }
             wait(ticks = attackSpeed)
         }

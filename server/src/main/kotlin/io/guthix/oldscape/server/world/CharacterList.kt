@@ -44,7 +44,17 @@ class NpcList(capacity: Int) : Iterable<Npc> {
         return npc
     }
 
+    fun add(npc: Npc) {
+        npcs[npc.index] = npc
+        occupiedIndexes.add(npc.index)
+    }
+
     fun remove(npc: Npc) {
+        npcs[npc.index] = null
+        occupiedIndexes.remove(npc.index)
+    }
+
+    fun free(npc: Npc) {
         npcs[npc.index] = null
         occupiedIndexes.remove(npc.index)
         freeIndexes.add(npc.index)
