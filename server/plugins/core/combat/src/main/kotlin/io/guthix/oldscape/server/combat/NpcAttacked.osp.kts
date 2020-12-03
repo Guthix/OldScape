@@ -23,7 +23,6 @@ import io.guthix.oldscape.server.pathing.simplePathSearch
 import io.guthix.oldscape.server.task.NormalTask
 import io.guthix.oldscape.server.template.attackSequence
 import io.guthix.oldscape.server.template.attackSpeed
-import io.guthix.oldscape.server.world.entity.HitMark
 
 on(NpcAttackedEvent::class).then {
     if (npc.inCombatWith != null) return@then
@@ -35,9 +34,8 @@ on(NpcAttackedEvent::class).then {
             wait { playerDestination.reached(npc.pos.x, npc.pos.y, npc.size) }
             npc.animate(npc.attackSequence)
             val damage = npc.calcHit(player) ?: 0
-            val hmColor = if (damage == 0) HitMark.Color.BLUE else HitMark.Color.RED
             player.animate(player.defenceSequence)
-            player.hit(hmColor, damage)
+            player.hit(damage)
             wait(ticks = npc.attackSpeed)
         }
     }

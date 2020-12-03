@@ -28,7 +28,6 @@ import io.guthix.oldscape.server.task.NormalTask
 import io.guthix.oldscape.server.template.SpotAnimIds
 import io.guthix.oldscape.server.template.defenceSequence
 import io.guthix.oldscape.server.world.World
-import io.guthix.oldscape.server.world.entity.HitMark
 import io.guthix.oldscape.server.world.entity.Npc
 import io.guthix.oldscape.server.world.entity.Player
 
@@ -59,9 +58,8 @@ fun Player.magicAttack(
                     wait(ticks = projectile.lifeTimeServerTicks - 1)
                     npc.animate(npc.defenceSequence)
                     npc.spotAnimate(spellTemplate.impactSpotAnim, spellTemplate.impactSpotAnimHeight)
-                    val hmColor = if (damage == 0) HitMark.Color.BLUE else HitMark.Color.RED
                     // TODO sound
-                    if (npc.hit(hmColor, damage)) cancelTasks(NormalTask)
+                    if (npc.hit(damage)) cancelTasks(NormalTask)
                 }
             }
             wait(ticks = attackSpeed)

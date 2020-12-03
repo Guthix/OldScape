@@ -32,7 +32,6 @@ import io.guthix.oldscape.server.template.defenceSequence
 import io.guthix.oldscape.server.template.drawBackSpotAnim
 import io.guthix.oldscape.server.template.drawBackSpotAnimHeight
 import io.guthix.oldscape.server.world.World
-import io.guthix.oldscape.server.world.entity.HitMark
 import io.guthix.oldscape.server.world.entity.Npc
 import io.guthix.oldscape.server.world.entity.Player
 import io.guthix.oldscape.server.world.entity.interest.EquipmentType
@@ -65,8 +64,7 @@ fun Player.rangeAttack(npc: Npc, world: World) {
                 wait(ticks = projectile.lifeTimeServerTicks - 1)
                 if (Random.nextDouble(1.0) < 0.8) world.addObject(ammunition.copy(quantity = 1), oldNpcPos)
                 npc.animate(npc.defenceSequence)
-                val hmColor = if (damage == 0) HitMark.Color.BLUE else HitMark.Color.RED
-                if (npc.hit(hmColor, damage)) cancelTasks(NormalTask)
+                if (npc.hit(damage)) cancelTasks(NormalTask)
             }
             wait(ticks = attackSpeed)
         }

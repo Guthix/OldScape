@@ -36,9 +36,9 @@ var Npc.health: Int by Property {
     stats.health
 }
 
-fun Player.hit(hmColor: HitMark.Color, amount: Int): Boolean {
-    addHitMark(HitMark(hmColor, amount, 0))
-    if (amount > health) {
+fun Player.hit(hitDamage: Int): Boolean {
+    if (hitDamage >= health) {
+        addHitMark(HitMark(HitMark.Color.RED, health, 0))
         health = 0
         updateHealthBar(StaticHealthBarUpdate(id = 0, curHealth = health, maxHealth = stats.hitpoints.level))
         cancelTasks(NormalTask)
@@ -49,14 +49,16 @@ fun Player.hit(hmColor: HitMark.Color, amount: Int): Boolean {
         }
         return true
     }
-    health -= amount
+    val hmColor = if (hitDamage == 0) HitMark.Color.BLUE else HitMark.Color.RED
+    addHitMark(HitMark(hmColor, hitDamage, 0))
+    health -= hitDamage
     updateHealthBar(StaticHealthBarUpdate(id = 0, curHealth = health, maxHealth = stats.hitpoints.level))
     return false
 }
 
-fun Npc.hit(hmColor: HitMark.Color, amount: Int): Boolean {
-    addHitMark(HitMark(hmColor, amount, 0))
-    if (amount > health) {
+fun Npc.hit(hitDamage: Int): Boolean {
+    if (hitDamage >= health) {
+        addHitMark(HitMark(HitMark.Color.RED, health, 0))
         health = 0
         updateHealthBar(StaticHealthBarUpdate(id = 0, curHealth = health, maxHealth = stats.health))
         cancelTasks(NormalTask)
@@ -67,7 +69,9 @@ fun Npc.hit(hmColor: HitMark.Color, amount: Int): Boolean {
         }
         return true
     }
-    health -= amount
+    val hmColor = if (hitDamage == 0) HitMark.Color.BLUE else HitMark.Color.RED
+    addHitMark(HitMark(hmColor, hitDamage, 0))
+    health -= hitDamage
     updateHealthBar(StaticHealthBarUpdate(id = 0, curHealth = health, maxHealth = stats.health))
     return false
 }
