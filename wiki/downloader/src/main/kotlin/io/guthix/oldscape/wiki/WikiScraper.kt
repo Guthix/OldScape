@@ -39,6 +39,7 @@ fun scrapeObjectWikiConfigs(cacheConfigs: Map<Int, ObjConfig>): List<ObjWikiDefi
             connectionRequestTimeout = 400_000
         }
     }.use { client ->
+        val cacheIds = cacheConfigs.values.map(ObjConfig::id)
         val wikiConfigs = mutableMapOf<Int, ObjWikiDefinition>()
         for ((id, cacheConfig) in cacheConfigs) {
             logger.info { "--------------Handle $id ${cacheConfig.name}----------------" }
@@ -67,7 +68,8 @@ fun scrapeObjectWikiConfigs(cacheConfigs: Map<Int, ObjConfig>): List<ObjWikiDefi
                     parseWikiString<ObjWikiDefinition>(entry).forEach { wikiConfig ->
                         wikiConfig.name = cacheConfig.name
                         val ids = wikiConfig.ids?.toList() ?: listOf(id)
-                        ids.forEach { wikiId ->
+                        wikiLoop@ for (wikiId in ids) {
+                            if (!cacheIds.contains(wikiId)) continue@wikiLoop
                             logger.info { "Downloaded config for name: ${wikiConfig.name} id: $wikiId" }
                             wikiConfigs[wikiId] = wikiConfig
                         }
@@ -86,6 +88,7 @@ fun scrapeNpcWikiConfigs(cacheConfigs: Map<Int, NpcConfig>): List<NpcWikiDefinit
     val wikiConfigs = HttpClient(Apache) {
         followRedirects = false
     }.use { client ->
+        val cacheIds = cacheConfigs.values.map(NpcConfig::id)
         val wikiConfigs = mutableMapOf<Int, NpcWikiDefinition>()
         for ((id, cacheConfig) in cacheConfigs) {
             logger.info { "--------------Handle $id ${cacheConfig.name}----------------" }
@@ -108,7 +111,8 @@ fun scrapeNpcWikiConfigs(cacheConfigs: Map<Int, NpcConfig>): List<NpcWikiDefinit
                     parseWikiString<NpcWikiDefinition>(entry).forEach { wikiConfig ->
                         wikiConfig.name = cacheConfig.name
                         val ids = wikiConfig.ids?.toList() ?: listOf(id)
-                        ids.forEach { wikiId ->
+                        wikiLoop@ for (wikiId in ids) {
+                            if (!cacheIds.contains(wikiId)) continue@wikiLoop
                             logger.info { "Downloaded config for name: ${wikiConfig.name} id: $wikiId" }
                             wikiConfigs[wikiId] = wikiConfig
                         }

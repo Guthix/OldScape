@@ -61,7 +61,6 @@ object YamlDownloader {
             it.ids!!.first()
         }
 
-        // TODO remove ids that are not in the cache
         val equipmentDefs = objWikiConfigs.filter { it.isEquipable == true }
         writeTemplate(equipmentDefs, "Equipment.yaml", ObjWikiDefinition::toEquipmentTemplate)
 
