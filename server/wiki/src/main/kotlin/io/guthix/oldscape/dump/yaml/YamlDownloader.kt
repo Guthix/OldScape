@@ -30,7 +30,6 @@ import io.guthix.oldscape.wiki.wikitext.NpcWikiDefinition
 import io.guthix.oldscape.wiki.wikitext.ObjWikiDefinition
 import kotlinx.serialization.encodeToString
 import mu.KotlinLogging
-import java.io.File
 import java.nio.file.Files
 import java.nio.file.Path
 
@@ -41,11 +40,11 @@ fun main(args: Array<String>) {
 }
 
 object YamlDownloader {
-    private val cachePath = Path.of(javaClass.getResource("/cache").toURI())
+    private val cachePath = Path.of("server/src/main/resources/cache")
 
-    private val serverPath = Path.of(javaClass.getResource("/server").toURI())
+    private val serverPath = Path.of("server/src/main/resources/template")
 
-    private val dumpPath = File("dump").toPath()
+    private val dumpPath = Path.of("server/toolbox/src/resources/dump")
 
     @JvmStatic
     fun main(args: Array<String>) {
