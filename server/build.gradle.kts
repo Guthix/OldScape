@@ -3,7 +3,6 @@
 import io.guthix.oldscape.server.template.TemplateGenerator
 
 plugins {
-    idea
     application
     id("org.jetbrains.dokka")
     kotlin("jvm")
@@ -16,7 +15,9 @@ group = "io.guthix.oldscape"
 version = "0.1.0-SNAPSHOT"
 description = "An Oldschool Runescape Server Emulator"
 
-application { mainClass.set("io.guthix.oldscape.server.OldScape") }
+application {
+    mainClass.set("io.guthix.oldscape.server.OldScape")
+}
 
 val kCoroutinesVersion: String by rootProject.extra
 val classGraphVersion: String by extra("4.8.53")
@@ -34,6 +35,12 @@ allprojects {
     group = project(":server").group
     version = project(":server").version
 }
+
+//tasks.register("run(debug)") {
+//    group = "application"
+//    application.applicationDefaultJvmArgs = listOf("-Dlogback.configurationFile=src/main/resources/logbackDebug.xml")
+//    tasks.getAt("run").shouldRunAfter(this)
+//}
 
 dependencies {
     project(":server:plugins").dependencyProject.subprojects.forEach { pluginProject ->

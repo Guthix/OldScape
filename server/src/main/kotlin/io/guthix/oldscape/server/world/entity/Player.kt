@@ -267,4 +267,6 @@ class Player internal constructor(
     }
 
     fun clearMap(): Unit = sceneManager.clear(this)
+
+    override fun toString(): String = "Player(uid=$uid, index=$index, priority=$priority, name=$username)"
 }

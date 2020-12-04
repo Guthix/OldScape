@@ -15,13 +15,12 @@
  */
 package io.guthix.oldscape.server.net.game
 
-import io.guthix.oldscape.server.event.ClientDisconnectEvent
-import io.guthix.oldscape.server.event.EventBus
-import io.guthix.oldscape.server.event.PlayerGameEvent
+import io.guthix.oldscape.server.event.*
 import io.guthix.oldscape.server.net.PacketInboundHandler
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.Player
 import io.netty.channel.ChannelHandlerContext
+import mu.KLogging
 
 class GameHandler(val player: Player, val world: World) : PacketInboundHandler<PlayerGameEvent>() {
     override fun channelRegistered(ctx: ChannelHandlerContext) {
@@ -30,6 +29,9 @@ class GameHandler(val player: Player, val world: World) : PacketInboundHandler<P
     }
 
     override fun channelRead0(ctx: ChannelHandlerContext, msg: PlayerGameEvent) {
+        if (logger.isDebugEnabled) {
+            if (msg !is NoTimeoutEvent && msg !is MouseMoveEvent && msg !is MouseClickEvent) logger.debug("$msg")
+        }
         EventBus.schedule(msg)
     }
 
@@ -37,4 +39,6 @@ class GameHandler(val player: Player, val world: World) : PacketInboundHandler<P
         super.channelInactive(ctx)
         EventBus.schedule(ClientDisconnectEvent(player, world))
     }
+
+    companion object : KLogging()
 }

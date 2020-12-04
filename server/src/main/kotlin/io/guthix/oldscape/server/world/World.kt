@@ -54,6 +54,7 @@ import kotlin.reflect.KProperty
 import kotlin.reflect.full.starProjectedType
 
 class World internal constructor(
+    val uid: Int,
     internal val map: Array<Array<Array<Zone?>>>,
     val xteas: Map<Int, IntArray>
 ) : TimerTask(), TaskHolder, EventHolder, PropertyHolder {
@@ -247,6 +248,8 @@ class World internal constructor(
         return projectile
     }
 
+    override fun toString(): String = "World(uid=$uid)"
+
     companion object : KLogging() {
         const val MAX_PLAYERS: Int = 2048
 
@@ -263,7 +266,7 @@ class World internal constructor(
                     }
                 }
             }
-            val world = World(map, xteas)
+            val world = World(uid = 1, map, xteas)
             mapsquares.forEach { (_, def) ->
                 world.addTerrain(def.x.mapsquares, def.y.mapsquares, def.mapDefinition)
                 def.locationDefinitions.forEach { world.addLocByDef(def.x.mapsquares, def.y.mapsquares, it) }

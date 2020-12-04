@@ -15,6 +15,7 @@
  */
 package io.guthix.oldscape.server
 
+import ch.qos.logback.classic.util.ContextInitializer
 import io.guthix.js5.Js5Cache
 import io.guthix.js5.container.Js5Container
 import io.guthix.js5.container.Js5Store
@@ -46,6 +47,9 @@ fun main(args: Array<String>) {
 object OldScape {
     @JvmStatic
     fun main(args: Array<String>) {
+        if (args.isNotEmpty() && args[0].equals("debug", true)) {
+            System.setProperty(ContextInitializer.CONFIG_FILE_PROPERTY, "src/main/resources/logbackDebug.xml")
+        }
         val config = readYaml<ServerConfig>("/Config.yaml")
         val cacheDir = Path.of(javaClass.getResource("/cache").toURI())
         val store = Js5DiskStore.open(cacheDir).use {
