@@ -19,7 +19,7 @@ import io.guthix.oldscape.server.Property
 import io.guthix.oldscape.server.event.EventBus
 import io.guthix.oldscape.server.event.ObjEquipedEvent
 import io.guthix.oldscape.server.event.ObjUnEquipedEvent
-import io.guthix.oldscape.server.plugin.InvalidMessageException
+import io.guthix.oldscape.server.plugin.invalidMessage
 import io.guthix.oldscape.server.stat.CombatBonus
 import io.guthix.oldscape.server.stat.StyleBonus
 import io.guthix.oldscape.server.template.*
@@ -42,7 +42,7 @@ fun Player.equip(world: World, obj: Obj) {
             updateAppearance()
             EventBus.schedule(ObjEquipedEvent(obj, this, world))
         }
-    } ?: throw InvalidMessageException("No equipment defined for $obj.")
+    } ?: invalidMessage("No equipment defined for $obj.")
 }
 
 internal val buttonToSlots = mapOf(

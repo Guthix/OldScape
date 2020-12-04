@@ -15,4 +15,6 @@
  */
 package io.guthix.oldscape.server.plugin
 
+fun invalidMessage(message: Any): Nothing = throw InvalidMessageException("$message")
+
 class InvalidMessageException(message: String) : Exception(message)

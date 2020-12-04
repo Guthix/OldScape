@@ -20,11 +20,12 @@ import io.guthix.oldscape.server.event.LocClickEvent
 import io.guthix.oldscape.server.event.LocReachedEvent
 import io.guthix.oldscape.server.pathing.DestinationLocation
 import io.guthix.oldscape.server.pathing.breadthFirstSearch
+import io.guthix.oldscape.server.plugin.invalidMessage
 import io.guthix.oldscape.server.task.NormalTask
 import io.guthix.oldscape.server.world.map.Tile
 
 on(LocClickEvent::class).then {
-    val loc = world.getLoc(id, player.pos.floor, x, y) ?: error(
+    val loc = world.getLoc(id, player.pos.floor, x, y) ?: invalidMessage(
         "Could not find location at ${Tile(player.pos.floor, x, y)}."
     )
     val destination = DestinationLocation(loc, world)
