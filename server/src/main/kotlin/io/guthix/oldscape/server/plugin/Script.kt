@@ -24,10 +24,10 @@ import kotlin.script.experimental.annotations.KotlinScript
 
 @KotlinScript(fileExtension = "osp.kts")
 abstract class Script : KLogging() {
-    fun <E : Event> on(type: KClass<E>): ScriptFilter<E> = ScriptFilter(this::class.qualifiedName, type)
+    fun <E : Event> on(type: KClass<E>): ScriptFilter<E> = ScriptFilter(type)
 }
 
-class ScriptFilter<E : Event>(private val scriptName: String?, private val type: KClass<E>) {
+class ScriptFilter<E : Event>(private val type: KClass<E>) {
     private var condition: E.() -> Boolean = { true }
 
     fun where(condition: E.() -> Boolean): ScriptFilter<E> {
@@ -35,11 +35,10 @@ class ScriptFilter<E : Event>(private val scriptName: String?, private val type:
         return this
     }
 
-    fun then(plugin: E.() -> Unit): ScriptScheduler<E> = ScriptScheduler(scriptName, type, condition, plugin)
+    fun then(plugin: E.() -> Unit): ScriptScheduler<E> = ScriptScheduler(type, condition, plugin)
 }
 
 class ScriptScheduler<in E : Event>(
-    private val scriptName: String?,
     type: KClass<E>,
     private val condition: E.() -> Boolean,
     private val plugin: E.() -> Unit
@@ -57,11 +56,7 @@ class ScriptScheduler<in E : Event>(
 
     internal fun execute(event: E) {
         val handler = EventHandler(event, plugin)
-        try {
-            handler.handle()
-        } catch (e: Exception) {
-            EventHandler.logger.error(e) { "Could not execute event $event in $scriptName." }
-        }
+        handler.handle()
     }
 }
 
@@ -69,7 +64,11 @@ class EventHandler<out E : Event>(
     val event: E,
     private val plugin: E.() -> Unit
 ) {
-    fun handle(): Unit = event.plugin()
+    fun handle(): Unit = try {
+        event.plugin()
+    } catch (e: Exception) {
+        logger.error(e) { "Error executing event $event." }
+    }
 
     companion object : KLogging()
 }
