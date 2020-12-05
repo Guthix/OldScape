@@ -30,6 +30,7 @@ class Loc(
     override var orientation: Int
 ) : Entity {
     val template: LocTemplate by lazy { ServerContext.locTemplates[id] }
+    val name: String = template.name
     val impenetrable: Boolean get() = template.impenetrable
     val clipType: Int get() = template.clipType
     val width: TileUnit get() = template.width
@@ -47,6 +48,8 @@ class Loc(
     val slot: Int get() = MAP_SLOTS[type]
 
     internal val mapKey get() = (pos.x.relativeZone.value shl 5) or (pos.y.relativeZone.value shl 2) or slot
+
+    override fun toString(): String = "Loc(id=$id, name=$name, type=$type, orientation= $orientation, pos=$pos)"
 
     override val tasks: MutableMap<TaskType, MutableSet<Task>> = mutableMapOf()
 

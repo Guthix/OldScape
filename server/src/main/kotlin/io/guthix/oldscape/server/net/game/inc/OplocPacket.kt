@@ -50,9 +50,8 @@ class Oploc2Packet : GamePacketDecoder(36, FixedSize(7)) {
         world: World
     ): PlayerGameEvent {
         val id = buf.readUnsignedShort()
-        val x = buf.readUnsignedShortLE().tiles
-        val y = buf.readUnsignedShortLE().tiles
-
+        val x = buf.readUnsignedShortAddLE().tiles
+        val y = buf.readUnsignedShortAddLE().tiles
         val pressed = buf.readUnsignedByteNeg().toInt() == 1
         return LocClickEvent(x, y, id, pressed, player, world)
     }
@@ -67,7 +66,7 @@ class Oploc3Packet : GamePacketDecoder(89, FixedSize(7)) {
         world: World
     ): PlayerGameEvent {
         val x = buf.readUnsignedShortAdd().tiles
-        val y = buf.readUnsignedShortLE().tiles
+        val y = buf.readUnsignedShortAddLE().tiles
         val pressed = buf.readUnsignedByteAdd().toInt() == 1
         val id = buf.readUnsignedShortAdd()
         return LocClickEvent(x, y, id, pressed, player, world)
@@ -98,7 +97,7 @@ class Oploc5Packet : GamePacketDecoder(67, FixedSize(7)) {
         player: Player,
         world: World
     ): PlayerGameEvent {
-        val id = buf.readUnsignedShortLE()
+        val id = buf.readUnsignedShortAddLE()
         val x = buf.readUnsignedShortLE().tiles
         val pressed = buf.readUnsignedByte().toInt() == 1
         val y = buf.readUnsignedShort().tiles

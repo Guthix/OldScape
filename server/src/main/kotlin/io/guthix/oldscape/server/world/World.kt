@@ -268,7 +268,7 @@ class World internal constructor(
             }
             val world = World(uid = 1, map, xteas)
             mapsquares.forEach { (_, def) ->
-                world.addTerrain(def.x.mapsquares, def.y.mapsquares, def.mapDefinition)
+                world.addTerrainByDef(def.x.mapsquares, def.y.mapsquares, def.mapDefinition)
                 def.locationDefinitions.forEach { world.addLocByDef(def.x.mapsquares, def.y.mapsquares, it) }
             }
             val zoneCount = map.sumBy { floor -> floor.sumBy { yZones -> yZones.count { it != null } } }
@@ -276,7 +276,7 @@ class World internal constructor(
             return world
         }
 
-        private fun World.addTerrain(msX: MapsquareUnit, msY: MapsquareUnit, def: MapDefinition) {
+        private fun World.addTerrainByDef(msX: MapsquareUnit, msY: MapsquareUnit, def: MapDefinition) {
             def.renderRules.forEachIndexed { floor, floorRenderRules ->
                 floorRenderRules.forEachIndexed { x, verticalRenderRules ->
                     verticalRenderRules.forEachIndexed { y, currentRule ->

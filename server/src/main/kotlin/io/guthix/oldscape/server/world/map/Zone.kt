@@ -16,7 +16,9 @@
 package io.guthix.oldscape.server.world.map
 
 import io.guthix.oldscape.server.world.entity.*
-import io.guthix.oldscape.server.world.map.dim.*
+import io.guthix.oldscape.server.world.map.dim.FloorUnit
+import io.guthix.oldscape.server.world.map.dim.TileUnit
+import io.guthix.oldscape.server.world.map.dim.ZoneUnit
 
 internal class Zone(val floor: FloorUnit, val x: ZoneUnit, val y: ZoneUnit) {
     val id: Int get() = id(floor, x, y)
@@ -48,8 +50,8 @@ internal class Zone(val floor: FloorUnit, val x: ZoneUnit, val y: ZoneUnit) {
     fun getLoc(id: Int, localX: TileUnit, localY: TileUnit): Loc? {
         for (slot in 0 until Loc.UNIQUE_SLOTS) {
             val key = Loc.generateMapKey(localX, localY, slot)
-            val mapObject = staticLocs[key] ?: addedLocs[key]
-            mapObject?.let { if (id == it.id) return@getLoc if(deletedLocs[key] != null) null else it }
+            val loc = staticLocs[key] ?: addedLocs[key]
+            loc?.let { if (id == it.id) return@getLoc if (deletedLocs[key] != null) null else it }
         }
         return null
     }
