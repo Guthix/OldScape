@@ -236,6 +236,10 @@ data class ObjConfig(override val id: Int) : NamedConfig(id) {
             data.writeOpcode(148)
             data.writeShort(it)
         }
+        placeholderTemplateId?.let {
+            data.writeOpcode(149)
+            data.writeShort(it)
+        }
         params?.let {
             data.writeOpcode(249)
             data.writeParams(it)
