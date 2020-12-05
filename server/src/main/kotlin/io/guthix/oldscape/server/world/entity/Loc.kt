@@ -16,8 +16,6 @@
 package io.guthix.oldscape.server.world.entity
 
 import io.guthix.oldscape.server.ServerContext
-import io.guthix.oldscape.server.task.Task
-import io.guthix.oldscape.server.task.TaskType
 import io.guthix.oldscape.server.template.LocTemplate
 import io.guthix.oldscape.server.world.map.Tile
 import io.guthix.oldscape.server.world.map.dim.TileUnit
@@ -50,8 +48,6 @@ class Loc(
     internal val mapKey get() = (pos.x.relativeZone.value shl 5) or (pos.y.relativeZone.value shl 2) or slot
 
     override fun toString(): String = "Loc(id=$id, name=$name, type=$type, orientation= $orientation, pos=$pos)"
-
-    override val tasks: MutableMap<TaskType, MutableSet<Task>> = mutableMapOf()
 
     override val properties: MutableMap<KProperty<*>, Any?> = mutableMapOf()
 

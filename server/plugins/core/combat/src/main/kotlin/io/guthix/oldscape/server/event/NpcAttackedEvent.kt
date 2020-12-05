@@ -20,7 +20,7 @@ import io.guthix.oldscape.server.world.entity.Npc
 import io.guthix.oldscape.server.world.entity.Player
 
 data class NpcAttackedEvent(
-    val npc: Npc,
-    override val player: Player,
+    val player: Player,
+    override val npc: Npc,
     override val world: World
-) : PlayerGameEvent(player, world)
+) : NpcGameEvent(npc, world)

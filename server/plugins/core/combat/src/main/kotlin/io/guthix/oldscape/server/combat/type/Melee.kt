@@ -39,7 +39,7 @@ fun Player.meleeAttack(npc: Npc, world: World) {
     val player = this
     addTask(NormalTask) {
         wait { npcDestination.reached(pos.x, pos.y, size) }
-        EventBus.schedule(NpcAttackedEvent(npc, player, world))
+        EventBus.schedule(NpcAttackedEvent(player, npc, world))
         while (true) { // start player combat
             animate(attackSequence)
             val damage = calcHit(npc, maxMeleeHit()) ?: 0

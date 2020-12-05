@@ -75,13 +75,21 @@ class World internal constructor(
     val isFull: Boolean get() = players.size + loginQueue.size >= MAX_PLAYERS
 
     override fun run() {
+        // World
         processInEvents()
         processLogins()
+
+        // NPC
         processNpcTasks()
         proccessNpcMovement()
+        processNpcTasks()
+
+        // Player
         processPlayerTasks()
         proccessPlayerMovement()
+        processPlayerTasks()
         synchronizeInterest()
+
         processLogouts()
         postProcess()
     }
@@ -185,11 +193,11 @@ class World internal constructor(
     }
 
     private fun proccessNpcMovement() {
-        for (npc in npcs) npc.move()
+        for (npc in npcs) npc.move(this)
     }
 
     private fun proccessPlayerMovement() {
-        players.filterNot(Player::isLoggingOut).forEach(Player::move)
+        players.filterNot(Player::isLoggingOut).forEach { it.move(this) }
     }
 
     private fun synchronizeInterest() {

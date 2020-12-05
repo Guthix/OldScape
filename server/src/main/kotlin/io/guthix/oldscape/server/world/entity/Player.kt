@@ -18,12 +18,9 @@ package io.guthix.oldscape.server.world.entity
 import io.guthix.oldscape.server.PersistentProperty
 import io.guthix.oldscape.server.PersistentPropertyHolder
 import io.guthix.oldscape.server.ServerContext
-import io.guthix.oldscape.server.event.Event
 import io.guthix.oldscape.server.event.EventHolder
 import io.guthix.oldscape.server.event.PublicMessageEvent
 import io.guthix.oldscape.server.net.game.out.*
-import io.guthix.oldscape.server.plugin.EventHandler
-import io.guthix.oldscape.server.task.Task
 import io.guthix.oldscape.server.template.InventoryIds
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.interest.*
@@ -34,7 +31,6 @@ import io.guthix.oldscape.server.world.map.dim.floors
 import io.guthix.oldscape.server.world.map.dim.tiles
 import io.netty.channel.ChannelFuture
 import io.netty.channel.ChannelHandlerContext
-import java.util.concurrent.ConcurrentLinkedQueue
 
 class Player internal constructor(
     val uid: Int,
@@ -135,16 +131,6 @@ class Player internal constructor(
         }
 
     override val updateFlags = sortedSetOf<PlayerUpdateType>()
-
-    override val events: ConcurrentLinkedQueue<EventHandler<Event>> = ConcurrentLinkedQueue()
-
-    override fun processTasks() {
-        while (true) {
-            while (events.isNotEmpty()) events.poll().handle()
-            val resumed = tasks.values.flatMap { routineList -> routineList.toList().map(Task::run) } // TODO optimize
-            if (resumed.all { !it } && events.isEmpty()) break // TODO add live lock detection
-        }
-    }
 
     fun initialize(world: World) {
         playerManager.initialize(world, this)

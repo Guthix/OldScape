@@ -59,6 +59,19 @@ object EventBus {
         }
     }
 
+    fun <E : NpcGameEvent> schedule(event: E) {
+        eventListeners[event::class]?.let {
+            for (listener in it) listener.schedule(event, event.npc)
+        }
+    }
+
+
+    fun <E : CharacterGameEvent> schedule(event: E) {
+        eventListeners[event::class]?.let {
+            for (listener in it) listener.schedule(event, event.character)
+        }
+    }
+
     @Suppress("UNCHECKED_CAST")
     fun <E : Event> register(type: KClass<E>, listener: ScriptScheduler<E>) {
         val listeners = eventListeners.getOrPut(type) {

@@ -17,7 +17,6 @@ package io.guthix.oldscape.server.world.entity
 
 import io.guthix.oldscape.server.ServerContext
 import io.guthix.oldscape.server.net.game.out.NpcInfoSmallViewportPacket
-import io.guthix.oldscape.server.task.Task
 import io.guthix.oldscape.server.template.NpcTemplate
 import io.guthix.oldscape.server.world.entity.interest.NpcUpdateType
 import io.guthix.oldscape.server.world.map.Tile
@@ -38,14 +37,6 @@ data class Npc(val id: Int, override val index: Int, override var pos: Tile) : C
     val contextMenu: Array<String?> get() = template.contextMenu
 
     override var orientation: Int = 0
-
-    override fun processTasks() {
-        while (true) {
-            val resumed = tasks.values.flatMap { routineList -> routineList.toList().map(Task::run) } // TODO optimize
-            if (resumed.all { !it }) break // TODO add live lock detection
-        }
-    }
-
 
     override fun toString(): String = "Npc(index=$index, id=$id, name=$name, pos=$pos)"
 

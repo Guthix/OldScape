@@ -48,7 +48,7 @@ fun Player.magicAttack(
             spotAnimate(spellTemplate.castSpotAnim, spellTemplate.castSpotAnimHeight)
             // TODO sound
             val projectile = world.addProjectile(spellTemplate.projectile, player.pos, npc)
-            EventBus.schedule(NpcAttackedEvent(npc, player, world))
+            EventBus.schedule(NpcAttackedEvent(player, npc, world))
             world.addTask(NormalTask) {
                 val damage = calcHit(npc, spellTemplate.hit(world, player, npc))
                 if (damage == null) {

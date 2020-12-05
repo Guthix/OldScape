@@ -13,21 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.guthix.oldscape.server.world.entity
+package io.guthix.oldscape.server.event
 
-import io.guthix.oldscape.server.PropertyHolder
+import io.guthix.oldscape.server.world.World
+import io.guthix.oldscape.server.world.entity.Character
 import io.guthix.oldscape.server.world.map.Tile
-import io.guthix.oldscape.server.world.map.dim.TileUnit
-import kotlin.reflect.KProperty
 
-interface Entity : PropertyHolder {
-    val pos: Tile
-
-    val sizeX: TileUnit
-
-    val sizeY: TileUnit
-
-    var orientation: Int
-
-    override val properties: MutableMap<KProperty<*>, Any?>
-}
+data class CharacterMovedEvent(
+    val from: Tile,
+    val to: Tile,
+    override val character: Character,
+    override val world: World
+) : CharacterGameEvent(character, world)

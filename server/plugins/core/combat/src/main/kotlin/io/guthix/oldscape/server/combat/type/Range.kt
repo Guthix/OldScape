@@ -57,7 +57,7 @@ fun Player.rangeAttack(npc: Npc, world: World) {
             animate(attackSequence)
             spotAnimate(ammunition.drawBackSpotAnim, ammunition.drawBackSpotAnimHeight)
             val projectile = world.addProjectile(ammunition.ammunitionProjectile, pos, npc)
-            EventBus.schedule(NpcAttackedEvent(npc, player, world))
+            EventBus.schedule(NpcAttackedEvent(player, npc, world))
             world.addTask(NormalTask) { // projectile task
                 val damage = calcHit(npc, maxRangeHit()) ?: 0
                 val oldNpcPos = npc.pos

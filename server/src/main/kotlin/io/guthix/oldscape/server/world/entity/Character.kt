@@ -15,10 +15,13 @@
  */
 package io.guthix.oldscape.server.world.entity
 
-import io.guthix.oldscape.server.event.PublicMessageEvent
+import io.guthix.oldscape.server.event.*
 import io.guthix.oldscape.server.net.game.out.PlayerInfoPacket
+import io.guthix.oldscape.server.plugin.EventHandler
 import io.guthix.oldscape.server.task.Task
+import io.guthix.oldscape.server.task.TaskHolder
 import io.guthix.oldscape.server.task.TaskType
+import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.interest.InterestUpdateType
 import io.guthix.oldscape.server.world.entity.interest.MovementInterestUpdate
 import io.guthix.oldscape.server.world.entity.interest.PlayerManager
@@ -27,10 +30,11 @@ import io.guthix.oldscape.server.world.map.dim.TileUnit
 import io.guthix.oldscape.server.world.map.dim.floors
 import io.guthix.oldscape.server.world.map.dim.tiles
 import java.util.*
+import java.util.concurrent.ConcurrentLinkedQueue
 import kotlin.math.atan2
 import kotlin.reflect.KProperty
 
-abstract class Character(open val index: Int) : Entity {
+abstract class Character(open val index: Int) : Entity, EventHolder, TaskHolder {
     abstract val size: TileUnit
 
     override val sizeX: TileUnit get() = size
@@ -65,9 +69,19 @@ abstract class Character(open val index: Int) : Entity {
 
     internal abstract val updateFlags: SortedSet<out InterestUpdateType>
 
-    internal val postTasks = mutableListOf<() -> Unit>()
+    override val events: ConcurrentLinkedQueue<EventHandler<Event>> = ConcurrentLinkedQueue()
 
     override val tasks: MutableMap<TaskType, MutableSet<Task>> = mutableMapOf()
+
+    internal val postTasks = mutableListOf<() -> Unit>()
+
+    fun processTasks() {
+        while (true) {
+            while (events.isNotEmpty()) events.poll().handle()
+            val resumed = tasks.values.flatMap { routineList -> routineList.toList().map(Task::run) } // TODO optimize
+            if (resumed.all { !it } && events.isEmpty()) break // TODO add live lock detection
+        }
+    }
 
     override val properties: MutableMap<KProperty<*>, Any?> = mutableMapOf()
 
@@ -75,7 +89,7 @@ abstract class Character(open val index: Int) : Entity {
         teleportLocation = to
     }
 
-    fun move() {
+    fun move(world: World) {
         lastPos = pos
         when {
             teleportLocation != null -> {
@@ -83,12 +97,13 @@ abstract class Character(open val index: Int) : Entity {
                 pos = teleportLocation ?: throw IllegalStateException("Teleport location can't be null.")
                 followPosition = pos.copy(x = pos.x - 1.tiles) // TODO make follow location based on collision masks
             }
-            path.isNotEmpty() -> takeStep()
+            path.isNotEmpty() -> takeStep(world)
             else -> MovementInterestUpdate.STAY
         }
     }
 
-    private fun takeStep() {
+    private fun takeStep(world: World) {
+        val curPos = pos.copy()
         pos = when {
             inRunMode -> when {
                 path.size == 1 -> {
@@ -114,6 +129,7 @@ abstract class Character(open val index: Int) : Entity {
                 path.removeAt(0)
             }
         }
+        EventBus.schedule(CharacterMovedEvent(curPos, pos, this, world))
         orientation = getOrientation(followPosition, pos)
     }
 
@@ -226,8 +242,6 @@ abstract class Character(open val index: Int) : Entity {
     protected abstract fun addHitUpdateFlag(): Boolean
 
     protected abstract fun addShoutFlag(): Boolean
-
-    abstract fun processTasks()
 
     fun addPostTask(task: () -> Unit) {
         postTasks.add(task)
