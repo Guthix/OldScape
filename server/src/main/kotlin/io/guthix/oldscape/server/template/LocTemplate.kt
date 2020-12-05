@@ -18,9 +18,6 @@ package io.guthix.oldscape.server.template
 import io.guthix.oldscape.cache.config.LocConfig
 import io.guthix.oldscape.server.world.map.dim.TileUnit
 import io.guthix.oldscape.server.world.map.dim.tiles
-import mu.KotlinLogging
-
-private val logger = KotlinLogging.logger { }
 
 data class LocTemplate(private val config: LocConfig) : BaseTemplate(config) {
     val id: Int get() = config.id

@@ -15,12 +15,19 @@
  */
 package io.guthix.oldscape.server.world.map
 
+import io.guthix.oldscape.server.PropertyHolder
 import io.guthix.oldscape.server.world.entity.*
-import io.guthix.oldscape.server.world.map.dim.FloorUnit
-import io.guthix.oldscape.server.world.map.dim.TileUnit
-import io.guthix.oldscape.server.world.map.dim.ZoneUnit
+import io.guthix.oldscape.server.world.map.dim.*
+import kotlinx.serialization.KSerializer
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.descriptors.SerialDescriptor
+import kotlinx.serialization.encoding.Decoder
+import kotlinx.serialization.encoding.Encoder
+import kotlin.reflect.KProperty
 
-internal class Zone(val floor: FloorUnit, val x: ZoneUnit, val y: ZoneUnit) {
+@Serializable(with = ZoneSerializer::class)
+data class Zone(val floor: FloorUnit, val x: ZoneUnit, val y: ZoneUnit) : PropertyHolder {
     val id: Int get() = id(floor, x, y)
 
     val masks: Array<IntArray> = Array(ZoneUnit.SIZE_TILE.value) {
@@ -38,6 +45,8 @@ internal class Zone(val floor: FloorUnit, val x: ZoneUnit, val y: ZoneUnit) {
     val addedLocs: MutableMap<Int, Loc> = mutableMapOf()
 
     val deletedLocs: MutableMap<Int, Loc> = mutableMapOf()
+
+    override val properties: MutableMap<KProperty<*>, Any?> = mutableMapOf()
 
     fun addCollision(localX: TileUnit, localY: TileUnit, mask: Int) {
         masks[localX.value][localY.value] = masks[localX.value][localY.value] or mask
@@ -102,5 +111,23 @@ internal class Zone(val floor: FloorUnit, val x: ZoneUnit, val y: ZoneUnit) {
 
     companion object {
         fun id(floor: FloorUnit, x: ZoneUnit, y: ZoneUnit): Int = y.value or x.value shl 13 or floor.value shl 26
+    }
+}
+
+@Serializable
+@SerialName("Zone")
+private data class ZoneSurrogate(val floor: Int, val x: Int, val y: Int)
+
+object ZoneSerializer : KSerializer<Zone> {
+    override val descriptor: SerialDescriptor = ZoneSurrogate.serializer().descriptor
+
+    override fun serialize(encoder: Encoder, value: Zone) {
+        val surrogate = ZoneSurrogate(value.floor.value, value.x.value, value.y.value)
+        encoder.encodeSerializableValue(ZoneSurrogate.serializer(), surrogate)
+    }
+
+    override fun deserialize(decoder: Decoder): Zone {
+        val surrogate = decoder.decodeSerializableValue(ZoneSurrogate.serializer())
+        return Zone(surrogate.floor.floors, surrogate.x.zones, surrogate.y.zones)
     }
 }

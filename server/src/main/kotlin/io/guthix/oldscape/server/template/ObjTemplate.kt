@@ -16,9 +16,6 @@
 package io.guthix.oldscape.server.template
 
 import io.guthix.oldscape.cache.config.ObjConfig
-import mu.KotlinLogging
-
-private val logger = KotlinLogging.logger { }
 
 data class ObjTemplate(private val config: ObjConfig) : BaseTemplate(config) {
     val id: Int get() = config.id

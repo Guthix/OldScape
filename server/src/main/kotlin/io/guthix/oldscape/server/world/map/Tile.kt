@@ -46,8 +46,9 @@ data class Tile(val floor: FloorUnit, val x: TileUnit, val y: TileUnit) {
     override fun toString(): String = "Tile(z=${floor.value}, x=${x.value}, y=${y.value})"
 }
 
-@SerialName("Color")
+
 @Serializable
+@SerialName("Tile")
 private data class TileSurrogate(val floor: Int, val x: Int, val y: Int)
 
 object TileSerializer : KSerializer<Tile> {

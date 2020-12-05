@@ -16,9 +16,6 @@
 package io.guthix.oldscape.server.template
 
 import io.guthix.oldscape.cache.config.NpcConfig
-import mu.KotlinLogging
-
-private val logger = KotlinLogging.logger { }
 
 data class NpcTemplate(private val config: NpcConfig) : BaseTemplate(config) {
     val id: Int get() = config.id
