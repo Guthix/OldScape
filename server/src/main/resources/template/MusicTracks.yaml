@@ -1,0 +1,1320 @@
+- id: 0
+  name: "scape main"
+- id: 1
+  name: "iban"
+- id: 2
+  name: "autumn voyage"
+- id: 3
+  name: "unknown land"
+- id: 4
+  name: "hells bells"
+- id: 5
+  name: "sad meadow"
+- id: 6
+  name: "jollyr"
+- id: 7
+  name: "overture"
+- id: 8
+  name: "wildwood"
+- id: 9
+  name: "kingdom"
+- id: 10
+  name: "moody"
+- id: 11
+  name: "spooky2"
+- id: 12
+  name: "long way home"
+- id: 13
+  name: "mage arena"
+- id: 14
+  name: "witching"
+- id: 15
+  name: "workshop"
+- id: 16
+  name: "scape main default"
+- id: 17
+  name: "escape"
+- id: 18
+  name: "horizon"
+- id: 19
+  name: "arabique"
+- id: 20
+  name: "lullaby"
+- id: 21
+  name: "monarch waltz"
+- id: 22
+  name: "gnome king"
+- id: 23
+  name: "fe fi fo fum"
+- id: 24
+  name: "attack1"
+- id: 25
+  name: "attack2"
+- id: 26
+  name: "attack3"
+- id: 27
+  name: "attack4"
+- id: 28
+  name: "attack5"
+- id: 29
+  name: "attack6"
+- id: 30
+  name: "voodoo cult"
+- id: 31
+  name: "fight of the basilisk"
+- id: 32
+  name: "voyage"
+- id: 33
+  name: "gnome village"
+- id: 34
+  name: "wonder"
+- id: 35
+  name: "sea shanty2"
+- id: 36
+  name: "arabian"
+- id: 37
+  name: "deep wildy"
+- id: 38
+  name: "trawler"
+- id: 39
+  name: "church music 1"
+- id: 40
+  name: "church music 2"
+- id: 41
+  name: "expecting"
+- id: 42
+  name: "wilderness2"
+- id: 43
+  name: "wilderness3"
+- id: 44
+  name: "right on track"
+- id: 45
+  name: "venture2"
+- id: 46
+  name: "harmony2"
+- id: 47
+  name: "duel arena"
+- id: 48
+  name: "morytania"
+- id: 49
+  name: "wander"
+- id: 50
+  name: "al kharid"
+- id: 51
+  name: "trawler minor"
+- id: 52
+  name: "serene"
+- id: 53
+  name: "royale"
+- id: 54
+  name: "scape soft"
+- id: 55
+  name: "high seas"
+- id: 56
+  name: "doorways"
+- id: 57
+  name: "rune essence"
+- id: 58
+  name: "nomad"
+- id: 59
+  name: "cursed"
+- id: 60
+  name: "lasting"
+- id: 61
+  name: "village"
+- id: 62
+  name: "newbie melody"
+- id: 63
+  name: "chain of command"
+- id: 64
+  name: "book of spells"
+- id: 65
+  name: "miracle dance"
+- id: 66
+  name: "legion"
+- id: 67
+  name: "close quarters"
+- id: 68
+  name: "cavern"
+- id: 69
+  name: "egypt"
+- id: 70
+  name: "upcoming"
+- id: 71
+  name: "chompy hunt"
+- id: 72
+  name: "fanfare"
+- id: 73
+  name: "alls fairy in love n war"
+- id: 74
+  name: "lightwalk"
+- id: 75
+  name: "venture"
+- id: 76
+  name: "harmony"
+- id: 77
+  name: "splendour"
+- id: 78
+  name: "reggae"
+- id: 79
+  name: "the desert"
+- id: 80
+  name: "soundscape"
+- id: 81
+  name: "wonderous"
+- id: 82
+  name: "waterfall"
+- id: 83
+  name: "big chords"
+- id: 84
+  name: "dead quiet"
+- id: 85
+  name: "vision"
+- id: 86
+  name: "dimension x"
+- id: 87
+  name: "ice melody"
+- id: 88
+  name: "twilight"
+- id: 89
+  name: "reggae2"
+- id: 90
+  name: "ambient jungle"
+- id: 91
+  name: "riverside"
+- id: 92
+  name: "sea shanty"
+- id: 93
+  name: "parade"
+- id: 94
+  name: "tribal2"
+- id: 95
+  name: "intrepid"
+- id: 96
+  name: "inspiration"
+- id: 97
+  name: "hermit"
+- id: 98
+  name: "forever"
+- id: 99
+  name: "baroque"
+- id: 100
+  name: "beyond"
+- id: 101
+  name: "gnome village2"
+- id: 102
+  name: "alone"
+- id: 103
+  name: "oriental"
+- id: 104
+  name: "camelot"
+- id: 105
+  name: "tomorrow"
+- id: 106
+  name: "expanse"
+- id: 107
+  name: "miles away"
+- id: 108
+  name: "starlight"
+- id: 109
+  name: "theme"
+- id: 110
+  name: "serenade"
+- id: 111
+  name: "still night"
+- id: 112
+  name: "gnomeball"
+- id: 113
+  name: "lightness"
+- id: 114
+  name: "jungly1"
+- id: 115
+  name: "jungly2"
+- id: 116
+  name: "greatness"
+- id: 117
+  name: "jungly3"
+- id: 118
+  name: "faerie"
+- id: 119
+  name: "fishing"
+- id: 120
+  name: "shining"
+- id: 121
+  name: "forbidden"
+- id: 122
+  name: "shine"
+- id: 123
+  name: "arabian2"
+- id: 124
+  name: "arabian3"
+- id: 125
+  name: "garden"
+- id: 126
+  name: "we are the fairies"
+- id: 127
+  name: "nightfall"
+- id: 128
+  name: "grumpy"
+- id: 129
+  name: "spookyjungle"
+- id: 130
+  name: "tree spirits"
+- id: 131
+  name: "understanding"
+- id: 132
+  name: "breeze"
+- id: 133
+  name: "the tower"
+- id: 134
+  name: "la mort"
+- id: 135
+  name: "jaws of the basilisk"
+- id: 136
+  name: "lair of the basilisk"
+- id: 137
+  name: "jormungand defeated jingle"
+- id: 138
+  name: "emperor"
+- id: 139
+  name: "ballad of the basilisk"
+- id: 140
+  name: "talking forest"
+- id: 141
+  name: "barbarianism"
+- id: 142
+  name: "complication"
+- id: 143
+  name: "down to earth"
+- id: 144
+  name: "scape cave"
+- id: 145
+  name: "yesteryear"
+- id: 146
+  name: "zealot"
+- id: 147
+  name: "silence"
+- id: 148
+  name: "emotion"
+- id: 149
+  name: "principality"
+- id: 150
+  name: "mouse trap"
+- id: 151
+  name: "start"
+- id: 152
+  name: "ballad of enchantment"
+- id: 153
+  name: "expedition"
+- id: 154
+  name: "bone dance"
+- id: 155
+  name: "neverland"
+- id: 156
+  name: "mausoleum"
+- id: 157
+  name: "medieval"
+- id: 158
+  name: "quest"
+- id: 159
+  name: "gaol"
+- id: 160
+  name: "army of darkness"
+- id: 161
+  name: "long ago"
+- id: 162
+  name: "tribal background"
+- id: 163
+  name: "flute salad"
+- id: 164
+  name: "landlubber"
+- id: 165
+  name: "tribal"
+- id: 166
+  name: "fanfare2"
+- id: 167
+  name: "fanfare3"
+- id: 168
+  name: "lonesome"
+- id: 169
+  name: "crystal sword"
+- id: 170
+  name: "the shadow"
+- id: 171
+  name: "null"
+- id: 172
+  name: "jungle island"
+- id: 173
+  name: "dunjun"
+- id: 174
+  name: "desert voyage"
+- id: 175
+  name: "spirit"
+- id: 176
+  name: "undercurrent"
+- id: 177
+  name: "adventure"
+- id: 178
+  name: "courage"
+- id: 179
+  name: "underground"
+- id: 180
+  name: "attention"
+- id: 181
+  name: "crystal cave"
+- id: 182
+  name: "dangerous"
+- id: 183
+  name: "troubled"
+- id: 184
+  name: "magical journey"
+- id: 185
+  name: "magic dance"
+- id: 186
+  name: "arrival"
+- id: 187
+  name: "tremble"
+- id: 188
+  name: "in the manor"
+- id: 189
+  name: "wolf mountain"
+- id: 190
+  name: "heart and mind"
+- id: 191
+  name: "knightly"
+- id: 192
+  name: "trinity"
+- id: 193
+  name: "mellow"
+- id: 194
+  name: "brimstail's scales"
+- id: 195
+  name: "delrith summoning"
+- id: 196
+  name: "wally cutscene"
+- id: 197
+  name: "lament of meiyerditch"
+- id: 198
+  name: "dagannoth dawn"
+- id: 199
+  name: "jormungand fight"
+- id: 200
+  name: "the mollusc menace"
+- id: 201
+  name: "slug a bug ball"
+- id: 202
+  name: "prime time"
+- id: 203
+  name: "my arms journey"
+- id: 204
+  name: "roc and roll"
+- id: 205
+  name: "high spirits"
+- id: 206
+  name: "floating free"
+- id: 207
+  name: "scape hunter"
+- id: 208
+  name: "jungle island xmas"
+- id: 209
+  name: "jungle bells"
+- id: 210
+  name: "sea shanty xmas"
+- id: 211
+  name: "pirates of penance"
+- id: 212
+  name: "barbarian assault tutorial"
+- id: 213
+  name: "labyrinth"
+- id: 214
+  name: "undead dungeon"
+- id: 215
+  name: "lotr_jingle_3"
+- id: 216
+  name: "espionage"
+- id: 217
+  name: "have an ice day"
+- id: 218
+  name: "peng_bards_jingle"
+- id: 219
+  name: "peng_plans_jingle"
+- id: 220
+  name: "island of the trolls"
+- id: 221
+  name: "jester minute"
+- id: 222
+  name: "major miner"
+- id: 223
+  name: "norse code"
+- id: 224
+  name: "ogre the top"
+- id: 225
+  name: "volcanic vikings"
+- id: 227
+  name: "fris_jingle_1"
+- id: 228
+  name: "garden of autumn"
+- id: 229
+  name: "garden of spring"
+- id: 230
+  name: "garden of summer"
+- id: 231
+  name: "garden of winter"
+- id: 234
+  name: "creature cruelty"
+- id: 235
+  name: "magic magic magic"
+- id: 236
+  name: "mutant medley"
+- id: 237
+  name: "work work work"
+- id: 238
+  name: "zombiism"
+- id: 239
+  name: "brain_barrelchest_battle"
+- id: 240
+  name: "dorgeshun city"
+- id: 241
+  name: "stagnant"
+- id: 242
+  name: "time out"
+- id: 243
+  name: "stratosphere"
+- id: 244
+  name: "waterlogged"
+- id: 245
+  name: "natural"
+- id: 246
+  name: "grotto"
+- id: 247
+  name: "artistry"
+- id: 248
+  name: "aztec"
+- id: 249
+  name: "dorgeshun deep"
+- id: 250
+  name: "surok_king_battle_music"
+- id: 251
+  name: "forest"
+- id: 252
+  name: "elven mist"
+- id: 253
+  name: "lost soul"
+- id: 254
+  name: "meridian"
+- id: 255
+  name: "woodland"
+- id: 256
+  name: "overpass"
+- id: 257
+  name: "sojourn"
+- id: 258
+  name: "contest"
+- id: 259
+  name: "crystal castle"
+- id: 260
+  name: "insect queen"
+- id: 261
+  name: "marzipan"
+- id: 262
+  name: "righteousness"
+- id: 263
+  name: "bandit camp"
+- id: 264
+  name: "mad eadgar"
+- id: 265
+  name: "superstition"
+- id: 266
+  name: "bone dry"
+- id: 267
+  name: "sunburn"
+- id: 268
+  name: "everywhere"
+- id: 269
+  name: "competition"
+- id: 270
+  name: "exposed"
+- id: 271
+  name: "well of voyage"
+- id: 272
+  name: "alternative root"
+- id: 273
+  name: "easter jig"
+- id: 274
+  name: "rising damp"
+- id: 275
+  name: "slice of station"
+- id: 276
+  name: "ham and seek"
+- id: 277
+  name: "haunted mine"
+- id: 278
+  name: "deep down"
+- id: 279
+  name: "ham attack"
+- id: 280
+  name: "slice of grand opening"
+- id: 281
+  name: "slice of silent movie"
+- id: 282
+  name: "chamber"
+- id: 283
+  name: "everlasting"
+- id: 284
+  name: "miscellania"
+- id: 285
+  name: "etcetera"
+- id: 286
+  name: "shadowland"
+- id: 287
+  name: "lair"
+- id: 288
+  name: "deadlands"
+- id: 289
+  name: "rellekka"
+- id: 290
+  name: "saga"
+- id: 291
+  name: "borderland"
+- id: 292
+  name: "stranded"
+- id: 293
+  name: "legend"
+- id: 294
+  name: "frostbite"
+- id: 295
+  name: "warrior"
+- id: 296
+  name: "technology"
+- id: 297
+  name: "etcetera theme"
+- id: 298
+  name: "illusive"
+- id: 299
+  name: "inadequacy"
+- id: 300
+  name: "untouchable"
+- id: 301
+  name: "down and out"
+- id: 302
+  name: "on the up"
+- id: 303
+  name: "monkey madness"
+- id: 304
+  name: "marooned"
+- id: 305
+  name: "anywhere"
+- id: 306
+  name: "island life"
+- id: 307
+  name: "temple"
+- id: 308
+  name: "suspicious"
+- id: 309
+  name: "looking back"
+- id: 310
+  name: "dwarf theme"
+- id: 311
+  name: "showdown"
+- id: 312
+  name: "find my way"
+- id: 313
+  name: "goblin village"
+- id: 314
+  name: "castlewars"
+- id: 315
+  name: "impetuous_clue"
+- id: 316
+  name: "the navigator"
+- id: 317
+  name: "melodrama"
+- id: 318
+  name: "ready for battle"
+- id: 319
+  name: "stillness"
+- id: 320
+  name: "lighthouse"
+- id: 321
+  name: "scape scared"
+- id: 322
+  name: "out of the deep"
+- id: 323
+  name: "upass"
+- id: 324
+  name: "background"
+- id: 325
+  name: "cave background"
+- id: 326
+  name: "dark"
+- id: 327
+  name: "dream"
+- id: 328
+  name: "march"
+- id: 329
+  name: "regal"
+- id: 330
+  name: "cellar song"
+- id: 331
+  name: "scape sad"
+- id: 332
+  name: "scape wild"
+- id: 333
+  name: "spooky"
+- id: 334
+  name: "pirates of peril"
+- id: 335
+  name: "romancing the crone"
+- id: 336
+  name: "dangerous road"
+- id: 337
+  name: "faithless"
+- id: 338
+  name: "tiptoe"
+- id: 339
+  name: "the terrible tower"
+- id: 340
+  name: "masquerade"
+- id: 341
+  name: "the slayer"
+- id: 342
+  name: "body parts"
+- id: 343
+  name: "monster melee"
+- id: 344
+  name: "fenkenstrain's refrain"
+- id: 345
+  name: "barking mad"
+- id: 346
+  name: "goblin game"
+- id: 347
+  name: "fruits de mer"
+- id: 348
+  name: "narnode's theme"
+- id: 349
+  name: "impetuous"
+- id: 351
+  name: "dynasty"
+- id: 352
+  name: "scarab"
+- id: 353
+  name: "shipwrecked"
+- id: 354
+  name: "phasmatys"
+- id: 355
+  name: "the other side"
+- id: 356
+  name: "settlement"
+- id: 357
+  name: "cave of beasts"
+- id: 358
+  name: "dragontooth island"
+- id: 359
+  name: "sarcophagus"
+- id: 361
+  name: "down below"
+- id: 362
+  name: "karamja jam"
+- id: 363
+  name: "7th realm"
+- id: 364
+  name: "pathways"
+- id: 365
+  name: "melzars maze"
+- id: 366
+  name: "eagle peak"
+- id: 367
+  name: "barb wire"
+- id: 368
+  name: "observatory telescope cutscene"
+- id: 369
+  name: "time to mine"
+- id: 370
+  name: "in between"
+- id: 371
+  name: "schools out"
+- id: 372
+  name: "far away"
+- id: 373
+  name: "claustrophobia"
+- id: 374
+  name: "knightmare"
+- id: 375
+  name: "fight or flight"
+- id: 376
+  name: "temple of light"
+- id: 377
+  name: "the golem"
+- id: 378
+  name: "forgotten"
+- id: 379
+  name: "throne of the demon"
+- id: 380
+  name: "dance of the undead"
+- id: 381
+  name: "dangerous way"
+- id: 382
+  name: "lore and order"
+- id: 383
+  name: "city of the dead"
+- id: 384
+  name: "hypnotized"
+- id: 385
+  name: "kr_betray_jingle"
+- id: 386
+  name: "too many cooks"
+- id: 387
+  name: "sphinx"
+- id: 388
+  name: "mirage"
+- id: 389
+  name: "cave of the goblins"
+- id: 390
+  name: "romper chomper"
+- id: 391
+  name: "strength of saradomin"
+- id: 392
+  name: "zogre dance"
+- id: 393
+  name: "path of peril"
+- id: 394
+  name: "wayward"
+- id: 395
+  name: "tale of keldagrim"
+- id: 396
+  name: "land of the dwarves"
+- id: 397
+  name: "tears of guthix"
+- id: 398
+  name: "the power of tears"
+- id: 399
+  name: "zamorak zoo"
+- id: 400
+  name: "scape original"
+- id: 401
+  name: "the adventurer"
+- id: 402
+  name: "the rogues den"
+- id: 403
+  name: "the far side"
+- id: 404
+  name: "armageddon"
+- id: 405
+  name: "giant dwarf meeting"
+- id: 406
+  name: "sailing journey2"
+- id: 407
+  name: "the lost melody"
+- id: 408
+  name: "bandos battalion"
+- id: 409
+  name: "frogland"
+- id: 410
+  name: "lost tribe cutscene"
+- id: 411
+  name: "evil bobs island"
+- id: 412
+  name: "into the abyss"
+- id: 413
+  name: "the quizmaster"
+- id: 414
+  name: "armadyl alliance"
+- id: 415
+  name: "athletes foot"
+- id: 416
+  name: "gnome_village_party"
+- id: 417
+  name: "beneath_the_stronghold"
+- id: 418
+  name: "corporal punishment"
+- id: 419
+  name: "pheasant peasant"
+- id: 420
+  name: "the lost tribe"
+- id: 421
+  name: "troubled_waters"
+- id: 422
+  name: "nether_realm"
+- id: 423
+  name: "scorpia_dances"
+- id: 424
+  name: "devils_may_care"
+- id: 425
+  name: "the chosen"
+- id: 426
+  name: "pick_and_shovel"
+- id: 427
+  name: "warpath"
+- id: 428
+  name: "clanwars"
+- id: 429
+  name: "shining_spirit"
+- id: 430
+  name: "corporealbeast"
+- id: 431
+  name: "grimly_fiendish"
+- id: 432
+  name: "coil"
+- id: 433
+  name: "thrall_of_the_serpent"
+- id: 434
+  name: "have a blast"
+- id: 435
+  name: "wilderness"
+- id: 436
+  name: "forgettable melody"
+- id: 437
+  name: "bunny_sugar_rush"
+- id: 438
+  name: "drunken dwarf"
+- id: 439
+  name: "maws_jaws_claws"
+- id: 440
+  name: "that_sullen_hall"
+- id: 441
+  name: "sire"
+- id: 442
+  name: "dies_irae"
+- id: 443
+  name: "nox_irae"
+- id: 444
+  name: "soulfall"
+- id: 445
+  name: "rugged_terrain"
+- id: 446
+  name: "zeah_mining"
+- id: 447
+  name: "over to nardah"
+- id: 448
+  name: "the monsters below"
+- id: 449
+  name: "zeah_combat"
+- id: 450
+  name: "zeah_fishing"
+- id: 451
+  name: "kourend_the_magnificent"
+- id: 452
+  name: "forlorn_homestead"
+- id: 453
+  name: "jungle hunt"
+- id: 454
+  name: "home sweet home"
+- id: 455
+  name: "zeah_magic"
+- id: 456
+  name: "zeah_farming"
+- id: 457
+  name: "monkey trouble"
+- id: 458
+  name: "scape_ape"
+- id: 459
+  name: "monkey sadness"
+- id: 460
+  name: "joy of the hunt"
+- id: 461
+  name: "the desolate isle"
+- id: 462
+  name: "spirits of elid"
+- id: 463
+  name: "fire and brimstone"
+- id: 464
+  name: "the genie"
+- id: 465
+  name: "desert heat"
+- id: 466
+  name: "ground scape"
+- id: 467
+  name: "monkey business"
+- id: 468
+  name: "monkey badness"
+- id: 469
+  name: "in the pits"
+- id: 470
+  name: "strange place"
+- id: 471
+  name: "brew hoo hoo"
+- id: 472
+  name: "darkly_altared"
+- id: 473
+  name: "tzhaar"
+- id: 474
+  name: "last_man_standing"
+- id: 475
+  name: "wild side"
+- id: 476
+  name: "dead can dance"
+- id: 477
+  name: "wasteland"
+- id: 478
+  name: "the cellar dwellers"
+- id: 479
+  name: "jungle troubles"
+- id: 480
+  name: "mined out"
+- id: 481
+  name: "catch me if you can"
+- id: 482
+  name: "rat a tat tat"
+- id: 483
+  name: "wintertodt_boss"
+- id: 484
+  name: "bobs on holiday"
+- id: 485
+  name: "the noble rodent"
+- id: 486
+  name: "altar_ego"
+- id: 487
+  name: "lower_depths"
+- id: 488
+  name: "shayzien_march"
+- id: 489
+  name: "bubble and squeak"
+- id: 490
+  name: "sarim's vermin"
+- id: 491
+  name: "rat hunt"
+- id: 492
+  name: "upper_depths"
+- id: 493
+  name: "olm_battle"
+- id: 494
+  name: "ascent"
+- id: 495
+  name: "desolate_mage"
+- id: 496
+  name: "the trade parade"
+- id: 497
+  name: "aye car rum ba"
+- id: 498
+  name: "blistering barnacles"
+- id: 499
+  name: "darkness_in_the_depths"
+- id: 500
+  name: "inferno"
+- id: 501
+  name: "distant land"
+- id: 502
+  name: "mor-ul-rek"
+- id: 504
+  name: "fangs for the memory"
+- id: 505
+  name: "pharoah's tomb"
+- id: 506
+  name: "land down under"
+- id: 508
+  name: "meddling kids"
+- id: 509
+  name: "corridors of power"
+- id: 510
+  name: "slither and thither"
+- id: 511
+  name: "in the clink"
+- id: 515
+  name: "mudskipper melody"
+- id: 517
+  name: "subterranea"
+- id: 518
+  name: "gargoyleboss"
+- id: 519
+  name: "incantation"
+- id: 520
+  name: "grip of the talon"
+- id: 521
+  name: "revenants"
+- id: 522
+  name: "on_the_shore"
+- id: 523
+  name: "land of snow"
+- id: 524
+  name: "xenophobe"
+- id: 525
+  name: "title fight"
+- id: 526
+  name: "winter funfare"
+- id: 527
+  name: "dragonkin ambience"
+- id: 528
+  name: "victory is mine"
+- id: 529
+  name: "woe of the wyvern"
+- id: 530
+  name: "in the brine"
+- id: 531
+  name: "lucid nightmare"
+- id: 532
+  name: "diango's little helpers"
+- id: 533
+  name: "roll the bones"
+- id: 534
+  name: "mind over matter"
+- id: 535
+  name: "golden touch"
+- id: 536
+  name: "zombie dragon"
+- id: 537
+  name: "dogs of war"
+- id: 538
+  name: "autumn in bridgelum"
+- id: 539
+  name: "lucid dream"
+- id: 540
+  name: "oncoming foe"
+- id: 541
+  name: "the enchanter"
+- id: 542
+  name: "lament"
+- id: 544
+  name: "making waves"
+- id: 545
+  name: "cabin fever"
+- id: 546
+  name: "last stand"
+- id: 547
+  name: "scape santa"
+- id: 548
+  name: "poles apart"
+- id: 549
+  name: "dragonkin temple"
+- id: 550
+  name: "myths guild"
+- id: 551
+  name: "shayzien crypt"
+- id: 554
+  name: "roots_and_flutes"
+- id: 557
+  name: "bloodbath"
+- id: 558
+  name: "food for thought"
+- id: 559
+  name: "malady"
+- id: 560
+  name: "dance of death"
+- id: 561
+  name: "conspiracy"
+- id: 562
+  name: "vanescula"
+- id: 563
+  name: "bait"
+- id: 564
+  name: "xarpus combat"
+- id: 565
+  name: "wrath and ruin"
+- id: 566
+  name: "verzik ambience"
+- id: 567
+  name: "xarpus ambience"
+- id: 568
+  name: "storm brew"
+- id: 569
+  name: "maiden combat"
+- id: 570
+  name: "maiden ambience"
+- id: 571
+  name: "pestilent bloat combat"
+- id: 572
+  name: "verzik combat"
+- id: 573
+  name: "the mad mole"
+- id: 574
+  name: "fairy dragon cutscene"
+- id: 575
+  name: "chickened out"
+- id: 576
+  name: "davy jones locker"
+- id: 577
+  name: "mastermindless"
+- id: 578
+  name: "pestilent bloat ambience"
+- id: 579
+  name: "nylocas combat"
+- id: 580
+  name: "nylocas ambience"
+- id: 581
+  name: "sotetseg combat"
+- id: 582
+  name: "verzik defeated"
+- id: 583
+  name: "chef surprize"
+- id: 584
+  name: "sotetseg ambience"
+- id: 585
+  name: "barren_land"
+- id: 586
+  name: "everlasting fire"
+- id: 587
+  name: "null and void"
+- id: 588
+  name: "pest control"
+- id: 589
+  name: "my2arm_love_theme_full"
+- id: 590
+  name: "weiss_town"
+- id: 591
+  name: "tomb raider"
+- id: 592
+  name: "troll_shuffle"
+- id: 593
+  name: "my2arm_boss_battle"
+- id: 594
+  name: "no way out"
+- id: 595
+  name: "way of the wyrm"
+- id: 596
+  name: "hespori cave"
+- id: 597
+  name: "newbie farming"
+- id: 598
+  name: "alchemical hydra"
+- id: 599
+  name: "hoe down"
+- id: 600
+  name: "method of madness"
+- id: 601
+  name: "hespori"
+- id: 602
+  name: "fear and loathing"
+- id: 603
+  name: "funny bunnies"
+- id: 604
+  name: "assault and battery"
+- id: 605
+  name: "battlefront"
+- id: 606
+  name: "the depths"
+- id: 607
+  name: "stuck in the mire"
+- id: 609
+  name: "a farmers grind"
+- id: 610
+  name: "distillery hilarity"
+- id: 611
+  name: "trouble brewing"
+- id: 612
+  name: "head to head"
+- id: 613
+  name: "grow grow grow"
+- id: 614
+  name: "pinball wizard"
+- id: 615
+  name: "beetle juice"
+- id: 616
+  name: "back to life"
+- id: 617
+  name: "getting down to business"
+- id: 618
+  name: "gill bill"
+- id: 619
+  name: "spy games"
+- id: 620
+  name: "where eagles lair"
+- id: 621
+  name: "homescape"
+- id: 622
+  name: "waking dream"
+- id: 623
+  name: "dreamstate"
+- id: 624
+  name: "forsaken tower"
+- id: 625
+  name: "the lunar isle"
+- id: 626
+  name: "way of the enchanter"
+- id: 627
+  name: "isle of everywhere"
+- id: 628
+  name: "molch"
+- id: 629
+  name: "burning desire"
+- id: 630
+  name: "the galleon"
+- id: 631
+  name: "life's a beach!"
+- id: 632
+  name: "little cave of horrors"
+- id: 633
+  name: "on the wing"
+- id: 634
+  name: "warriors guild"
+- id: 635
+  name: "ful to the brim"
+- id: 636
+  name: "woodland walk"
+- id: 637
+  name: "box_of_delights"
+- id: 638
+  name: "ham fisted"
+- id: 639
+  name: "forthos_dungeon"
+- id: 640
+  name: "sigmunds showdown"
+- id: 641
+  name: "sarachnis_lair"
+- id: 642
+  name: "no pasaran"
+- id: 643
+  name: "the last shanty"
+- id: 644
+  name: "iowerths_lament"
+- id: 645
+  name: "warped_library"
+- id: 646
+  name: "night of the vampiyre"
+- id: 647
+  name: "city_guardians"
+- id: 648
+  name: "the_tower_of_voices"
+- id: 650
+  name: "gauntlet_minigame"
+- id: 651
+  name: "ithell"
+- id: 652
+  name: "the dark fragment"
+- id: 653
+  name: "faith_of_the_hefin"
+- id: 654
+  name: "elven seed"
+- id: 655
+  name: "amlodd"
+- id: 656
+  name: "stand up and be counted"
+- id: 657
+  name: "prif_slayer_dungeon"
+- id: 659
+  name: "cryws"
+- id: 660
+  name: "dance_of_the_meilyr"
+- id: 661
+  name: "scape crystal"
+- id: 662
+  name: "zalcano_combat"
+- id: 663
+  name: "nightmare_combat"
+- id: 664
+  name: "slepe dungeon"
+- id: 667
+  name: "the terrible caverns"
+- id: 669
+  name: "well hallowed air"
+- id: 670
+  name: "arboretum"
+- id: 671
+  name: "darkmeyer"
+- id: 672
+  name: "upir likhyi"
+- id: 674
+  name: "hallowed sepulchre"
+- id: 675
+  name: "the terrible tunnels"
+- id: 677
+  name: "domain of the vampyres"
+- id: 678
+  name: "vanstrom"
+- id: 679
+  name: "rest_in_peace"
+- id: 680
+  name: "the enclave"
+- id: 681
+  name: "safety in numbers"
+- id: 682
+  name: "eves epinette"
+- id: 683
+  name: "sea_minor_shanty"

@@ -27,7 +27,7 @@ import io.guthix.oldscape.cache.MapArchive
 import io.guthix.oldscape.cache.xtea.MapXtea
 import io.guthix.oldscape.server.db.PostgresDb
 import io.guthix.oldscape.server.event.EventBus
-import io.guthix.oldscape.server.event.InitializeTemplateEvent
+import io.guthix.oldscape.server.event.ServerBootEvent
 import io.guthix.oldscape.server.event.WorldInitializedEvent
 import io.guthix.oldscape.server.net.Huffman
 import io.guthix.oldscape.server.net.OldScapeServer
@@ -66,7 +66,7 @@ object OldScape {
         Huffman.load(BinariesArchive.load(binaryArchive).huffman)
 
         EventBus.loadScripts()
-        EventBus.execute(InitializeTemplateEvent)
+        EventBus.execute(ServerBootEvent)
         GamePacketDecoder.loadIncPackets()
         PostgresDb.initialize(config.db)
 

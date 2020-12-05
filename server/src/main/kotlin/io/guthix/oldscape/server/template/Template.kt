@@ -17,7 +17,7 @@ package io.guthix.oldscape.server.template
 
 import io.guthix.oldscape.cache.config.Config
 import io.guthix.oldscape.server.PropertyHolder
-import io.guthix.oldscape.server.event.InitializeTemplateEvent
+import io.guthix.oldscape.server.event.ServerBootEvent
 import io.guthix.oldscape.server.plugin.Script
 import io.guthix.oldscape.server.readYaml
 import mu.KLogging
@@ -62,7 +62,7 @@ inline fun <reified T : Template, B : BaseTemplate> Script.loadTemplates(
     loader: TemplateRepository<B>,
     property: KProperty<T?>
 ) {
-    on(InitializeTemplateEvent::class).then {
+    on(ServerBootEvent::class).then {
         val templates: List<T> = readYaml(relativePath)
         templates.forEach { template ->
             template.ids.forEach { id ->

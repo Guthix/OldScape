@@ -210,12 +210,18 @@ class World internal constructor(
     fun getCollision(floor: FloorUnit, x: TileUnit, y: TileUnit): Int = getZone(floor, x, y)?.masks
         ?.get(x.relativeZone.value)?.get(y.relativeZone.value) ?: Collision.MASK_TERRAIN_BLOCK
 
-    internal fun getZone(tile: Tile): Zone? = map[tile.floor.value][tile.x.inZones.value][tile.y.inZones.value]
+    fun getZone(tile: Tile): Zone? = map[tile.floor.value][tile.x.inZones.value][tile.y.inZones.value]
 
-    internal fun getZone(floor: FloorUnit, x: TileUnit, y: TileUnit): Zone? =
-        map[floor.value][x.inZones.value][y.inZones.value]
+    fun getZone(floor: FloorUnit, x: TileUnit, y: TileUnit): Zone? = map[floor.value][x.inZones.value][y.inZones.value]
 
-    internal fun getZone(floor: FloorUnit, x: ZoneUnit, y: ZoneUnit): Zone? = map[floor.value][x.value][y.value]
+    fun getZone(floor: FloorUnit, x: ZoneUnit, y: ZoneUnit): Zone? = map[floor.value][x.value][y.value]
+
+    fun getZones(floor: FloorUnit, x: MapsquareUnit, y: MapsquareUnit): Array<Array<Zone?>> =
+        Array(MapsquareUnit.SIZE_ZONE.value) { localX ->
+            Array(MapsquareUnit.SIZE_ZONE.value) { localY ->
+                getZone(floor, x.inZones + localX.zones, y.inZones + localY.zones)
+            }
+        }
 
     fun getLoc(id: Int, floor: FloorUnit, x: TileUnit, y: TileUnit): Loc? = getZone(floor, x, y)?.getLoc(
         id, x.relativeZone, y.relativeZone

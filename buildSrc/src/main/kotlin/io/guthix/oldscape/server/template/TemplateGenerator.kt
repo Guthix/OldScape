@@ -68,6 +68,7 @@ class TemplateGenerator : Plugin<Project> {
                     target.writeIntTemplates("Varbits", "VarbitId")
                     target.writeIntTemplates("CS2s", "CS2Id")
                     target.writeIntTemplates("Varps", "VarpId")
+                    target.writeIntTemplates("MusicTracks", "MusicTrackId")
                 }
             }
         }

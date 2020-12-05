@@ -13,6 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.guthix.oldscape.server.event
+package io.guthix.oldscape.server.music
 
-object InitializeTemplateEvent : Event
+import io.guthix.oldscape.server.Property
+import io.guthix.oldscape.server.world.map.Zone
+import kotlinx.serialization.Serializable
+
+var Zone.musicTrack: Int? by Property {
+    null
+}
+
+@Serializable
+data class ZoneMusic(val floor: Int, val msX: Int, val msY: Int, val musicId: Int)

@@ -27,7 +27,7 @@ import kotlinx.serialization.encoding.Encoder
 import kotlin.reflect.KProperty
 
 @Serializable(with = ZoneSerializer::class)
-data class Zone(val floor: FloorUnit, val x: ZoneUnit, val y: ZoneUnit) : PropertyHolder {
+data class Zone internal constructor(val floor: FloorUnit, val x: ZoneUnit, val y: ZoneUnit) : PropertyHolder {
     val id: Int get() = id(floor, x, y)
 
     val masks: Array<IntArray> = Array(ZoneUnit.SIZE_TILE.value) {
