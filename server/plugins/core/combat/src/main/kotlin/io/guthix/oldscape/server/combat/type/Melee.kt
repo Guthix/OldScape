@@ -17,16 +17,13 @@ package io.guthix.oldscape.server.combat.type
 
 import io.guthix.oldscape.server.combat.attackSequence
 import io.guthix.oldscape.server.combat.attackSpeed
-import io.guthix.oldscape.server.combat.dmg.calcHit
-import io.guthix.oldscape.server.combat.dmg.maxMeleeHit
 import io.guthix.oldscape.server.combat.inCombatWith
-import io.guthix.oldscape.server.damage.hit
 import io.guthix.oldscape.server.event.EventBus
 import io.guthix.oldscape.server.event.NpcAttackedEvent
+import io.guthix.oldscape.server.event.NpcHitEvent
 import io.guthix.oldscape.server.pathing.DestinationRectangleDirect
 import io.guthix.oldscape.server.pathing.breadthFirstSearch
 import io.guthix.oldscape.server.task.NormalTask
-import io.guthix.oldscape.server.template.defenceSequence
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.Npc
 import io.guthix.oldscape.server.world.entity.Player
@@ -42,12 +39,7 @@ fun Player.meleeAttack(npc: Npc, world: World) {
         EventBus.schedule(NpcAttackedEvent(player, npc, world))
         while (true) { // start player combat
             animate(attackSequence)
-            val damage = calcHit(npc, maxMeleeHit()) ?: 0
-            npc.animate(npc.defenceSequence)
-            if (npc.hit(world, damage)) {
-                cancelTasks(NormalTask)
-                return@addTask
-            }
+            EventBus.schedule(NpcHitEvent(player, npc, world))
             wait(ticks = attackSpeed)
         }
     }.finalize {

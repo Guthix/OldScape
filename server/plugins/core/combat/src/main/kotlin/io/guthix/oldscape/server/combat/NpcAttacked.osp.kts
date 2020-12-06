@@ -16,16 +16,20 @@
 package io.guthix.oldscape.server.combat
 
 import io.guthix.oldscape.server.combat.dmg.calcHit
+import io.guthix.oldscape.server.combat.dmg.maxMeleeHit
 import io.guthix.oldscape.server.damage.hit
+import io.guthix.oldscape.server.event.EventBus
 import io.guthix.oldscape.server.event.NpcAttackedEvent
+import io.guthix.oldscape.server.event.NpcHitEvent
+import io.guthix.oldscape.server.event.PlayerHitEvent
 import io.guthix.oldscape.server.pathing.DestinationRectangleDirect
 import io.guthix.oldscape.server.pathing.simplePathSearch
 import io.guthix.oldscape.server.task.NormalTask
 import io.guthix.oldscape.server.template.attackSequence
 import io.guthix.oldscape.server.template.attackSpeed
+import io.guthix.oldscape.server.template.defenceSequence
 
 on(NpcAttackedEvent::class).then {
-    if (npc.inCombatWith != null) return@then
     var playerDestination = DestinationRectangleDirect(player, world)
     npc.inCombatWith = player
     npc.cancelTasks(NormalTask)
@@ -33,9 +37,7 @@ on(NpcAttackedEvent::class).then {
         while (true) {
             wait { playerDestination.reached(npc.pos.x, npc.pos.y, npc.size) }
             npc.animate(npc.attackSequence)
-            val damage = npc.calcHit(player) ?: 0
-            player.animate(player.defenceSequence)
-            player.hit(world, damage)
+            EventBus.schedule(PlayerHitEvent(npc, player, world))
             wait(ticks = npc.attackSpeed)
         }
     }
@@ -50,5 +52,13 @@ on(NpcAttackedEvent::class).then {
     }.finalize {
         npc.inCombatWith = null
         npc.turnToLock(null)
+    }
+}
+
+on(NpcHitEvent::class).then {
+    val damage = player.calcHit(npc, player.maxMeleeHit()) ?: 0
+    npc.animate(npc.defenceSequence)
+    if (npc.hit(world, damage)) {
+        player.cancelTasks(NormalTask)
     }
 }
