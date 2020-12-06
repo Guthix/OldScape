@@ -23,7 +23,7 @@ abstract class CharacterInfoPacket {
     companion object {
         val INTEREST_SIZE: TileUnit = 32.tiles
 
-        private val INTEREST_RANGE = INTEREST_SIZE / 2.tiles
+        private val INTEREST_RANGE = INTEREST_SIZE / 2.tiles - 1.tiles
 
         fun Tile.isInterestedIn(other: Tile): Boolean = withInDistanceOf(other, INTEREST_RANGE)
     }

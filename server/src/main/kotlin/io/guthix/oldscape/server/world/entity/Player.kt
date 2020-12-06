@@ -156,8 +156,8 @@ class Player internal constructor(
         futures.addAll(statManager.synchronize(world, this))
         futures.addAll(energyManager.synchronize(this))
         futures.addAll(sceneManager.synchronize(world, world.xteas, this))
-        futures.addAll(npcManager.synchronize(world, this))
         futures.addAll(playerManager.synchronize(world, this))
+        futures.addAll(npcManager.synchronize(world, this))
         ctx.flush()
         return futures
     }
