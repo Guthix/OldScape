@@ -94,8 +94,9 @@ abstract class Character(open val index: Int) : Entity, EventHolder, TaskHolder 
         when {
             teleportLocation != null -> {
                 movementType = MovementInterestUpdate.TELEPORT
-                pos = teleportLocation ?: throw IllegalStateException("Teleport location can't be null.")
+                pos = teleportLocation!!
                 followPosition = pos.copy(x = pos.x - 1.tiles) // TODO make follow location based on collision masks
+                addPostTask { teleportLocation = null }
             }
             path.isNotEmpty() -> takeStep(world)
             else -> MovementInterestUpdate.STAY
