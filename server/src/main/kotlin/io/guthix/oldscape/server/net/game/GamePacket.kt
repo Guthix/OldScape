@@ -21,12 +21,47 @@ import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.Player
 import io.guthix.oldscape.server.world.map.dim.TileUnit
 import io.netty.buffer.ByteBuf
+import io.netty.buffer.ByteBufHolder
 import io.netty.channel.ChannelHandlerContext
-import mu.KotlinLogging
+import mu.KLogging
 
-private val logger = KotlinLogging.logger { }
+class GamePacket(val opcode: Int, val type: PacketSize, val payload: ByteBuf) : ByteBufHolder {
+    override fun refCnt(): Int = payload.refCnt()
 
-class GamePacket(val opcode: Int, val type: PacketSize, val payload: ByteBuf)
+    override fun release(): Boolean = payload.release()
+
+    override fun release(decrement: Int): Boolean = payload.release(decrement)
+
+    override fun content(): ByteBuf = payload
+
+    override fun copy(): ByteBufHolder = GamePacket(opcode, type, payload.copy())
+
+    override fun duplicate(): ByteBufHolder = GamePacket(opcode, type, payload.duplicate())
+
+    override fun retainedDuplicate(): ByteBufHolder = GamePacket(opcode, type, payload.retainedDuplicate())
+
+    override fun replace(content: ByteBuf): ByteBufHolder = GamePacket(opcode, type, content)
+
+    override fun retain(): ByteBufHolder {
+        payload.retain()
+        return this
+    }
+
+    override fun retain(increment: Int): ByteBufHolder {
+        payload.retain(increment)
+        return this
+    }
+
+    override fun touch(): ByteBufHolder {
+        payload.touch()
+        return this
+    }
+
+    override fun touch(hint: Any): ByteBufHolder {
+        payload.touch(hint)
+        return this
+    }
+}
 
 sealed class PacketSize
 
@@ -64,7 +99,7 @@ abstract class GamePacketDecoder(val opcode: Int, val packetSize: PacketSize) {
         world: World
     ): PlayerGameEvent
 
-    companion object {
+    companion object : KLogging() {
         private const val pkg = "io.guthix.oldscape.server.net.game.inc"
 
         val inc: MutableMap<Int, GamePacketDecoder> = mutableMapOf()

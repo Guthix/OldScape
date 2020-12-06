@@ -63,7 +63,12 @@ class GameDecoder(
         if (state == State.PAYLOAD) {
             if (!inc.isReadable(size)) return
             val payload = if (size > 0) inc.readBytes(size) else Unpooled.EMPTY_BUFFER
-            out.add(decoder!!.decode(payload, size, ctx, player, world))
+            val packet = try {
+                decoder!!.decode(payload, size, ctx, player, world)
+            } finally {
+                payload.release()
+            }
+            out.add(packet)
             state = State.OPCODE
         }
     }

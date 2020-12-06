@@ -21,7 +21,6 @@ import io.guthix.oldscape.server.net.game.VarShortSize
 import io.guthix.oldscape.server.net.game.ZoneOutGameEvent
 import io.guthix.oldscape.server.world.map.dim.TileUnit
 import io.netty.buffer.ByteBuf
-import io.netty.buffer.Unpooled
 import io.netty.channel.ChannelHandlerContext
 
 class UpdateZonePartialEnclosedPacket(
@@ -34,7 +33,7 @@ class UpdateZonePartialEnclosedPacket(
     override val size: VarShortSize = VarShortSize
 
     override fun encode(ctx: ChannelHandlerContext): ByteBuf {
-        val buf = Unpooled.compositeBuffer(1 + packets.size * 2)
+        val buf = ctx.alloc().compositeBuffer(1 + packets.size * 2)
         val header = ctx.alloc().buffer(STATIC_SIZE)
         header.writeByteSub(localY.value)
         header.writeByte(localX.value)

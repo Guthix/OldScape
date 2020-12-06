@@ -30,6 +30,10 @@ class GameEncoder(private val encodeCipher: IsaacRandom) : MessageToByteEncoder<
             else -> {
             }
         }
-        out.writeBytes(packet.payload)
+        try {
+            out.writeBytes(packet.payload)
+        } finally {
+            packet.release()
+        }
     }
 }

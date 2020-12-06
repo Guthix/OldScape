@@ -21,10 +21,9 @@ import io.guthix.oldscape.server.world.map.dim.TileUnit
 import io.guthix.oldscape.server.world.map.dim.tiles
 import kotlinx.serialization.Serializable
 
-val Npc.wanderRadius: TileUnit get() = walkTemplate.wanderRadius.tiles
+val Npc.wanderRadius: TileUnit get() = walkTemplate?.wanderRadius?.tiles ?: 5.tiles
 
-private val Npc.walkTemplate: NpcWalkTemplate
-    get() = template.walk ?: throw TemplateNotFoundException(id, NpcWalkTemplate::class)
+private val Npc.walkTemplate: NpcWalkTemplate? get() = template.walk
 
 internal val NpcTemplate.walk: NpcWalkTemplate? by Property { null }
 
