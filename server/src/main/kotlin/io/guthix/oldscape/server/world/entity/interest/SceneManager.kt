@@ -60,10 +60,9 @@ internal class SceneManager {
 
     fun getInterestedXteas(xteas: Map<Int, IntArray>): List<IntArray> {
         val interestedXteas = mutableListOf<IntArray>()
-        for (mSquareX in middleZone.x.startMapInterest..middleZone.x.endMapInterest) {
-            for (mSquareY in middleZone.y.startMapInterest..middleZone.y.endMapInterest) {
-                if (onTutorialIsland(mSquareX, mSquareY)) continue
-                val id = (mSquareX.value shl 8) or mSquareY.value
+        for (msX in middleZone.x.startMapInterest..middleZone.x.endMapInterest) {
+            for (msY in middleZone.y.startMapInterest..middleZone.y.endMapInterest) {
+                val id = (msX.value shl 8) or msY.value
                 val xtea = xteas[id] ?: error("Could not find XTEA for id $id.")
                 interestedXteas.add(xtea)
             }
@@ -216,10 +215,6 @@ internal class SceneManager {
         private val ZoneUnit.startMapInterest get() = (this - RANGE).inMapsquares
 
         private val ZoneUnit.endMapInterest get() = (this + RANGE).inMapsquares
-
-        private fun onTutorialIsland(x: MapsquareUnit, y: MapsquareUnit) =
-            ((x.value == 48 || x.value == 49) && y.value == 48)
-                || (x.value == 48 && x.value == 148)
     }
 }
 
