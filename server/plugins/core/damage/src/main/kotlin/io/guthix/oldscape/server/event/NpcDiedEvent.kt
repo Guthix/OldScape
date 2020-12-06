@@ -19,6 +19,6 @@ import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.Npc
 
 data class NpcDiedEvent(
-    val npc: Npc,
+    override val npc: Npc,
     override val world: World
-) : GameEvent(world)
+) : NpcGameEvent(npc, world)

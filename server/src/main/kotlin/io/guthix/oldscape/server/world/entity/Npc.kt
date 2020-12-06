@@ -28,6 +28,8 @@ data class Npc(val id: Int, override val index: Int, override var pos: Tile) : C
 
     val name: String get() = template.name
 
+    var isRemoved: Boolean = false
+
     override var spawnPos: Tile = pos.copy()
 
     override val updateFlags = sortedSetOf<NpcUpdateType>()

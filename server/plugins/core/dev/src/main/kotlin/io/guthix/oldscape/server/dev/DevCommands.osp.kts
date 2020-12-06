@@ -60,12 +60,6 @@ on(ClientCheatEvent::class).where { string == "rangeq" }.then {
     player.itemBag.add(ObjIds.BRONZE_ARROW_882, amount = 5)
 }
 
-on(ClientCheatEvent::class).where { string == "test" }.then {
-    println("testing1 ${player.persValue1}")
-    println("testing1 ${player.persValue2}")
-    println("testing1 ${player.persValue3}")
-}
-
 on(ClientCheatEvent::class).where { string == "clear" }.then {
     player.clearMap()
 }

@@ -64,7 +64,7 @@ class NpcInfoSmallViewportPacket(
                     buf.writeBits(value = getDirectionWalk(npc), amount = 3) //TODO Needs to send second step
                     buf.writeBoolean(npc.updateFlags.isNotEmpty())
                 }
-                npc.index == -1 || npc.movementType == MovementInterestUpdate.TELEPORT
+                npc.isRemoved || npc.movementType == MovementInterestUpdate.TELEPORT
                     || !player.pos.isInterestedIn(npc.pos) -> {
                     buf.writeBoolean(true)
                     buf.writeBits(value = 3, amount = 2)
