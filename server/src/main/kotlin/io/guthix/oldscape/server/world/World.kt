@@ -58,6 +58,8 @@ class World internal constructor(
     internal val map: Array<Array<Array<Zone?>>>,
     val xteas: Map<Int, IntArray>
 ) : TimerTask(), TaskHolder, EventHolder, PropertyHolder {
+    var tick: Long = 0
+
     override val properties: MutableMap<KProperty<*>, Any?> = mutableMapOf()
 
     override val events: LinkedBlockingDeque<EventHandler<Event>> = LinkedBlockingDeque()
@@ -92,6 +94,7 @@ class World internal constructor(
 
         processLogouts()
         postProcess()
+        tick++
     }
 
     private fun processInEvents() {
@@ -151,15 +154,20 @@ class World internal constructor(
 
     fun addNpc(npc: Npc): Npc {
         npcs.add(npc)
+        npc.isRemoved = false
         return npc
     }
 
     fun removeNpc(npc: Npc): Npc {
         npcs.remove(npc)
+        npc.isRemoved = true
         return npc
     }
 
-    fun freeNpc(npc: Npc): Unit = npcs.free(npc)
+    fun freeNpc(npc: Npc) {
+        npcs.free(npc)
+        npc.isRemoved = true
+    }
 
     fun stagePlayerLogout(player: Player, force: Boolean) {
         player.stageLogout(force)
