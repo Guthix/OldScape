@@ -224,7 +224,7 @@ class Player internal constructor(
         ctx.write(SetMapFlagPacket(x - sceneManager.baseX.inTiles, y - sceneManager.baseY.inTiles))
     }
 
-    fun playSont(id: Int) {
+    fun playSong(id: Int) {
         ctx.write(MidiSongPacket(id))
     }
 

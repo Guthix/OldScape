@@ -129,7 +129,7 @@ abstract class Character(open val index: Int) : Entity, EventHolder, TaskHolder 
                 path.removeAt(0)
             }
         }
-        EventBus.schedule(CharacterMovedEvent(curPos, pos, this, world))
+        EventBus.schedule(CharacterMovedEvent(curPos, this, world))
         orientation = getOrientation(followPosition, pos)
     }
 

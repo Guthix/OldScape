@@ -21,7 +21,6 @@ import io.guthix.oldscape.server.world.map.Tile
 
 data class CharacterMovedEvent(
     val from: Tile,
-    val to: Tile,
     override val character: Character,
     override val world: World
 ) : CharacterGameEvent(character, world)
