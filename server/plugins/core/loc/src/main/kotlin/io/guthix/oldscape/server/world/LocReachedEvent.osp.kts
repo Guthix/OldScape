@@ -16,10 +16,7 @@
 package io.guthix.oldscape.server.world
 
 import io.guthix.oldscape.server.event.LocReachedEvent
-import io.guthix.oldscape.server.task.NormalTask
 
 on(LocReachedEvent::class).then {
-    player.addTask(NormalTask) {
-        player.turnTo(loc)
-    }
+    player.turnTo(loc)
 }

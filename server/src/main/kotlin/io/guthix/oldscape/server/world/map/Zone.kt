@@ -34,6 +34,8 @@ data class Zone internal constructor(val floor: FloorUnit, val x: ZoneUnit, val 
         IntArray(ZoneUnit.SIZE_TILE.value)
     }
 
+    internal val playersLoaded: MutableList<Player> = mutableListOf()
+
     val players: MutableList<Player> = mutableListOf()
 
     val npcs: MutableList<Npc> = mutableListOf()
@@ -69,7 +71,7 @@ data class Zone internal constructor(val floor: FloorUnit, val x: ZoneUnit, val 
         val locAtPosition = staticLocs[loc.mapKey]
         require(locAtPosition == null) { "Can't add loc because $locAtPosition already exists on ${loc.pos}." }
         addedLocs[loc.mapKey] = loc
-        players.forEach { player -> player.scene.addChangeLoc(loc) }
+        playersLoaded.forEach { player -> player.scene.addChangeLoc(loc) }
     }
 
     fun delLoc(loc: Loc) {
@@ -81,12 +83,12 @@ data class Zone internal constructor(val floor: FloorUnit, val x: ZoneUnit, val 
             require(staticLoc != null) {  "Can't deleted loc because $loc doesn't exist." }
             deletedLocs[loc.mapKey] = staticLoc
         }
-        players.forEach { player -> player.scene.delLoc(loc) }
+        playersLoaded.forEach { player -> player.scene.delLoc(loc) }
     }
 
     fun addObject(tile: Tile, obj: Obj) {
         groundObjects.getOrPut(tile, { mutableMapOf() }).getOrPut(obj.id, { mutableListOf() }).add(obj)
-        players.forEach { player -> player.scene.addObject(tile, obj) }
+        playersLoaded.forEach { player -> player.scene.addObject(tile, obj) }
     }
 
     fun removeObject(tile: Tile, id: Int): Obj {
@@ -99,12 +101,12 @@ data class Zone internal constructor(val floor: FloorUnit, val x: ZoneUnit, val 
         val obj = objList.removeFirst()
         if (objIdMap.isEmpty()) groundObjects.remove(tile)
         if (objList.isEmpty()) groundObjects[tile]?.remove(id)
-        players.forEach { player -> player.scene.removeObject(tile, obj) }
+        playersLoaded.forEach { player -> player.scene.removeObject(tile, obj) }
         return obj
     }
 
     fun addProjectile(proj: Projectile) {
-        players.forEach { player -> player.scene.addProjectile(proj) }
+        playersLoaded.forEach { player -> player.scene.addProjectile(proj) }
     }
 
     override fun toString(): String = "Zone(z=${floor.value}, x=${x.value}, y=${y.value})"

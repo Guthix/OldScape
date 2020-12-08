@@ -80,7 +80,7 @@ internal class SceneManager {
     fun unsubscribeZones(player: Player) {
         zones.forEachIndexed { _, arrayOfZones ->
             arrayOfZones.forEachIndexed { _, zone ->
-                zone?.players?.remove(player)
+                zone?.playersLoaded?.remove(player)
             }
         }
     }
@@ -93,7 +93,7 @@ internal class SceneManager {
                 val zone = world.getZone(middleZone.floor, zoneX, zoneY)
                 zones[i][j] = zone
                 zone?.let {
-                    zone.players.add(player)
+                    zone.playersLoaded.add(player)
                     val prevLocalX = (zone.x - (oldZone.x - RANGE))
                     val prevLocalY = (zone.y - (oldZone.y - RANGE))
                     if (middleZone.floor == oldZone.floor && prevLocalX in REL_RANGE && prevLocalY in REL_RANGE) {
@@ -182,7 +182,7 @@ internal class SceneManager {
                 val zone = world.getZone(middleZone.floor, zoneX, zoneY)
                 zones[i][j] = zone
                 zone?.let {
-                    zone.players.add(player)
+                    zone.playersLoaded.add(player)
                     addInterestPackets(zone)
                 }
             }

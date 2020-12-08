@@ -40,13 +40,14 @@ class Property<in C : PropertyHolder, T : Any?>(
     }
 }
 
+internal val KProperty<*>.persistentName get() = "${javaField?.declaringClass?.name}.${name}"
+
 class PersistentProperty<in C : PersistentPropertyHolder, T : Any>(
     val initializer: C.() -> T = { throw IllegalStateException("Not initialized.") }
 ) {
     @Suppress("UNCHECKED_CAST")
     operator fun getValue(thisRef: C, property: KProperty<*>): T {
-        val key = "${property.javaField?.declaringClass?.name}.${property.name}"
-        return thisRef.persistentProperties.getOrPut(key) {
+        return thisRef.persistentProperties.getOrPut(property.persistentName) {
             initializer(thisRef)
         } as T
     }

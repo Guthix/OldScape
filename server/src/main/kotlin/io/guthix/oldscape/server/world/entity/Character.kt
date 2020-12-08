@@ -26,6 +26,7 @@ import io.guthix.oldscape.server.world.entity.interest.InterestUpdateType
 import io.guthix.oldscape.server.world.entity.interest.MovementInterestUpdate
 import io.guthix.oldscape.server.world.entity.interest.PlayerManager
 import io.guthix.oldscape.server.world.map.Tile
+import io.guthix.oldscape.server.world.map.Zone
 import io.guthix.oldscape.server.world.map.dim.TileUnit
 import io.guthix.oldscape.server.world.map.dim.floors
 import io.guthix.oldscape.server.world.map.dim.tiles
@@ -42,6 +43,8 @@ abstract class Character(open val index: Int) : Entity, EventHolder, TaskHolder 
     override val sizeY: TileUnit get() = size
 
     abstract override var pos: Tile
+
+    abstract var zone: Zone
 
     abstract var spawnPos: Tile
 
@@ -91,12 +94,19 @@ abstract class Character(open val index: Int) : Entity, EventHolder, TaskHolder 
 
     fun move(world: World) {
         lastPos = pos
+        val lastZone = zone
         when {
             teleportLocation != null -> doTeleport(world)
             path.isNotEmpty() -> takeStep(world)
             else -> MovementInterestUpdate.STAY
         }
+        zone = world.getZone(pos) ?: error("Player at pos $pos not in zone.")
+        if(lastZone != zone) {
+            moveZone(lastZone, zone)
+        }
     }
+
+    abstract fun moveZone(from: Zone, to: Zone)
 
     private fun doTeleport(world: World) {
         movementType = MovementInterestUpdate.TELEPORT

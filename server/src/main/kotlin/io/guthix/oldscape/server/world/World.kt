@@ -30,6 +30,7 @@ import io.guthix.oldscape.server.net.game.GameDecoder
 import io.guthix.oldscape.server.net.game.GameEncoder
 import io.guthix.oldscape.server.net.game.GameHandler
 import io.guthix.oldscape.server.net.login.*
+import io.guthix.oldscape.server.persistentName
 import io.guthix.oldscape.server.plugin.EventHandler
 import io.guthix.oldscape.server.task.Task
 import io.guthix.oldscape.server.task.TaskHolder
@@ -129,7 +130,13 @@ class World internal constructor(
             request.ctx.pipeline().replace(
                 StatusEncoder::class.qualifiedName, LoginEncoder::class.qualifiedName, LoginEncoder()
             )
-            val player = players.create(playerDbData.first, playerDbData.second, request)
+            val tile = playerDbData.second[Player::pos.persistentName] as Tile
+            val player = players.create(
+                playerDbData.first,
+                playerDbData.second,
+                getZone(tile) ?: error("Zone doesn't exist for $tile."),
+                request
+            )
             request.ctx.writeAndFlush(LoginResponse(player.index, player.rights))
             request.ctx.pipeline().replace(LoginDecoder::class.qualifiedName, GameDecoder::class.qualifiedName,
                 GameDecoder(request.isaacPair.decodeGen, player, this)
@@ -145,7 +152,7 @@ class World internal constructor(
     }
 
     fun createNpc(id: Int, tile: Tile): Npc {
-        val npc = npcs.create(id, tile)
+        val npc = npcs.create(id, tile, getZone(tile) ?: error("Zone doesn't exist for $tile."))
         EventBus.schedule(NpcSpawnedEvent(npc, this))
         return npc
     }

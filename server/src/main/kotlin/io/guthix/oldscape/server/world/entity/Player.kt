@@ -26,6 +26,7 @@ import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.interest.*
 import io.guthix.oldscape.server.world.entity.intface.IfComponent
 import io.guthix.oldscape.server.world.map.Tile
+import io.guthix.oldscape.server.world.map.Zone
 import io.guthix.oldscape.server.world.map.dim.TileUnit
 import io.guthix.oldscape.server.world.map.dim.floors
 import io.guthix.oldscape.server.world.map.dim.tiles
@@ -38,6 +39,7 @@ class Player internal constructor(
     var ctx: ChannelHandlerContext,
     val username: String,
     val clientSettings: ClientSettings,
+    override var zone: Zone,
     override val persistentProperties: MutableMap<String, Any>,
     private val playerManager: PlayerManager,
     private val npcManager: NpcManager,
@@ -171,6 +173,11 @@ class Player internal constructor(
         statManager.postProcess()
         energyManager.postProcess()
         sceneManager.postProcess()
+    }
+
+    override fun moveZone(from: Zone, to: Zone) {
+        from.players.remove(this)
+        to.players.add(this)
     }
 
     fun openTopInterface(id: Int, modalSlot: Int? = null, moves: Map<Int, Int> = mutableMapOf()): TopInterfaceManager {

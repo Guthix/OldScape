@@ -463,12 +463,10 @@ class PlayerInfoPacket(
         }
 
         val movementTemporary: PlayerUpdateType = PlayerUpdateType(10, 0x400) { player ->
-            println("Temp move")
             writeByteNeg(if (player.movementType == MovementInterestUpdate.TELEPORT) 127 else 0)
         }
 
         val orientation: PlayerUpdateType = PlayerUpdateType(11, 0x8) { player ->
-            println("Send orientation ${player.orientation}")
             writeShortAdd(player.orientation)
         }
     }

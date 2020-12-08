@@ -20,6 +20,7 @@ import io.guthix.oldscape.server.world.entity.Npc
 import io.guthix.oldscape.server.world.entity.Player
 import io.guthix.oldscape.server.world.entity.interest.*
 import io.guthix.oldscape.server.world.map.Tile
+import io.guthix.oldscape.server.world.map.Zone
 import java.util.*
 import kotlin.random.Random
 
@@ -36,9 +37,9 @@ class NpcList(capacity: Int) : Iterable<Npc> {
         for (index in capacity downTo 1) freeIndexes.push(index)
     }
 
-    fun create(id: Int, pos: Tile): Npc {
+    fun create(id: Int, pos: Tile, zone: Zone): Npc {
         val index = freeIndexes.pop()
-        val npc = Npc(id, index, pos)
+        val npc = Npc(id, index, pos, zone)
         npcs[npc.index] = npc
         occupiedIndexes.add(npc.index)
         return npc
@@ -88,10 +89,10 @@ class PlayerList(capacity: Int) : Iterable<Player> {
         for (index in capacity downTo 1) freeIndexes.push(index)
     }
 
-    fun create(uid: Int, properties: MutableMap<String, Any>, req: LoginRequest): Player {
+    fun create(uid: Int, properties: MutableMap<String, Any>, zone: Zone, req: LoginRequest): Player {
         val index = freeIndexes.pop()
         val priority = Random.nextInt(occupiedIndexes.size + 1)
-        val player = Player(uid, priority, req.ctx, req.username, req.clientSettings, properties,
+        val player = Player(uid, priority, req.ctx, req.username, req.clientSettings, zone, properties,
             PlayerManager(index), NpcManager(), SceneManager(), EnergyManager(), ContextMenuManager(), VarpManager(),
             StatManager(), TopInterfaceManager(req.ctx, id = 165)
         )

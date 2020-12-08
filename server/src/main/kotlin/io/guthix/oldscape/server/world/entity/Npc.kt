@@ -20,10 +20,16 @@ import io.guthix.oldscape.server.net.game.out.NpcInfoSmallViewportPacket
 import io.guthix.oldscape.server.template.NpcTemplate
 import io.guthix.oldscape.server.world.entity.interest.NpcUpdateType
 import io.guthix.oldscape.server.world.map.Tile
+import io.guthix.oldscape.server.world.map.Zone
 import io.guthix.oldscape.server.world.map.dim.TileUnit
 import io.guthix.oldscape.server.world.map.dim.tiles
 
-data class Npc(val id: Int, override val index: Int, override var pos: Tile) : Character(index) {
+class Npc(
+    val id: Int,
+    override val index: Int,
+    override var pos: Tile,
+    override var zone: Zone
+) : Character(index) {
     val template: NpcTemplate by lazy { ServerContext.npcTemplates[id] }
 
     val name: String get() = template.name
@@ -55,4 +61,9 @@ data class Npc(val id: Int, override val index: Int, override var pos: Tile) : C
     override fun addHitUpdateFlag(): Boolean = updateFlags.add(NpcInfoSmallViewportPacket.hit)
 
     override fun addShoutFlag(): Boolean = updateFlags.add(NpcInfoSmallViewportPacket.shout)
+
+    override fun moveZone(from: Zone, to: Zone) {
+        from.npcs.remove(this)
+        to.npcs.add(this)
+    }
 }
