@@ -92,19 +92,21 @@ abstract class Character(open val index: Int) : Entity, EventHolder, TaskHolder 
     fun move(world: World) {
         lastPos = pos
         when {
-            teleportLocation != null -> {
-                movementType = MovementInterestUpdate.TELEPORT
-                pos = teleportLocation!!
-                followPosition = pos.copy(x = pos.x - 1.tiles) // TODO make follow location based on collision masks
-                addPostTask { teleportLocation = null }
-            }
+            teleportLocation != null -> doTeleport(world)
             path.isNotEmpty() -> takeStep(world)
             else -> MovementInterestUpdate.STAY
         }
     }
 
+    private fun doTeleport(world: World) {
+        movementType = MovementInterestUpdate.TELEPORT
+        pos = teleportLocation!!
+        followPosition = pos.copy(x = pos.x - 1.tiles) // TODO make follow location based on collision masks
+        addPostTask { teleportLocation = null }
+        EventBus.schedule(CharacterMovedEvent(lastPos, this, world))
+    }
+
     private fun takeStep(world: World) {
-        val curPos = pos.copy()
         pos = when {
             inRunMode -> when {
                 path.size == 1 -> {
@@ -130,7 +132,7 @@ abstract class Character(open val index: Int) : Entity, EventHolder, TaskHolder 
                 path.removeAt(0)
             }
         }
-        EventBus.schedule(CharacterMovedEvent(curPos, this, world))
+        EventBus.schedule(CharacterMovedEvent(lastPos, this, world))
         orientation = getOrientation(followPosition, pos)
     }
 

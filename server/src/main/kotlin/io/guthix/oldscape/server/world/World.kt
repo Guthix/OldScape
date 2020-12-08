@@ -84,12 +84,10 @@ class World internal constructor(
         // NPC
         processNpcTasks()
         proccessNpcMovement()
-        processNpcTasks()
 
         // Player
         processPlayerTasks()
         proccessPlayerMovement()
-        processPlayerTasks()
         synchronizeInterest()
 
         processLogouts()
