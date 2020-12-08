@@ -63,8 +63,8 @@ inline fun <reified T : Template, B : BaseTemplate> Script.loadTemplates(
     property: KProperty<T?>
 ) {
     on(ServerBootEvent::class).then {
-        val templates: List<T> = readYaml(relativePath)
-        templates.forEach { template ->
+        val templates: Map<String, T> = readYaml(relativePath)
+        templates.values.forEach { template ->
             template.ids.forEach { id ->
                 val baseTemplate = loader[id]
                 baseTemplate.properties[property] = template

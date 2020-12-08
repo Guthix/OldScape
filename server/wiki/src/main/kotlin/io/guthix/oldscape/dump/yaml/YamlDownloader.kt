@@ -15,7 +15,10 @@
  */
 package io.guthix.oldscape.dump.yaml
 
+import com.charleskorn.kaml.PolymorphismStyle
+import com.charleskorn.kaml.SequenceStyle
 import com.charleskorn.kaml.Yaml
+import com.charleskorn.kaml.YamlConfiguration
 import io.guthix.js5.Js5Cache
 import io.guthix.js5.container.disk.Js5DiskStore
 import io.guthix.oldscape.cache.ConfigArchive
@@ -33,18 +36,16 @@ import mu.KotlinLogging
 import java.nio.file.Files
 import java.nio.file.Path
 
-private val logger = KotlinLogging.logger { }
-
 fun main(args: Array<String>) {
     YamlDownloader.main(args)
 }
 
 object YamlDownloader {
-    private val cachePath = Path.of("server/src/main/resources/cache")
+    val cachePath: Path = Path.of("server/src/main/resources/cache")
 
-    private val serverPath = Path.of("server/src/main/resources/template")
+    val serverPath: Path = Path.of("server/src/main/resources/template")
 
-    private val dumpPath = Path.of("server/toolbox/src/resources/dump")
+    val dumpPath: Path = Path.of("server/wiki/src/main/resources/dump")
 
     @JvmStatic
     fun main(args: Array<String>) {
@@ -54,10 +55,10 @@ object YamlDownloader {
         val npcCacheConfigs = NpcConfig.load(configArchive.readGroup(NpcConfig.id))
         val objCacheConfigs = ObjConfig.load(configArchive.readGroup(ObjConfig.id))
 
-        val objWikiConfigs = scrapeObjectWikiConfigs(objCacheConfigs).filter { it.ids != null }.sortedBy {
+        val npcWikiConfigs = scrapeNpcWikiConfigs(npcCacheConfigs).filter { it.ids != null }.sortedBy {
             it.ids!!.first()
         }
-        val npcWikiConfigs = scrapeNpcWikiConfigs(npcCacheConfigs).filter { it.ids != null }.sortedBy {
+        val objWikiConfigs = scrapeObjectWikiConfigs(objCacheConfigs).filter { it.ids != null }.sortedBy {
             it.ids!!.first()
         }
 
@@ -74,22 +75,52 @@ object YamlDownloader {
         writeTemplate(monsterDefs, "Monsters.yaml", NpcWikiDefinition::toMonsterTemplate)
     }
 
-    fun <D : WikiDefinition, T : Template> writeTemplate(
+    inline fun <reified D : WikiDefinition, reified T : Template> writeTemplate(
         defs: List<D>,
         fileName: String,
         templateBuilder: D.(T?) -> T
     ) {
+        val logger = KotlinLogging.logger {  }
         val serverTemplates = try {
-            Yaml.default.readYaml<List<T>>(Files.readString(serverPath.resolve(fileName)))
+            Yaml.default.readYaml<Map<String, T>>(Files.readString(serverPath.resolve(fileName)))
         } catch (e: Exception) {
-            emptyList()
+            emptyMap()
         }
         val dumpFile = dumpPath.resolve(fileName)
-        val yamlString = Yaml.default.encodeToString(defs.map { dump ->
-            val serverTemplate = serverTemplates.find { dump.ids == it.ids }
-            dump.templateBuilder(serverTemplate)
-        })
+        val data: Map<String, T> = defs.map { dump ->
+            val serverTemplate = serverTemplates.values.find { dump.ids == it.ids }
+            configNameToIdentifier(dump.ids?.first() ?: 0, dump.name ?: "NULL") to dump.templateBuilder(serverTemplate)
+        }.toMap()
+        val yamlString = Yaml(
+            configuration = YamlConfiguration(
+                encodeDefaults = false,
+                sequenceStyle = SequenceStyle.Flow,
+                polymorphismStyle = PolymorphismStyle.Property
+            )
+        ).encodeToString(data)
         Files.writeString(dumpFile, yamlString)
         logger.info { "Written ${defs.size} templates to ${dumpFile.toFile().absolutePath}" }
     }
+
+    fun configNameToIdentifier(id: Int, name: String): String {
+        fun String.removeTags(): String {
+            val builder = StringBuilder(length)
+            var inTag = false
+            forEach {
+                if (it == '<') {
+                    inTag = true
+                } else if (it == '>') {
+                    inTag = false
+                } else if (!inTag) {
+                    builder.append(it)
+                }
+            }
+            return "$builder"
+        }
+
+        val normalizedName = name.toUpperCase().replace(' ', '_').replace(Regex("[^a-zA-Z\\d_:]"), "").removeTags()
+        val propName = if (normalizedName.isNotEmpty()) normalizedName + "_$id" else "$id"
+        return if (propName.first().isDigit()) "`$propName`" else propName
+    }
 }
+

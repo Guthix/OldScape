@@ -36,12 +36,6 @@ allprojects {
     version = project(":server").version
 }
 
-//tasks.register("run(debug)") {
-//    group = "application"
-//    application.applicationDefaultJvmArgs = listOf("-Dlogback.configurationFile=src/main/resources/logbackDebug.xml")
-//    tasks.getAt("run").shouldRunAfter(this)
-//}
-
 dependencies {
     project(":server:plugins").dependencyProject.subprojects.forEach { pluginProject ->
         if (pluginProject.buildFile.exists()) {

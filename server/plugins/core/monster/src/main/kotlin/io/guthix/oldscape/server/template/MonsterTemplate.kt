@@ -20,6 +20,7 @@ import io.guthix.oldscape.server.stat.AttackType
 import io.guthix.oldscape.server.stat.CombatBonus
 import io.guthix.oldscape.server.stat.StyleBonus
 import io.guthix.oldscape.server.world.entity.Npc
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 val Npc.lvl: Int get() = monsterTemplate.lvl
@@ -29,7 +30,7 @@ val Npc.maxHit: Int get() = monsterTemplate.maxHit ?: throw TemplateNotFoundExce
 val Npc.attackType: AttackType
     get() = monsterTemplate.attackType ?: throw TemplateNotFoundException(id, Npc::attackType)
 
-val Npc.isAggressive: Boolean get() = monsterTemplate.isAggressive
+val Npc.aggressiveType: AggresiveType get() = monsterTemplate.aggressiveType
 
 val Npc.isPoisonous: Boolean get() = monsterTemplate.isPoisonous
 
@@ -65,12 +66,19 @@ internal val Npc.monsterTemplate: MonsterTemplate
 internal val NpcTemplate.monster: MonsterTemplate? by Property { null }
 
 @Serializable
+sealed class AggresiveType {
+    @Serializable @SerialName("Never") object Never : AggresiveType()
+    @Serializable @SerialName("Always") data class Always(val range: Int? = null) : AggresiveType()
+    @Serializable @SerialName("Combat") data class Combat(val range: Int? = null) : AggresiveType()
+}
+
+@Serializable
 data class MonsterTemplate(
     override val ids: List<Int>,
     val lvl: Int,
     val maxHit: Int? = null,
     val attackType: AttackType? = null,
-    val isAggressive: Boolean,
+    val aggressiveType: AggresiveType,
     val isPoisonous: Boolean,
     val isImmumePoison: Boolean,
     val isImmuneVenom: Boolean,

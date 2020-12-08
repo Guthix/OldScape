@@ -77,8 +77,8 @@ object OldScape {
             ).mapsquares,
             mapSquareXteas.map { it.mapsquare to it.key }.toMap()
         )
-        EventBus.schedule(WorldInitializedEvent(world))
         Timer().scheduleAtFixedRate(world, 0, 600)
+        EventBus.execute(WorldInitializedEvent(world))
         OldScapeServer(config.revision, config.port, config.rsa.privateKey, config.rsa.modulus, world, store).run()
     }
 

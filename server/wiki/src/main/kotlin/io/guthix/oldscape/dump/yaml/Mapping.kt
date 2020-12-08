@@ -60,7 +60,7 @@ fun NpcWikiDefinition.toMonsterTemplate(serverT: MonsterTemplate?): MonsterTempl
     combatLvl ?: throw IllegalStateException("Combat lvl can't be null."),
     maxHit,
     attackStyles?.first().toAttackType(),
-    isAggressive ?: false,
+    if (isAggressive == true) AggresiveType.Combat(null) else AggresiveType.Never,
     isPoisonous ?: false,
     isImmuneToPoison ?: false,
     isImmuneToVenom ?: false,

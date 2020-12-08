@@ -22,9 +22,11 @@ import io.guthix.oldscape.server.world.map.dim.floors
 import io.guthix.oldscape.server.world.map.dim.tiles
 
 on(WorldInitializedEvent::class).then {
-    val spawns: List<NpcSpawn> = readYaml("/NpcSpawns.yaml")
-    spawns.forEach { (id, floor, x, y) ->
+    val spawns: Map<String, List<NpcSpawn>> = readYaml("/NpcSpawns.yaml")
+    var count = 0
+    spawns.values.forEach { spawnList -> spawnList.forEach { (id, floor, x, y) ->
         world.createNpc(id, Tile(floor.floors, x.tiles, y.tiles))
-    }
-    logger.info { "Loaded ${spawns.size} Npc spawns" }
+        count++
+    } }
+    logger.info { "Loaded $count Npc spawns" }
 }

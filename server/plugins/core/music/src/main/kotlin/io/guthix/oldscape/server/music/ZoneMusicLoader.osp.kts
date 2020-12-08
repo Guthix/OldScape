@@ -21,8 +21,8 @@ import io.guthix.oldscape.server.world.map.dim.floors
 import io.guthix.oldscape.server.world.map.dim.mapsquares
 
 on(WorldInitializedEvent::class).then {
-    val zoneMusic: List<ZoneMusic> = readYaml("/Music.yaml")
-    zoneMusic.forEach { (floor, msX, msY, musicId) ->
+    val zoneMusic: Map<String, ZoneMusic> = readYaml("/Music.yaml")
+    zoneMusic.values.forEach { (floor, msX, msY, musicId) ->
         val zones = world.getZones(floor.floors, msX.mapsquares, msY.mapsquares)
         zones.forEach { zoneY ->
             zoneY.forEach { zone ->

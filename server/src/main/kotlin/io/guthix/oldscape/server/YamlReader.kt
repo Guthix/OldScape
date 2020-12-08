@@ -15,7 +15,9 @@
  */
 package io.guthix.oldscape.server
 
+import com.charleskorn.kaml.PolymorphismStyle
 import com.charleskorn.kaml.Yaml
+import com.charleskorn.kaml.YamlConfiguration
 import kotlinx.serialization.decodeFromString
 import java.io.BufferedReader
 import java.io.FileNotFoundException
@@ -27,7 +29,9 @@ inline fun <reified C> Any.readYaml(filePath: String): C {
     val inStream = javaClass.getResourceAsStream(filePath).use {
         BufferedReader(InputStreamReader(it)).lines().parallel().collect(Collectors.joining("\n"))
     }
-    return Yaml.default.decodeFromString(inStream)
+    return Yaml(
+        configuration = YamlConfiguration(encodeDefaults = false, polymorphismStyle = PolymorphismStyle.Property)
+    ).decodeFromString(inStream)
 }
 
 
