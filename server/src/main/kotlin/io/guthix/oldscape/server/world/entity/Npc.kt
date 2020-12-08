@@ -30,6 +30,10 @@ class Npc(
     override var pos: Tile,
     override var zone: Zone
 ) : Character(index) {
+    init {
+        zone.npcs.add(this)
+    }
+
     val template: NpcTemplate by lazy { ServerContext.npcTemplates[id] }
 
     val name: String get() = template.name

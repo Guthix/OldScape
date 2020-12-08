@@ -101,18 +101,26 @@ class NpcInfoSmallViewportPacket(
 
     fun externalNpcUpdate(buf: BitBuf): BitBuf {
         var npcsAdded = 0
-        for (npc in npcs) { // TODO can optimize this
-            if (npcsAdded > 16) break
-            if (needsAdd(npc)) {
-                buf.writeBits(value = npc.index, amount = 15)
-                buf.writeBits(value = getRespectiveLocation(npc.pos.y, player.pos.y).value, amount = 5)
-                buf.writeBits(value = npc.encodedOrientation, amount = 3)
-                buf.writeBoolean(false) // Is teleport
-                buf.writeBoolean(npc.updateFlags.isNotEmpty())
-                buf.writeBits(value = getRespectiveLocation(npc.pos.x, player.pos.x).value, amount = 5)
-                buf.writeBits(value = npc.id, amount = 14)
-                localNpcs.add(npc)
-                npcsAdded++
+        outer@ for (zoneDim in player.scene.zones) {
+            for(zone in zoneDim) {
+                if(zone == null) continue
+                for(npc in zone.npcs) {
+                    if (npcsAdded > 16) {
+                        println("added 16 npcs")
+                        break@outer
+                    }
+                    if (needsAdd(npc)) {
+                        buf.writeBits(value = npc.index, amount = 15)
+                        buf.writeBits(value = getRespectiveLocation(npc.pos.y, player.pos.y).value, amount = 5)
+                        buf.writeBits(value = npc.encodedOrientation, amount = 3)
+                        buf.writeBoolean(false) // Is teleport
+                        buf.writeBoolean(npc.updateFlags.isNotEmpty())
+                        buf.writeBits(value = getRespectiveLocation(npc.pos.x, player.pos.x).value, amount = 5)
+                        buf.writeBits(value = npc.id, amount = 14)
+                        localNpcs.add(npc)
+                        npcsAdded++
+                    }
+                }
             }
         }
         if (localNpcs.any { it.updateFlags.isNotEmpty() }) {

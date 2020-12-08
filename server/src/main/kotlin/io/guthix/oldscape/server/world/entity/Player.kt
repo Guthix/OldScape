@@ -50,6 +50,10 @@ class Player internal constructor(
     private val statManager: StatManager,
     private val interfaceManager: TopInterfaceManager,
 ) : Character(playerManager.index), Comparable<Player>, EventHolder, PersistentPropertyHolder {
+    init {
+        zone.players.add(this)
+    }
+
     override var pos: Tile by PersistentProperty { Tile(0.floors, 3235.tiles, 3222.tiles) }
 
     override var spawnPos: Tile = pos.copy()
