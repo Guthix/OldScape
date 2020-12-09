@@ -13,14 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.guthix.oldscape.server.template
+package io.guthix.oldscape.server.event
 
-import io.guthix.oldscape.cache.config.NpcConfig
+import io.guthix.oldscape.server.world.World
+import io.guthix.oldscape.server.world.entity.Npc
+import io.guthix.oldscape.server.world.entity.Player
 
-data class NpcTemplate(private val config: NpcConfig) : BaseTemplate(config) {
-    val id: Int get() = config.id
-    val name: String get() = config.name
-    val size: Int get() = config.size.toInt()
-    val combatLevel: Int? get() = config.combatLevel
-    val contextMenu: Array<String?> get() = config.options
-}
+data class NpcAttackEvent(
+    val npc: Npc,
+    override val player: Player,
+    override val world: World
+) : PlayerGameEvent(player, world)

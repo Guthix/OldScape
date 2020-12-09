@@ -62,6 +62,8 @@ class Player internal constructor(
 
     override var orientation: Int by PersistentProperty { 0 }
 
+    val localNpcs: List<Npc> get() = npcManager.localNpcs
+
     val gender: Gender by PersistentProperty { Gender.MALE }
 
     val colours: Colours by PersistentProperty { Colours(0, 0, 0, 0, 0) }

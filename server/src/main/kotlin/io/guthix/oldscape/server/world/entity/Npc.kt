@@ -41,6 +41,8 @@ class Npc(
 
     val name: String get() = template.name
 
+    val combatLevel: Int? get() = template.combatLevel
+
     var isRemoved: Boolean = false
 
     override var spawnPos: Tile = pos.copy()

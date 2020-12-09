@@ -20,6 +20,9 @@ import io.guthix.oldscape.server.stat.AttackType
 import io.guthix.oldscape.server.stat.CombatBonus
 import io.guthix.oldscape.server.stat.StyleBonus
 import io.guthix.oldscape.server.world.entity.Npc
+import io.guthix.oldscape.server.world.map.dim.TileUnit
+import io.guthix.oldscape.server.world.map.dim.tiles
+import kotlinx.serialization.Contextual
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -68,8 +71,16 @@ internal val NpcTemplate.monster: MonsterTemplate? by Property { null }
 @Serializable
 sealed class AggresiveType {
     @Serializable @SerialName("Never") object Never : AggresiveType()
-    @Serializable @SerialName("Always") data class Always(val range: Int? = null) : AggresiveType()
-    @Serializable @SerialName("Combat") data class Combat(val range: Int? = null) : AggresiveType()
+    @Serializable @SerialName("Always") data class Always(val _range: Int? = null) : AggresiveType() {
+        @Contextual val range: TileUnit = _range?.tiles ?: DEFAULT_RANGE
+    }
+    @Serializable @SerialName("Combat") data class Combat(val _range: Int? = null) : AggresiveType() {
+        @Contextual val range: TileUnit = _range?.tiles ?: DEFAULT_RANGE
+    }
+
+    companion object {
+        val DEFAULT_RANGE: TileUnit = 10.tiles
+    }
 }
 
 @Serializable
