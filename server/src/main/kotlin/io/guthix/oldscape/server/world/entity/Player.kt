@@ -18,7 +18,9 @@ package io.guthix.oldscape.server.world.entity
 import io.guthix.oldscape.server.PersistentProperty
 import io.guthix.oldscape.server.PersistentPropertyHolder
 import io.guthix.oldscape.server.ServerContext
+import io.guthix.oldscape.server.event.EventBus
 import io.guthix.oldscape.server.event.EventHolder
+import io.guthix.oldscape.server.event.PlayerMovedEvent
 import io.guthix.oldscape.server.event.PublicMessageEvent
 import io.guthix.oldscape.server.net.game.out.*
 import io.guthix.oldscape.server.template.InventoryIds
@@ -177,6 +179,10 @@ class Player internal constructor(
         statManager.postProcess()
         energyManager.postProcess()
         sceneManager.postProcess()
+    }
+
+    override fun scheduleMovedEvent(world: World) {
+        EventBus.schedule(PlayerMovedEvent(lastPos, this, world))
     }
 
     override fun moveZone(from: Zone, to: Zone) {

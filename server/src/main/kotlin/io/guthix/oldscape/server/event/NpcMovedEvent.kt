@@ -16,11 +16,11 @@
 package io.guthix.oldscape.server.event
 
 import io.guthix.oldscape.server.world.World
-import io.guthix.oldscape.server.world.entity.Character
+import io.guthix.oldscape.server.world.entity.Npc
 import io.guthix.oldscape.server.world.map.Tile
 
-data class CharacterMovedEvent(
+data class NpcMovedEvent(
     val from: Tile,
-    override val character: Character,
+    override val npc: Npc,
     override val world: World
-) : CharacterGameEvent(character, world)
+) : NpcGameEvent(npc, world)

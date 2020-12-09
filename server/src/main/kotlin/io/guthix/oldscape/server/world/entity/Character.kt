@@ -15,7 +15,9 @@
  */
 package io.guthix.oldscape.server.world.entity
 
-import io.guthix.oldscape.server.event.*
+import io.guthix.oldscape.server.event.Event
+import io.guthix.oldscape.server.event.EventHolder
+import io.guthix.oldscape.server.event.PublicMessageEvent
 import io.guthix.oldscape.server.net.game.out.PlayerInfoPacket
 import io.guthix.oldscape.server.plugin.EventHandler
 import io.guthix.oldscape.server.task.Task
@@ -92,31 +94,40 @@ abstract class Character(open val index: Int) : Entity, EventHolder, TaskHolder 
         teleportLocation = to
     }
 
+    abstract fun scheduleMovedEvent(world: World)
+
+    abstract fun moveZone(from: Zone, to: Zone)
+
     fun move(world: World) {
         lastPos = pos
         val lastZone = zone
         when {
-            teleportLocation != null -> doTeleport(world)
-            path.isNotEmpty() -> takeStep(world)
+            teleportLocation != null -> {
+                doTeleport()
+                postMovement(lastZone, world)
+            }
+            path.isNotEmpty() -> {
+                doStep()
+                postMovement(lastZone, world)
+            }
             else -> MovementInterestUpdate.STAY
-        }
-        zone = world.getZone(pos) ?: error("Player at pos $pos not in zone.")
-        if(lastZone != zone) {
-            moveZone(lastZone, zone)
         }
     }
 
-    abstract fun moveZone(from: Zone, to: Zone)
+    private fun postMovement(lastZone: Zone, world: World) {
+        zone = world.getZone(pos) ?: error("Player at pos $pos not in zone.")
+        if(lastZone != zone) moveZone(lastZone, zone)
+        scheduleMovedEvent(world)
+    }
 
-    private fun doTeleport(world: World) {
+    private fun doTeleport() {
         movementType = MovementInterestUpdate.TELEPORT
         pos = teleportLocation!!
         followPosition = pos.copy(x = pos.x - 1.tiles) // TODO make follow location based on collision masks
         addPostTask { teleportLocation = null }
-        EventBus.schedule(CharacterMovedEvent(lastPos, this, world))
     }
 
-    private fun takeStep(world: World) {
+    private fun doStep() {
         pos = when {
             inRunMode -> when {
                 path.size == 1 -> {
@@ -142,7 +153,6 @@ abstract class Character(open val index: Int) : Entity, EventHolder, TaskHolder 
                 path.removeAt(0)
             }
         }
-        EventBus.schedule(CharacterMovedEvent(lastPos, this, world))
         orientation = getOrientation(followPosition, pos)
     }
 

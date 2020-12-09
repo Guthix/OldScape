@@ -16,8 +16,11 @@
 package io.guthix.oldscape.server.world.entity
 
 import io.guthix.oldscape.server.ServerContext
+import io.guthix.oldscape.server.event.EventBus
+import io.guthix.oldscape.server.event.NpcMovedEvent
 import io.guthix.oldscape.server.net.game.out.NpcInfoSmallViewportPacket
 import io.guthix.oldscape.server.template.NpcTemplate
+import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.interest.NpcUpdateType
 import io.guthix.oldscape.server.world.map.Tile
 import io.guthix.oldscape.server.world.map.Zone
@@ -65,6 +68,10 @@ class Npc(
     override fun addHitUpdateFlag(): Boolean = updateFlags.add(NpcInfoSmallViewportPacket.hit)
 
     override fun addShoutFlag(): Boolean = updateFlags.add(NpcInfoSmallViewportPacket.shout)
+
+    override fun scheduleMovedEvent(world: World) {
+        EventBus.schedule(NpcMovedEvent(lastPos, this, world))
+    }
 
     override fun moveZone(from: Zone, to: Zone) {
         from.npcs.remove(this)

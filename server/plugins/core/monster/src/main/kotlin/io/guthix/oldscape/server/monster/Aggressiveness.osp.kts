@@ -13,24 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.guthix.oldscape.server.music
+package io.guthix.oldscape.server.monster
 
-import io.guthix.oldscape.server.event.PlayerInitialized
 import io.guthix.oldscape.server.event.PlayerMovedEvent
-import io.guthix.oldscape.server.world.map.dim.MapsquareUnit
 
 on(PlayerMovedEvent::class).then {
-    if (
-        from.floor != player.pos.floor ||
-        (from.x / MapsquareUnit.SIZE_TILE != player.pos.x / MapsquareUnit.SIZE_TILE) ||
-        (from.y / MapsquareUnit.SIZE_TILE != player.pos.y / MapsquareUnit.SIZE_TILE)
-    ) {
-        val zone = world.getZone(player.pos)
-        zone?.musicTrack?.let(player::playSong)
-    }
-}
 
-on(PlayerInitialized::class).then {
-    val zone = world.getZone(player.pos)
-    zone?.musicTrack?.let(player::playSong)
 }

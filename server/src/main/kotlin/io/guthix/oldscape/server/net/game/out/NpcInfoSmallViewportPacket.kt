@@ -105,10 +105,7 @@ class NpcInfoSmallViewportPacket(
             for(zone in zoneDim) {
                 if(zone == null) continue
                 for(npc in zone.npcs) {
-                    if (npcsAdded > 16) {
-                        println("added 16 npcs")
-                        break@outer
-                    }
+                    if (npcsAdded > 16) break@outer
                     if (needsAdd(npc)) {
                         buf.writeBits(value = npc.index, amount = 15)
                         buf.writeBits(value = getRespectiveLocation(npc.pos.y, player.pos.y).value, amount = 5)
