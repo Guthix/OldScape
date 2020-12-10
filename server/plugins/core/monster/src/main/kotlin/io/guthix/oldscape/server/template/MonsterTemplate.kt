@@ -25,8 +25,6 @@ import io.guthix.oldscape.server.world.map.dim.tiles
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
-val Npc.lvl: Int get() = monsterTemplate?.lvl ?: throw TemplateNotFoundException(id, Npc::lvl)
-
 val Npc.maxHit: Int get() = monsterTemplate?.maxHit ?: throw TemplateNotFoundException(id, Npc::maxHit)
 
 val Npc.attackType: AttackType
@@ -90,7 +88,6 @@ sealed class AggresiveType {
 @Serializable
 data class MonsterTemplate(
     override val ids: List<Int>,
-    val lvl: Int,
     val maxHit: Int? = null,
     val attackType: AttackType? = null,
     val aggressiveType: AggresiveType,

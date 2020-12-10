@@ -24,13 +24,13 @@ import io.guthix.js5.container.disk.Js5DiskStore
 import io.guthix.oldscape.cache.ConfigArchive
 import io.guthix.oldscape.cache.config.NpcConfig
 import io.guthix.oldscape.cache.config.ObjConfig
-import io.guthix.oldscape.server.readYaml
 import io.guthix.oldscape.server.template.Template
 import io.guthix.oldscape.wiki.WikiDefinition
 import io.guthix.oldscape.wiki.scrapeNpcWikiConfigs
 import io.guthix.oldscape.wiki.scrapeObjectWikiConfigs
 import io.guthix.oldscape.wiki.wikitext.NpcWikiDefinition
 import io.guthix.oldscape.wiki.wikitext.ObjWikiDefinition
+import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import mu.KotlinLogging
 import java.nio.file.Files
@@ -47,13 +47,21 @@ object YamlDownloader {
 
     val dumpPath: Path = Path.of("server/wiki/src/main/resources/dump")
 
+    val yaml: Yaml = Yaml(
+        configuration = YamlConfiguration(
+            encodeDefaults = false,
+            sequenceStyle = SequenceStyle.Flow,
+            polymorphismStyle = PolymorphismStyle.Property
+        )
+    )
+
     @JvmStatic
     fun main(args: Array<String>) {
         val cache = Js5Cache(Js5DiskStore.open(cachePath))
         val configArchive = cache.readArchive(ConfigArchive.id)
 
         val npcCacheConfigs = NpcConfig.load(configArchive.readGroup(NpcConfig.id))
-        val objCacheConfigs = ObjConfig.load(configArchive.readGroup(ObjConfig.id))
+        val objCacheConfigs = ObjConfig.load(configArchive.readGroup(ObjConfig.id)).filter { it.key < 0 }
 
         val npcWikiConfigs = scrapeNpcWikiConfigs(npcCacheConfigs).filter { it.ids != null }.sortedBy {
             it.ids!!.first()
@@ -63,27 +71,43 @@ object YamlDownloader {
         }
 
         val equipmentDefs = objWikiConfigs.filter { it.isEquipable == true }
-        writeTemplate(equipmentDefs, "Equipment.yaml", ObjWikiDefinition::toEquipmentTemplate)
+        writeTemplate(equipmentDefs,
+            "server/plugins/core/equipment/src/main/resources/template", "Equipment.yaml",
+            ObjWikiDefinition::toEquipmentTemplate
+        )
 
         val weaponDefs = objWikiConfigs.filter { it.combatStyle != null }
-        writeTemplate(weaponDefs, "Weapons.yaml", ObjWikiDefinition::toWeaponTemplate)
+        writeTemplate(weaponDefs,
+            "server/plugins/core/combat/src/main/resources/template",  "Weapons.yaml",
+            ObjWikiDefinition::toWeaponTemplate
+        )
 
         val weightDefs = objWikiConfigs.filter { it.weight != null }
-        writeTemplate(weightDefs, "ObjWeights.yaml", ObjWikiDefinition::toWeightTemplate)
+        writeTemplate(weightDefs,
+            "server/plugins/core/obj/src/main/resources/template", "ObjWeights.yaml",
+            ObjWikiDefinition::toWeightTemplate
+        )
 
         val monsterDefs = npcWikiConfigs.filter { it.combatLvl != null }
-        writeTemplate(monsterDefs, "Monsters.yaml", NpcWikiDefinition::toMonsterTemplate)
+        writeTemplate(
+            monsterDefs,
+            "server/plugins/core/monster/src/main/resources/template", "Monsters.yaml",
+            NpcWikiDefinition::toMonsterTemplate
+        )
     }
 
     inline fun <reified D : WikiDefinition, reified T : Template> writeTemplate(
         defs: List<D>,
+        filePath: String,
         fileName: String,
         templateBuilder: D.(T?) -> T
     ) {
         val logger = KotlinLogging.logger {  }
         val serverTemplates = try {
-            Yaml.default.readYaml<Map<String, T>>(Files.readString(serverPath.resolve(fileName)))
+            val yamlString: String = Files.readString(Path.of(filePath).resolve(fileName))
+            yaml.decodeFromString<Map<String, T>>(yamlString)
         } catch (e: Exception) {
+            logger.error { "Count not find ${Path.of(filePath).resolve(fileName).toAbsolutePath()}." }
             emptyMap()
         }
         val dumpFile = dumpPath.resolve(fileName)
@@ -91,13 +115,7 @@ object YamlDownloader {
             val serverTemplate = serverTemplates.values.find { dump.ids == it.ids }
             configNameToIdentifier(dump.ids?.first() ?: 0, dump.name ?: "NULL") to dump.templateBuilder(serverTemplate)
         }.toMap()
-        val yamlString = Yaml(
-            configuration = YamlConfiguration(
-                encodeDefaults = false,
-                sequenceStyle = SequenceStyle.Flow,
-                polymorphismStyle = PolymorphismStyle.Property
-            )
-        ).encodeToString(data)
+        val yamlString = yaml.encodeToString(data)
         Files.writeString(dumpFile, yamlString)
         logger.info { "Written ${defs.size} templates to ${dumpFile.toFile().absolutePath}" }
     }

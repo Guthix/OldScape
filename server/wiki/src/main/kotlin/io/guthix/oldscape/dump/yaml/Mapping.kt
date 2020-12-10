@@ -57,14 +57,13 @@ fun ObjWikiDefinition.toWeaponTemplate(serverT: WeaponTemplate?): WeaponTemplate
 
 fun NpcWikiDefinition.toMonsterTemplate(serverT: MonsterTemplate?): MonsterTemplate = MonsterTemplate(
     ids!!,
-    combatLvl ?: throw IllegalStateException("Combat lvl can't be null."),
     maxHit,
     attackStyles?.first().toAttackType(),
     if (isAggressive == true) serverT?.aggressiveType ?: AggresiveType.Combat(null) else AggresiveType.Never,
     isPoisonous ?: false,
     isImmuneToPoison ?: false,
     isImmuneToVenom ?: false,
-    serverT?.attackSpeed,
+    serverT?.attackSpeed ?: attackSpeed,
     serverT?.sequences,
     CombatStats(
         hitPoints ?: 0,
