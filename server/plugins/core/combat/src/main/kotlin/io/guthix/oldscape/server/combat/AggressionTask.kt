@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.guthix.oldscape.server.monster
+package io.guthix.oldscape.server.combat
 
 import io.guthix.oldscape.server.task.TaskType
 

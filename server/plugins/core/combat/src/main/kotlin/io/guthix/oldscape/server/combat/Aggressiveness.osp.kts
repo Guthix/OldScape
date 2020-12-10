@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.guthix.oldscape.server.monster
+package io.guthix.oldscape.server.combat
 
 import io.guthix.oldscape.server.event.EventBus
 import io.guthix.oldscape.server.event.NpcAttackEvent
@@ -34,15 +34,19 @@ on(NpcSpawnedEvent::class).then {
                     }
                 }
                 wait(ticks = 1)
+                wait { npc.inCombatWith == null }
             }
         }
         is AggresiveType.Always -> npc.addTask(AggresionTask) {
-            world.findPlayers(npc.pos, aggressiveness.range).forEach {
-                if(it.pos.withInDistanceOf(npc.pos, aggressiveness.range)) {
-                    EventBus.schedule(NpcAttackEvent(npc, it, world))
+            while(true) {
+                world.findPlayers(npc.pos, aggressiveness.range).forEach {
+                    if(it.pos.withInDistanceOf(npc.pos, aggressiveness.range)) {
+                        EventBus.schedule(NpcAttackEvent(npc, it, world))
+                    }
                 }
+                wait(ticks = 1)
+                wait { npc.inCombatWith == null }
             }
-            wait(ticks = 1)
         }
     }
 }

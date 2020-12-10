@@ -18,18 +18,27 @@ package io.guthix.oldscape.server.combat
 import io.guthix.oldscape.server.combat.dmg.calcHit
 import io.guthix.oldscape.server.combat.dmg.maxMeleeHit
 import io.guthix.oldscape.server.damage.hit
-import io.guthix.oldscape.server.event.EventBus
-import io.guthix.oldscape.server.event.NpcAttackedEvent
-import io.guthix.oldscape.server.event.NpcHitEvent
-import io.guthix.oldscape.server.event.PlayerHitEvent
+import io.guthix.oldscape.server.event.*
 import io.guthix.oldscape.server.pathing.DestinationRectangleDirect
 import io.guthix.oldscape.server.pathing.simplePathSearch
 import io.guthix.oldscape.server.task.NormalTask
 import io.guthix.oldscape.server.template.attackSequence
 import io.guthix.oldscape.server.template.attackSpeed
 import io.guthix.oldscape.server.template.defenceSequence
+import io.guthix.oldscape.server.world.World
+import io.guthix.oldscape.server.world.entity.Npc
+import io.guthix.oldscape.server.world.entity.Player
 
 on(NpcAttackedEvent::class).then {
+    startNpcCombat(npc, player, world)
+}
+
+on(NpcAttackEvent::class).then {
+    startNpcCombat(npc, player, world)
+}
+
+fun startNpcCombat(npc: Npc, player: Player, world: World) {
+    if(npc.inCombatWith != null) return
     var playerDestination = DestinationRectangleDirect(player, world)
     npc.inCombatWith = player
     npc.cancelTasks(NormalTask)

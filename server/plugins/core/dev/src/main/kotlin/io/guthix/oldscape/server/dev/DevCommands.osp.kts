@@ -18,7 +18,6 @@ package io.guthix.oldscape.server.dev
 import io.guthix.oldscape.server.event.ClientCheatEvent
 import io.guthix.oldscape.server.event.PublicMessageEvent
 import io.guthix.oldscape.server.template.LocIds
-import io.guthix.oldscape.server.template.NpcIds
 import io.guthix.oldscape.server.template.ObjIds
 import io.guthix.oldscape.server.world.entity.Loc
 import io.guthix.oldscape.server.world.map.Tile
@@ -73,6 +72,8 @@ on(ClientCheatEvent::class).where { string == "pos" }.then {
     player.talk(PublicMessageEvent(0, 0, "Position ${player.pos}", player, world))
 }
 
-on(ClientCheatEvent::class).where { string == "npc" }.then {
-    world.createNpc(NpcIds.ZOMBIE_42, player.pos.copy(x = player.pos.x + 2.tiles))
+on(ClientCheatEvent::class).where { string.startsWith("npc") }.then {
+    val args = string.split(" ")
+    val first = args[1].toInt()
+    world.createNpc(first , player.pos.copy(x = player.pos.x + 2.tiles))
 }
