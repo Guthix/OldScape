@@ -13,18 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.guthix.oldscape.server.net.game.out
+package io.guthix.oldscape.server.monster
 
-import io.guthix.oldscape.server.world.map.Tile
-import io.guthix.oldscape.server.world.map.dim.TileUnit
-import io.guthix.oldscape.server.world.map.dim.tiles
+import io.guthix.oldscape.server.task.TaskType
 
-abstract class CharacterInfoPacket {
-    companion object {
-        val INTEREST_SIZE: TileUnit = 32.tiles
-
-        val INTEREST_RANGE: TileUnit = INTEREST_SIZE / 2.tiles - 1.tiles
-
-        fun Tile.isInterestedIn(other: Tile): Boolean = withInDistanceOf(other, INTEREST_RANGE)
-    }
-}
+object AggresionTask : TaskType

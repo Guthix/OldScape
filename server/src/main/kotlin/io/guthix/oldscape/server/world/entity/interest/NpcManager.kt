@@ -25,6 +25,6 @@ class NpcManager {
     val localNpcs: MutableList<Npc> = mutableListOf()
 
     internal fun synchronize(world: World, player: Player): List<ChannelFuture> = listOf(
-        player.ctx.write(NpcInfoSmallViewportPacket(player, localNpcs, world.npcs))
+        player.ctx.write(NpcInfoSmallViewportPacket(player, localNpcs, world))
     )
 }

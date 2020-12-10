@@ -17,32 +17,32 @@ package io.guthix.oldscape.server.monster
 
 import io.guthix.oldscape.server.event.EventBus
 import io.guthix.oldscape.server.event.NpcAttackEvent
-import io.guthix.oldscape.server.event.PlayerMovedEvent
+import io.guthix.oldscape.server.event.NpcSpawnedEvent
 import io.guthix.oldscape.server.template.AggresiveType
 import io.guthix.oldscape.server.template.aggressiveType
-import io.guthix.oldscape.server.world.World
-import io.guthix.oldscape.server.world.entity.Npc
-import io.guthix.oldscape.server.world.entity.Player
 
-on(PlayerMovedEvent::class).then {
-    player.localNpcs.forEach { npc ->
-        checkNpcAggressive(player, npc, world)
-    }
-}
-
-fun checkNpcAggressive(player: Player, npc: Npc, world: World) {
+on(NpcSpawnedEvent::class).then {
     when(val aggressiveness = npc.aggressiveType) {
-        AggresiveType.Never -> return
-        is AggresiveType.Combat -> {
+        null -> return@then
+        AggresiveType.Never -> return@then
+        is AggresiveType.Combat -> npc.addTask(AggresionTask) {
             val npcLevel = npc.combatLevel ?: 0
-            if(player.pos.withInDistanceOf(npc.pos, aggressiveness.range) && player.combatLevel <= npcLevel * 2) {
-                EventBus.schedule(NpcAttackEvent(npc, player, world))
+            while(true) {
+                world.findPlayers(npc.pos, aggressiveness.range).forEach {
+                    if(it.pos.withInDistanceOf(npc.pos, aggressiveness.range) && it.combatLevel <= npcLevel * 2) {
+                        EventBus.schedule(NpcAttackEvent(npc, it, world))
+                    }
+                }
+                wait(ticks = 1)
             }
         }
-        is AggresiveType.Always -> {
-            if(player.pos.withInDistanceOf(npc.pos, aggressiveness.range)) {
-                EventBus.schedule(NpcAttackEvent(npc, player, world))
+        is AggresiveType.Always -> npc.addTask(AggresionTask) {
+            world.findPlayers(npc.pos, aggressiveness.range).forEach {
+                if(it.pos.withInDistanceOf(npc.pos, aggressiveness.range)) {
+                    EventBus.schedule(NpcAttackEvent(npc, it, world))
+                }
             }
+            wait(ticks = 1)
         }
     }
 }

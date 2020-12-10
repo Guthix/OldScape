@@ -25,23 +25,23 @@ import io.guthix.oldscape.server.world.map.dim.tiles
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
-val Npc.lvl: Int get() = monsterTemplate.lvl
+val Npc.lvl: Int get() = monsterTemplate?.lvl ?: throw TemplateNotFoundException(id, Npc::lvl)
 
-val Npc.maxHit: Int get() = monsterTemplate.maxHit ?: throw TemplateNotFoundException(id, Npc::maxHit)
+val Npc.maxHit: Int get() = monsterTemplate?.maxHit ?: throw TemplateNotFoundException(id, Npc::maxHit)
 
 val Npc.attackType: AttackType
-    get() = monsterTemplate.attackType ?: throw TemplateNotFoundException(id, Npc::attackType)
+    get() = monsterTemplate?.attackType ?: throw TemplateNotFoundException(id, Npc::attackType)
 
-val Npc.aggressiveType: AggresiveType get() = monsterTemplate.aggressiveType
+val Npc.aggressiveType: AggresiveType? get() = monsterTemplate?.aggressiveType
 
-val Npc.isPoisonous: Boolean get() = monsterTemplate.isPoisonous
+val Npc.isPoisonous: Boolean? get() = monsterTemplate?.isPoisonous
 
-val Npc.isImmumePoison: Boolean get() = monsterTemplate.isImmumePoison
+val Npc.isImmumePoison: Boolean? get() = monsterTemplate?.isImmumePoison
 
-val Npc.isImmuneVenom: Boolean get() = monsterTemplate.isImmuneVenom
+val Npc.isImmuneVenom: Boolean? get() = monsterTemplate?.isImmuneVenom
 
 val Npc.attackSpeed: Int
-    get() = monsterTemplate.attackSpeed ?: throw TemplateNotFoundException(id, Npc::attackSpeed)
+    get() = monsterTemplate?.attackSpeed ?: throw TemplateNotFoundException(id, Npc::attackSpeed)
 
 val Npc.spawnSequence: Int get() = sequences.spawn ?: throw TemplateNotFoundException(id, Npc::spawnSequence)
 
@@ -52,27 +52,32 @@ val Npc.defenceSequence: Int get() = sequences.defence
 val Npc.deathSequence: Int get() = sequences.death
 
 private val Npc.sequences: CombatSequences
-    get() = monsterTemplate.sequences ?: throw TemplateNotFoundException(id, Npc::sequences)
+    get() = monsterTemplate?.sequences ?: throw TemplateNotFoundException(id, Npc::sequences)
 
-val Npc.stats: CombatStats get() = monsterTemplate.stats
+val Npc.stats: CombatStats get() = monsterTemplate?.stats ?: throw TemplateNotFoundException(id, Npc::stats)
 
-val Npc.attackBonus: CombatBonus? get() = monsterTemplate.attackBonus
+val Npc.attackBonus: CombatBonus get() =
+    monsterTemplate?.attackBonus ?: throw TemplateNotFoundException(id, Npc::attackBonus)
 
-val Npc.strengthBonus: CombatBonus get() = monsterTemplate.strengthBonus
+val Npc.strengthBonus: CombatBonus get() =
+    monsterTemplate?.strengthBonus ?: throw TemplateNotFoundException(id, Npc::strengthBonus)
 
-val Npc.defensiveStats: StyleBonus get() = monsterTemplate.defensiveStats
+val Npc.defensiveStats: StyleBonus get() =
+    monsterTemplate?.defensiveStats ?: throw TemplateNotFoundException(id, Npc::defensiveStats)
 
-internal val Npc.monsterTemplate: MonsterTemplate
-    get() = template.monster ?: throw TemplateNotFoundException(id, MonsterTemplate::class)
+internal val Npc.monsterTemplate: MonsterTemplate?
+    get() = template.monster
 
 internal val NpcTemplate.monster: MonsterTemplate? by Property { null }
 
 @Serializable
 sealed class AggresiveType {
     @Serializable @SerialName("Never") object Never : AggresiveType()
+
     @Serializable @SerialName("Always") data class Always(val _range: Int? = null) : AggresiveType() {
         val range: TileUnit get() =  _range?.tiles ?: DEFAULT_RANGE
     }
+
     @Serializable @SerialName("Combat") data class Combat(val _range: Int? = null) : AggresiveType() {
         val range: TileUnit get() = _range?.tiles ?: DEFAULT_RANGE
     }

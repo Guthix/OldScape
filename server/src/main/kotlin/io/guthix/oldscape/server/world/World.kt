@@ -56,7 +56,7 @@ import kotlin.reflect.full.starProjectedType
 
 class World internal constructor(
     val uid: Int,
-    internal val map: Array<Array<Array<Zone?>>>,
+    internal val zones: Array<Array<Array<Zone?>>>,
     val xteas: Map<Int, IntArray>
 ) : TimerTask(), TaskHolder, EventHolder, PropertyHolder {
     var tick: Long = 0
@@ -71,9 +71,9 @@ class World internal constructor(
 
     internal val logoutQueue = ConcurrentLinkedQueue<Player>()
 
-    val players: PlayerList = PlayerList(MAX_PLAYERS)
+    internal val players: PlayerList = PlayerList(MAX_PLAYERS)
 
-    val npcs: NpcList = NpcList(MAX_NPCS)
+    internal val npcs: NpcList = NpcList(MAX_NPCS)
 
     val isFull: Boolean get() = players.size + loginQueue.size >= MAX_PLAYERS
 
@@ -103,6 +103,45 @@ class World internal constructor(
             if (resumed.all { !it } && events.isEmpty()) break // TODO add live lock detection
         }
     }
+
+    fun findNpcs(tile: Tile, range: TileUnit): List<Npc> =
+        findNpcs(tile.floor, tile.x - range..tile.x + range, tile.y - range..tile.y + range)
+
+    fun findNpcs(floor: FloorUnit, rangeX: TileUnitRange, rangeY: TileUnitRange): List<Npc> =
+        rangeX.zoneRange.flatMap { x -> rangeY.zoneRange.flatMap { y ->
+            zones[floor.value][x.value][y.value]?.npcs ?: emptyList()
+        } }.filter { npc -> npc.pos.x in rangeX && npc.pos.y in rangeY }
+
+    fun createNpc(id: Int, tile: Tile): Npc {
+        val npc = npcs.create(id, tile, getZone(tile) ?: error("Zone doesn't exist for $tile."))
+        EventBus.schedule(NpcSpawnedEvent(npc, this))
+        return npc
+    }
+
+    fun addNpc(npc: Npc): Npc {
+        npcs.add(npc)
+        npc.isRemoved = false
+        return npc
+    }
+
+    fun removeNpc(npc: Npc): Npc {
+        npcs.remove(npc)
+        npc.isRemoved = true
+        return npc
+    }
+
+    fun freeNpc(npc: Npc) {
+        npcs.free(npc)
+        npc.isRemoved = true
+    }
+
+    fun findPlayers(tile: Tile, range: TileUnit): List<Player> =
+        findPlayers(tile.floor, tile.x - range..tile.x + range, tile.y - range..tile.y + range)
+
+    fun findPlayers(floor: FloorUnit, rangeX: TileUnitRange, rangeY: TileUnitRange): List<Player> =
+        rangeX.zoneRange.flatMap { x -> rangeY.zoneRange.flatMap { y ->
+            zones[floor.value][x.value][y.value]?.players ?: emptyList()
+        } }.filter { player -> player.pos.x in rangeX && player.pos.y in rangeY }
 
     private fun processLogins() {
         main@ while (loginQueue.isNotEmpty()) {
@@ -149,29 +188,6 @@ class World internal constructor(
             )
             EventBus.schedule(LoginEvent(player, this))
         }
-    }
-
-    fun createNpc(id: Int, tile: Tile): Npc {
-        val npc = npcs.create(id, tile, getZone(tile) ?: error("Zone doesn't exist for $tile."))
-        EventBus.schedule(NpcSpawnedEvent(npc, this))
-        return npc
-    }
-
-    fun addNpc(npc: Npc): Npc {
-        npcs.add(npc)
-        npc.isRemoved = false
-        return npc
-    }
-
-    fun removeNpc(npc: Npc): Npc {
-        npcs.remove(npc)
-        npc.isRemoved = true
-        return npc
-    }
-
-    fun freeNpc(npc: Npc) {
-        npcs.free(npc)
-        npc.isRemoved = true
     }
 
     fun stagePlayerLogout(player: Player, force: Boolean) {
@@ -231,11 +247,12 @@ class World internal constructor(
     fun getCollision(floor: FloorUnit, x: TileUnit, y: TileUnit): Int = getZone(floor, x, y)?.masks
         ?.get(x.relativeZone.value)?.get(y.relativeZone.value) ?: Collision.MASK_TERRAIN_BLOCK
 
-    fun getZone(tile: Tile): Zone? = map[tile.floor.value][tile.x.inZones.value][tile.y.inZones.value]
+    fun getZone(tile: Tile): Zone? = zones[tile.floor.value][tile.x.inZones.value][tile.y.inZones.value]
 
-    fun getZone(floor: FloorUnit, x: TileUnit, y: TileUnit): Zone? = map[floor.value][x.inZones.value][y.inZones.value]
+    fun getZone(floor: FloorUnit, x: TileUnit, y: TileUnit): Zone? =
+        zones[floor.value][x.inZones.value][y.inZones.value]
 
-    fun getZone(floor: FloorUnit, x: ZoneUnit, y: ZoneUnit): Zone? = map[floor.value][x.value][y.value]
+    fun getZone(floor: FloorUnit, x: ZoneUnit, y: ZoneUnit): Zone? = zones[floor.value][x.value][y.value]
 
     fun getZones(floor: FloorUnit, x: MapsquareUnit, y: MapsquareUnit): Array<Array<Zone?>> =
         Array(MapsquareUnit.SIZE_ZONE.value) { localX ->
@@ -244,9 +261,7 @@ class World internal constructor(
             }
         }
 
-    fun getLoc(id: Int, floor: FloorUnit, x: TileUnit, y: TileUnit): Loc? = getZone(floor, x, y)?.getLoc(
-        id, x.relativeZone, y.relativeZone
-    )
+
 
     fun addObject(id: Int, amount: Int, tile: Tile): Obj {
         val obj = Obj(id, amount)
@@ -257,6 +272,10 @@ class World internal constructor(
     fun addObject(obj: Obj, tile: Tile): Unit? = getZone(tile)?.addObject(tile, obj)
 
     fun removeObject(id: Int, tile: Tile): Obj? = getZone(tile)?.removeObject(tile, id)
+
+    fun getLoc(id: Int, floor: FloorUnit, x: TileUnit, y: TileUnit): Loc? = getZone(floor, x, y)?.getLoc(
+        id, x.relativeZone, y.relativeZone
+    )
 
     fun addLoc(loc: Loc): Loc {
         getZone(loc.pos)?.addLoc(loc)

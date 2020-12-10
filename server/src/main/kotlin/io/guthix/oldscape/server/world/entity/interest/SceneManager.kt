@@ -54,7 +54,7 @@ internal class SceneManager {
             val iXteas = getInterestedXteas(xteas)
             player.ctx.write(RebuildNormalPacket(iXteas, curZone.x, curZone.y))
             unsubscribeZones(player)
-            subscribeToZones(oldZone, player, map)
+            subscribeZones(oldZone, player, map)
         }
     }
 
@@ -77,15 +77,9 @@ internal class SceneManager {
         return interestedXteas
     }
 
-    fun unsubscribeZones(player: Player) {
-        zones.forEachIndexed { _, arrayOfZones ->
-            arrayOfZones.forEachIndexed { _, zone ->
-                zone?.playersLoaded?.remove(player)
-            }
-        }
-    }
 
-    fun subscribeToZones(oldZone: Zone, player: Player, world: World) {
+
+    private fun subscribeZones(oldZone: Zone, player: Player, world: World) {
         val prevPacketCache = changes.copyOf()
         changes.forEach { it.forEach(MutableList<ZoneOutGameEvent>::clear) }
         ((middleZone.x - RANGE)..(middleZone.x + RANGE)).forEachIndexed { i, zoneX ->
@@ -106,6 +100,14 @@ internal class SceneManager {
         }
     }
 
+    private fun unsubscribeZones(player: Player) {
+        zones.forEachIndexed { _, arrayOfZones ->
+            arrayOfZones.forEachIndexed { _, zone ->
+                zone?.playersLoaded?.remove(player)
+            }
+        }
+    }
+
     private fun addInterestPackets(zone: Zone) {
         zone.groundObjects.forEach { (tile, objMap) ->
             objMap.values.forEach { objList ->
@@ -122,19 +124,19 @@ internal class SceneManager {
         }
     }
 
-    fun addObject(tile: Tile, obj: Obj) {
+    internal fun addObject(tile: Tile, obj: Obj) {
         changes[(tile.x.inZones - baseX).value][(tile.y.inZones - baseY).value].add(
             ObjAddPacket(obj.id, obj.quantity, tile.x.relativeZone, tile.y.relativeZone)
         )
     }
 
-    fun removeObject(tile: Tile, obj: Obj) {
+    internal fun removeObject(tile: Tile, obj: Obj) {
         changes[(tile.x.inZones - baseX).value][(tile.y.inZones - baseY).value].add(
             ObjDelPacket(obj.id, tile.x.relativeZone, tile.y.relativeZone)
         )
     }
 
-    fun addChangeLoc(loc: Loc) {
+    internal fun addChangeLoc(loc: Loc) {
         changes[(loc.pos.x.inZones - baseX).value][(loc.pos.y.inZones - baseY).value].add(
             LocAddChangePacket(
                 loc.id, loc.type, loc.orientation, loc.pos.x.relativeZone, loc.pos.y.relativeZone
@@ -142,13 +144,13 @@ internal class SceneManager {
         )
     }
 
-    fun delLoc(loc: Loc) {
+    internal fun delLoc(loc: Loc) {
         changes[(loc.pos.x.inZones - baseX).value][(loc.pos.y.inZones - baseY).value].add(
             LocDelPacket(loc.type, loc.orientation, loc.pos.x.relativeZone, loc.pos.y.relativeZone)
         )
     }
 
-    fun addProjectile(projectile: Projectile) {
+    internal fun addProjectile(projectile: Projectile) {
         changes[(projectile.start.x.inZones - baseX).value][(projectile.start.y.inZones - baseY).value].add(
             MapProjanimPacket(
                 projectile.id,
@@ -167,7 +169,7 @@ internal class SceneManager {
         )
     }
 
-    fun clear(player: Player) {
+    internal fun clear(player: Player) {
         changes.forEachIndexed { x, yPacketList ->
             yPacketList.forEachIndexed { y, _ ->
                 player.ctx.write(UpdateZoneFullFollowsPacket(x.zones.inTiles, y.zones.inTiles))

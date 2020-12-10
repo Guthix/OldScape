@@ -18,7 +18,7 @@ package io.guthix.oldscape.server.net.game.out
 import io.guthix.buffer.*
 import io.guthix.oldscape.server.net.game.OutGameEvent
 import io.guthix.oldscape.server.net.game.VarShortSize
-import io.guthix.oldscape.server.world.NpcList
+import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.*
 import io.guthix.oldscape.server.world.entity.interest.MovementInterestUpdate
 import io.guthix.oldscape.server.world.entity.interest.NpcUpdateType
@@ -30,7 +30,7 @@ import io.netty.channel.ChannelHandlerContext
 class NpcInfoSmallViewportPacket(
     private val player: Player,
     private val localNpcs: MutableList<Npc>,
-    private val npcs: NpcList
+    private val world: World
 ) : OutGameEvent, CharacterInfoPacket() {
     override val opcode: Int = 62
 
@@ -101,23 +101,18 @@ class NpcInfoSmallViewportPacket(
 
     fun externalNpcUpdate(buf: BitBuf): BitBuf {
         var npcsAdded = 0
-        outer@ for (zoneDim in player.scene.zones) {
-            for(zone in zoneDim) {
-                if(zone == null) continue
-                for(npc in zone.npcs) {
-                    if (npcsAdded > 16) break@outer
-                    if (needsAdd(npc)) {
-                        buf.writeBits(value = npc.index, amount = 15)
-                        buf.writeBits(value = getRespectiveLocation(npc.pos.y, player.pos.y).value, amount = 5)
-                        buf.writeBits(value = npc.encodedOrientation, amount = 3)
-                        buf.writeBoolean(false) // Is teleport
-                        buf.writeBoolean(npc.updateFlags.isNotEmpty())
-                        buf.writeBits(value = getRespectiveLocation(npc.pos.x, player.pos.x).value, amount = 5)
-                        buf.writeBits(value = npc.id, amount = 14)
-                        localNpcs.add(npc)
-                        npcsAdded++
-                    }
-                }
+        for(npc in world.findNpcs(player.pos, INTEREST_RANGE)) {
+            if (npcsAdded > 16) break
+            if (!localNpcs.contains(npc)) {
+                buf.writeBits(value = npc.index, amount = 15)
+                buf.writeBits(value = getRespectiveLocation(npc.pos.y, player.pos.y).value, amount = 5)
+                buf.writeBits(value = npc.encodedOrientation, amount = 3)
+                buf.writeBoolean(false) // Is teleport
+                buf.writeBoolean(npc.updateFlags.isNotEmpty())
+                buf.writeBits(value = getRespectiveLocation(npc.pos.x, player.pos.x).value, amount = 5)
+                buf.writeBits(value = npc.id, amount = 14)
+                localNpcs.add(npc)
+                npcsAdded++
             }
         }
         if (localNpcs.any { it.updateFlags.isNotEmpty() }) {

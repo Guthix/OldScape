@@ -20,7 +20,7 @@ import io.guthix.oldscape.server.world.entity.Npc
 import io.guthix.oldscape.server.world.entity.Player
 
 data class IfOnNpcEvent(
-    val npcId: Int,
+    val npcIndex: Int,
     val interfaceId: Int,
     val interfaceSlotId: Int,
     val ctrlPressed: Boolean,
@@ -28,5 +28,5 @@ data class IfOnNpcEvent(
     override val player: Player,
     override val world: World
 ) : PlayerGameEvent(player, world) {
-    val npc: Npc = world.npcs[npcId] ?: error("Could not find npc with id $npcId.")
+    val npc: Npc = world.npcs[npcIndex] ?: error("Could not find npc with id $npcIndex.")
 }

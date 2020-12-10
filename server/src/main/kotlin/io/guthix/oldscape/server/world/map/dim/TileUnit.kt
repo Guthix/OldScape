@@ -55,6 +55,7 @@ class TileUnitRange(
 ) : TileUnitProgression(start, endInclusive, 1), ClosedRange<TileUnit> {
     override val start: TileUnit get() = first
     override val endInclusive: TileUnit get() = last
+    val zoneRange: ZoneUnitRange = start.inZones..endInclusive.inZones
     override fun contains(value: TileUnit): Boolean = value.value in first.value..last.value
     override fun isEmpty(): Boolean = first > last
     override fun equals(other: Any?): Boolean = other is TileUnitRange &&
