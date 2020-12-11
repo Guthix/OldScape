@@ -16,14 +16,20 @@
 package io.guthix.oldscape.server.db
 
 import io.guthix.oldscape.server.ServerConfig
+import mu.KotlinLogging
 import org.jetbrains.exposed.sql.Column
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.SchemaUtils
 import org.jetbrains.exposed.sql.Table
 import org.jetbrains.exposed.sql.transactions.transaction
+import org.postgresql.util.PSQLException
 import kotlin.reflect.KClass
 
+private val logger = KotlinLogging.logger { }
+
 object PostgresDb {
+    var initialized = false
+
     fun initialize(config: ServerConfig.DB) {
         Database.connect(
             url = "jdbc:postgresql:${config.url}",
@@ -33,8 +39,15 @@ object PostgresDb {
         )
 
         transaction {
-            SchemaUtils.create(PlayerTable, PlayerPropertiesTable)
+            initialized = try {
+                SchemaUtils.create(PlayerTable, PlayerPropertiesTable)
+                true
+            } catch(e: PSQLException) {
+                logger.error { "Could not connect to Postgres db at: ${config.url} username: ${config.username}" }
+                false
+            }
         }
+
     }
 }
 

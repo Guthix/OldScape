@@ -19,10 +19,8 @@ import io.guthix.oldscape.cache.map.MapDefinition
 import io.guthix.oldscape.cache.map.MapLocDefinition
 import io.guthix.oldscape.cache.map.MapSquareDefinition
 import io.guthix.oldscape.server.PropertyHolder
+import io.guthix.oldscape.server.db.*
 import io.guthix.oldscape.server.db.KotlinClass
-import io.guthix.oldscape.server.db.PlayerPropertiesTable
-import io.guthix.oldscape.server.db.PlayerTable
-import io.guthix.oldscape.server.db.upsert
 import io.guthix.oldscape.server.event.*
 import io.guthix.oldscape.server.net.StatusEncoder
 import io.guthix.oldscape.server.net.StatusResponse
@@ -146,24 +144,28 @@ class World internal constructor(
     private fun processLogins() {
         main@ while (loginQueue.isNotEmpty()) {
             val request = loginQueue.poll()
-            val playerDbData = try {
-                transaction {
-                    val playerTableRow = PlayerTable.select {
-                        PlayerTable.username eq request.username
-                    }.single()
-                    val playerUid = playerTableRow[PlayerTable.id]
-                    val properties = PlayerPropertiesTable.select {
-                        PlayerPropertiesTable.playerId eq playerUid
+            val playerDbData: Pair<Int, MutableMap<String, Any>> = if(PostgresDb.initialized) {
+                try {
+                    transaction {
+                        val playerTableRow = PlayerTable.select {
+                            PlayerTable.username eq request.username
+                        }.single()
+                        val playerUid = playerTableRow[PlayerTable.id]
+                        val properties = PlayerPropertiesTable.select {
+                            PlayerPropertiesTable.playerId eq playerUid
+                        }
+                        playerUid to properties.map {
+                            val jsonData = it[PlayerPropertiesTable.property]
+                            val type = KotlinClass.fromName(it[PlayerPropertiesTable.type]).starProjectedType
+                            it[PlayerPropertiesTable.name] to Json.decodeFromString(serializer(type), jsonData)!!
+                        }.toMap().toMutableMap()
                     }
-                    playerUid to properties.map {
-                        val jsonData = it[PlayerPropertiesTable.property]
-                        val type = KotlinClass.fromName(it[PlayerPropertiesTable.type]).starProjectedType
-                        it[PlayerPropertiesTable.name] to Json.decodeFromString(serializer(type), jsonData)!!
-                    }.toMap().toMutableMap()
+                } catch (e: NoSuchElementException) {
+                    request.ctx.writeAndFlush(StatusResponse.INVALID_CREDENTIALS)
+                    break@main
                 }
-            } catch (e: NoSuchElementException) {
-                request.ctx.writeAndFlush(StatusResponse.INVALID_CREDENTIALS)
-                break@main
+            } else {
+                0 to mutableMapOf(Player::pos.persistentName to Player.defaultSpawn)
             }
             request.ctx.write(StatusResponse.NORMAL)
             request.ctx.pipeline().replace(
@@ -198,14 +200,16 @@ class World internal constructor(
     private fun processLogouts() {
         while (logoutQueue.isNotEmpty()) {
             val player = logoutQueue.poll()
-            transaction {
-                player.persistentProperties.forEach { (key, value) ->
-                    val projType = value::class.starProjectedType
-                    PlayerPropertiesTable.upsert(PlayerPropertiesTable.name) {
-                        it[playerId] = player.uid
-                        it[name] = key
-                        it[type] = "$projType"
-                        it[property] = Json.encodeToString(serializer(projType), value)
+            if(PostgresDb.initialized) {
+                transaction {
+                    player.persistentProperties.forEach { (key, value) ->
+                        val projType = value::class.starProjectedType
+                        PlayerPropertiesTable.upsert(PlayerPropertiesTable.name) {
+                            it[playerId] = player.uid
+                            it[name] = key
+                            it[type] = "$projType"
+                            it[property] = Json.encodeToString(serializer(projType), value)
+                        }
                     }
                 }
             }

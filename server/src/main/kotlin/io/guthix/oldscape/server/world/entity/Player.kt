@@ -58,7 +58,7 @@ class Player internal constructor(
 
     override var pos: Tile by PersistentProperty { Tile(0.floors, 3235.tiles, 3222.tiles) }
 
-    override var spawnPos: Tile = Tile(0.floors, 3235.tiles, 3222.tiles)
+    override var spawnPos: Tile = defaultSpawn
 
     override var orientation: Int by PersistentProperty { 0 }
 
@@ -280,4 +280,8 @@ class Player internal constructor(
     fun clearMap(): Unit = sceneManager.clear(this)
 
     override fun toString(): String = "Player(uid=$uid, index=$index, priority=$priority, name=$username)"
+
+    companion object {
+        internal val defaultSpawn: Tile = Tile(0.floors, 3235.tiles, 3222.tiles)
+    }
 }
