@@ -58,7 +58,7 @@ class Player internal constructor(
 
     override var pos: Tile by PersistentProperty { Tile(0.floors, 3235.tiles, 3222.tiles) }
 
-    override var spawnPos: Tile = pos.copy()
+    override var spawnPos: Tile = Tile(0.floors, 3235.tiles, 3222.tiles)
 
     override var orientation: Int by PersistentProperty { 0 }
 
@@ -246,6 +246,8 @@ class Player internal constructor(
     fun playSong(id: Int) {
         ctx.write(MidiSongPacket(id))
     }
+
+    override fun addTemporaryMovementFlag(): Boolean = updateFlags.add(PlayerInfoPacket.movementTemporary)
 
     override fun addOrientationFlag(): Boolean = updateFlags.add(PlayerInfoPacket.orientation)
 

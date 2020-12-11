@@ -18,7 +18,6 @@ package io.guthix.oldscape.server.world.entity
 import io.guthix.oldscape.server.event.Event
 import io.guthix.oldscape.server.event.EventHolder
 import io.guthix.oldscape.server.event.PublicMessageEvent
-import io.guthix.oldscape.server.net.game.out.PlayerInfoPacket
 import io.guthix.oldscape.server.plugin.EventHandler
 import io.guthix.oldscape.server.task.Task
 import io.guthix.oldscape.server.task.TaskHolder
@@ -92,6 +91,7 @@ abstract class Character(open val index: Int) : Entity, EventHolder, TaskHolder 
 
     fun teleport(to: Tile) {
         teleportLocation = to
+        path = mutableListOf()
     }
 
     abstract fun scheduleMovedEvent(world: World)
@@ -122,6 +122,7 @@ abstract class Character(open val index: Int) : Entity, EventHolder, TaskHolder 
 
     private fun doTeleport() {
         movementType = MovementInterestUpdate.TELEPORT
+        addTemporaryMovementFlag()
         pos = teleportLocation!!
         followPosition = pos.copy(x = pos.x - 1.tiles) // TODO make follow location based on collision masks
         addPostTask { teleportLocation = null }
@@ -132,7 +133,7 @@ abstract class Character(open val index: Int) : Entity, EventHolder, TaskHolder 
             inRunMode -> when {
                 path.size == 1 -> {
                     movementType = MovementInterestUpdate.WALK
-                    if (this is Player) updateFlags.add(PlayerInfoPacket.movementTemporary) // TODO improve this
+                    addTemporaryMovementFlag()
                     followPosition = pos
                     path.removeAt(0)
                 }
@@ -251,6 +252,8 @@ abstract class Character(open val index: Int) : Entity, EventHolder, TaskHolder 
         postTasks.clear()
         movementType = MovementInterestUpdate.STAY
     }
+
+    protected abstract fun addTemporaryMovementFlag(): Boolean
 
     protected abstract fun addOrientationFlag(): Boolean
 

@@ -49,6 +49,7 @@ fun Player.hit(world: World, hitDamage: Int): Boolean {
         animate(deathSequence)
         addTask(NormalTask) {
             wait(sequence?.duration ?: 0)
+            stopAnimation() // dead animation runs for a very long time
             EventBus.schedule(PlayerDiedEvent(this@hit, world))
         }
         return true

@@ -15,6 +15,7 @@
  */
 package io.guthix.oldscape.server.dev
 
+import io.guthix.oldscape.server.damage.hit
 import io.guthix.oldscape.server.event.ClientCheatEvent
 import io.guthix.oldscape.server.event.PublicMessageEvent
 import io.guthix.oldscape.server.template.LocIds
@@ -41,6 +42,10 @@ on(ClientCheatEvent::class).where { string == "locadd" }.then {
             orientation = 0
         )
     )
+}
+
+on(ClientCheatEvent::class).where { string == "hit" }.then {
+    player.hit(world, 99)
 }
 
 on(ClientCheatEvent::class).where { string == "locdel" }.then {

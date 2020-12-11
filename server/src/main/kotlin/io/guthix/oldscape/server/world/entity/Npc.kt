@@ -57,6 +57,8 @@ class Npc(
 
     override fun toString(): String = "Npc(index=$index, id=$id, name=$name, pos=$pos)"
 
+    override fun addTemporaryMovementFlag(): Boolean = false
+
     override fun addOrientationFlag(): Boolean = updateFlags.add(NpcInfoSmallViewportPacket.orientation)
 
     override fun addTurnToLockFlag(): Boolean = updateFlags.add(NpcInfoSmallViewportPacket.turnLockTo)
