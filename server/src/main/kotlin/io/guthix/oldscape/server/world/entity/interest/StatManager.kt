@@ -22,12 +22,12 @@ import io.netty.channel.ChannelFuture
 import kotlin.math.pow
 
 class Stat(val id: Int, status: Int, xp: Int, private val changes: MutableList<Stat>) {
-    var level: Int = experienceTable.indexOfFirst { xp > it } + 1
+    var level: Int = experienceTable.indexOfLast { xp > it } + 1
         private set
 
-    private var xpToPrevLevel = experienceTable[level]
+    private var xpToPrevLevel = experienceTable[level - 1]
 
-    private var xpForNextLevel = experienceTable[level]
+    private var xpForNextLevel = if(level >= 99) Int.MAX_VALUE else experienceTable[level]
 
     var xp: Int = xp
         private set
