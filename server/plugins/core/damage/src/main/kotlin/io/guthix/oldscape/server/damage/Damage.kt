@@ -20,6 +20,7 @@ import io.guthix.oldscape.server.event.EventBus
 import io.guthix.oldscape.server.event.NpcDiedEvent
 import io.guthix.oldscape.server.event.PlayerDiedEvent
 import io.guthix.oldscape.server.task.NormalTask
+import io.guthix.oldscape.server.template.SequenceIds
 import io.guthix.oldscape.server.template.deathSequence
 import io.guthix.oldscape.server.template.stats
 import io.guthix.oldscape.server.world.World
@@ -28,7 +29,7 @@ import io.guthix.oldscape.server.world.entity.Npc
 import io.guthix.oldscape.server.world.entity.Player
 import io.guthix.oldscape.server.world.entity.StaticHealthBarUpdate
 
-val Player.deathSequence: Int by Property { 836 }
+val Player.deathSequence: Int by Property { SequenceIds.PLAYER_DEATH_836 }
 
 var Player.health: Int
     get() = stats.hitpoints.status

@@ -4,3 +4,5 @@
   name: "Block"
 - id: 711
   name: "Spell Cast"
+- id: 836
+  name: "Player Death"
