@@ -16,12 +16,11 @@
 package io.guthix.oldscape.server.combat
 
 import io.guthix.oldscape.server.ServerContext
-import io.guthix.oldscape.server.combat.type.CombatSpell
-import io.guthix.oldscape.server.combat.type.magicAttack
-import io.guthix.oldscape.server.combat.type.meleeAttack
-import io.guthix.oldscape.server.combat.type.rangeAttack
+import io.guthix.oldscape.server.combat.dmg.calcHit
+import io.guthix.oldscape.server.damage.hit
 import io.guthix.oldscape.server.event.IfOnNpcEvent
 import io.guthix.oldscape.server.event.NpcClickEvent
+import io.guthix.oldscape.server.event.PlayerHitEvent
 import io.guthix.oldscape.server.stat.AttackType
 
 on(NpcClickEvent::class).where { contextMenuEntry == "Attack" }.then {
@@ -31,6 +30,12 @@ on(NpcClickEvent::class).where { contextMenuEntry == "Attack" }.then {
         AttackType.RANGED -> player.rangeAttack(npc, world)
         else -> player.meleeAttack(npc, world)
     }
+}
+
+on(PlayerHitEvent::class).then {
+    val damage = npc.calcHit(player) ?: 0
+    player.animate(player.defenceSequence)
+    player.hit(world, damage)
 }
 
 CombatSpell.values().forEach { spell ->

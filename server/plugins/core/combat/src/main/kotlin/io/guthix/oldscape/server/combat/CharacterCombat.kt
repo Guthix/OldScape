@@ -26,6 +26,27 @@ import io.guthix.oldscape.server.world.map.dim.TileUnit
 import io.guthix.oldscape.server.world.map.dim.max
 import io.guthix.oldscape.server.world.map.dim.tiles
 
+enum class CombatProjectileType(
+    val startHeight: Int,
+    val endHeight: Int,
+    val speed: Int,
+    val speedDelay: Int,
+    val delay: Int,
+    val angle: Int,
+    val steepness: Int
+) {
+    ARROW(startHeight = 40, endHeight = 36, speed = 5, speedDelay = 5, delay = 41, angle = 15, steepness = 11),
+    BOLT(startHeight = 38, endHeight = 36, speed = 5, speedDelay = 5, delay = 41, angle = 5, steepness = 11),
+    JAVELIN(startHeight = 38, endHeight = 36, speed = 3, speedDelay = 2, delay = 42, angle = 1, steepness = 120),
+    THROWN(startHeight = 40, endHeight = 36, speed = 5, speedDelay = 5, delay = 32, angle = 15, steepness = 11),
+    CHINCHOMPA(startHeight = 40, endHeight = 36, speed = 5, speedDelay = 5, delay = 21, angle = 15, steepness = 11),
+    MAGIC(startHeight = 43, endHeight = 31, speed = 10, speedDelay = 5, delay = 51, angle = 16, steepness = 64);
+
+    fun createTemplate(id: Int): ProjectileTemplate = ProjectileTemplate(
+        id, startHeight, endHeight, speed, speedDelay, delay, angle, steepness
+    )
+}
+
 enum class MeleeCombatStance(val attack: Int = 0, val strength: Int = 0, val defence: Int = 0, val range: Int = 0) {
     ACCURATE(attack = 3),
     AGGRESSIVE(strength = 3),

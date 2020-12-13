@@ -13,14 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.guthix.oldscape.server.event
+package io.guthix.oldscape.server.combat.aggression
 
-import io.guthix.oldscape.server.world.World
-import io.guthix.oldscape.server.world.entity.Npc
-import io.guthix.oldscape.server.world.entity.Player
+import io.guthix.oldscape.server.task.TaskType
 
-data class NpcAttackEvent(
-    val npc: Npc,
-    override val player: Player,
-    override val world: World
-) : PlayerGameEvent(player, world)
+object AggressionTask : TaskType

@@ -1,3 +1,4 @@
+
 /*
  * Copyright 2018-2020 Guthix
  *
@@ -13,11 +14,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.guthix.oldscape.server.combat
+package io.guthix.oldscape.server.combat.aggression
 
-import io.guthix.oldscape.server.event.EventBus
-import io.guthix.oldscape.server.event.NpcAttackEvent
+import io.guthix.oldscape.server.combat.inCombatWith
+import io.guthix.oldscape.server.combat.startNpcCombat
 import io.guthix.oldscape.server.event.NpcSpawnedEvent
+import io.guthix.oldscape.server.task.NormalTask
 import io.guthix.oldscape.server.template.AggresiveType
 import io.guthix.oldscape.server.template.aggressiveType
 
@@ -25,23 +27,23 @@ on(NpcSpawnedEvent::class).then {
     when(val aggressiveness = npc.aggressiveType) {
         null -> return@then
         AggresiveType.Never -> return@then
-        is AggresiveType.Combat -> npc.addTask(AggresionTask) {
+        is AggresiveType.Combat -> npc.addTask(AggressionTask) {
             val npcLevel = npc.combatLevel ?: 0
             while(true) {
                 world.findPlayers(npc.pos, aggressiveness.range).forEach {
                     if(it.pos.withInDistanceOf(npc.pos, aggressiveness.range) && it.combatLevel <= npcLevel * 2) {
-                        EventBus.schedule(NpcAttackEvent(npc, it, world))
+                        npc.addTask(NormalTask) { startNpcCombat(npc, it, world)}
                     }
                 }
                 wait(ticks = 1)
                 wait { npc.inCombatWith == null }
             }
         }
-        is AggresiveType.Always -> npc.addTask(AggresionTask) {
+        is AggresiveType.Always -> npc.addTask(AggressionTask) {
             while(true) {
                 world.findPlayers(npc.pos, aggressiveness.range).forEach {
                     if(it.pos.withInDistanceOf(npc.pos, aggressiveness.range)) {
-                        EventBus.schedule(NpcAttackEvent(npc, it, world))
+                        npc.addTask(NormalTask) { startNpcCombat(npc, it, world)}
                     }
                 }
                 wait(ticks = 1)

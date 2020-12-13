@@ -15,6 +15,21 @@
  */
 package io.guthix.oldscape.server.combat
 
-import io.guthix.oldscape.server.task.TaskType
+import io.guthix.oldscape.server.combat.dmg.calcHit
+import io.guthix.oldscape.server.combat.dmg.maxMeleeHit
+import io.guthix.oldscape.server.damage.hit
+import io.guthix.oldscape.server.event.NpcHitEvent
+import io.guthix.oldscape.server.task.NormalTask
+import io.guthix.oldscape.server.template.defenceSequence
 
-object AggresionTask : TaskType
+on(NpcHitEvent::class).then {
+    startNpcCombat(npc, player, world)
+}
+
+on(NpcHitEvent::class).then {
+    val damage = player.calcHit(npc, player.maxMeleeHit()) ?: 0
+    npc.animate(npc.defenceSequence)
+    if (npc.hit(world, damage)) {
+        player.cancelTasks(NormalTask)
+    }
+}

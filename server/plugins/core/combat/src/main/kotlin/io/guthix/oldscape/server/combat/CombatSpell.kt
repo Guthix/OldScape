@@ -13,11 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.guthix.oldscape.server.combat.type
+package io.guthix.oldscape.server.combat
 
 import io.guthix.oldscape.cache.config.EnumConfig
 import io.guthix.oldscape.server.ServerContext
-import io.guthix.oldscape.server.combat.ProjectileType
 import io.guthix.oldscape.server.template.*
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.Character
@@ -58,7 +57,7 @@ enum class CombatSpell(
         castSpotAnimHeight = 92,
         impactSpotAnim = SpotAnimIds.WIND_STRIKE_HIT_92,
         impactSpotAnimHeight = 124,
-        projectile = ProjectileType.MAGIC.createTemplate(91),
+        projectile = CombatProjectileType.MAGIC.createTemplate(91),
         hit = { world, player, target -> 2 }
     );
 

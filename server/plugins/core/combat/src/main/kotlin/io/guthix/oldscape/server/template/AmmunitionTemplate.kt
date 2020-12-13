@@ -16,11 +16,11 @@
 package io.guthix.oldscape.server.template
 
 import io.guthix.oldscape.server.Property
-import io.guthix.oldscape.server.combat.ProjectileType
+import io.guthix.oldscape.server.combat.CombatProjectileType
 import io.guthix.oldscape.server.world.entity.Obj
 import kotlinx.serialization.Serializable
 
-val Obj.ammunitionType: ProjectileType get() = ammunitionTemplate.type
+val Obj.ammunitionType: CombatProjectileType get() = ammunitionTemplate.type
 
 val Obj.ammunitionProjectile: ProjectileTemplate get() = ammunitionTemplate.projectile
 
@@ -36,7 +36,7 @@ internal val ObjTemplate.ammunition: AmmunitionTemplate? by Property { null }
 @Serializable
 data class AmmunitionTemplate(
     override val ids: List<Int>,
-    val type: ProjectileType,
+    val type: CombatProjectileType,
     val projectileId: Int,
     val drawBackSpotAnim: Int,
     val drawBackSpotAnimHeight: Int
