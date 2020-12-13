@@ -20,7 +20,6 @@ import io.guthix.oldscape.cache.map.MapLocDefinition
 import io.guthix.oldscape.cache.map.MapSquareDefinition
 import io.guthix.oldscape.server.PropertyHolder
 import io.guthix.oldscape.server.db.*
-import io.guthix.oldscape.server.db.KotlinClass
 import io.guthix.oldscape.server.event.*
 import io.guthix.oldscape.server.net.StatusEncoder
 import io.guthix.oldscape.server.net.StatusResponse
@@ -38,9 +37,6 @@ import io.guthix.oldscape.server.world.entity.*
 import io.guthix.oldscape.server.world.map.Tile
 import io.guthix.oldscape.server.world.map.Zone
 import io.guthix.oldscape.server.world.map.dim.*
-import io.netty.util.concurrent.DefaultPromise
-import io.netty.util.concurrent.ImmediateEventExecutor
-import io.netty.util.concurrent.PromiseCombiner
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.serializer
 import mu.KLogging
@@ -171,7 +167,7 @@ class World internal constructor(
             request.ctx.pipeline().replace(
                 StatusEncoder::class.qualifiedName, LoginEncoder::class.qualifiedName, LoginEncoder()
             )
-            val tile = playerDbData.second[Player::pos.persistentName] as Tile
+            val tile = (playerDbData.second[Player::pos.persistentName] as Tile?) ?: Player.defaultSpawn
             val player = players.create(
                 playerDbData.first,
                 playerDbData.second,
@@ -234,16 +230,9 @@ class World internal constructor(
     }
 
     private fun synchronizeInterest() {
-        val futures = PromiseCombiner(ImmediateEventExecutor.INSTANCE)
-        players.forEach { if (!it.isLoggingOut) it.synchronize(this).forEach(futures::add) }
-        futures.finish(DefaultPromise<Void>(ImmediateEventExecutor.INSTANCE).addListener {
-            if (it.isSuccess) {
-                for (player in players) player.postProcess()
-                for (npc in npcs) npc.postProcess()
-            } else {
-                throw it.cause()
-            }
-        })
+        players.forEach { player -> if (!player.isLoggingOut) player.synchronize(this).forEach { it.await() } }
+        for (player in players) player.postProcess()
+        for (npc in npcs) npc.postProcess()
     }
 
     fun getCollision(tile: Tile): Int = getCollision(tile.floor, tile.x, tile.y)
