@@ -16,8 +16,8 @@
  */
 package io.guthix.oldscape.server.combat.aggression
 
+import io.guthix.oldscape.server.combat.attackPlayer
 import io.guthix.oldscape.server.combat.inCombatWith
-import io.guthix.oldscape.server.combat.startNpcCombat
 import io.guthix.oldscape.server.event.NpcSpawnedEvent
 import io.guthix.oldscape.server.task.NormalTask
 import io.guthix.oldscape.server.template.AggresiveType
@@ -32,7 +32,7 @@ on(NpcSpawnedEvent::class).then {
             while(true) {
                 world.findPlayers(npc.pos, aggressiveness.range).forEach {
                     if(it.pos.withInDistanceOf(npc.pos, aggressiveness.range) && it.combatLevel <= npcLevel * 2) {
-                        npc.addTask(NormalTask) { startNpcCombat(npc, it, world)}
+                        npc.addTask(NormalTask) { npc.attackPlayer(it, world) }
                     }
                 }
                 wait(ticks = 1)
@@ -43,7 +43,7 @@ on(NpcSpawnedEvent::class).then {
             while(true) {
                 world.findPlayers(npc.pos, aggressiveness.range).forEach {
                     if(it.pos.withInDistanceOf(npc.pos, aggressiveness.range)) {
-                        npc.addTask(NormalTask) { startNpcCombat(npc, it, world)}
+                        npc.addTask(NormalTask) { npc.attackPlayer(it, world) }
                     }
                 }
                 wait(ticks = 1)

@@ -21,15 +21,9 @@ import io.guthix.oldscape.server.damage.hit
 import io.guthix.oldscape.server.event.IfOnNpcEvent
 import io.guthix.oldscape.server.event.NpcClickEvent
 import io.guthix.oldscape.server.event.PlayerHitEvent
-import io.guthix.oldscape.server.stat.AttackType
 
 on(NpcClickEvent::class).where { contextMenuEntry == "Attack" }.then {
-    if (player.inCombatWith == npc) return@then
-    player.turnToLock(npc)
-    when (player.currentStyle.attackType) {
-        AttackType.RANGED -> player.rangeAttack(npc, world)
-        else -> player.meleeAttack(npc, world)
-    }
+    player.attackNpc(npc, world)
 }
 
 on(PlayerHitEvent::class).then {

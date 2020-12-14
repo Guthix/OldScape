@@ -19,35 +19,46 @@ import io.guthix.oldscape.server.event.EventBus
 import io.guthix.oldscape.server.event.PlayerHitEvent
 import io.guthix.oldscape.server.pathing.DestinationRectangleDirect
 import io.guthix.oldscape.server.pathing.simplePathSearch
+import io.guthix.oldscape.server.stat.AttackType
 import io.guthix.oldscape.server.task.NormalTask
 import io.guthix.oldscape.server.template.attackSequence
 import io.guthix.oldscape.server.template.attackSpeed
+import io.guthix.oldscape.server.template.attackType
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.Npc
 import io.guthix.oldscape.server.world.entity.Player
 
-fun startNpcCombat(npc: Npc, player: Player, world: World) {
+fun Npc.attackPlayer(player: Player, world: World): Unit = when (attackType) {
+    AttackType.RANGED -> TODO()
+    AttackType.MAGIC -> TODO()
+    else -> meleeAttack(player, world)
+}
+
+internal fun Npc.meleeAttack(player: Player, world: World) {
+    cancelTasks(NormalTask)
     var playerDestination = DestinationRectangleDirect(player, world)
-    npc.inCombatWith = player
-    npc.cancelTasks(NormalTask)
-    npc.addTask(NormalTask) { // combat fighting task
+    path = simplePathSearch(pos, playerDestination, size, world)
+    addTask(NormalTask) { // combat fighting task
+        inCombatWith = player
         while (true) {
-            wait { playerDestination.reached(npc.pos.x, npc.pos.y, npc.size) }
-            npc.animate(npc.attackSequence)
-            EventBus.schedule(PlayerHitEvent(npc, player, world))
-            wait(ticks = npc.attackSpeed)
-        }
-    }
-    npc.addTask(NormalTask) { // following task
-        npc.turnToLock(player)
-        while (true) {
-            playerDestination = DestinationRectangleDirect(player, world)
-            npc.path = simplePathSearch(npc.pos, playerDestination, npc.size, world)
-            wait(ticks = 1)
-            wait { player.lastPos != player.pos }
+            wait { playerDestination.reached(pos.x, pos.y, size) }
+            animate(attackSequence)
+            EventBus.schedule(PlayerHitEvent(this@meleeAttack, player, world))
+            wait(ticks = attackSpeed)
         }
     }.finalize {
-        npc.inCombatWith = null
-        npc.turnToLock(null)
+        inCombatWith = null
+    }
+    addTask(NormalTask) { // following task
+        turnToLock(player)
+        wait { playerDestination.reached(pos.x, pos.y, size) }
+        while (true) {
+            wait { player.lastPos != player.pos }
+            playerDestination = DestinationRectangleDirect(player, world)
+            path = simplePathSearch(pos, playerDestination, size, world)
+            wait(ticks = 1)
+        }
+    }.finalize {
+        turnToLock(null)
     }
 }

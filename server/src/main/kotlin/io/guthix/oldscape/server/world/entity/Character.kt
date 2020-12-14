@@ -110,7 +110,6 @@ abstract class Character(open val index: Int) : Entity, EventHolder, TaskHolder 
                 doStep()
                 postMovement(lastZone, world)
             }
-            else -> MovementInterestUpdate.STAY
         }
     }
 

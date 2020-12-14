@@ -23,13 +23,13 @@ import io.guthix.oldscape.server.task.NormalTask
 import io.guthix.oldscape.server.template.defenceSequence
 
 on(NpcHitEvent::class).then {
-    startNpcCombat(npc, player, world)
-}
-
-on(NpcHitEvent::class).then {
-    val damage = player.calcHit(npc, player.maxMeleeHit()) ?: 0
-    npc.animate(npc.defenceSequence)
-    if (npc.hit(world, damage)) {
-        player.cancelTasks(NormalTask)
+    if(npc.inCombatWith == null) {
+        npc.attackPlayer(player, world)
+    } else {
+        val damage = player.calcHit(npc, player.maxMeleeHit()) ?: 0
+        npc.animate(npc.defenceSequence)
+        if (npc.hit(world, damage)) {
+            player.cancelTasks(NormalTask)
+        }
     }
 }

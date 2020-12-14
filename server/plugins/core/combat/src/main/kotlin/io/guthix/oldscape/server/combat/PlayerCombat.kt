@@ -19,11 +19,12 @@ import io.guthix.oldscape.server.combat.dmg.calcHit
 import io.guthix.oldscape.server.combat.dmg.maxRangeHit
 import io.guthix.oldscape.server.damage.hit
 import io.guthix.oldscape.server.event.EventBus
-import io.guthix.oldscape.server.event.NpcAttackedEvent
 import io.guthix.oldscape.server.event.NpcHitEvent
 import io.guthix.oldscape.server.pathing.DestinationRange
 import io.guthix.oldscape.server.pathing.DestinationRectangleDirect
 import io.guthix.oldscape.server.pathing.breadthFirstSearch
+import io.guthix.oldscape.server.pathing.simplePathSearch
+import io.guthix.oldscape.server.stat.AttackType
 import io.guthix.oldscape.server.task.NormalTask
 import io.guthix.oldscape.server.template.*
 import io.guthix.oldscape.server.world.World
@@ -32,27 +33,46 @@ import io.guthix.oldscape.server.world.entity.Player
 import io.guthix.oldscape.server.world.entity.interest.EquipmentType
 import kotlin.random.Random
 
-fun Player.meleeAttack(npc: Npc, world: World) {
-    val npcDestination = DestinationRectangleDirect(npc, world)
-    path = breadthFirstSearch(pos, npcDestination, size, true, world)
-    inCombatWith = npc
+fun Player.attackNpc(npc: Npc, world: World) {
+    if (inCombatWith == npc) return
+    when (currentStyle.attackType) {
+        AttackType.RANGED -> rangeAttack(npc, world)
+        AttackType.MAGIC -> magicAttack(npc, world, CombatSpell.WIND_STRIKE)
+        else -> meleeAttack(npc, world)
+    }
+}
+
+internal fun Player.meleeAttack(npc: Npc, world: World) {
     cancelTasks(NormalTask)
-    val player = this
+    var npcDestination = DestinationRectangleDirect(npc, world)
+    path = breadthFirstSearch(pos, npcDestination, size, findAlternative = true, world)
     addTask(NormalTask) {
-        wait { npcDestination.reached(pos.x, pos.y, size) }
-        EventBus.schedule(NpcAttackedEvent(player, npc, world))
+        inCombatWith = npc
         while (true) { // start player combat
+            wait { npcDestination.reached(pos.x, pos.y, size) }
             animate(attackSequence)
-            EventBus.schedule(NpcHitEvent(player, npc, world))
+            EventBus.schedule(NpcHitEvent(this@meleeAttack, npc, world))
             wait(ticks = attackSpeed)
         }
     }.finalize {
         inCombatWith = null
+    }
+    addTask(NormalTask) {
+        inCombatWith = npc
+        turnToLock(npc)
+        wait { npcDestination.reached(pos.x, pos.y, size) }
+        while (true) {
+            wait { npc.lastPos != npc.pos }
+            npcDestination = DestinationRectangleDirect(npc, world)
+            path = simplePathSearch(pos, npcDestination, size, world)
+            wait(ticks = 1)
+        }
+    }.finalize {
         turnToLock(null)
     }
 }
 
-fun Player.rangeAttack(npc: Npc, world: World) {
+internal fun Player.rangeAttack(npc: Npc, world: World) {
     val npcDestination = DestinationRange(npc, attackRange, world)
     path = breadthFirstSearch(pos, npcDestination, size, true, world)
     inCombatWith = npc
@@ -72,7 +92,7 @@ fun Player.rangeAttack(npc: Npc, world: World) {
             animate(attackSequence)
             spotAnimate(ammunition.drawBackSpotAnim, ammunition.drawBackSpotAnimHeight)
             val projectile = world.addProjectile(ammunition.ammunitionProjectile, pos, npc)
-            EventBus.schedule(NpcAttackedEvent(player, npc, world))
+            EventBus.schedule(NpcHitEvent(player, npc, world))
             world.addTask(NormalTask) { // projectile task
                 val damage = calcHit(npc, maxRangeHit()) ?: 0
                 val oldNpcPos = npc.pos
@@ -89,7 +109,7 @@ fun Player.rangeAttack(npc: Npc, world: World) {
     }
 }
 
-fun Player.magicAttack(
+internal fun Player.magicAttack(
     npc: Npc,
     world: World,
     spellTemplate: CombatSpell
@@ -106,7 +126,7 @@ fun Player.magicAttack(
             spotAnimate(spellTemplate.castSpotAnim, spellTemplate.castSpotAnimHeight)
             // TODO sound
             val projectile = world.addProjectile(spellTemplate.projectile, player.pos, npc)
-            EventBus.schedule(NpcAttackedEvent(player, npc, world))
+            EventBus.schedule(NpcHitEvent(player, npc, world))
             world.addTask(NormalTask) {
                 val damage = calcHit(npc, spellTemplate.hit(world, player, npc))
                 if (damage == null) {
