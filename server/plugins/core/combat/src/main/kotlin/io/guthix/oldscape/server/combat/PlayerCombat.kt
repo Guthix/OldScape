@@ -33,13 +33,10 @@ import io.guthix.oldscape.server.world.entity.Player
 import io.guthix.oldscape.server.world.entity.interest.EquipmentType
 import kotlin.random.Random
 
-fun Player.attackNpc(npc: Npc, world: World) {
-    if (inCombatWith == npc) return
-    when (currentStyle.attackType) {
-        AttackType.RANGED -> rangeAttack(npc, world)
-        AttackType.MAGIC -> magicAttack(npc, world, CombatSpell.WIND_STRIKE)
-        else -> meleeAttack(npc, world)
-    }
+fun Player.attackNpc(npc: Npc, world: World): Unit = when (currentStyle.attackType) {
+    AttackType.RANGED -> rangeAttack(npc, world)
+    AttackType.MAGIC -> magicAttack(npc, world, CombatSpell.WIND_STRIKE)
+    else -> meleeAttack(npc, world)
 }
 
 internal fun Player.meleeAttack(npc: Npc, world: World) {

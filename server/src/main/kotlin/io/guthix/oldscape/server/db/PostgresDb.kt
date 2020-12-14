@@ -68,6 +68,7 @@ object PlayerPropertiesTable : Table() {
 
 internal object KotlinClass {
     private val kotlinTypesMap = mapOf(
+        Boolean::class.qualifiedName to Boolean::class,
         Double::class.qualifiedName to Double::class,
         Float::class.qualifiedName to Float::class,
         Long::class.qualifiedName to Long::class,

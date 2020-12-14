@@ -15,6 +15,7 @@
  */
 package io.guthix.oldscape.server.combat
 
+import io.guthix.oldscape.server.PersistentProperty
 import io.guthix.oldscape.server.Property
 import io.guthix.oldscape.server.stat.AttackType
 import io.guthix.oldscape.server.stat.StatMultiplier
@@ -93,6 +94,10 @@ val Player.attackSequence: Int by Property {
 
 val Player.defenceSequence: Int by Property {
     equipment.weapon?.blockAnim ?: SequenceIds.BLOCK_424
+}
+
+var Player.autoRetaliate: Boolean by PersistentProperty {
+    true
 }
 
 var Character.inCombatWith: Character? by Property { null }

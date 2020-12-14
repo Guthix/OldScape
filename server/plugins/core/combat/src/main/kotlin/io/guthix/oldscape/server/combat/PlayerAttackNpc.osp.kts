@@ -23,10 +23,13 @@ import io.guthix.oldscape.server.event.NpcClickEvent
 import io.guthix.oldscape.server.event.PlayerHitEvent
 
 on(NpcClickEvent::class).where { contextMenuEntry == "Attack" }.then {
-    player.attackNpc(npc, world)
+    if(player.inCombatWith != npc) player.attackNpc(npc, world)
 }
 
 on(PlayerHitEvent::class).then {
+    if(player.inCombatWith == null && player.autoRetaliate) {
+        player.attackNpc(npc, world)
+    }
     val damage = npc.calcHit(player) ?: 0
     player.animate(player.defenceSequence)
     player.hit(world, damage)
