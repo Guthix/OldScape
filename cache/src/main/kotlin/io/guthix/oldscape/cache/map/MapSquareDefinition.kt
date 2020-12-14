@@ -22,18 +22,18 @@ import io.netty.buffer.ByteBuf
 import kotlin.experimental.and
 import kotlin.math.cos
 
-public class MapSquareDefinition(
-    public val x: Int,
-    public val y: Int,
-    public val mapDefinition: MapDefinition,
-    public val locationDefinitions: List<MapLocDefinition>
+class MapSquareDefinition(
+    val x: Int,
+    val y: Int,
+    val mapDefinition: MapDefinition,
+    val locationDefinitions: List<MapLocDefinition>
 ) {
-    public companion object {
-        public const val FLOOR_COUNT: Int = 4
+    companion object {
+        const val FLOOR_COUNT: Int = 4
 
-        public const val SIZE: Int = 64
+        const val SIZE: Int = 64
 
-        public fun decode(landData: ByteBuf, mapData: ByteBuf, x: Int, y: Int): MapSquareDefinition {
+        fun decode(landData: ByteBuf, mapData: ByteBuf, x: Int, y: Int): MapSquareDefinition {
             val mapDefinitions = MapDefinition.decode(landData, x, y)
             val mapLocDefinitions = MapLocDefinition.decode(mapData, mapDefinitions.renderRules)
             return MapSquareDefinition(x, y, mapDefinitions, mapLocDefinitions)
@@ -41,18 +41,18 @@ public class MapSquareDefinition(
     }
 }
 
-public class MapDefinition(
-    public val tileHeights: Array<Array<IntArray>>,
-    public val renderRules: Array<Array<ShortArray>>,
-    public val overlayIds: Array<Array<ByteArray>>,
-    public val overlayPaths: Array<Array<ShortArray>>,
-    public val overlayRotations: Array<Array<ShortArray>>,
-    public val underlayIds: Array<Array<ShortArray>>
+class MapDefinition(
+    val tileHeights: Array<Array<IntArray>>,
+    val renderRules: Array<Array<ShortArray>>,
+    val overlayIds: Array<Array<ByteArray>>,
+    val overlayPaths: Array<Array<ShortArray>>,
+    val overlayRotations: Array<Array<ShortArray>>,
+    val underlayIds: Array<Array<ShortArray>>
 ) {
-    public companion object {
-        public const val BLOCKED_TILE_MASK: Short = 0x1
-        public const val BRIDGE_TILE_MASK: Short = 0x2
-        public const val ROOF_TILE_MASK: Short = 0x4
+    companion object {
+        const val BLOCKED_TILE_MASK: Short = 0x1
+        const val LINK_BELOW_TILE_MASK: Short = 0x2
+        const val ROOF_TILE_MASK: Short = 0x4
         private const val JAGEX_CIRCULAR_ANGLE = 2048
         private const val ANGULAR_RATIO = 360.0 / JAGEX_CIRCULAR_ANGLE
         private val JAGEX_RADIAN = Math.toRadians(ANGULAR_RATIO)
@@ -60,7 +60,7 @@ public class MapDefinition(
             ((0xFFFF + 1) * cos(it.toDouble() * JAGEX_RADIAN).toInt())
         }
 
-        public fun decode(data: ByteBuf, baseX: Int, baseY: Int): MapDefinition {
+        fun decode(data: ByteBuf, baseX: Int, baseY: Int): MapDefinition {
             val tileHeights = Array(MapSquareDefinition.FLOOR_COUNT) { Array(MapSquareDefinition.SIZE) { IntArray(
                 MapSquareDefinition.SIZE
             ) } }
@@ -164,7 +164,7 @@ public class MapDefinition(
     }
 }
 
-public data class MapLocDefinition(
+data class MapLocDefinition(
     val id: Int,
     val floor: Int,
     val localX: Int,
@@ -172,8 +172,8 @@ public data class MapLocDefinition(
     val type: Int,
     val orientation: Int
 ) {
-    public companion object {
-        public fun decode(data: ByteBuf, renderRules: Array<Array<ShortArray>>): List<MapLocDefinition> {
+    companion object {
+        fun decode(data: ByteBuf, renderRules: Array<Array<ShortArray>>): List<MapLocDefinition> {
             var id = -1
             var offset = data.readIncrSmallSmart()
             val locations = mutableListOf<MapLocDefinition>()
@@ -186,8 +186,8 @@ public data class MapLocDefinition(
                     val localY = positionHash and 0x3F
                     val localX = (positionHash shr 6) and 0x3F
                     var z = (positionHash shr 12) and 0x3
-                    if((renderRules[1][localX][localY] and MapDefinition.BRIDGE_TILE_MASK) ==
-                        MapDefinition.BRIDGE_TILE_MASK
+                    if((renderRules[1][localX][localY] and MapDefinition.LINK_BELOW_TILE_MASK) ==
+                        MapDefinition.LINK_BELOW_TILE_MASK
                     ) z--
                     if(z < 0) {
                         data.readByte()

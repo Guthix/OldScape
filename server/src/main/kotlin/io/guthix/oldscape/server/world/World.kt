@@ -321,7 +321,7 @@ class World internal constructor(
                     verticalRenderRules.forEachIndexed { y, currentRule ->
                         var z = floor
                         if (currentRule.toInt() and MapDefinition.BLOCKED_TILE_MASK.toInt() == 1) {
-                            if (def.renderRules[1][x][y].toInt() and MapDefinition.BRIDGE_TILE_MASK.toInt() == 2) {
+                            if (def.renderRules[1][x][y].toInt() and MapDefinition.LINK_BELOW_TILE_MASK.toInt() == 2) {
                                 z--
                             }
                             if (z >= 0) {
