@@ -30,7 +30,7 @@ on(NpcClickEvent::class).where { contextMenuEntry == "Attack" }.then {
 }
 
 on(PlayerHitByNpcEvent::class).then {
-    if(player.inCombatWith == null) player.attackNpc(npc, world)
+    if(player.inCombatWith == null && player.autoRetaliate) player.attackNpc(npc, world)
     val damage = npc.calcHit(player)
     if(damage == null) {
         if(spotAnimOnFail == null) {
