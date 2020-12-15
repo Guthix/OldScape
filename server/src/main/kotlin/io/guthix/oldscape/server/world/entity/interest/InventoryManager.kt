@@ -80,18 +80,18 @@ open class InventoryManager(
         }
     }
 
-    fun remove(slot: Int): Obj? {
+    fun removeFromSlot(slot: Int): Obj? {
         val obj = objs[slot] ?: return null
         resetSlot(slot)
         return obj
     }
 
-    fun remove(objTemplate: ObjTemplate): Obj? {
-        val slot = objs.indexOfFirst { it?.template == objTemplate }
-        return if(slot == -1) null else remove(slot)
+    fun remove(id: Int, amount: Int): Obj? {
+        val slot = objs.indexOfFirst { it?.id == id }
+        return if(slot == -1) null else removeFromSlot(slot, amount)
     }
 
-    fun remove(slot: Int, amount: Int): Obj? {
+    fun removeFromSlot(slot: Int, amount: Int): Obj? {
         val obj = objs[slot] ?: return null
         return when {
             obj.quantity < amount -> null
@@ -107,9 +107,9 @@ open class InventoryManager(
         }
     }
 
-    fun remove(objTemplate: ObjTemplate, amount: Int): Obj? {
+    fun removeFromSlot(objTemplate: ObjTemplate, amount: Int): Obj? {
         val slot = objs.indexOfFirst { it?.template == objTemplate }
-        return if(slot == -1) null else remove(slot, amount)
+        return if(slot == -1) null else removeFromSlot(slot, amount)
     }
 
     private fun resetSlot(slot: Int) {

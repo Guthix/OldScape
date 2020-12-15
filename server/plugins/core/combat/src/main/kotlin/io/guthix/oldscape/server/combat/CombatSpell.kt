@@ -21,6 +21,7 @@ import io.guthix.oldscape.server.template.*
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.Character
 import io.guthix.oldscape.server.world.entity.Player
+import io.guthix.oldscape.server.world.entity.SpotAnimation
 
 val ObjTemplate.spellBookKey: Int get() = param[336] as Int
 
@@ -42,10 +43,8 @@ enum class CombatSpell(
     private val obj: Int,
     val castAnim: Int,
     val castSound: Int,
-    val castSpotAnim: Int,
-    val castSpotAnimHeight: Int,
-    val impactSpotAnim: Int,
-    val impactSpotAnimHeight: Int,
+    val castSpotAnim: SpotAnimation,
+    val impactSpotAnim: SpotAnimation,
     val projectile: ProjectileTemplate,
     val hit: (World, Player, Character) -> Int
 ) {
@@ -53,12 +52,10 @@ enum class CombatSpell(
         obj = ObjIds.NULL_3273,
         castAnim = SequenceIds.SPELL_CAST_711,
         castSound = 220,
-        castSpotAnim = SpotAnimIds.WIND_STRIKE_CAST_90,
-        castSpotAnimHeight = 92,
-        impactSpotAnim = SpotAnimIds.WIND_STRIKE_HIT_92,
-        impactSpotAnimHeight = 124,
+        castSpotAnim = SpotAnimation(SpotAnimIds.WIND_STRIKE_CAST_90, height = 92),
+        impactSpotAnim = SpotAnimation(SpotAnimIds.WIND_STRIKE_HIT_92, height = 124),
         projectile = CombatProjectileType.MAGIC.createTemplate(91),
-        hit = { world, player, target -> 2 }
+        hit = { _, _, _ -> 2 }
     );
 
     val component: EnumConfig.Component get() = ServerContext.objTemplates[obj].component

@@ -60,7 +60,7 @@ internal val buttonToSlots = mapOf(
 )
 
 fun Player.unequip(equipmentType: EquipmentType, world: World): Obj? {
-    val obj = equipment.remove(equipmentType.slot) ?: return null
+    val obj = equipment.removeFromSlot(equipmentType.slot) ?: return null
     equipment.removeBonuses(obj)
     obj.template.equipment?.let { (_, _, coversHair, isFullBody, coversFace) ->
         if (coversFace == true) equipment.coversFace = false

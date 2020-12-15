@@ -22,12 +22,15 @@ import io.guthix.oldscape.server.pathing.DestinationRectangleDirect
 import io.guthix.oldscape.server.pathing.simplePathSearch
 import io.guthix.oldscape.server.stat.AttackType
 import io.guthix.oldscape.server.task.NormalTask
+import io.guthix.oldscape.server.task.TaskType
 import io.guthix.oldscape.server.template.attackSequence
 import io.guthix.oldscape.server.template.attackSpeed
 import io.guthix.oldscape.server.template.attackType
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.Npc
 import io.guthix.oldscape.server.world.entity.Player
+
+object AggressionTask : TaskType
 
 fun Npc.attackPlayer(player: Player, world: World): Unit = when (attackType) {
     AttackType.RANGED -> TODO()

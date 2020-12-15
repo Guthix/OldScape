@@ -22,7 +22,7 @@ import io.guthix.oldscape.server.plugin.invalidMessage
 on(InvObjClickEvent::class).where {
     interfaceId == player.itemBag.interfaceId && (contextMenuEntry == "Wield" || contextMenuEntry == "Wear")
 }.then {
-    val obj = player.itemBag.remove(inventorySlot) ?: return@then
+    val obj = player.itemBag.removeFromSlot(inventorySlot) ?: return@then
     player.equip(world, obj)
 }
 

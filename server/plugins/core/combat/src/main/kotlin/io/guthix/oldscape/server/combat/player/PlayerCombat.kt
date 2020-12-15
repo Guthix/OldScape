@@ -18,11 +18,10 @@ package io.guthix.oldscape.server.combat.player
 import io.guthix.oldscape.server.PersistentProperty
 import io.guthix.oldscape.server.Property
 import io.guthix.oldscape.server.combat.CombatSpell
-import io.guthix.oldscape.server.combat.dmg.calcHit
+import io.guthix.oldscape.server.combat.dmg.maxMagicHit
 import io.guthix.oldscape.server.combat.dmg.maxMeleeHit
 import io.guthix.oldscape.server.combat.dmg.maxRangeHit
 import io.guthix.oldscape.server.combat.inCombatWith
-import io.guthix.oldscape.server.damage.hit
 import io.guthix.oldscape.server.event.EventBus
 import io.guthix.oldscape.server.event.NpcHitByPlayerEvent
 import io.guthix.oldscape.server.pathing.DestinationRange
@@ -35,6 +34,7 @@ import io.guthix.oldscape.server.template.*
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.Npc
 import io.guthix.oldscape.server.world.entity.Player
+import io.guthix.oldscape.server.world.entity.SpotAnimation
 import io.guthix.oldscape.server.world.entity.interest.EquipmentType
 import io.guthix.oldscape.server.world.map.dim.TileUnit
 import io.guthix.oldscape.server.world.map.dim.max
@@ -72,12 +72,12 @@ var Player.autoRetaliate: Boolean by PersistentProperty {
 }
 
 fun Player.attackNpc(npc: Npc, world: World): Unit = when (currentStyle.attackType) {
-    AttackType.RANGED -> rangeAttack(npc, world)
-    AttackType.MAGIC -> magicAttack(npc, world, CombatSpell.WIND_STRIKE)
-    else -> meleeAttack(npc, world)
+    AttackType.RANGED -> startRangeAttack(npc, world)
+    AttackType.MAGIC -> startMagicAttack(npc, world, CombatSpell.WIND_STRIKE)
+    else -> startMeleeAttack(npc, world)
 }
 
-internal fun Player.meleeAttack(npc: Npc, world: World) {
+internal fun Player.startMeleeAttack(npc: Npc, world: World) {
     cancelTasks(NormalTask)
     var npcDestination = DestinationRectangleDirect(npc, world)
     path = breadthFirstSearch(pos, npcDestination, size, findAlternative = true, world)
@@ -86,7 +86,7 @@ internal fun Player.meleeAttack(npc: Npc, world: World) {
         while (true) { // start player combat
             wait { npcDestination.reached(pos.x, pos.y, size) }
             animate(attackSequence)
-            EventBus.schedule(NpcHitByPlayerEvent(this@meleeAttack, npc, world, maxMeleeHit()))
+            EventBus.schedule(NpcHitByPlayerEvent(this@startMeleeAttack, npc, world, maxMeleeHit()))
             wait(ticks = attackSpeed)
         }
     }.finalize {
@@ -107,7 +107,7 @@ internal fun Player.meleeAttack(npc: Npc, world: World) {
     }
 }
 
-internal fun Player.rangeAttack(npc: Npc, world: World) {
+internal fun Player.startRangeAttack(npc: Npc, world: World) {
     cancelTasks(NormalTask)
     var npcDestination = DestinationRange(npc, attackRange, world)
     path = breadthFirstSearch(pos, npcDestination, size, true, world)
@@ -129,7 +129,7 @@ internal fun Player.rangeAttack(npc: Npc, world: World) {
                 val oldNpcPos = npc.pos
                 wait(ticks = projectile.lifeTimeServerTicks - 1)
                 if (Random.nextDouble(1.0) < 0.8) world.addObject(ammunition.copy(quantity = 1), oldNpcPos)
-                EventBus.schedule(NpcHitByPlayerEvent(this@rangeAttack, npc, world, maxRangeHit()))
+                EventBus.schedule(NpcHitByPlayerEvent(this@startRangeAttack, npc, world, maxRangeHit()))
             }
             wait(ticks = attackSpeed)
         }
@@ -150,40 +150,83 @@ internal fun Player.rangeAttack(npc: Npc, world: World) {
     }
 }
 
+val spashAnimation: SpotAnimation = SpotAnimation(SpotAnimIds.SPLASH_85, height = 123)
+
 internal fun Player.magicAttack(
     npc: Npc,
     world: World,
     spellTemplate: CombatSpell
 ) {
+    cancelTasks(NormalTask)
     val npcDestination = DestinationRange(npc, attackRange, world)
     path = breadthFirstSearch(pos, npcDestination, size, true, world)
-    inCombatWith = npc
+    addTask(NormalTask) {
+        wait { npcDestination.reached(pos.x, pos.y, size) }
+        animate(spellTemplate.castAnim)
+        spotAnimate(spellTemplate.castSpotAnim)
+        val projectile = world.addProjectile(spellTemplate.projectile, pos, npc)
+        world.addTask(NormalTask) {
+            wait(ticks = projectile.lifeTimeServerTicks - 1)
+            EventBus.schedule(NpcHitByPlayerEvent(
+                this@magicAttack,
+                npc,
+                world,
+                maxMagicHit(spellTemplate.hit(world, this@magicAttack, npc)),
+                spotAnimOnSuccess = spellTemplate.impactSpotAnim,
+                spotAnimOnFail = spashAnimation
+            ))
+        }
+        wait(ticks = attackSpeed)
+    }.finalize {
+        inCombatWith = null
+    }
+    addTask(NormalTask) {
+        wait { npcDestination.reached(pos.x, pos.y, size) }
+        turnTo(npc)
+    }
+}
+
+internal fun Player.startMagicAttack(
+    npc: Npc,
+    world: World,
+    spellTemplate: CombatSpell
+) {
     cancelTasks(NormalTask)
-    val player = this
-    addTask(NormalTask) combatTask@{
-        main@ while (true) { // start player combat
+    var npcDestination = DestinationRange(npc, attackRange, world)
+    path = breadthFirstSearch(pos, npcDestination, size, true, world)
+    addTask(NormalTask) {
+        inCombatWith = npc
+        while (true) { // start player combat
             wait { npcDestination.reached(pos.x, pos.y, size) }
             animate(spellTemplate.castAnim)
-            spotAnimate(spellTemplate.castSpotAnim, spellTemplate.castSpotAnimHeight)
-            // TODO sound
-            val projectile = world.addProjectile(spellTemplate.projectile, player.pos, npc)
+            spotAnimate(spellTemplate.castSpotAnim)
+            val projectile = world.addProjectile(spellTemplate.projectile, pos, npc)
             world.addTask(NormalTask) {
-                val damage = calcHit(npc, spellTemplate.hit(world, player, npc))
-                if (damage == null) {
-                    npc.spotAnimate(SpotAnimIds.SPLASH_85, height = 123, projectile.lifetimeClientTicks) // sound 227
-                    // TODO sound
-                } else {
-                    wait(ticks = projectile.lifeTimeServerTicks - 1)
-                    npc.animate(npc.defenceSequence)
-                    npc.spotAnimate(spellTemplate.impactSpotAnim, spellTemplate.impactSpotAnimHeight)
-                    // TODO sound // TODO implement proper hits
-                    if (npc.hit(world, damage)) cancelTasks(NormalTask)
-                }
+                wait(ticks = projectile.lifeTimeServerTicks - 1)
+                EventBus.schedule(NpcHitByPlayerEvent(
+                    this@startMagicAttack,
+                    npc,
+                    world,
+                    maxMagicHit(spellTemplate.hit(world, this@startMagicAttack, npc)),
+                    spotAnimOnSuccess = spellTemplate.impactSpotAnim,
+                    spotAnimOnFail = spashAnimation
+                ))
             }
             wait(ticks = attackSpeed)
         }
     }.finalize {
         inCombatWith = null
+    }
+    addTask(NormalTask) {
+        turnToLock(npc)
+        wait { npcDestination.reached(pos.x, pos.y, size) }
+        while (true) {
+            wait { npc.lastPos != npc.pos }
+            npcDestination = DestinationRange(npc, attackRange, world)
+            path = simplePathSearch(pos, npcDestination, size, world)
+            wait(ticks = 1)
+        }
+    }.finalize {
         turnToLock(null)
     }
 }
