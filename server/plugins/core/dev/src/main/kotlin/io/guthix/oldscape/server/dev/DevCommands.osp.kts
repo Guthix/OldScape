@@ -48,6 +48,11 @@ on(ClientCheatEvent::class).where { string == "hit" }.then {
     player.hit(world, 99)
 }
 
+
+on(ClientCheatEvent::class).where { string == "magic" }.then {
+    player.itemBag.add(ObjIds.STAFF_OF_AIR_1381, 1)
+}
+
 on(ClientCheatEvent::class).where { string == "locdel" }.then {
     world.delLoc(
         Loc(
