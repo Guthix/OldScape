@@ -34,12 +34,21 @@ on(PlayerHitByNpcEvent::class).then {
     val damage = npc.calcHit(player)
     if(damage == null) {
         if(spotAnimOnFail == null) {
-            if(player.hit(world, 0)) { npc.cancelTasks(NormalTask) }
+            if(player.hit(world, 0)) {
+                npc.cancelTasks(NormalTask)
+            } else {
+                player.animate(player.defenceSequence)
+            }
         } else {
             player.spotAnimate(spotAnimOnFail)
         }
     } else {
-        if(player.hit(world, damage)) { npc.cancelTasks(NormalTask) }
+        player.animate(player.defenceSequence)
+        if(player.hit(world, damage)) {
+            npc.cancelTasks(NormalTask)
+        } else {
+            player.animate(player.defenceSequence)
+        }
         spotAnimOnSuccess?.let(player::spotAnimate)
     }
 }
