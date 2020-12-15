@@ -20,19 +20,26 @@ import io.guthix.oldscape.server.combat.dmg.calcHit
 import io.guthix.oldscape.server.damage.hit
 import io.guthix.oldscape.server.event.IfOnNpcEvent
 import io.guthix.oldscape.server.event.NpcClickEvent
-import io.guthix.oldscape.server.event.PlayerHitEvent
+import io.guthix.oldscape.server.event.PlayerHitByNpcEvent
+import io.guthix.oldscape.server.task.NormalTask
 
 on(NpcClickEvent::class).where { contextMenuEntry == "Attack" }.then {
     if(player.inCombatWith != npc) player.attackNpc(npc, world)
 }
 
-on(PlayerHitEvent::class).then {
-    if(player.inCombatWith == null && player.autoRetaliate) {
-        player.attackNpc(npc, world)
+on(PlayerHitByNpcEvent::class).then {
+    if(player.inCombatWith == null) player.attackNpc(npc, world)
+    val damage = npc.calcHit(player)
+    if(damage == null) {
+        if(spotAnimOnFail == null) {
+            if(player.hit(world, 0)) { npc.cancelTasks(NormalTask) }
+        } else {
+            player.spotAnimate(spotAnimOnFail)
+        }
+    } else {
+        if(player.hit(world, damage)) { npc.cancelTasks(NormalTask) }
+        spotAnimOnSuccess?.let(player::spotAnimate)
     }
-    val damage = npc.calcHit(player) ?: 0
-    player.animate(player.defenceSequence)
-    player.hit(world, damage)
 }
 
 CombatSpell.values().forEach { spell ->

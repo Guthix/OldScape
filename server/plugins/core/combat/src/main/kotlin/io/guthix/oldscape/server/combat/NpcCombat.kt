@@ -16,7 +16,7 @@
 package io.guthix.oldscape.server.combat
 
 import io.guthix.oldscape.server.event.EventBus
-import io.guthix.oldscape.server.event.PlayerHitEvent
+import io.guthix.oldscape.server.event.PlayerHitByNpcEvent
 import io.guthix.oldscape.server.pathing.DestinationRectangleDirect
 import io.guthix.oldscape.server.pathing.simplePathSearch
 import io.guthix.oldscape.server.stat.AttackType
@@ -43,7 +43,7 @@ internal fun Npc.meleeAttack(player: Player, world: World) {
         while (true) {
             wait { playerDestination.reached(pos.x, pos.y, size) }
             animate(attackSequence)
-            EventBus.schedule(PlayerHitEvent(this@meleeAttack, player, world))
+            EventBus.schedule(PlayerHitByNpcEvent(this@meleeAttack, player, world))
             wait(ticks = attackSpeed)
         }
     }.finalize {

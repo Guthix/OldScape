@@ -16,19 +16,21 @@
 package io.guthix.oldscape.server.combat
 
 import io.guthix.oldscape.server.combat.dmg.calcHit
-import io.guthix.oldscape.server.combat.dmg.maxMeleeHit
 import io.guthix.oldscape.server.damage.hit
-import io.guthix.oldscape.server.event.NpcHitEvent
+import io.guthix.oldscape.server.event.NpcHitByPlayerEvent
 import io.guthix.oldscape.server.task.NormalTask
-import io.guthix.oldscape.server.template.defenceSequence
 
-on(NpcHitEvent::class).then {
-    if(npc.inCombatWith == null) {
-        npc.attackPlayer(player, world)
-    }
-    val damage = player.calcHit(npc, player.maxMeleeHit()) ?: 0
-    npc.animate(npc.defenceSequence)
-    if (npc.hit(world, damage)) {
-        player.cancelTasks(NormalTask)
+on(NpcHitByPlayerEvent::class).then {
+    if(npc.inCombatWith == null) npc.attackPlayer(player, world)
+    val damage = player.calcHit(npc, maxHit)
+    if(damage == null) {
+        if(spotAnimOnFail == null) {
+            if(npc.hit(world, 0)) { player.cancelTasks(NormalTask) }
+        } else {
+            npc.spotAnimate(spotAnimOnFail)
+        }
+    } else {
+        if(npc.hit(world, damage)) { player.cancelTasks(NormalTask) }
+        spotAnimOnSuccess?.let(npc::spotAnimate)
     }
 }

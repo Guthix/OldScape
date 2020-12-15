@@ -18,9 +18,12 @@ package io.guthix.oldscape.server.event
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.Npc
 import io.guthix.oldscape.server.world.entity.Player
+import io.guthix.oldscape.server.world.entity.SpotAnimation
 
-data class NpcHitEvent(
-    val player: Player,
-    override val npc: Npc,
-    override val world: World
-) : NpcGameEvent(npc, world)
+data class PlayerHitByNpcEvent(
+    val npc: Npc,
+    override val player: Player,
+    override val world: World,
+    val spotAnimOnSuccess: SpotAnimation? = null,
+    val spotAnimOnFail: SpotAnimation? = null,
+) : PlayerGameEvent(player, world)

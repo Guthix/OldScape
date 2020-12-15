@@ -16,10 +16,11 @@
 package io.guthix.oldscape.server.combat
 
 import io.guthix.oldscape.server.combat.dmg.calcHit
+import io.guthix.oldscape.server.combat.dmg.maxMeleeHit
 import io.guthix.oldscape.server.combat.dmg.maxRangeHit
 import io.guthix.oldscape.server.damage.hit
 import io.guthix.oldscape.server.event.EventBus
-import io.guthix.oldscape.server.event.NpcHitEvent
+import io.guthix.oldscape.server.event.NpcHitByPlayerEvent
 import io.guthix.oldscape.server.pathing.DestinationRange
 import io.guthix.oldscape.server.pathing.DestinationRectangleDirect
 import io.guthix.oldscape.server.pathing.breadthFirstSearch
@@ -48,7 +49,7 @@ internal fun Player.meleeAttack(npc: Npc, world: World) {
         while (true) { // start player combat
             wait { npcDestination.reached(pos.x, pos.y, size) }
             animate(attackSequence)
-            EventBus.schedule(NpcHitEvent(this@meleeAttack, npc, world))
+            EventBus.schedule(NpcHitByPlayerEvent(this@meleeAttack, npc, world, maxMeleeHit()))
             wait(ticks = attackSpeed)
         }
     }.finalize {
@@ -70,15 +71,13 @@ internal fun Player.meleeAttack(npc: Npc, world: World) {
 }
 
 internal fun Player.rangeAttack(npc: Npc, world: World) {
-    val npcDestination = DestinationRange(npc, attackRange, world)
-    path = breadthFirstSearch(pos, npcDestination, size, true, world)
-    inCombatWith = npc
     cancelTasks(NormalTask)
-    val player = this
+    var npcDestination = DestinationRange(npc, attackRange, world)
+    path = breadthFirstSearch(pos, npcDestination, size, true, world)
     addTask(NormalTask) {
+        inCombatWith = npc
         main@ while (true) { // start player combat
             wait { npcDestination.reached(pos.x, pos.y, size) }
-
             val ammunition = equipment.ammunition
             if (ammunition == null || ammunition.quantity <= 0) {
                 senGameMessage("There is no ammo left in your quiver.")
@@ -89,19 +88,27 @@ internal fun Player.rangeAttack(npc: Npc, world: World) {
             animate(attackSequence)
             spotAnimate(ammunition.drawBackSpotAnim, ammunition.drawBackSpotAnimHeight)
             val projectile = world.addProjectile(ammunition.ammunitionProjectile, pos, npc)
-            EventBus.schedule(NpcHitEvent(player, npc, world))
             world.addTask(NormalTask) { // projectile task
-                val damage = calcHit(npc, maxRangeHit()) ?: 0
                 val oldNpcPos = npc.pos
                 wait(ticks = projectile.lifeTimeServerTicks - 1)
                 if (Random.nextDouble(1.0) < 0.8) world.addObject(ammunition.copy(quantity = 1), oldNpcPos)
-                npc.animate(npc.defenceSequence)
-                if (npc.hit(world, damage)) cancelTasks(NormalTask)
+                EventBus.schedule(NpcHitByPlayerEvent(this@rangeAttack, npc, world, maxRangeHit()))
             }
             wait(ticks = attackSpeed)
         }
     }.finalize {
         inCombatWith = null
+    }
+    addTask(NormalTask) {
+        turnToLock(npc)
+        wait { npcDestination.reached(pos.x, pos.y, size) }
+        while (true) {
+            wait { npc.lastPos != npc.pos }
+            npcDestination = DestinationRange(npc, attackRange, world)
+            path = simplePathSearch(pos, npcDestination, size, world)
+            wait(ticks = 1)
+        }
+    }.finalize {
         turnToLock(null)
     }
 }
@@ -123,7 +130,6 @@ internal fun Player.magicAttack(
             spotAnimate(spellTemplate.castSpotAnim, spellTemplate.castSpotAnimHeight)
             // TODO sound
             val projectile = world.addProjectile(spellTemplate.projectile, player.pos, npc)
-            EventBus.schedule(NpcHitEvent(player, npc, world))
             world.addTask(NormalTask) {
                 val damage = calcHit(npc, spellTemplate.hit(world, player, npc))
                 if (damage == null) {
@@ -133,7 +139,7 @@ internal fun Player.magicAttack(
                     wait(ticks = projectile.lifeTimeServerTicks - 1)
                     npc.animate(npc.defenceSequence)
                     npc.spotAnimate(spellTemplate.impactSpotAnim, spellTemplate.impactSpotAnimHeight)
-                    // TODO sound
+                    // TODO sound // TODO implement proper hits
                     if (npc.hit(world, damage)) cancelTasks(NormalTask)
                 }
             }

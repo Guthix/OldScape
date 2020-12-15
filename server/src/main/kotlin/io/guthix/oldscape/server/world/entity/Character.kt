@@ -192,14 +192,16 @@ abstract class Character(open val index: Int) : Entity, EventHolder, TaskHolder 
 
     object SpotAnimTask : TaskType
 
-    fun spotAnimate(spotAnimId: Int, height: Int, delay: Int = 0) {
-        val anim = SpotAnimation(spotAnimId, height, delay)
+    fun spotAnimate(spotAnimId: Int, height: Int, delay: Int = 0): Unit =
+        spotAnimate(SpotAnimation(spotAnimId, height, delay))
+
+    fun spotAnimate(spotAnim: SpotAnimation) {
         addSpotAnimationFlag()
-        spotAnimation = anim
+        spotAnimation = spotAnim
         cancelTasks(SpotAnimTask)
         addTask(SpotAnimTask) {
-            wait(ticks = anim.delay)
-            val duration = anim.duration ?: throw IllegalStateException(
+            wait(ticks = spotAnim.delay)
+            val duration = spotAnim.duration ?: throw IllegalStateException(
                 "Can't start routine because spot animation or sequence does not exist."
             )
             wait(ticks = duration)
