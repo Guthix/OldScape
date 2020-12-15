@@ -52,7 +52,7 @@ fun ObjWikiDefinition.toWeaponTemplate(serverT: WeaponTemplate?): WeaponTemplate
     combatStyle.toWeaponType() ?: WeaponType.UNARMED,
     attackSpeed ?: 0,
     serverT?.attackRange,
-    serverT?.weaponSequences
+    serverT?.sequences
 )
 
 fun NpcWikiDefinition.toMonsterTemplate(serverT: MonsterTemplate?): MonsterTemplate = MonsterTemplate(

@@ -34,7 +34,7 @@ val Obj.attackAnim: Int get() = weaponSequences.attack
 val Obj.blockAnim: Int get() = weaponSequences.defence
 
 private val Obj.weaponSequences: WeaponSequences
-    get() = weaponTemplate.weaponSequences ?: throw TemplateNotFoundException(id, Obj::weaponSequences)
+    get() = weaponTemplate.sequences ?: throw TemplateNotFoundException(id, Obj::weaponSequences)
 
 private val Obj.weaponTemplate: WeaponTemplate
     get() = template.weapon ?: throw TemplateNotFoundException(id, WeaponTemplate::class)
@@ -47,7 +47,7 @@ data class WeaponTemplate(
     val type: WeaponType,
     val attackSpeed: Int,
     val attackRange: Int? = null,
-    val weaponSequences: WeaponSequences? = null,
+    val sequences: WeaponSequences? = null,
 ) : Template
 
 @Serializable

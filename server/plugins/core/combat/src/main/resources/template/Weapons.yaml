@@ -66,54 +66,67 @@
   ids: [806]
   type: "THROW_WEAPON"
   attackSpeed: 3
+  attackRange: 3
 "IRON_DART_807":
   ids: [807]
   type: "THROW_WEAPON"
   attackSpeed: 3
+  attackRange: 3
 "STEEL_DART_808":
   ids: [808]
   type: "THROW_WEAPON"
   attackSpeed: 3
+  attackRange: 3
 "MITHRIL_DART_809":
   ids: [809]
   type: "THROW_WEAPON"
   attackSpeed: 3
+  attackRange: 3
 "ADAMANT_DART_810":
   ids: [810]
   type: "THROW_WEAPON"
   attackSpeed: 3
+  attackRange: 3
 "RUNE_DART_811":
   ids: [811]
   type: "THROW_WEAPON"
   attackSpeed: 3
+  attackRange: 3
 "BRONZE_DART_812":
   ids: [812]
   type: "THROW_WEAPON"
   attackSpeed: 3
+  attackRange: 3
 "IRON_DART_813":
   ids: [813]
   type: "THROW_WEAPON"
   attackSpeed: 3
+  attackRange: 3
 "STEEL_DART_814":
   ids: [814]
   type: "THROW_WEAPON"
   attackSpeed: 3
+  attackRange: 3
 "MITHRIL_DART_815":
   ids: [815]
   type: "THROW_WEAPON"
   attackSpeed: 3
+  attackRange: 3
 "ADAMANT_DART_816":
   ids: [816]
   type: "THROW_WEAPON"
   attackSpeed: 3
+  attackRange: 3
 "RUNE_DART_817":
   ids: [817]
   type: "THROW_WEAPON"
   attackSpeed: 3
+  attackRange: 3
 "POISONED_DARTP_818":
   ids: [818]
   type: "THROW_WEAPON"
   attackSpeed: 3
+  attackRange: 3
 "CROSSBOW_837":
   ids: [837]
   type: "CROSSBOW"
@@ -122,50 +135,65 @@
   ids: [839]
   type: "BOW"
   attackSpeed: 6
+  attackRange: 10
 "SHORTBOW_841":
   ids: [841]
   type: "BOW"
   attackSpeed: 4
+  attackRange: 7
 "OAK_SHORTBOW_843":
   ids: [843]
   type: "BOW"
   attackSpeed: 4
+  attackRange: 7
 "OAK_LONGBOW_845":
   ids: [845]
   type: "BOW"
   attackSpeed: 6
+  attackRange: 10
 "WILLOW_LONGBOW_847":
   ids: [847]
   type: "BOW"
   attackSpeed: 6
+  attackRange: 10
 "WILLOW_SHORTBOW_849":
   ids: [849]
   type: "BOW"
   attackSpeed: 4
+  attackRange: 7
 "MAPLE_LONGBOW_851":
   ids: [851]
   type: "BOW"
   attackSpeed: 6
+  attackRange: 10
 "MAPLE_SHORTBOW_853":
   ids: [853, 20403]
   type: "BOW"
   attackSpeed: 4
+  attackRange: 7
 "YEW_LONGBOW_855":
   ids: [855]
   type: "BOW"
   attackSpeed: 6
+  attackRange: 10
 "YEW_SHORTBOW_857":
   ids: [857, 20401]
   type: "BOW"
   attackSpeed: 4
+  attackRange: 7
 "MAGIC_LONGBOW_859":
   ids: [859]
   type: "BOW"
   attackSpeed: 6
+  attackRange: 10
 "MAGIC_SHORTBOW_861":
   ids: [861, 20558]
   type: "BOW"
   attackSpeed: 4
+  attackRange: 7
+  sequences:
+    attack: 426
+    defence: 424
 "IRON_KNIFE_863":
   ids: [863]
   type: "THROW_WEAPON"
@@ -762,10 +790,12 @@
   ids: [3093]
   type: "THROW_WEAPON"
   attackSpeed: 3
+  attackRange: 3
 "BLACK_DART_3094":
   ids: [3094]
   type: "THROW_WEAPON"
   attackSpeed: 3
+  attackRange: 3
 "BRONZE_CLAWS_3095":
   ids: [3095]
   type: "UNARMED"
@@ -1166,38 +1196,47 @@
   ids: [5628]
   type: "THROW_WEAPON"
   attackSpeed: 3
+  attackRange: 3
 "IRON_DART_5629":
   ids: [5629]
   type: "THROW_WEAPON"
   attackSpeed: 3
+  attackRange: 3
 "STEEL_DART_5630":
   ids: [5630]
   type: "THROW_WEAPON"
   attackSpeed: 3
+  attackRange: 3
 "BLACK_DART_5631":
   ids: [5631]
   type: "THROW_WEAPON"
   attackSpeed: 3
+  attackRange: 3
 "MITHRIL_DART_5632":
   ids: [5632]
   type: "THROW_WEAPON"
   attackSpeed: 3
+  attackRange: 3
 "ADAMANT_DART_5633":
   ids: [5633]
   type: "THROW_WEAPON"
   attackSpeed: 3
+  attackRange: 3
 "RUNE_DART_5634":
   ids: [5634]
   type: "THROW_WEAPON"
   attackSpeed: 3
+  attackRange: 3
 "BRONZE_DART_5635":
   ids: [5635]
   type: "THROW_WEAPON"
   attackSpeed: 3
+  attackRange: 3
 "IRON_DART_5636":
   ids: [5636]
   type: "THROW_WEAPON"
   attackSpeed: 3
+  attackRange: 3
 "STEEL_DART_5637":
   ids: [5637]
   type: "THROW_WEAPON"
@@ -1206,18 +1245,22 @@
   ids: [5638]
   type: "THROW_WEAPON"
   attackSpeed: 3
+  attackRange: 3
 "MITHRIL_DART_5639":
   ids: [5639]
   type: "THROW_WEAPON"
   attackSpeed: 3
+  attackRange: 3
 "ADAMANT_DART_5640":
   ids: [5640]
   type: "THROW_WEAPON"
   attackSpeed: 3
+  attackRange: 3
 "RUNE_DART_5641":
   ids: [5641]
   type: "THROW_WEAPON"
   attackSpeed: 3
+  attackRange: 3
 "BRONZE_KNIFE_5654":
   ids: [5654]
   type: "THROW_WEAPON"
@@ -2098,18 +2141,22 @@
   ids: [11230]
   type: "THROW_WEAPON"
   attackSpeed: 3
+  attackRange: 3
 "DRAGON_DART_11231":
   ids: [11231]
   type: "THROW_WEAPON"
   attackSpeed: 3
+  attackRange: 3
 "DRAGON_DART_11233":
   ids: [11233]
   type: "THROW_WEAPON"
   attackSpeed: 3
+  attackRange: 3
 "DRAGON_DART_11234":
   ids: [11234]
   type: "THROW_WEAPON"
   attackSpeed: 3
+  attackRange: 3
 "DARK_BOW_11235":
   ids: [11235, 20408]
   type: "BOW"
@@ -2490,6 +2537,7 @@
   ids: [12788]
   type: "BOW"
   attackSpeed: 4
+  attackRange: 7
 "STEAM_BATTLESTAFF_12795":
   ids: [12795]
   type: "STAFF"
