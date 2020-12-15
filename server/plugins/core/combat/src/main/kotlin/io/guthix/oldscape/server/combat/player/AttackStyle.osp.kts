@@ -13,8 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.guthix.oldscape.server.combat.aggression
+package io.guthix.oldscape.server.combat.player
 
-import io.guthix.oldscape.server.task.TaskType
+import io.guthix.oldscape.server.event.ObjEquipedEvent
+import io.guthix.oldscape.server.template.VarbitIds
+import io.guthix.oldscape.server.template.equipmentType
 
-object AggressionTask : TaskType
+on(ObjEquipedEvent::class).then {
+    player.updateVarbit(VarbitIds.ATTACK_STYLE_357, player.equipment.weapon?.equipmentType?.slot ?: 0)
+}

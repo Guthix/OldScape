@@ -15,9 +15,9 @@
  */
 package io.guthix.oldscape.server.combat.dmg
 
-import io.guthix.oldscape.server.combat.currentStyle
 import io.guthix.oldscape.server.combat.damageMultiplier
 import io.guthix.oldscape.server.combat.findBonus
+import io.guthix.oldscape.server.combat.player.currentStyle
 import io.guthix.oldscape.server.equipment.attackBonus
 import io.guthix.oldscape.server.equipment.defenceBonus
 import io.guthix.oldscape.server.prayer.prayerMultiplier
@@ -58,17 +58,17 @@ private fun Player.maxAttackRol(): Double =
     effectiveAttack() * (equipment.attackBonus.findBonus(currentStyle.attackType) + 64)
 
 private fun Npc.maxAttackRol(): Double =
-    effectiveAttack() * ((attackBonus?.melee ?: 0) + 64)
+    effectiveAttack() * (attackBonus.melee + 64)
 
 private fun Player.maxRangeRol(): Double = effectiveRange() * (equipment.attackBonus.range + 64)
 
 private fun Npc.maxRangeRol(): Double =
-    effectiveRange() * ((attackBonus?.range ?: 0) + 64)
+    effectiveRange() * (attackBonus.range + 64)
 
 private fun Player.maxMagicRol(): Double = effectiveMagic() * (equipment.attackBonus.magic + 64)
 
 private fun Npc.maxMagicRol(): Double =
-    effectiveMagic() * ((attackBonus?.magic ?: 0) + 64)
+    effectiveMagic() * (attackBonus.magic + 64)
 
 private fun Player.maxDefenceRol(attackType: AttackType): Double =
     effectiveDefence() * (equipment.defenceBonus.findBonus(attackType) + 64)

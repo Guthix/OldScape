@@ -13,10 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.guthix.oldscape.server.combat
+package io.guthix.oldscape.server.combat.player
 
 import io.guthix.oldscape.server.ServerContext
+import io.guthix.oldscape.server.combat.CombatSpell
 import io.guthix.oldscape.server.combat.dmg.calcHit
+import io.guthix.oldscape.server.combat.inCombatWith
 import io.guthix.oldscape.server.damage.hit
 import io.guthix.oldscape.server.event.IfOnNpcEvent
 import io.guthix.oldscape.server.event.NpcClickEvent

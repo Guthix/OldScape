@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.guthix.oldscape.server.combat
+package io.guthix.oldscape.server.combat.player
 
 import io.guthix.oldscape.server.event.ButtonClickEvent
 import io.guthix.oldscape.server.event.PlayerInitialized

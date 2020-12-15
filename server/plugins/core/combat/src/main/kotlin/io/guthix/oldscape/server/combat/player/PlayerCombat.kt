@@ -13,11 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.guthix.oldscape.server.combat
+package io.guthix.oldscape.server.combat.player
 
+import io.guthix.oldscape.server.PersistentProperty
+import io.guthix.oldscape.server.Property
+import io.guthix.oldscape.server.combat.CombatSpell
 import io.guthix.oldscape.server.combat.dmg.calcHit
 import io.guthix.oldscape.server.combat.dmg.maxMeleeHit
 import io.guthix.oldscape.server.combat.dmg.maxRangeHit
+import io.guthix.oldscape.server.combat.inCombatWith
 import io.guthix.oldscape.server.damage.hit
 import io.guthix.oldscape.server.event.EventBus
 import io.guthix.oldscape.server.event.NpcHitByPlayerEvent
@@ -32,7 +36,40 @@ import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.Npc
 import io.guthix.oldscape.server.world.entity.Player
 import io.guthix.oldscape.server.world.entity.interest.EquipmentType
+import io.guthix.oldscape.server.world.map.dim.TileUnit
+import io.guthix.oldscape.server.world.map.dim.max
+import io.guthix.oldscape.server.world.map.dim.tiles
 import kotlin.random.Random
+
+val Player.selectedTypes: IntArray by Property {
+    IntArray(WeaponType.values().size)
+}
+
+val Player.currentStyle: CombatStyle
+    get() {
+        val weaponType = equipment.weapon?.weaponType ?: WeaponType.UNARMED
+        val index = selectedTypes[weaponType.ordinal]
+        return weaponType.styles[index]
+    }
+
+val Player.attackSpeed: Int get() = equipment.weapon?.baseAttackSpeed?.plus(currentStyle.style.attackSpeedBonus) ?: 4
+
+val Player.attackRange: TileUnit
+    get() = max(
+        10.tiles, equipment.weapon?.baseAttackRange?.plus(currentStyle.style.attackRangeBonus.tiles) ?: 1.tiles
+    )
+
+val Player.attackSequence: Int by Property {
+    equipment.weapon?.attackAnim ?: SequenceIds.PUNCH_422
+}
+
+val Player.defenceSequence: Int by Property {
+    equipment.weapon?.blockAnim ?: SequenceIds.BLOCK_424
+}
+
+var Player.autoRetaliate: Boolean by PersistentProperty {
+    true
+}
 
 fun Player.attackNpc(npc: Npc, world: World): Unit = when (currentStyle.attackType) {
     AttackType.RANGED -> rangeAttack(npc, world)

@@ -14,9 +14,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.guthix.oldscape.server.combat.aggression
+package io.guthix.oldscape.server.combat.npc
 
-import io.guthix.oldscape.server.combat.attackPlayer
 import io.guthix.oldscape.server.combat.inCombatWith
 import io.guthix.oldscape.server.event.NpcSpawnedEvent
 import io.guthix.oldscape.server.template.AggresiveType
