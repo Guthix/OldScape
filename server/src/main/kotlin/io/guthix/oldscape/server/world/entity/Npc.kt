@@ -15,6 +15,8 @@
  */
 package io.guthix.oldscape.server.world.entity
 
+import io.guthix.oldscape.dim.TileUnit
+import io.guthix.oldscape.dim.tiles
 import io.guthix.oldscape.server.ServerContext
 import io.guthix.oldscape.server.event.EventBus
 import io.guthix.oldscape.server.event.NpcMovedEvent
@@ -24,8 +26,6 @@ import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.interest.NpcUpdateType
 import io.guthix.oldscape.server.world.map.Tile
 import io.guthix.oldscape.server.world.map.Zone
-import io.guthix.oldscape.server.world.map.dim.TileUnit
-import io.guthix.oldscape.server.world.map.dim.tiles
 
 class Npc(
     val id: Int,

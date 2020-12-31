@@ -43,7 +43,7 @@ fun gltfExport(id: Int, model: Model) {
     model.computeTextureUVCoordinates()
     val gltf = GlTF()
     gltf.asset = jagexAsset
-    val textureCount = if(model.triangleTextures == null) 0 else model.triangleTextures!!.count { it != -1 }
+    val textureCount = if (model.triangleTextures == null) 0 else model.triangleTextures!!.count { it != -1 }
     val buffer = ByteBuffer.allocate(
         indexHeaderSize + (model.triangleCount * vertexInTriangle * floatInVertex * floatSize) * 2 + 2 * vertexInTriangle * floatSize * textureCount
     )
@@ -52,7 +52,7 @@ fun gltfExport(id: Int, model: Model) {
     buffer.put(1)
     buffer.put(2)
     buffer.put(0) // fill
-    for(triangleId in 0 until model.triangleCount) {
+    for (triangleId in 0 until model.triangleCount) {
         val vertices = listOf(
             model.triangleVertex1!![triangleId],
             model.triangleVertex2!![triangleId],
@@ -69,8 +69,8 @@ fun gltfExport(id: Int, model: Model) {
             buffer.putFloat((model.vertexPositionsY!![it] * -1).toFloat())
             buffer.putFloat((model.vertexPositionsZ!![it] * -1).toFloat())
         }
-        val textureId = if(model.triangleTextures == null) -1 else model.triangleTextures!![triangleId].toInt()
-        if(textureId != -1) { // write UV coordinates
+        val textureId = if (model.triangleTextures == null) -1 else model.triangleTextures!![triangleId].toInt()
+        if (textureId != -1) { // write UV coordinates
             repeat(vertexInTriangle) {
                 buffer.putFloat(model.triangleTextUCo!![triangleId]!![it])
                 buffer.putFloat(model.triangleTextVCo!![triangleId]!![it])
@@ -85,7 +85,7 @@ fun gltfExport(id: Int, model: Model) {
     gltf.addNodes(singleMeshNode)
     gltf.addScenes(singleNodeScene)
     gltf.addMeshes(createMesh(model, materialMap))
-    GltfWriter().write(gltf,  FileOutputStream(File("./resources/gltf/$id.gltf")))
+    GltfWriter().write(gltf, FileOutputStream(File("./resources/gltf/$id.gltf")))
     FileOutputStream(File("./resources/gltf/$id.bin")).write(buffer.array())
 }
 
@@ -98,7 +98,7 @@ private fun createBuffer(bufferName: String, byteBuffer: ByteBuffer) = Buffer().
 @ExperimentalUnsignedTypes
 private fun createTriangleBufferView(gltf: GlTF, model: Model) {
     var totalTextureSize = 0
-    for(triangleId in 0 until model.triangleCount) {
+    for (triangleId in 0 until model.triangleCount) {
         val vertxBufferView = BufferView().apply {
             buffer = 0
             byteOffset = indexHeaderSize + triangleId * 2 * triangleSize + totalTextureSize
@@ -107,8 +107,8 @@ private fun createTriangleBufferView(gltf: GlTF, model: Model) {
             target = GltfBufferType.ARRAY_BUFFER.opcode
         }
         gltf.addBufferViews(vertxBufferView)
-        val textureId = if(model.triangleTextures == null) -1 else model.triangleTextures!![triangleId].toInt()
-        if(textureId != -1) {
+        val textureId = if (model.triangleTextures == null) -1 else model.triangleTextures!![triangleId].toInt()
+        if (textureId != -1) {
             val uvSize = 2 * vertexInTriangle * floatSize
             val uvBufferView = BufferView().apply {
                 buffer = 0
@@ -126,7 +126,7 @@ private fun createTriangleBufferView(gltf: GlTF, model: Model) {
 @ExperimentalUnsignedTypes
 private fun createVertexAccessor(gltf: GlTF, model: Model) {
     var textureBufferViews = 0
-    for(triangleId in 0 until model.triangleCount) {
+    for (triangleId in 0 until model.triangleCount) {
         val vertexA = model.triangleVertex1!![triangleId]
         val vertexB = model.triangleVertex2!![triangleId]
         val vertexC = model.triangleVertex3!![triangleId]
@@ -179,8 +179,8 @@ private fun createVertexAccessor(gltf: GlTF, model: Model) {
         }
         gltf.addAccessors(vertexAccessor)
 
-        val textureId = if(model.triangleTextures == null) -1 else model.triangleTextures!![triangleId].toInt()
-        if(textureId != -1) {
+        val textureId = if (model.triangleTextures == null) -1 else model.triangleTextures!![triangleId].toInt()
+        if (textureId != -1) {
             val uvAccessor = Accessor().apply {
                 bufferView = 2 + triangleId + textureBufferViews
                 byteOffset = 0
@@ -205,12 +205,12 @@ private fun createVertexAccessor(gltf: GlTF, model: Model) {
 @ExperimentalUnsignedTypes
 private fun createTextures(gltf: GlTF, model: Model): Map<Int, Int> {
     val textureMap = mutableMapOf<Int, Int>()
-    val gltfTextureMap =  mutableMapOf<Int, Int>()
+    val gltfTextureMap = mutableMapOf<Int, Int>()
     var localIndex = 0
     model.triangleTextures!!.forEachIndexed { triangleId, textureId ->
-        if(textureId.toInt() != -1) {
+        if (textureId.toInt() != -1) {
             val textureIndices = textureMap.filterValues { it == textureId.toInt() }.keys
-            if(textureIndices.isEmpty()) { // new texture
+            if (textureIndices.isEmpty()) { // new texture
                 val image = Image().apply {
                     uri = "$textureId.png"
                 }
@@ -236,13 +236,13 @@ private fun createMaterials(gltf: GlTF, model: Model, textures: Map<Int, Int>): 
     val colorMap = mutableMapOf<Int, Int>()
     val gltfMaterialMap = mutableMapOf<Int, Int>()
     var localIndex = 0
-    for(triangleId in 0 until model.triangleCount) {
-        val textureId = if(model.triangleTextures == null) -1 else model.triangleTextures!![triangleId].toInt()
+    for (triangleId in 0 until model.triangleCount) {
+        val textureId = if (model.triangleTextures == null) -1 else model.triangleTextures!![triangleId].toInt()
         if (textureId == -1) { // Triangle has color
             val colorBitPack = model.triangleColors!![triangleId].toInt()
             val colorIndices = colorMap.filterValues { it == colorBitPack }.keys
-            if(colorIndices.isEmpty()) { // new color
-                val alpha = if(model.triangleAlphas != null) {
+            if (colorIndices.isEmpty()) { // new color
+                val alpha = if (model.triangleAlphas != null) {
                     ((model.triangleAlphas!![triangleId].toInt() and 0xFF) / 255).toFloat()
                 } else 1f
                 val material = createColorMaterial(
@@ -278,14 +278,14 @@ private fun createMaterials(gltf: GlTF, model: Model, textures: Map<Int, Int>): 
 private fun createMesh(model: Model, materialMap: Map<Int, Int>): Mesh {
     val mesh = Mesh()
     var textureOffset = 0
-    for(triangleId in 0 until model.triangleCount) {
+    for (triangleId in 0 until model.triangleCount) {
         val primitive = MeshPrimitive().apply {
             indices = 0
             material = materialMap[triangleId]
             addAttributes("NORMAL", 1 + triangleId * 2 + textureOffset)
             addAttributes("POSITION", 2 + triangleId * 2 + textureOffset)
-            val textureId = if(model.triangleTextures == null) -1 else model.triangleTextures!![triangleId].toInt()
-            if(textureId != -1) {
+            val textureId = if (model.triangleTextures == null) -1 else model.triangleTextures!![triangleId].toInt()
+            if (textureId != -1) {
                 addAttributes("TEXCOORD_0", 3 + triangleId * 2 + textureOffset)
                 textureOffset++
             }

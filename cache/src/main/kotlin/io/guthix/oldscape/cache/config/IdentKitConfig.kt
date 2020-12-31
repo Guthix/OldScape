@@ -41,25 +41,29 @@ public data class IdentKitConfig(override val id: Int) : Config(id) {
             data.writeByte(it.size)
             it.forEach { id -> data.writeShort(id) }
         }
-        if(nonSelectable) data.writeOpcode(3)
-        colorFind?.let { colorFind -> colorReplace?.let { colorReplace->
-            data.writeOpcode(40)
-            data.writeByte(colorFind.size)
-            for (i in colorFind.indices) {
-                data.writeShort(colorFind[i])
-                data.writeShort(colorReplace[i])
+        if (nonSelectable) data.writeOpcode(3)
+        colorFind?.let { colorFind ->
+            colorReplace?.let { colorReplace ->
+                data.writeOpcode(40)
+                data.writeByte(colorFind.size)
+                for (i in colorFind.indices) {
+                    data.writeShort(colorFind[i])
+                    data.writeShort(colorReplace[i])
+                }
             }
-        } }
-        textureFind?.let { textureFind -> textureReplace?.let { textureReplace->
-            data.writeOpcode(41)
-            data.writeByte(textureFind.size)
-            for (i in textureFind.indices) {
-                data.writeShort(textureFind[i])
-                data.writeShort(textureReplace[i])
+        }
+        textureFind?.let { textureFind ->
+            textureReplace?.let { textureReplace ->
+                data.writeOpcode(41)
+                data.writeByte(textureFind.size)
+                for (i in textureFind.indices) {
+                    data.writeShort(textureFind[i])
+                    data.writeShort(textureReplace[i])
+                }
             }
-        } }
+        }
         models.forEachIndexed { i, id ->
-            if(id != -1) {
+            if (id != -1) {
                 data.writeOpcode(60 + i)
                 data.writeShort(id)
             }

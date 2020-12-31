@@ -15,13 +15,13 @@
  */
 package io.guthix.oldscape.server.template
 
+import io.guthix.oldscape.dim.TileUnit
+import io.guthix.oldscape.dim.tiles
 import io.guthix.oldscape.server.Property
 import io.guthix.oldscape.server.stat.AttackType
 import io.guthix.oldscape.server.stat.CombatBonus
 import io.guthix.oldscape.server.stat.StyleBonus
 import io.guthix.oldscape.server.world.entity.Npc
-import io.guthix.oldscape.server.world.map.dim.TileUnit
-import io.guthix.oldscape.server.world.map.dim.tiles
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -54,14 +54,17 @@ private val Npc.sequences: CombatSequences
 
 val Npc.stats: CombatStats get() = monsterTemplate?.stats ?: throw TemplateNotFoundException(id, Npc::stats)
 
-val Npc.attackBonus: CombatBonus get() =
-    monsterTemplate?.attackBonus ?: throw TemplateNotFoundException(id, Npc::attackBonus)
+val Npc.attackBonus: CombatBonus
+    get() =
+        monsterTemplate?.attackBonus ?: throw TemplateNotFoundException(id, Npc::attackBonus)
 
-val Npc.strengthBonus: CombatBonus get() =
-    monsterTemplate?.strengthBonus ?: throw TemplateNotFoundException(id, Npc::strengthBonus)
+val Npc.strengthBonus: CombatBonus
+    get() =
+        monsterTemplate?.strengthBonus ?: throw TemplateNotFoundException(id, Npc::strengthBonus)
 
-val Npc.defensiveStats: StyleBonus get() =
-    monsterTemplate?.defensiveStats ?: throw TemplateNotFoundException(id, Npc::defensiveStats)
+val Npc.defensiveStats: StyleBonus
+    get() =
+        monsterTemplate?.defensiveStats ?: throw TemplateNotFoundException(id, Npc::defensiveStats)
 
 internal val Npc.monsterTemplate: MonsterTemplate?
     get() = template.monster
@@ -70,13 +73,19 @@ internal val NpcTemplate.monster: MonsterTemplate? by Property { null }
 
 @Serializable
 sealed class AggresiveType {
-    @Serializable @SerialName("Never") object Never : AggresiveType()
+    @Serializable
+    @SerialName("Never")
+    object Never : AggresiveType()
 
-    @Serializable @SerialName("Always") data class Always(val _range: Int? = null) : AggresiveType() {
-        val range: TileUnit get() =  _range?.tiles ?: DEFAULT_RANGE
+    @Serializable
+    @SerialName("Always")
+    data class Always(val _range: Int? = null) : AggresiveType() {
+        val range: TileUnit get() = _range?.tiles ?: DEFAULT_RANGE
     }
 
-    @Serializable @SerialName("Combat") data class Combat(val _range: Int? = null) : AggresiveType() {
+    @Serializable
+    @SerialName("Combat")
+    data class Combat(val _range: Int? = null) : AggresiveType() {
         val range: TileUnit get() = _range?.tiles ?: DEFAULT_RANGE
     }
 

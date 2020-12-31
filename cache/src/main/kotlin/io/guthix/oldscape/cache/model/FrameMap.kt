@@ -31,7 +31,7 @@ public class FrameMap(public val types: ShortArray, public val frameMaps: Array<
             frameMaps[0].map { data.readUnsignedByte() }
 
             frameMaps.forEach { frameMap ->
-                for(i in frameMap.indices) {
+                for (i in frameMap.indices) {
                     frameMap[i] = data.readUnsignedByte()
                 }
             }

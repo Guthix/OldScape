@@ -15,6 +15,9 @@
  */
 package io.guthix.oldscape.server.combat.player
 
+import io.guthix.oldscape.dim.TileUnit
+import io.guthix.oldscape.dim.max
+import io.guthix.oldscape.dim.tiles
 import io.guthix.oldscape.server.PersistentProperty
 import io.guthix.oldscape.server.Property
 import io.guthix.oldscape.server.combat.CombatSpell
@@ -36,9 +39,6 @@ import io.guthix.oldscape.server.world.entity.Npc
 import io.guthix.oldscape.server.world.entity.Player
 import io.guthix.oldscape.server.world.entity.SpotAnimation
 import io.guthix.oldscape.server.world.entity.interest.EquipmentType
-import io.guthix.oldscape.server.world.map.dim.TileUnit
-import io.guthix.oldscape.server.world.map.dim.max
-import io.guthix.oldscape.server.world.map.dim.tiles
 import kotlin.random.Random
 
 val Player.selectedTypes: IntArray by Property {

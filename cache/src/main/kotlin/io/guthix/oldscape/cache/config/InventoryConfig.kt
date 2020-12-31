@@ -22,7 +22,7 @@ import java.io.IOException
 public data class InventoryConfig(override val id: Int) : Config(id) {
     var capacity: Int = 0
 
-    override fun encode(): ByteBuf = if(capacity != 0) {
+    override fun encode(): ByteBuf = if (capacity != 0) {
         Unpooled.buffer(4).apply {
             writeOpcode(2)
             writeShort(capacity)

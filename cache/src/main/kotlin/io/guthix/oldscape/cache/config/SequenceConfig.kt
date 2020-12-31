@@ -37,20 +37,22 @@ public data class SequenceConfig(override val id: Int) : Config(id) {
 
     override fun encode(): ByteBuf {
         val data = Unpooled.buffer()
-        frameDuration?.let { frameLengths -> frameIds?.let { frameIds ->
-            if(frameLengths.size != frameIds.size) throw IOException("Frame lengths don't match frame ids.")
-            data.writeOpcode(1)
-            data.writeShort(frameLengths.size)
-            frameLengths.forEach {
-                data.writeShort(it)
+        frameDuration?.let { frameLengths ->
+            frameIds?.let { frameIds ->
+                if (frameLengths.size != frameIds.size) throw IOException("Frame lengths don't match frame ids.")
+                data.writeOpcode(1)
+                data.writeShort(frameLengths.size)
+                frameLengths.forEach {
+                    data.writeShort(it)
+                }
+                frameIds.forEach {
+                    data.writeShort(it and 0xFFFF)
+                }
+                frameIds.forEach {
+                    data.writeShort(it shr 16)
+                }
             }
-            frameIds.forEach {
-                data.writeShort(it and 0xFFFF)
-            }
-            frameIds.forEach {
-                data.writeShort(it shr 16)
-            }
-        } }
+        }
         frameStep?.let {
             data.writeOpcode(2)
             data.writeShort(it)
@@ -58,12 +60,12 @@ public data class SequenceConfig(override val id: Int) : Config(id) {
         interleave?.let {
             data.writeOpcode(3)
             data.writeByte(it.size - 1)
-            for(i in 0 until it.size - 1) {
+            for (i in 0 until it.size - 1) {
                 data.writeShort(it[i])
             }
         }
-        if(stretches) data.writeOpcode(4)
-        if(forcedPriority.toInt() != 5) {
+        if (stretches) data.writeOpcode(4)
+        if (forcedPriority.toInt() != 5) {
             data.writeOpcode(5)
             data.writeByte(forcedPriority.toInt())
         }
@@ -75,7 +77,7 @@ public data class SequenceConfig(override val id: Int) : Config(id) {
             data.writeOpcode(7)
             data.writeShort(it)
         }
-        if(maxLoops.toInt() != 99) {
+        if (maxLoops.toInt() != 99) {
             data.writeOpcode(8)
             data.writeByte(maxLoops.toInt())
         }
@@ -87,7 +89,7 @@ public data class SequenceConfig(override val id: Int) : Config(id) {
             data.writeOpcode(10)
             data.writeByte(it.toInt())
         }
-        if(replyMode.toInt() != 2) {
+        if (replyMode.toInt() != 2) {
             data.writeOpcode(11)
             data.writeByte(replyMode.toInt())
         }
@@ -124,7 +126,7 @@ public data class SequenceConfig(override val id: Int) : Config(id) {
                         val length = data.readUnsignedShort()
                         sequenceConfig.frameDuration = IntArray(length) { data.readUnsignedShort() }
                         val frameIds = IntArray(length) { data.readUnsignedShort() }
-                        for(i in 0 until length) {
+                        for (i in 0 until length) {
                             frameIds[i] += data.readUnsignedShort() shl 16
                         }
                         sequenceConfig.frameIds = frameIds
@@ -133,7 +135,7 @@ public data class SequenceConfig(override val id: Int) : Config(id) {
                     3 -> {
                         val length = data.readUnsignedByte().toInt()
                         val interleave = IntArray(length + 1)
-                        for(i in 0 until length) {
+                        for (i in 0 until length) {
                             interleave[i] = data.readUnsignedByte().toInt()
                         }
                         interleave[length] = 9999999
@@ -163,11 +165,11 @@ public data class SequenceConfig(override val id: Int) : Config(id) {
                 }
             }
             sequenceConfig.precedenceAnimating?.let {
-                sequenceConfig.precedenceAnimating = if(sequenceConfig.interleave != null) 2 else 0
+                sequenceConfig.precedenceAnimating = if (sequenceConfig.interleave != null) 2 else 0
 
             }
             sequenceConfig.priority?.let {
-                sequenceConfig.priority = if(sequenceConfig.interleave != null) 2 else 0
+                sequenceConfig.priority = if (sequenceConfig.interleave != null) 2 else 0
             }
             return sequenceConfig
         }

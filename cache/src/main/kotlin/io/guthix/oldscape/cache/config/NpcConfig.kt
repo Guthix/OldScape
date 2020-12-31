@@ -64,11 +64,11 @@ public data class NpcConfig(override val id: Int) : NamedConfig(id) {
                 data.writeShort(it)
             }
         }
-        if(name != "null") {
+        if (name != "null") {
             data.writeOpcode(2)
             data.writeStringCP1252(name)
         }
-        if(size.toInt() != 1) {
+        if (size.toInt() != 1) {
             data.writeOpcode(12)
             data.writeByte(size.toInt())
         }
@@ -77,7 +77,7 @@ public data class NpcConfig(override val id: Int) : NamedConfig(id) {
             data.writeShort(it)
         }
         walkSequence?.let {
-            if(walkBackSequence == null && walkRightSequence == null && walkLeftSequence == null) {
+            if (walkBackSequence == null && walkRightSequence == null && walkLeftSequence == null) {
                 data.writeOpcode(14)
                 data.writeShort(it)
             }
@@ -90,37 +90,45 @@ public data class NpcConfig(override val id: Int) : NamedConfig(id) {
             data.writeOpcode(16)
             data.writeShort(it)
         }
-        walkSequence?.let { walkSequence -> walkBackSequence?.let { walkBackSequence ->
-            walkLeftSequence?.let { walkLeftSequence -> walkRightSequence?.let { walkRightSequence ->
-                data.writeOpcode(17)
-                data.writeShort(walkSequence)
-                data.writeShort(walkBackSequence)
-                data.writeShort(walkLeftSequence)
-                data.writeShort(walkRightSequence)
-            } }
-        } }
+        walkSequence?.let { walkSequence ->
+            walkBackSequence?.let { walkBackSequence ->
+                walkLeftSequence?.let { walkLeftSequence ->
+                    walkRightSequence?.let { walkRightSequence ->
+                        data.writeOpcode(17)
+                        data.writeShort(walkSequence)
+                        data.writeShort(walkBackSequence)
+                        data.writeShort(walkLeftSequence)
+                        data.writeShort(walkRightSequence)
+                    }
+                }
+            }
+        }
         options.forEachIndexed { i, str ->
-            if(str != null && str != "Hidden") {
+            if (str != null && str != "Hidden") {
                 data.writeOpcode(30 + i)
                 data.writeStringCP1252(str)
             }
         }
-        colorFind?.let { colorFind -> colorReplace?.let { colorReplace->
-            data.writeOpcode(40)
-            data.writeByte(colorFind.size)
-            for (i in colorFind.indices) {
-                data.writeShort(colorFind[i])
-                data.writeShort(colorReplace[i])
+        colorFind?.let { colorFind ->
+            colorReplace?.let { colorReplace ->
+                data.writeOpcode(40)
+                data.writeByte(colorFind.size)
+                for (i in colorFind.indices) {
+                    data.writeShort(colorFind[i])
+                    data.writeShort(colorReplace[i])
+                }
             }
-        } }
-        textureFind?.let { textureFind -> textureReplace?.let { textureReplace->
-            data.writeOpcode(41)
-            data.writeByte(textureFind.size)
-            for (i in textureFind.indices) {
-                data.writeShort(textureFind[i])
-                data.writeShort(textureReplace[i])
+        }
+        textureFind?.let { textureFind ->
+            textureReplace?.let { textureReplace ->
+                data.writeOpcode(41)
+                data.writeByte(textureFind.size)
+                for (i in textureFind.indices) {
+                    data.writeShort(textureFind[i])
+                    data.writeShort(textureReplace[i])
+                }
             }
-        } }
+        }
         models2?.let { models2 ->
             data.writeOpcode(60)
             data.writeByte(models2.size)
@@ -128,25 +136,25 @@ public data class NpcConfig(override val id: Int) : NamedConfig(id) {
                 data.writeShort(it)
             }
         }
-        if(!drawMapDot) data.writeOpcode(93)
+        if (!drawMapDot) data.writeOpcode(93)
         combatLevel?.let {
             data.writeOpcode(95)
             data.writeShort(it)
         }
-        if(resizeX != 128) {
+        if (resizeX != 128) {
             data.writeOpcode(97)
             data.writeShort(resizeX)
         }
-        if(resizeY != 128) {
+        if (resizeY != 128) {
             data.writeOpcode(98)
             data.writeShort(resizeY)
         }
-        if(hasRenderPriority) data.writeOpcode(99)
-        if(ambient.toInt() != 0) {
+        if (hasRenderPriority) data.writeOpcode(99)
+        if (ambient.toInt() != 0) {
             data.writeOpcode(100)
             data.writeByte(ambient.toInt())
         }
-        if(contrast != 0) {
+        if (contrast != 0) {
             data.writeOpcode(101)
             data.writeByte(contrast / 5)
         }
@@ -154,29 +162,29 @@ public data class NpcConfig(override val id: Int) : NamedConfig(id) {
             data.writeOpcode(102)
             data.writeShort(it)
         }
-        if(rotation != 32) {
+        if (rotation != 32) {
             data.writeOpcode(103)
             data.writeShort(rotation)
         }
         transforms?.let { transforms ->
-            data.writeOpcode(if(transforms.last() == null) 118 else 106)
-            if(transformVarbit == null) data.writeShort(65535) else data.writeShort(transformVarbit!!.toInt())
-            if(transformVarp == null) data.writeShort(65535) else data.writeShort(transformVarp!!.toInt())
+            data.writeOpcode(if (transforms.last() == null) 118 else 106)
+            if (transformVarbit == null) data.writeShort(65535) else data.writeShort(transformVarbit!!.toInt())
+            if (transformVarp == null) data.writeShort(65535) else data.writeShort(transformVarp!!.toInt())
             transforms.last()?.let(data::writeShort)
             val size = transforms.size - 2
             data.writeByte(size)
-            for(i in 0..size) {
+            for (i in 0..size) {
                 val transform = transforms[i]
-                if(transform == null) {
+                if (transform == null) {
                     data.writeShort(65535)
                 } else {
                     data.writeShort(transform)
                 }
             }
         }
-        if(!isInteractable) data.writeOpcode(107)
-        if(!isClickable) data.writeOpcode(109)
-        if(aBool2190) data.writeOpcode(111)
+        if (!isInteractable) data.writeOpcode(107)
+        if (!isClickable) data.writeOpcode(109)
+        if (aBool2190) data.writeOpcode(111)
         params?.let {
             data.writeOpcode(249)
             data.writeParams(it)
@@ -247,20 +255,20 @@ public data class NpcConfig(override val id: Int) : NamedConfig(id) {
                     103 -> npcConfig.rotation = data.readUnsignedShort()
                     106, 118 -> {
                         val transformVarbit = data.readUnsignedShort()
-                        npcConfig.transformVarbit = if(transformVarbit == 65535) null else transformVarbit
+                        npcConfig.transformVarbit = if (transformVarbit == 65535) null else transformVarbit
                         val transformVarp = data.readUnsignedShort()
-                        npcConfig.transformVarp = if(transformVarbit == 65535) null else transformVarp
-                        val lastEntry = if(opcode == 118) {
+                        npcConfig.transformVarp = if (transformVarbit == 65535) null else transformVarp
+                        val lastEntry = if (opcode == 118) {
                             val entry = data.readUnsignedShort()
-                            if(entry == 65535) null else entry
+                            if (entry == 65535) null else entry
                         } else null
                         val size = data.readUnsignedByte().toInt()
                         val transforms = arrayOfNulls<Int?>(size + 2)
-                        for(i in 0..size) {
+                        for (i in 0..size) {
                             val transform = data.readUnsignedShort()
-                            transforms[i] = if(transform == 65535) null else transform
+                            transforms[i] = if (transform == 65535) null else transform
                         }
-                        if(opcode == 118) {
+                        if (opcode == 118) {
                             transforms[size + 1] = lastEntry
                         }
                         npcConfig.transforms = transforms

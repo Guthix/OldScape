@@ -54,7 +54,7 @@ public class Model(public var id: Int) {
 
     public fun computeNormals() {
         vertexNormals = Array(vertexCount) { VertexNormal() }
-        for(i in 0 until triangleCount) {
+        for (i in 0 until triangleCount) {
             val vertexA = triangleVertex1!![i]
             val vertexB = triangleVertex2!![i]
             val vertexC = triangleVertex3!![i]
@@ -86,7 +86,7 @@ public class Model(public var id: Int) {
             yN = yN * 256 / vectorLength
             zN = zN * 256 / vectorLength
 
-            val renderType = if(triangleRenderTypes == null) 0 else triangleRenderTypes!![i].toInt()
+            val renderType = if (triangleRenderTypes == null) 0 else triangleRenderTypes!![i].toInt()
             if (renderType == 0) {
                 var vertexNormal = vertexNormals!![vertexA]
                 vertexNormal.x += xN
@@ -322,7 +322,7 @@ public class Model(public var id: Int) {
                 if (hasFaceRenderTypes == 1) model.triangleRenderTypes!![i] = buf2.readByte()
                 if (hasFaceAlphas == 1) model.triangleAlphas!![i] = buf4.readByte()
                 if (hasFaceSkins == 1) model.triangleSkins!![i] = buf5.readUnsignedByte().toInt()
-                if (hasTexture == 1)  model.triangleTextures!![i] = buf6.readUnsignedShort() - 1
+                if (hasTexture == 1) model.triangleTextures!![i] = buf6.readUnsignedShort() - 1
                 if (model.textureCoordinates != null && model.triangleTextures!![i] != -1) {
                     model.textureCoordinates!![i] = (buf7.readUnsignedByte().toInt() - 1).toByte()
                 }
@@ -502,7 +502,7 @@ public class Model(public var id: Int) {
                     1 -> { // read unconnected triangle
                         vertexId1 = vertexIdBuffer.readSmallSmart() + lastVertexId
                         vertexId2 = vertexIdBuffer.readSmallSmart() + vertexId1
-                        vertexId3 = vertexIdBuffer.readSmallSmart()  + vertexId2
+                        vertexId3 = vertexIdBuffer.readSmallSmart() + vertexId2
                         lastVertexId = vertexId3
                         model.triangleVertex1!![triangleId] = vertexId1
                         model.triangleVertex2!![triangleId] = vertexId2
@@ -510,7 +510,7 @@ public class Model(public var id: Int) {
                     }
                     2 -> { // read triangle connected to previously read vertices
                         vertexId2 = vertexId3
-                        vertexId3 = vertexIdBuffer.readSmallSmart()  + lastVertexId
+                        vertexId3 = vertexIdBuffer.readSmallSmart() + lastVertexId
                         lastVertexId = vertexId3
                         model.triangleVertex1!![triangleId] = vertexId1
                         model.triangleVertex2!![triangleId] = vertexId2
@@ -518,7 +518,7 @@ public class Model(public var id: Int) {
                     }
                     3 -> { // read triangle connected to previously read vertices
                         vertexId1 = vertexId3
-                        vertexId3 = vertexIdBuffer.readSmallSmart()  + lastVertexId
+                        vertexId3 = vertexIdBuffer.readSmallSmart() + lastVertexId
                         lastVertexId = vertexId3
                         model.triangleVertex1!![triangleId] = vertexId1
                         model.triangleVertex2!![triangleId] = vertexId2
@@ -528,7 +528,7 @@ public class Model(public var id: Int) {
                         val resVertexId = vertexId1
                         vertexId1 = vertexId2
                         vertexId2 = resVertexId
-                        vertexId3 = vertexIdBuffer.readSmallSmart()  + lastVertexId
+                        vertexId3 = vertexIdBuffer.readSmallSmart() + lastVertexId
                         lastVertexId = vertexId3
                         model.triangleVertex1!![triangleId] = vertexId1
                         model.triangleVertex2!![triangleId] = resVertexId
@@ -584,7 +584,7 @@ public class Model(public var id: Int) {
         ) {
             val textureTriangleVertexBuffer = data.duplicate().readerIndex(textureTriangleVertexPos)
             for (i in 0 until textureTriangleCount) {
-                if(model.textureRenderTypes!![i].toInt() and 255 == 0) {
+                if (model.textureRenderTypes!![i].toInt() and 255 == 0) {
                     model.textureTriangleVertex1!![i] = textureTriangleVertexBuffer.readUnsignedShort()
                     model.textureTriangleVertex2!![i] = textureTriangleVertexBuffer.readUnsignedShort()
                     model.textureTriangleVertex3!![i] = textureTriangleVertexBuffer.readUnsignedShort()

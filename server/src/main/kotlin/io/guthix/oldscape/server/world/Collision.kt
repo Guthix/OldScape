@@ -15,12 +15,12 @@
  */
 package io.guthix.oldscape.server.world
 
+import io.guthix.oldscape.dim.FloorUnit
+import io.guthix.oldscape.dim.TileUnit
+import io.guthix.oldscape.dim.tiles
+import io.guthix.oldscape.dim.until
 import io.guthix.oldscape.server.world.entity.Loc
 import io.guthix.oldscape.server.world.map.Tile
-import io.guthix.oldscape.server.world.map.dim.FloorUnit
-import io.guthix.oldscape.server.world.map.dim.TileUnit
-import io.guthix.oldscape.server.world.map.dim.tiles
-import io.guthix.oldscape.server.world.map.dim.until
 
 internal fun World.addCollision(tile: Tile, mask: Int): Unit? =
     getZone(tile)?.addCollision(tile.x.relativeZone, tile.y.relativeZone, mask)

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.guthix.oldscape.server.world.map.dim
+package io.guthix.oldscape.dim
 
 import kotlin.math.abs
 import kotlin.math.max

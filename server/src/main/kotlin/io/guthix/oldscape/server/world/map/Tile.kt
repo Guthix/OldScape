@@ -15,10 +15,10 @@
  */
 package io.guthix.oldscape.server.world.map
 
-import io.guthix.oldscape.server.world.map.dim.FloorUnit
-import io.guthix.oldscape.server.world.map.dim.TileUnit
-import io.guthix.oldscape.server.world.map.dim.floors
-import io.guthix.oldscape.server.world.map.dim.tiles
+import io.guthix.oldscape.dim.FloorUnit
+import io.guthix.oldscape.dim.TileUnit
+import io.guthix.oldscape.dim.floors
+import io.guthix.oldscape.dim.tiles
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

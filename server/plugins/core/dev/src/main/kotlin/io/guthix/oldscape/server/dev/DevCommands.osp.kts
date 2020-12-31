@@ -15,6 +15,8 @@
  */
 package io.guthix.oldscape.server.dev
 
+import io.guthix.oldscape.dim.floors
+import io.guthix.oldscape.dim.tiles
 import io.guthix.oldscape.server.damage.hit
 import io.guthix.oldscape.server.event.ClientCheatEvent
 import io.guthix.oldscape.server.event.PublicMessageEvent
@@ -22,8 +24,6 @@ import io.guthix.oldscape.server.template.LocIds
 import io.guthix.oldscape.server.template.ObjIds
 import io.guthix.oldscape.server.world.entity.Loc
 import io.guthix.oldscape.server.world.map.Tile
-import io.guthix.oldscape.server.world.map.dim.floors
-import io.guthix.oldscape.server.world.map.dim.tiles
 
 on(ClientCheatEvent::class).where { string == "drop" }.then {
     world.addObject(
@@ -80,5 +80,5 @@ on(ClientCheatEvent::class).where { string == "pos" }.then {
 on(ClientCheatEvent::class).where { string.startsWith("npc") }.then {
     val args = string.split(" ")
     val first = args[1].toInt()
-    world.createNpc(first , player.pos.copy(x = player.pos.x + 2.tiles))
+    world.createNpc(first, player.pos.copy(x = player.pos.x + 2.tiles))
 }

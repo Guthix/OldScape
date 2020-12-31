@@ -15,11 +15,11 @@
  */
 package io.guthix.oldscape.server.template
 
+import io.guthix.oldscape.dim.TileUnit
+import io.guthix.oldscape.dim.tiles
 import io.guthix.oldscape.server.Property
 import io.guthix.oldscape.server.stat.AttackType
 import io.guthix.oldscape.server.world.entity.Obj
-import io.guthix.oldscape.server.world.map.dim.TileUnit
-import io.guthix.oldscape.server.world.map.dim.tiles
 import kotlinx.serialization.Serializable
 
 val Obj.weaponType: WeaponType get() = weaponTemplate.type

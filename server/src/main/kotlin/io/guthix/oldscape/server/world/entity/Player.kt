@@ -15,6 +15,9 @@
  */
 package io.guthix.oldscape.server.world.entity
 
+import io.guthix.oldscape.dim.TileUnit
+import io.guthix.oldscape.dim.floors
+import io.guthix.oldscape.dim.tiles
 import io.guthix.oldscape.server.PersistentProperty
 import io.guthix.oldscape.server.PersistentPropertyHolder
 import io.guthix.oldscape.server.ServerContext
@@ -29,9 +32,6 @@ import io.guthix.oldscape.server.world.entity.interest.*
 import io.guthix.oldscape.server.world.entity.intface.IfComponent
 import io.guthix.oldscape.server.world.map.Tile
 import io.guthix.oldscape.server.world.map.Zone
-import io.guthix.oldscape.server.world.map.dim.TileUnit
-import io.guthix.oldscape.server.world.map.dim.floors
-import io.guthix.oldscape.server.world.map.dim.tiles
 import io.netty.channel.ChannelFuture
 import io.netty.channel.ChannelHandlerContext
 

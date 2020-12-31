@@ -24,7 +24,7 @@ public data class VarbitConfig(override val id: Int) : Config(id) {
     var lsb: Short = 0
     var msb: Short = 0
 
-    override fun encode(): ByteBuf  = if(varpId != 0 && lsb.toInt() != 0 && msb.toInt() != 0) {
+    override fun encode(): ByteBuf = if (varpId != 0 && lsb.toInt() != 0 && msb.toInt() != 0) {
         Unpooled.buffer(6).apply {
             writeOpcode(1)
             writeShort(varpId)
@@ -42,7 +42,7 @@ public data class VarbitConfig(override val id: Int) : Config(id) {
         override fun decode(id: Int, data: ByteBuf): VarbitConfig {
             val varbitConfig = VarbitConfig(id)
             decoder@ while (true) {
-                when(val opcode = data.readUnsignedByte().toInt()) {
+                when (val opcode = data.readUnsignedByte().toInt()) {
                     0 -> break@decoder
                     1 -> {
                         varbitConfig.varpId = data.readUnsignedShort()

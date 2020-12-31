@@ -34,7 +34,7 @@ public data class SpotAnimConfig(override val id: Int) : Config(id) {
 
     override fun encode(): ByteBuf {
         val data = Unpooled.buffer()
-        if(modelId != 0) {
+        if (modelId != 0) {
             data.writeOpcode(1)
             data.writeShort(modelId)
         }
@@ -42,42 +42,46 @@ public data class SpotAnimConfig(override val id: Int) : Config(id) {
             data.writeOpcode(2)
             data.writeShort(sequenceId!!.toInt())
         }
-        if(resizeX != 128) {
+        if (resizeX != 128) {
             data.writeOpcode(4)
             data.writeByte(resizeX)
         }
-        if(resizeY != 128) {
+        if (resizeY != 128) {
             data.writeOpcode(5)
             data.writeByte(resizeY)
         }
-        if(rotation != 0) {
+        if (rotation != 0) {
             data.writeOpcode(6)
             data.writeShort(rotation)
         }
-        if(ambient.toInt() != 0) {
+        if (ambient.toInt() != 0) {
             data.writeOpcode(7)
             data.writeByte(ambient.toInt())
         }
-        if(contrast.toInt() != 0) {
+        if (contrast.toInt() != 0) {
             data.writeOpcode(8)
             data.writeByte(contrast.toInt())
         }
-        colorFind?.let { colorFind -> colorReplace?.let { colorReplace->
-            data.writeOpcode(40)
-            data.writeByte(colorFind.size)
-            for (i in colorFind.indices) {
-                data.writeShort(colorFind[i])
-                data.writeShort(colorReplace[i])
+        colorFind?.let { colorFind ->
+            colorReplace?.let { colorReplace ->
+                data.writeOpcode(40)
+                data.writeByte(colorFind.size)
+                for (i in colorFind.indices) {
+                    data.writeShort(colorFind[i])
+                    data.writeShort(colorReplace[i])
+                }
             }
-        } }
-        textureFind?.let { textureFind -> textureReplace?.let { textureReplace->
-            data.writeOpcode(41)
-            data.writeByte(textureFind.size)
-            for (i in textureFind.indices) {
-                data.writeShort(textureFind[i])
-                data.writeShort(textureReplace[i])
+        }
+        textureFind?.let { textureFind ->
+            textureReplace?.let { textureReplace ->
+                data.writeOpcode(41)
+                data.writeByte(textureFind.size)
+                for (i in textureFind.indices) {
+                    data.writeShort(textureFind[i])
+                    data.writeShort(textureReplace[i])
+                }
             }
-        } }
+        }
         data.writeOpcode(0)
         return data
     }

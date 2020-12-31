@@ -22,7 +22,7 @@ import java.io.IOException
 public data class UnderlayConfig(override val id: Int) : Config(id) {
     var color: Int = 0
 
-    override fun encode(): ByteBuf = if(color != 0) {
+    override fun encode(): ByteBuf = if (color != 0) {
         Unpooled.buffer(2).apply {
             writeOpcode(1)
             writeMedium(color)

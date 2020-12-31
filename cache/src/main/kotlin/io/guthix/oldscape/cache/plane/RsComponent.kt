@@ -114,7 +114,7 @@ public data class RsComponent(val id: Int) {
 
     public companion object {
         public fun decode(id: Int, data: ByteBuf): RsComponent {
-            return when(data.getByte(data.readerIndex() + 1).toInt()) {
+            return when (data.getByte(data.readerIndex() + 1).toInt()) {
                 -1 -> decodeIf3(id, data)
                 else -> decodeIf1(id, data)
             }
@@ -132,18 +132,18 @@ public data class RsComponent(val id: Int) {
             iFace.originalHeight = data.readUnsignedShort()
             iFace.opacity = data.readUnsignedByte()
             iFace.parentId = data.readUnsignedShort()
-            iFace.parentId = if(iFace.parentId == 0xFFF) {
+            iFace.parentId = if (iFace.parentId == 0xFFF) {
                 null
             } else {
                 iFace.parentId!! + (id and 0xFFFF.inv())
             }
             iFace.hoveredSiblingId = data.readUnsignedShort()
-            if(iFace.hoveredSiblingId  == 0xFFFF) iFace.hoveredSiblingId = null
+            if (iFace.hoveredSiblingId == 0xFFFF) iFace.hoveredSiblingId = null
             val operatorSize = data.readUnsignedByte().toInt()
             if (operatorSize > 0) {
                 val alternateOperators = ShortArray(operatorSize)
                 val alternateRhs = IntArray(operatorSize)
-                for(i in 0 until operatorSize) {
+                for (i in 0 until operatorSize) {
                     alternateOperators[i] = data.readUnsignedByte()
                     alternateRhs[i] = data.readUnsignedShort()
                 }
@@ -154,17 +154,17 @@ public data class RsComponent(val id: Int) {
                     val byteCodeSize = data.readUnsignedShort()
                     val instructions = Array(byteCodeSize) {
                         var byteCode: Int? = data.readUnsignedShort()
-                        if(byteCode == 0xFFFF) byteCode = null
+                        if (byteCode == 0xFFFF) byteCode = null
                         byteCode
                     }
                     instructions
                 }
             } else null
-            if(type == 0) {
+            if (type == 0) {
                 iFace.scrollHeight = data.readUnsignedShort()
                 iFace.isHidden = data.readUnsignedByte().toInt() == 1
             }
-            if(type == 1) {
+            if (type == 1) {
                 data.readUnsignedShort()
                 data.readUnsignedByte()
             }
@@ -175,12 +175,12 @@ public data class RsComponent(val id: Int) {
                 if (data.readUnsignedByte().toInt() == 1) iFace.clickMask = iFace.clickMask or 0x40000000
                 if (data.readUnsignedByte().toInt() == 1) iFace.clickMask = iFace.clickMask or -0x80000000
                 if (data.readUnsignedByte().toInt() == 1) iFace.clickMask = iFace.clickMask or 0x20000000
-                iFace.xPitch =data.readUnsignedByte()
+                iFace.xPitch = data.readUnsignedByte()
                 iFace.yPitch = data.readUnsignedByte()
                 iFace.xOffsets = ShortArray(20)
                 iFace.yOffsets = ShortArray(20)
                 iFace.sprites = arrayOfNulls(20)
-                for(i in 0 until 20) {
+                for (i in 0 until 20) {
                     if (data.readUnsignedByte().toInt() == 1) {
                         iFace.xOffsets!![i] = data.readShort()
                         iFace.yOffsets!![i] = data.readShort()
@@ -190,7 +190,7 @@ public data class RsComponent(val id: Int) {
                     }
                 }
                 iFace.configActions = arrayOfNulls(5)
-                for(i in 0 until 5) {
+                for (i in 0 until 5) {
                     val configAction = data.readStringCP1252()
                     if (configAction.isNotEmpty()) {
                         iFace.configActions!![i] = configAction
@@ -198,18 +198,18 @@ public data class RsComponent(val id: Int) {
                     }
                 }
             }
-            iFace.isFilled = if(type == 3) data.readUnsignedByte().toInt() == 1 else false
+            iFace.isFilled = if (type == 3) data.readUnsignedByte().toInt() == 1 else false
             if (type == 4 || type == 1) {
-                iFace.xTextAlignment  = data.readUnsignedByte()
-                iFace.yTextAlignment  = data.readUnsignedByte()
-                iFace.lineHeight  = data.readUnsignedByte()
+                iFace.xTextAlignment = data.readUnsignedByte()
+                iFace.yTextAlignment = data.readUnsignedByte()
+                iFace.lineHeight = data.readUnsignedByte()
                 iFace.fontId = data.readUnsignedShort()
                 if (iFace.fontId == 0xFFFF) iFace.fontId = null
                 iFace.textIsShadowed = data.readUnsignedByte().toInt() == 1
             }
             if (type == 4) {
                 iFace.text = data.readStringCP1252()
-                iFace.alternateText  = data.readStringCP1252()
+                iFace.alternateText = data.readStringCP1252()
             }
             if (type == 1 || type == 3 || type == 4) {
                 iFace.textColor = data.readInt()
@@ -249,7 +249,7 @@ public data class RsComponent(val id: Int) {
                 iFace.yPitch = data.readShort()
                 if (data.readUnsignedByte().toInt() == 1) iFace.clickMask = iFace.clickMask or 0x40000000
                 iFace.configActions = arrayOfNulls(5)
-                for(i in 0 until 5) {
+                for (i in 0 until 5) {
                     val configAction = data.readStringCP1252()
                     if (configAction.isNotEmpty()) {
                         iFace.configActions!![i] = configAction
@@ -269,7 +269,7 @@ public data class RsComponent(val id: Int) {
                 if (iFace.tooltip.isEmpty()) {
                     if (iFace.menuType == 1) iFace.tooltip = "Ok"
                     if (iFace.menuType == 4) iFace.tooltip = "Select"
-                    if (iFace.menuType == 5) iFace .tooltip = "Select"
+                    if (iFace.menuType == 5) iFace.tooltip = "Select"
                     if (iFace.menuType == 6) iFace.tooltip = "Continue"
                 }
             }
@@ -299,7 +299,7 @@ public data class RsComponent(val id: Int) {
             iFace.dynamicX = data.readByte()
             iFace.dynamicY = data.readByte()
             iFace.parentId = data.readUnsignedShort()
-            iFace.parentId = if(iFace.parentId == 0xFFFF) {
+            iFace.parentId = if (iFace.parentId == 0xFFFF) {
                 null
             } else {
                 iFace.parentId!! + (id and -0x10000)
@@ -324,7 +324,7 @@ public data class RsComponent(val id: Int) {
                 iFace.modelType = 1
                 iFace.modelId = data.readUnsignedShort()
                 if (iFace.modelId == 0xFFFF) iFace.modelId = null
-                iFace.offsetX2d =data.readShort()
+                iFace.offsetX2d = data.readShort()
                 iFace.offsetY2d = data.readShort()
                 iFace.rotationX = data.readUnsignedShort()
                 iFace.rotationZ = data.readUnsignedShort()

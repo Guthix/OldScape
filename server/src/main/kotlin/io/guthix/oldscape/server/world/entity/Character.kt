@@ -15,6 +15,9 @@
  */
 package io.guthix.oldscape.server.world.entity
 
+import io.guthix.oldscape.dim.TileUnit
+import io.guthix.oldscape.dim.floors
+import io.guthix.oldscape.dim.tiles
 import io.guthix.oldscape.server.event.Event
 import io.guthix.oldscape.server.event.EventHolder
 import io.guthix.oldscape.server.event.PublicMessageEvent
@@ -28,9 +31,6 @@ import io.guthix.oldscape.server.world.entity.interest.MovementInterestUpdate
 import io.guthix.oldscape.server.world.entity.interest.PlayerManager
 import io.guthix.oldscape.server.world.map.Tile
 import io.guthix.oldscape.server.world.map.Zone
-import io.guthix.oldscape.server.world.map.dim.TileUnit
-import io.guthix.oldscape.server.world.map.dim.floors
-import io.guthix.oldscape.server.world.map.dim.tiles
 import java.util.*
 import java.util.concurrent.ConcurrentLinkedQueue
 import kotlin.math.atan2
@@ -115,7 +115,7 @@ abstract class Character(open val index: Int) : Entity, EventHolder, TaskHolder 
 
     private fun postMovement(lastZone: Zone, world: World) {
         zone = world.getZone(pos) ?: error("Player at pos $pos not in zone.")
-        if(lastZone != zone) moveZone(lastZone, zone)
+        if (lastZone != zone) moveZone(lastZone, zone)
         scheduleMovedEvent(world)
     }
 

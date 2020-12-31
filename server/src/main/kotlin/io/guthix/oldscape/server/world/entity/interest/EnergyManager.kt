@@ -17,7 +17,6 @@ package io.guthix.oldscape.server.world.entity.interest
 
 import io.guthix.oldscape.server.net.game.out.UpdateRunenergyPacket
 import io.guthix.oldscape.server.net.game.out.UpdateRunweightPacket
-import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.Player
 import io.netty.channel.ChannelFuture
 

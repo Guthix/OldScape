@@ -15,10 +15,10 @@
  */
 package io.guthix.oldscape.server.world.entity
 
+import io.guthix.oldscape.dim.TileUnit
 import io.guthix.oldscape.server.ServerContext
 import io.guthix.oldscape.server.template.LocTemplate
 import io.guthix.oldscape.server.world.map.Tile
-import io.guthix.oldscape.server.world.map.dim.TileUnit
 import kotlin.reflect.KProperty
 
 class Loc(

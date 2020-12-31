@@ -71,34 +71,34 @@ data class LocConfig(override val id: Int) : NamedConfig(id) {
         objectModels?.let {
             data.writeOpcode(1)
             data.writeByte(it.size)
-            for(i in it.indices) {
+            for (i in it.indices) {
                 data.writeShort(it[i])
                 data.writeByte(it[i])
             }
         }
-        if(name != "null") {
+        if (name != "null") {
             data.writeOpcode(2)
             data.writeStringCP1252(name)
         }
-        if(objectTypes == null) {
+        if (objectTypes == null) {
             objectModels?.let { objectModels ->
                 data.writeOpcode(5)
                 data.writeByte(objectModels.size)
-                for(model in objectModels) {
+                for (model in objectModels) {
                     data.writeShort(model)
                 }
             }
         }
-        if(width.toInt() != 1) {
+        if (width.toInt() != 1) {
             data.writeOpcode(14)
             data.writeByte(width.toInt())
         }
-        if(length.toInt() != 1) {
+        if (length.toInt() != 1) {
             data.writeOpcode(15)
             data.writeByte(length.toInt())
         }
-        if(!impenetrable) {
-            if(clipType == 0) {
+        if (!impenetrable) {
+            if (clipType == 0) {
                 data.writeOpcode(17)
             } else {
                 data.writeOpcode(18)
@@ -109,62 +109,66 @@ data class LocConfig(override val id: Int) : NamedConfig(id) {
             data.writeByte(it.toInt())
         }
         contouredGround?.let {
-            if(contouredGround == 0) {
+            if (contouredGround == 0) {
                 data.writeOpcode(21)
             } else {
                 data.writeOpcode(81)
                 data.writeByte(it / 256)
             }
         }
-        if(nonFlatShading) data.writeOpcode(22)
-        if(modelClipped) data.writeOpcode(23)
-        if(animationId == null) data.writeShort(65535) else data.writeShort(animationId!!.toInt())
-        if(clipType == 1) data.writeOpcode(27)
-        if(decorDisplacement.toInt() != 16) {
+        if (nonFlatShading) data.writeOpcode(22)
+        if (modelClipped) data.writeOpcode(23)
+        if (animationId == null) data.writeShort(65535) else data.writeShort(animationId!!.toInt())
+        if (clipType == 1) data.writeOpcode(27)
+        if (decorDisplacement.toInt() != 16) {
             data.writeOpcode(28)
             data.writeByte(decorDisplacement.toInt())
         }
-        if(ambient.toInt() != 0) {
+        if (ambient.toInt() != 0) {
             data.writeOpcode(29)
             data.writeByte(ambient.toInt())
         }
-        if(contrast != 0) {
+        if (contrast != 0) {
             data.writeOpcode(39)
             data.writeByte(contrast)
         }
         options.forEachIndexed { i, str ->
-            if(str != null && str != "Hidden") {
+            if (str != null && str != "Hidden") {
                 data.writeOpcode(30 + i)
                 data.writeStringCP1252(str)
             }
         }
-        colorFind?.let { colorFind -> colorReplace?.let { colorReplace->
-            data.writeOpcode(40)
-            data.writeByte(colorFind.size)
-            for (i in colorFind.indices) {
-                data.writeShort(colorFind[i])
-                data.writeShort(colorReplace[i])
+        colorFind?.let { colorFind ->
+            colorReplace?.let { colorReplace ->
+                data.writeOpcode(40)
+                data.writeByte(colorFind.size)
+                for (i in colorFind.indices) {
+                    data.writeShort(colorFind[i])
+                    data.writeShort(colorReplace[i])
+                }
             }
-        } }
-        textureFind?.let { textureFind -> textureReplace?.let { textureReplace->
-            data.writeOpcode(41)
-            data.writeByte(textureFind.size)
-            for (i in textureFind.indices) {
-                data.writeShort(textureFind[i])
-                data.writeShort(textureReplace[i])
+        }
+        textureFind?.let { textureFind ->
+            textureReplace?.let { textureReplace ->
+                data.writeOpcode(41)
+                data.writeByte(textureFind.size)
+                for (i in textureFind.indices) {
+                    data.writeShort(textureFind[i])
+                    data.writeShort(textureReplace[i])
+                }
             }
-        } }
-        if(isMirrored) data.writeOpcode(62)
-        if(!isClipped) data.writeOpcode(64)
-        if(modelSizeX != 128) {
+        }
+        if (isMirrored) data.writeOpcode(62)
+        if (!isClipped) data.writeOpcode(64)
+        if (modelSizeX != 128) {
             data.writeOpcode(65)
             data.writeShort(modelSizeX)
         }
-        if(modelSizeHeight != 128) {
+        if (modelSizeHeight != 128) {
             data.writeOpcode(66)
             data.writeShort(modelSizeHeight)
         }
-        if(modelSizeY != 128) {
+        if (modelSizeY != 128) {
             data.writeOpcode(67)
             data.writeShort(modelSizeY)
         }
@@ -172,38 +176,38 @@ data class LocConfig(override val id: Int) : NamedConfig(id) {
             data.writeOpcode(68)
             data.writeShort(it)
         }
-        if(accessBlock.toInt() != 0) {
+        if (accessBlock.toInt() != 0) {
             data.writeOpcode(69)
             data.writeByte(accessBlock.toInt())
         }
-        if(offsetX.toInt() != 0) {
+        if (offsetX.toInt() != 0) {
             data.writeOpcode(70)
             data.writeShort(offsetX.toInt())
         }
-        if(offsetHeight.toInt() != 0) {
+        if (offsetHeight.toInt() != 0) {
             data.writeOpcode(71)
             data.writeShort(offsetHeight.toInt())
         }
-        if(offsetY.toInt() != 0) {
+        if (offsetY.toInt() != 0) {
             data.writeOpcode(72)
             data.writeShort(offsetY.toInt())
         }
-        if(obstructsGround) data.writeOpcode(73)
-        if(isHollow) data.writeOpcode(74)
+        if (obstructsGround) data.writeOpcode(73)
+        if (isHollow) data.writeOpcode(74)
         supportItems?.let {
             data.writeOpcode(75)
             data.writeByte(it.toInt())
         }
         transforms?.let { transforms ->
-            data.writeOpcode(if(transforms.last() == null) 118 else 106)
-            if(transformVarbit == null) data.writeShort(65535) else data.writeShort(transformVarbit!!.toInt())
-            if(transformVarp == null) data.writeShort(65535) else data.writeShort(transformVarp!!.toInt())
+            data.writeOpcode(if (transforms.last() == null) 118 else 106)
+            if (transformVarbit == null) data.writeShort(65535) else data.writeShort(transformVarbit!!.toInt())
+            if (transformVarp == null) data.writeShort(65535) else data.writeShort(transformVarp!!.toInt())
             transforms.last()?.let(data::writeShort)
             val size = transforms.size - 2
             data.writeByte(size)
-            for(i in 0..size) {
+            for (i in 0..size) {
                 val transform = transforms[i]
-                if(transform == null) {
+                if (transform == null) {
                     data.writeShort(65535)
                 } else {
                     data.writeShort(transform)

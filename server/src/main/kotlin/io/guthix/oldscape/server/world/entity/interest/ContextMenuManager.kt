@@ -16,7 +16,6 @@
 package io.guthix.oldscape.server.world.entity.interest
 
 import io.guthix.oldscape.server.net.game.out.SetPlayerOpPacket
-import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.Player
 import io.netty.channel.ChannelFuture
 

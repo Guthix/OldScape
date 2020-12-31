@@ -20,10 +20,10 @@ import io.guthix.oldscape.server.event.PlayerInitialized
 import io.guthix.oldscape.server.template.VarpIds
 
 on(PlayerInitialized::class).then {
-    player.updateVarp(VarpIds.AUTO_RETALIATE_172, if(player.autoRetaliate) 0 else 1)
+    player.updateVarp(VarpIds.AUTO_RETALIATE_172, if (player.autoRetaliate) 0 else 1)
 }
 
 on(ButtonClickEvent::class).where { interfaceId == 593 && buttonId == 30 }.then {
     player.autoRetaliate = !player.autoRetaliate
-    player.updateVarp(VarpIds.AUTO_RETALIATE_172, if(player.autoRetaliate) 0 else 1)
+    player.updateVarp(VarpIds.AUTO_RETALIATE_172, if (player.autoRetaliate) 0 else 1)
 }

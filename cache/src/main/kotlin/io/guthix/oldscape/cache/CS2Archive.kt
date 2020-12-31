@@ -19,7 +19,7 @@ import io.guthix.js5.Js5Archive
 import io.guthix.oldscape.cache.script.MachineScript
 
 public class CS2Archive(public val scripts: Map<Int, MachineScript>) {
-    public companion object  {
+    public companion object {
         public const val id: Int = 12
 
         public fun load(archive: Js5Archive): CS2Archive {

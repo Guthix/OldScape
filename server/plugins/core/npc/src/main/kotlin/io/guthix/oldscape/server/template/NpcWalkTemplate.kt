@@ -15,10 +15,10 @@
  */
 package io.guthix.oldscape.server.template
 
+import io.guthix.oldscape.dim.TileUnit
+import io.guthix.oldscape.dim.tiles
 import io.guthix.oldscape.server.Property
 import io.guthix.oldscape.server.world.entity.Npc
-import io.guthix.oldscape.server.world.map.dim.TileUnit
-import io.guthix.oldscape.server.world.map.dim.tiles
 import kotlinx.serialization.Serializable
 
 val Npc.wanderRadius: TileUnit get() = walkTemplate?.wanderRadius?.tiles ?: 5.tiles

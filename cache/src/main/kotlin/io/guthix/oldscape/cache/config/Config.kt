@@ -58,10 +58,10 @@ abstract class ConfigCompanion<out T : Config> {
     protected fun ByteBuf.readParams(): MutableMap<Int, Any> {
         val amount = readUnsignedByte()
         val paramMap = mutableMapOf<Int, Any>()
-        for(i in 0 until amount) {
+        for (i in 0 until amount) {
             val isString = readUnsignedByte().toInt() == 1
             val index = readUnsignedMedium()
-            val value: Any = if(isString) readStringCP1252() else readInt()
+            val value: Any = if (isString) readStringCP1252() else readInt()
             paramMap[index] = value
         }
         return paramMap

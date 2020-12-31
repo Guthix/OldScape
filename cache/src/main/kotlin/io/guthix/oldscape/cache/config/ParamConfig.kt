@@ -39,7 +39,7 @@ public data class ParamConfig(override val id: Int) : Config(id) {
             data.writeOpcode(2)
             data.writeInt(it)
         }
-        if(!autoDisable) data.writeOpcode(4)
+        if (!autoDisable) data.writeOpcode(4)
         defaultString?.let {
             data.writeOpcode(5)
             data.writeStringCP1252(it)
@@ -54,7 +54,7 @@ public data class ParamConfig(override val id: Int) : Config(id) {
         override fun decode(id: Int, data: ByteBuf): ParamConfig {
             val paramConfig = ParamConfig(id)
             decoder@ while (true) {
-                when(val opcode = data.readUnsignedByte().toInt()) {
+                when (val opcode = data.readUnsignedByte().toInt()) {
                     0 -> break@decoder
                     1 -> paramConfig.stackType = data.readCharCP1252()
                     2 -> paramConfig.defaultInt = data.readInt()

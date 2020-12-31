@@ -73,7 +73,7 @@ object OldScape {
         val mapSquareXteas = loadMapSquareXteaKeys(cacheDir.resolve("xteas.json"))
         val world = World.fromMap(
             MapArchive.load(
-                cache.readArchive(MapArchive.id), mapSquareXteas.map {MapXtea(it.mapsquare, it.key)}
+                cache.readArchive(MapArchive.id), mapSquareXteas.map { MapXtea(it.mapsquare, it.key) }
             ).mapsquares,
             mapSquareXteas.map { it.mapsquare to it.key }.toMap()
         )

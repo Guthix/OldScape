@@ -15,12 +15,12 @@
  */
 package io.guthix.oldscape.server.pathing
 
+import io.guthix.oldscape.dim.*
 import io.guthix.oldscape.server.world.Collision
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.Character
 import io.guthix.oldscape.server.world.entity.Loc
 import io.guthix.oldscape.server.world.map.Tile
-import io.guthix.oldscape.server.world.map.dim.*
 
 // TODO add caching the result?
 abstract class Destination(val floor: FloorUnit, val x: TileUnit, val y: TileUnit) {

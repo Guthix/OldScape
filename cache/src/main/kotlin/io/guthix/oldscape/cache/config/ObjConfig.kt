@@ -73,40 +73,40 @@ data class ObjConfig(override val id: Int) : NamedConfig(id) {
 
     override fun encode(): ByteBuf {
         val data = Unpooled.buffer()
-        if(model != 0) {
+        if (model != 0) {
             data.writeOpcode(1)
             data.writeShort(model)
         }
-        if(name != "null") {
+        if (name != "null") {
             data.writeOpcode(2)
             data.writeStringCP1252(name)
         }
-        if(zoom2d != 2000) {
+        if (zoom2d != 2000) {
             data.writeOpcode(4)
             data.writeShort(zoom2d)
         }
-        if(xan2d != 0) {
+        if (xan2d != 0) {
             data.writeOpcode(5)
             data.writeShort(xan2d)
         }
-        if(yan2d != 0) {
+        if (yan2d != 0) {
             data.writeOpcode(6)
             data.writeShort(yan2d)
         }
-        if(xoff2d != 0) {
+        if (xoff2d != 0) {
             data.writeOpcode(7)
-            if(xoff2d < 0) data.writeShort(xoff2d + 65536) else data.writeShort(xoff2d)
+            if (xoff2d < 0) data.writeShort(xoff2d + 65536) else data.writeShort(xoff2d)
         }
-        if(yoff2d != 0) {
+        if (yoff2d != 0) {
             data.writeOpcode(8)
-            if(yoff2d < 0) data.writeShort(yoff2d + 65536) else data.writeShort(yoff2d)
+            if (yoff2d < 0) data.writeShort(yoff2d + 65536) else data.writeShort(yoff2d)
         }
-        if(stackable) data.writeOpcode(11)
-        if(cost != 1) {
+        if (stackable) data.writeOpcode(11)
+        if (cost != 1) {
             data.writeOpcode(12)
             data.writeInt(cost)
         }
-        if(members) data.writeOpcode(16)
+        if (members) data.writeOpcode(16)
         maleModel0?.let {
             data.writeOpcode(23)
             data.writeShort(it)
@@ -126,38 +126,42 @@ data class ObjConfig(override val id: Int) : NamedConfig(id) {
             data.writeShort(it)
         }
         groundActions.forEachIndexed { i, str ->
-            if(str != null && str != "Hidden" && str != "Take") {
+            if (str != null && str != "Hidden" && str != "Take") {
                 data.writeOpcode(30 + i)
                 data.writeStringCP1252(str)
             }
         }
         iop.forEachIndexed { i, str ->
-            if(str != null && str != "Hidden" && str != "Drop") {
+            if (str != null && str != "Hidden" && str != "Drop") {
                 data.writeOpcode(35 + i)
                 data.writeStringCP1252(str)
             }
         }
-        colorFind?.let { colorFind -> colorReplace?.let { colorReplace->
-            data.writeOpcode(40)
-            data.writeByte(colorFind.size)
-            for (i in colorFind.indices) {
-                data.writeShort(colorFind[i])
-                data.writeShort(colorReplace[i])
+        colorFind?.let { colorFind ->
+            colorReplace?.let { colorReplace ->
+                data.writeOpcode(40)
+                data.writeByte(colorFind.size)
+                for (i in colorFind.indices) {
+                    data.writeShort(colorFind[i])
+                    data.writeShort(colorReplace[i])
+                }
             }
-        } }
-        textureFind?.let { textureFind -> textureReplace?.let { textureReplace->
-            data.writeOpcode(41)
-            data.writeByte(textureFind.size)
-            for (i in textureFind.indices) {
-                data.writeShort(textureFind[i])
-                data.writeShort(textureReplace[i])
+        }
+        textureFind?.let { textureFind ->
+            textureReplace?.let { textureReplace ->
+                data.writeOpcode(41)
+                data.writeByte(textureFind.size)
+                for (i in textureFind.indices) {
+                    data.writeShort(textureFind[i])
+                    data.writeShort(textureReplace[i])
+                }
             }
-        } }
-        if(shiftClickDropIndex.toInt() != -2) {
+        }
+        if (shiftClickDropIndex.toInt() != -2) {
             data.writeOpcode(42)
             data.writeByte(shiftClickDropIndex.toInt())
         }
-        if(tradable) data.writeOpcode(65)
+        if (tradable) data.writeOpcode(65)
         maleModel2?.let {
             data.writeOpcode(78)
             data.writeShort(it)
@@ -182,7 +186,7 @@ data class ObjConfig(override val id: Int) : NamedConfig(id) {
             data.writeOpcode(93)
             data.writeShort(it)
         }
-        if(zan2d != 0) {
+        if (zan2d != 0) {
             data.writeOpcode(95)
             data.writeShort(zan2d)
         }
@@ -200,27 +204,27 @@ data class ObjConfig(override val id: Int) : NamedConfig(id) {
             data.writeShort(obj)
             data.writeShort(countCo)
         }
-        if(resizeX != 128) {
+        if (resizeX != 128) {
             data.writeOpcode(110)
             data.writeShort(resizeX)
         }
-        if(resizeY != 128) {
+        if (resizeY != 128) {
             data.writeOpcode(111)
             data.writeShort(resizeY)
         }
-        if(resizeZ != 128) {
+        if (resizeZ != 128) {
             data.writeOpcode(112)
             data.writeShort(resizeZ)
         }
-        if(ambient.toInt() != 0) {
+        if (ambient.toInt() != 0) {
             data.writeOpcode(113)
             data.writeByte(ambient.toInt())
         }
-        if(contrast.toInt() != 0) {
+        if (contrast.toInt() != 0) {
             data.writeOpcode(114)
             data.writeByte(contrast.toInt())
         }
-        if(team.toInt() != 0) {
+        if (team.toInt() != 0) {
             data.writeOpcode(115)
             data.writeByte(team.toInt())
         }

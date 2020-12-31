@@ -1,4 +1,3 @@
-
 /*
  * Copyright 2018-2020 Guthix
  *
@@ -22,14 +21,14 @@ import io.guthix.oldscape.server.template.AggresiveType
 import io.guthix.oldscape.server.template.aggressiveType
 
 on(NpcSpawnedEvent::class).then {
-    when(val aggressiveness = npc.aggressiveType) {
+    when (val aggressiveness = npc.aggressiveType) {
         null -> return@then
         AggresiveType.Never -> return@then
         is AggresiveType.Combat -> npc.addTask(AggressionTask) {
             val npcLevel = npc.combatLevel ?: 0
-            while(true) {
+            while (true) {
                 world.findPlayers(npc.pos, aggressiveness.range).forEach {
-                    if(it.pos.withInDistanceOf(npc.pos, aggressiveness.range) && it.combatLevel <= npcLevel * 2) {
+                    if (it.pos.withInDistanceOf(npc.pos, aggressiveness.range) && it.combatLevel <= npcLevel * 2) {
                         npc.attackPlayer(it, world)
                     }
                 }
@@ -38,9 +37,9 @@ on(NpcSpawnedEvent::class).then {
             }
         }
         is AggresiveType.Always -> npc.addTask(AggressionTask) {
-            while(true) {
+            while (true) {
                 world.findPlayers(npc.pos, aggressiveness.range).forEach {
-                    if(it.pos.withInDistanceOf(npc.pos, aggressiveness.range)) {
+                    if (it.pos.withInDistanceOf(npc.pos, aggressiveness.range)) {
                         npc.attackPlayer(it, world)
                     }
                 }

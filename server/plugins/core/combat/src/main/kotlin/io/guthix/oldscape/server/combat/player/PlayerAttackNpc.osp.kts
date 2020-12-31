@@ -26,15 +26,15 @@ import io.guthix.oldscape.server.event.PlayerHitByNpcEvent
 import io.guthix.oldscape.server.task.NormalTask
 
 on(NpcClickEvent::class).where { contextMenuEntry == "Attack" }.then {
-    if(player.inCombatWith != npc) player.attackNpc(npc, world)
+    if (player.inCombatWith != npc) player.attackNpc(npc, world)
 }
 
 on(PlayerHitByNpcEvent::class).then {
-    if(player.inCombatWith == null && player.autoRetaliate) player.attackNpc(npc, world)
+    if (player.inCombatWith == null && player.autoRetaliate) player.attackNpc(npc, world)
     val damage = npc.calcHit(player)
-    if(damage == null) {
-        if(spotAnimOnFail == null) {
-            if(player.hit(world, 0)) {
+    if (damage == null) {
+        if (spotAnimOnFail == null) {
+            if (player.hit(world, 0)) {
                 npc.cancelTasks(NormalTask)
             } else {
                 player.animate(player.defenceSequence)
@@ -44,7 +44,7 @@ on(PlayerHitByNpcEvent::class).then {
         }
     } else {
         player.animate(player.defenceSequence)
-        if(player.hit(world, damage)) {
+        if (player.hit(world, damage)) {
             npc.cancelTasks(NormalTask)
         } else {
             player.animate(player.defenceSequence)

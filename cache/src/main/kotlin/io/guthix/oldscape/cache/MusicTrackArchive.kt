@@ -19,7 +19,7 @@ import io.guthix.js5.Js5Archive
 import io.guthix.oldscape.cache.sound.MidiFile
 
 public class MusicTrackArchive(public val tracks: List<MidiFile>) {
-    public companion object  {
+    public companion object {
         public const val id: Int = 6
 
         public fun load(archive: Js5Archive): MusicTrackArchive {

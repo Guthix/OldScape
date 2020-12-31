@@ -57,17 +57,17 @@ public data class AssemblyScript(
         strBuilder.append("\n")
         val labels = mutableSetOf<Int>()
         instructions.forEach { instruction ->
-            if(instruction is IntInstruction && instruction.isJump) {
+            if (instruction is IntInstruction && instruction.isJump) {
                 labels.add(instruction.operand)
             }
-            if(instruction is SwitchInstruction) {
+            if (instruction is SwitchInstruction) {
                 instruction.operand.forEach { (_, jumpAddress) ->
                     labels.add(jumpAddress)
                 }
             }
         }
         instructions.forEachIndexed { curLine, instruction ->
-            if(labels.contains(curLine)) strBuilder.append("LABEL$curLine:\n")
+            if (labels.contains(curLine)) strBuilder.append("LABEL$curLine:\n")
             strBuilder.append(String.format("    %-22s", instruction.name))
             when (instruction) {
                 is IntInstruction -> strBuilder.append("${instruction.operand}\n")
@@ -87,14 +87,14 @@ public data class AssemblyScript(
         public fun disassemble(script: MachineScript): AssemblyScript {
             val instructions = Array(script.instructions.size) { curLine ->
                 val machineInstr = script.instructions[curLine]
-                if(machineInstr is IntInstruction && machineInstr.isJump) {
+                if (machineInstr is IntInstruction && machineInstr.isJump) {
                     IntInstruction(
                         machineInstr.opcode,
                         machineInstr.name,
                         curLine + machineInstr.operand + 1
                     )
                 }
-                if(machineInstr is SwitchInstruction) {
+                if (machineInstr is SwitchInstruction) {
                     val updatedMap = mutableMapOf<Int, Int>()
                     machineInstr.operand.forEach { value, jumpDelta ->
                         updatedMap[value] = curLine + jumpDelta + 1

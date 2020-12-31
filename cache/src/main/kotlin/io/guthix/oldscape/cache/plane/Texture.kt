@@ -34,7 +34,7 @@ public class Texture(
             val field1527 = data.readUnsignedShort()
             val field1530 = data.readUnsignedByte().toInt() == 1
             val amount = data.readUnsignedByte().toInt()
-            if(amount !in 0..4) throw IOException("Amount of textures should be between 0 and 4 but is $amount.")
+            if (amount !in 0..4) throw IOException("Amount of textures should be between 0 and 4 but is $amount.")
             val fileIds = IntArray(amount) {
                 data.readUnsignedShort()
             }

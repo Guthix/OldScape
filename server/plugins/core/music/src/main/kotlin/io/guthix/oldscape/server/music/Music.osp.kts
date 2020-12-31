@@ -15,9 +15,9 @@
  */
 package io.guthix.oldscape.server.music
 
+import io.guthix.oldscape.dim.MapsquareUnit
 import io.guthix.oldscape.server.event.PlayerInitialized
 import io.guthix.oldscape.server.event.PlayerMovedEvent
-import io.guthix.oldscape.server.world.map.dim.MapsquareUnit
 
 on(PlayerMovedEvent::class).then {
     if (

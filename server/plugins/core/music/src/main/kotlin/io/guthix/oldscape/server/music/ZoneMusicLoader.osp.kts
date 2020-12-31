@@ -15,10 +15,10 @@
  */
 package io.guthix.oldscape.server.music
 
+import io.guthix.oldscape.dim.floors
+import io.guthix.oldscape.dim.mapsquares
 import io.guthix.oldscape.server.event.WorldInitializedEvent
 import io.guthix.oldscape.server.readYaml
-import io.guthix.oldscape.server.world.map.dim.floors
-import io.guthix.oldscape.server.world.map.dim.mapsquares
 
 on(WorldInitializedEvent::class).then {
     val zoneMusic: Map<String, ZoneMusic> = readYaml("/Music.yaml")

@@ -18,7 +18,6 @@ package io.guthix.oldscape.server.world.entity.interest
 import io.guthix.oldscape.server.net.game.out.VarpLargePacket
 import io.guthix.oldscape.server.net.game.out.VarpSmallPacket
 import io.guthix.oldscape.server.template.VarbitTemplate
-import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.Player
 import io.netty.channel.ChannelFuture
 import kotlin.math.pow

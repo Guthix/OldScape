@@ -55,7 +55,7 @@ public data class MachineScript(
         return result
     }
 
-    override fun toString(): String  {
+    override fun toString(): String {
         val strBuilder = StringBuilder()
         strBuilder.append("""
             id: $id
@@ -67,7 +67,7 @@ public data class MachineScript(
         strBuilder.append("\n")
         instructions.forEach { instruction ->
             strBuilder.append(String.format("%-22s", instruction.name))
-            when(instruction) {
+            when (instruction) {
                 is IntInstruction -> strBuilder.append("${instruction.operand}\n")
                 is StringInstruction -> strBuilder.append("${instruction.operand}\n")
                 is SwitchInstruction -> {
@@ -107,7 +107,7 @@ public data class MachineScript(
             var i = 0
             while (data.readerIndex() < opcodeEndPos) {
                 val opcode = data.readUnsignedShort()
-                if(opcode == InstructionDefinition.SCONST.opcode) {
+                if (opcode == InstructionDefinition.SCONST.opcode) {
                     stringOperands[i] = data.readStringCP1252()
                 } else if (opcode < 100 && opcode != InstructionDefinition.RETURN.opcode
                     && opcode != InstructionDefinition.POP_INT.opcode
@@ -125,8 +125,8 @@ public data class MachineScript(
                     ?: InstructionDefinition(opcode, String.format("%03d", opcode)).apply {
                         logger.warn("InstructionDefinition $opcode is not implemented")
                     }
-                if(intOperands[it] != null) {
-                    if(opcodes[it] == InstructionDefinition.SWITCH.opcode) {
+                if (intOperands[it] != null) {
+                    if (opcodes[it] == InstructionDefinition.SWITCH.opcode) {
                         SwitchInstruction(
                             instrDef.opcode,
                             instrDef.name,
@@ -140,7 +140,7 @@ public data class MachineScript(
                         )
                     }
                 } else {
-                    val stringOp= stringOperands[it]
+                    val stringOp = stringOperands[it]
                         ?: throw IOException("Could not find string operand for instruction ${instrDef.name}.")
                     StringInstruction(instrDef.opcode, instrDef.name, stringOp)
                 }

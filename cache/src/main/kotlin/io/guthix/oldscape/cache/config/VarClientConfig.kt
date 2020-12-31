@@ -22,7 +22,7 @@ import java.io.IOException
 public data class VarClientConfig(override val id: Int) : Config(id) {
     var isPeristent: Boolean = false
 
-    override fun encode(): ByteBuf = if(isPeristent) {
+    override fun encode(): ByteBuf = if (isPeristent) {
         Unpooled.buffer(2).apply {
             writeOpcode(2)
             writeByte(0)

@@ -15,6 +15,7 @@
  */
 package io.guthix.oldscape.server.world.entity.interest
 
+import io.guthix.oldscape.dim.*
 import io.guthix.oldscape.server.net.game.ZoneOutGameEvent
 import io.guthix.oldscape.server.net.game.out.*
 import io.guthix.oldscape.server.world.World
@@ -24,7 +25,6 @@ import io.guthix.oldscape.server.world.entity.Player
 import io.guthix.oldscape.server.world.entity.Projectile
 import io.guthix.oldscape.server.world.map.Tile
 import io.guthix.oldscape.server.world.map.Zone
-import io.guthix.oldscape.server.world.map.dim.*
 import io.netty.channel.ChannelFuture
 
 internal class SceneManager {
@@ -76,7 +76,6 @@ internal class SceneManager {
         }
         return interestedXteas
     }
-
 
 
     private fun subscribeZones(oldZone: Zone, player: Player, world: World) {

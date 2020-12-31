@@ -155,15 +155,15 @@ public class AudioFilter(
                 unity[0] = data.readUnsignedShort()
                 unity[1] = data.readUnsignedShort()
                 val uByte1 = data.readUnsignedByte().toInt()
-                for(i in 0 until SIZE) {
-                    for(j in 0 until pairs[i]) {
+                for (i in 0 until SIZE) {
+                    for (j in 0 until pairs[i]) {
                         phases[i][0][j] = data.readUnsignedShort()
                         magnitudes[i][0][j] = data.readUnsignedShort()
                     }
                 }
 
-                for(i in 0 until SIZE) {
-                    for(j in 0 until pairs[i]) {
+                for (i in 0 until SIZE) {
+                    for (j in 0 until pairs[i]) {
                         if (uByte1 and (1 shl i * 4 shl j) != 0) {
                             phases[i][1][j] = data.readUnsignedShort()
                             magnitudes[i][1][j] = data.readUnsignedShort()

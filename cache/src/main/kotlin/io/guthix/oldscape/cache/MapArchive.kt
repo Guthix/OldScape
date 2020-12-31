@@ -21,7 +21,7 @@ import io.guthix.oldscape.cache.xtea.MapXtea
 import java.io.FileNotFoundException
 
 public class MapArchive(public val mapsquares: Map<Int, MapSquareDefinition>) {
-    public companion object  {
+    public companion object {
         public const val id: Int = 5
 
         public fun load(archive: Js5Archive, xteas: List<MapXtea>): MapArchive {

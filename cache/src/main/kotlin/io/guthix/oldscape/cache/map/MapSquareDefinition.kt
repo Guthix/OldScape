@@ -61,24 +61,46 @@ class MapDefinition(
         }
 
         fun decode(data: ByteBuf, baseX: Int, baseY: Int): MapDefinition {
-            val tileHeights = Array(MapSquareDefinition.FLOOR_COUNT) { Array(MapSquareDefinition.SIZE) { IntArray(
-                MapSquareDefinition.SIZE
-            ) } }
-            val renderRules = Array(MapSquareDefinition.FLOOR_COUNT) { Array(MapSquareDefinition.SIZE) { ShortArray(
-                MapSquareDefinition.SIZE
-            ) } }
-            val overlayIds = Array(MapSquareDefinition.FLOOR_COUNT) { Array(MapSquareDefinition.SIZE) { ByteArray(
-                MapSquareDefinition.SIZE
-            ) } }
-            val overlayPaths = Array(MapSquareDefinition.FLOOR_COUNT) { Array(MapSquareDefinition.SIZE) { ShortArray(
-                MapSquareDefinition.SIZE
-            ) } }
-            val overlayRotations = Array(MapSquareDefinition.FLOOR_COUNT) { Array(MapSquareDefinition.SIZE) {
-                ShortArray(MapSquareDefinition.SIZE)
-            } }
-            val underlayIds = Array(MapSquareDefinition.FLOOR_COUNT) { Array(MapSquareDefinition.SIZE) { ShortArray(
-                MapSquareDefinition.SIZE
-            ) } }
+            val tileHeights = Array(MapSquareDefinition.FLOOR_COUNT) {
+                Array(MapSquareDefinition.SIZE) {
+                    IntArray(
+                        MapSquareDefinition.SIZE
+                    )
+                }
+            }
+            val renderRules = Array(MapSquareDefinition.FLOOR_COUNT) {
+                Array(MapSquareDefinition.SIZE) {
+                    ShortArray(
+                        MapSquareDefinition.SIZE
+                    )
+                }
+            }
+            val overlayIds = Array(MapSquareDefinition.FLOOR_COUNT) {
+                Array(MapSquareDefinition.SIZE) {
+                    ByteArray(
+                        MapSquareDefinition.SIZE
+                    )
+                }
+            }
+            val overlayPaths = Array(MapSquareDefinition.FLOOR_COUNT) {
+                Array(MapSquareDefinition.SIZE) {
+                    ShortArray(
+                        MapSquareDefinition.SIZE
+                    )
+                }
+            }
+            val overlayRotations = Array(MapSquareDefinition.FLOOR_COUNT) {
+                Array(MapSquareDefinition.SIZE) {
+                    ShortArray(MapSquareDefinition.SIZE)
+                }
+            }
+            val underlayIds = Array(MapSquareDefinition.FLOOR_COUNT) {
+                Array(MapSquareDefinition.SIZE) {
+                    ShortArray(
+                        MapSquareDefinition.SIZE
+                    )
+                }
+            }
             for (z in 0 until MapSquareDefinition.FLOOR_COUNT) {
                 for (x in 0 until MapSquareDefinition.SIZE) {
                     for (y in 0 until MapSquareDefinition.SIZE) {
@@ -86,7 +108,7 @@ class MapDefinition(
                             val opcode = data.readUnsignedByte().toInt()
                             when {
                                 opcode == 0 -> {
-                                    if(z == 0) {
+                                    if (z == 0) {
                                         tileHeights[0][x][y] = calcZ0Height(baseX, baseY, x, y)
                                     } else {
                                         tileHeights[z][x][y] = tileHeights[z - 1][x][y] - 240
@@ -96,7 +118,7 @@ class MapDefinition(
                                 opcode == 1 -> {
                                     var height = data.readUnsignedByte().toInt()
                                     if (height == 1) height = 0
-                                    if(z == 0) {
+                                    if (z == 0) {
                                         tileHeights[0][x][y] = -height * 8
                                     } else {
                                         tileHeights[z][x][y] = tileHeights[z - 1][x][y] - height * 8
@@ -125,7 +147,7 @@ class MapDefinition(
                 (interpolateNoise(10294 + xc, 37821 + yc, 2) - 128 shr 1) +
                 (interpolateNoise(xc, yc, 1) - 128 shr 2)
             height = (height * 0.3).toInt() + 35
-            if (height < 10)  height = 10 else if (height > 60) height = 60
+            if (height < 10) height = 10 else if (height > 60) height = 60
             return -height * 8
         }
 
@@ -186,10 +208,10 @@ data class MapLocDefinition(
                     val localY = positionHash and 0x3F
                     val localX = (positionHash shr 6) and 0x3F
                     var z = (positionHash shr 12) and 0x3
-                    if((renderRules[1][localX][localY] and MapDefinition.LINK_BELOW_TILE_MASK) ==
+                    if ((renderRules[1][localX][localY] and MapDefinition.LINK_BELOW_TILE_MASK) ==
                         MapDefinition.LINK_BELOW_TILE_MASK
                     ) z--
-                    if(z < 0) {
+                    if (z < 0) {
                         data.readByte()
                     } else {
                         val attributes = data.readUnsignedByte().toInt()

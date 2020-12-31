@@ -78,7 +78,7 @@ object YamlDownloader {
 
         val weaponDefs = objWikiConfigs.filter { it.combatStyle != null }
         writeTemplate(weaponDefs,
-            "server/plugins/core/combat/src/main/resources/template",  "Weapons.yaml",
+            "server/plugins/core/combat/src/main/resources/template", "Weapons.yaml",
             ObjWikiDefinition::toWeaponTemplate
         )
 
@@ -102,7 +102,7 @@ object YamlDownloader {
         fileName: String,
         templateBuilder: D.(T?) -> T
     ) {
-        val logger = KotlinLogging.logger {  }
+        val logger = KotlinLogging.logger { }
         val serverTemplates = try {
             val yamlString: String = Files.readString(Path.of(filePath).resolve(fileName))
             yaml.decodeFromString<Map<String, T>>(yamlString)

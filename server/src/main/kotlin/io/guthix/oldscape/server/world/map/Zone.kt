@@ -15,9 +15,9 @@
  */
 package io.guthix.oldscape.server.world.map
 
+import io.guthix.oldscape.dim.*
 import io.guthix.oldscape.server.PropertyHolder
 import io.guthix.oldscape.server.world.entity.*
-import io.guthix.oldscape.server.world.map.dim.*
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -76,11 +76,11 @@ data class Zone internal constructor(val floor: FloorUnit, val x: ZoneUnit, val 
 
     fun delLoc(loc: Loc) {
         val addedLoc = addedLocs[loc.mapKey]
-        if(addedLoc != null) {
+        if (addedLoc != null) {
             addedLocs.remove(loc.mapKey)
         } else {
             val staticLoc = staticLocs[loc.mapKey]
-            require(staticLoc != null) {  "Can't deleted loc because $loc doesn't exist." }
+            require(staticLoc != null) { "Can't deleted loc because $loc doesn't exist." }
             deletedLocs[loc.mapKey] = staticLoc
         }
         playersLoaded.forEach { player -> player.scene.delLoc(loc) }

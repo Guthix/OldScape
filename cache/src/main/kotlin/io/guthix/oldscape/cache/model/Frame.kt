@@ -49,7 +49,7 @@ public class Frame(
                 }
                 indexFrameIds[index] = i
                 if (frameMaps.types[i].toInt() != 0) {
-                    for(j in i - 1 downTo lastI + 1) {
+                    for (j in i - 1 downTo lastI + 1) {
                         if (frameMaps.types[j].toInt() == 0) {
                             indexFrameIds[index] = j
                             translatorX[index] = 0

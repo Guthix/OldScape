@@ -15,6 +15,8 @@
  */
 package io.guthix.oldscape.server.playermove
 
+import io.guthix.oldscape.dim.FloorUnit
+import io.guthix.oldscape.dim.TileUnit
 import io.guthix.oldscape.server.event.MapClickEvent
 import io.guthix.oldscape.server.event.MiniMapClickEvent
 import io.guthix.oldscape.server.pathing.DestinationTile
@@ -23,8 +25,6 @@ import io.guthix.oldscape.server.task.NormalTask
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.Player
 import io.guthix.oldscape.server.world.map.Tile
-import io.guthix.oldscape.server.world.map.dim.FloorUnit
-import io.guthix.oldscape.server.world.map.dim.TileUnit
 
 on(MiniMapClickEvent::class).then {
     player.startWalkingToTile(player.pos.floor, x, y, world)

@@ -18,6 +18,7 @@ package io.guthix.oldscape.server.world
 import io.guthix.oldscape.cache.map.MapDefinition
 import io.guthix.oldscape.cache.map.MapLocDefinition
 import io.guthix.oldscape.cache.map.MapSquareDefinition
+import io.guthix.oldscape.dim.*
 import io.guthix.oldscape.server.PropertyHolder
 import io.guthix.oldscape.server.db.*
 import io.guthix.oldscape.server.event.*
@@ -36,7 +37,6 @@ import io.guthix.oldscape.server.template.ProjectileTemplate
 import io.guthix.oldscape.server.world.entity.*
 import io.guthix.oldscape.server.world.map.Tile
 import io.guthix.oldscape.server.world.map.Zone
-import io.guthix.oldscape.server.world.map.dim.*
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.serializer
 import mu.KLogging
@@ -102,9 +102,11 @@ class World internal constructor(
         findNpcs(tile.floor, tile.x - range..tile.x + range, tile.y - range..tile.y + range)
 
     fun findNpcs(floor: FloorUnit, rangeX: TileUnitRange, rangeY: TileUnitRange): List<Npc> =
-        rangeX.zoneRange.flatMap { x -> rangeY.zoneRange.flatMap { y ->
-            zones[floor.value][x.value][y.value]?.npcs ?: emptyList()
-        } }.filter { npc -> npc.pos.x in rangeX && npc.pos.y in rangeY }
+        rangeX.zoneRange.flatMap { x ->
+            rangeY.zoneRange.flatMap { y ->
+                zones[floor.value][x.value][y.value]?.npcs ?: emptyList()
+            }
+        }.filter { npc -> npc.pos.x in rangeX && npc.pos.y in rangeY }
 
     fun createNpc(id: Int, tile: Tile): Npc {
         val npc = npcs.create(id, tile, getZone(tile) ?: error("Zone doesn't exist for $tile."))
@@ -133,14 +135,16 @@ class World internal constructor(
         findPlayers(tile.floor, tile.x - range..tile.x + range, tile.y - range..tile.y + range)
 
     fun findPlayers(floor: FloorUnit, rangeX: TileUnitRange, rangeY: TileUnitRange): List<Player> =
-        rangeX.zoneRange.flatMap { x -> rangeY.zoneRange.flatMap { y ->
-            zones[floor.value][x.value][y.value]?.players ?: emptyList()
-        } }.filter { player -> player.pos.x in rangeX && player.pos.y in rangeY }
+        rangeX.zoneRange.flatMap { x ->
+            rangeY.zoneRange.flatMap { y ->
+                zones[floor.value][x.value][y.value]?.players ?: emptyList()
+            }
+        }.filter { player -> player.pos.x in rangeX && player.pos.y in rangeY }
 
     private fun processLogins() {
         main@ while (loginQueue.isNotEmpty()) {
             val request = loginQueue.poll()
-            val playerDbData: Pair<Int, MutableMap<String, Any>> = if(PostgresDb.initialized) {
+            val playerDbData: Pair<Int, MutableMap<String, Any>> = if (PostgresDb.initialized) {
                 try {
                     transaction {
                         val playerTableRow = PlayerTable.select {
@@ -196,7 +200,7 @@ class World internal constructor(
     private fun processLogouts() {
         while (logoutQueue.isNotEmpty()) {
             val player = logoutQueue.poll()
-            if(PostgresDb.initialized) {
+            if (PostgresDb.initialized) {
                 transaction {
                     player.persistentProperties.forEach { (key, value) ->
                         val projType = value::class.starProjectedType
@@ -253,7 +257,6 @@ class World internal constructor(
                 getZone(floor, x.inZones + localX.zones, y.inZones + localY.zones)
             }
         }
-
 
 
     fun addObject(id: Int, amount: Int, tile: Tile): Obj {
@@ -335,8 +338,7 @@ class World internal constructor(
             }
         }
 
-        private fun World.addLocByDef(msX: MapsquareUnit, msY: MapsquareUnit, locDef: MapLocDefinition)
-            = addStaticLoc(
+        private fun World.addLocByDef(msX: MapsquareUnit, msY: MapsquareUnit, locDef: MapLocDefinition) = addStaticLoc(
             Loc(locDef.id,
                 locDef.type,
                 Tile(locDef.floor.floors, msX.inTiles + locDef.localX.tiles, msY.inTiles + locDef.localY.tiles),

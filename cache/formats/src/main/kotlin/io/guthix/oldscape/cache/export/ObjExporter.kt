@@ -28,8 +28,8 @@ fun exportObj(model: Model, textureArchive: TextureArchive, objWriter: PrintWrit
     objWriter.println("o rsmodel")
     for (i in 0 until model.vertexCount) {
         objWriter.println("v " + model.vertexPositionsX!![i]
-                    + " " + model.vertexPositionsY!![i] * -1
-                    + " " + model.vertexPositionsZ!![i] * -1
+            + " " + model.vertexPositionsY!![i] * -1
+            + " " + model.vertexPositionsZ!![i] * -1
         )
     }
     if (model.triangleTextures != null) {
@@ -52,7 +52,7 @@ fun exportObj(model: Model, textureArchive: TextureArchive, objWriter: PrintWrit
         val z = model.triangleVertex3!![i] + 1
 
         objWriter.println("usemtl m$i")
-        if(model.triangleTextures != null) {
+        if (model.triangleTextures != null) {
             objWriter.println(("f " + x + "/" + (i * 3 + 1) + " " + y + "/" + (i * 3 + 2) + " " + z + "/" + (i * 3 + 3)))
         } else {
             objWriter.println("f $x $y $z")
@@ -61,7 +61,7 @@ fun exportObj(model: Model, textureArchive: TextureArchive, objWriter: PrintWrit
     }
 
     for (i in 0 until model.triangleCount) {
-        val textureId = if(model.triangleTextures == null) -1 else model.triangleTextures!![i]
+        val textureId = if (model.triangleTextures == null) -1 else model.triangleTextures!![i]
         mtlWriter.println("newmtl m$i")
         if (textureId == -1) {
             val color = rs2hsbToColor(model.triangleColors!![i])

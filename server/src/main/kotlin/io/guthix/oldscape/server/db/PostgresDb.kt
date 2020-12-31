@@ -42,7 +42,7 @@ object PostgresDb {
             initialized = try {
                 SchemaUtils.create(PlayerTable, PlayerPropertiesTable)
                 true
-            } catch(e: PSQLException) {
+            } catch (e: PSQLException) {
                 logger.error { "Could not connect to Postgres db at: ${config.url} username: ${config.username}" }
                 false
             }

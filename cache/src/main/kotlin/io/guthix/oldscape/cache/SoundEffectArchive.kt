@@ -19,7 +19,7 @@ import io.guthix.js5.Js5Archive
 import io.guthix.oldscape.cache.sound.SoundEffect
 
 public class SoundEffectArchive(public val soundEffects: List<SoundEffect>) {
-    public companion object  {
+    public companion object {
         public const val id: Int = 4
 
         public fun load(archive: Js5Archive): SoundEffectArchive {

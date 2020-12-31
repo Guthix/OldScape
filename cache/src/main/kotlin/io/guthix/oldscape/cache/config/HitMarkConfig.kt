@@ -47,7 +47,7 @@ public data class HitMarkConfig(override val id: Int) : Config(id) {
             data.writeOpcode(1)
             data.writeNullableLargeSmart(it)
         }
-        if(textColor != 16777215) {
+        if (textColor != 16777215) {
             data.writeOpcode(2)
             data.writeMedium(textColor)
         }
@@ -67,24 +67,24 @@ public data class HitMarkConfig(override val id: Int) : Config(id) {
             data.writeOpcode(6)
             data.writeNullableLargeSmart(int4)
         }
-        if(int5.toInt() != 0) {
+        if (int5.toInt() != 0) {
             data.writeOpcode(7)
             data.writeShort(int5.toInt())
         }
-        if(string1 != "") {
+        if (string1 != "") {
             data.writeOpcode(8)
             data.writeString0CP1252(string1)
         }
-        if(int6 != 70) {
+        if (int6 != 70) {
             data.writeOpcode(9)
             data.writeShort(int6)
         }
-        if(int7.toInt() != 0) {
+        if (int7.toInt() != 0) {
             data.writeOpcode(10)
             data.writeShort(int7.toInt())
         }
         int8?.let {
-            if(it == 0) {
+            if (it == 0) {
                 data.writeOpcode(11)
             } else {
                 data.writeOpcode(14)
@@ -95,20 +95,20 @@ public data class HitMarkConfig(override val id: Int) : Config(id) {
             data.writeOpcode(12)
             data.writeByte(it.toInt())
         }
-        if(int10.toInt() != 0) {
+        if (int10.toInt() != 0) {
             data.writeOpcode(13)
             data.writeShort(int10.toInt())
         }
         transforms?.let { transforms ->
-            data.writeOpcode(if(transforms.last() == null) 18 else 17)
-            if(transformVarbit == null) data.writeShort(65535) else data.writeShort(transformVarbit!!.toInt())
-            if(transformVarp == null) data.writeShort(65535) else data.writeShort(transformVarp!!.toInt())
+            data.writeOpcode(if (transforms.last() == null) 18 else 17)
+            if (transformVarbit == null) data.writeShort(65535) else data.writeShort(transformVarbit!!.toInt())
+            if (transformVarp == null) data.writeShort(65535) else data.writeShort(transformVarp!!.toInt())
             transforms.last()?.let(data::writeShort)
             val size = transforms.size - 2
             data.writeByte(size)
-            for(i in 0..size) {
+            for (i in 0..size) {
                 val transform = transforms[i]
-                if(transform == null) {
+                if (transform == null) {
                     data.writeShort(65535)
                 } else {
                     data.writeShort(transform)
@@ -125,7 +125,7 @@ public data class HitMarkConfig(override val id: Int) : Config(id) {
         override fun decode(id: Int, data: ByteBuf): HitMarkConfig {
             val hitmarkConfig = HitMarkConfig(id)
             decoder@ while (true) {
-                when(val opcode = data.readUnsignedByte().toInt()) {
+                when (val opcode = data.readUnsignedByte().toInt()) {
                     0 -> break@decoder
                     1 -> hitmarkConfig.fontId = data.readNullableLargeSmart()
                     2 -> hitmarkConfig.textColor = data.readUnsignedMedium()
@@ -143,20 +143,20 @@ public data class HitMarkConfig(override val id: Int) : Config(id) {
                     14 -> hitmarkConfig.int8 = data.readUnsignedShort()
                     17, 18 -> {
                         val transformVarbit = data.readUnsignedShort()
-                        hitmarkConfig.transformVarbit = if(transformVarbit == 65535) null else transformVarbit
+                        hitmarkConfig.transformVarbit = if (transformVarbit == 65535) null else transformVarbit
                         val transformVarp = data.readUnsignedShort()
-                        hitmarkConfig.transformVarp = if(transformVarbit == 65535) null else transformVarp
-                        val lastEntry = if(opcode == 18) {
+                        hitmarkConfig.transformVarp = if (transformVarbit == 65535) null else transformVarp
+                        val lastEntry = if (opcode == 18) {
                             val entry = data.readUnsignedShort()
-                            if(entry == 65535) null else entry
+                            if (entry == 65535) null else entry
                         } else null
                         val size = data.readUnsignedByte().toInt()
                         val transforms = arrayOfNulls<Int?>(size + 2)
-                        for(i in 0..size) {
+                        for (i in 0..size) {
                             val transform = data.readUnsignedShort()
-                            transforms[i] = if(transform == 65535) null else transform
+                            transforms[i] = if (transform == 65535) null else transform
                         }
-                        if(opcode == 18) {
+                        if (opcode == 18) {
                             transforms[size + 1] = lastEntry
                         }
                         hitmarkConfig.transforms = transforms

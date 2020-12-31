@@ -15,9 +15,9 @@
  */
 package io.guthix.oldscape.server.world.entity
 
+import io.guthix.oldscape.dim.TileUnit
 import io.guthix.oldscape.server.PropertyHolder
 import io.guthix.oldscape.server.world.map.Tile
-import io.guthix.oldscape.server.world.map.dim.TileUnit
 import kotlin.reflect.KProperty
 
 interface Entity : PropertyHolder {

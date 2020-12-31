@@ -22,7 +22,7 @@ import java.io.IOException
 public data class VarPlayerConfig(override val id: Int) : Config(id) {
     var type: Int = 0
 
-    override fun encode(): ByteBuf = if(type != 0) {
+    override fun encode(): ByteBuf = if (type != 0) {
         Unpooled.buffer(2).apply {
             writeOpcode(5)
             writeShort(type)

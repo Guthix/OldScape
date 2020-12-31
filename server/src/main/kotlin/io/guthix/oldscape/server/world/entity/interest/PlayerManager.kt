@@ -15,12 +15,12 @@
  */
 package io.guthix.oldscape.server.world.entity.interest
 
+import io.guthix.oldscape.dim.TileUnit
+import io.guthix.oldscape.dim.tiles
 import io.guthix.oldscape.server.net.game.out.PlayerInfoPacket
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.Player
 import io.guthix.oldscape.server.world.map.Tile
-import io.guthix.oldscape.server.world.map.dim.TileUnit
-import io.guthix.oldscape.server.world.map.dim.tiles
 import io.netty.channel.ChannelFuture
 import kotlinx.serialization.Serializable
 

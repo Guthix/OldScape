@@ -28,7 +28,7 @@ public data class OverlayConfig(override val id: Int) : Config(id) {
 
     override fun encode(): ByteBuf {
         val data = Unpooled.buffer()
-        if(color.rgb != 0) {
+        if (color.rgb != 0) {
             data.writeOpcode(1)
             data.writeMedium(color.rgb)
         }
@@ -36,7 +36,7 @@ public data class OverlayConfig(override val id: Int) : Config(id) {
             data.writeOpcode(2)
             data.writeByte(it.toInt())
         }
-        if(!isHidden) data.writeOpcode(5)
+        if (!isHidden) data.writeOpcode(5)
         otherColor?.let {
             data.writeOpcode(7)
             data.writeMedium(it.rgb)

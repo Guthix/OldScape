@@ -84,7 +84,7 @@ public class MidiFile(public val midi: ByteArray) {
             var chnnlAfterTchOpcodes = 0
             var keyAfterTchOpcodes = 0
             var progmChangeOpcodes = 0
-            for(track in 0 until tracks) {
+            for (track in 0 until tracks) {
                 var opcode = -1
                 while (true) {
                     val controlChangeIndex = data.readUnsignedByte().toInt()
@@ -110,9 +110,9 @@ public class MidiFile(public val midi: ByteArray) {
             offset += chnnlAfterTchOpcodes + progmChangeOpcodes
             val marker1 = data.readerIndex()
             val opcode = tracks + tempoOpcodes + ctrlChangeOpcodes + noteOnOpcodes + noteOffOpcodes +
-                    wheelChangeOpcodes + chnnlAfterTchOpcodes + keyAfterTchOpcodes + progmChangeOpcodes
+                wheelChangeOpcodes + chnnlAfterTchOpcodes + keyAfterTchOpcodes + progmChangeOpcodes
 
-            for(i in 0 until opcode) {
+            for (i in 0 until opcode) {
                 data.readVarInt()
             }
             offset += data.readerIndex() - marker1
@@ -130,7 +130,7 @@ public class MidiFile(public val midi: ByteArray) {
             var commandsSize = 0
             var otherSize = 0
             var controllerNumber = 0
-            for(i in 0 until ctrlChangeOpcodes) {
+            for (i in 0 until ctrlChangeOpcodes) {
                 controllerNumber = controllerNumber + data.readByte() and Byte.MAX_VALUE.toInt()
                 if (controllerNumber == CONTROLLER_BANK_SELECT || controllerNumber == CONTROLLER_BANK_SELECT_2) {
                     progmChangeOpcodes++
@@ -224,7 +224,7 @@ public class MidiFile(public val midi: ByteArray) {
             var var57 = 0
             var var58 = 0
             val var59 = IntArray(128)
-            controllerNumber  = 0
+            controllerNumber = 0
             var var29 = 0
             writer@ for (var60 in 0 until tracks) {
                 midiBuff.writeInt(MTRK_MAGIC)
@@ -254,7 +254,7 @@ public class MidiFile(public val midi: ByteArray) {
                         midiBuff.writeByte(data.getByte(tempoOffset++).toInt())
                     } else {
                         var52 = var52 xor (status shr 4)
-                        when(curJagOpcode) {
+                        when (curJagOpcode) {
                             JAG_NOTE_ON -> {
                                 if (shouldWriteOpcode) midiBuff.writeByte(NOTE_ON + var52)
                                 var53 += data.getByte(notesIndex++).toInt()
@@ -274,9 +274,9 @@ public class MidiFile(public val midi: ByteArray) {
                                     midiBuff.writeByte(CONTROL_CHANGE + var52)
                                 }
                                 controllerNumber = controllerNumber + data.getByte(controlChangeIndex++) and
-                                        Byte.MAX_VALUE.toInt()
+                                    Byte.MAX_VALUE.toInt()
                                 midiBuff.writeByte(controllerNumber)
-                                val result = if(controllerNumber == CONTROLLER_BANK_SELECT
+                                val result = if (controllerNumber == CONTROLLER_BANK_SELECT
                                     || controllerNumber == CONTROLLER_BANK_SELECT_2) {
                                     data.getByte(programChangeIndex++)
                                 } else if (controllerNumber == CONTROLLER_MODULATION_WHEEL) {
@@ -316,7 +316,7 @@ public class MidiFile(public val midi: ByteArray) {
                                 midiBuff.writeByte(var67 and Byte.MAX_VALUE.toInt())
                             }
                             JAG_PITCH_BEND -> {
-                                if (shouldWriteOpcode)  midiBuff.writeByte(PITCH_WHEEL_CHANGE + var52)
+                                if (shouldWriteOpcode) midiBuff.writeByte(PITCH_WHEEL_CHANGE + var52)
                                 var56 += data.getByte(pitchWheelLowIndex++)
                                 var56 += data.getByte(pitchWheelHighIndex++).toInt() shl 7
                                 midiBuff.writeByte(var56 and Byte.MAX_VALUE.toInt())
@@ -337,7 +337,8 @@ public class MidiFile(public val midi: ByteArray) {
                             JAG_PROGRAM_CHANGE -> {
                                 if (shouldWriteOpcode) midiBuff.writeByte(PROGRAM_CHANGE + var52)
                                 midiBuff.writeByte(data.getByte(programChangeIndex++).toInt())
-                            } else -> throw IOException("Did not recognise jag track opcode $curJagOpcode.")
+                            }
+                            else -> throw IOException("Did not recognise jag track opcode $curJagOpcode.")
                         }
                     }
                 }

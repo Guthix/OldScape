@@ -21,6 +21,8 @@ pluginManagement {
 
 rootProject.name = "oldscape"
 
+include("dim")
+
 include("cache")
 include("cache:formats")
 

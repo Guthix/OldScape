@@ -69,7 +69,7 @@ public class ObjWikiDefinition : WikiDefinition() {
             line.checkWikiKey("update", version) -> update = line.getWikiString()
             line.checkWikiKey("members", version) -> isMembers = line.getWikiBool()
             line.checkWikiKey("quest", version) -> {
-                quests = if(line.getWikiString().equals("No", ignoreCase = true)) {
+                quests = if (line.getWikiString().equals("No", ignoreCase = true)) {
                     null
                 } else {
                     line.getWikiStrings()
@@ -84,8 +84,8 @@ public class ObjWikiDefinition : WikiDefinition() {
             line.checkWikiKey("alchable", version) -> isAlchable = line.getWikiBool()
             line.checkWikiKey("destroy", version) -> destroy = line.getWikiString()
             line.checkWikiKey("value", version) -> valuePrice = line.getWikiInt()
-            line.checkWikiKey("store", version) ->  {
-                storePrice = if(line.getWikiString().equals("No", ignoreCase = true)
+            line.checkWikiKey("store", version) -> {
+                storePrice = if (line.getWikiString().equals("No", ignoreCase = true)
                     || line.contains("Not sold", ignoreCase = true)
                 ) {
                     null
@@ -117,7 +117,8 @@ public class ObjWikiDefinition : WikiDefinition() {
             line.checkWikiKey("prayer", version) -> prayerBonus = line.getWikiInt()
             line.checkWikiKey("speed", version) -> attackSpeed = line.getWikiInt()
             line.checkWikiKey("combatstyle", version) -> combatStyle = line.getWikiString()
-            else -> { }
+            else -> {
+            }
         }
     }
 

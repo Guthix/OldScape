@@ -16,14 +16,14 @@
 package io.guthix.oldscape.server.net.game.out
 
 import io.guthix.buffer.*
+import io.guthix.oldscape.dim.TileUnit
+import io.guthix.oldscape.dim.tiles
 import io.guthix.oldscape.server.net.game.OutGameEvent
 import io.guthix.oldscape.server.net.game.VarShortSize
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.*
 import io.guthix.oldscape.server.world.entity.interest.MovementInterestUpdate
 import io.guthix.oldscape.server.world.entity.interest.NpcUpdateType
-import io.guthix.oldscape.server.world.map.dim.TileUnit
-import io.guthix.oldscape.server.world.map.dim.tiles
 import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 
@@ -101,7 +101,7 @@ class NpcInfoSmallViewportPacket(
 
     fun externalNpcUpdate(buf: BitBuf): BitBuf {
         var npcsAdded = 0
-        for(npc in world.findNpcs(player.pos, INTEREST_RANGE)) {
+        for (npc in world.findNpcs(player.pos, INTEREST_RANGE)) {
             if (npcsAdded > 16) break
             if (!localNpcs.contains(npc)) {
                 buf.writeBits(value = npc.index, amount = 15)

@@ -27,7 +27,7 @@ class Stat(val id: Int, status: Int, xp: Int, private val changes: MutableList<S
 
     private var xpToPrevLevel = experienceTable[level - 1]
 
-    private var xpForNextLevel = if(level >= 99) Int.MAX_VALUE else experienceTable[level]
+    private var xpForNextLevel = if (level >= 99) Int.MAX_VALUE else experienceTable[level]
 
     var xp: Int = xp
         private set

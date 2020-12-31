@@ -15,12 +15,12 @@
  */
 package io.guthix.oldscape.server.pathing
 
+import io.guthix.oldscape.dim.TileUnit
+import io.guthix.oldscape.dim.abs
+import io.guthix.oldscape.dim.tiles
 import io.guthix.oldscape.server.world.Collision
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.map.Tile
-import io.guthix.oldscape.server.world.map.dim.TileUnit
-import io.guthix.oldscape.server.world.map.dim.abs
-import io.guthix.oldscape.server.world.map.dim.tiles
 
 private const val SCALE = 16
 

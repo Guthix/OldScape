@@ -33,23 +33,23 @@ public data class HitBarConfig(override val id: Int) : Config(id) {
 
     override fun encode(): ByteBuf {
         val data = Unpooled.buffer()
-        if(int1.toInt() != 255) {
+        if (int1.toInt() != 255) {
             data.writeOpcode(2)
             data.writeByte(int1.toInt())
         }
-        if(int2.toInt() != 255) {
+        if (int2.toInt() != 255) {
             data.writeOpcode(3)
             data.writeByte(int2.toInt())
         }
         int3?.let {
-            if(it == 0) {
+            if (it == 0) {
                 data.writeOpcode(4)
             } else {
                 data.writeOpcode(11)
                 data.writeShort(it)
             }
         }
-        if(int4 != 70) {
+        if (int4 != 70) {
             data.writeOpcode(5)
             data.writeShort(int4)
         }
@@ -61,11 +61,11 @@ public data class HitBarConfig(override val id: Int) : Config(id) {
             data.writeOpcode(8)
             data.writeNullableLargeSmart(it)
         }
-        if(width.toInt() != 30) {
+        if (width.toInt() != 30) {
             data.writeOpcode(14)
             data.writeByte(width.toInt())
         }
-        if(widthPadding.toInt() != 0) {
+        if (widthPadding.toInt() != 0) {
             data.writeOpcode(15)
             data.writeByte(widthPadding.toInt())
         }
@@ -79,7 +79,7 @@ public data class HitBarConfig(override val id: Int) : Config(id) {
         override fun decode(id: Int, data: ByteBuf): HitBarConfig {
             val hitBarConfig = HitBarConfig(id)
             decoder@ while (true) {
-                when(val opcode = data.readUnsignedByte().toInt()) {
+                when (val opcode = data.readUnsignedByte().toInt()) {
                     0 -> break@decoder
                     1 -> data.readUnsignedShort()
                     2 -> hitBarConfig.int1 = data.readUnsignedByte()
