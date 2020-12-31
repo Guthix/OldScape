@@ -1,3 +1,0 @@
-<component name="DependencyValidationManager">
-  <scope name="Copyrighted" pattern="src:*..*&amp;&amp;!src[oldscape-server.main]:io.guthix.oldscape.server.id..*&amp;&amp;!src[oldscape-server.main]:cache..*" />
-</component>

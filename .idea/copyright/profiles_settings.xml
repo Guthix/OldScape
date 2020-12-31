@@ -1,7 +1,7 @@
 <component name="CopyrightManager">
   <settings>
     <module2copyright>
-      <element module="Copyrighted" copyright="oldscape-server" />
+      <element module="SourceCode" copyright="oldscape-server" />
     </module2copyright>
     <LanguageOptions name="Kotlin">
       <option name="fileTypeOverride" value="3" />
