@@ -17,7 +17,6 @@ val kotlinVersion: String by extra(project.getKotlinPluginVersion()!!)
 
 repositories {
     mavenCentral()
-    maven("https://jitpack.io")
 }
 
 dependencies {
