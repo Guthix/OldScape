@@ -12,6 +12,7 @@ description = "An Oldschool Runescape Emulation"
 val kotlinLoggingVersion: String by extra("2.0.2")
 val kCoroutinesVersion: String by extra("1.3.2")
 val kotlinVersion: String by extra("1.4.10")
+val logbackVersion: String by extra("1.2.3")
 
 allprojects {
     apply(plugin = "kotlin")

@@ -28,7 +28,8 @@ include("cache:formats")
 
 include("server")
 include("server:wiki")
-includeModules("server:plugins")
+include("server:world")
+includeModules("server:world:plugins")
 
 include("wiki:parser")
 include("wiki:downloader")
