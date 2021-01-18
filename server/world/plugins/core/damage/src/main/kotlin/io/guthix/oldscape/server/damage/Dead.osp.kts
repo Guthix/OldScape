@@ -18,6 +18,7 @@ package io.guthix.oldscape.server.damage
 import io.guthix.oldscape.server.event.NpcDiedEvent
 import io.guthix.oldscape.server.event.PlayerDiedEvent
 import io.guthix.oldscape.server.task.NormalTask
+import io.guthix.oldscape.server.template.stats
 
 on(NpcDiedEvent::class).then {
     val npc = world.removeNpc(npc)

@@ -20,6 +20,7 @@ import io.guthix.oldscape.server.event.NpcSpawnedEvent
 import io.guthix.oldscape.server.pathing.DestinationTile
 import io.guthix.oldscape.server.pathing.simplePathSearch
 import io.guthix.oldscape.server.task.NormalTask
+import io.guthix.oldscape.server.template.wanderRadius
 import kotlin.random.Random
 
 on(NpcSpawnedEvent::class).then {

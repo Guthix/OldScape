@@ -18,6 +18,7 @@ package io.guthix.oldscape.server.combat.player
 import io.guthix.oldscape.server.event.ObjEquipedEvent
 import io.guthix.oldscape.server.event.PlayerInitialized
 import io.guthix.oldscape.server.template.VarbitIds
+import io.guthix.oldscape.server.template.weaponType
 
 on(PlayerInitialized::class).then {
     player.updateVarbit(VarbitIds.ATTACK_STYLE_357, player.equipment.weapon?.weaponType?.id ?: 0)

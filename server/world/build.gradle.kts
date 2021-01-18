@@ -22,11 +22,11 @@ val serverProject: Project = project(":server")
 
 val kCoroutinesVersion: String by rootProject.extra
 val logbackVersion: String by rootProject.extra
-val nettyVersion: String by serverProject.extra("4.1.42.Final")
-val ktSerVersion: String by serverProject.extra("1.0.1")
-val kamlVersion: String by serverProject.extra("0.26.0")
-val exposedVersion: String by serverProject.extra("0.28.1")
-val postgresVersion: String by serverProject.extra("42.2.18")
+val nettyVersion: String by serverProject.extra
+val ktSerVersion: String by serverProject.extra
+val kamlVersion: String by serverProject.extra
+val exposedVersion: String by serverProject.extra
+val postgresVersion: String by serverProject.extra
 val kotlinVersion: String by serverProject.rootProject.extra
 val classGraphVersion: String by extra("4.8.53")
 

@@ -15,8 +15,10 @@
  */
 package io.guthix.oldscape.server.combat.npc
 
+import io.guthix.oldscape.server.combat.inCombatWith
 import io.guthix.oldscape.server.event.NpcSpawnedEvent
 import io.guthix.oldscape.server.template.AggresiveType
+import io.guthix.oldscape.server.template.aggressiveType
 
 on(NpcSpawnedEvent::class).then {
     when (val aggressiveness = npc.aggressiveType) {

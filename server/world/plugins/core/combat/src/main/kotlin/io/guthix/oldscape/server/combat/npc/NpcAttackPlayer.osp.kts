@@ -15,8 +15,12 @@
  */
 package io.guthix.oldscape.server.combat.npc
 
+import io.guthix.oldscape.server.combat.dmg.calcHit
+import io.guthix.oldscape.server.combat.inCombatWith
+import io.guthix.oldscape.server.damage.hit
 import io.guthix.oldscape.server.event.NpcHitByPlayerEvent
 import io.guthix.oldscape.server.task.NormalTask
+import io.guthix.oldscape.server.template.defenceSequence
 
 on(NpcHitByPlayerEvent::class).then {
     if (npc.inCombatWith == null) npc.attackPlayer(player, world)
