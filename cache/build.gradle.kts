@@ -3,11 +3,8 @@
 import java.net.URI
 
 plugins {
-    idea
     `maven-publish`
     signing
-    id("org.jetbrains.dokka")
-    kotlin("jvm")
 }
 
 group = "io.guthix.oldscape"
