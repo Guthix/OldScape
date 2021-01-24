@@ -1,0 +1,3560 @@
+"EXCALIBUR_35":
+  ids: [ 35 ]
+  type: "UNARMED"
+  attackSpeed: 5
+"CATTLEPROD_278":
+  ids: [ 278 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"AXE_HANDLE_492":
+  ids: [ 492 ]
+  type: "UNARMED"
+  attackSpeed: 5
+"BLURITE_SWORD_667":
+  ids: [ 667 ]
+  type: "UNARMED"
+  attackSpeed: 5
+"HOLY_WATER_732":
+  ids: [ 732 ]
+  type: "THROW_WEAPON"
+  attackSpeed: 3
+"DARK_DAGGER_746":
+  ids: [ 746 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"GLOWING_DAGGER_747":
+  ids: [ 747 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"GNOMEBALL_751":
+  ids: [ 751 ]
+  type: "UNARMED"
+  attackSpeed: 0
+"PHOENIX_CROSSBOW_767":
+  ids: [ 767 ]
+  type: "CROSSBOW"
+  attackSpeed: 6
+"DRAMEN_STAFF_772":
+  ids: [ 772 ]
+  type: "BLUNT"
+  attackSpeed: 4
+"BRONZE_THROWNAXE_800":
+  ids: [ 800 ]
+  type: "THROW_WEAPON"
+  attackSpeed: 5
+"IRON_THROWNAXE_801":
+  ids: [ 801 ]
+  type: "THROW_WEAPON"
+  attackSpeed: 5
+"STEEL_THROWNAXE_802":
+  ids: [ 802 ]
+  type: "THROW_WEAPON"
+  attackSpeed: 5
+"MITHRIL_THROWNAXE_803":
+  ids: [ 803 ]
+  type: "THROW_WEAPON"
+  attackSpeed: 5
+"ADAMANT_THROWNAXE_804":
+  ids: [ 804 ]
+  type: "THROW_WEAPON"
+  attackSpeed: 5
+"RUNE_THROWNAXE_805":
+  ids: [ 805 ]
+  type: "THROW_WEAPON"
+  attackSpeed: 5
+"BRONZE_DART_806":
+  ids: [ 806 ]
+  type: "THROW_WEAPON"
+  attackSpeed: 3
+  attackRange: 3
+"IRON_DART_807":
+  ids: [ 807 ]
+  type: "THROW_WEAPON"
+  attackSpeed: 3
+  attackRange: 3
+"STEEL_DART_808":
+  ids: [ 808 ]
+  type: "THROW_WEAPON"
+  attackSpeed: 3
+  attackRange: 3
+"MITHRIL_DART_809":
+  ids: [ 809 ]
+  type: "THROW_WEAPON"
+  attackSpeed: 3
+  attackRange: 3
+"ADAMANT_DART_810":
+  ids: [ 810 ]
+  type: "THROW_WEAPON"
+  attackSpeed: 3
+  attackRange: 3
+"RUNE_DART_811":
+  ids: [ 811 ]
+  type: "THROW_WEAPON"
+  attackSpeed: 3
+  attackRange: 3
+"BRONZE_DART_812":
+  ids: [ 812 ]
+  type: "THROW_WEAPON"
+  attackSpeed: 3
+  attackRange: 3
+"IRON_DART_813":
+  ids: [ 813 ]
+  type: "THROW_WEAPON"
+  attackSpeed: 3
+  attackRange: 3
+"STEEL_DART_814":
+  ids: [ 814 ]
+  type: "THROW_WEAPON"
+  attackSpeed: 3
+  attackRange: 3
+"MITHRIL_DART_815":
+  ids: [ 815 ]
+  type: "THROW_WEAPON"
+  attackSpeed: 3
+  attackRange: 3
+"ADAMANT_DART_816":
+  ids: [ 816 ]
+  type: "THROW_WEAPON"
+  attackSpeed: 3
+  attackRange: 3
+"RUNE_DART_817":
+  ids: [ 817 ]
+  type: "THROW_WEAPON"
+  attackSpeed: 3
+  attackRange: 3
+"POISONED_DARTP_818":
+  ids: [ 818 ]
+  type: "THROW_WEAPON"
+  attackSpeed: 3
+  attackRange: 3
+"CROSSBOW_837":
+  ids: [ 837 ]
+  type: "CROSSBOW"
+  attackSpeed: 6
+"LONGBOW_839":
+  ids: [ 839 ]
+  type: "BOW"
+  attackSpeed: 6
+  attackRange: 10
+"SHORTBOW_841":
+  ids: [ 841 ]
+  type: "BOW"
+  attackSpeed: 4
+  attackRange: 7
+"OAK_SHORTBOW_843":
+  ids: [ 843 ]
+  type: "BOW"
+  attackSpeed: 4
+  attackRange: 7
+"OAK_LONGBOW_845":
+  ids: [ 845 ]
+  type: "BOW"
+  attackSpeed: 6
+  attackRange: 10
+"WILLOW_LONGBOW_847":
+  ids: [ 847 ]
+  type: "BOW"
+  attackSpeed: 6
+  attackRange: 10
+"WILLOW_SHORTBOW_849":
+  ids: [ 849 ]
+  type: "BOW"
+  attackSpeed: 4
+  attackRange: 7
+"MAPLE_LONGBOW_851":
+  ids: [ 851 ]
+  type: "BOW"
+  attackSpeed: 6
+  attackRange: 10
+"MAPLE_SHORTBOW_853":
+  ids: [ 853, 20403 ]
+  type: "BOW"
+  attackSpeed: 4
+  attackRange: 7
+"YEW_LONGBOW_855":
+  ids: [ 855 ]
+  type: "BOW"
+  attackSpeed: 6
+  attackRange: 10
+"YEW_SHORTBOW_857":
+  ids: [ 857, 20401 ]
+  type: "BOW"
+  attackSpeed: 4
+  attackRange: 7
+"MAGIC_LONGBOW_859":
+  ids: [ 859 ]
+  type: "BOW"
+  attackSpeed: 6
+  attackRange: 10
+"MAGIC_SHORTBOW_861":
+  ids: [ 861, 20558 ]
+  type: "BOW"
+  attackSpeed: 4
+  attackRange: 7
+  sequences:
+    attack: 426
+    defence: 424
+"IRON_KNIFE_863":
+  ids: [ 863 ]
+  type: "THROW_WEAPON"
+  attackSpeed: 3
+"BRONZE_KNIFE_864":
+  ids: [ 864 ]
+  type: "THROW_WEAPON"
+  attackSpeed: 3
+"STEEL_KNIFE_865":
+  ids: [ 865 ]
+  type: "THROW_WEAPON"
+  attackSpeed: 3
+"MITHRIL_KNIFE_866":
+  ids: [ 866 ]
+  type: "THROW_WEAPON"
+  attackSpeed: 3
+"ADAMANT_KNIFE_867":
+  ids: [ 867 ]
+  type: "THROW_WEAPON"
+  attackSpeed: 3
+"RUNE_KNIFE_868":
+  ids: [ 868 ]
+  type: "THROW_WEAPON"
+  attackSpeed: 3
+"BLACK_KNIFE_869":
+  ids: [ 869 ]
+  type: "THROW_WEAPON"
+  attackSpeed: 3
+"BRONZE_KNIFE_870":
+  ids: [ 870 ]
+  type: "THROW_WEAPON"
+  attackSpeed: 3
+"IRON_KNIFE_871":
+  ids: [ 871 ]
+  type: "THROW_WEAPON"
+  attackSpeed: 3
+"STEEL_KNIFE_872":
+  ids: [ 872 ]
+  type: "THROW_WEAPON"
+  attackSpeed: 3
+"MITHRIL_KNIFE_873":
+  ids: [ 873 ]
+  type: "THROW_WEAPON"
+  attackSpeed: 3
+"BLACK_KNIFE_874":
+  ids: [ 874 ]
+  type: "THROW_WEAPON"
+  attackSpeed: 3
+"ADAMANT_KNIFE_875":
+  ids: [ 875 ]
+  type: "THROW_WEAPON"
+  attackSpeed: 3
+"RUNE_KNIFE_876":
+  ids: [ 876 ]
+  type: "THROW_WEAPON"
+  attackSpeed: 3
+"MACHETE_975":
+  ids: [ 975 ]
+  type: "UNARMED"
+  attackSpeed: 5
+"IRON_DAGGER_1203":
+  ids: [ 1203 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"BRONZE_DAGGER_1205":
+  ids: [ 1205 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"STEEL_DAGGER_1207":
+  ids: [ 1207 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"MITHRIL_DAGGER_1209":
+  ids: [ 1209 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"ADAMANT_DAGGER_1211":
+  ids: [ 1211 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"RUNE_DAGGER_1213":
+  ids: [ 1213 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"DRAGON_DAGGER_1215":
+  ids: [ 1215, 20407 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"BLACK_DAGGER_1217":
+  ids: [ 1217 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"IRON_DAGGER_1219":
+  ids: [ 1219 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"BRONZE_DAGGER_1221":
+  ids: [ 1221 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"STEEL_DAGGER_1223":
+  ids: [ 1223 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"MITHRIL_DAGGER_1225":
+  ids: [ 1225 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"ADAMANT_DAGGER_1227":
+  ids: [ 1227 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"RUNE_DAGGER_1229":
+  ids: [ 1229 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"DRAGON_DAGGER_1231":
+  ids: [ 1231 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"BLACK_DAGGER_1233":
+  ids: [ 1233 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"POISONED_DAGGERP_1235":
+  ids: [ 1235 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"BRONZE_SPEAR_1237":
+  ids: [ 1237 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"IRON_SPEAR_1239":
+  ids: [ 1239 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"STEEL_SPEAR_1241":
+  ids: [ 1241 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"MITHRIL_SPEAR_1243":
+  ids: [ 1243 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"ADAMANT_SPEAR_1245":
+  ids: [ 1245 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"RUNE_SPEAR_1247":
+  ids: [ 1247 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"DRAGON_SPEAR_1249":
+  ids: [ 1249 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"BRONZE_SPEAR_1251":
+  ids: [ 1251 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"IRON_SPEAR_1253":
+  ids: [ 1253 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"STEEL_SPEAR_1255":
+  ids: [ 1255 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"MITHRIL_SPEAR_1257":
+  ids: [ 1257 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"ADAMANT_SPEAR_1259":
+  ids: [ 1259 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"RUNE_SPEAR_1261":
+  ids: [ 1261 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"DRAGON_SPEAR_1263":
+  ids: [ 1263 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"BRONZE_PICKAXE_1265":
+  ids: [ 1265 ]
+  type: "PICKAXE"
+  attackSpeed: 5
+"IRON_PICKAXE_1267":
+  ids: [ 1267 ]
+  type: "PICKAXE"
+  attackSpeed: 5
+"STEEL_PICKAXE_1269":
+  ids: [ 1269 ]
+  type: "PICKAXE"
+  attackSpeed: 5
+"ADAMANT_PICKAXE_1271":
+  ids: [ 1271 ]
+  type: "PICKAXE"
+  attackSpeed: 5
+"MITHRIL_PICKAXE_1273":
+  ids: [ 1273 ]
+  type: "PICKAXE"
+  attackSpeed: 5
+"RUNE_PICKAXE_1275":
+  ids: [ 1275 ]
+  type: "PICKAXE"
+  attackSpeed: 5
+"BRONZE_SWORD_1277":
+  ids: [ 1277 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"IRON_SWORD_1279":
+  ids: [ 1279 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"STEEL_SWORD_1281":
+  ids: [ 1281 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"BLACK_SWORD_1283":
+  ids: [ 1283 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"MITHRIL_SWORD_1285":
+  ids: [ 1285 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"ADAMANT_SWORD_1287":
+  ids: [ 1287 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"RUNE_SWORD_1289":
+  ids: [ 1289 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"BRONZE_LONGSWORD_1291":
+  ids: [ 1291 ]
+  type: "UNARMED"
+  attackSpeed: 5
+"IRON_LONGSWORD_1293":
+  ids: [ 1293 ]
+  type: "UNARMED"
+  attackSpeed: 5
+"STEEL_LONGSWORD_1295":
+  ids: [ 1295 ]
+  type: "UNARMED"
+  attackSpeed: 5
+"BLACK_LONGSWORD_1297":
+  ids: [ 1297 ]
+  type: "UNARMED"
+  attackSpeed: 5
+"MITHRIL_LONGSWORD_1299":
+  ids: [ 1299 ]
+  type: "UNARMED"
+  attackSpeed: 5
+"ADAMANT_LONGSWORD_1301":
+  ids: [ 1301 ]
+  type: "UNARMED"
+  attackSpeed: 5
+"RUNE_LONGSWORD_1303":
+  ids: [ 1303 ]
+  type: "UNARMED"
+  attackSpeed: 5
+"DRAGON_LONGSWORD_1305":
+  ids: [ 1305 ]
+  type: "UNARMED"
+  attackSpeed: 5
+"BRONZE_2H_SWORD_1307":
+  ids: [ 1307 ]
+  type: "UNARMED"
+  attackSpeed: 7
+"IRON_2H_SWORD_1309":
+  ids: [ 1309 ]
+  type: "UNARMED"
+  attackSpeed: 7
+"STEEL_2H_SWORD_1311":
+  ids: [ 1311 ]
+  type: "UNARMED"
+  attackSpeed: 7
+"BLACK_2H_SWORD_1313":
+  ids: [ 1313 ]
+  type: "UNARMED"
+  attackSpeed: 7
+"MITHRIL_2H_SWORD_1315":
+  ids: [ 1315 ]
+  type: "UNARMED"
+  attackSpeed: 7
+"ADAMANT_2H_SWORD_1317":
+  ids: [ 1317 ]
+  type: "UNARMED"
+  attackSpeed: 7
+"RUNE_2H_SWORD_1319":
+  ids: [ 1319, 20555 ]
+  type: "UNARMED"
+  attackSpeed: 7
+"BRONZE_SCIMITAR_1321":
+  ids: [ 1321 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"IRON_SCIMITAR_1323":
+  ids: [ 1323 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"STEEL_SCIMITAR_1325":
+  ids: [ 1325 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"BLACK_SCIMITAR_1327":
+  ids: [ 1327 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"MITHRIL_SCIMITAR_1329":
+  ids: [ 1329 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"ADAMANT_SCIMITAR_1331":
+  ids: [ 1331 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"RUNE_SCIMITAR_1333":
+  ids: [ 1333, 20402 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"IRON_WARHAMMER_1335":
+  ids: [ 1335 ]
+  type: "BLUNT"
+  attackSpeed: 6
+"BRONZE_WARHAMMER_1337":
+  ids: [ 1337 ]
+  type: "BLUNT"
+  attackSpeed: 6
+"STEEL_WARHAMMER_1339":
+  ids: [ 1339 ]
+  type: "BLUNT"
+  attackSpeed: 6
+"BLACK_WARHAMMER_1341":
+  ids: [ 1341 ]
+  type: "BLUNT"
+  attackSpeed: 6
+"MITHRIL_WARHAMMER_1343":
+  ids: [ 1343 ]
+  type: "BLUNT"
+  attackSpeed: 6
+"ADAMANT_WARHAMMER_1345":
+  ids: [ 1345 ]
+  type: "BLUNT"
+  attackSpeed: 6
+"RUNE_WARHAMMER_1347":
+  ids: [ 1347 ]
+  type: "BLUNT"
+  attackSpeed: 6
+"IRON_AXE_1349":
+  ids: [ 1349 ]
+  type: "AXE"
+  attackSpeed: 5
+"BRONZE_AXE_1351":
+  ids: [ 1351 ]
+  type: "AXE"
+  attackSpeed: 5
+"STEEL_AXE_1353":
+  ids: [ 1353 ]
+  type: "AXE"
+  attackSpeed: 5
+"MITHRIL_AXE_1355":
+  ids: [ 1355 ]
+  type: "AXE"
+  attackSpeed: 5
+"ADAMANT_AXE_1357":
+  ids: [ 1357 ]
+  type: "AXE"
+  attackSpeed: 5
+"RUNE_AXE_1359":
+  ids: [ 1359 ]
+  type: "AXE"
+  attackSpeed: 5
+"BLACK_AXE_1361":
+  ids: [ 1361 ]
+  type: "AXE"
+  attackSpeed: 5
+"IRON_BATTLEAXE_1363":
+  ids: [ 1363 ]
+  type: "AXE"
+  attackSpeed: 6
+"STEEL_BATTLEAXE_1365":
+  ids: [ 1365 ]
+  type: "AXE"
+  attackSpeed: 6
+"BLACK_BATTLEAXE_1367":
+  ids: [ 1367 ]
+  type: "AXE"
+  attackSpeed: 6
+"MITHRIL_BATTLEAXE_1369":
+  ids: [ 1369 ]
+  type: "AXE"
+  attackSpeed: 6
+"ADAMANT_BATTLEAXE_1371":
+  ids: [ 1371 ]
+  type: "AXE"
+  attackSpeed: 6
+"RUNE_BATTLEAXE_1373":
+  ids: [ 1373, 20552 ]
+  type: "AXE"
+  attackSpeed: 6
+"BRONZE_BATTLEAXE_1375":
+  ids: [ 1375 ]
+  type: "AXE"
+  attackSpeed: 6
+"DRAGON_BATTLEAXE_1377":
+  ids: [ 1377 ]
+  type: "AXE"
+  attackSpeed: 6
+"STAFF_1379":
+  ids: [ 1379 ]
+  type: "STAFF"
+  attackSpeed: 5
+"STAFF_OF_AIR_1381":
+  ids: [ 1381 ]
+  type: "STAFF"
+  attackSpeed: 5
+"STAFF_OF_WATER_1383":
+  ids: [ 1383 ]
+  type: "STAFF"
+  attackSpeed: 5
+"STAFF_OF_EARTH_1385":
+  ids: [ 1385 ]
+  type: "STAFF"
+  attackSpeed: 5
+"STAFF_OF_FIRE_1387":
+  ids: [ 1387 ]
+  type: "STAFF"
+  attackSpeed: 5
+"MAGIC_STAFF_1389":
+  ids: [ 1389 ]
+  type: "STAFF"
+  attackSpeed: 5
+"BATTLESTAFF_1391":
+  ids: [ 1391 ]
+  type: "STAFF"
+  attackSpeed: 5
+"FIRE_BATTLESTAFF_1393":
+  ids: [ 1393 ]
+  type: "STAFF"
+  attackSpeed: 5
+"WATER_BATTLESTAFF_1395":
+  ids: [ 1395 ]
+  type: "STAFF"
+  attackSpeed: 5
+"AIR_BATTLESTAFF_1397":
+  ids: [ 1397 ]
+  type: "STAFF"
+  attackSpeed: 5
+"EARTH_BATTLESTAFF_1399":
+  ids: [ 1399 ]
+  type: "STAFF"
+  attackSpeed: 5
+"MYSTIC_FIRE_STAFF_1401":
+  ids: [ 1401 ]
+  type: "STAFF"
+  attackSpeed: 5
+"MYSTIC_WATER_STAFF_1403":
+  ids: [ 1403 ]
+  type: "STAFF"
+  attackSpeed: 5
+"MYSTIC_AIR_STAFF_1405":
+  ids: [ 1405 ]
+  type: "STAFF"
+  attackSpeed: 5
+"MYSTIC_EARTH_STAFF_1407":
+  ids: [ 1407 ]
+  type: "STAFF"
+  attackSpeed: 5
+"IBANS_STAFF_1409":
+  ids: [ 1409 ]
+  type: "STAFF"
+  attackSpeed: 5
+"IBANS_STAFF_1410":
+  ids: [ 1410 ]
+  type: "STAFF"
+  attackSpeed: 5
+"SCYTHE_1419":
+  ids: [ 1419 ]
+  type: "SCYTHE"
+  attackSpeed: 6
+"IRON_MACE_1420":
+  ids: [ 1420 ]
+  type: "SPIKED_WEAPON"
+  attackSpeed: 5
+"BRONZE_MACE_1422":
+  ids: [ 1422 ]
+  type: "SPIKED_WEAPON"
+  attackSpeed: 5
+"STEEL_MACE_1424":
+  ids: [ 1424 ]
+  type: "SPIKED_WEAPON"
+  attackSpeed: 5
+"BLACK_MACE_1426":
+  ids: [ 1426 ]
+  type: "SPIKED_WEAPON"
+  attackSpeed: 5
+"MITHRIL_MACE_1428":
+  ids: [ 1428 ]
+  type: "SPIKED_WEAPON"
+  attackSpeed: 5
+"ADAMANT_MACE_1430":
+  ids: [ 1430 ]
+  type: "SPIKED_WEAPON"
+  attackSpeed: 5
+"RUNE_MACE_1432":
+  ids: [ 1432 ]
+  type: "SPIKED_WEAPON"
+  attackSpeed: 5
+"DRAGON_MACE_1434":
+  ids: [ 1434 ]
+  type: "SPIKED_WEAPON"
+  attackSpeed: 5
+"SILVERLIGHT_2402":
+  ids: [ 2402 ]
+  type: "UNARMED"
+  attackSpeed: 5
+"SARADOMIN_STAFF_2415":
+  ids: [ 2415 ]
+  type: "STAFF"
+  attackSpeed: 5
+"GUTHIX_STAFF_2416":
+  ids: [ 2416 ]
+  type: "STAFF"
+  attackSpeed: 5
+"ZAMORAK_STAFF_2417":
+  ids: [ 2417 ]
+  type: "STAFF"
+  attackSpeed: 5
+"ASSORTED_FLOWERS_2460":
+  ids: [ 2460 ]
+  type: "BLUNT"
+  attackSpeed: 4
+"RED_FLOWERS_2462":
+  ids: [ 2462 ]
+  type: "BLUNT"
+  attackSpeed: 4
+"BLUE_FLOWERS_2464":
+  ids: [ 2464 ]
+  type: "BLUNT"
+  attackSpeed: 4
+"YELLOW_FLOWERS_2466":
+  ids: [ 2466 ]
+  type: "BLUNT"
+  attackSpeed: 4
+"PURPLE_FLOWERS_2468":
+  ids: [ 2468 ]
+  type: "BLUNT"
+  attackSpeed: 4
+"ORANGE_FLOWERS_2470":
+  ids: [ 2470 ]
+  type: "BLUNT"
+  attackSpeed: 4
+"MIXED_FLOWERS_2472":
+  ids: [ 2472 ]
+  type: "BLUNT"
+  attackSpeed: 4
+"WHITE_FLOWERS_2474":
+  ids: [ 2474 ]
+  type: "BLUNT"
+  attackSpeed: 4
+"BLACK_FLOWERS_2476":
+  ids: [ 2476 ]
+  type: "BLUNT"
+  attackSpeed: 4
+"OGRE_BOW_2883":
+  ids: [ 2883 ]
+  type: "BOW"
+  attackSpeed: 8
+"WOLFBANE_2952":
+  ids: [ 2952 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"SILVER_SICKLE_2961":
+  ids: [ 2961 ]
+  type: "UNARMED"
+  attackSpeed: 5
+"SILVER_SICKLE_B_2963":
+  ids: [ 2963 ]
+  type: "UNARMED"
+  attackSpeed: 5
+"LAVA_BATTLESTAFF_3053":
+  ids: [ 3053 ]
+  type: "STAFF"
+  attackSpeed: 5
+"MYSTIC_LAVA_STAFF_3054":
+  ids: [ 3054 ]
+  type: "STAFF"
+  attackSpeed: 5
+"BLACK_DART_3093":
+  ids: [ 3093 ]
+  type: "THROW_WEAPON"
+  attackSpeed: 3
+  attackRange: 3
+"BLACK_DART_3094":
+  ids: [ 3094 ]
+  type: "THROW_WEAPON"
+  attackSpeed: 3
+  attackRange: 3
+"BRONZE_CLAWS_3095":
+  ids: [ 3095 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"IRON_CLAWS_3096":
+  ids: [ 3096 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"STEEL_CLAWS_3097":
+  ids: [ 3097 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"BLACK_CLAWS_3098":
+  ids: [ 3098 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"MITHRIL_CLAWS_3099":
+  ids: [ 3099 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"ADAMANT_CLAWS_3100":
+  ids: [ 3100 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"RUNE_CLAWS_3101":
+  ids: [ 3101 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"BRONZE_SPEAR_3170":
+  ids: [ 3170 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"IRON_SPEAR_3171":
+  ids: [ 3171 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"STEEL_SPEAR_3172":
+  ids: [ 3172 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"MITHRIL_SPEAR_3173":
+  ids: [ 3173 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"ADAMANT_SPEAR_3174":
+  ids: [ 3174 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"RUNE_SPEAR_3175":
+  ids: [ 3175 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"DRAGON_SPEAR_3176":
+  ids: [ 3176 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"BRONZE_HALBERD_3190":
+  ids: [ 3190 ]
+  type: "POLEARM"
+  attackSpeed: 7
+"IRON_HALBERD_3192":
+  ids: [ 3192 ]
+  type: "POLEARM"
+  attackSpeed: 7
+"STEEL_HALBERD_3194":
+  ids: [ 3194 ]
+  type: "POLEARM"
+  attackSpeed: 7
+"BLACK_HALBERD_3196":
+  ids: [ 3196 ]
+  type: "POLEARM"
+  attackSpeed: 7
+"MITHRIL_HALBERD_3198":
+  ids: [ 3198 ]
+  type: "POLEARM"
+  attackSpeed: 7
+"ADAMANT_HALBERD_3200":
+  ids: [ 3200 ]
+  type: "POLEARM"
+  attackSpeed: 7
+"RUNE_HALBERD_3202":
+  ids: [ 3202 ]
+  type: "POLEARM"
+  attackSpeed: 7
+"DRAGON_HALBERD_3204":
+  ids: [ 3204 ]
+  type: "POLEARM"
+  attackSpeed: 7
+"LYRE_3689":
+  ids: [ 3689 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"ENCHANTED_LYRE_3690":
+  ids: [ 3690 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"ENCHANTED_LYRE_3691":
+  ids: [ 3691 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"PET_ROCK_3695":
+  ids: [ 3695 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"FREMENNIK_BLADE_3757":
+  ids: [ 3757 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"IRON_SICKLE_3899":
+  ids: [ 3899 ]
+  type: "UNARMED"
+  attackSpeed: 5
+"MONKEY_TALISMAN_4023":
+  ids: [ 4023 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"NINJA_MONKEY_GREEGREE_4024":
+  ids: [ 4024 ]
+  type: "UNARMED"
+  attackSpeed: 0
+"NINJA_MONKEY_GREEGREE_4025":
+  ids: [ 4025 ]
+  type: "UNARMED"
+  attackSpeed: 0
+"GORILLA_GREEGREE_4026":
+  ids: [ 4026 ]
+  type: "UNARMED"
+  attackSpeed: 0
+"BEARDED_GORILLA_GREEGREE_4027":
+  ids: [ 4027 ]
+  type: "UNARMED"
+  attackSpeed: 0
+"ANCIENT_GORILLA_GREEGREE_4028":
+  ids: [ 4028 ]
+  type: "UNARMED"
+  attackSpeed: 0
+"ZOMBIE_MONKEY_GREEGREE_4029":
+  ids: [ 4029 ]
+  type: "UNARMED"
+  attackSpeed: 0
+"ZOMBIE_MONKEY_GREEGREE_4030":
+  ids: [ 4030 ]
+  type: "UNARMED"
+  attackSpeed: 0
+"KARAMJAN_MONKEY_GREEGREE_4031":
+  ids: [ 4031 ]
+  type: "UNARMED"
+  attackSpeed: 0
+"SARADOMIN_BANNER_4037":
+  ids: [ 4037 ]
+  type: "BANNER"
+  attackSpeed: 4
+"ZAMORAK_BANNER_4039":
+  ids: [ 4039 ]
+  type: "BANNER"
+  attackSpeed: 4
+"DECORATIVE_SWORD_4068":
+  ids: [ 4068 ]
+  type: "UNARMED"
+  attackSpeed: 5
+"SLED_4083":
+  ids: [ 4083 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"SLED_4084":
+  ids: [ 4084 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"TROLLWEISS_4086":
+  ids: [ 4086 ]
+  type: "BLUNT"
+  attackSpeed: 5
+"ABYSSAL_WHIP_4151":
+  ids: [ 4151, 20405 ]
+  type: "WHIP"
+  attackSpeed: 4
+"GRANITE_MAUL_4153":
+  ids: [ 4153, 20557 ]
+  type: "BLUNT"
+  attackSpeed: 7
+"LEAFBLADED_SPEAR_4158":
+  ids: [ 4158 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"SLAYERS_STAFF_4170":
+  ids: [ 4170 ]
+  type: "STAFF"
+  attackSpeed: 4
+"SIGNED_OAK_BOW_4236":
+  ids: [ 4236 ]
+  type: "BOW"
+  attackSpeed: 6
+"DECORATIVE_SWORD_4503":
+  ids: [ 4503 ]
+  type: "UNARMED"
+  attackSpeed: 5
+"DECORATIVE_SWORD_4508":
+  ids: [ 4508 ]
+  type: "UNARMED"
+  attackSpeed: 5
+"EASTER_BASKET_4565":
+  ids: [ 4565 ]
+  type: "BLUNT"
+  attackSpeed: 4
+"RUBBER_CHICKEN_4566":
+  ids: [ 4566 ]
+  type: "BLUNT"
+  attackSpeed: 4
+"BLACK_SPEAR_4580":
+  ids: [ 4580 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"BLACK_SPEAR_4582":
+  ids: [ 4582 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"BLACK_SPEAR_4584":
+  ids: [ 4584 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"DRAGON_SCIMITAR_4587":
+  ids: [ 4587, 20406 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"OAK_BLACKJACK_4599":
+  ids: [ 4599 ]
+  type: "BLUNT"
+  attackSpeed: 4
+"WILLOW_BLACKJACK_4600":
+  ids: [ 4600 ]
+  type: "BLUNT"
+  attackSpeed: 4
+"ANCIENT_STAFF_4675":
+  ids: [ 4675, 20431 ]
+  type: "STAFF"
+  attackSpeed: 4
+"AHRIMS_STAFF_4710":
+  ids: [ 4710 ]
+  type: "STAFF"
+  attackSpeed: 6
+"DHAROKS_GREATAXE_4718":
+  ids: [ 4718 ]
+  type: "AXE"
+  attackSpeed: 7
+"GUTHANS_WARSPEAR_4726":
+  ids: [ 4726 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"KARILS_CROSSBOW_4734":
+  ids: [ 4734 ]
+  type: "CROSSBOW"
+  attackSpeed: 4
+"TORAGS_HAMMERS_4747":
+  ids: [ 4747 ]
+  type: "BLUNT"
+  attackSpeed: 5
+"VERACS_FLAIL_4755":
+  ids: [ 4755 ]
+  type: "SPIKED_WEAPON"
+  attackSpeed: 5
+"COMP_OGRE_BOW_4827":
+  ids: [ 4827 ]
+  type: "BOW"
+  attackSpeed: 5
+"AHRIMS_STAFF_4862":
+  ids: [ 4862 ]
+  type: "STAFF"
+  attackSpeed: 6
+"AHRIMS_STAFF_4863":
+  ids: [ 4863 ]
+  type: "STAFF"
+  attackSpeed: 6
+"AHRIMS_STAFF_4864":
+  ids: [ 4864 ]
+  type: "STAFF"
+  attackSpeed: 6
+"AHRIMS_STAFF_4865":
+  ids: [ 4865 ]
+  type: "STAFF"
+  attackSpeed: 6
+"AHRIMS_STAFF_4866":
+  ids: [ 4866 ]
+  type: "STAFF"
+  attackSpeed: 6
+"DHAROKS_GREATAXE_4886":
+  ids: [ 4886 ]
+  type: "AXE"
+  attackSpeed: 7
+"DHAROKS_GREATAXE_4887":
+  ids: [ 4887 ]
+  type: "AXE"
+  attackSpeed: 7
+"DHAROKS_GREATAXE_4888":
+  ids: [ 4888 ]
+  type: "AXE"
+  attackSpeed: 7
+"DHAROKS_GREATAXE_4889":
+  ids: [ 4889 ]
+  type: "AXE"
+  attackSpeed: 7
+"DHAROKS_GREATAXE_4890":
+  ids: [ 4890 ]
+  type: "AXE"
+  attackSpeed: 7
+"GUTHANS_WARSPEAR_4910":
+  ids: [ 4910 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"GUTHANS_WARSPEAR_4911":
+  ids: [ 4911 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"GUTHANS_WARSPEAR_4912":
+  ids: [ 4912 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"GUTHANS_WARSPEAR_4913":
+  ids: [ 4913 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"GUTHANS_WARSPEAR_4914":
+  ids: [ 4914 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"KARILS_CROSSBOW_4934":
+  ids: [ 4934 ]
+  type: "CROSSBOW"
+  attackSpeed: 4
+"KARILS_CROSSBOW_4935":
+  ids: [ 4935 ]
+  type: "CROSSBOW"
+  attackSpeed: 4
+"KARILS_CROSSBOW_4936":
+  ids: [ 4936 ]
+  type: "CROSSBOW"
+  attackSpeed: 4
+"KARILS_CROSSBOW_4937":
+  ids: [ 4937 ]
+  type: "CROSSBOW"
+  attackSpeed: 4
+"KARILS_CROSSBOW_4938":
+  ids: [ 4938 ]
+  type: "CROSSBOW"
+  attackSpeed: 4
+"TORAGS_HAMMERS_4958":
+  ids: [ 4958 ]
+  type: "BLUNT"
+  attackSpeed: 5
+"TORAGS_HAMMERS_4959":
+  ids: [ 4959 ]
+  type: "BLUNT"
+  attackSpeed: 5
+"TORAGS_HAMMERS_4960":
+  ids: [ 4960 ]
+  type: "BLUNT"
+  attackSpeed: 5
+"TORAGS_HAMMERS_4961":
+  ids: [ 4961 ]
+  type: "BLUNT"
+  attackSpeed: 5
+"TORAGS_HAMMERS_4962":
+  ids: [ 4962 ]
+  type: "BLUNT"
+  attackSpeed: 5
+"VERACS_FLAIL_4982":
+  ids: [ 4982 ]
+  type: "SPIKED_WEAPON"
+  attackSpeed: 5
+"VERACS_FLAIL_4983":
+  ids: [ 4983 ]
+  type: "SPIKED_WEAPON"
+  attackSpeed: 5
+"VERACS_FLAIL_4984":
+  ids: [ 4984 ]
+  type: "SPIKED_WEAPON"
+  attackSpeed: 5
+"VERACS_FLAIL_4985":
+  ids: [ 4985 ]
+  type: "SPIKED_WEAPON"
+  attackSpeed: 5
+"VERACS_FLAIL_4986":
+  ids: [ 4986 ]
+  type: "SPIKED_WEAPON"
+  attackSpeed: 5
+"BONE_SPEAR_5016":
+  ids: [ 5016 ]
+  type: "SPEAR"
+  attackSpeed: 6
+"BONE_CLUB_5018":
+  ids: [ 5018 ]
+  type: "BLUNT"
+  attackSpeed: 6
+"FOX_5608":
+  ids: [ 5608 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"BRONZE_DART_5628":
+  ids: [ 5628 ]
+  type: "THROW_WEAPON"
+  attackSpeed: 3
+  attackRange: 3
+"IRON_DART_5629":
+  ids: [ 5629 ]
+  type: "THROW_WEAPON"
+  attackSpeed: 3
+  attackRange: 3
+"STEEL_DART_5630":
+  ids: [ 5630 ]
+  type: "THROW_WEAPON"
+  attackSpeed: 3
+  attackRange: 3
+"BLACK_DART_5631":
+  ids: [ 5631 ]
+  type: "THROW_WEAPON"
+  attackSpeed: 3
+  attackRange: 3
+"MITHRIL_DART_5632":
+  ids: [ 5632 ]
+  type: "THROW_WEAPON"
+  attackSpeed: 3
+  attackRange: 3
+"ADAMANT_DART_5633":
+  ids: [ 5633 ]
+  type: "THROW_WEAPON"
+  attackSpeed: 3
+  attackRange: 3
+"RUNE_DART_5634":
+  ids: [ 5634 ]
+  type: "THROW_WEAPON"
+  attackSpeed: 3
+  attackRange: 3
+"BRONZE_DART_5635":
+  ids: [ 5635 ]
+  type: "THROW_WEAPON"
+  attackSpeed: 3
+  attackRange: 3
+"IRON_DART_5636":
+  ids: [ 5636 ]
+  type: "THROW_WEAPON"
+  attackSpeed: 3
+  attackRange: 3
+"STEEL_DART_5637":
+  ids: [ 5637 ]
+  type: "THROW_WEAPON"
+  attackSpeed: 3
+"BLACK_DART_5638":
+  ids: [ 5638 ]
+  type: "THROW_WEAPON"
+  attackSpeed: 3
+  attackRange: 3
+"MITHRIL_DART_5639":
+  ids: [ 5639 ]
+  type: "THROW_WEAPON"
+  attackSpeed: 3
+  attackRange: 3
+"ADAMANT_DART_5640":
+  ids: [ 5640 ]
+  type: "THROW_WEAPON"
+  attackSpeed: 3
+  attackRange: 3
+"RUNE_DART_5641":
+  ids: [ 5641 ]
+  type: "THROW_WEAPON"
+  attackSpeed: 3
+  attackRange: 3
+"BRONZE_KNIFE_5654":
+  ids: [ 5654 ]
+  type: "THROW_WEAPON"
+  attackSpeed: 3
+"IRON_KNIFE_5655":
+  ids: [ 5655 ]
+  type: "THROW_WEAPON"
+  attackSpeed: 3
+"STEEL_KNIFE_5656":
+  ids: [ 5656 ]
+  type: "THROW_WEAPON"
+  attackSpeed: 3
+"MITHRIL_KNIFE_5657":
+  ids: [ 5657 ]
+  type: "THROW_WEAPON"
+  attackSpeed: 3
+"BLACK_KNIFE_5658":
+  ids: [ 5658 ]
+  type: "THROW_WEAPON"
+  attackSpeed: 3
+"ADAMANT_KNIFE_5659":
+  ids: [ 5659 ]
+  type: "THROW_WEAPON"
+  attackSpeed: 3
+"RUNE_KNIFE_5660":
+  ids: [ 5660 ]
+  type: "THROW_WEAPON"
+  attackSpeed: 3
+"BRONZE_KNIFE_5661":
+  ids: [ 5661 ]
+  type: "THROW_WEAPON"
+  attackSpeed: 3
+"IRON_KNIFE_5662":
+  ids: [ 5662 ]
+  type: "THROW_WEAPON"
+  attackSpeed: 3
+"STEEL_KNIFE_5663":
+  ids: [ 5663 ]
+  type: "THROW_WEAPON"
+  attackSpeed: 3
+"MITHRIL_KNIFE_5664":
+  ids: [ 5664 ]
+  type: "THROW_WEAPON"
+  attackSpeed: 3
+"BLACK_KNIFE_5665":
+  ids: [ 5665 ]
+  type: "THROW_WEAPON"
+  attackSpeed: 3
+"ADAMANT_KNIFE_5666":
+  ids: [ 5666 ]
+  type: "THROW_WEAPON"
+  attackSpeed: 3
+"RUNE_KNIFE_5667":
+  ids: [ 5667 ]
+  type: "THROW_WEAPON"
+  attackSpeed: 3
+"IRON_DAGGER_5668":
+  ids: [ 5668 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"BRONZE_DAGGER_5670":
+  ids: [ 5670 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"STEEL_DAGGER_5672":
+  ids: [ 5672 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"MITHRIL_DAGGER_5674":
+  ids: [ 5674 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"ADAMANT_DAGGER_5676":
+  ids: [ 5676 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"RUNE_DAGGER_5678":
+  ids: [ 5678 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"DRAGON_DAGGER_5680":
+  ids: [ 5680 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"BLACK_DAGGER_5682":
+  ids: [ 5682 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"IRON_DAGGER_5686":
+  ids: [ 5686 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"BRONZE_DAGGER_5688":
+  ids: [ 5688 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"STEEL_DAGGER_5690":
+  ids: [ 5690 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"MITHRIL_DAGGER_5692":
+  ids: [ 5692 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"ADAMANT_DAGGER_5694":
+  ids: [ 5694 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"RUNE_DAGGER_5696":
+  ids: [ 5696 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"DRAGON_DAGGER_5698":
+  ids: [ 5698 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"BLACK_DAGGER_5700":
+  ids: [ 5700 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"BRONZE_SPEAR_5704":
+  ids: [ 5704 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"IRON_SPEAR_5706":
+  ids: [ 5706 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"STEEL_SPEAR_5708":
+  ids: [ 5708 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"MITHRIL_SPEAR_5710":
+  ids: [ 5710 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"ADAMANT_SPEAR_5712":
+  ids: [ 5712 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"RUNE_SPEAR_5714":
+  ids: [ 5714 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"DRAGON_SPEAR_5716":
+  ids: [ 5716 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"BRONZE_SPEAR_5718":
+  ids: [ 5718 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"IRON_SPEAR_5720":
+  ids: [ 5720 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"STEEL_SPEAR_5722":
+  ids: [ 5722 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"MITHRIL_SPEAR_5724":
+  ids: [ 5724 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"ADAMANT_SPEAR_5726":
+  ids: [ 5726 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"RUNE_SPEAR_5728":
+  ids: [ 5728 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"DRAGON_SPEAR_5730":
+  ids: [ 5730 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"BLACK_SPEAR_5734":
+  ids: [ 5734 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"BLACK_SPEAR_5736":
+  ids: [ 5736 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"FIXED_DEVICE_6082":
+  ids: [ 6082 ]
+  type: "GUN"
+  attackSpeed: 4
+"BEER_GLASS_6123":
+  ids: [ 6123 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"ENCHANTED_LYRE_6125":
+  ids: [ 6125 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"ENCHANTED_LYRE_6126":
+  ids: [ 6126 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"ENCHANTED_LYRE_6127":
+  ids: [ 6127 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"OPAL_MACHETE_6313":
+  ids: [ 6313 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"JADE_MACHETE_6315":
+  ids: [ 6315 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"RED_TOPAZ_MACHETE_6317":
+  ids: [ 6317 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"OAK_BLACKJACKO_6408":
+  ids: [ 6408 ]
+  type: "BLUNT"
+  attackSpeed: 4
+"OAK_BLACKJACKD_6410":
+  ids: [ 6410 ]
+  type: "BLUNT"
+  attackSpeed: 4
+"WILLOW_BLACKJACKO_6412":
+  ids: [ 6412 ]
+  type: "BLUNT"
+  attackSpeed: 4
+"WILLOW_BLACKJACKD_6414":
+  ids: [ 6414 ]
+  type: "BLUNT"
+  attackSpeed: 4
+"MAPLE_BLACKJACK_6416":
+  ids: [ 6416 ]
+  type: "BLUNT"
+  attackSpeed: 4
+"MAPLE_BLACKJACKO_6418":
+  ids: [ 6418 ]
+  type: "BLUNT"
+  attackSpeed: 4
+"MAPLE_BLACKJACKD_6420":
+  ids: [ 6420 ]
+  type: "BLUNT"
+  attackSpeed: 4
+"TOKTZXILUL_6522":
+  ids: [ 6522 ]
+  type: "THROW_WEAPON"
+  attackSpeed: 4
+"TOKTZXILAK_6523":
+  ids: [ 6523, 20554 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"TOKTZXILEK_6525":
+  ids: [ 6525 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"TOKTZMEJTAL_6526":
+  ids: [ 6526 ]
+  type: "STAFF"
+  attackSpeed: 6
+"TZHAARKETEM_6527":
+  ids: [ 6527 ]
+  type: "BLUNT"
+  attackSpeed: 5
+"TZHAARKETOM_6528":
+  ids: [ 6528 ]
+  type: "BLUNT"
+  attackSpeed: 7
+"MOUSE_TOY_6541":
+  ids: [ 6541 ]
+  type: "BLUNT"
+  attackSpeed: 4
+"MUD_BATTLESTAFF_6562":
+  ids: [ 6562 ]
+  type: "STAFF"
+  attackSpeed: 5
+"MYSTIC_MUD_STAFF_6563":
+  ids: [ 6563 ]
+  type: "STAFF"
+  attackSpeed: 5
+"WHITE_CLAWS_6587":
+  ids: [ 6587 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"WHITE_BATTLEAXE_6589":
+  ids: [ 6589 ]
+  type: "AXE"
+  attackSpeed: 6
+"WHITE_DAGGER_6591":
+  ids: [ 6591 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"WHITE_DAGGER_6593":
+  ids: [ 6593 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"WHITE_DAGGER_6595":
+  ids: [ 6595 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"WHITE_DAGGER_6597":
+  ids: [ 6597 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"WHITE_HALBERD_6599":
+  ids: [ 6599 ]
+  type: "POLEARM"
+  attackSpeed: 7
+"WHITE_MACE_6601":
+  ids: [ 6601 ]
+  type: "SPIKED_WEAPON"
+  attackSpeed: 5
+"WHITE_MAGIC_STAFF_6603":
+  ids: [ 6603 ]
+  type: "STAFF"
+  attackSpeed: 5
+"WHITE_SWORD_6605":
+  ids: [ 6605 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"WHITE_LONGSWORD_6607":
+  ids: [ 6607 ]
+  type: "UNARMED"
+  attackSpeed: 5
+"WHITE_2H_SWORD_6609":
+  ids: [ 6609 ]
+  type: "UNARMED"
+  attackSpeed: 7
+"WHITE_SCIMITAR_6611":
+  ids: [ 6611 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"WHITE_WARHAMMER_6613":
+  ids: [ 6613 ]
+  type: "BLUNT"
+  attackSpeed: 6
+"SEERCULL_6724":
+  ids: [ 6724 ]
+  type: "BOW"
+  attackSpeed: 5
+"DRAGON_AXE_6739":
+  ids: [ 6739 ]
+  type: "AXE"
+  attackSpeed: 5
+"SILVERLIGHT_6745":
+  ids: [ 6745 ]
+  type: "UNARMED"
+  attackSpeed: 5
+"DARKLIGHT_6746":
+  ids: [ 6746 ]
+  type: "UNARMED"
+  attackSpeed: 5
+"GUTHIX_MJOLNIR_6760":
+  ids: [ 6760 ]
+  type: "POLESTAFF"
+  attackSpeed: 6
+"SARADOMIN_MJOLNIR_6762":
+  ids: [ 6762 ]
+  type: "POLESTAFF"
+  attackSpeed: 6
+"ZAMORAK_MJOLNIR_6764":
+  ids: [ 6764 ]
+  type: "POLESTAFF"
+  attackSpeed: 6
+"RAT_POLE_6773":
+  ids: [ 6773 ]
+  type: "BLUNT"
+  attackSpeed: 5
+"RAT_POLE_6774":
+  ids: [ 6774 ]
+  type: "BLUNT"
+  attackSpeed: 5
+"RAT_POLE_6775":
+  ids: [ 6775 ]
+  type: "BLUNT"
+  attackSpeed: 5
+"RAT_POLE_6776":
+  ids: [ 6776 ]
+  type: "BLUNT"
+  attackSpeed: 5
+"RAT_POLE_6777":
+  ids: [ 6777 ]
+  type: "BLUNT"
+  attackSpeed: 5
+"RAT_POLE_6778":
+  ids: [ 6778 ]
+  type: "BLUNT"
+  attackSpeed: 5
+"RAT_POLE_6779":
+  ids: [ 6779 ]
+  type: "BLUNT"
+  attackSpeed: 5
+"BEGINNER_WAND_6908":
+  ids: [ 6908, 20553 ]
+  type: "STAFF"
+  attackSpeed: 4
+"APPRENTICE_WAND_6910":
+  ids: [ 6910, 20556 ]
+  type: "STAFF"
+  attackSpeed: 4
+"TEACHER_WAND_6912":
+  ids: [ 6912 ]
+  type: "STAFF"
+  attackSpeed: 4
+"MASTER_WAND_6914":
+  ids: [ 6914, 20560 ]
+  type: "STAFF"
+  attackSpeed: 4
+"LUCKY_CUTLASS_7140":
+  ids: [ 7140 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"HARRYS_CUTLASS_7141":
+  ids: [ 7141 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"RAPIER_7142":
+  ids: [ 7142 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"DRAGON_2H_SWORD_7158":
+  ids: [ 7158, 20559 ]
+  type: "UNARMED"
+  attackSpeed: 7
+"MUD_PIE_7170":
+  ids: [ 7170 ]
+  type: "THROW_WEAPON"
+  attackSpeed: 4
+"MAGIC_SECATEURS_7409":
+  ids: [ 7409 ]
+  type: "UNARMED"
+  attackSpeed: 5
+"WOODEN_SPOON_7433":
+  ids: [ 7433 ]
+  type: "UNARMED"
+  attackSpeed: 5
+"EGG_WHISK_7435":
+  ids: [ 7435 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"SPORK_7437":
+  ids: [ 7437 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"SPATULA_7439":
+  ids: [ 7439 ]
+  type: "UNARMED"
+  attackSpeed: 7
+"FRYING_PAN_7441":
+  ids: [ 7441 ]
+  type: "BLUNT"
+  attackSpeed: 6
+"SKEWER_7443":
+  ids: [ 7443 ]
+  type: "UNARMED"
+  attackSpeed: 5
+"ROLLING_PIN_7445":
+  ids: [ 7445 ]
+  type: "BLUNT"
+  attackSpeed: 5
+"KITCHEN_KNIFE_7447":
+  ids: [ 7447 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"MEAT_TENDERISER_7449":
+  ids: [ 7449 ]
+  type: "BLUNT"
+  attackSpeed: 6
+"CLEAVER_7451":
+  ids: [ 7451 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"ROD_OF_IVANDIS_10_7639":
+  ids: [ 7639 ]
+  type: "STAFF"
+  attackSpeed: 5
+"ROD_OF_IVANDIS_10_7640":
+  ids: [ 7640 ]
+  type: "STAFF"
+  attackSpeed: 5
+"ROD_OF_IVANDIS_10_7641":
+  ids: [ 7641 ]
+  type: "STAFF"
+  attackSpeed: 5
+"ROD_OF_IVANDIS_10_7642":
+  ids: [ 7642 ]
+  type: "STAFF"
+  attackSpeed: 5
+"ROD_OF_IVANDIS_10_7643":
+  ids: [ 7643 ]
+  type: "STAFF"
+  attackSpeed: 5
+"ROD_OF_IVANDIS_10_7644":
+  ids: [ 7644 ]
+  type: "STAFF"
+  attackSpeed: 5
+"ROD_OF_IVANDIS_10_7645":
+  ids: [ 7645 ]
+  type: "STAFF"
+  attackSpeed: 5
+"ROD_OF_IVANDIS_10_7646":
+  ids: [ 7646 ]
+  type: "STAFF"
+  attackSpeed: 5
+"ROD_OF_IVANDIS_10_7647":
+  ids: [ 7647 ]
+  type: "STAFF"
+  attackSpeed: 5
+"ROD_OF_IVANDIS_10_7648":
+  ids: [ 7648 ]
+  type: "STAFF"
+  attackSpeed: 5
+"GADDERHAMMER_7668":
+  ids: [ 7668 ]
+  type: "BLUNT"
+  attackSpeed: 5
+"BOXING_GLOVES_7671":
+  ids: [ 7671 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"BOXING_GLOVES_7673":
+  ids: [ 7673 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"WOODEN_SWORD_7675":
+  ids: [ 7675 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"PUGEL_7679":
+  ids: [ 7679 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"BOW_AND_ARROW_7686":
+  ids: [ 7686 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"PAINTBRUSH_7756":
+  ids: [ 7756 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"ZAROS_MJOLNIR_7804":
+  ids: [ 7804 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"ANGER_SWORD_7806":
+  ids: [ 7806 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"ANGER_BATTLEAXE_7807":
+  ids: [ 7807 ]
+  type: "AXE"
+  attackSpeed: 6
+"ANGER_MACE_7808":
+  ids: [ 7808 ]
+  type: "SPIKED_WEAPON"
+  attackSpeed: 5
+"ANGER_SPEAR_7809":
+  ids: [ 7809 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"AXE_HANDLE_7952":
+  ids: [ 7952 ]
+  type: "UNARMED"
+  attackSpeed: 5
+"BANNER_8650":
+  ids: [ 8650 ]
+  type: "BANNER"
+  attackSpeed: 4
+"BANNER_8652":
+  ids: [ 8652 ]
+  type: "BANNER"
+  attackSpeed: 4
+"BANNER_8654":
+  ids: [ 8654 ]
+  type: "BANNER"
+  attackSpeed: 4
+"BANNER_8656":
+  ids: [ 8656 ]
+  type: "BANNER"
+  attackSpeed: 4
+"BANNER_8658":
+  ids: [ 8658 ]
+  type: "BANNER"
+  attackSpeed: 4
+"BANNER_8660":
+  ids: [ 8660 ]
+  type: "BANNER"
+  attackSpeed: 4
+"BANNER_8662":
+  ids: [ 8662 ]
+  type: "BANNER"
+  attackSpeed: 4
+"BANNER_8664":
+  ids: [ 8664 ]
+  type: "BANNER"
+  attackSpeed: 4
+"BANNER_8666":
+  ids: [ 8666 ]
+  type: "BANNER"
+  attackSpeed: 4
+"BANNER_8668":
+  ids: [ 8668 ]
+  type: "BANNER"
+  attackSpeed: 4
+"BANNER_8670":
+  ids: [ 8670 ]
+  type: "BANNER"
+  attackSpeed: 4
+"BANNER_8672":
+  ids: [ 8672 ]
+  type: "BANNER"
+  attackSpeed: 4
+"BANNER_8674":
+  ids: [ 8674 ]
+  type: "BANNER"
+  attackSpeed: 4
+"BANNER_8676":
+  ids: [ 8676 ]
+  type: "BANNER"
+  attackSpeed: 4
+"BANNER_8678":
+  ids: [ 8678 ]
+  type: "BANNER"
+  attackSpeed: 4
+"BANNER_8680":
+  ids: [ 8680 ]
+  type: "BANNER"
+  attackSpeed: 4
+"VOID_KNIGHT_MACE_8841":
+  ids: [ 8841 ]
+  type: "STAFF"
+  attackSpeed: 5
+"CRATE_WITH_ZANIK_8871":
+  ids: [ 8871 ]
+  type: "UNARMED"
+  attackSpeed: 0
+"BONE_DAGGER_8872":
+  ids: [ 8872 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"BONE_DAGGER_8874":
+  ids: [ 8874 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"BONE_DAGGER_8876":
+  ids: [ 8876 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"BONE_DAGGER_8878":
+  ids: [ 8878 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"DORGESHUUN_CROSSBOW_8880":
+  ids: [ 8880 ]
+  type: "CROSSBOW"
+  attackSpeed: 5
+"CUTTHROAT_FLAG_8966":
+  ids: [ 8966 ]
+  type: "BANNER"
+  attackSpeed: 4
+"GUILDED_SMILE_FLAG_8967":
+  ids: [ 8967 ]
+  type: "BANNER"
+  attackSpeed: 4
+"BRONZE_FIST_FLAG_8968":
+  ids: [ 8968 ]
+  type: "BANNER"
+  attackSpeed: 4
+"LUCKY_SHOT_FLAG_8969":
+  ids: [ 8969 ]
+  type: "BANNER"
+  attackSpeed: 4
+"TREASURE_FLAG_8970":
+  ids: [ 8970 ]
+  type: "BANNER"
+  attackSpeed: 4
+"PHASMATYS_FLAG_8971":
+  ids: [ 8971 ]
+  type: "BANNER"
+  attackSpeed: 4
+"SKULL_SCEPTRE_9013":
+  ids: [ 9013 ]
+  type: "POLESTAFF"
+  attackSpeed: 5
+"PHARAOHS_SCEPTRE_3_9044":
+  ids: [ 9044 ]
+  type: "POLESTAFF"
+  attackSpeed: 4
+"PHARAOHS_SCEPTRE_3_9046":
+  ids: [ 9046 ]
+  type: "POLESTAFF"
+  attackSpeed: 4
+"PHARAOHS_SCEPTRE_3_9048":
+  ids: [ 9048 ]
+  type: "POLESTAFF"
+  attackSpeed: 4
+"PHARAOHS_SCEPTRE_3_9050":
+  ids: [ 9050 ]
+  type: "POLESTAFF"
+  attackSpeed: 4
+"LUNAR_STAFF_9084":
+  ids: [ 9084 ]
+  type: "STAFF"
+  attackSpeed: 5
+"LUNAR_STAFF__PT1_9091":
+  ids: [ 9091 ]
+  type: "STAFF"
+  attackSpeed: 4
+"LUNAR_STAFF__PT2_9092":
+  ids: [ 9092 ]
+  type: "STAFF"
+  attackSpeed: 4
+"LUNAR_STAFF__PT3_9093":
+  ids: [ 9093 ]
+  type: "STAFF"
+  attackSpeed: 4
+"BRONZE_CROSSBOW_9174":
+  ids: [ 9174 ]
+  type: "CROSSBOW"
+  attackSpeed: 6
+"BLURITE_CROSSBOW_9176":
+  ids: [ 9176 ]
+  type: "CROSSBOW"
+  attackSpeed: 6
+"IRON_CROSSBOW_9177":
+  ids: [ 9177 ]
+  type: "CROSSBOW"
+  attackSpeed: 6
+"STEEL_CROSSBOW_9179":
+  ids: [ 9179 ]
+  type: "CROSSBOW"
+  attackSpeed: 6
+"MITH_CROSSBOW_9181":
+  ids: [ 9181 ]
+  type: "CROSSBOW"
+  attackSpeed: 6
+"ADAMANT_CROSSBOW_9183":
+  ids: [ 9183 ]
+  type: "CROSSBOW"
+  attackSpeed: 6
+"RUNE_CROSSBOW_9185":
+  ids: [ 9185 ]
+  type: "CROSSBOW"
+  attackSpeed: 6
+"TRAINING_SWORD_9703":
+  ids: [ 9703 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"TRAINING_BOW_9705":
+  ids: [ 9705 ]
+  type: "BOW"
+  attackSpeed: 4
+"BUTTERFLY_NET_10010":
+  ids: [ 10010 ]
+  type: "SPEAR"
+  attackSpeed: 4
+"FALCONERS_GLOVE_10023":
+  ids: [ 10023 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"FALCONERS_GLOVE_10024":
+  ids: [ 10024 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"CHINCHOMPA_10033":
+  ids: [ 10033 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"RED_CHINCHOMPA_10034":
+  ids: [ 10034 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"BARBTAIL_HARPOON_10129":
+  ids: [ 10129 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"ORANGE_SALAMANDER_10146":
+  ids: [ 10146 ]
+  type: "UNARMED"
+  attackSpeed: 5
+"RED_SALAMANDER_10147":
+  ids: [ 10147 ]
+  type: "UNARMED"
+  attackSpeed: 5
+"BLACK_SALAMANDER_10148":
+  ids: [ 10148 ]
+  type: "UNARMED"
+  attackSpeed: 5
+"SWAMP_LIZARD_10149":
+  ids: [ 10149 ]
+  type: "UNARMED"
+  attackSpeed: 5
+"NOOSE_WAND_10150":
+  ids: [ 10150 ]
+  type: "SPEAR"
+  attackSpeed: 4
+"HUNTERS_CROSSBOW_10156":
+  ids: [ 10156 ]
+  type: "CROSSBOW"
+  attackSpeed: 4
+"WILLOW_COMP_BOW_10280":
+  ids: [ 10280 ]
+  type: "BOW"
+  attackSpeed: 5
+"YEW_COMP_BOW_10282":
+  ids: [ 10282 ]
+  type: "BOW"
+  attackSpeed: 5
+"MAGIC_COMP_BOW_10284":
+  ids: [ 10284 ]
+  type: "BOW"
+  attackSpeed: 5
+"SARADOMIN_CROZIER_10440":
+  ids: [ 10440 ]
+  type: "STAFF"
+  attackSpeed: 5
+"GUTHIX_CROZIER_10442":
+  ids: [ 10442 ]
+  type: "STAFF"
+  attackSpeed: 5
+"ZAMORAK_CROZIER_10444":
+  ids: [ 10444 ]
+  type: "STAFF"
+  attackSpeed: 5
+"UNDEAD_CHICKEN_10487":
+  ids: [ 10487 ]
+  type: "BLUNT"
+  attackSpeed: 4
+"BLESSED_AXE_10491":
+  ids: [ 10491 ]
+  type: "AXE"
+  attackSpeed: 5
+"SNOWBALL_10501":
+  ids: [ 10501 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"KERIS_10581":
+  ids: [ 10581 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"KERIS_10582":
+  ids: [ 10582 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"KERIS_10583":
+  ids: [ 10583 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"KERIS_10584":
+  ids: [ 10584 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"A_JESTER_STICK_10840":
+  ids: [ 10840 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"SHADOW_SWORD_10858":
+  ids: [ 10858 ]
+  type: "UNARMED"
+  attackSpeed: 6
+"BARRELCHEST_ANCHOR_10887":
+  ids: [ 10887 ]
+  type: "SPIKED_WEAPON"
+  attackSpeed: 6
+"BARRELCHEST_ANCHOR_10888":
+  ids: [ 10888 ]
+  type: "SPIKED_WEAPON"
+  attackSpeed: 6
+"BRINE_SABRE_11037":
+  ids: [ 11037 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"ANCIENT_MACE_11061":
+  ids: [ 11061 ]
+  type: "SPIKED_WEAPON"
+  attackSpeed: 5
+"DRAGON_DART_11230":
+  ids: [ 11230 ]
+  type: "THROW_WEAPON"
+  attackSpeed: 3
+  attackRange: 3
+"DRAGON_DART_11231":
+  ids: [ 11231 ]
+  type: "THROW_WEAPON"
+  attackSpeed: 3
+  attackRange: 3
+"DRAGON_DART_11233":
+  ids: [ 11233 ]
+  type: "THROW_WEAPON"
+  attackSpeed: 3
+  attackRange: 3
+"DRAGON_DART_11234":
+  ids: [ 11234 ]
+  type: "THROW_WEAPON"
+  attackSpeed: 3
+  attackRange: 3
+"DARK_BOW_11235":
+  ids: [ 11235, 20408 ]
+  type: "BOW"
+  attackSpeed: 9
+"MAGIC_BUTTERFLY_NET_11259":
+  ids: [ 11259 ]
+  type: "SPEAR"
+  attackSpeed: 6
+"BRONZE_HASTA_11367":
+  ids: [ 11367 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"IRON_HASTA_11369":
+  ids: [ 11369 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"STEEL_HASTA_11371":
+  ids: [ 11371 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"MITHRIL_HASTA_11373":
+  ids: [ 11373 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"ADAMANT_HASTA_11375":
+  ids: [ 11375 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"RUNE_HASTA_11377":
+  ids: [ 11377 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"BRONZE_HASTA_11379":
+  ids: [ 11379 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"BRONZE_HASTA_11381":
+  ids: [ 11381 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"BRONZE_HASTA_11382":
+  ids: [ 11382 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"BRONZE_HASTA_11384":
+  ids: [ 11384 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"IRON_HASTA_11386":
+  ids: [ 11386 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"IRON_HASTA_11388":
+  ids: [ 11388 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"IRON_HASTA_11389":
+  ids: [ 11389 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"IRON_HASTA_11391":
+  ids: [ 11391 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"STEEL_HASTA_11393":
+  ids: [ 11393 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"STEEL_HASTA_11395":
+  ids: [ 11395 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"STEEL_HASTA_11396":
+  ids: [ 11396 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"STEEL_HASTA_11398":
+  ids: [ 11398 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"MITHRIL_HASTA_11400":
+  ids: [ 11400 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"MITHRIL_HASTA_11402":
+  ids: [ 11402 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"MITHRIL_HASTA_11403":
+  ids: [ 11403 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"MITHRIL_HASTA_11405":
+  ids: [ 11405 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"ADAMANT_HASTA_11407":
+  ids: [ 11407 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"ADAMANT_HASTA_11409":
+  ids: [ 11409 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"ADAMANT_HASTA_11410":
+  ids: [ 11410 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"ADAMANT_HASTA_11412":
+  ids: [ 11412 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"RUNE_HASTA_11414":
+  ids: [ 11414 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"RUNE_HASTA_11416":
+  ids: [ 11416 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"RUNE_HASTA_11417":
+  ids: [ 11417 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"RUNE_HASTA_11419":
+  ids: [ 11419 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"BEACH_BOXING_GLOVES_11705":
+  ids: [ 11705 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"BEACH_BOXING_GLOVES_11706":
+  ids: [ 11706 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"CURSED_GOBLIN_HAMMER_11707":
+  ids: [ 11707 ]
+  type: "BLUNT"
+  attackSpeed: 4
+"CURSED_GOBLIN_BOW_11708":
+  ids: [ 11708 ]
+  type: "BOW"
+  attackSpeed: 6
+"CURSED_GOBLIN_STAFF_11709":
+  ids: [ 11709 ]
+  type: "STAFF"
+  attackSpeed: 5
+"MAGIC_SECATEURS_11711":
+  ids: [ 11711 ]
+  type: "UNARMED"
+  attackSpeed: 5
+"RUNE_PICKAXE_11719":
+  ids: [ 11719 ]
+  type: "PICKAXE"
+  attackSpeed: 5
+"MITHRIL_PICKAXE_11720":
+  ids: [ 11720 ]
+  type: "PICKAXE"
+  attackSpeed: 5
+"IRON_PICKAXE_11721":
+  ids: [ 11721 ]
+  type: "PICKAXE"
+  attackSpeed: 5
+"NEW_CRYSTAL_BOW_I_11748":
+  ids: [ 11748 ]
+  type: "BOW"
+  attackSpeed: 5
+"NEW_CRYSTAL_BOW_I_11749":
+  ids: [ 11749 ]
+  type: "BOW"
+  attackSpeed: 5
+"NEW_CRYSTAL_BOW_I_11750":
+  ids: [ 11750 ]
+  type: "BOW"
+  attackSpeed: 5
+"NEW_CRYSTAL_BOW_I_11751":
+  ids: [ 11751 ]
+  type: "BOW"
+  attackSpeed: 5
+"NEW_CRYSTAL_BOW_I_11752":
+  ids: [ 11752 ]
+  type: "BOW"
+  attackSpeed: 5
+"NEW_CRYSTAL_BOW_I_11753":
+  ids: [ 11753 ]
+  type: "BOW"
+  attackSpeed: 5
+"NEW_CRYSTAL_BOW_I_11754":
+  ids: [ 11754 ]
+  type: "BOW"
+  attackSpeed: 5
+"NEW_CRYSTAL_BOW_I_11755":
+  ids: [ 11755 ]
+  type: "BOW"
+  attackSpeed: 5
+"NEW_CRYSTAL_BOW_I_11756":
+  ids: [ 11756 ]
+  type: "BOW"
+  attackSpeed: 5
+"NEW_CRYSTAL_BOW_I_11757":
+  ids: [ 11757 ]
+  type: "BOW"
+  attackSpeed: 5
+"NEW_CRYSTAL_BOW_I_11758":
+  ids: [ 11758 ]
+  type: "BOW"
+  attackSpeed: 5
+"ARMADYL_CROSSBOW_11785":
+  ids: [ 11785, 23611 ]
+  type: "CROSSBOW"
+  attackSpeed: 6
+"STEAM_BATTLESTAFF_11787":
+  ids: [ 11787 ]
+  type: "STAFF"
+  attackSpeed: 5
+"MYSTIC_STEAM_STAFF_11789":
+  ids: [ 11789 ]
+  type: "STAFF"
+  attackSpeed: 5
+"STAFF_OF_THE_DEAD_11791":
+  ids: [ 11791 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"ARMADYL_GODSWORD_11802":
+  ids: [ 11802, 20593 ]
+  type: "UNARMED"
+  attackSpeed: 6
+"BANDOS_GODSWORD_11804":
+  ids: [ 11804 ]
+  type: "UNARMED"
+  attackSpeed: 6
+"SARADOMIN_GODSWORD_11806":
+  ids: [ 11806 ]
+  type: "UNARMED"
+  attackSpeed: 6
+"ZAMORAK_GODSWORD_11808":
+  ids: [ 11808 ]
+  type: "UNARMED"
+  attackSpeed: 6
+"ZAMORAKIAN_SPEAR_11824":
+  ids: [ 11824 ]
+  type: "SPEAR"
+  attackSpeed: 4
+"SARADOMIN_SWORD_11838":
+  ids: [ 11838 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"ZAMORAKIAN_HASTA_11889":
+  ids: [ 11889 ]
+  type: "SPEAR"
+  attackSpeed: 4
+"LEAFBLADED_SWORD_11902":
+  ids: [ 11902 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"TRIDENT_OF_THE_SEAS_FULL_11905":
+  ids: [ 11905 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"TRIDENT_OF_THE_SEAS_FULL_11907":
+  ids: [ 11907 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"TRIDENT_OF_THE_SEAS_FULL_11908":
+  ids: [ 11908 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"DRAGON_PICKAXE_11920":
+  ids: [ 11920 ]
+  type: "PICKAXE"
+  attackSpeed: 5
+"BLACK_CHINCHOMPA_11959":
+  ids: [ 11959 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"SMOKE_BATTLESTAFF_11998":
+  ids: [ 11998 ]
+  type: "STAFF"
+  attackSpeed: 5
+"MYSTIC_SMOKE_STAFF_12000":
+  ids: [ 12000 ]
+  type: "STAFF"
+  attackSpeed: 5
+"ABYSSAL_TENTACLE_12006":
+  ids: [ 12006 ]
+  type: "WHIP"
+  attackSpeed: 4
+"ANCIENT_CROZIER_12199":
+  ids: [ 12199 ]
+  type: "STAFF"
+  attackSpeed: 5
+"ARMADYL_CROZIER_12263":
+  ids: [ 12263 ]
+  type: "STAFF"
+  attackSpeed: 5
+"BANDOS_CROZIER_12275":
+  ids: [ 12275 ]
+  type: "STAFF"
+  attackSpeed: 5
+"BLACK_PICKAXE_12297":
+  ids: [ 12297 ]
+  type: "PICKAXE"
+  attackSpeed: 5
+"KATANA_12357":
+  ids: [ 12357 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"DRAGON_CANE_12373":
+  ids: [ 12373 ]
+  type: "POLESTAFF"
+  attackSpeed: 5
+"BLACK_CANE_12375":
+  ids: [ 12375 ]
+  type: "SPIKED_WEAPON"
+  attackSpeed: 5
+"ADAMANT_CANE_12377":
+  ids: [ 12377 ]
+  type: "SPIKED_WEAPON"
+  attackSpeed: 5
+"RUNE_CANE_12379":
+  ids: [ 12379 ]
+  type: "SPIKED_WEAPON"
+  attackSpeed: 5
+"GILDED_SCIMITAR_12389":
+  ids: [ 12389 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"`3RD_AGE_WAND_12422`":
+  ids: [ 12422 ]
+  type: "STAFF"
+  attackSpeed: 4
+"`3RD_AGE_BOW_12424`":
+  ids: [ 12424 ]
+  type: "BOW"
+  attackSpeed: 4
+"`3RD_AGE_LONGSWORD_12426`":
+  ids: [ 12426 ]
+  type: "UNARMED"
+  attackSpeed: 5
+"ROYAL_SCEPTRE_12439":
+  ids: [ 12439 ]
+  type: "POLESTAFF"
+  attackSpeed: 4
+"IBANS_STAFF_U_12658":
+  ids: [ 12658 ]
+  type: "STAFF"
+  attackSpeed: 5
+"EVENT_RPG_12727":
+  ids: [ 12727 ]
+  type: "UNARMED"
+  attackSpeed: 3
+"DARK_BOW_12765":
+  ids: [ 12765 ]
+  type: "BOW"
+  attackSpeed: 9
+"DARK_BOW_12766":
+  ids: [ 12766 ]
+  type: "BOW"
+  attackSpeed: 9
+"DARK_BOW_12767":
+  ids: [ 12767 ]
+  type: "BOW"
+  attackSpeed: 9
+"DARK_BOW_12768":
+  ids: [ 12768 ]
+  type: "BOW"
+  attackSpeed: 9
+"VOLCANIC_ABYSSAL_WHIP_12773":
+  ids: [ 12773 ]
+  type: "WHIP"
+  attackSpeed: 4
+"FROZEN_ABYSSAL_WHIP_12774":
+  ids: [ 12774 ]
+  type: "WHIP"
+  attackSpeed: 4
+"MAGIC_SHORTBOW_I_12788":
+  ids: [ 12788 ]
+  type: "BOW"
+  attackSpeed: 4
+  attackRange: 7
+"STEAM_BATTLESTAFF_12795":
+  ids: [ 12795 ]
+  type: "STAFF"
+  attackSpeed: 5
+"MYSTIC_STEAM_STAFF_12796":
+  ids: [ 12796 ]
+  type: "STAFF"
+  attackSpeed: 5
+"DRAGON_PICKAXE_12797":
+  ids: [ 12797 ]
+  type: "PICKAXE"
+  attackSpeed: 5
+"SARADOMINS_BLESSED_SWORD_12809":
+  ids: [ 12809 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"GRANITE_MAUL_12848":
+  ids: [ 12848 ]
+  type: "BLUNT"
+  attackSpeed: 7
+"TRIDENT_OF_THE_SWAMP_12899":
+  ids: [ 12899 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"TRIDENT_OF_THE_SWAMP_12900":
+  ids: [ 12900 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"TOXIC_STAFF_UNCHARGED_12902":
+  ids: [ 12902 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"TOXIC_STAFF_UNCHARGED_12904":
+  ids: [ 12904 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"TOXIC_BLOWPIPE_EMPTY_12924":
+  ids: [ 12924 ]
+  type: "THROW_WEAPON"
+  attackSpeed: 3
+"TOXIC_BLOWPIPE_EMPTY_12926":
+  ids: [ 12926 ]
+  type: "THROW_WEAPON"
+  attackSpeed: 3
+"PHARAOHS_SCEPTRE_3_13074":
+  ids: [ 13074 ]
+  type: "POLESTAFF"
+  attackSpeed: 4
+"PHARAOHS_SCEPTRE_3_13075":
+  ids: [ 13075 ]
+  type: "POLESTAFF"
+  attackSpeed: 4
+"PHARAOHS_SCEPTRE_3_13076":
+  ids: [ 13076 ]
+  type: "POLESTAFF"
+  attackSpeed: 4
+"PHARAOHS_SCEPTRE_3_13077":
+  ids: [ 13077 ]
+  type: "POLESTAFF"
+  attackSpeed: 4
+"PHARAOHS_SCEPTRE_3_13078":
+  ids: [ 13078 ]
+  type: "POLESTAFF"
+  attackSpeed: 4
+"ENCHANTED_LYRE_13079":
+  ids: [ 13079 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"NEW_CRYSTAL_HALBERD_FULL_I_13080":
+  ids: [ 13080 ]
+  type: "POLEARM"
+  attackSpeed: 7
+"NEW_CRYSTAL_HALBERD_FULL_I_13081":
+  ids: [ 13081 ]
+  type: "POLEARM"
+  attackSpeed: 7
+"NEW_CRYSTAL_HALBERD_FULL_I_13082":
+  ids: [ 13082 ]
+  type: "POLEARM"
+  attackSpeed: 7
+"NEW_CRYSTAL_HALBERD_FULL_I_13083":
+  ids: [ 13083 ]
+  type: "POLEARM"
+  attackSpeed: 7
+"NEW_CRYSTAL_HALBERD_FULL_I_13084":
+  ids: [ 13084 ]
+  type: "POLEARM"
+  attackSpeed: 7
+"NEW_CRYSTAL_HALBERD_FULL_I_13085":
+  ids: [ 13085 ]
+  type: "POLEARM"
+  attackSpeed: 7
+"NEW_CRYSTAL_HALBERD_FULL_I_13086":
+  ids: [ 13086 ]
+  type: "POLEARM"
+  attackSpeed: 7
+"NEW_CRYSTAL_HALBERD_FULL_I_13087":
+  ids: [ 13087 ]
+  type: "POLEARM"
+  attackSpeed: 7
+"NEW_CRYSTAL_HALBERD_FULL_I_13088":
+  ids: [ 13088 ]
+  type: "POLEARM"
+  attackSpeed: 7
+"NEW_CRYSTAL_HALBERD_FULL_I_13089":
+  ids: [ 13089 ]
+  type: "POLEARM"
+  attackSpeed: 7
+"NEW_CRYSTAL_HALBERD_FULL_I_13090":
+  ids: [ 13090 ]
+  type: "POLEARM"
+  attackSpeed: 7
+"WILDERNESS_SWORD_1_13108":
+  ids: [ 13108 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"WILDERNESS_SWORD_2_13109":
+  ids: [ 13109 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"WILDERNESS_SWORD_3_13110":
+  ids: [ 13110 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"WILDERNESS_SWORD_4_13111":
+  ids: [ 13111 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"WESTERN_BANNER_1_13141":
+  ids: [ 13141 ]
+  type: "POLESTAFF"
+  attackSpeed: 5
+"WESTERN_BANNER_2_13142":
+  ids: [ 13142 ]
+  type: "POLESTAFF"
+  attackSpeed: 5
+"WESTERN_BANNER_3_13143":
+  ids: [ 13143 ]
+  type: "POLESTAFF"
+  attackSpeed: 5
+"WESTERN_BANNER_4_13144":
+  ids: [ 13144 ]
+  type: "POLESTAFF"
+  attackSpeed: 5
+"EMPTY_BLASTER_13183":
+  ids: [ 13183 ]
+  type: "BLASTER"
+  attackSpeed: 0
+"INCOMPLETE_BLASTER_13184":
+  ids: [ 13184 ]
+  type: "BLASTER"
+  attackSpeed: 0
+"EASTER_BLASTER_13185":
+  ids: [ 13185 ]
+  type: "BLASTER"
+  attackSpeed: 5
+"ODDSKULL_13195":
+  ids: [ 13195 ]
+  type: "UNARMED"
+  attackSpeed: 0
+"INFERNAL_AXE_13241":
+  ids: [ 13241 ]
+  type: "AXE"
+  attackSpeed: 5
+"INFERNAL_AXE_13242":
+  ids: [ 13242 ]
+  type: "AXE"
+  attackSpeed: 5
+"INFERNAL_PICKAXE_13243":
+  ids: [ 13243 ]
+  type: "PICKAXE"
+  attackSpeed: 5
+"INFERNAL_PICKAXE_13244":
+  ids: [ 13244 ]
+  type: "PICKAXE"
+  attackSpeed: 5
+"ABYSSAL_BLUDGEON_13263":
+  ids: [ 13263 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"ABYSSAL_DAGGER_13265":
+  ids: [ 13265 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"ABYSSAL_DAGGER_13267":
+  ids: [ 13267 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"ABYSSAL_DAGGER_13269":
+  ids: [ 13269 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"ABYSSAL_DAGGER_13271":
+  ids: [ 13271 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"GREEN_BANNER_13328":
+  ids: [ 13328 ]
+  type: "BANNER"
+  attackSpeed: 4
+"DRAGON_WARHAMMER_13576":
+  ids: [ 13576, 20785 ]
+  type: "BLUNT"
+  attackSpeed: 6
+"DRAGON_CLAWS_13652":
+  ids: [ 13652, 20784 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"LIGHT_BALLISTA_19478":
+  ids: [ 19478 ]
+  type: "CROSSBOW"
+  attackSpeed: 7
+"HEAVY_BALLISTA_19481":
+  ids: [ 19481 ]
+  type: "CROSSBOW"
+  attackSpeed: 7
+"KRUK_MONKEY_GREEGREE_19525":
+  ids: [ 19525 ]
+  type: "UNARMED"
+  attackSpeed: 0
+"ARCLIGHT_19675":
+  ids: [ 19675 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"ZOMBIE_HEAD_19912":
+  ids: [ 19912 ]
+  type: "BLUNT"
+  attackSpeed: 6
+"NUNCHAKU_19918":
+  ids: [ 19918 ]
+  type: "BLUNT"
+  attackSpeed: 5
+"HEAVY_CASKET_19941":
+  ids: [ 19941 ]
+  type: "BLUNT"
+  attackSpeed: 6
+"DRAGON_SCIMITAR_OR_20000":
+  ids: [ 20000 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"`3RD_AGE_AXE_20011`":
+  ids: [ 20011 ]
+  type: "AXE"
+  attackSpeed: 5
+"`3RD_AGE_PICKAXE_20014`":
+  ids: [ 20014 ]
+  type: "PICKAXE"
+  attackSpeed: 5
+"ALE_OF_THE_GODS_20056":
+  ids: [ 20056 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"GILDED_2H_SWORD_20155":
+  ids: [ 20155 ]
+  type: "UNARMED"
+  attackSpeed: 7
+"GILDED_SPEAR_20158":
+  ids: [ 20158 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"GILDED_HASTA_20161":
+  ids: [ 20161 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"LARGE_SPADE_20164":
+  ids: [ 20164 ]
+  type: "BLUNT"
+  attackSpeed: 4
+"CRIER_BELL_20243":
+  ids: [ 20243 ]
+  type: "BLUNT"
+  attackSpeed: 4
+"CLUELESS_SCROLL_20249":
+  ids: [ 20249 ]
+  type: "BLUNT"
+  attackSpeed: 4
+"ARCEUUS_BANNER_20251":
+  ids: [ 20251 ]
+  type: "POLESTAFF"
+  attackSpeed: 5
+"HOSIDIUS_BANNER_20254":
+  ids: [ 20254 ]
+  type: "POLESTAFF"
+  attackSpeed: 5
+"LOVAKENGJ_BANNER_20257":
+  ids: [ 20257 ]
+  type: "POLESTAFF"
+  attackSpeed: 5
+"PISCARILIUS_BANNER_20260":
+  ids: [ 20260 ]
+  type: "POLESTAFF"
+  attackSpeed: 5
+"SHAYZIEN_BANNER_20263":
+  ids: [ 20263 ]
+  type: "POLESTAFF"
+  attackSpeed: 5
+"ARMADYL_GODSWORD_OR_20368":
+  ids: [ 20368 ]
+  type: "UNARMED"
+  attackSpeed: 6
+"BANDOS_GODSWORD_OR_20370":
+  ids: [ 20370 ]
+  type: "UNARMED"
+  attackSpeed: 6
+"SARADOMIN_GODSWORD_OR_20372":
+  ids: [ 20372 ]
+  type: "UNARMED"
+  attackSpeed: 6
+"ZAMORAK_GODSWORD_OR_20374":
+  ids: [ 20374 ]
+  type: "UNARMED"
+  attackSpeed: 6
+"SPEAR_20397":
+  ids: [ 20397 ]
+  type: "POLEARM"
+  attackSpeed: 7
+"VOID_KNIGHT_MACE_20473":
+  ids: [ 20473 ]
+  type: "STAFF"
+  attackSpeed: 5
+"DECORATIVE_SWORD_20483":
+  ids: [ 20483 ]
+  type: "UNARMED"
+  attackSpeed: 5
+"STALE_BAGUETTE_20590":
+  ids: [ 20590 ]
+  type: "BLUNT"
+  attackSpeed: 4
+"BRUMA_TORCH_20720":
+  ids: [ 20720 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"LEAFBLADED_BATTLEAXE_20727":
+  ids: [ 20727 ]
+  type: "AXE"
+  attackSpeed: 5
+"MIST_BATTLESTAFF_20730":
+  ids: [ 20730 ]
+  type: "STAFF"
+  attackSpeed: 5
+"MYSTIC_MIST_STAFF_20733":
+  ids: [ 20733 ]
+  type: "STAFF"
+  attackSpeed: 5
+"DUST_BATTLESTAFF_20736":
+  ids: [ 20736 ]
+  type: "STAFF"
+  attackSpeed: 5
+"MYSTIC_DUST_STAFF_20739":
+  ids: [ 20739 ]
+  type: "STAFF"
+  attackSpeed: 5
+"HILL_GIANT_CLUB_20756":
+  ids: [ 20756 ]
+  type: "BLUNT"
+  attackSpeed: 7
+"HUNTING_KNIFE_20779":
+  ids: [ 20779 ]
+  type: "BLUNT"
+  attackSpeed: 4
+"GIANT_PRESENT_20836":
+  ids: [ 20836 ]
+  type: "BLUNT"
+  attackSpeed: 4
+"DRAGON_THROWNAXE_20849":
+  ids: [ 20849, 21207 ]
+  type: "THROW_WEAPON"
+  attackSpeed: 5
+"TWISTED_BOW_20997":
+  ids: [ 20997 ]
+  type: "BOW"
+  attackSpeed: 6
+"ELDER_MAUL_21003":
+  ids: [ 21003, 21205 ]
+  type: "BLUNT"
+  attackSpeed: 6
+"KODAI_WAND_21006":
+  ids: [ 21006 ]
+  type: "STAFF"
+  attackSpeed: 4
+"DRAGON_SWORD_21009":
+  ids: [ 21009, 21206 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"DRAGON_HUNTER_CROSSBOW_21012":
+  ids: [ 21012 ]
+  type: "CROSSBOW"
+  attackSpeed: 6
+"DINHS_BULWARK_21015":
+  ids: [ 21015 ]
+  type: "BULWARK"
+  attackSpeed: 7
+"DRAGON_HARPOON_21028":
+  ids: [ 21028 ]
+  type: "UNARMED"
+  attackSpeed: 5
+"INFERNAL_HARPOON_21031":
+  ids: [ 21031 ]
+  type: "UNARMED"
+  attackSpeed: 5
+"INFERNAL_HARPOON_21033":
+  ids: [ 21033 ]
+  type: "UNARMED"
+  attackSpeed: 5
+"KILLERS_KNIFE_21059":
+  ids: [ 21059 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"LAVA_BATTLESTAFF_21198":
+  ids: [ 21198 ]
+  type: "STAFF"
+  attackSpeed: 5
+"MYSTIC_LAVA_STAFF_21200":
+  ids: [ 21200 ]
+  type: "STAFF"
+  attackSpeed: 5
+"BIRTHDAY_BALLOONS_21209":
+  ids: [ 21209 ]
+  type: "BLUNT"
+  attackSpeed: 4
+"SLAYERS_STAFF_E_21255":
+  ids: [ 21255 ]
+  type: "STAFF"
+  attackSpeed: 4
+"SKULL_SCEPTRE_I_21276":
+  ids: [ 21276 ]
+  type: "POLESTAFF"
+  attackSpeed: 5
+"HAND_FAN_21354":
+  ids: [ 21354 ]
+  type: "BLUNT"
+  attackSpeed: 4
+"HEATPROOF_VESSEL_21539":
+  ids: [ 21539 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"GRANITE_LONGSWORD_21646":
+  ids: [ 21646 ]
+  type: "UNARMED"
+  attackSpeed: 5
+"MERFOLK_TRIDENT_21649":
+  ids: [ 21649 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"GRANITE_HAMMER_21742":
+  ids: [ 21742 ]
+  type: "BLUNT"
+  attackSpeed: 4
+"FINE_MESH_NET_21865":
+  ids: [ 21865 ]
+  type: "BLUNT"
+  attackSpeed: 4
+"DRAGON_CROSSBOW_21902":
+  ids: [ 21902 ]
+  type: "CROSSBOW"
+  attackSpeed: 6
+"TRIDENT_OF_THE_SEAS_E_22288":
+  ids: [ 22288 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"TRIDENT_OF_THE_SEAS_E_22290":
+  ids: [ 22290 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"TRIDENT_OF_THE_SWAMP_E_22292":
+  ids: [ 22292 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"TRIDENT_OF_THE_SWAMP_E_22294":
+  ids: [ 22294 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"STAFF_OF_LIGHT_22296":
+  ids: [ 22296 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"PROP_SWORD_22316":
+  ids: [ 22316 ]
+  type: "BLUNT"
+  attackSpeed: 4
+"SANGUINESTI_STAFF_22323":
+  ids: [ 22323 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"GHRAZI_RAPIER_22324":
+  ids: [ 22324 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"SCYTHE_OF_VITUR_22325":
+  ids: [ 22325 ]
+  type: "SCYTHE"
+  attackSpeed: 5
+"STARTER_SWORD_22331":
+  ids: [ 22331 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"STARTER_BOW_22333":
+  ids: [ 22333 ]
+  type: "BOW"
+  attackSpeed: 4
+"STARTER_STAFF_22335":
+  ids: [ 22335 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"HOLY_HANDEGG_22355":
+  ids: [ 22355 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"PEACEFUL_HANDEGG_22358":
+  ids: [ 22358 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"CHAOTIC_HANDEGG_22361":
+  ids: [ 22361 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"BRYOPHYTAS_STAFF_UNCHARGED_22368":
+  ids: [ 22368 ]
+  type: "STAFF"
+  attackSpeed: 5
+"BRYOPHYTAS_STAFF_UNCHARGED_22370":
+  ids: [ 22370 ]
+  type: "STAFF"
+  attackSpeed: 5
+"IVANDIS_FLAIL_22398":
+  ids: [ 22398 ]
+  type: "STAFF"
+  attackSpeed: 5
+"EMERALD_SICKLE_B_22433":
+  ids: [ 22433 ]
+  type: "UNARMED"
+  attackSpeed: 5
+"ENCHANTED_EMERALD_SICKLE_B_22435":
+  ids: [ 22435 ]
+  type: "UNARMED"
+  attackSpeed: 5
+"SANGUINESTI_STAFF_22481":
+  ids: [ 22481 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"SCYTHE_OF_VITUR_22486":
+  ids: [ 22486 ]
+  type: "SCYTHE"
+  attackSpeed: 5
+"DAWNBRINGER_22516":
+  ids: [ 22516 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"VIGGORAS_CHAINMACE_U_22542":
+  ids: [ 22542 ]
+  type: "SPIKED_WEAPON"
+  attackSpeed: 4
+"VIGGORAS_CHAINMACE_U_22545":
+  ids: [ 22545 ]
+  type: "SPIKED_WEAPON"
+  attackSpeed: 4
+"CRAWS_BOW_U_22547":
+  ids: [ 22547 ]
+  type: "BOW"
+  attackSpeed: 4
+"CRAWS_BOW_U_22550":
+  ids: [ 22550 ]
+  type: "BOW"
+  attackSpeed: 4
+"THAMMARONS_SCEPTRE_U_22552":
+  ids: [ 22552 ]
+  type: "STAFF"
+  attackSpeed: 4
+"THAMMARONS_SCEPTRE_U_22555":
+  ids: [ 22555 ]
+  type: "STAFF"
+  attackSpeed: 4
+"VESTAS_SPEAR_22610":
+  ids: [ 22610 ]
+  type: "SPEAR"
+  attackSpeed: 5
+"VESTAS_LONGSWORD_22613":
+  ids: [ 22613 ]
+  type: "UNARMED"
+  attackSpeed: 5
+"STATIUSS_WARHAMMER_22622":
+  ids: [ 22622 ]
+  type: "BLUNT"
+  attackSpeed: 5
+"MORRIGANS_THROWING_AXE_22634":
+  ids: [ 22634 ]
+  type: "THROW_WEAPON"
+  attackSpeed: 5
+"MORRIGANS_JAVELIN_22636":
+  ids: [ 22636 ]
+  type: "THROW_WEAPON"
+  attackSpeed: 6
+"ZURIELS_STAFF_22647":
+  ids: [ 22647 ]
+  type: "STAFF"
+  attackSpeed: 5
+"EEK_22684":
+  ids: [ 22684 ]
+  type: "BLUNT"
+  attackSpeed: 4
+"CANDY_CANE_22719":
+  ids: [ 22719 ]
+  type: "BLUNT"
+  attackSpeed: 4
+"DRAGON_HASTA_22731":
+  ids: [ 22731 ]
+  type: "SPEAR"
+  attackSpeed: 4
+"DRAGON_HASTA_22734":
+  ids: [ 22734 ]
+  type: "SPEAR"
+  attackSpeed: 4
+"DRAGON_HASTA_22737":
+  ids: [ 22737 ]
+  type: "SPEAR"
+  attackSpeed: 4
+"DRAGON_HASTA_22740":
+  ids: [ 22740 ]
+  type: "SPEAR"
+  attackSpeed: 4
+"DRAGON_HASTA_22743":
+  ids: [ 22743 ]
+  type: "SPEAR"
+  attackSpeed: 4
+"DRAGON_KNIFE_22804":
+  ids: [ 22804 ]
+  type: "THROW_WEAPON"
+  attackSpeed: 3
+"DRAGON_KNIFE_22806":
+  ids: [ 22806 ]
+  type: "THROW_WEAPON"
+  attackSpeed: 3
+"DRAGON_KNIFE_22808":
+  ids: [ 22808 ]
+  type: "THROW_WEAPON"
+  attackSpeed: 3
+"DRAGON_KNIFE_22810":
+  ids: [ 22810 ]
+  type: "THROW_WEAPON"
+  attackSpeed: 3
+"CORMORANTS_GLOVE_22816":
+  ids: [ 22816 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"CORMORANTS_GLOVE_22817":
+  ids: [ 22817 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"GOLDEN_TENCH_22840":
+  ids: [ 22840 ]
+  type: "BLUNT"
+  attackSpeed: 4
+"PEARL_BARBARIAN_ROD_22842":
+  ids: [ 22842 ]
+  type: "UNARMED"
+  attackSpeed: 5
+"PEARL_FLY_FISHING_ROD_22844":
+  ids: [ 22844 ]
+  type: "UNARMED"
+  attackSpeed: 5
+"PEARL_FISHING_ROD_22846":
+  ids: [ 22846 ]
+  type: "UNARMED"
+  attackSpeed: 5
+"DRAGON_HUNTER_LANCE_22978":
+  ids: [ 22978 ]
+  type: "SPEAR"
+  attackSpeed: 4
+"BIRTHDAY_CAKE_23108":
+  ids: [ 23108 ]
+  type: "BLUNT"
+  attackSpeed: 4
+"OILY_PEARL_FISHING_ROD_23122":
+  ids: [ 23122 ]
+  type: "UNARMED"
+  attackSpeed: 5
+"DUAL_SAI_23206":
+  ids: [ 23206 ]
+  type: "UNARMED"
+  attackSpeed: 5
+"TZHAARKETOM_T_23235":
+  ids: [ 23235 ]
+  type: "BLUNT"
+  attackSpeed: 7
+"GILDED_PICKAXE_23276":
+  ids: [ 23276 ]
+  type: "PICKAXE"
+  attackSpeed: 5
+"GILDED_AXE_23279":
+  ids: [ 23279 ]
+  type: "AXE"
+  attackSpeed: 5
+"GILDED_SPADE_23282":
+  ids: [ 23282 ]
+  type: "BLUNT"
+  attackSpeed: 4
+"RUNE_SCIMITAR_23330":
+  ids: [ 23330 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"RUNE_SCIMITAR_23332":
+  ids: [ 23332 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"RUNE_SCIMITAR_23334":
+  ids: [ 23334 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"`3RD_AGE_DRUIDIC_STAFF_23342`":
+  ids: [ 23342 ]
+  type: "STAFF"
+  attackSpeed: 5
+"RAIN_BOW_23357":
+  ids: [ 23357 ]
+  type: "BOW"
+  attackSpeed: 4
+"HAM_JOINT_23360":
+  ids: [ 23360 ]
+  type: "BLUNT"
+  attackSpeed: 3
+"STAFF_OF_BOB_THE_CAT_23363":
+  ids: [ 23363 ]
+  type: "STAFF"
+  attackSpeed: 5
+"GIANT_EASTER_EGG_23446":
+  ids: [ 23446 ]
+  type: "BLUNT"
+  attackSpeed: 4
+"ENCHANTED_LYREI_23458":
+  ids: [ 23458 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"SARACHNIS_CUDGEL_23528":
+  ids: [ 23528 ]
+  type: "SPIKED_WEAPON"
+  attackSpeed: 4
+"CRYSTAL_AXE_23673":
+  ids: [ 23673 ]
+  type: "AXE"
+  attackSpeed: 5
+"CRYSTAL_AXE_23675":
+  ids: [ 23675 ]
+  type: "AXE"
+  attackSpeed: 5
+"DRAGON_PICKAXEOR_23677":
+  ids: [ 23677 ]
+  type: "PICKAXE"
+  attackSpeed: 5
+"CRYSTAL_PICKAXE_23680":
+  ids: [ 23680 ]
+  type: "PICKAXE"
+  attackSpeed: 5
+"CRYSTAL_PICKAXE_23682":
+  ids: [ 23682 ]
+  type: "PICKAXE"
+  attackSpeed: 5
+"CRYSTAL_HARPOON_23762":
+  ids: [ 23762 ]
+  type: "UNARMED"
+  attackSpeed: 5
+"CRYSTAL_HARPOON_23764":
+  ids: [ 23764 ]
+  type: "UNARMED"
+  attackSpeed: 5
+"CORRUPTED_SCEPTRE_23820":
+  ids: [ 23820 ]
+  type: "BLUNT"
+  attackSpeed: 5
+"CORRUPTED_AXE_23821":
+  ids: [ 23821 ]
+  type: "AXE"
+  attackSpeed: 5
+"CORRUPTED_PICKAXE_23822":
+  ids: [ 23822 ]
+  type: "PICKAXE"
+  attackSpeed: 5
+"CORRUPTED_HARPOON_23823":
+  ids: [ 23823 ]
+  type: "UNARMED"
+  attackSpeed: 5
+"CORRUPTED_HALBERD_BASIC_23849":
+  ids: [ 23849 ]
+  type: "POLEARM"
+  attackSpeed: 4
+"CORRUPTED_HALBERD_ATTUNED_23850":
+  ids: [ 23850 ]
+  type: "POLEARM"
+  attackSpeed: 4
+"CORRUPTED_HALBERD_PERFECTED_23851":
+  ids: [ 23851 ]
+  type: "POLEARM"
+  attackSpeed: 4
+"CORRUPTED_STAFF_BASIC_23852":
+  ids: [ 23852 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"CORRUPTED_STAFF_ATTUNED_23853":
+  ids: [ 23853 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"CORRUPTED_STAFF_PERFECTED_23854":
+  ids: [ 23854 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"CORRUPTED_BOW_BASIC_23855":
+  ids: [ 23855 ]
+  type: "BOW"
+  attackSpeed: 5
+"CORRUPTED_BOW_ATTUNED_23856":
+  ids: [ 23856 ]
+  type: "BOW"
+  attackSpeed: 5
+"CORRUPTED_BOW_PERFECTED_23857":
+  ids: [ 23857 ]
+  type: "BOW"
+  attackSpeed: 5
+"CRYSTAL_SCEPTRE_23861":
+  ids: [ 23861 ]
+  type: "BLUNT"
+  attackSpeed: 5
+"CRYSTAL_AXE_23862":
+  ids: [ 23862 ]
+  type: "AXE"
+  attackSpeed: 5
+"CRYSTAL_PICKAXE_23863":
+  ids: [ 23863 ]
+  type: "PICKAXE"
+  attackSpeed: 5
+"CRYSTAL_HARPOON_23864":
+  ids: [ 23864 ]
+  type: "UNARMED"
+  attackSpeed: 5
+"CRYSTAL_HALBERD_BASIC_23895":
+  ids: [ 23895 ]
+  type: "POLEARM"
+  attackSpeed: 4
+"CRYSTAL_HALBERD_ATTUNED_23896":
+  ids: [ 23896 ]
+  type: "POLEARM"
+  attackSpeed: 4
+"CRYSTAL_HALBERD_PERFECTED_23897":
+  ids: [ 23897 ]
+  type: "POLEARM"
+  attackSpeed: 4
+"CRYSTAL_STAFF_BASIC_23898":
+  ids: [ 23898 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"CRYSTAL_STAFF_ATTUNED_23899":
+  ids: [ 23899 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"CRYSTAL_STAFF_PERFECTED_23900":
+  ids: [ 23900 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"CRYSTAL_BOW_BASIC_23901":
+  ids: [ 23901 ]
+  type: "BOW"
+  attackSpeed: 5
+"CRYSTAL_BOW_ATTUNED_23902":
+  ids: [ 23902 ]
+  type: "BOW"
+  attackSpeed: 5
+"CRYSTAL_BOW_PERFECTED_23903":
+  ids: [ 23903 ]
+  type: "BOW"
+  attackSpeed: 5
+"IMBUED_TEPHRA_23907":
+  ids: [ 23907 ]
+  type: "UNARMED"
+  attackSpeed: 3
+"CRYSTAL_BOW_23983":
+  ids: [ 23983 ]
+  type: "BOW"
+  attackSpeed: 5
+"CRYSTAL_HALBERD_23987":
+  ids: [ 23987 ]
+  type: "POLEARM"
+  attackSpeed: 7
+"BLADE_OF_SAELDOR_23995":
+  ids: [ 23995 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"BLADE_OF_SAELDOR_23997":
+  ids: [ 23997 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"CRYSTAL_GRAIL_24000":
+  ids: [ 24000 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"STAFF_OF_BALANCE_24144":
+  ids: [ 24144 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"DECORATIVE_SWORD_24157":
+  ids: [ 24157 ]
+  type: "UNARMED"
+  attackSpeed: 5
+"VOID_KNIGHT_MACE_24181":
+  ids: [ 24181 ]
+  type: "STAFF"
+  attackSpeed: 5
+"SWIFT_BLADE_24219":
+  ids: [ 24219 ]
+  type: "UNARMED"
+  attackSpeed: 3
+"GRANITE_MAUL_24225":
+  ids: [ 24225 ]
+  type: "BLUNT"
+  attackSpeed: 7
+"GRANITE_MAUL_24227":
+  ids: [ 24227 ]
+  type: "BLUNT"
+  attackSpeed: 7
+"SKELETON_LANTERN_24327":
+  ids: [ 24327 ]
+  type: "BLUNT"
+  attackSpeed: 4
+"TWISTED_DRAGON_TROPHY_24372":
+  ids: [ 24372 ]
+  type: "BLUNT"
+  attackSpeed: 4
+"TWISTED_RUNE_TROPHY_24374":
+  ids: [ 24374 ]
+  type: "BLUNT"
+  attackSpeed: 4
+"TWISTED_ADAMANT_TROPHY_24376":
+  ids: [ 24376 ]
+  type: "BLUNT"
+  attackSpeed: 4
+"TWISTED_MITHRIL_TROPHY_24378":
+  ids: [ 24378 ]
+  type: "BLUNT"
+  attackSpeed: 4
+"TWISTED_STEEL_TROPHY_24380":
+  ids: [ 24380 ]
+  type: "BLUNT"
+  attackSpeed: 4
+"TWISTED_IRON_TROPHY_24382":
+  ids: [ 24382 ]
+  type: "BLUNT"
+  attackSpeed: 4
+"TWISTED_BRONZE_TROPHY_24384":
+  ids: [ 24384 ]
+  type: "BLUNT"
+  attackSpeed: 4
+"TWISTED_CANE_24395":
+  ids: [ 24395 ]
+  type: "SPIKED_WEAPON"
+  attackSpeed: 5
+"TWISTED_BANNER_24413":
+  ids: [ 24413 ]
+  type: "BANNER"
+  attackSpeed: 4
+"INQUISITORS_MACE_24417":
+  ids: [ 24417 ]
+  type: "SPIKED_WEAPON"
+  attackSpeed: 4
+"NIGHTMARE_STAFF_24422":
+  ids: [ 24422 ]
+  type: "STAFF"
+  attackSpeed: 5
+"HARMONISED_NIGHTMARE_STAFF_24423":
+  ids: [ 24423 ]
+  type: "STAFF"
+  attackSpeed: 5
+"VOLATILE_NIGHTMARE_STAFF_24424":
+  ids: [ 24424 ]
+  type: "STAFF"
+  attackSpeed: 5
+"ELDRITCH_NIGHTMARE_STAFF_24425":
+  ids: [ 24425 ]
+  type: "STAFF"
+  attackSpeed: 5
+"CARROT_SWORD_24537":
+  ids: [ 24537 ]
+  type: "BLUNT"
+  attackSpeed: 4
+"`24CARAT_SWORD_24539`":
+  ids: [ 24539 ]
+  type: "BLUNT"
+  attackSpeed: 4
+"BLADE_OF_SAELDOR_C_24551":
+  ids: [ 24551 ]
+  type: "UNARMED"
+  attackSpeed: 4
+"VESTAS_BLIGHTED_LONGSWORD_24617":
+  ids: [ 24617 ]
+  type: "UNARMED"
+  attackSpeed: 5
+"VESTAS_BLIGHTED_LONGSWORD_24619":
+  ids: [ 24619 ]
+  type: "UNARMED"
+  attackSpeed: 5
+"RUBY_SICKLE_B_24693":
+  ids: [ 24693 ]
+  type: "UNARMED"
+  attackSpeed: 5
+"ENCHANTED_RUBY_SICKLE_B_24695":
+  ids: [ 24695 ]
+  type: "UNARMED"
+  attackSpeed: 5
+"BLISTERWOOD_SICKLE_24697":
+  ids: [ 24697 ]
+  type: "UNARMED"
+  attackSpeed: 5
+"BLISTERWOOD_FLAIL_24699":
+  ids: [ 24699 ]
+  type: "STAFF"
+  attackSpeed: 5
+"HALLOWED_HAMMER_24727":
+  ids: [ 24727 ]
+  type: "BLUNT"
+  attackSpeed: 4
+"SEVERED_LEG_24792":
+  ids: [ 24792 ]
+  type: "BLUNT"
+  attackSpeed: 4
