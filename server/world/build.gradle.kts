@@ -1,6 +1,6 @@
 @file:Suppress("ConvertLambdaToReference")
 
-import io.guthix.oldscape.server.template.TemplateGenerator
+import io.guthix.oldscape.CodeGenerator
 
 plugins {
     application
@@ -8,7 +8,7 @@ plugins {
     kotlin("plugin.serialization")
 }
 
-apply<TemplateGenerator>()
+apply<CodeGenerator>()
 
 group = "io.guthix.oldscape"
 version = "0.1.0-SNAPSHOT"

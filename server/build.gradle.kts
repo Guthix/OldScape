@@ -1,15 +1,11 @@
 @file:Suppress("ConvertLambdaToReference")
 
-import io.guthix.oldscape.CodeGenerator
-
 plugins {
     application
     id("org.jetbrains.dokka")
     kotlin("jvm")
     kotlin("plugin.serialization")
 }
-
-apply<CodeGenerator>()
 
 group = "io.guthix.oldscape"
 version = "0.1.0-SNAPSHOT"
@@ -25,6 +21,5 @@ val logbackVersion: String by extra("1.2.3")
 val nettyVersion: String by extra("4.1.42.Final")
 val ktSerVersion: String by extra("1.0.1")
 val kamlVersion: String by extra("0.26.0")
-val nettyVersion: String by extra("4.1.42.Final")
 val exposedVersion: String by extra("0.28.1")
 val postgresVersion: String by extra("42.2.18")
