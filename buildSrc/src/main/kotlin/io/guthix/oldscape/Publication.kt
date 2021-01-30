@@ -26,14 +26,14 @@ import org.gradle.plugins.signing.SigningExtension
 import java.net.URI
 
 @Suppress("ConvertLambdaToReference")
-fun Project.registerPublication(publicationName: String) {
+fun Project.registerPublication(publicationName: String, pomName: String) {
     configure<PublishingExtension> {
         repositories {
             mavenCentralRepository()
         }
         publications {
             val publicationProvider = register<MavenPublication>(publicationName) {
-                configurePom(artifactId, description ?: "")
+                configurePom(pomName, description)
             }
             signPublication(publicationProvider)
         }
@@ -49,10 +49,10 @@ private fun RepositoryHandler.mavenCentralRepository() = maven {
     }
 }
 
-private fun MavenPublication.configurePom(projectName: String, desc: String) {
+private fun MavenPublication.configurePom(projectName: String, desc: String?) {
     pom {
         name.set(projectName)
-        description.set(desc)
+        desc?.let { description.set(desc) }
         url.set("https://github.com/guthix/OldScape")
 
         licenses {

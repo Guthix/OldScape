@@ -23,4 +23,7 @@ dependencies {
     dokkaHtmlPlugin(group = "org.jetbrains.dokka", name = "kotlin-as-java-plugin", version = kotlinVersion)
 }
 
-registerPublication(publicationName = "oldscapeCache")
+registerPublication(
+    publicationName = "oldscapeCache",
+    pomName = "oldscape-cache"
+)
