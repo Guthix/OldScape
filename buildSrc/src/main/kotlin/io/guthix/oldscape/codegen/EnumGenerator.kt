@@ -13,12 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.guthix.oldscape.server.template.imp
+package io.guthix.oldscape.codegen
 
+import io.guthix.oldscape.*
 import io.guthix.oldscape.cache.config.EnumConfig
 import io.guthix.oldscape.cache.config.LocationConfig
 import io.guthix.oldscape.cache.config.ObjectConfig
-import io.guthix.oldscape.server.template.*
 import org.gradle.api.Project
 import java.io.IOException
 import java.io.PrintWriter

@@ -13,16 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.guthix.oldscape.server.template.imp
+package io.guthix.oldscape.codegen
 
-import io.guthix.oldscape.server.template.*
+import io.guthix.oldscape.*
 import org.gradle.api.Project
 import java.io.PrintWriter
 import java.nio.file.Path
 
-fun Project.writeIntTemplates(
+fun Project.writeConfigTemplates(
     fileName: String,
-    templateName: String,
+    templateName: String
 ) {
     val enumIds = readNamedIds(fileName)
     val sourceRoot = createSourceTree(this)
@@ -35,10 +35,10 @@ private fun Path.printCodeFile(templateName: String, namedIds: List<NamedId>) {
     PrintWriter(sourceFile).use { pw ->
         pw.printFileHeader()
         pw.println()
-        pw.println("object ${templateName}s {")
+        pw.println("object ${templateName}s : TemplateLoader<$templateName>() {")
         for ((id, configName) in namedIds) {
             val identifier = configNameToIdentifier(id, configName)
-            pw.println("    const val $identifier: Int = $id")
+            pw.println("    val $identifier: $templateName get() = get(${id})")
         }
         pw.println("}")
         pw.flush()

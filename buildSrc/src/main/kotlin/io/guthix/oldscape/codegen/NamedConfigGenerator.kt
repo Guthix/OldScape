@@ -13,12 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.guthix.oldscape.server.template.imp
+package io.guthix.oldscape.codegen
 
 import io.guthix.oldscape.cache.config.NamedConfig
-import io.guthix.oldscape.server.template.configNameToIdentifier
-import io.guthix.oldscape.server.template.createSourceTree
-import io.guthix.oldscape.server.template.printFileHeader
+import io.guthix.oldscape.configNameToIdentifier
+import io.guthix.oldscape.createSourceTree
+import io.guthix.oldscape.printFileHeader
 import org.gradle.api.Project
 import java.io.PrintWriter
 import java.nio.file.Path
