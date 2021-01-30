@@ -44,8 +44,8 @@ class CodeGenerator : Plugin<Project> {
             val sourceSets = target.properties["sourceSets"] as SourceSetContainer
             sourceSets.getByName("main").java.srcDir(sourceSet)
         }
-        val templateGenTask = target.task("templateIdGen") { task ->
-            task.doFirst {
+        val templateGenTask = target.task("templateIdGen") {
+            doFirst {
                 val resourceDir = "${target.projectDir}/src/main/resources"
                 Js5Cache(Js5DiskStore.open(File("$resourceDir/cache").toPath())).use { cache ->
                     val configArchive = cache.readArchive(ConfigArchive.id)

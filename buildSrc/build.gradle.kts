@@ -1,7 +1,7 @@
 @file:Suppress("ConvertLambdaToReference")
 
 plugins {
-    `embedded-kotlin`
+    `kotlin-dsl`
 }
 
 val oldscapeCacheVersion: String by extra("0.1.0")
@@ -9,6 +9,7 @@ val jacksonVersion: String by extra("2.10.2")
 
 repositories {
     mavenCentral()
+    jcenter()
 }
 
 dependencies {
