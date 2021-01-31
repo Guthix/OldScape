@@ -17,6 +17,7 @@ package io.guthix.oldscape
 
 import org.gradle.api.Project
 import org.gradle.api.artifacts.dsl.RepositoryHandler
+import org.gradle.api.component.SoftwareComponent
 import org.gradle.api.provider.Provider
 import org.gradle.api.publish.PublishingExtension
 import org.gradle.api.publish.maven.MavenPublication
@@ -33,7 +34,7 @@ fun Project.registerPublication(publicationName: String, pomName: String) {
         }
         publications {
             val publicationProvider = register<MavenPublication>(publicationName) {
-                configurePom(pomName, description)
+                configurePom(pomName, description, components.getByName("java"))
             }
             signPublication(publicationProvider)
         }
@@ -49,12 +50,12 @@ private fun RepositoryHandler.mavenCentralRepository() = maven {
     }
 }
 
-private fun MavenPublication.configurePom(projectName: String, desc: String?) {
+private fun MavenPublication.configurePom(projectName: String, desc: String?, component: SoftwareComponent) {
     pom {
         name.set(projectName)
         desc?.let { description.set(desc) }
         url.set("https://github.com/guthix/OldScape")
-
+        from(component)
         licenses {
             license {
                 name.set("The Apache Software License, Version 2.0")

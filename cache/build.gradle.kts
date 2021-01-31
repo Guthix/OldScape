@@ -7,7 +7,7 @@ plugins {
     signing
 }
 
-group = "io.guthix.oldscape"
+group = "io.guthix"
 version = "0.1.0"
 description = "A library for modifying OldScape caches"
 
@@ -16,6 +16,11 @@ val logbackVersion: String by extra("1.2.3")
 val kotlinVersion: String by rootProject.extra
 
 kotlin { explicitApi() }
+
+java {
+    withJavadocJar()
+    withSourcesJar()
+}
 
 dependencies {
     api(group = "io.guthix", name = "jagex-store-5", version = jagexStore5Version)

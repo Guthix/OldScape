@@ -1,5 +1,3 @@
-@file:Suppress("ConvertLambdaToReference")
-
 plugins {
     `kotlin-dsl`
 }
