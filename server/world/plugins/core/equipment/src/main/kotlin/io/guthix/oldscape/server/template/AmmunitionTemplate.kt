@@ -16,7 +16,7 @@
 package io.guthix.oldscape.server.template
 
 import io.guthix.oldscape.server.Property
-import io.guthix.oldscape.server.combat.CombatProjectileType
+import io.guthix.oldscape.server.equipment.CombatProjectileType
 import io.guthix.oldscape.server.world.entity.Obj
 import kotlinx.serialization.Serializable
 

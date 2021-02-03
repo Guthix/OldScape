@@ -17,6 +17,7 @@ package io.guthix.oldscape.server.combat
 
 import io.guthix.oldscape.cache.config.EnumConfig
 import io.guthix.oldscape.server.ServerContext
+import io.guthix.oldscape.server.equipment.CombatProjectileType
 import io.guthix.oldscape.server.template.*
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.Character

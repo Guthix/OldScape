@@ -17,4 +17,6 @@ package io.guthix.oldscape.server.template
 
 import io.guthix.oldscape.server.ServerContext
 
+loadTemplates("/template/Ammunition.yaml", ServerContext.objTemplates, ObjTemplate::ammunition)
+loadTemplates("/template/Weapons.yaml", ServerContext.objTemplates, ObjTemplate::weapon)
 loadTemplates("/template/Equipment.yaml", ServerContext.objTemplates, ObjTemplate::equipment)
