@@ -1,7 +1,6 @@
 @file:Suppress("ConvertLambdaToReference")
 
 plugins {
-    application
     id("org.jetbrains.dokka")
     kotlin("jvm")
     kotlin("plugin.serialization")
@@ -10,10 +9,6 @@ plugins {
 group = "io.guthix.oldscape"
 version = "0.1.0-SNAPSHOT"
 description = "An Oldschool Runescape Server Emulator"
-
-application {
-    mainClass.set("io.guthix.oldscape.server.OldScape")
-}
 
 val kCoroutinesVersion: String by rootProject.extra
 val classGraphVersion: String by extra("4.8.53")
