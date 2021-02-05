@@ -80,18 +80,6 @@ class Player internal constructor(
         )
     }
 
-    val animations: StanceSequences by PersistentProperty {
-        StanceSequences(
-            stand = 808,
-            turn = 823,
-            walk = 819,
-            turn180 = 820,
-            turn90CW = 821,
-            turn90CCW = 822,
-            run = 824
-        )
-    }
-
     val itemBag: InventoryManager by PersistentProperty {
         InventoryManager(InventoryIds.ITEM_BAG_93, TopInterfaceManager.INVENTORY_IFID, 0)
     }

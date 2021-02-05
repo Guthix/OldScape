@@ -29,7 +29,6 @@ fun ObjWikiDefinition.toWeightTemplate(servert: ObjWeightTemplate?): ObjWeightTe
 fun ObjWikiDefinition.toEquipmentTemplate(serverT: EquipmentTemplate?): EquipmentTemplate = EquipmentTemplate(
     ids!!,
     slot.toEquipmentType(),
-    coversHair = false, isFullBody = false, coversFace = false,
     StyleBonus(
         attBonusStab ?: 0,
         attBonusSlash ?: 0,
@@ -47,7 +46,7 @@ fun ObjWikiDefinition.toEquipmentTemplate(serverT: EquipmentTemplate?): Equipmen
     prayerBonus ?: 0
 )
 
-fun ObjWikiDefinition.toWeaponTemplate(serverT: WeaponTemplate?): WeaponTemplate = WeaponTemplate(
+fun ObjWikiDefinition.toWeaponTemplate(serverT: AttackTemplate?): AttackTemplate = AttackTemplate(
     ids!!,
     combatStyle.toWeaponType() ?: WeaponType.UNARMED,
     attackSpeed ?: 0,

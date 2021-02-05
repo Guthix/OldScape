@@ -22,27 +22,27 @@ import io.guthix.oldscape.server.stat.AttackType
 import io.guthix.oldscape.server.world.entity.Obj
 import kotlinx.serialization.Serializable
 
-val Obj.weaponType: WeaponType get() = weaponTemplate.type
+val Obj.weaponType: WeaponType get() = attackTemplate.type
 
-val Obj.baseAttackSpeed: Int get() = weaponTemplate.attackSpeed
+val Obj.baseAttackSpeed: Int get() = attackTemplate.attackSpeed
 
 val Obj.baseAttackRange: TileUnit
-    get() = weaponTemplate.attackRange?.tiles ?: throw TemplateNotFoundException(id, Obj::baseAttackRange)
+    get() = attackTemplate.attackRange?.tiles ?: throw TemplateNotFoundException(id, Obj::baseAttackRange)
 
 val Obj.attackAnim: Int get() = weaponSequences.attack
 
 val Obj.blockAnim: Int get() = weaponSequences.defence
 
 private val Obj.weaponSequences: WeaponSequences
-    get() = weaponTemplate.sequences ?: throw TemplateNotFoundException(id, Obj::weaponSequences)
+    get() = attackTemplate.sequences ?: throw TemplateNotFoundException(id, Obj::weaponSequences)
 
-private val Obj.weaponTemplate: WeaponTemplate
-    get() = template.weapon ?: throw TemplateNotFoundException(id, WeaponTemplate::class)
+private val Obj.attackTemplate: AttackTemplate
+    get() = template.attack ?: throw TemplateNotFoundException(id, AttackTemplate::class)
 
-internal val ObjTemplate.weapon: WeaponTemplate? by Property { null }
+internal val ObjTemplate.attack: AttackTemplate? by Property { null }
 
 @Serializable
-data class WeaponTemplate(
+data class AttackTemplate(
     override val ids: List<Int>,
     val type: WeaponType,
     val attackSpeed: Int,

@@ -348,7 +348,7 @@ class PlayerInfoPacket(
                 tempBuf.writeShort(512 + it.id)
             } ?: run { tempBuf.writeByte(0) }
             player.equipment.body?.let { // write arms
-                if (player.equipment.isFullBody) {
+                if (player.equipment.body?.isFullBody == true) {
                     tempBuf.writeByte(0)
                 } else tempBuf.writeShort(256 + player.style.arms)
             } ?: run { tempBuf.writeShort(256 + player.style.arms) }
@@ -356,7 +356,7 @@ class PlayerInfoPacket(
                 tempBuf.writeShort(512 + it.id)
             } ?: run { tempBuf.writeShort(256 + player.style.legs) }
             player.equipment.head?.let { // write hair
-                if (player.equipment.coversHair) {
+                if (player.equipment.head?.coversHair == true) {
                     tempBuf.writeByte(0)
                 } else tempBuf.writeShort(256 + player.style.hair)
             } ?: run { tempBuf.writeShort(256 + player.style.hair) }
@@ -368,7 +368,7 @@ class PlayerInfoPacket(
             } ?: run { tempBuf.writeShort(256 + player.style.feet) }
             if (player.gender == Gender.MALE) { //tBuf.write beard
                 player.equipment.head?.let {
-                    if (player.equipment.coversFace) {
+                    if (player.equipment.head?.coversFace == true) {
                         tempBuf.writeByte(0)
                     } else tempBuf.writeShort(256 + player.style.beard)
                 } ?: run { tempBuf.writeShort(256 + player.style.beard) }
@@ -381,13 +381,13 @@ class PlayerInfoPacket(
             tempBuf.writeByte(player.colours.feet)
             tempBuf.writeByte(player.colours.skin)
 
-            tempBuf.writeShort(player.animations.stand)
-            tempBuf.writeShort(player.animations.turn)
-            tempBuf.writeShort(player.animations.walk)
-            tempBuf.writeShort(player.animations.turn180)
-            tempBuf.writeShort(player.animations.turn90CW)
-            tempBuf.writeShort(player.animations.turn90CCW)
-            tempBuf.writeShort(player.animations.run)
+            tempBuf.writeShort(player.equipment.weapon?.stance?.stand ?: 808)
+            tempBuf.writeShort(player.equipment.weapon?.stance?.turn ?: 808)
+            tempBuf.writeShort(player.equipment.weapon?.stance?.walk ?: 808)
+            tempBuf.writeShort(player.equipment.weapon?.stance?.turn180 ?: 808)
+            tempBuf.writeShort(player.equipment.weapon?.stance?.turn90CW ?: 808)
+            tempBuf.writeShort(player.equipment.weapon?.stance?.turn90CCW ?: 808)
+            tempBuf.writeShort(player.equipment.weapon?.stance?.run ?: 808)
             tempBuf.writeStringCP1252(player.username) // username
             tempBuf.writeByte(player.combatLevel) // combat level
             tempBuf.writeShort(0) // skillId level
@@ -429,9 +429,7 @@ class PlayerInfoPacket(
 
 
         val nameModifiers: PlayerUpdateType = PlayerUpdateType(8, 0x100) { player ->
-            player.nameModifiers.forEach { entry ->
-                writeStringCP1252(entry)
-            }
+            player.nameModifiers.forEach(::writeStringCP1252)
         }
 
         val hit: PlayerUpdateType = PlayerUpdateType(9, 0x10) { player ->

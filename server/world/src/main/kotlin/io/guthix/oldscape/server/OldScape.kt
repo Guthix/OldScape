@@ -32,7 +32,13 @@ import io.guthix.oldscape.server.event.WorldInitializedEvent
 import io.guthix.oldscape.server.net.Huffman
 import io.guthix.oldscape.server.net.OldScapeServer
 import io.guthix.oldscape.server.net.game.GamePacketDecoder
+import io.guthix.oldscape.server.plugin.Script
+import io.guthix.oldscape.server.template.ObjTemplate
+import io.guthix.oldscape.server.template.loadTemplates
 import io.guthix.oldscape.server.world.World
+import io.guthix.oldscape.server.world.entity.interest.bodyGear
+import io.guthix.oldscape.server.world.entity.interest.headGear
+import io.guthix.oldscape.server.world.entity.interest.weapon
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json

@@ -15,8 +15,12 @@
  */
 package io.guthix.oldscape.server.world.entity.interest
 
+import io.guthix.oldscape.server.Property
 import io.guthix.oldscape.server.PropertyHolder
 import io.guthix.oldscape.server.template.InventoryIds
+import io.guthix.oldscape.server.template.ObjTemplate
+import io.guthix.oldscape.server.template.Template
+import io.guthix.oldscape.server.template.TemplateNotFoundException
 import io.guthix.oldscape.server.world.entity.Obj
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.Transient
@@ -41,10 +45,49 @@ class EquipmentManager : InventoryManager(InventoryIds.EQUIPMENT_94), PropertyHo
     val ring: Obj? get() = objs[EquipmentType.RING.slot]
     val ammunition: Obj? get() = objs[EquipmentType.AMMUNITION.slot]
 
-    var coversHair: Boolean = false
-    var isFullBody: Boolean = false
-    var coversFace: Boolean = false
-
     @Transient
     override val properties: MutableMap<KProperty<*>, Any?> = mutableMapOf()
 }
+
+private val Obj.bodyGearTemplate: BodyGearTemplate
+    get() = template.bodyGear ?: throw TemplateNotFoundException(id, BodyGearTemplate::class)
+
+internal val ObjTemplate.bodyGear: BodyGearTemplate? by Property { null }
+
+
+internal val Obj.isFullBody get() = bodyGearTemplate.isFullBody
+
+@Serializable
+data class BodyGearTemplate(
+    override val ids: List<Int>,
+    val isFullBody: Boolean
+) : Template
+
+internal val Obj.coversHair get() = headGearTemplate.coversHair
+
+internal val Obj.coversFace get() = headGearTemplate.coversFace
+
+private val Obj.headGearTemplate: HeadGearTemplate
+    get() = template.headGear ?: throw TemplateNotFoundException(id, HeadGearTemplate::class)
+
+internal val ObjTemplate.headGear: HeadGearTemplate? by Property { null }
+
+@Serializable
+data class HeadGearTemplate(
+    override val ids: List<Int>,
+    val coversHair: Boolean,
+    val coversFace: Boolean
+) : Template
+
+internal val Obj.stance get() = weaponTemplate.stance
+
+private val Obj.weaponTemplate: WeaponTemplate
+    get() = template.weapon ?: throw TemplateNotFoundException(id, WeaponTemplate::class)
+
+internal val ObjTemplate.weapon: WeaponTemplate? by Property { null }
+
+@Serializable
+data class WeaponTemplate(
+    override val ids: List<Int>,
+    val stance: StanceSequences
+) : Template

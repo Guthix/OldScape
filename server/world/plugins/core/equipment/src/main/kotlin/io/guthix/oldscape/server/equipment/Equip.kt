@@ -30,13 +30,10 @@ import io.guthix.oldscape.server.world.entity.interest.EquipmentManager
 import io.guthix.oldscape.server.world.entity.interest.EquipmentType
 
 fun Player.equip(world: World, obj: Obj) {
-    obj.template.equipment?.let { (_, nType, coversHair, isFullBody, coversFace) ->
+    obj.template.equipment?.let { (_, nType) ->
         nType?.let { type ->
             val old = equipment[type.slot]
             equipment[type.slot] = obj
-            coversFace?.let { equipment.coversFace = it }
-            coversHair?.let { equipment.coversFace = it }
-            isFullBody?.let { equipment.coversFace = it }
             equipment.updateBonuses(old, obj)
             old?.let { itemBag.add(old) }
             updateAppearance()
@@ -62,11 +59,6 @@ internal val buttonToSlots = mapOf(
 fun Player.unequip(equipmentType: EquipmentType, world: World): Obj? {
     val obj = equipment.removeFromSlot(equipmentType.slot) ?: return null
     equipment.removeBonuses(obj)
-    obj.template.equipment?.let { (_, _, coversHair, isFullBody, coversFace) ->
-        if (coversFace == true) equipment.coversFace = false
-        if (coversHair == true) equipment.coversHair = false
-        if (isFullBody == true) equipment.isFullBody = false
-    }
     updateAppearance()
     EventBus.schedule(ObjUnEquipedEvent(obj, this, world))
     return obj

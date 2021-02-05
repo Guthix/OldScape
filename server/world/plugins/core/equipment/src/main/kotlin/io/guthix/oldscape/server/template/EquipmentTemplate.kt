@@ -46,9 +46,6 @@ internal val ObjTemplate.equipment: EquipmentTemplate? by Property { null }
 data class EquipmentTemplate(
     override val ids: List<Int>,
     val type: EquipmentType? = null,
-    val coversHair: Boolean? = null,
-    val isFullBody: Boolean? = null,
-    val coversFace: Boolean? = null,
     val attackBonus: StyleBonus? = null,
     val strengthBonus: CombatBonus? = null,
     val defenceBonus: StyleBonus? = null,

@@ -78,7 +78,7 @@ object YamlDownloader {
 
         val weaponDefs = objWikiConfigs.filter { it.combatStyle != null }
         writeTemplate(weaponDefs,
-            "server/plugins/core/combat/src/main/resources/template", "Weapons.yaml",
+            "server/plugins/core/combat/src/main/resources/template", "Attack.yaml",
             ObjWikiDefinition::toWeaponTemplate
         )
 

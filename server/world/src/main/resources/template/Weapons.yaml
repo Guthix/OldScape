@@ -1,0 +1,10 @@
+"STAFF_OF_AIR_1381":
+  ids: [ 1381 ]
+  stance:
+    stand: 813
+    turn: 1209
+    walk: 1205
+    turn180: 1206
+    turn90CW: 1207
+    turn90CCW: 1208
+    run: 1210
