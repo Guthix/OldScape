@@ -123,7 +123,7 @@ fun Project.readNamedIds(name: String): List<NamedId> {
     val resourceDir = "${projectDir}/src/main/resources"
     return ObjectMapper(YAMLFactory()).registerKotlinModule()
         .readValue(
-            File(resourceDir).toPath().resolve("template/$name.yaml").toFile(),
+            File(resourceDir).toPath().resolve("names/$name.yaml").toFile(),
             object : TypeReference<List<NamedId>>() {}
         )
 }
