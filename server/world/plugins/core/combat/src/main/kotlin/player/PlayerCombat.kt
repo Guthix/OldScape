@@ -21,27 +21,12 @@ import io.guthix.oldscape.dim.tiles
 import io.guthix.oldscape.server.PersistentProperty
 import io.guthix.oldscape.server.Property
 import io.guthix.oldscape.server.core.combat.CombatSpell
-import io.guthix.oldscape.server.core.combat.dmg.maxMagicHit
-import io.guthix.oldscape.server.core.combat.dmg.maxMeleeHit
-import io.guthix.oldscape.server.core.combat.dmg.maxRangeHit
-import io.guthix.oldscape.server.core.combat.event.NpcHitByPlayerEvent
-import io.guthix.oldscape.server.core.combat.inCombatWith
 import io.guthix.oldscape.server.core.equipment.template.*
-import io.guthix.oldscape.server.core.pathing.DestinationRange
-import io.guthix.oldscape.server.core.pathing.DestinationRectangleDirect
-import io.guthix.oldscape.server.core.pathing.breadthFirstSearch
-import io.guthix.oldscape.server.core.pathing.simplePathSearch
 import io.guthix.oldscape.server.core.stat.AttackType
-import io.guthix.oldscape.server.event.EventBus
-import io.guthix.oldscape.server.task.NormalTask
 import io.guthix.oldscape.server.template.*
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.Npc
 import io.guthix.oldscape.server.world.entity.Player
-import io.guthix.oldscape.server.world.entity.SpotAnimation
-import io.guthix.oldscape.server.world.entity.interest.EquipmentType
-import template.*
-import kotlin.random.Random
 
 val Player.selectedTypes: IntArray by Property {
     IntArray(WeaponType.values().size)
@@ -73,161 +58,12 @@ var Player.autoRetaliate: Boolean by PersistentProperty {
     true
 }
 
-fun Player.attackNpc(npc: Npc, world: World): Unit = when (currentStyle.attackType) {
-    AttackType.RANGED -> startRangeAttack(npc, world)
+val Player.currentMagicSpell: CombatSpell? by Property { null }
+
+fun Player.attackNpc(npc: Npc, world: World): Unit = when  {
+    currentStyle.attackType == AttackType.RANGED -> startRangeAttack(npc, world)
+    currentStyle.attackType == AttackType.MAGIC && currentMagicSpell != null -> {
+        startMagicAttack(npc, world, currentMagicSpell!!)
+    }
     else -> startMeleeAttack(npc, world)
-}
-
-fun Player.startMeleeAttack(npc: Npc, world: World) {
-    cancelTasks(NormalTask)
-    var npcDestination = DestinationRectangleDirect(npc, world)
-    path = breadthFirstSearch(pos, npcDestination, size, findAlternative = true, world)
-    addTask(NormalTask) {
-        inCombatWith = npc
-        while (true) { // start player combat
-            wait { npcDestination.reached(pos.x, pos.y, size) }
-            animate(attackSequence)
-            EventBus.schedule(NpcHitByPlayerEvent(this@startMeleeAttack, npc, world, maxMeleeHit()))
-            wait(ticks = attackSpeed)
-        }
-    }.finalize {
-        inCombatWith = null
-    }
-    addTask(NormalTask) {
-        inCombatWith = npc
-        turnToLock(npc)
-        wait { npcDestination.reached(pos.x, pos.y, size) }
-        while (true) {
-            wait { npc.lastPos != npc.pos }
-            npcDestination = DestinationRectangleDirect(npc, world)
-            path = simplePathSearch(pos, npcDestination, size, world)
-            wait(ticks = 1)
-        }
-    }.finalize {
-        turnToLock(null)
-    }
-}
-
-fun Player.startRangeAttack(npc: Npc, world: World) {
-    cancelTasks(NormalTask)
-    var npcDestination = DestinationRange(npc, attackRange, world)
-    path = breadthFirstSearch(pos, npcDestination, size, true, world)
-    addTask(NormalTask) {
-        inCombatWith = npc
-        main@ while (true) { // start player combat
-            wait { npcDestination.reached(pos.x, pos.y, size) }
-            val ammunition = equipment.ammunition
-            if (ammunition == null || ammunition.quantity <= 0) {
-                senGameMessage("There is no ammo left in your quiver.")
-                cancel()
-                break@main
-            }
-            equipment[EquipmentType.AMMUNITION.slot] = ammunition.apply { quantity-- }
-            animate(attackSequence)
-            spotAnimate(ammunition.drawBackSpotAnim, ammunition.drawBackSpotAnimHeight)
-            val projectile = world.addProjectile(ammunition.ammunitionProjectile, pos, npc)
-            world.addTask(NormalTask) { // projectile task
-                val oldNpcPos = npc.pos
-                wait(ticks = projectile.lifeTimeServerTicks - 1)
-                if (Random.nextDouble(1.0) < 0.8) world.addObject(ammunition.copy(quantity = 1), oldNpcPos)
-                EventBus.schedule(NpcHitByPlayerEvent(this@startRangeAttack, npc, world, maxRangeHit()))
-            }
-            wait(ticks = attackSpeed)
-        }
-    }.finalize {
-        inCombatWith = null
-    }
-    addTask(NormalTask) {
-        turnToLock(npc)
-        wait { npcDestination.reached(pos.x, pos.y, size) }
-        while (true) {
-            wait { npc.lastPos != npc.pos }
-            npcDestination = DestinationRange(npc, attackRange, world)
-            path = simplePathSearch(pos, npcDestination, size, world)
-            wait(ticks = 1)
-        }
-    }.finalize {
-        turnToLock(null)
-    }
-}
-
-val spashAnimation: SpotAnimation = SpotAnimation(SpotAnimIds.SPLASH_85, height = 123)
-
-fun Player.magicAttack(
-    npc: Npc,
-    world: World,
-    spellTemplate: CombatSpell
-) {
-    cancelTasks(NormalTask)
-    val npcDestination = DestinationRange(npc, attackRange, world)
-    path = breadthFirstSearch(pos, npcDestination, size, true, world)
-    addTask(NormalTask) {
-        wait { npcDestination.reached(pos.x, pos.y, size) }
-        animate(spellTemplate.castAnim)
-        spotAnimate(spellTemplate.castSpotAnim)
-        val projectile = world.addProjectile(spellTemplate.projectile, pos, npc)
-        world.addTask(NormalTask) {
-            wait(ticks = projectile.lifeTimeServerTicks - 1)
-            EventBus.schedule(NpcHitByPlayerEvent(
-                this@magicAttack,
-                npc,
-                world,
-                maxMagicHit(spellTemplate.hit(world, this@magicAttack, npc)),
-                spotAnimOnSuccess = spellTemplate.impactSpotAnim,
-                spotAnimOnFail = spashAnimation
-            ))
-        }
-        wait(ticks = attackSpeed)
-    }.finalize {
-        inCombatWith = null
-    }
-    addTask(NormalTask) {
-        wait { npcDestination.reached(pos.x, pos.y, size) }
-        turnTo(npc)
-    }
-}
-
-internal fun Player.startMagicAttack(
-    npc: Npc,
-    world: World,
-    spellTemplate: CombatSpell
-) {
-    cancelTasks(NormalTask)
-    var npcDestination = DestinationRange(npc, attackRange, world)
-    path = breadthFirstSearch(pos, npcDestination, size, true, world)
-    addTask(NormalTask) {
-        inCombatWith = npc
-        while (true) { // start player combat
-            wait { npcDestination.reached(pos.x, pos.y, size) }
-            animate(spellTemplate.castAnim)
-            spotAnimate(spellTemplate.castSpotAnim)
-            val projectile = world.addProjectile(spellTemplate.projectile, pos, npc)
-            world.addTask(NormalTask) {
-                wait(ticks = projectile.lifeTimeServerTicks - 1)
-                EventBus.schedule(NpcHitByPlayerEvent(
-                    this@startMagicAttack,
-                    npc,
-                    world,
-                    maxMagicHit(spellTemplate.hit(world, this@startMagicAttack, npc)),
-                    spotAnimOnSuccess = spellTemplate.impactSpotAnim,
-                    spotAnimOnFail = spashAnimation
-                ))
-            }
-            wait(ticks = attackSpeed)
-        }
-    }.finalize {
-        inCombatWith = null
-    }
-    addTask(NormalTask) {
-        turnToLock(npc)
-        wait { npcDestination.reached(pos.x, pos.y, size) }
-        while (true) {
-            wait { npc.lastPos != npc.pos }
-            npcDestination = DestinationRange(npc, attackRange, world)
-            path = simplePathSearch(pos, npcDestination, size, world)
-            wait(ticks = 1)
-        }
-    }.finalize {
-        turnToLock(null)
-    }
 }
