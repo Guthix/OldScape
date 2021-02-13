@@ -75,11 +75,10 @@ var Player.autoRetaliate: Boolean by PersistentProperty {
 
 fun Player.attackNpc(npc: Npc, world: World): Unit = when (currentStyle.attackType) {
     AttackType.RANGED -> startRangeAttack(npc, world)
-    AttackType.MAGIC -> startMagicAttack(npc, world, CombatSpell.WIND_STRIKE)
     else -> startMeleeAttack(npc, world)
 }
 
-internal fun Player.startMeleeAttack(npc: Npc, world: World) {
+fun Player.startMeleeAttack(npc: Npc, world: World) {
     cancelTasks(NormalTask)
     var npcDestination = DestinationRectangleDirect(npc, world)
     path = breadthFirstSearch(pos, npcDestination, size, findAlternative = true, world)
@@ -109,7 +108,7 @@ internal fun Player.startMeleeAttack(npc: Npc, world: World) {
     }
 }
 
-internal fun Player.startRangeAttack(npc: Npc, world: World) {
+fun Player.startRangeAttack(npc: Npc, world: World) {
     cancelTasks(NormalTask)
     var npcDestination = DestinationRange(npc, attackRange, world)
     path = breadthFirstSearch(pos, npcDestination, size, true, world)
@@ -154,7 +153,7 @@ internal fun Player.startRangeAttack(npc: Npc, world: World) {
 
 val spashAnimation: SpotAnimation = SpotAnimation(SpotAnimIds.SPLASH_85, height = 123)
 
-internal fun Player.magicAttack(
+fun Player.magicAttack(
     npc: Npc,
     world: World,
     spellTemplate: CombatSpell

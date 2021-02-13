@@ -15,13 +15,10 @@
  */
 package io.guthix.oldscape.server.core.combat.player
 
-import io.guthix.oldscape.server.ServerContext
-import io.guthix.oldscape.server.core.combat.CombatSpell
 import io.guthix.oldscape.server.core.combat.dmg.calcHit
 import io.guthix.oldscape.server.core.combat.event.PlayerHitByNpcEvent
 import io.guthix.oldscape.server.core.combat.inCombatWith
 import io.guthix.oldscape.server.core.damage.hit
-import io.guthix.oldscape.server.event.IfOnNpcEvent
 import io.guthix.oldscape.server.event.NpcClickEvent
 import io.guthix.oldscape.server.task.NormalTask
 
@@ -52,29 +49,3 @@ on(PlayerHitByNpcEvent::class).then {
         spotAnimOnSuccess?.let(player::spotAnimate)
     }
 }
-
-CombatSpell.values().forEach { spell ->
-    on(IfOnNpcEvent::class)
-        .where { interfaceId == spell.component.interfaceId && interfaceSlotId == spell.component.slot }.then {
-            if (player.itemBag.remove(spell.spellRune1, spell.spellRune1Amount) == null) {
-                player.senGameMessage(
-                    "You do not have enough ${ServerContext.objTemplates[spell.spellRune1].name}s to cast this spell."
-                )
-                return@then
-            }
-            if (player.itemBag.remove(spell.spellRune2, spell.spellRune2Amount) == null) {
-                player.senGameMessage(
-                    "You do not have enough ${ServerContext.objTemplates[spell.spellRune2].name}s to cast this spell."
-                )
-                return@then
-            }
-            if (player.itemBag.remove(spell.spellRune3, spell.spellRune3Amount) == null) {
-                player.senGameMessage(
-                    "You do not have enough ${ServerContext.objTemplates[spell.spellRune3].name}s to cast this spell."
-                )
-                return@then
-            }
-            player.magicAttack(npc, world, spell)
-        }
-}
-
