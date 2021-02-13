@@ -132,6 +132,7 @@ fun PrintWriter.printFileHeader(vararg supressions: String) {
     print("@file:Suppress(\"PropertyName\", \"ObjectPropertyName\"")
     supressions.forEach { print(", \"$it\"") }
     println(")")
+    println()
     println("package ${CodeGenerator.packageName}")
 }
 
