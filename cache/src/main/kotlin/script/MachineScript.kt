@@ -57,13 +57,15 @@ public data class MachineScript(
 
     override fun toString(): String {
         val strBuilder = StringBuilder()
-        strBuilder.append("""
+        strBuilder.append(
+            """
             id: $id
             localIntCount: $localIntCount
             localStringCount: $localStringCount
             intArgumentCount: $intArgumentCount
             stringArgumentCount: $stringArgumentCount
-        """.trimIndent())
+        """.trimIndent()
+        )
         strBuilder.append("\n")
         instructions.forEach { instruction ->
             strBuilder.append(String.format("%-22s", instruction.name))

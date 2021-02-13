@@ -23,7 +23,7 @@ import io.guthix.oldscape.server.Property
 import io.guthix.oldscape.server.core.combat.CombatSpell
 import io.guthix.oldscape.server.core.equipment.template.*
 import io.guthix.oldscape.server.core.stat.AttackType
-import io.guthix.oldscape.server.template.*
+import io.guthix.oldscape.server.template.SequenceIds
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.Npc
 import io.guthix.oldscape.server.world.entity.Player
@@ -60,7 +60,7 @@ var Player.autoRetaliate: Boolean by PersistentProperty {
 
 val Player.currentMagicSpell: CombatSpell? by Property { null }
 
-fun Player.attackNpc(npc: Npc, world: World): Unit = when  {
+fun Player.attackNpc(npc: Npc, world: World): Unit = when {
     currentStyle.attackType == AttackType.RANGED -> startRangeAttack(npc, world)
     currentStyle.attackType == AttackType.MAGIC && currentMagicSpell != null -> {
         startMagicAttack(npc, world, currentMagicSpell!!)

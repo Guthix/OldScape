@@ -123,8 +123,9 @@ private fun Path.printCodeFile(
                     }
                     pw.println("    )")
                 } else {
-                    pw.println("    val $identifier: Map<$keyType, $valueType> get() = " +
-                        "ServerContext.enumTemplates[${extraConfig.id}] as Map<$keyType, $valueType>"
+                    pw.println(
+                        "    val $identifier: Map<$keyType, $valueType> get() = " +
+                            "ServerContext.enumTemplates[${extraConfig.id}] as Map<$keyType, $valueType>"
                     )
                 }
             }

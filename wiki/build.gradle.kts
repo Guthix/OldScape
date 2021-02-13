@@ -64,7 +64,8 @@ allprojects {
                     scm {
                         connection.set("scm:git:git://$gitSuffix")
                         developerConnection.set("scm:git:ssh://$gitSuffix")
-                        url.set(repoUrl
+                        url.set(
+                            repoUrl
                         )
                     }
                     developers {

@@ -52,7 +52,8 @@ class OldScapeServer(
                 childHandler(object : ChannelInitializer<SocketChannel>() {
                     override fun initChannel(channel: SocketChannel) {
                         channel.pipeline().addLast(ServiceDecoder::class.qualifiedName, ServiceDecoder())
-                        channel.pipeline().addLast(ServiceHandler::class.qualifiedName,
+                        channel.pipeline().addLast(
+                            ServiceHandler::class.qualifiedName,
                             ServiceHandler(revision, rsaExp, rsaMod, world, store)
                         )
                     }

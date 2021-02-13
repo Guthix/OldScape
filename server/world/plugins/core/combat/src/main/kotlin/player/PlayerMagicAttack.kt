@@ -15,7 +15,6 @@
  */
 package io.guthix.oldscape.server.core.combat.player
 
-import io.guthix.oldscape.server.Property
 import io.guthix.oldscape.server.core.combat.CombatSpell
 import io.guthix.oldscape.server.core.combat.dmg.maxMagicHit
 import io.guthix.oldscape.server.core.combat.event.NpcHitByPlayerEvent

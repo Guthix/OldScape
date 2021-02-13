@@ -27,9 +27,10 @@ fun exportObj(model: Model, textureArchive: TextureArchive, objWriter: PrintWrit
     objWriter.println("mtllib " + model.id + ".mtl")
     objWriter.println("o rsmodel")
     for (i in 0 until model.vertexCount) {
-        objWriter.println("v " + model.vertexPositionsX!![i]
-            + " " + model.vertexPositionsY!![i] * -1
-            + " " + model.vertexPositionsZ!![i] * -1
+        objWriter.println(
+            "v " + model.vertexPositionsX!![i]
+                + " " + model.vertexPositionsY!![i] * -1
+                + " " + model.vertexPositionsZ!![i] * -1
         )
     }
     if (model.triangleTextures != null) {

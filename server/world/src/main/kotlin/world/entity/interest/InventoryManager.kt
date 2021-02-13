@@ -154,13 +154,17 @@ open class InventoryManager(
         val futures = mutableListOf<ChannelFuture>()
         if (changes.isNotEmpty()) {
             if (changes.size == objCount) { // TODO use better heuristic
-                futures.add(player.ctx.write(
-                    UpdateInvFullPacket(interfaceId, interfaceSlotId, invId, objs.toList())
-                ))
+                futures.add(
+                    player.ctx.write(
+                        UpdateInvFullPacket(interfaceId, interfaceSlotId, invId, objs.toList())
+                    )
+                )
             } else {
-                futures.add(player.ctx.write(
-                    UpdateInvPartialPacket(interfaceId, interfaceSlotId, invId, changes.toMap())
-                ))
+                futures.add(
+                    player.ctx.write(
+                        UpdateInvPartialPacket(interfaceId, interfaceSlotId, invId, changes.toMap())
+                    )
+                )
             }
         }
         return futures

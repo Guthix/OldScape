@@ -18,7 +18,6 @@ package io.guthix.oldscape.server.core.music.template
 import io.guthix.oldscape.dim.floors
 import io.guthix.oldscape.dim.mapsquares
 import io.guthix.oldscape.server.core.music.ZoneMusic
-import io.guthix.oldscape.server.core.music.musicTrack
 import io.guthix.oldscape.server.event.WorldInitializedEvent
 import io.guthix.oldscape.server.readYaml
 

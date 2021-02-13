@@ -179,13 +179,16 @@ class World internal constructor(
                 request
             )
             request.ctx.writeAndFlush(LoginResponse(player.index, player.rights))
-            request.ctx.pipeline().replace(LoginDecoder::class.qualifiedName, GameDecoder::class.qualifiedName,
+            request.ctx.pipeline().replace(
+                LoginDecoder::class.qualifiedName, GameDecoder::class.qualifiedName,
                 GameDecoder(request.isaacPair.decodeGen, player, this)
             )
-            request.ctx.pipeline().replace(LoginHandler::class.qualifiedName, GameHandler::class.qualifiedName,
+            request.ctx.pipeline().replace(
+                LoginHandler::class.qualifiedName, GameHandler::class.qualifiedName,
                 GameHandler(player, this)
             )
-            request.ctx.pipeline().replace(LoginEncoder::class.qualifiedName, GameEncoder::class.qualifiedName,
+            request.ctx.pipeline().replace(
+                LoginEncoder::class.qualifiedName, GameEncoder::class.qualifiedName,
                 GameEncoder(request.isaacPair.encodeGen)
             )
             EventBus.schedule(LoginEvent(player, this))
@@ -339,7 +342,8 @@ class World internal constructor(
         }
 
         private fun World.addLocByDef(msX: MapsquareUnit, msY: MapsquareUnit, locDef: MapLocDefinition) = addStaticLoc(
-            Loc(locDef.id,
+            Loc(
+                locDef.id,
                 locDef.type,
                 Tile(locDef.floor.floors, msX.inTiles + locDef.localX.tiles, msY.inTiles + locDef.localY.tiles),
                 locDef.orientation

@@ -418,7 +418,8 @@ class PlayerInfoPacket(
             writeByteNeg(player.rights)
             writeByteNeg(0) // some boolean
             val compressed = Unpooled.compositeBuffer(2).apply { // TODO use pooling
-                addComponents(true,
+                addComponents(
+                    true,
                     Unpooled.buffer(2).apply { writeSmallSmart(player.publicMessage!!.length) },
                     Unpooled.wrappedBuffer(Huffman.compress(player.publicMessage!!.message))
                 )

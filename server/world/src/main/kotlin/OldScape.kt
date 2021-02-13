@@ -56,8 +56,10 @@ object OldScape {
             Js5HeapStore.open(it, appendVersions = false)
         }
         val cache = Js5Cache(store)
-        store.write(Js5Store.MASTER_INDEX, Js5Store.MASTER_INDEX, Js5Container(
-            cache.generateValidator(includeWhirlpool = false, includeSizes = false).encode()).encode()
+        store.write(
+            Js5Store.MASTER_INDEX, Js5Store.MASTER_INDEX, Js5Container(
+                cache.generateValidator(includeWhirlpool = false, includeSizes = false).encode()
+            ).encode()
         )
 
         val configArchive = cache.readArchive(ConfigArchive.id)

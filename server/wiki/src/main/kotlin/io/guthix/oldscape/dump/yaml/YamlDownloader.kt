@@ -71,19 +71,22 @@ object YamlDownloader {
         }
 
         val equipmentDefs = objWikiConfigs.filter { it.isEquipable == true }
-        writeTemplate(equipmentDefs,
+        writeTemplate(
+            equipmentDefs,
             "server/plugins/core/equipment/src/main/resources/template", "Equipment.yaml",
             ObjWikiDefinition::toEquipmentTemplate
         )
 
         val weaponDefs = objWikiConfigs.filter { it.combatStyle != null }
-        writeTemplate(weaponDefs,
+        writeTemplate(
+            weaponDefs,
             "server/plugins/core/combat/src/main/resources/template", "Attack.yaml",
             ObjWikiDefinition::toWeaponTemplate
         )
 
         val weightDefs = objWikiConfigs.filter { it.weight != null }
-        writeTemplate(weightDefs,
+        writeTemplate(
+            weightDefs,
             "server/plugins/core/obj/src/main/resources/template", "ObjWeights.yaml",
             ObjWikiDefinition::toWeightTemplate
         )

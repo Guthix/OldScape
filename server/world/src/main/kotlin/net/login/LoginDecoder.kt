@@ -83,8 +83,11 @@ class LoginDecoder(
         }
         val decodeSeed = IntArray(XTEA_KEY_SIZE) { encodeSeed[it] + 50 }
         val isaacPair = IsaacRandomPair(IsaacRandom(decodeSeed), IsaacRandom(encodeSeed))
-        out.add(LoginRequest(loginType, revision, authType, sessionId, uniqueId, userName, password, clientSettings,
-            machineSettings, crcs, isaacPair, ctx)
+        out.add(
+            LoginRequest(
+                loginType, revision, authType, sessionId, uniqueId, userName, password, clientSettings,
+                machineSettings, crcs, isaacPair, ctx
+            )
         )
     }
 
@@ -128,7 +131,8 @@ class LoginDecoder(
         readString0CP1252()
         skipBytes(18)
         readString0CP1252()
-        return MachineSettings(operatingSystem, is64Bit, osVersion, javaVendor, javaVersionMajor, javaVersionMinor,
+        return MachineSettings(
+            operatingSystem, is64Bit, osVersion, javaVendor, javaVersionMajor, javaVersionMinor,
             javaVersionPatch, maxMemory, availableProcessors
         )
     }

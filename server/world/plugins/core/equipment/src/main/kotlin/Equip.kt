@@ -16,13 +16,12 @@
 package io.guthix.oldscape.server.core.equipment
 
 import io.guthix.oldscape.server.Property
-import io.guthix.oldscape.server.event.EventBus
 import io.guthix.oldscape.server.core.equipment.event.ObjEquipedEvent
 import io.guthix.oldscape.server.core.equipment.event.ObjUnEquipedEvent
 import io.guthix.oldscape.server.core.equipment.template.*
-import io.guthix.oldscape.server.core.equipment.template.equipment
 import io.guthix.oldscape.server.core.stat.CombatBonus
 import io.guthix.oldscape.server.core.stat.StyleBonus
+import io.guthix.oldscape.server.event.EventBus
 import io.guthix.oldscape.server.plugin.invalidMessage
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.Obj

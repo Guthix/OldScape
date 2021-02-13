@@ -76,7 +76,8 @@ class ServiceHandler(
         rsaPrivateKey: BigInteger,
         rsaMod: BigInteger
     ) {
-        replace(ServiceDecoder::class.qualifiedName, LoginDecoder::class.qualifiedName,
+        replace(
+            ServiceDecoder::class.qualifiedName, LoginDecoder::class.qualifiedName,
             LoginDecoder(store.archiveCount, rsaPrivateKey, rsaMod)
         )
         replace(SessionIdEncoder::class.qualifiedName, StatusEncoder::class.qualifiedName, StatusEncoder())

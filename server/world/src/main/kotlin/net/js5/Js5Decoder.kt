@@ -27,11 +27,13 @@ class Js5Decoder : ByteToMessageDecoder() {
             Js5Type.NORMAL_CONTAINER_REQUEST.opcode, Js5Type.URGENT_CONTAINER_REQUEST.opcode -> {
                 val indexFileId = inc.readUnsignedByte().toInt()
                 val containerId = inc.readUnsignedShort()
-                out.add(Js5ContainerRequest(
-                    opcode == Js5Type.URGENT_CONTAINER_REQUEST.opcode,
-                    indexFileId,
-                    containerId
-                ))
+                out.add(
+                    Js5ContainerRequest(
+                        opcode == Js5Type.URGENT_CONTAINER_REQUEST.opcode,
+                        indexFileId,
+                        containerId
+                    )
+                )
             }
             Js5Type.CLIENT_LOGGED_IN.opcode, Js5Type.CLIENT_LOGGED_OUT.opcode -> {
                 val statusCode = inc.readUnsignedMedium()

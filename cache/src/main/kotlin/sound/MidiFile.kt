@@ -277,7 +277,8 @@ public class MidiFile(public val midi: ByteArray) {
                                     Byte.MAX_VALUE.toInt()
                                 midiBuff.writeByte(controllerNumber)
                                 val result = if (controllerNumber == CONTROLLER_BANK_SELECT
-                                    || controllerNumber == CONTROLLER_BANK_SELECT_2) {
+                                    || controllerNumber == CONTROLLER_BANK_SELECT_2
+                                ) {
                                     data.getByte(programChangeIndex++)
                                 } else if (controllerNumber == CONTROLLER_MODULATION_WHEEL) {
                                     data.getByte(modulationWheelOffset++)

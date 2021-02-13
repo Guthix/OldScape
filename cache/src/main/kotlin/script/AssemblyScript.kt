@@ -47,13 +47,15 @@ public data class AssemblyScript(
 
     override fun toString(): String {
         val strBuilder = StringBuilder()
-        strBuilder.append("""
+        strBuilder.append(
+            """
             // id: $id
             // localIntCount: $localIntCount
             // localStringCount: $localStringCount
             // intArgumentCount: $intArgumentCount
             // stringArgumentCount: $stringArgumentCount
-        """.trimIndent())
+        """.trimIndent()
+        )
         strBuilder.append("\n")
         val labels = mutableSetOf<Int>()
         instructions.forEach { instruction ->
@@ -107,7 +109,8 @@ public data class AssemblyScript(
                 }
                 machineInstr
             }
-            return AssemblyScript(script.id, instructions, script.localIntCount, script.localStringCount,
+            return AssemblyScript(
+                script.id, instructions, script.localIntCount, script.localStringCount,
                 script.intArgumentCount, script.stringArgumentCount
             )
 

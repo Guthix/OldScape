@@ -200,9 +200,11 @@ internal class SceneManager {
                     futures.add(player.ctx.write(UpdateZonePartialFollowsPacket(x.zones.inTiles, y.zones.inTiles)))
                     futures.add(player.ctx.write(packetList.first()))
                 } else if (packetList.size > 1) {
-                    futures.add(player.ctx.write(
-                        UpdateZonePartialEnclosedPacket(x.zones.inTiles, y.zones.inTiles, packetList.toList())
-                    ))
+                    futures.add(
+                        player.ctx.write(
+                            UpdateZonePartialEnclosedPacket(x.zones.inTiles, y.zones.inTiles, packetList.toList())
+                        )
+                    )
                 }
             }
         }
