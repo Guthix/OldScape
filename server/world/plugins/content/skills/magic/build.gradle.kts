@@ -1,4 +1,6 @@
+import io.guthix.oldscape.corePlugin
+
 dependencies {
-    implementation(project(":server:world:plugins:core:combat"))
-    implementation(project(":server:world:plugins:core:equipment"))
+    corePlugin("combat")
+    corePlugin("equipment")
 }

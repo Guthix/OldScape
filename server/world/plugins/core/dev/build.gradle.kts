@@ -1,4 +1,6 @@
+import io.guthix.oldscape.corePlugin
+
 dependencies {
-    implementation(project(":server:world:plugins:core:loc"))
-    implementation(project(":server:world:plugins:core:damage"))
+    corePlugin("loc")
+    corePlugin("damage")
 }

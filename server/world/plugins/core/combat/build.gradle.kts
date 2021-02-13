@@ -1,8 +1,10 @@
+import io.guthix.oldscape.corePlugin
+
 dependencies {
-    implementation(project(":server:world:plugins:core:pathing"))
-    implementation(project(":server:world:plugins:core:prayer"))
-    implementation(project(":server:world:plugins:core:equipment"))
-    implementation(project(":server:world:plugins:core:damage"))
-    implementation(project(":server:world:plugins:core:stat"))
-    implementation(project(":server:world:plugins:core:monster"))
+    corePlugin("pathing")
+    corePlugin("prayer")
+    corePlugin("equipment")
+    corePlugin("damage")
+    corePlugin("stat")
+    corePlugin("monster")
 }

@@ -1,3 +1,5 @@
+import io.guthix.oldscape.corePlugin
+
 dependencies {
-    implementation(project(":server:world:plugins:core:stat"))
+    corePlugin("stat")
 }
