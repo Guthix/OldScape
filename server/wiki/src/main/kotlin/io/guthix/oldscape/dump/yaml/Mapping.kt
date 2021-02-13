@@ -15,9 +15,15 @@
  */
 package io.guthix.oldscape.dump.yaml
 
-import io.guthix.oldscape.server.stat.CombatBonus
-import io.guthix.oldscape.server.stat.StyleBonus
-import io.guthix.oldscape.server.template.*
+import io.guthix.oldscape.server.core.equipment.template.AttackTemplate
+import io.guthix.oldscape.server.core.equipment.template.EquipmentTemplate
+import io.guthix.oldscape.server.core.equipment.template.WeaponType
+import io.guthix.oldscape.server.core.monster.template.AggresiveType
+import io.guthix.oldscape.server.core.monster.template.CombatStats
+import io.guthix.oldscape.server.core.monster.template.MonsterTemplate
+import io.guthix.oldscape.server.core.obj.template.ObjWeightTemplate
+import io.guthix.oldscape.server.core.stat.CombatBonus
+import io.guthix.oldscape.server.core.stat.StyleBonus
 import io.guthix.oldscape.wiki.wikitext.NpcWikiDefinition
 import io.guthix.oldscape.wiki.wikitext.ObjWikiDefinition
 
