@@ -51,6 +51,11 @@ on(ClientCheatEvent::class).where { string == "hit" }.then {
 
 on(ClientCheatEvent::class).where { string == "magic" }.then {
     player.itemBag.add(ObjIds.STAFF_OF_AIR_1381, 1)
+    player.itemBag.add(ObjIds.AIR_RUNE_556, 10000)
+    player.itemBag.add(ObjIds.FIRE_RUNE_554, 10000)
+    player.itemBag.add(ObjIds.WATER_RUNE_555, 10000)
+    player.itemBag.add(ObjIds.EARTH_RUNE_557, 10000)
+    player.itemBag.add(ObjIds.MIND_RUNE_558, 10000)
 }
 
 on(ClientCheatEvent::class).where { string == "locdel" }.then {

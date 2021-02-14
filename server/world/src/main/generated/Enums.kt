@@ -15,11 +15,10 @@ object Enums {
     val ANCIENT_SPELLBOOK_1983: Map<Int, Int> get() = ServerContext.enumTemplates[1983] as Map<Int, Int>
     val LUNAR_SPELLBOOK_1984: Map<Int, Int> get() = ServerContext.enumTemplates[1984] as Map<Int, Int>
     val ARCHEUUS_SPELLBOOK_1985: Map<Int, Int> get() = ServerContext.enumTemplates[1985] as Map<Int, Int>
-    val SPELLBOOK_1981: Map<Int, Map<Int, Int>>
-        get() = mapOf(
-            0 to NORMAL_SPELLBOOK_1982,
-            1 to ANCIENT_SPELLBOOK_1983,
-            2 to LUNAR_SPELLBOOK_1984,
-            3 to ARCHEUUS_SPELLBOOK_1985,
-        )
+    val SPELLBOOK_1981: Map<Int, Map<Int, Int>> get() = mapOf(
+        0 to NORMAL_SPELLBOOK_1982,
+        1 to ANCIENT_SPELLBOOK_1983,
+        2 to LUNAR_SPELLBOOK_1984,
+        3 to ARCHEUUS_SPELLBOOK_1985,
+    )
 }
