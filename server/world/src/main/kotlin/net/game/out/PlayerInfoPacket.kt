@@ -382,12 +382,12 @@ class PlayerInfoPacket(
             tempBuf.writeByte(player.colours.skin)
 
             tempBuf.writeShort(player.equipment.weapon?.stance?.stand ?: 808)
-            tempBuf.writeShort(player.equipment.weapon?.stance?.turn ?: 808)
-            tempBuf.writeShort(player.equipment.weapon?.stance?.walk ?: 808)
-            tempBuf.writeShort(player.equipment.weapon?.stance?.turn180 ?: 808)
-            tempBuf.writeShort(player.equipment.weapon?.stance?.turn90CW ?: 808)
-            tempBuf.writeShort(player.equipment.weapon?.stance?.turn90CCW ?: 808)
-            tempBuf.writeShort(player.equipment.weapon?.stance?.run ?: 808)
+            tempBuf.writeShort(player.equipment.weapon?.stance?.turn ?: 823)
+            tempBuf.writeShort(player.equipment.weapon?.stance?.walk ?: 819)
+            tempBuf.writeShort(player.equipment.weapon?.stance?.turn180 ?: 820)
+            tempBuf.writeShort(player.equipment.weapon?.stance?.turn90CW ?: 821)
+            tempBuf.writeShort(player.equipment.weapon?.stance?.turn90CCW ?: 822)
+            tempBuf.writeShort(player.equipment.weapon?.stance?.run ?: 824)
             tempBuf.writeStringCP1252(player.username) // username
             tempBuf.writeByte(player.combatLevel) // combat level
             tempBuf.writeShort(0) // skillId level
