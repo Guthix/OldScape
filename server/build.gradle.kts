@@ -1,11 +1,5 @@
 @file:Suppress("ConvertLambdaToReference")
 
-plugins {
-    id("org.jetbrains.dokka")
-    kotlin("jvm")
-    kotlin("plugin.serialization")
-}
-
 group = "io.guthix.oldscape"
 version = "0.1.0-SNAPSHOT"
 description = "An Oldschool Runescape Server Emulator"

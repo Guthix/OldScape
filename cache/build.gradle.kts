@@ -17,11 +17,6 @@ val kotlinVersion: String by rootProject.extra
 
 kotlin { explicitApi() }
 
-java {
-    withJavadocJar()
-    withSourcesJar()
-}
-
 dependencies {
     api(group = "io.guthix", name = "jagex-store-5", version = jagexStore5Version)
     implementation(group = "ch.qos.logback", name = "logback-classic", version = logbackVersion)
