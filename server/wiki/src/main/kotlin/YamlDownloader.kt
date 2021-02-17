@@ -24,6 +24,7 @@ import io.guthix.js5.container.disk.Js5DiskStore
 import io.guthix.oldscape.cache.ConfigArchive
 import io.guthix.oldscape.cache.config.NpcConfig
 import io.guthix.oldscape.cache.config.ObjConfig
+import io.guthix.oldscape.BuildConfig
 import io.guthix.oldscape.server.template.Template
 import io.guthix.oldscape.wiki.wikitext.NpcWikiDefinition
 import io.guthix.oldscape.wiki.wikitext.ObjWikiDefinition
@@ -52,7 +53,7 @@ object YamlDownloader {
 
     @JvmStatic
     fun main(args: Array<String>) {
-        val cache = Js5Cache(Js5DiskStore.open(Path.of(javaClass.getResource("/cache").toURI())))
+        val cache = Js5Cache(Js5DiskStore.open(BuildConfig.CACHE_PATH))
         val configArchive = cache.readArchive(ConfigArchive.id)
 
         val npcCacheConfigs = NpcConfig.load(configArchive.readGroup(NpcConfig.id))

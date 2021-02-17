@@ -33,6 +33,7 @@ import io.guthix.oldscape.server.net.Huffman
 import io.guthix.oldscape.server.net.OldScapeServer
 import io.guthix.oldscape.server.net.game.GamePacketDecoder
 import io.guthix.oldscape.server.world.World
+import io.guthix.oldscape.BuildConfig
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
@@ -51,8 +52,7 @@ object OldScape {
             System.setProperty(ContextInitializer.CONFIG_FILE_PROPERTY, "src/main/resources/logbackDebug.xml")
         }
         val config = readYaml<ServerConfig>("/Config.yaml")
-        val cacheDir = Path.of(ConfigArchive::class.java.getResource("/cache").toURI())
-        val store = Js5DiskStore.open(cacheDir).use {
+        val store = Js5DiskStore.open(BuildConfig.CACHE_PATH).use {
             Js5HeapStore.open(it, appendVersions = false)
         }
         val cache = Js5Cache(store)
@@ -72,7 +72,7 @@ object OldScape {
         GamePacketDecoder.loadIncPackets()
         PostgresDb.initialize(config.db)
 
-        val mapSquareXteas = loadMapSquareXteaKeys(cacheDir.resolve("xteas.json"))
+        val mapSquareXteas = loadMapSquareXteaKeys(BuildConfig.CACHE_PATH.resolve("xteas.json"))
         val world = World.fromMap(
             MapArchive.load(
                 cache.readArchive(MapArchive.id), mapSquareXteas.map { MapXtea(it.mapsquare, it.key) }
