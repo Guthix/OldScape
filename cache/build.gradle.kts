@@ -19,6 +19,7 @@ kotlin { explicitApi() }
 
 dependencies {
     api(group = "io.guthix", name = "jagex-store-5", version = jagexStore5Version)
+    api(project(":cache:names"))
     implementation(group = "ch.qos.logback", name = "logback-classic", version = logbackVersion)
     dokkaHtmlPlugin(group = "org.jetbrains.dokka", name = "kotlin-as-java-plugin", version = kotlinVersion)
 }

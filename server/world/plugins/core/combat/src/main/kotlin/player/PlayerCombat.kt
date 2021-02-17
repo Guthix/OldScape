@@ -23,7 +23,7 @@ import io.guthix.oldscape.server.Property
 import io.guthix.oldscape.server.core.combat.CombatSpell
 import io.guthix.oldscape.server.core.equipment.template.*
 import io.guthix.oldscape.server.core.stat.AttackType
-import io.guthix.oldscape.server.template.SequenceIds
+import io.guthix.oldscape.cache.SequenceIds
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.Npc
 import io.guthix.oldscape.server.world.entity.Player

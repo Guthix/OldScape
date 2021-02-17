@@ -22,7 +22,7 @@ import io.guthix.oldscape.server.core.monster.template.deathSequence
 import io.guthix.oldscape.server.core.monster.template.stats
 import io.guthix.oldscape.server.event.EventBus
 import io.guthix.oldscape.server.task.NormalTask
-import io.guthix.oldscape.server.template.SequenceIds
+import io.guthix.oldscape.cache.SequenceIds
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.HitMark
 import io.guthix.oldscape.server.world.entity.Npc

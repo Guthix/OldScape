@@ -15,6 +15,7 @@
  */
 package io.guthix.oldscape.codegen
 
+import io.guthix.oldscape.IdGenerator
 import io.guthix.oldscape.cache.config.NamedConfig
 import io.guthix.oldscape.configNameToIdentifier
 import io.guthix.oldscape.createSourceTree
@@ -22,8 +23,6 @@ import io.guthix.oldscape.printFileHeader
 import org.gradle.api.Project
 import java.io.PrintWriter
 import java.nio.file.Path
-
-private const val maxTemplatePerFile = 10000
 
 fun Project.writeNamedConfigTemplates(name: String, configs: Map<Int, NamedConfig>, ignoreNulls: Boolean) {
     val sourceRoot = createSourceTree(this)
@@ -35,7 +34,7 @@ private fun Path.printCodeFile(fileName: String, configs: Map<Int, NamedConfig>,
     val sourceFile = resolve("$fileName.kt").toFile()
     sourceFile.createNewFile()
     PrintWriter(sourceFile).use { pw ->
-        pw.printFileHeader()
+        pw.printFileHeader(IdGenerator.packageName)
         pw.println()
         pw.println("object $fileName {")
         for (namedConfig in configs.values) {

@@ -17,7 +17,7 @@ package io.guthix.oldscape.server.world.entity.interest
 
 import io.guthix.oldscape.server.Property
 import io.guthix.oldscape.server.PropertyHolder
-import io.guthix.oldscape.server.template.InventoryIds
+import io.guthix.oldscape.cache.InventoryIds
 import io.guthix.oldscape.server.template.ObjTemplate
 import io.guthix.oldscape.server.template.Template
 import io.guthix.oldscape.server.template.TemplateNotFoundException

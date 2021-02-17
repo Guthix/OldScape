@@ -20,8 +20,8 @@ import io.guthix.oldscape.dim.tiles
 import io.guthix.oldscape.server.core.damage.hit
 import io.guthix.oldscape.server.event.ClientCheatEvent
 import io.guthix.oldscape.server.event.PublicMessageEvent
-import io.guthix.oldscape.server.template.LocIds
-import io.guthix.oldscape.server.template.ObjIds
+import io.guthix.oldscape.cache.LocIds
+import io.guthix.oldscape.cache.ObjIds
 import io.guthix.oldscape.server.world.entity.Loc
 import io.guthix.oldscape.server.world.map.Tile
 

@@ -18,8 +18,8 @@ package io.guthix.oldscape.server.core.session
 import io.guthix.oldscape.server.event.EventBus
 import io.guthix.oldscape.server.event.LoginEvent
 import io.guthix.oldscape.server.event.PlayerInitialized
-import io.guthix.oldscape.server.template.VarbitIds
-import io.guthix.oldscape.server.template.VarpIds
+import io.guthix.oldscape.cache.VarbitIds
+import io.guthix.oldscape.cache.VarpIds
 
 on(LoginEvent::class).then {
     player.initialize(world)

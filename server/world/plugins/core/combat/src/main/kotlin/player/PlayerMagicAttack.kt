@@ -24,7 +24,7 @@ import io.guthix.oldscape.server.core.pathing.breadthFirstSearch
 import io.guthix.oldscape.server.core.pathing.simplePathSearch
 import io.guthix.oldscape.server.event.EventBus
 import io.guthix.oldscape.server.task.NormalTask
-import io.guthix.oldscape.server.template.SpotAnimIds
+import io.guthix.oldscape.cache.SpotAnimIds
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.Npc
 import io.guthix.oldscape.server.world.entity.Player

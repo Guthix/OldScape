@@ -25,6 +25,7 @@ include("dim")
 
 include("cache")
 include("cache:formats")
+include("cache:names")
 
 include("server")
 include("server:wiki")

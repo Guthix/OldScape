@@ -26,7 +26,7 @@ import io.guthix.oldscape.server.event.EventHolder
 import io.guthix.oldscape.server.event.PlayerMovedEvent
 import io.guthix.oldscape.server.event.PublicMessageEvent
 import io.guthix.oldscape.server.net.game.out.*
-import io.guthix.oldscape.server.template.InventoryIds
+import io.guthix.oldscape.cache.InventoryIds
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.interest.*
 import io.guthix.oldscape.server.world.entity.intface.IfComponent

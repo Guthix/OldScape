@@ -51,7 +51,7 @@ object OldScape {
             System.setProperty(ContextInitializer.CONFIG_FILE_PROPERTY, "src/main/resources/logbackDebug.xml")
         }
         val config = readYaml<ServerConfig>("/Config.yaml")
-        val cacheDir = Path.of(javaClass.getResource("/cache").toURI())
+        val cacheDir = Path.of(ConfigArchive::class.java.getResource("/cache").toURI())
         val store = Js5DiskStore.open(cacheDir).use {
             Js5HeapStore.open(it, appendVersions = false)
         }

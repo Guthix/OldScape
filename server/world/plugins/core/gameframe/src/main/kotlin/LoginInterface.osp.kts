@@ -16,7 +16,7 @@
 package io.guthix.oldscape.server.core.gameframe
 
 import io.guthix.oldscape.server.event.PlayerInitialized
-import io.guthix.oldscape.server.template.CS2Ids
+import io.guthix.oldscape.cache.CS2Ids
 import io.guthix.oldscape.server.world.entity.intface.Interface
 
 on(PlayerInitialized::class).then {

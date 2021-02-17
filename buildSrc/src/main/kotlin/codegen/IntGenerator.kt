@@ -33,7 +33,7 @@ private fun Path.printCodeFile(templateName: String, namedIds: List<NamedId>) {
     val sourceFile = resolve("${templateName}s.kt").toFile()
     sourceFile.createNewFile()
     PrintWriter(sourceFile).use { pw ->
-        pw.printFileHeader()
+        pw.printFileHeader(IdGenerator.packageName)
         pw.println()
         pw.println("object ${templateName}s {")
         for ((id, configName) in namedIds) {

@@ -85,7 +85,7 @@ private fun Path.printCodeFile(
 
     val sourceFile = resolve("${templateName}.kt").toFile()
     PrintWriter(sourceFile).use { pw ->
-        pw.printFileHeader("UNCHECKED_CAST", "LongLine")
+        pw.printFileHeader(ServerContextGenerator.packageName,"UNCHECKED_CAST", "LongLine")
         pw.println()
         pw.println("import io.guthix.oldscape.cache.config.EnumConfig")
         pw.println("import io.guthix.oldscape.server.ServerContext")

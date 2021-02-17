@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.guthix.oldscape.dump.yaml
+package io.guthix.oldscape.wiki
 
 import io.guthix.oldscape.server.core.equipment.template.WeaponType
 import io.guthix.oldscape.server.core.stat.AttackType

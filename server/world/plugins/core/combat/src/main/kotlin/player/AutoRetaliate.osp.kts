@@ -17,7 +17,7 @@ package io.guthix.oldscape.server.core.combat.player
 
 import io.guthix.oldscape.server.event.ButtonClickEvent
 import io.guthix.oldscape.server.event.PlayerInitialized
-import io.guthix.oldscape.server.template.VarpIds
+import io.guthix.oldscape.cache.VarpIds
 
 on(PlayerInitialized::class).then {
     player.updateVarp(VarpIds.AUTO_RETALIATE_172, if (player.autoRetaliate) 0 else 1)

@@ -21,10 +21,10 @@ import io.guthix.oldscape.server.core.combat.CombatSpell
 import io.guthix.oldscape.server.core.combat.player.magicAttack
 import io.guthix.oldscape.server.core.equipment.CombatProjectileType
 import io.guthix.oldscape.server.event.IfOnNpcEvent
-import io.guthix.oldscape.server.template.ObjIds
+import io.guthix.oldscape.cache.ObjIds
 import io.guthix.oldscape.server.template.ProjectileTemplate
-import io.guthix.oldscape.server.template.SequenceIds
-import io.guthix.oldscape.server.template.SpotAnimIds
+import io.guthix.oldscape.cache.SequenceIds
+import io.guthix.oldscape.cache.SpotAnimIds
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.Character
 import io.guthix.oldscape.server.world.entity.Player

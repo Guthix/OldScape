@@ -9,7 +9,7 @@ val ktSerVersion: String by serverProject.extra
 val kamlVersion: String by serverProject.extra
 val wikiDownloaderVersion: String by extra("0.1.0")
 
-application { mainClass.set("io.guthix.oldscape.wiki.yaml.YamlDownloader") }
+application { mainClass.set("io.guthix.oldscape.wiki.YamlDownloader") }
 
 dependencies {
     implementation(project(":server:world"))
