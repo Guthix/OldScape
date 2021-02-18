@@ -20,7 +20,8 @@ buildConfig {
     buildConfigField(
         type ="java.nio.file.Path",
         name = "CACHE_PATH",
-        value = "Path.of(\"${project(":cache").projectDir}\\src\\main\\resources\")".replace("\\", "\\\\")
+        value = "Path.of(\"${project(":cache").projectDir.resolve("src/main/resources")}\")"
+            .replace("\\", "/")
     )
 }
 
