@@ -6067,6 +6067,10 @@
   isImmumePoison: false
   isImmuneVenom: false
   attackSpeed: 6
+  sequences:
+    attack: 6184
+    defence: 6183
+    death: 6182
   stats:
     health: 12
     attack: 3
@@ -19727,6 +19731,10 @@
   isImmumePoison: false
   isImmuneVenom: false
   attackSpeed: 4
+  sequences:
+    attack: 6184
+    defence: 6183
+    death: 6182
   stats:
     health: 5
     attack: 1
