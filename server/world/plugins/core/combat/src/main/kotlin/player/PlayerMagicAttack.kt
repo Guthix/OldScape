@@ -25,6 +25,7 @@ import io.guthix.oldscape.server.core.pathing.simplePathSearch
 import io.guthix.oldscape.server.event.EventBus
 import io.guthix.oldscape.server.task.NormalTask
 import io.guthix.oldscape.cache.SpotAnimIds
+import io.guthix.oldscape.dim.tiles
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.Npc
 import io.guthix.oldscape.server.world.entity.Player
@@ -38,7 +39,7 @@ fun Player.startMagicAttack(
     spellTemplate: CombatSpell
 ) {
     cancelTasks(NormalTask)
-    var npcDestination = DestinationRange(npc, attackRange, world)
+    var npcDestination = DestinationRange(npc, 10.tiles, world)
     path = breadthFirstSearch(pos, npcDestination, size, true, world)
     addTask(NormalTask) {
         inCombatWith = npc
@@ -70,7 +71,7 @@ fun Player.startMagicAttack(
         wait { npcDestination.reached(pos.x, pos.y, size) }
         while (true) {
             wait { npc.lastPos != npc.pos }
-            npcDestination = DestinationRange(npc, attackRange, world)
+            npcDestination = DestinationRange(npc, 10.tiles, world)
             path = simplePathSearch(pos, npcDestination, size, world)
             wait(ticks = 1)
         }
@@ -85,7 +86,7 @@ fun Player.magicAttack(
     spellTemplate: CombatSpell
 ) {
     cancelTasks(NormalTask)
-    val npcDestination = DestinationRange(npc, attackRange, world)
+    val npcDestination = DestinationRange(npc, 10.tiles, world)
     path = breadthFirstSearch(pos, npcDestination, size, true, world)
     addTask(NormalTask) {
         wait { npcDestination.reached(pos.x, pos.y, size) }
