@@ -21,7 +21,8 @@ import io.guthix.oldscape.cache.ConfigArchive
 import io.guthix.oldscape.cache.config.LocationConfig
 import io.guthix.oldscape.cache.config.EnumConfig
 import io.guthix.oldscape.cache.config.ObjectConfig
-import io.guthix.oldscape.codegen.writeNamedConfigTemplates
+import io.guthix.oldscape.cache.config.NpcConfig
+import io.guthix.oldscape.codegen.writeParamTemplates
 import io.guthix.oldscape.codegen.writeEnumTemplates
 import org.gradle.api.Project
 import org.gradle.api.plugins.BasePlugin
@@ -37,8 +38,19 @@ class ServerContextGenerator : CodeGenerator() {
                     val configArchive = cache.readArchive(ConfigArchive.id)
                     val locs = LocationConfig.load(configArchive.readGroup(LocationConfig.id))
                     val objs = ObjectConfig.load(configArchive.readGroup(ObjectConfig.id))
+                    val npcs = NpcConfig.load(configArchive.readGroup(NpcConfig.id))
                     val enums = EnumConfig.load(configArchive.readGroup(EnumConfig.id))
                     target.writeEnumTemplates(enums, objs, locs)
+                    target.writeParamTemplates(
+                        "ObjParams",
+                        "ObjTemplate",
+                        objs.values.mapNotNull { it.params?.toMap() }
+                    )
+                    target.writeParamTemplates(
+                        "NpcParams",
+                        "NpcTemplate",
+                        npcs.values.mapNotNull { it.params?.toMap() }
+                    )
                 }
             }
         }

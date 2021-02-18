@@ -22,9 +22,9 @@ import io.guthix.oldscape.server.core.combat.player.magicAttack
 import io.guthix.oldscape.server.core.equipment.CombatProjectileType
 import io.guthix.oldscape.server.event.IfOnNpcEvent
 import io.guthix.oldscape.cache.ObjIds
-import io.guthix.oldscape.server.template.ProjectileTemplate
 import io.guthix.oldscape.cache.SequenceIds
 import io.guthix.oldscape.cache.SpotAnimIds
+import io.guthix.oldscape.server.template.*
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.server.world.entity.Character
 import io.guthix.oldscape.server.world.entity.Player
@@ -49,19 +49,21 @@ enum class RegularSpellbookSpell(
         hit = { _, _, _ -> 2 }
     );
 
-    val component: EnumConfig.Component get() = ServerContext.objTemplates[obj].component
+    val component: EnumConfig.Component get() = EnumConfig.Component.decode(
+        ServerContext.objTemplates[obj].SPELL_INTERFACE_596 ?: throw TemplateNotFoundException(obj, "Param 596")
+    )
 
-    val spellRune1: Int? get() = ServerContext.objTemplates[obj].spellRune1
+    val spellRune1: Int? get() = ServerContext.objTemplates[obj].SPELL_RUNE_1_365
 
-    val spellRune1Amount: Int? get() = ServerContext.objTemplates[obj].spellRune1Amount
+    val spellRune1Amount: Int? get() = ServerContext.objTemplates[obj].SPELL_RUNE_1_AMOUNT_366
 
-    val spellRune2: Int? get() = ServerContext.objTemplates[obj].spellRune2
+    val spellRune2: Int? get() = ServerContext.objTemplates[obj].SPELL_RUNE_2_367
 
-    val spellRune2Amount: Int? get() = ServerContext.objTemplates[obj].spellRune2Amount
+    val spellRune2Amount: Int? get() = ServerContext.objTemplates[obj].SPELL_RUNE_2_AMOUNT_368
 
-    val spellRune3: Int? get() = ServerContext.objTemplates[obj].spellRune3
+    val spellRune3: Int? get() = ServerContext.objTemplates[obj].SPELL_RUNE_3_369
 
-    val spellRune3Amount: Int? get() = ServerContext.objTemplates[obj].spellRune3Amount
+    val spellRune3Amount: Int? get() = ServerContext.objTemplates[obj].SPELL_RUNE_3_AMOUNT_370
 }
 
 RegularSpellbookSpell.values().forEach { spell ->

@@ -23,4 +23,5 @@ data class NpcTemplate(private val config: NpcConfig) : BaseTemplate(config) {
     val size: Int get() = config.size.toInt()
     val combatLevel: Int? get() = config.combatLevel
     val contextMenu: Array<String?> get() = config.options
+    val params: MutableMap<Int, Any> get() = config.params ?: throw TemplateNotFoundException(id, ::params)
 }

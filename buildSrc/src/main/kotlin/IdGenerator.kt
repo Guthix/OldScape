@@ -51,9 +51,6 @@ class IdGenerator : CodeGenerator() {
                     val npcs = NpcConfig.load(configArchive.readGroup(NpcConfig.id))
                     target.writeNamedConfigTemplates("Npc", npcs, false)
 
-//                    val enums = EnumConfig.load(configArchive.readGroup(EnumConfig.id))
-//                    target.writeEnumTemplates(enums, objs, locs)
-
                     target.writeIntTemplates("Enums", enumKtFileName)
                     target.writeIntTemplates("SpotAnims", spotAnimKtFileName)
                     target.writeIntTemplates("Inventories", invKtFileName)
@@ -62,6 +59,8 @@ class IdGenerator : CodeGenerator() {
                     target.writeIntTemplates("Varbits", varbitKtFileName)
                     target.writeIntTemplates("CS2s", cs2KtFileName)
                     target.writeIntTemplates("MusicTracks", musicTrackKtFileName)
+                    target.writeIntTemplates("ObjParams", objParamFileName)
+                    target.writeIntTemplates("NpcParams", npcParamFileName)
                 }
             }
         }
@@ -84,6 +83,9 @@ class IdGenerator : CodeGenerator() {
         const val varbitKtFileName: String = "VarbitId"
         const val cs2KtFileName: String = "CS2Id"
         const val musicTrackKtFileName: String = "MusicTrackId"
+        const val locParamFileName: String = "LocParamId"
+        const val objParamFileName: String = "ObjParamId"
+        const val npcParamFileName: String = "NpcParamId"
     }
 }
 
