@@ -73,8 +73,8 @@ class IdGenerator : CodeGenerator() {
     companion object {
         const val packageName: String = "io.guthix.oldscape.cache"
 
-        const val cacheDir: String = "cache/src/main/resources/cache"
-        const val nameDir: String = "cache/names/src/main/resources/names"
+        const val cacheDir: String = "cache/src/main/resources"
+        const val nameDir: String = "cache/names/src/main/resources"
 
         const val enumKtFileName: String = "EnumId"
         const val spotAnimKtFileName: String = "SpotAnimId"
