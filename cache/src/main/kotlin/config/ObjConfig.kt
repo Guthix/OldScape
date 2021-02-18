@@ -67,7 +67,7 @@ data class ObjConfig(override val id: Int) : NamedConfig(id) {
     var boughtTemplate: Int? = null
     var placeholderId: Int? = null
     var placeholderTemplateId: Int? = null
-    var params: MutableMap<Int, Any>? = null
+    override var params: MutableMap<Int, Any>? = null
     val isNoted: Boolean get() = notedTemplateId == 799
     val isPlaceHolder: Boolean get() = placeholderTemplateId == 14401
 

@@ -53,7 +53,7 @@ public data class NpcConfig(override val id: Int) : NamedConfig(id) {
     var transformVarp: Int? = null
     var transforms: Array<Int?>? = null
     var aBool2190: Boolean = false
-    var params: MutableMap<Int, Any>? = null
+    override var params: MutableMap<Int, Any>? = null
 
     override fun encode(): ByteBuf {
         val data = Unpooled.buffer()

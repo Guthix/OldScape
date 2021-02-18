@@ -22,6 +22,7 @@ import io.netty.buffer.ByteBuf
 
 abstract class NamedConfig(id: Int) : Config(id) {
     abstract val name: String
+    abstract val params: MutableMap<Int, Any>?
 }
 
 abstract class Config(open val id: Int) {

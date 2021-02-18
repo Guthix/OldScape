@@ -64,7 +64,7 @@ data class LocConfig(override val id: Int) : NamedConfig(id) {
     var anInt2113: Int = 0
     var anInt2083: Short = 0
     var anIntArray2084: IntArray? = null
-    var params: MutableMap<Int, Any>? = null
+    override var params: MutableMap<Int, Any>? = null
 
     override fun encode(): ByteBuf {
         val data = Unpooled.buffer()
