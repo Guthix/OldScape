@@ -43,7 +43,7 @@ private fun Path.printCodeFile(templateName: String, namedIds: List<NamedId>, pa
         pw.println()
         for ((id, configName) in namedIds) {
             val identifier = configNameToIdentifier(id, configName)
-            val type = paramTypes[id] ?: throw IllegalStateException("Could not find param for $id try ${paramTypes.keys.first()}.")
+            val type = paramTypes[id] ?: throw IllegalStateException("Could not find param for $id.")
             pw.println("val $templateName.$identifier: ${type.simpleName}? get() = params[$id] as ${type.simpleName}?")
         }
         pw.flush()
