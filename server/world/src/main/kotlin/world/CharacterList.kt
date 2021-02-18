@@ -65,12 +65,18 @@ class NpcList(capacity: Int) : Iterable<Npc> {
 
     override fun iterator(): IndexIterator = IndexIterator()
 
-    inner class IndexIterator : Iterator<Npc> {
-        var indexIterator: MutableIterator<Int> = occupiedIndexes.iterator()
+    inner class IndexIterator : MutableIterator<Npc> {
+        internal var currentIndex = 0
 
-        override fun hasNext(): Boolean = indexIterator.hasNext()
+        override fun hasNext(): Boolean = currentIndex < occupiedIndexes.size
 
-        override fun next(): Npc = npcs[indexIterator.next()] ?: next()
+        override fun next(): Npc = npcs[currentIndex++] ?: next()
+
+        override fun remove() {
+            npcs[currentIndex] = null
+            occupiedIndexes.remove(currentIndex)
+            freeIndexes.add(currentIndex)
+        }
     }
 }
 
