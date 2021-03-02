@@ -55,8 +55,10 @@ class ScriptScheduler<in E : Event>(
     }
 
     internal fun execute(event: E) {
-        val handler = EventHandler(event, plugin)
-        handler.handle()
+        if (event.condition()) {
+            val handler = EventHandler(event, plugin)
+            handler.handle()
+        }
     }
 }
 
