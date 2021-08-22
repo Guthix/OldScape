@@ -211,7 +211,7 @@ class Player internal constructor(
         }
     }
 
-    fun senGameMessage(message: String) {
+    fun sendGameMessage(message: String) {
         ctx.write(MessageGamePacket(0, false, message))
     }
 

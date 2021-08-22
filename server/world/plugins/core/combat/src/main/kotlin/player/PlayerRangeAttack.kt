@@ -42,7 +42,7 @@ fun Player.startRangeAttack(npc: Npc, world: World) {
             wait { npcDestination.reached(pos.x, pos.y, size) }
             val ammunition = equipment.ammunition
             if (ammunition == null || ammunition.quantity <= 0) {
-                senGameMessage("There is no ammo left in your quiver.")
+                sendGameMessage("There is no ammo left in your quiver.")
                 cancel()
                 break@main
             }

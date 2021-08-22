@@ -26,6 +26,6 @@ on(LoginEvent::class).then {
     player.updateVarbit(VarbitIds.CHAT_ENABLE_8119, value = 1) // enable chat
     player.updateVarp(VarpIds.NPC_ATTACK_OPTION_SETTING_1306, value = 2) // (0, 1, 2, 3)
     player.updateVarp(VarpIds.PLAYER_ATTACK_OPTION_SETTING_1107, value = 2) // (0, 1, 2, 3)
-    player.senGameMessage("Welcome to OldScape Emulator!")
+    player.sendGameMessage("Welcome to OldScape Emulator!")
     EventBus.schedule(PlayerInitialized(player, world))
 }

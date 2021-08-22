@@ -71,7 +71,7 @@ RegularSpellbookSpell.values().forEach { spell ->
         .where { interfaceId == spell.component.interfaceId && interfaceSlotId == spell.component.slot }.then {
             spell.spellRune1?.let { rune ->
                 if (player.itemBag.remove(rune, spell.spellRune1Amount!!) == null) {
-                    player.senGameMessage(
+                    player.sendGameMessage(
                         "You do not have enough ${ServerContext.objTemplates[rune].name}s to cast this spell."
                     )
                     return@then
@@ -79,7 +79,7 @@ RegularSpellbookSpell.values().forEach { spell ->
             }
             spell.spellRune2?.let { rune ->
                 if (player.itemBag.remove(rune, spell.spellRune2Amount!!) == null) {
-                    player.senGameMessage(
+                    player.sendGameMessage(
                         "You do not have enough ${ServerContext.objTemplates[rune].name}s to cast this spell."
                     )
                     return@then
@@ -87,7 +87,7 @@ RegularSpellbookSpell.values().forEach { spell ->
             }
             spell.spellRune3?.let { rune ->
                 if (player.itemBag.remove(rune, spell.spellRune3Amount!!) == null) {
-                    player.senGameMessage(
+                    player.sendGameMessage(
                         "You do not have enough ${ServerContext.objTemplates[rune].name}s to cast this spell."
                     )
                     return@then
