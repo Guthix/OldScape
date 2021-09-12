@@ -1,18 +1,14 @@
 @file:Suppress("ConvertLambdaToReference")
 
 plugins {
-    idea
     id("org.jetbrains.dokka")
     kotlin("jvm")
     id("com.github.gmazzo.buildconfig") version "2.0.2"
 }
 
-group = "io.guthix.oldscape"
-description = "An Oldschool Runescape Emulation"
-
 val kotlinLoggingVersion: String by extra("2.0.2")
-val kCoroutinesVersion: String by extra("1.3.2")
-val kotlinVersion: String by extra("1.4.10")
+val kCoroutinesVersion: String by extra("1.5.2")
+val kotlinVersion: String by extra("1.5.30")
 val logbackVersion: String by extra("1.2.3")
 
 buildConfig {
@@ -26,11 +22,13 @@ buildConfig {
 }
 
 allprojects {
-    apply(plugin = "kotlin")
+    apply(plugin = "org.jetbrains.kotlin.jvm")
     apply(plugin = "org.jetbrains.dokka")
 
+    group = "io.guthix"
+    version = "0.1.0"
+
     repositories {
-        jcenter()
         mavenCentral()
     }
 

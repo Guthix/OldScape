@@ -1,18 +1,11 @@
-@file:Suppress("ConvertLambdaToReference")
-
 import io.guthix.oldscape.ServerContextGenerator
 
 plugins {
     application
-    id("org.jetbrains.dokka")
     kotlin("plugin.serialization")
 }
 
 apply<ServerContextGenerator>()
-
-group = "io.guthix.oldscape"
-version = "0.1.0-SNAPSHOT"
-description = "An Oldschool Runescape Server Emulator"
 
 application {
     mainClass.set("io.guthix.oldscape.server.OldScape")
@@ -31,10 +24,7 @@ val kotlinVersion: String by serverProject.rootProject.extra
 val classGraphVersion: String by extra("4.8.53")
 
 allprojects {
-    apply(plugin = "kotlinx-serialization")
-
-    group = project(":server").group
-    version = project(":server").version
+    apply(plugin = "org.jetbrains.kotlin.plugin.serialization")
 }
 
 dependencies {

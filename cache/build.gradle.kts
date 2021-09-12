@@ -7,10 +7,6 @@ plugins {
     signing
 }
 
-group = "io.guthix"
-version = "0.1.0"
-description = "A library for modifying OldScape caches"
-
 val jagexStore5Version: String by extra("0.4.0")
 val logbackVersion: String by extra("1.2.3")
 val kotlinVersion: String by rootProject.extra
@@ -24,7 +20,4 @@ dependencies {
     dokkaHtmlPlugin(group = "org.jetbrains.dokka", name = "kotlin-as-java-plugin", version = kotlinVersion)
 }
 
-registerPublication(
-    publicationName = "oldscapeCache",
-    pomName = "oldscape-cache"
-)
+registerPublication(name = "oldscape-cache", description = "A library for modifying OldScape caches")

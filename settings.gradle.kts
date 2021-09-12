@@ -3,9 +3,9 @@ import java.nio.file.Path
 import java.nio.file.Paths
 
 pluginManagement {
-    val kotlinVersion by extra("1.4.10")
-    val ktSerVersion by extra(kotlinVersion)
-    val dokkaVersion by extra(kotlinVersion)
+    val kotlinVersion by extra("1.5.30")
+    val ktSerVersion by extra("1.5.30")
+    val dokkaVersion by extra("1.5.0")
 
     plugins {
         kotlin("jvm") version kotlinVersion

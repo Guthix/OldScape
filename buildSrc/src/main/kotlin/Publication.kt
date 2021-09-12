@@ -17,6 +17,7 @@ package io.guthix.oldscape
 
 import org.gradle.api.Project
 import org.gradle.api.artifacts.dsl.RepositoryHandler
+import org.gradle.api.artifacts.repositories.PasswordCredentials
 import org.gradle.api.component.SoftwareComponent
 import org.gradle.api.provider.Provider
 import org.gradle.api.publish.PublishingExtension
@@ -26,15 +27,19 @@ import org.gradle.kotlin.dsl.register
 import org.gradle.plugins.signing.SigningExtension
 import java.net.URI
 
-@Suppress("ConvertLambdaToReference")
-fun Project.registerPublication(publicationName: String, pomName: String) {
+private const val SNAPSHOT_BASE_VERSION = "0.2.1"
+
+fun Project.registerPublication(name: String, description: String) {
+    this.description = description
     configure<PublishingExtension> {
         repositories {
             mavenCentralRepository()
+            sonarSnapshotRepository()
         }
         publications {
-            val publicationProvider = register<MavenPublication>(publicationName) {
-                configurePom(pomName, description, components.getByName("java"))
+            val taskName = name.split("-").joinToString("", transform = String::capitalize)
+            val publicationProvider = register<MavenPublication>(taskName) {
+                configurePom(name, description, components.getByName("java"))
             }
             signPublication(publicationProvider)
         }
@@ -44,13 +49,23 @@ fun Project.registerPublication(publicationName: String, pomName: String) {
 private fun RepositoryHandler.mavenCentralRepository() = maven {
     name = "MavenCentral"
     url = URI("https://oss.sonatype.org/service/local/staging/deploy/maven2/")
-    credentials {
-        username = System.getenv("OSSRH_USERNAME")
-        password = System.getenv("OSSRH_PASSWORD")
-    }
+    credentials { ossrhCredentials() }
+}
+
+private fun RepositoryHandler.sonarSnapshotRepository() = maven {
+    name = "SonarSnapshot"
+    url = URI("https://oss.sonatype.org/content/repositories/snapshots/")
+    credentials { ossrhCredentials() }
+}
+
+private fun PasswordCredentials.ossrhCredentials() {
+    username = System.getenv("OSSRH_USERNAME")
+    password = System.getenv("OSSRH_PASSWORD")
 }
 
 private fun MavenPublication.configurePom(projectName: String, desc: String?, component: SoftwareComponent) {
+    val releaseVersion = System.getenv("RELEASE_VERSION")?.removePrefix("v")
+    version = releaseVersion ?: "$SNAPSHOT_BASE_VERSION.${System.getenv("GITHUB_RUN_NUMBER") ?: "LOCAL"}-SNAPSHOT"
     pom {
         name.set(projectName)
         desc?.let { description.set(desc) }
@@ -59,7 +74,7 @@ private fun MavenPublication.configurePom(projectName: String, desc: String?, co
         licenses {
             license {
                 name.set("The Apache Software License, Version 2.0")
-                url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
+                url.set("https://www.apache.org/licenses/LICENSE-2.0.txt")
                 distribution.set("repo")
             }
         }
@@ -69,7 +84,7 @@ private fun MavenPublication.configurePom(projectName: String, desc: String?, co
                 id.set("Guthix")
                 name.set("Guthix Contributors")
                 organization.set("Guthix")
-                organizationUrl.set("http://www.guthix.io")
+                organizationUrl.set("https://www.guthix.io")
             }
         }
 

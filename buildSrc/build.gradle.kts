@@ -7,7 +7,6 @@ val jacksonVersion: String by extra("2.10.2")
 
 repositories {
     mavenCentral()
-    jcenter()
 }
 
 dependencies {
