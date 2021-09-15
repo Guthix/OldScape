@@ -68,6 +68,7 @@ private fun MavenPublication.configurePom(projectName: String, desc: String?, co
     version = releaseVersion ?: "$SNAPSHOT_BASE_VERSION.${System.getenv("GITHUB_RUN_NUMBER") ?: "LOCAL"}-SNAPSHOT"
     pom {
         name.set(projectName)
+        artifactId = projectName
         desc?.let { description.set(desc) }
         url.set("https://github.com/guthix/OldScape")
         from(component)
