@@ -1,5 +1,3 @@
-@file:Suppress("ConvertLambdaToReference")
-
 subprojects {
     dependencies {
         implementation(project(":server:world"))

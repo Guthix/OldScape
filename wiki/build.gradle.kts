@@ -5,7 +5,6 @@ import io.guthix.oldscape.registerPublication
 allprojects {
     apply(plugin = "maven-publish")
     apply(plugin = "signing")
-    apply(plugin = "org.jetbrains.dokka")
 
     kotlin { explicitApi() }
 

@@ -1,15 +1,9 @@
 @file:Suppress("ConvertLambdaToReference")
 
 plugins {
-    id("org.jetbrains.dokka")
-    kotlin("jvm")
+    kotlin("jvm") version "1.5.30"
     id("com.github.gmazzo.buildconfig") version "2.0.2"
 }
-
-val kotlinLoggingVersion: String by extra("2.0.2")
-val kCoroutinesVersion: String by extra("1.5.2")
-val kotlinVersion: String by extra("1.5.30")
-val logbackVersion: String by extra("1.2.3")
 
 buildConfig {
     packageName("io.guthix.oldscape")
@@ -23,7 +17,6 @@ buildConfig {
 
 allprojects {
     apply(plugin = "org.jetbrains.kotlin.jvm")
-    apply(plugin = "org.jetbrains.dokka")
 
     group = "io.guthix"
     version = "0.1.0"
@@ -53,6 +46,6 @@ allprojects {
 subprojects {
     dependencies {
         implementation(rootProject)
-        implementation(group = "io.github.microutils", name = "kotlin-logging", version = kotlinLoggingVersion)
+        implementation(rootProject.deps.kotlin.logging)
     }
 }
