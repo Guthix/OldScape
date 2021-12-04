@@ -21,7 +21,8 @@ fun abs(n: MapsquareUnit): MapsquareUnit = abs(n.value).mapsquares
 
 val Int.mapsquares: MapsquareUnit get() = MapsquareUnit(this)
 
-inline class MapsquareUnit(val value: Int) : Comparable<MapsquareUnit> {
+@JvmInline
+value class MapsquareUnit(val value: Int) : Comparable<MapsquareUnit> {
     val inTiles: TileUnit get() = TileUnit(value * SIZE_TILE.value)
     val inZones: ZoneUnit get() = ZoneUnit(value * SIZE_ZONE.value)
 

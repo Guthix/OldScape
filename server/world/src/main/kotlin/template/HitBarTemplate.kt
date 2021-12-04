@@ -17,6 +17,6 @@ package io.guthix.oldscape.server.template
 
 import io.guthix.oldscape.cache.config.HitBarConfig
 
-data class HitBarTemplate(val config: HitBarConfig) : BaseTemplate(config) {
+data class HitBarTemplate(val config: HitBarConfig) : BaseTemplate() {
     val width: Int get() = config.width.toInt()
 }

@@ -39,7 +39,7 @@ public data class IdentKitConfig(override val id: Int) : Config(id) {
         modelIds?.let {
             data.writeOpcode(2)
             data.writeByte(it.size)
-            it.forEach { id -> data.writeShort(id) }
+            it.forEach(data::writeShort)
         }
         if (nonSelectable) data.writeOpcode(3)
         colorFind?.let { colorFind ->

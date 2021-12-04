@@ -17,7 +17,7 @@ package io.guthix.oldscape.server.template
 
 import io.guthix.oldscape.cache.config.InventoryConfig
 
-data class InventoryTemplate(private val config: InventoryConfig) : BaseTemplate(config) {
+data class InventoryTemplate(private val config: InventoryConfig) : BaseTemplate() {
     val id: Int get() = config.id
     val capacity: Int get() = config.capacity
 }

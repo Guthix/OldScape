@@ -17,4 +17,4 @@ package io.guthix.oldscape.server.template
 
 import io.guthix.oldscape.cache.config.EnumConfig
 
-data class EnumTemplate<K, V>(private val config: EnumConfig<K, V>) : BaseTemplate(config), MutableMap<K, V> by config
+data class EnumTemplate<K, V>(private val config: EnumConfig<K, V>) : BaseTemplate(), MutableMap<K, V> by config

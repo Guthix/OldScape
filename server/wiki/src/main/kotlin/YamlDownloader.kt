@@ -28,6 +28,7 @@ import io.guthix.oldscape.BuildConfig
 import io.guthix.oldscape.server.template.Template
 import io.guthix.oldscape.wiki.wikitext.NpcWikiDefinition
 import io.guthix.oldscape.wiki.wikitext.ObjWikiDefinition
+import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import mu.KotlinLogging
@@ -110,10 +111,10 @@ object YamlDownloader {
             emptyMap()
         }
         val dumpFile = dumpPath.resolve(fileName)
-        val data: Map<String, T> = defs.map { dump ->
+        val data: Map<String, T> = defs.associate { dump ->
             val serverTemplate = serverTemplates.values.find { dump.ids == it.ids }
             configNameToIdentifier(dump.ids?.first() ?: 0, dump.name ?: "NULL") to dump.templateBuilder(serverTemplate)
-        }.toMap()
+        }
         val yamlString = yaml.encodeToString(data)
         Files.writeString(dumpFile, yamlString)
         logger.info { "Written ${defs.size} templates to ${dumpFile.toFile().absolutePath}" }
@@ -135,7 +136,7 @@ object YamlDownloader {
             return "$builder"
         }
 
-        val normalizedName = name.toUpperCase().replace(' ', '_').replace(Regex("[^a-zA-Z\\d_:]"), "").removeTags()
+        val normalizedName = name.uppercase().replace(' ', '_').replace(Regex("[^a-zA-Z\\d_:]"), "").removeTags()
         val propName = if (normalizedName.isNotEmpty()) normalizedName + "_$id" else "$id"
         return if (propName.first().isDigit()) "`$propName`" else propName
     }

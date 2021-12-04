@@ -19,7 +19,7 @@ import io.guthix.oldscape.cache.config.LocConfig
 import io.guthix.oldscape.dim.TileUnit
 import io.guthix.oldscape.dim.tiles
 
-data class LocTemplate(private val config: LocConfig) : BaseTemplate(config) {
+data class LocTemplate(private val config: LocConfig) : BaseTemplate() {
     val id: Int get() = config.id
     val name: String get() = config.name
     val width: TileUnit get() = config.width.toInt().tiles

@@ -67,31 +67,31 @@ fun Player.unequip(equipmentType: EquipmentType, world: World): Obj? {
 var EquipmentManager.attackBonus: StyleBonus by Property {
     val bonusTemplates = objs.map { it?.attackBonus }
     StyleBonus(
-        bonusTemplates.sumBy { it?.stab ?: 0 },
-        bonusTemplates.sumBy { it?.slash ?: 0 },
-        bonusTemplates.sumBy { it?.crush ?: 0 },
-        bonusTemplates.sumBy { it?.range ?: 0 },
-        bonusTemplates.sumBy { it?.magic ?: 0 }
+        bonusTemplates.sumOf { it?.stab ?: 0 },
+        bonusTemplates.sumOf { it?.slash ?: 0 },
+        bonusTemplates.sumOf { it?.crush ?: 0 },
+        bonusTemplates.sumOf { it?.range ?: 0 },
+        bonusTemplates.sumOf { it?.magic ?: 0 }
     )
 }
 
 var EquipmentManager.defenceBonus: StyleBonus by Property {
     val bonusTemplates = objs.map { it?.defenceBonus }
     StyleBonus(
-        bonusTemplates.sumBy { it?.stab ?: 0 },
-        bonusTemplates.sumBy { it?.slash ?: 0 },
-        bonusTemplates.sumBy { it?.crush ?: 0 },
-        bonusTemplates.sumBy { it?.range ?: 0 },
-        bonusTemplates.sumBy { it?.magic ?: 0 }
+        bonusTemplates.sumOf { it?.stab ?: 0 },
+        bonusTemplates.sumOf { it?.slash ?: 0 },
+        bonusTemplates.sumOf { it?.crush ?: 0 },
+        bonusTemplates.sumOf { it?.range ?: 0 },
+        bonusTemplates.sumOf { it?.magic ?: 0 }
     )
 }
 
 var EquipmentManager.strengtBonus: CombatBonus by Property {
     val bonusTemplates = objs.map { it?.strengthBonus }
     CombatBonus(
-        bonusTemplates.sumBy { it?.melee ?: 0 },
-        bonusTemplates.sumBy { it?.range ?: 0 },
-        bonusTemplates.sumBy { it?.magic ?: 0 }
+        bonusTemplates.sumOf { it?.melee ?: 0 },
+        bonusTemplates.sumOf { it?.range ?: 0 },
+        bonusTemplates.sumOf { it?.magic ?: 0 }
     )
 }
 

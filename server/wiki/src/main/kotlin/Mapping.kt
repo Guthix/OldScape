@@ -27,30 +27,36 @@ import io.guthix.oldscape.server.core.stat.StyleBonus
 import io.guthix.oldscape.wiki.wikitext.NpcWikiDefinition
 import io.guthix.oldscape.wiki.wikitext.ObjWikiDefinition
 
-fun ObjWikiDefinition.toWeightTemplate(servert: ObjWeightTemplate?): ObjWeightTemplate = ObjWeightTemplate(
-    ids!!,
-    weight!!
-)
+fun ObjWikiDefinition.toWeightTemplate(
+    @Suppress("UNUSED_PARAMETER") servert: ObjWeightTemplate?
+): ObjWeightTemplate =
+    ObjWeightTemplate(
+        ids!!,
+        weight!!
+    )
 
-fun ObjWikiDefinition.toEquipmentTemplate(serverT: EquipmentTemplate?): EquipmentTemplate = EquipmentTemplate(
-    ids!!,
-    slot.toEquipmentType(),
-    StyleBonus(
-        attBonusStab ?: 0,
-        attBonusSlash ?: 0,
-        attBonusCrush ?: 0,
-        attBonusRange ?: 0,
-        attBonusMagic ?: 0
-    ), CombatBonus(strengthBonus ?: 0, rangeStrengthBonus ?: 0, magicDamageBonus ?: 0),
-    StyleBonus(
-        defBonusStab ?: 0,
-        defBonusSlash ?: 0,
-        defBonusCrush ?: 0,
-        defBonusRange ?: 0,
-        defBonusMagic ?: 0
-    ),
-    prayerBonus ?: 0
-)
+fun ObjWikiDefinition.toEquipmentTemplate(
+    @Suppress("UNUSED_PARAMETER") serverT: EquipmentTemplate?
+): EquipmentTemplate =
+    EquipmentTemplate(
+        ids!!,
+        slot.toEquipmentType(),
+        StyleBonus(
+            attBonusStab ?: 0,
+            attBonusSlash ?: 0,
+            attBonusCrush ?: 0,
+            attBonusRange ?: 0,
+            attBonusMagic ?: 0
+        ), CombatBonus(strengthBonus ?: 0, rangeStrengthBonus ?: 0, magicDamageBonus ?: 0),
+        StyleBonus(
+            defBonusStab ?: 0,
+            defBonusSlash ?: 0,
+            defBonusCrush ?: 0,
+            defBonusRange ?: 0,
+            defBonusMagic ?: 0
+        ),
+        prayerBonus ?: 0
+    )
 
 fun ObjWikiDefinition.toWeaponTemplate(serverT: AttackTemplate?): AttackTemplate = AttackTemplate(
     ids!!,

@@ -464,11 +464,11 @@ public class Model(public var id: Int) {
                 for (i in 0 until triangleCount) {
                     if (model.textureCoordinates!![i].toInt() and 255 != 255) {
                         val var21 = model.textureCoordinates!![i].toInt()
-                        if (model.textureTriangleVertex1!![var21] and '\uffff'.toInt() ==
+                        if (model.textureTriangleVertex1!![var21] and '\uffff'.code ==
                             model.triangleVertex1!![i]
-                            && model.textureTriangleVertex2!![var21] and '\uffff'.toInt() ==
+                            && model.textureTriangleVertex2!![var21] and '\uffff'.code ==
                             model.triangleVertex2!![i]
-                            && model.textureTriangleVertex3!![var21] and '\uffff'.toInt() ==
+                            && model.textureTriangleVertex3!![var21] and '\uffff'.code ==
                             model.triangleVertex3!![i]
                         ) {
                             model.textureCoordinates!![i] = -1

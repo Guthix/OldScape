@@ -152,11 +152,11 @@ class NpcInfoSmallViewportPacket(
             writeByte(npc.sequence?.duration ?: 0)
         }
 
-        val orientation: NpcUpdateType = NpcUpdateType(1, 0x10) { npc ->
+        val orientation: NpcUpdateType = NpcUpdateType(1, 0x10) { _ ->
             //TODO
         }
 
-        val transform: NpcUpdateType = NpcUpdateType(2, 0x20) { npc ->
+        val transform: NpcUpdateType = NpcUpdateType(2, 0x20) { _ ->
             //TODO
         }
 

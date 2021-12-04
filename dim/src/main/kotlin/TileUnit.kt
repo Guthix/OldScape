@@ -24,7 +24,8 @@ fun abs(n: TileUnit): TileUnit = abs(n.value).tiles
 
 val Int.tiles: TileUnit get() = TileUnit(this)
 
-inline class TileUnit(val value: Int) : Comparable<TileUnit> {
+@JvmInline
+value class TileUnit(val value: Int) : Comparable<TileUnit> {
     val inZones: ZoneUnit get() = ZoneUnit(value / ZoneUnit.SIZE_TILE.value)
     val inMapsquares: MapsquareUnit get() = MapsquareUnit(value / MapsquareUnit.SIZE_TILE.value)
     val relativeZone: TileUnit get() = TileUnit(value % ZoneUnit.SIZE_TILE.value)

@@ -17,7 +17,7 @@ package io.guthix.oldscape.server.template
 
 import io.guthix.oldscape.cache.config.NpcConfig
 
-data class NpcTemplate(private val config: NpcConfig) : BaseTemplate(config) {
+data class NpcTemplate(private val config: NpcConfig) : BaseTemplate() {
     val id: Int get() = config.id
     val name: String get() = config.name
     val size: Int get() = config.size.toInt()

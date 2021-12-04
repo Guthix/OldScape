@@ -19,7 +19,8 @@ val Int.floors: FloorUnit get() = FloorUnit(this)
 
 infix fun FloorUnit.until(to: FloorUnit): FloorUnitRange = this..(to - 1.floors)
 
-inline class FloorUnit(val value: Int) : Comparable<FloorUnit> {
+@JvmInline
+value class FloorUnit(val value: Int) : Comparable<FloorUnit> {
     operator fun plus(other: FloorUnit): FloorUnit = FloorUnit(value + other.value)
     operator fun minus(other: FloorUnit): FloorUnit = FloorUnit(value - other.value)
     operator fun times(other: FloorUnit): FloorUnit = FloorUnit(value * other.value)

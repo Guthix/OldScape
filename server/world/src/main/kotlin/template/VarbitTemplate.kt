@@ -17,7 +17,7 @@ package io.guthix.oldscape.server.template
 
 import io.guthix.oldscape.cache.config.VarbitConfig
 
-data class VarbitTemplate(private val config: VarbitConfig) : BaseTemplate(config) {
+data class VarbitTemplate(private val config: VarbitConfig) : BaseTemplate() {
     val lsb: Int get() = config.lsb.toInt()
     val msb: Int get() = config.msb.toInt()
     val varpId: Int get() = config.varpId

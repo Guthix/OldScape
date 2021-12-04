@@ -17,7 +17,7 @@ package io.guthix.oldscape.server.template
 
 import io.guthix.oldscape.cache.config.SpotAnimConfig
 
-data class SpotAnimTemplate(private val config: SpotAnimConfig) : BaseTemplate(config) {
+data class SpotAnimTemplate(private val config: SpotAnimConfig) : BaseTemplate() {
     val id: Int get() = config.id
     val sequenceId: Int? get() = config.sequenceId
 }

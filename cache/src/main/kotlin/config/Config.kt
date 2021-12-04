@@ -54,6 +54,7 @@ abstract class ConfigCompanion<out T : Config> {
         return configs
     }
 
+    @ExperimentalUnsignedTypes
     abstract fun decode(id: Int, data: ByteBuf): T
 
     protected fun ByteBuf.readParams(): MutableMap<Int, Any> {

@@ -88,7 +88,7 @@ public abstract class WikiDefinition {
         val splits = split(" ").subList(2, 5)
         return LocalDate.of(
             splits[2].replace("[", "").replace("]", "").toInt(),
-            Month.valueOf(splits[1].replace("]", "").toUpperCase()),
+            Month.valueOf(splits[1].replace("]", "").uppercase()),
             splits[0].replace("[", "").toInt()
         )
     }

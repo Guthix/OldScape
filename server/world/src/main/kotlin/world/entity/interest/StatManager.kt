@@ -102,9 +102,7 @@ class StatManager {
     val hunter: Stat = Stat(id = 21, status = 99, xp = 13_034_431, changes)
     val construction: Stat = Stat(id = 22, status = 99, xp = 13_034_431, changes)
 
-    internal fun initialize(world: World, player: Player) {}
-
-    internal fun synchronize(world: World, player: Player): List<ChannelFuture> = changes.map { stat ->
+    internal fun synchronize(player: Player): List<ChannelFuture> = changes.map { stat ->
         player.ctx.write(UpdateStatPacket(stat.id, stat.xp, stat.status))
     }
 

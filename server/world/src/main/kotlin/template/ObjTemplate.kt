@@ -17,7 +17,7 @@ package io.guthix.oldscape.server.template
 
 import io.guthix.oldscape.cache.config.ObjConfig
 
-data class ObjTemplate(private val config: ObjConfig) : BaseTemplate(config) {
+data class ObjTemplate(private val config: ObjConfig) : BaseTemplate() {
     val id: Int get() = config.id
     val name: String get() = config.name
     val isStackable: Boolean get() = config.stackable

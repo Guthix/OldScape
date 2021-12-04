@@ -34,6 +34,7 @@ import io.guthix.oldscape.server.net.OldScapeServer
 import io.guthix.oldscape.server.net.game.GamePacketDecoder
 import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.BuildConfig
+import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
@@ -102,5 +103,6 @@ object OldScape {
         }
     }
 
+    @ExperimentalSerializationApi
     private fun loadMapSquareXteaKeys(path: Path): List<XteaConfig> = Json.decodeFromString(Files.readString(path))
 }

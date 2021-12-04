@@ -310,7 +310,7 @@ class PlayerInfoPacket(
             intArrayOf(0, 1, 2, 3, 4)
         )
 
-        val movementForced: PlayerUpdateType = PlayerUpdateType(0, 0x200) { player ->
+        val movementForced: PlayerUpdateType = PlayerUpdateType(0, 0x200) { _ ->
             //TODO
         }
 

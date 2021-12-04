@@ -316,7 +316,7 @@ class World internal constructor(
                 world.addTerrainByDef(def.x.mapsquares, def.y.mapsquares, def.mapDefinition)
                 def.locationDefinitions.forEach { world.addLocByDef(def.x.mapsquares, def.y.mapsquares, it) }
             }
-            val zoneCount = map.sumBy { floor -> floor.sumBy { yZones -> yZones.count { it != null } } }
+            val zoneCount = map.sumOf { floor -> floor.sumOf { yZones -> yZones.count { it != null } } }
             logger.info { "Loaded $zoneCount zones" }
             return world
         }

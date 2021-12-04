@@ -24,7 +24,7 @@ public class Huffman(private val frequencies: ByteArray, private val masks: IntA
 
         var currentPos = 0
         for (element in text) {
-            val curChar = element.toInt() and 255
+            val curChar = element.code and 255
             val frequency = frequencies[curChar]
             val encoding = masks[curChar]
             if (frequency.toInt() == 0) throw RuntimeException("No codeword for data value $curChar.")

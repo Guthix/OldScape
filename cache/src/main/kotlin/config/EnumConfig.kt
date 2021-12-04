@@ -39,11 +39,11 @@ public data class EnumConfig<K, V>(
         val data = Unpooled.buffer()
         keyType?.let {
             data.writeOpcode(1)
-            data.writeByte(it.letter.toInt())
+            data.writeByte(it.letter.code)
         }
         valType?.let {
             data.writeOpcode(2)
-            data.writeByte(it.letter.toInt())
+            data.writeByte(it.letter.code)
         }
         if (defaultValue is String) {
             data.writeOpcode(3)
@@ -163,8 +163,8 @@ public data class EnumConfig<K, V>(
             decoder@ while (true) {
                 when (val opcode = data.readUnsignedByte().toInt()) {
                     0 -> break@decoder
-                    1 -> enumConfig.keyType = Type(data.readUnsignedByte().toChar())
-                    2 -> enumConfig.valType = Type(data.readUnsignedByte().toChar())
+                    1 -> enumConfig.keyType = Type(data.readUnsignedByte().toInt().toChar())
+                    2 -> enumConfig.valType = Type(data.readUnsignedByte().toInt().toChar())
                     3 -> enumConfig.defaultValue = data.readStringCP1252()
                     4 -> {
                         val value = data.readInt()

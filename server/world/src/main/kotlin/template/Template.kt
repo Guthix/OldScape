@@ -28,7 +28,7 @@ interface Template {
     val ids: List<Int>
 }
 
-abstract class BaseTemplate(config: Config) : PropertyHolder {
+abstract class BaseTemplate() : PropertyHolder {
     override val properties: MutableMap<KProperty<*>, Any?> = mutableMapOf()
 }
 

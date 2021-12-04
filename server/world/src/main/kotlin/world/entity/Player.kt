@@ -141,7 +141,6 @@ class Player internal constructor(
         itemBag.initialize()
         equipment.initialize()
         contextMenuManager.initialize(this)
-        statManager.initialize(world, this)
         energyManager.initialize(this)
     }
 
@@ -151,7 +150,7 @@ class Player internal constructor(
         futures.addAll(equipment.synchronize(this))
         futures.addAll(contextMenuManager.synchronize(this))
         futures.addAll(varpManager.synchronize(this))
-        futures.addAll(statManager.synchronize(world, this))
+        futures.addAll(statManager.synchronize(this))
         futures.addAll(energyManager.synchronize(this))
         futures.addAll(sceneManager.synchronize(world, world.xteas, this))
         futures.addAll(playerManager.synchronize(world, this))

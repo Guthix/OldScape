@@ -18,7 +18,7 @@ package io.guthix.oldscape.server.template
 import io.guthix.oldscape.cache.config.SequenceConfig
 import kotlin.math.ceil
 
-data class SequenceTemplate(private val config: SequenceConfig) : BaseTemplate(config) {
+data class SequenceTemplate(private val config: SequenceConfig) : BaseTemplate() {
     val id: Int get() = config.id
     val tickDuration: Int? by lazy(
         ceil(config.frameDuration?.filter { it < 100 }?.sum()?.toDouble()?.div(30) ?: 0.toDouble())::toInt
