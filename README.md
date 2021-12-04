@@ -10,8 +10,8 @@ OldScape is an emulator project that simulates the Oldschool Runescape server. T
 emulated the server and improve it whenever possible. OldScape puts an emphasis on ease of use for content developers.
 
 ## How To setup
-
-To setup this project properly a cache has to be present under `cache/src/main/resources`. To support player 
-saving PostgreSQL needs to be installed with a configuration that matches `server/world/main/resources/Config.yaml`.
+Run the `run` run configuration in IntelliJ or the OldScape:server:world run gradle task to start the server.
+To support player saving PostgreSQL needs to be installed with a configuration that matches 
+`server/world/main/resources/Config.yaml`.
 
 If you run into any issues you can get help from our [discord](https://discord.gg/AFyGxNp) channel.
