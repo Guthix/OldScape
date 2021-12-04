@@ -38,8 +38,8 @@ class IdGenerator : CodeGenerator() {
         super.apply(target)
         val idGenTask = target.task("generateCacheIds") {
             doFirst {
-                val resourceDir = "${target.rootDir}/$cacheDir"
-                Js5Cache(Js5DiskStore.open(File(resourceDir).toPath())).use { cache ->
+                val cacheDir = "${target.rootProject.buildDir}/cache"
+                Js5Cache(Js5DiskStore.open(File(cacheDir).toPath())).use { cache ->
                     val configArchive = cache.readArchive(ConfigArchive.id)
 
                     val locs = LocationConfig.load(configArchive.readGroup(LocationConfig.id))
@@ -66,6 +66,7 @@ class IdGenerator : CodeGenerator() {
         }
         val classesTask = target.tasks.getByName("compileKotlin")
         idGenTask.group = BasePlugin.BUILD_GROUP
+        idGenTask.dependsOn(target.rootProject.tasks.getByName("unzipCache"))
         classesTask.dependsOn(idGenTask)
     }
 

@@ -19748,7 +19748,6 @@ object LocIds {
     const val WIZARD_STATUE_38423: Int = 38423
     const val WIZARD_STATUE_38424: Int = 38424
     const val WIZARD_STATUE_38425: Int = 38425
-    const val FIRE_38426: Int = 38426
     const val FIRE_38427: Int = 38427
     const val KNIGHT_STATUE_38428: Int = 38428
     const val KNIGHT_STATUE_38429: Int = 38429

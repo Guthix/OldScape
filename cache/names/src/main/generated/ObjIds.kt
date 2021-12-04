@@ -24848,4 +24848,7 @@ object ObjIds {
     const val NULL_24841: Int = 24841
     const val A_TASTE_OF_HOPE_24842: Int = 24842
     const val NULL_24843: Int = 24843
+    const val RING_OF_ENDURANCE_UNCHARGED_24844: Int = 24844
+    const val NULL_24845: Int = 24845
+    const val NULL_24846: Int = 24846
 }

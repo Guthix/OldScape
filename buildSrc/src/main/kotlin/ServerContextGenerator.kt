@@ -33,8 +33,8 @@ class ServerContextGenerator : CodeGenerator() {
         super.apply(target)
         val contextGenTask = target.task("generateTemplateContext") {
             doFirst {
-                val resourceDir = "${target.rootDir}/${IdGenerator.cacheDir}"
-                Js5Cache(Js5DiskStore.open(File(resourceDir).toPath())).use { cache ->
+                val cacheDir = "${target.rootProject.buildDir}/cache"
+                Js5Cache(Js5DiskStore.open(File(cacheDir).toPath())).use { cache ->
                     val configArchive = cache.readArchive(ConfigArchive.id)
                     val locs = LocationConfig.load(configArchive.readGroup(LocationConfig.id))
                     val objs = ObjectConfig.load(configArchive.readGroup(ObjectConfig.id))
@@ -56,6 +56,7 @@ class ServerContextGenerator : CodeGenerator() {
         }
         val classesTask = target.tasks.getByName("compileKotlin")
         contextGenTask.group = BasePlugin.BUILD_GROUP
+        contextGenTask.dependsOn(target.rootProject.tasks.getByName("unzipCache"))
         classesTask.dependsOn(contextGenTask)
     }
 
