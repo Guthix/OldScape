@@ -37,7 +37,9 @@ fun Project.registerPublication(name: String, description: String) {
             sonarSnapshotRepository()
         }
         publications {
-            val taskName = name.split("-").joinToString("", transform = String::capitalize)
+            val taskName = name.split("-").joinToString("", transform = { sub ->
+                sub.replaceFirstChar { char -> char.titlecase() }
+            })
             val publicationProvider = register<MavenPublication>(taskName) {
                 configurePom(name, description, components.getByName("java"))
             }
@@ -96,7 +98,6 @@ private fun MavenPublication.configurePom(projectName: String, desc: String?, co
     }
 }
 
-@Suppress("UnstableApiUsage")
 private fun Project.signPublication(publicationProvider: Provider<MavenPublication>) {
     val signingKey = System.getenv("SIGNING_KEY")
     val signingKeyPassphrase = System.getenv("SIGNING_PASSWORD")

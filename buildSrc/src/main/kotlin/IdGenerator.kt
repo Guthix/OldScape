@@ -32,13 +32,14 @@ import org.gradle.api.plugins.BasePlugin
 import java.io.File
 import java.io.PrintWriter
 import java.nio.file.Path
+import java.util.Locale
 
 class IdGenerator : CodeGenerator() {
     override fun apply(target: Project) {
         super.apply(target)
         val idGenTask = target.task("generateCacheIds") {
             doFirst {
-                val cacheDir = "${target.rootProject.buildDir}/cache"
+                val cacheDir = "${target.rootProject.layout.buildDirectory}/cache"
                 Js5Cache(Js5DiskStore.open(File(cacheDir).toPath())).use { cache ->
                     val configArchive = cache.readArchive(ConfigArchive.id)
 
@@ -112,7 +113,11 @@ fun configNameToIdentifier(id: Int, name: String): String {
         return "$builder"
     }
 
-    val normalizedName = name.toUpperCase().replace(' ', '_').replace(Regex("[^a-zA-Z\\d_:]"), "").removeTags()
+    val normalizedName = name
+        .uppercase(Locale.getDefault())
+        .replace(' ', '_')
+        .replace(Regex("[^a-zA-Z\\d_:]"), "")
+        .removeTags()
     val propName = if (normalizedName.isNotEmpty()) normalizedName + "_$id" else "$id"
     return if (propName.first().isDigit()) "`$propName`" else propName
 }
