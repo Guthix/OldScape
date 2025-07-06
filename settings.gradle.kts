@@ -7,7 +7,7 @@ rootProject.name = "oldscape"
 dependencyResolutionManagement {
     versionCatalogs {
         create("deps") {
-            version("jdk", "11")
+            version("jdk", "21")
             version("kotlin", "2.2.0")
             version("json", "1.9.0")
             version("kaml", "0.35.3")
