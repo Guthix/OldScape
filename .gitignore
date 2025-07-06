@@ -75,3 +75,5 @@ gradle-app.setting
 
 .DS_Store
 .idea/discord.xml
+
+.kotlin
