@@ -30,7 +30,7 @@ private const val wikiUrl = "https://oldschool.runescape.wiki"
 
 private val logger = KotlinLogging.logger { }
 
-fun scrapeObjectWikiConfigs(cacheConfigs: Map<Int, ObjConfig>): List<ObjWikiDefinition> = runBlocking {
+public fun scrapeObjectWikiConfigs(cacheConfigs: Map<Int, ObjConfig>): List<ObjWikiDefinition> = runBlocking {
     val wikiConfigs = HttpClient(Apache) {
         followRedirects = false
         engine {
@@ -84,7 +84,7 @@ fun scrapeObjectWikiConfigs(cacheConfigs: Map<Int, ObjConfig>): List<ObjWikiDefi
     wikiConfigs.values.distinct()
 }
 
-fun scrapeNpcWikiConfigs(cacheConfigs: Map<Int, NpcConfig>): List<NpcWikiDefinition> = runBlocking {
+public fun scrapeNpcWikiConfigs(cacheConfigs: Map<Int, NpcConfig>): List<NpcWikiDefinition> = runBlocking {
     val wikiConfigs = HttpClient(Apache) {
         followRedirects = false
     }.use { client ->
@@ -129,7 +129,7 @@ fun scrapeNpcWikiConfigs(cacheConfigs: Map<Int, NpcConfig>): List<NpcWikiDefinit
 }
 
 /** Scrapes the wiki and retrieves the wiki text.*/
-suspend fun HttpClient.scrapeWikiText(wikiType: String, id: Int, name: String): String {
+public suspend fun HttpClient.scrapeWikiText(wikiType: String, id: Int, name: String): String {
     val urlName = name.replace(' ', '_').replace("<.*?>".toRegex(), "")
     val queryUrl = if (urlName.contains("%")) {
         "$wikiUrl/w/Special:Lookup?type=$wikiType&id=$id"
@@ -146,4 +146,4 @@ suspend fun HttpClient.scrapeWikiText(wikiType: String, id: Int, name: String): 
     return get(rawUrl)
 }
 
-class PageNotFoundException(message: String) : Exception(message)
+public class PageNotFoundException(message: String) : Exception(message)
