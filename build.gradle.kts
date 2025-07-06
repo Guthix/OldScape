@@ -3,7 +3,7 @@
 import de.undercouch.gradle.tasks.download.Download
 
 plugins {
-    kotlin("jvm") version "1.5.30"
+    kotlin("jvm") version "2.2.0"
     id("com.github.gmazzo.buildconfig") version "2.0.2"
     id("de.undercouch.download") version "4.1.2"
 }
@@ -55,18 +55,6 @@ allprojects {
     java {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
-    }
-
-    tasks {
-        compileKotlin {
-            kotlinOptions.jvmTarget = "11"
-            kotlinOptions.freeCompilerArgs = listOf(
-                "-Xopt-in=kotlin.ExperimentalStdlibApi", "-XXLanguage:+InlineClasses"
-            )
-        }
-        compileTestKotlin {
-            kotlinOptions.jvmTarget = "11"
-        }
     }
 }
 

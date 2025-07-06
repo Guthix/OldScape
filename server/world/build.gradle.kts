@@ -2,7 +2,7 @@ import io.guthix.oldscape.ServerContextGenerator
 
 plugins {
     application
-    kotlin("plugin.serialization") version "1.5.30"
+    kotlin("plugin.serialization") version "2.2.0"
 }
 
 apply<ServerContextGenerator>()

@@ -1,10 +1,6 @@
 @file:Suppress("UnstableApiUsage")
 
-import groovy.util.FileNameFinder
 import java.nio.file.Path
-import java.nio.file.Paths
-
-enableFeaturePreview("VERSION_CATALOGS")
 
 rootProject.name = "oldscape"
 
@@ -12,8 +8,8 @@ dependencyResolutionManagement {
     versionCatalogs {
         create("deps") {
             version("jdk", "11")
-            version("kotlin", "1.5.30")
-            version("serialization", "1.2.2")
+            version("kotlin", "2.2.0")
+            version("json", "1.9.0")
             version("kaml", "0.35.3")
             version("coroutines", "1.5.2")
             version("netty", "4.1.66.Final")
@@ -28,28 +24,28 @@ dependencyResolutionManagement {
             version("ktor",  "1.4.0")
 
 
-            alias("kotlin-reflect").to("org.jetbrains.kotlin", "kotlin-reflect").versionRef("kotlin")
-            alias("kotlin-serialization").to("org.jetbrains.kotlinx", "kotlinx-serialization-core")
-                .versionRef("serialization")
-            alias("kotlin-serialization-json").to("org.jetbrains.kotlinx", "kotlinx-serialization-json")
-                .versionRef("serialization")
-            alias("kotlin-serialization-yaml").to("com.charleskorn.kaml", "kaml").versionRef("kaml")
-            alias("kotlin-coroutines").to("org.jetbrains.kotlinx", "kotlinx-coroutines-core").versionRef("coroutines")
-            alias("kotlin-scripting").to("org.jetbrains.kotlin", "kotlin-scripting-common").versionRef("kotlin")
-            alias("ktor-server-core").to("io.ktor", "ktor-server-core").versionRef("ktor")
-            alias("ktor-client-apache").to("io.ktor", "ktor-client-apache").versionRef("ktor")
-            alias("netty-all").to("io.netty", "netty-all").versionRef("netty")
-            alias("exposed-core").to("org.jetbrains.exposed", "exposed-core").versionRef("exposed")
-            alias("exposed-jdbc").to("org.jetbrains.exposed", "exposed-jdbc").versionRef("exposed")
-            alias("postgresql").to("org.postgresql", "postgresql").versionRef("postgres")
-            alias("jagex-bytebuf-ext").to("io.guthix", "jagex-bytebuf-extensions").versionRef("jagex-bytebuf-ext")
-            alias("jagex-js5").to("io.guthix", "jagex-store-5").versionRef("jagex-store-5")
-            alias("classgraph").to("io.github.classgraph", "classgraph").versionRef("classgraph")
-            alias("kotlin-logging").to("io.github.microutils", "kotlin-logging-jvm").versionRef("kotlin-logging")
-            alias("logback").to("ch.qos.logback", "logback-classic").versionRef("logback")
-            alias("kotest-junit").to("io.kotest", "kotest-runner-junit5-jvm").versionRef("kotest")
-            alias("kotest-assert").to("io.kotest", "kotest-assertions-core-jvm").versionRef("kotest")
-            alias("kotest-property").to("io.kotest", "kotest-property").versionRef("kotest")
+            library("kotlin-reflect", "org.jetbrains.kotlin", "kotlin-reflect").versionRef("kotlin")
+            library("kotlin-serialization", "org.jetbrains.kotlinx", "kotlinx-serialization-core")
+                .versionRef("kotlin")
+            library("kotlin-serialization-json", "org.jetbrains.kotlinx", "kotlinx-serialization-json-jvm")
+                .versionRef("json")
+            library("kotlin-serialization-yaml", "com.charleskorn.kaml", "kaml").versionRef("kaml")
+            library("kotlin-coroutines", "org.jetbrains.kotlinx", "kotlinx-coroutines-core").versionRef("coroutines")
+            library("kotlin-scripting", "org.jetbrains.kotlin", "kotlin-scripting-common").versionRef("kotlin")
+            library("ktor-server-core", "io.ktor", "ktor-server-core").versionRef("ktor")
+            library("ktor-client-apache", "io.ktor", "ktor-client-apache").versionRef("ktor")
+            library("netty-all", "io.netty", "netty-all").versionRef("netty")
+            library("exposed-core", "org.jetbrains.exposed", "exposed-core").versionRef("exposed")
+            library("exposed-jdbc", "org.jetbrains.exposed", "exposed-jdbc").versionRef("exposed")
+            library("postgresql", "org.postgresql", "postgresql").versionRef("postgres")
+            library("jagex-bytebuf-ext", "io.guthix", "jagex-bytebuf-extensions").versionRef("jagex-bytebuf-ext")
+            library("jagex-js5", "io.guthix", "jagex-store-5").versionRef("jagex-store-5")
+            library("classgraph", "io.github.classgraph", "classgraph").versionRef("classgraph")
+            library("kotlin-logging", "io.github.microutils", "kotlin-logging-jvm").versionRef("kotlin-logging")
+            library("logback", "ch.qos.logback", "logback-classic").versionRef("logback")
+            library("kotest-junit", "io.kotest", "kotest-runner-junit5-jvm").versionRef("kotest")
+            library("kotest-assert", "io.kotest", "kotest-assertions-core-jvm").versionRef("kotest")
+            library("kotest-property", "io.kotest", "kotest-property").versionRef("kotest")
         }
     }
 }
@@ -72,9 +68,9 @@ fun includeModules(module: String) {
     val pluginRelativePath = module.replace(":", "/")
     val pluginRootDir: Path = rootProject.projectDir.toPath().resolve(pluginRelativePath)
     if (pluginRootDir.toFile().exists()) {
-        val gradleBuildFiles = FileNameFinder().getFileNames("$pluginRootDir", "**/*.gradle.kts")
-        gradleBuildFiles.forEach { filename ->
-            val buildFilePath = Paths.get(filename)
+        val gradleBuildFiles = fileTree("$pluginRootDir").files.filter { it.name.endsWith(".gradle.kts") }
+        gradleBuildFiles.forEach { file ->
+            val buildFilePath = file.toPath()
             val moduleDir = buildFilePath.parent
             val relativePath = pluginRootDir.relativize(moduleDir)
             val pluginName = "$relativePath".replace(File.separator, ":")
