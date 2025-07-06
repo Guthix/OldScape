@@ -39,7 +39,7 @@ class IdGenerator : CodeGenerator() {
         super.apply(target)
         val idGenTask = target.task("generateCacheIds") {
             doFirst {
-                val cacheDir = "${target.rootProject.layout.buildDirectory}/cache"
+                val cacheDir = target.rootProject.layout.buildDirectory.dir("cache").get().asFile.path
                 Js5Cache(Js5DiskStore.open(File(cacheDir).toPath())).use { cache ->
                     val configArchive = cache.readArchive(ConfigArchive.id)
 
