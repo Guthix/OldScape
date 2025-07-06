@@ -20,7 +20,7 @@ import io.guthix.oldscape.cache.plane.RsComponent
 
 public class ComponentArchive(public val components: List<RsComponent>) {
     public companion object {
-        public const val id: Int = 3
+        public const val ID: Int = 3
 
         public fun load(archive: Js5Archive): ComponentArchive {
             val components = mutableListOf<RsComponent>()

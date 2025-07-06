@@ -22,7 +22,7 @@ import java.io.FileNotFoundException
 
 public class MapArchive(public val mapsquares: Map<Int, MapSquareDefinition>) {
     public companion object {
-        public const val id: Int = 5
+        public const val ID: Int = 5
 
         public fun load(archive: Js5Archive, xteas: List<MapXtea>): MapArchive {
             val mapSquares = mutableMapOf<Int, MapSquareDefinition>()

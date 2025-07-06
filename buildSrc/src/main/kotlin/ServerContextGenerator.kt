@@ -62,7 +62,7 @@ class ServerContextGenerator : CodeGenerator() {
 
 
     companion object {
-        const val constantPrefix: String = "    const val "
-        const val packageName: String = "io.guthix.oldscape.server.template"
+        const val CONST_PREFIX: String = "    const val "
+        const val PACKAGE_NAME: String = "io.guthix.oldscape.server.template"
     }
 }

@@ -20,7 +20,7 @@ import io.guthix.oldscape.cache.model.Model
 
 public class ModelArchive(public val models: List<Model>) {
     public companion object {
-        public const val id: Int = 7
+        public const val ID: Int = 7
 
         public fun load(archive: Js5Archive): ModelArchive {
             val models = mutableListOf<Model>()

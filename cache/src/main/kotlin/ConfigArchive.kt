@@ -39,7 +39,7 @@ public class ConfigArchive(
     public val varPlayerConfigs: Map<Int, VarPlayerConfig>
 ) {
     public companion object {
-        public const val id: Int = 2
+        public const val ID: Int = 2
 
         public fun load(archive: Js5Archive): ConfigArchive = ConfigArchive(
             AreaConfig.load(archive.readGroup(AreaConfig.id)),

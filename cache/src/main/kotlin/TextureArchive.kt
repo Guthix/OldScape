@@ -20,7 +20,7 @@ import io.guthix.oldscape.cache.plane.Texture
 
 public class TextureArchive(public val textures: List<Texture>) {
     public companion object {
-        public const val id: Int = 9
+        public const val ID: Int = 9
 
         public fun load(archive: Js5Archive): TextureArchive {
             val textures = mutableListOf<Texture>()

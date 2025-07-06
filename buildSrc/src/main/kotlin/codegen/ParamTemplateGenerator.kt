@@ -39,7 +39,7 @@ private fun Path.printCodeFile(templateName: String, namedIds: List<NamedId>, pa
     val sourceFile = resolve("${templateName}Params.kt").toFile()
     sourceFile.createNewFile()
     PrintWriter(sourceFile).use { pw ->
-        pw.printFileHeader(ServerContextGenerator.packageName)
+        pw.printFileHeader(ServerContextGenerator.PACKAGE_NAME)
         pw.println()
         for ((id, configName) in namedIds) {
             val identifier = configNameToIdentifier(id, configName)

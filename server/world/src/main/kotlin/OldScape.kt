@@ -36,7 +36,6 @@ import io.guthix.oldscape.server.world.World
 import io.guthix.oldscape.BuildConfig
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 import java.nio.file.Files
 import java.nio.file.Path
@@ -63,8 +62,8 @@ object OldScape {
             ).encode()
         )
 
-        val configArchive = cache.readArchive(ConfigArchive.id)
-        val binaryArchive = cache.readArchive(BinariesArchive.id)
+        val configArchive = cache.readArchive(ConfigArchive.ID)
+        val binaryArchive = cache.readArchive(BinariesArchive.ID)
         ServerContext.load(configArchive)
         Huffman.load(BinariesArchive.load(binaryArchive).huffman)
 
@@ -76,7 +75,7 @@ object OldScape {
         val mapSquareXteas = loadMapSquareXteaKeys(BuildConfig.CACHE_PATH.resolve("xteas.json"))
         val world = World.fromMap(
             MapArchive.load(
-                cache.readArchive(MapArchive.id), mapSquareXteas.map { MapXtea(it.mapsquare, it.key) }
+                cache.readArchive(MapArchive.ID), mapSquareXteas.map { MapXtea(it.mapsquare, it.key) }
             ).mapsquares,
             mapSquareXteas.map { it.mapsquare to it.key }.toMap()
         )

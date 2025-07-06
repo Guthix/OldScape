@@ -28,7 +28,6 @@ import io.guthix.oldscape.BuildConfig
 import io.guthix.oldscape.server.template.Template
 import io.guthix.oldscape.wiki.wikitext.NpcWikiDefinition
 import io.guthix.oldscape.wiki.wikitext.ObjWikiDefinition
-import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import mu.KotlinLogging
@@ -55,7 +54,7 @@ object YamlDownloader {
     @JvmStatic
     fun main(args: Array<String>) {
         val cache = Js5Cache(Js5DiskStore.open(BuildConfig.CACHE_PATH))
-        val configArchive = cache.readArchive(ConfigArchive.id)
+        val configArchive = cache.readArchive(ConfigArchive.ID)
 
         val npcCacheConfigs = NpcConfig.load(configArchive.readGroup(NpcConfig.id))
         val objCacheConfigs = ObjConfig.load(configArchive.readGroup(ObjConfig.id)).filter { it.key < 0 }

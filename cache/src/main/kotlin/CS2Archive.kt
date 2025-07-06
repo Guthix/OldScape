@@ -20,7 +20,7 @@ import io.guthix.oldscape.cache.script.MachineScript
 
 public class CS2Archive(public val scripts: Map<Int, MachineScript>) {
     public companion object {
-        public const val id: Int = 12
+        public const val ID: Int = 12
 
         public fun load(archive: Js5Archive): CS2Archive {
             val scripts = mutableMapOf<Int, MachineScript>()

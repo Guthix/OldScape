@@ -20,7 +20,7 @@ import io.guthix.oldscape.cache.plane.SpriteSet
 
 public class SpriteArchive(public val spriteSets: List<SpriteSet>) {
     public companion object {
-        public const val id: Int = 8
+        public const val ID: Int = 8
 
         public fun load(archive: Js5Archive): SpriteArchive {
             val sprites = mutableListOf<SpriteSet>()

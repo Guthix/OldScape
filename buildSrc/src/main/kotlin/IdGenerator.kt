@@ -51,16 +51,16 @@ class IdGenerator : CodeGenerator() {
                     val npcs = NpcConfig.load(configArchive.readGroup(NpcConfig.id))
                     target.writeNamedConfigTemplates("Npc", npcs, false)
 
-                    target.writeIntTemplates("Enums", enumKtFileName)
-                    target.writeIntTemplates("SpotAnims", spotAnimKtFileName)
-                    target.writeIntTemplates("Inventories", invKtFileName)
-                    target.writeIntTemplates("Sequences", sequenceKtFileName)
-                    target.writeIntTemplates("Varps", varpKtFileName)
-                    target.writeIntTemplates("Varbits", varbitKtFileName)
-                    target.writeIntTemplates("CS2s", cs2KtFileName)
-                    target.writeIntTemplates("MusicTracks", musicTrackKtFileName)
-                    target.writeIntTemplates("ObjParams", objParamFileName)
-                    target.writeIntTemplates("NpcParams", npcParamFileName)
+                    target.writeIntTemplates("Enums", ENUM_FILE_NAME)
+                    target.writeIntTemplates("SpotAnims", SPOT_ANIM_FILE_NAME)
+                    target.writeIntTemplates("Inventories", INV_FILE_NAME)
+                    target.writeIntTemplates("Sequences", SEQUENCE_FILE_NAME)
+                    target.writeIntTemplates("Varps", VARP_FILE_NAME)
+                    target.writeIntTemplates("Varbits", VARBIT_FILE_NAME)
+                    target.writeIntTemplates("CS2s", CS2_FILE_NAME)
+                    target.writeIntTemplates("MusicTracks", MUSIC_TRACK_FILE_NAME)
+                    target.writeIntTemplates("ObjParams", OBJ_PARAM_FILE_NAME)
+                    target.writeIntTemplates("NpcParams", NPC_PARAM_FILE_NAME)
                 }
             }
         }
@@ -71,27 +71,27 @@ class IdGenerator : CodeGenerator() {
     }
 
     companion object {
-        const val packageName: String = "io.guthix.oldscape.cache"
+        const val PACKAGE_NAME: String = "io.guthix.oldscape.cache"
 
-        const val cacheDir: String = "cache/src/main/resources"
-        const val nameDir: String = "cache/names/src/main/resources"
+        const val CACHE_DIR: String = "cache/src/main/resources"
+        const val NAME_DIR: String = "cache/names/src/main/resources"
 
-        const val enumKtFileName: String = "EnumId"
-        const val spotAnimKtFileName: String = "SpotAnimId"
-        const val invKtFileName: String = "InventoryId"
-        const val sequenceKtFileName: String = "SequenceId"
-        const val varpKtFileName: String = "VarpId"
-        const val varbitKtFileName: String = "VarbitId"
-        const val cs2KtFileName: String = "CS2Id"
-        const val musicTrackKtFileName: String = "MusicTrackId"
-        const val locParamFileName: String = "LocParamId"
-        const val objParamFileName: String = "ObjParamId"
-        const val npcParamFileName: String = "NpcParamId"
+        const val ENUM_FILE_NAME: String = "EnumId"
+        const val SPOT_ANIM_FILE_NAME: String = "SpotAnimId"
+        const val INV_FILE_NAME: String = "InventoryId"
+        const val SEQUENCE_FILE_NAME: String = "SequenceId"
+        const val VARP_FILE_NAME: String = "VarpId"
+        const val VARBIT_FILE_NAME: String = "VarbitId"
+        const val CS2_FILE_NAME: String = "CS2Id"
+        const val MUSIC_TRACK_FILE_NAME: String = "MusicTrackId"
+        const val LOC_PARAM_FILE_NAME: String = "LocParamId"
+        const val OBJ_PARAM_FILE_NAME: String = "ObjParamId"
+        const val NPC_PARAM_FILE_NAME: String = "NpcParamId"
     }
 }
 
 fun createSourceTree(target: Project): Path {
-    val srcDir = File("${target.projectDir}/${CodeGenerator.generatedFolder}")
+    val srcDir = File("${target.projectDir}/${CodeGenerator.GENERATED_FOLDER}")
     srcDir.mkdirs()
     return srcDir.toPath()
 }
@@ -122,7 +122,7 @@ data class NamedId(val id: Int, val name: String)
 fun Project.readNamedIds(name: String): List<NamedId> {
     return ObjectMapper(YAMLFactory()).registerKotlinModule()
         .readValue(
-            File("$rootDir/${IdGenerator.nameDir}").toPath().resolve("$name.yaml").toFile(),
+            File("$rootDir/${IdGenerator.NAME_DIR}").toPath().resolve("$name.yaml").toFile(),
             object : TypeReference<List<NamedId>>() {}
         )
 }

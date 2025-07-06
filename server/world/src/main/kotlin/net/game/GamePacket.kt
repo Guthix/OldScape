@@ -100,12 +100,12 @@ abstract class GamePacketDecoder(val opcode: Int, val packetSize: PacketSize) {
     ): PlayerGameEvent
 
     companion object : KLogging() {
-        private const val pkg = "io.guthix.oldscape.server.net.game.inc"
+        private const val PKG = "io.guthix.oldscape.server.net.game.inc"
 
         val inc: MutableMap<Int, GamePacketDecoder> = mutableMapOf()
 
         fun loadIncPackets() {
-            ClassGraph().whitelistPackages(pkg).scan().use { scanResult ->
+            ClassGraph().whitelistPackages(PKG).scan().use { scanResult ->
                 val pluginClassList = scanResult.getSubclasses(
                     "io.guthix.oldscape.server.net.game.GamePacketDecoder"
                 ).directOnly()

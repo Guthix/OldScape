@@ -25,12 +25,12 @@ import kotlin.reflect.KClass
 private val logger = KotlinLogging.logger { }
 
 object EventBus {
-    const val pkg: String = "io.guthix.oldscape.server"
+    const val PKG: String = "io.guthix.oldscape.server"
 
     private val eventListeners = mutableMapOf<KClass<out Event>, MutableList<ScriptScheduler<Event>>>()
 
     fun loadScripts() {
-        ClassGraph().whitelistPackages(pkg).scan().use { scanResult ->
+        ClassGraph().whitelistPackages(PKG).scan().use { scanResult ->
             val pluginClassList = scanResult
                 .getSubclasses("io.guthix.oldscape.server.plugin.Script")
                 .directOnly()

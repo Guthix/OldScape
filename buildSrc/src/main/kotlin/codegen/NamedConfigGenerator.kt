@@ -34,7 +34,7 @@ private fun Path.printCodeFile(fileName: String, configs: Map<Int, NamedConfig>,
     val sourceFile = resolve("$fileName.kt").toFile()
     sourceFile.createNewFile()
     PrintWriter(sourceFile).use { pw ->
-        pw.printFileHeader(IdGenerator.packageName)
+        pw.printFileHeader(IdGenerator.PACKAGE_NAME)
         pw.println()
         pw.println("object $fileName {")
         for (namedConfig in configs.values) {
