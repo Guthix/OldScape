@@ -1,5 +1,3 @@
-@file:Suppress("ConvertLambdaToReference")
-
 import de.undercouch.gradle.tasks.download.Download
 
 plugins {
